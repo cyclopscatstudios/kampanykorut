@@ -1,0 +1,14 @@
+[
+  {
+    "key": "mainMenu.newGame",
+    "lang": "Új játék"
+  },
+  {
+    "key": "mainMenu.modMaker",
+    "lang": "Mod készítő"
+  },
+  {
+    "key": "mainMenu.settings",
+    "lang": "Beállítások"
+  }
+]

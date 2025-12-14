@@ -3,10 +3,14 @@ import classNames from "classnames";
 interface TextProps {
   children: React.ReactNode;
   weight?: "light" | "normal" | "medium" | "bold";
-  color?: "white"
+  color?: "white" | "emerald";
 }
 
-export function Text({ children, weight = "normal", color = "white" }: TextProps) {
+export function Text({
+  children,
+  weight = "normal",
+  color = "white",
+}: TextProps) {
   function getWeightClass(weight: string) {
     switch (weight) {
       case "light":
@@ -23,13 +27,17 @@ export function Text({ children, weight = "normal", color = "white" }: TextProps
   }
 
   function getTextColor(color: string) {
-    switch(color) {
-      case 'white':
-        return 'text-white';
+    switch (color) {
+      case "white":
+        return "text-white";
+      case "emerald":
+        return "text-emerald-50";
     }
   }
 
   const fontWeight = getWeightClass(weight);
   const fontColor = getTextColor(color);
-  return <div className={classNames("", fontWeight, fontColor)}>{children}</div>;
+  return (
+    <div className={classNames("", fontWeight, fontColor)}>{children}</div>
+  );
 }

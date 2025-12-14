@@ -1,0 +1,14 @@
+[
+  {
+    "key": "mainMenu.newGame",
+    "lang": "New Game"
+  },
+  {
+    "key": "mainMenu.modMaker",
+    "lang": "Mod Maker"
+  },
+  {
+    "key": "mainMenu.settings",
+    "lang": "Settings"
+  }
+]

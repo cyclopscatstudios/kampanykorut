@@ -7,14 +7,19 @@ interface MenuListProps {
 
 export function MenuList({ listItems }: MenuListProps) {
   return (
-    <ul className="p-2 w-[450px]">
-      {listItems.map((item, index) => (
-        <li key={index} className="pb-2.5">
-          <Button block>
-            <Text>{item}</Text>
-          </Button>
-        </li>
-      ))}
-    </ul>
+    <div className="px-8 py-12 outline outline-1 outline-emerald-800/60">
+      <ul className="w-[450px]">
+        {listItems.map((item, index) => (
+          <li
+            key={index}
+            className={index !== listItems.length - 1 ? "pb-4" : ""}
+          >
+            <Button block>
+              <Text color="emerald">{item}</Text>
+            </Button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
