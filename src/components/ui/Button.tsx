@@ -7,6 +7,7 @@ interface ButtonProps {
   color?: Colors;
   block?: boolean;
   fullRounded?: boolean;
+  className?: string;
 }
 
 const COLOR_CLASSES = {
@@ -27,6 +28,7 @@ export function Button({
   color = "emerald",
   block = false,
   fullRounded,
+  className,
 }: ButtonProps) {
   return (
     <button
@@ -35,6 +37,7 @@ export function Button({
         "h-[50px] cursor-pointer p-2   shadow-md shadow-black/40 border border-emerald-900/40",
 
         COLOR_CLASSES[color].base,
+        className,
         {
           "w-full": block,
           "rounded-full": fullRounded,

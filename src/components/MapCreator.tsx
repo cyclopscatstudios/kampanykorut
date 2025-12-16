@@ -1,14 +1,16 @@
 import { DistrictMap } from "./DistrictMap";
-import hungary_oevk from "../assets/jsons/oevk.json";
+import oevk_2022 from "../assets/jsons/oevk_2022.json";
+import results from "../assets/jsons/2022_results.json";
 
 export function MapCreator() {
   return (
     <DistrictMap
-      districts={hungary_oevk}
-      width={800}
-      height={500}
+      districts={oevk_2022}
+      result={results}
+      width={1000}
+      height={600}
       stroke="#333"
-      strokeWidth={0.8}
+      strokeWidth={1}
     />
   );
 }

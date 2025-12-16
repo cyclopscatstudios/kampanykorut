@@ -1,16 +1,26 @@
-import React from "react";
+import type { PartyName } from "../types/color";
+import { getPartyColor, getWinnerResults } from "./ui/map.utils";
 
-type District = {
+export type District = {
   maz: string;
   evk: string;
   centrum: string;
   poligon: string;
 };
 
+export type Result = {
+  megyekod: number;
+  megye: string;
+  oevk: number;
+  telepules: string;
+  valasztopolgar: number;
+  partok: Partial<Record<PartyName, number>>;
+  jeloltek: Partial<Record<PartyName, string[]>>;
+};
+
 type RawPoint = { lat: number; lon: number };
 type Point = { x: number; y: number };
 
-// --- 1. Poligon adat parsolása ---
 function parsePolygon(poly: string): RawPoint[] {
   return poly.split(",").map((pair) => {
     const [latStr, lonStr] = pair.trim().split(/\s+/);
@@ -21,7 +31,6 @@ function parsePolygon(poly: string): RawPoint[] {
   });
 }
 
-// --- 2. Vetítés (long * cos(avgLat)) ---
 function projectPoints(pts: RawPoint[], cosLat: number): Point[] {
   return pts.map((p) => ({
     x: p.lon * cosLat,
@@ -29,7 +38,6 @@ function projectPoints(pts: RawPoint[], cosLat: number): Point[] {
   }));
 }
 
-// --- 3. Douglas–Peucker poligon-simítás ---
 function simplifyDP(points: Point[], tolerance = 0.00005): Point[] {
   if (points.length <= 2) return points;
 
@@ -83,10 +91,9 @@ function simplifyDP(points: Point[], tolerance = 0.00005): Point[] {
   return simplified;
 }
 
-// --- 4. A React komponens ---
-
 export function DistrictMap({
   districts,
+  result,
   width = 1100,
   height = 800,
   stroke = "#000",
@@ -94,6 +101,7 @@ export function DistrictMap({
   simplifyTolerance = 0.00005,
 }: {
   districts: District[];
+  result: Result[];
   width?: number;
   height?: number;
   stroke?: string;
@@ -102,7 +110,6 @@ export function DistrictMap({
 }) {
   if (!districts || districts.length === 0) return null;
 
-  // Átlagos szélesség → cos(lat) vetítéshez
   let sumLat = 0;
   let count = 0;
 
@@ -116,7 +123,6 @@ export function DistrictMap({
   const avgLat = sumLat / count;
   const cosLat = Math.cos((avgLat * Math.PI) / 180);
 
-  // Vetített bounding box számítása
   let minX = Infinity,
     maxX = -Infinity,
     minY = Infinity,
@@ -140,7 +146,6 @@ export function DistrictMap({
   const projW = maxX - minX;
   const projH = maxY - minY;
 
-  // Egy közös scale, hogy ne torzuljon
   const scale = Math.min(
     (width - margin * 2) / projW,
     (height - margin * 2) / projH,
@@ -155,16 +160,20 @@ export function DistrictMap({
           simplified
             .map((p, i) => {
               const x = margin + (p.x - minX) * scale;
-              const y = margin + (maxY - p.y) * scale; // y-tükrözés
+              const y = margin + (maxY - p.y) * scale;
               return `${i === 0 ? "M" : "L"}${x},${y}`;
             })
             .join(" ") + " Z";
 
+        const { winner } = getWinnerResults(d, result);
+        const districtColor = getPartyColor(winner as PartyName);
+
         return (
           <path
+            className="cursor-pointer hover:fill-sky-700"
             pointerEvents="all"
-            fill="transparent"
-            onClick={() => console.log({ d })}
+            fill={districtColor}
+            onClick={() => console.log(getWinnerResults(d, result))}
             key={`${d.maz}-${d.evk}`}
             data-maz={d.maz}
             data-evk={d.evk}

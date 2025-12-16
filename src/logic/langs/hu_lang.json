@@ -10,5 +10,17 @@
   {
     "key": "mainMenu.settings",
     "lang": "Beállítások"
+  },
+  {
+    "key": "newGameMenu.classicMode",
+    "lang": "Klasszikus mód"
+  },
+  {
+    "key": "newGameMenu.campaignMode",
+    "lang": "Kampány mód"
+  },
+  {
+    "key": "menuList.button.back",
+    "lang": "Vissza"
   }
 ]

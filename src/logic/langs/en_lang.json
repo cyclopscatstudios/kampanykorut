@@ -10,5 +10,17 @@
   {
     "key": "mainMenu.settings",
     "lang": "Settings"
+  },
+  {
+    "key": "newGameMenu.classicMode",
+    "lang": "Classic mode"
+  },
+  {
+    "key": "newGameMenu.campaignMode",
+    "lang": "Campaign mode"
+  },
+  {
+    "key": "menuList.button.back",
+    "lang": "Back"
   }
 ]
