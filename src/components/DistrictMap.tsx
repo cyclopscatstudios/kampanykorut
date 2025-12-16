@@ -1,3 +1,4 @@
+import { useWheelZoom } from "../hooks/useWheelZoom";
 import type { PartyName } from "../types/color";
 import { getPartyColor, getWinnerResults } from "./ui/map.utils";
 
@@ -108,7 +109,18 @@ export function DistrictMap({
   strokeWidth?: number;
   simplifyTolerance?: number;
 }) {
-  if (!districts || districts.length === 0) return null;
+  if (!districts || districts.length === 0! || !width || !height) {
+    return null;
+  }
+
+  const {
+    viewBox,
+    isPanning,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+    handleWheel,
+  } = useWheelZoom(width, height);
 
   let sumLat = 0;
   let count = 0;
@@ -152,7 +164,16 @@ export function DistrictMap({
   );
 
   return (
-    <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
+    <svg
+      width={width}
+      height={height}
+      viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`}
+      onWheel={handleWheel}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      style={{ cursor: isPanning.current ? "grabbing" : "grab" }}
+    >
       {projected.map((d) => {
         const simplified = simplifyDP(d.pts, simplifyTolerance);
 
