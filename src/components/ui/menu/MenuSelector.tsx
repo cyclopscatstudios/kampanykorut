@@ -3,6 +3,7 @@ import { MainMenu } from "./MainMenu";
 import { NewGameMenu } from "./NewGameMenu";
 import type { MenuItem } from "../MenuList";
 import { menuLogic, MenuType } from "../../../logic/MenuLogic";
+import { eventEmitter } from "../../../logic/EventEmitter";
 
 enum NewGameMenuItems {
   ClassicMode = "classicMode",
@@ -17,24 +18,26 @@ export function MenuSelector() {
   const handleMenuChange = (menuItem: MenuItem) => {
     switch (menuItem.id) {
       case "newGame":
-        setCurrentMenu(MenuType.NewGameMenu);
-        menuLogic.setHistoryItem(MenuType.NewGameMenu);
-        return;
+        return setMenuType(MenuType.NewGameMenu);
+      case "classicMode": {
+        eventEmitter.emit("backgroundColor", "bg-white");
+        return setMenuType(MenuType.ClassicMode);
+      }
       case "back": {
         const prevMenu =
           menuLogic.getHistory()[menuLogic.getHistory().length - 2];
         setCurrentMenu(prevMenu);
-        const newHistory = menuLogic.getHistory();
-        newHistory.pop();
-        if (newHistory) {
-          menuLogic.setHistory(newHistory);
-        }
+        menuLogic.goBack();
         return;
       }
       default:
-        setCurrentMenu(MenuType.MainMenu);
-        menuLogic.setHistoryItem(MenuType.MainMenu);
+        setMenuType(MenuType.MainMenu);
     }
+  };
+
+  const setMenuType = (menuType: MenuType) => {
+    setCurrentMenu(menuType);
+    menuLogic.setHistoryItem(menuType);
   };
 
   return (

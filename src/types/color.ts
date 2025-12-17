@@ -1,4 +1,4 @@
-export type Colors = "emerald" | "red" | "blue";
+export type Colors = "emerald" | "red" | "blue" | "darkBlue" | "lightBlue";
 
 export enum PartyName {
   EllenzekiOsszefogas = "ellenzeki_osszefogas",
@@ -20,4 +20,31 @@ export const partyColors: Record<PartyName, string> = {
   [PartyName.NormalisElet]: "#9D4EDD",
   [PartyName.Munkaspart]: "#B7094C",
   [PartyName.Fuggetlen]: "#6C757D",
+};
+
+export const partyHoverColor: Record<PartyName, string> = {
+  [PartyName.EllenzekiOsszefogas]: "#27d9ce",
+  [PartyName.Fidesz]: "#ff8c3a",
+  [PartyName.MiHazank]: "#688d1b",
+  [PartyName.Mkkp]: "#6A994E",
+  [PartyName.MegoldasMozgalom]: "#577590",
+  [PartyName.NormalisElet]: "#9D4EDD",
+  [PartyName.Munkaspart]: "#B7094C",
+  [PartyName.Fuggetlen]: "#6C757D",
+};
+
+export const partyActiveColor: Record<PartyName, string> = {
+  [PartyName.EllenzekiOsszefogas]: "#1c9b94",
+  [PartyName.Fidesz]: "#c55200",
+  [PartyName.MiHazank]: "#688d1b",
+  [PartyName.Mkkp]: "#6A994E",
+  [PartyName.MegoldasMozgalom]: "#577590",
+  [PartyName.NormalisElet]: "#9D4EDD",
+  [PartyName.Munkaspart]: "#B7094C",
+  [PartyName.Fuggetlen]: "#6C757D",
+};
+
+export const mainColors = {
+  Blue: "#0f172a",
+  BackgroundColor: "rgba(15,23,42,0.92)",
 };

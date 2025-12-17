@@ -1,6 +1,7 @@
 export enum MenuType {
   MainMenu = "mainMenu",
   NewGameMenu = "newGameMenu",
+  ClassicMode = "classicMode",
 }
 
 class MenuLogic {
@@ -20,6 +21,16 @@ class MenuLogic {
 
   public getHistory() {
     return this.menuHistory;
+  }
+
+  public goBack() {
+    if (this.menuHistory.length > 1) {
+      this.menuHistory = this.menuHistory.slice(0, -1);
+    }
+  }
+
+  public getCurrentMenu() {
+    return this.menuHistory[this.menuHistory.length - 1];
   }
 }
 

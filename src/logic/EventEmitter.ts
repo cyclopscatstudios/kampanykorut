@@ -1,5 +1,6 @@
 type Events = {
   changeLanguage: string;
+  backgroundColor: string;
 };
 
 class EventEmitter<E extends Record<string, any>> {

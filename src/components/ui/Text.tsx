@@ -1,9 +1,15 @@
 import classNames from "classnames";
+import { mainColors } from "../../types/color";
 
 interface TextProps {
   children: React.ReactNode;
   weight?: "light" | "normal" | "medium" | "bold";
-  color?: "white" | "emerald";
+  color?:
+    | "white"
+    | "emerald-light"
+    | "emerald-dark"
+    | "dark-blue"
+    | "light-blue";
 }
 
 export function Text({
@@ -30,8 +36,14 @@ export function Text({
     switch (color) {
       case "white":
         return "text-white";
-      case "emerald":
+      case "emerald-light":
         return "text-emerald-50";
+      case "emerald-dark":
+        return "text-emerald-900";
+      case "light-blue":
+        return "text-blue-50";
+      case "dark-blue":
+        return "text-blue-900";
     }
   }
 

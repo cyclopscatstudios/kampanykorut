@@ -1,9 +1,12 @@
 import classNames from "classnames";
 import type { Colors } from "../../types/color";
 
+type ButtonSize = "normal" | "small";
+
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
+  size?: ButtonSize;
   color?: Colors;
   block?: boolean;
   fullRounded?: boolean;
@@ -20,11 +23,18 @@ const COLOR_CLASSES = {
   emerald: {
     base: "bg-emerald-800 hover:bg-emerald-500 active:bg-emerald-900",
   },
+  darkBlue: {
+    base: "bg-blue-900 hover:bg-blue-600 active:bg-blue-900",
+  },
+  lightBlue: {
+    base: "bg-blue-50 hover:bg-blue-100 active:bg-blue-200",
+  },
 } as const;
 
 export function Button({
   children,
   onClick,
+  size = "normal",
   color = "emerald",
   block = false,
   fullRounded,
@@ -34,8 +44,11 @@ export function Button({
     <button
       onClick={onClick}
       className={classNames(
-        "h-[50px] cursor-pointer p-2   shadow-md shadow-black/40 border border-emerald-900/40",
-
+        "cursor-pointer shadow-md shadow-black/40 border",
+        {
+          "h-[50px] p-2": size === "normal",
+          "h-[25px] p-0.5": size === "small",
+        },
         COLOR_CLASSES[color].base,
         className,
         {

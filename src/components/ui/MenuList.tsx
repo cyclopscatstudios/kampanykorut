@@ -46,7 +46,7 @@ export function MenuList({
             }
           >
             <Button block onClick={() => handleOnClick(item)}>
-              <Text color="emerald">{item.text}</Text>
+              <Text color="emerald-light">{item.text}</Text>
             </Button>
           </li>
         ))}
@@ -56,7 +56,7 @@ export function MenuList({
               block
               onClick={() => onClick?.({ id: MenuItemId.Back, text: "Back" })}
             >
-              <Text color="emerald">{backButton}</Text>
+              <Text color="emerald-light">{backButton}</Text>
             </Button>
           </li>
         )}

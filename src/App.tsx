@@ -6,7 +6,7 @@ import { MapCreator } from "./components/MapCreator";
 function App() {
   return (
     <FullscreenBackground>
-      {/* <MenuSelector /> */}
+      <MenuSelector />
       <MapCreator />
     </FullscreenBackground>
   );

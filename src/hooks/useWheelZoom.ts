@@ -1,42 +1,38 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 
-type ViewBox = {
+export type ViewBox = {
   x: number;
   y: number;
   w: number;
   h: number;
 };
 
-export function useWheelZoom(width: number, height: number) {
-  const [viewBox, setViewBox] = useState<ViewBox>({
-    x: 0,
-    y: 0,
-    w: width,
-    h: height,
-  });
-  function handleWheel(e: React.WheelEvent<SVGSVGElement>) {
-    e.preventDefault();
-
-    const zoomFactor = e.deltaY > 0 ? 1.15 : 0.85;
-
-    setViewBox((vb) => {
-      const mx = e.nativeEvent.offsetX / width;
-      const my = e.nativeEvent.offsetY / height;
-
-      const newW = vb.w * zoomFactor;
-      const newH = vb.h * zoomFactor;
-
-      return {
-        x: vb.x + (vb.w - newW) * mx,
-        y: vb.y + (vb.h - newH) * my,
-        w: newW,
-        h: newH,
-      };
-    });
-  }
-
+export function useWheelZoom(
+  setViewBox: React.Dispatch<React.SetStateAction<ViewBox>>,
+  width: number,
+  height: number,
+) {
   const isPanning = useRef(false);
   const last = useRef<{ x: number; y: number } | null>(null);
+
+  function handleWheel(e: React.WheelEvent<SVGSVGElement>) {
+    if (e.cancelable) e.preventDefault();
+
+    const factor = e.deltaY > 0 ? 1.15 : 0.85;
+
+    const cx = e.nativeEvent.offsetX / width;
+    const cy = e.nativeEvent.offsetY / height;
+
+    setViewBox((vb) => zoomAt(vb, factor, cx, cy));
+  }
+
+  function zoomIn() {
+    setViewBox((vb) => zoomAt(vb, 0.85));
+  }
+
+  function zoomOut() {
+    setViewBox((vb) => zoomAt(vb, 1.15));
+  }
 
   function handleMouseDown(e: React.MouseEvent) {
     isPanning.current = true;
@@ -63,12 +59,30 @@ export function useWheelZoom(width: number, height: number) {
     last.current = null;
   }
 
+  function resetViewBox(initial: ViewBox) {
+    setViewBox(initial);
+  }
+
   return {
-    viewBox,
     isPanning,
     handleWheel,
-    handleMouseMove,
     handleMouseDown,
+    handleMouseMove,
     handleMouseUp,
+    zoomIn,
+    zoomOut,
+    resetViewBox,
+  };
+}
+
+function zoomAt(vb: ViewBox, factor: number, cx = 0.5, cy = 0.5): ViewBox {
+  const newW = vb.w * factor;
+  const newH = vb.h * factor;
+
+  return {
+    x: vb.x + (vb.w - newW) * cx,
+    y: vb.y + (vb.h - newH) * cy,
+    w: newW,
+    h: newH,
   };
 }
