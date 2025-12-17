@@ -47,7 +47,7 @@ export function MapCreator() {
             {selectedDistrict?.valasztopolgar}
           </Text>
           <Button color="darkBlue" fullRounded block>
-            <Text color="light-blue">Visit district</Text>
+            <Button.Text>Visit district</Button.Text>
           </Button>
         </div>
       </div>
@@ -100,18 +100,18 @@ function MapWithWheelZoom({
         wheel={wheel}
       />
       <div>
-        <Button size="small" color="lightBlue" onClick={() => wheel.zoomIn()}>
-          <i className="bi bi-zoom-in"></i>
+        <Button size="small" color="transparent" onClick={() => wheel.zoomIn()}>
+          <Button.Icon name="zoom-in" color="lightBlue" size="large" />
         </Button>
         <Button
           size="small"
-          color="lightBlue"
+          color="transparent"
           onClick={() => wheel.resetViewBox(initialView)}
         >
-          <i className="bi bi-fullscreen"></i>
+          <Button.Icon name="fullscreen" color="transparent" size="large" />
         </Button>
-        <Button size="small" color="lightBlue" onClick={() => wheel.zoomOut()}>
-          <i className="bi bi-zoom-out"></i>
+        <Button size="small" color="transparent" onClick={() => wheel.zoomOut()}>
+          <Button.Icon name="zoom-out" color="lightBlue" size="large" />
         </Button>
       </div>
     </div>
