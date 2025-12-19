@@ -30,7 +30,10 @@ export function QuestionCard({
   const [answer, setAnswer] = useState<string | undefined>();
 
   return (
-    <div className="w-[1024px] h-[768px] border border-blue-500 p-4 bg-blue-50" data-testid={id}>
+    <div
+      className="w-[1024px] h-[768px] border border-blue-500 p-4 bg-blue-50"
+      data-testid={id}
+    >
       <div className="w-full flex flex-col justify-center items-center">
         <div className="bg-blue-900 mb-4 p-2 rounded-md">
           <Text weight="bold" color="light-blue" className="text-center">
