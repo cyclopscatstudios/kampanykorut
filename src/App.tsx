@@ -1,13 +1,22 @@
 import "./App.css";
 import FullscreenBackground from "./ui/Background";
 import { MenuSelector } from "./components/ui/menu/MenuSelector";
-import { MapCreator } from "./components/MapCreator";
+import { useState } from "react";
+import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
+
+export type ScreenType = "MenuSelector" | "MapCreator";
 
 function App() {
+  const [currentScreen, setCurrentScreen] =
+    useState<ScreenType>("MenuSelector");
+
   return (
     <FullscreenBackground>
-      <MenuSelector />
-      <MapCreator />
+      {currentScreen === "MenuSelector" ? (
+        <MenuSelector setCurrentScreen={setCurrentScreen} />
+      ) : (
+        <MainGameScreen />
+      )}
     </FullscreenBackground>
   );
 }

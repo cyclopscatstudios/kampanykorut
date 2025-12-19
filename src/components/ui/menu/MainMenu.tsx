@@ -12,7 +12,7 @@ export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
     <div className="relative w-full h-full">
       <div className="absolute top-0 left-0 w-full flex justify-center pt-8">
         <div className="flex flex-col items-center z-10">
-          <h1 className="text-emerald-100/30 text-5xl tracking-widest mb-6">
+          <h1 className="font-bartle text-emerald-100/30 text-5xl tracking-widest mb-6">
             KAMPÁNYKÖRÚT
           </h1>
           <img src={logo} alt="Logo" className="w-25 h-25" />

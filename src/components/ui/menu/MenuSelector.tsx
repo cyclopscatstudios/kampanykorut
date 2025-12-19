@@ -4,6 +4,7 @@ import { NewGameMenu } from "./NewGameMenu";
 import type { MenuItem } from "../MenuList";
 import { menuLogic, MenuType } from "../../../logic/MenuLogic";
 import { eventEmitter } from "../../../logic/EventEmitter";
+import type { ScreenType } from "../../../App";
 
 enum NewGameMenuItems {
   ClassicMode = "classicMode",
@@ -12,7 +13,11 @@ enum NewGameMenuItems {
 
 export type MenuItems = MenuType | NewGameMenuItems;
 
-export function MenuSelector() {
+export function MenuSelector({
+  setCurrentScreen,
+}: {
+  setCurrentScreen: (screen: ScreenType) => void;
+}) {
   const [currentMenu, setCurrentMenu] = useState<MenuType>(MenuType.MainMenu);
 
   const handleMenuChange = (menuItem: MenuItem) => {
@@ -21,6 +26,7 @@ export function MenuSelector() {
         return setMenuType(MenuType.NewGameMenu);
       case "classicMode": {
         eventEmitter.emit("backgroundColor", "bg-white");
+        setCurrentScreen("MapCreator");
         return setMenuType(MenuType.ClassicMode);
       }
       case "back": {

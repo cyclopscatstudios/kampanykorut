@@ -38,5 +38,7 @@ function getIconColor(color: Colors) {
   switch (color) {
     case "lightBlue":
       return "text-blue-50";
+    case "darkBlue":
+      return "text-blue-900";
   }
 }

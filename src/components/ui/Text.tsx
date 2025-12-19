@@ -10,12 +10,14 @@ interface TextProps {
     | "emerald-dark"
     | "dark-blue"
     | "light-blue";
+  className?: string;
 }
 
 export function Text({
   children,
   weight = "normal",
   color = "white",
+  className,
 }: TextProps) {
   function getWeightClass(weight: string) {
     switch (weight) {
@@ -50,6 +52,8 @@ export function Text({
   const fontWeight = getWeightClass(weight);
   const fontColor = getTextColor(color);
   return (
-    <div className={classNames("", fontWeight, fontColor)}>{children}</div>
+    <div className={classNames("", fontWeight, fontColor, className)}>
+      {children}
+    </div>
   );
 }

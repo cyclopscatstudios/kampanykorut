@@ -1,10 +1,4 @@
-export type Colors =
-  | "emerald"
-  | "red"
-  | "blue"
-  | "darkBlue"
-  | "lightBlue"
-  | "transparent";
+export type Colors = "emerald" | "darkBlue" | "lightBlue" | "transparent";
 
 export enum PartyName {
   EllenzekiOsszefogas = "ellenzeki_osszefogas",
