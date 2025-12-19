@@ -1,7 +1,8 @@
 import { useTranslateLang } from "../../../logic/useTranslateLang";
-import { MenuItemId, MenuList, type MenuItem } from "../MenuList";
+import { MenuList } from "../MenuList";
 import logo from "../../../assets/logo.svg";
 import { MenuLayout } from "./MenuLayout";
+import { MenuItemId, type MenuItem } from "./menu.types";
 
 export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
   const newGame = useTranslateLang("mainMenu.newGame");

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { MainMenu } from "./MainMenu";
 import { NewGameMenu } from "./NewGameMenu";
-import type { MenuItem } from "../MenuList";
 import { menuLogic, MenuType } from "../../../logic/MenuLogic";
 import { eventEmitter } from "../../../logic/EventEmitter";
 import type { ScreenType } from "../../../App";
+import type { MenuItem } from "./menu.types";
 
 enum NewGameMenuItems {
   ClassicMode = "classicMode",

@@ -1,5 +1,6 @@
 import { useTranslateLang } from "../../../logic/useTranslateLang";
-import { MenuItemId, MenuList, type MenuItem } from "../MenuList";
+import { MenuList } from "../MenuList";
+import { MenuItemId, type MenuItem } from "./menu.types";
 import { MenuLayout } from "./MenuLayout";
 
 export function NewGameMenu({
