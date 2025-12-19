@@ -3,7 +3,9 @@ type Events = {
   backgroundColor: string;
 };
 
+// eslint-disable-next-line
 class EventEmitter<E extends Record<string, any>> {
+  // eslint-disable-next-line
   private events = new Map<keyof E, Set<(payload: any) => void>>();
 
   on<K extends keyof E>(event: K, handler: (payload: E[K]) => void) {

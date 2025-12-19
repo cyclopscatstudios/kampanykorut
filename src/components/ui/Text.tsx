@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { mainColors } from "../../types/color";
 
 interface TextProps {
   children: React.ReactNode;
