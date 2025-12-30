@@ -4,7 +4,6 @@ import {
   getWinnerResults,
   type District,
   type DistrictResult,
-  type Result,
 } from "../ui/map.utils";
 import { parsePolygon, projectPoints } from "./geometry";
 import { computeBounds, computeScale } from "./projection";
@@ -16,11 +15,12 @@ import {
   getPartyHoverColor,
   getPartyActiveColor,
 } from "../ui/color.utils";
+import type { OevkResult } from "../../logic/ResultModifier";
 
 interface DistrictMapProps {
   districts: District[];
-  result: Result[];
-  onClick: (r: DistrictResult) => void;
+  result: OevkResult[];
+  onClick?: (r: DistrictResult) => void;
   width?: number;
   height?: number;
   stroke?: string;
@@ -122,7 +122,7 @@ export function DistrictMap({
             }}
             onMouseDown={() => setPressed(id)}
             onMouseUp={() => setPressed(null)}
-            onClick={() => onClick(getWinnerResults(d, result))}
+            onClick={() => onClick?.(getWinnerResults(d, result))}
           />
         );
       })}

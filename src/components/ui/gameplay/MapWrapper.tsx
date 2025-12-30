@@ -3,7 +3,7 @@ import { type ViewBox, useWheelZoom } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
 import { Button } from "../Button";
 import type { District, DistrictResult } from "../map.utils";
-import results_2022 from "../../../assets/jsons/2022/2022_results.json";
+import type { OevkResult } from "../../../logic/ResultModifier";
 
 const initialFullMapViewBox: ViewBox = {
   x: 45,
@@ -24,10 +24,12 @@ export function MapWrapper({
   fullView,
   handleDistrict,
   selectedDistrict,
+  results,
 }: {
   districts: District[];
   fullView: boolean;
-  handleDistrict: (r: DistrictResult) => void;
+  handleDistrict?: (r: DistrictResult) => void;
+  results: OevkResult[];
   selectedDistrict?: DistrictResult | null;
 }) {
   const initialView = fullView ? initialFullMapViewBox : initialCityMapView;
@@ -40,7 +42,7 @@ export function MapWrapper({
       <div className="bg-blue-50/25 rounded-md h-full flex items-center">
         <DistrictMap
           districts={districts}
-          result={results_2022}
+          result={results}
           onClick={handleDistrict}
           width={800}
           height={550}

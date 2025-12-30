@@ -106,7 +106,6 @@ function getButtonTextColor(variant?: ButtonVariant, color?: Colors) {
 function ButtonText({ children }: { children: React.ReactNode }) {
   const ctx = React.useContext(ButtonContext);
   const textColor = getButtonTextColor(ctx?.variant, ctx?.color);
-  console.log({ ctx });
   return (
     <span
       className={classNames("font-bold", textColor, {

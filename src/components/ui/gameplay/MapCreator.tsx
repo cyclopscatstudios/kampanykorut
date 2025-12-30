@@ -6,6 +6,7 @@ import type { CurrentView } from "./MainGameScreen";
 import { MapWrapper } from "./MapWrapper";
 import oevk_2022 from "../../../assets/jsons/2022/oevk_2022.json";
 import budapest from "../../../assets/jsons/2022/budapest.json";
+import results from "../../../assets/jsons/2022/oevk_constituency_results.json";
 
 export function MapCreator({
   setCurrentView,
@@ -26,6 +27,7 @@ export function MapCreator({
         <div className="w-[800px] h-[500px] p-4">
           <MapWrapper
             districts={oevk_2022}
+            results={results}
             fullView
             handleDistrict={handleDistrict}
             selectedDistrict={selectedDistrict}
@@ -34,6 +36,7 @@ export function MapCreator({
         <div className="w-[450px] h-[500px] p-4">
           <MapWrapper
             districts={budapest}
+            results={results}
             fullView={false}
             handleDistrict={handleDistrict}
             selectedDistrict={selectedDistrict}
