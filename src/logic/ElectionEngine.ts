@@ -30,26 +30,6 @@ interface ListVoteInput {
   partok: PartyVotesRaw;
 }
 
-interface MandateResult {
-  party: PartyId;
-  constituencySeats: number;
-  listSeats: number;
-  totalSeats: number;
-}
-
-interface ElectionResult {
-  mandates: MandateResult[];
-
-  constituencySeats: Record<PartyId, number>;
-  listSeats: Record<PartyId, number>;
-
-  compensation: {
-    losingVotes: PartyVotes;
-    winnerCompensation: PartyVotes;
-    total: PartyVotes;
-  };
-}
-
 export class ElectionEngine {
   private mandateCalculator: MandateCalculator;
 

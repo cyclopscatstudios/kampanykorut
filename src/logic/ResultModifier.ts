@@ -16,12 +16,6 @@ type VoterBase = {
   valasztopolgar: number;
 };
 
-type VoteTarget = {
-  target: string;
-  vote: number;
-  from: string;
-};
-
 export class ResultModifier {
   private voterBases: VoterBase[] = [];
 
