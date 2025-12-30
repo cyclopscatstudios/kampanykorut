@@ -128,9 +128,8 @@ export function Calculator() {
   }
 
   function handleMoidyfyDistrict() {
-    const result = resultModifierEngine.modifyDistrict(listResults, 1, 1, [
-      { fidesz: 50000 },
-    ]);
+    const result = resultModifierEngine.modifyDistrict(listResults, 1, 1, "fidesz", 5000);
+    console.log({ result });
   }
 
   function buildTargetShares(

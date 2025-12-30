@@ -40,7 +40,8 @@ export class ResultModifier {
     list: OevkResult[],
     megyekod: number,
     oevk: number,
-    target: Record<string, number>[],
+    targetParty: string,
+    amount: number,
     from: string = "bizonytalan",
   ): OevkResult[] {
     return list.map((row) => {
@@ -48,19 +49,31 @@ export class ResultModifier {
         return row;
       }
 
+      const partok = { ...row.partok };
+
+      let available = 0;
+
       if (from === "bizonytalan") {
-        const voterBase = this.voterBases.find(
-          (v) => v.id === `${megyekod}-${oevk}`,
-        );
-        console.log({ voterBase });
+        available = this.getRemainingVoteCount(row);
+      } else {
+        available = partok[from] ?? 0;
       }
+
+      const transfer = Math.max(0, Math.min(amount, available));
+
+      if (transfer === 0) {
+        return row;
+      }
+
+      if (from !== "bizonytalan") {
+        partok[from] = (partok[from] ?? 0) - transfer;
+      }
+
+      partok[targetParty] = (partok[targetParty] ?? 0) + transfer;
 
       return {
         ...row,
-        partok: {
-          ...row.partok,
-          ...Object.assign({}, ...target),
-        },
+        partok,
       };
     });
   }
@@ -109,6 +122,19 @@ export class ResultModifier {
         },
       };
     });
+  }
+
+  private getRemainingVoteCount(district: OevkResult) {
+    const remainingVotesInDistrict =
+      district.valasztopolgar ??
+      this.voterBases.find(
+        (v) => v.id === `${district.megyekod}-${district.oevk}`,
+      )?.valasztopolgar ??
+      0;
+    const allVoteCount =
+      Object.values(district.partok).reduce((a, b) => (a ?? 0) + (b ?? 0), 0) ??
+      0;
+    return remainingVotesInDistrict - allVoteCount;
   }
 
   private extractVotes(input: Record<string, number | undefined>): Votes {
