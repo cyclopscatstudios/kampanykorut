@@ -55,11 +55,7 @@ describe("ElectionEngine", () => {
       },
     ];
 
-    const engine = new ElectionEngine(
-      constituencyData,
-      listData,
-      config,
-    );
+    const engine = new ElectionEngine(constituencyData, listData, config);
 
     const result = engine.calculate();
 
@@ -79,9 +75,7 @@ describe("ElectionEngine", () => {
     expect(totalListSeats).toBe(config.listSeats);
 
     for (const row of result.mandates) {
-      expect(row.totalSeats).toBe(
-        row.constituencySeats + row.listSeats,
-      );
+      expect(row.totalSeats).toBe(row.constituencySeats + row.listSeats);
     }
   });
 

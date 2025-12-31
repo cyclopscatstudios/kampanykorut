@@ -30,6 +30,41 @@ export class ResultModifier {
     }));
   }
 
+  distributeVotesByPartyShare(
+    list: OevkResult[],
+    totalVotes: number,
+    partyShares: Shares,
+  ): {
+    districts: OevkResult[];
+    totals: Record<string, number>;
+    percentages: Shares;
+    totalVotes: number;
+  } {
+    let result = list.map((r) => ({
+      ...r,
+      partok: { ...r.partok },
+    }));
+
+    for (const [party, share] of Object.entries(partyShares)) {
+      const partyTotal = Math.round(totalVotes * share);
+
+      const weights = this.getPartyWeights(result, party);
+      const distributed = this.distributeByWeights(weights, partyTotal);
+
+      result = this.applyPartyDistributionImmutable(result, party, distributed);
+    }
+
+    const totals = this.sumPartyTotals(result);
+    const percentages = this.calculatePercentages(totals);
+
+    return {
+      districts: result,
+      totals,
+      percentages,
+      totalVotes: Object.values(totals).reduce((a, b) => a + b, 0),
+    };
+  }
+
   modifyDistrict(
     list: OevkResult[],
     megyekod: number,
@@ -116,6 +151,67 @@ export class ResultModifier {
         },
       };
     });
+  }
+
+  private sumPartyTotals(districts: OevkResult[]): Record<string, number> {
+    const totals: Record<string, number> = {};
+
+    for (const d of districts) {
+      for (const [party, votes] of Object.entries(d.partok)) {
+        totals[party] = (totals[party] ?? 0) + (votes ?? 0);
+      }
+    }
+
+    return totals;
+  }
+
+  private calculatePercentages(totals: Record<string, number>): Shares {
+    const sum = Object.values(totals).reduce((a, b) => a + b, 0);
+    const result: Shares = {};
+
+    for (const [party, votes] of Object.entries(totals)) {
+      result[party] = sum ? votes / sum : 0;
+    }
+
+    return result;
+  }
+
+  private getPartyWeights(districts: OevkResult[], party: string): number[] {
+    return districts.map((d) => d.partok[party] ?? 0);
+  }
+
+  private applyPartyDistributionImmutable(
+    districts: OevkResult[],
+    party: string,
+    distributed: number[],
+  ): OevkResult[] {
+    return districts.map((row, i) => ({
+      ...row,
+      partok: {
+        ...row.partok,
+        [party]: (row.partok[party] ?? 0) + (distributed[i] ?? 0),
+      },
+    }));
+  }
+
+  private distributeByWeights(weights: number[], total: number): number[] {
+    const sum = weights.reduce((a, b) => a + b, 0);
+    if (!sum || !total) return weights.map(() => 0);
+
+    const raw = weights.map((w) => (w / sum) * total);
+    const ints = raw.map((v) => Math.floor(v));
+
+    let remaining = total - ints.reduce((a, b) => a + b, 0);
+
+    const order = raw
+      .map((v, i) => ({ i, frac: v - Math.floor(v) }))
+      .sort((a, b) => b.frac - a.frac);
+
+    for (let i = 0; i < remaining; i++) {
+      ints[order[i].i]++;
+    }
+
+    return ints;
   }
 
   private getRemainingVoteCount(district: OevkResult) {

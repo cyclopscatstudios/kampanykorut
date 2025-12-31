@@ -26,6 +26,10 @@ export function Calculator() {
 
   const [fideszShare, setFideszShare] = useState(0.53);
   const [ellenzekShare, setEllenzekShare] = useState(0.35);
+  const [sumOfVotes, setSumOfVotes] = useState({});
+
+  console.log({ sumOfVotes });
+  console.log({ constituencyState });
 
   const basesetConstituencyResultsRef =
     useRef<OevkResult[]>(constituencyResults);
@@ -35,6 +39,28 @@ export function Calculator() {
   useEffect(() => {
     resetResults();
   }, []);
+
+  useEffect(() => {
+    const result = sumPartyVotesWithTotal(listState);
+    setSumOfVotes(result);
+  }, [listState]);
+
+  function sumPartyVotesWithTotal(data: OevkResult[]) {
+    const partyTotals: Record<string, number> = {};
+    let totalVotes = 0;
+
+    for (const row of data) {
+      for (const [party, votes] of Object.entries(row.partok)) {
+        partyTotals[party] = (partyTotals[party] ?? 0) + (votes ?? 0);
+        totalVotes += votes ?? 0;
+      }
+    }
+
+    return {
+      partyTotals,
+      totalVotes,
+    };
+  }
 
   function normalizeTwoPartyShares(f: number, e: number): Shares {
     const sum = f + e;
@@ -74,10 +100,12 @@ export function Calculator() {
     );
 
     const newList = resultModifierEngine.applyNationalSwingToList(
-      listState,
+      listResults,
       baseShare,
       targetShare,
     );
+
+    console.log({ baseShare, targetShare });
 
     setConstituencyState(newDistricts);
     setListState(newList);
@@ -128,8 +156,25 @@ export function Calculator() {
   }
 
   function handleMoidyfyDistrict() {
-    const result = resultModifierEngine.modifyDistrict(listResults, 1, 1, "fidesz", 5000);
+    const result = resultModifierEngine.modifyDistrict(
+      listResults,
+      1,
+      1,
+      "fidesz",
+      5000,
+    );
     console.log({ result });
+  }
+
+  function handleModifyList() {
+    const { districts: updated, percentages } =
+      resultModifierEngine.distributeVotesByPartyShare(listState, 200000, {
+        fidesz: 0.46,
+        ellenzeki_osszefogas: 0.51,
+        mi_hazank: 0.03,
+      });
+    console.log({ percentages });
+    setListState(updated);
   }
 
   function buildTargetShares(
@@ -274,6 +319,10 @@ export function Calculator() {
 
         <Button onClick={handleMoidyfyDistrict}>
           <Button.Text>Modify district</Button.Text>
+        </Button>
+
+        <Button onClick={handleModifyList}>
+          <Button.Text>Modify list</Button.Text>
         </Button>
       </div>
 

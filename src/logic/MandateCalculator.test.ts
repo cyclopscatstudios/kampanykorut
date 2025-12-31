@@ -107,7 +107,10 @@ describe("MandateCalculator", () => {
 
       const seats = calculator.allocateListSeats(listVotes, compensation);
 
-      const totalSeats = Object.values(seats).reduce((a: any, b: any) => a + b, 0);
+      const totalSeats = Object.values(seats).reduce(
+        (a: any, b: any) => a + b,
+        0,
+      );
       expect(totalSeats).toBe(config.listSeats);
 
       expect(seats.fidesz).toBeGreaterThan(seats.ellenzek);

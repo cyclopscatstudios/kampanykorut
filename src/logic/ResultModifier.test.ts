@@ -1,6 +1,5 @@
 import { ResultModifier, type OevkResult } from "./ResultModifier";
 
-
 describe("ResultModifier", () => {
   let baseList: OevkResult[];
 
@@ -114,7 +113,11 @@ describe("ResultModifier", () => {
         mkkp: 0.1,
       };
 
-      const result = rm.applyNationalSwingToList(baseList, baseShare, targetShare);
+      const result = rm.applyNationalSwingToList(
+        baseList,
+        baseShare,
+        targetShare,
+      );
 
       const originalSum = Object.values(baseList[0].partok).reduce(
         (a, b) => (a ?? 0) + (b ?? 0),
@@ -150,6 +153,80 @@ describe("ResultModifier", () => {
 
       expect(row.partok.ellenzek!).toBeGreaterThan(300);
       expect(row.partok.fidesz!).toBeLessThan(400);
+    });
+  });
+
+  describe("distributeVotesByPartyShare", () => {
+    it("should distribute votes by party share", () => {
+      const rm = new ResultModifier(baseList);
+      const { districts, percentages, totalVotes, totals } =
+        rm.distributeVotesByPartyShare(
+          [
+            {
+              megyekod: 1,
+              megye: "BUDAPEST",
+              oevk: 1,
+              partok: {
+                ellenzeki_osszefogas: 21300,
+                fidesz: 18767,
+                mkkp: 2842,
+                megoldas_mozgalom: 472,
+                mi_hazank: 1307,
+                normalis_elet: 155,
+              },
+            },
+            {
+              megyekod: 1,
+              megye: "BUDAPEST",
+              oevk: 2,
+              partok: {
+                ellenzeki_osszefogas: 26398,
+                fidesz: 21814,
+                mkkp: 2963,
+                megoldas_mozgalom: 484,
+                mi_hazank: 1696,
+                normalis_elet: 188,
+              },
+            },
+            {
+              megyekod: 1,
+              megye: "BUDAPEST",
+              oevk: 3,
+              partok: {
+                ellenzeki_osszefogas: 25194,
+                fidesz: 21352,
+                mkkp: 3717,
+                megoldas_mozgalom: 449,
+                mi_hazank: 1358,
+                normalis_elet: 132,
+              },
+            },
+          ],
+          200000,
+          {
+            fidesz: 0.46,
+            ellenzeki_osszefogas: 0.51,
+            mi_hazank: 0.03,
+          },
+        );
+      expect(totalVotes).toBe(350588);
+      expect(percentages).toEqual({
+        ellenzeki_osszefogas: 0.49885335493513755,
+        fidesz: 0.43907093226237065,
+        megoldas_mozgalom: 0.004007553025203373,
+        mi_hazank: 0.029553207753830708,
+        mkkp: 0.027160085342339157,
+        normalis_elet: 0.001354866681118578,
+      });
+      expect(totals).toEqual({
+        ellenzeki_osszefogas: 174892,
+        fidesz: 153933,
+        megoldas_mozgalom: 1405,
+        mi_hazank: 10361,
+        mkkp: 9522,
+        normalis_elet: 475,
+      });
+      expect(districts).toMatchSnapshot();
     });
   });
 });
