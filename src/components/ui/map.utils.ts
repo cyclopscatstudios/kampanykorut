@@ -1,9 +1,9 @@
-import type { OevkResult } from "../../logic/ResultModifier";
+import type { ConstituencyDataProps } from "../../logic/ResultModifier";
 
 export type DistrictResult = {
   winner: string;
   maxVotes?: number;
-} & OevkResult;
+} & ConstituencyDataProps;
 
 export type District = {
   maz: string;
@@ -12,7 +12,7 @@ export type District = {
   poligon: string;
 };
 
-export function getWinnerResults(d: District, result: OevkResult[]) {
+export function getWinnerResults(d: District, result: ConstituencyDataProps[]) {
   const results = result.find(
     (er) => er.megyekod === Number(d.maz) && er.oevk === Number(d.evk),
   );

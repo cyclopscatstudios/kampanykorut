@@ -1,7 +1,7 @@
-import { ResultModifier, type OevkResult } from "./ResultModifier";
+import { ResultModifier, type ConstituencyDataProps } from "./ResultModifier";
 
 describe("ResultModifier", () => {
-  let baseList: OevkResult[];
+  let baseList: ConstituencyDataProps[];
 
   beforeEach(() => {
     baseList = [
@@ -75,7 +75,7 @@ describe("ResultModifier", () => {
     });
 
     it("should not modify other districts", () => {
-      const other: OevkResult = {
+      const other: ConstituencyDataProps = {
         megyekod: 2,
         megye: "PEST",
         oevk: 1,

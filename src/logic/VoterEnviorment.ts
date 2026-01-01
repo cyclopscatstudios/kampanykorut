@@ -15,6 +15,8 @@ export class VoterEnvironment {
   }
 
   private calculateMaxGuaranteedTurnout(percentage: number) {
+    this.defaultTurnoutPercentage;
+    this.maximumGuaranteedTurnout;
     return Math.floor((this.eligibleVoters * percentage) / 100);
   }
 }

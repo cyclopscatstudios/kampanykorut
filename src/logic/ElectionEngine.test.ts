@@ -6,58 +6,58 @@ describe("ElectionEngine", () => {
     thresholdPercent: 5,
   };
 
+  const constituencyData = [
+    {
+      megyekod: 1,
+      megye: "BP",
+      oevk: 1,
+      partok: {
+        fidesz: 12000,
+        opposition: 11000,
+        mkkp: undefined,
+      },
+      jeloltek: {
+        fidesz: ["Candidate A"],
+        opposition: ["Candidate B"],
+      },
+    },
+    {
+      megyekod: 1,
+      megye: "BP",
+      oevk: 2,
+      partok: {
+        opposition: 9000,
+        fidesz: 8000,
+      },
+    },
+  ];
+
+  const listData = [
+    {
+      megyekod: 1,
+      megye: "BP",
+      oevk: 1,
+      partok: {
+        fidesz: 50000,
+        opposition: 40000,
+        mkkp: 3000,
+      },
+    },
+    {
+      megyekod: 1,
+      megye: "BP",
+      oevk: 2,
+      partok: {
+        fidesz: 30000,
+        opposition: 35000,
+      },
+    },
+  ];
+
+  const engine = new ElectionEngine(constituencyData, listData, config);
+
   it("merges input data and calculates mandates correctly", () => {
-    const constituencyData = [
-      {
-        megyekod: 1,
-        megye: "BP",
-        oevk: 1,
-        partok: {
-          fidesz: 12000,
-          opposition: 11000,
-          mkkp: undefined,
-        },
-        jeloltek: {
-          fidesz: ["Candidate A"],
-          opposition: ["Candidate B"],
-        },
-      },
-      {
-        megyekod: 1,
-        megye: "BP",
-        oevk: 2,
-        partok: {
-          opposition: 9000,
-          fidesz: 8000,
-        },
-      },
-    ];
-
-    const listData = [
-      {
-        megyekod: 1,
-        megye: "BP",
-        oevk: 1,
-        partok: {
-          fidesz: 50000,
-          opposition: 40000,
-          mkkp: 3000,
-        },
-      },
-      {
-        megyekod: 1,
-        megye: "BP",
-        oevk: 2,
-        partok: {
-          fidesz: 30000,
-          opposition: 35000,
-        },
-      },
-    ];
-
-    const engine = new ElectionEngine(constituencyData, listData, config);
-
-    const result = engine.calculate();
+    const result = engine.calculate(constituencyData, listData);
 
     expect(result).toHaveProperty("mandates");
     expect(result).toHaveProperty("constituencySeats");
@@ -80,34 +80,30 @@ describe("ElectionEngine", () => {
   });
 
   it("filters invalid or zero votes before processing", () => {
-    const engine = new ElectionEngine(
-      [
-        {
-          megyekod: 1,
-          megye: "Test",
-          oevk: 1,
-          partok: {
-            fidesz: 100,
-            opposition: undefined,
-            minor: 0,
-          },
+    const updatedConstituencyData = [
+      {
+        megyekod: 1,
+        megye: "Test",
+        oevk: 1,
+        partok: {
+          fidesz: 100,
+          opposition: undefined,
+          minor: 0,
         },
-      ],
-      [
-        {
-          megyekod: 1,
-          megye: "Test",
-          oevk: 1,
-          partok: {
-            fidesz: 50,
-            opposition: undefined,
-          },
+      },
+    ];
+    const updatedListData = [
+      {
+        megyekod: 1,
+        megye: "Test",
+        oevk: 1,
+        partok: {
+          fidesz: 50,
+          opposition: undefined,
         },
-      ],
-      config,
-    );
-
-    const result = engine.calculate();
+      },
+    ];
+    const result = engine.calculate(updatedConstituencyData, updatedListData);
 
     expect(result.constituencySeats).toEqual({
       fidesz: 1,
@@ -117,33 +113,29 @@ describe("ElectionEngine", () => {
   });
 
   it("does not allocate list seats to parties below threshold", () => {
-    const engine = new ElectionEngine(
-      [
-        {
-          megyekod: 1,
-          megye: "Test",
-          oevk: 1,
-          partok: {
-            major: 1000,
-            minor: 100,
-          },
+    const updatedConstituencyData = [
+      {
+        megyekod: 1,
+        megye: "Test",
+        oevk: 1,
+        partok: {
+          major: 1000,
+          minor: 100,
         },
-      ],
-      [
-        {
-          megyekod: 1,
-          megye: "Test",
-          oevk: 1,
-          partok: {
-            major: 1000,
-            minor: 10,
-          },
+      },
+    ];
+    const updatedListData = [
+      {
+        megyekod: 1,
+        megye: "Test",
+        oevk: 1,
+        partok: {
+          major: 1000,
+          minor: 10,
         },
-      ],
-      config,
-    );
-
-    const result = engine.calculate();
+      },
+    ];
+    const result = engine.calculate(updatedConstituencyData, updatedListData);
 
     expect(result.listSeats.minor).toBeUndefined();
     expect(result.listSeats.major).toBe(config.listSeats);

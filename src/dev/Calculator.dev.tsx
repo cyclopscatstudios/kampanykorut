@@ -1,40 +1,44 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Text } from "../components/ui/Text";
 import { Button } from "../components/ui/Button";
 import { MapWrapper } from "../components/ui/gameplay/MapWrapper";
-
 import constituencyResults from "../assets/jsons/2022/oevk_constituency_results.json";
 import listResults from "../assets/jsons/2022/oevk_list_results.json";
 import oevk_2022 from "../assets/jsons/2022/oevk_2022.json";
-
 import { ElectionEngine } from "../logic/ElectionEngine";
-import { ResultModifier, type OevkResult } from "../logic/ResultModifier";
+import {
+  type ConstituencyDataProps,
+  type PartyListDataProps,
+} from "../logic/ResultModifier";
 
 type Winner = "fidesz" | "ellenzeki_osszefogas";
 type Shares = Record<string, number>;
 
 export function Calculator() {
   const [constituencyState, setConstituencyState] =
-    useState<OevkResult[]>(constituencyResults);
-
-  const [listState, setListState] = useState<OevkResult[]>(listResults);
-
+    useState<ConstituencyDataProps[]>(constituencyResults);
+  const [listState, setListState] = useState<PartyListDataProps[]>(listResults);
   const [mandates, setMandates] = useState<Record<Winner, number>>({
     fidesz: 0,
     ellenzeki_osszefogas: 0,
   });
+  const [fideszShare, setFideszShare] = useState(0.54);
+  const [ellenzekShare, setEllenzekShare] = useState(0.34);
+  const engine = new ElectionEngine(constituencyResults, listResults, {
+    listSeats: 93,
+    thresholdPercent: 5,
+  });
+  const [_, setResults] = useState<{
+    partyTotals: Record<string, number>;
+    totalVotes: number;
+  } | null>(null);
 
-  const [fideszShare, setFideszShare] = useState(0.53);
-  const [ellenzekShare, setEllenzekShare] = useState(0.35);
-  const [sumOfVotes, setSumOfVotes] = useState({});
-
-  console.log({ sumOfVotes });
-  console.log({ constituencyState });
-
-  const basesetConstituencyResultsRef =
-    useRef<OevkResult[]>(constituencyResults);
-
-  const resultModifierEngine = new ResultModifier(constituencyResults);
+  const FIXED = {
+    mi_hazank: 0.06,
+    mkkp: 0.02,
+    megoldas_mozgalom: 0.005,
+    normalis_elet: 0.005,
+  };
 
   useEffect(() => {
     resetResults();
@@ -42,10 +46,23 @@ export function Calculator() {
 
   useEffect(() => {
     const result = sumPartyVotesWithTotal(listState);
-    setSumOfVotes(result);
+    setResults(result);
   }, [listState]);
 
-  function sumPartyVotesWithTotal(data: OevkResult[]) {
+  const handleChangePartyPercentage = (value: number, party: string) => {
+    const fixedNumbers = Object.values(FIXED).reduce((a, b) => a + b);
+    const otherParty = party === "fidesz" ? ellenzekShare : fideszShare;
+    if (fixedNumbers + otherParty + value > 1) {
+      return;
+    }
+    if (party === "fidesz") {
+      setFideszShare(value);
+    } else {
+      setEllenzekShare(value);
+    }
+  };
+
+  function sumPartyVotesWithTotal(data: PartyListDataProps[]) {
     const partyTotals: Record<string, number> = {};
     let totalVotes = 0;
 
@@ -74,7 +91,9 @@ export function Calculator() {
     };
   }
 
-  function calculateNationalShareFromResults(data: OevkResult[]): Shares {
+  function calculateNationalShareFromResults(
+    data: ConstituencyDataProps[],
+  ): Shares {
     let f = 0;
     let e = 0;
 
@@ -87,35 +106,25 @@ export function Calculator() {
   }
 
   function applyNationalSwing() {
-    const baseShare = calculateNationalShareFromResults(
-      basesetConstituencyResultsRef.current,
-    );
+    const baseShare = calculateNationalShareFromResults(constituencyResults);
 
     const targetShare = buildTargetShares(fideszShare, ellenzekShare);
+    console.log({ baseShare }, { targetShare });
 
-    const newDistricts = resultModifierEngine.applyNationalSwingToDistricts(
-      basesetConstituencyResultsRef.current,
-      baseShare,
-      targetShare,
-    );
-
-    const newList = resultModifierEngine.applyNationalSwingToList(
-      listResults,
-      baseShare,
-      targetShare,
-    );
-
-    console.log({ baseShare, targetShare });
-
-    setConstituencyState(newDistricts);
-    setListState(newList);
-
-    const engine = new ElectionEngine(newDistricts, newList, {
+    const engine = new ElectionEngine(constituencyResults, listResults, {
       listSeats: 93,
       thresholdPercent: 5,
     });
 
-    const out = engine.calculate();
+    const { newDistricts, newList } = engine.modifyByTarget(
+      baseShare,
+      targetShare,
+    );
+
+    setConstituencyState(newDistricts);
+    setListState(newList);
+    const out = engine.calculate(newDistricts, newList);
+    console.log({ out });
 
     setMandates({
       fidesz:
@@ -127,24 +136,13 @@ export function Calculator() {
   }
 
   function resetResults() {
-    setConstituencyState(basesetConstituencyResultsRef.current);
+    setConstituencyState(constituencyResults);
     setListState(listResults);
+    setFideszShare(0.54);
+    setEllenzekShare(0.34);
 
-    const baseShares = deriveSharesFromList(listResults);
-
-    setFideszShare(baseShares.fidesz);
-    setEllenzekShare(baseShares.ellenzek);
-
-    const engine = new ElectionEngine(
-      basesetConstituencyResultsRef.current,
-      listResults,
-      {
-        listSeats: 93,
-        thresholdPercent: 5,
-      },
-    );
-
-    const out = engine.calculate();
+    const out = engine.calculate(listResults, constituencyResults);
+    console.log({ out });
 
     setMandates({
       fidesz:
@@ -156,24 +154,15 @@ export function Calculator() {
   }
 
   function handleMoidyfyDistrict() {
-    const result = resultModifierEngine.modifyDistrict(
-      listResults,
-      1,
-      1,
-      "fidesz",
-      5000,
-    );
-    console.log({ result });
+    engine.modifyDistricts(listResults, 1, 1, "fidesz", 5000);
   }
 
   function handleModifyList() {
-    const { districts: updated, percentages } =
-      resultModifierEngine.distributeVotesByPartyShare(listState, 200000, {
-        fidesz: 0.46,
-        ellenzeki_osszefogas: 0.51,
-        mi_hazank: 0.03,
-      });
-    console.log({ percentages });
+    const { updated } = engine.modifyByShare(listState, 200000, {
+      fidesz: 0.46,
+      ellenzeki_osszefogas: 0.51,
+      mi_hazank: 0.03,
+    });
     setListState(updated);
   }
 
@@ -181,13 +170,6 @@ export function Calculator() {
     fideszRatio: number,
     ellenzekRatio: number,
   ): Shares {
-    const FIXED = {
-      mi_hazank: 0.06,
-      mkkp: 0.02,
-      megoldas_mozgalom: 0.005,
-      normalis_elet: 0.005,
-    };
-
     const fixedSum =
       FIXED.mi_hazank +
       FIXED.mkkp +
@@ -204,44 +186,7 @@ export function Calculator() {
     };
   }
 
-  function deriveSharesFromList(list: typeof listResults) {
-    const totals: Record<string, number> = {};
-
-    for (const row of list) {
-      for (const [party, v] of Object.entries(row.partok)) {
-        if (typeof v === "number") {
-          totals[party] = (totals[party] ?? 0) + v;
-        }
-      }
-    }
-
-    const fixed = {
-      mi_hazank: 0.06,
-      mkkp: 0.02,
-      megoldas_mozgalom: 0.005,
-      normalis_elet: 0.005,
-    };
-
-    const fixedSum =
-      fixed.mi_hazank +
-      fixed.mkkp +
-      fixed.megoldas_mozgalom +
-      fixed.normalis_elet;
-
-    const f = totals.fidesz ?? 0;
-    const e = totals.ellenzeki_osszefogas ?? 0;
-
-    const sumFE = f + e || 1;
-
-    const round2 = (n: number) => Math.round(n * 100) / 100;
-
-    return {
-      fidesz: round2((f / sumFE) * (1 - fixedSum)),
-      ellenzek: round2((e / sumFE) * (1 - fixedSum)),
-    };
-  }
-
-  function countConstituencySeats(results: OevkResult[]) {
+  function countConstituencySeats(results: ConstituencyDataProps[]) {
     let fidesz = 0;
     let ellenzek = 0;
 
@@ -291,7 +236,9 @@ export function Calculator() {
             type="number"
             step="0.01"
             value={fideszShare}
-            onChange={(e) => setFideszShare(+e.target.value)}
+            onChange={(e) =>
+              handleChangePartyPercentage(+e.target.value, "fidesz")
+            }
             className="w-full rounded border px-2 py-1"
           />
         </div>
@@ -302,7 +249,9 @@ export function Calculator() {
             type="number"
             step="0.01"
             value={ellenzekShare}
-            onChange={(e) => setEllenzekShare(+e.target.value)}
+            onChange={(e) =>
+              handleChangePartyPercentage(+e.target.value, "ellenzek")
+            }
             className="w-full rounded border px-2 py-1"
           />
         </div>

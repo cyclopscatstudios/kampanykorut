@@ -15,11 +15,11 @@ import {
   getPartyHoverColor,
   getPartyActiveColor,
 } from "../ui/color.utils";
-import type { OevkResult } from "../../logic/ResultModifier";
+import type { ConstituencyDataProps } from "../../logic/ResultModifier";
 
 interface DistrictMapProps {
   districts: District[];
-  result: OevkResult[];
+  result: ConstituencyDataProps[];
   onClick?: (r: DistrictResult) => void;
   width?: number;
   height?: number;
