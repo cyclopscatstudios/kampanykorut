@@ -1,3 +1,8 @@
+import {
+  VoterEnvironment,
+  type VoterEnvironmentConfig,
+} from "./VoterEnvironment";
+
 export type Shares = Record<string, number>;
 type Votes = Record<string, number>;
 
@@ -25,8 +30,13 @@ type VoterBase = {
 
 export class ResultModifier {
   private voterBases: VoterBase[] = [];
+  private voterEnvironment: VoterEnvironment;
 
-  constructor(list: ConstituencyDataProps[]) {
+  constructor(
+    list: ConstituencyDataProps[],
+    voterEnviormentConfig: VoterEnvironmentConfig,
+  ) {
+    this.voterEnvironment = new VoterEnvironment(voterEnviormentConfig);
     this.setVoterBase(list);
   }
 
@@ -47,6 +57,9 @@ export class ResultModifier {
     percentages: Shares;
     totalVotes: number;
   } {
+    if (totalVotes > this.voterEnvironment.getAvailableVoters()) {
+      throw new Error("no more voters left");
+    }
     let result = list.map((r) => ({
       ...r,
       partok: { ...r.partok },
@@ -322,5 +335,9 @@ export class ResultModifier {
 
   private sumValues(obj: Record<string, number>): number {
     return Object.values(obj).reduce((a, b) => a + b, 0);
+  }
+
+  getSumVotes() {
+    return this.voterEnvironment.getAvailableVoters();
   }
 }

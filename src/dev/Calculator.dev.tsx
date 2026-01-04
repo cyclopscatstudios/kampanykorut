@@ -22,12 +22,24 @@ export function Calculator() {
     fidesz: 0,
     ellenzeki_osszefogas: 0,
   });
-  const [fideszShare, setFideszShare] = useState(0.54);
-  const [ellenzekShare, setEllenzekShare] = useState(0.34);
-  const engine = new ElectionEngine(constituencyResults, listResults, {
-    listSeats: 93,
-    thresholdPercent: 5,
-  });
+  const [fideszShare, setFideszShare] = useState(0.52);
+  const [ellenzekShare, setEllenzekShare] = useState(0.36);
+
+  console.log({ listState });
+
+  const engine = new ElectionEngine(
+    constituencyResults,
+    listResults,
+    {
+      listSeats: 93,
+      thresholdPercent: 5,
+    },
+    {
+      maxTurnout: 85,
+      eligibleVoters: 8215304,
+      listData: listResults,
+    },
+  );
   const [_, setResults] = useState<{
     partyTotals: Record<string, number>;
     totalVotes: number;
@@ -111,10 +123,19 @@ export function Calculator() {
     const targetShare = buildTargetShares(fideszShare, ellenzekShare);
     console.log({ baseShare }, { targetShare });
 
-    const engine = new ElectionEngine(constituencyResults, listResults, {
-      listSeats: 93,
-      thresholdPercent: 5,
-    });
+    const engine = new ElectionEngine(
+      constituencyResults,
+      listResults,
+      {
+        listSeats: 93,
+        thresholdPercent: 5,
+      },
+      {
+        maxTurnout: 85,
+        eligibleVoters: 8215304,
+        listData: listState,
+      },
+    );
 
     const { newDistricts, newList } = engine.modifyByTarget(
       baseShare,
@@ -138,11 +159,12 @@ export function Calculator() {
   function resetResults() {
     setConstituencyState(constituencyResults);
     setListState(listResults);
-    setFideszShare(0.54);
-    setEllenzekShare(0.34);
 
     const out = engine.calculate(listResults, constituencyResults);
     console.log({ out });
+
+    setFideszShare(out.percentages["fidesz"]);
+    setEllenzekShare(out.percentages["ellenzeki_osszefogas"]);
 
     setMandates({
       fidesz:

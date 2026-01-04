@@ -9,6 +9,7 @@ import {
   type PartyListDataProps,
   type Shares,
 } from "./ResultModifier";
+import type { VoterEnvironmentConfig } from "./VoterEnvironment";
 
 export type PartyId = string;
 
@@ -77,10 +78,14 @@ export class ElectionEngine {
   constructor(
     private constituencyData: ConstituencyDataProps[],
     private listData: PartyListDataProps[],
-    private config: ElectionConfig,
+    private electionConfig: ElectionConfig,
+    private voterEnvironmentConfig: VoterEnvironmentConfig,
   ) {
-    this.mandateCalculator = new MandateCalculator(this.config);
-    this.resultModifier = new ResultModifier(this.constituencyData);
+    this.mandateCalculator = new MandateCalculator(this.electionConfig);
+    this.resultModifier = new ResultModifier(
+      this.constituencyData,
+      this.voterEnvironmentConfig,
+    );
   }
 
   private merge(
