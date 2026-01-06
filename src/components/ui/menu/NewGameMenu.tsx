@@ -15,8 +15,13 @@ export function NewGameMenu({
     <MenuLayout>
       <MenuList
         listItems={[
-          { id: MenuItemId.ClassicMode, text: classicMode },
-          { id: MenuItemId.CampaignMode, text: campaignMode },
+          { id: MenuItemId.ClassicMode, text: classicMode, icon: "classic", iconSource: "svg" },
+          {
+            id: MenuItemId.CampaignMode,
+            text: campaignMode,
+            icon: "campaign",
+            iconSource: "svg",
+          },
         ]}
         onClick={onClick}
         hasBackButton

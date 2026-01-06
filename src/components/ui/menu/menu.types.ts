@@ -1,3 +1,5 @@
+import type { IconSource } from "../Icon";
+
 export enum MenuItemId {
   NewGame = "newGame",
   ModMaker = "modMaker",
@@ -10,4 +12,6 @@ export enum MenuItemId {
 export type MenuItem = {
   id: MenuItemId;
   text: string;
+  icon?: string;
+  iconSource?: IconSource;
 };

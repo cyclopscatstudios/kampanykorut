@@ -1,11 +1,7 @@
-import img1 from "../assets/images/38518253_2938573_54667f9f1a048b61efb938fbcdebcfa8_wm.jpg";
-import img2 from "../assets/images/1955651626.jpg";
-import img3 from "../assets/images/parlament.jpg";
+import img from "../assets/images/parlament_night.jpg";
 import classNames from "classnames";
 
 function FullscreenBackground({ children }: { children: React.ReactNode }) {
-  const img = getRandomImage();
-
   return (
     <div
       style={{
@@ -21,7 +17,7 @@ function FullscreenBackground({ children }: { children: React.ReactNode }) {
       <div className="flex items-center justify-center w-full h-full">
         <div
           className={classNames(
-            "w-[1200px] h-[800px] bg-[rgba(15,23,42,0.92)] border border-slate-700 rounded-sm shadow-xl shadow-black/60 relative overflow-hidden",
+            "w-[1200px] h-[800px] bg-[rgba(15,23,42,0.92)] rounded-sm shadow-xl shadow-black/60 relative overflow-hidden",
           )}
         >
           <div className="flex items-center justify-center w-full h-full">
@@ -31,12 +27,6 @@ function FullscreenBackground({ children }: { children: React.ReactNode }) {
       </div>
     </div>
   );
-}
-
-function getRandomImage() {
-  const images = [img1, img2, img3];
-  const randomIndex = Math.floor(Math.random() * images.length);
-  return images[randomIndex];
 }
 
 export default FullscreenBackground;

@@ -1,5 +1,6 @@
 import { useTranslateLang } from "../../logic/useTranslateLang";
 import { Button } from "./Button";
+import { Icon } from "./Icon";
 import { MenuItemId, type MenuItem } from "./menu/menu.types";
 import { Text } from "./Text";
 
@@ -23,7 +24,7 @@ export function MenuList({
   };
 
   return (
-    <div className="px-8 py-12 outline outline-1 outline-emerald-800/60">
+    <div>
       <ul className="w-[450px]">
         {listItems.map((item, index) => (
           <li
@@ -32,18 +33,31 @@ export function MenuList({
               index !== listItems.length - 1 || hasBackButton ? "pb-4" : ""
             }
           >
-            <Button block onClick={() => handleOnClick(item)}>
-              <Text color="emerald-light">{item.text}</Text>
+            <Button
+              variant="tertiary"
+              size="large"
+              block
+              onClick={() => handleOnClick(item)}
+            >
+              <Icon name={item.icon as any} source={item.iconSource} />
+              <Text weight="medium" color="emerald-light">
+                {item.text}
+              </Text>
             </Button>
           </li>
         ))}
         {hasBackButton && (
           <li>
             <Button
+              variant="tertiary"
+              size="large"
               block
               onClick={() => onClick?.({ id: MenuItemId.Back, text: "Back" })}
             >
-              <Text color="emerald-light">{backButton}</Text>
+              <Icon name="backspace-fill" />
+              <Text weight="medium" color="emerald-light">
+                {backButton}
+              </Text>
             </Button>
           </li>
         )}

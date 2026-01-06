@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import type { Colors } from "../../types/color";
 import React, { createContext } from "react";
-import { Icon, type IconProps } from "./Icon";
+import { Icon, type BootstrapIcon, type IconProps } from "./Icon";
 
-type ButtonSize = "normal" | "small";
+type ButtonSize = "normal" | "small" | "large";
 
 type ButtonVariant = "primary" | "secondary" | "tertiary";
 
@@ -23,7 +23,7 @@ function getButtonColors(variant: ButtonVariant, color?: Colors) {
     return "bg-blue-50 hover:bg-blue-100 active:bg-blue-200";
   }
   if (variant === "tertiary") {
-    return "bg-transparent hover:bg-blue-100/50 active:bg-blue-200/50";
+    return "bg-slate-100/10 hover:bg-blue-500 active:bg-blue-600";
   }
   switch (color) {
     case "darkBlue":
@@ -37,7 +37,10 @@ function getButtonColors(variant: ButtonVariant, color?: Colors) {
   }
 }
 
-function getBorderColor(color?: Colors) {
+function getBorderColor(color?: Colors, variant?: ButtonVariant) {
+  if (variant === "tertiary") {
+    return "border border-slate-50/10";
+  }
   switch (color) {
     case "darkBlue":
       return "border-blue-900";
@@ -62,20 +65,21 @@ export function Button(props: ButtonProps) {
     fullRounded,
   } = props;
   const buttonColors = getButtonColors(variant, color);
-  const borderColor = variant === "secondary" ? getBorderColor(color) : "";
+  const borderColor = getBorderColor(color, variant);
 
   return (
     <ButtonContext.Provider value={{ ...props }}>
       <button
         onClick={onClick}
         className={classNames(
-          "cursor-pointer px-4",
+          "cursor-pointer px-4 inline-flex items-center justify-center gap-2",
           {
             "h-10": size === "normal",
+            "h-[50px] py-0.5": size === "large",
             "h-[30px] py-0.5": size === "small",
             "w-full": block,
             "rounded-full": fullRounded,
-            "rounded-sm ": !fullRounded,
+            "rounded-md ": !fullRounded,
             "border-2": variant === "secondary",
           },
           className,
