@@ -39,7 +39,10 @@ export function MenuList({
               block
               onClick={() => handleOnClick(item)}
             >
-              <Icon name={item.icon as BootstrapIcon} source={item.iconSource} />
+              <Icon
+                name={item.icon as BootstrapIcon}
+                source={item.iconSource}
+              />
               <Text weight="medium" color="lightBlue">
                 {item.text}
               </Text>

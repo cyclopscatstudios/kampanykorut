@@ -5,6 +5,8 @@ import { Button } from "../Button";
 import type { CurrentView } from "./MainGameScreen";
 import mzpPortrait from "../../../assets/images/2022/mzp-portrait.png";
 import ellenzekiOsszefogas from "../../../assets/images/2022/ellenzeki-osszefogas.png";
+import { ImageWrapper } from "./ImageWrapper";
+import slogan from "../../../assets/images/2022/ellenzeki_osszefogas_2022_kampany_szoveg.png";
 
 interface Answer {
   id: string;
@@ -53,24 +55,26 @@ export function QuestionCard({
           className="hover:text-blue-950 hover:font-bold"
         />
       </div>
-      <div className="flex justify-around">
-        <Button onClick={() => setCurrentQuestion(currentQuestion + 1)}>
-          <Button.Text>Continue</Button.Text>
-        </Button>
-        <Button variant="secondary" onClick={() => setCurrentView("MapView")}>
-          <Button.Text>Map view</Button.Text>
-        </Button>
-      </div>
-      <div className="flex justify-around items-center bg-blue-900 h-[350px] w-full mt-auto">
-        <div className="w-[200px] h-[300px] bg-white">
-          <img src={mzpPortrait} />
+      <div className="mt-auto mb-5">
+        <div className="flex justify-around">
+          <Button onClick={() => setCurrentQuestion(currentQuestion + 1)}>
+            <Button.Text>Continue</Button.Text>
+          </Button>
+          <Button variant="secondary" onClick={() => setCurrentView("MapView")}>
+            <Button.Text>Map view</Button.Text>
+          </Button>
         </div>
-        <div className="w-[200px] h-[300px] bg-white">
-          {/*           <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Egys%C3%A9gben_Magyarorsz%C3%A1g%C3%A9rt_2022.png" />
-           */}{" "}
-        </div>
-        <div className="w-[200px] h-[300px] bg-white">
-          <img src={ellenzekiOsszefogas} />
+        <div className="h-[280px] flex items-end justify-center bg-gray-100 mb-2">
+          <ImageWrapper src={mzpPortrait} type="portrait" />
+          <div className="flex flex-col justify-end items-center h-full m-10">
+            <div className="bg-blue-900 w-[300px] m-3 p-2">
+              <Text color="lightBlue" weight="bold" className="text-center">
+                Nyíregyháza
+              </Text>
+            </div>
+            <ImageWrapper src={slogan} type="slogan" />
+          </div>
+          <ImageWrapper src={ellenzekiOsszefogas} type="portrait" />
         </div>
       </div>
     </div>
