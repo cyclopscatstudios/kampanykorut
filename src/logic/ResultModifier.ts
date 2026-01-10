@@ -2,6 +2,7 @@ import {
   VoterEnvironment,
   type VoterEnvironmentConfig,
 } from "./VoterEnvironment";
+import { sumPartyTotals as sum } from "./ResultModifier.utils";
 
 export type Shares = Record<string, number>;
 type Votes = Record<string, number>;
@@ -174,15 +175,7 @@ export class ResultModifier {
   }
 
   sumPartyTotals(districts: ConstituencyDataProps[]): Record<string, number> {
-    const totals: Record<string, number> = {};
-
-    for (const d of districts) {
-      for (const [party, votes] of Object.entries(d.partok)) {
-        totals[party] = (totals[party] ?? 0) + (votes ?? 0);
-      }
-    }
-
-    return totals;
+    return sum(districts);
   }
 
   calculatePercentages(totals: Record<string, number>): Shares {
@@ -262,7 +255,9 @@ export class ResultModifier {
     targetShare: Shares,
   ): Votes {
     const sum = this.sumValues(votes);
-    if (!sum) return votes;
+    if (!sum) {
+      votes;
+    }
 
     const localShare = this.toShare(votes);
     const lean = this.computeLean(localShare, baseShare);
@@ -287,7 +282,9 @@ export class ResultModifier {
     const keys = Object.keys(raw);
     const norm = this.sumValues(raw);
 
-    if (!norm || !total) return {};
+    if (!norm || !total) {
+      return {};
+    }
 
     const result: Votes = {};
     let acc = 0;
@@ -325,9 +322,8 @@ export class ResultModifier {
     return result;
   }
 
-  private toShare(votes: Votes): Shares {
+  private toShare(votes: Votes) {
     const sum = this.sumValues(votes);
-    if (!sum) return {};
     return Object.fromEntries(
       Object.entries(votes).map(([k, v]) => [k, v / sum]),
     );

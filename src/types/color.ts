@@ -1,9 +1,14 @@
 export type Colors =
-  | "emerald"
+  | "red"
+  | "yellow"
+  | "green"
   | "darkBlue"
+  | "blue"
   | "lightBlue"
-  | "transparent"
-  | "slate";
+  | "silver"
+  | "gray"
+  | "white"
+  | "transparent";
 
 export enum PartyName {
   EllenzekiOsszefogas = "ellenzeki_osszefogas",
@@ -47,9 +52,4 @@ export const partyActiveColor: Record<PartyName, string> = {
   [PartyName.NormalisElet]: "#9D4EDD",
   [PartyName.Munkaspart]: "#B7094C",
   [PartyName.Fuggetlen]: "#6C757D",
-};
-
-export const mainColors = {
-  Blue: "#0f172a",
-  BackgroundColor: "rgba(15,23,42,0.92)",
 };

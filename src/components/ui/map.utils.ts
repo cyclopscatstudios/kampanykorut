@@ -1,4 +1,5 @@
 import type { ConstituencyDataProps } from "../../logic/ResultModifier";
+import type { PartyName } from "../../types/color";
 
 export type DistrictResult = {
   winner: string;
@@ -28,7 +29,7 @@ export function getWinnerResults(d: District, result: ConstituencyDataProps[]) {
     throw new Error("District result not found");
   }
   return {
-    winner,
+    winner: winner as PartyName,
     maxVotes,
     ...results,
   };

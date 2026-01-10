@@ -1,11 +1,11 @@
 import classNames from "classnames";
 import type { Colors } from "../../types/color";
 import React, { createContext } from "react";
-import { Icon, type BootstrapIcon, type IconProps } from "./Icon";
+import { Icon, type IconProps } from "./Icon";
 
 type ButtonSize = "normal" | "small" | "large";
 
-type ButtonVariant = "primary" | "secondary" | "tertiary";
+type ButtonVariant = "primary" | "secondary" | "tertiary" | "transparent";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -25,11 +25,18 @@ function getButtonColors(variant: ButtonVariant, color?: Colors) {
   if (variant === "tertiary") {
     return "bg-slate-100/10 hover:bg-blue-500 active:bg-blue-600";
   }
+  if (variant === "transparent") {
+    return "bg-transparent hover:bg-slate-100/10 active:bg-slate-200";
+  }
   switch (color) {
-    case "darkBlue":
+    case "blue":
       return "bg-blue-900 hover:bg-blue-700 active:bg-blue-900";
+    case "darkBlue":
+      return "bg-dark-blue hover:bg-blue-900 active:bg-blue-900";
     case "lightBlue":
       return "bg-blue-50 hover:bg-blue-100 active:bg-blue-200";
+    case "red":
+      return "bg-red-600 hover:bg-red-400 active:bg-red-800";
     case "transparent":
       return "bg-transparent";
     default:

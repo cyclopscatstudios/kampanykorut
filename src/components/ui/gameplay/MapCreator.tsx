@@ -1,12 +1,13 @@
 import type { DistrictResult } from "../map.utils";
 import { useState } from "react";
-import { Text } from "../Text";
-import { Button } from "../Button";
 import type { CurrentView } from "./MainGameScreen";
 import { MapWrapper } from "./MapWrapper";
 import oevk_2022 from "../../../assets/jsons/2022/oevk_2022.json";
 import budapest from "../../../assets/jsons/2022/budapest.json";
 import results from "../../../assets/jsons/2022/oevk_constituency_results.json";
+import { BottomBar } from "./BottomBar";
+import { calculateWinner } from "../../../logic/ResultModifier.utils";
+import { SwingFactor } from "../../../types/utils";
 
 export function MapCreator({
   setCurrentView,
@@ -19,6 +20,7 @@ export function MapCreator({
   const handleDistrict = (r: DistrictResult) => {
     setSelectedDistrict(r);
   };
+  const swingFactor = getSwingFactor(selectedDistrict);
 
   return (
     <div className="flex flex-col h-full w-full">
@@ -45,29 +47,32 @@ export function MapCreator({
       </div>
       <div>
         <div className="h-40 w-full flex justify-center">
-          <div className="bg-blue-50 p-5 w-[300px] h-full flex flex-col justify-center items-center">
-            <div className="h-full mb-1">
-              <Text color="dark-blue" weight="bold">
-                {selectedDistrict?.megye}
-              </Text>
-              <Text color="dark-blue">{selectedDistrict?.telepules}</Text>
-              <Text color="dark-blue" weight="light">
-                {selectedDistrict?.valasztopolgar}
-              </Text>
-            </div>
-            <div className="min-h-[50px] w-full">
-              <Button
-                color="darkBlue"
-                fullRounded
-                block
-                onClick={() => setCurrentView("QuestionView")}
-              >
-                <Button.Text>Visit district</Button.Text>
-              </Button>
-            </div>
-          </div>
+          <BottomBar
+            data={selectedDistrict}
+            onClick={() => setCurrentView("QuestionView")}
+            swingFactor={swingFactor}
+          />
         </div>
       </div>
     </div>
   );
+}
+
+function getSwingFactor(district?: DistrictResult | null) {
+  const total = calculateWinner(district);
+  const winnerPercent =
+    total?.totalVotes === 0
+      ? 0
+      : Number(
+          (((total?.maxVotes ?? 0) / (total?.totalVotes ?? 0)) * 100).toFixed(
+            2,
+          ),
+        );
+  if (winnerPercent < 50) {
+    return SwingFactor.High;
+  } else if (winnerPercent > 50 && winnerPercent < 60) {
+    return SwingFactor.Medium;
+  } else {
+    return SwingFactor.Low;
+  }
 }

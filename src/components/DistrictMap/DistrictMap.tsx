@@ -8,7 +8,6 @@ import {
 import { parsePolygon, projectPoints } from "./geometry";
 import { computeBounds, computeScale } from "./projection";
 import { buildPathD, simplifyDP } from "./path";
-import type { PartyName } from "../../types/color";
 import { getFillColor } from "./color";
 import {
   getPartyColor,
@@ -21,6 +20,7 @@ interface DistrictMapProps {
   districts: District[];
   result: ConstituencyDataProps[];
   onClick?: (r: DistrictResult) => void;
+  onDoubleClick?: (r: DistrictResult) => void;
   width?: number;
   height?: number;
   stroke?: string;
@@ -40,6 +40,7 @@ export function DistrictMap({
   strokeWidth = 0.7,
   simplifyTolerance = 0.00005,
   onClick,
+  onDoubleClick,
   selectedDistrict,
   wheel,
   viewBox,
@@ -88,9 +89,9 @@ export function DistrictMap({
         const pathD = buildPathD(simplified, bounds, scale, margin);
 
         const { winner } = getWinnerResults(d, result);
-        const base = getPartyColor(winner as PartyName);
-        const hover = getPartyHoverColor(winner as PartyName);
-        const active = getPartyActiveColor(winner as PartyName);
+        const base = getPartyColor(winner);
+        const hover = getPartyHoverColor(winner);
+        const active = getPartyActiveColor(winner);
 
         const isSelected =
           selectedDistrict &&
@@ -120,6 +121,7 @@ export function DistrictMap({
               setHovered(null);
               setPressed(null);
             }}
+            onDoubleClick={() => onClick?.(getWinnerResults(d, result))}
             onMouseDown={() => setPressed(id)}
             onMouseUp={() => setPressed(null)}
             onClick={() => onClick?.(getWinnerResults(d, result))}

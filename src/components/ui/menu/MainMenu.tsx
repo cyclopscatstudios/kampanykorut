@@ -18,11 +18,11 @@ export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
       <div className="absolute top-0 left-0 w-full flex justify-center pt-8">
         <div className="flex flex-col items-center z-10">
           <img src={logo} alt="Logo" className="w-15 h-15" />
-          <Text weight="bold" color="light-blue" className="text-5xl mt-5 mb-5">
+          <Text weight="bold" color="lightBlue" className="text-5xl mt-5 mb-5">
             KAMPÁNYKÖRÚT
           </Text>
           <div onClick={() => setQuote(() => getRandomQuote())}>
-            <Text color="light-blue" className="text-sm">
+            <Text color="lightBlue" className="text-sm">
               {quote}
             </Text>
           </div>

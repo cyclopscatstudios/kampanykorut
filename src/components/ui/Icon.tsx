@@ -14,6 +14,7 @@ export interface IconProps {
   size?: IconSize;
   color?: Colors;
   source?: IconSource;
+  className?: string;
 }
 
 export function Icon({
@@ -21,10 +22,11 @@ export function Icon({
   size = "normal",
   color = "lightBlue",
   source = "bootstrap",
+  className,
 }: IconProps) {
   const iconSize = getIconSize(size);
   const iconColor = getIconColor(color);
-  console.log(name, source)
+  console.log(name, source);
 
   if (source === "svg") {
     const SvgIcon = svgIcons[name as keyof typeof svgIcons];
@@ -34,7 +36,11 @@ export function Icon({
     return <SvgIcon className={classNames(iconSize, iconColor)} aria-hidden />;
   }
 
-  return <i className={classNames(`bi bi-${name}`, iconSize, iconColor)} />;
+  return (
+    <i
+      className={classNames(`bi bi-${name}`, iconSize, iconColor, className)}
+    />
+  );
 }
 
 function getIconSize(size: IconSize) {
@@ -42,7 +48,7 @@ function getIconSize(size: IconSize) {
     case "normal":
       return "text-base";
     case "large":
-      return "text-lg";
+      return "text-2xl";
     default:
       return "text-base";
   }

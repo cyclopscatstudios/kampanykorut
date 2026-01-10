@@ -15,7 +15,12 @@ export function NewGameMenu({
     <MenuLayout>
       <MenuList
         listItems={[
-          { id: MenuItemId.ClassicMode, text: classicMode, icon: "classic", iconSource: "svg" },
+          {
+            id: MenuItemId.ClassicMode,
+            text: classicMode,
+            icon: "classic",
+            iconSource: "svg",
+          },
           {
             id: MenuItemId.CampaignMode,
             text: campaignMode,

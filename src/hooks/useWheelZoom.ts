@@ -40,7 +40,9 @@ export function useWheelZoom(
   }
 
   function handleMouseMove(e: React.MouseEvent) {
-    if (!isPanning.current || !last.current) return;
+    if (!isPanning.current || !last.current) {
+      return;
+    }
 
     const dx = e.clientX - last.current.x;
     const dy = e.clientY - last.current.y;

@@ -1,10 +1,11 @@
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
-      },
+      colors: { "dark-blue": "#0f172a" },
+      fontFamily: { montserrat: ["Montserrat", "sans-serif"] },
     },
   },
+  plugins: [],
 };

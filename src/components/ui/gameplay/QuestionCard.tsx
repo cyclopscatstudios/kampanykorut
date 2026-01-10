@@ -3,6 +3,8 @@ import { RadioGroup } from "../RadioGroup";
 import { useState } from "react";
 import { Button } from "../Button";
 import type { CurrentView } from "./MainGameScreen";
+import mzpPortrait from "../../../assets/images/2022/mzp-portrait.png";
+import ellenzekiOsszefogas from "../../../assets/images/2022/ellenzeki-osszefogas.png";
 
 interface Answer {
   id: string;
@@ -36,7 +38,7 @@ export function QuestionCard({
     >
       <div className="w-full flex flex-col justify-center items-center mb-4">
         <div className="bg-blue-900 mb-4 p-2 rounded-md">
-          <Text weight="bold" color="light-blue" className="text-center">
+          <Text weight="bold" color="lightBlue" className="text-center">
             {question}
           </Text>
         </div>
@@ -61,16 +63,14 @@ export function QuestionCard({
       </div>
       <div className="flex justify-around items-center bg-blue-900 h-[350px] w-full mt-auto">
         <div className="w-[200px] h-[300px] bg-white">
-          {/*           <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/M%C3%A1rki-Zay_P%C3%A9ter_cropped.jpg" />
-           */}{" "}
+          <img src={mzpPortrait} />
         </div>
         <div className="w-[200px] h-[300px] bg-white">
           {/*           <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Egys%C3%A9gben_Magyarorsz%C3%A1g%C3%A9rt_2022.png" />
            */}{" "}
         </div>
         <div className="w-[200px] h-[300px] bg-white">
-          {/*           <img src="https://s3-eu-central-1.amazonaws.com/greenfo.hu/wp-media-folder-greenfo/wp-content/uploads/2021/05/hatparti-logok.jpg" />
-           */}{" "}
+          <img src={ellenzekiOsszefogas} />
         </div>
       </div>
     </div>

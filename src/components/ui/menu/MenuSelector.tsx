@@ -2,7 +2,6 @@ import { useState } from "react";
 import { MainMenu } from "./MainMenu";
 import { NewGameMenu } from "./NewGameMenu";
 import { menuLogic, MenuType } from "../../../logic/MenuLogic";
-import { eventEmitter } from "../../../logic/EventEmitter";
 import type { ScreenType } from "../../../App";
 import type { MenuItem } from "./menu.types";
 
@@ -25,7 +24,6 @@ export function MenuSelector({
       case "newGame":
         return setMenuType(MenuType.NewGameMenu);
       case "classicMode": {
-        eventEmitter.emit("backgroundColor", "bg-white");
         setCurrentScreen("MapCreator");
         return setMenuType(MenuType.ClassicMode);
       }

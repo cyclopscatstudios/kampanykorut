@@ -49,7 +49,7 @@ export function RadioGroup<T extends string>({
               disabled={option.disabled}
               onChange={() => onChange(option.value)}
             />
-            <Text color="dark-blue" className={className}>
+            <Text color="darkBlue" className={className}>
               {option.label}
             </Text>
           </label>

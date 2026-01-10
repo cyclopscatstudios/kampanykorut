@@ -1,6 +1,6 @@
 import { useTranslateLang } from "../../logic/useTranslateLang";
 import { Button } from "./Button";
-import { Icon } from "./Icon";
+import { Icon, type BootstrapIcon } from "./Icon";
 import { MenuItemId, type MenuItem } from "./menu/menu.types";
 import { Text } from "./Text";
 
@@ -39,8 +39,8 @@ export function MenuList({
               block
               onClick={() => handleOnClick(item)}
             >
-              <Icon name={item.icon as any} source={item.iconSource} />
-              <Text weight="medium" color="emerald-light">
+              <Icon name={item.icon as BootstrapIcon} source={item.iconSource} />
+              <Text weight="medium" color="lightBlue">
                 {item.text}
               </Text>
             </Button>
@@ -55,7 +55,7 @@ export function MenuList({
               onClick={() => onClick?.({ id: MenuItemId.Back, text: "Back" })}
             >
               <Icon name="backspace-fill" />
-              <Text weight="medium" color="emerald-light">
+              <Text weight="medium" color="lightBlue">
                 {backButton}
               </Text>
             </Button>

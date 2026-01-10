@@ -44,6 +44,7 @@ export function MapWrapper({
           districts={districts}
           result={results}
           onClick={handleDistrict}
+          onDoubleClick={handleDistrict}
           width={800}
           height={550}
           stroke="white"
@@ -56,7 +57,7 @@ export function MapWrapper({
       <div>
         <Button
           size="small"
-          variant="tertiary"
+          variant="transparent"
           color="lightBlue"
           onClick={() => wheel.zoomIn()}
         >
@@ -64,7 +65,7 @@ export function MapWrapper({
         </Button>
         <Button
           size="small"
-          variant="tertiary"
+          variant="transparent"
           color="lightBlue"
           onClick={() => wheel.resetViewBox(initialView)}
         >
@@ -72,7 +73,7 @@ export function MapWrapper({
         </Button>
         <Button
           size="small"
-          variant="tertiary"
+          variant="transparent"
           color="lightBlue"
           onClick={() => wheel.zoomOut()}
         >

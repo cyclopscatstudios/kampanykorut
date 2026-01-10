@@ -1,14 +1,10 @@
 import classNames from "classnames";
+import type { Colors } from "../../types/color";
 
 interface TextProps {
   children: React.ReactNode;
   weight?: "light" | "normal" | "medium" | "bold";
-  color?:
-    | "white"
-    | "emerald-light"
-    | "emerald-dark"
-    | "dark-blue"
-    | "light-blue";
+  color?: Colors;
   className?: string;
 }
 
@@ -33,18 +29,22 @@ export function Text({
     }
   }
 
-  function getTextColor(color: string) {
+  function getTextColor(color: Colors) {
     switch (color) {
       case "white":
         return "text-white";
-      case "emerald-light":
-        return "text-emerald-50";
-      case "emerald-dark":
-        return "text-emerald-900";
-      case "light-blue":
+      case "lightBlue":
         return "text-blue-50";
-      case "dark-blue":
+      case "gray":
+        return "text-neutral-500";
+      case "darkBlue":
         return "text-blue-900";
+      case "red":
+        return "text-red-600";
+      case "yellow":
+        return "text-yellow-600";
+      case "green":
+        return "text-green-600";
     }
   }
 
