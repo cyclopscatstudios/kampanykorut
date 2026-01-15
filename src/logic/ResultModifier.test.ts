@@ -1,7 +1,60 @@
 import { ResultModifier, type ConstituencyDataProps } from "./ResultModifier";
+import {
+  type VoterEnvironmentConfig,
+} from "./VoterEnvironment";
+
+const listResults = [
+  {
+    megyekod: 1,
+    megye: "BUDAPEST",
+    oevk: 1,
+    telepules: "",
+    partok: {
+      ellenzeki_osszefogas: 21300,
+      fidesz: 18767,
+      mkkp: 2842,
+      megoldas_mozgalom: 472,
+      mi_hazank: 1307,
+      normalis_elet: 155,
+    },
+  },
+  {
+    megyekod: 1,
+    megye: "BUDAPEST",
+    oevk: 2,
+    telepules: "",
+    partok: {
+      ellenzeki_osszefogas: 26398,
+      fidesz: 21814,
+      mkkp: 2963,
+      megoldas_mozgalom: 484,
+      mi_hazank: 1696,
+      normalis_elet: 188,
+    },
+  },
+  {
+    megyekod: 1,
+    megye: "BUDAPEST",
+    oevk: 3,
+    telepules: "",
+    partok: {
+      ellenzeki_osszefogas: 25194,
+      fidesz: 21352,
+      mkkp: 3717,
+      megoldas_mozgalom: 449,
+      mi_hazank: 1358,
+      normalis_elet: 132,
+    },
+  },
+];
 
 describe("ResultModifier", () => {
   let baseList: ConstituencyDataProps[];
+  const voterEnvironmentConfig: VoterEnvironmentConfig = {
+    maxTurnout: 85,
+    eligibleVoters: 8215304,
+    listData: listResults,
+  };
 
   beforeEach(() => {
     baseList = [
@@ -22,7 +75,7 @@ describe("ResultModifier", () => {
 
   describe("modifyDistrict", () => {
     it("should move votes from one party to another", () => {
-      const rm = new ResultModifier(baseList);
+      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
 
       const result = rm.modifyDistrict(
         baseList,
@@ -40,7 +93,7 @@ describe("ResultModifier", () => {
     });
 
     it("should not be able to take more votes than available", () => {
-      const rm = new ResultModifier(baseList);
+      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
 
       const result = rm.modifyDistrict(
         baseList,
@@ -58,7 +111,7 @@ describe("ResultModifier", () => {
     });
 
     it("should take votes from 'bizonytalan' if from === 'bizonytalan'", () => {
-      const rm = new ResultModifier(baseList);
+      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
 
       const result = rm.modifyDistrict(
         baseList,
@@ -79,10 +132,14 @@ describe("ResultModifier", () => {
         megyekod: 2,
         megye: "PEST",
         oevk: 1,
+        telepules: "",
         partok: { fidesz: 10 },
       };
 
-      const rm = new ResultModifier([...baseList, other]);
+      const rm = new ResultModifier(
+        [...baseList, other],
+        voterEnvironmentConfig,
+      );
 
       const result = rm.modifyDistrict(
         [...baseList, other],
@@ -99,7 +156,7 @@ describe("ResultModifier", () => {
 
   describe("applyNationalSwingToList", () => {
     it("should keep all vote counts", () => {
-      const rm = new ResultModifier(baseList);
+      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
 
       const baseShare = {
         fidesz: 0.5,
@@ -133,7 +190,7 @@ describe("ResultModifier", () => {
     });
 
     it("should proportionally shift votes", () => {
-      const rm = new ResultModifier(baseList);
+      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
 
       const result = rm.applyNationalSwingToList(
         baseList,
@@ -158,59 +215,61 @@ describe("ResultModifier", () => {
 
   describe("distributeVotesByPartyShare", () => {
     it("should distribute votes by party share", () => {
-      const rm = new ResultModifier(baseList);
-      const { districts, percentages, totalVotes, totals } =
-        rm.distributeVotesByPartyShare(
-          [
-            {
-              megyekod: 1,
-              megye: "BUDAPEST",
-              oevk: 1,
-              partok: {
-                ellenzeki_osszefogas: 21300,
-                fidesz: 18767,
-                mkkp: 2842,
-                megoldas_mozgalom: 472,
-                mi_hazank: 1307,
-                normalis_elet: 155,
-              },
-            },
-            {
-              megyekod: 1,
-              megye: "BUDAPEST",
-              oevk: 2,
-              partok: {
-                ellenzeki_osszefogas: 26398,
-                fidesz: 21814,
-                mkkp: 2963,
-                megoldas_mozgalom: 484,
-                mi_hazank: 1696,
-                normalis_elet: 188,
-              },
-            },
-            {
-              megyekod: 1,
-              megye: "BUDAPEST",
-              oevk: 3,
-              partok: {
-                ellenzeki_osszefogas: 25194,
-                fidesz: 21352,
-                mkkp: 3717,
-                megoldas_mozgalom: 449,
-                mi_hazank: 1358,
-                normalis_elet: 132,
-              },
-            },
-          ],
-          200000,
+      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
+      const result = rm.distributeVotesByPartyShare(
+        [
           {
-            fidesz: 0.46,
-            ellenzeki_osszefogas: 0.51,
-            mi_hazank: 0.03,
+            megyekod: 1,
+            megye: "BUDAPEST",
+            oevk: 1,
+            telepules: "Budapest V. kerület",
+            partok: {
+              ellenzeki_osszefogas: 21300,
+              fidesz: 18767,
+              mkkp: 2842,
+              megoldas_mozgalom: 472,
+              mi_hazank: 1307,
+              normalis_elet: 155,
+            },
           },
-        );
-      expect(totalVotes).toBe(350588);
-      expect(percentages).toEqual({
+          {
+            megyekod: 1,
+            megye: "BUDAPEST",
+            oevk: 2,
+            telepules: "Budapest XI. kerület",
+            partok: {
+              ellenzeki_osszefogas: 26398,
+              fidesz: 21814,
+              mkkp: 2963,
+              megoldas_mozgalom: 484,
+              mi_hazank: 1696,
+              normalis_elet: 188,
+            },
+          },
+          {
+            megyekod: 1,
+            megye: "BUDAPEST",
+            oevk: 3,
+            telepules: "Budapest XII. kerület",
+            partok: {
+              ellenzeki_osszefogas: 25194,
+              fidesz: 21352,
+              mkkp: 3717,
+              megoldas_mozgalom: 449,
+              mi_hazank: 1358,
+              normalis_elet: 132,
+            },
+          },
+        ],
+        200000,
+        {
+          fidesz: 0.46,
+          ellenzeki_osszefogas: 0.51,
+          mi_hazank: 0.03,
+        },
+      );
+      expect(result?.totalVotes).toBe(350588);
+      expect(result?.percentages).toEqual({
         ellenzeki_osszefogas: 0.49885335493513755,
         fidesz: 0.43907093226237065,
         megoldas_mozgalom: 0.004007553025203373,
@@ -218,7 +277,7 @@ describe("ResultModifier", () => {
         mkkp: 0.027160085342339157,
         normalis_elet: 0.001354866681118578,
       });
-      expect(totals).toEqual({
+      expect(result?.totals).toEqual({
         ellenzeki_osszefogas: 174892,
         fidesz: 153933,
         megoldas_mozgalom: 1405,
@@ -226,7 +285,7 @@ describe("ResultModifier", () => {
         mkkp: 9522,
         normalis_elet: 475,
       });
-      expect(districts).toMatchSnapshot();
+      expect(result?.districts).toMatchSnapshot();
     });
   });
 });

@@ -40,7 +40,6 @@ export function DistrictMap({
   strokeWidth = 0.7,
   simplifyTolerance = 0.00005,
   onClick,
-  onDoubleClick,
   selectedDistrict,
   wheel,
   viewBox,

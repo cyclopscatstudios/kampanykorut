@@ -11,7 +11,7 @@ export interface ConstituencyDataProps {
   megyekod: number;
   megye: string;
   oevk: number;
-  telepules?: string;
+  telepules: string;
   valasztopolgar?: number;
   partok: Record<string, number | undefined>;
   jeloltek?: Record<string, string[] | undefined>;
@@ -22,6 +22,13 @@ export interface PartyListDataProps {
   megye: string;
   oevk: number;
   partok: Record<string, number | undefined>;
+}
+
+interface DistributedVotesResult {
+  districts: ConstituencyDataProps[];
+  totals: Record<string, number>;
+  percentages: Shares;
+  totalVotes: number;
 }
 
 type VoterBase = {
@@ -49,17 +56,12 @@ export class ResultModifier {
   }
 
   distributeVotesByPartyShare(
-    list: PartyListDataProps[],
+    list: ConstituencyDataProps[],
     totalVotes: number,
     partyShares: Shares,
-  ): {
-    districts: ConstituencyDataProps[];
-    totals: Record<string, number>;
-    percentages: Shares;
-    totalVotes: number;
-  } {
+  ): DistributedVotesResult | null {
     if (totalVotes > this.voterEnvironment.getAvailableVoters()) {
-      throw new Error("no more voters left");
+      return null;
     }
     let result = list.map((r) => ({
       ...r,
@@ -87,7 +89,7 @@ export class ResultModifier {
   }
 
   modifyDistrict(
-    list: PartyListDataProps[],
+    list: ConstituencyDataProps[],
     megyekod: number,
     oevk: number,
     targetParty: string,
@@ -256,7 +258,7 @@ export class ResultModifier {
   ): Votes {
     const sum = this.sumValues(votes);
     if (!sum) {
-      votes;
+      return votes;
     }
 
     const localShare = this.toShare(votes);

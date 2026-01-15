@@ -37,7 +37,7 @@ export function Calculator() {
     {
       maxTurnout: 85,
       eligibleVoters: 8215304,
-      listData: listResults,
+      listData: constituencyState,
     },
   );
   const [_, setResults] = useState<{
@@ -133,7 +133,7 @@ export function Calculator() {
       {
         maxTurnout: 85,
         eligibleVoters: 8215304,
-        listData: listState,
+        listData: constituencyState,
       },
     );
 
@@ -160,7 +160,7 @@ export function Calculator() {
     setConstituencyState(constituencyResults);
     setListState(listResults);
 
-    const out = engine.calculate(listResults, constituencyResults);
+    const out = engine.calculate(constituencyResults, listResults);
     console.log({ out });
 
     setFideszShare(out.percentages["fidesz"]);
@@ -176,16 +176,30 @@ export function Calculator() {
   }
 
   function handleMoidyfyDistrict() {
-    engine.modifyDistricts(listResults, 1, 1, "fidesz", 5000);
+    const result = engine.modifyDistrict(
+      constituencyResults,
+      1,
+      1,
+      "fidesz",
+      5000,
+    );
+    console.log(constituencyResults, { result });
   }
 
-  function handleModifyList() {
-    const { updated } = engine.modifyByShare(listState, 200000, {
+  function handleModifyByShare() {
+    const result = engine.modifyByShare(constituencyState, 200000, {
       fidesz: 0.46,
       ellenzeki_osszefogas: 0.51,
       mi_hazank: 0.03,
     });
-    setListState(updated);
+    if (result) {
+      setListState(result.updated);
+    }
+  }
+
+  function handleModifyList() {
+    const result = engine.modifyList(constituencyState, { fidesz: 51 });
+    console.log({ result });
   }
 
   function buildTargetShares(
@@ -290,6 +304,10 @@ export function Calculator() {
 
         <Button onClick={handleMoidyfyDistrict}>
           <Button.Text>Modify district</Button.Text>
+        </Button>
+
+        <Button onClick={handleModifyByShare}>
+          <Button.Text>Modify by share</Button.Text>
         </Button>
 
         <Button onClick={handleModifyList}>

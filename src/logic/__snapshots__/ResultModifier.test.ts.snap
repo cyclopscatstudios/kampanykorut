@@ -1,93 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ResultModifier > distributeVotesByPartyShare > asd 1`] = `
-[
-  {
-    "megye": "BUDAPEST",
-    "megyekod": 1,
-    "oevk": 1,
-    "partok": {
-      "ellenzeki_osszefogas": 51106,
-      "fidesz": 46645,
-      "megoldas_mozgalom": 472,
-      "mi_hazank": 3105,
-      "mkkp": 2842,
-      "normalis_elet": 155,
-    },
-  },
-  {
-    "megye": "BUDAPEST",
-    "megyekod": 1,
-    "oevk": 2,
-    "partok": {
-      "ellenzeki_osszefogas": 63337,
-      "fidesz": 54218,
-      "megoldas_mozgalom": 484,
-      "mi_hazank": 4030,
-      "mkkp": 2963,
-      "normalis_elet": 188,
-    },
-  },
-  {
-    "megye": "BUDAPEST",
-    "megyekod": 1,
-    "oevk": 3,
-    "partok": {
-      "ellenzeki_osszefogas": 60449,
-      "fidesz": 53070,
-      "megoldas_mozgalom": 449,
-      "mi_hazank": 3226,
-      "mkkp": 3717,
-      "normalis_elet": 132,
-    },
-  },
-]
-`;
-
-exports[`ResultModifier > distributeVotesByPartyShare > shoul 1`] = `
-[
-  {
-    "megye": "BUDAPEST",
-    "megyekod": 1,
-    "oevk": 1,
-    "partok": {
-      "ellenzeki_osszefogas": 51106,
-      "fidesz": 46645,
-      "megoldas_mozgalom": 472,
-      "mi_hazank": 3105,
-      "mkkp": 2842,
-      "normalis_elet": 155,
-    },
-  },
-  {
-    "megye": "BUDAPEST",
-    "megyekod": 1,
-    "oevk": 2,
-    "partok": {
-      "ellenzeki_osszefogas": 63337,
-      "fidesz": 54218,
-      "megoldas_mozgalom": 484,
-      "mi_hazank": 4030,
-      "mkkp": 2963,
-      "normalis_elet": 188,
-    },
-  },
-  {
-    "megye": "BUDAPEST",
-    "megyekod": 1,
-    "oevk": 3,
-    "partok": {
-      "ellenzeki_osszefogas": 60449,
-      "fidesz": 53070,
-      "megoldas_mozgalom": 449,
-      "mi_hazank": 3226,
-      "mkkp": 3717,
-      "normalis_elet": 132,
-    },
-  },
-]
-`;
-
 exports[`ResultModifier > distributeVotesByPartyShare > should distribute votes by party share 1`] = `
 [
   {
@@ -102,6 +14,7 @@ exports[`ResultModifier > distributeVotesByPartyShare > should distribute votes 
       "mkkp": 2842,
       "normalis_elet": 155,
     },
+    "telepules": "Budapest V. kerület",
   },
   {
     "megye": "BUDAPEST",
@@ -115,6 +28,7 @@ exports[`ResultModifier > distributeVotesByPartyShare > should distribute votes 
       "mkkp": 2963,
       "normalis_elet": 188,
     },
+    "telepules": "Budapest XI. kerület",
   },
   {
     "megye": "BUDAPEST",
@@ -128,6 +42,7 @@ exports[`ResultModifier > distributeVotesByPartyShare > should distribute votes 
       "mkkp": 3717,
       "normalis_elet": 132,
     },
+    "telepules": "Budapest XII. kerület",
   },
 ]
 `;

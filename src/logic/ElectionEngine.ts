@@ -20,6 +20,7 @@ type CandidateMapRaw = Record<PartyId, string[] | undefined>;
 type CandidateMap = Record<PartyId, string[]>;
 
 interface CalculateResults {
+  totals: PartyVotes;
   mandates: Array<{
     party: string;
     constituencySeats: number;
@@ -191,21 +192,26 @@ export class ElectionEngine {
    * }}
    */
   modifyByShare(
-    listData: PartyListDataProps[],
+    listData: ConstituencyDataProps[],
     newVotes: number,
     shares: Shares,
   ) {
-    const {
-      districts: updated,
-      percentages,
-      totalVotes,
-      totals,
-    } = this.resultModifier.distributeVotesByPartyShare(
+    const result = this.resultModifier.distributeVotesByPartyShare(
       listData,
       newVotes,
       shares,
     );
-    return { updated, percentages, totalVotes, totals };
+
+    if (!result) {
+      return null;
+    }
+
+    return {
+      updated: result.districts,
+      percentages: result.percentages,
+      totalVotes: result.totalVotes,
+      totals: result.totals,
+    };
   }
 
   /**
@@ -224,9 +230,11 @@ export class ElectionEngine {
    *   Source of the transferred votes.
    * @returns {PartyListDataProps[]}
    *   New list where the matching district has updated party vote values.
+   *
+   * modifyDistricts([{"megyekod": 1, "oevk": 1, "fidesz": 1000}], 1, 1, "fidesz", 5000) -> [{"megyekod": 1, "oevk": 1, "fidesz": 6000}]
    */
-  modifyDistricts(
-    listData: PartyListDataProps[],
+  modifyDistrict(
+    listData: ConstituencyDataProps[],
     megyekod: number,
     oevk: number,
     targetParty: string,
@@ -253,6 +261,8 @@ export class ElectionEngine {
    *   Mapping of party identifiers to absolute vote counts.
    * @returns {ConstituencyDataProps[]}
    *   A new array where each district contains the merged party vote values.
+   *
+   * modifyListDistrict([{ "party-a": 10 }], { "party-a": 90 }) -> [{ "party-a": 90, ... }]
    */
   modifyList(
     constituencyData: ConstituencyDataProps[],
@@ -260,6 +270,12 @@ export class ElectionEngine {
   ) {
     return this.resultModifier.modifyListDistricts(constituencyData, target);
   }
+
+/*   modifyByMotivitation(
+    constituencyData: ConstituencyDataProps[],
+    partyListData: PartyListDataProps[],
+    motivationDelta: Record<PartyId, number>,
+  ) {} */
 
   /**
    * Calculates the full election result based on constituency and party list data.
@@ -312,10 +328,11 @@ export class ElectionEngine {
       });
     }
 
-    const totals = this.resultModifier.sumPartyTotals(updatedListData);
+    const totals = this.resultModifier.sumPartyTotals(updatedConstituencyData);
     const percentages = this.resultModifier.calculatePercentages(totals);
 
     return {
+      totals,
       mandates,
       constituencySeats,
       listSeats,

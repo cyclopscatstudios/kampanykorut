@@ -19,19 +19,18 @@ export function calculateWinner(result?: DistrictResult | null) {
   if (!result) {
     return;
   }
+
   let winner = "";
-  let maxVotes = 0;
+  let maxVotes = -Infinity;
   let totalVotes = 0;
 
   for (const [party, votes] of Object.entries(result.partok)) {
-    if (!votes) {
-      return;
-    }
+    const v = votes ?? 0;
 
-    totalVotes += votes;
+    totalVotes += v;
 
-    if (votes > maxVotes) {
-      maxVotes = votes;
+    if (v > maxVotes) {
+      maxVotes = v;
       winner = party;
     }
   }

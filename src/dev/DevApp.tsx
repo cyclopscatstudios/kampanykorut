@@ -10,7 +10,7 @@ function DevApp() {
   const [currentPage, setCurrentPage] = useState<Page | null>(null);
   return (
     <div className="w-screen h-screen">
-      <Text weight="bold" color="dark-blue" className="text-center">
+      <Text weight="bold" color="darkBlue" className="text-center">
         Dev testing
       </Text>
       <div className="flex gap-4 w-full justify-center">

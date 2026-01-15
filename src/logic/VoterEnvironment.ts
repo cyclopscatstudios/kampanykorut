@@ -1,12 +1,9 @@
-import {
-  type ConstituencyDataProps,
-  type PartyListDataProps,
-} from "./ResultModifier";
+import { type ConstituencyDataProps } from "./ResultModifier";
 
 export interface VoterEnvironmentConfig {
   eligibleVoters: number;
   maxTurnout: number;
-  listData: PartyListDataProps[];
+  listData: ConstituencyDataProps[];
 }
 
 export class VoterEnvironment {
@@ -26,7 +23,7 @@ export class VoterEnvironment {
     return this.maxAvailableVoters - this.voters;
   }
 
-  setVoters(listData: PartyListDataProps[]) {
+  setVoters(listData: ConstituencyDataProps[]) {
     this.voters = this.getVoters(listData);
   }
 

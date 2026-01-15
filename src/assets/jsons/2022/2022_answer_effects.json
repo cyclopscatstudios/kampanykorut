@@ -1,0 +1,25 @@
+[
+  {
+    "id": "2022_ogyv-1",
+    "answers": [
+      {
+        "id": "A",
+        "effect": {
+          "party-swing": {
+            "ellenzeki_osszefogas": "0.8"
+          }
+        }
+      },
+      {
+        "id": "B",
+        "effect": {
+          "party-swing": {
+            "ellenzeki_osszefogas": "-1.5",
+            "fidesz": "0.5",
+            "mi-hazank": "0.5"
+          }
+        }
+      }
+    ]
+  }
+]
