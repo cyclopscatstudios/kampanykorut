@@ -28,8 +28,6 @@ export function Calculator() {
   console.log({ listState });
 
   const engine = new ElectionEngine(
-    constituencyResults,
-    listResults,
     {
       listSeats: 93,
       thresholdPercent: 5,
@@ -124,8 +122,6 @@ export function Calculator() {
     console.log({ baseShare }, { targetShare });
 
     const engine = new ElectionEngine(
-      constituencyResults,
-      listResults,
       {
         listSeats: 93,
         thresholdPercent: 5,
@@ -140,6 +136,8 @@ export function Calculator() {
     const { newDistricts, newList } = engine.modifyByTarget(
       baseShare,
       targetShare,
+      constituencyResults,
+      listResults,
     );
 
     setConstituencyState(newDistricts);

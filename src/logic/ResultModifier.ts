@@ -32,28 +32,11 @@ interface DistributedVotesResult {
   totalVotes: number;
 }
 
-type VoterBase = {
-  id: string;
-  valasztopolgar: number;
-};
-
 export class ResultModifier {
-  private voterBases: VoterBase[] = [];
   private voterEnvironment: VoterEnvironment;
 
-  constructor(
-    list: ConstituencyDataProps[],
-    voterEnviormentConfig: VoterEnvironmentConfig,
-  ) {
+  constructor(voterEnviormentConfig: VoterEnvironmentConfig) {
     this.voterEnvironment = new VoterEnvironment(voterEnviormentConfig);
-    this.setVoterBase(list);
-  }
-
-  private setVoterBase(list: ConstituencyDataProps[]) {
-    this.voterBases = list.map((row) => ({
-      id: `${row.megyekod}-${row.oevk}`,
-      valasztopolgar: row.valasztopolgar ?? 0,
-    }));
   }
 
   distributeVotesByPartyShare(
@@ -107,7 +90,7 @@ export class ResultModifier {
       let available = 0;
 
       if (from === "bizonytalan") {
-        available = this.getRemainingVoteCount(row);
+        available = this.voterEnvironment.getRemainingVoteCount(row);
       } else {
         available = partok[from] ?? 0;
       }
@@ -286,19 +269,6 @@ export class ResultModifier {
     }
 
     return ints;
-  }
-
-  private getRemainingVoteCount(district: ConstituencyDataProps) {
-    const remainingVotesInDistrict =
-      district.valasztopolgar ??
-      this.voterBases.find(
-        (v) => v.id === `${district.megyekod}-${district.oevk}`,
-      )?.valasztopolgar ??
-      0;
-    const allVoteCount =
-      Object.values(district.partok).reduce((a, b) => (a ?? 0) + (b ?? 0), 0) ??
-      0;
-    return remainingVotesInDistrict - allVoteCount;
   }
 
   private extractVotes(input: Record<string, number | undefined>): Votes {

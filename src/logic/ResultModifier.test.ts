@@ -73,7 +73,7 @@ describe("ResultModifier", () => {
 
   describe("modifyDistrict", () => {
     it("should move votes from one party to another", () => {
-      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig);
 
       const result = rm.modifyDistrict(
         baseList,
@@ -91,7 +91,7 @@ describe("ResultModifier", () => {
     });
 
     it("should not be able to take more votes than available", () => {
-      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig);
 
       const result = rm.modifyDistrict(
         baseList,
@@ -109,7 +109,7 @@ describe("ResultModifier", () => {
     });
 
     it("should take votes from 'bizonytalan' if from === 'bizonytalan'", () => {
-      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig);
 
       const result = rm.modifyDistrict(
         baseList,
@@ -134,10 +134,7 @@ describe("ResultModifier", () => {
         partok: { fidesz: 10 },
       };
 
-      const rm = new ResultModifier(
-        [...baseList, other],
-        voterEnvironmentConfig,
-      );
+      const rm = new ResultModifier(voterEnvironmentConfig);
 
       const result = rm.modifyDistrict(
         [...baseList, other],
@@ -154,7 +151,7 @@ describe("ResultModifier", () => {
 
   describe("applyNationalSwingToList", () => {
     it("should keep all vote counts", () => {
-      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig);
 
       const baseShare = {
         fidesz: 0.5,
@@ -188,7 +185,7 @@ describe("ResultModifier", () => {
     });
 
     it("should proportionally shift votes", () => {
-      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig);
 
       const result = rm.applyNationalSwingToList(
         baseList,
@@ -213,7 +210,7 @@ describe("ResultModifier", () => {
 
   describe("distributeVotesByPartyShare", () => {
     it("should distribute votes by party share", () => {
-      const rm = new ResultModifier(baseList, voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig);
       const result = rm.distributeVotesByPartyShare(
         [
           {

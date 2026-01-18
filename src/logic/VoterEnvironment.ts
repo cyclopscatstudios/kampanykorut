@@ -6,8 +6,14 @@ export interface VoterEnvironmentConfig {
   listData: ConstituencyDataProps[];
 }
 
+type VoterBase = {
+  id: string;
+  valasztopolgar: number;
+};
+
 export class VoterEnvironment {
   private voters: number;
+  private voterBases: VoterBase[] = [];
   private maxAvailableVoters: number;
 
   constructor(config: VoterEnvironmentConfig) {
@@ -17,6 +23,7 @@ export class VoterEnvironment {
         config.eligibleVoters,
         config.maxTurnout,
       ) ?? 0;
+    this.setVoterBase(config.listData);
   }
 
   getAvailableVoters() {
@@ -25,6 +32,26 @@ export class VoterEnvironment {
 
   setVoters(listData: ConstituencyDataProps[]) {
     this.voters = this.getVoters(listData);
+  }
+
+  getRemainingVoteCount(district: ConstituencyDataProps) {
+    const remainingVotesInDistrict =
+      district.valasztopolgar ??
+      this.voterBases.find(
+        (v) => v.id === `${district.megyekod}-${district.oevk}`,
+      )?.valasztopolgar ??
+      0;
+    const allVoteCount =
+      Object.values(district.partok).reduce((a, b) => (a ?? 0) + (b ?? 0), 0) ??
+      0;
+    return remainingVotesInDistrict - allVoteCount;
+  }
+
+  private setVoterBase(list: ConstituencyDataProps[]) {
+    this.voterBases = list.map((row) => ({
+      id: `${row.megyekod}-${row.oevk}`,
+      valasztopolgar: row.valasztopolgar ?? 0,
+    }));
   }
 
   private calculateMaxAvailableVoters(

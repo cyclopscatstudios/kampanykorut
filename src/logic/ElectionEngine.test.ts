@@ -110,12 +110,7 @@ describe("ElectionEngine", () => {
     },
   ];
 
-  const engine = new ElectionEngine(
-    constituencyData,
-    listData,
-    electionConfig,
-    voterEnvironmentConfig,
-  );
+  const engine = new ElectionEngine(electionConfig, voterEnvironmentConfig);
 
   it("merges input data and calculates mandates correctly", () => {
     const result = engine.calculate(constituencyData, listData);

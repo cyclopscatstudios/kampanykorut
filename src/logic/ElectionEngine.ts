@@ -77,16 +77,11 @@ export class ElectionEngine {
   private resultModifier: ResultModifier;
 
   constructor(
-    private constituencyData: ConstituencyDataProps[],
-    private listData: PartyListDataProps[],
     private electionConfig: ElectionConfig,
     private voterEnvironmentConfig: VoterEnvironmentConfig,
   ) {
     this.mandateCalculator = new MandateCalculator(this.electionConfig);
-    this.resultModifier = new ResultModifier(
-      this.constituencyData,
-      this.voterEnvironmentConfig,
-    );
+    this.resultModifier = new ResultModifier(this.voterEnvironmentConfig);
   }
 
   private merge(
@@ -158,15 +153,20 @@ export class ElectionEngine {
    *   newList: PartyListDataProps[];
    * }}
    */
-  modifyByTarget(baseShare: Shares, targetShare: Shares) {
+  modifyByTarget(
+    baseShare: Shares,
+    targetShare: Shares,
+    constituencyList: ConstituencyDataProps[],
+    partyList: PartyListDataProps[],
+  ) {
     const newDistricts = this.resultModifier.applyNationalSwingToDistricts(
-      this.constituencyData,
+      constituencyList,
       baseShare,
       targetShare,
     );
 
     const newList = this.resultModifier.applyNationalSwingToList(
-      this.listData,
+      partyList,
       baseShare,
       targetShare,
     );
