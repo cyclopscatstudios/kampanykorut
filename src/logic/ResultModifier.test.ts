@@ -1,7 +1,5 @@
 import { ResultModifier, type ConstituencyDataProps } from "./ResultModifier";
-import {
-  type VoterEnvironmentConfig,
-} from "./VoterEnvironment";
+import { type VoterEnvironmentConfig } from "./VoterEnvironment";
 
 const listResults = [
   {

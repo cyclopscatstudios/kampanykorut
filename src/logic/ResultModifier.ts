@@ -3,6 +3,7 @@ import {
   type VoterEnvironmentConfig,
 } from "./VoterEnvironment";
 import { sumPartyTotals as sum } from "./ResultModifier.utils";
+import type { PartyId } from "./ElectionEngine";
 
 export type Shares = Record<string, number>;
 type Votes = Record<string, number>;
@@ -176,6 +177,61 @@ export class ResultModifier {
     });
   }
 
+  modifyByMotivation(
+    constituencyData: ConstituencyDataProps[],
+    partyListData: PartyListDataProps[],
+    motivationTarget: Record<PartyId, number>,
+  ) {
+    const newConstituencyData = constituencyData.map((d) => ({
+      ...d,
+      partok: Object.fromEntries(
+        Object.entries(d.partok).map(([party, votes]) => [
+          party,
+          this.applyMotivationTarget(
+            votes as number,
+            party as PartyId,
+            motivationTarget,
+          ),
+        ]),
+      ),
+    }));
+
+    const newPartyListData = partyListData.map((d) => ({
+      ...d,
+      partok: Object.fromEntries(
+        Object.entries(d.partok).map(([party, votes]) => [
+          party,
+          this.applyMotivationTarget(
+            votes as number,
+            party as PartyId,
+            motivationTarget,
+          ),
+        ]),
+      ),
+    }));
+
+    return {
+      newConstituencyData,
+      newPartyListData,
+    };
+  }
+
+  private applyMotivationTarget(
+    votes: number,
+    party: PartyId,
+    motivationTarget: Record<PartyId, number>,
+  ) {
+    const target = motivationTarget[party];
+    if (target === undefined) {
+      return votes;
+    }
+    return Math.round(votes * this.clamp(target));
+  }
+
+  private clamp(v: number) {
+    return Math.min(1, Math.max(0, v));
+  }
+
   sumPartyTotals(districts: ConstituencyDataProps[]): Record<string, number> {
     return sum(districts);
   }
@@ -260,8 +316,7 @@ export class ResultModifier {
     if (!sum) {
       return votes;
     }
-
-    const localShare = this.toShare(votes);
+    const localShare = this.toShare(votes, sum);
     const lean = this.computeLean(localShare, baseShare);
     const normalizedTarget = this.normalize(targetShare);
     const raw = this.applyTarget(lean, normalizedTarget);
@@ -324,8 +379,7 @@ export class ResultModifier {
     return result;
   }
 
-  private toShare(votes: Votes) {
-    const sum = this.sumValues(votes);
+  private toShare(votes: Votes, sum: number) {
     return Object.fromEntries(
       Object.entries(votes).map(([k, v]) => [k, v / sum]),
     );

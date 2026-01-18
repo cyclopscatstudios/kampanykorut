@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ElectionEngine > asd 1`] = `
+{
+  "newConstituencyData": [
+    {
+      "megye": "Test",
+      "megyekod": 1,
+      "oevk": 1,
+      "partok": {
+        "major": 995,
+        "minor": 910,
+      },
+      "telepules": "",
+    },
+  ],
+  "newPartyListData": [
+    {
+      "megye": "Test",
+      "megyekod": 1,
+      "oevk": 1,
+      "partok": {
+        "major": 995,
+        "minor": 910,
+      },
+    },
+  ],
+}
+`;

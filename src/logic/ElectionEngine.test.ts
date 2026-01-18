@@ -203,4 +203,38 @@ describe("ElectionEngine", () => {
     expect(result.listSeats.minor).toBeUndefined();
     expect(result.listSeats.major).toBe(electionConfig.listSeats);
   });
+  it("asd", () => {
+    const updatedConstituencyData = [
+      {
+        megyekod: 1,
+        megye: "Test",
+        oevk: 1,
+        telepules: "",
+        partok: {
+          major: 1000,
+          minor: 1000,
+        },
+      },
+    ];
+    const updatedListData = [
+      {
+        megyekod: 1,
+        megye: "Test",
+        oevk: 1,
+        partok: {
+          major: 1000,
+          minor: 1000,
+        },
+      },
+    ];
+    const result = engine.modifyByMotivation(
+      updatedConstituencyData,
+      updatedListData,
+      {
+        major: 0.995,
+        minor: 0.91,
+      },
+    );
+    expect(result).toMatchSnapshot();
+  });
 });

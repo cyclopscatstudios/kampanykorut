@@ -271,11 +271,17 @@ export class ElectionEngine {
     return this.resultModifier.modifyListDistricts(constituencyData, target);
   }
 
-/*   modifyByMotivitation(
+  modifyByMotivation(
     constituencyData: ConstituencyDataProps[],
     partyListData: PartyListDataProps[],
     motivationDelta: Record<PartyId, number>,
-  ) {} */
+  ) {
+    return this.resultModifier.modifyByMotivation(
+      constituencyData,
+      partyListData,
+      motivationDelta,
+    );
+  }
 
   /**
    * Calculates the full election result based on constituency and party list data.
