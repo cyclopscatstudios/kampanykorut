@@ -5,8 +5,9 @@
       {
         "id": "A",
         "effect": {
-          "party-swing": {
-            "ellenzeki_osszefogas": "0.8"
+          "type": "party-swing",
+          "params": {
+            "ellenzeki_osszefogas": 0.8
           }
         }
       },
