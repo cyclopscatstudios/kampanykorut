@@ -9,7 +9,7 @@ import { ElectionEngine } from "../logic/ElectionEngine";
 import {
   type DistrictCandidateData,
   type DistrictPartyData,
-} from "../logic/ResultModifier";
+} from "../logic/ResultTransformer/PipelineTransform";
 
 type Winner = "fidesz" | "ellenzeki_osszefogas";
 type Shares = Record<string, number>;

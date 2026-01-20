@@ -1,6 +1,12 @@
 import { listResults } from "./mocks/mockCandidateData";
-import { ResultModifier, type DistrictCandidateData } from "./ResultModifier";
+import { ResultModifier } from "./ResultModifier";
+import { type DistrictCandidateData } from "./ResultTransformer/PipelineTransform";
 import { type VoterEnvironmentConfig } from "./VoterEnvironment";
+
+const electionConfig = {
+  listSeats: 10,
+  thresholdPercent: 5,
+};
 
 describe("ResultModifier", () => {
   let baseList: DistrictCandidateData[];
@@ -29,7 +35,7 @@ describe("ResultModifier", () => {
 
   describe("modifyDistrict", () => {
     it("should move votes from one party to another", () => {
-      const rm = new ResultModifier(voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig, electionConfig);
 
       const result = rm.modifyDistricts(baseList, [
         {
@@ -48,7 +54,7 @@ describe("ResultModifier", () => {
     });
 
     it("should not be able to take more votes than available", () => {
-      const rm = new ResultModifier(voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig, electionConfig);
 
       const result = rm.modifyDistricts(baseList, [
         {
@@ -67,7 +73,7 @@ describe("ResultModifier", () => {
     });
 
     it("should take votes from 'bizonytalan' if from === 'bizonytalan'", () => {
-      const rm = new ResultModifier(voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig, electionConfig);
 
       const result = rm.modifyDistricts(baseList, [
         {
@@ -94,7 +100,7 @@ describe("ResultModifier", () => {
         partok: { fidesz: 10 },
       };
 
-      const rm = new ResultModifier(voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig, electionConfig);
 
       const result = rm.modifyDistricts(
         [...baseList, other],
@@ -115,7 +121,7 @@ describe("ResultModifier", () => {
 
   describe("applyNationalSwingToList", () => {
     it("should keep all vote counts", () => {
-      const rm = new ResultModifier(voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig, electionConfig);
 
       const baseShare = {
         fidesz: 0.5,
@@ -149,7 +155,7 @@ describe("ResultModifier", () => {
     });
 
     it("should proportionally shift votes", () => {
-      const rm = new ResultModifier(voterEnvironmentConfig);
+      const rm = new ResultModifier(voterEnvironmentConfig, electionConfig);
 
       const result = rm.applyNationalSwingToList(
         baseList,
@@ -192,7 +198,7 @@ describe("ResultModifier", () => {
         ],
         maxTurnout: 85,
       };
-      const rm = new ResultModifier(config);
+      const rm = new ResultModifier(config, electionConfig);
       const result = rm.distributeVotesByPartyShare(
         [
           {
@@ -232,7 +238,7 @@ describe("ResultModifier", () => {
           },
         ],
       };
-      const rm = new ResultModifier(config);
+      const rm = new ResultModifier(config, electionConfig);
       const result = rm.distributeVotesByPartyShare(
         [
           {
@@ -270,7 +276,7 @@ describe("ResultModifier", () => {
         ],
       };
 
-      const rm = new ResultModifier(config);
+      const rm = new ResultModifier(config, electionConfig);
 
       const result = rm.distributeVotesByPartyShare(config.listData, 10, {
         "party-a": 1,
@@ -303,7 +309,7 @@ describe("ResultModifier", () => {
         ],
       };
 
-      const rm = new ResultModifier(config);
+      const rm = new ResultModifier(config, electionConfig);
 
       const beforeVotes =
         Object.values(config.listData[0].partok).reduce(
@@ -345,11 +351,14 @@ describe("ResultModifier", () => {
         },
       ];
 
-      const rm = new ResultModifier({
-        eligibleVoters: 1000,
-        maxTurnout: 100,
-        listData: districts,
-      });
+      const rm = new ResultModifier(
+        {
+          eligibleVoters: 1000,
+          maxTurnout: 100,
+          listData: districts,
+        },
+        electionConfig,
+      );
 
       const result = rm.distributeVotesByPartyShare(districts, 20, {
         "party-a": 1,

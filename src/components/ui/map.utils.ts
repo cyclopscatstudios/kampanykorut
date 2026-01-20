@@ -1,4 +1,4 @@
-import type { DistrictCandidateData } from "../../logic/ResultModifier";
+import type { DistrictCandidateData } from "../../logic/ResultTransformer/PipelineTransform";
 import type { PartyName } from "../../types/color";
 
 export type DistrictResult = {

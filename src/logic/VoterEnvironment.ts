@@ -1,4 +1,4 @@
-import { type DistrictCandidateData } from "./ResultModifier";
+import { type DistrictCandidateData } from "./ResultTransformer/PipelineTransform";
 
 export interface VoterEnvironmentConfig {
   eligibleVoters: number;

@@ -1,4 +1,8 @@
 import type { PartyId } from "./ElectionEngine";
+import type {
+  DistrictCandidateData,
+  Shares,
+} from "./ResultTransformer/PipelineTransform";
 
 export type PartyVotes = Record<PartyId, number>;
 
@@ -117,5 +121,28 @@ export class MandateCalculator {
     }
 
     return seats;
+  }
+
+  sumPartyTotals(districts: DistrictCandidateData[]): Record<string, number> {
+    const totals: Record<string, number> = {};
+
+    for (const d of districts) {
+      for (const [party, votes] of Object.entries(d.partok)) {
+        totals[party] = (totals[party] ?? 0) + (votes ?? 0);
+      }
+    }
+
+    return totals;
+  }
+
+  calculatePercentages(totals: Record<string, number>): Shares {
+    const sum = Object.values(totals).reduce((a, b) => a + b, 0);
+    const result: Shares = {};
+
+    for (const [party, votes] of Object.entries(totals)) {
+      result[party] = sum ? votes / sum : 0;
+    }
+
+    return result;
   }
 }

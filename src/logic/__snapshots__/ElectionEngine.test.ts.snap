@@ -12,6 +12,7 @@ exports[`ElectionEngine > asd 1`] = `
         "minor": 910,
       },
       "telepules": "",
+      "valasztopolgar": 600000,
     },
   ],
   "newPartyData": [

@@ -3,13 +3,13 @@ import {
   type CombinedOevk,
   type ElectionConfig,
 } from "./MandateCalculator";
+import { ResultModifier } from "./ResultModifier";
 import {
-  ResultModifier,
   type DistrictCandidateData,
   type DistrictTarget,
   type DistrictPartyData,
   type Shares,
-} from "./ResultModifier";
+} from "./ResultTransformer/PipelineTransform";
 import type { VoterEnvironmentConfig } from "./VoterEnvironment";
 
 export type PartyId = string;
@@ -82,7 +82,10 @@ export class ElectionEngine {
     private voterEnvironmentConfig: VoterEnvironmentConfig,
   ) {
     this.mandateCalculator = new MandateCalculator(this.electionConfig);
-    this.resultModifier = new ResultModifier(this.voterEnvironmentConfig);
+    this.resultModifier = new ResultModifier(
+      this.voterEnvironmentConfig,
+      this.electionConfig,
+    );
   }
 
   private merge(
@@ -319,8 +322,8 @@ export class ElectionEngine {
       });
     }
 
-    const totals = this.resultModifier.sumPartyTotals(districtCandidateData);
-    const percentages = this.resultModifier.calculatePercentages(totals);
+    const totals = this.mandateCalculator.sumPartyTotals(districtCandidateData);
+    const percentages = this.mandateCalculator.calculatePercentages(totals);
 
     return {
       totals,
