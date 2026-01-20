@@ -21,7 +21,7 @@ export class MandateCalculator {
   constructor(private config: ElectionConfig) {}
 
   // Single-member district seats
-  calculateConstituencySeats(data: CombinedOevk[]) {
+  calculateSeats(data: CombinedOevk[]) {
     const result: Record<PartyId, number> = {};
 
     for (const oevk of data) {

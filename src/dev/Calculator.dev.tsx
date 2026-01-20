@@ -7,8 +7,8 @@ import listResults from "../assets/jsons/2022/oevk_list_results.json";
 import oevk_2022 from "../assets/jsons/2022/oevk_2022.json";
 import { ElectionEngine } from "../logic/ElectionEngine";
 import {
-  type ConstituencyDataProps,
-  type PartyListDataProps,
+  type DistrictCandidateData,
+  type DistrictPartyData,
 } from "../logic/ResultModifier";
 
 type Winner = "fidesz" | "ellenzeki_osszefogas";
@@ -16,8 +16,8 @@ type Shares = Record<string, number>;
 
 export function Calculator() {
   const [constituencyState, setConstituencyState] =
-    useState<ConstituencyDataProps[]>(constituencyResults);
-  const [listState, setListState] = useState<PartyListDataProps[]>(listResults);
+    useState<DistrictCandidateData[]>(constituencyResults);
+  const [listState, setListState] = useState<DistrictPartyData[]>(listResults);
   const [mandates, setMandates] = useState<Record<Winner, number>>({
     fidesz: 0,
     ellenzeki_osszefogas: 0,
@@ -72,7 +72,7 @@ export function Calculator() {
     }
   };
 
-  function sumPartyVotesWithTotal(data: PartyListDataProps[]) {
+  function sumPartyVotesWithTotal(data: DistrictPartyData[]) {
     const partyTotals: Record<string, number> = {};
     let totalVotes = 0;
 
@@ -102,7 +102,7 @@ export function Calculator() {
   }
 
   function calculateNationalShareFromResults(
-    data: ConstituencyDataProps[],
+    data: DistrictCandidateData[],
   ): Shares {
     let f = 0;
     let e = 0;
@@ -133,16 +133,16 @@ export function Calculator() {
       },
     );
 
-    const { newDistricts, newList } = engine.modifyByTarget(
+    const { newCandidateData, newPartyData } = engine.modifyByTarget(
       baseShare,
       targetShare,
       constituencyResults,
       listResults,
     );
 
-    setConstituencyState(newDistricts);
-    setListState(newList);
-    const out = engine.calculate(newDistricts, newList);
+    setConstituencyState(newCandidateData);
+    setListState(newPartyData);
+    const out = engine.calculate(newCandidateData, newPartyData);
     console.log({ out });
 
     setMandates({
@@ -174,13 +174,14 @@ export function Calculator() {
   }
 
   function handleMoidyfyDistrict() {
-    const result = engine.modifyDistrict(
-      constituencyResults,
-      1,
-      1,
-      "fidesz",
-      5000,
-    );
+    const result = engine.modifyDistrict(constituencyResults, [
+      {
+        amount: 5000,
+        megyekod: 1,
+        oevk: 1,
+        targetParty: "fidesz",
+      },
+    ]);
     console.log(constituencyResults, { result });
   }
 
@@ -220,7 +221,7 @@ export function Calculator() {
     };
   }
 
-  function countConstituencySeats(results: ConstituencyDataProps[]) {
+  function countConstituencySeats(results: DistrictCandidateData[]) {
     let fidesz = 0;
     let ellenzek = 0;
 

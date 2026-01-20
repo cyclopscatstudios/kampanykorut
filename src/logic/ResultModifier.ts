@@ -2,23 +2,22 @@ import {
   VoterEnvironment,
   type VoterEnvironmentConfig,
 } from "./VoterEnvironment";
-import { sumPartyTotals as sum } from "./ResultModifier.utils";
 import type { PartyId } from "./ElectionEngine";
 
 export type Shares = Record<string, number>;
 type Votes = Record<string, number>;
 
-export interface ConstituencyDataProps {
+export interface DistrictCandidateData {
   megyekod: number;
   megye: string;
   oevk: number;
   telepules: string;
-  valasztopolgar?: number;
+  valasztopolgar: number;
   partok: Record<string, number | undefined>;
   jeloltek?: Record<string, string[] | undefined>;
 }
 
-export interface PartyListDataProps {
+export interface DistrictPartyData {
   megyekod: number;
   megye: string;
   oevk: number;
@@ -26,10 +25,20 @@ export interface PartyListDataProps {
 }
 
 interface DistributedVotesResult {
-  districts: ConstituencyDataProps[];
+  districts: DistrictCandidateData[];
   totals: Record<string, number>;
   percentages: Shares;
   totalVotes: number;
+}
+
+type VoteSource = { type: "bizonytalan" } | { type: "party"; party: string };
+
+export interface DistrictTarget {
+  megyekod: number;
+  oevk: number;
+  targetParty: string;
+  amount: number;
+  from?: VoteSource;
 }
 
 export class ResultModifier {
@@ -40,82 +49,104 @@ export class ResultModifier {
   }
 
   distributeVotesByPartyShare(
-    list: ConstituencyDataProps[],
-    totalVotes: number,
+    districtCandidateData: DistrictCandidateData[],
+    totalVoters: number,
     partyShares: Shares,
   ): DistributedVotesResult | null {
-    if (totalVotes > this.voterEnvironment.getAvailableVoters()) {
+    const remainingCapacity =
+      this.voterEnvironment.getRemainingVotesInDistricts(districtCandidateData);
+
+    if (totalVoters > remainingCapacity) {
       return null;
     }
-    let result = list.map((r) => ({
-      ...r,
-      partok: { ...r.partok },
+
+    let result = districtCandidateData.map((d) => ({
+      ...d,
+      partok: { ...d.partok },
     }));
 
     for (const [party, share] of Object.entries(partyShares)) {
-      const partyTotal = Math.round(totalVotes * share);
+      const votesForParty = Math.round(totalVoters * share);
+
+      if (votesForParty === 0) {
+        continue;
+      }
 
       const weights = this.getPartyWeights(result, party);
-      const distributed = this.distributeByWeights(weights, partyTotal);
+      const distributed = this.distributeByWeights(weights, votesForParty);
 
-      result = this.applyPartyDistributionImmutable(result, party, distributed);
+      result = this.applyPartyDistributionWithCapacity(
+        result,
+        party,
+        distributed,
+      );
     }
 
     const totals = this.sumPartyTotals(result);
-    const percentages = this.calculatePercentages(totals);
 
     return {
       districts: result,
       totals,
-      percentages,
+      percentages: this.calculatePercentages(totals),
       totalVotes: Object.values(totals).reduce((a, b) => a + b, 0),
     };
   }
 
-  modifyDistrict(
-    list: ConstituencyDataProps[],
-    megyekod: number,
-    oevk: number,
-    targetParty: string,
-    amount: number,
-    from: string = "bizonytalan",
+  modifyDistricts(
+    districtCandidateData: DistrictCandidateData[],
+    districtTargets: DistrictTarget[],
   ) {
-    return list.map((row) => {
-      if (row.megyekod !== megyekod || row.oevk !== oevk) {
-        return row;
-      }
+    return districtTargets.reduce(
+      (currentList, target) =>
+        currentList.map((row) => this.applyDistrictTarget(row, target)),
+      districtCandidateData,
+    );
+  }
 
-      const partok = { ...row.partok };
+  private applyDistrictTarget(
+    districtCandidateData: DistrictCandidateData,
+    target: DistrictTarget,
+  ): DistrictCandidateData {
+    if (
+      districtCandidateData.megyekod !== target.megyekod ||
+      districtCandidateData.oevk !== target.oevk
+    ) {
+      return districtCandidateData;
+    }
 
-      let available = 0;
+    const from: VoteSource = target.from ?? { type: "bizonytalan" };
+    const partok = { ...districtCandidateData.partok };
 
-      if (from === "bizonytalan") {
-        available = this.voterEnvironment.getRemainingVoteCount(row);
-      } else {
-        available = partok[from] ?? 0;
-      }
+    let available = 0;
 
-      const transfer = Math.max(0, Math.min(amount, available));
+    if (from.type === "bizonytalan") {
+      available = this.voterEnvironment.getRemainingVoteCount(
+        districtCandidateData,
+      );
+    } else {
+      available = partok[from.party] ?? 0;
+    }
 
-      if (transfer === 0) {
-        return row;
-      }
+    const transfer = Math.max(0, Math.min(target.amount, available));
 
-      if (from !== "bizonytalan") {
-        partok[from] = (partok[from] ?? 0) - transfer;
-      }
+    if (transfer === 0) {
+      return districtCandidateData;
+    }
 
-      partok[targetParty] = (partok[targetParty] ?? 0) + transfer;
+    if (from.type !== "bizonytalan") {
+      partok[from.party] = (partok[from.party] ?? 0) - transfer;
+    }
 
-      return {
-        ...row,
-        partok,
-      };
-    });
+    partok[target.targetParty] = (partok[target.targetParty] ?? 0) + transfer;
+
+    return {
+      ...districtCandidateData,
+      partok,
+    };
   }
 
   modifyListDistricts(
-    list: ConstituencyDataProps[],
+    list: DistrictCandidateData[],
     target: Record<string, number>,
   ) {
     return list.map((row) => ({
@@ -128,11 +159,11 @@ export class ResultModifier {
   }
 
   applyNationalSwingToList(
-    list: PartyListDataProps[],
+    districtPartyData: DistrictPartyData[],
     baseShare: Shares,
     targetShare: Shares,
   ) {
-    return list.map((row) => {
+    return districtPartyData.map((row) => {
       const votes = this.extractVotes(row.partok);
       return {
         ...row,
@@ -142,11 +173,11 @@ export class ResultModifier {
   }
 
   applyNationalSwingToDistricts(
-    list: ConstituencyDataProps[],
+    districtCandidateData: DistrictCandidateData[],
     baseShare: Shares,
     targetShare: Shares,
   ) {
-    return list.map((row) => {
+    return districtCandidateData.map((row) => {
       const votes = this.extractVotes(row.partok);
       const updated = this.applySwing(votes, baseShare, targetShare);
 
@@ -161,11 +192,11 @@ export class ResultModifier {
   }
 
   modifyByMotivation(
-    constituencyData: ConstituencyDataProps[],
-    partyListData: PartyListDataProps[],
+    districtCandidateData: DistrictCandidateData[],
+    districtPartyData: DistrictPartyData[],
     motivationTarget: Record<PartyId, number>,
   ) {
-    const newConstituencyData = constituencyData.map((d) => ({
+    const newCandidateData = districtCandidateData.map((d) => ({
       ...d,
       partok: Object.fromEntries(
         Object.entries(d.partok).map(([party, votes]) => [
@@ -179,7 +210,7 @@ export class ResultModifier {
       ),
     }));
 
-    const newPartyListData = partyListData.map((d) => ({
+    const newPartyData = districtPartyData.map((d) => ({
       ...d,
       partok: Object.fromEntries(
         Object.entries(d.partok).map(([party, votes]) => [
@@ -194,8 +225,8 @@ export class ResultModifier {
     }));
 
     return {
-      newConstituencyData,
-      newPartyListData,
+      newCandidateData,
+      newPartyData,
     };
   }
 
@@ -215,8 +246,16 @@ export class ResultModifier {
     return Math.min(1, Math.max(0, v));
   }
 
-  sumPartyTotals(districts: ConstituencyDataProps[]): Record<string, number> {
-    return sum(districts);
+  sumPartyTotals(districts: DistrictCandidateData[]): Record<string, number> {
+    const totals: Record<string, number> = {};
+
+    for (const d of districts) {
+      for (const [party, votes] of Object.entries(d.partok)) {
+        totals[party] = (totals[party] ?? 0) + (votes ?? 0);
+      }
+    }
+
+    return totals;
   }
 
   calculatePercentages(totals: Record<string, number>): Shares {
@@ -231,29 +270,40 @@ export class ResultModifier {
   }
 
   private getPartyWeights(
-    districts: ConstituencyDataProps[],
+    districtCandidateData: DistrictCandidateData[],
     party: string,
   ): number[] {
-    return districts.map((d) => d.partok[party] ?? 0);
+    return districtCandidateData.map((d) => d.partok[party] ?? 0);
   }
 
-  private applyPartyDistributionImmutable(
-    districts: ConstituencyDataProps[],
+  private applyPartyDistributionWithCapacity(
+    districts: DistrictCandidateData[],
     party: string,
     distributed: number[],
   ) {
-    return districts.map((row, i) => ({
-      ...row,
-      partok: {
-        ...row.partok,
-        [party]: (row.partok[party] ?? 0) + (distributed[i] ?? 0),
-      },
-    }));
+    return districts.map((d, i) => {
+      const usedVotes =
+        Object.values(d.partok).reduce((a, b) => (a ?? 0) + (b ?? 0), 0) ?? 0;
+
+      const capacity = (d.valasztopolgar ?? 0) - usedVotes;
+
+      const toApply = Math.max(0, Math.min(distributed[i] ?? 0, capacity));
+
+      return {
+        ...d,
+        partok: {
+          ...d.partok,
+          [party]: (d.partok[party] ?? 0) + toApply,
+        },
+      };
+    });
   }
 
   private distributeByWeights(weights: number[], total: number): number[] {
     const sum = weights.reduce((a, b) => a + b, 0);
-    if (!sum || !total) return weights.map(() => 0);
+    if (!sum || !total) {
+      return weights.map(() => 0);
+    }
 
     const raw = weights.map((w) => (w / sum) * total);
     const ints = raw.map((v) => Math.floor(v));
@@ -294,9 +344,11 @@ export class ResultModifier {
     return this.distributeVotes(raw, sum);
   }
 
-  normalize(shares: Shares): Shares {
+  private normalize(shares: Shares): Shares {
     const sum = this.sumValues(shares);
-    if (!sum) return shares;
+    if (!sum) {
+      return shares;
+    }
 
     const out: Shares = {};
     for (const k in shares) {
@@ -357,9 +409,5 @@ export class ResultModifier {
 
   private sumValues(obj: Record<string, number>): number {
     return Object.values(obj).reduce((a, b) => a + b, 0);
-  }
-
-  getSumVotes() {
-    return this.voterEnvironment.getAvailableVoters();
   }
 }

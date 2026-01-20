@@ -2,7 +2,7 @@
 
 exports[`ElectionEngine > asd 1`] = `
 {
-  "newConstituencyData": [
+  "newCandidateData": [
     {
       "megye": "Test",
       "megyekod": 1,
@@ -14,7 +14,7 @@ exports[`ElectionEngine > asd 1`] = `
       "telepules": "",
     },
   ],
-  "newPartyListData": [
+  "newPartyData": [
     {
       "megye": "Test",
       "megyekod": 1,
