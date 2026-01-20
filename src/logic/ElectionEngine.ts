@@ -3,12 +3,13 @@ import {
   type CombinedOevk,
   type ElectionConfig,
 } from "./MandateCalculator";
+import { ResultModifier } from "./ResultModifier";
 import {
-  ResultModifier,
-  type ConstituencyDataProps,
-  type PartyListDataProps,
+  type DistrictCandidateData,
+  type DistrictTarget,
+  type DistrictPartyData,
   type Shares,
-} from "./ResultModifier";
+} from "./ResultTransformer/PipelineTransform";
 import type { VoterEnvironmentConfig } from "./VoterEnvironment";
 
 export type PartyId = string;
@@ -77,25 +78,23 @@ export class ElectionEngine {
   private resultModifier: ResultModifier;
 
   constructor(
-    private constituencyData: ConstituencyDataProps[],
-    private listData: PartyListDataProps[],
     private electionConfig: ElectionConfig,
     private voterEnvironmentConfig: VoterEnvironmentConfig,
   ) {
     this.mandateCalculator = new MandateCalculator(this.electionConfig);
     this.resultModifier = new ResultModifier(
-      this.constituencyData,
       this.voterEnvironmentConfig,
+      this.electionConfig,
     );
   }
 
   private merge(
-    updatedData: ConstituencyDataProps[],
-    updatedList: PartyListDataProps[],
+    updatedCandidateData: DistrictCandidateData[],
+    updatedPartyData: DistrictPartyData[],
   ) {
     const map = new Map<string, CombinedOevk>();
 
-    for (const c of updatedData) {
+    for (const c of updatedCandidateData) {
       const key = `${c.megyekod}-${c.oevk}`;
 
       map.set(key, {
@@ -108,7 +107,7 @@ export class ElectionEngine {
       });
     }
 
-    for (const l of updatedList) {
+    for (const l of updatedPartyData) {
       const key = `${l.megyekod}-${l.oevk}`;
       const row = map.get(key);
       if (!row) {
@@ -154,50 +153,55 @@ export class ElectionEngine {
    * @param {Shares} targetShare
    *   Desired national vote share ratios to apply.
    * @returns {{
-   *   newDistricts: ConstituencyDataProps[];
-   *   newList: PartyListDataProps[];
+   *   newDistrictData: DistrictCandidateData[];
+   *   newListData: DistrictPartyData[];
    * }}
    */
-  modifyByTarget(baseShare: Shares, targetShare: Shares) {
-    const newDistricts = this.resultModifier.applyNationalSwingToDistricts(
-      this.constituencyData,
+  modifyByTarget(
+    baseShare: Shares,
+    targetShare: Shares,
+    districtCandidateData: DistrictCandidateData[],
+    districtPartyData: DistrictPartyData[],
+  ) {
+    const newCandidateData = this.resultModifier.applyNationalSwingToDistricts(
+      districtCandidateData,
       baseShare,
       targetShare,
     );
 
-    const newList = this.resultModifier.applyNationalSwingToList(
-      this.listData,
+    const newPartyData = this.resultModifier.applyNationalSwingToList(
+      districtPartyData,
       baseShare,
       targetShare,
     );
 
-    return { newDistricts, newList };
+    return { newCandidateData, newPartyData };
   }
 
   /**
    * Distributes a fixed total number of votes among parties according to
    * predefined share ratios, and allocates those votes across districts
    * using party-specific weighting.
-   * @param {PartyListDataProps[]} listData
+   * @param {DistrictPartyData[]} listData
    *   Input district list containing existing party vote data.
    * @param {number} newVotes
    *   Total number of votes to be distributed across all parties.
    * @param {Shares} shares
    *   Mapping of party → share ratio (0–1).
    * @returns {{
-   *   districts: ConstituencyDataProps[];
+   *   districts: DistrictCandidateData[];
    *   totals: Record<string, number>;
    *   percentages: Shares;
    *   totalVotes: number;
    * }}
    */
   modifyByShare(
-    listData: ConstituencyDataProps[],
+    districtCandidateData: DistrictCandidateData[],
     newVotes: number,
     shares: Shares,
   ) {
     const result = this.resultModifier.distributeVotesByPartyShare(
-      listData,
+      districtCandidateData,
       newVotes,
       shares,
     );
@@ -216,38 +220,20 @@ export class ElectionEngine {
 
   /**
    * Transfers a given number of votes to a target party inside a single district.
-   * @param {PartyListDataProps[]} listData
+   * @param {DistrictPartyData[]} listData
    *   List of district-level party vote records.
-   * @param {number} megyekod
-   *   County code identifying the district.
-   * @param {number} oevk
-   *   Constituency (OEVK) identifier within the county.
-   * @param {string} targetParty
-   *   Party identifier that receives the transferred votes.
-   * @param {number} votes
-   *   Number of votes to transfer.
-   * @param {string} [from="bizonytalan"]
-   *   Source of the transferred votes.
-   * @returns {PartyListDataProps[]}
-   *   New list where the matching district has updated party vote values.
+   * @param {DistrictTarget[]} districtTarget
+   *   List of district-level target.
    *
    * modifyDistricts([{"megyekod": 1, "oevk": 1, "fidesz": 1000}], 1, 1, "fidesz", 5000) -> [{"megyekod": 1, "oevk": 1, "fidesz": 6000}]
    */
   modifyDistrict(
-    listData: ConstituencyDataProps[],
-    megyekod: number,
-    oevk: number,
-    targetParty: string,
-    votes: number,
-    from?: string,
+    districtCandidateData: DistrictCandidateData[],
+    districtTarget: DistrictTarget[],
   ) {
-    return this.resultModifier.modifyDistrict(
-      listData,
-      megyekod,
-      oevk,
-      targetParty,
-      votes,
-      from,
+    return this.resultModifier.modifyDistricts(
+      districtCandidateData,
+      districtTarget,
     );
   }
 
@@ -255,52 +241,54 @@ export class ElectionEngine {
    * Applies fixed party vote values to all districts in the list.
    * This function performs a shallow overwrite only; it does not redistribute
    * votes or preserve totals.
-   * @param {ConstituencyDataProps[]} list
+   * @param {DistrictCandidateData[]} list
    *   Array of constituency records to be updated.
    * @param {Record<string, number>} target
    *   Mapping of party identifiers to absolute vote counts.
-   * @returns {ConstituencyDataProps[]}
+   * @returns {DistrictCandidateData[]}
    *   A new array where each district contains the merged party vote values.
    *
    * modifyListDistrict([{ "party-a": 10 }], { "party-a": 90 }) -> [{ "party-a": 90, ... }]
    */
   modifyList(
-    constituencyData: ConstituencyDataProps[],
+    districtCandidateData: DistrictCandidateData[],
     target: Record<string, number>,
   ) {
-    return this.resultModifier.modifyListDistricts(constituencyData, target);
+    return this.resultModifier.modifyListDistricts(
+      districtCandidateData,
+      target,
+    );
   }
 
   modifyByMotivation(
-    constituencyData: ConstituencyDataProps[],
-    partyListData: PartyListDataProps[],
+    districtCandidateData: DistrictCandidateData[],
+    districtPartyData: DistrictPartyData[],
     motivationDelta: Record<PartyId, number>,
   ) {
     return this.resultModifier.modifyByMotivation(
-      constituencyData,
-      partyListData,
+      districtCandidateData,
+      districtPartyData,
       motivationDelta,
     );
   }
 
   /**
    * Calculates the full election result based on constituency and party list data.
-   * @param {ConstituencyDataProps[]} updatedConstituencyData
+   * @param {DistrictCandidateData[]} updatedConstituencyData
    *   Constituency-level election input data (one record per OEVK).
-   * @param {PartyListDataProps[]} updatedListData
+   * @param {DistrictPartyData[]} updatedListData
    *   Party list vote data used for national aggregation and percentage calculation.
    * @returns {CalculateResults}
    *   The calculated election results including mandates, seat distribution,
    *   compensation details, and vote percentages.
    */
   calculate(
-    updatedConstituencyData: ConstituencyDataProps[],
-    updatedListData: PartyListDataProps[],
+    districtCandidateData: DistrictCandidateData[],
+    districtPartyData: DistrictPartyData[],
   ): CalculateResults {
-    const merged = this.merge(updatedConstituencyData, updatedListData);
+    const merged = this.merge(districtCandidateData, districtPartyData);
 
-    const constituencySeats =
-      this.mandateCalculator.calculateConstituencySeats(merged);
+    const constituencySeats = this.mandateCalculator.calculateSeats(merged);
     const compensation = this.mandateCalculator.calculateCompensation(merged);
 
     const listTotals: PartyVotes = {};
@@ -334,8 +322,8 @@ export class ElectionEngine {
       });
     }
 
-    const totals = this.resultModifier.sumPartyTotals(updatedConstituencyData);
-    const percentages = this.resultModifier.calculatePercentages(totals);
+    const totals = this.mandateCalculator.sumPartyTotals(districtCandidateData);
+    const percentages = this.mandateCalculator.calculatePercentages(totals);
 
     return {
       totals,

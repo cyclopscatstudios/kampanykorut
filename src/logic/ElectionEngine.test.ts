@@ -7,6 +7,7 @@ const listResults = [
     megye: "BUDAPEST",
     oevk: 1,
     telepules: "",
+    valasztopolgar: 600000,
     partok: {
       ellenzeki_osszefogas: 21300,
       fidesz: 18767,
@@ -21,6 +22,7 @@ const listResults = [
     megye: "BUDAPEST",
     oevk: 2,
     telepules: "",
+    valasztopolgar: 600000,
     partok: {
       ellenzeki_osszefogas: 26398,
       fidesz: 21814,
@@ -35,6 +37,7 @@ const listResults = [
     megye: "BUDAPEST",
     oevk: 3,
     telepules: "",
+    valasztopolgar: 600000,
     partok: {
       ellenzeki_osszefogas: 25194,
       fidesz: 21352,
@@ -63,6 +66,7 @@ describe("ElectionEngine", () => {
       megyekod: 1,
       megye: "BP",
       oevk: 1,
+      valasztopolgar: 600000,
       partok: {
         fidesz: 12000,
         opposition: 11000,
@@ -79,6 +83,7 @@ describe("ElectionEngine", () => {
       megye: "BP",
       oevk: 2,
       telepules: "",
+      valasztopolgar: 600000,
       partok: {
         opposition: 9000,
         fidesz: 8000,
@@ -110,12 +115,7 @@ describe("ElectionEngine", () => {
     },
   ];
 
-  const engine = new ElectionEngine(
-    constituencyData,
-    listData,
-    electionConfig,
-    voterEnvironmentConfig,
-  );
+  const engine = new ElectionEngine(electionConfig, voterEnvironmentConfig);
 
   it("merges input data and calculates mandates correctly", () => {
     const result = engine.calculate(constituencyData, listData);
@@ -147,6 +147,7 @@ describe("ElectionEngine", () => {
         megye: "Test",
         oevk: 1,
         telepules: "",
+        valasztopolgar: 600000,
         partok: {
           fidesz: 100,
           opposition: undefined,
@@ -159,6 +160,7 @@ describe("ElectionEngine", () => {
         megyekod: 1,
         megye: "Test",
         oevk: 1,
+        valasztopolgar: 600000,
         partok: {
           fidesz: 50,
           opposition: undefined,
@@ -181,6 +183,7 @@ describe("ElectionEngine", () => {
         megye: "Test",
         oevk: 1,
         telepules: "",
+        valasztopolgar: 600000,
         partok: {
           major: 1000,
           minor: 100,
@@ -210,6 +213,7 @@ describe("ElectionEngine", () => {
         megye: "Test",
         oevk: 1,
         telepules: "",
+        valasztopolgar: 600000,
         partok: {
           major: 1000,
           minor: 1000,

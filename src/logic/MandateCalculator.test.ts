@@ -33,7 +33,7 @@ describe("MandateCalculator", () => {
         },
       ];
 
-      const result = calculator.calculateConstituencySeats(data);
+      const result = calculator.calculateSeats(data);
 
       expect(result).toEqual({
         fidesz: 1,
@@ -52,7 +52,7 @@ describe("MandateCalculator", () => {
         },
       ];
 
-      const result = calculator.calculateConstituencySeats(data);
+      const result = calculator.calculateSeats(data);
       expect(result).toEqual({});
     });
   });

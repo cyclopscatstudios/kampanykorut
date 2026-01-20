@@ -1,10 +1,10 @@
-import type { ConstituencyDataProps } from "../../logic/ResultModifier";
+import type { DistrictCandidateData } from "../../logic/ResultTransformer/PipelineTransform";
 import type { PartyName } from "../../types/color";
 
 export type DistrictResult = {
   winner: string;
   maxVotes?: number;
-} & ConstituencyDataProps;
+} & DistrictCandidateData;
 
 export type District = {
   maz: string;
@@ -13,7 +13,7 @@ export type District = {
   poligon: string;
 };
 
-export function getWinnerResults(d: District, result: ConstituencyDataProps[]) {
+export function getWinnerResults(d: District, result: DistrictCandidateData[]) {
   const results = result.find(
     (er) => er.megyekod === Number(d.maz) && er.oevk === Number(d.evk),
   );

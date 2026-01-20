@@ -14,11 +14,11 @@ import {
   getPartyHoverColor,
   getPartyActiveColor,
 } from "../ui/color.utils";
-import type { ConstituencyDataProps } from "../../logic/ResultModifier";
+import type { DistrictCandidateData } from "../../logic/ResultTransformer/PipelineTransform";
 
 interface DistrictMapProps {
   districts: District[];
-  result: ConstituencyDataProps[];
+  result: DistrictCandidateData[];
   onClick?: (r: DistrictResult) => void;
   onDoubleClick?: (r: DistrictResult) => void;
   width?: number;
