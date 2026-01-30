@@ -3,6 +3,7 @@ import { MandateCalculator, type ElectionConfig } from "./MandateCalculator";
 import type {
   DistrictCandidateData,
   DistrictPartyData,
+  DistrictTarget,
   Shares,
 } from "./ResultTransformer/PipelineTransform";
 import type { VoterEnvironmentConfig } from "./VoterEnvironment";
@@ -10,7 +11,14 @@ import type { VoterEnvironmentConfig } from "./VoterEnvironment";
 export enum EffectType {
   PartySwing = "party-swing",
   PartyShare = "party-share",
+  Motivation = "motivation",
+  District = "district"
 }
+
+type PartyShareParams = {
+  newVotoes: number;
+  share: Record<string, number>;
+};
 
 export type Effect =
   | {
@@ -19,10 +27,15 @@ export type Effect =
     }
   | {
       type: EffectType.PartyShare;
-      params: {
-        newVotoes: number;
-        share: Record<string, number>;
-      };
+      params: PartyShareParams;
+    }
+  | {
+      type: EffectType.District;
+      params: DistrictTarget[];
+  }
+  | {
+      type: EffectType.Motivation;
+      params: Record<string, number>;
     };
 
 export class ElectionEffectApplier {
@@ -51,7 +64,46 @@ export class ElectionEffectApplier {
       case EffectType.PartySwing:
         this.applyPartySwing(effect.params);
         break;
+      case EffectType.PartyShare:
+        this.applyPartyShare(effect.params);
+        break;
+      case EffectType.District:
+        this.applyDistrictChange(effect.params);
+        break;
+      case EffectType.Motivation:
+        this.applyMotivationChange(effect.params);
+        break;
     }
+  }
+
+  private applyDistrictChange(params: DistrictTarget[]) {
+    this.electionEngine.modifyDistrict(this.candidateData, params);
+  }
+
+  private applyPartyShare(params: PartyShareParams) {
+    this.electionEngine.modifyByShare(this.candidateData, params.newVotoes, params.share);
+  }
+
+  private applyMotivationChange(params: Record<string, number>) {
+    const motivationDelta = this.getMotivationDelta(params);
+    this.electionEngine.modifyByMotivation(
+      this.candidateData,
+      this.partyData,
+      motivationDelta,
+    );
+  }
+
+  private getMotivationDelta(params: Record<string, number>) {
+    const delta: Record<string, number> = { ...params };
+
+    for (const [party, percentage] of Object.entries(delta)) {
+      if (percentage === undefined) {
+        continue;
+      }
+
+      delta[party] = 100 - percentage;
+    }
+    return delta;
   }
 
   private applyPartySwing(params: Record<string, number>) {
@@ -77,8 +129,12 @@ export class ElectionEffectApplier {
     const target: Shares = { ...baseShare };
 
     for (const [party, delta] of Object.entries(params)) {
-      if (delta === undefined) continue;
-      if (baseShare[party] === undefined) continue;
+      if (delta === undefined) {
+        continue;
+      }
+      if (baseShare[party] === undefined) {
+        continue; 
+      }
 
       target[party] = baseShare[party] + delta;
     }

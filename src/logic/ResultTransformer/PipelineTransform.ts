@@ -150,14 +150,13 @@ export class PipelineTransform {
     motivationTarget: Record<PartyId, number>,
   ) {
     const target = motivationTarget[party];
+
     if (target === undefined) {
       return votes;
     }
-    return Math.round(votes * this.clamp(target));
-  }
 
-  private clamp(v: number) {
-    return Math.min(1, Math.max(0, v));
+    const multiplier = Math.max(0, target / 100);
+    return Math.round(votes * multiplier);
   }
 
   private getPartyWeights(

@@ -201,6 +201,18 @@ export function Calculator() {
     console.log({ result });
   }
 
+  function handleMotivation() {
+    const result = engine.modifyByMotivation(constituencyState, listState, {
+      fidesz: 88,
+      ellenzeki_osszefogas: 98,
+    });
+    const out = engine.calculate(result.newCandidateData, result.newPartyData);
+    setConstituencyState(result.newCandidateData);
+    setListState(result.newPartyData);
+    console.log({ out });
+    console.log({ result });
+  }
+
   function buildTargetShares(
     fideszRatio: number,
     ellenzekRatio: number,
@@ -311,6 +323,10 @@ export function Calculator() {
 
         <Button onClick={handleModifyList}>
           <Button.Text>Modify list</Button.Text>
+        </Button>
+
+        <Button onClick={handleMotivation}>
+          <Button.Text>Modify by motivation</Button.Text>
         </Button>
       </div>
 
