@@ -1,9 +1,12 @@
+import { createLogger } from "../logger";
 import type {
   DistrictCandidateData,
   DistrictPartyData,
   Shares,
 } from "./PipelineTransform";
 type Votes = Record<string, number>;
+
+const log = createLogger("NationalSwingTransform");
 
 export class NationalSwingTransform {
   applyNationalSwingToList(
