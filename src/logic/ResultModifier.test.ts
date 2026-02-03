@@ -1,6 +1,6 @@
 import { listResults } from "./mocks/mockCandidateData";
 import { ResultModifier } from "./ResultModifier";
-import { type DistrictCandidateData } from "./ResultTransformer/PipelineTransform";
+import { type CandidateListData } from "./ResultTransformer/PipelineTransform";
 import { type VoterEnvironmentConfig } from "./VoterEnvironment";
 
 const electionConfig = {
@@ -9,7 +9,7 @@ const electionConfig = {
 };
 
 describe("ResultModifier", () => {
-  let baseList: DistrictCandidateData[];
+  let baseList: CandidateListData[];
   const voterEnvironmentConfig: VoterEnvironmentConfig = {
     maxTurnout: 85,
     eligibleVoters: 8215304,
@@ -91,7 +91,7 @@ describe("ResultModifier", () => {
     });
 
     it("should not modify other districts", () => {
-      const other: DistrictCandidateData = {
+      const other: CandidateListData = {
         megyekod: 2,
         megye: "PEST",
         oevk: 1,
@@ -330,7 +330,7 @@ describe("ResultModifier", () => {
       expect(afterVotes - beforeVotes).toBe(20);
     });
     it("should respects capacity across multiple districts", () => {
-      const districts: DistrictCandidateData[] = [
+      const districts: CandidateListData[] = [
         {
           megye: "A",
           megyekod: 1,

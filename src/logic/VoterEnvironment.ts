@@ -1,9 +1,9 @@
-import { type DistrictCandidateData } from "./ResultTransformer/PipelineTransform";
+import { type CandidateListData } from "./ResultTransformer/PipelineTransform";
 
 export interface VoterEnvironmentConfig {
   eligibleVoters: number;
   maxTurnout: number;
-  listData: DistrictCandidateData[];
+  listData: CandidateListData[];
 }
 
 type VoterBase = {
@@ -30,17 +30,17 @@ export class VoterEnvironment {
     return this.maxAvailableVoters - this.voters;
   }
 
-  setVoters(listData: DistrictCandidateData[]) {
+  setVoters(listData: CandidateListData[]) {
     this.voters = this.getVoters(listData);
   }
 
-  getRemainingVotesInDistricts(districts: DistrictCandidateData[]): number {
+  getRemainingVotesInDistricts(districts: CandidateListData[]): number {
     return districts.reduce((sum, district) => {
       return sum + this.getRemainingVoteCount(district);
     }, 0);
   }
 
-  getRemainingVoteCount(district: DistrictCandidateData) {
+  getRemainingVoteCount(district: CandidateListData) {
     const remainingVotesInDistrict =
       district.valasztopolgar ??
       this.voterBases.find(
@@ -53,7 +53,7 @@ export class VoterEnvironment {
     return remainingVotesInDistrict - allVoteCount;
   }
 
-  private setVoterBase(list: DistrictCandidateData[]) {
+  private setVoterBase(list: CandidateListData[]) {
     this.voterBases = list.map((row) => ({
       id: `${row.megyekod}-${row.oevk}`,
       valasztopolgar: row.valasztopolgar ?? 0,
@@ -67,7 +67,7 @@ export class VoterEnvironment {
     return Math.floor((eligibleVoters * maxTurnout) / 100);
   }
 
-  private getVoters(data: DistrictCandidateData[]) {
+  private getVoters(data: CandidateListData[]) {
     return data.reduce((total, row) => {
       const districtSum = Object.values(row.partok).reduce(
         (sum, votes) => (sum ?? 0) + (votes ?? 0),

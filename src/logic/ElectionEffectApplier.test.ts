@@ -5,8 +5,8 @@ import {
 } from "./ElectionEffectApplier";
 import { listResults } from "./mocks/mockCandidateData";
 import type {
-  DistrictCandidateData,
-  DistrictPartyData,
+  CandidateListData,
+  PartyListData,
 } from "./ResultTransformer/PipelineTransform";
 import type { VoterEnvironmentConfig } from "./VoterEnvironment";
 
@@ -23,8 +23,8 @@ const voterEnvironmentConfig: VoterEnvironmentConfig = {
 
 describe("ElectionEffectApplier – PartySwing", () => {
   let applier: ElectionEffectApplier;
-  let candidateData: DistrictCandidateData[];
-  let partyData: DistrictPartyData[];
+  let candidateData: CandidateListData[];
+  let partyData: PartyListData[];
 
   beforeEach(() => {
     candidateData = [
@@ -34,9 +34,9 @@ describe("ElectionEffectApplier – PartySwing", () => {
           ellenzek: 38,
         },
       },
-    ] as unknown as DistrictCandidateData[];
+    ] as unknown as CandidateListData[];
 
-    partyData = [] as DistrictPartyData[];
+    partyData = [] as PartyListData[];
 
     applier = new ElectionEffectApplier(
       electionConfig,

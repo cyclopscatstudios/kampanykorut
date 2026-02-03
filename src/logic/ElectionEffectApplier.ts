@@ -1,8 +1,8 @@
 import { ElectionEngine } from "./ElectionEngine";
 import { MandateCalculator, type ElectionConfig } from "./MandateCalculator";
 import type {
-  DistrictCandidateData,
-  DistrictPartyData,
+  CandidateListData,
+  PartyListData,
   DistrictTarget,
   Shares,
 } from "./ResultTransformer/PipelineTransform";
@@ -41,14 +41,14 @@ export type Effect =
 export class ElectionEffectApplier {
   private electionEngine: ElectionEngine;
   private mandateCalculator: MandateCalculator;
-  private candidateData: DistrictCandidateData[] = [];
-  private partyData: DistrictPartyData[] = [];
+  private candidateData: CandidateListData[] = [];
+  private partyData: PartyListData[] = [];
 
   constructor(
     electionConfig: ElectionConfig,
     voterEnvironmentConfig: VoterEnvironmentConfig,
-    candidateData: DistrictCandidateData[],
-    partyData: DistrictPartyData[],
+    candidateData: CandidateListData[],
+    partyData: PartyListData[],
   ) {
     this.electionEngine = new ElectionEngine(
       electionConfig,

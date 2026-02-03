@@ -1,4 +1,4 @@
-import type { DistrictCandidateData } from "./PipelineTransform";
+import type { CandidateListData } from "./PipelineTransform";
 
 export class VoteAllocationTransform {
   distributeByWeights(weights: number[], total: number): number[] {
@@ -24,7 +24,7 @@ export class VoteAllocationTransform {
   }
 
   applyPartyDistributionWithCapacity(
-    districts: DistrictCandidateData[],
+    districts: CandidateListData[],
     party: string,
     distributed: number[],
   ) {

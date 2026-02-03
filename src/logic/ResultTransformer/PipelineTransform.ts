@@ -8,7 +8,7 @@ import { MandateCalculator, type ElectionConfig } from "../MandateCalculator";
 
 export type Shares = Record<string, number>;
 
-export interface DistrictCandidateData {
+export interface CandidateListData {
   megyekod: number;
   megye: string;
   oevk: number;
@@ -18,7 +18,7 @@ export interface DistrictCandidateData {
   jeloltek?: Record<string, string[] | undefined>;
 }
 
-export interface DistrictPartyData {
+export interface PartyListData {
   megyekod: number;
   megye: string;
   oevk: number;
@@ -38,7 +38,7 @@ export interface DistrictTarget {
 }
 
 export interface DistributedVotesResult {
-  districts: DistrictCandidateData[];
+  districts: CandidateListData[];
   totals: Record<string, number>;
   percentages: Shares;
   totalVotes: number;
@@ -59,7 +59,7 @@ export class PipelineTransform {
   }
 
   distributeVotesByPartyShare(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     totalVoters: number,
     partyShares: Shares,
   ): DistributedVotesResult | null {
@@ -106,8 +106,8 @@ export class PipelineTransform {
   }
 
   modifyByMotivation(
-    districtCandidateData: DistrictCandidateData[],
-    districtPartyData: DistrictPartyData[],
+    districtCandidateData: CandidateListData[],
+    districtPartyData: PartyListData[],
     motivationTarget: Record<PartyId, number>,
   ) {
     const newCandidateData = districtCandidateData.map((d) => ({
@@ -160,7 +160,7 @@ export class PipelineTransform {
   }
 
   private getPartyWeights(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     party: string,
   ): number[] {
     return districtCandidateData.map((d) => d.partok[party] ?? 0);

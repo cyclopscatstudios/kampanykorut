@@ -1,6 +1,6 @@
 import type { PartyId } from "./ElectionEngine";
 import type {
-  DistrictCandidateData,
+  CandidateListData,
   Shares,
 } from "./ResultTransformer/PipelineTransform";
 
@@ -123,7 +123,7 @@ export class MandateCalculator {
     return seats;
   }
 
-  sumPartyTotals(districts: DistrictCandidateData[]): Record<string, number> {
+  sumPartyTotals(districts: CandidateListData[]): Record<string, number> {
     const totals: Record<string, number> = {};
 
     for (const d of districts) {

@@ -5,8 +5,8 @@ import { NationalSwingTransform } from "./ResultTransformer/NationalSwingTransfo
 import {
   PipelineTransform,
   type DistributedVotesResult,
-  type DistrictCandidateData,
-  type DistrictPartyData,
+  type CandidateListData,
+  type PartyListData,
   type DistrictTarget,
   type Shares,
 } from "./ResultTransformer/PipelineTransform";
@@ -32,7 +32,7 @@ export class ResultModifier {
   }
 
   applyNationalSwingToDistricts(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     baseShare: Shares,
     targetShare: Shares,
   ) {
@@ -44,7 +44,7 @@ export class ResultModifier {
   }
 
   applyNationalSwingToList(
-    districtPartyData: DistrictPartyData[],
+    districtPartyData: PartyListData[],
     baseShare: Shares,
     targetShare: Shares,
   ) {
@@ -56,7 +56,7 @@ export class ResultModifier {
   }
 
   distributeVotesByPartyShare(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     totalVoters: number,
     partyShares: Shares,
   ): DistributedVotesResult | null {
@@ -68,7 +68,7 @@ export class ResultModifier {
   }
 
   modifyDistricts(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     districtTargets: DistrictTarget[],
   ) {
     return this.districtTargetTransform.modifyDistricts(
@@ -78,15 +78,15 @@ export class ResultModifier {
   }
 
   modifyListDistricts(
-    list: DistrictCandidateData[],
+    list: CandidateListData[],
     target: Record<string, number>,
   ) {
     return this.districtTargetTransform.modifyListDistricts(list, target);
   }
 
   modifyByMotivation(
-    districtCandidateData: DistrictCandidateData[],
-    districtPartyData: DistrictPartyData[],
+    districtCandidateData: CandidateListData[],
+    districtPartyData: PartyListData[],
     motivationTarget: Record<PartyId, number>,
   ) {
     return this.pipelineTransform.modifyByMotivation(

@@ -5,15 +5,15 @@ import { QuestionCard } from "./QuestionCard";
 import { ElectionEffectApplier } from "../../../logic/ElectionEffectApplier";
 import type { ElectionConfig } from "../../../logic/MandateCalculator";
 import type { VoterEnvironmentConfig } from "../../../logic/VoterEnvironment";
-import type { DistrictCandidateData, DistrictPartyData } from "../../../logic/ResultTransformer/PipelineTransform";
+import type { CandidateListData, PartyListData } from "../../../logic/ResultTransformer/PipelineTransform";
 import candidateJSON from "../../../assets/jsons/2022/oevk_constituency_results.json";
 import partyJSON from "../../../assets/jsons/2022/oevk_list_results.json";
 
 export type CurrentView = "MapView" | "QuestionView";
 
 export function MainGameScreen() {
-  const [candidateData, setCandidateData] = useState<DistrictCandidateData[]>(candidateJSON);
-  const [partyData, setPartyData] = useState<DistrictPartyData[]>(partyJSON);
+  const [candidateData, setCandidateData] = useState<CandidateListData[]>(candidateJSON);
+  const [partyData, setPartyData] = useState<PartyListData[]>(partyJSON);
     const electionConfig: ElectionConfig = {
     listSeats: 93,
     thresholdPercent: 5

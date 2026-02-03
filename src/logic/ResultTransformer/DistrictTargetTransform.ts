@@ -1,5 +1,5 @@
 import type {
-  DistrictCandidateData,
+  CandidateListData,
   DistrictTarget,
   VoteSource,
 } from "./PipelineTransform";
@@ -16,7 +16,7 @@ export class DistrictTargetTransform {
   }
 
   modifyDistricts(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     districtTargets: DistrictTarget[],
   ) {
     return districtTargets.reduce(
@@ -27,7 +27,7 @@ export class DistrictTargetTransform {
   }
 
   modifyListDistricts(
-    list: DistrictCandidateData[],
+    list: CandidateListData[],
     target: Record<string, number>,
   ) {
     return list.map((row) => ({
@@ -40,9 +40,9 @@ export class DistrictTargetTransform {
   }
 
   private applyDistrictTarget(
-    districtCandidateData: DistrictCandidateData,
+    districtCandidateData: CandidateListData,
     target: DistrictTarget,
-  ): DistrictCandidateData {
+  ): CandidateListData {
     if (
       districtCandidateData.megyekod !== target.megyekod ||
       districtCandidateData.oevk !== target.oevk

@@ -1,7 +1,7 @@
 import { createLogger } from "../logger";
 import type {
-  DistrictCandidateData,
-  DistrictPartyData,
+  CandidateListData,
+  PartyListData,
   Shares,
 } from "./PipelineTransform";
 type Votes = Record<string, number>;
@@ -10,7 +10,7 @@ const log = createLogger("NationalSwingTransform");
 
 export class NationalSwingTransform {
   applyNationalSwingToList(
-    districtPartyData: DistrictPartyData[],
+    districtPartyData: PartyListData[],
     baseShare: Shares,
     targetShare: Shares,
   ) {
@@ -24,7 +24,7 @@ export class NationalSwingTransform {
   }
 
   applyNationalSwingToDistricts(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     baseShare: Shares,
     targetShare: Shares,
   ) {
