@@ -1,0 +1,438 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CampaignEngine > should apply district typed decision 1`] = `
+{
+  "calculated": {
+    "compensation": {
+      "losingVotes": {
+        "ellenzek": 11050,
+        "fidesz": 8000,
+      },
+      "total": {
+        "ellenzek": 12049,
+        "fidesz": 8899,
+      },
+      "winnerCompensation": {
+        "ellenzek": 999,
+        "fidesz": 899,
+      },
+    },
+    "constituencySeats": {
+      "ellenzek": 1,
+      "fidesz": 1,
+    },
+    "listSeats": {
+      "ellenzek": 5,
+      "fidesz": 5,
+    },
+    "mandates": [
+      {
+        "constituencySeats": 1,
+        "listSeats": 5,
+        "party": "fidesz",
+        "totalSeats": 6,
+      },
+      {
+        "constituencySeats": 1,
+        "listSeats": 5,
+        "party": "ellenzek",
+        "totalSeats": 6,
+      },
+    ],
+    "percentages": {
+      "ellenzek": 0.50125,
+      "fidesz": 0.49875,
+      "mkkp": 0,
+    },
+    "totals": {
+      "ellenzek": 20050,
+      "fidesz": 19950,
+      "mkkp": 0,
+    },
+  },
+  "modified": {
+    "candidateListData": [
+      {
+        "jeloltek": {
+          "ellenzek": [
+            "Candidate B",
+          ],
+          "fidesz": [
+            "Candidate A",
+          ],
+        },
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 11050,
+          "fidesz": 11950,
+          "mkkp": undefined,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 9000,
+          "fidesz": 8000,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+    ],
+    "partyListData": [
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 40000,
+          "fidesz": 50000,
+          "mkkp": 3000,
+        },
+        "telepules": "",
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 35000,
+          "fidesz": 30000,
+        },
+        "telepules": "",
+      },
+    ],
+  },
+}
+`;
+
+exports[`CampaignEngine > should apply motivation typed decision 1`] = `
+{
+  "calculated": {
+    "compensation": {
+      "losingVotes": {
+        "ellenzek": 11000,
+        "fidesz": 7680,
+      },
+      "total": {
+        "ellenzek": 12319,
+        "fidesz": 8199,
+      },
+      "winnerCompensation": {
+        "ellenzek": 1319,
+        "fidesz": 519,
+      },
+    },
+    "constituencySeats": {
+      "ellenzek": 1,
+      "fidesz": 1,
+    },
+    "listSeats": {
+      "ellenzek": 5,
+      "fidesz": 5,
+    },
+    "mandates": [
+      {
+        "constituencySeats": 1,
+        "listSeats": 5,
+        "party": "fidesz",
+        "totalSeats": 6,
+      },
+      {
+        "constituencySeats": 1,
+        "listSeats": 5,
+        "party": "ellenzek",
+        "totalSeats": 6,
+      },
+    ],
+    "percentages": {
+      "ellenzek": 0.5102040816326531,
+      "fidesz": 0.4897959183673469,
+      "mkkp": 0,
+    },
+    "totals": {
+      "ellenzek": 20000,
+      "fidesz": 19200,
+      "mkkp": 0,
+    },
+  },
+  "modified": {
+    "candidateListData": [
+      {
+        "jeloltek": {
+          "ellenzek": [
+            "Candidate B",
+          ],
+          "fidesz": [
+            "Candidate A",
+          ],
+        },
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 11000,
+          "fidesz": 11520,
+          "mkkp": undefined,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 9000,
+          "fidesz": 7680,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+    ],
+    "partyListData": [
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 40000,
+          "fidesz": 48000,
+          "mkkp": 3000,
+        },
+        "telepules": "",
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 35000,
+          "fidesz": 28800,
+        },
+        "telepules": "",
+      },
+    ],
+  },
+}
+`;
+
+exports[`CampaignEngine > should apply party-share typed decision 1`] = `
+{
+  "calculated": {
+    "compensation": {
+      "losingVotes": {
+        "ellenzek": 20000,
+      },
+      "total": {
+        "ellenzek": 20000,
+        "fidesz": 59998,
+      },
+      "winnerCompensation": {
+        "fidesz": 59998,
+      },
+    },
+    "constituencySeats": {
+      "fidesz": 2,
+    },
+    "listSeats": {
+      "ellenzek": 4,
+      "fidesz": 6,
+    },
+    "mandates": [
+      {
+        "constituencySeats": 2,
+        "listSeats": 6,
+        "party": "fidesz",
+        "totalSeats": 8,
+      },
+      {
+        "constituencySeats": 0,
+        "listSeats": 4,
+        "party": "ellenzek",
+        "totalSeats": 4,
+      },
+    ],
+    "percentages": {
+      "ellenzek": 0.2,
+      "fidesz": 0.8,
+      "mkkp": 0,
+      "opposition": 0,
+    },
+    "totals": {
+      "ellenzek": 20000,
+      "fidesz": 80000,
+      "mkkp": 0,
+      "opposition": 0,
+    },
+  },
+  "modified": {
+    "candidateListData": [
+      {
+        "jeloltek": {
+          "ellenzek": [
+            "Candidate B",
+          ],
+          "fidesz": [
+            "Candidate A",
+          ],
+        },
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 11000,
+          "fidesz": 48000,
+          "mkkp": undefined,
+          "opposition": 0,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 9000,
+          "fidesz": 32000,
+          "opposition": 0,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+    ],
+    "partyListData": [
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 40000,
+          "fidesz": 50000,
+          "mkkp": 3000,
+        },
+        "telepules": "",
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 35000,
+          "fidesz": 30000,
+        },
+        "telepules": "",
+      },
+    ],
+  },
+}
+`;
+
+exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
+{
+  "calculated": {
+    "compensation": {
+      "losingVotes": {
+        "ellenzek": 3346,
+      },
+      "total": {
+        "ellenzek": 3346,
+        "fidesz": 33306,
+      },
+      "winnerCompensation": {
+        "fidesz": 33306,
+      },
+    },
+    "constituencySeats": {
+      "fidesz": 2,
+    },
+    "listSeats": {
+      "fidesz": 10,
+    },
+    "mandates": [
+      {
+        "constituencySeats": 2,
+        "listSeats": 10,
+        "party": "fidesz",
+        "totalSeats": 12,
+      },
+    ],
+    "percentages": {
+      "ellenzek": 0.08365,
+      "fidesz": 0.91635,
+      "mkkp": 0,
+    },
+    "totals": {
+      "ellenzek": 3346,
+      "fidesz": 36654,
+      "mkkp": 0,
+    },
+  },
+  "modified": {
+    "candidateListData": [
+      {
+        "jeloltek": {
+          "ellenzek": [
+            "Candidate B",
+          ],
+          "fidesz": [
+            "Candidate A",
+          ],
+        },
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 1769,
+          "fidesz": 21231,
+          "mkkp": 0,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 1577,
+          "fidesz": 15423,
+          "mkkp": 0,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+    ],
+    "partyListData": [
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 6305,
+          "fidesz": 86695,
+          "mkkp": 0,
+        },
+        "telepules": "",
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 6233,
+          "fidesz": 58767,
+          "mkkp": 0,
+        },
+        "telepules": "",
+      },
+    ],
+  },
+}
+`;

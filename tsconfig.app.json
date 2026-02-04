@@ -9,6 +9,8 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,

@@ -1,4 +1,4 @@
-import type { DistrictResult } from "../components/ui/map.utils";
+import type { DistrictResult } from "../../components/ui/map.utils";
 
 export function calculateWinner(result?: DistrictResult | null) {
   if (!result) {

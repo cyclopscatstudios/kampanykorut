@@ -1,19 +1,12 @@
+import { VoterEnvironment } from "../../VoterEnvironment";
 import type {
   CandidateListData,
   DistrictTarget,
   VoteSource,
-} from "./PipelineTransform";
-import {
-  VoterEnvironment,
-  type VoterEnvironmentConfig,
-} from "../VoterEnvironment";
+} from "./PipelineTransform.types";
 
 export class DistrictTargetTransform {
-  private voterEnvironment: VoterEnvironment;
-
-  constructor(voterEnviormentConfig: VoterEnvironmentConfig) {
-    this.voterEnvironment = new VoterEnvironment(voterEnviormentConfig);
-  }
+  constructor(private voterEnvironment: VoterEnvironment) {}
 
   modifyDistricts(
     districtCandidateData: CandidateListData[],

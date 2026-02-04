@@ -1,9 +1,9 @@
-import { createLogger } from "../logger";
+import { createLogger } from "../../logger";
 import type {
-  CandidateListData,
   PartyListData,
   Shares,
-} from "./PipelineTransform";
+  CandidateListData,
+} from "./PipelineTransform.types";
 type Votes = Record<string, number>;
 
 const log = createLogger("NationalSwingTransform");

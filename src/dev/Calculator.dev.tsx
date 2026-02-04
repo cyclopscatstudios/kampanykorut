@@ -6,11 +6,7 @@ import constituencyResults from "../assets/jsons/2022/oevk_constituency_results.
 import listResults from "../assets/jsons/2022/oevk_list_results.json";
 import oevk_2022 from "../assets/jsons/2022/oevk_2022.json";
 import { ElectionEngine } from "../logic/ElectionEngine";
-import {
-  type CandidateListData,
-  type PartyListData,
-} from "../logic/ResultTransformer/PipelineTransform";
-
+import type { CandidateListData, PartyListData } from "../logic/domain/ResultTransformer/PipelineTransform.types";
 type Winner = "fidesz" | "ellenzeki_osszefogas";
 type Shares = Record<string, number>;
 
@@ -147,9 +143,9 @@ export function Calculator() {
 
     setMandates({
       fidesz:
-        out.mandates.find((m: any) => m.party === "fidesz")?.totalSeats ?? 0,
+        out?.mandates.find((m: any) => m.party === "fidesz")?.totalSeats ?? 0,
       ellenzeki_osszefogas:
-        out.mandates.find((m: any) => m.party === "ellenzeki_osszefogas")
+        out?.mandates.find((m: any) => m.party === "ellenzeki_osszefogas")
           ?.totalSeats ?? 0,
     });
   }
@@ -161,14 +157,14 @@ export function Calculator() {
     const out = engine.calculate(constituencyResults, listResults);
     console.log({ out });
 
-    setFideszShare(out.percentages["fidesz"]);
-    setEllenzekShare(out.percentages["ellenzeki_osszefogas"]);
+    setFideszShare(out?.percentages["fidesz"] ?? 0);
+    setEllenzekShare(out?.percentages["ellenzeki_osszefogas"] ?? 0);
 
     setMandates({
       fidesz:
-        out.mandates.find((m: any) => m.party === "fidesz")?.totalSeats ?? 0,
+        out?.mandates.find((m: any) => m.party === "fidesz")?.totalSeats ?? 0,
       ellenzeki_osszefogas:
-        out.mandates.find((m: any) => m.party === "ellenzeki_osszefogas")
+        out?.mandates.find((m: any) => m.party === "ellenzeki_osszefogas")
           ?.totalSeats ?? 0,
     });
   }

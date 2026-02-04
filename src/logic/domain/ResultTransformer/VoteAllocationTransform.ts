@@ -1,4 +1,4 @@
-import type { CandidateListData } from "./PipelineTransform";
+import type { CandidateListData } from "./PipelineTransform.types";
 
 export class VoteAllocationTransform {
   distributeByWeights(weights: number[], total: number): number[] {

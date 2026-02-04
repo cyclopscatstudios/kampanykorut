@@ -11,6 +11,7 @@ export default defineConfig({
   },
   plugins: [react(), svgr(), tailwindcss()],
   test: {
+    setupFiles: ["./src/test/setup.ts"],
     globals: true,
     environment: "node",
     include: ["**/*.test.ts"],

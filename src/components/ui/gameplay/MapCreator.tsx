@@ -6,7 +6,7 @@ import oevk_2022 from "../../../assets/jsons/2022/oevk_2022.json";
 import budapest from "../../../assets/jsons/2022/budapest.json";
 import results from "../../../assets/jsons/2022/oevk_constituency_results.json";
 import { BottomBar } from "./BottomBar";
-import { calculateWinner } from "../../../logic/ResultModifier.utils";
+import { calculateWinner } from "../../../logic/domain/ResultModifier.utils";
 import { SwingFactor } from "../../../types/utils";
 
 export function MapCreator({

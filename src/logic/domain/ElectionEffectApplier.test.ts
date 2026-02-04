@@ -1,14 +1,10 @@
-import {
-  ElectionEffectApplier,
-  type Effect,
-  EffectType,
-} from "./ElectionEffectApplier";
-import { listResults } from "./mocks/mockCandidateData";
+import { EffectApplier, type RawEffect, EffectType } from "./EffectApplier";
+import { listResults } from "../mocks/mockCandidateData";
 import type {
   CandidateListData,
   PartyListData,
 } from "./ResultTransformer/PipelineTransform";
-import type { VoterEnvironmentConfig } from "./VoterEnvironment";
+import type { VoterEnvironmentConfig } from "../VoterEnvironment";
 
 const electionConfig = {
   listSeats: 10,
@@ -22,7 +18,7 @@ const voterEnvironmentConfig: VoterEnvironmentConfig = {
 };
 
 describe("ElectionEffectApplier – PartySwing", () => {
-  let applier: ElectionEffectApplier;
+  let applier: EffectApplier;
   let candidateData: CandidateListData[];
   let partyData: PartyListData[];
 
@@ -38,7 +34,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
 
     partyData = [] as PartyListData[];
 
-    applier = new ElectionEffectApplier(
+    applier = new EffectApplier(
       electionConfig,
       voterEnvironmentConfig,
       candidateData,
@@ -75,7 +71,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
   });
 
   it("should call modifyByTarget with correct parameters", () => {
-    const effect: Effect = {
+    const effect: RawEffect = {
       type: EffectType.PartySwing,
       params: {
         fidesz: -1,
@@ -93,7 +89,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
   });
 
   it("should call modifyByMotivation with correct parameters", () => {
-    const effect: Effect = {
+    const effect: RawEffect = {
       type: EffectType.Motivation,
       params: {
         fidesz: 0.5,
@@ -110,8 +106,8 @@ describe("ElectionEffectApplier – PartySwing", () => {
     );
   });
 
-  it('asd', () => {
-    const effect: Effect = {
+  it("asd", () => {
+    const effect: RawEffect = {
       type: EffectType.PartyShare,
       params: {
         newVotoes: 1000,
@@ -132,5 +128,5 @@ describe("ElectionEffectApplier – PartySwing", () => {
         ellenzek: 0.4,
       },
     );
-  })
+  });
 });
