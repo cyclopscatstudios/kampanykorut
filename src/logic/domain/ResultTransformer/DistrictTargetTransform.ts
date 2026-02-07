@@ -1,22 +1,15 @@
+import { VoterEnvironment } from "../../VoterEnvironment";
 import type {
-  DistrictCandidateData,
+  CandidateListData,
   DistrictTarget,
   VoteSource,
-} from "./PipelineTransform";
-import {
-  VoterEnvironment,
-  type VoterEnvironmentConfig,
-} from "../VoterEnvironment";
+} from "./PipelineTransform.types";
 
 export class DistrictTargetTransform {
-  private voterEnvironment: VoterEnvironment;
-
-  constructor(voterEnviormentConfig: VoterEnvironmentConfig) {
-    this.voterEnvironment = new VoterEnvironment(voterEnviormentConfig);
-  }
+  constructor(private voterEnvironment: VoterEnvironment) {}
 
   modifyDistricts(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     districtTargets: DistrictTarget[],
   ) {
     return districtTargets.reduce(
@@ -27,7 +20,7 @@ export class DistrictTargetTransform {
   }
 
   modifyListDistricts(
-    list: DistrictCandidateData[],
+    list: CandidateListData[],
     target: Record<string, number>,
   ) {
     return list.map((row) => ({
@@ -40,9 +33,9 @@ export class DistrictTargetTransform {
   }
 
   private applyDistrictTarget(
-    districtCandidateData: DistrictCandidateData,
+    districtCandidateData: CandidateListData,
     target: DistrictTarget,
-  ): DistrictCandidateData {
+  ): CandidateListData {
     if (
       districtCandidateData.megyekod !== target.megyekod ||
       districtCandidateData.oevk !== target.oevk

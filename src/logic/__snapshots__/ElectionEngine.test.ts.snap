@@ -8,8 +8,8 @@ exports[`ElectionEngine > asd 1`] = `
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "major": 995,
-        "minor": 910,
+        "major": 10,
+        "minor": 9,
       },
       "telepules": "",
       "valasztopolgar": 600000,
@@ -21,8 +21,8 @@ exports[`ElectionEngine > asd 1`] = `
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "major": 995,
-        "minor": 910,
+        "major": 10,
+        "minor": 9,
       },
     },
   ],

@@ -1,0 +1,62 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`createCampaignEngine > should create a new campaign engine instance 1`] = `
+CampaignEngine {
+  "effectApplier": EffectApplier {
+    "mandateCalculator": MandateCalculator {
+      "config": {
+        "listSeats": 10,
+        "thresholdPercent": 5,
+      },
+    },
+  },
+  "mandateCalculator": MandateCalculator {
+    "config": {
+      "listSeats": 10,
+      "thresholdPercent": 5,
+    },
+  },
+  "resultModifier": ResultModifier {
+    "districtTargetTransform": DistrictTargetTransform {
+      "voterEnvironment": VoterEnvironment {
+        "maxAvailableVoters": 6983008,
+        "voterBases": [
+          {
+            "id": "1-1",
+            "valasztopolgar": 600000,
+          },
+          {
+            "id": "1-2",
+            "valasztopolgar": 600000,
+          },
+        ],
+        "voters": 40000,
+      },
+    },
+    "nationalSwingTransform": NationalSwingTransform {},
+    "pipelineTransform": PipelineTransform {
+      "mandateCalculator": MandateCalculator {
+        "config": {
+          "listSeats": 10,
+          "thresholdPercent": 5,
+        },
+      },
+      "voteAllocationTransform": VoteAllocationTransform {},
+      "voterEnvironment": VoterEnvironment {
+        "maxAvailableVoters": 6983008,
+        "voterBases": [
+          {
+            "id": "1-1",
+            "valasztopolgar": 600000,
+          },
+          {
+            "id": "1-2",
+            "valasztopolgar": 600000,
+          },
+        ],
+        "voters": 40000,
+      },
+    },
+  },
+}
+`;

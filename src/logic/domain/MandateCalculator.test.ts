@@ -1,4 +1,5 @@
-import { MandateCalculator, type CombinedOevk } from "./MandateCalculator";
+import { MandateCalculator } from "./MandateCalculator";
+import type { CombinedOevk } from "./MandateCalculator.types";
 
 describe("MandateCalculator", () => {
   const config = {
@@ -33,7 +34,7 @@ describe("MandateCalculator", () => {
         },
       ];
 
-      const result = calculator.calculateSeats(data);
+      const result = (calculator as any).calculateSeats(data);
 
       expect(result).toEqual({
         fidesz: 1,
@@ -52,7 +53,7 @@ describe("MandateCalculator", () => {
         },
       ];
 
-      const result = calculator.calculateSeats(data);
+      const result = (calculator as any).calculateSeats(data);
       expect(result).toEqual({});
     });
   });
@@ -73,7 +74,7 @@ describe("MandateCalculator", () => {
         },
       ];
 
-      const result = calculator.calculateCompensation(data);
+      const result = (calculator as any).calculateCompensation(data);
 
       expect(result.losingVotes).toEqual({
         ellenzek: 10000,
@@ -105,9 +106,12 @@ describe("MandateCalculator", () => {
         ellenzek: 20_000,
       };
 
-      const seats = calculator.allocateListSeats(listVotes, compensation);
+      const seats = (calculator as any).allocateListSeats(
+        listVotes,
+        compensation,
+      );
 
-      const totalSeats = Object.values(seats).reduce(
+      const totalSeats = (Object.values(seats) as number[]).reduce(
         (a: number, b: number) => a + b,
         0,
       );
@@ -125,7 +129,10 @@ describe("MandateCalculator", () => {
 
       const compensation = {};
 
-      const seats = calculator.allocateListSeats(listVotes, compensation);
+      const seats = (calculator as any).allocateListSeats(
+        listVotes,
+        compensation,
+      );
 
       expect(seats.kispart).toBeUndefined();
     });
@@ -138,7 +145,10 @@ describe("MandateCalculator", () => {
 
       const compensation = {};
 
-      const seats = calculator.allocateListSeats(listVotes, compensation);
+      const seats = (calculator as any).allocateListSeats(
+        listVotes,
+        compensation,
+      );
 
       expect(seats.fidesz).toBe(config.listSeats);
     });

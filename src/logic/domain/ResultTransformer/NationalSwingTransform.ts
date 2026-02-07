@@ -1,16 +1,16 @@
-import { createLogger } from "../logger";
+import { createLogger } from "../../logger";
 import type {
-  DistrictCandidateData,
-  DistrictPartyData,
+  PartyListData,
   Shares,
-} from "./PipelineTransform";
+  CandidateListData,
+} from "./PipelineTransform.types";
 type Votes = Record<string, number>;
 
 const log = createLogger("NationalSwingTransform");
 
 export class NationalSwingTransform {
   applyNationalSwingToList(
-    districtPartyData: DistrictPartyData[],
+    districtPartyData: PartyListData[],
     baseShare: Shares,
     targetShare: Shares,
   ) {
@@ -24,7 +24,7 @@ export class NationalSwingTransform {
   }
 
   applyNationalSwingToDistricts(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     baseShare: Shares,
     targetShare: Shares,
   ) {
@@ -49,6 +49,7 @@ export class NationalSwingTransform {
   ): Votes {
     const sum = this.sumValues(votes);
     if (!sum) {
+      log.warn("No votes to apply swing to");
       return votes;
     }
     const localShare = this.toShare(votes, sum);
@@ -71,6 +72,7 @@ export class NationalSwingTransform {
   private normalize(shares: Shares): Shares {
     const sum = this.sumValues(shares);
     if (!sum) {
+      log.warn("No shares to normalize");
       return shares;
     }
 
@@ -86,6 +88,7 @@ export class NationalSwingTransform {
     const norm = this.sumValues(raw);
 
     if (!norm || !total) {
+      log.warn("No votes to distribute after swing");
       return {};
     }
 

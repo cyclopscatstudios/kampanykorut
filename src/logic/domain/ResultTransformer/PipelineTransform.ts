@@ -1,48 +1,16 @@
 import {
   VoterEnvironment,
   type VoterEnvironmentConfig,
-} from "../VoterEnvironment";
-import type { PartyId } from "../ElectionEngine";
+} from "../../VoterEnvironment";
 import { VoteAllocationTransform } from "./VoteAllocationTransform";
-import { MandateCalculator, type ElectionConfig } from "../MandateCalculator";
-
-export type Shares = Record<string, number>;
-
-export interface DistrictCandidateData {
-  megyekod: number;
-  megye: string;
-  oevk: number;
-  telepules: string;
-  valasztopolgar: number;
-  partok: Record<string, number | undefined>;
-  jeloltek?: Record<string, string[] | undefined>;
-}
-
-export interface DistrictPartyData {
-  megyekod: number;
-  megye: string;
-  oevk: number;
-  partok: Record<string, number | undefined>;
-}
-
-export type VoteSource =
-  | { type: "bizonytalan" }
-  | { type: "party"; party: string };
-
-export interface DistrictTarget {
-  megyekod: number;
-  oevk: number;
-  targetParty: string;
-  amount: number;
-  from?: VoteSource;
-}
-
-export interface DistributedVotesResult {
-  districts: DistrictCandidateData[];
-  totals: Record<string, number>;
-  percentages: Shares;
-  totalVotes: number;
-}
+import { MandateCalculator } from "../MandateCalculator";
+import type {
+  Shares,
+  DistributedVotesResult,
+  PartyListData,
+  CandidateListData,
+} from "./PipelineTransform.types";
+import type { ElectionConfig, PartyId } from "../MandateCalculator.types";
 
 export class PipelineTransform {
   private voterEnvironment: VoterEnvironment;
@@ -59,7 +27,7 @@ export class PipelineTransform {
   }
 
   distributeVotesByPartyShare(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     totalVoters: number,
     partyShares: Shares,
   ): DistributedVotesResult | null {
@@ -106,8 +74,8 @@ export class PipelineTransform {
   }
 
   modifyByMotivation(
-    districtCandidateData: DistrictCandidateData[],
-    districtPartyData: DistrictPartyData[],
+    districtCandidateData: CandidateListData[],
+    districtPartyData: PartyListData[],
     motivationTarget: Record<PartyId, number>,
   ) {
     const newCandidateData = districtCandidateData.map((d) => ({
@@ -160,7 +128,7 @@ export class PipelineTransform {
   }
 
   private getPartyWeights(
-    districtCandidateData: DistrictCandidateData[],
+    districtCandidateData: CandidateListData[],
     party: string,
   ): number[] {
     return districtCandidateData.map((d) => d.partok[party] ?? 0);

@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DistrictTargetTransform > should apply district target correctly 1`] = `
+[
+  {
+    "jeloltek": {
+      "ellenzek": [
+        "Candidate B",
+      ],
+      "fidesz": [
+        "Candidate A",
+      ],
+    },
+    "megye": "BP",
+    "megyekod": 1,
+    "oevk": 1,
+    "partok": {
+      "ellenzek": 11050,
+      "fidesz": 12000,
+      "mkkp": undefined,
+    },
+    "telepules": "",
+    "valasztopolgar": 600000,
+  },
+  {
+    "megye": "BP",
+    "megyekod": 1,
+    "oevk": 2,
+    "partok": {
+      "ellenzek": 9000,
+      "fidesz": 8000,
+    },
+    "telepules": "",
+    "valasztopolgar": 600000,
+  },
+]
+`;

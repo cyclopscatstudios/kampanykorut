@@ -3,7 +3,7 @@ import { type ViewBox, useWheelZoom } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
 import { Button } from "../Button";
 import type { District, DistrictResult } from "../map.utils";
-import type { DistrictCandidateData } from "../../../logic/ResultTransformer/PipelineTransform";
+import type { CandidateListData } from "../../../logic/domain/ResultTransformer/PipelineTransform.types";
 
 const initialFullMapViewBox: ViewBox = {
   x: 45,
@@ -29,7 +29,7 @@ export function MapWrapper({
   districts: District[];
   fullView: boolean;
   handleDistrict?: (r: DistrictResult) => void;
-  results: DistrictCandidateData[];
+  results: CandidateListData[];
   selectedDistrict?: DistrictResult | null;
 }) {
   const initialView = fullView ? initialFullMapViewBox : initialCityMapView;
