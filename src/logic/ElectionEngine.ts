@@ -1,5 +1,9 @@
 import { MandateCalculator } from "./domain/MandateCalculator";
-import type { CalculateResults, ElectionConfig, PartyId } from "./domain/MandateCalculator.types";
+import type {
+  CalculateResults,
+  ElectionConfig,
+  PartyId,
+} from "./domain/MandateCalculator.types";
 import { ResultModifier } from "./domain/ResultModifier";
 import { DistrictTargetTransform } from "./domain/ResultTransformer/DistrictTargetTransform";
 import { NationalSwingTransform } from "./domain/ResultTransformer/NationalSwingTransform";

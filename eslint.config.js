@@ -23,5 +23,8 @@ export default defineConfig([
       globals: globals.browser,
     },
     ignores: ["src/dev/*"],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'warn',
+    },
   },
 ]);

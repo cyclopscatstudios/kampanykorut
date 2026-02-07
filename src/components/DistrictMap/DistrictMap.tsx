@@ -14,7 +14,7 @@ import {
   getPartyHoverColor,
   getPartyActiveColor,
 } from "../ui/color.utils";
-import type { CandidateListData } from "../../logic/domain/ResultTransformer/PipelineTransform";
+import type { CandidateListData } from "../../logic/domain/ResultTransformer/PipelineTransform.types";
 
 interface DistrictMapProps {
   districts: District[];

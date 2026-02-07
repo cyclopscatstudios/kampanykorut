@@ -1,5 +1,4 @@
 import { injectable } from "tsyringe";
-import type { PartyId } from "../ElectionEngine";
 import { createLogger } from "../logger";
 import type {
   ElectionConfig,
@@ -9,6 +8,7 @@ import type {
   PartyVotesRaw,
   CandidateMapRaw,
   CandidateMap,
+  PartyId,
 } from "./MandateCalculator.types";
 import type {
   CandidateListData,

@@ -6,7 +6,10 @@ import constituencyResults from "../assets/jsons/2022/oevk_constituency_results.
 import listResults from "../assets/jsons/2022/oevk_list_results.json";
 import oevk_2022 from "../assets/jsons/2022/oevk_2022.json";
 import { ElectionEngine } from "../logic/ElectionEngine";
-import type { CandidateListData, PartyListData } from "../logic/domain/ResultTransformer/PipelineTransform.types";
+import type {
+  CandidateListData,
+  PartyListData,
+} from "../logic/domain/ResultTransformer/PipelineTransform.types";
 type Winner = "fidesz" | "ellenzeki_osszefogas";
 type Shares = Record<string, number>;
 

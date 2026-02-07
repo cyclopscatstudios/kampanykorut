@@ -124,18 +124,18 @@ describe("ElectionEngine", () => {
     expect(result).toHaveProperty("constituencySeats");
     expect(result).toHaveProperty("listSeats");
     expect(result).toHaveProperty("compensation");
-    expect(result.constituencySeats).toEqual({
+    expect(result?.constituencySeats).toEqual({
       fidesz: 1,
       opposition: 1,
     });
 
-    const totalListSeats = Object.values(result.listSeats).reduce(
+    const totalListSeats = Object.values(result?.listSeats ?? {}).reduce(
       (a: number, b: unknown) => a + (b as number),
       0,
     );
     expect(totalListSeats).toBe(electionConfig.listSeats);
 
-    for (const row of result.mandates) {
+    for (const row of result?.mandates ?? []) {
       expect(row.totalSeats).toBe(row.constituencySeats + row.listSeats);
     }
   });
@@ -169,11 +169,11 @@ describe("ElectionEngine", () => {
     ];
     const result = engine.calculate(updatedConstituencyData, updatedListData);
 
-    expect(result.constituencySeats).toEqual({
+    expect(result?.constituencySeats).toEqual({
       fidesz: 1,
     });
 
-    expect(result.listSeats.fidesz).toBeDefined();
+    expect(result?.listSeats.fidesz).toBeDefined();
   });
 
   it("does not allocate list seats to parties below threshold", () => {
@@ -203,8 +203,8 @@ describe("ElectionEngine", () => {
     ];
     const result = engine.calculate(updatedConstituencyData, updatedListData);
 
-    expect(result.listSeats.minor).toBeUndefined();
-    expect(result.listSeats.major).toBe(electionConfig.listSeats);
+    expect(result?.listSeats.minor).toBeUndefined();
+    expect(result?.listSeats.major).toBe(electionConfig.listSeats);
   });
   it("asd", () => {
     const updatedConstituencyData = [

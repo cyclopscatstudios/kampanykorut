@@ -16,20 +16,18 @@ import type {
 @injectable()
 export class EffectApplier {
   private mandateCalculator: MandateCalculator;
-  private candidateData: CandidateListData[] = [];
 
-  constructor(
-    electionConfig: ElectionConfig,
-    candidateData: CandidateListData[],
-  ) {
+  constructor(electionConfig: ElectionConfig) {
     this.mandateCalculator = new MandateCalculator(electionConfig);
-    this.candidateData = candidateData;
   }
 
-  getAppliedEffect(effect: RawEffect): AppliedEffect {
+  getAppliedEffect(
+    effect: RawEffect,
+    candidateListData: CandidateListData[],
+  ): AppliedEffect {
     switch (effect.type) {
       case EffectType.PartySwing:
-        return this.getPartySwingShares(effect.params);
+        return this.getPartySwingShares(effect.params, candidateListData);
       case EffectType.PartyShare:
         return this.getPartyShare(effect.params);
       case EffectType.District:
@@ -39,14 +37,17 @@ export class EffectApplier {
     }
   }
 
-  getPartySwingShares(params: Record<string, number>): AppliedEffect {
-    const baseShare = this.getBaseShare();
+  getPartySwingShares(
+    params: Record<string, number>,
+    candidateListData: CandidateListData[],
+  ): AppliedEffect {
+    const baseShare = this.getBaseShare(candidateListData);
     const targetShare = this.getTargetShare(baseShare, params);
     return { type: EffectType.PartySwing, baseShare, targetShare };
   }
 
-  private getBaseShare() {
-    const totals = this.mandateCalculator.sumPartyTotals(this.candidateData);
+  private getBaseShare(candidateListData: CandidateListData[]) {
+    const totals = this.mandateCalculator.sumPartyTotals(candidateListData);
     return this.mandateCalculator.calculatePercentages(totals);
   }
 

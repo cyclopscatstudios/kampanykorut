@@ -5,10 +5,10 @@ import {
 import { VoteAllocationTransform } from "./VoteAllocationTransform";
 import { MandateCalculator } from "../MandateCalculator";
 import type {
-  CandidateListData,
   Shares,
   DistributedVotesResult,
   PartyListData,
+  CandidateListData,
 } from "./PipelineTransform.types";
 import type { ElectionConfig, PartyId } from "../MandateCalculator.types";
 

@@ -49,6 +49,7 @@ export class NationalSwingTransform {
   ): Votes {
     const sum = this.sumValues(votes);
     if (!sum) {
+      log.warn("No votes to apply swing to");
       return votes;
     }
     const localShare = this.toShare(votes, sum);
@@ -71,6 +72,7 @@ export class NationalSwingTransform {
   private normalize(shares: Shares): Shares {
     const sum = this.sumValues(shares);
     if (!sum) {
+      log.warn("No shares to normalize");
       return shares;
     }
 
@@ -86,6 +88,7 @@ export class NationalSwingTransform {
     const norm = this.sumValues(raw);
 
     if (!norm || !total) {
+      log.warn("No votes to distribute after swing");
       return {};
     }
 

@@ -1,4 +1,4 @@
-import { type CandidateListData } from "./domain/ResultTransformer/PipelineTransform";
+import type { CandidateListData } from "./domain/ResultTransformer/PipelineTransform.types";
 
 export interface VoterEnvironmentConfig {
   eligibleVoters: number;

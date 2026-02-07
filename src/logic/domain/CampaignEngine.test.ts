@@ -45,7 +45,7 @@ describe("CampaignEngine", () => {
 
     campaignEngine = new CampaignEngine(
       resultModifier,
-      new EffectApplier(electionConfig, candidateListData),
+      new EffectApplier(electionConfig),
       new MandateCalculator(electionConfig),
     );
   });

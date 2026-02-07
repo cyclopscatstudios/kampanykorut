@@ -28,7 +28,10 @@ export class CampaignEngine {
   ) {}
 
   processTurn(state: GameState, decision: Decision) {
-    const appliedEffects = this.effectApplier.getAppliedEffect(decision.effect);
+    const appliedEffects = this.effectApplier.getAppliedEffect(
+      decision.effect,
+      state.candidateListData,
+    );
     const modified = this.resultModifier.apply(state, appliedEffects);
     const calculated = this.mandateCalculator.calculate(
       modified?.candidateListData,
