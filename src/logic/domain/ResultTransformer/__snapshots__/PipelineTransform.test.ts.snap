@@ -95,38 +95,3 @@ exports[`PipelineTransform > modifyByMotivation > should modify votes by motivat
   ],
 }
 `;
-
-exports[`PipelineTransform > should distribute votes by party share 1`] = `
-{
-  "districts": [
-    {
-      "jeloltek": {
-        "party-a": [
-          "candidate A",
-        ],
-        "party-b": [
-          "candidate B",
-        ],
-      },
-      "megye": "Teszt",
-      "megyekod": 1,
-      "oevk": 1,
-      "partok": {
-        "party-a": 50,
-        "party-b": 25,
-      },
-      "telepules": "Teszt",
-      "valasztopolgar": 300,
-    },
-  ],
-  "percentages": {
-    "party-a": 0.6666666666666666,
-    "party-b": 0.3333333333333333,
-  },
-  "totalVotes": 75,
-  "totals": {
-    "party-a": 50,
-    "party-b": 25,
-  },
-}
-`;

@@ -24,7 +24,7 @@ export default defineConfig([
     },
     ignores: ["src/dev/*"],
     rules: {
-      '@typescript-eslint/no-explicit-any': 'warn',
+      "@typescript-eslint/no-explicit-any": "warn",
     },
   },
 ]);
