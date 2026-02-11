@@ -26,7 +26,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
     expect(result).toEqual({
       type: EffectType.PartySwing,
       baseShare: { ellenzek: 0.5, fidesz: 0.5, mkkp: 0 },
-      targetShare: { ellenzek: 0.5, fidesz: -0.5, mkkp: 0 },
+      targetShare: { ellenzek: 0.5, fidesz: 0.49, mkkp: 0 },
     });
   });
 
@@ -43,7 +43,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
       type: EffectType.Motivation,
       motivationDelta: {
         fidesz: 99.5,
-        ellenzek: 99,
+        ellenzek: 100,
       },
     });
   });

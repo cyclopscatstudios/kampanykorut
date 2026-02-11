@@ -21,5 +21,13 @@ export function createCampaignEngine(config: GameModeConfig) {
     new DistrictTargetTransform(voterEnvironment),
   );
 
-  return new CampaignEngine(resultModifier, effectApplier, mandateCalculator);
+  return new CampaignEngine(
+    config.candidateListData,
+    config.partyListData,
+    config.questions,
+    config.answerEffect,
+    resultModifier,
+    effectApplier,
+    mandateCalculator,
+  );
 }

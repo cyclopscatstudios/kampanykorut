@@ -1,3 +1,4 @@
+import type { District } from "../../../components/ui/map.utils";
 import {
   candidateListData,
   partyListData,
@@ -14,8 +15,15 @@ const electionConfig = {
   listSeats: 10,
   thresholdPercent: 5,
 };
+const mockDistricts: District[] = [
+  { centrum: "", evk: "", maz: "", poligon: "" },
+];
 
 export const mockGameConfig = {
+  answerEffect: [],
+  questions: [],
+  capitalCity: mockDistricts,
+  districts: mockDistricts,
   electionConfig,
   voterEnvironmentConfig,
   candidateListData,

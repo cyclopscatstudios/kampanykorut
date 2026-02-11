@@ -7,15 +7,19 @@ import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
 export type ScreenType = "MenuSelector" | "MapCreator";
 
 function App() {
+  const [activeGameId, setActiveGameId] = useState<string | undefined>();
   const [currentScreen, setCurrentScreen] =
     useState<ScreenType>("MenuSelector");
 
   return (
     <FullscreenBackground>
       {currentScreen === "MenuSelector" ? (
-        <MenuSelector setCurrentScreen={setCurrentScreen} />
+        <MenuSelector
+          setCurrentScreen={setCurrentScreen}
+          setActiveGameId={setActiveGameId}
+        />
       ) : (
-        <MainGameScreen />
+        <MainGameScreen gameId={activeGameId ?? ""} />
       )}
     </FullscreenBackground>
   );

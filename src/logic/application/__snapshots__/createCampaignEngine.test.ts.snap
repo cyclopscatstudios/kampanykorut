@@ -2,7 +2,10 @@
 
 exports[`createCampaignEngine > should create a new campaign engine instance 1`] = `
 CampaignEngine {
+  "answers": undefined,
   "effectApplier": EffectApplier {
+    "DEFAULT_MOTIVATION_DELTA": 99,
+    "EPSILON": 0.000001,
     "mandateCalculator": MandateCalculator {
       "config": {
         "listSeats": 10,
@@ -10,12 +13,69 @@ CampaignEngine {
       },
     },
   },
+  "initialCandidateData": [
+    {
+      "jeloltek": {
+        "ellenzek": [
+          "Candidate B",
+        ],
+        "fidesz": [
+          "Candidate A",
+        ],
+      },
+      "megye": "BP",
+      "megyekod": 1,
+      "oevk": 1,
+      "partok": {
+        "ellenzek": 11000,
+        "fidesz": 12000,
+        "mkkp": undefined,
+      },
+      "telepules": "",
+      "valasztopolgar": 600000,
+    },
+    {
+      "megye": "BP",
+      "megyekod": 1,
+      "oevk": 2,
+      "partok": {
+        "ellenzek": 9000,
+        "fidesz": 8000,
+      },
+      "telepules": "",
+      "valasztopolgar": 600000,
+    },
+  ],
+  "initialPartyData": [
+    {
+      "megye": "BP",
+      "megyekod": 1,
+      "oevk": 1,
+      "partok": {
+        "ellenzek": 40000,
+        "fidesz": 50000,
+        "mkkp": 3000,
+      },
+      "telepules": "",
+    },
+    {
+      "megye": "BP",
+      "megyekod": 1,
+      "oevk": 2,
+      "partok": {
+        "ellenzek": 35000,
+        "fidesz": 30000,
+      },
+      "telepules": "",
+    },
+  ],
   "mandateCalculator": MandateCalculator {
     "config": {
       "listSeats": 10,
       "thresholdPercent": 5,
     },
   },
+  "questions": undefined,
   "resultModifier": ResultModifier {
     "districtTargetTransform": DistrictTargetTransform {
       "voterEnvironment": VoterEnvironment {

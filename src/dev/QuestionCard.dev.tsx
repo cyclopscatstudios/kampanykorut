@@ -5,6 +5,8 @@ export function QuestionCardDev() {
   const obj = questions[0];
   return (
     <QuestionCard
+      handleOnClick={() => {}}
+      title="Title"
       id={obj.id}
       possibleAnswers={obj.possibleAnswers}
       question={obj.question}

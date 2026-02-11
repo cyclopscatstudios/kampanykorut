@@ -6,6 +6,7 @@ export enum MenuItemId {
   Settings = "settings",
   CampaignMode = "campaignMode",
   ClassicMode = "classicMode",
+  GameLoader = "gameLoader",
   Back = "back",
 }
 
@@ -14,4 +15,6 @@ export type MenuItem = {
   text: string;
   icon?: string;
   iconSource?: IconSource;
+  description?: string;
+  [key: string]: any;
 };

@@ -1,19 +1,25 @@
-import type { DistrictResult } from "../map.utils";
+import type { District, DistrictResult } from "../map.utils";
 import { useState } from "react";
 import type { CurrentView } from "./MainGameScreen";
 import { MapWrapper } from "./MapWrapper";
-import oevk_2022 from "../../../assets/jsons/2022/oevk_2022.json";
-import budapest from "../../../assets/jsons/2022/budapest.json";
-import results from "../../../assets/jsons/2022/oevk_constituency_results.json";
 import { BottomBar } from "./BottomBar";
 import { calculateWinner } from "../../../logic/domain/ResultModifier.utils";
 import { SwingFactor } from "../../../types/utils";
+import type { CandidateListData } from "../../../logic/domain/ResultTransformer/PipelineTransform.types";
+
+interface MapCreatorProps {
+  districts: District[];
+  candidateListData: CandidateListData[];
+  capitalCity: District[];
+  setCurrentView: (currentView: CurrentView) => void;
+}
 
 export function MapCreator({
+  candidateListData,
+  capitalCity,
+  districts,
   setCurrentView,
-}: {
-  setCurrentView: (currentView: CurrentView) => void;
-}) {
+}: MapCreatorProps) {
   const [selectedDistrict, setSelectedDistrict] =
     useState<DistrictResult | null>();
 
@@ -28,8 +34,8 @@ export function MapCreator({
       <div className="flex w-full h-full justify-between items-center">
         <div className="w-[800px] h-[500px] p-4">
           <MapWrapper
-            districts={oevk_2022}
-            results={results}
+            districts={districts}
+            results={candidateListData}
             fullView
             handleDistrict={handleDistrict}
             selectedDistrict={selectedDistrict}
@@ -37,8 +43,8 @@ export function MapCreator({
         </div>
         <div className="w-[450px] h-[500px] p-4">
           <MapWrapper
-            districts={budapest}
-            results={results}
+            districts={capitalCity}
+            results={candidateListData}
             fullView={false}
             handleDistrict={handleDistrict}
             selectedDistrict={selectedDistrict}

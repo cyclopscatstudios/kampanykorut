@@ -14,13 +14,15 @@ interface Answer {
   affect?: Record<string, number>[];
 }
 
-interface Question {
+export interface Question {
   id: string;
+  title: string;
   question: string;
   possibleAnswers: Answer[];
   setCurrentView: (currentView: CurrentView) => void;
   currentQuestion: number;
   setCurrentQuestion: (currentQuestion: number) => void;
+  handleOnClick: (answer?: string) => void;
 }
 
 export function QuestionCard({
@@ -30,6 +32,7 @@ export function QuestionCard({
   setCurrentView,
   currentQuestion,
   setCurrentQuestion,
+  handleOnClick,
 }: Question) {
   const [answer, setAnswer] = useState<string | undefined>();
 
@@ -57,7 +60,12 @@ export function QuestionCard({
       </div>
       <div className="mt-auto mb-5">
         <div className="flex justify-around">
-          <Button onClick={() => setCurrentQuestion(currentQuestion + 1)}>
+          <Button
+            onClick={() => {
+              handleOnClick(answer);
+              setCurrentQuestion(currentQuestion + 1);
+            }}
+          >
             <Button.Text>Continue</Button.Text>
           </Button>
           <Button variant="secondary" onClick={() => setCurrentView("MapView")}>

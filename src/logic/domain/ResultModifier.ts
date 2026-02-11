@@ -17,7 +17,10 @@ export class ResultModifier {
     private districtTargetTransform: DistrictTargetTransform,
   ) {}
 
-  apply(state: GameState, appliedEffects?: AppliedEffect): GameState | null {
+  apply(
+    state: GameState,
+    appliedEffects?: AppliedEffect,
+  ): Pick<GameState, "candidateListData" | "partyListData"> | null {
     if (!appliedEffects) {
       log.error("No applied effects provided to ResultModifier");
       return null;
@@ -37,7 +40,7 @@ export class ResultModifier {
   private applyPartySwing(
     state: GameState,
     appliedEffects: Extract<AppliedEffect, { type: EffectType.PartySwing }>,
-  ): GameState {
+  ) {
     const candidateListData =
       this.nationalSwingTransform.applyNationalSwingToDistricts(
         state.candidateListData,

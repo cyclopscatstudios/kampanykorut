@@ -1,0 +1,5256 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`useElectionState > should initialize state 1`] = `
+{
+  "answers": [
+    {
+      "effects": [
+        {
+          "params": {
+            "ellenzeki_osszefogas": 0.8,
+          },
+          "type": "party-swing",
+        },
+      ],
+      "id": "A",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "ellenzeki_osszefogas": "-1.5",
+            "fidesz": "0.5",
+            "mi-hazank": "0.5",
+          },
+          "type": "party-swing",
+        },
+      ],
+      "id": "B",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "ellenzeki_osszefogas": -0.8,
+            "fidesz": -0.3,
+            "mi-hazank": -0.2,
+          },
+          "type": "motivation",
+        },
+      ],
+      "id": "C",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "ellenzeki_osszefogas": -8,
+            "fidesz": 3,
+            "mi-hazank": -0.2,
+          },
+          "type": "motivation",
+        },
+      ],
+      "id": "D",
+    },
+  ],
+  "candidateListData": [
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "CSÁRDI ANTAL",
+        ],
+        "fidesz": [
+          "BÖRÖCZ LÁSZLÓ",
+        ],
+        "megoldas_mozgalom": [
+          "MURÁNYI GERGELY",
+        ],
+        "mi_hazank": [
+          "SZIKORA ISTVÁN",
+        ],
+        "mkkp": [
+          "HOTZ ANTAL",
+        ],
+        "munkaspart": [
+          "SIMON GYÖRGY",
+        ],
+        "normalis_elet": [
+          "SWIERKIEWICZ LARION",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 21778,
+        "fidesz": 19144,
+        "megoldas_mozgalom": 543,
+        "mi_hazank": 1229,
+        "mkkp": 1975,
+        "munkaspart": 79,
+        "normalis_elet": 186,
+      },
+      "telepules": "Budapest V. kerület",
+      "valasztopolgar": 59754,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "OROSZ ANNA",
+        ],
+        "fidesz": [
+          "DR. SIMICSKÓ ISTVÁN",
+        ],
+        "megoldas_mozgalom": [
+          "SZENES GÁBOR",
+        ],
+        "mi_hazank": [
+          "NOVÁK ELŐD",
+        ],
+        "mkkp": [
+          "MENDLY MIKLÓS",
+        ],
+        "munkaspart": [
+          "BARABÁS GYÖRGY",
+        ],
+        "normalis_elet": [
+          "BILLEIN PIROSKA",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 27881,
+        "fidesz": 21864,
+        "megoldas_mozgalom": 458,
+        "mi_hazank": 1653,
+        "mkkp": 1607,
+        "munkaspart": 56,
+        "normalis_elet": 159,
+      },
+      "telepules": "Budapest XI. kerület",
+      "valasztopolgar": 66833,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "HAJNAL MIKLÓS",
+        ],
+        "fidesz": [
+          "DR. FÜRJES BALÁZS",
+        ],
+        "fuggetlen": [
+          "HAJDU MÁRIA",
+        ],
+        "megoldas_mozgalom": [
+          "JENEI DÁVID",
+        ],
+        "mi_hazank": [
+          "DR. GRUNDTNER ANDRÁS",
+        ],
+        "mkkp": [
+          "KOVÁCS GERGELY",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 25323,
+        "fidesz": 21872,
+        "fuggetlen": 680,
+        "megoldas_mozgalom": 398,
+        "mi_hazank": 1163,
+        "mkkp": 2861,
+      },
+      "telepules": "Budapest XII. kerület",
+      "valasztopolgar": 64378,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "TORDAI BENCE",
+        ],
+        "fidesz": [
+          "DR. GÓR CSABA",
+        ],
+        "megoldas_mozgalom": [
+          "HORVÁTH DIÁNA",
+        ],
+        "mi_hazank": [
+          "NAGY ATTILA",
+        ],
+        "mkkp": [
+          "JUHÁSZ VERONIKA",
+        ],
+        "normalis_elet": [
+          "LÁZ JÓZSEF",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 29993,
+        "fidesz": 23468,
+        "megoldas_mozgalom": 623,
+        "mi_hazank": 1352,
+        "mkkp": 2130,
+        "normalis_elet": 235,
+      },
+      "telepules": "Budapest II. kerület",
+      "valasztopolgar": 71208,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. OLÁH LAJOS",
+        ],
+        "fidesz": [
+          "KOVÁCS BALÁZS NORBERT",
+        ],
+        "megoldas_mozgalom": [
+          "MAJOR GERGELY RÓBERT",
+        ],
+        "mi_hazank": [
+          "DR. POPÉLY GYULA",
+        ],
+        "mkkp": [
+          "TERDIK ROLAND",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 20561,
+        "fidesz": 15119,
+        "megoldas_mozgalom": 638,
+        "mi_hazank": 1467,
+        "mkkp": 2228,
+      },
+      "telepules": "Budapest VII. kerület",
+      "valasztopolgar": 58914,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "JÁMBOR ANDRÁS",
+        ],
+        "fidesz": [
+          "SÁRA BOTOND",
+        ],
+        "mi_hazank": [
+          "DÚRÓ DÓRA",
+        ],
+        "mkkp": [
+          "DÖME ZSUZSANNA",
+        ],
+        "normalis_elet": [
+          "HAGA BÉLA",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 21462,
+        "fidesz": 18561,
+        "mi_hazank": 2159,
+        "mkkp": 1933,
+        "normalis_elet": 307,
+      },
+      "telepules": "Budapest VIII. kerület",
+      "valasztopolgar": 68448,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "HISZÉKENY DEZSŐ",
+        ],
+        "fidesz": [
+          "HARRACH TAMÁS",
+        ],
+        "megoldas_mozgalom": [
+          "HALMI BAJNOK",
+        ],
+        "mi_hazank": [
+          "NAGY ZSOLT",
+        ],
+        "mkkp": [
+          "DR. ALEVA MÁRTA",
+        ],
+        "normalis_elet": [
+          "DR. VARGA ISTVÁN KÁROLY",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 7,
+      "partok": {
+        "ellenzeki_osszefogas": 35248,
+        "fidesz": 17697,
+        "megoldas_mozgalom": 675,
+        "mi_hazank": 1907,
+        "mkkp": 2445,
+        "normalis_elet": 263,
+      },
+      "telepules": "Budapest XIII. kerület",
+      "valasztopolgar": 79234,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. HADHÁZY ÁKOS",
+        ],
+        "fidesz": [
+          "BORBÉLY ÁDÁM",
+        ],
+        "megoldas_mozgalom": [
+          "JANICSÁK ISTVÁN",
+        ],
+        "mi_hazank": [
+          "CZEGLÉDI JÁNOS",
+        ],
+        "mkkp": [
+          "RÓZSA REGINA",
+        ],
+        "munkaspart": [
+          "KARACS LAJOSNÉ",
+        ],
+        "normalis_elet": [
+          "DUMA NORBERT",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 8,
+      "partok": {
+        "ellenzeki_osszefogas": 30159,
+        "fidesz": 20373,
+        "megoldas_mozgalom": 816,
+        "mi_hazank": 2108,
+        "mkkp": 1946,
+        "munkaspart": 104,
+        "normalis_elet": 255,
+      },
+      "telepules": "Budapest XIV. kerület",
+      "valasztopolgar": 74785,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "ARATÓ GERGELY",
+        ],
+        "fidesz": [
+          "DR. PAP SÁNDOR",
+        ],
+        "megoldas_mozgalom": [
+          "DÉTÁRI LAJOS LÁSZLÓ",
+        ],
+        "mi_hazank": [
+          "VÉKONY CSONGOR",
+        ],
+        "mkkp": [
+          "HANKÓ KLÁRA",
+        ],
+        "munkaspart": [
+          "GÁL PÉTER",
+        ],
+        "normalis_elet": [
+          "DEMÉNY-NAGY KRISTÓF",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 9,
+      "partok": {
+        "ellenzeki_osszefogas": 22990,
+        "fidesz": 21282,
+        "megoldas_mozgalom": 1100,
+        "mi_hazank": 2210,
+        "mkkp": 1957,
+        "munkaspart": 180,
+        "normalis_elet": 292,
+      },
+      "telepules": "Budapest X. kerület",
+      "valasztopolgar": 72110,
+    },
+    {
+      "jeloltek": {
+        "egyeb": [
+          "RÓZSA LÁSZLÓ PÉTER",
+        ],
+        "ellenzeki_osszefogas": [
+          "SZABÓ TIMEA",
+        ],
+        "fidesz": [
+          "BÚS BALÁZS",
+        ],
+        "megoldas_mozgalom": [
+          "POTECZKI IMRE",
+        ],
+        "mi_hazank": [
+          "KATONA MIKLÓS",
+        ],
+        "mkkp": [
+          "BUDAI SÁNDOR",
+        ],
+        "normalis_elet": [
+          "MÜLLER ANITA",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 10,
+      "partok": {
+        "egyeb": 365,
+        "ellenzeki_osszefogas": 26051,
+        "fidesz": 21940,
+        "megoldas_mozgalom": 826,
+        "mi_hazank": 1929,
+        "mkkp": 1954,
+        "normalis_elet": 296,
+      },
+      "telepules": "Budapest III. kerület",
+      "valasztopolgar": 69771,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "VARJU LÁSZLÓ",
+        ],
+        "fidesz": [
+          "WINTERMANTEL ZSOLT",
+        ],
+        "megoldas_mozgalom": [
+          "ENDRÉDI ISTVÁN",
+        ],
+        "mi_hazank": [
+          "PAJOR TIBOR",
+        ],
+        "mkkp": [
+          "PAIZS MIKLÓS",
+        ],
+        "normalis_elet": [
+          "SZŐNYI JÓZSEF",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 11,
+      "partok": {
+        "ellenzeki_osszefogas": 28195,
+        "fidesz": 21684,
+        "megoldas_mozgalom": 900,
+        "mi_hazank": 2480,
+        "mkkp": 1949,
+        "normalis_elet": 277,
+      },
+      "telepules": "Budapest IV. kerület",
+      "valasztopolgar": 74515,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "BARKÓCZI BALÁZS",
+        ],
+        "fidesz": [
+          "DR. PINTÉR GÁBOR",
+        ],
+        "megoldas_mozgalom": [
+          "SZABÓ NORBERT ÁDÁM",
+        ],
+        "mi_hazank": [
+          "TAKÁCS ANDRÁS",
+        ],
+        "mkkp": [
+          "STEIMETZ ALEX",
+        ],
+        "munkaspart": [
+          "GALLAI DÁVID",
+        ],
+        "normalis_elet": [
+          "HUSZÁR CLAUDIA",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 12,
+      "partok": {
+        "ellenzeki_osszefogas": 23397,
+        "fidesz": 21987,
+        "megoldas_mozgalom": 1131,
+        "mi_hazank": 2559,
+        "mkkp": 2282,
+        "munkaspart": 161,
+        "normalis_elet": 347,
+      },
+      "telepules": "Budapest XV. kerület",
+      "valasztopolgar": 71850,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "VAJDA ZOLTÁN",
+        ],
+        "fidesz": [
+          "SZATMÁRY KRISTÓF",
+        ],
+        "fuggetlen": [
+          "SCHAFFER VIKTOR",
+        ],
+        "megoldas_mozgalom": [
+          "DR. STELLI-KIS SÁNDOR",
+        ],
+        "mi_hazank": [
+          "NAGYNÉ HOLLÓSI ÉVA",
+        ],
+        "mkkp": [
+          "BOJTI BENCE",
+        ],
+        "munkaspart": [
+          "DR. SZANYI TIBOR",
+        ],
+        "normalis_elet": [
+          "DR. ZSIDRÓ LÁSZLÓ",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 13,
+      "partok": {
+        "ellenzeki_osszefogas": 25080,
+        "fidesz": 24612,
+        "fuggetlen": 666,
+        "megoldas_mozgalom": 610,
+        "mi_hazank": 1833,
+        "mkkp": 1749,
+        "munkaspart": 393,
+        "normalis_elet": 229,
+      },
+      "telepules": "Budapest XVI. kerület",
+      "valasztopolgar": 68991,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "SZILÁGYI GYÖRGY",
+        ],
+        "fidesz": [
+          "DUNAI MÓNIKA",
+        ],
+        "megoldas_mozgalom": [
+          "HAJMÁSI GERGELY",
+        ],
+        "mi_hazank": [
+          "FAZEKAS LÁSZLÓ",
+        ],
+        "mkkp": [
+          "SZIN RICHÁRD",
+        ],
+        "munkaspart": [
+          "ZOLLAI ANDRÁS",
+        ],
+        "normalis_elet": [
+          "TOMASOVSZKI LÁSZLÓ",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 14,
+      "partok": {
+        "ellenzeki_osszefogas": 24733,
+        "fidesz": 25114,
+        "megoldas_mozgalom": 875,
+        "mi_hazank": 2875,
+        "mkkp": 2172,
+        "munkaspart": 132,
+        "normalis_elet": 339,
+      },
+      "telepules": "Budapest XVII. kerület",
+      "valasztopolgar": 74285,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "KUNHALMI ÁGNES",
+        ],
+        "fidesz": [
+          "DR. LÉVAI ISTVÁN ZOLTÁN",
+        ],
+        "fuggetlen": [
+          "JUHÁSZ ISTVÁN",
+        ],
+        "megoldas_mozgalom": [
+          "TABI TÜNDE",
+        ],
+        "mi_hazank": [
+          "ÁRVAI CSABA",
+        ],
+        "mkkp": [
+          "SZOKOR MÁRTON",
+        ],
+        "normalis_elet": [
+          "SINKA ZOLTÁNNÉ",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 15,
+      "partok": {
+        "ellenzeki_osszefogas": 25946,
+        "fidesz": 25166,
+        "fuggetlen": 1678,
+        "megoldas_mozgalom": 679,
+        "mi_hazank": 2559,
+        "mkkp": 1860,
+        "normalis_elet": 291,
+      },
+      "telepules": "Budapest XVIII. kerület",
+      "valasztopolgar": 78158,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. HILLER ISTVÁN",
+        ],
+        "fidesz": [
+          "FÖLDESI GYULA",
+        ],
+        "megoldas_mozgalom": [
+          "HORVÁTH ELEMÉR",
+        ],
+        "mi_hazank": [
+          "HRIVNÁK PÁL",
+        ],
+        "mkkp": [
+          "SZENTESI SZABOLCS",
+        ],
+        "munkaspart": [
+          "SZÉKELY SÁNDOR",
+        ],
+        "normalis_elet": [
+          "GARAI VERONIKA",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 16,
+      "partok": {
+        "ellenzeki_osszefogas": 22856,
+        "fidesz": 20880,
+        "megoldas_mozgalom": 629,
+        "mi_hazank": 2410,
+        "mkkp": 2039,
+        "munkaspart": 133,
+        "normalis_elet": 367,
+      },
+      "telepules": "Budapest XX. kerület",
+      "valasztopolgar": 69584,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. SZABÓ SZABOLCS",
+        ],
+        "fidesz": [
+          "NÉMETH SZILÁRD ISTVÁN",
+        ],
+        "megoldas_mozgalom": [
+          "KOLLER SÁNDOR",
+        ],
+        "mi_hazank": [
+          "KOVÁCS ATTILA",
+        ],
+        "mkkp": [
+          "CSIZMADIA CSEKE",
+        ],
+        "munkaspart": [
+          "PÁL ÉVA",
+        ],
+        "normalis_elet": [
+          "JÁRÓ ARNOLDNÉ",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 17,
+      "partok": {
+        "ellenzeki_osszefogas": 24595,
+        "fidesz": 22055,
+        "megoldas_mozgalom": 905,
+        "mi_hazank": 3035,
+        "mkkp": 1787,
+        "munkaspart": 238,
+        "normalis_elet": 291,
+      },
+      "telepules": "Budapest XXI. kerület",
+      "valasztopolgar": 74456,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "TÓTH ENDRE",
+        ],
+        "fidesz": [
+          "NÉMETH ZSOLT",
+        ],
+        "megoldas_mozgalom": [
+          "PAPP ZOLTÁN",
+        ],
+        "mi_hazank": [
+          "ESZE TAMÁS",
+        ],
+        "mkkp": [
+          "OZSVÁT ATTILA",
+        ],
+        "munkaspart": [
+          "SCHLENK RICHÁRD",
+        ],
+        "normalis_elet": [
+          "SZABÓ GÁBOR DÁNIEL",
+        ],
+      },
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 18,
+      "partok": {
+        "ellenzeki_osszefogas": 28964,
+        "fidesz": 25120,
+        "megoldas_mozgalom": 613,
+        "mi_hazank": 2531,
+        "mkkp": 2019,
+        "munkaspart": 89,
+        "normalis_elet": 425,
+      },
+      "telepules": "Budapest XXII. kerület",
+      "valasztopolgar": 77117,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. MELLÁR TAMÁS",
+        ],
+        "fidesz": [
+          "KŐVÁRI JÁNOS",
+        ],
+        "fuggetlen": [
+          "BOGNÁR SZILVIA",
+        ],
+        "megoldas_mozgalom": [
+          "PALKÓ ÁDÁM",
+        ],
+        "mi_hazank": [
+          "VARGA TAMÁS",
+        ],
+        "mkkp": [
+          "NAGY RICHÁRD",
+        ],
+        "munkaspart": [
+          "SUGÁR GYÖRGY",
+        ],
+        "normalis_elet": [
+          "HIRTH JÓZSEF",
+        ],
+      },
+      "megye": "BARANYA",
+      "megyekod": 2,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 22710,
+        "fidesz": 21557,
+        "fuggetlen": 1521,
+        "megoldas_mozgalom": 422,
+        "mi_hazank": 2779,
+        "mkkp": 2103,
+        "munkaspart": 114,
+        "normalis_elet": 391,
+      },
+      "telepules": "Pécs",
+      "valasztopolgar": 74465,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. SZAKÁCS LÁSZLÓ",
+        ],
+        "fidesz": [
+          "DR. HOPPÁL PÉTER",
+        ],
+        "fuggetlen": [
+          "HENCSEI ZSOLT",
+        ],
+        "megoldas_mozgalom": [
+          "DR. JUHÁSZ GÁBOR",
+        ],
+        "mi_hazank": [
+          "IPACS SÁNDOR",
+        ],
+        "mkkp": [
+          "MARTOS CSONGOR",
+        ],
+        "munkaspart": [
+          "SZILÁGYI LÁSZLÓ CSABA",
+        ],
+        "normalis_elet": [
+          "ÁRVAINÉ BEHÁN ZSUZSANNA",
+        ],
+      },
+      "megye": "BARANYA",
+      "megyekod": 2,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 21226,
+        "fidesz": 22898,
+        "fuggetlen": 837,
+        "megoldas_mozgalom": 635,
+        "mi_hazank": 2829,
+        "mkkp": 2099,
+        "munkaspart": 489,
+        "normalis_elet": 543,
+      },
+      "telepules": "Pécs",
+      "valasztopolgar": 76693,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "SCHWARCZ-KIEFER PATRIK",
+        ],
+        "fidesz": [
+          "DR. HARGITAI JÁNOS",
+        ],
+        "megoldas_mozgalom": [
+          "DÖBREI ISTVÁN",
+        ],
+        "mi_hazank": [
+          "BERNÁTH CSILLA",
+        ],
+        "munkaspart": [
+          "KÓS ZOLTÁN",
+        ],
+      },
+      "megye": "BARANYA",
+      "megyekod": 2,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 13954,
+        "fidesz": 28172,
+        "megoldas_mozgalom": 826,
+        "mi_hazank": 3448,
+        "munkaspart": 213,
+      },
+      "telepules": "Mohács",
+      "valasztopolgar": 70815,
+    },
+    {
+      "jeloltek": {
+        "egyeb": [
+          "GÁL JÓZSEF",
+        ],
+        "ellenzeki_osszefogas": [
+          "SZARKÁNDI LAJOSNÉ",
+        ],
+        "fidesz": [
+          "NAGY CSABA",
+        ],
+        "fuggetlen": [
+          "KÁRPÁTI ZOLTÁN",
+        ],
+        "megoldas_mozgalom": [
+          "VIG AURÉL BENCE",
+        ],
+        "mi_hazank": [
+          "ÁCS JÓZSEF",
+        ],
+        "mkkp": [
+          "MOLNÁR-FULMER GERGELY",
+        ],
+      },
+      "megye": "BARANYA",
+      "megyekod": 2,
+      "oevk": 4,
+      "partok": {
+        "egyeb": 0,
+        "ellenzeki_osszefogas": 13835,
+        "fidesz": 29403,
+        "fuggetlen": 760,
+        "megoldas_mozgalom": 352,
+        "mi_hazank": 2575,
+        "mkkp": 1215,
+      },
+      "telepules": "Szigetvár",
+      "valasztopolgar": 75794,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "SZŐKÉNÉ KOPPING RITA",
+        ],
+        "fidesz": [
+          "DR. SALACZ LÁSZLÓ",
+        ],
+        "mi_hazank": [
+          "ERŐS ERZSÉBET",
+        ],
+        "mkkp": [
+          "KORDIK SZABOLCS",
+        ],
+        "normalis_elet": [
+          "ÁBRAHÁM ATTILÁNÉ",
+        ],
+      },
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 13464,
+        "fidesz": 27420,
+        "mi_hazank": 3425,
+        "mkkp": 1691,
+        "normalis_elet": 462,
+      },
+      "telepules": "Kecskemét",
+      "valasztopolgar": 69101,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "BODROZSÁN ALEXANDRA",
+        ],
+        "fidesz": [
+          "DR. SZEBERÉNYI GYULA TAMÁS",
+        ],
+        "mi_hazank": [
+          "FARAGÓ DÁNIEL",
+        ],
+        "mkkp": [
+          "KARIKÓ ÁGNES",
+        ],
+        "normalis_elet": [
+          "SÁNTA LÁSZLÓ",
+        ],
+      },
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 17208,
+        "fidesz": 26606,
+        "mi_hazank": 3512,
+        "mkkp": 2274,
+        "normalis_elet": 597,
+      },
+      "telepules": "Kecskemét",
+      "valasztopolgar": 71933,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. MAGÓNÉ TÓTH GYÖNGYI MÁRIA",
+        ],
+        "fidesz": [
+          "FONT SÁNDOR",
+        ],
+        "megoldas_mozgalom": [
+          "DR. KUDRON-TONIGOLD NÁNDOR",
+        ],
+        "mi_hazank": [
+          "SZABÓ PATRIK",
+        ],
+        "normalis_elet": [
+          "TARA LAJOS",
+        ],
+      },
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 13464,
+        "fidesz": 26592,
+        "megoldas_mozgalom": 1311,
+        "mi_hazank": 2778,
+        "normalis_elet": 395,
+      },
+      "telepules": "Kalocsa",
+      "valasztopolgar": 65242,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "KIS-SZENICZEY KÁLMÁN",
+        ],
+        "fidesz": [
+          "LEZSÁK SÁNDOR",
+        ],
+        "megoldas_mozgalom": [
+          "KONCZ DÓRA",
+        ],
+        "mi_hazank": [
+          "BALDE GYULA",
+        ],
+        "mkkp": [
+          "FARKAS BENCE",
+        ],
+      },
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 11727,
+        "fidesz": 29835,
+        "megoldas_mozgalom": 864,
+        "mi_hazank": 3427,
+        "mkkp": 1529,
+      },
+      "telepules": "Kiskunfélegyháza",
+      "valasztopolgar": 71615,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "MOLNÁR LÁSZLÓ",
+        ],
+        "fidesz": [
+          "BÁNYAI GÁBOR",
+        ],
+        "megoldas_mozgalom": [
+          "FEHÉRVÁRI DÓRA",
+        ],
+        "mi_hazank": [
+          "SZABADI ISTVÁN",
+        ],
+      },
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 12218,
+        "fidesz": 25763,
+        "megoldas_mozgalom": 641,
+        "mi_hazank": 4205,
+      },
+      "telepules": "Kiskunhalas",
+      "valasztopolgar": 68267,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "KISS LÁSZLÓ",
+        ],
+        "fidesz": [
+          "ZSIGÓ RÓBERT",
+        ],
+        "megoldas_mozgalom": [
+          "ALMÁSI TERÉZIA",
+        ],
+        "mi_hazank": [
+          "ÉBERLING BALÁZS",
+        ],
+        "mkkp": [
+          "GARAMI ARTÚR",
+        ],
+      },
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 13697,
+        "fidesz": 23976,
+        "megoldas_mozgalom": 354,
+        "mi_hazank": 3017,
+        "mkkp": 827,
+      },
+      "telepules": "Baja",
+      "valasztopolgar": 64619,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "STUMMER JÁNOS",
+        ],
+        "fidesz": [
+          "HERCZEG TAMÁS",
+        ],
+        "fuggetlen": [
+          "CSURÁR IBOLYA",
+          "FARAGÓ GERGELY",
+          "FARAGÓ ANETT",
+          "FARAGÓ LAJOS GERGELY",
+          "FARAGÓ BETTI",
+        ],
+        "megoldas_mozgalom": [
+          "SZEGEDI ÉVA",
+        ],
+        "mi_hazank": [
+          "GYEBNÁR DÁVID",
+        ],
+        "mkkp": [
+          "DEBRECZENI GERGŐ",
+        ],
+        "normalis_elet": [
+          "SZEKERCZÉS ANDRÁS",
+        ],
+      },
+      "megye": "BÉKÉS",
+      "megyekod": 4,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 19019,
+        "fidesz": 22920,
+        "fuggetlen": 412,
+        "megoldas_mozgalom": 436,
+        "mi_hazank": 3167,
+        "mkkp": 1142,
+        "normalis_elet": 391,
+      },
+      "telepules": "Békéscsaba",
+      "valasztopolgar": 68522,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. KONDÉ GÁBOR",
+        ],
+        "fidesz": [
+          "DANKÓ BÉLA",
+        ],
+        "megoldas_mozgalom": [
+          "TAKÁCS ÁDÁM",
+        ],
+        "mi_hazank": [
+          "FÖLDESI MIHÁLY",
+        ],
+        "mkkp": [
+          "PAPP ÁKOS",
+        ],
+        "normalis_elet": [
+          "BÓDIZS ISTVÁN",
+        ],
+      },
+      "megye": "BÉKÉS",
+      "megyekod": 4,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 13086,
+        "fidesz": 25716,
+        "megoldas_mozgalom": 462,
+        "mi_hazank": 3873,
+        "mkkp": 1090,
+        "normalis_elet": 331,
+      },
+      "telepules": "Békés",
+      "valasztopolgar": 69176,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "LEEL-ŐSSY GÁBOR",
+        ],
+        "fidesz": [
+          "DR. KOVÁCS JÓZSEF",
+        ],
+        "megoldas_mozgalom": [
+          "DR. POMUCZNÉ NAGY ILDIKÓ ANNA",
+        ],
+        "mi_hazank": [
+          "VIDÓ ATTILA",
+        ],
+        "mkkp": [
+          "MOLNÁR CSANÁD",
+        ],
+        "munkaspart": [
+          "UJJ GYÖRGY IMRE",
+        ],
+        "normalis_elet": [
+          "BÓDIZS-DARVASI DZSENIFER",
+        ],
+      },
+      "megye": "BÉKÉS",
+      "megyekod": 4,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 14982,
+        "fidesz": 24623,
+        "megoldas_mozgalom": 541,
+        "mi_hazank": 2784,
+        "mkkp": 828,
+        "munkaspart": 163,
+        "normalis_elet": 236,
+      },
+      "telepules": "Gyula",
+      "valasztopolgar": 67685,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. SZABÓ ERVIN",
+        ],
+        "fidesz": [
+          "ERDŐS NORBERT",
+        ],
+        "fuggetlen": [
+          "BOROS CSABA",
+        ],
+        "megoldas_mozgalom": [
+          "SZABÓ GYÖRGY",
+        ],
+        "mi_hazank": [
+          "SCHULTZ GÁBOR",
+        ],
+        "mkkp": [
+          "BÓDAI DÁVID",
+        ],
+        "munkaspart": [
+          "GÁL FERENC",
+        ],
+        "normalis_elet": [
+          "HAVASI GYULA",
+        ],
+      },
+      "megye": "BÉKÉS",
+      "megyekod": 4,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 17821,
+        "fidesz": 22379,
+        "fuggetlen": 619,
+        "megoldas_mozgalom": 200,
+        "mi_hazank": 2631,
+        "mkkp": 915,
+        "munkaspart": 144,
+        "normalis_elet": 214,
+      },
+      "telepules": "Orosháza",
+      "valasztopolgar": 71541,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "SZILÁGYI SZABOLCS",
+        ],
+        "fidesz": [
+          "CSÖBÖR KATALIN",
+        ],
+        "megoldas_mozgalom": [
+          "HALMI BENCE ISTVÁN",
+        ],
+        "mi_hazank": [
+          "DUZSIK ISTVÁN",
+        ],
+        "mkkp": [
+          "PÁSTI GABRIELLA",
+        ],
+        "munkaspart": [
+          "KILIÁN BÉLA",
+        ],
+        "normalis_elet": [
+          "LOUKOTA ZOLTÁNNÉ",
+        ],
+      },
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 20442,
+        "fidesz": 22978,
+        "megoldas_mozgalom": 1016,
+        "mi_hazank": 3266,
+        "mkkp": 1289,
+        "munkaspart": 129,
+        "normalis_elet": 296,
+      },
+      "telepules": "Miskolc",
+      "valasztopolgar": 72579,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. VARGA LÁSZLÓ",
+        ],
+        "fidesz": [
+          "DR. KISS JÁNOS",
+        ],
+        "megoldas_mozgalom": [
+          "SIMKÓ ISTVÁN TAMÁS",
+        ],
+        "mi_hazank": [
+          "PAKUSZA ZOLTÁN",
+        ],
+        "mkkp": [
+          "KISS GÁBOR",
+        ],
+        "munkaspart": [
+          "FÜLÖP JÓZSEF ISTVÁNNÉ",
+        ],
+        "normalis_elet": [
+          "SZEKERES ANITA",
+        ],
+      },
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 20110,
+        "fidesz": 20602,
+        "megoldas_mozgalom": 551,
+        "mi_hazank": 3977,
+        "mkkp": 1278,
+        "munkaspart": 157,
+        "normalis_elet": 309,
+      },
+      "telepules": "Miskolc",
+      "valasztopolgar": 71302,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "KISS SÁNDOR",
+        ],
+        "fidesz": [
+          "RIZ GÁBOR",
+        ],
+        "fuggetlen": [
+          "VILCSEK ERNŐ",
+        ],
+        "megoldas_mozgalom": [
+          "LENKÓ ORSOLYA",
+        ],
+        "mi_hazank": [
+          "SZARVAS GÁBOR",
+        ],
+        "mkkp": [
+          "GYURGYÁK TAMÁS",
+        ],
+        "munkaspart": [
+          "PAP FERENC",
+        ],
+        "normalis_elet": [
+          "ZSIDEK ISTVÁN BENCE",
+        ],
+      },
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 10884,
+        "fidesz": 23686,
+        "fuggetlen": 2121,
+        "megoldas_mozgalom": 222,
+        "mi_hazank": 2389,
+        "mkkp": 548,
+        "munkaspart": 167,
+        "normalis_elet": 177,
+      },
+      "telepules": "Ózd",
+      "valasztopolgar": 70559,
+    },
+    {
+      "jeloltek": {
+        "egyeb": [
+          "KÓTAI GYULA",
+          "SZÁNTÓ SZABOLCS",
+        ],
+        "ellenzeki_osszefogas": [
+          "ÜVEGES GÁBOR",
+        ],
+        "fidesz": [
+          "DEMETER ZOLTÁN",
+        ],
+        "megoldas_mozgalom": [
+          "ENDRE LÁSZLÓ ANDRÁS",
+        ],
+        "mi_hazank": [
+          "DR. FISZTER ZSUZSANNA",
+        ],
+        "mkkp": [
+          "GALÁN MÁTÉ",
+        ],
+        "munkaspart": [
+          "MENYHÉRT ROLAND",
+        ],
+        "normalis_elet": [
+          "PETŐ KRISZTIÁN",
+        ],
+      },
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 4,
+      "partok": {
+        "egyeb": 277,
+        "ellenzeki_osszefogas": 15648,
+        "fidesz": 24636,
+        "megoldas_mozgalom": 256,
+        "mi_hazank": 3276,
+        "mkkp": 856,
+        "munkaspart": 92,
+        "normalis_elet": 252,
+      },
+      "telepules": "Kazincbarcika",
+      "valasztopolgar": 74214,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "ERDEI SÁNDOR ZSOLT",
+        ],
+        "fidesz": [
+          "DR. HÖRCSIK RICHÁRD",
+        ],
+        "fuggetlen": [
+          "BALOGH RÓBERT",
+          "STEFÁN GÁBOR",
+        ],
+        "megoldas_mozgalom": [
+          "ORNYIK RÓBERT",
+        ],
+        "mi_hazank": [
+          "PASZTORNICZKY ISTVÁN",
+        ],
+        "mkkp": [
+          "VINCZE TAMÁS",
+        ],
+        "munkaspart": [
+          "GLONCI BÉLA",
+        ],
+        "normalis_elet": [
+          "VARGA ZOLTÁN",
+        ],
+      },
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 13526,
+        "fidesz": 27335,
+        "fuggetlen": 349,
+        "megoldas_mozgalom": 257,
+        "mi_hazank": 2614,
+        "mkkp": 736,
+        "munkaspart": 83,
+        "normalis_elet": 206,
+      },
+      "telepules": "Sátoraljaújhely",
+      "valasztopolgar": 73338,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "JÉZSÓ GÁBOR",
+        ],
+        "fidesz": [
+          "DR. KONCZ ZSÓFIA",
+        ],
+        "fuggetlen": [
+          "MACSKÁS JÓZSEF",
+        ],
+        "megoldas_mozgalom": [
+          "VESZPRÉMI ÁDÁM",
+        ],
+        "munkaspart": [
+          "PAPP GYÖRGY",
+        ],
+        "normalis_elet": [
+          "MOLNÁR SÁNDOR",
+        ],
+      },
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 18618,
+        "fidesz": 29737,
+        "fuggetlen": 732,
+        "megoldas_mozgalom": 558,
+        "munkaspart": 237,
+        "normalis_elet": 523,
+      },
+      "telepules": "Tiszaújváros",
+      "valasztopolgar": 76032,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "SERMER ÁDÁM",
+        ],
+        "fidesz": [
+          "TÁLLAI ANDRÁS",
+        ],
+        "fuggetlen": [
+          "NÓTÁR ZOLTÁN",
+          "NÓTÁR BALÁZS MÁTÉ",
+          "FARKAS ÉVA",
+        ],
+        "megoldas_mozgalom": [
+          "KERTÉSZ GYULA",
+        ],
+        "mi_hazank": [
+          "SZAJLAI JÁNOS",
+        ],
+        "mkkp": [
+          "BLAU SÁNDOR",
+        ],
+        "munkaspart": [
+          "KÓRÓDI PÉTER",
+        ],
+        "normalis_elet": [
+          "KOVÁCS LÁSZLÓ",
+        ],
+      },
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 7,
+      "partok": {
+        "ellenzeki_osszefogas": 13343,
+        "fidesz": 29907,
+        "fuggetlen": 497,
+        "megoldas_mozgalom": 592,
+        "mi_hazank": 3721,
+        "mkkp": 1000,
+        "munkaspart": 103,
+        "normalis_elet": 335,
+      },
+      "telepules": "Mezőkövesd",
+      "valasztopolgar": 75515,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "SZABÓ SÁNDOR",
+        ],
+        "fidesz": [
+          "BARTÓK CSABA",
+        ],
+        "fuggetlen": [
+          "DR. SZABÓ BÁLINT",
+        ],
+        "megoldas_mozgalom": [
+          "VESZELINOV ANNAMÁRIA",
+        ],
+        "mi_hazank": [
+          "LÉKÓ JULIANNA",
+        ],
+        "mkkp": [
+          "NAGY FERENC",
+        ],
+        "normalis_elet": [
+          "BUDAI GABRIELLA ÁGNES",
+        ],
+      },
+      "megye": "CSONGRÁD-CSANÁD",
+      "megyekod": 6,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 27443,
+        "fidesz": 20159,
+        "fuggetlen": 1123,
+        "megoldas_mozgalom": 1006,
+        "mi_hazank": 3162,
+        "mkkp": 2163,
+        "normalis_elet": 376,
+      },
+      "telepules": "Szeged",
+      "valasztopolgar": 80527,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "MIHÁLIK EDVIN",
+        ],
+        "fidesz": [
+          "MIHÁLFFY BÉLA",
+        ],
+        "megoldas_mozgalom": [
+          "GONDA BENJAMIN NORBERT",
+        ],
+        "mi_hazank": [
+          "TOROCZKAI LÁSZLÓ",
+        ],
+        "mkkp": [
+          "TÓTH-BENEDEK CSANÁD",
+        ],
+        "normalis_elet": [
+          "LÉVAINÉ DR. KOVÁCS MARIAN",
+        ],
+      },
+      "megye": "CSONGRÁD-CSANÁD",
+      "megyekod": 6,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 24443,
+        "fidesz": 27516,
+        "megoldas_mozgalom": 734,
+        "mi_hazank": 5768,
+        "mkkp": 1845,
+        "normalis_elet": 453,
+      },
+      "telepules": "Szeged",
+      "valasztopolgar": 86558,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "SZŰCS ILDIKÓ",
+        ],
+        "fidesz": [
+          "FARKAS SÁNDOR",
+        ],
+        "fuggetlen": [
+          "KÖRÖNDI MÁTÉ",
+        ],
+        "megoldas_mozgalom": [
+          "ÜVEGES HAJNALKA",
+        ],
+        "mi_hazank": [
+          "LACZKÓ ZSOLT",
+        ],
+      },
+      "megye": "CSONGRÁD-CSANÁD",
+      "megyekod": 6,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 16947,
+        "fidesz": 29582,
+        "fuggetlen": 1443,
+        "megoldas_mozgalom": 755,
+        "mi_hazank": 5313,
+      },
+      "telepules": "Szentes",
+      "valasztopolgar": 80170,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. MÁRKI-ZAY PÉTER",
+        ],
+        "fidesz": [
+          "LÁZÁR JÁNOS",
+        ],
+        "megoldas_mozgalom": [
+          "SZABÓ ZOLTÁN",
+        ],
+        "mi_hazank": [
+          "VERES CSABA LEVENTE",
+        ],
+        "mkkp": [
+          "KIS JÓZSEF",
+        ],
+        "munkaspart": [
+          "KOVÁCS ISTVÁN",
+        ],
+      },
+      "megye": "CSONGRÁD-CSANÁD",
+      "megyekod": 6,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 22328,
+        "fidesz": 28753,
+        "megoldas_mozgalom": 463,
+        "mi_hazank": 2938,
+        "mkkp": 944,
+        "munkaspart": 119,
+      },
+      "telepules": "Hódmezővásárhely",
+      "valasztopolgar": 77415,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. MÁRTON ROLAND",
+        ],
+        "fidesz": [
+          "VARGHA TAMÁS",
+        ],
+        "megoldas_mozgalom": [
+          "BALOGH BENEDEK",
+        ],
+        "mi_hazank": [
+          "VÉGH ANNAMÁRIA",
+        ],
+        "mkkp": [
+          "FENEKES ROLAND",
+        ],
+        "normalis_elet": [
+          "GÖDE IMRE",
+        ],
+      },
+      "megye": "FEJÉR",
+      "megyekod": 7,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 18994,
+        "fidesz": 21546,
+        "megoldas_mozgalom": 591,
+        "mi_hazank": 2337,
+        "mkkp": 1637,
+        "normalis_elet": 319,
+      },
+      "telepules": "Székesfehérvár",
+      "valasztopolgar": 60023,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "FAZAKAS ATTILA",
+        ],
+        "fidesz": [
+          "TÖRŐ GÁBOR",
+        ],
+        "megoldas_mozgalom": [
+          "HUSZTI MÁRIA ROZÁLIA",
+        ],
+        "mi_hazank": [
+          "SCHMIDT ROLAND",
+        ],
+        "mkkp": [
+          "DR. VARGA ESZTER",
+        ],
+        "munkaspart": [
+          "VERES PÉTER",
+        ],
+        "normalis_elet": [
+          "FOGARASI MÁRTA",
+        ],
+      },
+      "megye": "FEJÉR",
+      "megyekod": 7,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 15219,
+        "fidesz": 28380,
+        "megoldas_mozgalom": 449,
+        "mi_hazank": 4153,
+        "mkkp": 1860,
+        "munkaspart": 116,
+        "normalis_elet": 489,
+      },
+      "telepules": "Székesfehérvár",
+      "valasztopolgar": 70183,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "BALÁZS PÉTER",
+        ],
+        "fidesz": [
+          "TESSELY ZOLTÁN",
+        ],
+        "megoldas_mozgalom": [
+          "KÖNYVES TAMÁS",
+        ],
+        "mi_hazank": [
+          "HEGEDÜS PÁL",
+        ],
+        "mkkp": [
+          "MÉSZÁROS LÁSZLÓ",
+        ],
+        "munkaspart": [
+          "FLÉGER ISTVÁN TAMÁS",
+        ],
+      },
+      "megye": "FEJÉR",
+      "megyekod": 7,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 18092,
+        "fidesz": 32520,
+        "megoldas_mozgalom": 854,
+        "mi_hazank": 3168,
+        "mkkp": 1944,
+        "munkaspart": 137,
+      },
+      "telepules": "Bicske",
+      "valasztopolgar": 76732,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "KÁLLÓ GERGELY",
+        ],
+        "fidesz": [
+          "DR. MÉSZÁROS LAJOS",
+        ],
+        "megoldas_mozgalom": [
+          "HERMANN HENRIK",
+        ],
+        "mi_hazank": [
+          "BADÓ PÉTER",
+        ],
+        "mkkp": [
+          "POZSGAI ANITA",
+        ],
+        "munkaspart": [
+          "FEHÉRVÁRI ZSOLT ISTVÁN",
+        ],
+        "normalis_elet": [
+          "KOHL JÁNOS",
+        ],
+      },
+      "megye": "FEJÉR",
+      "megyekod": 7,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 19509,
+        "fidesz": 20562,
+        "megoldas_mozgalom": 669,
+        "mi_hazank": 2219,
+        "mkkp": 1194,
+        "munkaspart": 97,
+        "normalis_elet": 286,
+      },
+      "telepules": "Dunaújváros",
+      "valasztopolgar": 65896,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "KERTÉSZ ÉVA",
+        ],
+        "fidesz": [
+          "VARGA GÁBOR",
+        ],
+        "megoldas_mozgalom": [
+          "LAKATOS KRISZTIÁN",
+        ],
+        "mi_hazank": [
+          "GIEBER LAJOS",
+        ],
+        "mkkp": [
+          "SPALA GÁBOR",
+        ],
+        "normalis_elet": [
+          "DR. KOVÁCS JÁNOS FERENC",
+        ],
+      },
+      "megye": "FEJÉR",
+      "megyekod": 7,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 10441,
+        "fidesz": 27629,
+        "megoldas_mozgalom": 289,
+        "mi_hazank": 3019,
+        "mkkp": 969,
+        "normalis_elet": 457,
+      },
+      "telepules": "Sárbogárd",
+      "valasztopolgar": 67210,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "JANCSÓ ZITA",
+        ],
+        "fidesz": [
+          "SIMON RÓBERT BALÁZS",
+        ],
+        "megoldas_mozgalom": [
+          "DR. SZILÁGYI NORBERT",
+        ],
+        "mi_hazank": [
+          "BÁLINT CSABA",
+        ],
+        "mkkp": [
+          "KOVÁCS BALÁZS",
+        ],
+      },
+      "megye": "GYŐR-MOSON-SOPRON",
+      "megyekod": 8,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 18356,
+        "fidesz": 24182,
+        "megoldas_mozgalom": 1079,
+        "mi_hazank": 2631,
+        "mkkp": 1692,
+      },
+      "telepules": "Győr",
+      "valasztopolgar": 66579,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. GASZTONYI LÁSZLÓ",
+        ],
+        "fidesz": [
+          "KARA ÁKOS",
+        ],
+        "megoldas_mozgalom": [
+          "SZEMES NORBERT",
+        ],
+        "mi_hazank": [
+          "SZABÓ RÓBERT",
+        ],
+        "normalis_elet": [
+          "SZÖLLŐSI SÁNDOR",
+        ],
+      },
+      "megye": "GYŐR-MOSON-SOPRON",
+      "megyekod": 8,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 16517,
+        "fidesz": 31661,
+        "megoldas_mozgalom": 861,
+        "mi_hazank": 3214,
+        "normalis_elet": 402,
+      },
+      "telepules": "Győr",
+      "valasztopolgar": 73057,
+    },
+    {
+      "jeloltek": {
+        "egyeb": [
+          "SZABADAI VIKTOR",
+        ],
+        "ellenzeki_osszefogas": [
+          "KOVÁCSNÉ VARGA ILDIKÓ",
+        ],
+        "fidesz": [
+          "GYOPÁROS ALPÁR",
+        ],
+        "megoldas_mozgalom": [
+          "PÉRCSI DONÁT TAMÁS",
+        ],
+        "mi_hazank": [
+          "FERENCZ GERGŐ",
+        ],
+      },
+      "megye": "GYŐR-MOSON-SOPRON",
+      "megyekod": 8,
+      "oevk": 3,
+      "partok": {
+        "egyeb": 152,
+        "ellenzeki_osszefogas": 10592,
+        "fidesz": 35119,
+        "megoldas_mozgalom": 650,
+        "mi_hazank": 2795,
+      },
+      "telepules": "Csorna",
+      "valasztopolgar": 66713,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. BRENNER KOLOMAN",
+        ],
+        "fidesz": [
+          "BARCZA ATTILA",
+        ],
+        "megoldas_mozgalom": [
+          "SALA ZOLTÁN",
+        ],
+        "mi_hazank": [
+          "HORVÁTH GÁBOR",
+        ],
+      },
+      "megye": "GYŐR-MOSON-SOPRON",
+      "megyekod": 8,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 18786,
+        "fidesz": 32394,
+        "megoldas_mozgalom": 1190,
+        "mi_hazank": 4112,
+      },
+      "telepules": "Sopron",
+      "valasztopolgar": 75464,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "MAGYAR ZOLTÁN",
+        ],
+        "fidesz": [
+          "DR. NAGY ISTVÁN",
+        ],
+        "megoldas_mozgalom": [
+          "MÁCSIK JÁNOS",
+        ],
+        "mi_hazank": [
+          "TAKÁCS MIKLÓS FERENC",
+        ],
+        "mkkp": [
+          "FÖLDESI ANDRÁS",
+        ],
+        "normalis_elet": [
+          "VARGA RENÁTA",
+        ],
+      },
+      "megye": "GYŐR-MOSON-SOPRON",
+      "megyekod": 8,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 16746,
+        "fidesz": 32549,
+        "megoldas_mozgalom": 729,
+        "mi_hazank": 2807,
+        "mkkp": 1663,
+        "normalis_elet": 463,
+      },
+      "telepules": "Mosonmagyaróvár",
+      "valasztopolgar": 77129,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "VARGA ZOLTÁN",
+        ],
+        "fidesz": [
+          "KÓSA LAJOS",
+        ],
+        "megoldas_mozgalom": [
+          "HERMANN ZOLTÁN",
+        ],
+        "mi_hazank": [
+          "SALÁNKINÉ KUTI ZSUZSANNA",
+        ],
+        "mkkp": [
+          "PETŐ CSABA",
+        ],
+        "munkaspart": [
+          "NAGYNÉ NÉMETH MARIETTA",
+        ],
+      },
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 18994,
+        "fidesz": 23385,
+        "megoldas_mozgalom": 678,
+        "mi_hazank": 2912,
+        "mkkp": 1681,
+        "munkaspart": 128,
+      },
+      "telepules": "Debrecen",
+      "valasztopolgar": 66301,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "MÁNDI LÁSZLÓ",
+        ],
+        "fidesz": [
+          "DR. PÓSÁN LÁSZLÓ",
+        ],
+        "munkaspart": [
+          "HUSZTI ANDREA",
+        ],
+        "normalis_elet": [
+          "MORÁN-MIHUCZA SZILVIA",
+        ],
+      },
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 19560,
+        "fidesz": 27111,
+        "munkaspart": 579,
+        "normalis_elet": 1498,
+      },
+      "telepules": "Debrecen",
+      "valasztopolgar": 72198,
+    },
+    {
+      "jeloltek": {
+        "egyeb": [
+          "RÓZSÁS VIOLA JULIANNA",
+        ],
+        "ellenzeki_osszefogas": [
+          "SALAMON GERGŐ",
+        ],
+        "fidesz": [
+          "TASÓ LÁSZLÓ",
+        ],
+        "megoldas_mozgalom": [
+          "HORNYÁK ATTILA",
+        ],
+        "mi_hazank": [
+          "HUNYADI MÁTÉ",
+        ],
+        "munkaspart": [
+          "KÁPOSZNYÁK ISTVÁN",
+        ],
+        "normalis_elet": [
+          "DOBRÁNSZKI LÁSZLÓ",
+        ],
+      },
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 3,
+      "partok": {
+        "egyeb": 177,
+        "ellenzeki_osszefogas": 13627,
+        "fidesz": 31266,
+        "megoldas_mozgalom": 602,
+        "mi_hazank": 3075,
+        "munkaspart": 128,
+        "normalis_elet": 358,
+      },
+      "telepules": "Debrecen",
+      "valasztopolgar": 78335,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "SZÁNTAI LÁSZLÓ",
+        ],
+        "fidesz": [
+          "DR. VITÁNYI ISTVÁN",
+        ],
+        "fuggetlen": [
+          "MEZEI JÓZSEF",
+        ],
+        "megoldas_mozgalom": [
+          "ZELENÁK ANDRÁS",
+        ],
+        "mi_hazank": [
+          "SOMI LAJOS",
+        ],
+        "munkaspart": [
+          "KÓTI LÁSZLÓ",
+        ],
+        "normalis_elet": [
+          "FARKAS ANTAL",
+        ],
+      },
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 9483,
+        "fidesz": 25407,
+        "fuggetlen": 3399,
+        "megoldas_mozgalom": 283,
+        "mi_hazank": 2270,
+        "munkaspart": 92,
+        "normalis_elet": 272,
+      },
+      "telepules": "Berettyóújfalu",
+      "valasztopolgar": 67955,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "KISS LÁSZLÓ",
+        ],
+        "fidesz": [
+          "BODÓ SÁNDOR",
+        ],
+        "megoldas_mozgalom": [
+          "TÓTH FERENCZ",
+        ],
+        "mi_hazank": [
+          "DR. TÓTH SÁNDOR",
+        ],
+        "munkaspart": [
+          "SIPOS SÁNDOR",
+        ],
+        "normalis_elet": [
+          "CZIFRA LEVENTE ISTVÁN",
+        ],
+      },
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 13529,
+        "fidesz": 26982,
+        "megoldas_mozgalom": 410,
+        "mi_hazank": 3159,
+        "munkaspart": 102,
+        "normalis_elet": 332,
+      },
+      "telepules": "Hajdúszoboszló",
+      "valasztopolgar": 69610,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "HEGEDÜS PÉTER",
+        ],
+        "fidesz": [
+          "DR. TIBA ISTVÁN",
+        ],
+        "megoldas_mozgalom": [
+          "ANDORKÓ LÁSZLÓ",
+        ],
+        "mi_hazank": [
+          "NAGY ZOLTÁN",
+        ],
+        "munkaspart": [
+          "DOBÁNY LÁSZLÓ",
+        ],
+        "normalis_elet": [
+          "VARGÁNÉ FÜLÖP ERZSÉBET",
+        ],
+      },
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 13929,
+        "fidesz": 26062,
+        "megoldas_mozgalom": 641,
+        "mi_hazank": 3504,
+        "munkaspart": 187,
+        "normalis_elet": 468,
+      },
+      "telepules": "Hajdúböszörmény",
+      "valasztopolgar": 69635,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "BERECZ MÁTYÁS",
+        ],
+        "fidesz": [
+          "DR. PAJTÓK GÁBOR",
+        ],
+        "megoldas_mozgalom": [
+          "KACSÓ SÁNDOR BÉLA",
+        ],
+        "mi_hazank": [
+          "DR. PÁPAI ÁKOS",
+        ],
+        "mkkp": [
+          "VASS VERONIKA",
+        ],
+        "normalis_elet": [
+          "NAGY ÁGNES",
+        ],
+      },
+      "megye": "HEVES",
+      "megyekod": 10,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 20772,
+        "fidesz": 29703,
+        "megoldas_mozgalom": 634,
+        "mi_hazank": 3945,
+        "mkkp": 1400,
+        "normalis_elet": 454,
+      },
+      "telepules": "Eger",
+      "valasztopolgar": 81233,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DUDÁS RÓBERT",
+        ],
+        "fidesz": [
+          "HORVÁTH LÁSZLÓ",
+        ],
+        "fuggetlen": [
+          "ÉRSEK ZSOLT",
+        ],
+        "megoldas_mozgalom": [
+          "BARNA RICHÁRD",
+        ],
+        "mi_hazank": [
+          "HAJDARA ROLAND",
+        ],
+      },
+      "megye": "HEVES",
+      "megyekod": 10,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 19148,
+        "fidesz": 28878,
+        "fuggetlen": 915,
+        "megoldas_mozgalom": 505,
+        "mi_hazank": 3141,
+      },
+      "telepules": "Gyöngyös",
+      "valasztopolgar": 76849,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "KORÓZS LAJOS",
+        ],
+        "fidesz": [
+          "SZABÓ ZSOLT",
+        ],
+        "megoldas_mozgalom": [
+          "ANTAL GERGŐ",
+        ],
+        "mi_hazank": [
+          "GONDA ÁDÁM",
+        ],
+        "munkaspart": [
+          "KOVÁCS ISTVÁNNÉ",
+        ],
+      },
+      "megye": "HEVES",
+      "megyekod": 10,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 15450,
+        "fidesz": 30863,
+        "megoldas_mozgalom": 952,
+        "mi_hazank": 4746,
+        "munkaspart": 248,
+      },
+      "telepules": "Hatvan",
+      "valasztopolgar": 79655,
+    },
+    {
+      "jeloltek": {
+        "egyeb": [
+          "DR. CSIKÓS ATTILA",
+        ],
+        "ellenzeki_osszefogas": [
+          "SZIRÁKI PÁL",
+        ],
+        "fidesz": [
+          "DR. KÁLLAI MÁRIA",
+        ],
+        "megoldas_mozgalom": [
+          "KORPAI ERIKA",
+        ],
+        "mi_hazank": [
+          "VINCZE BÉLA",
+        ],
+        "mkkp": [
+          "VICZÁN PÉTER",
+        ],
+        "munkaspart": [
+          "NÉMETH ATTILA",
+        ],
+        "normalis_elet": [
+          "VARGA MÓNIKA",
+        ],
+      },
+      "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+      "megyekod": 11,
+      "oevk": 1,
+      "partok": {
+        "egyeb": 521,
+        "ellenzeki_osszefogas": 20864,
+        "fidesz": 24972,
+        "megoldas_mozgalom": 650,
+        "mi_hazank": 3921,
+        "mkkp": 1545,
+        "munkaspart": 296,
+        "normalis_elet": 460,
+      },
+      "telepules": "Szolnok",
+      "valasztopolgar": 77426,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. KERTÉSZ OTTÓ",
+        ],
+        "fidesz": [
+          "PÓCS JÁNOS",
+        ],
+        "megoldas_mozgalom": [
+          "OSZVALD NÁNDOR",
+        ],
+        "mi_hazank": [
+          "DOBRÁN GYULA",
+        ],
+        "munkaspart": [
+          "BALOGH IMRÉNÉ",
+        ],
+        "normalis_elet": [
+          "MAGDA GYÖRGY",
+        ],
+      },
+      "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+      "megyekod": 11,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 15915,
+        "fidesz": 28215,
+        "megoldas_mozgalom": 551,
+        "mi_hazank": 2116,
+        "munkaspart": 111,
+        "normalis_elet": 265,
+      },
+      "telepules": "Jászberény",
+      "valasztopolgar": 70852,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. LUKÁCS LÁSZLÓ GYÖRGY",
+        ],
+        "fidesz": [
+          "F. KOVÁCS SÁNDOR",
+        ],
+        "megoldas_mozgalom": [
+          "HALMI BÁLINT FERENC",
+        ],
+        "mi_hazank": [
+          "SOMLAY RÓBERT",
+        ],
+        "munkaspart": [
+          "NAGY JÓZSEF",
+        ],
+      },
+      "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+      "megyekod": 11,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 13614,
+        "fidesz": 29923,
+        "megoldas_mozgalom": 468,
+        "mi_hazank": 2426,
+        "munkaspart": 221,
+      },
+      "telepules": "Karcag",
+      "valasztopolgar": 75111,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "CSÁNYI TAMÁS",
+        ],
+        "fidesz": [
+          "HERCZEG ZSOLT",
+        ],
+        "mi_hazank": [
+          "SZABÓ BETTINA",
+        ],
+        "mkkp": [
+          "FARKAS ATTILA",
+        ],
+        "munkaspart": [
+          "BENCSIK MIHÁLY",
+        ],
+        "normalis_elet": [
+          "SZEGÉNY JÁNOS",
+        ],
+      },
+      "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+      "megyekod": 11,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 17047,
+        "fidesz": 23667,
+        "mi_hazank": 3756,
+        "mkkp": 936,
+        "munkaspart": 148,
+        "normalis_elet": 399,
+      },
+      "telepules": "Törökszentmiklós",
+      "valasztopolgar": 73724,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. KONCZER ERIK",
+        ],
+        "fidesz": [
+          "BENCSIK JÁNOS",
+        ],
+        "megoldas_mozgalom": [
+          "DR. POPOVICS JUDIT",
+        ],
+        "mi_hazank": [
+          "BODA BÁNK",
+        ],
+        "mkkp": [
+          "BÖRZSEI DÁVID",
+        ],
+        "munkaspart": [
+          "JÁNOKI TIBOR",
+        ],
+        "normalis_elet": [
+          "KEINDL TIBOR",
+        ],
+      },
+      "megye": "KOMÁROM-ESZTERGOM",
+      "megyekod": 12,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 22417,
+        "fidesz": 26240,
+        "megoldas_mozgalom": 891,
+        "mi_hazank": 2856,
+        "mkkp": 1429,
+        "munkaspart": 252,
+        "normalis_elet": 372,
+      },
+      "telepules": "Tatabánya",
+      "valasztopolgar": 78608,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "NUNKOVICS TIBOR",
+        ],
+        "fidesz": [
+          "ERŐS GÁBOR",
+        ],
+        "fuggetlen": [
+          "DEÁK FERENC",
+        ],
+        "mi_hazank": [
+          "LANTOS JÁNOS",
+        ],
+        "mkkp": [
+          "STIPITS ZOLTÁN",
+        ],
+        "normalis_elet": [
+          "GREINER TAMÁS",
+        ],
+      },
+      "megye": "KOMÁROM-ESZTERGOM",
+      "megyekod": 12,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 21587,
+        "fidesz": 27795,
+        "fuggetlen": 983,
+        "mi_hazank": 3047,
+        "mkkp": 1463,
+        "normalis_elet": 765,
+      },
+      "telepules": "Esztergom",
+      "valasztopolgar": 81769,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. NEMES ANDREA",
+        ],
+        "fidesz": [
+          "CZUNYINÉ DR. BERTALAN JUDIT",
+        ],
+        "megoldas_mozgalom": [
+          "FÜZI GÁBOR",
+        ],
+        "mi_hazank": [
+          "ÁBRAHÁM BARNABÁS",
+        ],
+        "mkkp": [
+          "GOMBOS MÁTÉ",
+        ],
+        "normalis_elet": [
+          "MATUS FERENC",
+        ],
+      },
+      "megye": "KOMÁROM-ESZTERGOM",
+      "megyekod": 12,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 18605,
+        "fidesz": 30965,
+        "megoldas_mozgalom": 1000,
+        "mi_hazank": 3728,
+        "mkkp": 1479,
+        "normalis_elet": 422,
+      },
+      "telepules": "Komárom",
+      "valasztopolgar": 82238,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "GODÓ BEATRIX",
+        ],
+        "fidesz": [
+          "BECSÓ ZSOLT",
+        ],
+        "megoldas_mozgalom": [
+          "KECSKÉS PÉTER",
+        ],
+        "mi_hazank": [
+          "DR. MUSZTÁCS LÁSZLÓ",
+        ],
+        "mkkp": [
+          "PAULÓ MIHÁLY TAMÁS",
+        ],
+        "munkaspart": [
+          "KRIZS NORBERT",
+        ],
+        "normalis_elet": [
+          "PINTÉR ZSOLT",
+        ],
+      },
+      "megye": "NÓGRÁD",
+      "megyekod": 13,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 17467,
+        "fidesz": 26023,
+        "megoldas_mozgalom": 403,
+        "mi_hazank": 2960,
+        "mkkp": 879,
+        "munkaspart": 241,
+        "normalis_elet": 350,
+      },
+      "telepules": "Salgótarján",
+      "valasztopolgar": 75257,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "GYENES SZILÁRD",
+        ],
+        "fidesz": [
+          "BALLA MIHÁLY",
+        ],
+        "megoldas_mozgalom": [
+          "SOPOTNIK LÁSZLÓ",
+        ],
+        "mi_hazank": [
+          "DÓCS DÁVID",
+        ],
+        "mkkp": [
+          "MÁRTON RENÁTA",
+        ],
+        "munkaspart": [
+          "DR. FRANKFURTER ZSUZSANNA",
+        ],
+        "normalis_elet": [
+          "DOMOKOS ZOLTÁN",
+        ],
+      },
+      "megye": "NÓGRÁD",
+      "megyekod": 13,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 12722,
+        "fidesz": 31921,
+        "megoldas_mozgalom": 471,
+        "mi_hazank": 6315,
+        "mkkp": 1097,
+        "munkaspart": 339,
+        "normalis_elet": 265,
+      },
+      "telepules": "Balassagyarmat",
+      "valasztopolgar": 78717,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. BŐSZ ANETT",
+        ],
+        "fidesz": [
+          "DR. ARADSZKI ANDRÁS",
+        ],
+        "fuggetlen": [
+          "DR. ASZTALOS ÉVA",
+        ],
+        "megoldas_mozgalom": [
+          "VÁRADI VALENTIN",
+        ],
+        "mi_hazank": [
+          "CSOTT KÁROLY",
+        ],
+        "mkkp": [
+          "IGNÁTH KITTI",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 28076,
+        "fidesz": 29597,
+        "fuggetlen": 1527,
+        "megoldas_mozgalom": 729,
+        "mi_hazank": 3220,
+        "mkkp": 2067,
+      },
+      "telepules": "Érd",
+      "valasztopolgar": 87054,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. SZÉL BERNADETT",
+        ],
+        "fidesz": [
+          "MENCZER TAMÁS",
+        ],
+        "megoldas_mozgalom": [
+          "DR. BOGÓ DÁNIEL LÁSZLÓ",
+        ],
+        "mi_hazank": [
+          "GYÖRGY JÓZSEF",
+        ],
+        "mkkp": [
+          "JAKAB EDINA",
+        ],
+        "normalis_elet": [
+          "KEREKES ERZSÉBET",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 33432,
+        "fidesz": 34810,
+        "megoldas_mozgalom": 779,
+        "mi_hazank": 2700,
+        "mkkp": 2399,
+        "normalis_elet": 302,
+      },
+      "telepules": "Budakeszi",
+      "valasztopolgar": 94355,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "BUZINKAY GYÖRGY",
+        ],
+        "fidesz": [
+          "DR. VITÁLYOS ESZTER",
+        ],
+        "megoldas_mozgalom": [
+          "POLOCSÁNYI BÉLA",
+        ],
+        "mi_hazank": [
+          "PÁL BÉLA",
+        ],
+        "mkkp": [
+          "KÖVESDI MIKLÓS",
+        ],
+        "munkaspart": [
+          "PÁLMAI FERENC",
+        ],
+        "normalis_elet": [
+          "TIHANYI CSABA",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 26540,
+        "fidesz": 36877,
+        "megoldas_mozgalom": 819,
+        "mi_hazank": 3051,
+        "mkkp": 3035,
+        "munkaspart": 284,
+        "normalis_elet": 391,
+      },
+      "telepules": "Szentendre",
+      "valasztopolgar": 92307,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "INOTAY GERGELY",
+        ],
+        "fidesz": [
+          "RÉTVÁRI BENCE",
+        ],
+        "megoldas_mozgalom": [
+          "MANTZOURAKIS SARANTIS",
+        ],
+        "mi_hazank": [
+          "DR. PÁLI JENŐ",
+        ],
+        "mkkp": [
+          "KORGA GERGELY",
+        ],
+        "munkaspart": [
+          "SIMON JÓZSEF FERENC",
+        ],
+        "normalis_elet": [
+          "PINTÉR LÁSZLÓ",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 18759,
+        "fidesz": 30747,
+        "megoldas_mozgalom": 426,
+        "mi_hazank": 3242,
+        "mkkp": 1783,
+        "munkaspart": 102,
+        "normalis_elet": 384,
+      },
+      "telepules": "Vác",
+      "valasztopolgar": 75140,
+    },
+    {
+      "jeloltek": {
+        "egyeb": [
+          "LŐRINCZ LÁSZLÓ",
+        ],
+        "ellenzeki_osszefogas": [
+          "DOROSZ DÁVID",
+        ],
+        "fidesz": [
+          "TUZSON BENCE",
+        ],
+        "megoldas_mozgalom": [
+          "KOVÁCS ROXÁNA",
+        ],
+        "mi_hazank": [
+          "KOVÁCS MÁTYÁS",
+        ],
+        "mkkp": [
+          "BÜRGER ZOLTÁN",
+        ],
+        "normalis_elet": [
+          "SZUCHÁNYI GÁBOR",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 5,
+      "partok": {
+        "egyeb": 624,
+        "ellenzeki_osszefogas": 31228,
+        "fidesz": 34390,
+        "megoldas_mozgalom": 1274,
+        "mi_hazank": 3499,
+        "mkkp": 2801,
+        "normalis_elet": 462,
+      },
+      "telepules": "Dunakeszi",
+      "valasztopolgar": 97639,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "HOHN KRISZTINA",
+        ],
+        "fidesz": [
+          "VÉCSEY LÁSZLÓ",
+        ],
+        "fuggetlen": [
+          "ANTAL TAMÁS",
+        ],
+        "megoldas_mozgalom": [
+          "KOPKA SÁNDOR ZOLTÁN",
+        ],
+        "mi_hazank": [
+          "HALÁSZ GÉZA",
+        ],
+        "mkkp": [
+          "BŐSZE GÁBOR",
+        ],
+        "normalis_elet": [
+          "SZIBILLA LÁSZLÓ",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 25826,
+        "fidesz": 33188,
+        "fuggetlen": 880,
+        "megoldas_mozgalom": 1178,
+        "mi_hazank": 3911,
+        "mkkp": 2290,
+        "normalis_elet": 385,
+      },
+      "telepules": "Gödöllő",
+      "valasztopolgar": 90850,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "FRICSOVSZKY-TÓTH PÉTER",
+        ],
+        "fidesz": [
+          "DR. SZŰCS LAJOS",
+        ],
+        "megoldas_mozgalom": [
+          "BALOGH ISTVÁN",
+        ],
+        "mi_hazank": [
+          "SZABÓNÉ PAPP KLÁRA",
+        ],
+        "mkkp": [
+          "IVÁN PETRA",
+        ],
+        "normalis_elet": [
+          "BOCZ DÁNIEL",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 7,
+      "partok": {
+        "ellenzeki_osszefogas": 23449,
+        "fidesz": 31623,
+        "megoldas_mozgalom": 1484,
+        "mi_hazank": 4219,
+        "mkkp": 2915,
+        "normalis_elet": 558,
+      },
+      "telepules": "Vecsés",
+      "valasztopolgar": 90638,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "JÓSZAI TEODÓRA",
+        ],
+        "fidesz": [
+          "BÓNA ZOLTÁN",
+        ],
+        "fuggetlen": [
+          "DOROGI GYULA",
+        ],
+        "megoldas_mozgalom": [
+          "KÁMÁNY JÁNOS KRISZTIÁN",
+        ],
+        "mi_hazank": [
+          "BOTLÓ KORNÉL LEVENTE",
+        ],
+        "mkkp": [
+          "ZSELI BERNADETT",
+        ],
+        "normalis_elet": [
+          "PROHÁSZKA GYÖRGY JÁNOS",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 8,
+      "partok": {
+        "ellenzeki_osszefogas": 27701,
+        "fidesz": 29584,
+        "fuggetlen": 751,
+        "megoldas_mozgalom": 806,
+        "mi_hazank": 3657,
+        "mkkp": 2070,
+        "normalis_elet": 373,
+      },
+      "telepules": "Szigetszentmiklós",
+      "valasztopolgar": 92212,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. SCHMUCK ERZSÉBET",
+        ],
+        "fidesz": [
+          "CZERVÁN GYÖRGY",
+        ],
+        "megoldas_mozgalom": [
+          "VÁRI ZOLTÁN ZSOLT",
+        ],
+        "mi_hazank": [
+          "DR. LÁSZLÓ PÉTER",
+        ],
+        "mkkp": [
+          "KISS KORNÉL",
+        ],
+        "normalis_elet": [
+          "BEZZEG BOGLÁRKA",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 9,
+      "partok": {
+        "ellenzeki_osszefogas": 14096,
+        "fidesz": 29632,
+        "megoldas_mozgalom": 589,
+        "mi_hazank": 3259,
+        "mkkp": 1236,
+        "normalis_elet": 397,
+      },
+      "telepules": "Nagykáta",
+      "valasztopolgar": 76839,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "SZABÓ REBEKA",
+        ],
+        "fidesz": [
+          "POGÁCSÁS TIBOR",
+        ],
+        "megoldas_mozgalom": [
+          "ZRUBKA ZITA",
+        ],
+        "mi_hazank": [
+          "LÁSZLÓ ATTILA",
+        ],
+        "mkkp": [
+          "KŐHEGYI RÓBERT",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 10,
+      "partok": {
+        "ellenzeki_osszefogas": 14797,
+        "fidesz": 30973,
+        "megoldas_mozgalom": 677,
+        "mi_hazank": 3901,
+        "mkkp": 1528,
+      },
+      "telepules": "Monor",
+      "valasztopolgar": 79235,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "JÁNOSI-LESI ÁGOTA",
+        ],
+        "fidesz": [
+          "PÁNCZÉL KÁROLY",
+        ],
+        "megoldas_mozgalom": [
+          "SZABÓ LÁSZLÓ",
+        ],
+        "mi_hazank": [
+          "BOBROVÁCZ ANTAL",
+        ],
+        "mkkp": [
+          "FERANCZ NORBERT",
+        ],
+        "munkaspart": [
+          "FEKETE LÁSZLÓ",
+        ],
+        "normalis_elet": [
+          "MIHÁLY DÁNIEL",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 11,
+      "partok": {
+        "ellenzeki_osszefogas": 19824,
+        "fidesz": 35513,
+        "megoldas_mozgalom": 885,
+        "mi_hazank": 3769,
+        "mkkp": 1807,
+        "munkaspart": 169,
+        "normalis_elet": 550,
+      },
+      "telepules": "Dabas",
+      "valasztopolgar": 89136,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "ZÁGRÁB NÁNDOR",
+        ],
+        "fidesz": [
+          "FÖLDI LÁSZLÓ",
+        ],
+        "megoldas_mozgalom": [
+          "PÁSZTOR ÉVA ILONA",
+        ],
+        "mi_hazank": [
+          "BARTHA BARNA",
+        ],
+        "mkkp": [
+          "KIS VIKTOR",
+        ],
+        "normalis_elet": [
+          "ANDRISKA ISTVÁN",
+        ],
+      },
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 12,
+      "partok": {
+        "ellenzeki_osszefogas": 13696,
+        "fidesz": 28244,
+        "megoldas_mozgalom": 506,
+        "mi_hazank": 3693,
+        "mkkp": 1239,
+        "normalis_elet": 406,
+      },
+      "telepules": "Cegléd",
+      "valasztopolgar": 74223,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. VARGA ISTVÁN",
+        ],
+        "fidesz": [
+          "GELENCSÉR ATTILA",
+        ],
+        "fuggetlen": [
+          "VARGA ISTVÁN",
+          "HORVÁTH ÁKOS",
+          "DR. NADRAI NORBERT JÓZSEF",
+        ],
+        "megoldas_mozgalom": [
+          "HAUSER GERGŐ",
+        ],
+        "mi_hazank": [
+          "KELEMEN CSABA",
+        ],
+        "mkkp": [
+          "TELEKI-MOLNÁR ZSÓFIA",
+        ],
+        "munkaspart": [
+          "VARGA TAMÁS",
+        ],
+      },
+      "megye": "SOMOGY",
+      "megyekod": 15,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 14670,
+        "fidesz": 20062,
+        "fuggetlen": 3048,
+        "megoldas_mozgalom": 755,
+        "mi_hazank": 2490,
+        "mkkp": 983,
+        "munkaspart": 110,
+      },
+      "telepules": "Kaposvár",
+      "valasztopolgar": 61327,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "ANDER BALÁZS",
+        ],
+        "fidesz": [
+          "SZÁSZFALVI LÁSZLÓ",
+        ],
+        "megoldas_mozgalom": [
+          "PALKÓ SÁNDOR",
+        ],
+        "mi_hazank": [
+          "HALÁSZNÉ HUNYADI GYÖNGYI",
+        ],
+      },
+      "megye": "SOMOGY",
+      "megyekod": 15,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 13855,
+        "fidesz": 21571,
+        "megoldas_mozgalom": 332,
+        "mi_hazank": 1525,
+      },
+      "telepules": "Barcs",
+      "valasztopolgar": 59317,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. STEINMETZ ÁDÁM",
+        ],
+        "fidesz": [
+          "MÓRING JÓZSEF ATTILA",
+        ],
+        "megoldas_mozgalom": [
+          "KAZAI CSABA",
+        ],
+        "mi_hazank": [
+          "JOZÓ TAMÁS",
+        ],
+      },
+      "megye": "SOMOGY",
+      "megyekod": 15,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 14776,
+        "fidesz": 24171,
+        "megoldas_mozgalom": 374,
+        "mi_hazank": 2408,
+      },
+      "telepules": "Marcali",
+      "valasztopolgar": 62285,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "POTOCSKÁNÉ KŐRÖSI ANITA",
+        ],
+        "fidesz": [
+          "WITZMANN MIHÁLY",
+        ],
+        "megoldas_mozgalom": [
+          "BURDA PATRIK",
+        ],
+        "munkaspart": [
+          "KNOCH LÁSZLÓ",
+        ],
+        "normalis_elet": [
+          "SÜMEGI RITA",
+        ],
+      },
+      "megye": "SOMOGY",
+      "megyekod": 15,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 16010,
+        "fidesz": 26834,
+        "megoldas_mozgalom": 835,
+        "munkaspart": 341,
+        "normalis_elet": 751,
+      },
+      "telepules": "Siófok",
+      "valasztopolgar": 64327,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "LENGYEL MÁTÉ",
+        ],
+        "fidesz": [
+          "DR. SZABÓ TÜNDE",
+        ],
+        "fuggetlen": [
+          "NAGY LÁSZLÓ",
+        ],
+        "megoldas_mozgalom": [
+          "DR. HELMECZY LÁSZLÓ",
+        ],
+        "mi_hazank": [
+          "DR. HORVÁTH ATTILA",
+        ],
+        "mkkp": [
+          "BALÁZS ZSOLT",
+        ],
+        "normalis_elet": [
+          "DR. GŐDÉNY GYÖRGY",
+        ],
+      },
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 21806,
+        "fidesz": 23254,
+        "fuggetlen": 1124,
+        "megoldas_mozgalom": 1023,
+        "mi_hazank": 2718,
+        "mkkp": 1075,
+        "normalis_elet": 772,
+      },
+      "telepules": "Nyíregyháza",
+      "valasztopolgar": 73713,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "ARANYOS GÁBOR",
+        ],
+        "fidesz": [
+          "DR. VINNAI GYŐZŐ",
+        ],
+        "fuggetlen": [
+          "KANALAS MELINDA",
+        ],
+        "megoldas_mozgalom": [
+          "KARDOS FERENC",
+        ],
+        "mi_hazank": [
+          "KOVÁCS KOPPÁNY ZOLTÁN",
+        ],
+        "normalis_elet": [
+          "GURCSÁK LÁSZLÓ",
+        ],
+      },
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 14759,
+        "fidesz": 26277,
+        "fuggetlen": 476,
+        "megoldas_mozgalom": 448,
+        "mi_hazank": 2823,
+        "normalis_elet": 417,
+      },
+      "telepules": "Nyíregyháza",
+      "valasztopolgar": 71410,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "TÓTH VIKTOR",
+        ],
+        "fidesz": [
+          "DR. SESZTÁK MIKLÓS",
+        ],
+        "megoldas_mozgalom": [
+          "DZSUBÁK BALÁZS",
+        ],
+        "mi_hazank": [
+          "PERDIÁK JÁNOS",
+        ],
+        "munkaspart": [
+          "TÓTH PÉTER PÁL",
+        ],
+        "normalis_elet": [
+          "GYÖRKÖSNÉ ORBÁN MÁRIA",
+        ],
+      },
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 12781,
+        "fidesz": 31946,
+        "megoldas_mozgalom": 770,
+        "mi_hazank": 2869,
+        "munkaspart": 197,
+        "normalis_elet": 351,
+      },
+      "telepules": "Kisvárda",
+      "valasztopolgar": 77500,
+    },
+    {
+      "jeloltek": {
+        "egyeb": [
+          "KIRÁLY SZILÁRD",
+        ],
+        "ellenzeki_osszefogas": [
+          "DR. SÁPI MÓNIKA",
+        ],
+        "fidesz": [
+          "DR. TILKI ATTILA",
+        ],
+        "megoldas_mozgalom": [
+          "KANTULY ZSOLT",
+        ],
+        "mi_hazank": [
+          "BERTICS MIHÁLY",
+        ],
+        "normalis_elet": [
+          "SZABÓ MÁRIA",
+        ],
+      },
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 4,
+      "partok": {
+        "egyeb": 172,
+        "ellenzeki_osszefogas": 11404,
+        "fidesz": 31523,
+        "megoldas_mozgalom": 302,
+        "mi_hazank": 2159,
+        "normalis_elet": 319,
+      },
+      "telepules": "Vásárosnamény",
+      "valasztopolgar": 72700,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "FÖLDI ISTVÁN",
+        ],
+        "fidesz": [
+          "KOVÁCS SÁNDOR",
+        ],
+        "megoldas_mozgalom": [
+          "ROLAND ALEX",
+        ],
+        "mi_hazank": [
+          "DR. APÁTI ISTVÁN",
+        ],
+        "normalis_elet": [
+          "NAGY CSABA ATTILA",
+        ],
+      },
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 11250,
+        "fidesz": 29647,
+        "megoldas_mozgalom": 347,
+        "mi_hazank": 4185,
+        "normalis_elet": 332,
+      },
+      "telepules": "Mátészalka",
+      "valasztopolgar": 73065,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "TÓTH VIKTOR",
+        ],
+        "fidesz": [
+          "DR. SIMON MIKLÓS",
+        ],
+        "megoldas_mozgalom": [
+          "CZAKÓ ZOLTÁN",
+        ],
+        "mi_hazank": [
+          "SZATHMÁRI LAJOS",
+        ],
+        "mkkp": [
+          "POLYÁK CSABA",
+        ],
+        "normalis_elet": [
+          "KOROKNAI ZSOLT",
+        ],
+      },
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 12027,
+        "fidesz": 29875,
+        "megoldas_mozgalom": 386,
+        "mi_hazank": 2252,
+        "mkkp": 558,
+        "normalis_elet": 381,
+      },
+      "telepules": "Nyírbátor",
+      "valasztopolgar": 71642,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. HARANGOZÓ TAMÁS",
+        ],
+        "fidesz": [
+          "HORVÁTH ISTVÁN",
+        ],
+        "megoldas_mozgalom": [
+          "HAJDU FERENC",
+        ],
+        "mi_hazank": [
+          "PAPP TAMÁS",
+        ],
+        "mkkp": [
+          "FARKAS LÁSZLÓ",
+        ],
+        "munkaspart": [
+          "KERCSÓ MÁRTON",
+        ],
+      },
+      "megye": "TOLNA",
+      "megyekod": 17,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 14279,
+        "fidesz": 22642,
+        "megoldas_mozgalom": 383,
+        "mi_hazank": 2361,
+        "mkkp": 1042,
+        "munkaspart": 85,
+      },
+      "telepules": "Szekszárd",
+      "valasztopolgar": 59349,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "SZABÓ LORÁND",
+        ],
+        "fidesz": [
+          "POTÁPI ÁRPÁD JÁNOS",
+        ],
+        "megoldas_mozgalom": [
+          "KŐMÜVES ATTILA",
+        ],
+        "mi_hazank": [
+          "TOBAK GÁBOR",
+        ],
+        "normalis_elet": [
+          "BEA GÁBOR",
+        ],
+      },
+      "megye": "TOLNA",
+      "megyekod": 17,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 10536,
+        "fidesz": 24362,
+        "megoldas_mozgalom": 576,
+        "mi_hazank": 2942,
+        "normalis_elet": 601,
+      },
+      "telepules": "Dombóvár",
+      "valasztopolgar": 58630,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "BENCZE JÁNOS",
+        ],
+        "fidesz": [
+          "SÜLI JÁNOS",
+        ],
+        "megoldas_mozgalom": [
+          "LACZKÓ PÉTER",
+        ],
+        "mi_hazank": [
+          "ÁRVAI TIBOR",
+        ],
+        "normalis_elet": [
+          "HALÁSZ GERGELY",
+        ],
+      },
+      "megye": "TOLNA",
+      "megyekod": 17,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 11107,
+        "fidesz": 25102,
+        "megoldas_mozgalom": 433,
+        "mi_hazank": 2696,
+        "normalis_elet": 518,
+      },
+      "telepules": "Paks",
+      "valasztopolgar": 58863,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "DR. CZEGLÉDY CSABA",
+        ],
+        "fidesz": [
+          "DR. HENDE CSABA",
+        ],
+        "megoldas_mozgalom": [
+          "TÖMBÖLY TAMÁS",
+        ],
+        "mi_hazank": [
+          "DR. VADON ISTVÁN",
+        ],
+        "mkkp": [
+          "NAGY DÁVID",
+        ],
+        "munkaspart": [
+          "HEGEDÜS MÁTÉ",
+        ],
+        "normalis_elet": [
+          "HORVÁTH ÉVA",
+        ],
+      },
+      "megye": "VAS",
+      "megyekod": 18,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 20771,
+        "fidesz": 25792,
+        "megoldas_mozgalom": 530,
+        "mi_hazank": 2421,
+        "mkkp": 1585,
+        "munkaspart": 71,
+        "normalis_elet": 467,
+      },
+      "telepules": "Szombathely",
+      "valasztopolgar": 68418,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "HENCZ KORNÉL",
+        ],
+        "fidesz": [
+          "ÁGH PÉTER",
+        ],
+        "megoldas_mozgalom": [
+          "HORVÁTH SÁNDOR",
+        ],
+        "mi_hazank": [
+          "GICZY JÓZSEF",
+        ],
+        "mkkp": [
+          "ZAKOTA TAMÁS",
+        ],
+        "normalis_elet": [
+          "RUTKAI ZOLTÁN",
+        ],
+      },
+      "megye": "VAS",
+      "megyekod": 18,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 13026,
+        "fidesz": 32226,
+        "megoldas_mozgalom": 441,
+        "mi_hazank": 2933,
+        "mkkp": 1137,
+        "normalis_elet": 294,
+      },
+      "telepules": "Sárvár",
+      "valasztopolgar": 68087,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "BANA TIBOR",
+        ],
+        "fidesz": [
+          "V.NÉMETH ZSOLT",
+        ],
+        "megoldas_mozgalom": [
+          "DÁVID DÁVID",
+        ],
+        "mi_hazank": [
+          "NÉMETI CSABA",
+        ],
+      },
+      "megye": "VAS",
+      "megyekod": 18,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 12874,
+        "fidesz": 31938,
+        "megoldas_mozgalom": 613,
+        "mi_hazank": 2676,
+      },
+      "telepules": "Körmend",
+      "valasztopolgar": 66285,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "CSONKA BALÁZS",
+        ],
+        "fidesz": [
+          "OVÁDI PÉTER",
+        ],
+        "megoldas_mozgalom": [
+          "SIMOR ISTVÁN",
+        ],
+        "mi_hazank": [
+          "KOVACSICS ZSOLT",
+        ],
+        "mkkp": [
+          "VÉRTESI BENJÁMIN",
+        ],
+      },
+      "megye": "VESZPRÉM",
+      "megyekod": 19,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 20301,
+        "fidesz": 26119,
+        "megoldas_mozgalom": 604,
+        "mi_hazank": 3231,
+        "mkkp": 1484,
+      },
+      "telepules": "Veszprém",
+      "valasztopolgar": 70276,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "BENEDEK SZILVESZTER",
+        ],
+        "fidesz": [
+          "KONTRÁT KÁROLY",
+        ],
+        "megoldas_mozgalom": [
+          "BERTA ÁKOS",
+        ],
+        "mi_hazank": [
+          "KOVÁCS ATTILA",
+        ],
+        "mkkp": [
+          "KÁRPÁTI ZOLTÁN",
+        ],
+        "normalis_elet": [
+          "DALMADI RÓBERT",
+        ],
+      },
+      "megye": "VESZPRÉM",
+      "megyekod": 19,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 19172,
+        "fidesz": 26762,
+        "megoldas_mozgalom": 834,
+        "mi_hazank": 3582,
+        "mkkp": 1765,
+        "normalis_elet": 372,
+      },
+      "telepules": "Balatonfüred",
+      "valasztopolgar": 73635,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "RIG LAJOS",
+        ],
+        "fidesz": [
+          "DR. NAVRACSICS TIBOR",
+        ],
+        "fuggetlen": [
+          "TAKÁCS LAJOS",
+        ],
+        "megoldas_mozgalom": [
+          "FÓRIZS LAJOS",
+        ],
+        "mkkp": [
+          "SÁNDOR BALÁZS",
+        ],
+      },
+      "megye": "VESZPRÉM",
+      "megyekod": 19,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 20797,
+        "fidesz": 23685,
+        "fuggetlen": 727,
+        "megoldas_mozgalom": 396,
+        "mkkp": 1115,
+      },
+      "telepules": "Tapolca",
+      "valasztopolgar": 67516,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "GRŐBER ATTILA",
+        ],
+        "fidesz": [
+          "DR. KOVÁCS ZOLTÁN",
+        ],
+        "megoldas_mozgalom": [
+          "DR. HORVÁTH GYULA",
+        ],
+        "mi_hazank": [
+          "TAKÁCS MÁTÉ",
+        ],
+        "mkkp": [
+          "DOMJÁN ÁKOS",
+        ],
+      },
+      "megye": "VESZPRÉM",
+      "megyekod": 19,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 13826,
+        "fidesz": 29806,
+        "megoldas_mozgalom": 352,
+        "mi_hazank": 2702,
+        "mkkp": 849,
+      },
+      "telepules": "Pápa",
+      "valasztopolgar": 68362,
+    },
+    {
+      "jeloltek": {
+        "egyeb": [
+          "VIRÁG DEBÓRA",
+        ],
+        "ellenzeki_osszefogas": [
+          "DR. CSIDEI IRÉN",
+        ],
+        "fidesz": [
+          "VIGH LÁSZLÓ",
+        ],
+        "fuggetlen": [
+          "KOLTAI TIBOR",
+        ],
+        "megoldas_mozgalom": [
+          "SZÉP SZABOLCS",
+        ],
+        "mi_hazank": [
+          "KISS FERENC",
+        ],
+        "mkkp": [
+          "CSISZÁR VIKTOR",
+        ],
+        "normalis_elet": [
+          "MARTON ÁDÁM",
+        ],
+      },
+      "megye": "ZALA",
+      "megyekod": 20,
+      "oevk": 1,
+      "partok": {
+        "egyeb": 85,
+        "ellenzeki_osszefogas": 16987,
+        "fidesz": 31178,
+        "fuggetlen": 694,
+        "megoldas_mozgalom": 672,
+        "mi_hazank": 3409,
+        "mkkp": 1414,
+        "normalis_elet": 455,
+      },
+      "telepules": "Zalaegerszeg",
+      "valasztopolgar": 74913,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "ELEKES ISTVÁN",
+        ],
+        "fidesz": [
+          "NAGY BÁLINT",
+        ],
+        "mi_hazank": [
+          "BEREI GÁBOR",
+        ],
+        "mkkp": [
+          "NÉMETH EMESE",
+        ],
+        "normalis_elet": [
+          "CSENDES JÓZSEF",
+        ],
+      },
+      "megye": "ZALA",
+      "megyekod": 20,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 15467,
+        "fidesz": 30734,
+        "mi_hazank": 3185,
+        "mkkp": 1363,
+        "normalis_elet": 611,
+      },
+      "telepules": "Keszthely",
+      "valasztopolgar": 73769,
+    },
+    {
+      "jeloltek": {
+        "ellenzeki_osszefogas": [
+          "HORVÁTH JÁCINT",
+        ],
+        "fidesz": [
+          "CSERESNYÉS PÉTER",
+        ],
+        "megoldas_mozgalom": [
+          "BARNA TAMÁS",
+        ],
+        "mi_hazank": [
+          "HOKKER TIBOR",
+        ],
+        "mkkp": [
+          "NAGY DÁVID",
+        ],
+        "munkaspart": [
+          "SZÉKELY SÁNDOR",
+        ],
+        "normalis_elet": [
+          "BORDA BALÁZS",
+        ],
+      },
+      "megye": "ZALA",
+      "megyekod": 20,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 18466,
+        "fidesz": 26126,
+        "megoldas_mozgalom": 410,
+        "mi_hazank": 2711,
+        "mkkp": 975,
+        "munkaspart": 122,
+        "normalis_elet": 504,
+      },
+      "telepules": "Nagykanizsa",
+      "valasztopolgar": 71793,
+    },
+  ],
+  "currentQuestion": {
+    "id": "2022_ogyv-1",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nyilvánosan hangsúlyozod a függetlenséged: „Én senkinek nem vagyok az embere, a pártok is csak eszközök a rendszer leváltásához.”",
+      },
+      {
+        "id": "B",
+        "label": "A kampány első nagy beszédében külön-külön megdicséred az összes részt vevő pártot és vezetőjét, és azt mondod: „Mostantól egy csapat vagyunk, kész.”",
+      },
+      {
+        "id": "C",
+        "label": "Kijelented, hogy „a régi baloldal is bűnös”, és rendszeresen kritizálod Gyurcsány Ferencet – miközben a DK a legerősebb párt az összefogáson belül.",
+      },
+      {
+        "id": "D",
+        "label": "Zárt ajtók mögött leülsz a pártelnökökkel, és addig nem tartasz nagy nyilvános beszédet, amíg nincs közös, rövid üzenet, amit mindenki hajlandó ismételni.",
+      },
+    ],
+    "question": "2021 ősze. Megnyerted az ellenzéki előválasztást, te vagy az összefogás közös miniszterelnök-jelöltje. A pártok bizalmatlanok, de a nyilvánosságban nagy várakozás van.",
+    "title": "Elfogadod-e a közös jelöltséget?",
+  },
+  "partyListData": [
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 21300,
+        "fidesz": 18767,
+        "megoldas_mozgalom": 472,
+        "mi_hazank": 1307,
+        "mkkp": 2842,
+        "normalis_elet": 155,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 26398,
+        "fidesz": 21814,
+        "megoldas_mozgalom": 484,
+        "mi_hazank": 1696,
+        "mkkp": 2963,
+        "normalis_elet": 188,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 25194,
+        "fidesz": 21352,
+        "megoldas_mozgalom": 449,
+        "mi_hazank": 1358,
+        "mkkp": 3717,
+        "normalis_elet": 132,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 28872,
+        "fidesz": 23286,
+        "megoldas_mozgalom": 539,
+        "mi_hazank": 1579,
+        "mkkp": 3231,
+        "normalis_elet": 184,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 19909,
+        "fidesz": 15389,
+        "megoldas_mozgalom": 519,
+        "mi_hazank": 1418,
+        "mkkp": 2523,
+        "normalis_elet": 184,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 20946,
+        "fidesz": 18398,
+        "megoldas_mozgalom": 421,
+        "mi_hazank": 1834,
+        "mkkp": 2570,
+        "normalis_elet": 273,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 7,
+      "partok": {
+        "ellenzeki_osszefogas": 32590,
+        "fidesz": 19408,
+        "megoldas_mozgalom": 763,
+        "mi_hazank": 2032,
+        "mkkp": 3115,
+        "normalis_elet": 277,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 8,
+      "partok": {
+        "ellenzeki_osszefogas": 28824,
+        "fidesz": 20675,
+        "megoldas_mozgalom": 689,
+        "mi_hazank": 2199,
+        "mkkp": 3129,
+        "normalis_elet": 292,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 9,
+      "partok": {
+        "ellenzeki_osszefogas": 23083,
+        "fidesz": 21361,
+        "megoldas_mozgalom": 702,
+        "mi_hazank": 2314,
+        "mkkp": 2297,
+        "normalis_elet": 313,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 10,
+      "partok": {
+        "ellenzeki_osszefogas": 25941,
+        "fidesz": 21285,
+        "megoldas_mozgalom": 736,
+        "mi_hazank": 2291,
+        "mkkp": 2761,
+        "normalis_elet": 324,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 11,
+      "partok": {
+        "ellenzeki_osszefogas": 27830,
+        "fidesz": 21261,
+        "megoldas_mozgalom": 889,
+        "mi_hazank": 2487,
+        "mkkp": 2671,
+        "normalis_elet": 348,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 12,
+      "partok": {
+        "ellenzeki_osszefogas": 23379,
+        "fidesz": 22386,
+        "megoldas_mozgalom": 775,
+        "mi_hazank": 2625,
+        "mkkp": 2399,
+        "normalis_elet": 332,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 13,
+      "partok": {
+        "ellenzeki_osszefogas": 25784,
+        "fidesz": 23521,
+        "megoldas_mozgalom": 785,
+        "mi_hazank": 2211,
+        "mkkp": 2589,
+        "normalis_elet": 250,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 14,
+      "partok": {
+        "ellenzeki_osszefogas": 24907,
+        "fidesz": 24766,
+        "megoldas_mozgalom": 852,
+        "mi_hazank": 2881,
+        "mkkp": 2472,
+        "normalis_elet": 372,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 15,
+      "partok": {
+        "ellenzeki_osszefogas": 25936,
+        "fidesz": 25479,
+        "megoldas_mozgalom": 792,
+        "mi_hazank": 2973,
+        "mkkp": 2418,
+        "normalis_elet": 386,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 16,
+      "partok": {
+        "ellenzeki_osszefogas": 22167,
+        "fidesz": 21251,
+        "megoldas_mozgalom": 658,
+        "mi_hazank": 2473,
+        "mkkp": 2331,
+        "normalis_elet": 345,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 17,
+      "partok": {
+        "ellenzeki_osszefogas": 23699,
+        "fidesz": 22810,
+        "megoldas_mozgalom": 714,
+        "mi_hazank": 2953,
+        "mkkp": 2259,
+        "normalis_elet": 351,
+      },
+    },
+    {
+      "megye": "BUDAPEST",
+      "megyekod": 1,
+      "oevk": 18,
+      "partok": {
+        "ellenzeki_osszefogas": 28081,
+        "fidesz": 25101,
+        "megoldas_mozgalom": 695,
+        "mi_hazank": 2472,
+        "mkkp": 3077,
+        "normalis_elet": 310,
+      },
+    },
+    {
+      "megye": "BARANYA",
+      "megyekod": 2,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 23401,
+        "fidesz": 21373,
+        "megoldas_mozgalom": 516,
+        "mi_hazank": 2852,
+        "mkkp": 2512,
+        "normalis_elet": 474,
+      },
+    },
+    {
+      "megye": "BARANYA",
+      "megyekod": 2,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 21513,
+        "fidesz": 22913,
+        "megoldas_mozgalom": 516,
+        "mi_hazank": 3094,
+        "mkkp": 2279,
+        "normalis_elet": 563,
+      },
+    },
+    {
+      "megye": "BARANYA",
+      "megyekod": 2,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 12448,
+        "fidesz": 25340,
+        "megoldas_mozgalom": 428,
+        "mi_hazank": 3081,
+        "mkkp": 1023,
+        "normalis_elet": 321,
+      },
+    },
+    {
+      "megye": "BARANYA",
+      "megyekod": 2,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 14149,
+        "fidesz": 28830,
+        "megoldas_mozgalom": 385,
+        "mi_hazank": 2730,
+        "mkkp": 1205,
+        "normalis_elet": 342,
+      },
+    },
+    {
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 13466,
+        "fidesz": 27159,
+        "megoldas_mozgalom": 409,
+        "mi_hazank": 3389,
+        "mkkp": 1680,
+        "normalis_elet": 432,
+      },
+    },
+    {
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 17307,
+        "fidesz": 26442,
+        "megoldas_mozgalom": 500,
+        "mi_hazank": 3398,
+        "mkkp": 2199,
+        "normalis_elet": 537,
+      },
+    },
+    {
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 13387,
+        "fidesz": 26022,
+        "megoldas_mozgalom": 562,
+        "mi_hazank": 2832,
+        "mkkp": 1022,
+        "normalis_elet": 378,
+      },
+    },
+    {
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 12032,
+        "fidesz": 29297,
+        "megoldas_mozgalom": 602,
+        "mi_hazank": 3792,
+        "mkkp": 1413,
+        "normalis_elet": 346,
+      },
+    },
+    {
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 12201,
+        "fidesz": 24372,
+        "megoldas_mozgalom": 375,
+        "mi_hazank": 4075,
+        "mkkp": 1158,
+        "normalis_elet": 265,
+      },
+    },
+    {
+      "megye": "BÁCS-KISKUN",
+      "megyekod": 3,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 12848,
+        "fidesz": 23506,
+        "megoldas_mozgalom": 320,
+        "mi_hazank": 3285,
+        "mkkp": 962,
+        "normalis_elet": 250,
+      },
+    },
+    {
+      "megye": "BÉKÉS",
+      "megyekod": 4,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 18350,
+        "fidesz": 22551,
+        "megoldas_mozgalom": 539,
+        "mi_hazank": 3728,
+        "mkkp": 1470,
+        "normalis_elet": 502,
+      },
+    },
+    {
+      "megye": "BÉKÉS",
+      "megyekod": 4,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 13114,
+        "fidesz": 25500,
+        "megoldas_mozgalom": 460,
+        "mi_hazank": 3666,
+        "mkkp": 1229,
+        "normalis_elet": 413,
+      },
+    },
+    {
+      "megye": "BÉKÉS",
+      "megyekod": 4,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 14348,
+        "fidesz": 24620,
+        "megoldas_mozgalom": 389,
+        "mi_hazank": 3047,
+        "mkkp": 1000,
+        "normalis_elet": 348,
+      },
+    },
+    {
+      "megye": "BÉKÉS",
+      "megyekod": 4,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 16512,
+        "fidesz": 23114,
+        "megoldas_mozgalom": 280,
+        "mi_hazank": 3413,
+        "mkkp": 1059,
+        "normalis_elet": 350,
+      },
+    },
+    {
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 20710,
+        "fidesz": 23178,
+        "megoldas_mozgalom": 688,
+        "mi_hazank": 3141,
+        "mkkp": 1412,
+        "normalis_elet": 363,
+      },
+    },
+    {
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 20031,
+        "fidesz": 21045,
+        "megoldas_mozgalom": 570,
+        "mi_hazank": 3417,
+        "mkkp": 1515,
+        "normalis_elet": 357,
+      },
+    },
+    {
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 11554,
+        "fidesz": 24538,
+        "megoldas_mozgalom": 259,
+        "mi_hazank": 2874,
+        "mkkp": 659,
+        "normalis_elet": 337,
+      },
+    },
+    {
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 15205,
+        "fidesz": 25028,
+        "megoldas_mozgalom": 338,
+        "mi_hazank": 3374,
+        "mkkp": 1013,
+        "normalis_elet": 352,
+      },
+    },
+    {
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 13076,
+        "fidesz": 27659,
+        "megoldas_mozgalom": 321,
+        "mi_hazank": 2599,
+        "mkkp": 774,
+        "normalis_elet": 277,
+      },
+    },
+    {
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 16958,
+        "fidesz": 28435,
+        "megoldas_mozgalom": 487,
+        "mi_hazank": 3075,
+        "mkkp": 1029,
+        "normalis_elet": 452,
+      },
+    },
+    {
+      "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+      "megyekod": 5,
+      "oevk": 7,
+      "partok": {
+        "ellenzeki_osszefogas": 14874,
+        "fidesz": 28386,
+        "megoldas_mozgalom": 595,
+        "mi_hazank": 4108,
+        "mkkp": 1166,
+        "normalis_elet": 426,
+      },
+    },
+    {
+      "megye": "CSONGRÁD-CSANÁD",
+      "megyekod": 6,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 26674,
+        "fidesz": 21404,
+        "megoldas_mozgalom": 816,
+        "mi_hazank": 3472,
+        "mkkp": 2629,
+        "normalis_elet": 483,
+      },
+    },
+    {
+      "megye": "CSONGRÁD-CSANÁD",
+      "megyekod": 6,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 24285,
+        "fidesz": 28222,
+        "megoldas_mozgalom": 679,
+        "mi_hazank": 4756,
+        "mkkp": 2530,
+        "normalis_elet": 419,
+      },
+    },
+    {
+      "megye": "CSONGRÁD-CSANÁD",
+      "megyekod": 6,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 17314,
+        "fidesz": 29772,
+        "megoldas_mozgalom": 550,
+        "mi_hazank": 4582,
+        "mkkp": 1614,
+        "normalis_elet": 362,
+      },
+    },
+    {
+      "megye": "CSONGRÁD-CSANÁD",
+      "megyekod": 6,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 21544,
+        "fidesz": 27953,
+        "megoldas_mozgalom": 439,
+        "mi_hazank": 3810,
+        "mkkp": 1397,
+        "normalis_elet": 356,
+      },
+    },
+    {
+      "megye": "FEJÉR",
+      "megyekod": 7,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 18528,
+        "fidesz": 21304,
+        "megoldas_mozgalom": 599,
+        "mi_hazank": 2545,
+        "mkkp": 2060,
+        "normalis_elet": 343,
+      },
+    },
+    {
+      "megye": "FEJÉR",
+      "megyekod": 7,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 15223,
+        "fidesz": 28021,
+        "megoldas_mozgalom": 508,
+        "mi_hazank": 4257,
+        "mkkp": 1845,
+        "normalis_elet": 435,
+      },
+    },
+    {
+      "megye": "FEJÉR",
+      "megyekod": 7,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 18159,
+        "fidesz": 31305,
+        "megoldas_mozgalom": 754,
+        "mi_hazank": 3285,
+        "mkkp": 2225,
+        "normalis_elet": 306,
+      },
+    },
+    {
+      "megye": "FEJÉR",
+      "megyekod": 7,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 18851,
+        "fidesz": 20663,
+        "megoldas_mozgalom": 583,
+        "mi_hazank": 2758,
+        "mkkp": 1305,
+        "normalis_elet": 375,
+      },
+    },
+    {
+      "megye": "FEJÉR",
+      "megyekod": 7,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 10535,
+        "fidesz": 27512,
+        "megoldas_mozgalom": 321,
+        "mi_hazank": 3083,
+        "mkkp": 1022,
+        "normalis_elet": 364,
+      },
+    },
+    {
+      "megye": "GYŐR-MOSON-SOPRON",
+      "megyekod": 8,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 18436,
+        "fidesz": 23879,
+        "megoldas_mozgalom": 754,
+        "mi_hazank": 2705,
+        "mkkp": 1812,
+        "normalis_elet": 326,
+      },
+    },
+    {
+      "megye": "GYŐR-MOSON-SOPRON",
+      "megyekod": 8,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 16353,
+        "fidesz": 29848,
+        "megoldas_mozgalom": 726,
+        "mi_hazank": 3664,
+        "mkkp": 1749,
+        "normalis_elet": 426,
+      },
+    },
+    {
+      "megye": "GYŐR-MOSON-SOPRON",
+      "megyekod": 8,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 11071,
+        "fidesz": 33286,
+        "megoldas_mozgalom": 540,
+        "mi_hazank": 2963,
+        "mkkp": 1250,
+        "normalis_elet": 253,
+      },
+    },
+    {
+      "megye": "GYŐR-MOSON-SOPRON",
+      "megyekod": 8,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 17918,
+        "fidesz": 31080,
+        "megoldas_mozgalom": 781,
+        "mi_hazank": 3831,
+        "mkkp": 1950,
+        "normalis_elet": 416,
+      },
+    },
+    {
+      "megye": "GYŐR-MOSON-SOPRON",
+      "megyekod": 8,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 17003,
+        "fidesz": 31420,
+        "megoldas_mozgalom": 691,
+        "mi_hazank": 3113,
+        "mkkp": 1844,
+        "normalis_elet": 464,
+      },
+    },
+    {
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 18410,
+        "fidesz": 23853,
+        "megoldas_mozgalom": 609,
+        "mi_hazank": 2790,
+        "mkkp": 1850,
+        "normalis_elet": 311,
+      },
+    },
+    {
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 17586,
+        "fidesz": 25587,
+        "megoldas_mozgalom": 529,
+        "mi_hazank": 3120,
+        "mkkp": 1745,
+        "normalis_elet": 477,
+      },
+    },
+    {
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 13752,
+        "fidesz": 30732,
+        "megoldas_mozgalom": 485,
+        "mi_hazank": 2990,
+        "mkkp": 1162,
+        "normalis_elet": 344,
+      },
+    },
+    {
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 9921,
+        "fidesz": 27435,
+        "megoldas_mozgalom": 310,
+        "mi_hazank": 2650,
+        "mkkp": 752,
+        "normalis_elet": 373,
+      },
+    },
+    {
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 12653,
+        "fidesz": 26857,
+        "megoldas_mozgalom": 384,
+        "mi_hazank": 3367,
+        "mkkp": 942,
+        "normalis_elet": 348,
+      },
+    },
+    {
+      "megye": "HAJDÚ-BIHAR",
+      "megyekod": 9,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 13318,
+        "fidesz": 26108,
+        "megoldas_mozgalom": 503,
+        "mi_hazank": 3402,
+        "mkkp": 1012,
+        "normalis_elet": 458,
+      },
+    },
+    {
+      "megye": "HEVES",
+      "megyekod": 10,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 20303,
+        "fidesz": 30150,
+        "megoldas_mozgalom": 585,
+        "mi_hazank": 4010,
+        "mkkp": 1573,
+        "normalis_elet": 405,
+      },
+    },
+    {
+      "megye": "HEVES",
+      "megyekod": 10,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 18112,
+        "fidesz": 28439,
+        "megoldas_mozgalom": 502,
+        "mi_hazank": 3675,
+        "mkkp": 1293,
+        "normalis_elet": 434,
+      },
+    },
+    {
+      "megye": "HEVES",
+      "megyekod": 10,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 15670,
+        "fidesz": 30527,
+        "megoldas_mozgalom": 491,
+        "mi_hazank": 4164,
+        "mkkp": 1193,
+        "normalis_elet": 356,
+      },
+    },
+    {
+      "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+      "megyekod": 11,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 21078,
+        "fidesz": 25140,
+        "megoldas_mozgalom": 652,
+        "mi_hazank": 4204,
+        "mkkp": 1723,
+        "normalis_elet": 516,
+      },
+    },
+    {
+      "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+      "megyekod": 11,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 14294,
+        "fidesz": 28196,
+        "megoldas_mozgalom": 525,
+        "mi_hazank": 2855,
+        "mkkp": 978,
+        "normalis_elet": 345,
+      },
+    },
+    {
+      "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+      "megyekod": 11,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 12715,
+        "fidesz": 29807,
+        "megoldas_mozgalom": 350,
+        "mi_hazank": 2745,
+        "mkkp": 875,
+        "normalis_elet": 285,
+      },
+    },
+    {
+      "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+      "megyekod": 11,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 15779,
+        "fidesz": 24356,
+        "megoldas_mozgalom": 319,
+        "mi_hazank": 4032,
+        "mkkp": 1156,
+        "normalis_elet": 437,
+      },
+    },
+    {
+      "megye": "KOMÁROM-ESZTERGOM",
+      "megyekod": 12,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 22363,
+        "fidesz": 25347,
+        "megoldas_mozgalom": 695,
+        "mi_hazank": 3326,
+        "mkkp": 1954,
+        "normalis_elet": 477,
+      },
+    },
+    {
+      "megye": "KOMÁROM-ESZTERGOM",
+      "megyekod": 12,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 20303,
+        "fidesz": 27784,
+        "megoldas_mozgalom": 455,
+        "mi_hazank": 3703,
+        "mkkp": 2046,
+        "normalis_elet": 586,
+      },
+    },
+    {
+      "megye": "KOMÁROM-ESZTERGOM",
+      "megyekod": 12,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 17770,
+        "fidesz": 30956,
+        "megoldas_mozgalom": 689,
+        "mi_hazank": 4150,
+        "mkkp": 1648,
+        "normalis_elet": 525,
+      },
+    },
+    {
+      "megye": "NÓGRÁD",
+      "megyekod": 13,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 16204,
+        "fidesz": 27344,
+        "megoldas_mozgalom": 356,
+        "mi_hazank": 3210,
+        "mkkp": 1033,
+        "normalis_elet": 386,
+      },
+    },
+    {
+      "megye": "NÓGRÁD",
+      "megyekod": 13,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 13610,
+        "fidesz": 32747,
+        "megoldas_mozgalom": 455,
+        "mi_hazank": 4596,
+        "mkkp": 1160,
+        "normalis_elet": 305,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 27112,
+        "fidesz": 30110,
+        "megoldas_mozgalom": 811,
+        "mi_hazank": 3475,
+        "mkkp": 2754,
+        "normalis_elet": 385,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 30872,
+        "fidesz": 33330,
+        "megoldas_mozgalom": 810,
+        "mi_hazank": 3208,
+        "mkkp": 3985,
+        "normalis_elet": 295,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 26868,
+        "fidesz": 34396,
+        "megoldas_mozgalom": 812,
+        "mi_hazank": 3331,
+        "mkkp": 3736,
+        "normalis_elet": 392,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 17902,
+        "fidesz": 30727,
+        "megoldas_mozgalom": 514,
+        "mi_hazank": 3363,
+        "mkkp": 2266,
+        "normalis_elet": 385,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 31683,
+        "fidesz": 33250,
+        "megoldas_mozgalom": 1157,
+        "mi_hazank": 3890,
+        "mkkp": 3667,
+        "normalis_elet": 531,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 25091,
+        "fidesz": 34312,
+        "megoldas_mozgalom": 965,
+        "mi_hazank": 3961,
+        "mkkp": 2756,
+        "normalis_elet": 411,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 7,
+      "partok": {
+        "ellenzeki_osszefogas": 24224,
+        "fidesz": 31481,
+        "megoldas_mozgalom": 1062,
+        "mi_hazank": 4023,
+        "mkkp": 2626,
+        "normalis_elet": 506,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 8,
+      "partok": {
+        "ellenzeki_osszefogas": 26733,
+        "fidesz": 30137,
+        "megoldas_mozgalom": 816,
+        "mi_hazank": 3894,
+        "mkkp": 2468,
+        "normalis_elet": 473,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 9,
+      "partok": {
+        "ellenzeki_osszefogas": 13631,
+        "fidesz": 30246,
+        "megoldas_mozgalom": 559,
+        "mi_hazank": 3338,
+        "mkkp": 1252,
+        "normalis_elet": 352,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 10,
+      "partok": {
+        "ellenzeki_osszefogas": 15189,
+        "fidesz": 30124,
+        "megoldas_mozgalom": 630,
+        "mi_hazank": 3738,
+        "mkkp": 1633,
+        "normalis_elet": 324,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 11,
+      "partok": {
+        "ellenzeki_osszefogas": 19895,
+        "fidesz": 34734,
+        "megoldas_mozgalom": 809,
+        "mi_hazank": 3921,
+        "mkkp": 1998,
+        "normalis_elet": 460,
+      },
+    },
+    {
+      "megye": "PEST",
+      "megyekod": 14,
+      "oevk": 12,
+      "partok": {
+        "ellenzeki_osszefogas": 13938,
+        "fidesz": 28501,
+        "megoldas_mozgalom": 459,
+        "mi_hazank": 3386,
+        "mkkp": 1233,
+        "normalis_elet": 412,
+      },
+    },
+    {
+      "megye": "SOMOGY",
+      "megyekod": 15,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 16464,
+        "fidesz": 20877,
+        "megoldas_mozgalom": 633,
+        "mi_hazank": 2781,
+        "mkkp": 1192,
+        "normalis_elet": 297,
+      },
+    },
+    {
+      "megye": "SOMOGY",
+      "megyekod": 15,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 11592,
+        "fidesz": 22263,
+        "megoldas_mozgalom": 295,
+        "mi_hazank": 1944,
+        "mkkp": 613,
+        "normalis_elet": 222,
+      },
+    },
+    {
+      "megye": "SOMOGY",
+      "megyekod": 15,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 12585,
+        "fidesz": 25383,
+        "megoldas_mozgalom": 333,
+        "mi_hazank": 2570,
+        "mkkp": 808,
+        "normalis_elet": 204,
+      },
+    },
+    {
+      "megye": "SOMOGY",
+      "megyekod": 15,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 15101,
+        "fidesz": 25266,
+        "megoldas_mozgalom": 441,
+        "mi_hazank": 2652,
+        "mkkp": 1084,
+        "normalis_elet": 370,
+      },
+    },
+    {
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 22082,
+        "fidesz": 23873,
+        "megoldas_mozgalom": 789,
+        "mi_hazank": 3044,
+        "mkkp": 1407,
+        "normalis_elet": 628,
+      },
+    },
+    {
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 14333,
+        "fidesz": 26445,
+        "megoldas_mozgalom": 429,
+        "mi_hazank": 2732,
+        "mkkp": 919,
+        "normalis_elet": 408,
+      },
+    },
+    {
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 13815,
+        "fidesz": 30663,
+        "megoldas_mozgalom": 514,
+        "mi_hazank": 2857,
+        "mkkp": 754,
+        "normalis_elet": 372,
+      },
+    },
+    {
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 10472,
+        "fidesz": 32486,
+        "megoldas_mozgalom": 264,
+        "mi_hazank": 2055,
+        "mkkp": 535,
+        "normalis_elet": 243,
+      },
+    },
+    {
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 5,
+      "partok": {
+        "ellenzeki_osszefogas": 10763,
+        "fidesz": 31357,
+        "megoldas_mozgalom": 263,
+        "mi_hazank": 2808,
+        "mkkp": 463,
+        "normalis_elet": 266,
+      },
+    },
+    {
+      "megye": "SZABOLCS-SZATMÁR-BEREG",
+      "megyekod": 16,
+      "oevk": 6,
+      "partok": {
+        "ellenzeki_osszefogas": 11046,
+        "fidesz": 30966,
+        "megoldas_mozgalom": 319,
+        "mi_hazank": 2393,
+        "mkkp": 569,
+        "normalis_elet": 360,
+      },
+    },
+    {
+      "megye": "TOLNA",
+      "megyekod": 17,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 13069,
+        "fidesz": 23200,
+        "megoldas_mozgalom": 398,
+        "mi_hazank": 2383,
+        "mkkp": 1137,
+        "normalis_elet": 260,
+      },
+    },
+    {
+      "megye": "TOLNA",
+      "megyekod": 17,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 10383,
+        "fidesz": 23112,
+        "megoldas_mozgalom": 367,
+        "mi_hazank": 2845,
+        "mkkp": 882,
+        "normalis_elet": 358,
+      },
+    },
+    {
+      "megye": "TOLNA",
+      "megyekod": 17,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 10721,
+        "fidesz": 24391,
+        "megoldas_mozgalom": 320,
+        "mi_hazank": 2769,
+        "mkkp": 937,
+        "normalis_elet": 359,
+      },
+    },
+    {
+      "megye": "VAS",
+      "megyekod": 18,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 19233,
+        "fidesz": 27128,
+        "megoldas_mozgalom": 515,
+        "mi_hazank": 2434,
+        "mkkp": 1784,
+        "normalis_elet": 393,
+      },
+    },
+    {
+      "megye": "VAS",
+      "megyekod": 18,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 13670,
+        "fidesz": 31003,
+        "megoldas_mozgalom": 459,
+        "mi_hazank": 3073,
+        "mkkp": 1439,
+        "normalis_elet": 382,
+      },
+    },
+    {
+      "megye": "VAS",
+      "megyekod": 18,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 11454,
+        "fidesz": 31858,
+        "megoldas_mozgalom": 366,
+        "mi_hazank": 2888,
+        "mkkp": 1119,
+        "normalis_elet": 300,
+      },
+    },
+    {
+      "megye": "VESZPRÉM",
+      "megyekod": 19,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 19637,
+        "fidesz": 24483,
+        "megoldas_mozgalom": 659,
+        "mi_hazank": 3618,
+        "mkkp": 2106,
+        "normalis_elet": 405,
+      },
+    },
+    {
+      "megye": "VESZPRÉM",
+      "megyekod": 19,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 19232,
+        "fidesz": 26134,
+        "megoldas_mozgalom": 620,
+        "mi_hazank": 3874,
+        "mkkp": 2019,
+        "normalis_elet": 453,
+      },
+    },
+    {
+      "megye": "VESZPRÉM",
+      "megyekod": 19,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 16626,
+        "fidesz": 24716,
+        "megoldas_mozgalom": 345,
+        "mi_hazank": 3091,
+        "mkkp": 1505,
+        "normalis_elet": 344,
+      },
+    },
+    {
+      "megye": "VESZPRÉM",
+      "megyekod": 19,
+      "oevk": 4,
+      "partok": {
+        "ellenzeki_osszefogas": 12912,
+        "fidesz": 29105,
+        "megoldas_mozgalom": 354,
+        "mi_hazank": 3083,
+        "mkkp": 1113,
+        "normalis_elet": 312,
+      },
+    },
+    {
+      "megye": "ZALA",
+      "megyekod": 20,
+      "oevk": 1,
+      "partok": {
+        "ellenzeki_osszefogas": 17517,
+        "fidesz": 31050,
+        "megoldas_mozgalom": 655,
+        "mi_hazank": 3677,
+        "mkkp": 1640,
+        "normalis_elet": 526,
+      },
+    },
+    {
+      "megye": "ZALA",
+      "megyekod": 20,
+      "oevk": 2,
+      "partok": {
+        "ellenzeki_osszefogas": 14873,
+        "fidesz": 30951,
+        "megoldas_mozgalom": 439,
+        "mi_hazank": 3371,
+        "mkkp": 1394,
+        "normalis_elet": 468,
+      },
+    },
+    {
+      "megye": "ZALA",
+      "megyekod": 20,
+      "oevk": 3,
+      "partok": {
+        "ellenzeki_osszefogas": 17520,
+        "fidesz": 26528,
+        "megoldas_mozgalom": 381,
+        "mi_hazank": 3295,
+        "mkkp": 1153,
+        "normalis_elet": 466,
+      },
+    },
+  ],
+  "turn": 0,
+}
+`;

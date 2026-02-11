@@ -15,6 +15,7 @@ import { candidateListData, partyListData } from "./mocks/mockListData";
 let campaignEngine: CampaignEngine;
 
 const gameState = {
+  turn: 0,
   candidateListData,
   partyListData,
 };
@@ -44,6 +45,10 @@ describe("CampaignEngine", () => {
     );
 
     campaignEngine = new CampaignEngine(
+      candidateListData,
+      partyListData,
+      [],
+      [],
       resultModifier,
       new EffectApplier(electionConfig),
       new MandateCalculator(electionConfig),
