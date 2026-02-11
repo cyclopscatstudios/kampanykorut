@@ -18,9 +18,9 @@ exports[`useElectionState > should initialize state 1`] = `
       "effects": [
         {
           "params": {
-            "ellenzeki_osszefogas": "-1.5",
-            "fidesz": "0.5",
-            "mi-hazank": "0.5",
+            "ellenzeki_osszefogas": -1.5,
+            "fidesz": 0.5,
+            "mi-hazank": 0.5,
           },
           "type": "party-swing",
         },

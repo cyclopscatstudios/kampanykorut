@@ -2,7 +2,7 @@
 
 exports[`createCampaignEngine > should create a new campaign engine instance 1`] = `
 CampaignEngine {
-  "answers": undefined,
+  "answers": [],
   "effectApplier": EffectApplier {
     "DEFAULT_MOTIVATION_DELTA": 99,
     "EPSILON": 0.000001,
@@ -75,7 +75,7 @@ CampaignEngine {
       "thresholdPercent": 5,
     },
   },
-  "questions": undefined,
+  "questions": [],
   "resultModifier": ResultModifier {
     "districtTargetTransform": DistrictTargetTransform {
       "voterEnvironment": VoterEnvironment {
