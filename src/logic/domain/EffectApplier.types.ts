@@ -11,7 +11,7 @@ export enum EffectType {
 }
 
 export type PartyShareParams = {
-  newVotoes: number;
+  newVotes: number;
   share: Record<string, number>;
 };
 

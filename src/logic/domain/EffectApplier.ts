@@ -1,4 +1,3 @@
-import { injectable } from "tsyringe";
 import {
   EffectType,
   type RawEffect,
@@ -12,29 +11,55 @@ import type {
   Shares,
   DistrictTarget,
 } from "./ResultTransformer/PipelineTransform.types";
+import { createLogger } from "../logger";
 
-@injectable()
+const log = createLogger("EffectApplier");
+
 export class EffectApplier {
   private mandateCalculator: MandateCalculator;
+  private EPSILON = 0.000001;
+  private DEFAULT_MOTIVATION_DELTA = 99;
 
   constructor(electionConfig: ElectionConfig) {
     this.mandateCalculator = new MandateCalculator(electionConfig);
   }
 
-  getAppliedEffect(
-    effect: RawEffect,
+  getAppliedEffects(
+    effects: RawEffect[],
     candidateListData: CandidateListData[],
-  ): AppliedEffect {
-    switch (effect.type) {
-      case EffectType.PartySwing:
-        return this.getPartySwingShares(effect.params, candidateListData);
-      case EffectType.PartyShare:
-        return this.getPartyShare(effect.params);
-      case EffectType.District:
-        return this.getDistrictChange(effect.params);
-      case EffectType.Motivation:
-        return this.getMotivationChange(effect.params);
-    }
+  ): AppliedEffect[] {
+    let appliedEffects: AppliedEffect[] = [];
+
+    effects.forEach((effect) => {
+      switch (effect.type) {
+        case EffectType.PartySwing:
+          appliedEffects = [
+            ...appliedEffects,
+            this.getPartySwingShares(effect.params, candidateListData),
+          ];
+          break;
+        case EffectType.PartyShare:
+          appliedEffects = [
+            ...appliedEffects,
+            this.getPartyShare(effect.params),
+          ];
+          break;
+        case EffectType.District:
+          appliedEffects = [
+            ...appliedEffects,
+            this.getDistrictChange(effect.params),
+          ];
+          break;
+        case EffectType.Motivation:
+          appliedEffects = [
+            ...appliedEffects,
+            this.getMotivationChange(effect.params),
+          ];
+          break;
+      }
+    });
+
+    return appliedEffects;
   }
 
   getPartySwingShares(
@@ -57,22 +82,34 @@ export class EffectApplier {
   ): Shares {
     const target: Shares = { ...baseShare };
 
-    for (const [party, delta] of Object.entries(params)) {
-      if (delta === undefined) {
-        continue;
-      }
-      if (baseShare[party] === undefined) {
-        continue;
+    const deltas = Object.entries(params)
+      .filter(([party]) => baseShare[party] !== undefined)
+      .map(([party, value]) => ({
+        party,
+        delta: Number(value) / 100,
+      }));
+
+    const deltaSum = deltas.reduce((a, b) => a + b.delta, 0);
+
+    if (Math.abs(deltaSum) > this.EPSILON) {
+      log.error(`PartySwing delta must sum to 0. Current sum: ${deltaSum}`);
+    }
+
+    for (const { party, delta } of deltas) {
+      const next = baseShare[party] + delta;
+
+      if (next < 0) {
+        log.error(`PartySwing pushed ${party} below 0`);
       }
 
-      target[party] = baseShare[party] + delta;
+      target[party] = next;
     }
 
     return target;
   }
 
   private getPartyShare(params: PartyShareParams): AppliedEffect {
-    const newVotes = params.newVotoes;
+    const newVotes = params.newVotes;
     const share = params.share;
     return { type: EffectType.PartyShare, newVotes, share };
   }
@@ -94,7 +131,12 @@ export class EffectApplier {
         continue;
       }
 
-      delta[party] = 100 - percentage;
+      delta[party] = this.DEFAULT_MOTIVATION_DELTA + percentage;
+
+      if (delta[party] > 100) {
+        log.error(`delta number for ${party} cannot be bigger then 100`);
+        delta[party] = 100;
+      }
     }
     return delta;
   }

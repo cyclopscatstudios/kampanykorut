@@ -4,7 +4,7 @@ import { Icon, type BootstrapIcon } from "./Icon";
 import { MenuItemId, type MenuItem } from "./menu/menu.types";
 import { Text } from "./Text";
 
-interface MenuListProps {
+export interface MenuListProps {
   listItems: MenuItem[];
   onClick?: (item: MenuItem) => void;
   hasBackButton?: boolean;

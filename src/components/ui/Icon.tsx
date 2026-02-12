@@ -26,7 +26,6 @@ export function Icon({
 }: IconProps) {
   const iconSize = getIconSize(size);
   const iconColor = getIconColor(color);
-  console.log(name, source);
 
   if (source === "svg") {
     const SvgIcon = svgIcons[name as keyof typeof svgIcons];

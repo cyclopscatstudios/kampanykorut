@@ -3,40 +3,70 @@ import type {
   CandidateListData,
   PartyListData,
 } from "../../domain/ResultTransformer/PipelineTransform.types";
-import type { Decision, GameState } from "../../domain/CampaignEngine";
+import type { GameState } from "../../domain/CampaignEngine";
 import type { ElectionConfig } from "../../domain/MandateCalculator.types";
 import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
 import { createCampaignEngine } from "../createCampaignEngine";
+import type { District } from "../../../components/ui/map.utils";
+import type { Question } from "../../../components/ui/gameplay/QuestionCard";
+import type { RawEffect } from "../../domain/EffectApplier.types";
+import { gameModeRegistry } from "../gameModeRegistery";
+
+export type Answer = {
+  id: string;
+  effects: RawEffect[];
+};
+
+export interface AnsweEffectProps {
+  id: string;
+  answers: Answer[];
+}
 
 export interface GameModeConfig {
   electionConfig: ElectionConfig;
   voterEnvironmentConfig: VoterEnvironmentConfig;
   candidateListData: CandidateListData[];
   partyListData: PartyListData[];
+  districts: District[];
+  capitalCity: District[];
+  questions: Pick<Question, "id" | "title" | "question" | "possibleAnswers">[];
+  answerEffect: AnsweEffectProps[];
 }
 
-export function useElectionState(config: GameModeConfig) {
-  const engine = useMemo(() => createCampaignEngine(config), [config]);
-
-  const [state, setState] = useState<GameState | null>(() =>
-    createInitialState(config),
+export function useElectionState(gameId: string) {
+  const config = gameModeRegistry[gameId];
+  const campaignEngine = useMemo(() => createCampaignEngine(config), [config]);
+  const [gameState, setGameState] = useState<GameState>(() =>
+    campaignEngine.createInitialState(),
   );
 
-  const processDecision = (decision: Decision) => {
-    if (!state) {
-      return null;
+  const handleAnwerQuestion = (answer?: string) => {
+    const answerEffect = getAnswerEffects(gameState?.answers, answer);
+    if (!answer || !gameState.currentQuestion || !answerEffect) {
+      return;
     }
-    const result = engine.processTurn(state, decision);
-    setState(result.modified);
-    return result;
+    const newGameState = campaignEngine.processTurn(
+      {
+        turn: gameState.turn,
+        candidateListData: config.candidateListData,
+        partyListData: config.partyListData,
+      },
+      {
+        answerId: answer,
+        questionId: gameState.currentQuestion?.id,
+        effects: answerEffect,
+      },
+    );
+    setGameState(newGameState);
   };
 
-  return { state, processDecision };
-}
+  const getAnswerEffects = (answers?: Answer[], answerId?: string) => {
+    return answers?.find((a) => a.id === answerId)?.effects;
+  };
 
-function createInitialState(config: GameModeConfig): GameState {
   return {
-    candidateListData: config.candidateListData,
-    partyListData: config.partyListData,
+    state: gameState,
+    config,
+    handleAnwerQuestion,
   };
 }

@@ -15,14 +15,15 @@ import { candidateListData, partyListData } from "./mocks/mockListData";
 let campaignEngine: CampaignEngine;
 
 const gameState = {
+  turn: 0,
   candidateListData,
   partyListData,
 };
 
-const getDecision = (effect: RawEffect): Decision => ({
+const getDecision = (effects: RawEffect[]): Decision => ({
   questionId: "q1",
   answerId: "a1",
-  effect,
+  effects,
 });
 
 describe("CampaignEngine", () => {
@@ -44,63 +45,75 @@ describe("CampaignEngine", () => {
     );
 
     campaignEngine = new CampaignEngine(
+      candidateListData,
+      partyListData,
+      [],
+      [],
       resultModifier,
       new EffectApplier(electionConfig),
       new MandateCalculator(electionConfig),
     );
   });
   it("should apply the party-swing typed decision", () => {
-    const decision = getDecision({
-      type: EffectType.PartySwing,
-      params: {
-        fidesz: 5,
-        opposition: -3,
+    const decision = getDecision([
+      {
+        type: EffectType.PartySwing,
+        params: {
+          fidesz: 5,
+          opposition: -3,
+        },
       },
-    });
+    ]);
 
     const result = campaignEngine.processTurn(gameState, decision);
     expect(result).toMatchSnapshot();
   });
   it("should apply party-share typed decision", () => {
-    const decision = getDecision({
-      type: EffectType.PartyShare,
-      params: {
-        newVotoes: 100000,
-        share: {
-          fidesz: 0.6,
-          opposition: 0.4,
+    const decision = getDecision([
+      {
+        type: EffectType.PartyShare,
+        params: {
+          newVotes: 100000,
+          share: {
+            fidesz: 0.6,
+            opposition: 0.4,
+          },
         },
       },
-    });
+    ]);
 
     const result = campaignEngine.processTurn(gameState, decision);
     expect(result).toMatchSnapshot();
   });
   it("should apply motivation typed decision", () => {
-    const decision = getDecision({
-      type: EffectType.Motivation,
-      params: {
-        fidesz: 4,
-        opposition: -2,
+    const decision = getDecision([
+      {
+        type: EffectType.Motivation,
+        params: {
+          fidesz: 4,
+          opposition: -2,
+        },
       },
-    });
+    ]);
 
     const result = campaignEngine.processTurn(gameState, decision);
     expect(result).toMatchSnapshot();
   });
   it("should apply district typed decision", () => {
-    const decision = getDecision({
-      type: EffectType.District,
-      params: [
-        {
-          amount: 50,
-          megyekod: 1,
-          oevk: 1,
-          targetParty: "ellenzek",
-          from: { party: "fidesz", type: "party" },
-        },
-      ],
-    });
+    const decision = getDecision([
+      {
+        type: EffectType.District,
+        params: [
+          {
+            amount: 50,
+            megyekod: 1,
+            oevk: 1,
+            targetParty: "ellenzek",
+            from: { party: "fidesz", type: "party" },
+          },
+        ],
+      },
+    ]);
 
     const result = campaignEngine.processTurn(gameState, decision);
     expect(result).toMatchSnapshot();
