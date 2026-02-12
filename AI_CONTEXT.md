@@ -9,18 +9,18 @@ Domain-driven architecture.
 ## Architecture Overview
 
 /domain
-  Pure deterministic logic.
-  No React imports allowed.
+Pure deterministic logic.
+No React imports allowed.
 
 /application
-  Orchestrates domain operations.
+Orchestrates domain operations.
 
 /ui
-  React components only.
-  No calculation logic allowed.
+React components only.
+No calculation logic allowed.
 
 /mods
-  JSON-based mod configuration.
+JSON-based mod configuration.
 
 ## Core Invariants
 

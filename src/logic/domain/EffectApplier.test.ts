@@ -23,11 +23,13 @@ describe("ElectionEffectApplier – PartySwing", () => {
     };
 
     const result = effectApplier.getAppliedEffects([effect], candidateListData);
-    expect(result).toEqual([{
-      type: EffectType.PartySwing,
-      baseShare: { ellenzek: 0.5, fidesz: 0.5, mkkp: 0 },
-      targetShare: { ellenzek: 0.5, fidesz: 0.49, mkkp: 0 },
-    }]);
+    expect(result).toEqual([
+      {
+        type: EffectType.PartySwing,
+        baseShare: { ellenzek: 0.5, fidesz: 0.5, mkkp: 0 },
+        targetShare: { ellenzek: 0.5, fidesz: 0.49, mkkp: 0 },
+      },
+    ]);
   });
 
   it("should call modifyByMotivation with correct parameters", () => {
@@ -39,13 +41,15 @@ describe("ElectionEffectApplier – PartySwing", () => {
       },
     };
     const result = effectApplier.getAppliedEffects([effect], candidateListData);
-    expect(result).toEqual([{
-      type: EffectType.Motivation,
-      motivationDelta: {
-        fidesz: 99.5,
-        ellenzek: 100,
+    expect(result).toEqual([
+      {
+        type: EffectType.Motivation,
+        motivationDelta: {
+          fidesz: 99.5,
+          ellenzek: 100,
+        },
       },
-    }]);
+    ]);
   });
 
   it("should return correct result for PartyShare effect", () => {
@@ -60,13 +64,15 @@ describe("ElectionEffectApplier – PartySwing", () => {
       },
     };
     const result = effectApplier.getAppliedEffects([effect], candidateListData);
-    expect(result).toEqual([{
-      type: EffectType.PartyShare,
-      newVotes: 1000,
-      share: {
-        fidesz: 0.6,
-        ellenzek: 0.4,
+    expect(result).toEqual([
+      {
+        type: EffectType.PartyShare,
+        newVotes: 1000,
+        share: {
+          fidesz: 0.6,
+          ellenzek: 0.4,
+        },
       },
-    }]);
+    ]);
   });
 });
