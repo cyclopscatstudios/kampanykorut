@@ -28,7 +28,7 @@ export interface GameState {
 export interface Decision {
   questionId: string;
   answerId: string;
-  effect: RawEffect;
+  effects: RawEffect[];
 }
 
 export interface TurnResult {
@@ -63,8 +63,8 @@ export class CampaignEngine {
   }
 
   processTurn(state: GameState, decision: Decision): GameState {
-    const appliedEffects = this.effectApplier.getAppliedEffect(
-      decision.effect,
+    const appliedEffects = this.effectApplier.getAppliedEffects(
+      decision.effects,
       state.candidateListData,
     );
     const modified = this.resultModifier.apply(state, appliedEffects);

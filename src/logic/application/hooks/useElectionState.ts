@@ -54,7 +54,7 @@ export function useElectionState(gameId: string) {
       {
         answerId: answer,
         questionId: gameState.currentQuestion?.id,
-        effect: answerEffect[0],
+        effects: answerEffect,
       },
     );
     setGameState(newGameState);

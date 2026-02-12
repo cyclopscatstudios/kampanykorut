@@ -24,20 +24,42 @@ export class EffectApplier {
     this.mandateCalculator = new MandateCalculator(electionConfig);
   }
 
-  getAppliedEffect(
-    effect: RawEffect,
+  getAppliedEffects(
+    effects: RawEffect[],
     candidateListData: CandidateListData[],
-  ): AppliedEffect {
-    switch (effect.type) {
-      case EffectType.PartySwing:
-        return this.getPartySwingShares(effect.params, candidateListData);
-      case EffectType.PartyShare:
-        return this.getPartyShare(effect.params);
-      case EffectType.District:
-        return this.getDistrictChange(effect.params);
-      case EffectType.Motivation:
-        return this.getMotivationChange(effect.params);
-    }
+  ): AppliedEffect[] {
+    let appliedEffects: AppliedEffect[] = [];
+
+    effects.forEach((effect) => {
+      switch (effect.type) {
+        case EffectType.PartySwing:
+          appliedEffects = [
+            ...appliedEffects,
+            this.getPartySwingShares(effect.params, candidateListData),
+          ];
+          break;
+        case EffectType.PartyShare:
+          appliedEffects = [
+            ...appliedEffects,
+            this.getPartyShare(effect.params),
+          ];
+          break;
+        case EffectType.District:
+          appliedEffects = [
+            ...appliedEffects,
+            this.getDistrictChange(effect.params),
+          ];
+          break;
+        case EffectType.Motivation:
+          appliedEffects = [
+            ...appliedEffects,
+            this.getMotivationChange(effect.params),
+          ];
+          break;
+      }
+    });
+
+    return appliedEffects;
   }
 
   getPartySwingShares(
@@ -87,7 +109,7 @@ export class EffectApplier {
   }
 
   private getPartyShare(params: PartyShareParams): AppliedEffect {
-    const newVotes = params.newVotoes;
+    const newVotes = params.newVotes;
     const share = params.share;
     return { type: EffectType.PartyShare, newVotes, share };
   }

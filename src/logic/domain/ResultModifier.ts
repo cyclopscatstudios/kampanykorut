@@ -5,11 +5,9 @@ import { DistrictTargetTransform } from "./ResultTransformer/DistrictTargetTrans
 import { NationalSwingTransform } from "./ResultTransformer/NationalSwingTransform";
 import { PipelineTransform } from "./ResultTransformer/PipelineTransform";
 import type { CandidateListData } from "./ResultTransformer/PipelineTransform.types";
-import { injectable } from "tsyringe";
 
 const log = createLogger("ResultModifier");
 
-@injectable()
 export class ResultModifier {
   constructor(
     private nationalSwingTransform: NationalSwingTransform,
@@ -19,21 +17,51 @@ export class ResultModifier {
 
   apply(
     state: GameState,
-    appliedEffects?: AppliedEffect,
+    appliedEffects?: AppliedEffect[],
   ): Pick<GameState, "candidateListData" | "partyListData"> | null {
-    if (!appliedEffects) {
+    if (!appliedEffects?.length) {
       log.error("No applied effects provided to ResultModifier");
       return null;
     }
-    switch (appliedEffects.type) {
+
+    let currentState = state;
+
+    for (const effect of appliedEffects) {
+      const partial = this.applySingleEffect(currentState, effect);
+
+      if (!partial) continue;
+
+      currentState = {
+        ...currentState,
+        ...partial,
+      };
+    }
+
+    return {
+      candidateListData: currentState.candidateListData,
+      partyListData: currentState.partyListData,
+    };
+  }
+
+  private applySingleEffect(
+    state: GameState,
+    effect: AppliedEffect,
+  ): Pick<GameState, "candidateListData" | "partyListData"> | null {
+    switch (effect.type) {
       case EffectType.PartySwing:
-        return this.applyPartySwing(state, appliedEffects);
+        return this.applyPartySwing(state, effect);
+
       case EffectType.PartyShare:
-        return this.applyShares(state, appliedEffects);
+        return this.applyShares(state, effect);
+
       case EffectType.District:
-        return this.applyDistrict(state, appliedEffects);
+        return this.applyDistrict(state, effect);
+
       case EffectType.Motivation:
-        return this.applyMotivation(state, appliedEffects);
+        return this.applyMotivation(state, effect);
+
+      default:
+        return null;
     }
   }
 
