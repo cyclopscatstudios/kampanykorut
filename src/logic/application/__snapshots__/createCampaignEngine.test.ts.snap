@@ -2,6 +2,9 @@
 
 exports[`createCampaignEngine > should create a new campaign engine instance 1`] = `
 CampaignEngine {
+  "StateEngine": StateEngine {
+    "storage": StorageEngine {},
+  },
   "answers": [],
   "effectApplier": EffectApplier {
     "DEFAULT_MOTIVATION_DELTA": 99,

@@ -11,6 +11,8 @@ import {
   type VoterEnvironmentConfig,
 } from "../VoterEnvironment";
 import { candidateListData, partyListData } from "./mocks/mockListData";
+import { StorageEngine } from "../application/StorageEngine";
+import { StateEngine } from "../application/StateEngine";
 
 let campaignEngine: CampaignEngine;
 
@@ -52,6 +54,7 @@ describe("CampaignEngine", () => {
       resultModifier,
       new EffectApplier(electionConfig),
       new MandateCalculator(electionConfig),
+      new StateEngine(new StorageEngine())
     );
   });
   it("should apply the party-swing typed decision", () => {

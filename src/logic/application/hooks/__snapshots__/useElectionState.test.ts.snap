@@ -45,7 +45,7 @@ exports[`useElectionState > should initialize state 1`] = `
         {
           "params": {
             "ellenzeki_osszefogas": -8,
-            "fidesz": 3,
+            "fidesz": 0.8,
             "mi-hazank": -0.2,
           },
           "type": "motivation",

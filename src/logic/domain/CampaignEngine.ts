@@ -12,6 +12,7 @@ import type {
   AnsweEffectProps,
   Answer,
 } from "../application/hooks/useElectionState";
+import type { StateEngine } from "../application/StateEngine";
 
 export interface GameState {
   turn: number;
@@ -50,16 +51,23 @@ export class CampaignEngine {
     private resultModifier: ResultModifier,
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
+    private StateEngine: StateEngine,
   ) {}
 
   createInitialState(): GameState {
-    return {
-      turn: 0,
-      currentQuestion: this.questions[0],
-      answers: this.getAnswers(this.answers, this.questions[0]),
-      candidateListData: structuredClone(this.initialCandidateData),
-      partyListData: structuredClone(this.initialPartyData),
-    };
+    const session = this.StateEngine.loadGameState();
+
+    if (!session) {
+      return {
+        turn: 0,
+        currentQuestion: this.questions[0],
+        answers: this.getAnswers(this.answers, this.questions[0]),
+        candidateListData: structuredClone(this.initialCandidateData),
+        partyListData: structuredClone(this.initialPartyData),
+      };
+    }
+
+    return session;
   }
 
   processTurn(state: GameState, decision: Decision): GameState {
@@ -73,7 +81,7 @@ export class CampaignEngine {
       modified?.partyListData,
     );
 
-    return {
+    const session = {
       ...state,
       turn: state.turn + 1,
       currentQuestion: this.questions[state.turn],
@@ -82,6 +90,10 @@ export class CampaignEngine {
       partyListData: modified?.partyListData ?? state.partyListData,
       mandates: calculated,
     };
+
+    this.StateEngine.saveGameState(JSON.stringify(session));
+
+    return session;
   }
 
   private getAnswers(

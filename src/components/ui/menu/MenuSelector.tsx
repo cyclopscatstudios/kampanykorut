@@ -20,10 +20,9 @@ export function MenuSelector({
   setCurrentScreen: (screen: ScreenType) => void;
   setActiveGameId: (gameId?: string) => void;
 }) {
-  const [currentMenu, setCurrentMenu] = useState<MenuType>(MenuType.MainMenu);
+  const [currentMenu, setCurrentMenu] = useState<any>(MenuType.MainMenu);
 
   const handleMenuChange = (menuItem: MenuItem) => {
-    console.log({ menuItem });
     switch (menuItem.id) {
       case "newGame":
         return setMenuType(MenuType.NewGameMenu);
@@ -37,6 +36,7 @@ export function MenuSelector({
       case "back": {
         const prevMenu =
           menuLogic.getHistory()[menuLogic.getHistory().length - 2];
+        console.log({ prevMenu });
         setCurrentMenu(prevMenu);
         menuLogic.goBack();
         return;

@@ -45,7 +45,7 @@
           {
             "type": "motivation",
             "params": {
-              "fidesz": 3,
+              "fidesz": 0.8,
               "mi-hazank": -0.2,
               "ellenzeki_osszefogas": -8.0
             }

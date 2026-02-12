@@ -6,7 +6,9 @@ import { DistrictTargetTransform } from "../domain/ResultTransformer/DistrictTar
 import { NationalSwingTransform } from "../domain/ResultTransformer/NationalSwingTransform";
 import { PipelineTransform } from "../domain/ResultTransformer/PipelineTransform";
 import { VoterEnvironment } from "../VoterEnvironment";
+import { StateEngine } from "./StateEngine";
 import type { GameModeConfig } from "./hooks/useElectionState";
+import { StorageEngine } from "./StorageEngine";
 
 export function createCampaignEngine(config: GameModeConfig) {
   const mandateCalculator = new MandateCalculator(config.electionConfig);
@@ -21,6 +23,8 @@ export function createCampaignEngine(config: GameModeConfig) {
     new DistrictTargetTransform(voterEnvironment),
   );
 
+  const gameSessionEngine = new StateEngine(new StorageEngine());
+
   return new CampaignEngine(
     config.candidateListData,
     config.partyListData,
@@ -29,5 +33,6 @@ export function createCampaignEngine(config: GameModeConfig) {
     resultModifier,
     effectApplier,
     mandateCalculator,
+    gameSessionEngine,
   );
 }
