@@ -54,7 +54,7 @@ describe("CampaignEngine", () => {
       resultModifier,
       new EffectApplier(electionConfig),
       new MandateCalculator(electionConfig),
-      new StateEngine(new StorageEngine())
+      new StateEngine(new StorageEngine()),
     );
   });
   it("should apply the party-swing typed decision", () => {

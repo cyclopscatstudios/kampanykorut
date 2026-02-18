@@ -3,6 +3,8 @@
 exports[`createCampaignEngine > should create a new campaign engine instance 1`] = `
 CampaignEngine {
   "StateEngine": StateEngine {
+    "loadGameState": [Function],
+    "loadSession": [Function],
     "storage": StorageEngine {},
   },
   "answers": [],

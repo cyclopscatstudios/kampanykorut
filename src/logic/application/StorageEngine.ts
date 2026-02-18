@@ -1,7 +1,9 @@
+import { singleton } from "tsyringe";
 import type { SessionKey } from "./StateEngine";
 
 export type StorageType = "localStorage" | "sessionStorage";
 
+@singleton()
 export class StorageEngine {
   constructor() {}
 

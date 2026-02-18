@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { MainMenu } from "./MainMenu";
 import { NewGameMenu } from "./NewGameMenu";
-import { menuLogic, MenuType } from "../../../logic/MenuLogic";
 import type { ScreenType } from "../../../App";
 import type { MenuItem } from "./menu.types";
 import { GameLoaderMenu } from "./GameLoaderMenu";
+import { useAppStateMachine } from "../../../logic/application/hooks/useAppStateMachine";
+import type { MenuType } from "../../../logic/application/AppStateMachine";
 
 enum NewGameMenuItems {
   ClassicMode = "classicMode",
@@ -20,47 +20,24 @@ export function MenuSelector({
   setCurrentScreen: (screen: ScreenType) => void;
   setActiveGameId: (gameId?: string) => void;
 }) {
-  const [currentMenu, setCurrentMenu] = useState<any>(MenuType.MainMenu);
+  const { state, transition } = useAppStateMachine();
 
-  const handleMenuChange = (menuItem: MenuItem) => {
-    switch (menuItem.id) {
-      case "newGame":
-        return setMenuType(MenuType.NewGameMenu);
-      case "classicMode": {
-        return setMenuType(MenuType.ClassicMode);
-      }
-      case "gameLoader":
-        setActiveGameId(menuItem.gameId);
-        setCurrentScreen("MapCreator");
-        break;
-      case "back": {
-        const prevMenu =
-          menuLogic.getHistory()[menuLogic.getHistory().length - 2];
-        console.log({ prevMenu });
-        setCurrentMenu(prevMenu);
-        menuLogic.goBack();
-        return;
-      }
-      default:
-        setMenuType(MenuType.MainMenu);
+  console.log({ state });
+
+  const handleOnClick = (to: MenuItem) => {
+    transition(to);
+    if (to.id === "gameLoader") {
+      setCurrentScreen("MapCreator");
+      setActiveGameId(to.gameId);
     }
-  };
-
-  const setMenuType = (menuType: MenuType) => {
-    setCurrentMenu(menuType);
-    menuLogic.setHistoryItem(menuType);
   };
 
   return (
     <>
-      {currentMenu === MenuType.MainMenu && (
-        <MainMenu onClick={handleMenuChange} />
-      )}
-      {currentMenu === MenuType.NewGameMenu && (
-        <NewGameMenu onClick={handleMenuChange} />
-      )}
-      {currentMenu === MenuType.ClassicMode && (
-        <GameLoaderMenu onClick={handleMenuChange} />
+      {state.menuType === "mainMenu" && <MainMenu onClick={handleOnClick} />}
+      {state.menuType === "gameMenu" && <NewGameMenu onClick={handleOnClick} />}
+      {state.menuType === "gameModeMenu" && (
+        <GameLoaderMenu onClick={handleOnClick} />
       )}
     </>
   );

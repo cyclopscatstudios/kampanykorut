@@ -4,12 +4,20 @@
     "lang": "Új játék"
   },
   {
+    "key": "mainMenu.loadGame",
+    "lang": "Játék betöltése"
+  },
+  {
     "key": "mainMenu.modMaker",
     "lang": "Mod készítő"
   },
   {
     "key": "mainMenu.settings",
     "lang": "Beállítások"
+  },
+  {
+    "key": "mainMenu.about",
+    "lang": "A játékról"
   },
   {
     "key": "newGameMenu.classicMode",

@@ -55,19 +55,13 @@ export class CampaignEngine {
   ) {}
 
   createInitialState(): GameState {
-    const session = this.StateEngine.loadGameState();
-
-    if (!session) {
-      return {
-        turn: 0,
-        currentQuestion: this.questions[0],
-        answers: this.getAnswers(this.answers, this.questions[0]),
-        candidateListData: structuredClone(this.initialCandidateData),
-        partyListData: structuredClone(this.initialPartyData),
-      };
-    }
-
-    return session;
+    return {
+      turn: 0,
+      currentQuestion: this.questions[0],
+      answers: this.getAnswers(this.answers, this.questions[0]),
+      candidateListData: structuredClone(this.initialCandidateData),
+      partyListData: structuredClone(this.initialPartyData),
+    };
   }
 
   processTurn(state: GameState, decision: Decision): GameState {
@@ -91,7 +85,7 @@ export class CampaignEngine {
       mandates: calculated,
     };
 
-    this.StateEngine.saveGameState(JSON.stringify(session));
+    this.StateEngine.saveSession(session, "gameSession");
 
     return session;
   }

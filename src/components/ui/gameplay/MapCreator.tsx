@@ -30,7 +30,6 @@ export function MapCreator({
 
   return (
     <div className="flex flex-col h-full w-full">
-      <div className="h-[50px] bg-blue-50 rounded-t">asd</div>
       <div className="flex w-full h-full justify-between items-center">
         <div className="w-[800px] h-[500px] p-4">
           <MapWrapper

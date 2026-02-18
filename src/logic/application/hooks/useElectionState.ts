@@ -11,6 +11,7 @@ import type { District } from "../../../components/ui/map.utils";
 import type { Question } from "../../../components/ui/gameplay/QuestionCard";
 import type { RawEffect } from "../../domain/EffectApplier.types";
 import { gameModeRegistry } from "../gameModeRegistery";
+import { useStateEngine } from "./useStateEngine";
 
 export type Answer = {
   id: string;
@@ -39,6 +40,12 @@ export function useElectionState(gameId: string) {
   const [gameState, setGameState] = useState<GameState>(() =>
     campaignEngine.createInitialState(),
   );
+  const { loadSession } = useStateEngine();
+
+  const loadSavedGame = () => {
+    const session = loadSession("gameSession");
+    setGameState(session);
+  };
 
   const handleAnwerQuestion = (answer?: string) => {
     const answerEffect = getAnswerEffects(gameState?.answers, answer);
@@ -68,5 +75,6 @@ export function useElectionState(gameId: string) {
     state: gameState,
     config,
     handleAnwerQuestion,
+    loadSavedGame,
   };
 }

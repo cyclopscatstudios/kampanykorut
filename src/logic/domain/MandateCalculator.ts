@@ -15,6 +15,7 @@ import type {
   PartyListData,
   Shares,
 } from "./ResultTransformer/PipelineTransform.types";
+import { calcPercentages } from "./ResultModifier.utils";
 
 const log = createLogger("MandateCalculator");
 
@@ -92,14 +93,7 @@ export class MandateCalculator {
   }
 
   public calculatePercentages(totals: Record<string, number>): Shares {
-    const sum = Object.values(totals).reduce((a, b) => a + b, 0);
-    const result: Shares = {};
-
-    for (const [party, votes] of Object.entries(totals)) {
-      result[party] = sum ? votes / sum : 0;
-    }
-
-    return result;
+    return calcPercentages(totals);
   }
 
   private merge(

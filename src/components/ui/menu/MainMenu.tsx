@@ -2,7 +2,7 @@ import { useTranslateLang } from "../../../logic/useTranslateLang";
 import { MenuList } from "../MenuList";
 import logo from "../../../assets/logo_reworked.png";
 import { MenuLayout } from "./MenuLayout";
-import { MenuItemId, type MenuItem } from "./menu.types";
+import { type MenuItem } from "./menu.types";
 import { Text } from "../Text";
 import { quotes } from "../../../assets/jsons/quotes";
 import { useState } from "react";
@@ -10,8 +10,9 @@ import { useState } from "react";
 export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
   const [quote, setQuote] = useState(() => getRandomQuote());
   const newGame = useTranslateLang("mainMenu.newGame");
-  const modMaker = useTranslateLang("mainMenu.modMaker");
+  const loadGame = useTranslateLang("mainMenu.loadGame");
   const settings = useTranslateLang("mainMenu.settings");
+  const about = useTranslateLang("mainMenu.about");
 
   return (
     <div className="relative w-full h-full">
@@ -31,9 +32,10 @@ export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
       <MenuLayout>
         <MenuList
           listItems={[
-            { id: MenuItemId.NewGame, text: newGame, icon: "play-circle-fill" },
-            { id: MenuItemId.ModMaker, text: modMaker, icon: "pencil-fill" },
-            { id: MenuItemId.Settings, text: settings, icon: "gear-fill" },
+            { id: "newGame", text: newGame, icon: "play-circle-fill" },
+            { id: "loadGame", text: loadGame, icon: "clipboard-data-fill" },
+            { id: "settings", text: settings, icon: "gear-fill" },
+            { id: "about", text: about, icon: "info-circle-fill" },
           ]}
           onClick={onClick}
         />

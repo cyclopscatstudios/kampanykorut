@@ -1,3 +1,4 @@
+import type { MenuItemType } from "../../../logic/application/AppStateMachine";
 import type { IconSource } from "../Icon";
 
 export enum MenuItemId {
@@ -11,7 +12,7 @@ export enum MenuItemId {
 }
 
 export type MenuItem = {
-  id: MenuItemId;
+  id: MenuItemType;
   text: string;
   icon?: string;
   iconSource?: IconSource;

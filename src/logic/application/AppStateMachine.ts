@@ -1,0 +1,106 @@
+import { inject, singleton } from "tsyringe";
+import type { MenuItem } from "../../components/ui/menu/menu.types";
+import { AppStateRegistry, gameMenuRegistery } from "./AppStateRegisery";
+import { Emitter } from "./Emitter";
+import { StateEngine } from "./StateEngine";
+import { StorageEngine } from "./StorageEngine";
+
+export type MenuType = (typeof gameMenuRegistery)[number];
+export type MenuItemType =
+  | "newGame"
+  | "loadGame"
+  | "modMaker"
+  | "settings"
+  | "about"
+  | "classicMode"
+  | "campaignMode"
+  | "gameLoader"
+  | "back";
+export type ScreenType = "menuScreen" | "gameScreen";
+export interface MenuState {
+  screenType: ScreenType;
+  menuType?: MenuType;
+}
+
+@singleton()
+export class AppStateMachine extends Emitter<MenuState> {
+  private currentState: MenuState;
+  private menuHistory: MenuType[];
+
+  constructor(@inject(StateEngine) private stateEngine: StateEngine) {
+    super();
+    this.menuHistory = ["mainMenu"];
+    this.currentState = {
+      screenType: "menuScreen",
+      menuType: "mainMenu",
+    };
+    this.stateEngine = new StateEngine(new StorageEngine());
+    this.transition = this.transition.bind(this);
+  }
+
+  getCurrentScreen() {
+    return this.currentState;
+  }
+
+  transition = (to: MenuItem) => {
+    if (to.id === "back") {
+      this.goBack();
+    }
+
+    let newState = this.getStateByMenuType(to.id);
+
+    if (to.id !== "back" && newState.menuType) {
+      this.menuHistory.push(newState.menuType);
+    }
+
+    if (to.id === "gameLoader") {
+      newState = {
+        ...newState,
+        ...to,
+      };
+    }
+
+    this.setCurrentState(newState);
+    this.notify(newState);
+  };
+
+  private goBack() {
+    if (this.menuHistory.length > 1) {
+      this.menuHistory = this.menuHistory.slice(0, -1);
+    }
+  }
+
+  private getStateByMenuType(type: MenuItemType): MenuState {
+    if (type === "gameLoader") {
+      return {
+        screenType: "gameScreen",
+      };
+    }
+    if (type === "back") {
+      const previousMenu = this.menuHistory[this.menuHistory.length - 1];
+      return {
+        screenType: "gameScreen",
+        menuType: previousMenu,
+      };
+    }
+    const state = AppStateRegistry[type];
+    return {
+      ...state,
+      menuType: state.onTransition,
+    };
+  }
+
+  private setCurrentState(state: MenuState) {
+    if (!state.menuType) {
+      this.currentState = {
+        screenType: "gameScreen",
+      };
+    } else {
+      this.currentState = {
+        screenType: "menuScreen",
+        menuType: state.menuType,
+      };
+    }
+    this.stateEngine.saveSession(state, "menuSession");
+  }
+}

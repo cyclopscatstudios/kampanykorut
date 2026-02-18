@@ -1,21 +1,17 @@
+import { inject, singleton } from "tsyringe";
 import type { GameState } from "../domain/CampaignEngine";
 import { createLogger } from "../logger";
-import type { StorageEngine } from "./StorageEngine";
+import { StorageEngine } from "./StorageEngine";
 
 const log = createLogger("StorageEngine");
 
-export type SessionKey = "gameSession" | "menuSession";
+export type SessionKey = "gameSession" | "menuSession" | "devSession";
 
+@singleton()
 export class StateEngine {
-  constructor(private storage: StorageEngine) {}
-
-  saveGameState<T>(session: T) {
-    const value = this.safeStringify(session);
-    if (!value) {
-      log.error("failed to save to storage");
-      return null;
-    }
-    return this.storage.setItem("gameSession", value, "localStorage");
+  constructor(@inject(StorageEngine) private storage: StorageEngine) {
+    this.loadGameState = this.loadGameState.bind(this);
+    this.loadSession = this.loadSession.bind(this);
   }
 
   saveSession<T>(session: T, sessionKey: SessionKey) {

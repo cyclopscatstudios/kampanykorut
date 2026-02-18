@@ -53,5 +53,66 @@
         ]
       }
     ]
+  },
+  {
+    "id": "2022_ogyv-2",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "party-swing",
+            "params": {
+              "ellenzeki_osszefogas": -0.4
+            }
+          },
+          {
+            "type": "party-swing",
+            "params": {
+              "ellenzeki_osszefogas": -0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "party-swing",
+            "params": {
+              "ellenzeki_osszefogas": -1.5,
+              "fidesz": 0.5,
+              "mi-hazank": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "motivation",
+            "params": {
+              "fidesz": -0.3,
+              "mi-hazank": -0.2,
+              "ellenzeki_osszefogas": -0.8
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "motivation",
+            "params": {
+              "fidesz": 0.8,
+              "mi-hazank": -0.2,
+              "ellenzeki_osszefogas": -8.0
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
