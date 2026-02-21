@@ -92,7 +92,7 @@ CampaignEngine {
   },
   "questions": [],
   "resultModifier": ResultModifier {
-    "districtTargetTransform": DistrictTargetTransform {
+    "districtTargetTransform": DistrictVoteTransformer {
       "voterEnvironment": VoterEnvironment {
         "maxAvailableVoters": 6983008,
         "voterBases": [
@@ -108,8 +108,8 @@ CampaignEngine {
         "voters": 40000,
       },
     },
-    "nationalSwingTransform": NationalSwingTransform {},
-    "pipelineTransform": PipelineTransform {
+    "nationalSwingTransform": UnionSwingTransformer {},
+    "pipelineTransform": VoteShareTransformer {
       "mandateCalculator": MandateCalculator {
         "config": {
           "listSeats": 10,
