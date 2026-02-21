@@ -14,7 +14,7 @@ import type {
   CandidateListData,
   PartyListData,
   Shares,
-} from "./ResultTransformer/PipelineTransform.types";
+} from "./ResultTransformer/VoteShareTransformer.types";
 import { calcPercentages } from "./ResultModifier.utils";
 
 const log = createLogger("MandateCalculator");

@@ -29,6 +29,16 @@ export const AppStateRegistry: Record<
     menuType: "mainMenu",
     onTransition: "mainMenu",
   },
+  about: {
+    screenType: "gameScreen",
+    menuType: "mainMenu",
+    onTransition: "mainMenu",
+  },
+  loadGame: {
+    screenType: "gameScreen",
+    menuType: "mainMenu",
+    onTransition: "mainMenu",
+  },
 };
 
 export const gameMenuRegistery = ["mainMenu", "gameMenu", "gameLoaderMenu"];

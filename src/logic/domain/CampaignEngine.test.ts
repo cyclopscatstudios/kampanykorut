@@ -3,9 +3,9 @@ import { EffectType, type RawEffect } from "./EffectApplier.types";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
 import { ResultModifier } from "./ResultModifier";
-import { DistrictTargetTransform } from "./ResultTransformer/DistrictTargetTransform";
-import { NationalSwingTransform } from "./ResultTransformer/NationalSwingTransform";
-import { PipelineTransform } from "./ResultTransformer/PipelineTransform";
+import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
+import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
+import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
 import {
   VoterEnvironment,
   type VoterEnvironmentConfig,
@@ -13,6 +13,7 @@ import {
 import { candidateListData, partyListData } from "./mocks/mockListData";
 import { StorageEngine } from "../application/StorageEngine";
 import { StateEngine } from "../application/StateEngine";
+import { StateHandler } from "../application/StateHandler";
 
 let campaignEngine: CampaignEngine;
 
@@ -41,10 +42,12 @@ describe("CampaignEngine", () => {
     };
     const voterEnvironment = new VoterEnvironment(voterEnvironmentConfig);
     const resultModifier = new ResultModifier(
-      new NationalSwingTransform(),
-      new PipelineTransform(voterEnvironmentConfig, electionConfig),
-      new DistrictTargetTransform(voterEnvironment),
+      new UnionSwingTransformer(),
+      new VoteShareTransformer(voterEnvironmentConfig, electionConfig),
+      new DistrictVoteTransformer(voterEnvironment),
     );
+
+    const stateHandler = new StateHandler();
 
     campaignEngine = new CampaignEngine(
       candidateListData,
@@ -52,15 +55,16 @@ describe("CampaignEngine", () => {
       [],
       [],
       resultModifier,
-      new EffectApplier(electionConfig),
+      new EffectApplier(electionConfig, stateHandler),
       new MandateCalculator(electionConfig),
       new StateEngine(new StorageEngine()),
+      stateHandler,
     );
   });
   it("should apply the party-swing typed decision", () => {
     const decision = getDecision([
       {
-        type: EffectType.PartySwing,
+        type: EffectType.UniformSwing,
         params: {
           fidesz: 5,
           opposition: -3,
@@ -74,7 +78,7 @@ describe("CampaignEngine", () => {
   it("should apply party-share typed decision", () => {
     const decision = getDecision([
       {
-        type: EffectType.PartyShare,
+        type: EffectType.VoteAllocation,
         params: {
           newVotes: 100000,
           share: {
@@ -91,7 +95,7 @@ describe("CampaignEngine", () => {
   it("should apply motivation typed decision", () => {
     const decision = getDecision([
       {
-        type: EffectType.Motivation,
+        type: EffectType.TurnoutChange,
         params: {
           fidesz: 4,
           opposition: -2,
@@ -105,7 +109,7 @@ describe("CampaignEngine", () => {
   it("should apply district typed decision", () => {
     const decision = getDecision([
       {
-        type: EffectType.District,
+        type: EffectType.DistrictVoteTransfer,
         params: [
           {
             amount: 50,

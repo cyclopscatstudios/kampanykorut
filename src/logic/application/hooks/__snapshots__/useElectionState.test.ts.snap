@@ -7,9 +7,10 @@ exports[`useElectionState > should initialize state 1`] = `
       "effects": [
         {
           "params": {
-            "ellenzeki_osszefogas": 0.8,
+            "ellenzeki_osszefogas": 5,
+            "fidesz": -5,
           },
-          "type": "party-swing",
+          "type": "uniform-swing",
         },
       ],
       "id": "A",
@@ -3870,6 +3871,87 @@ exports[`useElectionState > should initialize state 1`] = `
     ],
     "question": "2021 ősze. Megnyerted az ellenzéki előválasztást, te vagy az összefogás közös miniszterelnök-jelöltje. A pártok bizalmatlanok, de a nyilvánosságban nagy várakozás van.",
     "title": "Elfogadod-e a közös jelöltséget?",
+  },
+  "mandates": {
+    "compensation": {
+      "losingVotes": {
+        "egyeb": 2373,
+        "ellenzeki_osszefogas": 1493076,
+        "fidesz": 404540,
+        "fuggetlen": 27962,
+        "megoldas_mozgalom": 64341,
+        "mi_hazank": 307064,
+        "mkkp": 126648,
+        "munkaspart": 8678,
+        "normalis_elet": 31495,
+      },
+      "total": {
+        "egyeb": 2373,
+        "ellenzeki_osszefogas": 1579149,
+        "fidesz": 1330256,
+        "fuggetlen": 27962,
+        "megoldas_mozgalom": 64341,
+        "mi_hazank": 307064,
+        "mkkp": 126648,
+        "munkaspart": 8678,
+        "normalis_elet": 31495,
+      },
+      "winnerCompensation": {
+        "ellenzeki_osszefogas": 86073,
+        "fidesz": 925716,
+      },
+    },
+    "constituencySeats": {
+      "ellenzeki_osszefogas": 19,
+      "fidesz": 87,
+    },
+    "listSeats": {
+      "ellenzeki_osszefogas": 39,
+      "fidesz": 47,
+      "mi_hazank": 7,
+    },
+    "mandates": [
+      {
+        "constituencySeats": 19,
+        "listSeats": 39,
+        "party": "ellenzeki_osszefogas",
+        "totalSeats": 58,
+      },
+      {
+        "constituencySeats": 87,
+        "listSeats": 47,
+        "party": "fidesz",
+        "totalSeats": 134,
+      },
+      {
+        "constituencySeats": 0,
+        "listSeats": 7,
+        "party": "mi_hazank",
+        "totalSeats": 7,
+      },
+    ],
+    "percentages": {
+      "egyeb": 0.0004414318688138151,
+      "ellenzeki_osszefogas": 0.36901471960426274,
+      "fidesz": 0.5252200276504142,
+      "fuggetlen": 0.005201566757594563,
+      "megoldas_mozgalom": 0.011968886587168005,
+      "mi_hazank": 0.057120874574566084,
+      "mkkp": 0.023559403001067025,
+      "munkaspart": 0.0016143049968673777,
+      "normalis_elet": 0.005858784959246147,
+    },
+    "totals": {
+      "egyeb": 2373,
+      "ellenzeki_osszefogas": 1983708,
+      "fidesz": 2823419,
+      "fuggetlen": 27962,
+      "megoldas_mozgalom": 64341,
+      "mi_hazank": 307064,
+      "mkkp": 126648,
+      "munkaspart": 8678,
+      "normalis_elet": 31495,
+    },
   },
   "partyListData": [
     {

@@ -20,9 +20,9 @@ describe("StorageEngine", () => {
 
     vi.clearAllMocks();
 
-    // @ts-expect-error
+    // @ts-expect-error global override
     global.localStorage = localStorageMock;
-    // @ts-expect-error
+    // @ts-expect-error global override
     global.sessionStorage = sessionStorageMock;
   });
 

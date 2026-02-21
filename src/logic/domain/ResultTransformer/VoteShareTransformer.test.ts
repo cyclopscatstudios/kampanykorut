@@ -1,9 +1,9 @@
 import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
 import { candidateListData, partyListData } from "../mocks/mockListData";
-import { PipelineTransform } from "./PipelineTransform";
-import type { CandidateListData } from "./PipelineTransform.types";
+import { VoteShareTransformer } from "./VoteShareTransformer";
+import type { CandidateListData } from "./VoteShareTransformer.types";
 
-let pipelineTransform: PipelineTransform;
+let pipelineTransform: VoteShareTransformer;
 
 const config: VoterEnvironmentConfig = {
   eligibleVoters: 20,
@@ -31,7 +31,7 @@ const electionConfig = {
 
 describe("PipelineTransform", () => {
   beforeEach(() => {
-    pipelineTransform = new PipelineTransform(config, electionConfig);
+    pipelineTransform = new VoteShareTransformer(config, electionConfig);
   });
 
   describe("distributeVotesByPartyShare", () => {

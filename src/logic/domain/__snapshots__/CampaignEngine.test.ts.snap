@@ -354,9 +354,9 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 10455,
-        "fidesz": 12545,
-        "mkkp": 0,
+        "ellenzek": 11000,
+        "fidesz": 12012,
+        "mkkp": undefined,
       },
       "telepules": "",
       "valasztopolgar": 600000,
@@ -366,9 +366,8 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 8596,
-        "fidesz": 8404,
-        "mkkp": 0,
+        "ellenzek": 9000,
+        "fidesz": 8009,
       },
       "telepules": "",
       "valasztopolgar": 600000,
@@ -378,16 +377,16 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
   "mandates": {
     "compensation": {
       "losingVotes": {
-        "ellenzek": 10455,
-        "fidesz": 8404,
+        "ellenzek": 11000,
+        "fidesz": 8009,
       },
       "total": {
-        "ellenzek": 10646,
-        "fidesz": 10493,
+        "ellenzek": 11990,
+        "fidesz": 9020,
       },
       "winnerCompensation": {
-        "ellenzek": 191,
-        "fidesz": 2089,
+        "ellenzek": 990,
+        "fidesz": 1011,
       },
     },
     "constituencySeats": {
@@ -413,13 +412,13 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       },
     ],
     "percentages": {
-      "ellenzek": 0.476275,
-      "fidesz": 0.523725,
+      "ellenzek": 0.4997376377401864,
+      "fidesz": 0.5002623622598136,
       "mkkp": 0,
     },
     "totals": {
-      "ellenzek": 19051,
-      "fidesz": 20949,
+      "ellenzek": 20000,
+      "fidesz": 20021,
       "mkkp": 0,
     },
   },
@@ -429,9 +428,9 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 39158,
-        "fidesz": 53842,
-        "mkkp": 0,
+        "ellenzek": 40000,
+        "fidesz": 50047,
+        "mkkp": 3000,
       },
       "telepules": "",
     },
@@ -440,9 +439,8 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 33456,
-        "fidesz": 31544,
-        "mkkp": 0,
+        "ellenzek": 35000,
+        "fidesz": 30033,
       },
       "telepules": "",
     },

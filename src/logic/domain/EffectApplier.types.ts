@@ -1,13 +1,14 @@
 import type {
   DistrictTarget,
+  DistrictTargetGroup,
   Shares,
-} from "./ResultTransformer/PipelineTransform.types";
+} from "./ResultTransformer/VoteShareTransformer.types";
 
 export enum EffectType {
-  PartySwing = "party-swing",
-  PartyShare = "party-share",
-  Motivation = "motivation",
-  District = "district",
+  UniformSwing = "uniform-swing",
+  VoteAllocation = "vote-allocation",
+  TurnoutChange = "turnout-change",
+  DistrictVoteTransfer = "district-vote-transfer",
 }
 
 export type PartyShareParams = {
@@ -17,38 +18,38 @@ export type PartyShareParams = {
 
 export type RawEffect =
   | {
-      type: EffectType.PartySwing;
+      type: EffectType.UniformSwing;
       params: Record<string, number>;
     }
   | {
-      type: EffectType.PartyShare;
+      type: EffectType.VoteAllocation;
       params: PartyShareParams;
     }
   | {
-      type: EffectType.District;
+      type: EffectType.DistrictVoteTransfer;
       params: DistrictTarget[];
     }
   | {
-      type: EffectType.Motivation;
+      type: EffectType.TurnoutChange;
       params: Record<string, number>;
     };
 
 export type AppliedEffect =
   | {
-      type: EffectType.PartySwing;
+      type: EffectType.UniformSwing;
       baseShare: Shares;
       targetShare: Shares;
     }
   | {
-      type: EffectType.PartyShare;
+      type: EffectType.VoteAllocation;
       newVotes: number;
       share: Record<string, number>;
     }
   | {
-      type: EffectType.District;
-      params: DistrictTarget[];
+      type: EffectType.DistrictVoteTransfer;
+      target: DistrictTarget[] | DistrictTargetGroup[];
     }
   | {
-      type: EffectType.Motivation;
+      type: EffectType.TurnoutChange;
       motivationDelta: Record<string, number>;
     };

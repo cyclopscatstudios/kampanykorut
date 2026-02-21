@@ -1,14 +1,14 @@
 import { mockGameConfig } from "../../application/hooks/MockGameConfig";
 import { VoterEnvironment } from "../../VoterEnvironment";
 import { candidateListData } from "../mocks/mockListData";
-import { DistrictTargetTransform } from "./DistrictTargetTransform";
-import type { DistrictTarget } from "./PipelineTransform.types";
+import { DistrictVoteTransformer } from "./DistrictVoteTransformer";
+import type { DistrictTarget } from "./VoteShareTransformer.types";
 
 describe("DistrictTargetTransform", () => {
   const voterEnvironment = new VoterEnvironment(
     mockGameConfig.voterEnvironmentConfig,
   );
-  const districtTargetTransform = new DistrictTargetTransform(voterEnvironment);
+  const districtTargetTransform = new DistrictVoteTransformer(voterEnvironment);
 
   it("should apply district target correctly", () => {
     const districtTarget: DistrictTarget = {

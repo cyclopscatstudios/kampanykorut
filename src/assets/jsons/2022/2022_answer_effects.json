@@ -6,9 +6,10 @@
         "id": "A",
         "effects": [
           {
-            "type": "party-swing",
+            "type": "uniform-swing",
             "params": {
-              "ellenzeki_osszefogas": 0.8
+              "ellenzeki_osszefogas": 5,
+              "fidesz": -5
             }
           }
         ]

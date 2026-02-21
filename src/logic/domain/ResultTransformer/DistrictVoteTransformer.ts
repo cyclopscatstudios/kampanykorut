@@ -3,9 +3,9 @@ import type {
   CandidateListData,
   DistrictTarget,
   VoteSource,
-} from "./PipelineTransform.types";
+} from "./VoteShareTransformer.types";
 
-export class DistrictTargetTransform {
+export class DistrictVoteTransformer {
   constructor(private voterEnvironment: VoterEnvironment) {}
 
   modifyDistricts(

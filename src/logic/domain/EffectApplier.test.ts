@@ -1,6 +1,8 @@
+import { StateHandler } from "../application/StateHandler";
 import { EffectApplier } from "./EffectApplier";
 import { type RawEffect, EffectType } from "./EffectApplier.types";
 import { candidateListData } from "./mocks/mockListData";
+import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
 
 let effectApplier: EffectApplier;
 
@@ -11,12 +13,12 @@ const electionConfig = {
 
 describe("ElectionEffectApplier – PartySwing", () => {
   beforeEach(() => {
-    effectApplier = new EffectApplier(electionConfig);
+    effectApplier = new EffectApplier(electionConfig, new StateHandler());
   });
 
   it("should call modifyByTarget with correct parameters", () => {
     const effect: RawEffect = {
-      type: EffectType.PartySwing,
+      type: EffectType.UniformSwing,
       params: {
         fidesz: -1,
       },
@@ -25,7 +27,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
     const result = effectApplier.getAppliedEffects([effect], candidateListData);
     expect(result).toEqual([
       {
-        type: EffectType.PartySwing,
+        type: EffectType.UniformSwing,
         baseShare: { ellenzek: 0.5, fidesz: 0.5, mkkp: 0 },
         targetShare: { ellenzek: 0.5, fidesz: 0.49, mkkp: 0 },
       },
@@ -34,7 +36,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
 
   it("should call modifyByMotivation with correct parameters", () => {
     const effect: RawEffect = {
-      type: EffectType.Motivation,
+      type: EffectType.TurnoutChange,
       params: {
         fidesz: 0.5,
         ellenzek: 1,
@@ -43,7 +45,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
     const result = effectApplier.getAppliedEffects([effect], candidateListData);
     expect(result).toEqual([
       {
-        type: EffectType.Motivation,
+        type: EffectType.TurnoutChange,
         motivationDelta: {
           fidesz: 99.5,
           ellenzek: 100,
@@ -54,7 +56,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
 
   it("should return correct result for PartyShare effect", () => {
     const effect: RawEffect = {
-      type: EffectType.PartyShare,
+      type: EffectType.VoteAllocation,
       params: {
         newVotes: 1000,
         share: {
@@ -66,12 +68,48 @@ describe("ElectionEffectApplier – PartySwing", () => {
     const result = effectApplier.getAppliedEffects([effect], candidateListData);
     expect(result).toEqual([
       {
-        type: EffectType.PartyShare,
+        type: EffectType.VoteAllocation,
         newVotes: 1000,
         share: {
           fidesz: 0.6,
           ellenzek: 0.4,
         },
+      },
+    ]);
+  });
+
+  it("should return correct result for District effect", () => {
+    const effect: RawEffect = {
+      type: EffectType.DistrictVoteTransfer,
+      params: [
+        {
+          amount: 100,
+          megyekod: 1,
+          oevk: 1,
+          targetParty: "fidesz",
+          from: {
+            party: "ellenzek",
+            type: "party",
+          },
+        },
+      ] as DistrictTarget[],
+    };
+    const result = effectApplier.getAppliedEffects([effect], candidateListData);
+    expect(result).toEqual([
+      {
+        target: [
+          {
+            amount: 100,
+            from: {
+              party: "ellenzek",
+              type: "party",
+            },
+            megyekod: 1,
+            oevk: 1,
+            targetParty: "fidesz",
+          },
+        ],
+        type: "district-vote-transfer",
       },
     ]);
   });

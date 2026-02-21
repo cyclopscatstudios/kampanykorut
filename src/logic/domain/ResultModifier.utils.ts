@@ -1,5 +1,5 @@
 import type { DistrictResult } from "../../components/ui/map.utils";
-import type { Shares } from "./ResultTransformer/PipelineTransform.types";
+import type { Shares } from "./ResultTransformer/VoteShareTransformer.types";
 
 export function calculateWinner(result?: DistrictResult | null) {
   if (!result) {

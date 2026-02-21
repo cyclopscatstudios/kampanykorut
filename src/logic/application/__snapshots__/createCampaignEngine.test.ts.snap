@@ -17,6 +17,16 @@ CampaignEngine {
         "thresholdPercent": 5,
       },
     },
+    "stateHandler": StateHandler {
+      "listeners": [],
+      "state": {
+        "gameState": {
+          "candidateListData": [],
+          "partyListData": [],
+          "turn": 0,
+        },
+      },
+    },
   },
   "initialCandidateData": [
     {
@@ -106,7 +116,6 @@ CampaignEngine {
           "thresholdPercent": 5,
         },
       },
-      "voteAllocationTransform": VoteAllocationTransform {},
       "voterEnvironment": VoterEnvironment {
         "maxAvailableVoters": 6983008,
         "voterBases": [
@@ -120,6 +129,16 @@ CampaignEngine {
           },
         ],
         "voters": 40000,
+      },
+    },
+  },
+  "stateHandler": StateHandler {
+    "listeners": [],
+    "state": {
+      "gameState": {
+        "candidateListData": [],
+        "partyListData": [],
+        "turn": 0,
       },
     },
   },

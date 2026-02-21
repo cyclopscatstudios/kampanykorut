@@ -10,18 +10,22 @@ import type {
   CandidateListData,
   Shares,
   DistrictTarget,
-} from "./ResultTransformer/PipelineTransform.types";
+  DistrictTargetGroup,
+} from "./ResultTransformer/VoteShareTransformer.types";
 import { createLogger } from "../logger";
+import { StateHandler } from "../application/StateHandler";
 
 const log = createLogger("EffectApplier");
 
 export class EffectApplier {
   private mandateCalculator: MandateCalculator;
+  private stateHandler: StateHandler;
   private EPSILON = 0.000001;
   private DEFAULT_MOTIVATION_DELTA = 99;
 
-  constructor(electionConfig: ElectionConfig) {
+  constructor(electionConfig: ElectionConfig, stateHandler: StateHandler) {
     this.mandateCalculator = new MandateCalculator(electionConfig);
+    this.stateHandler = stateHandler;
   }
 
   getAppliedEffects(
@@ -32,30 +36,32 @@ export class EffectApplier {
 
     effects.forEach((effect) => {
       switch (effect.type) {
-        case EffectType.PartySwing:
+        case EffectType.UniformSwing:
           appliedEffects = [
             ...appliedEffects,
             this.getPartySwingShares(effect.params, candidateListData),
           ];
           break;
-        case EffectType.PartyShare:
+        case EffectType.VoteAllocation:
           appliedEffects = [
             ...appliedEffects,
             this.getPartyShare(effect.params),
           ];
           break;
-        case EffectType.District:
+        case EffectType.DistrictVoteTransfer:
           appliedEffects = [
             ...appliedEffects,
             this.getDistrictChange(effect.params),
           ];
           break;
-        case EffectType.Motivation:
+        case EffectType.TurnoutChange:
           appliedEffects = [
             ...appliedEffects,
             this.getMotivationChange(effect.params),
           ];
           break;
+        default:
+          return this.handleEffectError();
       }
     });
 
@@ -68,7 +74,7 @@ export class EffectApplier {
   ): AppliedEffect {
     const baseShare = this.getBaseShare(candidateListData);
     const targetShare = this.getTargetShare(baseShare, params);
-    return { type: EffectType.PartySwing, baseShare, targetShare };
+    return { type: EffectType.UniformSwing, baseShare, targetShare };
   }
 
   private getBaseShare(candidateListData: CandidateListData[]) {
@@ -91,6 +97,7 @@ export class EffectApplier {
 
     const deltaSum = deltas.reduce((a, b) => a + b.delta, 0);
 
+    // TODO: consider deleting this check and handle swing differences in the class
     if (Math.abs(deltaSum) > this.EPSILON) {
       log.error(`PartySwing delta must sum to 0. Current sum: ${deltaSum}`);
     }
@@ -111,16 +118,18 @@ export class EffectApplier {
   private getPartyShare(params: PartyShareParams): AppliedEffect {
     const newVotes = params.newVotes;
     const share = params.share;
-    return { type: EffectType.PartyShare, newVotes, share };
+    return { type: EffectType.VoteAllocation, newVotes, share };
   }
 
-  private getDistrictChange(params: DistrictTarget[]): AppliedEffect {
-    return { type: EffectType.District, params };
+  private getDistrictChange(
+    target: DistrictTarget[] | DistrictTargetGroup[],
+  ): AppliedEffect {
+    return { type: EffectType.DistrictVoteTransfer, target };
   }
 
   private getMotivationChange(params: Record<string, number>): AppliedEffect {
     const motivationDelta = this.getMotivationDelta(params);
-    return { type: EffectType.Motivation, motivationDelta };
+    return { type: EffectType.TurnoutChange, motivationDelta };
   }
 
   private getMotivationDelta(params: Record<string, number>) {
@@ -139,5 +148,13 @@ export class EffectApplier {
       }
     }
     return delta;
+  }
+
+  private handleEffectError() {
+    const decision = this.stateHandler.get("turnDecision");
+    log.error(
+      `Provided effect type for answer id ${decision?.answerId} to question ${decision?.questionId} is not a valid effect`,
+    );
+    return null;
   }
 }

@@ -2,19 +2,17 @@ import {
   VoterEnvironment,
   type VoterEnvironmentConfig,
 } from "../../VoterEnvironment";
-import { VoteAllocationTransform } from "./VoteAllocationTransform";
 import { MandateCalculator } from "../MandateCalculator";
 import type {
   Shares,
   DistributedVotesResult,
   PartyListData,
   CandidateListData,
-} from "./PipelineTransform.types";
+} from "./VoteShareTransformer.types";
 import type { ElectionConfig, PartyId } from "../MandateCalculator.types";
 
-export class PipelineTransform {
+export class VoteShareTransformer {
   private voterEnvironment: VoterEnvironment;
-  private voteAllocationTransform: VoteAllocationTransform;
   private mandateCalculator: MandateCalculator;
 
   constructor(
@@ -22,7 +20,6 @@ export class PipelineTransform {
     electionConfig: ElectionConfig,
   ) {
     this.voterEnvironment = new VoterEnvironment(voterEnviormentConfig);
-    this.voteAllocationTransform = new VoteAllocationTransform();
     this.mandateCalculator = new MandateCalculator(electionConfig);
   }
 
@@ -51,12 +48,9 @@ export class PipelineTransform {
       }
 
       const weights = this.getPartyWeights(result, party);
-      const distributed = this.voteAllocationTransform.distributeByWeights(
-        weights,
-        votesForParty,
-      );
+      const distributed = this.distributeByWeights(weights, votesForParty);
 
-      result = this.voteAllocationTransform.applyPartyDistributionWithCapacity(
+      result = this.applyPartyDistributionWithCapacity(
         result,
         party,
         distributed,
@@ -132,5 +126,50 @@ export class PipelineTransform {
     party: string,
   ): number[] {
     return districtCandidateData.map((d) => d.partok[party] ?? 0);
+  }
+
+  private distributeByWeights(weights: number[], total: number): number[] {
+    const sum = weights.reduce((a, b) => a + b, 0);
+    if (!sum || !total) {
+      return weights.map(() => 0);
+    }
+
+    const raw = weights.map((w) => (w / sum) * total);
+    const ints = raw.map((v) => Math.floor(v));
+
+    const remaining = total - ints.reduce((a, b) => a + b, 0);
+
+    const order = raw
+      .map((v, i) => ({ i, frac: v - Math.floor(v) }))
+      .sort((a, b) => b.frac - a.frac);
+
+    for (let i = 0; i < remaining; i++) {
+      ints[order[i].i]++;
+    }
+
+    return ints;
+  }
+
+  private applyPartyDistributionWithCapacity(
+    districts: CandidateListData[],
+    party: string,
+    distributed: number[],
+  ) {
+    return districts.map((d, i) => {
+      const usedVotes =
+        Object.values(d.partok).reduce((a, b) => (a ?? 0) + (b ?? 0), 0) ?? 0;
+
+      const capacity = (d.valasztopolgar ?? 0) - usedVotes;
+
+      const toApply = Math.max(0, Math.min(distributed[i] ?? 0, capacity));
+
+      return {
+        ...d,
+        partok: {
+          ...d.partok,
+          [party]: (d.partok[party] ?? 0) + toApply,
+        },
+      };
+    });
   }
 }

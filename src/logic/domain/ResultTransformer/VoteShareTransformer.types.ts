@@ -29,6 +29,16 @@ export interface DistrictTarget {
   from?: VoteSource;
 }
 
+export interface District {
+  megyekod: number;
+  oevk: number;
+}
+
+export interface DistrictTargetGroup {
+  groupId: string;
+  isCustomGroup: boolean;
+}
+
 export interface DistributedVotesResult {
   districts: CandidateListData[];
   totals: Record<string, number>;

@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import type {
   CandidateListData,
   PartyListData,
-} from "../../domain/ResultTransformer/PipelineTransform.types";
+} from "../../domain/ResultTransformer/VoteShareTransformer.types";
 import type { GameState } from "../../domain/CampaignEngine";
 import type { ElectionConfig } from "../../domain/MandateCalculator.types";
 import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
@@ -41,6 +41,8 @@ export function useElectionState(gameId: string) {
     campaignEngine.createInitialState(),
   );
   const { loadSession } = useStateEngine();
+
+  console.log({ gameState });
 
   const loadSavedGame = () => {
     const session = loadSession("gameSession");

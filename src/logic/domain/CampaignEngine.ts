@@ -5,7 +5,7 @@ import type { ResultModifier } from "./ResultModifier";
 import type {
   CandidateListData,
   PartyListData,
-} from "./ResultTransformer/PipelineTransform.types";
+} from "./ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "./MandateCalculator.types";
 import type { Question } from "../../components/ui/gameplay/QuestionCard";
 import type {
@@ -13,6 +13,7 @@ import type {
   Answer,
 } from "../application/hooks/useElectionState";
 import type { StateEngine } from "../application/StateEngine";
+import type { StateHandler } from "../application/StateHandler";
 
 export interface GameState {
   turn: number;
@@ -52,6 +53,7 @@ export class CampaignEngine {
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
     private StateEngine: StateEngine,
+    private stateHandler: StateHandler,
   ) {}
 
   createInitialState(): GameState {
@@ -61,10 +63,20 @@ export class CampaignEngine {
       answers: this.getAnswers(this.answers, this.questions[0]),
       candidateListData: structuredClone(this.initialCandidateData),
       partyListData: structuredClone(this.initialPartyData),
+      mandates: this.mandateCalculator.calculate(
+        this.initialCandidateData,
+        this.initialPartyData,
+      ),
     };
   }
 
   processTurn(state: GameState, decision: Decision): GameState {
+    this.stateHandler.set("gameState", {
+      ...state,
+      answers: this.getAnswers(this.answers, this.questions[state.turn]),
+      currentQuestion: this.questions[state.turn],
+    });
+    this.stateHandler.set("turnDecision", decision);
     const appliedEffects = this.effectApplier.getAppliedEffects(
       decision.effects,
       state.candidateListData,

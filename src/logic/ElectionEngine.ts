@@ -5,15 +5,15 @@ import type {
   PartyId,
 } from "./domain/MandateCalculator.types";
 import { ResultModifier } from "./domain/ResultModifier";
-import { DistrictTargetTransform } from "./domain/ResultTransformer/DistrictTargetTransform";
-import { NationalSwingTransform } from "./domain/ResultTransformer/NationalSwingTransform";
-import { PipelineTransform } from "./domain/ResultTransformer/PipelineTransform";
+import { DistrictVoteTransformer } from "./domain/ResultTransformer/DistrictVoteTransformer";
+import { UnionSwingTransformer } from "./domain/ResultTransformer/UnionSwingTransformer";
+import { VoteShareTransformer } from "./domain/ResultTransformer/VoteShareTransformer";
 import type {
   Shares,
   CandidateListData,
   PartyListData,
   DistrictTarget,
-} from "./domain/ResultTransformer/PipelineTransform.types";
+} from "./domain/ResultTransformer/VoteShareTransformer.types";
 import {
   VoterEnvironment,
   type VoterEnvironmentConfig,
@@ -57,9 +57,9 @@ import {
 export class ElectionEngine {
   private mandateCalculator: MandateCalculator;
   private resultModifier: ResultModifier;
-  private nationalSwingTransform: NationalSwingTransform;
-  private pipelineTransform: PipelineTransform;
-  private dsitrictTargetTransform: DistrictTargetTransform;
+  private nationalSwingTransform: UnionSwingTransformer;
+  private pipelineTransform: VoteShareTransformer;
+  private dsitrictTargetTransform: DistrictVoteTransformer;
   private voterEnvironment: VoterEnvironment;
 
   constructor(
@@ -68,11 +68,11 @@ export class ElectionEngine {
   ) {
     this.voterEnvironment = new VoterEnvironment(voterEnvironmentConfig);
     this.mandateCalculator = new MandateCalculator(this.electionConfig);
-    this.dsitrictTargetTransform = new DistrictTargetTransform(
+    this.dsitrictTargetTransform = new DistrictVoteTransformer(
       this.voterEnvironment,
     );
-    const nationalSwingTransform = new NationalSwingTransform();
-    this.pipelineTransform = new PipelineTransform(
+    const nationalSwingTransform = new UnionSwingTransformer();
+    this.pipelineTransform = new VoteShareTransformer(
       this.voterEnvironmentConfig,
       this.electionConfig,
     );
@@ -81,7 +81,7 @@ export class ElectionEngine {
       this.pipelineTransform,
       this.dsitrictTargetTransform,
     );
-    this.nationalSwingTransform = new NationalSwingTransform();
+    this.nationalSwingTransform = new UnionSwingTransformer();
   }
 
   /**
@@ -103,14 +103,15 @@ export class ElectionEngine {
     districtPartyData: PartyListData[],
   ) {
     const newCandidateData =
-      this.nationalSwingTransform.applyNationalSwingToDistricts(
+      this.nationalSwingTransform.applyUniformSwingToDistricts(
         districtCandidateData,
         baseShare,
         targetShare,
       );
 
-    const newPartyData = this.nationalSwingTransform.applyNationalSwingToList(
+    const newPartyData = this.nationalSwingTransform.applyUniformSwingToList(
       districtPartyData,
+      districtCandidateData,
       baseShare,
       targetShare,
     );

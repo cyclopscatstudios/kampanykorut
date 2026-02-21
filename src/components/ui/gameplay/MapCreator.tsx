@@ -5,7 +5,7 @@ import { MapWrapper } from "./MapWrapper";
 import { BottomBar } from "./BottomBar";
 import { calculateWinner } from "../../../logic/domain/ResultModifier.utils";
 import { SwingFactor } from "../../../types/utils";
-import type { CandidateListData } from "../../../logic/domain/ResultTransformer/PipelineTransform.types";
+import type { CandidateListData } from "../../../logic/domain/ResultTransformer/VoteShareTransformer.types";
 
 interface MapCreatorProps {
   districts: District[];

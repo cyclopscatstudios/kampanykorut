@@ -9,12 +9,9 @@ import { ElectionEngine } from "../logic/ElectionEngine";
 import type {
   CandidateListData,
   PartyListData,
-} from "../logic/domain/ResultTransformer/PipelineTransform.types";
+} from "../logic/domain/ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "../logic/domain/MandateCalculator.types";
 import { StorageEngine } from "../logic/application/StorageEngine";
-
-type Winner = "fidesz" | "ellenzeki_osszefogas" | "mi_hazank" | "other";
-type Shares = Record<string, number>;
 
 export function Calculator() {
   const [candidateListState, setCandidateListStat] =
@@ -79,7 +76,7 @@ export function Calculator() {
   const handleModifyBySwing = () => {
     const calc = engine.calculate(candidateListState, partyListState);
     const savedTotals = storage.getItem("devSession", "localStorage");
-    const baseShares = JSON.parse(savedTotals ?? "");
+    const baseShares = toPercentages(JSON.parse(savedTotals ?? ""));
     const targetShares = getTargetShares(calc?.percentages);
     if (targetShares) {
       const results = engine.modifyByTarget(
@@ -88,6 +85,7 @@ export function Calculator() {
         candidateListState,
         partyListState,
       );
+      console.log({ baseShares, targetShares });
       setCandidateListStat(results.newCandidateData);
       setPartyListState(results.newPartyData);
       saveBaseShare(results.newCandidateData, results.newPartyData);
@@ -96,25 +94,30 @@ export function Calculator() {
         results.newPartyData,
       );
       handleSetMandates(newCalc);
+      console.log({ newCalc });
     }
   };
+
+  function toPercentages(obj: Record<string, number>): Record<string, number> {
+    return Object.fromEntries(
+      Object.entries(obj).map(([k, v]) => [k, v * 100]),
+    );
+  }
 
   const getTargetShares = (parties?: Record<string, number>) => {
     if (!parties) return null;
 
-    for (const [party] of Object.entries(parties)) {
-      if (party === "fidesz") {
-        parties[party] = fideszShare;
-      }
-      if (party === "ellenzeki_osszefogas") {
-        parties[party] = ellenzekShare;
-      }
-      if (party === "mi_hazank") {
-        parties[party] = miHazanShare;
-      }
-    }
+    const overrides: Record<string, number> = {
+      fidesz: fideszShare,
+      ellenzeki_osszefogas: ellenzekShare,
+      mi_hazank: miHazanShare,
+    };
 
-    return parties;
+    return Object.fromEntries(
+      Object.entries(parties)
+        .filter(([party]) => party in overrides)
+        .map(([party]) => [party, overrides[party]]),
+    );
   };
 
   const handlePercentageChange = (value: string, party: string) => {

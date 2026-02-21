@@ -1,18 +1,22 @@
 import type { GameState } from "./CampaignEngine";
 import { type AppliedEffect, EffectType } from "./EffectApplier.types";
 import { createLogger } from "../logger";
-import { DistrictTargetTransform } from "./ResultTransformer/DistrictTargetTransform";
-import { NationalSwingTransform } from "./ResultTransformer/NationalSwingTransform";
-import { PipelineTransform } from "./ResultTransformer/PipelineTransform";
-import type { CandidateListData } from "./ResultTransformer/PipelineTransform.types";
+import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
+import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
+import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
+import type {
+  CandidateListData,
+  DistrictTarget,
+  DistrictTargetGroup,
+} from "./ResultTransformer/VoteShareTransformer.types";
 
 const log = createLogger("ResultModifier");
 
 export class ResultModifier {
   constructor(
-    private nationalSwingTransform: NationalSwingTransform,
-    private pipelineTransform: PipelineTransform,
-    private districtTargetTransform: DistrictTargetTransform,
+    private nationalSwingTransform: UnionSwingTransformer,
+    private pipelineTransform: VoteShareTransformer,
+    private districtTargetTransform: DistrictVoteTransformer,
   ) {}
 
   apply(
@@ -48,16 +52,16 @@ export class ResultModifier {
     effect: AppliedEffect,
   ): Pick<GameState, "candidateListData" | "partyListData"> | null {
     switch (effect.type) {
-      case EffectType.PartySwing:
+      case EffectType.UniformSwing:
         return this.applyPartySwing(state, effect);
 
-      case EffectType.PartyShare:
+      case EffectType.VoteAllocation:
         return this.applyShares(state, effect);
 
-      case EffectType.District:
+      case EffectType.DistrictVoteTransfer:
         return this.applyDistrict(state, effect);
 
-      case EffectType.Motivation:
+      case EffectType.TurnoutChange:
         return this.applyMotivation(state, effect);
 
       default:
@@ -67,16 +71,17 @@ export class ResultModifier {
 
   private applyPartySwing(
     state: GameState,
-    appliedEffects: Extract<AppliedEffect, { type: EffectType.PartySwing }>,
+    appliedEffects: Extract<AppliedEffect, { type: EffectType.UniformSwing }>,
   ) {
     const candidateListData =
-      this.nationalSwingTransform.applyNationalSwingToDistricts(
+      this.nationalSwingTransform.applyUniformSwingToDistricts(
         state.candidateListData,
         appliedEffects?.baseShare,
         appliedEffects?.targetShare,
       );
-    const partyListData = this.nationalSwingTransform.applyNationalSwingToList(
+    const partyListData = this.nationalSwingTransform.applyUniformSwingToList(
       state.partyListData,
+      state.candidateListData,
       appliedEffects.baseShare,
       appliedEffects.targetShare,
     );
@@ -86,7 +91,7 @@ export class ResultModifier {
 
   private applyShares(
     state: GameState,
-    appliedEffects: Extract<AppliedEffect, { type: EffectType.PartyShare }>,
+    appliedEffects: Extract<AppliedEffect, { type: EffectType.VoteAllocation }>,
   ) {
     const result = this.pipelineTransform.distributeVotesByPartyShare(
       state.candidateListData,
@@ -107,19 +112,31 @@ export class ResultModifier {
 
   private applyDistrict(
     state: GameState,
-    appliedEffects: Extract<AppliedEffect, { type: EffectType.District }>,
+    appliedEffects: Extract<
+      AppliedEffect,
+      { type: EffectType.DistrictVoteTransfer }
+    >,
   ) {
+    if (this.isDistrictTargetGroup(appliedEffects.target)) {
+      return null;
+    }
     const result = this.districtTargetTransform.modifyDistricts(
       state.candidateListData,
-      appliedEffects.params,
+      appliedEffects.target,
     );
 
     return { candidateListData: result, partyListData: state.partyListData };
   }
 
+  private isDistrictTargetGroup(
+    target: DistrictTarget[] | DistrictTargetGroup[],
+  ): target is DistrictTargetGroup[] {
+    return target.length > 0 && "group" in target[0];
+  }
+
   private applyMotivation(
     state: GameState,
-    appliedEffects: Extract<AppliedEffect, { type: EffectType.Motivation }>,
+    appliedEffects: Extract<AppliedEffect, { type: EffectType.TurnoutChange }>,
   ) {
     const result = this.pipelineTransform.modifyByMotivation(
       state.candidateListData,

@@ -4,7 +4,6 @@ import questions from "../../../assets/jsons/2022/2022_questions.json";
 import { QuestionCard } from "./QuestionCard";
 import { useElectionState } from "../../../logic/application/hooks/useElectionState";
 import { Button } from "../Button";
-import { useStateEngine } from "../../../logic/application/hooks/useStateEngine";
 
 export type CurrentView = "MapView" | "QuestionView";
 
@@ -51,7 +50,6 @@ function ScreenWrapper({
   children: React.ReactNode;
   loadSavedGame: () => void;
 }) {
-  const { loadSession: _ } = useStateEngine();
   return (
     <div className="w-full">
       <div>
