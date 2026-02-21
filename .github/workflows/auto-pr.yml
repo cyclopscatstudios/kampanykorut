@@ -3,19 +3,22 @@ name: Auto create draft PR from feature branches
 on:
   push:
     branches:
-      - 'feature-**'
+      - 'feature-*'
 
 jobs:
   create-pr:
-    if: github.event.created == true
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
+
       - name: Create draft PR
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          base: main
-          branch: ${{ github.ref_name }}
-          draft: true
-          title: "WIP: ${{ github.ref_name }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base main \
+            --head "${{ github.ref_name }}" \
+            --title "WIP: ${{ github.ref_name }}" \
+            --draft \
+            --body "🤖 Automatically created draft PR"
