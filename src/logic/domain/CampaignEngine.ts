@@ -12,8 +12,6 @@ import type {
   AnsweEffectProps,
   Answer,
 } from "../application/hooks/useElectionState";
-import type { StateEngine } from "../application/StateEngine";
-import type { StateHandler } from "../application/StateHandler";
 
 export interface GameState {
   turn: number;
@@ -52,8 +50,6 @@ export class CampaignEngine {
     private resultModifier: ResultModifier,
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
-    private StateEngine: StateEngine,
-    private stateHandler: StateHandler,
   ) {}
 
   createInitialState(): GameState {
@@ -71,12 +67,6 @@ export class CampaignEngine {
   }
 
   processTurn(state: GameState, decision: Decision): GameState {
-    this.stateHandler.set("gameState", {
-      ...state,
-      answers: this.getAnswers(this.answers, this.questions[state.turn]),
-      currentQuestion: this.questions[state.turn],
-    });
-    this.stateHandler.set("turnDecision", decision);
     const appliedEffects = this.effectApplier.getAppliedEffects(
       decision.effects,
       state.candidateListData,
@@ -87,17 +77,17 @@ export class CampaignEngine {
       modified?.partyListData,
     );
 
+    const nextTurn = state.turn + 1;
+
     const session = {
       ...state,
       turn: state.turn + 1,
-      currentQuestion: this.questions[state.turn],
-      answers: this.getAnswers(this.answers, this.questions[state.turn]),
+      currentQuestion: this.questions[nextTurn],
+      answers: this.getAnswers(this.answers, this.questions[nextTurn]),
       candidateListData: modified?.candidateListData ?? state.candidateListData,
       partyListData: modified?.partyListData ?? state.partyListData,
       mandates: calculated,
     };
-
-    this.StateEngine.saveSession(session, "gameSession");
 
     return session;
   }

@@ -20,7 +20,6 @@ const log = createLogger("EffectApplier");
 export class EffectApplier {
   private mandateCalculator: MandateCalculator;
   private stateHandler: StateHandler;
-  private EPSILON = 0.000001;
   private DEFAULT_MOTIVATION_DELTA = 99;
 
   constructor(electionConfig: ElectionConfig, stateHandler: StateHandler) {
@@ -72,14 +71,37 @@ export class EffectApplier {
     params: Record<string, number>,
     candidateListData: CandidateListData[],
   ): AppliedEffect {
-    const baseShare = this.getBaseShare(candidateListData);
+    const baseShare = this.getBaseShare(candidateListData, params);
     const targetShare = this.getTargetShare(baseShare, params);
     return { type: EffectType.UniformSwing, baseShare, targetShare };
   }
 
-  private getBaseShare(candidateListData: CandidateListData[]) {
+  private getBaseShare(
+    candidateListData: CandidateListData[],
+    params: Record<string, number>,
+  ) {
     const totals = this.mandateCalculator.sumPartyTotals(candidateListData);
-    return this.mandateCalculator.calculatePercentages(totals);
+    const partiesToPercentages = this.toPercentages(
+      this.mandateCalculator.calculatePercentages(totals),
+    );
+    return this.filterOutParties(params, partiesToPercentages);
+  }
+
+  private filterOutParties(
+    effectedParties: Record<string, number>,
+    allParties: Record<string, number>,
+  ) {
+    return Object.fromEntries(
+      Object.entries(allParties).filter(
+        ([party]) => effectedParties[party] !== undefined,
+      ),
+    );
+  }
+
+  private toPercentages(obj: Record<string, number>): Record<string, number> {
+    return Object.fromEntries(
+      Object.entries(obj).map(([k, v]) => [k, v * 100]),
+    );
   }
 
   private getTargetShare(
@@ -92,15 +114,8 @@ export class EffectApplier {
       .filter(([party]) => baseShare[party] !== undefined)
       .map(([party, value]) => ({
         party,
-        delta: Number(value) / 100,
+        delta: value,
       }));
-
-    const deltaSum = deltas.reduce((a, b) => a + b.delta, 0);
-
-    // TODO: consider deleting this check and handle swing differences in the class
-    if (Math.abs(deltaSum) > this.EPSILON) {
-      log.error(`PartySwing delta must sum to 0. Current sum: ${deltaSum}`);
-    }
 
     for (const { party, delta } of deltas) {
       const next = baseShare[party] + delta;

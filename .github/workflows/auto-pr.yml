@@ -3,7 +3,7 @@ name: Auto create draft PR from feature branches
 on:
   push:
     branches:
-      - 'feature-*'
+      - "feature-*"
 
 permissions:
   contents: read
@@ -16,7 +16,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check if PR already exists
+        id: check_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COUNT=$(gh pr list \
+            --head "${{ github.ref_name }}" \
+            --base main \
+            --json number \
+            --jq 'length')
+
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+
       - name: Create draft PR
+        if: steps.check_pr.outputs.count == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

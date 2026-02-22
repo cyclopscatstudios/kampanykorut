@@ -26,7 +26,7 @@ interface DistrictGroup {
   ],
 }; */
 
-// test 
+// test
 
 export class DistrictGroupEngine {
   private defaultGroups: DistrictGroup[] = DEFAULT_GROUPS;

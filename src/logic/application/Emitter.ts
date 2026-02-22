@@ -1,4 +1,8 @@
+import { createLogger } from "../logger";
+
 export type Listener<T> = (event: T) => void;
+
+const log = createLogger("Emitter");
 
 export class Emitter<T> {
   protected listeners: Listener<T>[] = [];
@@ -11,7 +15,7 @@ export class Emitter<T> {
   }
 
   protected notify(event: T) {
-    console.log("notify", event);
+    log.info("Emitting event", { event });
     this.listeners.forEach((l) => l(event));
   }
 }

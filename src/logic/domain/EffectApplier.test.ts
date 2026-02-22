@@ -28,8 +28,8 @@ describe("ElectionEffectApplier – PartySwing", () => {
     expect(result).toEqual([
       {
         type: EffectType.UniformSwing,
-        baseShare: { ellenzek: 0.5, fidesz: 0.5, mkkp: 0 },
-        targetShare: { ellenzek: 0.5, fidesz: 0.49, mkkp: 0 },
+        baseShare: { fidesz: 50 },
+        targetShare: { fidesz: 49 },
       },
     ]);
   });
