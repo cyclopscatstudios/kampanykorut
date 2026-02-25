@@ -107,7 +107,7 @@ export class CampaignEngine {
       candidateListData: modified?.candidateListData ?? state.candidateListData,
       partyListData: modified?.partyListData ?? state.partyListData,
       mandates: calculated,
-      isEnded: nextTurn > 0,
+      isEnded: nextTurn > 3,
     };
 
     return session;

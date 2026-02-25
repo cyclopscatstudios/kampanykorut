@@ -18,7 +18,11 @@ export function ImageWrapper({ src, type, name }: ImageWrapperProps) {
         style,
       )}
     >
-      <img src={src} className="max-w-full max-h-full object-contain" alt={`${name}-${type}`} />
+      <img
+        src={src}
+        className="max-w-full max-h-full object-contain"
+        alt={`${name}-${type}`}
+      />
     </div>
   );
 }

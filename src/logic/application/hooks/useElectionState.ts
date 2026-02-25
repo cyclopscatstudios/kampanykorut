@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type {
   CandidateListData,
   PartyListData,
@@ -12,8 +12,7 @@ import type { Question } from "../../../components/ui/gameplay/QuestionCard";
 import type { RawEffect } from "../../domain/EffectApplier.types";
 import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
-import { container } from "tsyringe";
-import { StateHandler } from "../StateHandler";
+import { useStateHandler } from "./useStateHandler";
 
 export type Answer = {
   id: string;
@@ -49,9 +48,11 @@ export function useElectionState(gameId: string) {
     campaignEngine.createInitialState(),
   );
   const { loadSession, saveSession } = useStateEngine();
-  const stateHandler = container.resolve(StateHandler);
-  stateHandler.set("currentConfig", config);
-  console.log({ gameState });
+  const { updateState } = useStateHandler();
+
+  useEffect(() => {
+    updateState("currentConfig", config);
+  }, [config]);
 
   const loadSavedGame = () => {
     const session = loadSession("gameSession");
@@ -70,8 +71,12 @@ export function useElectionState(gameId: string) {
     };
     const newGameState = campaignEngine.processTurn(gameState, decision);
     saveSession(newGameState, "gameSession");
-    stateHandler.set("gameState", newGameState);
-    stateHandler.set("turnDecision", decision);
+    updateState("gameState", newGameState);
+    updateState("turnDecision", decision);
+    updateState("history", {
+      questionId: gameState.currentQuestion?.id,
+      answerId: answer,
+    });
     setGameState(newGameState);
   };
 

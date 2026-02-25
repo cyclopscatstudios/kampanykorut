@@ -3,10 +3,16 @@ import type { Decision, GameState } from "../domain/CampaignEngine";
 import { Emitter } from "./Emitter";
 import type { GameModeConfig } from "./hooks/useElectionState";
 
-interface StateHandlerType {
+interface HistoryItem {
+  questionId: string;
+  answerId: string;
+}
+
+export interface StateHandlerType {
   gameState: GameState;
   turnDecision?: Decision;
   currentConfig?: GameModeConfig;
+  history?: HistoryItem[];
 }
 
 const defaultState: StateHandlerType = {
@@ -17,6 +23,7 @@ const defaultState: StateHandlerType = {
     isEnded: false,
   },
   currentConfig: undefined,
+  history: [],
 };
 
 @singleton()
@@ -39,5 +46,6 @@ export class StateHandler extends Emitter<StateHandlerType> {
   set<K extends keyof StateHandlerType>(key: K, value: StateHandlerType[K]) {
     this.state[key] = value;
     this.notify(this.state);
+    console.log("State updated:", this.state);
   }
 }

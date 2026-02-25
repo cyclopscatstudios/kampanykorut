@@ -6,29 +6,30 @@ import type { ElectionConfig } from "../logic/domain/MandateCalculator.types";
 import type { VoterEnvironmentConfig } from "../logic/VoterEnvironment";
 
 export function FinalResultDev() {
-    const stateHandler = container.resolve(StateHandler);
-    stateHandler.set("currentConfig", {
-        finalResultAssets: { playerSideDefeat: "src/assets/images/2022/ellenzek_vereseg_ketharmad.jpg", playerSideVictory: "" },
-        electionConfig: {} as ElectionConfig,
-        voterEnvironmentConfig: {} as VoterEnvironmentConfig,
-        candidateListData: [],
-        partyListData: [],
-        districts: [],
-        capitalCity: [],
-        questions: [],
-        answerEffect: []
-    })
-    const results = {
-        mandates: [
-            {
-                party: "fidesz",
-                totalSeats: 135,
-                constituencySeats: 80,
-                listSeats: 55
-            }
-        ]
-    } as FinalResults;
-    return (
-        <FinalResultScreen results={results} />
-    )
+  const stateHandler = container.resolve(StateHandler);
+  stateHandler.set("currentConfig", {
+    finalResultAssets: {
+      playerSideDefeat: "src/assets/images/2022/ellenzek_vereseg_ketharmad.jpg",
+      playerSideVictory: "",
+    },
+    electionConfig: {} as ElectionConfig,
+    voterEnvironmentConfig: {} as VoterEnvironmentConfig,
+    candidateListData: [],
+    partyListData: [],
+    districts: [],
+    capitalCity: [],
+    questions: [],
+    answerEffect: [],
+  });
+  const results = {
+    mandates: [
+      {
+        party: "fidesz",
+        totalSeats: 135,
+        constituencySeats: 80,
+        listSeats: 55,
+      },
+    ],
+  } as FinalResults;
+  return <FinalResultScreen results={results} />;
 }
