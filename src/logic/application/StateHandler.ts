@@ -1,10 +1,12 @@
 import { singleton } from "tsyringe";
 import type { Decision, GameState } from "../domain/CampaignEngine";
 import { Emitter } from "./Emitter";
+import type { GameModeConfig } from "./hooks/useElectionState";
 
 interface StateHandlerType {
   gameState: GameState;
   turnDecision?: Decision;
+  currentConfig?: GameModeConfig;
 }
 
 const defaultState: StateHandlerType = {
@@ -12,7 +14,9 @@ const defaultState: StateHandlerType = {
     candidateListData: [],
     partyListData: [],
     turn: 0,
+    isEnded: false,
   },
+  currentConfig: undefined,
 };
 
 @singleton()

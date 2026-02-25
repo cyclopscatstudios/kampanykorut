@@ -4,6 +4,25 @@ exports[`useElectionState > should initialize state 1`] = `
 {
   "answers": [
     {
+      "conditionalEffects": [
+        {
+          "effects": [
+            {
+              "params": {
+                "ellenzeki_osszefogas": 0.4,
+              },
+              "type": "uniform-swing",
+            },
+          ],
+          "if": [
+            {
+              "answerId": "C",
+              "questionId": "2022_ogyv-2",
+            },
+          ],
+          "mode": "append",
+        },
+      ],
       "effects": [
         {
           "params": {
@@ -3899,6 +3918,7 @@ exports[`useElectionState > should initialize state 1`] = `
     "question": "2021 ősze. Megnyerted az ellenzéki előválasztást, te vagy az összefogás közös miniszterelnök-jelöltje. A pártok bizalmatlanok, de a nyilvánosságban nagy várakozás van.",
     "title": "Elfogadod-e a közös jelöltséget?",
   },
+  "isEnded": false,
   "mandates": {
     "compensation": {
       "losingVotes": {

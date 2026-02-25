@@ -25,6 +25,11 @@ export interface AnsweEffectProps {
   answers: Answer[];
 }
 
+export interface FinalResultAssets {
+  playerSideDefeat: string;
+  playerSideVictory: string;
+}
+
 export interface GameModeConfig {
   electionConfig: ElectionConfig;
   voterEnvironmentConfig: VoterEnvironmentConfig;
@@ -34,6 +39,7 @@ export interface GameModeConfig {
   capitalCity: District[];
   questions: Pick<Question, "id" | "title" | "question" | "possibleAnswers">[];
   answerEffect: AnsweEffectProps[];
+  finalResultAssets: FinalResultAssets;
 }
 
 export function useElectionState(gameId: string) {
@@ -44,6 +50,8 @@ export function useElectionState(gameId: string) {
   );
   const { loadSession, saveSession } = useStateEngine();
   const stateHandler = container.resolve(StateHandler);
+  stateHandler.set("currentConfig", config);
+  console.log({ gameState });
 
   const loadSavedGame = () => {
     const session = loadSession("gameSession");
@@ -71,10 +79,15 @@ export function useElectionState(gameId: string) {
     return answers?.find((a) => a.id === answerId)?.effects;
   };
 
+  const getFinalResults = () => {
+    return campaignEngine.getFinalResults(gameState);
+  };
+
   return {
     state: gameState,
     config,
     handleAnwerQuestion,
     loadSavedGame,
+    getFinalResults,
   };
 }

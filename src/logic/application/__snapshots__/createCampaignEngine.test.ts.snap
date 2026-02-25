@@ -5,7 +5,6 @@ CampaignEngine {
   "answers": [],
   "effectApplier": EffectApplier {
     "DEFAULT_MOTIVATION_DELTA": 99,
-    "EPSILON": 0.000001,
     "mandateCalculator": MandateCalculator {
       "config": {
         "listSeats": 10,
@@ -15,8 +14,10 @@ CampaignEngine {
     "stateHandler": StateHandler {
       "listeners": [],
       "state": {
+        "currentConfig": undefined,
         "gameState": {
           "candidateListData": [],
+          "isEnded": false,
           "partyListData": [],
           "turn": 0,
         },

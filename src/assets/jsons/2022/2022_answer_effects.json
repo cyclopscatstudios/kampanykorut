@@ -14,6 +14,23 @@
             "params": { "ellenzeki_osszefogas": 0.2 }
           },
           { "type": "turnout-change", "params": { "fidesz": -0.8 } }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2022_ogyv-2",
+                "answerId": "C"
+              }
+            ],
+            "mode": "append",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": { "ellenzeki_osszefogas": 0.4 }
+              }
+            ]
+          }
         ]
       },
       {
@@ -58,7 +75,6 @@
       }
     ]
   },
-
   {
     "id": "2022_ogyv-2",
     "answers": [

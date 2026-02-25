@@ -12,6 +12,7 @@ import type {
   AnsweEffectProps,
   Answer,
 } from "../application/hooks/useElectionState";
+import { createLogger } from "../logger";
 
 export interface GameState {
   turn: number;
@@ -23,6 +24,7 @@ export interface GameState {
   candidateListData: CandidateListData[];
   partyListData: PartyListData[];
   mandates?: CalculateResults;
+  isEnded: boolean;
 }
 
 export interface Decision {
@@ -37,6 +39,19 @@ export interface TurnResult {
   partyListData?: PartyListData[];
   mandates?: CalculateResults;
 }
+
+export interface FinalResults extends CalculateResults {
+  winnerParty?: {
+    party?: string;
+    constituencySeats?: number;
+    listSeats?: number;
+    totalSeats?: number;
+    hasMajority?: boolean;
+    majorityType?: "simple" | "supermajority" | null;
+  };
+}
+
+const log = createLogger("CampaignEngine");
 
 export class CampaignEngine {
   constructor(
@@ -63,10 +78,15 @@ export class CampaignEngine {
         this.initialCandidateData,
         this.initialPartyData,
       ),
+      isEnded: false,
     };
   }
 
   processTurn(state: GameState, decision: Decision): GameState {
+    if (state.turn > 3) {
+      log.info("Game has ended. No more turns to process.");
+      return state;
+    }
     const appliedEffects = this.effectApplier.getAppliedEffects(
       decision.effects,
       state.candidateListData,
@@ -87,9 +107,44 @@ export class CampaignEngine {
       candidateListData: modified?.candidateListData ?? state.candidateListData,
       partyListData: modified?.partyListData ?? state.partyListData,
       mandates: calculated,
+      isEnded: nextTurn > 0,
     };
 
     return session;
+  }
+
+  getFinalResults(state: GameState): FinalResults {
+    const winnerParty = state.mandates?.mandates.reduce((max, party) => {
+      return party.totalSeats > max.totalSeats ? party : max;
+    }, state.mandates.mandates[0]);
+    const hasMajority = winnerParty ? winnerParty.totalSeats > 100 : false;
+    const majorityType = this.getMajorityType(winnerParty);
+    return {
+      ...state.mandates,
+      winnerParty: {
+        ...winnerParty,
+        hasMajority,
+        majorityType,
+      },
+    } as FinalResults;
+  }
+
+  private getMajorityType(winnderParty?: {
+    party: string;
+    constituencySeats: number;
+    listSeats: number;
+    totalSeats: number;
+  }) {
+    if (!winnderParty) {
+      return null;
+    }
+    if (winnderParty.totalSeats >= 133) {
+      return "supermajority";
+    }
+    if (winnderParty.totalSeats >= 100) {
+      return "simple";
+    }
+    return null;
   }
 
   private getAnswers(

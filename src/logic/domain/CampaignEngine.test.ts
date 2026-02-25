@@ -11,8 +11,6 @@ import {
   type VoterEnvironmentConfig,
 } from "../VoterEnvironment";
 import { candidateListData, partyListData } from "./mocks/mockListData";
-import { StorageEngine } from "../application/StorageEngine";
-import { StateEngine } from "../application/StateEngine";
 import { StateHandler } from "../application/StateHandler";
 
 let campaignEngine: CampaignEngine;
@@ -21,6 +19,7 @@ const gameState = {
   turn: 0,
   candidateListData,
   partyListData,
+  isEnded: false
 };
 
 const getDecision = (effects: RawEffect[]): Decision => ({
@@ -57,8 +56,6 @@ describe("CampaignEngine", () => {
       resultModifier,
       new EffectApplier(electionConfig, stateHandler),
       new MandateCalculator(electionConfig),
-      new StateEngine(new StorageEngine()),
-      stateHandler,
     );
   });
   it("should apply the party-swing typed decision", () => {

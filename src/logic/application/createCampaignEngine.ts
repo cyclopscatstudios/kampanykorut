@@ -6,9 +6,7 @@ import { DistrictVoteTransformer } from "../domain/ResultTransformer/DistrictVot
 import { UnionSwingTransformer } from "../domain/ResultTransformer/UnionSwingTransformer";
 import { VoteShareTransformer } from "../domain/ResultTransformer/VoteShareTransformer";
 import { VoterEnvironment } from "../VoterEnvironment";
-import { StateEngine } from "./StateEngine";
 import type { GameModeConfig } from "./hooks/useElectionState";
-import { StorageEngine } from "./StorageEngine";
 import { StateHandler } from "./StateHandler";
 
 export function createCampaignEngine(config: GameModeConfig) {
@@ -28,8 +26,6 @@ export function createCampaignEngine(config: GameModeConfig) {
     new DistrictVoteTransformer(voterEnvironment),
   );
 
-  const gameSessionEngine = new StateEngine(new StorageEngine());
-
   return new CampaignEngine(
     config.candidateListData,
     config.partyListData,
@@ -38,7 +34,5 @@ export function createCampaignEngine(config: GameModeConfig) {
     resultModifier,
     effectApplier,
     mandateCalculator,
-    gameSessionEngine,
-    stateHandler,
   );
 }

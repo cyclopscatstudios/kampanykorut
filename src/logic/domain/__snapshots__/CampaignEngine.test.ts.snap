@@ -37,6 +37,7 @@ exports[`CampaignEngine > should apply district typed decision 1`] = `
     },
   ],
   "currentQuestion": undefined,
+  "isEnded": true,
   "mandates": {
     "compensation": {
       "losingVotes": {
@@ -149,6 +150,7 @@ exports[`CampaignEngine > should apply motivation typed decision 1`] = `
     },
   ],
   "currentQuestion": undefined,
+  "isEnded": true,
   "mandates": {
     "compensation": {
       "losingVotes": {
@@ -263,6 +265,7 @@ exports[`CampaignEngine > should apply party-share typed decision 1`] = `
     },
   ],
   "currentQuestion": undefined,
+  "isEnded": true,
   "mandates": {
     "compensation": {
       "losingVotes": {
@@ -374,6 +377,7 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
     },
   ],
   "currentQuestion": undefined,
+  "isEnded": true,
   "mandates": {
     "compensation": {
       "losingVotes": {

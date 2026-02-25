@@ -5,9 +5,10 @@ type ImageType = "portrait" | "slogan";
 interface ImageWrapperProps {
   src: string;
   type: ImageType;
+  name?: string;
 }
 
-export function ImageWrapper({ src, type }: ImageWrapperProps) {
+export function ImageWrapper({ src, type, name }: ImageWrapperProps) {
   const style = getStyleByAspectRatio(type);
 
   return (
@@ -17,7 +18,7 @@ export function ImageWrapper({ src, type }: ImageWrapperProps) {
         style,
       )}
     >
-      <img src={src} className="max-w-full max-h-full object-contain" alt="" />
+      <img src={src} className="max-w-full max-h-full object-contain" alt={`${name}-${type}`} />
     </div>
   );
 }
