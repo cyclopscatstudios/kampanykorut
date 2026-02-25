@@ -1,6 +1,11 @@
+import { container } from "tsyringe";
 import { StateHandler } from "../application/StateHandler";
 import { EffectApplier } from "./EffectApplier";
-import { type RawEffect, EffectType } from "./EffectApplier.types";
+import {
+  type ConditionalRawEffect,
+  type RawEffect,
+  EffectType,
+} from "./EffectApplier.types";
 import { candidateListData } from "./mocks/mockListData";
 import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
 
@@ -12,8 +17,9 @@ const electionConfig = {
 };
 
 describe("ElectionEffectApplier – PartySwing", () => {
+  const stateHandler = container.resolve(StateHandler);
   beforeEach(() => {
-    effectApplier = new EffectApplier(electionConfig, new StateHandler());
+    effectApplier = new EffectApplier(electionConfig, stateHandler);
   });
 
   it("should call modifyByTarget with correct parameters", () => {
@@ -112,5 +118,131 @@ describe("ElectionEffectApplier – PartySwing", () => {
         type: "district-vote-transfer",
       },
     ]);
+  });
+
+  describe("EffectApplier – Conditional Effects", () => {
+    it("should apply replace conditional effect", () => {
+      stateHandler.set("history", [{ questionId: "q1", answerId: "a1" }]);
+      const effect: RawEffect = {
+        type: EffectType.DistrictVoteTransfer,
+        params: [
+          {
+            amount: 100,
+            megyekod: 1,
+            oevk: 1,
+            targetParty: "fidesz",
+            from: {
+              party: "ellenzek",
+              type: "party",
+            },
+          },
+        ] as DistrictTarget[],
+      };
+      const conditionalEffect: ConditionalRawEffect = {
+        if: [
+          {
+            questionId: "q1",
+            answerId: "a1",
+          },
+        ],
+        effects: [
+          {
+            type: EffectType.VoteAllocation,
+            params: {
+              newVotes: 1000,
+              share: {
+                fidesz: 0.6,
+                ellenzek: 0.4,
+              },
+            },
+          },
+        ],
+        mode: "replace",
+      };
+      const result = effectApplier.getAppliedEffects(
+        [effect],
+        candidateListData,
+        [conditionalEffect],
+      );
+      expect(result).toEqual([
+        {
+          type: "vote-allocation",
+          newVotes: 1000,
+          share: {
+            fidesz: 0.6,
+            ellenzek: 0.4,
+          },
+        },
+      ]);
+    });
+    it("should apply merge conditional effect", () => {
+      stateHandler.set("history", [{ questionId: "q1", answerId: "a1" }]);
+      const effect: RawEffect = {
+        type: EffectType.DistrictVoteTransfer,
+        params: [
+          {
+            amount: 100,
+            megyekod: 1,
+            oevk: 1,
+            targetParty: "fidesz",
+            from: {
+              party: "ellenzek",
+              type: "party",
+            },
+          },
+        ] as DistrictTarget[],
+      };
+      const conditionalEffect: ConditionalRawEffect = {
+        if: [
+          {
+            questionId: "q1",
+            answerId: "a1",
+          },
+        ],
+        effects: [
+          {
+            type: EffectType.VoteAllocation,
+            params: {
+              newVotes: 1000,
+              share: {
+                fidesz: 0.6,
+                ellenzek: 0.4,
+              },
+            },
+          },
+        ],
+        mode: "merge",
+      };
+      const result = effectApplier.getAppliedEffects(
+        [effect],
+        candidateListData,
+        [conditionalEffect],
+      );
+      expect(result).toEqual([
+        {
+          target: [
+            {
+              amount: 100,
+              from: {
+                party: "ellenzek",
+                type: "party",
+              },
+              megyekod: 1,
+              oevk: 1,
+              targetParty: "fidesz",
+            },
+          ],
+          type: "district-vote-transfer",
+        },
+        {
+          type: "vote-allocation",
+          newVotes: 1000,
+          share: {
+            fidesz: 0.6,
+            ellenzek: 0.4,
+          },
+        },
+      ]);
+    });
   });
 });

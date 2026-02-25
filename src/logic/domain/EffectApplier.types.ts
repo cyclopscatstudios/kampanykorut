@@ -21,7 +21,7 @@ export type ConditionalRawEffect = {
     questionId: string;
     answerId: string;
   }[];
-  mode: "append" | "replace";
+  mode: "merge" | "replace";
   effects: RawEffect[];
 };
 
