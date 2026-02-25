@@ -6,7 +6,6 @@ export function useStateHandler() {
 
   const updateState = (key: keyof StateHandlerType, value: unknown) => {
     const currentState = stateHandler.get(key);
-    console.log({ currentState, value });
     if (Array.isArray(currentState)) {
       if (Array.isArray(value)) {
         return stateHandler.set(key, [...currentState, ...value]);

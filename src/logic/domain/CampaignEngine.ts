@@ -1,5 +1,5 @@
 import type { EffectApplier } from "./EffectApplier";
-import type { RawEffect } from "./EffectApplier.types";
+import type { ConditionalRawEffect, RawEffect } from "./EffectApplier.types";
 import type { MandateCalculator } from "./MandateCalculator";
 import type { ResultModifier } from "./ResultModifier";
 import type {
@@ -14,12 +14,22 @@ import type {
 } from "../application/hooks/useElectionState";
 import { createLogger } from "../logger";
 
+export interface RawQuestion {
+  id: string;
+  title: string;
+  question: string;
+  possibleAnswers: {
+    id: string;
+    label: string;
+  }[];
+  affects?: { id: string }[];
+  requires?: { questionId: string; answerId: string }[];
+  blocks?: { questionId: string; answerId: string }[];
+}
+
 export interface GameState {
   turn: number;
-  currentQuestion?: Pick<
-    Question,
-    "id" | "title" | "question" | "possibleAnswers"
-  >;
+  currentQuestion?: RawQuestion;
   answers?: Answer[];
   candidateListData: CandidateListData[];
   partyListData: PartyListData[];
@@ -31,6 +41,7 @@ export interface Decision {
   questionId: string;
   answerId: string;
   effects: RawEffect[];
+  conditionalEffects?: ConditionalRawEffect[];
 }
 
 export interface TurnResult {
@@ -90,7 +101,9 @@ export class CampaignEngine {
     const appliedEffects = this.effectApplier.getAppliedEffects(
       decision.effects,
       state.candidateListData,
+      decision.conditionalEffects,
     );
+    console.log({ appliedEffects });
     const modified = this.resultModifier.apply(state, appliedEffects);
     const calculated = this.mandateCalculator.calculate(
       modified?.candidateListData,

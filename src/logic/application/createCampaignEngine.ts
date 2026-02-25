@@ -1,3 +1,4 @@
+import { container } from "tsyringe";
 import { CampaignEngine } from "../domain/CampaignEngine";
 import { EffectApplier } from "../domain/EffectApplier";
 import { MandateCalculator } from "../domain/MandateCalculator";
@@ -11,7 +12,7 @@ import { StateHandler } from "./StateHandler";
 
 export function createCampaignEngine(config: GameModeConfig) {
   const mandateCalculator = new MandateCalculator(config.electionConfig);
-  const stateHandler = new StateHandler();
+  const stateHandler = container.resolve(StateHandler);
 
   const effectApplier = new EffectApplier(config.electionConfig, stateHandler);
 

@@ -4,25 +4,6 @@ exports[`useElectionState > should initialize state 1`] = `
 {
   "answers": [
     {
-      "conditionalEffects": [
-        {
-          "effects": [
-            {
-              "params": {
-                "ellenzeki_osszefogas": 0.4,
-              },
-              "type": "uniform-swing",
-            },
-          ],
-          "if": [
-            {
-              "answerId": "C",
-              "questionId": "2022_ogyv-2",
-            },
-          ],
-          "mode": "append",
-        },
-      ],
       "effects": [
         {
           "params": {

@@ -14,23 +14,6 @@
             "params": { "ellenzeki_osszefogas": 0.2 }
           },
           { "type": "turnout-change", "params": { "fidesz": -0.8 } }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2022_ogyv-2",
-                "answerId": "C"
-              }
-            ],
-            "mode": "append",
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": { "ellenzeki_osszefogas": 0.4 }
-              }
-            ]
-          }
         ]
       },
       {
@@ -91,6 +74,23 @@
               "newVotes": 500,
               "share": { "fidesz": 0.7, "mi_hazank": 0.3 }
             }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2022_ogyv-1",
+                "answerId": "C"
+              }
+            ],
+            "mode": "replace",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": { "ellenzeki_osszefogas": 2 }
+              }
+            ]
           }
         ]
       },

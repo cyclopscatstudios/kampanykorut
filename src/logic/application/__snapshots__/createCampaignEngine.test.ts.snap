@@ -21,6 +21,7 @@ CampaignEngine {
           "partyListData": [],
           "turn": 0,
         },
+        "history": [],
       },
     },
   },
