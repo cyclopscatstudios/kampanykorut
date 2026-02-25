@@ -4,16 +4,21 @@ import questions from "../../../assets/jsons/2022/2022_questions.json";
 import { QuestionCard } from "./QuestionCard";
 import { useElectionState } from "../../../logic/application/hooks/useElectionState";
 import { Button } from "../Button";
+import { FinalResultScreen } from "./FinalResultScreen";
 
-export type CurrentView = "MapView" | "QuestionView";
+export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
 export function MainGameScreen({ gameId }: { gameId: string }) {
   const [currentView, setCurrentView] = useState<CurrentView>("MapView");
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const { state, config, handleAnwerQuestion, loadSavedGame } =
+  const { state, config, handleAnwerQuestion, loadSavedGame, getFinalResults } =
     useElectionState(gameId);
 
   const handleOnClick = (id?: string) => {
+    if (state.isEnded) {
+      setCurrentView("FinalScreen");
+      return;
+    }
     handleAnwerQuestion(id);
     setCurrentView("MapView");
   };
@@ -27,6 +32,8 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
           capitalCity={config.capitalCity}
           districts={config.districts}
         />
+      ) : currentView === "FinalScreen" ? (
+        <FinalResultScreen results={getFinalResults()} />
       ) : (
         <QuestionCard
           id={questions[currentQuestion].id}
@@ -51,7 +58,7 @@ function ScreenWrapper({
   loadSavedGame: () => void;
 }) {
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <div>
         <Button onClick={loadSavedGame} size="small">
           <Button.Text>Load saved game</Button.Text>

@@ -2,15 +2,9 @@
 
 exports[`createCampaignEngine > should create a new campaign engine instance 1`] = `
 CampaignEngine {
-  "StateEngine": StateEngine {
-    "loadGameState": [Function],
-    "loadSession": [Function],
-    "storage": StorageEngine {},
-  },
   "answers": [],
   "effectApplier": EffectApplier {
     "DEFAULT_MOTIVATION_DELTA": 99,
-    "EPSILON": 0.000001,
     "mandateCalculator": MandateCalculator {
       "config": {
         "listSeats": 10,
@@ -20,8 +14,10 @@ CampaignEngine {
     "stateHandler": StateHandler {
       "listeners": [],
       "state": {
+        "currentConfig": undefined,
         "gameState": {
           "candidateListData": [],
+          "isEnded": false,
           "partyListData": [],
           "turn": 0,
         },
@@ -92,7 +88,7 @@ CampaignEngine {
   },
   "questions": [],
   "resultModifier": ResultModifier {
-    "districtTargetTransform": DistrictTargetTransform {
+    "districtTargetTransform": DistrictVoteTransformer {
       "voterEnvironment": VoterEnvironment {
         "maxAvailableVoters": 6983008,
         "voterBases": [
@@ -108,8 +104,8 @@ CampaignEngine {
         "voters": 40000,
       },
     },
-    "nationalSwingTransform": NationalSwingTransform {},
-    "pipelineTransform": PipelineTransform {
+    "nationalSwingTransform": UnionSwingTransformer {},
+    "pipelineTransform": VoteShareTransformer {
       "mandateCalculator": MandateCalculator {
         "config": {
           "listSeats": 10,
@@ -129,16 +125,6 @@ CampaignEngine {
           },
         ],
         "voters": 40000,
-      },
-    },
-  },
-  "stateHandler": StateHandler {
-    "listeners": [],
-    "state": {
-      "gameState": {
-        "candidateListData": [],
-        "partyListData": [],
-        "turn": 0,
       },
     },
   },

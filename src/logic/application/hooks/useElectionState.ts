@@ -12,6 +12,8 @@ import type { Question } from "../../../components/ui/gameplay/QuestionCard";
 import type { RawEffect } from "../../domain/EffectApplier.types";
 import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
+import { container } from "tsyringe";
+import { StateHandler } from "../StateHandler";
 
 export type Answer = {
   id: string;
@@ -23,6 +25,11 @@ export interface AnsweEffectProps {
   answers: Answer[];
 }
 
+export interface FinalResultAssets {
+  playerSideDefeat: string;
+  playerSideVictory: string;
+}
+
 export interface GameModeConfig {
   electionConfig: ElectionConfig;
   voterEnvironmentConfig: VoterEnvironmentConfig;
@@ -32,6 +39,7 @@ export interface GameModeConfig {
   capitalCity: District[];
   questions: Pick<Question, "id" | "title" | "question" | "possibleAnswers">[];
   answerEffect: AnsweEffectProps[];
+  finalResultAssets: FinalResultAssets;
 }
 
 export function useElectionState(gameId: string) {
@@ -40,8 +48,9 @@ export function useElectionState(gameId: string) {
   const [gameState, setGameState] = useState<GameState>(() =>
     campaignEngine.createInitialState(),
   );
-  const { loadSession } = useStateEngine();
-
+  const { loadSession, saveSession } = useStateEngine();
+  const stateHandler = container.resolve(StateHandler);
+  stateHandler.set("currentConfig", config);
   console.log({ gameState });
 
   const loadSavedGame = () => {
@@ -54,18 +63,15 @@ export function useElectionState(gameId: string) {
     if (!answer || !gameState.currentQuestion || !answerEffect) {
       return;
     }
-    const newGameState = campaignEngine.processTurn(
-      {
-        turn: gameState.turn,
-        candidateListData: config.candidateListData,
-        partyListData: config.partyListData,
-      },
-      {
-        answerId: answer,
-        questionId: gameState.currentQuestion?.id,
-        effects: answerEffect,
-      },
-    );
+    const decision = {
+      answerId: answer,
+      questionId: gameState.currentQuestion?.id,
+      effects: answerEffect,
+    };
+    const newGameState = campaignEngine.processTurn(gameState, decision);
+    saveSession(newGameState, "gameSession");
+    stateHandler.set("gameState", newGameState);
+    stateHandler.set("turnDecision", decision);
     setGameState(newGameState);
   };
 
@@ -73,10 +79,15 @@ export function useElectionState(gameId: string) {
     return answers?.find((a) => a.id === answerId)?.effects;
   };
 
+  const getFinalResults = () => {
+    return campaignEngine.getFinalResults(gameState);
+  };
+
   return {
     state: gameState,
     config,
     handleAnwerQuestion,
     loadSavedGame,
+    getFinalResults,
   };
 }

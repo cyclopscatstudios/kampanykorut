@@ -28,4 +28,5 @@ export const mockGameConfig = {
   voterEnvironmentConfig,
   candidateListData,
   partyListData,
+  finalResultAssets: {} as GameModeConfig["finalResultAssets"],
 } as GameModeConfig;

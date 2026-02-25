@@ -95,6 +95,15 @@
     "id": "2022_ogyv-5",
     "title": "Vidék vs. Budapest",
     "question": "Az ellenzék Budapesten erős, de a rendszer a vidéki egyéni körzetek miatt dől el.",
+    "affects": [{
+      "id": "2022_ogyv-6"
+    }],
+    "requires": [
+      { "questionId": "2022_ogyv-1", "answerId": "A" }
+    ],
+    "blocks": [
+      { "questionId": "2022_ogyv-1", "answerId": "C" }
+    ],
     "possibleAnswers": [
       {
         "id": "A",

@@ -12,6 +12,8 @@ export class StateEngine {
   constructor(@inject(StorageEngine) private storage: StorageEngine) {
     this.loadGameState = this.loadGameState.bind(this);
     this.loadSession = this.loadSession.bind(this);
+    this.safeStringify = this.safeStringify.bind(this);
+    this.saveSession = this.saveSession.bind(this);
   }
 
   saveSession<T>(session: T, sessionKey: SessionKey) {

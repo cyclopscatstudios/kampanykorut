@@ -65,6 +65,7 @@ export class ResultModifier {
         return this.applyMotivation(state, effect);
 
       default:
+        log.error("Unknown effect type in ResultModifier", { effect });
         return null;
     }
   }
@@ -73,6 +74,7 @@ export class ResultModifier {
     state: GameState,
     appliedEffects: Extract<AppliedEffect, { type: EffectType.UniformSwing }>,
   ) {
+    log.info("Applying uniform swing", { appliedEffects });
     const candidateListData =
       this.nationalSwingTransform.applyUniformSwingToDistricts(
         state.candidateListData,

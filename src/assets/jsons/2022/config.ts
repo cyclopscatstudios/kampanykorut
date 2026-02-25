@@ -10,6 +10,8 @@ import type {
   AnsweEffectProps,
   GameModeConfig,
 } from "../../../logic/application/hooks/useElectionState";
+import ellenzek_vereseg from '../../images/2022/ellenzek_vereseg_ketharmad.jpg';
+import ellenzek_gyozelem from '../../images/2022/ellenzek_gyozelem.jpg';
 
 export const config2022: GameModeConfig = {
   electionConfig,
@@ -24,4 +26,8 @@ export const config2022: GameModeConfig = {
   questions,
   // TODO fix this later
   answerEffect: answerEffect as AnsweEffectProps[],
+  finalResultAssets: {
+    playerSideDefeat: ellenzek_vereseg,
+    playerSideVictory: ellenzek_gyozelem,
+  }
 };

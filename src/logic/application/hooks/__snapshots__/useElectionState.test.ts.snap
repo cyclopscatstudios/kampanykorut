@@ -4,13 +4,43 @@ exports[`useElectionState > should initialize state 1`] = `
 {
   "answers": [
     {
+      "conditionalEffects": [
+        {
+          "effects": [
+            {
+              "params": {
+                "ellenzeki_osszefogas": 0.4,
+              },
+              "type": "uniform-swing",
+            },
+          ],
+          "if": [
+            {
+              "answerId": "C",
+              "questionId": "2022_ogyv-2",
+            },
+          ],
+          "mode": "append",
+        },
+      ],
       "effects": [
         {
           "params": {
-            "ellenzeki_osszefogas": 5,
-            "fidesz": -5,
+            "ellenzeki_osszefogas": 0.8,
           },
           "type": "uniform-swing",
+        },
+        {
+          "params": {
+            "ellenzeki_osszefogas": 0.2,
+          },
+          "type": "turnout-change",
+        },
+        {
+          "params": {
+            "fidesz": -0.8,
+          },
+          "type": "turnout-change",
         },
       ],
       "id": "A",
@@ -19,11 +49,9 @@ exports[`useElectionState > should initialize state 1`] = `
       "effects": [
         {
           "params": {
-            "ellenzeki_osszefogas": -1.5,
-            "fidesz": 0.5,
-            "mi-hazank": 0.5,
+            "ellenzeki_osszefogas": 0.5,
           },
-          "type": "party-swing",
+          "type": "uniform-swing",
         },
       ],
       "id": "B",
@@ -32,11 +60,25 @@ exports[`useElectionState > should initialize state 1`] = `
       "effects": [
         {
           "params": {
-            "ellenzeki_osszefogas": -0.8,
-            "fidesz": -0.3,
-            "mi-hazank": -0.2,
+            "ellenzeki_osszefogas": -1.4,
+            "fidesz": 0.5,
           },
-          "type": "motivation",
+          "type": "uniform-swing",
+        },
+        {
+          "params": [
+            {
+              "amount": 350,
+              "from": {
+                "party": "ellenzeki_osszefogas",
+                "type": "party",
+              },
+              "megyekod": 13,
+              "oevk": 2,
+              "targetParty": "mi_hazank",
+            },
+          ],
+          "type": "district-vote-transfer",
         },
       ],
       "id": "C",
@@ -45,11 +87,15 @@ exports[`useElectionState > should initialize state 1`] = `
       "effects": [
         {
           "params": {
-            "ellenzeki_osszefogas": -8,
-            "fidesz": 0.8,
-            "mi-hazank": -0.2,
+            "ellenzeki_osszefogas": 0.5,
           },
-          "type": "motivation",
+          "type": "uniform-swing",
+        },
+        {
+          "params": {
+            "ellenzeki_osszefogas": 0.4,
+          },
+          "type": "turnout-change",
         },
       ],
       "id": "D",
@@ -3872,6 +3918,7 @@ exports[`useElectionState > should initialize state 1`] = `
     "question": "2021 ősze. Megnyerted az ellenzéki előválasztást, te vagy az összefogás közös miniszterelnök-jelöltje. A pártok bizalmatlanok, de a nyilvánosságban nagy várakozás van.",
     "title": "Elfogadod-e a közös jelöltséget?",
   },
+  "isEnded": false,
   "mandates": {
     "compensation": {
       "losingVotes": {
