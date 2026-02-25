@@ -16,6 +16,7 @@ npm run storybook     # Launch Storybook at port 6006
 ```
 
 To run a single test file:
+
 ```bash
 npx vitest run src/path/to/file.test.ts
 ```

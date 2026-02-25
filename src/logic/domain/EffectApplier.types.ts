@@ -16,6 +16,15 @@ export type PartyShareParams = {
   share: Record<string, number>;
 };
 
+export type ConditionalRawEffect = {
+  if: {
+    questionId: string;
+    answerId: string;
+  }[];
+  mode: "merge" | "replace";
+  effects: RawEffect[];
+};
+
 export type RawEffect =
   | {
       type: EffectType.UniformSwing;

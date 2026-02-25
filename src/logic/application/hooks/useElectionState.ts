@@ -1,23 +1,26 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type {
   CandidateListData,
   PartyListData,
 } from "../../domain/ResultTransformer/VoteShareTransformer.types";
-import type { GameState } from "../../domain/CampaignEngine";
+import type { Decision, GameState } from "../../domain/CampaignEngine";
 import type { ElectionConfig } from "../../domain/MandateCalculator.types";
 import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
 import { createCampaignEngine } from "../createCampaignEngine";
 import type { District } from "../../../components/ui/map.utils";
 import type { Question } from "../../../components/ui/gameplay/QuestionCard";
-import type { RawEffect } from "../../domain/EffectApplier.types";
+import type {
+  ConditionalRawEffect,
+  RawEffect,
+} from "../../domain/EffectApplier.types";
 import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
-import { container } from "tsyringe";
-import { StateHandler } from "../StateHandler";
+import { useStateHandler } from "./useStateHandler";
 
 export type Answer = {
   id: string;
   effects: RawEffect[];
+  conditionalEffects?: ConditionalRawEffect[];
 };
 
 export interface AnsweEffectProps {
@@ -49,9 +52,11 @@ export function useElectionState(gameId: string) {
     campaignEngine.createInitialState(),
   );
   const { loadSession, saveSession } = useStateEngine();
-  const stateHandler = container.resolve(StateHandler);
-  stateHandler.set("currentConfig", config);
-  console.log({ gameState });
+  const { updateState } = useStateHandler();
+
+  useEffect(() => {
+    updateState("currentConfig", config);
+  }, [config]);
 
   const loadSavedGame = () => {
     const session = loadSession("gameSession");
@@ -60,23 +65,36 @@ export function useElectionState(gameId: string) {
 
   const handleAnwerQuestion = (answer?: string) => {
     const answerEffect = getAnswerEffects(gameState?.answers, answer);
+    const conditionalEffects = getConditionalEffects(
+      gameState?.answers,
+      answer,
+    );
     if (!answer || !gameState.currentQuestion || !answerEffect) {
       return;
     }
-    const decision = {
+    const decision: Decision = {
       answerId: answer,
       questionId: gameState.currentQuestion?.id,
       effects: answerEffect,
+      conditionalEffects: conditionalEffects,
     };
     const newGameState = campaignEngine.processTurn(gameState, decision);
     saveSession(newGameState, "gameSession");
-    stateHandler.set("gameState", newGameState);
-    stateHandler.set("turnDecision", decision);
+    updateState("gameState", newGameState);
+    updateState("turnDecision", decision);
+    updateState("history", {
+      questionId: gameState.currentQuestion?.id,
+      answerId: answer,
+    });
     setGameState(newGameState);
   };
 
   const getAnswerEffects = (answers?: Answer[], answerId?: string) => {
     return answers?.find((a) => a.id === answerId)?.effects;
+  };
+
+  const getConditionalEffects = (answers?: Answer[], answerId?: string) => {
+    return answers?.find((a) => a.id === answerId)?.conditionalEffects;
   };
 
   const getFinalResults = () => {

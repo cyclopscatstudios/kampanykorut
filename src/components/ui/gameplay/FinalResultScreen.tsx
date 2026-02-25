@@ -1,10 +1,7 @@
 import { useMemo } from "react";
 import type { FinalResults } from "../../../logic/domain/CampaignEngine";
 import { Text } from "../Text";
-import {
-  ParliamentHemicycle,
-  type Party,
-} from "./ParliamentHemicyle";
+import { ParliamentHemicycle, type Party } from "./ParliamentHemicyle";
 import { getPartyColor } from "../color.utils";
 import type { PartyName } from "../../../types/color";
 import { ImageWrapper } from "./ImageWrapper";
@@ -15,11 +12,14 @@ export function FinalResultScreen({ results }: { results: FinalResults }) {
   const parties = useMemo(() => buildPartiesFromResults(results), [results]);
   const stateHandler = container.resolve(StateHandler);
   const currentConfig = stateHandler.get("currentConfig");
-  console.log({currentConfig})
+
   return (
     <div className="h-full bg-blue-950">
       <Text>Final Results</Text>
-      <ImageWrapper src={currentConfig?.finalResultAssets.playerSideDefeat ?? ""} type="slogan"/>
+      <ImageWrapper
+        src={currentConfig?.finalResultAssets.playerSideDefeat ?? ""}
+        type="slogan"
+      />
       <ParliamentHemicycle
         width={760}
         height={420}

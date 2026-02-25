@@ -3,6 +3,7 @@ import {
   type RawEffect,
   type AppliedEffect,
   type PartyShareParams,
+  type ConditionalRawEffect,
 } from "./EffectApplier.types";
 import { MandateCalculator } from "./MandateCalculator";
 import type { ElectionConfig } from "./MandateCalculator.types";
@@ -30,35 +31,35 @@ export class EffectApplier {
   getAppliedEffects(
     effects: RawEffect[],
     candidateListData: CandidateListData[],
+    conditionalEffects?: ConditionalRawEffect[],
   ): AppliedEffect[] {
+    const resolvedEffects = this.resolveConditionalEffects(
+      effects,
+      conditionalEffects,
+    );
+
     let appliedEffects: AppliedEffect[] = [];
 
-    effects.forEach((effect) => {
+    resolvedEffects.forEach((effect) => {
       switch (effect.type) {
         case EffectType.UniformSwing:
-          appliedEffects = [
-            ...appliedEffects,
+          appliedEffects.push(
             this.getPartySwingShares(effect.params, candidateListData),
-          ];
+          );
           break;
+
         case EffectType.VoteAllocation:
-          appliedEffects = [
-            ...appliedEffects,
-            this.getPartyShare(effect.params),
-          ];
+          appliedEffects.push(this.getPartyShare(effect.params));
           break;
+
         case EffectType.DistrictVoteTransfer:
-          appliedEffects = [
-            ...appliedEffects,
-            this.getDistrictChange(effect.params),
-          ];
+          appliedEffects.push(this.getDistrictChange(effect.params));
           break;
+
         case EffectType.TurnoutChange:
-          appliedEffects = [
-            ...appliedEffects,
-            this.getMotivationChange(effect.params),
-          ];
+          appliedEffects.push(this.getMotivationChange(effect.params));
           break;
+
         default:
           return this.handleEffectError();
       }
@@ -67,7 +68,44 @@ export class EffectApplier {
     return appliedEffects;
   }
 
-  getPartySwingShares(
+  private resolveConditionalEffects(
+    baseEffects: RawEffect[],
+    conditionalEffects?: ConditionalRawEffect[],
+  ): RawEffect[] {
+    if (!conditionalEffects?.length) {
+      return baseEffects;
+    }
+
+    let finalEffects = [...baseEffects];
+    const history = this.stateHandler.get("history");
+
+    if (!history?.length) {
+      log.error("history is empty, but conditional effects are present");
+      return finalEffects;
+    }
+
+    for (const cond of conditionalEffects) {
+      const matches = cond.if.every((condition) => {
+        const h = history?.find((q) => q.questionId === condition.questionId);
+        return h?.answerId === condition.answerId;
+      });
+
+      if (!matches) {
+        log.error(`Condition not met for effects: ${JSON.stringify(cond)}`);
+        continue;
+      }
+
+      if (cond.mode === "replace") {
+        finalEffects = [...cond.effects];
+      } else {
+        finalEffects.push(...cond.effects);
+      }
+    }
+
+    return finalEffects;
+  }
+
+  private getPartySwingShares(
     params: Record<string, number>,
     candidateListData: CandidateListData[],
   ): AppliedEffect {

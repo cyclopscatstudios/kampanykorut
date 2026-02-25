@@ -81,7 +81,10 @@ export function Calculator() {
   }, []);
 
   const handleModifyBySwing = () => {
-    const calc = engine.calculate(gameState.candidateListData, gameState.partyListData);
+    const calc = engine.calculate(
+      gameState.candidateListData,
+      gameState.partyListData,
+    );
     const savedTotals = storage.getItem("devSession", "localStorage");
     const baseShares = toPercentages(JSON.parse(savedTotals ?? ""));
     const targetShares = getTargetShares(calc?.percentages);
@@ -96,7 +99,7 @@ export function Calculator() {
       setGameState({
         ...gameState,
         candidateListData: results.newCandidateData,
-        partyListData: results.newPartyData
+        partyListData: results.newPartyData,
       });
       saveBaseShare(results.newCandidateData, results.newPartyData);
       const newCalc = engine.calculate(
@@ -134,34 +137,41 @@ export function Calculator() {
     const newPercentage = Number(value);
     let remaining = 0;
     if (party === "fidesz") {
-      remaining = partyShares.ellenzeki_osszefogas + partyShares.mi_hazank + partyShares.other;
+      remaining =
+        partyShares.ellenzeki_osszefogas +
+        partyShares.mi_hazank +
+        partyShares.other;
       console.log(remaining + newPercentage);
       if (newPercentage + remaining > 99) {
         return false;
       }
       setPartyShares({
         ...partyShares,
-        fidesz: newPercentage
+        fidesz: newPercentage,
       });
     }
     if (party === "ellenzek") {
-      remaining = partyShares.fidesz + partyShares.mi_hazank + partyShares.other;
+      remaining =
+        partyShares.fidesz + partyShares.mi_hazank + partyShares.other;
       if (newPercentage + remaining > 99) {
         return false;
       }
       setPartyShares({
         ...partyShares,
-        ellenzeki_osszefogas: newPercentage
+        ellenzeki_osszefogas: newPercentage,
       });
     }
     if (party === "mi_hazank") {
-      remaining = partyShares.fidesz + partyShares.ellenzeki_osszefogas + partyShares.other;
+      remaining =
+        partyShares.fidesz +
+        partyShares.ellenzeki_osszefogas +
+        partyShares.other;
       if (newPercentage + remaining > 99) {
         return false;
       }
       setPartyShares({
         ...partyShares,
-        mi_hazank: newPercentage
+        mi_hazank: newPercentage,
       });
     }
   };
@@ -183,11 +193,23 @@ export function Calculator() {
     <div className="rounded-2xl bg-white/90 p-6 shadow-lg">
       <div className="flex flex-col gap-2 text-lg font-semibold">
         <Text color="darkBlue">
-          All share: {partyShares.fidesz + partyShares.ellenzeki_osszefogas + partyShares.mi_hazank + partyShares.other}
+          All share:{" "}
+          {partyShares.fidesz +
+            partyShares.ellenzeki_osszefogas +
+            partyShares.mi_hazank +
+            partyShares.other}
         </Text>
         <Text>
-          {partyShares.fidesz + partyShares.ellenzeki_osszefogas + partyShares.mi_hazank + partyShares.other < 99 ||
-          partyShares.fidesz + partyShares.ellenzeki_osszefogas + partyShares.mi_hazank + partyShares.other > 100
+          {partyShares.fidesz +
+            partyShares.ellenzeki_osszefogas +
+            partyShares.mi_hazank +
+            partyShares.other <
+            99 ||
+          partyShares.fidesz +
+            partyShares.ellenzeki_osszefogas +
+            partyShares.mi_hazank +
+            partyShares.other >
+            100
             ? "❌"
             : "✅"}
         </Text>
@@ -244,7 +266,9 @@ export function Calculator() {
             type="number"
             value={partyShares.ellenzeki_osszefogas}
             className="w-full rounded border px-2 py-1"
-            onChange={(e) => handlePercentageChange(e.target.value, "ellenzeki_osszefogas")}
+            onChange={(e) =>
+              handlePercentageChange(e.target.value, "ellenzeki_osszefogas")
+            }
           />
         </div>
         <div>

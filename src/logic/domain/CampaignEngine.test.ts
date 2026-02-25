@@ -19,7 +19,7 @@ const gameState = {
   turn: 0,
   candidateListData,
   partyListData,
-  isEnded: false
+  isEnded: false,
 };
 
 const getDecision = (effects: RawEffect[]): Decision => ({

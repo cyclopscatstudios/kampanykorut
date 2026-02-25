@@ -158,6 +158,31 @@ Supports multiple languages:
 - `en_lang.json` - English
 - `hu_lang.json` - Hungarian
 
+## JSON Examples
+
+yearOfElection_questions.json
+
+[
+{
+"id": "yearOfElection_electionName-questionNumber",
+"title": "Title example",
+"question": "Question description",
+"affects": [
+{
+"id": "yearOfElection_electionName-questionNumber"
+}
+],
+"requires": [{ "questionId": "yearOfElection_electionName-questionNumber", "answerId": "id" }],
+"blocks": [{ "questionId": "yearOfElection_electionName-questionNumber", "answerId": "id" }],
+"possibleAnswers": [
+{
+"id": "id",
+"label": "Answer description"
+}
+]
+}
+]
+
 ## Performance Considerations
 
 - Heavy components are memoized to prevent unnecessary re-renders
