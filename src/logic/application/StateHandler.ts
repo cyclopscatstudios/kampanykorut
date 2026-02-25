@@ -2,6 +2,7 @@ import { singleton } from "tsyringe";
 import type { Decision, GameState } from "../domain/CampaignEngine";
 import { Emitter } from "./Emitter";
 import type { GameModeConfig } from "./hooks/useElectionState";
+import { createLogger } from "../logger";
 
 interface HistoryItem {
   questionId: string;
@@ -26,6 +27,8 @@ const defaultState: StateHandlerType = {
   history: [],
 };
 
+const log = createLogger("StateHandler");
+
 @singleton()
 export class StateHandler extends Emitter<StateHandlerType> {
   private state: StateHandlerType;
@@ -46,6 +49,6 @@ export class StateHandler extends Emitter<StateHandlerType> {
   set<K extends keyof StateHandlerType>(key: K, value: StateHandlerType[K]) {
     this.state[key] = value;
     this.notify(this.state);
-    console.log("State updated:", this.state);
+    log.info('State updated', { key, value });
   }
 }

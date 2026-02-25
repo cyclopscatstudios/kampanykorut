@@ -12,7 +12,7 @@ export function FinalResultScreen({ results }: { results: FinalResults }) {
   const parties = useMemo(() => buildPartiesFromResults(results), [results]);
   const stateHandler = container.resolve(StateHandler);
   const currentConfig = stateHandler.get("currentConfig");
-  console.log({ currentConfig });
+
   return (
     <div className="h-full bg-blue-950">
       <Text>Final Results</Text>

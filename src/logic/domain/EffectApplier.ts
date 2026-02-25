@@ -91,7 +91,7 @@ export class EffectApplier {
       });
 
       if (!matches) {
-        console.log(`Condition not met for effects: ${JSON.stringify(cond)}`);
+        log.error(`Condition not met for effects: ${JSON.stringify(cond)}`);
         continue;
       }
 

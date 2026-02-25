@@ -103,7 +103,6 @@ export class CampaignEngine {
       state.candidateListData,
       decision.conditionalEffects,
     );
-    console.log({ appliedEffects });
     const modified = this.resultModifier.apply(state, appliedEffects);
     const calculated = this.mandateCalculator.calculate(
       modified?.candidateListData,
