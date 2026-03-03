@@ -1,5 +1,4 @@
 import type { District, DistrictResult } from "../map.utils";
-import { useState } from "react";
 import type { CurrentView } from "./MainGameScreen";
 import { MapWrapper } from "./MapWrapper";
 import { BottomBar } from "./BottomBar";
@@ -12,6 +11,8 @@ interface MapCreatorProps {
   candidateListData: CandidateListData[];
   capitalCity: District[];
   setCurrentView: (currentView: CurrentView) => void;
+  selectedDistrict?: DistrictResult | null;
+  setSelectedDistrict: (district: DistrictResult | null) => void;
 }
 
 export function MapCreator({
@@ -19,13 +20,9 @@ export function MapCreator({
   capitalCity,
   districts,
   setCurrentView,
+  selectedDistrict,
+  setSelectedDistrict,
 }: MapCreatorProps) {
-  const [selectedDistrict, setSelectedDistrict] =
-    useState<DistrictResult | null>();
-
-  const handleDistrict = (r: DistrictResult) => {
-    setSelectedDistrict(r);
-  };
   const swingFactor = getSwingFactor(selectedDistrict);
 
   return (
@@ -36,7 +33,7 @@ export function MapCreator({
             districts={districts}
             results={candidateListData}
             fullView
-            handleDistrict={handleDistrict}
+            handleDistrict={setSelectedDistrict}
             selectedDistrict={selectedDistrict}
           />
         </div>
@@ -45,7 +42,7 @@ export function MapCreator({
             districts={capitalCity}
             results={candidateListData}
             fullView={false}
-            handleDistrict={handleDistrict}
+            handleDistrict={setSelectedDistrict}
             selectedDistrict={selectedDistrict}
           />
         </div>

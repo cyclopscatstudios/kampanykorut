@@ -37,7 +37,7 @@ exports[`CampaignEngine > should apply district typed decision 1`] = `
     },
   ],
   "currentQuestion": undefined,
-  "isEnded": false,
+  "isEnded": true,
   "mandates": {
     "compensation": {
       "losingVotes": {
@@ -76,6 +76,7 @@ exports[`CampaignEngine > should apply district typed decision 1`] = `
       },
     ],
     "percentages": {
+      "_total": 1,
       "ellenzek": 0.50125,
       "fidesz": 0.49875,
       "mkkp": 0,
@@ -150,7 +151,7 @@ exports[`CampaignEngine > should apply motivation typed decision 1`] = `
     },
   ],
   "currentQuestion": undefined,
-  "isEnded": false,
+  "isEnded": true,
   "mandates": {
     "compensation": {
       "losingVotes": {
@@ -189,6 +190,7 @@ exports[`CampaignEngine > should apply motivation typed decision 1`] = `
       },
     ],
     "percentages": {
+      "_total": 1,
       "ellenzek": 0.5,
       "fidesz": 0.5,
       "mkkp": 0,
@@ -265,7 +267,7 @@ exports[`CampaignEngine > should apply party-share typed decision 1`] = `
     },
   ],
   "currentQuestion": undefined,
-  "isEnded": false,
+  "isEnded": true,
   "mandates": {
     "compensation": {
       "losingVotes": {
@@ -301,6 +303,7 @@ exports[`CampaignEngine > should apply party-share typed decision 1`] = `
       },
     ],
     "percentages": {
+      "_total": 1,
       "ellenzek": 0.2,
       "fidesz": 0.8,
       "mkkp": 0,
@@ -377,7 +380,7 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
     },
   ],
   "currentQuestion": undefined,
-  "isEnded": false,
+  "isEnded": true,
   "mandates": {
     "compensation": {
       "losingVotes": {
@@ -416,6 +419,7 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       },
     ],
     "percentages": {
+      "_total": 1,
       "ellenzek": 0.47619047619047616,
       "fidesz": 0.5238095238095238,
       "mkkp": 0,

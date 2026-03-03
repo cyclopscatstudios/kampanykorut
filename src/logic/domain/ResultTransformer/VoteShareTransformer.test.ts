@@ -1,4 +1,5 @@
 import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
+import { ElectionConfigEngine } from "../ElectionConfigEngine";
 import { candidateListData, partyListData } from "../mocks/mockListData";
 import { VoteShareTransformer } from "./VoteShareTransformer";
 import type { CandidateListData } from "./VoteShareTransformer.types";
@@ -28,10 +29,11 @@ const electionConfig = {
   listSeats: 10,
   thresholdPercent: 5,
 };
+const electionConfigEngine = new ElectionConfigEngine(electionConfig);
 
 describe("PipelineTransform", () => {
   beforeEach(() => {
-    pipelineTransform = new VoteShareTransformer(config, electionConfig);
+    pipelineTransform = new VoteShareTransformer(config, electionConfigEngine);
   });
 
   describe("distributeVotesByPartyShare", () => {

@@ -1,14 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import type {
   CandidateListData,
+  DistrictTarget,
   PartyListData,
 } from "../../domain/ResultTransformer/VoteShareTransformer.types";
-import type { Decision, GameState } from "../../domain/CampaignEngine";
+import type {
+  Decision,
+  GameState,
+  RawQuestion,
+} from "../../domain/CampaignEngine";
 import type { ElectionConfig } from "../../domain/MandateCalculator.types";
 import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
 import { createCampaignEngine } from "../createCampaignEngine";
 import type { District } from "../../../components/ui/map.utils";
-import type { Question } from "../../../components/ui/gameplay/QuestionCard";
 import type {
   ConditionalRawEffect,
   RawEffect,
@@ -23,7 +27,7 @@ export type Answer = {
   conditionalEffects?: ConditionalRawEffect[];
 };
 
-export interface AnsweEffectProps {
+export interface RawAnsweEffectProps {
   id: string;
   answers: Answer[];
 }
@@ -40,8 +44,8 @@ export interface GameModeConfig {
   partyListData: PartyListData[];
   districts: District[];
   capitalCity: District[];
-  questions: Pick<Question, "id" | "title" | "question" | "possibleAnswers">[];
-  answerEffect: AnsweEffectProps[];
+  questions: RawQuestion[];
+  answerEffect: RawAnsweEffectProps[];
   finalResultAssets: FinalResultAssets;
 }
 
@@ -52,53 +56,64 @@ export function useElectionState(gameId: string) {
     campaignEngine.createInitialState(),
   );
   const { loadSession, saveSession } = useStateEngine();
-  const { updateState } = useStateHandler();
+  const { getState, updateState } = useStateHandler();
 
   useEffect(() => {
     updateState("currentConfig", config);
-  }, [config]);
+  }, [config, updateState]);
 
   const loadSavedGame = () => {
     const session = loadSession("gameSession");
     setGameState(session);
   };
 
-  const handleAnwerQuestion = (answer?: string) => {
-    const answerEffect = getAnswerEffects(gameState?.answers, answer);
-    const conditionalEffects = getConditionalEffects(
-      gameState?.answers,
-      answer,
-    );
-    if (!answer || !gameState.currentQuestion || !answerEffect) {
+  const handleAnwerQuestion = (
+    rawAnswer?: string,
+    selectedDistrict?: DistrictTarget | null,
+  ) => {
+    const answer = getAnswer(gameState?.answers, rawAnswer);
+    if (!rawAnswer || !gameState.currentQuestion || !answer?.effects) {
       return;
     }
     const decision: Decision = {
-      answerId: answer,
+      answerId: rawAnswer,
       questionId: gameState.currentQuestion?.id,
-      effects: answerEffect,
-      conditionalEffects: conditionalEffects,
+      effects: answer.effects,
+      conditionalEffects: answer.conditionalEffects,
+      selectedDistrict,
     };
     const newGameState = campaignEngine.processTurn(gameState, decision);
-    saveSession(newGameState, "gameSession");
-    updateState("gameState", newGameState);
-    updateState("turnDecision", decision);
-    updateState("history", {
-      questionId: gameState.currentQuestion?.id,
-      answerId: answer,
-    });
-    setGameState(newGameState);
+    preserveState(rawAnswer, decision, newGameState);
   };
 
-  const getAnswerEffects = (answers?: Answer[], answerId?: string) => {
-    return answers?.find((a) => a.id === answerId)?.effects;
-  };
-
-  const getConditionalEffects = (answers?: Answer[], answerId?: string) => {
-    return answers?.find((a) => a.id === answerId)?.conditionalEffects;
+  const getAnswer = (answers?: Answer[], answerId?: string) => {
+    return answers?.find((a) => a.id === answerId);
   };
 
   const getFinalResults = () => {
     return campaignEngine.getFinalResults(gameState);
+  };
+
+  const preserveState = (
+    answer: string,
+    decision: Decision,
+    newGameState: GameState,
+  ) => {
+    console.log("preserve state called");
+    const historyEntry = {
+      questionId: gameState.currentQuestion?.id,
+      answerId: answer,
+    };
+    const historyItems = getState("history");
+    if (historyItems) {
+      const newHistoryItems = [...historyItems, historyEntry];
+      updateState("history", newHistoryItems as any);
+      saveSession(newHistoryItems, "questionHistory");
+    }
+    updateState("turnDecision", decision);
+    saveSession(newGameState, "gameSession");
+    updateState("gameState", newGameState);
+    setGameState(newGameState);
   };
 
   return {

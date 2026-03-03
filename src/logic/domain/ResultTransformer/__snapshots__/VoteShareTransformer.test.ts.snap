@@ -24,6 +24,7 @@ exports[`PipelineTransform > distributeVotesByPartyShare > should distribute vot
     },
   ],
   "percentages": {
+    "_total": 1,
     "party-a": 0.6666666666666666,
     "party-b": 0.3333333333333333,
   },

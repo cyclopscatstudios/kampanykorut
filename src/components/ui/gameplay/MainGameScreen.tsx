@@ -5,22 +5,29 @@ import { QuestionCard } from "./QuestionCard";
 import { useElectionState } from "../../../logic/application/hooks/useElectionState";
 import { Button } from "../Button";
 import { FinalResultScreen } from "./FinalResultScreen";
+import type { DistrictResult } from "../map.utils";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
 export function MainGameScreen({ gameId }: { gameId: string }) {
   const [currentView, setCurrentView] = useState<CurrentView>("MapView");
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answer, setAnswer] = useState<string | undefined>();
   const { state, config, handleAnwerQuestion, loadSavedGame, getFinalResults } =
     useElectionState(gameId);
+  const [selectedDistrict, setSelectedDistrict] =
+    useState<DistrictResult | null>();
 
   const handleOnClick = (id?: string) => {
     if (state.isEnded) {
       setCurrentView("FinalScreen");
       return;
     }
-    handleAnwerQuestion(id);
-    setCurrentView("MapView");
+    handleAnwerQuestion(id, selectedDistrict as any);
+    setAnswer("");
+    if (state.turn > 0 && state.turn % 2 === 0) {
+      setCurrentView("MapView");
+    }
   };
 
   return (
@@ -31,15 +38,18 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
           candidateListData={state.candidateListData}
           capitalCity={config.capitalCity}
           districts={config.districts}
+          selectedDistrict={selectedDistrict}
+          setSelectedDistrict={setSelectedDistrict}
         />
       ) : currentView === "FinalScreen" ? (
         <FinalResultScreen results={getFinalResults()} />
       ) : (
         <QuestionCard
           id={questions[currentQuestion].id}
-          title={questions[currentQuestion].title}
           question={questions[currentQuestion].question}
           possibleAnswers={questions[currentQuestion].possibleAnswers}
+          answer={answer}
+          setAnswer={setAnswer}
           setCurrentView={setCurrentView}
           currentQuestion={currentQuestion}
           setCurrentQuestion={setCurrentQuestion}

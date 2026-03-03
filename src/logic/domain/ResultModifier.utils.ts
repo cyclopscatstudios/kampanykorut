@@ -28,13 +28,24 @@ export function calculateWinner(result?: DistrictResult | null) {
   };
 }
 
-export function calcPercentages(totals: Record<string, number>): Shares {
+export function calcPercentages(
+  totals: Record<string, number>,
+): Shares & { _total: number } {
   const sum = Object.values(totals).reduce((a, b) => a + b, 0);
-  const result: Shares = {};
+  const result: Shares & { _total: number } = {} as any;
+
+  if (!sum) {
+    result._total = 0;
+    return result;
+  }
 
   for (const [party, votes] of Object.entries(totals)) {
-    result[party] = sum ? votes / sum : 0;
+    result[party] = votes / sum;
   }
+
+  result._total = Object.values(result)
+    .filter((v) => typeof v === "number")
+    .reduce((a, b) => a + b, 0);
 
   return result;
 }

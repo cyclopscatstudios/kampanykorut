@@ -1,3 +1,4 @@
+import { ElectionConfigEngine } from "./domain/ElectionConfigEngine";
 import { MandateCalculator } from "./domain/MandateCalculator";
 import type {
   CalculateResults,
@@ -61,20 +62,22 @@ export class ElectionEngine {
   private pipelineTransform: VoteShareTransformer;
   private dsitrictTargetTransform: DistrictVoteTransformer;
   private voterEnvironment: VoterEnvironment;
+  private electionConfigEngine: ElectionConfigEngine;
 
   constructor(
     private electionConfig: ElectionConfig,
     private voterEnvironmentConfig: VoterEnvironmentConfig,
   ) {
+    this.electionConfigEngine = new ElectionConfigEngine(this.electionConfig);
     this.voterEnvironment = new VoterEnvironment(voterEnvironmentConfig);
-    this.mandateCalculator = new MandateCalculator(this.electionConfig);
+    this.mandateCalculator = new MandateCalculator(this.electionConfigEngine);
     this.dsitrictTargetTransform = new DistrictVoteTransformer(
       this.voterEnvironment,
     );
     const nationalSwingTransform = new UnionSwingTransformer();
     this.pipelineTransform = new VoteShareTransformer(
       this.voterEnvironmentConfig,
-      this.electionConfig,
+      this.electionConfigEngine,
     );
     this.resultModifier = new ResultModifier(
       nationalSwingTransform,

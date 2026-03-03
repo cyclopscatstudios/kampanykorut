@@ -1,3 +1,4 @@
+import { ElectionConfigEngine } from "./ElectionConfigEngine";
 import { MandateCalculator } from "./MandateCalculator";
 import type { CombinedOevk } from "./MandateCalculator.types";
 
@@ -7,7 +8,8 @@ describe("MandateCalculator", () => {
     thresholdPercent: 5,
   };
 
-  const calculator = new MandateCalculator(config);
+  const electionConfigEngine = new ElectionConfigEngine(config);
+  const calculator = new MandateCalculator(electionConfigEngine);
 
   describe("calculateConstituencySeats", () => {
     it("should count constituency seats", () => {

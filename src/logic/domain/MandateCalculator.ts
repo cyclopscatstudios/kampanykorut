@@ -1,7 +1,6 @@
 import { injectable } from "tsyringe";
 import { createLogger } from "../logger";
 import type {
-  ElectionConfig,
   CalculateResults,
   PartyVotes,
   CombinedOevk,
@@ -16,12 +15,13 @@ import type {
   Shares,
 } from "./ResultTransformer/VoteShareTransformer.types";
 import { calcPercentages } from "./ResultModifier.utils";
+import type { ElectionConfigEngine } from "./ElectionConfigEngine";
 
 const log = createLogger("MandateCalculator");
 
 @injectable()
 export class MandateCalculator {
-  constructor(private config: ElectionConfig) {}
+  constructor(private configEngine: ElectionConfigEngine) {}
 
   calculate(
     districtCandidateData?: CandidateListData[],
@@ -226,13 +226,19 @@ export class MandateCalculator {
     const totalVotes = Object.values(combined).reduce((a, b) => a + b, 0);
 
     const eligible = Object.entries(combined).filter(
-      ([, v]) => (v / totalVotes) * 100 >= this.config.thresholdPercent,
+      ([, v]) =>
+        (v / totalVotes) * 100 >=
+        this.configEngine.getElectionConfig().thresholdPercent,
     );
 
     const quotients: { party: PartyId; value: number }[] = [];
 
     for (const [party, votes] of eligible) {
-      for (let d = 1; d <= this.config.listSeats; d++) {
+      for (
+        let d = 1;
+        d <= this.configEngine.getElectionConfig().listSeats;
+        d++
+      ) {
         quotients.push({ party, value: votes / d });
       }
     }
@@ -240,7 +246,7 @@ export class MandateCalculator {
     quotients.sort((a, b) => b.value - a.value);
 
     const seats: Record<PartyId, number> = {};
-    for (let i = 0; i < this.config.listSeats; i++) {
+    for (let i = 0; i < this.configEngine.getElectionConfig().listSeats; i++) {
       const q = quotients[i];
       seats[q.party] = (seats[q.party] ?? 0) + 1;
     }

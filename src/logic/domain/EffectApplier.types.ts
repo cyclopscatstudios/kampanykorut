@@ -36,7 +36,7 @@ export type RawEffect =
     }
   | {
       type: EffectType.DistrictVoteTransfer;
-      params: DistrictTarget[];
+      params: DistrictTarget[] | DistrictTargetGroup[];
     }
   | {
       type: EffectType.TurnoutChange;

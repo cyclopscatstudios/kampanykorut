@@ -1,6 +1,5 @@
 import { Text } from "../Text";
 import { RadioGroup } from "../RadioGroup";
-import { useState } from "react";
 import { Button } from "../Button";
 import type { CurrentView } from "./MainGameScreen";
 import mzpPortrait from "../../../assets/images/2022/mzp-portrait.png";
@@ -16,9 +15,10 @@ interface Answer {
 
 export interface Question {
   id: string;
-  title: string;
   question: string;
   possibleAnswers: Answer[];
+  answer?: string;
+  setAnswer: (a: string) => void;
   setCurrentView: (currentView: CurrentView) => void;
   currentQuestion: number;
   setCurrentQuestion: (currentQuestion: number) => void;
@@ -29,13 +29,13 @@ export function QuestionCard({
   id,
   question,
   possibleAnswers,
+  answer,
+  setAnswer,
   setCurrentView,
   currentQuestion,
   setCurrentQuestion,
   handleOnClick,
 }: Question) {
-  const [answer, setAnswer] = useState<string | undefined>();
-
   return (
     <div
       className="h-full border flex flex-col border-blue-500 p-4 bg-blue-50"

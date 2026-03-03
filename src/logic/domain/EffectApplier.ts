@@ -6,7 +6,6 @@ import {
   type ConditionalRawEffect,
 } from "./EffectApplier.types";
 import { MandateCalculator } from "./MandateCalculator";
-import type { ElectionConfig } from "./MandateCalculator.types";
 import type {
   CandidateListData,
   Shares,
@@ -15,30 +14,38 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
+import { DistrictGroupEngine } from "./DistrictGroupEngine";
+import type { ElectionConfigEngine } from "./ElectionConfigEngine";
+import { container } from "tsyringe";
 
 const log = createLogger("EffectApplier");
 
 export class EffectApplier {
   private mandateCalculator: MandateCalculator;
+  private districtGroupEngine: DistrictGroupEngine;
   private stateHandler: StateHandler;
+  private electionConfigEngine: ElectionConfigEngine;
   private DEFAULT_MOTIVATION_DELTA = 99;
 
-  constructor(electionConfig: ElectionConfig, stateHandler: StateHandler) {
-    this.mandateCalculator = new MandateCalculator(electionConfig);
-    this.stateHandler = stateHandler;
+  constructor(electionConfigEngine: ElectionConfigEngine) {
+    this.mandateCalculator = new MandateCalculator(electionConfigEngine);
+    this.electionConfigEngine = electionConfigEngine;
+    this.districtGroupEngine = new DistrictGroupEngine();
+    this.stateHandler = container.resolve(StateHandler);
   }
 
   getAppliedEffects(
     effects: RawEffect[],
     candidateListData: CandidateListData[],
     conditionalEffects?: ConditionalRawEffect[],
+    selectedDistrict?: DistrictTarget | null,
   ): AppliedEffect[] {
     const resolvedEffects = this.resolveConditionalEffects(
       effects,
       conditionalEffects,
     );
 
-    let appliedEffects: AppliedEffect[] = [];
+    const appliedEffects: AppliedEffect[] = [];
 
     resolvedEffects.forEach((effect) => {
       switch (effect.type) {
@@ -61,11 +68,36 @@ export class EffectApplier {
           break;
 
         default:
-          return this.handleEffectError();
+          return this.handleEffectError(effect);
       }
     });
 
+    const isDistrictBoosterAllowed =
+      this.electionConfigEngine.getElectionConfig().districtBoost;
+
+    if (isDistrictBoosterAllowed && selectedDistrict) {
+      const boosterEffect = this.getBoosterEffect(selectedDistrict);
+      if (boosterEffect) {
+        return [...appliedEffects, boosterEffect];
+      }
+    }
+
     return appliedEffects;
+  }
+
+  private getBoosterEffect(district: DistrictTarget): AppliedEffect | null {
+    const palyerSide = this.electionConfigEngine.getElectionConfig().playerSide;
+    if (!palyerSide) {
+      return null;
+    }
+    const boosterTarget: DistrictTarget = {
+      megyekod: district.megyekod,
+      oevk: district.oevk,
+      amount: 500,
+      from: { type: "bizonytalan" },
+      targetParty: palyerSide,
+    };
+    return { type: EffectType.DistrictVoteTransfer, target: [boosterTarget] };
   }
 
   private resolveConditionalEffects(
@@ -91,6 +123,7 @@ export class EffectApplier {
       });
 
       if (!matches) {
+        // TODO: this is not an error
         log.error(`Condition not met for effects: ${JSON.stringify(cond)}`);
         continue;
       }
@@ -177,7 +210,32 @@ export class EffectApplier {
   private getDistrictChange(
     target: DistrictTarget[] | DistrictTargetGroup[],
   ): AppliedEffect {
+    const finalTarget: DistrictTarget[] = [];
+    if (this.isDistrictTargetGroup(target)) {
+      target.forEach((t) => {
+        const targetDistricts =
+          this.districtGroupEngine.getDistrictTargetByGroupIds([t.groupId]);
+        targetDistricts.forEach((d) => {
+          d.districts.forEach((district) => {
+            finalTarget.push({
+              megyekod: district.megyekod,
+              oevk: district.oevk,
+              amount: t.amount,
+              targetParty: t.targetParty,
+              from: t.from,
+            });
+          });
+        });
+      });
+      return { type: EffectType.DistrictVoteTransfer, target: finalTarget };
+    }
     return { type: EffectType.DistrictVoteTransfer, target };
+  }
+
+  private isDistrictTargetGroup(
+    target: DistrictTarget[] | DistrictTargetGroup[],
+  ): target is DistrictTargetGroup[] {
+    return target.length > 0 && "groupId" in target[0];
   }
 
   private getMotivationChange(params: Record<string, number>): AppliedEffect {
@@ -203,10 +261,10 @@ export class EffectApplier {
     return delta;
   }
 
-  private handleEffectError() {
+  private handleEffectError(effect: RawEffect) {
     const decision = this.stateHandler.get("turnDecision");
     log.error(
-      `Provided effect type for answer id ${decision?.answerId} to question ${decision?.questionId} is not a valid effect`,
+      `Provided effect type for answer id ${decision?.answerId} to question ${decision?.questionId} is not a valid effect: ${effect.type}`,
     );
     return null;
   }

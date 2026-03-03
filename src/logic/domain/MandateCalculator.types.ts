@@ -13,6 +13,9 @@ export interface CombinedOevk {
 export interface ElectionConfig {
   listSeats: number;
   thresholdPercent: number;
+  districtBoost?: boolean;
+  playerSide?: string;
+  baseResults?: Record<string, number>;
 }
 
 export type PartyId = string;

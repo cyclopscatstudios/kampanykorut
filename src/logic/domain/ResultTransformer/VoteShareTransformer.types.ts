@@ -36,7 +36,10 @@ export interface District {
 
 export interface DistrictTargetGroup {
   groupId: string;
-  isCustomGroup: boolean;
+  isCustomGroup?: boolean;
+  targetParty: string;
+  amount: number;
+  from?: VoteSource;
 }
 
 export interface DistributedVotesResult {

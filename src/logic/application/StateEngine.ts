@@ -5,7 +5,11 @@ import { StorageEngine } from "./StorageEngine";
 
 const log = createLogger("StorageEngine");
 
-export type SessionKey = "gameSession" | "menuSession" | "devSession";
+export type SessionKey =
+  | "gameSession"
+  | "menuSession"
+  | "devSession"
+  | "questionHistory";
 
 @singleton()
 export class StateEngine {
@@ -24,6 +28,9 @@ export class StateEngine {
     }
     if (sessionKey === "gameSession") {
       return this.storage.setItem("gameSession", value, "localStorage");
+    }
+    if (sessionKey === "questionHistory") {
+      return this.storage.setItem("questionHistory", value, "localStorage");
     }
     return this.storage.setItem("menuSession", value, "localStorage");
   }

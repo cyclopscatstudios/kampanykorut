@@ -9,7 +9,8 @@ import type {
   PartyListData,
   CandidateListData,
 } from "./VoteShareTransformer.types";
-import type { ElectionConfig, PartyId } from "../MandateCalculator.types";
+import type { PartyId } from "../MandateCalculator.types";
+import type { ElectionConfigEngine } from "../ElectionConfigEngine";
 
 export class VoteShareTransformer {
   private voterEnvironment: VoterEnvironment;
@@ -17,10 +18,10 @@ export class VoteShareTransformer {
 
   constructor(
     voterEnviormentConfig: VoterEnvironmentConfig,
-    electionConfig: ElectionConfig,
+    electionConfigEngine: ElectionConfigEngine,
   ) {
     this.voterEnvironment = new VoterEnvironment(voterEnviormentConfig);
-    this.mandateCalculator = new MandateCalculator(electionConfig);
+    this.mandateCalculator = new MandateCalculator(electionConfigEngine);
   }
 
   distributeVotesByPartyShare(

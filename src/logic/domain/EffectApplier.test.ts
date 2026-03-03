@@ -8,6 +8,7 @@ import {
 } from "./EffectApplier.types";
 import { candidateListData } from "./mocks/mockListData";
 import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
+import { ElectionConfigEngine } from "./ElectionConfigEngine";
 
 let effectApplier: EffectApplier;
 
@@ -16,10 +17,12 @@ const electionConfig = {
   thresholdPercent: 5,
 };
 
+const electionConfigEngine = new ElectionConfigEngine(electionConfig);
+
 describe("ElectionEffectApplier – PartySwing", () => {
   const stateHandler = container.resolve(StateHandler);
   beforeEach(() => {
-    effectApplier = new EffectApplier(electionConfig, stateHandler);
+    effectApplier = new EffectApplier(electionConfigEngine);
   });
 
   it("should call modifyByTarget with correct parameters", () => {

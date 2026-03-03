@@ -40,6 +40,7 @@ export class DistrictVoteTransformer {
       districtCandidateData.megyekod !== target.megyekod ||
       districtCandidateData.oevk !== target.oevk
     ) {
+      // TODO log error war for incorrect target
       return districtCandidateData;
     }
 

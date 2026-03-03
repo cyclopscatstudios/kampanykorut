@@ -1,4 +1,3 @@
-import { container } from "tsyringe";
 import { CampaignEngine } from "../domain/CampaignEngine";
 import { EffectApplier } from "../domain/EffectApplier";
 import { MandateCalculator } from "../domain/MandateCalculator";
@@ -8,13 +7,13 @@ import { UnionSwingTransformer } from "../domain/ResultTransformer/UnionSwingTra
 import { VoteShareTransformer } from "../domain/ResultTransformer/VoteShareTransformer";
 import { VoterEnvironment } from "../VoterEnvironment";
 import type { GameModeConfig } from "./hooks/useElectionState";
-import { StateHandler } from "./StateHandler";
+import { ElectionConfigEngine } from "../domain/ElectionConfigEngine";
 
 export function createCampaignEngine(config: GameModeConfig) {
-  const mandateCalculator = new MandateCalculator(config.electionConfig);
-  const stateHandler = container.resolve(StateHandler);
+  const electionConfigEngine = new ElectionConfigEngine(config.electionConfig);
+  const mandateCalculator = new MandateCalculator(electionConfigEngine);
 
-  const effectApplier = new EffectApplier(config.electionConfig, stateHandler);
+  const effectApplier = new EffectApplier(electionConfigEngine);
 
   const voterEnvironment = new VoterEnvironment(config.voterEnvironmentConfig);
 
@@ -22,7 +21,7 @@ export function createCampaignEngine(config: GameModeConfig) {
     new UnionSwingTransformer(),
     new VoteShareTransformer(
       config.voterEnvironmentConfig,
-      config.electionConfig,
+      electionConfigEngine,
     ),
     new DistrictVoteTransformer(voterEnvironment),
   );
@@ -35,5 +34,6 @@ export function createCampaignEngine(config: GameModeConfig) {
     resultModifier,
     effectApplier,
     mandateCalculator,
+    electionConfigEngine,
   );
 }

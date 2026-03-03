@@ -6,13 +6,13 @@ export function QuestionCardDev() {
   return (
     <QuestionCard
       handleOnClick={() => {}}
-      title="Title"
       id={obj.id}
       possibleAnswers={obj.possibleAnswers}
       question={obj.question}
       currentQuestion={0}
       setCurrentQuestion={() => {}}
       setCurrentView={() => {}}
+      setAnswer={() => {}}
     />
   );
 }

@@ -1,22 +1,27 @@
 import type { EffectApplier } from "./EffectApplier";
-import type { ConditionalRawEffect, RawEffect } from "./EffectApplier.types";
+import {
+  type ConditionalRawEffect,
+  EffectType,
+  type RawEffect,
+} from "./EffectApplier.types";
 import type { MandateCalculator } from "./MandateCalculator";
 import type { ResultModifier } from "./ResultModifier";
 import type {
   CandidateListData,
+  DistrictTarget,
   PartyListData,
 } from "./ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "./MandateCalculator.types";
-import type { Question } from "../../components/ui/gameplay/QuestionCard";
 import type {
-  AnsweEffectProps,
   Answer,
+  RawAnsweEffectProps,
 } from "../application/hooks/useElectionState";
 import { createLogger } from "../logger";
+import type { ElectionConfigEngine } from "./ElectionConfigEngine";
 
 export interface RawQuestion {
   id: string;
-  title: string;
+  title?: string;
   question: string;
   possibleAnswers: {
     id: string;
@@ -42,6 +47,7 @@ export interface Decision {
   answerId: string;
   effects: RawEffect[];
   conditionalEffects?: ConditionalRawEffect[];
+  selectedDistrict?: DistrictTarget | null;
 }
 
 export interface TurnResult {
@@ -68,33 +74,48 @@ export class CampaignEngine {
   constructor(
     private readonly initialCandidateData: CandidateListData[],
     private readonly initialPartyData: PartyListData[],
-    private readonly questions: Pick<
-      Question,
-      "id" | "title" | "question" | "possibleAnswers"
-    >[],
-    private readonly answers: AnsweEffectProps[],
+    private readonly questions: RawQuestion[],
+    private readonly answers: RawAnsweEffectProps[],
     private resultModifier: ResultModifier,
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
+    private electionConfigEngine: ElectionConfigEngine,
   ) {}
 
   createInitialState(): GameState {
+    let candidateListData = this.initialCandidateData;
+    let partyListData = this.initialPartyData;
+
+    const electionConfig = this.electionConfigEngine.getElectionConfig();
+    const baseResults = electionConfig.baseResults;
+
+    if (baseResults) {
+      const baseApplied = this.applyBaseResults(
+        candidateListData,
+        partyListData,
+        baseResults,
+      );
+
+      candidateListData = baseApplied.candidateListData;
+      partyListData = baseApplied.partyListData;
+    }
+
     return {
       turn: 0,
       currentQuestion: this.questions[0],
       answers: this.getAnswers(this.answers, this.questions[0]),
-      candidateListData: structuredClone(this.initialCandidateData),
-      partyListData: structuredClone(this.initialPartyData),
+      candidateListData,
+      partyListData,
       mandates: this.mandateCalculator.calculate(
-        this.initialCandidateData,
-        this.initialPartyData,
+        candidateListData,
+        partyListData,
       ),
       isEnded: false,
     };
   }
 
   processTurn(state: GameState, decision: Decision): GameState {
-    if (state.turn > 3) {
+    if (state.turn > this.questions.length) {
       log.info("Game has ended. No more turns to process.");
       return state;
     }
@@ -102,6 +123,7 @@ export class CampaignEngine {
       decision.effects,
       state.candidateListData,
       decision.conditionalEffects,
+      decision.selectedDistrict,
     );
     const modified = this.resultModifier.apply(state, appliedEffects);
     const calculated = this.mandateCalculator.calculate(
@@ -119,7 +141,7 @@ export class CampaignEngine {
       candidateListData: modified?.candidateListData ?? state.candidateListData,
       partyListData: modified?.partyListData ?? state.partyListData,
       mandates: calculated,
-      isEnded: nextTurn > 3,
+      isEnded: nextTurn >= this.questions.length,
     };
 
     return session;
@@ -141,6 +163,33 @@ export class CampaignEngine {
     } as FinalResults;
   }
 
+  private applyBaseResults(
+    candidateListData: CandidateListData[],
+    partyListData: PartyListData[],
+    baseResults: Record<string, number>,
+  ) {
+    const tempState: GameState = {
+      turn: 0,
+      candidateListData,
+      partyListData,
+      isEnded: false,
+    };
+
+    log.info("Applying base results to initial state", { baseResults });
+
+    const appliedEffects = this.effectApplier.getAppliedEffects(
+      [{ type: EffectType.UniformSwing, params: { ...baseResults } }],
+      candidateListData,
+    );
+
+    const results = this.resultModifier.apply(tempState, appliedEffects);
+
+    return {
+      candidateListData: results?.candidateListData ?? candidateListData,
+      partyListData: results?.partyListData ?? partyListData,
+    };
+  }
+
   private getMajorityType(winnderParty?: {
     party: string;
     constituencySeats: number;
@@ -160,11 +209,8 @@ export class CampaignEngine {
   }
 
   private getAnswers(
-    answers: AnsweEffectProps[],
-    currentQuestion: Pick<
-      Question,
-      "id" | "title" | "question" | "possibleAnswers"
-    >,
+    answers: RawAnsweEffectProps[],
+    currentQuestion: RawQuestion,
   ) {
     return answers.find((e) => e.id === currentQuestion.id)?.answers;
   }

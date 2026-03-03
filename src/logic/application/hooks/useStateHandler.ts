@@ -4,18 +4,21 @@ import { StateHandler, type StateHandlerType } from "../StateHandler";
 export function useStateHandler() {
   const stateHandler = container.resolve(StateHandler);
 
-  const updateState = (key: keyof StateHandlerType, value: unknown) => {
-    const currentState = stateHandler.get(key);
-    if (Array.isArray(currentState)) {
-      if (Array.isArray(value)) {
-        return stateHandler.set(key, [...currentState, ...value]);
-      }
-      return stateHandler.set(key, [...currentState, value]);
-    }
-    return stateHandler.set(key, value as any);
+  const updateState = <K extends keyof StateHandlerType>(
+    key: K,
+    value: StateHandlerType[K],
+  ) => {
+    return stateHandler.set(key, value);
+  };
+
+  const getState = <K extends keyof StateHandlerType>(
+    key: K,
+  ): StateHandlerType[K] => {
+    return stateHandler.get(key);
   };
 
   return {
+    getState,
     updateState,
   };
 }

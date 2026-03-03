@@ -42,13 +42,13 @@ export class StateHandler extends Emitter<StateHandlerType> {
     return this.state;
   }
 
-  get<K extends keyof StateHandlerType>(key: K): Readonly<StateHandlerType[K]> {
+  get<K extends keyof StateHandlerType>(key: K): StateHandlerType[K] {
     return this.state[key];
   }
 
   set<K extends keyof StateHandlerType>(key: K, value: StateHandlerType[K]) {
     this.state[key] = value;
     this.notify(this.state);
-    log.info('State updated', { key, value });
+    log.info("State updated", { key, value });
   }
 }
