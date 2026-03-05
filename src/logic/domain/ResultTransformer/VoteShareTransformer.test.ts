@@ -1,5 +1,4 @@
 import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
-import { ElectionConfigEngine } from "../ElectionConfigEngine";
 import { candidateListData, partyListData } from "../mocks/mockListData";
 import { VoteShareTransformer } from "./VoteShareTransformer";
 import type { CandidateListData } from "./VoteShareTransformer.types";
@@ -25,15 +24,9 @@ const config: VoterEnvironmentConfig = {
   maxTurnout: 85,
 };
 
-const electionConfig = {
-  listSeats: 10,
-  thresholdPercent: 5,
-};
-const electionConfigEngine = new ElectionConfigEngine(electionConfig);
-
 describe("PipelineTransform", () => {
   beforeEach(() => {
-    pipelineTransform = new VoteShareTransformer(config, electionConfigEngine);
+    pipelineTransform = new VoteShareTransformer(config);
   });
 
   describe("distributeVotesByPartyShare", () => {
@@ -51,6 +44,14 @@ describe("PipelineTransform", () => {
               "party-b": ["candidate B"],
             },
             valasztopolgar: 300,
+          },
+        ],
+        [
+          {
+            megye: "Teszt",
+            megyekod: 1,
+            oevk: 1,
+            partok: { "party-a": 10, "party-b": 15 },
           },
         ],
         50,
@@ -72,6 +73,14 @@ describe("PipelineTransform", () => {
               "party-b": ["candidate B"],
             },
             valasztopolgar: 300,
+          },
+        ],
+        [
+          {
+            megye: "Teszt",
+            megyekod: 1,
+            oevk: 1,
+            partok: { "party-a": 10, "party-b": 15 },
           },
         ],
         276,
@@ -98,6 +107,14 @@ describe("PipelineTransform", () => {
 
       const result = pipelineTransform.distributeVotesByPartyShare(
         config.listData,
+        [
+          {
+            megye: "Teszt",
+            megyekod: 1,
+            oevk: 1,
+            partok: { "party-a": 10, "party-b": 15 },
+          },
+        ],
         10,
         {
           "party-a": 1,
@@ -106,13 +123,13 @@ describe("PipelineTransform", () => {
 
       expect(result).not.toBeNull();
 
-      const district = result!.districts[0];
-      const sum = Object.values(district.partok).reduce(
+      const district = result?.candidateList[0];
+      const sum = Object.values(district?.partok ?? {}).reduce(
         (a, b) => (a ?? 0) + (b ?? 0),
         0,
       );
 
-      expect(sum).toBeLessThanOrEqual(district.valasztopolgar!);
+      expect(sum).toBeLessThanOrEqual(district?.valasztopolgar ?? 0);
     });
     it("should distributes exactly totalVoters additional votes", () => {
       const config: VoterEnvironmentConfig = {
@@ -137,6 +154,14 @@ describe("PipelineTransform", () => {
 
       const result = pipelineTransform.distributeVotesByPartyShare(
         config.listData,
+        [
+          {
+            megye: "Teszt",
+            megyekod: 1,
+            oevk: 1,
+            partok: { "party-a": 10, "party-b": 15 },
+          },
+        ],
         20,
         {
           "party-a": 1,
@@ -144,7 +169,7 @@ describe("PipelineTransform", () => {
       )!;
 
       const afterVotes =
-        Object.values(result.districts[0].partok).reduce(
+        Object.values(result.candidateList[0].partok).reduce(
           (a, b) => (a ?? 0) + (b ?? 0),
           0,
         ) ?? 0;
@@ -175,13 +200,27 @@ describe("PipelineTransform", () => {
 
       const result = pipelineTransform.distributeVotesByPartyShare(
         districts,
+        [
+          {
+            megye: "A",
+            megyekod: 1,
+            oevk: 1,
+            partok: { "party-a": 0 },
+          },
+          {
+            megye: "B",
+            megyekod: 1,
+            oevk: 2,
+            partok: { "party-a": 0 },
+          },
+        ],
         20,
         {
           "party-a": 1,
         },
       )!;
 
-      for (const d of result.districts) {
+      for (const d of result.candidateList) {
         const sum = Object.values(d.partok).reduce(
           (a, b) => (a ?? 0) + (b ?? 0),
           0,

@@ -1,6 +1,6 @@
 import { mockGameConfig } from "../../application/hooks/MockGameConfig";
 import { VoterEnvironment } from "../../VoterEnvironment";
-import { candidateListData } from "../mocks/mockListData";
+import { candidateListData, partyListData } from "../mocks/mockListData";
 import { DistrictVoteTransformer } from "./DistrictVoteTransformer";
 import type { DistrictTarget } from "./VoteShareTransformer.types";
 
@@ -18,9 +18,11 @@ describe("DistrictTargetTransform", () => {
       megyekod: 1,
       oevk: 1,
     };
-    const result = districtTargetTransform.modifyDistricts(candidateListData, [
-      districtTarget,
-    ]);
+    const result = districtTargetTransform.modifyDistricts(
+      candidateListData,
+      partyListData,
+      [districtTarget],
+    );
 
     expect(result).toMatchSnapshot();
   });

@@ -97,6 +97,7 @@ export class ResultModifier {
   ) {
     const result = this.pipelineTransform.distributeVotesByPartyShare(
       state.candidateListData,
+      state.partyListData,
       appliedEffects.newVotes,
       appliedEffects.share,
     );
@@ -107,8 +108,8 @@ export class ResultModifier {
     }
 
     return {
-      candidateListData: result.districts,
-      partyListData: state.partyListData,
+      candidateListData: result.candidateList,
+      partyListData: result.partyList,
     };
   }
 
@@ -124,10 +125,13 @@ export class ResultModifier {
     }
     const result = this.districtTargetTransform.modifyDistricts(
       state.candidateListData,
+      state.partyListData,
       appliedEffects.target,
     );
-
-    return { candidateListData: result, partyListData: state.partyListData };
+    return {
+      candidateListData: result.newCandidateListData,
+      partyListData: result.newPartyListData,
+    };
   }
 
   private isDistrictTargetGroup(

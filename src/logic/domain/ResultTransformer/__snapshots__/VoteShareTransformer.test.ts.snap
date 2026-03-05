@@ -2,7 +2,7 @@
 
 exports[`PipelineTransform > distributeVotesByPartyShare > should distribute votes by party share 1`] = `
 {
-  "districts": [
+  "candidateList": [
     {
       "jeloltek": {
         "party-a": [
@@ -23,16 +23,17 @@ exports[`PipelineTransform > distributeVotesByPartyShare > should distribute vot
       "valasztopolgar": 300,
     },
   ],
-  "percentages": {
-    "_total": 1,
-    "party-a": 0.6666666666666666,
-    "party-b": 0.3333333333333333,
-  },
-  "totalVotes": 75,
-  "totals": {
-    "party-a": 50,
-    "party-b": 25,
-  },
+  "partyList": [
+    {
+      "megye": "Teszt",
+      "megyekod": 1,
+      "oevk": 1,
+      "partok": {
+        "party-a": 50,
+        "party-b": 25,
+      },
+    },
+  ],
 }
 `;
 

@@ -43,7 +43,7 @@ describe("CampaignEngine", () => {
     const voterEnvironment = new VoterEnvironment(voterEnvironmentConfig);
     const resultModifier = new ResultModifier(
       new UnionSwingTransformer(),
-      new VoteShareTransformer(voterEnvironmentConfig, electionConfigEngine),
+      new VoteShareTransformer(voterEnvironmentConfig),
       new DistrictVoteTransformer(voterEnvironment),
     );
 

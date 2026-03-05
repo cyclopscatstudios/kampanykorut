@@ -115,8 +115,8 @@ export class CampaignEngine {
   }
 
   processTurn(state: GameState, decision: Decision): GameState {
-    if (state.turn > this.questions.length) {
-      log.info("Game has ended. No more turns to process.");
+    if (state.turn >= this.questions.length - 1) {
+      log.info("Game has ended.");
       return state;
     }
     const appliedEffects = this.effectApplier.getAppliedEffects(
@@ -135,13 +135,13 @@ export class CampaignEngine {
 
     const session = {
       ...state,
-      turn: state.turn + 1,
+      turn: nextTurn,
       currentQuestion: this.questions[nextTurn],
       answers: this.getAnswers(this.answers, this.questions[nextTurn]),
       candidateListData: modified?.candidateListData ?? state.candidateListData,
       partyListData: modified?.partyListData ?? state.partyListData,
       mandates: calculated,
-      isEnded: nextTurn >= this.questions.length,
+      isEnded: nextTurn >= this.questions.length - 1,
     };
 
     return session;
@@ -212,6 +212,7 @@ export class CampaignEngine {
     answers: RawAnsweEffectProps[],
     currentQuestion: RawQuestion,
   ) {
+    console.log({ answers }, { currentQuestion });
     return answers.find((e) => e.id === currentQuestion.id)?.answers;
   }
 }

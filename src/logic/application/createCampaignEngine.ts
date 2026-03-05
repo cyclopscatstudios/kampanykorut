@@ -19,10 +19,7 @@ export function createCampaignEngine(config: GameModeConfig) {
 
   const resultModifier = new ResultModifier(
     new UnionSwingTransformer(),
-    new VoteShareTransformer(
-      config.voterEnvironmentConfig,
-      electionConfigEngine,
-    ),
+    new VoteShareTransformer(config.voterEnvironmentConfig),
     new DistrictVoteTransformer(voterEnvironment),
   );
 

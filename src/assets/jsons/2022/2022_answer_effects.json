@@ -1055,5 +1055,645 @@
         ]
       }
     ]
+  },
+  {
+    "id": "2022_ogyv-21",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.8, "fidesz": -1.2 }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "nagyvarosok_oevk",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 1000,
+                "from": { "type": "party", "party": "fidesz" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.5, "fidesz": -0.5 }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "vegyes_oevk",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 1000,
+                "from": { "type": "party", "party": "fidesz" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.1, "fidesz": -0.1 }
+          },
+          {
+            "type": "turnout-change",
+            "params": { "fidesz": -0.9 }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.8 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-22",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.8, "fidesz": -1.2 }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "nagyvarosok_oevk",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 1000,
+                "from": { "type": "party", "party": "fidesz" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 500,
+                "from": { "type": "party", "party": "fidesz" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.1, "fidesz": -0.1 }
+          },
+          {
+            "type": "turnout-change",
+            "params": { "fidesz": -0.9 }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.8 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-23",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.8, "fidesz": -1.2 }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "nagyvarosok_oevk",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 1000,
+                "from": { "type": "party", "party": "fidesz" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.1, "fidesz": -0.1 }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.1, "fidesz": -0.1 }
+          },
+          {
+            "type": "turnout-change",
+            "params": { "fidesz": -0.9 }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.8 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-24",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.5 }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.1, "fidesz": -0.1 }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.1, "fidesz": -0.1 }
+          },
+          {
+            "type": "turnout-change",
+            "params": { "fidesz": -0.9 }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.8 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-25",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.5 }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.1, "fidesz": -0.1 }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "turnout-change",
+            "params": { "ellenzeki_osszefogas": 0.5 }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.8 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-26",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.5 }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.1, "fidesz": -0.1 }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "turnout-change",
+            "params": { "ellenzeki_osszefogas": 0.5 }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.4 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-27",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "nyugati_megyek",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 500,
+                "from": { "type": "party", "party": "fidesz" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.1, "fidesz": -0.1 }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "turnout-change",
+            "params": { "ellenzeki_osszefogas": 0.5 }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.4 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-28",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "nyugati_megyek",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 500,
+                "from": { "type": "party", "party": "fidesz" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.3, "fidesz": -0.3 }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "turnout-change",
+            "params": { "ellenzeki_osszefogas": 0.5 }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.4 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-29",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "nyugati_megyek",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 500,
+                "from": { "type": "party", "party": "fidesz" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.3, "fidesz": -0.3 }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "turnout-change",
+            "params": { "ellenzeki_osszefogas": 0.2 }
+          },
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.2 }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.4 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-30",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.3, "fidesz": -0.3 }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "fidesz",
+                "amount": 500,
+                "from": { "type": "bizonytalan" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.3, "fidesz": -0.3 }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "turnout-change",
+            "params": { "ellenzeki_osszefogas": 0.2 }
+          },
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.2 }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.4 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-31",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.3, "fidesz": -0.3 }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "fidesz",
+                "amount": 500,
+                "from": { "type": "bizonytalan" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.3, "fidesz": -0.3 }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "turnout-change",
+            "params": { "ellenzeki_osszefogas": 0.4 }
+          },
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.2 }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 300,
+                "from": { "type": "bizonytalan" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.4 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2022_ogyv-32",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "turnout-change",
+            "params": { "fidesz": 0.3 }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.3, "fidesz": -0.3 }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "turnout-change",
+            "params": { "ellenzeki_osszefogas": 0.4 }
+          },
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 0.2 }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 300,
+                "from": { "type": "bizonytalan" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "fidesz": 0.4 }
+          }
+        ]
+      }
+    ]
   }
 ]

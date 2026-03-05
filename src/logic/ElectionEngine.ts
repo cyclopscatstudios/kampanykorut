@@ -77,7 +77,6 @@ export class ElectionEngine {
     const nationalSwingTransform = new UnionSwingTransformer();
     this.pipelineTransform = new VoteShareTransformer(
       this.voterEnvironmentConfig,
-      this.electionConfigEngine,
     );
     this.resultModifier = new ResultModifier(
       nationalSwingTransform,
@@ -141,11 +140,13 @@ export class ElectionEngine {
    */
   modifyByShare(
     districtCandidateData: CandidateListData[],
+    partyListData: PartyListData[],
     newVotes: number,
     shares: Shares,
   ) {
     const result = this.pipelineTransform.distributeVotesByPartyShare(
       districtCandidateData,
+      partyListData,
       newVotes,
       shares,
     );
@@ -155,10 +156,8 @@ export class ElectionEngine {
     }
 
     return {
-      updated: result.districts,
-      percentages: result.percentages,
-      totalVotes: result.totalVotes,
-      totals: result.totals,
+      candidateList: result.candidateList,
+      partyList: result.partyList,
     };
   }
 
@@ -173,10 +172,12 @@ export class ElectionEngine {
    */
   modifyDistrict(
     districtCandidateData: CandidateListData[],
+    partyListData: PartyListData[],
     districtTarget: DistrictTarget[],
   ) {
     return this.dsitrictTargetTransform.modifyDistricts(
       districtCandidateData,
+      partyListData,
       districtTarget,
     );
   }

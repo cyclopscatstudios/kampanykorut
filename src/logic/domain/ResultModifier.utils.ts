@@ -1,5 +1,8 @@
 import type { DistrictResult } from "../../components/ui/map.utils";
-import type { Shares } from "./ResultTransformer/VoteShareTransformer.types";
+import type {
+  CandidateListData,
+  Shares,
+} from "./ResultTransformer/VoteShareTransformer.types";
 
 export function calculateWinner(result?: DistrictResult | null) {
   if (!result) {
@@ -48,4 +51,14 @@ export function calcPercentages(
     .reduce((a, b) => a + b, 0);
 
   return result;
+}
+
+export function getCapacity(
+  districts: CandidateListData[],
+  oevk: number,
+  megyekod: number,
+) {
+  return districts.find(
+    (district) => district.megyekod === megyekod && district.oevk === oevk,
+  );
 }

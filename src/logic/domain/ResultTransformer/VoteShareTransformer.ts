@@ -2,69 +2,53 @@ import {
   VoterEnvironment,
   type VoterEnvironmentConfig,
 } from "../../VoterEnvironment";
-import { MandateCalculator } from "../MandateCalculator";
 import type {
   Shares,
-  DistributedVotesResult,
   PartyListData,
   CandidateListData,
 } from "./VoteShareTransformer.types";
 import type { PartyId } from "../MandateCalculator.types";
-import type { ElectionConfigEngine } from "../ElectionConfigEngine";
 
 export class VoteShareTransformer {
   private voterEnvironment: VoterEnvironment;
-  private mandateCalculator: MandateCalculator;
 
-  constructor(
-    voterEnviormentConfig: VoterEnvironmentConfig,
-    electionConfigEngine: ElectionConfigEngine,
-  ) {
+  constructor(voterEnviormentConfig: VoterEnvironmentConfig) {
     this.voterEnvironment = new VoterEnvironment(voterEnviormentConfig);
-    this.mandateCalculator = new MandateCalculator(electionConfigEngine);
   }
 
   distributeVotesByPartyShare(
     districtCandidateData: CandidateListData[],
+    partyListData: PartyListData[],
     totalVoters: number,
     partyShares: Shares,
-  ): DistributedVotesResult | null {
+    distributeOnPartyList = true,
+  ) {
     const remainingCapacity =
       this.voterEnvironment.getRemainingVotesInDistricts(districtCandidateData);
 
     if (totalVoters > remainingCapacity) {
       return null;
     }
+    const candidateList = this.distributeByCandidateList(
+      districtCandidateData,
+      totalVoters,
+      partyShares,
+    );
 
-    let result = districtCandidateData.map((d) => ({
-      ...d,
-      partok: { ...d.partok },
-    }));
+    let partyList = [...partyListData];
 
-    for (const [party, share] of Object.entries(partyShares)) {
-      const votesForParty = Math.round(totalVoters * share);
-
-      if (votesForParty === 0) {
-        continue;
-      }
-
-      const weights = this.getPartyWeights(result, party);
-      const distributed = this.distributeByWeights(weights, votesForParty);
-
-      result = this.applyPartyDistributionWithCapacity(
-        result,
-        party,
-        distributed,
+    if (distributeOnPartyList) {
+      partyList = this.distributeByPartyList(
+        districtCandidateData,
+        partyListData,
+        totalVoters,
+        partyShares,
       );
     }
 
-    const totals = this.mandateCalculator.sumPartyTotals(result);
-
     return {
-      districts: result,
-      totals,
-      percentages: this.mandateCalculator.calculatePercentages(totals),
-      totalVotes: Object.values(totals).reduce((a, b) => a + b, 0),
+      candidateList,
+      partyList,
     };
   }
 
@@ -107,6 +91,68 @@ export class VoteShareTransformer {
     };
   }
 
+  private distributeByPartyList(
+    districtCandidateData: CandidateListData[],
+    partyListData: PartyListData[],
+    totalVoters: number,
+    partyShares: Shares,
+  ) {
+    let result = partyListData.map((d) => ({
+      ...d,
+      partok: { ...d.partok },
+    }));
+
+    for (const [party, share] of Object.entries(partyShares)) {
+      const votesForParty = Math.round(totalVoters * share);
+
+      if (votesForParty === 0) {
+        continue;
+      }
+
+      const weights = this.getPartyWeights(result, party);
+      const distributed = this.distributeByWeights(weights, votesForParty);
+
+      result = this.applyPartyDistributionWithCapacityToList(
+        result,
+        districtCandidateData,
+        party,
+        distributed,
+      );
+    }
+
+    return result;
+  }
+
+  private distributeByCandidateList(
+    districtCandidateData: CandidateListData[],
+    totalVoters: number,
+    partyShares: Shares,
+  ) {
+    let result = districtCandidateData.map((d) => ({
+      ...d,
+      partok: { ...d.partok },
+    }));
+
+    for (const [party, share] of Object.entries(partyShares)) {
+      const votesForParty = Math.round(totalVoters * share);
+
+      if (votesForParty === 0) {
+        continue;
+      }
+
+      const weights = this.getPartyWeights(result, party);
+      const distributed = this.distributeByWeights(weights, votesForParty);
+
+      result = this.applyPartyDistributionWithCapacity(
+        result,
+        party,
+        distributed,
+      );
+    }
+
+    return result;
+  }
+
   private applyMotivationTarget(
     votes: number,
     party: PartyId,
@@ -123,7 +169,10 @@ export class VoteShareTransformer {
   }
 
   private getPartyWeights(
-    districtCandidateData: CandidateListData[],
+    districtCandidateData: Omit<
+      CandidateListData,
+      "telepules" | "valasztopolgar"
+    >[],
     party: string,
   ): number[] {
     return districtCandidateData.map((d) => d.partok[party] ?? 0);
@@ -172,5 +221,44 @@ export class VoteShareTransformer {
         },
       };
     });
+  }
+
+  private applyPartyDistributionWithCapacityToList(
+    partyList: PartyListData[],
+    districts: CandidateListData[],
+    party: string,
+    distributed: number[],
+  ) {
+    return partyList.map((d, i) => {
+      const usedVotes =
+        Object.values(d.partok).reduce((a, b) => (a ?? 0) + (b ?? 0), 0) ?? 0;
+
+      const districtCapacity = this.getCapacity(
+        districts,
+        d.megyekod,
+        d.oevk,
+      )?.valasztopolgar;
+      const capacity = (districtCapacity ?? 0) - usedVotes;
+
+      const toApply = Math.max(0, Math.min(distributed[i] ?? 0, capacity));
+
+      return {
+        ...d,
+        partok: {
+          ...d.partok,
+          [party]: (d.partok[party] ?? 0) + toApply,
+        },
+      };
+    });
+  }
+
+  private getCapacity(
+    districts: CandidateListData[],
+    oevk: number,
+    megyekod: number,
+  ) {
+    return districts.find(
+      (district) => district.megyekod === megyekod && district.oevk === oevk,
+    );
   }
 }

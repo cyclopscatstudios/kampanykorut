@@ -575,14 +575,6 @@ CampaignEngine {
     },
     "nationalSwingTransform": UnionSwingTransformer {},
     "pipelineTransform": VoteShareTransformer {
-      "mandateCalculator": MandateCalculator {
-        "configEngine": ElectionConfigEngine {
-          "electionConfig": {
-            "listSeats": 10,
-            "thresholdPercent": 5,
-          },
-        },
-      },
       "voterEnvironment": VoterEnvironment {
         "maxAvailableVoters": 6983008,
         "voterBases": [

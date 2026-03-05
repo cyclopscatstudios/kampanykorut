@@ -2,121 +2,6 @@
 
 exports[`CampaignEngine > should apply district typed decision 1`] = `
 {
-  "answers": undefined,
-  "candidateListData": [
-    {
-      "jeloltek": {
-        "ellenzek": [
-          "Candidate B",
-        ],
-        "fidesz": [
-          "Candidate A",
-        ],
-      },
-      "megye": "BP",
-      "megyekod": 1,
-      "oevk": 1,
-      "partok": {
-        "ellenzek": 11050,
-        "fidesz": 11950,
-        "mkkp": undefined,
-      },
-      "telepules": "",
-      "valasztopolgar": 600000,
-    },
-    {
-      "megye": "BP",
-      "megyekod": 1,
-      "oevk": 2,
-      "partok": {
-        "ellenzek": 9000,
-        "fidesz": 8000,
-      },
-      "telepules": "",
-      "valasztopolgar": 600000,
-    },
-  ],
-  "currentQuestion": undefined,
-  "isEnded": true,
-  "mandates": {
-    "compensation": {
-      "losingVotes": {
-        "ellenzek": 11050,
-        "fidesz": 8000,
-      },
-      "total": {
-        "ellenzek": 12049,
-        "fidesz": 8899,
-      },
-      "winnerCompensation": {
-        "ellenzek": 999,
-        "fidesz": 899,
-      },
-    },
-    "constituencySeats": {
-      "ellenzek": 1,
-      "fidesz": 1,
-    },
-    "listSeats": {
-      "ellenzek": 5,
-      "fidesz": 5,
-    },
-    "mandates": [
-      {
-        "constituencySeats": 1,
-        "listSeats": 5,
-        "party": "fidesz",
-        "totalSeats": 6,
-      },
-      {
-        "constituencySeats": 1,
-        "listSeats": 5,
-        "party": "ellenzek",
-        "totalSeats": 6,
-      },
-    ],
-    "percentages": {
-      "_total": 1,
-      "ellenzek": 0.50125,
-      "fidesz": 0.49875,
-      "mkkp": 0,
-    },
-    "totals": {
-      "ellenzek": 20050,
-      "fidesz": 19950,
-      "mkkp": 0,
-    },
-  },
-  "partyListData": [
-    {
-      "megye": "BP",
-      "megyekod": 1,
-      "oevk": 1,
-      "partok": {
-        "ellenzek": 40000,
-        "fidesz": 50000,
-        "mkkp": 3000,
-      },
-      "telepules": "",
-    },
-    {
-      "megye": "BP",
-      "megyekod": 1,
-      "oevk": 2,
-      "partok": {
-        "ellenzek": 35000,
-        "fidesz": 30000,
-      },
-      "telepules": "",
-    },
-  ],
-  "turn": 1,
-}
-`;
-
-exports[`CampaignEngine > should apply motivation typed decision 1`] = `
-{
-  "answers": undefined,
   "candidateListData": [
     {
       "jeloltek": {
@@ -150,57 +35,7 @@ exports[`CampaignEngine > should apply motivation typed decision 1`] = `
       "valasztopolgar": 600000,
     },
   ],
-  "currentQuestion": undefined,
-  "isEnded": true,
-  "mandates": {
-    "compensation": {
-      "losingVotes": {
-        "ellenzek": 11000,
-        "fidesz": 8000,
-      },
-      "total": {
-        "ellenzek": 11999,
-        "fidesz": 8999,
-      },
-      "winnerCompensation": {
-        "ellenzek": 999,
-        "fidesz": 999,
-      },
-    },
-    "constituencySeats": {
-      "ellenzek": 1,
-      "fidesz": 1,
-    },
-    "listSeats": {
-      "ellenzek": 5,
-      "fidesz": 5,
-    },
-    "mandates": [
-      {
-        "constituencySeats": 1,
-        "listSeats": 5,
-        "party": "fidesz",
-        "totalSeats": 6,
-      },
-      {
-        "constituencySeats": 1,
-        "listSeats": 5,
-        "party": "ellenzek",
-        "totalSeats": 6,
-      },
-    ],
-    "percentages": {
-      "_total": 1,
-      "ellenzek": 0.5,
-      "fidesz": 0.5,
-      "mkkp": 0,
-    },
-    "totals": {
-      "ellenzek": 20000,
-      "fidesz": 20000,
-      "mkkp": 0,
-    },
-  },
+  "isEnded": false,
   "partyListData": [
     {
       "megye": "BP",
@@ -224,13 +59,75 @@ exports[`CampaignEngine > should apply motivation typed decision 1`] = `
       "telepules": "",
     },
   ],
-  "turn": 1,
+  "turn": 0,
+}
+`;
+
+exports[`CampaignEngine > should apply motivation typed decision 1`] = `
+{
+  "candidateListData": [
+    {
+      "jeloltek": {
+        "ellenzek": [
+          "Candidate B",
+        ],
+        "fidesz": [
+          "Candidate A",
+        ],
+      },
+      "megye": "BP",
+      "megyekod": 1,
+      "oevk": 1,
+      "partok": {
+        "ellenzek": 11000,
+        "fidesz": 12000,
+        "mkkp": undefined,
+      },
+      "telepules": "",
+      "valasztopolgar": 600000,
+    },
+    {
+      "megye": "BP",
+      "megyekod": 1,
+      "oevk": 2,
+      "partok": {
+        "ellenzek": 9000,
+        "fidesz": 8000,
+      },
+      "telepules": "",
+      "valasztopolgar": 600000,
+    },
+  ],
+  "isEnded": false,
+  "partyListData": [
+    {
+      "megye": "BP",
+      "megyekod": 1,
+      "oevk": 1,
+      "partok": {
+        "ellenzek": 40000,
+        "fidesz": 50000,
+        "mkkp": 3000,
+      },
+      "telepules": "",
+    },
+    {
+      "megye": "BP",
+      "megyekod": 1,
+      "oevk": 2,
+      "partok": {
+        "ellenzek": 35000,
+        "fidesz": 30000,
+      },
+      "telepules": "",
+    },
+  ],
+  "turn": 0,
 }
 `;
 
 exports[`CampaignEngine > should apply party-share typed decision 1`] = `
 {
-  "answers": undefined,
   "candidateListData": [
     {
       "jeloltek": {
@@ -246,9 +143,8 @@ exports[`CampaignEngine > should apply party-share typed decision 1`] = `
       "oevk": 1,
       "partok": {
         "ellenzek": 11000,
-        "fidesz": 48000,
+        "fidesz": 12000,
         "mkkp": undefined,
-        "opposition": 0,
       },
       "telepules": "",
       "valasztopolgar": 600000,
@@ -259,63 +155,13 @@ exports[`CampaignEngine > should apply party-share typed decision 1`] = `
       "oevk": 2,
       "partok": {
         "ellenzek": 9000,
-        "fidesz": 32000,
-        "opposition": 0,
+        "fidesz": 8000,
       },
       "telepules": "",
       "valasztopolgar": 600000,
     },
   ],
-  "currentQuestion": undefined,
-  "isEnded": true,
-  "mandates": {
-    "compensation": {
-      "losingVotes": {
-        "ellenzek": 20000,
-      },
-      "total": {
-        "ellenzek": 20000,
-        "fidesz": 59998,
-      },
-      "winnerCompensation": {
-        "fidesz": 59998,
-      },
-    },
-    "constituencySeats": {
-      "fidesz": 2,
-    },
-    "listSeats": {
-      "ellenzek": 4,
-      "fidesz": 6,
-    },
-    "mandates": [
-      {
-        "constituencySeats": 2,
-        "listSeats": 6,
-        "party": "fidesz",
-        "totalSeats": 8,
-      },
-      {
-        "constituencySeats": 0,
-        "listSeats": 4,
-        "party": "ellenzek",
-        "totalSeats": 4,
-      },
-    ],
-    "percentages": {
-      "_total": 1,
-      "ellenzek": 0.2,
-      "fidesz": 0.8,
-      "mkkp": 0,
-      "opposition": 0,
-    },
-    "totals": {
-      "ellenzek": 20000,
-      "fidesz": 80000,
-      "mkkp": 0,
-      "opposition": 0,
-    },
-  },
+  "isEnded": false,
   "partyListData": [
     {
       "megye": "BP",
@@ -339,13 +185,12 @@ exports[`CampaignEngine > should apply party-share typed decision 1`] = `
       "telepules": "",
     },
   ],
-  "turn": 1,
+  "turn": 0,
 }
 `;
 
 exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
 {
-  "answers": undefined,
   "candidateListData": [
     {
       "jeloltek": {
@@ -361,7 +206,7 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       "oevk": 1,
       "partok": {
         "ellenzek": 11000,
-        "fidesz": 13150,
+        "fidesz": 12000,
         "mkkp": undefined,
       },
       "telepules": "",
@@ -373,63 +218,13 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       "oevk": 2,
       "partok": {
         "ellenzek": 9000,
-        "fidesz": 8850,
+        "fidesz": 8000,
       },
       "telepules": "",
       "valasztopolgar": 600000,
     },
   ],
-  "currentQuestion": undefined,
-  "isEnded": true,
-  "mandates": {
-    "compensation": {
-      "losingVotes": {
-        "ellenzek": 11000,
-        "fidesz": 8850,
-      },
-      "total": {
-        "ellenzek": 11149,
-        "fidesz": 10999,
-      },
-      "winnerCompensation": {
-        "ellenzek": 149,
-        "fidesz": 2149,
-      },
-    },
-    "constituencySeats": {
-      "ellenzek": 1,
-      "fidesz": 1,
-    },
-    "listSeats": {
-      "ellenzek": 5,
-      "fidesz": 5,
-    },
-    "mandates": [
-      {
-        "constituencySeats": 1,
-        "listSeats": 5,
-        "party": "fidesz",
-        "totalSeats": 6,
-      },
-      {
-        "constituencySeats": 1,
-        "listSeats": 5,
-        "party": "ellenzek",
-        "totalSeats": 6,
-      },
-    ],
-    "percentages": {
-      "_total": 1,
-      "ellenzek": 0.47619047619047616,
-      "fidesz": 0.5238095238095238,
-      "mkkp": 0,
-    },
-    "totals": {
-      "ellenzek": 20000,
-      "fidesz": 22000,
-      "mkkp": 0,
-    },
-  },
+  "isEnded": false,
   "partyListData": [
     {
       "megye": "BP",
@@ -437,7 +232,7 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       "oevk": 1,
       "partok": {
         "ellenzek": 40000,
-        "fidesz": 54650,
+        "fidesz": 50000,
         "mkkp": 3000,
       },
       "telepules": "",
@@ -448,11 +243,11 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       "oevk": 2,
       "partok": {
         "ellenzek": 35000,
-        "fidesz": 33250,
+        "fidesz": 30000,
       },
       "telepules": "",
     },
   ],
-  "turn": 1,
+  "turn": 0,
 }
 `;

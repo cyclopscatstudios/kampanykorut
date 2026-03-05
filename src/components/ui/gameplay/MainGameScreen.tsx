@@ -25,7 +25,7 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
     }
     handleAnwerQuestion(id, selectedDistrict as any);
     setAnswer("");
-    if (state.turn > 0 && state.turn % 2 === 0) {
+    if (state.turn > 0 && state.turn % 2) {
       setCurrentView("MapView");
     }
   };

@@ -214,31 +214,23 @@ export class MandateCalculator {
 
   // D'Hondt list seats
   private allocateListSeats(listVotes: PartyVotes, compensation: PartyVotes) {
-    const combined: PartyVotes = {};
+    const config = this.configEngine.getElectionConfig();
 
-    for (const party of new Set([
-      ...Object.keys(listVotes),
-      ...Object.keys(compensation),
-    ])) {
+    const totalListVotes = Object.values(listVotes).reduce((a, b) => a + b, 0);
+
+    const eligibleParties = Object.entries(listVotes)
+      .filter(([, v]) => (v / totalListVotes) * 100 >= config.thresholdPercent)
+      .map(([party]) => party);
+
+    const combined: PartyVotes = {};
+    for (const party of eligibleParties) {
       combined[party] = (listVotes[party] ?? 0) + (compensation[party] ?? 0);
     }
 
-    const totalVotes = Object.values(combined).reduce((a, b) => a + b, 0);
-
-    const eligible = Object.entries(combined).filter(
-      ([, v]) =>
-        (v / totalVotes) * 100 >=
-        this.configEngine.getElectionConfig().thresholdPercent,
-    );
-
     const quotients: { party: PartyId; value: number }[] = [];
 
-    for (const [party, votes] of eligible) {
-      for (
-        let d = 1;
-        d <= this.configEngine.getElectionConfig().listSeats;
-        d++
-      ) {
+    for (const [party, votes] of Object.entries(combined)) {
+      for (let d = 1; d <= config.listSeats; d++) {
         quotients.push({ party, value: votes / d });
       }
     }
@@ -246,7 +238,8 @@ export class MandateCalculator {
     quotients.sort((a, b) => b.value - a.value);
 
     const seats: Record<PartyId, number> = {};
-    for (let i = 0; i < this.configEngine.getElectionConfig().listSeats; i++) {
+
+    for (let i = 0; i < config.listSeats; i++) {
       const q = quotients[i];
       seats[q.party] = (seats[q.party] ?? 0) + 1;
     }
