@@ -56,7 +56,7 @@ export type AppliedEffect =
     }
   | {
       type: EffectType.DistrictVoteTransfer;
-      target: DistrictTarget[] | DistrictTargetGroup[];
+      target: DistrictTarget[];
     }
   | {
       type: EffectType.TurnoutChange;

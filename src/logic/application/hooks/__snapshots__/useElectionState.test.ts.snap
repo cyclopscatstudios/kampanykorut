@@ -33,14 +33,22 @@ exports[`useElectionState > should initialize state 1`] = `
             {
               "amount": 3500,
               "from": {
-                "party": "fidesz",
+                "party": "ellenzeki_osszefogas",
                 "type": "party",
               },
               "groupId": "billego_korzetek",
-              "targetParty": "ellenzeki_osszefogas",
+              "targetParty": "fidesz",
             },
           ],
           "type": "district-vote-transfer",
+        },
+        {
+          "params": {
+            "ellenzeki_osszefogas": -2,
+            "fidesz": 0.8,
+            "mi_hazank": 0.5,
+          },
+          "type": "uniform-swing",
         },
       ],
       "id": "B",
@@ -3889,22 +3897,22 @@ exports[`useElectionState > should initialize state 1`] = `
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nyilvánosan hangsúlyozod a függetlenséged: „Én senkinek nem vagyok az embere, a pártok is csak eszközök a rendszer leváltásához.”",
+        "label": "Nyilvánosan hangsúlyozod a függetlenségedet: „Én senkinek nem vagyok az embere, a pártok csak eszközök a rendszer leváltásához.”",
       },
       {
         "id": "B",
-        "label": "A kampány első nagy beszédében külön-külön megdicséred az összes részt vevő pártot és vezetőjét, és azt mondod: „Mostantól egy csapat vagyunk, kész.”",
+        "label": "Az első nagy kampánybeszédben külön-külön megdicséred az összes részt vevő pártot és vezetőjét: „Mostantól egy csapat vagyunk.”",
       },
       {
         "id": "C",
-        "label": "Kijelented, hogy „a régi baloldal is bűnös”, és rendszeresen kritizálod Gyurcsány Ferencet.",
+        "label": "Kijelented, hogy „a régi baloldal is hibázott”, és időnként kritizálod Gyurcsány Ferencet.",
       },
       {
         "id": "D",
-        "label": "Zárt ajtók mögött leülsz a pártelnökökkel, és addig nem tartasz nagy nyilvános beszédet, amíg nincs közös, rövid üzenet, amit mindenki hajlandó ismételni.",
+        "label": "Először zárt ajtók mögött egyeztetsz a pártelnökökkel, és csak ezután tartasz nagy nyilvános beszédet.",
       },
     ],
-    "question": "2021 ősze. Megnyerted az ellenzéki előválasztást, te vagy az összefogás közös miniszterelnök-jelöltje. A pártok bizalmatlanok, de a nyilvánosságban nagy várakozás van.",
+    "question": "2021 őszén megnyered az ellenzéki előválasztást, így te leszel az összefogás közös miniszterelnök-jelöltje. A pártok között még van bizalmatlanság, de a nyilvánosságban nagy a várakozás.",
     "title": "Elfogadod-e a közös jelöltséget?",
   },
   "isEnded": false,

@@ -1,11 +1,13 @@
 import { VoterEnvironment } from "../../VoterEnvironment";
-import { getCapacity } from "../ResultModifier.utils";
 import type {
   CandidateListData,
   DistrictTarget,
   PartyListData,
   VoteSource,
 } from "./VoteShareTransformer.types";
+import { createLogger } from "../../logger";
+
+const log = createLogger("DistrictVoteTransformer");
 
 export class DistrictVoteTransformer {
   constructor(private voterEnvironment: VoterEnvironment) {}
@@ -15,22 +17,44 @@ export class DistrictVoteTransformer {
     partyListData: PartyListData[],
     districtTargets: DistrictTarget[],
   ) {
-    const newPartyListData = districtTargets.reduce(
-      (currentList, target) =>
-        currentList.map((row) =>
-          this.applyPartyTarget(row, districtCandidateData, target),
-        ),
-      partyListData,
+    const key = (megyekod: number, oevk: number) => `${megyekod}_${oevk}`;
+
+    const partyIndex = new Map(
+      partyListData.map((row, i) => [key(row.megyekod, row.oevk), i]),
     );
-    const newCandidateListData = districtTargets.reduce(
-      (currentList, target) =>
-        currentList.map((row) => this.applyCandidateTarget(row, target)),
-      districtCandidateData,
+    const candidateIndex = new Map(
+      districtCandidateData.map((row, i) => [key(row.megyekod, row.oevk), i]),
     );
-    return {
-      newCandidateListData,
-      newPartyListData,
-    };
+
+    const newPartyListData = [...partyListData];
+    const newCandidateListData = [...districtCandidateData];
+
+    for (const target of districtTargets) {
+      const k = key(target.megyekod, target.oevk);
+      const pi = partyIndex.get(k);
+      const ci = candidateIndex.get(k);
+
+      if (pi === undefined) {
+        log.warn(
+          `provided target ${JSON.stringify(target)}'s district was not found in the party data`,
+        );
+      } else {
+        newPartyListData[pi] = this.applyPartyTarget(
+          newPartyListData[pi],
+          ci !== undefined ? districtCandidateData[ci] : undefined,
+          target,
+        );
+      }
+
+      if (ci !== undefined) {
+        newCandidateListData[ci] = this.applyCandidateTarget(
+          newCandidateListData[ci],
+          target,
+        );
+      }
+    }
+
+    return { newCandidateListData, newPartyListData };
   }
 
   modifyListDistricts(
@@ -48,29 +72,16 @@ export class DistrictVoteTransformer {
 
   private applyPartyTarget(
     partyListData: PartyListData,
-    districtCandidateData: CandidateListData[],
+    candidateData: CandidateListData | undefined,
     target: DistrictTarget,
   ) {
-    if (
-      partyListData.megyekod !== target.megyekod ||
-      partyListData.oevk !== target.oevk
-    ) {
-      // TODO log error war for incorrect target
-      return partyListData;
-    }
-
     const from: VoteSource = target.from ?? { type: "bizonytalan" };
     const partok = { ...partyListData.partok };
 
     let available = 0;
 
     if (from.type === "bizonytalan") {
-      available =
-        getCapacity(
-          districtCandidateData,
-          partyListData.oevk,
-          partyListData.megyekod,
-        )?.valasztopolgar ?? 0;
+      available = candidateData?.valasztopolgar ?? 0;
     } else {
       available = partok[from.party] ?? 0;
     }
@@ -101,7 +112,10 @@ export class DistrictVoteTransformer {
       districtCandidateData.megyekod !== target.megyekod ||
       districtCandidateData.oevk !== target.oevk
     ) {
-      // TODO log error war for incorrect target
+      console.log({ target }, { districtCandidateData });
+      log.warn(
+        `provided target ${target}'s district was not found in the district data`,
+      );
       return districtCandidateData;
     }
 

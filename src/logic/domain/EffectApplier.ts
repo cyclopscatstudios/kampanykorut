@@ -75,9 +75,17 @@ export class EffectApplier {
     const isDistrictBoosterAllowed =
       this.electionConfigEngine.getElectionConfig().districtBoost;
 
-    if (isDistrictBoosterAllowed && selectedDistrict) {
+    const canApplyeBoosterEffect =
+      this.stateHandler.get("gameState").turn % 2 === 0;
+
+    if (
+      isDistrictBoosterAllowed &&
+      selectedDistrict &&
+      canApplyeBoosterEffect
+    ) {
       const boosterEffect = this.getBoosterEffect(selectedDistrict);
       if (boosterEffect) {
+        log.info("Add boosterEffect to district ", selectedDistrict);
         return [...appliedEffects, boosterEffect];
       }
     }
@@ -123,8 +131,7 @@ export class EffectApplier {
       });
 
       if (!matches) {
-        // TODO: this is not an error
-        log.error(`Condition not met for effects: ${JSON.stringify(cond)}`);
+        log.info(`Condition not met for effects: ${JSON.stringify(cond)}`);
         continue;
       }
 
@@ -210,26 +217,25 @@ export class EffectApplier {
   private getDistrictChange(
     target: DistrictTarget[] | DistrictTargetGroup[],
   ): AppliedEffect {
-    const finalTarget: DistrictTarget[] = [];
-    if (this.isDistrictTargetGroup(target)) {
-      target.forEach((t) => {
-        const targetDistricts =
-          this.districtGroupEngine.getDistrictTargetByGroupIds([t.groupId]);
-        targetDistricts.forEach((d) => {
-          d.districts.forEach((district) => {
-            finalTarget.push({
-              megyekod: district.megyekod,
-              oevk: district.oevk,
-              amount: t.amount,
-              targetParty: t.targetParty,
-              from: t.from,
-            });
-          });
-        });
-      });
-      return { type: EffectType.DistrictVoteTransfer, target: finalTarget };
+    if (!this.isDistrictTargetGroup(target)) {
+      return { type: EffectType.DistrictVoteTransfer, target };
     }
-    return { type: EffectType.DistrictVoteTransfer, target };
+
+    const finalTarget = target.flatMap((t) =>
+      this.districtGroupEngine
+        .getDistrictTargetByGroupIds([t.groupId])
+        .flatMap((d) =>
+          d.districts.map((district) => ({
+            megyekod: district.megyekod,
+            oevk: district.oevk,
+            amount: t.amount,
+            targetParty: t.targetParty,
+            from: t.from,
+          })),
+        ),
+    );
+
+    return { type: EffectType.DistrictVoteTransfer, target: finalTarget };
   }
 
   private isDistrictTargetGroup(
