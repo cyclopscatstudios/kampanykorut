@@ -16,9 +16,17 @@ interface ButtonProps {
   block?: boolean;
   fullRounded?: boolean;
   className?: string;
+  disabled?: boolean;
 }
 
-function getButtonColors(variant: ButtonVariant, color?: Colors) {
+function getButtonColors(
+  variant: ButtonVariant,
+  color?: Colors,
+  disabled?: boolean,
+) {
+  if (disabled) {
+    return "bg-gray-600";
+  }
   if (variant === "secondary") {
     return "bg-blue-50 hover:bg-blue-100 active:bg-blue-200";
   }
@@ -44,7 +52,14 @@ function getButtonColors(variant: ButtonVariant, color?: Colors) {
   }
 }
 
-function getBorderColor(color?: Colors, variant?: ButtonVariant) {
+function getBorderColor(
+  color?: Colors,
+  variant?: ButtonVariant,
+  disabled?: boolean,
+) {
+  if (disabled) {
+    return "";
+  }
   if (variant === "tertiary") {
     return "border border-slate-50/10";
   }
@@ -70,17 +85,19 @@ export function Button(props: ButtonProps) {
     color,
     block,
     fullRounded,
+    disabled,
   } = props;
-  const buttonColors = getButtonColors(variant, color);
-  const borderColor = getBorderColor(color, variant);
+  const buttonColors = getButtonColors(variant, color, disabled);
+  const borderColor = getBorderColor(color, variant, disabled);
 
   return (
     <ButtonContext.Provider value={{ ...props }}>
       <button
         onClick={onClick}
         className={classNames(
-          "cursor-pointer px-4 inline-flex items-center justify-center gap-2",
+          "px-4 inline-flex items-center justify-center gap-2",
           {
+            "cursor-pointer": !disabled,
             "h-10": size === "normal",
             "h-[50px] py-0.5": size === "large",
             "h-[30px] py-0.5": size === "small",
@@ -100,7 +117,14 @@ export function Button(props: ButtonProps) {
   );
 }
 
-function getButtonTextColor(variant?: ButtonVariant, color?: Colors) {
+function getButtonTextColor(
+  variant?: ButtonVariant,
+  color?: Colors,
+  disabled?: boolean,
+) {
+  if (disabled) {
+    return "text-gray-800";
+  }
   if (variant === "secondary" || variant === "tertiary") {
     return "text-blue-900";
   }
@@ -116,7 +140,7 @@ function getButtonTextColor(variant?: ButtonVariant, color?: Colors) {
 
 function ButtonText({ children }: { children: React.ReactNode }) {
   const ctx = React.useContext(ButtonContext);
-  const textColor = getButtonTextColor(ctx?.variant, ctx?.color);
+  const textColor = getButtonTextColor(ctx?.variant, ctx?.color, ctx?.disabled);
   return (
     <span
       className={classNames("font-bold", textColor, {

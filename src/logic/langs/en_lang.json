@@ -30,5 +30,21 @@
   {
     "key": "menuList.button.back",
     "lang": "Back"
+  },
+  {
+    "key": "endResult.menuBar.summary",
+    "lang": "Summary"
+  },
+  {
+    "key": "endResult.menuBar.electionMap",
+    "lang": "Election map"
+  },
+  {
+    "key": "endResult.menuBar.statistics",
+    "lang": "Statistics"
+  },
+  {
+    "key": "endResult.menuBar.history",
+    "lang": "History"
   }
 ]

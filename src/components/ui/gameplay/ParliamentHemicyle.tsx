@@ -211,7 +211,7 @@ export function ParliamentHemicycle({
                   display: "inline-block",
                 }}
               />
-              <span>
+              <span className="text-white">
                 {p.name}: <b>{p.seats}</b>{" "}
                 <span style={{ opacity: 0.7 }}>({pct}%)</span>
               </span>

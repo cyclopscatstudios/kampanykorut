@@ -16,6 +16,7 @@ export interface ElectionConfig {
   districtBoost?: boolean;
   playerSide?: string;
   baseResults?: Record<string, number>;
+  parties: RawParty[];
 }
 
 export type PartyId = string;
@@ -42,3 +43,9 @@ export interface CalculateResults {
   };
   percentages: Record<string, number>;
 }
+
+export type RawParty = {
+  id: string;
+  name: string;
+  color: string;
+};
