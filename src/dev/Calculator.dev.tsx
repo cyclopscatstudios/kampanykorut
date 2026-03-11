@@ -332,7 +332,7 @@ function useElectionEngine(candidateListResults: CandidateListData[]) {
     {
       listSeats: 93,
       thresholdPercent: 5,
-      parties: []
+      parties: [],
     },
     {
       maxTurnout: 85,

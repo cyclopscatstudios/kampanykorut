@@ -6,7 +6,7 @@ describe("MandateCalculator", () => {
   const config = {
     listSeats: 10,
     thresholdPercent: 5,
-    parties: []
+    parties: [],
   };
 
   const electionConfigEngine = new ElectionConfigEngine(config);

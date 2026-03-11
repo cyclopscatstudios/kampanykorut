@@ -19,7 +19,7 @@ export function FinalResultScreen({ results }: { results: FinalResults }) {
 
   return (
     <div className=" bg-[#0f172a] p-5 rounded-xl border border-slate-200/65">
-      <div className="h-[700px]">
+      <div className="h-[700px] mb-3">
         {activeScreen === "summaryPage" && <SummaryPage results={results} />}
       </div>
       <div className="flex gap-5 w-full justify-center">

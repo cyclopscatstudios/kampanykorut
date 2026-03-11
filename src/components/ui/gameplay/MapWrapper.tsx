@@ -4,6 +4,7 @@ import { DistrictMap } from "../../DistrictMap/DistrictMap";
 import { Button } from "../Button";
 import type { District, DistrictResult } from "../map.utils";
 import type { CandidateListData } from "../../../logic/domain/ResultTransformer/VoteShareTransformer.types";
+import classNames from "classnames";
 
 const initialFullMapViewBox: ViewBox = {
   x: 45,
@@ -25,12 +26,18 @@ export function MapWrapper({
   handleDistrict,
   selectedDistrict,
   results,
+  className,
+  width = 800,
+  height = 550,
 }: {
   districts: District[];
   fullView: boolean;
   handleDistrict?: (r: DistrictResult) => void;
   results: CandidateListData[];
   selectedDistrict?: DistrictResult | null;
+  className?: string;
+  width?: number;
+  height?: number;
 }) {
   const initialView = fullView ? initialFullMapViewBox : initialCityMapView;
   const [viewBox, setViewBox] = useState<ViewBox>(initialView);
@@ -39,14 +46,19 @@ export function MapWrapper({
 
   return (
     <>
-      <div className="bg-blue-50/25 rounded-md h-full flex items-center">
+      <div
+        className={classNames(
+          "bg-blue-50/25  rounded-md flex items-center",
+          className,
+        )}
+      >
         <DistrictMap
           districts={districts}
           result={results}
           onClick={handleDistrict}
           onDoubleClick={handleDistrict}
-          width={800}
-          height={550}
+          width={width}
+          height={height}
           stroke="white"
           strokeWidth={0.8}
           selectedDistrict={selectedDistrict}

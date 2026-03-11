@@ -1,8 +1,10 @@
 import { container } from "tsyringe";
-import { FinalResultScreen } from "../components/ui/gameplay/FinalResultScreen/FinalResultScreen";
+import { FinalResultScreen } from "../components/ui/gameplay/FinalResultScreen/EndResultScreen";
 import { StateHandler } from "../logic/application/StateHandler";
 import type { ElectionConfig } from "../logic/domain/MandateCalculator.types";
 import type { VoterEnvironmentConfig } from "../logic/VoterEnvironment";
+import districts from "../assets/jsons/2022/oevk_2022.json";
+import candidateList from "../assets/jsons/2022/oevk_constituency_results.json";
 
 export function FinalResultDev() {
   const stateHandler = container.resolve(StateHandler);
@@ -36,9 +38,9 @@ export function FinalResultDev() {
       ],
     } as ElectionConfig,
     voterEnvironmentConfig: {} as VoterEnvironmentConfig,
-    candidateListData: [],
+    candidateListData: candidateList,
     partyListData: [],
-    districts: [],
+    districts,
     capitalCity: [],
     questions: [],
     answerEffect: [],

@@ -4,7 +4,7 @@ import questions from "../../../assets/jsons/2022/2022_questions.json";
 import { QuestionCard } from "./QuestionCard";
 import { useElectionState } from "../../../logic/application/hooks/useElectionState";
 import { Button } from "../Button";
-import { FinalResultScreen } from "./FinalResultScreen/FinalResultScreen";
+import { FinalResultScreen } from "./FinalResultScreen/EndResultScreen";
 import type { DistrictResult } from "../map.utils";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";

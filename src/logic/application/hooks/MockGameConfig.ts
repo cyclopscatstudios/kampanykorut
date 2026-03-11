@@ -14,14 +14,14 @@ const voterEnvironmentConfig: VoterEnvironmentConfig = {
 const electionConfig = {
   listSeats: 10,
   thresholdPercent: 5,
-  parties: []
+  parties: [],
 };
 const mockDistricts: District[] = [
   { centrum: "", evk: "", maz: "", poligon: "" },
 ];
 const mockEndResult: EndResultProps = {
-playerSideDefeat: {} as Asset,
-playerSideVictory: {} as Asset
+  playerSideDefeat: {} as Asset,
+  playerSideVictory: {} as Asset,
 };
 
 export const mockGameConfig = {

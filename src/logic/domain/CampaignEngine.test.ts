@@ -38,7 +38,7 @@ describe("CampaignEngine", () => {
     const electionConfig = {
       listSeats: 10,
       thresholdPercent: 5,
-      parties: []
+      parties: [],
     };
     const electionConfigEngine = new ElectionConfigEngine(electionConfig);
     const voterEnvironment = new VoterEnvironment(voterEnvironmentConfig);

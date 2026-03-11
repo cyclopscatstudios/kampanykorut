@@ -15,7 +15,7 @@ let effectApplier: EffectApplier;
 const electionConfig = {
   listSeats: 10,
   thresholdPercent: 5,
-  parties: []
+  parties: [],
 };
 
 const electionConfigEngine = new ElectionConfigEngine(electionConfig);
