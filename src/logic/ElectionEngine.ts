@@ -1,3 +1,4 @@
+import { StorageEngine } from "./application/StorageEngine";
 import { ElectionConfigEngine } from "./domain/ElectionConfigEngine";
 import { MandateCalculator } from "./domain/MandateCalculator";
 import type {
@@ -68,7 +69,7 @@ export class ElectionEngine {
     private electionConfig: ElectionConfig,
     private voterEnvironmentConfig: VoterEnvironmentConfig,
   ) {
-    this.electionConfigEngine = new ElectionConfigEngine(this.electionConfig);
+    this.electionConfigEngine = new ElectionConfigEngine(new StorageEngine(), this.electionConfig);
     this.voterEnvironment = new VoterEnvironment(voterEnvironmentConfig);
     this.mandateCalculator = new MandateCalculator(this.electionConfigEngine);
     this.dsitrictTargetTransform = new DistrictVoteTransformer(

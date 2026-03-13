@@ -8,9 +8,11 @@ import { VoteShareTransformer } from "../domain/ResultTransformer/VoteShareTrans
 import { VoterEnvironment } from "../VoterEnvironment";
 import type { GameModeConfig } from "./hooks/useElectionState";
 import { ElectionConfigEngine } from "../domain/ElectionConfigEngine";
+import { StorageEngine } from "./StorageEngine";
 
 export function createCampaignEngine(config: GameModeConfig) {
-  const electionConfigEngine = new ElectionConfigEngine(config.electionConfig);
+  const storageEngine = new StorageEngine();
+  const electionConfigEngine = new ElectionConfigEngine(storageEngine, config.electionConfig);
   const mandateCalculator = new MandateCalculator(electionConfigEngine);
 
   const effectApplier = new EffectApplier(electionConfigEngine);

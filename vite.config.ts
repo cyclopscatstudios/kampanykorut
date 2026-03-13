@@ -9,6 +9,9 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  optimizeDeps: {
+    exclude: ["playwright", "playwright-report"],
+  },
   plugins: [react(), svgr(), tailwindcss()],
   test: {
     setupFiles: ["./src/test/setup.ts"],
