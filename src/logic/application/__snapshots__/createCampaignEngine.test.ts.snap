@@ -460,6 +460,7 @@ CampaignEngine {
     "electionConfigEngine": ElectionConfigEngine {
       "electionConfig": {
         "listSeats": 10,
+        "parties": [],
         "thresholdPercent": 5,
       },
     },
@@ -467,6 +468,7 @@ CampaignEngine {
       "configEngine": ElectionConfigEngine {
         "electionConfig": {
           "listSeats": 10,
+          "parties": [],
           "thresholdPercent": 5,
         },
       },
@@ -488,6 +490,7 @@ CampaignEngine {
   "electionConfigEngine": ElectionConfigEngine {
     "electionConfig": {
       "listSeats": 10,
+      "parties": [],
       "thresholdPercent": 5,
     },
   },
@@ -551,6 +554,7 @@ CampaignEngine {
     "configEngine": ElectionConfigEngine {
       "electionConfig": {
         "listSeats": 10,
+        "parties": [],
         "thresholdPercent": 5,
       },
     },

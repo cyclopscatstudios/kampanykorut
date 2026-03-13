@@ -30,5 +30,21 @@
   {
     "key": "menuList.button.back",
     "lang": "Vissza"
+  },
+  {
+    "key": "endResult.menuBar.summary",
+    "lang": "Összefoglaló"
+  },
+  {
+    "key": "endResult.menuBar.electionMap",
+    "lang": "Választási térkép"
+  },
+  {
+    "key": "endResult.menuBar.statistics",
+    "lang": "Statisztikák"
+  },
+  {
+    "key": "endResult.menuBar.history",
+    "lang": "Előzmények"
   }
 ]

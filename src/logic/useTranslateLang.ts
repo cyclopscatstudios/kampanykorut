@@ -20,3 +20,24 @@ export function useTranslateLang(langKey: string) {
 
   return translate?.lang ?? "";
 }
+
+export function useTranslate() {
+  const [tJson, setTJson] = useState<{ key: string; lang: string }[]>(en_lang);
+
+  useEffect(() => {
+    const unsubscribe = eventEmitter.on("changeLanguage", (lang) => {
+      setTJson(lang === "hu" ? hu_lang : en_lang);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const t = (langKey: string) => {
+    const translate = tJson.find((l) => l.key === langKey);
+    return translate?.lang ?? "";
+  };
+
+  return t;
+}

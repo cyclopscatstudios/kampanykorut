@@ -6,5 +6,14 @@
   "baseResults": {
     "ellenzeki_osszefogas": 4,
     "fidesz": -5
-  }
+  },
+  "parties": [
+    { "id": "fidesz", "name": "Fidesz–KDNP", "color": "#F28E2B" },
+    {
+      "id": "ellenzeki_osszefogas",
+      "name": "Ellenzéki összefogás",
+      "color": "#20b2aa"
+    },
+    { "id": "mi_hazank", "name": "Mi Hazánk", "color": "#688d1b" }
+  ]
 }

@@ -4,7 +4,7 @@ import {
   partyListData,
 } from "../../domain/mocks/mockListData";
 import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
-import type { GameModeConfig } from "./useElectionState";
+import type { Asset, EndResultProps, GameModeConfig } from "./useElectionState";
 
 const voterEnvironmentConfig: VoterEnvironmentConfig = {
   maxTurnout: 85,
@@ -14,10 +14,15 @@ const voterEnvironmentConfig: VoterEnvironmentConfig = {
 const electionConfig = {
   listSeats: 10,
   thresholdPercent: 5,
+  parties: [],
 };
 const mockDistricts: District[] = [
   { centrum: "", evk: "", maz: "", poligon: "" },
 ];
+const mockEndResult: EndResultProps = {
+  playerSideDefeat: {} as Asset,
+  playerSideVictory: {} as Asset,
+};
 
 export const mockGameConfig = {
   answerEffect: [],
@@ -28,5 +33,5 @@ export const mockGameConfig = {
   voterEnvironmentConfig,
   candidateListData,
   partyListData,
-  finalResultAssets: {} as GameModeConfig["finalResultAssets"],
+  endResults: mockEndResult,
 } as GameModeConfig;

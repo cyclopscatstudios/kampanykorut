@@ -32,9 +32,16 @@ export interface RawAnsweEffectProps {
   answers: Answer[];
 }
 
-export interface FinalResultAssets {
-  playerSideDefeat: string;
-  playerSideVictory: string;
+export interface EndResultProps {
+  playerSideDefeat: Asset;
+  playerSideVictory: Asset;
+}
+
+export interface Asset {
+  imageUri: string;
+  title: string;
+  subtitle: string;
+  description: string;
 }
 
 export interface GameModeConfig {
@@ -46,7 +53,7 @@ export interface GameModeConfig {
   capitalCity: District[];
   questions: RawQuestion[];
   answerEffect: RawAnsweEffectProps[];
-  finalResultAssets: FinalResultAssets;
+  endResults: EndResultProps;
 }
 
 export function useElectionState(gameId: string) {
