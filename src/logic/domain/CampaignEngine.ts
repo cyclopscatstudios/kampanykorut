@@ -8,16 +8,21 @@ import type { MandateCalculator } from "./MandateCalculator";
 import type { ResultModifier } from "./ResultModifier";
 import type {
   CandidateListData,
-  DistrictTarget,
   PartyListData,
 } from "./ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "./MandateCalculator.types";
 import type {
+  AdvisorFeedback,
   Answer,
+  AnswerFeedback,
+  ConditionalAnswer,
   RawAnsweEffectProps,
 } from "../application/hooks/useElectionState";
 import { createLogger } from "../logger";
 import type { ElectionConfigEngine } from "./ElectionConfigEngine";
+import type { DistrictResult } from "../../components/ui/map.utils";
+import { StateHandler } from "../application/StateHandler";
+import { container } from "tsyringe";
 
 export interface RawQuestion {
   id: string;
@@ -40,6 +45,7 @@ export interface GameState {
   partyListData: PartyListData[];
   mandates?: CalculateResults;
   isEnded: boolean;
+  advisorFeedback?: AnswerFeedback;
 }
 
 export interface Decision {
@@ -47,7 +53,7 @@ export interface Decision {
   answerId: string;
   effects: RawEffect[];
   conditionalEffects?: ConditionalRawEffect[];
-  selectedDistrict?: DistrictTarget | null;
+  selectedDistrict?: DistrictResult | null;
 }
 
 export interface TurnResult {
@@ -76,11 +82,16 @@ export class CampaignEngine {
     private readonly initialPartyData: PartyListData[],
     private readonly questions: RawQuestion[],
     private readonly answers: RawAnsweEffectProps[],
+    private readonly advisorFeedback: AdvisorFeedback[],
     private resultModifier: ResultModifier,
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
     private electionConfigEngine: ElectionConfigEngine,
-  ) {}
+    private stateHandler: StateHandler,
+  ) {
+    this.stateHandler = container.resolve(StateHandler);
+    this.electionConfigEngine.getElectionConfig.bind(this);
+  }
 
   createInitialState(): GameState {
     let candidateListData = this.initialCandidateData;
@@ -94,6 +105,7 @@ export class CampaignEngine {
         candidateListData,
         partyListData,
         baseResults,
+        0,
       );
 
       candidateListData = baseApplied.candidateListData;
@@ -122,6 +134,7 @@ export class CampaignEngine {
     const appliedEffects = this.effectApplier.getAppliedEffects(
       decision.effects,
       state.candidateListData,
+      state.turn,
       decision.conditionalEffects,
       decision.selectedDistrict,
     );
@@ -140,6 +153,10 @@ export class CampaignEngine {
       answers: this.getAnswers(this.answers, this.questions[nextTurn]),
       candidateListData: modified?.candidateListData ?? state.candidateListData,
       partyListData: modified?.partyListData ?? state.partyListData,
+      advisorFeedback: this.getAdivsorFeedback(
+        decision.answerId,
+        state.currentQuestion,
+      ),
       mandates: calculated,
       isEnded: nextTurn >= this.questions.length - 1,
     };
@@ -153,8 +170,10 @@ export class CampaignEngine {
     }, state.mandates.mandates[0]);
     const hasMajority = winnerParty ? winnerParty.totalSeats > 100 : false;
     const majorityType = this.getMajorityType(winnerParty);
+    const mandates = { ...state.mandates };
+    // TODO fix this assertation
     return {
-      ...state.mandates,
+      mandates,
       winnerParty: {
         ...winnerParty,
         hasMajority,
@@ -163,10 +182,63 @@ export class CampaignEngine {
     } as FinalResults;
   }
 
+  private getAdivsorFeedback(answerId: string, question?: RawQuestion) {
+    const shouldShowAdvisorFeedback =
+      this.electionConfigEngine.getGameSettings().showAdvisorFeedback;
+    if (!shouldShowAdvisorFeedback) {
+      return undefined;
+    }
+    const advisorFeedback = this.advisorFeedback.find(
+      (f) => f.questionId === question?.id,
+    );
+
+    const conditionalFeedback = this.resolveConditionalFeedback(
+      advisorFeedback?.conditionalAnswers,
+    );
+
+    if (conditionalFeedback) {
+      return conditionalFeedback;
+    }
+
+    return advisorFeedback?.answers.find((a) => a.answerId === answerId);
+  }
+
+  private resolveConditionalFeedback(conditionalAnswers?: ConditionalAnswer[]) {
+    if (!conditionalAnswers) {
+      return;
+    }
+    let feedback;
+    const history = this.stateHandler.get("history");
+
+    if (!history?.length) {
+      log.error("history is empty, but conditional feedback are present");
+    }
+
+    for (const cond of conditionalAnswers) {
+      const matches = cond.if.every((condition) => {
+        const h = history?.find((q) => q.questionId === condition.questionId);
+        return h?.answerId === condition.answerId;
+      });
+
+      if (!matches) {
+        log.info(`Condition not met for feedback: ${JSON.stringify(cond)}`);
+        continue;
+      }
+
+      return {
+        answerId: cond.answer.answerId,
+        text: cond.answer.text,
+      };
+    }
+
+    return feedback;
+  }
+
   private applyBaseResults(
     candidateListData: CandidateListData[],
     partyListData: PartyListData[],
     baseResults: Record<string, number>,
+    turn: number,
   ) {
     const tempState: GameState = {
       turn: 0,
@@ -180,6 +252,7 @@ export class CampaignEngine {
     const appliedEffects = this.effectApplier.getAppliedEffects(
       [{ type: EffectType.UniformSwing, params: { ...baseResults } }],
       candidateListData,
+      turn,
     );
 
     const results = this.resultModifier.apply(tempState, appliedEffects);
@@ -212,7 +285,6 @@ export class CampaignEngine {
     answers: RawAnsweEffectProps[],
     currentQuestion: RawQuestion,
   ) {
-    console.log({ answers }, { currentQuestion });
     return answers.find((e) => e.id === currentQuestion.id)?.answers;
   }
 }

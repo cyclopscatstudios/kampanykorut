@@ -1,46 +1,34 @@
 import { StorageEngine } from "../application/StorageEngine";
 import type { ElectionConfig } from "./MandateCalculator.types";
 
+interface GameSettings {
+  showAdvisorFeedback: boolean;
+}
+
 // TODO: rename this to GameConfigEngine
 export class ElectionConfigEngine {
   private electionConfig: ElectionConfig;
 
-  constructor(private storage: StorageEngine, electionConfig: ElectionConfig) {
+  constructor(
+    private storage: StorageEngine,
+    electionConfig: ElectionConfig,
+  ) {
     this.electionConfig = electionConfig;
     this.init();
   }
 
-private init() {
-  const currentSettings = this.storage.getItem('settings', 'localStorage');
+  private init() {
+    const settings = {
+      showAdvisorFeedback: true,
+    };
 
-  if (!currentSettings) {
-    const defaults = { showAdvisorFeedback: true };
-    return this.storage.setItem(
-      'settings',
-      JSON.stringify(defaults),
-      'localStorage'
-    );
+    this.storage.setItem("settings", JSON.stringify(settings), "localStorage");
   }
 
-  let parsed: any;
-
-  try {
-    parsed = JSON.parse(currentSettings);
-  } catch {
-    parsed = {};
+  getGameSettings(): GameSettings {
+    const settings = this.storage.getItem("settings", "localStorage") ?? "";
+    return JSON.parse(settings);
   }
-
-  const newSettings = {
-    ...parsed,
-    showAdvisorFeedback: parsed.showAdvisorFeedback ?? true,
-  };
-
-  this.storage.setItem(
-    'settings',
-    JSON.stringify(newSettings),
-    'localStorage'
-  );
-}
 
   getElectionConfig() {
     return this.electionConfig;

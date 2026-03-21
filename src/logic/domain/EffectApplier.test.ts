@@ -9,6 +9,7 @@ import {
 import { candidateListData } from "./mocks/mockListData";
 import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
 import { ElectionConfigEngine } from "./ElectionConfigEngine";
+import { StorageEngine } from "../application/StorageEngine";
 
 let effectApplier: EffectApplier;
 
@@ -18,7 +19,7 @@ const electionConfig = {
   parties: [],
 };
 
-const electionConfigEngine = new ElectionConfigEngine(electionConfig);
+const electionConfigEngine = new ElectionConfigEngine(new StorageEngine(), electionConfig);
 
 describe("ElectionEffectApplier – PartySwing", () => {
   const stateHandler = container.resolve(StateHandler);
@@ -34,7 +35,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
       },
     };
 
-    const result = effectApplier.getAppliedEffects([effect], candidateListData);
+    const result = effectApplier.getAppliedEffects([effect], candidateListData, 0);
     expect(result).toEqual([
       {
         type: EffectType.UniformSwing,
@@ -52,7 +53,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
         ellenzek: 1,
       },
     };
-    const result = effectApplier.getAppliedEffects([effect], candidateListData);
+    const result = effectApplier.getAppliedEffects([effect], candidateListData, 0);
     expect(result).toEqual([
       {
         type: EffectType.TurnoutChange,
@@ -75,7 +76,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
         },
       },
     };
-    const result = effectApplier.getAppliedEffects([effect], candidateListData);
+    const result = effectApplier.getAppliedEffects([effect], candidateListData, 0);
     expect(result).toEqual([
       {
         type: EffectType.VoteAllocation,
@@ -104,7 +105,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
         },
       ] as DistrictTarget[],
     };
-    const result = effectApplier.getAppliedEffects([effect], candidateListData);
+    const result = effectApplier.getAppliedEffects([effect], candidateListData, 0);
     expect(result).toEqual([
       {
         target: [
@@ -166,6 +167,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
       const result = effectApplier.getAppliedEffects(
         [effect],
         candidateListData,
+        0,
         [conditionalEffect],
       );
       expect(result).toEqual([
@@ -220,6 +222,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
       const result = effectApplier.getAppliedEffects(
         [effect],
         candidateListData,
+        0,
         [conditionalEffect],
       );
       expect(result).toEqual([

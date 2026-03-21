@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type {
   CandidateListData,
-  DistrictTarget,
   PartyListData,
 } from "../../domain/ResultTransformer/VoteShareTransformer.types";
 import type {
@@ -12,7 +11,10 @@ import type {
 import type { ElectionConfig } from "../../domain/MandateCalculator.types";
 import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
 import { createCampaignEngine } from "../createCampaignEngine";
-import type { District } from "../../../components/ui/map.utils";
+import type {
+  District,
+  DistrictResult,
+} from "../../../components/ui/map.utils";
 import type {
   ConditionalRawEffect,
   RawEffect,
@@ -44,6 +46,36 @@ export interface Asset {
   description: string;
 }
 
+export interface AdvisorFeedback {
+  questionId: string;
+  answers: AnswerFeedback[];
+  conditionalAnswers?: ConditionalAnswer[];
+}
+
+export interface ConditionalAnswer {
+  if: {
+    questionId: string;
+    answerId: string;
+  }[];
+  answer: AnswerFeedback;
+}
+
+export interface AnswerFeedback {
+  answerId: string;
+  text: string;
+}
+
+export interface PendingTurn {
+  newGameState: GameState;
+  decision: Decision;
+  rawAnswer: string;
+}
+
+export interface AdvisorFeedbackAssets {
+  primaryAdvisorImageUri: string;
+  secondaryAdvisorImageUri: string;
+}
+
 export interface GameModeConfig {
   electionConfig: ElectionConfig;
   voterEnvironmentConfig: VoterEnvironmentConfig;
@@ -54,6 +86,8 @@ export interface GameModeConfig {
   questions: RawQuestion[];
   answerEffect: RawAnsweEffectProps[];
   endResults: EndResultProps;
+  advisorFeedback: AdvisorFeedback[];
+  advisorFeedbackAssets: AdvisorFeedbackAssets;
 }
 
 export function useElectionState(gameId: string) {
@@ -74,10 +108,10 @@ export function useElectionState(gameId: string) {
     setGameState(session);
   };
 
-  const handleAnwerQuestion = (
+  const processAnswer = (
     rawAnswer?: string,
-    selectedDistrict?: DistrictTarget | null,
-  ) => {
+    selectedDistrict?: DistrictResult | null,
+  ): PendingTurn | undefined => {
     const answer = getAnswer(gameState?.answers, rawAnswer);
     if (!rawAnswer || !gameState.currentQuestion || !answer?.effects) {
       return;
@@ -90,7 +124,16 @@ export function useElectionState(gameId: string) {
       selectedDistrict,
     };
     const newGameState = campaignEngine.processTurn(gameState, decision);
+    return { newGameState, decision, rawAnswer };
+  };
+
+  const commitTurn = ({
+    newGameState,
+    decision,
+    rawAnswer,
+  }: PendingTurn): GameState => {
     preserveState(rawAnswer, decision, newGameState);
+    return newGameState;
   };
 
   const getAnswer = (answers?: Answer[], answerId?: string) => {
@@ -106,15 +149,14 @@ export function useElectionState(gameId: string) {
     decision: Decision,
     newGameState: GameState,
   ) => {
-    console.log("preserve state called");
     const historyEntry = {
-      questionId: gameState.currentQuestion?.id,
+      questionId: gameState.currentQuestion?.id ?? "",
       answerId: answer,
     };
     const historyItems = getState("history");
     if (historyItems) {
       const newHistoryItems = [...historyItems, historyEntry];
-      updateState("history", newHistoryItems as any);
+      updateState("history", newHistoryItems);
       saveSession(newHistoryItems, "questionHistory");
     }
     updateState("turnDecision", decision);
@@ -126,7 +168,8 @@ export function useElectionState(gameId: string) {
   return {
     state: gameState,
     config,
-    handleAnwerQuestion,
+    processAnswer,
+    commitTurn,
     loadSavedGame,
     getFinalResults,
   };

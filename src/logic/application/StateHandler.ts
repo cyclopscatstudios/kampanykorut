@@ -3,10 +3,16 @@ import type { Decision, GameState } from "../domain/CampaignEngine";
 import { Emitter } from "./Emitter";
 import type { GameModeConfig } from "./hooks/useElectionState";
 import { createLogger } from "../logger";
+import type { RawEffect } from "../domain/EffectApplier.types";
 
-interface HistoryItem {
+export interface HistoryItem {
   questionId: string;
   answerId: string;
+}
+
+export interface AffectedQuestion {
+  questionId: string;
+  effect: RawEffect[];
 }
 
 export interface StateHandlerType {
@@ -14,6 +20,7 @@ export interface StateHandlerType {
   turnDecision?: Decision;
   currentConfig?: GameModeConfig;
   history?: HistoryItem[];
+  affectedQuestions?: AffectedQuestion[];
 }
 
 const defaultState: StateHandlerType = {

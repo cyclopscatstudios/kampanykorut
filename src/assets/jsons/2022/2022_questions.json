@@ -36,7 +36,7 @@
       },
       {
         "id": "C",
-        "label": "A harcos rendszerellenes imázst erősíted."
+        "label": "A Hódmezővásárhelyen felépített rendszerellenes kihívó szerepben lépsz fel országos szinten is."
       },
       {
         "id": "D",
@@ -64,7 +64,8 @@
         "id": "D",
         "label": "Fekete-Győr Andrással, a Momentum elnökével"
       }
-    ]
+    ],
+    "affects": [{ "id": "A" }, { "id": "C" }]
   },
   {
     "id": "2022_ogyv-4",
@@ -114,24 +115,24 @@
   },
   {
     "id": "2022_ogyv-6",
-    "title": "Mit kezdj Gyurcsány Ferenccel?",
-    "question": "A Fidesz szerint Gyurcsány irányít mindent, viszont a DK nélkül nincs elég jelölt az összefogásban.",
+    "title": "Mit kezdesz Gyurcsány Ferenccel?",
+    "question": "A kormánypárt következetesen azt állítja, hogy valójában Gyurcsány Ferenc irányítja az ellenzéket. Ugyanakkor a DK kulcsszereplője az összefogásnak, nélküle a kampány is nehezebb lenne. Hogyan kezeled ezt a helyzetet?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nyilvánosan elhatárolódsz tőle."
+        "label": "Nyilvánosan elhatárolódsz tőle, és kritizálod a 2010 előtti kormányzását."
       },
       {
         "id": "B",
-        "label": "Közös nagygyűlésen jelenetek meg, de hangsúlyozod, hogy te vezeted majd a kormányt."
+        "label": "Közösen léptek fel kampányrendezvényeken, de egyértelművé teszed, hogy te vezeted az összefogást."
       },
       {
         "id": "C",
-        "label": "Azt mondod: Gyurcsány is hibázott, de Orbán sokkal rosszabb."
+        "label": "Azt hangsúlyozod, hogy a múlt hibái mellett a jelenlegi kormány tevékenysége sokkal súlyosabb következményekkel jár."
       },
       {
         "id": "D",
-        "label": "Személyesen megkéred, hogy a kampányban háttérben maradjon."
+        "label": "A háttérben arra kéred, hogy a kampányban kevésbé legyen látható."
       }
     ]
   },
@@ -142,7 +143,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A kampányban teljes mellszélességgel vállalod, hogy a Jobbik múltja lezárt fejezet, de „nem vagyunk baloldali kormány”."
+        "label": "A kampányban teljes mellszélességgel vállalod, hogy a Jobbik múltja lezárt fejezet."
       },
       {
         "id": "B",
@@ -150,7 +151,7 @@
       },
       {
         "id": "C",
-        "label": "Célzott vidéki fórumokat tartasz, ahol a Jobbik helyi politikusai mutatnak be téged a szavazóiknak, mint „konzervatív, keresztény jelöltet”."
+        "label": "Célzott vidéki fórumokat tartasz, ahol a Jobbik helyi politikusai mutatnak be téged a szavazóiknak."
       },
       {
         "id": "D",

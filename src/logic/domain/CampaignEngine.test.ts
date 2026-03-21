@@ -12,6 +12,8 @@ import {
 } from "../VoterEnvironment";
 import { candidateListData, partyListData } from "./mocks/mockListData";
 import { ElectionConfigEngine } from "./ElectionConfigEngine";
+import { StorageEngine } from "../application/StorageEngine";
+import { StateHandler } from "../application/StateHandler";
 
 let campaignEngine: CampaignEngine;
 
@@ -40,7 +42,7 @@ describe("CampaignEngine", () => {
       thresholdPercent: 5,
       parties: [],
     };
-    const electionConfigEngine = new ElectionConfigEngine(electionConfig);
+    const electionConfigEngine = new ElectionConfigEngine(new StorageEngine(), electionConfig);
     const voterEnvironment = new VoterEnvironment(voterEnvironmentConfig);
     const resultModifier = new ResultModifier(
       new UnionSwingTransformer(),
@@ -53,10 +55,12 @@ describe("CampaignEngine", () => {
       partyListData,
       [],
       [],
+      [],
       resultModifier,
       new EffectApplier(electionConfigEngine),
       new MandateCalculator(electionConfigEngine),
       electionConfigEngine,
+      new StateHandler()
     );
   });
   it("should apply the party-swing typed decision", () => {

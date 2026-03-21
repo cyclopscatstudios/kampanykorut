@@ -2,6 +2,7 @@
 
 exports[`createCampaignEngine > should create a new campaign engine instance 1`] = `
 CampaignEngine {
+  "advisorFeedback": undefined,
   "answers": [],
   "effectApplier": EffectApplier {
     "DEFAULT_MOTIVATION_DELTA": 99,
@@ -463,6 +464,10 @@ CampaignEngine {
         "parties": [],
         "thresholdPercent": 5,
       },
+      "storage": StorageEngine {
+        "getItem": [Function],
+        "getLocalStorageItem": [Function],
+      },
     },
     "mandateCalculator": MandateCalculator {
       "configEngine": ElectionConfigEngine {
@@ -470,6 +475,10 @@ CampaignEngine {
           "listSeats": 10,
           "parties": [],
           "thresholdPercent": 5,
+        },
+        "storage": StorageEngine {
+          "getItem": [Function],
+          "getLocalStorageItem": [Function],
         },
       },
     },
@@ -492,6 +501,10 @@ CampaignEngine {
       "listSeats": 10,
       "parties": [],
       "thresholdPercent": 5,
+    },
+    "storage": StorageEngine {
+      "getItem": [Function],
+      "getLocalStorageItem": [Function],
     },
   },
   "initialCandidateData": [
@@ -557,6 +570,10 @@ CampaignEngine {
         "parties": [],
         "thresholdPercent": 5,
       },
+      "storage": StorageEngine {
+        "getItem": [Function],
+        "getLocalStorageItem": [Function],
+      },
     },
   },
   "questions": [],
@@ -593,6 +610,19 @@ CampaignEngine {
         ],
         "voters": 40000,
       },
+    },
+  },
+  "stateHandler": StateHandler {
+    "listeners": [],
+    "state": {
+      "currentConfig": undefined,
+      "gameState": {
+        "candidateListData": [],
+        "isEnded": false,
+        "partyListData": [],
+        "turn": 0,
+      },
+      "history": [],
     },
   },
 }

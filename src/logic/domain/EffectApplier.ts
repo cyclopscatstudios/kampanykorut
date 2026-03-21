@@ -17,6 +17,7 @@ import { StateHandler } from "../application/StateHandler";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
 import type { ElectionConfigEngine } from "./ElectionConfigEngine";
 import { container } from "tsyringe";
+import type { DistrictResult } from "../../components/ui/map.utils";
 
 const log = createLogger("EffectApplier");
 
@@ -37,8 +38,9 @@ export class EffectApplier {
   getAppliedEffects(
     effects: RawEffect[],
     candidateListData: CandidateListData[],
+    turn: number,
     conditionalEffects?: ConditionalRawEffect[],
-    selectedDistrict?: DistrictTarget | null,
+    selectedDistrict?: DistrictResult | null,
   ): AppliedEffect[] {
     const resolvedEffects = this.resolveConditionalEffects(
       effects,
@@ -75,8 +77,7 @@ export class EffectApplier {
     const isDistrictBoosterAllowed =
       this.electionConfigEngine.getElectionConfig().districtBoost;
 
-    const canApplyeBoosterEffect =
-      this.stateHandler.get("gameState").turn % 2 === 0;
+    const canApplyeBoosterEffect = turn % 2 === 0;
 
     if (
       isDistrictBoosterAllowed &&
@@ -93,7 +94,7 @@ export class EffectApplier {
     return appliedEffects;
   }
 
-  private getBoosterEffect(district: DistrictTarget): AppliedEffect | null {
+  private getBoosterEffect(district: DistrictResult): AppliedEffect | null {
     const palyerSide = this.electionConfigEngine.getElectionConfig().playerSide;
     if (!palyerSide) {
       return null;

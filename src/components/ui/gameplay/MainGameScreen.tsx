@@ -1,37 +1,78 @@
 import { useState } from "react";
 import { MapCreator } from "./MapCreator";
-import questions from "../../../assets/jsons/2022/2022_questions.json";
 import { QuestionCard } from "./QuestionCard";
-import { useElectionState } from "../../../logic/application/hooks/useElectionState";
+import {
+  useElectionState,
+  type AnswerFeedback,
+  type PendingTurn,
+} from "../../../logic/application/hooks/useElectionState";
 import { Button } from "../Button";
 import { FinalResultScreen } from "./FinalResultScreen/EndResultScreen";
 import type { DistrictResult } from "../map.utils";
+import { AdvisorModal } from "./AdvisorModal";
+import type { GameState } from "../../../logic/domain/CampaignEngine";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
 export function MainGameScreen({ gameId }: { gameId: string }) {
   const [currentView, setCurrentView] = useState<CurrentView>("MapView");
-  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answer, setAnswer] = useState<string | undefined>();
-  const { state, config, handleAnwerQuestion, loadSavedGame, getFinalResults } =
-    useElectionState(gameId);
+  const [advisorFeedback, setAdvisorFeedback] = useState<AnswerFeedback | null>(
+    null,
+  );
+  const [pendingTurn, setPendingTurn] = useState<PendingTurn | null>(null);
+  const {
+    state,
+    config,
+    processAnswer,
+    commitTurn,
+    loadSavedGame,
+    getFinalResults,
+  } = useElectionState(gameId);
   const [selectedDistrict, setSelectedDistrict] =
     useState<DistrictResult | null>();
 
-  const handleOnClick = (id?: string) => {
-    if (state.isEnded) {
+  const applyTurnResult = (result: GameState) => {
+    if (result.isEnded) {
       setCurrentView("FinalScreen");
       return;
     }
-    handleAnwerQuestion(id, selectedDistrict as any);
-    setAnswer("");
-    if (state.turn > 0 && state.turn % 2) {
+    if (result.turn % 2 === 0) {
       setCurrentView("MapView");
+    }
+  };
+
+  const handleOnClick = (id?: string) => {
+    const pending = processAnswer(id, selectedDistrict);
+    if (!pending) return;
+
+    if (pending.newGameState.advisorFeedback) {
+      setAdvisorFeedback(pending.newGameState.advisorFeedback);
+      setPendingTurn(pending);
+      return;
+    }
+    applyTurnResult(commitTurn(pending));
+    setAnswer("");
+  };
+
+  const handleAdvisorClose = () => {
+    setAdvisorFeedback(null);
+    if (pendingTurn) {
+      applyTurnResult(commitTurn(pendingTurn));
+      setPendingTurn(null);
+      setAnswer("");
     }
   };
 
   return (
     <ScreenWrapper loadSavedGame={loadSavedGame}>
+      <AdvisorModal
+        advice={advisorFeedback?.text ?? ""}
+        open={Boolean(advisorFeedback)}
+        onClose={handleAdvisorClose}
+        img1={config.advisorFeedbackAssets.primaryAdvisorImageUri}
+        img2={config.advisorFeedbackAssets.secondaryAdvisorImageUri}
+      />
       {currentView === "MapView" ? (
         <MapCreator
           setCurrentView={setCurrentView}
@@ -45,14 +86,13 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
         <FinalResultScreen results={getFinalResults()} />
       ) : (
         <QuestionCard
-          id={questions[currentQuestion].id}
-          question={questions[currentQuestion].question}
-          possibleAnswers={questions[currentQuestion].possibleAnswers}
+          id={state.currentQuestion?.id ?? ""}
+          question={state.currentQuestion?.question ?? ""}
+          possibleAnswers={state.currentQuestion?.possibleAnswers ?? []}
+          affects={state.currentQuestion?.affects}
           answer={answer}
           setAnswer={setAnswer}
           setCurrentView={setCurrentView}
-          currentQuestion={currentQuestion}
-          setCurrentQuestion={setCurrentQuestion}
           handleOnClick={handleOnClick}
         />
       )}

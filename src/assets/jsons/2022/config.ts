@@ -7,6 +7,8 @@ import capitalCity from "./budapest.json";
 import questions from "./2022_questions.json";
 import answerEffect from "./2022_answer_effects.json";
 import endResults from "./end_results.json";
+import feedback from "./advisor_feedback.json";
+import feedbackAssets from "./advisor_feedback_assets.json";
 import type {
   GameModeConfig,
   RawAnsweEffectProps,
@@ -26,4 +28,6 @@ export const config2022: GameModeConfig = {
   // TODO fix this later
   answerEffect: answerEffect as RawAnsweEffectProps[],
   endResults,
+  advisorFeedbackAssets: feedbackAssets,
+  advisorFeedback: feedback,
 };

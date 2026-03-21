@@ -9,8 +9,7 @@ export function QuestionCardDev() {
       id={obj.id}
       possibleAnswers={obj.possibleAnswers}
       question={obj.question}
-      currentQuestion={0}
-      setCurrentQuestion={() => {}}
+      affects={[{ id: "A" }]}
       setCurrentView={() => {}}
       setAnswer={() => {}}
     />

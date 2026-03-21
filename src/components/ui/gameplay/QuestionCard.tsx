@@ -6,6 +6,8 @@ import mzpPortrait from "../../../assets/images/2022/mzp-portrait.png";
 import ellenzekiOsszefogas from "../../../assets/images/2022/ellenzeki-osszefogas.png";
 import { ImageWrapper } from "./ImageWrapper";
 import slogan from "../../../assets/images/2022/ellenzeki_osszefogas_2022_kampany_szoveg.png";
+import { Icon } from "../Icon";
+import { Tooltip } from "../Tooltip";
 
 interface Answer {
   id: string;
@@ -18,10 +20,9 @@ export interface Question {
   question: string;
   possibleAnswers: Answer[];
   answer?: string;
+  affects?: { id: string }[];
   setAnswer: (a: string) => void;
   setCurrentView: (currentView: CurrentView) => void;
-  currentQuestion: number;
-  setCurrentQuestion: (currentQuestion: number) => void;
   handleOnClick: (answer?: string) => void;
 }
 
@@ -30,10 +31,9 @@ export function QuestionCard({
   question,
   possibleAnswers,
   answer,
+  affects,
   setAnswer,
   setCurrentView,
-  currentQuestion,
-  setCurrentQuestion,
   handleOnClick,
 }: Question) {
   return (
@@ -42,10 +42,22 @@ export function QuestionCard({
       data-testid={id}
     >
       <div className="w-full flex flex-col justify-center items-center mb-4">
-        <div className="bg-blue-900 mb-4 p-2 rounded-md">
+        <div className="flex justify-center items-center bg-blue-900 mb-4 p-2 rounded-md">
           <Text weight="bold" color="lightBlue" className="text-center">
             {question}
           </Text>
+          {affects && (
+            <Tooltip
+              content="Your choice may influence how future questions unfold."
+              position="right"
+            >
+              <Icon
+                name="exclamation-circle-fill"
+                color="purple"
+                className="mx-2"
+              />
+            </Tooltip>
+          )}
         </div>
         <RadioGroup
           name="possibleAnswer"
@@ -63,7 +75,6 @@ export function QuestionCard({
           <Button
             onClick={() => {
               handleOnClick(answer);
-              setCurrentQuestion(currentQuestion + 1);
             }}
           >
             <Button.Text>Continue</Button.Text>

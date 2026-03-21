@@ -9,10 +9,14 @@ import { VoterEnvironment } from "../VoterEnvironment";
 import type { GameModeConfig } from "./hooks/useElectionState";
 import { ElectionConfigEngine } from "../domain/ElectionConfigEngine";
 import { StorageEngine } from "./StorageEngine";
+import { StateHandler } from "./StateHandler";
 
 export function createCampaignEngine(config: GameModeConfig) {
   const storageEngine = new StorageEngine();
-  const electionConfigEngine = new ElectionConfigEngine(storageEngine, config.electionConfig);
+  const electionConfigEngine = new ElectionConfigEngine(
+    storageEngine,
+    config.electionConfig,
+  );
   const mandateCalculator = new MandateCalculator(electionConfigEngine);
 
   const effectApplier = new EffectApplier(electionConfigEngine);
@@ -30,9 +34,11 @@ export function createCampaignEngine(config: GameModeConfig) {
     config.partyListData,
     config.questions,
     config.answerEffect,
+    config.advisorFeedback,
     resultModifier,
     effectApplier,
     mandateCalculator,
     electionConfigEngine,
+    new StateHandler(),
   );
 }

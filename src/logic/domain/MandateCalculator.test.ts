@@ -1,3 +1,4 @@
+import { StorageEngine } from "../application/StorageEngine";
 import { ElectionConfigEngine } from "./ElectionConfigEngine";
 import { MandateCalculator } from "./MandateCalculator";
 import type { CombinedOevk } from "./MandateCalculator.types";
@@ -9,7 +10,7 @@ describe("MandateCalculator", () => {
     parties: [],
   };
 
-  const electionConfigEngine = new ElectionConfigEngine(config);
+  const electionConfigEngine = new ElectionConfigEngine(new StorageEngine(), config);
   const calculator = new MandateCalculator(electionConfigEngine);
 
   describe("calculateConstituencySeats", () => {

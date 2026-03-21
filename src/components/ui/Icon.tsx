@@ -55,8 +55,8 @@ function getIconSize(size: IconSize) {
 
 function getIconColor(color: Colors) {
   switch (color) {
-    case 'purple': {
-      return "text-purple-500"
+    case "purple": {
+      return "text-purple-500";
     }
     case "lightBlue":
       return "text-blue-50";
