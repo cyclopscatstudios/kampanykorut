@@ -42,7 +42,10 @@ describe("CampaignEngine", () => {
       thresholdPercent: 5,
       parties: [],
     };
-    const electionConfigEngine = new ElectionConfigEngine(new StorageEngine(), electionConfig);
+    const electionConfigEngine = new ElectionConfigEngine(
+      new StorageEngine(),
+      electionConfig,
+    );
     const voterEnvironment = new VoterEnvironment(voterEnvironmentConfig);
     const resultModifier = new ResultModifier(
       new UnionSwingTransformer(),
@@ -57,10 +60,10 @@ describe("CampaignEngine", () => {
       [],
       [],
       resultModifier,
-      new EffectApplier(electionConfigEngine),
+      new EffectApplier(electionConfigEngine, []),
       new MandateCalculator(electionConfigEngine),
       electionConfigEngine,
-      new StateHandler()
+      new StateHandler(),
     );
   });
   it("should apply the party-swing typed decision", () => {

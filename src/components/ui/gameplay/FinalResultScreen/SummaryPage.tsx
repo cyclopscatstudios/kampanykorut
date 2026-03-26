@@ -62,12 +62,9 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     </>
   );
 }
-
-function buildPartiesFromResults(
-  results: FinalResults,
-  parties?: RawParty[],
-): Party[] {
-  return results.mandates.map((mandate) => {
+// TODO: fix this later
+function buildPartiesFromResults(results: any, parties?: RawParty[]): Party[] {
+  return results.mandates.mandates.map((mandate: any) => {
     const party = parties?.find((p) => p.id === mandate.party);
     return {
       color: party?.color ?? "#cccccc",

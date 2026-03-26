@@ -9,10 +9,11 @@ import answerEffect from "./2022_answer_effects.json";
 import endResults from "./end_results.json";
 import feedback from "./advisor_feedback.json";
 import feedbackAssets from "./advisor_feedback_assets.json";
+import customGroups from "./custom_groups.json";
 import type {
   GameModeConfig,
   RawAnsweEffectProps,
-} from "../../../logic/application/hooks/useElectionState";
+} from "../../../logic/application/types";
 
 export const config2022: GameModeConfig = {
   electionConfig,
@@ -30,4 +31,5 @@ export const config2022: GameModeConfig = {
   endResults,
   advisorFeedbackAssets: feedbackAssets,
   advisorFeedback: feedback,
+  customGroups,
 };

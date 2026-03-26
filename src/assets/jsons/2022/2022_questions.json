@@ -161,24 +161,24 @@
   },
   {
     "id": "2022_ogyv-8",
-    "title": "Rezsicsökkentés narratívája",
-    "question": "A Fidesz évek óta a rezsicsökkentés védelmével kampányol. Bármilyen korrekciós javaslatodra azt mondják: „eltörölné a rezsicsökkentést”.",
+    "title": "A rezsicsökkentés narratívája",
+    "question": "A Fidesz évek óta a rezsicsökkentés védelmével kampányol. Bármilyen változtatási javaslatot azzal támadnak, hogy „az ellenzék eltörölné a rezsicsökkentést.”",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nyíltan kimondod, hogy a rezsicsökkentés jelen formájában fenntarthatatlan, ezért át kell alakítani, de a lakossági kedvezményeket meg kell tartani."
+        "label": "Nyíltan kimondod, hogy a rezsicsökkentés jelenlegi formájában fenntarthatatlan, ezért át kell alakítani, ugyanakkor a lakossági kedvezményeket meg kell őrizni."
       },
       {
         "id": "B",
-        "label": "Kijelented, hogy a lakossági rezsicsökkentéshez nem nyúl az ellenzék, viszont a nagyfogyasztó céges kedvezményeket megszünteted."
+        "label": "Kijelented, hogy a lakossági rezsicsökkentéshez nem nyúl az ellenzék, viszont a nagyfogyasztó vállalatok kedvezményeit megszüntetnéd."
       },
       {
         "id": "C",
-        "label": "Elkerülöd a témát, és inkább korrupcióról és jogállamról beszélsz."
+        "label": "Elkerülöd a témát, és inkább a korrupcióra és a jogállamiságra helyezed a hangsúlyt."
       },
       {
         "id": "D",
-        "label": "A rezsicsökkentés helyett hőszigetelési és ingatlan korszerűsítési programot hirdet meg az ellenzék."
+        "label": "A rezsicsökkentés helyett egy átfogó hőszigetelési és energiahatékonysági programot hirdetsz meg."
       }
     ]
   },

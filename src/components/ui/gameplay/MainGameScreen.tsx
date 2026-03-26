@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
-import {
-  useElectionState,
-  type AnswerFeedback,
-  type PendingTurn,
-} from "../../../logic/application/hooks/useElectionState";
+import { useElectionState } from "../../../logic/application/hooks/useElectionState";
 import { Button } from "../Button";
 import { FinalResultScreen } from "./FinalResultScreen/EndResultScreen";
 import type { DistrictResult } from "../map.utils";
 import { AdvisorModal } from "./AdvisorModal";
 import type { GameState } from "../../../logic/domain/CampaignEngine";
+import type {
+  AnswerFeedback,
+  PendingTurn,
+} from "../../../logic/application/types";
+import logo from "../../../assets/logo_reworked.png";
+import { Text } from "../Text";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
@@ -70,8 +72,12 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
         advice={advisorFeedback?.text ?? ""}
         open={Boolean(advisorFeedback)}
         onClose={handleAdvisorClose}
-        img1={config.advisorFeedbackAssets.primaryAdvisorImageUri}
-        img2={config.advisorFeedbackAssets.secondaryAdvisorImageUri}
+        asset={{
+          primaryAdvisorImageUri:
+            config.advisorFeedbackAssets.primaryAdvisorImageUri,
+          secondaryAdvisorImageUri:
+            config.advisorFeedbackAssets.secondaryAdvisorImageUri,
+        }}
       />
       {currentView === "MapView" ? (
         <MapCreator
@@ -102,7 +108,6 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
 
 function ScreenWrapper({
   children,
-  loadSavedGame,
 }: {
   children: React.ReactNode;
   loadSavedGame: () => void;
@@ -110,11 +115,86 @@ function ScreenWrapper({
   return (
     <div className="w-full h-full">
       <div>
-        <Button onClick={loadSavedGame} size="small">
-          <Button.Text>Load saved game</Button.Text>
-        </Button>
+        <MenuBar />
       </div>
       {children}
+    </div>
+  );
+}
+
+function MenuBar() {
+  return (
+    <div className="w-full border-b-2 border-blue-400">
+      <div className="flex justify-between items-center mx-5">
+        <div className="flex justify-center items-center gap-2">
+          <div className="flex justify-center items-center">
+            <img src={logo} className="size-5 mr-3" />
+            <Text
+              weight="bold"
+              color="lightBlue"
+              className="text-5xl mt-5 mb-5"
+            >
+              KAMPÁNYKÖRÚT
+            </Text>
+          </div>
+          <Button variant="transparent">
+            <Text
+              weight="bold"
+              color="lightBlue"
+              className="text-5xl mt-5 mb-5"
+            >
+              MAP
+            </Text>
+          </Button>
+          <Button variant="transparent">
+            <Text
+              weight="bold"
+              color="lightBlue"
+              className="text-5xl mt-5 mb-5"
+            >
+              DASHBOARD
+            </Text>
+          </Button>
+        </div>
+        <div className="flex justify-center gap-2">
+          <Button variant="transparent">
+            <Text
+              weight="bold"
+              color="lightBlue"
+              className="text-5xl mt-5 mb-5"
+            >
+              SAVE
+            </Text>
+          </Button>
+          <Button variant="transparent">
+            <Text
+              weight="bold"
+              color="lightBlue"
+              className="text-5xl mt-5 mb-5"
+            >
+              LOAD
+            </Text>
+          </Button>
+          <Button variant="transparent">
+            <Text
+              weight="bold"
+              color="lightBlue"
+              className="text-5xl mt-5 mb-5"
+            >
+              SETTINGS
+            </Text>
+          </Button>
+          <Button variant="transparent">
+            <Text
+              weight="bold"
+              color="lightBlue"
+              className="text-5xl mt-5 mb-5"
+            >
+              LANGUAGE
+            </Text>
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -11,18 +11,17 @@ import type {
   PartyListData,
 } from "./ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "./MandateCalculator.types";
+import { createLogger } from "../logger";
+import type { ElectionConfigEngine } from "./ElectionConfigEngine";
+import type { DistrictResult } from "../../components/ui/map.utils";
+import { StateHandler } from "../application/StateHandler";
 import type {
   AdvisorFeedback,
   Answer,
   AnswerFeedback,
   ConditionalAnswer,
   RawAnsweEffectProps,
-} from "../application/hooks/useElectionState";
-import { createLogger } from "../logger";
-import type { ElectionConfigEngine } from "./ElectionConfigEngine";
-import type { DistrictResult } from "../../components/ui/map.utils";
-import { StateHandler } from "../application/StateHandler";
-import { container } from "tsyringe";
+} from "../application/types";
 
 export interface RawQuestion {
   id: string;
@@ -89,7 +88,6 @@ export class CampaignEngine {
     private electionConfigEngine: ElectionConfigEngine,
     private stateHandler: StateHandler,
   ) {
-    this.stateHandler = container.resolve(StateHandler);
     this.electionConfigEngine.getElectionConfig.bind(this);
   }
 
@@ -127,7 +125,7 @@ export class CampaignEngine {
   }
 
   processTurn(state: GameState, decision: Decision): GameState {
-    if (state.turn >= this.questions.length - 1) {
+    if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
       return state;
     }
@@ -150,7 +148,7 @@ export class CampaignEngine {
       ...state,
       turn: nextTurn,
       currentQuestion: this.questions[nextTurn],
-      answers: this.getAnswers(this.answers, this.questions[nextTurn]),
+      answers: this.getAnswers(this.answers, this.questions[state.turn]),
       candidateListData: modified?.candidateListData ?? state.candidateListData,
       partyListData: modified?.partyListData ?? state.partyListData,
       advisorFeedback: this.getAdivsorFeedback(
@@ -158,7 +156,7 @@ export class CampaignEngine {
         state.currentQuestion,
       ),
       mandates: calculated,
-      isEnded: nextTurn >= this.questions.length - 1,
+      isEnded: nextTurn >= this.questions.length,
     };
 
     return session;
@@ -207,7 +205,6 @@ export class CampaignEngine {
     if (!conditionalAnswers) {
       return;
     }
-    let feedback;
     const history = this.stateHandler.get("history");
 
     if (!history?.length) {
@@ -230,8 +227,6 @@ export class CampaignEngine {
         text: cond.answer.text,
       };
     }
-
-    return feedback;
   }
 
   private applyBaseResults(

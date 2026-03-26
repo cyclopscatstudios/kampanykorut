@@ -6,10 +6,10 @@ import { DistrictVoteTransformer } from "../domain/ResultTransformer/DistrictVot
 import { UnionSwingTransformer } from "../domain/ResultTransformer/UnionSwingTransformer";
 import { VoteShareTransformer } from "../domain/ResultTransformer/VoteShareTransformer";
 import { VoterEnvironment } from "../VoterEnvironment";
-import type { GameModeConfig } from "./hooks/useElectionState";
 import { ElectionConfigEngine } from "../domain/ElectionConfigEngine";
 import { StorageEngine } from "./StorageEngine";
 import { StateHandler } from "./StateHandler";
+import type { GameModeConfig } from "./types";
 
 export function createCampaignEngine(config: GameModeConfig) {
   const storageEngine = new StorageEngine();
@@ -19,7 +19,10 @@ export function createCampaignEngine(config: GameModeConfig) {
   );
   const mandateCalculator = new MandateCalculator(electionConfigEngine);
 
-  const effectApplier = new EffectApplier(electionConfigEngine);
+  const effectApplier = new EffectApplier(
+    electionConfigEngine,
+    config.customGroups,
+  );
 
   const voterEnvironment = new VoterEnvironment(config.voterEnvironmentConfig);
 

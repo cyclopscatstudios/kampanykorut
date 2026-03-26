@@ -2,7 +2,7 @@ import { useState } from "react";
 import { type ViewBox, useWheelZoom } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
 import { Button } from "../Button";
-import type { District, DistrictResult } from "../map.utils";
+import type { DistrictPoligon, DistrictResult } from "../map.utils";
 import type { CandidateListData } from "../../../logic/domain/ResultTransformer/VoteShareTransformer.types";
 import classNames from "classnames";
 
@@ -30,7 +30,7 @@ export function MapWrapper({
   width = 800,
   height = 550,
 }: {
-  districts: District[];
+  districts: DistrictPoligon[];
   fullView: boolean;
   handleDistrict?: (r: DistrictResult) => void;
   results: CandidateListData[];

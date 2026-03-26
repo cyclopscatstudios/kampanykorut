@@ -8,6 +8,7 @@ exports[`useElectionState > should initialize state 1`] = `
         {
           "params": {
             "ellenzeki_osszefogas": 0.8,
+            "fidesz": -0.5,
           },
           "type": "uniform-swing",
         },

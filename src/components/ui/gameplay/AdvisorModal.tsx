@@ -3,20 +3,20 @@ import { Button } from "../Button";
 import { Heading } from "../Heading";
 import { Text } from "../Text";
 import { Icon } from "../Icon";
+import type { AdvisorFeedbackAssets } from "../../../logic/application/types";
+
 interface AdvisorModalProps {
   advice: string;
   open: boolean;
   onClose: () => void;
-  img1: string;
-  img2: string;
+  asset: AdvisorFeedbackAssets;
 }
 
 export function AdvisorModal({
   advice,
   open,
   onClose,
-  img1,
-  img2,
+  asset,
 }: AdvisorModalProps) {
   const [confirmationModal, setConfirmationModal] = useState(false);
 
@@ -60,14 +60,16 @@ export function AdvisorModal({
             </div>
           </div>
           <div className="flex gap-5 justify-center py-3">
-            {[img1, img2].map((img, i) => (
-              <div
-                key={i}
-                className="w-[100px] h-[100px] border border-[#4462aa] rounded-xl overflow-hidden"
-              >
-                <img src={img} className="w-full h-full object-cover" />
-              </div>
-            ))}
+            {[asset.primaryAdvisorImageUri, asset.secondaryAdvisorImageUri].map(
+              (img, i) => (
+                <div
+                  key={i}
+                  className="w-[100px] h-[100px] border border-[#4462aa] rounded-xl overflow-hidden"
+                >
+                  <img src={img} className="w-full h-full object-cover" />
+                </div>
+              ),
+            )}
           </div>
           <div className="mx-3">
             <div className="bg-[#1d2840] p-3 rounded-xl">

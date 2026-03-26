@@ -7,6 +7,7 @@ export function AdvisorModalDev() {
     <div className="size-full bg-red-50">
       <div>asd</div>
       <AdvisorModal
+        asset={{ primaryAdvisorImageUri: "", secondaryAdvisorImageUri: "" }}
         advice="Lorem ipsum dolore sit amet Lorem ipsum dolore sit amet  Lorem ipsum dolore sit amet "
         open={open}
         onClose={() => setOpen(false)}

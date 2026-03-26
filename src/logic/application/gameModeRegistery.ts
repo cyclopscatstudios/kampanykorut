@@ -1,4 +1,4 @@
-import type { GameModeConfig } from "./hooks/useElectionState";
+import type { GameModeConfig } from "./types";
 import { config2022 } from "../../assets/jsons/2022/config";
 
 export const gameModeRegistry: Record<string, GameModeConfig> = {

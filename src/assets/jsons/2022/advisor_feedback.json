@@ -153,5 +153,52 @@
         "text": "A jobbikos szavazók elengedése komoly kockázat ebben a helyzetben, a Mi Hazánk viszont köszöni a lehetőséget."
       }
     ]
+  },
+  {
+    "questionId": "2022_ogyv-8",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A kormánypárti médiagépezet már másnap ráerősített: „Márki-Zay Péter eltörölné a rezsicsökkentést.”"
+      },
+      {
+        "answerId": "B",
+        "text": "Politikailag védhető kompromisszumot kínáltál, de ellenfeleid gyorsan populistának bélyegezték a nagyvállalatokra hárított terheket."
+      },
+      {
+        "answerId": "C",
+        "text": "Sikerült elkerülnöd a rezsicsökkentés csapdáját, de ezzel át is engedted a témát a kormánypárti narratívának."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-9",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Megpróbáltál betörni az ellenfél médiaterébe, de a pálya erősen lejt: minden megszólalásod kockázatos terepen zajlik."
+      },
+      {
+        "answerId": "B",
+        "text": "Erősen építettél az online és független médiára, de ezzel főként a már meglévő támogatóidat érted el."
+      },
+      {
+        "answerId": "C",
+        "text": "Kiaknázatlan területre léptél. Bár ezek a médiumok nem érik el a kormánypárti gépezet szintjét, helyi szinten mégis hatással lehetnek."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-10",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Még ha igazad is van, az ellenzéki törzsszavazók között nem ez lesz a legnépszerűbb megnyilvánulásod."
+      },
+      {
+        "answerId": "B",
+        "text": "Még ha igazad is van, az ellenzéki törzsszavazók között nem ez lesz a legnépszerűbb megnyilvánulásod."
+      }
+    ]
   }
 ]

@@ -14,7 +14,7 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
-import { DistrictGroupEngine } from "./DistrictGroupEngine";
+import { DistrictGroupEngine, type DistrictGroup } from "./DistrictGroupEngine";
 import type { ElectionConfigEngine } from "./ElectionConfigEngine";
 import { container } from "tsyringe";
 import type { DistrictResult } from "../../components/ui/map.utils";
@@ -28,10 +28,13 @@ export class EffectApplier {
   private electionConfigEngine: ElectionConfigEngine;
   private DEFAULT_MOTIVATION_DELTA = 99;
 
-  constructor(electionConfigEngine: ElectionConfigEngine) {
+  constructor(
+    electionConfigEngine: ElectionConfigEngine,
+    customGroups: DistrictGroup[],
+  ) {
     this.mandateCalculator = new MandateCalculator(electionConfigEngine);
     this.electionConfigEngine = electionConfigEngine;
-    this.districtGroupEngine = new DistrictGroupEngine();
+    this.districtGroupEngine = new DistrictGroupEngine(customGroups);
     this.stateHandler = container.resolve(StateHandler);
   }
 

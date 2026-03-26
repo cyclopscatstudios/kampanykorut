@@ -1,4 +1,4 @@
-import type { District, DistrictResult } from "../map.utils";
+import type { DistrictPoligon, DistrictResult } from "../map.utils";
 import type { CurrentView } from "./MainGameScreen";
 import { MapWrapper } from "./MapWrapper";
 import { BottomBar } from "./BottomBar";
@@ -7,9 +7,9 @@ import { SwingFactor } from "../../../types/utils";
 import type { CandidateListData } from "../../../logic/domain/ResultTransformer/VoteShareTransformer.types";
 
 interface MapCreatorProps {
-  districts: District[];
+  districts: DistrictPoligon[];
   candidateListData: CandidateListData[];
-  capitalCity: District[];
+  capitalCity: DistrictPoligon[];
   setCurrentView: (currentView: CurrentView) => void;
   selectedDistrict?: DistrictResult | null;
   setSelectedDistrict: (district: DistrictResult | null) => void;

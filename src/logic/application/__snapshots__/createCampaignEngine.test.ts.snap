@@ -7,7 +7,7 @@ CampaignEngine {
   "effectApplier": EffectApplier {
     "DEFAULT_MOTIVATION_DELTA": 99,
     "districtGroupEngine": DistrictGroupEngine {
-      "defaultGroups": [
+      "districtGroups": [
         {
           "districts": [
             {

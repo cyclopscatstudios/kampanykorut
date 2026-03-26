@@ -3,7 +3,6 @@ import { ButtonDev } from "./Button.dev";
 import { QuestionCardDev } from "./QuestionCard.dev";
 import { BottomBarDev } from "./BottomBarDev";
 import { FinalResultDev } from "./FinalResult.dev";
-import { AdvisorModal } from "../components/ui/gameplay/AdvisorModal";
 import { AdvisorModalDev } from "./AdvisorModal.dev";
 
 export function UiKit() {

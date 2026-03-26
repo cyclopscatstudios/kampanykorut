@@ -10,7 +10,10 @@ describe("MandateCalculator", () => {
     parties: [],
   };
 
-  const electionConfigEngine = new ElectionConfigEngine(new StorageEngine(), config);
+  const electionConfigEngine = new ElectionConfigEngine(
+    new StorageEngine(),
+    config,
+  );
   const calculator = new MandateCalculator(electionConfigEngine);
 
   describe("calculateConstituencySeats", () => {

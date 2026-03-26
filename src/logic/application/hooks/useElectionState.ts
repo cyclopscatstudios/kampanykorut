@@ -1,94 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import type {
-  CandidateListData,
-  PartyListData,
-} from "../../domain/ResultTransformer/VoteShareTransformer.types";
-import type {
-  Decision,
-  GameState,
-  RawQuestion,
-} from "../../domain/CampaignEngine";
-import type { ElectionConfig } from "../../domain/MandateCalculator.types";
-import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
+import type { Decision, GameState } from "../../domain/CampaignEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
-import type {
-  District,
-  DistrictResult,
-} from "../../../components/ui/map.utils";
-import type {
-  ConditionalRawEffect,
-  RawEffect,
-} from "../../domain/EffectApplier.types";
+import type { DistrictResult } from "../../../components/ui/map.utils";
 import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
-
-export type Answer = {
-  id: string;
-  effects: RawEffect[];
-  conditionalEffects?: ConditionalRawEffect[];
-};
-
-export interface RawAnsweEffectProps {
-  id: string;
-  answers: Answer[];
-}
-
-export interface EndResultProps {
-  playerSideDefeat: Asset;
-  playerSideVictory: Asset;
-}
-
-export interface Asset {
-  imageUri: string;
-  title: string;
-  subtitle: string;
-  description: string;
-}
-
-export interface AdvisorFeedback {
-  questionId: string;
-  answers: AnswerFeedback[];
-  conditionalAnswers?: ConditionalAnswer[];
-}
-
-export interface ConditionalAnswer {
-  if: {
-    questionId: string;
-    answerId: string;
-  }[];
-  answer: AnswerFeedback;
-}
-
-export interface AnswerFeedback {
-  answerId: string;
-  text: string;
-}
-
-export interface PendingTurn {
-  newGameState: GameState;
-  decision: Decision;
-  rawAnswer: string;
-}
-
-export interface AdvisorFeedbackAssets {
-  primaryAdvisorImageUri: string;
-  secondaryAdvisorImageUri: string;
-}
-
-export interface GameModeConfig {
-  electionConfig: ElectionConfig;
-  voterEnvironmentConfig: VoterEnvironmentConfig;
-  candidateListData: CandidateListData[];
-  partyListData: PartyListData[];
-  districts: District[];
-  capitalCity: District[];
-  questions: RawQuestion[];
-  answerEffect: RawAnsweEffectProps[];
-  endResults: EndResultProps;
-  advisorFeedback: AdvisorFeedback[];
-  advisorFeedbackAssets: AdvisorFeedbackAssets;
-}
+import type { Answer, PendingTurn } from "../types";
 
 export function useElectionState(gameId: string) {
   const config = gameModeRegistry[gameId];

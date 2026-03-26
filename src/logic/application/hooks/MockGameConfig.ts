@@ -1,10 +1,10 @@
-import type { District } from "../../../components/ui/map.utils";
+import type { DistrictPoligon } from "../../../components/ui/map.utils";
 import {
   candidateListData,
   partyListData,
 } from "../../domain/mocks/mockListData";
 import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
-import type { Asset, EndResultProps, GameModeConfig } from "./useElectionState";
+import type { Asset, EndResultProps, GameModeConfig } from "../types";
 
 const voterEnvironmentConfig: VoterEnvironmentConfig = {
   maxTurnout: 85,
@@ -16,7 +16,7 @@ const electionConfig = {
   thresholdPercent: 5,
   parties: [],
 };
-const mockDistricts: District[] = [
+const mockDistricts: DistrictPoligon[] = [
   { centrum: "", evk: "", maz: "", poligon: "" },
 ];
 const mockEndResult: EndResultProps = {
@@ -34,4 +34,5 @@ export const mockGameConfig = {
   candidateListData,
   partyListData,
   endResults: mockEndResult,
-} as GameModeConfig;
+  customGroups: [],
+} as unknown as GameModeConfig;

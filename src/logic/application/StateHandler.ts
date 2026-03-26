@@ -1,7 +1,7 @@
 import { singleton } from "tsyringe";
 import type { Decision, GameState } from "../domain/CampaignEngine";
 import { Emitter } from "./Emitter";
-import type { GameModeConfig } from "./hooks/useElectionState";
+import type { GameModeConfig } from "./types";
 import { createLogger } from "../logger";
 import type { RawEffect } from "../domain/EffectApplier.types";
 
