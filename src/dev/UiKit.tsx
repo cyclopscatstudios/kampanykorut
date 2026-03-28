@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ButtonDev } from "./Button.dev";
-import { QuestionCardDev } from "./QuestionCard.dev";
 import { BottomBarDev } from "./BottomBarDev";
 import { FinalResultDev } from "./FinalResult.dev";
 import { AdvisorModalDev } from "./AdvisorModal.dev";
@@ -24,7 +23,6 @@ export function UiKit() {
       </div>
       <div className="w-[1000px]">
         {currentUiKit === "button" && <ButtonDev />}
-        {currentUiKit === "question-card" && <QuestionCardDev />}
         {currentUiKit === "bottom-bar" && <BottomBarDev />}
         {currentUiKit === "final-result" && <FinalResultDev />}
         {currentUiKit === "advisor-modal" && <AdvisorModalDev />}

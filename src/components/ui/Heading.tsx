@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import type { Colors } from "../../types/color";
 
-type HeadingLevel = 1 | 2 | 3;
+type HeadingLevel = 1 | 2 | 3 | 4;
 
 interface HeadingProps {
   children: React.ReactNode;
@@ -14,6 +14,7 @@ const sizeClasses: Record<HeadingLevel, string> = {
   1: "text-4xl lg:text-5xl",
   2: "text-3xl lg:text-4xl",
   3: "text-2xl lg:text-3xl",
+  4: "text-2xl lg:text-2xl",
 };
 
 const colorClasses: Partial<Record<Colors, string>> = {

@@ -8,6 +8,7 @@ import { ImageWrapper } from "./ImageWrapper";
 import slogan from "../../../assets/images/2022/ellenzeki_osszefogas_2022_kampany_szoveg.png";
 import { Icon } from "../Icon";
 import { Tooltip } from "../Tooltip";
+import { Heading } from "../Heading";
 
 interface Answer {
   id: string;
@@ -40,26 +41,29 @@ export function QuestionCard({
 }: Question) {
   return (
     <div
-      className="h-full border flex flex-col border-blue-500 p-4 bg-blue-50"
+      className="h-[784px] flex flex-col p-4 bg-slate-900"
       data-testid={id}
     >
       <div className="w-full flex flex-col justify-center items-center mb-4">
-        <div className="flex justify-center items-center bg-blue-900 mb-4 p-2 rounded-md">
-          <Text weight="bold" color="lightBlue" className="text-center">
-            {question}
-          </Text>
+        <div className="bg-slate-700 mb-4 p-2 rounded">
           {affects && (
             <Tooltip
               content="Your choice may influence how future questions unfold."
-              position="right"
+              position="bottom"
             >
-              <Icon
-                name="exclamation-circle-fill"
-                color="purple"
-                className="mx-2"
-              />
+              <div className="flex items-center p-1 bg-slate-600 rounded-full mb-2">
+                <Icon
+                  name="exclamation-circle-fill"
+                  color="purple"
+                  className="mx-2"
+                />
+                <Text className="text-xs pr-1" color="lightBlue">Strategic decision</Text>
+              </div>
             </Tooltip>
           )}
+          <Heading level={4} color="lightBlue">
+            {question}
+          </Heading>
         </div>
         <RadioGroup
           name="possibleAnswer"
@@ -69,11 +73,10 @@ export function QuestionCard({
             value: q.id,
             label: q.label,
           }))}
-          className="hover:text-blue-950 hover:font-bold"
         />
       </div>
-      <div className="mt-auto mb-5">
-        <div className="flex justify-around">
+      <div className="mt-2">
+        <div className="flex justify-around mb-4">
           <Button
             onClick={() => {
               handleOnClick(answer);
@@ -85,17 +88,26 @@ export function QuestionCard({
             <Button.Text>Map view</Button.Text>
           </Button>
         </div>
-        <div className="h-[280px] flex items-end justify-center bg-gray-100 mb-2">
-          <ImageWrapper src={mzpPortrait} type="portrait" />
-          <div className="flex flex-col justify-end items-center h-full m-10">
-            <div className="bg-blue-900 w-[300px] m-3 p-2">
+        <div className="flex items-end justify-center gap-4">
+          <div className="h-[220px] border border-slate-600 rounded overflow-hidden">
+            <img src={mzpPortrait} className="w-full h-full object-cover" />
+          </div>
+          <div className="flex flex-col justify-end items-center h-full">
+            <div className="bg-slate-700 w-[350px] border border-slate-600 p-3 mb-5">
               <Text color="lightBlue" weight="bold" className="text-center">
                 {cityName}
               </Text>
             </div>
-            <ImageWrapper src={slogan} type="slogan" />
+            <div className="h-[150px] w-[350px] border border-slate-600 rounded overflow-hidden">
+              <img src={slogan} className="w-full h-full object-cover" />
+            </div>
           </div>
-          <ImageWrapper src={ellenzekiOsszefogas} type="portrait" />
+          <div className="h-[220px] border border-slate-600 rounded overflow-hidden">
+            <img
+              src={ellenzekiOsszefogas}
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </div>
     </div>

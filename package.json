@@ -14,13 +14,14 @@
     "test": "vitest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "ladle": "npx ladle serve",
     "prepare": "husky",
     "test-ct": "playwright test -c playwright-ct.config.ts",
     "playwright": "playwright test --ui",
     "playwright:ct": "playwright test --config=playwright-ct.config.ts --ui"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.17",
+    "@ladle/react": "^5.1.1",
     "@testing-library/react": "^16.3.2",
     "bootstrap-icons": "^1.13.1",
     "classnames": "^2.5.1",
@@ -44,6 +45,7 @@
     "@storybook/react-vite": "^10.1.11",
     "@tailwindcss/cli": "^4.1.18",
     "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/vite": "^4.2.2",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.10.4",
     "@types/react": "^19.2.5",
