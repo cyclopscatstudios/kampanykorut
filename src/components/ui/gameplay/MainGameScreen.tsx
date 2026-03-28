@@ -74,9 +74,9 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
         onClose={handleAdvisorClose}
         asset={{
           primaryAdvisorImageUri:
-            config.advisorFeedbackAssets.primaryAdvisorImageUri,
+            config.advisorFeedbackAssets?.primaryAdvisorImageUri ?? "",
           secondaryAdvisorImageUri:
-            config.advisorFeedbackAssets.secondaryAdvisorImageUri,
+            config.advisorFeedbackAssets?.secondaryAdvisorImageUri ?? "",
         }}
       />
       {currentView === "MapView" ? (
@@ -100,6 +100,7 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
           setAnswer={setAnswer}
           setCurrentView={setCurrentView}
           handleOnClick={handleOnClick}
+          cityName={selectedDistrict?.telepules}
         />
       )}
     </ScreenWrapper>

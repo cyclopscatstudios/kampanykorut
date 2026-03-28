@@ -18,21 +18,23 @@ export function FinalResultScreen({ results }: { results: FinalResults }) {
   const t = useTranslate();
 
   return (
-    <div className=" bg-[#0f172a] p-5 rounded-xl border border-slate-200/65">
-      <div className="h-[700px] mb-3">
-        {activeScreen === "summaryPage" && <SummaryPage results={results} />}
-      </div>
-      <div className="flex gap-5 w-full justify-center">
-        {screens.map((screen) => {
-          return (
-            <Button
-              disabled={activeScreen === screen.id}
-              onClick={() => setActiveScreen(screen.id)}
-            >
-              <Button.Text>{t(screen.label)}</Button.Text>
-            </Button>
-          );
-        })}
+    <div className="m-2">
+      <div className="bg-[#0f172a] p-5 rounded-xl border border-slate-200/65">
+        <div className="h-[620px] mb-3">
+          {activeScreen === "summaryPage" && <SummaryPage results={results} />}
+        </div>
+        <div className="flex gap-5 w-full justify-center">
+          {screens.map((screen) => {
+            return (
+              <Button
+                disabled={activeScreen === screen.id}
+                onClick={() => setActiveScreen(screen.id)}
+              >
+                <Button.Text>{t(screen.label)}</Button.Text>
+              </Button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

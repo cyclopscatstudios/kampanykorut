@@ -79,7 +79,7 @@ export interface GameModeConfig {
   questions: RawQuestion[];
   answerEffect: RawAnsweEffectProps[];
   endResults: EndResultProps;
-  advisorFeedback: AdvisorFeedback[];
-  advisorFeedbackAssets: AdvisorFeedbackAssets;
-  customGroups: DistrictGroup[];
+  advisorFeedback?: AdvisorFeedback[];
+  advisorFeedbackAssets?: AdvisorFeedbackAssets;
+  customGroups?: DistrictGroup[];
 }

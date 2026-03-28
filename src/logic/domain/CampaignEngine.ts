@@ -39,10 +39,10 @@ export interface RawQuestion {
 export interface GameState {
   turn: number;
   currentQuestion?: RawQuestion;
-  answers?: Answer[];
+  answerEffects?: Answer[];
   candidateListData: CandidateListData[];
   partyListData: PartyListData[];
-  mandates?: CalculateResults;
+  results?: CalculateResults;
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;
 }
@@ -81,12 +81,12 @@ export class CampaignEngine {
     private readonly initialPartyData: PartyListData[],
     private readonly questions: RawQuestion[],
     private readonly answers: RawAnsweEffectProps[],
-    private readonly advisorFeedback: AdvisorFeedback[],
     private resultModifier: ResultModifier,
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
     private electionConfigEngine: ElectionConfigEngine,
     private stateHandler: StateHandler,
+    private readonly advisorFeedback?: AdvisorFeedback[],
   ) {
     this.electionConfigEngine.getElectionConfig.bind(this);
   }
@@ -113,10 +113,10 @@ export class CampaignEngine {
     return {
       turn: 0,
       currentQuestion: this.questions[0],
-      answers: this.getAnswers(this.answers, this.questions[0]),
+      answerEffects: this.getAnswerEffects(this.answers, this.questions[0]),
       candidateListData,
       partyListData,
-      mandates: this.mandateCalculator.calculate(
+      results: this.mandateCalculator.calculate(
         candidateListData,
         partyListData,
       ),
@@ -148,14 +148,17 @@ export class CampaignEngine {
       ...state,
       turn: nextTurn,
       currentQuestion: this.questions[nextTurn],
-      answers: this.getAnswers(this.answers, this.questions[state.turn]),
+      answerEffects: this.getAnswerEffects(
+        this.answers,
+        this.questions[nextTurn],
+      ),
       candidateListData: modified?.candidateListData ?? state.candidateListData,
       partyListData: modified?.partyListData ?? state.partyListData,
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
         state.currentQuestion,
       ),
-      mandates: calculated,
+      results: calculated,
       isEnded: nextTurn >= this.questions.length,
     };
 
@@ -163,12 +166,12 @@ export class CampaignEngine {
   }
 
   getFinalResults(state: GameState): FinalResults {
-    const winnerParty = state.mandates?.mandates.reduce((max, party) => {
+    const winnerParty = state.results?.mandates.reduce((max, party) => {
       return party.totalSeats > max.totalSeats ? party : max;
-    }, state.mandates.mandates[0]);
+    }, state.results.mandates[0]);
     const hasMajority = winnerParty ? winnerParty.totalSeats > 100 : false;
     const majorityType = this.getMajorityType(winnerParty);
-    const mandates = { ...state.mandates };
+    const mandates = { ...state.results };
     // TODO fix this assertation
     return {
       mandates,
@@ -186,7 +189,7 @@ export class CampaignEngine {
     if (!shouldShowAdvisorFeedback) {
       return undefined;
     }
-    const advisorFeedback = this.advisorFeedback.find(
+    const advisorFeedback = this.advisorFeedback?.find(
       (f) => f.questionId === question?.id,
     );
 
@@ -276,10 +279,14 @@ export class CampaignEngine {
     return null;
   }
 
-  private getAnswers(
+  private getAnswerEffects(
     answers: RawAnsweEffectProps[],
-    currentQuestion: RawQuestion,
+    currentQuestion?: RawQuestion,
   ) {
-    return answers.find((e) => e.id === currentQuestion.id)?.answers;
+    if (!currentQuestion) {
+      log.info("no currentQuestion was found, game ends in next turn");
+      return;
+    }
+    return answers.find((e) => e.id === currentQuestion?.id)?.answers;
   }
 }

@@ -13,7 +13,7 @@ export function SummaryPage({ results }: { results: FinalResults }) {
   const currentConfig = stateHandler.get("currentConfig");
 
   const didPlayerWin =
-    results.winnerParty === currentConfig?.electionConfig.playerSide;
+    results.winnerParty?.party === currentConfig?.electionConfig.playerSide;
   const assets = didPlayerWin
     ? currentConfig?.endResults.playerSideVictory
     : currentConfig?.endResults.playerSideDefeat;
@@ -27,36 +27,44 @@ export function SummaryPage({ results }: { results: FinalResults }) {
   return (
     <>
       <div className="border-b border-slate-200/65 p-3">
-        <Heading color="lightBlue" className="text-center mb-2">
+        <Heading color="lightBlue" className="text-center mb-1">
           {assets?.title}
         </Heading>
-        <Text color="gray" className="text-center">
+        <Text color="gray" className="text-center text-sm">
           {assets?.subtitle}
         </Text>
       </div>
-      <div className="flex pb-5">
-        <div className="pr-5">
-          <div className="py-5">
+      <div className="pb-5">
+        <div className="flex gap-6 px-6 pt-5">
+          <div className="basis-1/2">
             <ImageWrapper
               src={assets?.imageUri ?? ""}
               type="final"
-              className={`rounded-xl ${didPlayerWin ? "" : "grayscale"}`}
+              className={`object-cover rounded-xl ${
+                didPlayerWin ? "" : "grayscale"
+              }`}
             />
           </div>
-          <div className="dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200/65 dark:border-slate-700">
-            <ParliamentHemicycle
-              width={450}
-              height={150}
-              rows={9}
-              order="as-given"
-              showLegend
-              seatGap={2}
-              parties={parties}
-            />
+          <div className="basis-1/2">
+            <Text color="gray" className="leading-relaxed">
+              {assets?.description}
+            </Text>
           </div>
         </div>
-        <div className="p-5">
-          <Text color="gray">{assets?.description}</Text>
+        <div className="w-full flex justify-center mt-4">
+          <div className="w-[500px]">
+            <div className="dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200/65 dark:border-slate-700">
+              <ParliamentHemicycle
+                width={450}
+                height={150}
+                rows={9}
+                order="as-given"
+                showLegend
+                seatGap={2}
+                parties={parties}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>

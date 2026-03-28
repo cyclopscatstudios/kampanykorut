@@ -58,7 +58,6 @@ describe("CampaignEngine", () => {
       partyListData,
       [],
       [],
-      [],
       resultModifier,
       new EffectApplier(electionConfigEngine, []),
       new MandateCalculator(electionConfigEngine),

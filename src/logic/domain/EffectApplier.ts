@@ -30,7 +30,7 @@ export class EffectApplier {
 
   constructor(
     electionConfigEngine: ElectionConfigEngine,
-    customGroups: DistrictGroup[],
+    customGroups?: DistrictGroup[],
   ) {
     this.mandateCalculator = new MandateCalculator(electionConfigEngine);
     this.electionConfigEngine = electionConfigEngine;

@@ -24,6 +24,7 @@ export interface Question {
   setAnswer: (a: string) => void;
   setCurrentView: (currentView: CurrentView) => void;
   handleOnClick: (answer?: string) => void;
+  cityName?: string;
 }
 
 export function QuestionCard({
@@ -35,6 +36,7 @@ export function QuestionCard({
   setAnswer,
   setCurrentView,
   handleOnClick,
+  cityName,
 }: Question) {
   return (
     <div
@@ -88,7 +90,7 @@ export function QuestionCard({
           <div className="flex flex-col justify-end items-center h-full m-10">
             <div className="bg-blue-900 w-[300px] m-3 p-2">
               <Text color="lightBlue" weight="bold" className="text-center">
-                Nyíregyháza
+                {cityName}
               </Text>
             </div>
             <ImageWrapper src={slogan} type="slogan" />

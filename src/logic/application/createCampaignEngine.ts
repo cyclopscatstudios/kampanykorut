@@ -10,6 +10,7 @@ import { ElectionConfigEngine } from "../domain/ElectionConfigEngine";
 import { StorageEngine } from "./StorageEngine";
 import { StateHandler } from "./StateHandler";
 import type { GameModeConfig } from "./types";
+import { container } from "tsyringe";
 
 export function createCampaignEngine(config: GameModeConfig) {
   const storageEngine = new StorageEngine();
@@ -32,16 +33,18 @@ export function createCampaignEngine(config: GameModeConfig) {
     new DistrictVoteTransformer(voterEnvironment),
   );
 
+  const stateHandler = container.resolve(StateHandler);
+
   return new CampaignEngine(
     config.candidateListData,
     config.partyListData,
     config.questions,
     config.answerEffect,
-    config.advisorFeedback,
     resultModifier,
     effectApplier,
     mandateCalculator,
     electionConfigEngine,
-    new StateHandler(),
+    stateHandler,
+    config.advisorFeedback,
   );
 }

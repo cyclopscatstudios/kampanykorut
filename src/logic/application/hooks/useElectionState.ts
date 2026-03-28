@@ -29,10 +29,11 @@ export function useElectionState(gameId: string) {
     rawAnswer?: string,
     selectedDistrict?: DistrictResult | null,
   ): PendingTurn | undefined => {
-    const answer = getAnswer(gameState?.answers, rawAnswer);
+    const answer = getAnswer(gameState?.answerEffects, rawAnswer);
     if (!rawAnswer || !gameState.currentQuestion || !answer?.effects) {
       return;
     }
+
     const decision: Decision = {
       answerId: rawAnswer,
       questionId: gameState.currentQuestion?.id,
