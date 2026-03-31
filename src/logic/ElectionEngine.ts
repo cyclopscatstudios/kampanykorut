@@ -1,5 +1,5 @@
 import { StorageEngine } from "./application/StorageEngine";
-import { ElectionConfigEngine } from "./domain/ElectionConfigEngine";
+import { GameConfigEngine } from "./application/ElectionConfigEngine";
 import { MandateCalculator } from "./domain/MandateCalculator";
 import type {
   CalculateResults,
@@ -63,13 +63,13 @@ export class ElectionEngine {
   private pipelineTransform: VoteShareTransformer;
   private dsitrictTargetTransform: DistrictVoteTransformer;
   private voterEnvironment: VoterEnvironment;
-  private electionConfigEngine: ElectionConfigEngine;
+  private electionConfigEngine: GameConfigEngine;
 
   constructor(
     private electionConfig: ElectionConfig,
     private voterEnvironmentConfig: VoterEnvironmentConfig,
   ) {
-    this.electionConfigEngine = new ElectionConfigEngine(
+    this.electionConfigEngine = new GameConfigEngine(
       new StorageEngine(),
       this.electionConfig,
     );

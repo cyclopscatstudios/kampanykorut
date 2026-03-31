@@ -458,24 +458,32 @@ CampaignEngine {
         },
       ],
     },
-    "electionConfigEngine": ElectionConfigEngine {
+    "electionConfigEngine": GameConfigEngine {
       "electionConfig": {
         "listSeats": 10,
         "parties": [],
         "thresholdPercent": 5,
       },
+      "gameSettings": {
+        "showAdvisorFeedback": true,
+      },
+      "listeners": [],
       "storage": StorageEngine {
         "getItem": [Function],
         "getLocalStorageItem": [Function],
       },
     },
     "mandateCalculator": MandateCalculator {
-      "configEngine": ElectionConfigEngine {
+      "configEngine": GameConfigEngine {
         "electionConfig": {
           "listSeats": 10,
           "parties": [],
           "thresholdPercent": 5,
         },
+        "gameSettings": {
+          "showAdvisorFeedback": true,
+        },
+        "listeners": [],
         "storage": StorageEngine {
           "getItem": [Function],
           "getLocalStorageItem": [Function],
@@ -496,12 +504,16 @@ CampaignEngine {
       },
     },
   },
-  "electionConfigEngine": ElectionConfigEngine {
+  "electionConfigEngine": GameConfigEngine {
     "electionConfig": {
       "listSeats": 10,
       "parties": [],
       "thresholdPercent": 5,
     },
+    "gameSettings": {
+      "showAdvisorFeedback": true,
+    },
+    "listeners": [],
     "storage": StorageEngine {
       "getItem": [Function],
       "getLocalStorageItem": [Function],
@@ -564,12 +576,16 @@ CampaignEngine {
     },
   ],
   "mandateCalculator": MandateCalculator {
-    "configEngine": ElectionConfigEngine {
+    "configEngine": GameConfigEngine {
       "electionConfig": {
         "listSeats": 10,
         "parties": [],
         "thresholdPercent": 5,
       },
+      "gameSettings": {
+        "showAdvisorFeedback": true,
+      },
+      "listeners": [],
       "storage": StorageEngine {
         "getItem": [Function],
         "getLocalStorageItem": [Function],

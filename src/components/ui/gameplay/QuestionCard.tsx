@@ -2,9 +2,8 @@ import { Text } from "../Text";
 import { RadioGroup } from "../RadioGroup";
 import { Button } from "../Button";
 import type { CurrentView } from "./MainGameScreen";
-import mzpPortrait from "../../../assets/images/2022/mzp-portrait.png";
-import ellenzekiOsszefogas from "../../../assets/images/2022/ellenzeki-osszefogas.png";
-import { ImageWrapper } from "./ImageWrapper";
+import mzpPortrait from "/images/2022/mzp-portrait.png";
+import ellenzekiOsszefogas from "/images/2022/ellenzeki-osszefogas.png";
 import slogan from "../../../assets/images/2022/ellenzeki_osszefogas_2022_kampany_szoveg.png";
 import { Icon } from "../Icon";
 import { Tooltip } from "../Tooltip";
@@ -40,10 +39,7 @@ export function QuestionCard({
   cityName,
 }: Question) {
   return (
-    <div
-      className="h-[784px] flex flex-col p-4 bg-slate-900"
-      data-testid={id}
-    >
+    <div className="h-[784px] flex flex-col p-4 bg-slate-900" data-testid={id}>
       <div className="w-full flex flex-col justify-center items-center mb-4">
         <div className="bg-slate-700 mb-4 p-2 rounded">
           {affects && (
@@ -57,7 +53,9 @@ export function QuestionCard({
                   color="purple"
                   className="mx-2"
                 />
-                <Text className="text-xs pr-1" color="lightBlue">Strategic decision</Text>
+                <Text className="text-xs pr-1" color="lightBlue">
+                  Strategic decision
+                </Text>
               </div>
             </Tooltip>
           )}

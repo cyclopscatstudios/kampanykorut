@@ -17,7 +17,7 @@ export function GameLoaderMenu({
     <MenuLayout>
       <GameLoaderMenuList
         listItems={gameModes.map((gameMode) => ({
-          id: MenuItemId.GameLoader,
+          id: MenuItemId.SideSelector,
           gameId: gameMode.gameId,
           text: gameMode.name,
           icon: "campaign",

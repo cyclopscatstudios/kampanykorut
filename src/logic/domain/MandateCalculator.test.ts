@@ -1,5 +1,5 @@
 import { StorageEngine } from "../application/StorageEngine";
-import { ElectionConfigEngine } from "./ElectionConfigEngine";
+import { GameConfigEngine } from "../application/ElectionConfigEngine";
 import { MandateCalculator } from "./MandateCalculator";
 import type { CombinedOevk } from "./MandateCalculator.types";
 
@@ -8,9 +8,11 @@ describe("MandateCalculator", () => {
     listSeats: 10,
     thresholdPercent: 5,
     parties: [],
+    electionAssets: {},
+    playableSides: [],
   };
 
-  const electionConfigEngine = new ElectionConfigEngine(
+  const electionConfigEngine = new GameConfigEngine(
     new StorageEngine(),
     config,
   );

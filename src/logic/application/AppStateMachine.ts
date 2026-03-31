@@ -15,11 +15,13 @@ export type MenuItemType =
   | "classicMode"
   | "campaignMode"
   | "gameLoader"
+  | "sideSelector"
   | "back";
 export type ScreenType = "menuScreen" | "gameScreen";
 export interface MenuState {
   screenType: ScreenType;
   menuType?: MenuType;
+  gameId?: string;
 }
 
 @singleton()
@@ -43,6 +45,7 @@ export class AppStateMachine extends Emitter<MenuState> {
   }
 
   transition = (to: MenuItem) => {
+    console.log({ to });
     if (to.id === "back") {
       this.goBack();
     }
@@ -51,6 +54,13 @@ export class AppStateMachine extends Emitter<MenuState> {
 
     if (to.id !== "back" && newState.menuType) {
       this.menuHistory.push(newState.menuType);
+    }
+
+    if (to.id === "sideSelector") {
+      newState = {
+        ...newState,
+        ...to,
+      };
     }
 
     if (to.id === "gameLoader") {
@@ -84,6 +94,8 @@ export class AppStateMachine extends Emitter<MenuState> {
       };
     }
     const state = AppStateRegistry[type];
+    console.log({ type });
+    console.log({ state });
     return {
       ...state,
       menuType: state.onTransition,

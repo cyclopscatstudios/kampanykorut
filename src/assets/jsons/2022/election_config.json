@@ -15,5 +15,38 @@
       "color": "#20b2aa"
     },
     { "id": "mi_hazank", "name": "Mi Hazánk", "color": "#688d1b" }
-  ]
+  ],
+  "playableSides": [
+    {
+      "id": "ellenzeki_osszefogas",
+      "name": "Ellenzéki összefogás",
+      "description": "A korábban egymással versengő ellenzéki pártok 2022-re közös listán indultak, hogy egyesített erővel váltsák le a kormányt – ugyanakkor az ideológiai különbségek és belső feszültségek komoly kihívást jelentettek számukra.",
+      "mainCandidates": [
+        {
+          "id": "marki_zay_peter",
+          "label": "Marki-Zay Péter",
+          "description": "Hódmezővásárhely polgármestere, pártfüggetlen jelöltként nyerte meg az előválasztást, kívülről érkező politikusként a korrupcióellenességet és a politikai megújulást képviselte."
+        },
+        { "id": "dobrev_klara", "label": "Dobrev Klára" },
+        { "id": "karacsony_gergely", "label": "Karacsony Gergely" }
+      ],
+      "playableCandidates": ["marki_zay_peter"]
+    },
+    {
+      "id": "fidesz_kdnp",
+      "name": "Fidesz–KDNP",
+      "mainCandidates": [{ "id": "orban_viktor", "label": "Orban Viktor" }]
+    }
+  ],
+  "electionAssets": {
+    "ellenzeki_osszefogas": {
+      "portrait": {
+        "marki_zay_peter": "/images/2022/mzp-portrait.png"
+      },
+      "slogan": {
+        "ellenzeki_osszefogas_2022_kampany_szoveg": "/images/2022/ellenzeki_osszefogas_2022_kampany_szoveg.png"
+      },
+      "party_logo": "/images/2022/ellenzeki-osszefogas.png"
+    }
+  }
 }

@@ -12,7 +12,7 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "./MandateCalculator.types";
 import { createLogger } from "../logger";
-import type { ElectionConfigEngine } from "./ElectionConfigEngine";
+import type { GameConfigEngine } from "../application/ElectionConfigEngine";
 import type { DistrictResult } from "../../components/ui/map.utils";
 import { StateHandler } from "../application/StateHandler";
 import type {
@@ -84,7 +84,7 @@ export class CampaignEngine {
     private resultModifier: ResultModifier,
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
-    private electionConfigEngine: ElectionConfigEngine,
+    private electionConfigEngine: GameConfigEngine,
     private stateHandler: StateHandler,
     private readonly advisorFeedback?: AdvisorFeedback[],
   ) {

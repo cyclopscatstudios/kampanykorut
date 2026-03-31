@@ -39,6 +39,11 @@ export const AppStateRegistry: Record<
     menuType: "mainMenu",
     onTransition: "mainMenu",
   },
+  sideSelector: {
+    screenType: "gameScreen",
+    menuType: "gameLoaderMenu",
+    onTransition: "sideSelectorMenu",
+  },
 };
 
 export const gameMenuRegistery = ["mainMenu", "gameMenu", "gameLoaderMenu"];

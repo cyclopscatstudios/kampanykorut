@@ -6,7 +6,7 @@ import { DistrictVoteTransformer } from "../domain/ResultTransformer/DistrictVot
 import { UnionSwingTransformer } from "../domain/ResultTransformer/UnionSwingTransformer";
 import { VoteShareTransformer } from "../domain/ResultTransformer/VoteShareTransformer";
 import { VoterEnvironment } from "../VoterEnvironment";
-import { ElectionConfigEngine } from "../domain/ElectionConfigEngine";
+import { GameConfigEngine } from "./ElectionConfigEngine";
 import { StorageEngine } from "./StorageEngine";
 import { StateHandler } from "./StateHandler";
 import type { GameModeConfig } from "./types";
@@ -14,7 +14,7 @@ import { container } from "tsyringe";
 
 export function createCampaignEngine(config: GameModeConfig) {
   const storageEngine = new StorageEngine();
-  const electionConfigEngine = new ElectionConfigEngine(
+  const electionConfigEngine = new GameConfigEngine(
     storageEngine,
     config.electionConfig,
   );

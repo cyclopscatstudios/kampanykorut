@@ -11,9 +11,10 @@ import {
   type VoterEnvironmentConfig,
 } from "../VoterEnvironment";
 import { candidateListData, partyListData } from "./mocks/mockListData";
-import { ElectionConfigEngine } from "./ElectionConfigEngine";
+import { GameConfigEngine } from "../application/ElectionConfigEngine";
 import { StorageEngine } from "../application/StorageEngine";
 import { StateHandler } from "../application/StateHandler";
+import type { ElectionConfig } from "./MandateCalculator.types";
 
 let campaignEngine: CampaignEngine;
 
@@ -37,12 +38,14 @@ describe("CampaignEngine", () => {
       eligibleVoters: 8215304,
       listData: candidateListData,
     };
-    const electionConfig = {
+    const electionConfig: ElectionConfig = {
       listSeats: 10,
       thresholdPercent: 5,
       parties: [],
+      electionAssets: {},
+      playableSides: [],
     };
-    const electionConfigEngine = new ElectionConfigEngine(
+    const electionConfigEngine = new GameConfigEngine(
       new StorageEngine(),
       electionConfig,
     );

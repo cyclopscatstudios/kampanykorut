@@ -15,7 +15,7 @@ import type {
 import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
 import { DistrictGroupEngine, type DistrictGroup } from "./DistrictGroupEngine";
-import type { ElectionConfigEngine } from "./ElectionConfigEngine";
+import type { GameConfigEngine } from "../application/ElectionConfigEngine";
 import { container } from "tsyringe";
 import type { DistrictResult } from "../../components/ui/map.utils";
 
@@ -25,11 +25,11 @@ export class EffectApplier {
   private mandateCalculator: MandateCalculator;
   private districtGroupEngine: DistrictGroupEngine;
   private stateHandler: StateHandler;
-  private electionConfigEngine: ElectionConfigEngine;
+  private electionConfigEngine: GameConfigEngine;
   private DEFAULT_MOTIVATION_DELTA = 99;
 
   constructor(
-    electionConfigEngine: ElectionConfigEngine,
+    electionConfigEngine: GameConfigEngine,
     customGroups?: DistrictGroup[],
   ) {
     this.mandateCalculator = new MandateCalculator(electionConfigEngine);

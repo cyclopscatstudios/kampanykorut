@@ -8,7 +8,7 @@ import {
 } from "./EffectApplier.types";
 import { candidateListData } from "./mocks/mockListData";
 import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
-import { ElectionConfigEngine } from "./ElectionConfigEngine";
+import { GameConfigEngine } from "../application/ElectionConfigEngine";
 import { StorageEngine } from "../application/StorageEngine";
 
 let effectApplier: EffectApplier;
@@ -17,9 +17,11 @@ const electionConfig = {
   listSeats: 10,
   thresholdPercent: 5,
   parties: [],
+  electionAssets: {},
+  playableSides: [],
 };
 
-const electionConfigEngine = new ElectionConfigEngine(
+const electionConfigEngine = new GameConfigEngine(
   new StorageEngine(),
   electionConfig,
 );

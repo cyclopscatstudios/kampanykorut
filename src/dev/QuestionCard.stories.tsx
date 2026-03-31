@@ -40,7 +40,7 @@ export const Default: Story = () => {
       setAnswer={setAnswer}
       answer={answer}
       setCurrentView={noop}
-      affects={[{ "id": "A" }, { "id": "C" }]}
+      affects={[{ id: "A" }, { id: "C" }]}
     />
   );
 };

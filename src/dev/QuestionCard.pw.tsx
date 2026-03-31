@@ -36,7 +36,9 @@ test("Continue calls handleOnClick with selected answer", async ({ mount }) => {
       possibleAnswers={possibleAnswers}
       answer="B"
       cityName="Budapest"
-      handleOnClick={(a) => { clicked = a; }}
+      handleOnClick={(a) => {
+        clicked = a;
+      }}
       setAnswer={() => {}}
       setCurrentView={() => {}}
     />,
@@ -56,7 +58,9 @@ test("Map view button calls setCurrentView", async ({ mount }) => {
       cityName="Budapest"
       handleOnClick={() => {}}
       setAnswer={() => {}}
-      setCurrentView={(v) => { view = v; }}
+      setCurrentView={(v) => {
+        view = v;
+      }}
     />,
   );
 
