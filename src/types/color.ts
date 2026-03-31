@@ -8,6 +8,7 @@ export type Colors =
   | "silver"
   | "gray"
   | "white"
+  | "purple"
   | "transparent";
 
 export enum PartyName {

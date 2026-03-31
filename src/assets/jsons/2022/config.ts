@@ -4,13 +4,16 @@ import candidateListData from "./oevk_constituency_results.json";
 import partyListData from "./oevk_list_results.json";
 import districts from "./oevk_2022.json";
 import capitalCity from "./budapest.json";
-import questions from "./2022_questions.json";
-import answerEffect from "./2022_answer_effects.json";
+import questions from "./ellenzeki_osszefogas/2022_questions.json";
+import answerEffect from "./ellenzeki_osszefogas/2022_answer_effects.json";
 import endResults from "./end_results.json";
+import feedback from "./ellenzeki_osszefogas/advisor_feedback.json";
+import feedbackAssets from "./ellenzeki_osszefogas/advisor_feedback_assets.json";
+import customGroups from "./custom_groups.json";
 import type {
   GameModeConfig,
   RawAnsweEffectProps,
-} from "../../../logic/application/hooks/useElectionState";
+} from "../../../logic/application/types";
 
 export const config2022: GameModeConfig = {
   electionConfig,
@@ -26,4 +29,7 @@ export const config2022: GameModeConfig = {
   // TODO fix this later
   answerEffect: answerEffect as RawAnsweEffectProps[],
   endResults,
+  advisorFeedbackAssets: feedbackAssets,
+  advisorFeedback: feedback,
+  customGroups,
 };

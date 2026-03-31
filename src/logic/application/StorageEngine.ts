@@ -5,7 +5,10 @@ export type StorageType = "localStorage" | "sessionStorage";
 
 @singleton()
 export class StorageEngine {
-  constructor() {}
+  constructor() {
+    this.getItem = this.getItem.bind(this);
+    this.getLocalStorageItem = this.getLocalStorageItem.bind(this);
+  }
 
   getItem(key: SessionKey, storageType: StorageType) {
     const prefixedKey = this.getPrefixedKey(key);

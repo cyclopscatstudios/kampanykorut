@@ -14,9 +14,10 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
-import { DistrictGroupEngine } from "./DistrictGroupEngine";
-import type { ElectionConfigEngine } from "./ElectionConfigEngine";
+import { DistrictGroupEngine, type DistrictGroup } from "./DistrictGroupEngine";
+import type { GameConfigEngine } from "../application/GameConfigEngine";
 import { container } from "tsyringe";
+import type { DistrictResult } from "../../components/ui/map.utils";
 
 const log = createLogger("EffectApplier");
 
@@ -24,21 +25,25 @@ export class EffectApplier {
   private mandateCalculator: MandateCalculator;
   private districtGroupEngine: DistrictGroupEngine;
   private stateHandler: StateHandler;
-  private electionConfigEngine: ElectionConfigEngine;
+  private electionConfigEngine: GameConfigEngine;
   private DEFAULT_MOTIVATION_DELTA = 99;
 
-  constructor(electionConfigEngine: ElectionConfigEngine) {
+  constructor(
+    electionConfigEngine: GameConfigEngine,
+    customGroups?: DistrictGroup[],
+  ) {
     this.mandateCalculator = new MandateCalculator(electionConfigEngine);
     this.electionConfigEngine = electionConfigEngine;
-    this.districtGroupEngine = new DistrictGroupEngine();
+    this.districtGroupEngine = new DistrictGroupEngine(customGroups);
     this.stateHandler = container.resolve(StateHandler);
   }
 
   getAppliedEffects(
     effects: RawEffect[],
     candidateListData: CandidateListData[],
+    turn: number,
     conditionalEffects?: ConditionalRawEffect[],
-    selectedDistrict?: DistrictTarget | null,
+    selectedDistrict?: DistrictResult | null,
   ): AppliedEffect[] {
     const resolvedEffects = this.resolveConditionalEffects(
       effects,
@@ -75,8 +80,7 @@ export class EffectApplier {
     const isDistrictBoosterAllowed =
       this.electionConfigEngine.getElectionConfig().districtBoost;
 
-    const canApplyeBoosterEffect =
-      this.stateHandler.get("gameState").turn % 2 === 0;
+    const canApplyeBoosterEffect = turn % 2 === 0;
 
     if (
       isDistrictBoosterAllowed &&
@@ -93,7 +97,7 @@ export class EffectApplier {
     return appliedEffects;
   }
 
-  private getBoosterEffect(district: DistrictTarget): AppliedEffect | null {
+  private getBoosterEffect(district: DistrictResult): AppliedEffect | null {
     const palyerSide = this.electionConfigEngine.getElectionConfig().playerSide;
     if (!palyerSide) {
       return null;

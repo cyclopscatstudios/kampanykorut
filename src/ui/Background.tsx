@@ -17,7 +17,7 @@ function FullscreenBackground({ children }: { children: React.ReactNode }) {
       <div className="flex items-center justify-center w-full h-full">
         <div
           className={classNames(
-            "w-[1200px] h-[800px] bg-[rgba(15,23,42,0.92)] rounded-sm shadow-xl shadow-black/60 relative overflow-hidden",
+            "w-[1200px] h-[850px] bg-[rgba(15,23,42,0.92)] rounded-sm shadow-xl shadow-black/60 relative overflow-hidden",
           )}
         >
           <div className="flex items-center justify-center w-full h-full">

@@ -9,7 +9,8 @@ export type SessionKey =
   | "gameSession"
   | "menuSession"
   | "devSession"
-  | "questionHistory";
+  | "questionHistory"
+  | "settings";
 
 @singleton()
 export class StateEngine {

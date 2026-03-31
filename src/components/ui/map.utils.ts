@@ -6,14 +6,17 @@ export type DistrictResult = {
   maxVotes?: number;
 } & CandidateListData;
 
-export type District = {
+export type DistrictPoligon = {
   maz: string;
   evk: string;
   centrum: string;
   poligon: string;
 };
 
-export function getWinnerResults(d: District, result: CandidateListData[]) {
+export function getWinnerResults(
+  d: DistrictPoligon,
+  result: CandidateListData[],
+) {
   const results = result.find(
     (er) => er.megyekod === Number(d.maz) && er.oevk === Number(d.evk),
   );

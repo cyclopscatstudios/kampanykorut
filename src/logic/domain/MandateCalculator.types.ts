@@ -4,10 +4,29 @@ export interface CombinedOevk {
   megyekod: number;
   megye: string;
   oevk: number;
-
   constituencyVotes: PartyVotes;
   listVotes: PartyVotes;
   candidates?: Record<PartyId, string[]>;
+}
+
+export interface Candidates {
+  id: string;
+  label: string;
+  description?: string;
+}
+
+export interface PlayableSide {
+  id: string;
+  name: string;
+  description?: string;
+  mainCandidates: Candidates[];
+  playableCandidates?: string[];
+}
+
+export interface ElectionAsset {
+  portrait: Record<string, string>;
+  slogan: Record<string, string>;
+  party_logo: string;
 }
 
 export interface ElectionConfig {
@@ -17,6 +36,8 @@ export interface ElectionConfig {
   playerSide?: string;
   baseResults?: Record<string, number>;
   parties: RawParty[];
+  playableSides: PlayableSide[];
+  electionAssets: Record<string, ElectionAsset>;
 }
 
 export type PartyId = string;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useWheelZoom, type ViewBox } from "../../hooks/useWheelZoom";
 import {
   getWinnerResults,
-  type District,
+  type DistrictPoligon,
   type DistrictResult,
 } from "../ui/map.utils";
 import { parsePolygon, projectPoints } from "./geometry";
@@ -17,7 +17,7 @@ import {
 import type { CandidateListData } from "../../logic/domain/ResultTransformer/VoteShareTransformer.types";
 
 interface DistrictMapProps {
-  districts: District[];
+  districts: DistrictPoligon[];
   result: CandidateListData[];
   onClick?: (r: DistrictResult) => void;
   onDoubleClick?: (r: DistrictResult) => void;

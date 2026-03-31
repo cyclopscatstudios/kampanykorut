@@ -37,7 +37,7 @@ export function RadioGroup<T extends string>({
           <label
             key={option.value}
             htmlFor={id}
-            className={`flex items-center gap-2 cursor-pointer ${
+            className={`flex items-center gap-2 cursor-pointer p-4 bg-slate-800 ${
               option.disabled ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
@@ -49,7 +49,7 @@ export function RadioGroup<T extends string>({
               disabled={option.disabled}
               onChange={() => onChange(option.value)}
             />
-            <Text color="darkBlue" className={className}>
+            <Text color="lightBlue" className={className}>
               {option.label}
             </Text>
           </label>

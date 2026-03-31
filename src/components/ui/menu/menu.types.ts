@@ -8,6 +8,7 @@ export enum MenuItemId {
   CampaignMode = "campaignMode",
   ClassicMode = "classicMode",
   GameLoader = "gameLoader",
+  SideSelector = "sideSelector",
   Back = "back",
 }
 

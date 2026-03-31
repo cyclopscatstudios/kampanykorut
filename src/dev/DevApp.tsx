@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "../components/ui/Button";
 import { Text } from "../components/ui/Text";
 import { UiKit } from "./UiKit";
-import { Logic } from "./Logic";
 
 type Page = "ui-kit" | "logic";
 
@@ -25,7 +24,6 @@ function DevApp() {
         </Button>
       </div>
       {currentPage === "ui-kit" && <UiKit />}
-      {currentPage === "logic" && <Logic />}
     </div>
   );
 }

@@ -25,7 +25,7 @@ function getButtonColors(
   disabled?: boolean,
 ) {
   if (disabled) {
-    return "bg-gray-600";
+    return "bg-gray-100 opacity-10";
   }
   if (variant === "secondary") {
     return "bg-blue-50 hover:bg-blue-100 active:bg-blue-200";
@@ -93,11 +93,12 @@ export function Button(props: ButtonProps) {
   return (
     <ButtonContext.Provider value={{ ...props }}>
       <button
-        onClick={onClick}
+        onClick={disabled ? undefined : onClick}
         className={classNames(
           "px-4 inline-flex items-center justify-center gap-2",
           {
             "cursor-pointer": !disabled,
+            "cursor-not-allowed": disabled,
             "h-10": size === "normal",
             "h-[50px] py-0.5": size === "large",
             "h-[30px] py-0.5": size === "small",

@@ -5,6 +5,7 @@ import type { MenuItem } from "./menu.types";
 import { GameLoaderMenu } from "./GameLoaderMenu";
 import { useAppStateMachine } from "../../../logic/application/hooks/useAppStateMachine";
 import type { MenuType } from "../../../logic/application/AppStateMachine";
+import { SideSelectorMenu } from "./SideSelectorMenu";
 
 enum NewGameMenuItems {
   ClassicMode = "classicMode",
@@ -22,6 +23,8 @@ export function MenuSelector({
 }) {
   const { state, transition } = useAppStateMachine();
 
+  console.log({ state });
+
   const handleOnClick = (to: MenuItem) => {
     transition(to);
     if (to.id === "gameLoader") {
@@ -36,6 +39,9 @@ export function MenuSelector({
       {state.menuType === "gameMenu" && <NewGameMenu onClick={handleOnClick} />}
       {state.menuType === "gameModeMenu" && (
         <GameLoaderMenu onClick={handleOnClick} />
+      )}
+      {state.menuType === "sideSelectorMenu" && (
+        <SideSelectorMenu onClick={handleOnClick} gameId={state.gameId} />
       )}
     </>
   );

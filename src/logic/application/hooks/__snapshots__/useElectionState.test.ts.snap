@@ -2,12 +2,13 @@
 
 exports[`useElectionState > should initialize state 1`] = `
 {
-  "answers": [
+  "answerEffects": [
     {
       "effects": [
         {
           "params": {
             "ellenzeki_osszefogas": 0.8,
+            "fidesz": -0.5,
           },
           "type": "uniform-swing",
         },
@@ -63,6 +64,12 @@ exports[`useElectionState > should initialize state 1`] = `
           "type": "uniform-swing",
         },
         {
+          "params": {
+            "ellenzeki_osszefogas": -0.8,
+          },
+          "type": "turnout-change",
+        },
+        {
           "params": [
             {
               "amount": 350,
@@ -84,13 +91,7 @@ exports[`useElectionState > should initialize state 1`] = `
       "effects": [
         {
           "params": {
-            "ellenzeki_osszefogas": 0.5,
-          },
-          "type": "uniform-swing",
-        },
-        {
-          "params": {
-            "ellenzeki_osszefogas": 0.4,
+            "ellenzeki_osszefogas": -2,
           },
           "type": "turnout-change",
         },
@@ -3916,88 +3917,6 @@ exports[`useElectionState > should initialize state 1`] = `
     "title": "Elfogadod-e a közös jelöltséget?",
   },
   "isEnded": false,
-  "mandates": {
-    "compensation": {
-      "losingVotes": {
-        "egyeb": 2373,
-        "ellenzeki_osszefogas": 1257799,
-        "fidesz": 720823,
-        "fuggetlen": 27962,
-        "megoldas_mozgalom": 64341,
-        "mi_hazank": 307064,
-        "mkkp": 126648,
-        "munkaspart": 8678,
-        "normalis_elet": 31495,
-      },
-      "total": {
-        "egyeb": 2373,
-        "ellenzeki_osszefogas": 1477874,
-        "fidesz": 1296761,
-        "fuggetlen": 27962,
-        "megoldas_mozgalom": 64341,
-        "mi_hazank": 307064,
-        "mkkp": 126648,
-        "munkaspart": 8678,
-        "normalis_elet": 31495,
-      },
-      "winnerCompensation": {
-        "ellenzeki_osszefogas": 220075,
-        "fidesz": 575938,
-      },
-    },
-    "constituencySeats": {
-      "ellenzeki_osszefogas": 35,
-      "fidesz": 71,
-    },
-    "listSeats": {
-      "ellenzeki_osszefogas": 42,
-      "fidesz": 44,
-      "mi_hazank": 7,
-    },
-    "mandates": [
-      {
-        "constituencySeats": 35,
-        "listSeats": 42,
-        "party": "ellenzeki_osszefogas",
-        "totalSeats": 77,
-      },
-      {
-        "constituencySeats": 71,
-        "listSeats": 44,
-        "party": "fidesz",
-        "totalSeats": 115,
-      },
-      {
-        "constituencySeats": 0,
-        "listSeats": 7,
-        "party": "mi_hazank",
-        "totalSeats": 7,
-      },
-    ],
-    "percentages": {
-      "_total": 0.9999999999999999,
-      "egyeb": 0.00044589137311994685,
-      "ellenzeki_osszefogas": 0.4131460727361007,
-      "fidesz": 0.48002019570365906,
-      "fuggetlen": 0.005254114865225434,
-      "megoldas_mozgalom": 0.01208980060594627,
-      "mi_hazank": 0.05769793029738869,
-      "mkkp": 0.023797408606361158,
-      "munkaspart": 0.001630613289479519,
-      "normalis_elet": 0.005917972522719227,
-    },
-    "totals": {
-      "egyeb": 2373,
-      "ellenzeki_osszefogas": 2198732,
-      "fidesz": 2554631,
-      "fuggetlen": 27962,
-      "megoldas_mozgalom": 64341,
-      "mi_hazank": 307064,
-      "mkkp": 126648,
-      "munkaspart": 8678,
-      "normalis_elet": 31495,
-    },
-  },
   "partyListData": [
     {
       "megye": "BUDAPEST",
@@ -5378,6 +5297,88 @@ exports[`useElectionState > should initialize state 1`] = `
       },
     },
   ],
+  "results": {
+    "compensation": {
+      "losingVotes": {
+        "egyeb": 2373,
+        "ellenzeki_osszefogas": 1257799,
+        "fidesz": 720823,
+        "fuggetlen": 27962,
+        "megoldas_mozgalom": 64341,
+        "mi_hazank": 307064,
+        "mkkp": 126648,
+        "munkaspart": 8678,
+        "normalis_elet": 31495,
+      },
+      "total": {
+        "egyeb": 2373,
+        "ellenzeki_osszefogas": 1477874,
+        "fidesz": 1296761,
+        "fuggetlen": 27962,
+        "megoldas_mozgalom": 64341,
+        "mi_hazank": 307064,
+        "mkkp": 126648,
+        "munkaspart": 8678,
+        "normalis_elet": 31495,
+      },
+      "winnerCompensation": {
+        "ellenzeki_osszefogas": 220075,
+        "fidesz": 575938,
+      },
+    },
+    "constituencySeats": {
+      "ellenzeki_osszefogas": 35,
+      "fidesz": 71,
+    },
+    "listSeats": {
+      "ellenzeki_osszefogas": 42,
+      "fidesz": 44,
+      "mi_hazank": 7,
+    },
+    "mandates": [
+      {
+        "constituencySeats": 35,
+        "listSeats": 42,
+        "party": "ellenzeki_osszefogas",
+        "totalSeats": 77,
+      },
+      {
+        "constituencySeats": 71,
+        "listSeats": 44,
+        "party": "fidesz",
+        "totalSeats": 115,
+      },
+      {
+        "constituencySeats": 0,
+        "listSeats": 7,
+        "party": "mi_hazank",
+        "totalSeats": 7,
+      },
+    ],
+    "percentages": {
+      "_total": 0.9999999999999999,
+      "egyeb": 0.00044589137311994685,
+      "ellenzeki_osszefogas": 0.4131460727361007,
+      "fidesz": 0.48002019570365906,
+      "fuggetlen": 0.005254114865225434,
+      "megoldas_mozgalom": 0.01208980060594627,
+      "mi_hazank": 0.05769793029738869,
+      "mkkp": 0.023797408606361158,
+      "munkaspart": 0.001630613289479519,
+      "normalis_elet": 0.005917972522719227,
+    },
+    "totals": {
+      "egyeb": 2373,
+      "ellenzeki_osszefogas": 2198732,
+      "fidesz": 2554631,
+      "fuggetlen": 27962,
+      "megoldas_mozgalom": 64341,
+      "mi_hazank": 307064,
+      "mkkp": 126648,
+      "munkaspart": 8678,
+      "normalis_elet": 31495,
+    },
+  },
   "turn": 0,
 }
 `;
