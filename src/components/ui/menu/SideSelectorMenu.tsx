@@ -24,8 +24,6 @@ export function SideSelectorMenu({ onClick, gameId }: SideSelectorMenuProps) {
     candidateOptions,
   } = useSideSelectorMenu(gameId, onClick);
 
-  
-
   const partyAssets = selectedParty
     ? gameConfig?.electionAssets[selectedParty.id]
     : undefined;

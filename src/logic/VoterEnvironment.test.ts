@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect } from "vitest";
 import { VoterEnvironment } from "./VoterEnvironment";
 import type { CandidateListData } from "./domain/ResultTransformer/VoteShareTransformer.types";
 
@@ -97,19 +97,29 @@ describe("VoterEnvironment", () => {
 
   describe("getRemainingVoteCount", () => {
     it("uses district.valasztopolgar directly when defined", () => {
-      const listData = [makeDistrict({ fidesz: 3000 }, { valasztopolgar: 10000 })];
+      const listData = [
+        makeDistrict({ fidesz: 3000 }, { valasztopolgar: 10000 }),
+      ];
       const env = new VoterEnvironment({
         eligibleVoters: 100000,
         maxTurnout: 100,
         listData,
       });
-      const district = makeDistrict({ fidesz: 3000 }, { valasztopolgar: 10000, oevk: 1, megyekod: 1 });
+      const district = makeDistrict(
+        { fidesz: 3000 },
+        { valasztopolgar: 10000, oevk: 1, megyekod: 1 },
+      );
       expect(env.getRemainingVoteCount(district)).toBe(7000);
     });
 
     it("falls back to voterBase when district.valasztopolgar is undefined", () => {
       // Initial listData seeds the voterBase with valasztopolgar = 8000
-      const listData = [makeDistrict({ fidesz: 1000 }, { valasztopolgar: 8000, megyekod: 3, oevk: 5 })];
+      const listData = [
+        makeDistrict(
+          { fidesz: 1000 },
+          { valasztopolgar: 8000, megyekod: 3, oevk: 5 },
+        ),
+      ];
       const env = new VoterEnvironment({
         eligibleVoters: 100000,
         maxTurnout: 100,
@@ -130,7 +140,9 @@ describe("VoterEnvironment", () => {
     });
 
     it("falls back to 0 when voterBase is not found and valasztopolgar is undefined", () => {
-      const listData = [makeDistrict({ fidesz: 500 }, { megyekod: 1, oevk: 1 })];
+      const listData = [
+        makeDistrict({ fidesz: 500 }, { megyekod: 1, oevk: 1 }),
+      ];
       const env = new VoterEnvironment({
         eligibleVoters: 100000,
         maxTurnout: 100,
@@ -151,7 +163,12 @@ describe("VoterEnvironment", () => {
     });
 
     it("treats undefined partok values as 0 in vote subtraction", () => {
-      const listData = [makeDistrict({ fidesz: 1000 }, { valasztopolgar: 5000, megyekod: 1, oevk: 1 })];
+      const listData = [
+        makeDistrict(
+          { fidesz: 1000 },
+          { valasztopolgar: 5000, megyekod: 1, oevk: 1 },
+        ),
+      ];
       const env = new VoterEnvironment({
         eligibleVoters: 100000,
         maxTurnout: 100,
@@ -167,7 +184,9 @@ describe("VoterEnvironment", () => {
     });
 
     it("handles all-undefined partok (allVoteCount = 0)", () => {
-      const listData = [makeDistrict({}, { valasztopolgar: 6000, megyekod: 1, oevk: 1 })];
+      const listData = [
+        makeDistrict({}, { valasztopolgar: 6000, megyekod: 1, oevk: 1 }),
+      ];
       const env = new VoterEnvironment({
         eligibleVoters: 100000,
         maxTurnout: 100,
@@ -185,8 +204,14 @@ describe("VoterEnvironment", () => {
   describe("getRemainingVotesInDistricts", () => {
     it("sums getRemainingVoteCount across all provided districts", () => {
       const listData = [
-        makeDistrict({ fidesz: 2000 }, { valasztopolgar: 10000, megyekod: 1, oevk: 1 }),
-        makeDistrict({ ellenzek: 3000 }, { valasztopolgar: 10000, megyekod: 1, oevk: 2 }),
+        makeDistrict(
+          { fidesz: 2000 },
+          { valasztopolgar: 10000, megyekod: 1, oevk: 1 },
+        ),
+        makeDistrict(
+          { ellenzek: 3000 },
+          { valasztopolgar: 10000, megyekod: 1, oevk: 2 },
+        ),
       ];
       const env = new VoterEnvironment({
         eligibleVoters: 100000,
@@ -195,8 +220,14 @@ describe("VoterEnvironment", () => {
       });
 
       const districts = [
-        makeDistrict({ fidesz: 2000 }, { valasztopolgar: 10000, oevk: 1, megyekod: 1 }),
-        makeDistrict({ ellenzek: 3000 }, { valasztopolgar: 10000, oevk: 2, megyekod: 1 }),
+        makeDistrict(
+          { fidesz: 2000 },
+          { valasztopolgar: 10000, oevk: 1, megyekod: 1 },
+        ),
+        makeDistrict(
+          { ellenzek: 3000 },
+          { valasztopolgar: 10000, oevk: 2, megyekod: 1 },
+        ),
       ];
       // (10000 - 2000) + (10000 - 3000) = 8000 + 7000 = 15000
       expect(env.getRemainingVotesInDistricts(districts)).toBe(15000);

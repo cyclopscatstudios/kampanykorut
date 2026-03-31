@@ -1,4 +1,4 @@
-import electionConfig from "./election_config.json"
+import electionConfig from "./election_config.json";
 import voterEnvironmentRaw from "./voter_environment_config.json";
 import candidateListData from "./oevk_constituency_results.json";
 import partyListData from "./oevk_list_results.json";

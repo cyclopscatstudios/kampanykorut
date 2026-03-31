@@ -21,7 +21,9 @@ export function useSideSelectorMenu(
   onClick: (item: MenuItem) => void,
 ) {
   // TODO: refactor this to a more elegant solution, maybe with a context or something, to avoid this weird state handling
-  const [registeredGameId, setRegisteredGameId] = useState<string | undefined>(undefined);
+  const [registeredGameId, setRegisteredGameId] = useState<string | undefined>(
+    undefined,
+  );
 
   if (gameId !== registeredGameId) {
     setRegisteredGameId(gameId);

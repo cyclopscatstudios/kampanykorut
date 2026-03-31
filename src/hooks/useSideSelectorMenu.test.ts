@@ -106,7 +106,7 @@ describe("useSideSelectorMenu", () => {
 
     const setItemCallCount = localStorageMock.setItem.mock.calls.length;
 
-    rerender({ gameId: undefined });
+    rerender({ gameId: "" });
 
     // No new GameConfigEngine should have been constructed
     expect(localStorageMock.setItem.mock.calls.length).toBe(setItemCallCount);

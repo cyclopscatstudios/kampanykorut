@@ -39,7 +39,11 @@ describe("calculateWinner", () => {
   });
 
   it("returns correct winner, maxVotes and totalVotes for a valid district", () => {
-    const result = makeDistrictResult({ fidesz: 5000, ellenzek: 3000, egyeb: 1000 });
+    const result = makeDistrictResult({
+      fidesz: 5000,
+      ellenzek: 3000,
+      egyeb: 1000,
+    });
     expect(calculateWinner(result)).toEqual({
       winner: "fidesz",
       maxVotes: 5000,
@@ -56,7 +60,11 @@ describe("calculateWinner", () => {
   });
 
   it("treats undefined partok values as 0 via the ?? branch", () => {
-    const result = makeDistrictResult({ fidesz: 4000, ellenzek: undefined, egyeb: 2000 });
+    const result = makeDistrictResult({
+      fidesz: 4000,
+      ellenzek: undefined,
+      egyeb: 2000,
+    });
     const outcome = calculateWinner(result);
     expect(outcome?.winner).toBe("fidesz");
     expect(outcome?.maxVotes).toBe(4000);
