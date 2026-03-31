@@ -8,7 +8,7 @@ import {
 } from "./EffectApplier.types";
 import { candidateListData } from "./mocks/mockListData";
 import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
-import { GameConfigEngine } from "../application/ElectionConfigEngine";
+import { GameConfigEngine } from "../application/GameConfigEngine";
 import { StorageEngine } from "../application/StorageEngine";
 
 let effectApplier: EffectApplier;

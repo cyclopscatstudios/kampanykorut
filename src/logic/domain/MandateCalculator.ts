@@ -15,7 +15,7 @@ import type {
   Shares,
 } from "./ResultTransformer/VoteShareTransformer.types";
 import { calcPercentages } from "./ResultModifier.utils";
-import type { GameConfigEngine } from "../application/ElectionConfigEngine";
+import type { GameConfigEngine } from "../application/GameConfigEngine";
 
 const log = createLogger("MandateCalculator");
 

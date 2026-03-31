@@ -11,7 +11,7 @@ import {
   type VoterEnvironmentConfig,
 } from "../VoterEnvironment";
 import { candidateListData, partyListData } from "./mocks/mockListData";
-import { GameConfigEngine } from "../application/ElectionConfigEngine";
+import { GameConfigEngine } from "../application/GameConfigEngine";
 import { StorageEngine } from "../application/StorageEngine";
 import { StateHandler } from "../application/StateHandler";
 import type { ElectionConfig } from "./MandateCalculator.types";

@@ -1,5 +1,5 @@
 import { StorageEngine } from "./application/StorageEngine";
-import { GameConfigEngine } from "./application/ElectionConfigEngine";
+import { GameConfigEngine } from "./application/GameConfigEngine";
 import { MandateCalculator } from "./domain/MandateCalculator";
 import type {
   CalculateResults,

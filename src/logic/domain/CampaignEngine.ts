@@ -12,7 +12,7 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "./MandateCalculator.types";
 import { createLogger } from "../logger";
-import type { GameConfigEngine } from "../application/ElectionConfigEngine";
+import type { GameConfigEngine } from "../application/GameConfigEngine";
 import type { DistrictResult } from "../../components/ui/map.utils";
 import { StateHandler } from "../application/StateHandler";
 import type {

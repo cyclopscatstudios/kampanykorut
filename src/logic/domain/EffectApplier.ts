@@ -15,7 +15,7 @@ import type {
 import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
 import { DistrictGroupEngine, type DistrictGroup } from "./DistrictGroupEngine";
-import type { GameConfigEngine } from "../application/ElectionConfigEngine";
+import type { GameConfigEngine } from "../application/GameConfigEngine";
 import { container } from "tsyringe";
 import type { DistrictResult } from "../../components/ui/map.utils";
 

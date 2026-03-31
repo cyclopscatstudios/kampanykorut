@@ -1,5 +1,5 @@
 import { useEngine } from "./useEngine";
-import { GameConfigEngine } from "../ElectionConfigEngine";
+import { GameConfigEngine } from "../GameConfigEngine";
 import { useEffect, useState } from "react";
 
 export function useGameConfigEngine() {
