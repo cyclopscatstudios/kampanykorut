@@ -1,19 +1,17 @@
 import { StorageEngine } from "./StorageEngine";
 import type { ElectionConfig } from "../domain/MandateCalculator.types";
 import { Emitter } from "./Emitter";
-import { inject, singleton } from "tsyringe";
 
 interface GameSettings {
   showAdvisorFeedback: boolean;
 }
 
-@singleton()
 export class GameConfigEngine extends Emitter<any> {
   private electionConfig: ElectionConfig;
   private gameSettings: GameSettings;
 
   constructor(
-    @inject(StorageEngine) private storage: StorageEngine,
+    private storage: StorageEngine,
     electionConfig: ElectionConfig,
   ) {
     super();

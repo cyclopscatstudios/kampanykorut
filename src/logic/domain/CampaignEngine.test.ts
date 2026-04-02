@@ -13,7 +13,6 @@ import {
 import { candidateListData, partyListData } from "./mocks/mockListData";
 import { GameConfigEngine } from "../application/GameConfigEngine";
 import { StorageEngine } from "../application/StorageEngine";
-import { StateHandler } from "../application/StateHandler";
 import type { ElectionConfig } from "./MandateCalculator.types";
 
 let campaignEngine: CampaignEngine;
@@ -65,7 +64,6 @@ describe("CampaignEngine", () => {
       new EffectApplier(electionConfigEngine, []),
       new MandateCalculator(electionConfigEngine),
       electionConfigEngine,
-      new StateHandler(),
     );
   });
   it("should apply the party-swing typed decision", () => {

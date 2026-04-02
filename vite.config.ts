@@ -38,4 +38,10 @@ export default defineConfig({
       },
     ],
   },
+  resolve: {
+    alias: {
+      "@/logic/application": "/src/logic/application",
+      "@/logic/domain": "/src/logic/domain",
+    },
+  },
 });

@@ -14,7 +14,6 @@ import type { CalculateResults } from "./MandateCalculator.types";
 import { createLogger } from "../logger";
 import type { GameConfigEngine } from "../application/GameConfigEngine";
 import type { DistrictResult } from "../../components/ui/map.utils";
-import { StateHandler } from "../application/StateHandler";
 import type {
   AdvisorFeedback,
   Answer,
@@ -85,7 +84,6 @@ export class CampaignEngine {
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
     private electionConfigEngine: GameConfigEngine,
-    private stateHandler: StateHandler,
     private readonly advisorFeedback?: AdvisorFeedback[],
   ) {
     this.electionConfigEngine.getElectionConfig.bind(this);
@@ -124,7 +122,11 @@ export class CampaignEngine {
     };
   }
 
-  processTurn(state: GameState, decision: Decision): GameState {
+  processTurn(
+    state: GameState,
+    decision: Decision,
+    history: Array<{ questionId: string; answerId: string }> = [],
+  ): GameState {
     if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
       return state;
@@ -157,6 +159,7 @@ export class CampaignEngine {
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
         state.currentQuestion,
+        history,
       ),
       results: calculated,
       isEnded: nextTurn >= this.questions.length,
@@ -183,7 +186,11 @@ export class CampaignEngine {
     } as FinalResults;
   }
 
-  private getAdivsorFeedback(answerId: string, question?: RawQuestion) {
+  private getAdivsorFeedback(
+    answerId: string,
+    question?: RawQuestion,
+    history: Array<{ questionId: string; answerId: string }> = [],
+  ) {
     const shouldShowAdvisorFeedback =
       this.electionConfigEngine.getGameSettings().showAdvisorFeedback;
     if (!shouldShowAdvisorFeedback) {
@@ -195,6 +202,7 @@ export class CampaignEngine {
 
     const conditionalFeedback = this.resolveConditionalFeedback(
       advisorFeedback?.conditionalAnswers,
+      history,
     );
 
     if (conditionalFeedback) {
@@ -204,11 +212,13 @@ export class CampaignEngine {
     return advisorFeedback?.answers.find((a) => a.answerId === answerId);
   }
 
-  private resolveConditionalFeedback(conditionalAnswers?: ConditionalAnswer[]) {
+  private resolveConditionalFeedback(
+    conditionalAnswers?: ConditionalAnswer[],
+    history: Array<{ questionId: string; answerId: string }> = [],
+  ) {
     if (!conditionalAnswers) {
       return;
     }
-    const history = this.stateHandler.get("history");
 
     if (!history?.length) {
       log.error("history is empty, but conditional feedback are present");

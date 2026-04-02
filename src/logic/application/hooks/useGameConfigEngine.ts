@@ -1,25 +1,23 @@
-import { useEngine } from "./useEngine";
 import { GameConfigEngine } from "../GameConfigEngine";
 import { useEffect, useState } from "react";
 
-export function useGameConfigEngine() {
-  const gameConfigEngine = useEngine(GameConfigEngine);
-
-  const [trackedEngine, setTrackedEngine] = useState(gameConfigEngine);
-  const [gameConfig, setGameConfig] = useState(() =>
-    gameConfigEngine.getElectionConfig(),
+export function useGameConfigEngine(engine: GameConfigEngine | null) {
+  const [trackedEngine, setTrackedEngine] = useState(engine);
+  const [gameConfig, setGameConfig] = useState(
+    () => engine?.getElectionConfig() ?? null,
   );
 
-  if (trackedEngine !== gameConfigEngine) {
-    setTrackedEngine(gameConfigEngine);
-    setGameConfig(gameConfigEngine.getElectionConfig());
+  if (trackedEngine !== engine) {
+    setTrackedEngine(engine);
+    setGameConfig(engine?.getElectionConfig() ?? null);
   }
 
   useEffect(() => {
-    return gameConfigEngine.subscribe(setGameConfig);
-  }, [gameConfigEngine]);
+    if (!engine) {
+      return;
+    }
+    return engine.subscribe(setGameConfig);
+  }, [engine]);
 
-  return {
-    gameConfig,
-  };
+  return { gameConfig };
 }

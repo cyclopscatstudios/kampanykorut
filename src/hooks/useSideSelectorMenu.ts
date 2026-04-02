@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { container } from "tsyringe";
+import { useState, useMemo } from "react";
 import { gameModeRegistry } from "../logic/application/gameModeRegistery";
 import { GameConfigEngine } from "../logic/application/GameConfigEngine";
 import { StorageEngine } from "../logic/application/StorageEngine";
@@ -20,37 +19,26 @@ export function useSideSelectorMenu(
   gameId: string | undefined,
   onClick: (item: MenuItem) => void,
 ) {
-  // TODO: refactor this to a more elegant solution, maybe with a context or something, to avoid this weird state handling
-  const [registeredGameId, setRegisteredGameId] = useState<string | undefined>(
-    undefined,
-  );
-
-  if (gameId !== registeredGameId) {
-    setRegisteredGameId(gameId);
-
-    if (gameId) {
-      const config = gameModeRegistry[gameId];
-
-      if (config) {
-        const engine = new GameConfigEngine(
-          new StorageEngine(),
-          config.electionConfig,
-        );
-
-        container.registerInstance(GameConfigEngine, engine);
-      }
+  const configEngine = useMemo(() => {
+    if (!gameId) {
+      return null;
     }
-  }
+    const config = gameModeRegistry[gameId];
+    if (!config) {
+      return null;
+    }
+    return new GameConfigEngine(new StorageEngine(), config.electionConfig);
+  }, [gameId]);
 
   const [selectedParty, setSelectedParty] = useState<Party | undefined>();
   const [selectedCandidate, setSelectedCandidate] = useState<
     string | undefined
   >();
-  const { gameConfig } = useGameConfigEngine();
+  const { gameConfig } = useGameConfigEngine(configEngine);
   const { transition } = useAppStateMachine();
 
   const handlePartyChange = (partyId: string) => {
-    const party = gameConfig.playableSides.find((s) => s.id === partyId);
+    const party = gameConfig?.playableSides.find((s) => s.id === partyId);
     setSelectedParty(party);
     setSelectedCandidate(undefined);
   };
@@ -76,7 +64,7 @@ export function useSideSelectorMenu(
 
   return {
     gameConfig,
-    sides: gameConfig.playableSides,
+    sides: gameConfig?.playableSides ?? [],
     selectedParty,
     selectedCandidate,
     setSelectedCandidate,

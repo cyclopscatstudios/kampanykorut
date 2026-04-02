@@ -9,7 +9,10 @@ import type { Answer, PendingTurn } from "../types";
 
 export function useElectionState(gameId: string) {
   const config = gameModeRegistry[gameId];
-  const campaignEngine = useMemo(() => createCampaignEngine(config), [config]);
+  const { campaignEngine } = useMemo(
+    () => createCampaignEngine(config),
+    [config],
+  );
   const [gameState, setGameState] = useState<GameState>(() =>
     campaignEngine.createInitialState(),
   );
@@ -41,7 +44,12 @@ export function useElectionState(gameId: string) {
       conditionalEffects: answer.conditionalEffects,
       selectedDistrict,
     };
-    const newGameState = campaignEngine.processTurn(gameState, decision);
+    const history = getState("history") ?? [];
+    const newGameState = campaignEngine.processTurn(
+      gameState,
+      decision,
+      history,
+    );
     return { newGameState, decision, rawAnswer };
   };
 
