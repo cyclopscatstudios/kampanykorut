@@ -10,7 +10,7 @@ import {
 import { VoterEnvironment } from "../VoterEnvironment";
 import { GameConfigEngine } from "./GameConfigEngine";
 import { StorageEngine } from "./StorageEngine";
-import type { GameModeConfig } from "./types";
+import type { GameModeConfig } from "../types/campaignEngine.types";
 
 export function createCampaignEngine(config: GameModeConfig) {
   const configEngine = new GameConfigEngine(
@@ -32,7 +32,6 @@ export function createCampaignEngine(config: GameModeConfig) {
     ),
     new EffectApplier(configEngine, config.customGroups),
     new MandateCalculator(configEngine),
-    configEngine,
     config.advisorFeedback,
   );
 

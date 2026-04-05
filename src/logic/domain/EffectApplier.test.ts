@@ -1,15 +1,15 @@
 import { container } from "tsyringe";
 import { StateHandler } from "../application/StateHandler";
 import { EffectApplier } from "./EffectApplier";
-import {
-  type ConditionalRawEffect,
-  type RawEffect,
-  EffectType,
-} from "./EffectApplier.types";
 import { candidateListData } from "./mocks/mockListData";
 import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
 import { GameConfigEngine } from "../application/GameConfigEngine";
 import { StorageEngine } from "../application/StorageEngine";
+import { EffectType } from "../types/campaignEngine.types";
+import type {
+  RawEffect,
+  ConditionalRawEffect,
+} from "../types/campaignEngine.types";
 
 let effectApplier: EffectApplier;
 

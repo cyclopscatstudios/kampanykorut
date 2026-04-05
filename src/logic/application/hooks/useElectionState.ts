@@ -5,9 +5,9 @@ import type { DistrictResult } from "../../../components/ui/map.utils";
 import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
-import type { Answer, PendingTurn } from "../types";
 import { StorageEngine } from "../StorageEngine";
 import { GameConfigEngine } from "../GameConfigEngine";
+import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
 
 export function useElectionState(gameId: string) {
   const config = gameModeRegistry[gameId];
@@ -16,7 +16,7 @@ export function useElectionState(gameId: string) {
     [config],
   );
   const [gameState, setGameState] = useState<GameState>(() =>
-    campaignEngine.createInitialState(),
+    campaignEngine.createInitialState(config.electionConfig.baseResults),
   );
   const { loadSession, saveSession } = useStateEngine();
   const { getState, updateState } = useStateHandler();

@@ -609,21 +609,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
         },
       },
     },
-    "electionConfigEngine": GameConfigEngine {
-      "electionConfig": {
-        "listSeats": 10,
-        "parties": [],
-        "thresholdPercent": 5,
-      },
-      "gameSettings": {
-        "showAdvisorFeedback": true,
-      },
-      "listeners": [],
-      "storage": StorageEngine {
-        "getItem": [Function],
-        "getLocalStorageItem": [Function],
-      },
-    },
     "initialCandidateData": [
       {
         "jeloltek": {

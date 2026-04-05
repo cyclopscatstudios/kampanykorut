@@ -1,10 +1,7 @@
 import { StorageEngine } from "./StorageEngine";
-import type { ElectionConfig } from "../domain/MandateCalculator.types";
 import { Emitter } from "./Emitter";
-
-export interface GameSettings {
-  showAdvisorFeedback: boolean;
-}
+import type { GameSettings } from "../domain";
+import type { ElectionConfig } from "../types/campaignEngine.types";
 
 export class GameConfigEngine extends Emitter<any> {
   private electionConfig: ElectionConfig;

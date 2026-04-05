@@ -13,7 +13,7 @@ import customGroups from "./custom_groups.json";
 import type {
   GameModeConfig,
   RawAnsweEffectProps,
-} from "../../../logic/application/types";
+} from "../../../logic/types/campaignEngine.types";
 
 export const config2022: GameModeConfig = {
   electionConfig,

@@ -1,10 +1,3 @@
-import {
-  EffectType,
-  type RawEffect,
-  type AppliedEffect,
-  type PartyShareParams,
-  type ConditionalRawEffect,
-} from "./EffectApplier.types";
 import { MandateCalculator } from "./MandateCalculator";
 import type {
   CandidateListData,
@@ -14,10 +7,18 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
-import { DistrictGroupEngine, type DistrictGroup } from "./DistrictGroupEngine";
+import { DistrictGroupEngine } from "./DistrictGroupEngine";
 import type { GameConfigEngine } from "../application/GameConfigEngine";
 import { container } from "tsyringe";
 import type { DistrictResult } from "../../components/ui/map.utils";
+import { EffectType } from "../types/campaignEngine.types";
+import type {
+  DistrictGroup,
+  RawEffect,
+  ConditionalRawEffect,
+  AppliedEffect,
+  PartyShareParams,
+} from "../types/campaignEngine.types";
 
 const log = createLogger("EffectApplier");
 

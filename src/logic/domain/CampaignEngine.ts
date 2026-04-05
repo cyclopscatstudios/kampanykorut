@@ -1,9 +1,4 @@
 import type { EffectApplier } from "./EffectApplier";
-import {
-  type ConditionalRawEffect,
-  EffectType,
-  type RawEffect,
-} from "./EffectApplier.types";
 import type { MandateCalculator } from "./MandateCalculator";
 import type { ResultModifier } from "./ResultModifier";
 import type {
@@ -12,18 +7,21 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "./MandateCalculator.types";
 import { createLogger } from "../logger";
-import type {
-  GameConfigEngine,
-  GameSettings,
-} from "../application/GameConfigEngine";
 import type { DistrictResult } from "../../components/ui/map.utils";
-import type {
-  AdvisorFeedback,
-  Answer,
-  AnswerFeedback,
-  ConditionalAnswer,
-  RawAnsweEffectProps,
-} from "../application/types";
+import {
+  type Answer,
+  type AnswerFeedback,
+  type RawAnsweEffectProps,
+  type AdvisorFeedback,
+  type ConditionalAnswer,
+  EffectType,
+  type ConditionalRawEffect,
+  type RawEffect,
+} from "../types/campaignEngine.types";
+
+export interface GameSettings {
+  showAdvisorFeedback: boolean;
+}
 
 export interface RawQuestion {
   id: string;
@@ -86,18 +84,12 @@ export class CampaignEngine {
     private resultModifier: ResultModifier,
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
-    private electionConfigEngine: GameConfigEngine,
     private readonly advisorFeedback?: AdvisorFeedback[],
-  ) {
-    this.electionConfigEngine.getElectionConfig.bind(this);
-  }
+  ) {}
 
-  createInitialState(): GameState {
+  createInitialState(baseResults?: Record<string, number>): GameState {
     let candidateListData = this.initialCandidateData;
     let partyListData = this.initialPartyData;
-
-    const electionConfig = this.electionConfigEngine.getElectionConfig();
-    const baseResults = electionConfig.baseResults;
 
     if (baseResults) {
       const baseApplied = this.applyBaseResults(

@@ -1,5 +1,4 @@
 import { CampaignEngine, type Decision } from "./CampaignEngine";
-import { EffectType, type RawEffect } from "./EffectApplier.types";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
 import { ResultModifier } from "./ResultModifier";
@@ -13,7 +12,11 @@ import {
 import { candidateListData, partyListData } from "./mocks/mockListData";
 import { GameConfigEngine } from "../application/GameConfigEngine";
 import { StorageEngine } from "../application/StorageEngine";
-import type { ElectionConfig } from "./MandateCalculator.types";
+import {
+  type RawEffect,
+  type ElectionConfig,
+  EffectType,
+} from "../types/campaignEngine.types";
 
 let campaignEngine: CampaignEngine;
 
@@ -63,7 +66,6 @@ describe("CampaignEngine", () => {
       resultModifier,
       new EffectApplier(electionConfigEngine, []),
       new MandateCalculator(electionConfigEngine),
-      electionConfigEngine,
     );
   });
   it("should apply the party-swing typed decision", () => {
@@ -77,7 +79,9 @@ describe("CampaignEngine", () => {
       },
     ]);
 
-    const result = campaignEngine.processTurn(gameState, decision);
+    const result = campaignEngine.processTurn(gameState, decision, [], {
+      showAdvisorFeedback: true,
+    });
     expect(result).toMatchSnapshot();
   });
   it("should apply party-share typed decision", () => {
@@ -94,7 +98,9 @@ describe("CampaignEngine", () => {
       },
     ]);
 
-    const result = campaignEngine.processTurn(gameState, decision);
+    const result = campaignEngine.processTurn(gameState, decision, [], {
+      showAdvisorFeedback: true,
+    });
     expect(result).toMatchSnapshot();
   });
   it("should apply motivation typed decision", () => {
@@ -108,7 +114,9 @@ describe("CampaignEngine", () => {
       },
     ]);
 
-    const result = campaignEngine.processTurn(gameState, decision);
+    const result = campaignEngine.processTurn(gameState, decision, [], {
+      showAdvisorFeedback: true,
+    });
     expect(result).toMatchSnapshot();
   });
   it("should apply district typed decision", () => {
@@ -127,7 +135,9 @@ describe("CampaignEngine", () => {
       },
     ]);
 
-    const result = campaignEngine.processTurn(gameState, decision);
+    const result = campaignEngine.processTurn(gameState, decision, [], {
+      showAdvisorFeedback: true,
+    });
     expect(result).toMatchSnapshot();
   });
 });

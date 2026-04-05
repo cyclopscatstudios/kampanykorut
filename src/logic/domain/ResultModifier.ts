@@ -1,10 +1,10 @@
 import type { GameState } from "./CampaignEngine";
-import { type AppliedEffect, EffectType } from "./EffectApplier.types";
 import { createLogger } from "../logger";
 import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
 import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
 import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
 import type { CandidateListData } from "./ResultTransformer/VoteShareTransformer.types";
+import { EffectType, type AppliedEffect } from "../types/campaignEngine.types";
 
 const log = createLogger("ResultModifier");
 

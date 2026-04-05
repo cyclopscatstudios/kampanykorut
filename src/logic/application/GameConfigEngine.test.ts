@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { GameConfigEngine } from "./GameConfigEngine";
 import { StorageEngine } from "./StorageEngine";
-import type { ElectionConfig } from "../domain/MandateCalculator.types";
+import type { ElectionConfig } from "../types/campaignEngine.types";
 
 const baseElectionConfig: ElectionConfig = {
   listSeats: 93,

@@ -3,7 +3,7 @@ import { Button } from "../Button";
 import { Heading } from "../Heading";
 import { Text } from "../Text";
 import { Icon } from "../Icon";
-import type { AdvisorFeedbackAssets } from "../../../logic/application/types";
+import type { AdvisorFeedbackAssets } from "../../../logic/types/campaignEngine.types";
 
 interface AdvisorModalProps {
   advice: string;

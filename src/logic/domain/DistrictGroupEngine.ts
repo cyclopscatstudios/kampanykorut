@@ -1,12 +1,6 @@
-import type { District } from "./ResultTransformer/VoteShareTransformer.types";
 import { defaultGroups as DEFAULT_GROUPS } from "./DefaultGroups";
 import { createLogger } from "../logger";
-
-export interface DistrictGroup {
-  id: string;
-  label: string;
-  districts: District[];
-}
+import type { DistrictGroup } from "../types/campaignEngine.types";
 
 const log = createLogger("DistrictGroupEngine");
 
