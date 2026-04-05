@@ -34,18 +34,18 @@ export default defineConfig([
     ignores: ["src/dev/*"],
     rules: {
       "@typescript-eslint/no-explicit-any": "warn",
-      'import/no-restricted-paths': [
-      'error',
-      {
-        zones: [
-          {
-            target: './src/logic/domain',
-            from: './src/logic/application',
-            message: 'Application layer cannot import from domain directly',
-          },
-        ],
-      },
-    ],
+      "import/no-restricted-paths": [
+        "error",
+        {
+          zones: [
+            {
+              target: "./src/logic/domain",
+              from: "./src/logic/application",
+              message: "Application layer cannot import from domain directly",
+            },
+          ],
+        },
+      ],
     },
   },
 ]);

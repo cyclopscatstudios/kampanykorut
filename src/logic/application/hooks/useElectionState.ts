@@ -6,6 +6,8 @@ import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
 import type { Answer, PendingTurn } from "../types";
+import { StorageEngine } from "../StorageEngine";
+import { GameConfigEngine } from "../GameConfigEngine";
 
 export function useElectionState(gameId: string) {
   const config = gameModeRegistry[gameId];
@@ -18,6 +20,10 @@ export function useElectionState(gameId: string) {
   );
   const { loadSession, saveSession } = useStateEngine();
   const { getState, updateState } = useStateHandler();
+  const gameConfigEngine = new GameConfigEngine(
+    new StorageEngine(),
+    config.electionConfig,
+  );
 
   useEffect(() => {
     updateState("currentConfig", config);
@@ -45,12 +51,19 @@ export function useElectionState(gameId: string) {
       selectedDistrict,
     };
     const history = getState("history") ?? [];
+    const gameSettings = gameConfigEngine.getGameSettings();
     const newGameState = campaignEngine.processTurn(
       gameState,
       decision,
       history,
+      gameSettings,
     );
-    return { newGameState, decision, rawAnswer };
+
+    return {
+      newGameState,
+      decision,
+      rawAnswer,
+    };
   };
 
   const commitTurn = ({

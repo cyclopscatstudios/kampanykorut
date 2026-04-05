@@ -2,7 +2,7 @@ import { StorageEngine } from "./StorageEngine";
 import type { ElectionConfig } from "../domain/MandateCalculator.types";
 import { Emitter } from "./Emitter";
 
-interface GameSettings {
+export interface GameSettings {
   showAdvisorFeedback: boolean;
 }
 

@@ -84,7 +84,10 @@ export class MandateCalculator {
     const totals: Record<string, number> = {};
 
     for (const d of districts) {
-      for (const [party, votes] of Object.entries(d.partok)) {
+      for (const [party, votes] of Object.entries(d.partok ?? {})) {
+        if (!party || party === "undefined") continue;
+        if (!Number.isFinite(votes)) continue;
+
         totals[party] = (totals[party] ?? 0) + (votes ?? 0);
       }
     }

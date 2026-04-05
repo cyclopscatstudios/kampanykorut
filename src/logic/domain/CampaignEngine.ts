@@ -12,7 +12,10 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "./MandateCalculator.types";
 import { createLogger } from "../logger";
-import type { GameConfigEngine } from "../application/GameConfigEngine";
+import type {
+  GameConfigEngine,
+  GameSettings,
+} from "../application/GameConfigEngine";
 import type { DistrictResult } from "../../components/ui/map.utils";
 import type {
   AdvisorFeedback,
@@ -126,6 +129,7 @@ export class CampaignEngine {
     state: GameState,
     decision: Decision,
     history: Array<{ questionId: string; answerId: string }> = [],
+    gameSettings: GameSettings,
   ): GameState {
     if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
@@ -160,6 +164,7 @@ export class CampaignEngine {
         decision.answerId,
         state.currentQuestion,
         history,
+        gameSettings,
       ),
       results: calculated,
       isEnded: nextTurn >= this.questions.length,
@@ -190,9 +195,10 @@ export class CampaignEngine {
     answerId: string,
     question?: RawQuestion,
     history: Array<{ questionId: string; answerId: string }> = [],
+    gameSettings?: GameSettings,
   ) {
     const shouldShowAdvisorFeedback =
-      this.electionConfigEngine.getGameSettings().showAdvisorFeedback;
+      gameSettings?.showAdvisorFeedback ?? false;
     if (!shouldShowAdvisorFeedback) {
       return undefined;
     }
