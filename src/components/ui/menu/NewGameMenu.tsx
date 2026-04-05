@@ -26,6 +26,7 @@ export function NewGameMenu({
             text: campaignMode,
             icon: "campaign",
             iconSource: "svg",
+            disabled: true,
           },
         ]}
         onClick={onClick}

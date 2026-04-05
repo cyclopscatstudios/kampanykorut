@@ -18,5 +18,6 @@ export type MenuItem = {
   icon?: string;
   iconSource?: IconSource;
   description?: string;
+  disabled?: boolean;
   [key: string]: any;
 };

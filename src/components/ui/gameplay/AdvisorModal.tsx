@@ -4,6 +4,7 @@ import { Heading } from "../Heading";
 import { Text } from "../Text";
 import { Icon } from "../Icon";
 import type { AdvisorFeedbackAssets } from "../../../logic/types/campaignEngine.types";
+import { GameConfigEngine } from "../../../logic/application/GameConfigEngine";
 
 interface AdvisorModalProps {
   advice: string;

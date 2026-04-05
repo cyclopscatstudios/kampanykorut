@@ -23,8 +23,6 @@ export function MenuSelector({
 }) {
   const { state, transition } = useAppStateMachine();
 
-  console.log({ state });
-
   const handleOnClick = (to: MenuItem) => {
     transition(to);
     if (to.id === "gameLoader") {
