@@ -1,20 +1,17 @@
-import {
-  VoterEnvironment,
-  type VoterEnvironmentConfig,
-} from "../../VoterEnvironment";
+import { VoterEnvironment } from "../../VoterEnvironment";
 import type {
   Shares,
   PartyListData,
   CandidateListData,
 } from "./VoteShareTransformer.types";
 import type { PartyId } from "../MandateCalculator.types";
+import { inject, singleton } from "tsyringe";
 
+@singleton()
 export class VoteShareTransformer {
-  private voterEnvironment: VoterEnvironment;
-
-  constructor(voterEnviormentConfig: VoterEnvironmentConfig) {
-    this.voterEnvironment = new VoterEnvironment(voterEnviormentConfig);
-  }
+  constructor(
+    @inject(VoterEnvironment) private voterEnviroment: VoterEnvironment,
+  ) {}
 
   distributeVotesByPartyShare(
     districtCandidateData: CandidateListData[],
@@ -23,8 +20,9 @@ export class VoteShareTransformer {
     partyShares: Shares,
     distributeOnPartyList = true,
   ) {
-    const remainingCapacity =
-      this.voterEnvironment.getRemainingVotesInDistricts(districtCandidateData);
+    const remainingCapacity = this.voterEnviroment.getRemainingVotesInDistricts(
+      districtCandidateData,
+    );
 
     if (totalVoters > remainingCapacity) {
       return null;

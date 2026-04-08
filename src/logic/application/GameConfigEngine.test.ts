@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { GameConfigEngine } from "./GameConfigEngine";
-import { StorageEngine } from "./StorageEngine";
 import type { ElectionConfig } from "../types/campaignEngine.types";
+import { container } from "tsyringe";
 
 const baseElectionConfig: ElectionConfig = {
   listSeats: 93,
@@ -24,15 +24,17 @@ describe("GameConfigEngine", () => {
     vi.clearAllMocks();
     // @ts-expect-error global override
     global.localStorage = localStorageMock;
-    engine = new GameConfigEngine(new StorageEngine(), baseElectionConfig);
+    engine = container.resolve(GameConfigEngine);
+    engine.configure(baseElectionConfig);
   });
 
-  describe("constructor", () => {
-    it("persists default settings to localStorage on init", () => {
-      expect(localStorageMock.setItem).toHaveBeenCalledWith(
-        "kampanykorut_settings",
-        JSON.stringify({ showAdvisorFeedback: true }),
-      );
+  describe("configure", () => {
+    it("marks engine as configured", () => {
+      expect(engine.isConfigured()).toBe(true);
+    });
+
+    it("does not write to localStorage", () => {
+      expect(localStorageMock.setItem).not.toHaveBeenCalled();
     });
   });
 

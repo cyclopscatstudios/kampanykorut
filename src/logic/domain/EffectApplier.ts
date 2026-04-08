@@ -8,8 +8,8 @@ import type {
 import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
-import type { GameConfigEngine } from "../application/GameConfigEngine";
-import { container } from "tsyringe";
+import { GameConfigEngine } from "../application/GameConfigEngine";
+import { inject, injectable } from "tsyringe";
 import type { DistrictResult } from "../../components/ui/map.utils";
 import { EffectType } from "../types/campaignEngine.types";
 import type {
@@ -22,21 +22,22 @@ import type {
 
 const log = createLogger("EffectApplier");
 
+@injectable()
 export class EffectApplier {
-  private mandateCalculator: MandateCalculator;
-  private districtGroupEngine: DistrictGroupEngine;
-  private stateHandler: StateHandler;
-  private electionConfigEngine: GameConfigEngine;
+  private districtGroupEngine?: DistrictGroupEngine;
   private DEFAULT_MOTIVATION_DELTA = 99;
 
   constructor(
-    electionConfigEngine: GameConfigEngine,
-    customGroups?: DistrictGroup[],
-  ) {
-    this.mandateCalculator = new MandateCalculator(electionConfigEngine);
-    this.electionConfigEngine = electionConfigEngine;
+    @inject(GameConfigEngine) private electionConfigEngine: GameConfigEngine,
+    @inject(MandateCalculator) private mandateCalculator: MandateCalculator,
+    @inject(StateHandler) private stateHandler: StateHandler,
+  ) {}
+
+  configure(customGroups?: DistrictGroup[]) {
+    log.debug("Configuring EffectApplier with custom district groups", {
+      customGroups,
+    });
     this.districtGroupEngine = new DistrictGroupEngine(customGroups);
-    this.stateHandler = container.resolve(StateHandler);
   }
 
   getAppliedEffects(
@@ -226,8 +227,14 @@ export class EffectApplier {
       return { type: EffectType.DistrictVoteTransfer, target };
     }
 
+    const districtGroupEngine = this.districtGroupEngine;
+
+    if (!districtGroupEngine) {
+      return { type: EffectType.DistrictVoteTransfer, target: [] };
+    }
+
     const finalTarget = target.flatMap((t) =>
-      this.districtGroupEngine
+      districtGroupEngine
         .getDistrictTargetByGroupIds([t.groupId])
         .flatMap((d) =>
           d.districts.map((district) => ({

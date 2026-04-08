@@ -55,6 +55,6 @@ export class StateHandler extends Emitter<StateHandlerType> {
   set<K extends keyof StateHandlerType>(key: K, value: StateHandlerType[K]) {
     this.state[key] = value;
     this.notify(this.state);
-    log.info("State updated", { key, value });
+    log.debug("State updated", { key, value });
   }
 }

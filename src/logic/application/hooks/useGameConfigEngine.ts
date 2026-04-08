@@ -1,21 +1,14 @@
+import { container } from "tsyringe";
 import { GameConfigEngine } from "../GameConfigEngine";
 import { useEffect, useState } from "react";
 
-export function useGameConfigEngine(engine: GameConfigEngine | null) {
-  const [trackedEngine, setTrackedEngine] = useState(engine);
-  const [gameConfig, setGameConfig] = useState(
-    () => engine?.getElectionConfig() ?? null,
+export function useGameConfigEngine() {
+  const engine = container.resolve(GameConfigEngine);
+  const [gameConfig, setGameConfig] = useState(() =>
+    engine.isConfigured() ? engine.getElectionConfig() : null,
   );
 
-  if (trackedEngine !== engine) {
-    setTrackedEngine(engine);
-    setGameConfig(engine?.getElectionConfig() ?? null);
-  }
-
   useEffect(() => {
-    if (!engine) {
-      return;
-    }
     return engine.subscribe(setGameConfig);
   }, [engine]);
 

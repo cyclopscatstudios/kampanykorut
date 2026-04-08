@@ -16,7 +16,7 @@ type DropdownProps<T> = {
   renderItem?: (option: Option<T>, isSelected: boolean) => React.ReactNode;
   renderLabel?: (selected?: Option<T>) => React.ReactNode;
   disabled?: boolean;
-  optionDisabled?: boolean
+  optionDisabled?: boolean;
 };
 
 export function Dropdown<T>({
@@ -27,7 +27,7 @@ export function Dropdown<T>({
   renderItem,
   renderLabel,
   disabled,
-  optionDisabled
+  optionDisabled,
 }: DropdownProps<T>) {
   const [open, setOpen] = useState(false);
   const [internalValue, setInternalValue] = useState<T | undefined>(value);
@@ -79,10 +79,12 @@ export function Dropdown<T>({
               <div
                 key={key}
                 onClick={() => handleSelect(option.value)}
-                className={classNames(`px-3 py-2 cursor-pointer hover:bg-gray-100 ${
-                  isSelected ? "bg-gray-200" : ""
-                }`, { "cursor-not-allowed bg-gray-100": optionDisabled })}
-
+                className={classNames(
+                  `px-3 py-2 cursor-pointer hover:bg-gray-100 ${
+                    isSelected ? "bg-gray-200" : ""
+                  }`,
+                  { "cursor-not-allowed bg-gray-100": optionDisabled },
+                )}
               >
                 {renderItem ? renderItem(option, isSelected) : option.label}
               </div>

@@ -4,7 +4,6 @@ import { EffectApplier } from "./EffectApplier";
 import { candidateListData } from "./mocks/mockListData";
 import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
 import { GameConfigEngine } from "../application/GameConfigEngine";
-import { StorageEngine } from "../application/StorageEngine";
 import { EffectType } from "../types/campaignEngine.types";
 import type {
   RawEffect,
@@ -21,15 +20,14 @@ const electionConfig = {
   playableSides: [],
 };
 
-const electionConfigEngine = new GameConfigEngine(
-  new StorageEngine(),
-  electionConfig,
-);
+const electionConfigEngine = container.resolve(GameConfigEngine);
+electionConfigEngine.configure(electionConfig);
 
 describe("ElectionEffectApplier – PartySwing", () => {
   const stateHandler = container.resolve(StateHandler);
   beforeEach(() => {
-    effectApplier = new EffectApplier(electionConfigEngine, []);
+    effectApplier = container.resolve(EffectApplier);
+    effectApplier.configure([]);
   });
 
   it("should call modifyByTarget with correct parameters", () => {

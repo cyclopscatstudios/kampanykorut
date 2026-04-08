@@ -5,13 +5,17 @@ import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer
 import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
 import type { CandidateListData } from "./ResultTransformer/VoteShareTransformer.types";
 import { EffectType, type AppliedEffect } from "../types/campaignEngine.types";
+import { inject } from "tsyringe";
 
 const log = createLogger("ResultModifier");
 
 export class ResultModifier {
   constructor(
+    @inject(UnionSwingTransformer)
     private nationalSwingTransform: UnionSwingTransformer,
+    @inject(VoteShareTransformer)
     private pipelineTransform: VoteShareTransformer,
+    @inject(DistrictVoteTransformer)
     private districtTargetTransform: DistrictVoteTransformer,
   ) {}
 

@@ -5,9 +5,9 @@ import type { DistrictResult } from "../../../components/ui/map.utils";
 import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
-import { StorageEngine } from "../StorageEngine";
 import { GameConfigEngine } from "../GameConfigEngine";
 import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
+import { container } from "tsyringe";
 
 export function useElectionState(gameId: string) {
   const config = gameModeRegistry[gameId];
@@ -20,10 +20,7 @@ export function useElectionState(gameId: string) {
   );
   const { loadSession, saveSession } = useStateEngine();
   const { getState, updateState } = useStateHandler();
-  const gameConfigEngine = new GameConfigEngine(
-    new StorageEngine(),
-    config.electionConfig,
-  );
+  const gameConfigEngine = container.resolve(GameConfigEngine);
 
   useEffect(() => {
     updateState("currentConfig", config);

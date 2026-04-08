@@ -1,14 +1,10 @@
-import { mockGameConfig } from "../../application/hooks/MockGameConfig";
-import { VoterEnvironment } from "../../VoterEnvironment";
+import { container } from "tsyringe";
 import { candidateListData, partyListData } from "../mocks/mockListData";
 import { DistrictVoteTransformer } from "./DistrictVoteTransformer";
 import type { DistrictTarget } from "./VoteShareTransformer.types";
 
 describe("DistrictTargetTransform", () => {
-  const voterEnvironment = new VoterEnvironment(
-    mockGameConfig.voterEnvironmentConfig,
-  );
-  const districtTargetTransform = new DistrictVoteTransformer(voterEnvironment);
+  const districtTargetTransform = container.resolve(DistrictVoteTransformer);
 
   it("should apply district target correctly", () => {
     const districtTarget: DistrictTarget = {

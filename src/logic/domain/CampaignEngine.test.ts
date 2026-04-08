@@ -2,21 +2,12 @@ import { CampaignEngine, type Decision } from "./CampaignEngine";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
 import { ResultModifier } from "./ResultModifier";
-import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
-import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
-import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
-import {
-  VoterEnvironment,
-  type VoterEnvironmentConfig,
-} from "../VoterEnvironment";
 import { candidateListData, partyListData } from "./mocks/mockListData";
-import { GameConfigEngine } from "../application/GameConfigEngine";
-import { StorageEngine } from "../application/StorageEngine";
 import {
   type RawEffect,
-  type ElectionConfig,
   EffectType,
 } from "../types/campaignEngine.types";
+import { container } from "tsyringe";
 
 let campaignEngine: CampaignEngine;
 
@@ -35,28 +26,7 @@ const getDecision = (effects: RawEffect[]): Decision => ({
 
 describe("CampaignEngine", () => {
   beforeAll(() => {
-    const voterEnvironmentConfig: VoterEnvironmentConfig = {
-      maxTurnout: 85,
-      eligibleVoters: 8215304,
-      listData: candidateListData,
-    };
-    const electionConfig: ElectionConfig = {
-      listSeats: 10,
-      thresholdPercent: 5,
-      parties: [],
-      electionAssets: {},
-      playableSides: [],
-    };
-    const electionConfigEngine = new GameConfigEngine(
-      new StorageEngine(),
-      electionConfig,
-    );
-    const voterEnvironment = new VoterEnvironment(voterEnvironmentConfig);
-    const resultModifier = new ResultModifier(
-      new UnionSwingTransformer(),
-      new VoteShareTransformer(voterEnvironmentConfig),
-      new DistrictVoteTransformer(voterEnvironment),
-    );
+    const resultModifier = container.resolve(ResultModifier);
 
     campaignEngine = new CampaignEngine(
       candidateListData,
@@ -64,8 +34,8 @@ describe("CampaignEngine", () => {
       [],
       [],
       resultModifier,
-      new EffectApplier(electionConfigEngine, []),
-      new MandateCalculator(electionConfigEngine),
+      container.resolve(EffectApplier),
+      container.resolve(MandateCalculator)
     );
   });
   it("should apply the party-swing typed decision", () => {

@@ -1,7 +1,10 @@
 import { renderHook, act } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach } from "vitest";
+import { container } from "tsyringe";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
 import { MenuItemId } from "../components/ui/menu/menu.types";
+import { GameConfigEngine } from "../logic/application/GameConfigEngine";
+import { gameModeRegistry } from "../logic/application/gameModeRegistery";
 
 const { mockTransition } = vi.hoisted(() => ({
   mockTransition: vi.fn(),
@@ -27,6 +30,9 @@ describe("useSideSelectorMenu", () => {
     vi.clearAllMocks();
     // @ts-expect-error global override
     global.localStorage = localStorageMock;
+    container
+      .resolve(GameConfigEngine)
+      .configure(gameModeRegistry[GAME_ID].electionConfig);
   });
 
   it("returns sides from election config", () => {
@@ -95,21 +101,6 @@ describe("useSideSelectorMenu", () => {
       id: MenuItemId.Back,
       text: "Back",
     });
-  });
-
-  it("does not register an engine when gameId becomes undefined after being set", () => {
-    const { rerender } = renderHook(
-      ({ gameId }: { gameId: string | undefined }) =>
-        useSideSelectorMenu(gameId, vi.fn()),
-      { initialProps: { gameId: GAME_ID } },
-    );
-
-    const setItemCallCount = localStorageMock.setItem.mock.calls.length;
-
-    rerender({ gameId: "" });
-
-    // No new GameConfigEngine should have been constructed
-    expect(localStorageMock.setItem.mock.calls.length).toBe(setItemCallCount);
   });
 
   it("startGame calls onClick with the gameLoader item", () => {

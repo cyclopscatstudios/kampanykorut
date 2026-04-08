@@ -6,11 +6,15 @@ import type {
   VoteSource,
 } from "./VoteShareTransformer.types";
 import { createLogger } from "../../logger";
+import { inject, singleton } from "tsyringe";
 
 const log = createLogger("DistrictVoteTransformer");
 
+@singleton()
 export class DistrictVoteTransformer {
-  constructor(private voterEnvironment: VoterEnvironment) {}
+  constructor(
+    @inject(VoterEnvironment) private voterEnvironment: VoterEnvironment,
+  ) {}
 
   modifyDistricts(
     districtCandidateData: CandidateListData[],
@@ -112,7 +116,6 @@ export class DistrictVoteTransformer {
       districtCandidateData.megyekod !== target.megyekod ||
       districtCandidateData.oevk !== target.oevk
     ) {
-      console.log({ target }, { districtCandidateData });
       log.warn(
         `provided target ${target}'s district was not found in the district data`,
       );

@@ -1,7 +1,4 @@
-import { useState, useMemo } from "react";
-import { gameModeRegistry } from "../logic/application/gameModeRegistery";
-import { GameConfigEngine } from "../logic/application/GameConfigEngine";
-import { StorageEngine } from "../logic/application/StorageEngine";
+import { useState } from "react";
 import { useGameConfigEngine } from "../logic/application/hooks/useGameConfigEngine";
 import { useAppStateMachine } from "../logic/application/hooks/useAppStateMachine";
 import { MenuItemId, type MenuItem } from "../components/ui/menu/menu.types";
@@ -19,22 +16,11 @@ export function useSideSelectorMenu(
   gameId: string | undefined,
   onClick: (item: MenuItem) => void,
 ) {
-  const configEngine = useMemo(() => {
-    if (!gameId) {
-      return null;
-    }
-    const config = gameModeRegistry[gameId];
-    if (!config) {
-      return null;
-    }
-    return new GameConfigEngine(new StorageEngine(), config.electionConfig);
-  }, [gameId]);
-
   const [selectedParty, setSelectedParty] = useState<Party | undefined>();
   const [selectedCandidate, setSelectedCandidate] = useState<
     string | undefined
   >();
-  const { gameConfig } = useGameConfigEngine(configEngine);
+  const { gameConfig } = useGameConfigEngine();
   const { transition } = useAppStateMachine();
 
   const handlePartyChange = (partyId: string) => {

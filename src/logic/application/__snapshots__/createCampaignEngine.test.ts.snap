@@ -569,9 +569,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
           "parties": [],
           "thresholdPercent": 5,
         },
-        "gameSettings": {
-          "showAdvisorFeedback": true,
-        },
         "listeners": [],
         "storage": StorageEngine {
           "getItem": [Function],
@@ -584,9 +581,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
             "listSeats": 10,
             "parties": [],
             "thresholdPercent": 5,
-          },
-          "gameSettings": {
-            "showAdvisorFeedback": true,
           },
           "listeners": [],
           "storage": StorageEngine {
@@ -672,9 +666,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
           "parties": [],
           "thresholdPercent": 5,
         },
-        "gameSettings": {
-          "showAdvisorFeedback": true,
-        },
         "listeners": [],
         "storage": StorageEngine {
           "getItem": [Function],
@@ -702,7 +693,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       },
       "nationalSwingTransform": UnionSwingTransformer {},
       "pipelineTransform": VoteShareTransformer {
-        "voterEnvironment": VoterEnvironment {
+        "voterEnviroment": VoterEnvironment {
           "maxAvailableVoters": 6983008,
           "voterBases": [
             {
@@ -724,9 +715,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       "listSeats": 10,
       "parties": [],
       "thresholdPercent": 5,
-    },
-    "gameSettings": {
-      "showAdvisorFeedback": true,
     },
     "listeners": [],
     "storage": StorageEngine {

@@ -6,7 +6,7 @@ export const Default: Story = () => {
   return (
     <div className="relative">
       <FullscreenBackground>
-        <MenuSelector setCurrentScreen={() => {}} setActiveGameId={() => {}} />
+        <MenuSelector />
       </FullscreenBackground>
     </div>
   );

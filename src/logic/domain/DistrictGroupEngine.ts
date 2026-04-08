@@ -10,7 +10,7 @@ export class DistrictGroupEngine {
   constructor(customGroups?: DistrictGroup[]) {
     const groups = [...DEFAULT_GROUPS];
     if (customGroups) {
-      log.info("custom groups added to default dsitrict groups");
+      log.debug("custom groups added to default dsitrict groups");
       this.districtGroups = [...groups, ...customGroups];
     }
     this.districtGroups = groups;

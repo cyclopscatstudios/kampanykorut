@@ -15,6 +15,7 @@ export type SessionKey =
 @singleton()
 export class StateEngine {
   constructor(@inject(StorageEngine) private storage: StorageEngine) {
+    log.debug("StateEngine initialized");
     this.loadGameState = this.loadGameState.bind(this);
     this.loadSession = this.loadSession.bind(this);
     this.safeStringify = this.safeStringify.bind(this);
@@ -46,7 +47,7 @@ export class StateEngine {
   private loadGameState() {
     const session = this.storage.getItem("gameSession", "localStorage");
     if (!session) {
-      log.info("no session found, starting new game session");
+      log.debug("no session found, starting new game session");
       return null;
     }
     return this.safeParse(session) as GameState;
