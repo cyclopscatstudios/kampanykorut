@@ -3,10 +3,7 @@ import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
 import { ResultModifier } from "./ResultModifier";
 import { candidateListData, partyListData } from "./mocks/mockListData";
-import {
-  type RawEffect,
-  EffectType,
-} from "../types/campaignEngine.types";
+import { type RawEffect, EffectType } from "../types/campaignEngine.types";
 import { container } from "tsyringe";
 
 let campaignEngine: CampaignEngine;
@@ -35,7 +32,7 @@ describe("CampaignEngine", () => {
       [],
       resultModifier,
       container.resolve(EffectApplier),
-      container.resolve(MandateCalculator)
+      container.resolve(MandateCalculator),
     );
   });
   it("should apply the party-swing typed decision", () => {
