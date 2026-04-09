@@ -3,7 +3,7 @@ import { type ViewBox, useWheelZoom } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
 import { Button } from "../Button";
 import type { DistrictPoligon, DistrictResult } from "../map.utils";
-import type { CandidateListData } from "../../../logic/domain/ResultTransformer/VoteShareTransformer.types";
+import type { CandidateListData } from "@/logic/domain";
 import classNames from "classnames";
 
 const initialFullMapViewBox: ViewBox = {

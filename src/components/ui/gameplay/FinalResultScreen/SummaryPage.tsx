@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { container } from "tsyringe";
-import { StateHandler } from "../../../../logic/application/StateHandler";
-import type { FinalResults } from "../../../../logic/domain/CampaignEngine";
+import { StateHandler } from "@/logic/application";
+import type { FinalResults } from "@/logic/domain";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
 import { Heading } from "../../Heading";

@@ -2,9 +2,8 @@ import type { DistrictPoligon, DistrictResult } from "../map.utils";
 import type { CurrentView } from "./MainGameScreen";
 import { MapWrapper } from "./MapWrapper";
 import { BottomBar } from "./BottomBar";
-import { calculateWinner } from "../../../logic/domain/ResultModifier.utils";
 import { SwingFactor } from "../../../types/utils";
-import type { CandidateListData } from "../../../logic/domain/ResultTransformer/VoteShareTransformer.types";
+import { calculateWinner, type CandidateListData } from "@/logic/domain";
 
 interface MapCreatorProps {
   districts: DistrictPoligon[];

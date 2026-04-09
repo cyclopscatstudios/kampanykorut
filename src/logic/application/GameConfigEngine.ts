@@ -14,9 +14,10 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
   constructor(@inject(StorageEngine) private storage: StorageEngine) {
     log.debug("GameConfigEngine initialized");
     super();
+    this.getElectionConfig = this.getElectionConfig.bind(this);
   }
 
-  configure(electionConfig: ElectionConfig): void {
+  configure(electionConfig: ElectionConfig | null): void {
     log.debug("Configuring game with election config", { electionConfig });
     this.electionConfig = electionConfig;
   }

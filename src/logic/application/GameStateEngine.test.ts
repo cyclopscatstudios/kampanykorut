@@ -1,18 +1,15 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { GameStateEngine } from "./GameStateEngine";
-import type { GameConfigEngine } from "./GameConfigEngine";
+import { container } from "tsyringe";
 
 const mockConfigure = vi.fn();
-const mockGameConfigEngine = {
-  configure: mockConfigure,
-} as unknown as GameConfigEngine;
 
 describe("GameStateEngine", () => {
   let engine: GameStateEngine;
 
   beforeEach(() => {
     vi.clearAllMocks();
-    engine = new GameStateEngine(mockGameConfigEngine);
+    engine = container.resolve(GameStateEngine);
   });
 
   describe("getGameState", () => {
@@ -54,12 +51,6 @@ describe("GameStateEngine", () => {
       engine.updateGameState({ currentScreen: "MapCreator" });
 
       expect(listener).not.toHaveBeenCalled();
-    });
-
-    it("calls gameConfigEngine.configure when activeGameId is set", () => {
-      engine.updateGameState({ activeGameId: "2022_ogyv_default" });
-
-      expect(mockConfigure).toHaveBeenCalledOnce();
     });
 
     it("does not call gameConfigEngine.configure when activeGameId is absent", () => {

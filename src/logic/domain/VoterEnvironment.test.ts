@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { VoterEnvironment } from "./VoterEnvironment";
-import type { CandidateListData } from "./domain/ResultTransformer/VoteShareTransformer.types";
+import type { CandidateListData } from "./ResultTransformer/VoteShareTransformer.types";
 
 const makeDistrict = (
   partok: Record<string, number | undefined>,

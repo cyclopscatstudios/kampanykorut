@@ -10,7 +10,7 @@ import type {
   PartyListData,
   RawQuestion,
 } from "../domain";
-import type { VoterEnvironmentConfig } from "../VoterEnvironment";
+import type { VoterEnvironmentConfig } from "../domain/VoterEnvironment";
 
 export interface DistrictGroup {
   id: string;
@@ -103,11 +103,16 @@ export interface ElectionAsset {
   party_logo: string;
 }
 
+export type PlayerSide = {
+  partyId: string;
+  candidateId?: string;
+};
+
 export interface ElectionConfig {
   listSeats: number;
   thresholdPercent: number;
   districtBoost?: boolean;
-  playerSide?: string;
+  playerSide?: PlayerSide;
   baseResults?: Record<string, number>;
   parties: RawParty[];
   playableSides: PlayableSide[];

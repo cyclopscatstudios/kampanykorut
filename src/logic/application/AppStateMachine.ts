@@ -19,7 +19,7 @@ export type MenuItemType =
   | "gameLoader"
   | "sideSelector"
   | "back";
-export type ScreenType = "menuScreen" | "gameScreen";
+type ScreenType = "menuScreen" | "gameScreen";
 export interface MenuState {
   screenType: ScreenType;
   menuType?: MenuType;
@@ -65,6 +65,7 @@ export class AppStateMachine extends Emitter<MenuState> {
 
     if (to.id === "sideSelector") {
       this.gameStateEngine.updateGameState({ activeGameId: to.gameId });
+      log.info(`Transitioning to side selector with game id of ${to.gameId}`);
       newState = {
         ...newState,
         ...to,
@@ -73,6 +74,7 @@ export class AppStateMachine extends Emitter<MenuState> {
 
     if (to.id === "gameLoader") {
       this.gameStateEngine.updateGameState({ currentScreen: "MapCreator" });
+      log.info(`Transitioning to map creator with game id of ${to.gameId}`);
       newState = {
         ...newState,
         ...to,

@@ -13,7 +13,6 @@ import { inject, injectable } from "tsyringe";
 import type { DistrictResult } from "../../components/ui/map.utils";
 import { EffectType } from "../types/campaignEngine.types";
 import type {
-  DistrictGroup,
   RawEffect,
   ConditionalRawEffect,
   AppliedEffect,
@@ -28,16 +27,11 @@ export class EffectApplier {
   private DEFAULT_MOTIVATION_DELTA = 99;
 
   constructor(
-    @inject(GameConfigEngine) private electionConfigEngine: GameConfigEngine,
+    @inject(GameConfigEngine) private gameConfigEngine: GameConfigEngine,
     @inject(MandateCalculator) private mandateCalculator: MandateCalculator,
     @inject(StateHandler) private stateHandler: StateHandler,
-  ) {}
-
-  configure(customGroups?: DistrictGroup[]) {
-    log.debug("Configuring EffectApplier with custom district groups", {
-      customGroups,
-    });
-    this.districtGroupEngine = new DistrictGroupEngine(customGroups);
+  ) {
+    log.debug("EffectApplier initialized");
   }
 
   getAppliedEffects(
@@ -80,7 +74,7 @@ export class EffectApplier {
     });
 
     const isDistrictBoosterAllowed =
-      this.electionConfigEngine.getElectionConfig().districtBoost;
+      this.gameConfigEngine.getElectionConfig().districtBoost;
 
     const canApplyeBoosterEffect = turn % 2 === 0;
 
@@ -100,7 +94,7 @@ export class EffectApplier {
   }
 
   private getBoosterEffect(district: DistrictResult): AppliedEffect | null {
-    const palyerSide = this.electionConfigEngine.getElectionConfig().playerSide;
+    const palyerSide = this.gameConfigEngine.getElectionConfig().playerSide;
     if (!palyerSide) {
       return null;
     }

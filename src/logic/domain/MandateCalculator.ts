@@ -23,7 +23,9 @@ const log = createLogger("MandateCalculator");
 export class MandateCalculator {
   constructor(
     @inject(GameConfigEngine) private configEngine: GameConfigEngine,
-  ) {}
+  ) {
+    log.debug("MandateCalculator initialized");
+  }
 
   calculate(
     districtCandidateData?: CandidateListData[],

@@ -5,12 +5,18 @@ import type { DistrictGroup } from "../types/campaignEngine.types";
 const log = createLogger("DistrictGroupEngine");
 
 export class DistrictGroupEngine {
-  private districtGroups: DistrictGroup[];
+  private districtGroups: DistrictGroup[] = [];
 
-  constructor(customGroups?: DistrictGroup[]) {
+  constructor() {
+    log.debug("DistrictGroupEngine initialized");
+  }
+
+  configure(customGroups?: DistrictGroup[]) {
     const groups = [...DEFAULT_GROUPS];
     if (customGroups) {
-      log.debug("custom groups added to default dsitrict groups");
+      log.debug("Configuring DistrictGroupEngine with custom district groups", {
+        customGroups,
+      });
       this.districtGroups = [...groups, ...customGroups];
     }
     this.districtGroups = groups;

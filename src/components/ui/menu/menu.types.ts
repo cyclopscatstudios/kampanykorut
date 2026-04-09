@@ -1,4 +1,4 @@
-import type { MenuItemType } from "../../../logic/application/AppStateMachine";
+import type { MenuItemType } from "@/logic/application";
 import type { IconSource } from "../Icon";
 
 export enum MenuItemId {

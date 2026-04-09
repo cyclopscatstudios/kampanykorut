@@ -2,8 +2,7 @@ import { MainMenu } from "./MainMenu";
 import { NewGameMenu } from "./NewGameMenu";
 import type { MenuItem } from "./menu.types";
 import { GameLoaderMenu } from "./GameLoaderMenu";
-import { useAppStateMachine } from "../../../logic/application/hooks/useAppStateMachine";
-import type { MenuType } from "../../../logic/application/AppStateMachine";
+import { useAppStateMachine, type MenuType } from "@/logic/application";
 import { SideSelectorMenu } from "./SideSelectorMenu";
 
 enum NewGameMenuItems {

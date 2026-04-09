@@ -1,4 +1,4 @@
-import { VoterEnvironment } from "../../VoterEnvironment";
+import { VoterEnvironment } from "../VoterEnvironment";
 import type {
   Shares,
   PartyListData,

@@ -1,8 +1,10 @@
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
+import { defaultGroups } from "./DefaultGroups";
 
 describe("DistrictGroupEngine", () => {
   it("should return the correct district group for given group ids", () => {
     const engine = new DistrictGroupEngine();
+    engine.configure(defaultGroups);
 
     const result = engine.getDistrictTargetByGroupIds(["billego_korzetek"]);
     expect(result).toEqual([

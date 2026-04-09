@@ -27,7 +27,6 @@ describe("ElectionEffectApplier – PartySwing", () => {
   const stateHandler = container.resolve(StateHandler);
   beforeEach(() => {
     effectApplier = container.resolve(EffectApplier);
-    effectApplier.configure([]);
   });
 
   it("should call modifyByTarget with correct parameters", () => {

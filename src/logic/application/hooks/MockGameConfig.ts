@@ -8,7 +8,7 @@ import type {
   Asset,
   GameModeConfig,
 } from "../../types/campaignEngine.types";
-import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
+import type { VoterEnvironmentConfig } from "../../domain/VoterEnvironment";
 
 const voterEnvironmentConfig: VoterEnvironmentConfig = {
   maxTurnout: 85,

@@ -1,6 +1,6 @@
 import { singleton } from "tsyringe";
-import type { CandidateListData } from "./domain/ResultTransformer/VoteShareTransformer.types";
-import { createLogger } from "./logger";
+import type { CandidateListData } from "./ResultTransformer/VoteShareTransformer.types";
+import { createLogger } from "../logger";
 
 export interface VoterEnvironmentConfig {
   eligibleVoters: number;
@@ -25,7 +25,11 @@ export class VoterEnvironment {
     log.debug("VoterEnvironment initialized");
   }
 
-  configure(config: VoterEnvironmentConfig) {
+  configure(config: VoterEnvironmentConfig | null) {
+    if (!config) {
+      log.debug("Clearing VoterEnvironment config");
+      return;
+    }
     log.debug("Configuring VoterEnvironment with config", { config });
     this.voters = this.getVoters(config.listData);
     this.maxAvailableVoters =

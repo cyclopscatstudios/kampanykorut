@@ -4,10 +4,11 @@ import {
   MandateCalculator,
   ResultModifier,
 } from "@/logic/domain";
-import { VoterEnvironment } from "../VoterEnvironment";
+import { VoterEnvironment } from "../domain/VoterEnvironment";
 import { GameConfigEngine } from "./GameConfigEngine";
 import type { GameModeConfig } from "../types/campaignEngine.types";
 import { container } from "tsyringe";
+import { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
 
 export function createCampaignEngine(config: GameModeConfig) {
   const configEngine = container.resolve(GameConfigEngine);
@@ -16,8 +17,8 @@ export function createCampaignEngine(config: GameModeConfig) {
   const voterEnvironment = container.resolve(VoterEnvironment);
   voterEnvironment.configure(config.voterEnvironmentConfig);
 
-  const effectApplier = container.resolve(EffectApplier);
-  effectApplier.configure(config.customGroups);
+  const districtGroupEngine = container.resolve(DistrictGroupEngine);
+  districtGroupEngine.configure(config.customGroups);
 
   const campaignEngine = new CampaignEngine(
     config.candidateListData,
@@ -25,7 +26,7 @@ export function createCampaignEngine(config: GameModeConfig) {
     config.questions,
     config.answerEffect,
     container.resolve(ResultModifier),
-    effectApplier,
+    container.resolve(EffectApplier),
     container.resolve(MandateCalculator),
     config.advisorFeedback,
   );

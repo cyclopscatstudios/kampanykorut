@@ -4,6 +4,9 @@ import type { GameConfigEngine } from "./GameConfigEngine";
 import { gameModeRegistry } from "./gameModeRegistery";
 import type { MenuType } from "./AppStateMachine";
 import { createLogger } from "../logger";
+import type { VoterEnvironment } from "../domain";
+import type { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
+import type { StorageEngine } from "./StorageEngine";
 
 export type GameState = {
   currentScreen: ScreenType;
@@ -23,7 +26,12 @@ export class GameStateEngine extends Emitter<GameState> {
     activeGameId: undefined,
   };
 
-  constructor(private gameConfigEngine: GameConfigEngine) {
+  constructor(
+    private gameConfigEngine: GameConfigEngine,
+    private voterEnvironment: VoterEnvironment,
+    private districtGroupEngine: DistrictGroupEngine,
+    private storage: StorageEngine,
+  ) {
     log.debug("GameStateEngine initialized");
     super();
     this.getGameState = this.getGameState.bind(this);
@@ -34,13 +42,28 @@ export class GameStateEngine extends Emitter<GameState> {
     this.gameState = { ...this.gameState, ...gameState };
     if (gameState.activeGameId) {
       this.gameConfigEngine.configure(
-        gameModeRegistry[gameState.activeGameId].electionConfig,
+        this.getConfigByGameId(gameState.activeGameId),
       );
     }
+    this.storage.setItem(
+      "gameConfig",
+      JSON.stringify(this.gameState),
+      "localStorage",
+    );
     this.notify(this.gameState);
   }
 
   getGameState(): GameState {
     return this.gameState;
+  }
+
+  clearGameState() {
+    this.gameConfigEngine.configure(null);
+    this.voterEnvironment.configure(null);
+    this.districtGroupEngine.configure();
+  }
+
+  private getConfigByGameId(gameId: string) {
+    return gameModeRegistry[gameId].electionConfig;
   }
 }

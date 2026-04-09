@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
-import { useElectionState } from "../../../logic/application/hooks/useElectionState";
+import { useElectionState } from "@/logic/application";
 import { Button } from "../Button";
 import { FinalResultScreen } from "./FinalResultScreen/EndResultScreen";
 import type { DistrictResult } from "../map.utils";
