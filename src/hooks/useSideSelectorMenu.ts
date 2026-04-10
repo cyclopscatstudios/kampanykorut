@@ -48,7 +48,7 @@ export function useSideSelectorMenu(
       gameId,
       onTransition: "gameLoader",
       id: MenuItemId.GameLoader,
-      text: "2022 OGYV",
+      text: "Start Game",
     });
   };
 

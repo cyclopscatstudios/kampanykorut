@@ -80,7 +80,7 @@ export function SideSelectorMenu({ onClick, gameId }: SideSelectorMenuProps) {
       <Button
         className="mt-auto"
         disabled={!selectedCandidate}
-        onClick={startGame}
+        onClick={() => startGame()}
       >
         <Button.Text>Start Game</Button.Text>
       </Button>

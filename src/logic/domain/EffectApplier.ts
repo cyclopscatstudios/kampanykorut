@@ -103,7 +103,7 @@ export class EffectApplier {
       oevk: district.oevk,
       amount: 500,
       from: { type: "bizonytalan" },
-      targetParty: palyerSide,
+      targetParty: palyerSide.partyId,
     };
     return { type: EffectType.DistrictVoteTransfer, target: [boosterTarget] };
   }

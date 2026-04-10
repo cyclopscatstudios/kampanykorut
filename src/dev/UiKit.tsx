@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ButtonDev } from "./Button.dev";
 import { BottomBarDev } from "./BottomBarDev";
-import { FinalResultDev } from "./FinalResult.dev";
 import { AdvisorModalDev } from "./AdvisorModal.dev";
 
 export function UiKit() {
@@ -24,7 +23,6 @@ export function UiKit() {
       <div className="w-[1000px]">
         {currentUiKit === "button" && <ButtonDev />}
         {currentUiKit === "bottom-bar" && <BottomBarDev />}
-        {currentUiKit === "final-result" && <FinalResultDev />}
         {currentUiKit === "advisor-modal" && <AdvisorModalDev />}
       </div>
     </div>

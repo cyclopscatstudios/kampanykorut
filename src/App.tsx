@@ -1,36 +1,30 @@
-import "./App.css";
-import FullscreenBackground from "./ui/Background";
-import { MenuSelector } from "./components/ui/menu/MenuSelector";
-import { useEffect, useState } from "react";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
-import { container } from "tsyringe";
-import {
-  GameStateEngine,
-  type GameState,
-} from "./logic/application/GameStateEngine";
+import { MenuSelector } from "./components/ui/menu/MenuSelector";
+import type { GameState } from "./logic/application";
+import FullscreenBackground from "./ui/Background";
 
-export type ScreenType = "MenuSelector" | "MapCreator";
+type AppProps = {
+  gameState: GameState;
+};
 
-const gameStateEngine = container.resolve(GameStateEngine);
+export function App({ gameState }: AppProps) {
+  console.log({ gameState });
+  switch (gameState.currentScreen) {
+    case "MenuSelector":
+      return (
+        <FullscreenBackground>
+          <MenuSelector />
+        </FullscreenBackground>
+      );
 
-function App() {
-  const [gameState, setGameState] = useState<GameState>(() =>
-    gameStateEngine.getGameState(),
-  );
+    case "MapCreator":
+      return (
+        <FullscreenBackground>
+          <MainGameScreen gameId={gameState.activeGameId!} />
+        </FullscreenBackground>
+      );
 
-  useEffect(() => {
-    return gameStateEngine.subscribe(setGameState);
-  }, []);
-
-  return (
-    <FullscreenBackground>
-      {gameState.currentScreen === "MenuSelector" ? (
-        <MenuSelector />
-      ) : (
-        <MainGameScreen gameId={gameState.activeGameId ?? ""} />
-      )}
-    </FullscreenBackground>
-  );
+    default:
+      return null;
+  }
 }
-
-export default App;

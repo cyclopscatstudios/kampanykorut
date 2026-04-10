@@ -165,10 +165,11 @@ function ButtonIcon({ name, size }: IconProps) {
   return <Icon name={name} size={size} color={ctx?.color ?? iconColor} />;
 }
 
-function getIconColor(variant: ButtonVariant) {
+function getIconColor(variant: ButtonVariant): Colors {
   if (variant === "secondary" || variant === "tertiary") {
     return "darkBlue";
   }
+  return "blue";
 }
 
 Button.Text = ButtonText;
