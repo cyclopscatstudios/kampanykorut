@@ -4,6 +4,8 @@ import { AppStateRegistry, gameMenuRegistery } from "./AppStateRegisery";
 import { Emitter } from "./Emitter";
 import { StateEngine } from "./StateEngine";
 import { StorageEngine } from "./StorageEngine";
+import type { GameStateEngine } from "./GameStateEngine";
+import { createLogger } from "../logger";
 
 export type MenuType = (typeof gameMenuRegistery)[number];
 export type MenuItemType =
@@ -17,19 +19,25 @@ export type MenuItemType =
   | "gameLoader"
   | "sideSelector"
   | "back";
-export type ScreenType = "menuScreen" | "gameScreen";
+type ScreenType = "menuScreen" | "gameScreen";
 export interface MenuState {
   screenType: ScreenType;
   menuType?: MenuType;
   gameId?: string;
 }
 
+const log = createLogger("AppStateMachine");
+
 @singleton()
 export class AppStateMachine extends Emitter<MenuState> {
   private currentState: MenuState;
   private menuHistory: MenuType[];
 
-  constructor(@inject(StateEngine) private stateEngine: StateEngine) {
+  constructor(
+    @inject(StateEngine) private stateEngine: StateEngine,
+    private gameStateEngine: GameStateEngine,
+  ) {
+    log.debug("AppStateMachine initialized");
     super();
     this.menuHistory = ["mainMenu"];
     this.currentState = {
@@ -45,7 +53,6 @@ export class AppStateMachine extends Emitter<MenuState> {
   }
 
   transition = (to: MenuItem) => {
-    console.log({ to });
     if (to.id === "back") {
       this.goBack();
     }
@@ -57,6 +64,8 @@ export class AppStateMachine extends Emitter<MenuState> {
     }
 
     if (to.id === "sideSelector") {
+      this.gameStateEngine.updateGameState({ activeGameId: to.gameId });
+      log.info(`Transitioning to side selector with game id of ${to.gameId}`);
       newState = {
         ...newState,
         ...to,
@@ -64,6 +73,8 @@ export class AppStateMachine extends Emitter<MenuState> {
     }
 
     if (to.id === "gameLoader") {
+      this.gameStateEngine.updateGameState({ currentScreen: "MapCreator" });
+      log.info(`Transitioning to map creator with game id of ${to.gameId}`);
       newState = {
         ...newState,
         ...to,
@@ -94,8 +105,6 @@ export class AppStateMachine extends Emitter<MenuState> {
       };
     }
     const state = AppStateRegistry[type];
-    console.log({ type });
-    console.log({ state });
     return {
       ...state,
       menuType: state.onTransition,

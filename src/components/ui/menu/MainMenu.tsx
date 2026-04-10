@@ -33,9 +33,24 @@ export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
         <MenuList
           listItems={[
             { id: "newGame", text: newGame, icon: "play-circle-fill" },
-            { id: "loadGame", text: loadGame, icon: "clipboard-data-fill" },
-            { id: "settings", text: settings, icon: "gear-fill" },
-            { id: "about", text: about, icon: "info-circle-fill" },
+            {
+              id: "loadGame",
+              text: loadGame,
+              icon: "clipboard-data-fill",
+              disabled: true,
+            },
+            {
+              id: "settings",
+              text: settings,
+              icon: "gear-fill",
+              disabled: true,
+            },
+            {
+              id: "about",
+              text: about,
+              icon: "info-circle-fill",
+              disabled: true,
+            },
           ]}
           onClick={onClick}
         />

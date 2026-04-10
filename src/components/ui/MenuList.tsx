@@ -38,12 +38,16 @@ export function MenuList({
               size="large"
               block
               onClick={() => handleOnClick(item)}
+              disabled={item.disabled}
             >
               <Icon
                 name={item.icon as BootstrapIcon}
                 source={item.iconSource}
               />
-              <Text weight="medium" color="lightBlue">
+              <Text
+                weight="medium"
+                color={item.disabled ? "gray" : "lightBlue"}
+              >
                 {item.text}
               </Text>
             </Button>

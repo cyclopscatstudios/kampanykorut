@@ -1,4 +1,4 @@
-type LogLevel = "info" | "warn" | "error";
+type LogLevel = "debug" | "info" | "warn" | "error";
 
 interface LogPayload {
   message: string;
@@ -11,9 +11,13 @@ const isProd = import.meta.env.PROD;
 function log(level: LogLevel, payload: LogPayload) {
   const { message, data, context } = payload;
 
+  if (level === "debug" && isProd) return;
+
   const prefix = `[${level.toUpperCase()}]`;
 
-  if (level === "info") {
+  if (level === "debug") {
+    console.debug(prefix, message, data ?? "", context ?? "");
+  } else if (level === "info") {
     console.info(prefix, message, data ?? "", context ?? "");
   } else if (level === "warn") {
     console.warn(prefix, message, data ?? "", context ?? "");
@@ -22,11 +26,15 @@ function log(level: LogLevel, payload: LogPayload) {
   }
 
   if (isProd) {
-    // todo
+    // TODO: send to remote logging (Sentry, Datadog, stb.)
   }
 }
 
 const logger = {
+  debug(message: string, data?: unknown, context?: Record<string, unknown>) {
+    log("debug", { message, data, context });
+  },
+
   info(message: string, data?: unknown, context?: Record<string, unknown>) {
     log("info", { message, data, context });
   },
@@ -42,10 +50,15 @@ const logger = {
 
 export function createLogger(scope: string) {
   return {
+    debug: (msg: string, data?: unknown) =>
+      logger.debug(`[${scope}] ${msg}`, data),
+
     info: (msg: string, data?: unknown) =>
       logger.info(`[${scope}] ${msg}`, data),
+
     warn: (msg: string, data?: unknown) =>
       logger.warn(`[${scope}] ${msg}`, data),
+
     error: (msg: string, data?: unknown) =>
       logger.error(`[${scope}] ${msg}`, data),
   };

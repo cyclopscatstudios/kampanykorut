@@ -2,7 +2,6 @@
   "listSeats": 93,
   "thresholdPercent": 5,
   "districtBoost": true,
-  "playerSide": "ellenzeki_osszefogas",
   "baseResults": {
     "ellenzeki_osszefogas": 4,
     "fidesz": -5

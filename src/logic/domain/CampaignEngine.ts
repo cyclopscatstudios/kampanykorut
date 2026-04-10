@@ -1,9 +1,4 @@
 import type { EffectApplier } from "./EffectApplier";
-import {
-  type ConditionalRawEffect,
-  EffectType,
-  type RawEffect,
-} from "./EffectApplier.types";
 import type { MandateCalculator } from "./MandateCalculator";
 import type { ResultModifier } from "./ResultModifier";
 import type {
@@ -12,16 +7,21 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "./MandateCalculator.types";
 import { createLogger } from "../logger";
-import type { GameConfigEngine } from "../application/GameConfigEngine";
 import type { DistrictResult } from "../../components/ui/map.utils";
-import { StateHandler } from "../application/StateHandler";
-import type {
-  AdvisorFeedback,
-  Answer,
-  AnswerFeedback,
-  ConditionalAnswer,
-  RawAnsweEffectProps,
-} from "../application/types";
+import {
+  type Answer,
+  type AnswerFeedback,
+  type RawAnsweEffectProps,
+  type AdvisorFeedback,
+  type ConditionalAnswer,
+  EffectType,
+  type ConditionalRawEffect,
+  type RawEffect,
+} from "../types/campaignEngine.types";
+
+export interface GameSettings {
+  showAdvisorFeedback: boolean;
+}
 
 export interface RawQuestion {
   id: string;
@@ -84,19 +84,12 @@ export class CampaignEngine {
     private resultModifier: ResultModifier,
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
-    private electionConfigEngine: GameConfigEngine,
-    private stateHandler: StateHandler,
     private readonly advisorFeedback?: AdvisorFeedback[],
-  ) {
-    this.electionConfigEngine.getElectionConfig.bind(this);
-  }
+  ) {}
 
-  createInitialState(): GameState {
+  createInitialState(baseResults?: Record<string, number>): GameState {
     let candidateListData = this.initialCandidateData;
     let partyListData = this.initialPartyData;
-
-    const electionConfig = this.electionConfigEngine.getElectionConfig();
-    const baseResults = electionConfig.baseResults;
 
     if (baseResults) {
       const baseApplied = this.applyBaseResults(
@@ -124,7 +117,12 @@ export class CampaignEngine {
     };
   }
 
-  processTurn(state: GameState, decision: Decision): GameState {
+  processTurn(
+    state: GameState,
+    decision: Decision,
+    history: Array<{ questionId: string; answerId: string }> = [],
+    gameSettings: GameSettings,
+  ): GameState {
     if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
       return state;
@@ -157,6 +155,8 @@ export class CampaignEngine {
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
         state.currentQuestion,
+        history,
+        gameSettings,
       ),
       results: calculated,
       isEnded: nextTurn >= this.questions.length,
@@ -183,9 +183,14 @@ export class CampaignEngine {
     } as FinalResults;
   }
 
-  private getAdivsorFeedback(answerId: string, question?: RawQuestion) {
+  private getAdivsorFeedback(
+    answerId: string,
+    question?: RawQuestion,
+    history: Array<{ questionId: string; answerId: string }> = [],
+    gameSettings?: GameSettings,
+  ) {
     const shouldShowAdvisorFeedback =
-      this.electionConfigEngine.getGameSettings().showAdvisorFeedback;
+      gameSettings?.showAdvisorFeedback ?? false;
     if (!shouldShowAdvisorFeedback) {
       return undefined;
     }
@@ -195,6 +200,7 @@ export class CampaignEngine {
 
     const conditionalFeedback = this.resolveConditionalFeedback(
       advisorFeedback?.conditionalAnswers,
+      history,
     );
 
     if (conditionalFeedback) {
@@ -204,11 +210,13 @@ export class CampaignEngine {
     return advisorFeedback?.answers.find((a) => a.answerId === answerId);
   }
 
-  private resolveConditionalFeedback(conditionalAnswers?: ConditionalAnswer[]) {
+  private resolveConditionalFeedback(
+    conditionalAnswers?: ConditionalAnswer[],
+    history: Array<{ questionId: string; answerId: string }> = [],
+  ) {
     if (!conditionalAnswers) {
       return;
     }
-    const history = this.stateHandler.get("history");
 
     if (!history?.length) {
       log.error("history is empty, but conditional feedback are present");

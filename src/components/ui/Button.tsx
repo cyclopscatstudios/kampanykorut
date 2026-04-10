@@ -25,7 +25,7 @@ function getButtonColors(
   disabled?: boolean,
 ) {
   if (disabled) {
-    return "bg-gray-100 opacity-10";
+    return "bg-gray-100/5";
   }
   if (variant === "secondary") {
     return "bg-blue-50 hover:bg-blue-100 active:bg-blue-200";
@@ -124,7 +124,7 @@ function getButtonTextColor(
   disabled?: boolean,
 ) {
   if (disabled) {
-    return "text-gray-800";
+    return "text-gray-400";
   }
   if (variant === "secondary" || variant === "tertiary") {
     return "text-blue-900";
@@ -139,12 +139,18 @@ function getButtonTextColor(
   }
 }
 
-function ButtonText({ children }: { children: React.ReactNode }) {
+function ButtonText({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const ctx = React.useContext(ButtonContext);
   const textColor = getButtonTextColor(ctx?.variant, ctx?.color, ctx?.disabled);
   return (
     <span
-      className={classNames("font-bold", textColor, {
+      className={classNames("font-bold", textColor, className, {
         underline: ctx?.variant === "tertiary",
       })}
     >
@@ -159,10 +165,11 @@ function ButtonIcon({ name, size }: IconProps) {
   return <Icon name={name} size={size} color={ctx?.color ?? iconColor} />;
 }
 
-function getIconColor(variant: ButtonVariant) {
+function getIconColor(variant: ButtonVariant): Colors {
   if (variant === "secondary" || variant === "tertiary") {
     return "darkBlue";
   }
+  return "blue";
 }
 
 Button.Text = ButtonText;

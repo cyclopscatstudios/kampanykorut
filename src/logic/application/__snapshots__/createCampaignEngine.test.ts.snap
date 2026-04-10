@@ -1,478 +1,111 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`createCampaignEngine > should create a new campaign engine instance 1`] = `
-CampaignEngine {
-  "advisorFeedback": undefined,
-  "answers": [],
-  "effectApplier": EffectApplier {
-    "DEFAULT_MOTIVATION_DELTA": 99,
-    "districtGroupEngine": DistrictGroupEngine {
-      "districtGroups": [
-        {
-          "districts": [
-            {
-              "megyekod": 20,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 20,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 20,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 18,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 18,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 18,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 8,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 8,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 8,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 8,
-              "oevk": 4,
-            },
-            {
-              "megyekod": 8,
-              "oevk": 5,
-            },
-          ],
-          "id": "nyugati_megyek",
-          "label": "Nyugati megyék",
+{
+  "campaignEngine": CampaignEngine {
+    "advisorFeedback": undefined,
+    "answers": [],
+    "effectApplier": EffectApplier {
+      "DEFAULT_MOTIVATION_DELTA": 99,
+      "districtGroupEngine": undefined,
+      "gameConfigEngine": GameConfigEngine {
+        "electionConfig": {
+          "listSeats": 10,
+          "parties": [],
+          "thresholdPercent": 5,
         },
-        {
-          "districts": [
-            {
-              "megyekod": 9,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 9,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 9,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 9,
-              "oevk": 4,
-            },
-            {
-              "megyekod": 9,
-              "oevk": 5,
-            },
-            {
-              "megyekod": 9,
-              "oevk": 6,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 4,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 5,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 6,
-            },
-            {
-              "megyekod": 4,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 4,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 4,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 4,
-              "oevk": 4,
-            },
-          ],
-          "id": "keleti_megyek",
-          "label": "Keleti megyék",
+        "getElectionConfig": [Function],
+        "listeners": [],
+        "storage": StorageEngine {
+          "getItem": [Function],
+          "getLocalStorageItem": [Function],
         },
-        {
-          "districts": [
-            {
-              "megyekod": 14,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 4,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 6,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 10,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 11,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 12,
-            },
-            {
-              "megyekod": 2,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 2,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 6,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 5,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 5,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 10,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 10,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 18,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 18,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 12,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 7,
-              "oevk": 1,
-            },
-          ],
-          "id": "billego_korzetek",
-          "label": "Billegő körzetek",
-        },
-        {
-          "districts": [
-            {
-              "megyekod": 1,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 4,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 5,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 6,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 7,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 8,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 9,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 10,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 11,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 12,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 13,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 14,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 15,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 16,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 17,
-            },
-            {
-              "megyekod": 1,
-              "oevk": 18,
-            },
-            {
-              "megyekod": 6,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 2,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 8,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 9,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 5,
-              "oevk": 1,
-            },
-          ],
-          "id": "nagyvarosok",
-          "label": "Nagyvárosok",
-        },
-        {
-          "districts": [
-            {
-              "megyekod": 7,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 12,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 9,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 9,
-              "oevk": 4,
-            },
-            {
-              "megyekod": 9,
-              "oevk": 5,
-            },
-            {
-              "megyekod": 9,
-              "oevk": 6,
-            },
-            {
-              "megyekod": 5,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 5,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 5,
-              "oevk": 4,
-            },
-            {
-              "megyekod": 5,
-              "oevk": 6,
-            },
-            {
-              "megyekod": 5,
-              "oevk": 7,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 4,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 5,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 6,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 7,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 8,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 9,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 10,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 11,
-            },
-            {
-              "megyekod": 14,
-              "oevk": 12,
-            },
-          ],
-          "id": "vegyes_oevk",
-          "label": "Vegyes jellegű OEVK-k",
-        },
-        {
-          "districts": [
-            {
-              "megyekod": 13,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 13,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 17,
-              "oevk": 1,
-            },
-            {
-              "megyekod": 17,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 17,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 15,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 15,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 15,
-              "oevk": 4,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 2,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 3,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 4,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 5,
-            },
-            {
-              "megyekod": 16,
-              "oevk": 6,
-            },
-          ],
-          "id": "kis_telepulesek",
-          "label": "Kis települések",
-        },
-      ],
-    },
-    "electionConfigEngine": GameConfigEngine {
-      "electionConfig": {
-        "listSeats": 10,
-        "parties": [],
-        "thresholdPercent": 5,
       },
-      "gameSettings": {
-        "showAdvisorFeedback": true,
+      "mandateCalculator": MandateCalculator {
+        "configEngine": GameConfigEngine {
+          "electionConfig": {
+            "listSeats": 10,
+            "parties": [],
+            "thresholdPercent": 5,
+          },
+          "getElectionConfig": [Function],
+          "listeners": [],
+          "storage": StorageEngine {
+            "getItem": [Function],
+            "getLocalStorageItem": [Function],
+          },
+        },
       },
-      "listeners": [],
-      "storage": StorageEngine {
-        "getItem": [Function],
-        "getLocalStorageItem": [Function],
+      "stateHandler": StateHandler {
+        "listeners": [],
+        "state": {
+          "currentConfig": undefined,
+          "gameState": {
+            "candidateListData": [],
+            "isEnded": false,
+            "partyListData": [],
+            "turn": 0,
+          },
+          "history": [],
+        },
       },
     },
+    "initialCandidateData": [
+      {
+        "jeloltek": {
+          "ellenzek": [
+            "Candidate B",
+          ],
+          "fidesz": [
+            "Candidate A",
+          ],
+        },
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 11000,
+          "fidesz": 12000,
+          "mkkp": undefined,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 9000,
+          "fidesz": 8000,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+    ],
+    "initialPartyData": [
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 40000,
+          "fidesz": 50000,
+          "mkkp": 3000,
+        },
+        "telepules": "",
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 35000,
+          "fidesz": 30000,
+        },
+        "telepules": "",
+      },
+    ],
     "mandateCalculator": MandateCalculator {
       "configEngine": GameConfigEngine {
         "electionConfig": {
@@ -480,9 +113,7 @@ CampaignEngine {
           "parties": [],
           "thresholdPercent": 5,
         },
-        "gameSettings": {
-          "showAdvisorFeedback": true,
-        },
+        "getElectionConfig": [Function],
         "listeners": [],
         "storage": StorageEngine {
           "getItem": [Function],
@@ -490,155 +121,54 @@ CampaignEngine {
         },
       },
     },
-    "stateHandler": StateHandler {
-      "listeners": [],
-      "state": {
-        "currentConfig": undefined,
-        "gameState": {
-          "candidateListData": [],
-          "isEnded": false,
-          "partyListData": [],
-          "turn": 0,
+    "questions": [],
+    "resultModifier": ResultModifier {
+      "districtVoteTransformer": DistrictVoteTransformer {
+        "voterEnvironment": VoterEnvironment {
+          "maxAvailableVoters": 6983008,
+          "voterBases": [
+            {
+              "id": "1-1",
+              "valasztopolgar": 600000,
+            },
+            {
+              "id": "1-2",
+              "valasztopolgar": 600000,
+            },
+          ],
+          "voters": 40000,
         },
-        "history": [],
+      },
+      "unionSwingTransformer": UnionSwingTransformer {},
+      "voterShareTransformer": VoteShareTransformer {
+        "voterEnviroment": VoterEnvironment {
+          "maxAvailableVoters": 6983008,
+          "voterBases": [
+            {
+              "id": "1-1",
+              "valasztopolgar": 600000,
+            },
+            {
+              "id": "1-2",
+              "valasztopolgar": 600000,
+            },
+          ],
+          "voters": 40000,
+        },
       },
     },
   },
-  "electionConfigEngine": GameConfigEngine {
+  "configEngine": GameConfigEngine {
     "electionConfig": {
       "listSeats": 10,
       "parties": [],
       "thresholdPercent": 5,
     },
-    "gameSettings": {
-      "showAdvisorFeedback": true,
-    },
+    "getElectionConfig": [Function],
     "listeners": [],
     "storage": StorageEngine {
       "getItem": [Function],
       "getLocalStorageItem": [Function],
-    },
-  },
-  "initialCandidateData": [
-    {
-      "jeloltek": {
-        "ellenzek": [
-          "Candidate B",
-        ],
-        "fidesz": [
-          "Candidate A",
-        ],
-      },
-      "megye": "BP",
-      "megyekod": 1,
-      "oevk": 1,
-      "partok": {
-        "ellenzek": 11000,
-        "fidesz": 12000,
-        "mkkp": undefined,
-      },
-      "telepules": "",
-      "valasztopolgar": 600000,
-    },
-    {
-      "megye": "BP",
-      "megyekod": 1,
-      "oevk": 2,
-      "partok": {
-        "ellenzek": 9000,
-        "fidesz": 8000,
-      },
-      "telepules": "",
-      "valasztopolgar": 600000,
-    },
-  ],
-  "initialPartyData": [
-    {
-      "megye": "BP",
-      "megyekod": 1,
-      "oevk": 1,
-      "partok": {
-        "ellenzek": 40000,
-        "fidesz": 50000,
-        "mkkp": 3000,
-      },
-      "telepules": "",
-    },
-    {
-      "megye": "BP",
-      "megyekod": 1,
-      "oevk": 2,
-      "partok": {
-        "ellenzek": 35000,
-        "fidesz": 30000,
-      },
-      "telepules": "",
-    },
-  ],
-  "mandateCalculator": MandateCalculator {
-    "configEngine": GameConfigEngine {
-      "electionConfig": {
-        "listSeats": 10,
-        "parties": [],
-        "thresholdPercent": 5,
-      },
-      "gameSettings": {
-        "showAdvisorFeedback": true,
-      },
-      "listeners": [],
-      "storage": StorageEngine {
-        "getItem": [Function],
-        "getLocalStorageItem": [Function],
-      },
-    },
-  },
-  "questions": [],
-  "resultModifier": ResultModifier {
-    "districtTargetTransform": DistrictVoteTransformer {
-      "voterEnvironment": VoterEnvironment {
-        "maxAvailableVoters": 6983008,
-        "voterBases": [
-          {
-            "id": "1-1",
-            "valasztopolgar": 600000,
-          },
-          {
-            "id": "1-2",
-            "valasztopolgar": 600000,
-          },
-        ],
-        "voters": 40000,
-      },
-    },
-    "nationalSwingTransform": UnionSwingTransformer {},
-    "pipelineTransform": VoteShareTransformer {
-      "voterEnvironment": VoterEnvironment {
-        "maxAvailableVoters": 6983008,
-        "voterBases": [
-          {
-            "id": "1-1",
-            "valasztopolgar": 600000,
-          },
-          {
-            "id": "1-2",
-            "valasztopolgar": 600000,
-          },
-        ],
-        "voters": 40000,
-      },
-    },
-  },
-  "stateHandler": StateHandler {
-    "listeners": [],
-    "state": {
-      "currentConfig": undefined,
-      "gameState": {
-        "candidateListData": [],
-        "isEnded": false,
-        "partyListData": [],
-        "turn": 0,
-      },
-      "history": [],
     },
   },
 }

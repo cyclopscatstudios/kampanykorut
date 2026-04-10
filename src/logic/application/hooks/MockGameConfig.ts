@@ -3,8 +3,12 @@ import {
   candidateListData,
   partyListData,
 } from "../../domain/mocks/mockListData";
-import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
-import type { Asset, EndResultProps, GameModeConfig } from "../types";
+import type {
+  EndResultProps,
+  Asset,
+  GameModeConfig,
+} from "../../types/campaignEngine.types";
+import type { VoterEnvironmentConfig } from "../../domain/VoterEnvironment";
 
 const voterEnvironmentConfig: VoterEnvironmentConfig = {
   maxTurnout: 85,

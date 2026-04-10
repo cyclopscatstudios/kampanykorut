@@ -584,7 +584,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Iványi Gábort (bár kérdéses, hogy a Jobbik frakció támogatná-e)."
+        "label": "Iványi Gábort."
       },
       {
         "id": "B",
@@ -606,19 +606,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nyugat-magyarországi kistelepülések"
+        "label": "Nyugat-magyarországi települések"
       },
       {
         "id": "B",
-        "label": "Kelet-magyarországi kistelepülések"
+        "label": "Kelet-magyarországi települések"
       },
       {
         "id": "C",
-        "label": "Dél-magyarországi kistelepülések"
+        "label": "Dél-magyarországi települések"
       },
       {
         "id": "D",
-        "label": "Észak-magyarországi kistelepülések"
+        "label": "Észak-magyarországi települések"
       }
     ]
   },

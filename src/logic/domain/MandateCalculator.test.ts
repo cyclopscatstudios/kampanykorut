@@ -1,7 +1,7 @@
-import { StorageEngine } from "../application/StorageEngine";
 import { GameConfigEngine } from "../application/GameConfigEngine";
 import { MandateCalculator } from "./MandateCalculator";
 import type { CombinedOevk } from "./MandateCalculator.types";
+import { container } from "tsyringe";
 
 describe("MandateCalculator", () => {
   const config = {
@@ -12,10 +12,8 @@ describe("MandateCalculator", () => {
     playableSides: [],
   };
 
-  const electionConfigEngine = new GameConfigEngine(
-    new StorageEngine(),
-    config,
-  );
+  const electionConfigEngine = container.resolve(GameConfigEngine);
+  electionConfigEngine.configure(config);
   const calculator = new MandateCalculator(electionConfigEngine);
 
   describe("calculateConstituencySeats", () => {

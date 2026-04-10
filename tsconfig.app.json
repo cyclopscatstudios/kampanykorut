@@ -24,7 +24,12 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "paths": {
+      "@/logic/application": ["./src/logic/application"],
+      "@/logic/domain": ["./src/logic/domain"]
+    }
   },
   "include": ["src"]
 }

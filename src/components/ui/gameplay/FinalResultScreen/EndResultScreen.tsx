@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { FinalResults } from "../../../../logic/domain/CampaignEngine";
+import type { FinalResults } from "@/logic/domain";
 import { Button } from "../../Button";
 import { SummaryPage } from "./SummaryPage";
 import { useTranslate } from "../../../../logic/useTranslateLang";

@@ -15,7 +15,7 @@ export class Emitter<T> {
   }
 
   protected notify(event: T) {
-    log.info("Emitting event", { event });
+    log.debug("Emitting event", { event });
     this.listeners.forEach((l) => l(event));
   }
 }

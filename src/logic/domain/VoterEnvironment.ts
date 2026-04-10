@@ -1,4 +1,6 @@
-import type { CandidateListData } from "./domain/ResultTransformer/VoteShareTransformer.types";
+import { singleton } from "tsyringe";
+import type { CandidateListData } from "./ResultTransformer/VoteShareTransformer.types";
+import { createLogger } from "../logger";
 
 export interface VoterEnvironmentConfig {
   eligibleVoters: number;
@@ -11,12 +13,24 @@ type VoterBase = {
   valasztopolgar: number;
 };
 
-export class VoterEnvironment {
-  private voters: number;
-  private voterBases: VoterBase[] = [];
-  private maxAvailableVoters: number;
+const log = createLogger("VoterEnvironment");
 
-  constructor(config: VoterEnvironmentConfig) {
+@singleton()
+export class VoterEnvironment {
+  private voters: number = 0;
+  private voterBases: VoterBase[] = [];
+  private maxAvailableVoters: number = 0;
+
+  constructor() {
+    log.debug("VoterEnvironment initialized");
+  }
+
+  configure(config: VoterEnvironmentConfig | null) {
+    if (!config) {
+      log.debug("Clearing VoterEnvironment config");
+      return;
+    }
+    log.debug("Configuring VoterEnvironment with config", { config });
     this.voters = this.getVoters(config.listData);
     this.maxAvailableVoters =
       this.calculateMaxAvailableVoters(

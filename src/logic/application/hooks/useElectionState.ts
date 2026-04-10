@@ -5,16 +5,22 @@ import type { DistrictResult } from "../../../components/ui/map.utils";
 import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
-import type { Answer, PendingTurn } from "../types";
+import { GameConfigEngine } from "../GameConfigEngine";
+import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
+import { container } from "tsyringe";
 
 export function useElectionState(gameId: string) {
   const config = gameModeRegistry[gameId];
-  const campaignEngine = useMemo(() => createCampaignEngine(config), [config]);
+  const { campaignEngine } = useMemo(
+    () => createCampaignEngine(config),
+    [config],
+  );
   const [gameState, setGameState] = useState<GameState>(() =>
-    campaignEngine.createInitialState(),
+    campaignEngine.createInitialState(config.electionConfig.baseResults),
   );
   const { loadSession, saveSession } = useStateEngine();
   const { getState, updateState } = useStateHandler();
+  const gameConfigEngine = container.resolve(GameConfigEngine);
 
   useEffect(() => {
     updateState("currentConfig", config);
@@ -41,8 +47,20 @@ export function useElectionState(gameId: string) {
       conditionalEffects: answer.conditionalEffects,
       selectedDistrict,
     };
-    const newGameState = campaignEngine.processTurn(gameState, decision);
-    return { newGameState, decision, rawAnswer };
+    const history = getState("history") ?? [];
+    const gameSettings = gameConfigEngine.getGameSettings();
+    const newGameState = campaignEngine.processTurn(
+      gameState,
+      decision,
+      history,
+      gameSettings,
+    );
+
+    return {
+      newGameState,
+      decision,
+      rawAnswer,
+    };
   };
 
   const commitTurn = ({

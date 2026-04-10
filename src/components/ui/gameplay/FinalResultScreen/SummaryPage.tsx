@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 import { container } from "tsyringe";
-import { StateHandler } from "../../../../logic/application/StateHandler";
-import type { FinalResults } from "../../../../logic/domain/CampaignEngine";
-import type { RawParty } from "../../../../logic/domain/MandateCalculator.types";
+import { StateHandler } from "@/logic/application";
+import type { FinalResults } from "@/logic/domain";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
 import { Heading } from "../../Heading";
 import { Text } from "../../Text";
+import type { RawParty } from "../../../../logic/types/campaignEngine.types";
 
 export function SummaryPage({ results }: { results: FinalResults }) {
   const stateHandler = useMemo(() => container.resolve(StateHandler), []);

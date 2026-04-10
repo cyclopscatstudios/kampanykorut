@@ -1,4 +1,8 @@
-import type { VoterEnvironmentConfig } from "../../VoterEnvironment";
+import { container } from "tsyringe";
+import {
+  VoterEnvironment,
+  type VoterEnvironmentConfig,
+} from "../VoterEnvironment";
 import { candidateListData, partyListData } from "../mocks/mockListData";
 import { VoteShareTransformer } from "./VoteShareTransformer";
 import type { CandidateListData } from "./VoteShareTransformer.types";
@@ -26,7 +30,9 @@ const config: VoterEnvironmentConfig = {
 
 describe("PipelineTransform", () => {
   beforeEach(() => {
-    pipelineTransform = new VoteShareTransformer(config);
+    const voterEnviorment = container.resolve(VoterEnvironment);
+    voterEnviorment.configure(config);
+    pipelineTransform = new VoteShareTransformer(voterEnviorment);
   });
 
   describe("distributeVotesByPartyShare", () => {

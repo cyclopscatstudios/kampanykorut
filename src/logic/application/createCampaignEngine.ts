@@ -1,50 +1,35 @@
-import { CampaignEngine } from "../domain/CampaignEngine";
-import { EffectApplier } from "../domain/EffectApplier";
-import { MandateCalculator } from "../domain/MandateCalculator";
-import { ResultModifier } from "../domain/ResultModifier";
-import { DistrictVoteTransformer } from "../domain/ResultTransformer/DistrictVoteTransformer";
-import { UnionSwingTransformer } from "../domain/ResultTransformer/UnionSwingTransformer";
-import { VoteShareTransformer } from "../domain/ResultTransformer/VoteShareTransformer";
-import { VoterEnvironment } from "../VoterEnvironment";
+import {
+  CampaignEngine,
+  EffectApplier,
+  MandateCalculator,
+  ResultModifier,
+} from "@/logic/domain";
+import { VoterEnvironment } from "../domain/VoterEnvironment";
 import { GameConfigEngine } from "./GameConfigEngine";
-import { StorageEngine } from "./StorageEngine";
-import { StateHandler } from "./StateHandler";
-import type { GameModeConfig } from "./types";
+import type { GameModeConfig } from "../types/campaignEngine.types";
 import { container } from "tsyringe";
+import { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
 
 export function createCampaignEngine(config: GameModeConfig) {
-  const storageEngine = new StorageEngine();
-  const electionConfigEngine = new GameConfigEngine(
-    storageEngine,
-    config.electionConfig,
-  );
-  const mandateCalculator = new MandateCalculator(electionConfigEngine);
+  const configEngine = container.resolve(GameConfigEngine);
+  configEngine.configure(config.electionConfig);
 
-  const effectApplier = new EffectApplier(
-    electionConfigEngine,
-    config.customGroups,
-  );
+  const voterEnvironment = container.resolve(VoterEnvironment);
+  voterEnvironment.configure(config.voterEnvironmentConfig);
 
-  const voterEnvironment = new VoterEnvironment(config.voterEnvironmentConfig);
+  const districtGroupEngine = container.resolve(DistrictGroupEngine);
+  districtGroupEngine.configure(config.customGroups);
 
-  const resultModifier = new ResultModifier(
-    new UnionSwingTransformer(),
-    new VoteShareTransformer(config.voterEnvironmentConfig),
-    new DistrictVoteTransformer(voterEnvironment),
-  );
-
-  const stateHandler = container.resolve(StateHandler);
-
-  return new CampaignEngine(
+  const campaignEngine = new CampaignEngine(
     config.candidateListData,
     config.partyListData,
     config.questions,
     config.answerEffect,
-    resultModifier,
-    effectApplier,
-    mandateCalculator,
-    electionConfigEngine,
-    stateHandler,
+    container.resolve(ResultModifier),
+    container.resolve(EffectApplier),
+    container.resolve(MandateCalculator),
     config.advisorFeedback,
   );
+
+  return { campaignEngine, configEngine };
 }

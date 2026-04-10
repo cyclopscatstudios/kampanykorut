@@ -1,8 +1,9 @@
 [
   {
     "gameId": "2022_ogyv_default",
-    "name": "2022. április 3. - Országgyűlési választás",
-    "description": "A 2022-es magyarországi országgyűlési választás a rendszerváltás óta eltelt időszak kilencedik általános parlamenti választása volt Magyarországon 2022. április 3-án.[2] A választással egy időben népszavazást tartottak.",
-    "route": "./2022/"
+    "name": "2022: Országgyűlési választás",
+    "description": "A 2022-es magyarországi országgyűlési választás a rendszerváltás óta eltelt időszak kilencedik általános parlamenti választása volt Magyarországon 2022.",
+    "route": "./2022/",
+    "tags": ["historical"]
   }
 ]

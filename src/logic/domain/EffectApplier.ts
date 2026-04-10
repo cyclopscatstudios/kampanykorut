@@ -1,10 +1,3 @@
-import {
-  EffectType,
-  type RawEffect,
-  type AppliedEffect,
-  type PartyShareParams,
-  type ConditionalRawEffect,
-} from "./EffectApplier.types";
 import { MandateCalculator } from "./MandateCalculator";
 import type {
   CandidateListData,
@@ -14,28 +7,31 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
-import { DistrictGroupEngine, type DistrictGroup } from "./DistrictGroupEngine";
-import type { GameConfigEngine } from "../application/GameConfigEngine";
-import { container } from "tsyringe";
+import { DistrictGroupEngine } from "./DistrictGroupEngine";
+import { GameConfigEngine } from "../application/GameConfigEngine";
+import { inject, injectable } from "tsyringe";
 import type { DistrictResult } from "../../components/ui/map.utils";
+import { EffectType } from "../types/campaignEngine.types";
+import type {
+  RawEffect,
+  ConditionalRawEffect,
+  AppliedEffect,
+  PartyShareParams,
+} from "../types/campaignEngine.types";
 
 const log = createLogger("EffectApplier");
 
+@injectable()
 export class EffectApplier {
-  private mandateCalculator: MandateCalculator;
-  private districtGroupEngine: DistrictGroupEngine;
-  private stateHandler: StateHandler;
-  private electionConfigEngine: GameConfigEngine;
+  private districtGroupEngine?: DistrictGroupEngine;
   private DEFAULT_MOTIVATION_DELTA = 99;
 
   constructor(
-    electionConfigEngine: GameConfigEngine,
-    customGroups?: DistrictGroup[],
+    @inject(GameConfigEngine) private gameConfigEngine: GameConfigEngine,
+    @inject(MandateCalculator) private mandateCalculator: MandateCalculator,
+    @inject(StateHandler) private stateHandler: StateHandler,
   ) {
-    this.mandateCalculator = new MandateCalculator(electionConfigEngine);
-    this.electionConfigEngine = electionConfigEngine;
-    this.districtGroupEngine = new DistrictGroupEngine(customGroups);
-    this.stateHandler = container.resolve(StateHandler);
+    log.debug("EffectApplier initialized");
   }
 
   getAppliedEffects(
@@ -78,7 +74,7 @@ export class EffectApplier {
     });
 
     const isDistrictBoosterAllowed =
-      this.electionConfigEngine.getElectionConfig().districtBoost;
+      this.gameConfigEngine.getElectionConfig().districtBoost;
 
     const canApplyeBoosterEffect = turn % 2 === 0;
 
@@ -98,7 +94,7 @@ export class EffectApplier {
   }
 
   private getBoosterEffect(district: DistrictResult): AppliedEffect | null {
-    const palyerSide = this.electionConfigEngine.getElectionConfig().playerSide;
+    const palyerSide = this.gameConfigEngine.getElectionConfig().playerSide;
     if (!palyerSide) {
       return null;
     }
@@ -107,7 +103,7 @@ export class EffectApplier {
       oevk: district.oevk,
       amount: 500,
       from: { type: "bizonytalan" },
-      targetParty: palyerSide,
+      targetParty: palyerSide.partyId,
     };
     return { type: EffectType.DistrictVoteTransfer, target: [boosterTarget] };
   }
@@ -225,8 +221,14 @@ export class EffectApplier {
       return { type: EffectType.DistrictVoteTransfer, target };
     }
 
+    const districtGroupEngine = this.districtGroupEngine;
+
+    if (!districtGroupEngine) {
+      return { type: EffectType.DistrictVoteTransfer, target: [] };
+    }
+
     const finalTarget = target.flatMap((t) =>
-      this.districtGroupEngine
+      districtGroupEngine
         .getDistrictTargetByGroupIds([t.groupId])
         .flatMap((d) =>
           d.districts.map((district) => ({

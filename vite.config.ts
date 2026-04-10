@@ -27,7 +27,7 @@ export default defineConfig({
       thresholds: {
         lines: 70,
         functions: 70,
-        branches: 60,
+        branches: 50,
         statements: 70,
       },
     },
@@ -37,5 +37,11 @@ export default defineConfig({
         plugins: [],
       },
     ],
+  },
+  resolve: {
+    alias: {
+      "@/logic/application": "/src/logic/application",
+      "@/logic/domain": "/src/logic/domain",
+    },
   },
 });

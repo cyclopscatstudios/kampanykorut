@@ -1,10 +1,8 @@
 import { MainMenu } from "./MainMenu";
 import { NewGameMenu } from "./NewGameMenu";
-import type { ScreenType } from "../../../App";
 import type { MenuItem } from "./menu.types";
 import { GameLoaderMenu } from "./GameLoaderMenu";
-import { useAppStateMachine } from "../../../logic/application/hooks/useAppStateMachine";
-import type { MenuType } from "../../../logic/application/AppStateMachine";
+import { useAppStateMachine, type MenuType } from "@/logic/application";
 import { SideSelectorMenu } from "./SideSelectorMenu";
 
 enum NewGameMenuItems {
@@ -14,23 +12,11 @@ enum NewGameMenuItems {
 
 export type MenuItems = MenuType | NewGameMenuItems;
 
-export function MenuSelector({
-  setCurrentScreen,
-  setActiveGameId,
-}: {
-  setCurrentScreen: (screen: ScreenType) => void;
-  setActiveGameId: (gameId?: string) => void;
-}) {
+export function MenuSelector() {
   const { state, transition } = useAppStateMachine();
-
-  console.log({ state });
 
   const handleOnClick = (to: MenuItem) => {
     transition(to);
-    if (to.id === "gameLoader") {
-      setCurrentScreen("MapCreator");
-      setActiveGameId(to.gameId);
-    }
   };
 
   return (

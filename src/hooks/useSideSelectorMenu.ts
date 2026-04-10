@@ -1,11 +1,8 @@
 import { useState } from "react";
-import { container } from "tsyringe";
-import { gameModeRegistry } from "../logic/application/gameModeRegistery";
-import { GameConfigEngine } from "../logic/application/GameConfigEngine";
-import { StorageEngine } from "../logic/application/StorageEngine";
 import { useGameConfigEngine } from "../logic/application/hooks/useGameConfigEngine";
 import { useAppStateMachine } from "../logic/application/hooks/useAppStateMachine";
 import { MenuItemId, type MenuItem } from "../components/ui/menu/menu.types";
+import type { PlayerSide } from "../logic/types/campaignEngine.types";
 
 type Party = {
   id: string;
@@ -20,39 +17,26 @@ export function useSideSelectorMenu(
   gameId: string | undefined,
   onClick: (item: MenuItem) => void,
 ) {
-  // TODO: refactor this to a more elegant solution, maybe with a context or something, to avoid this weird state handling
-  const [registeredGameId, setRegisteredGameId] = useState<string | undefined>(
-    undefined,
-  );
-
-  if (gameId !== registeredGameId) {
-    setRegisteredGameId(gameId);
-
-    if (gameId) {
-      const config = gameModeRegistry[gameId];
-
-      if (config) {
-        const engine = new GameConfigEngine(
-          new StorageEngine(),
-          config.electionConfig,
-        );
-
-        container.registerInstance(GameConfigEngine, engine);
-      }
-    }
-  }
-
   const [selectedParty, setSelectedParty] = useState<Party | undefined>();
   const [selectedCandidate, setSelectedCandidate] = useState<
     string | undefined
   >();
-  const { gameConfig } = useGameConfigEngine();
+  const { gameConfig, updateGameConfig } = useGameConfigEngine();
   const { transition } = useAppStateMachine();
 
   const handlePartyChange = (partyId: string) => {
-    const party = gameConfig.playableSides.find((s) => s.id === partyId);
+    const party = gameConfig?.playableSides.find((s) => s.id === partyId);
     setSelectedParty(party);
+    const playerSide: PlayerSide = {
+      partyId: partyId,
+    };
+    updateGameConfig({ playerSide });
     setSelectedCandidate(undefined);
+  };
+
+  const handleCandidateChange = (partyId: string, candidateId: string) => {
+    setSelectedCandidate(candidateId);
+    updateGameConfig({ playerSide: { partyId, candidateId } });
   };
 
   const goBack = () => {
@@ -64,7 +48,7 @@ export function useSideSelectorMenu(
       gameId,
       onTransition: "gameLoader",
       id: MenuItemId.GameLoader,
-      text: "2022 OGYV",
+      text: "Start Game",
     });
   };
 
@@ -76,11 +60,12 @@ export function useSideSelectorMenu(
 
   return {
     gameConfig,
-    sides: gameConfig.playableSides,
+    sides: gameConfig?.playableSides ?? [],
     selectedParty,
     selectedCandidate,
     setSelectedCandidate,
     handlePartyChange,
+    handleCandidateChange,
     goBack,
     startGame,
     candidateOptions,

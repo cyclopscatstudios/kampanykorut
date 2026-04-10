@@ -1,9 +1,8 @@
 import { singleton } from "tsyringe";
 import type { Decision, GameState } from "../domain/CampaignEngine";
 import { Emitter } from "./Emitter";
-import type { GameModeConfig } from "./types";
 import { createLogger } from "../logger";
-import type { RawEffect } from "../domain/EffectApplier.types";
+import type { RawEffect, GameModeConfig } from "../types/campaignEngine.types";
 
 export interface HistoryItem {
   questionId: string;
@@ -56,6 +55,6 @@ export class StateHandler extends Emitter<StateHandlerType> {
   set<K extends keyof StateHandlerType>(key: K, value: StateHandlerType[K]) {
     this.state[key] = value;
     this.notify(this.state);
-    log.info("State updated", { key, value });
+    log.debug("State updated", { key, value });
   }
 }

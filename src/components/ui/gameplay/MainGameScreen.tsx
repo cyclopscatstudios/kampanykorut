@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
-import { useElectionState } from "../../../logic/application/hooks/useElectionState";
+import { useElectionState } from "@/logic/application";
 import { Button } from "../Button";
 import { FinalResultScreen } from "./FinalResultScreen/EndResultScreen";
 import type { DistrictResult } from "../map.utils";
 import { AdvisorModal } from "./AdvisorModal";
 import type { GameState } from "../../../logic/domain/CampaignEngine";
+import logo from "../../../assets/logo_reworked.png";
+import { Text } from "../Text";
 import type {
   AnswerFeedback,
   PendingTurn,
-} from "../../../logic/application/types";
-import logo from "../../../assets/logo_reworked.png";
-import { Text } from "../Text";
+} from "../../../logic/types/campaignEngine.types";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 

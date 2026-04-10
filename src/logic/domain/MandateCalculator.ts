@@ -1,4 +1,4 @@
-import { injectable } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 import { createLogger } from "../logger";
 import type {
   CalculateResults,
@@ -15,13 +15,17 @@ import type {
   Shares,
 } from "./ResultTransformer/VoteShareTransformer.types";
 import { calcPercentages } from "./ResultModifier.utils";
-import type { GameConfigEngine } from "../application/GameConfigEngine";
+import { GameConfigEngine } from "../application/GameConfigEngine";
 
 const log = createLogger("MandateCalculator");
 
 @injectable()
 export class MandateCalculator {
-  constructor(private configEngine: GameConfigEngine) {}
+  constructor(
+    @inject(GameConfigEngine) private configEngine: GameConfigEngine,
+  ) {
+    log.debug("MandateCalculator initialized");
+  }
 
   calculate(
     districtCandidateData?: CandidateListData[],
@@ -84,7 +88,10 @@ export class MandateCalculator {
     const totals: Record<string, number> = {};
 
     for (const d of districts) {
-      for (const [party, votes] of Object.entries(d.partok)) {
+      for (const [party, votes] of Object.entries(d.partok ?? {})) {
+        if (!party || party === "undefined") continue;
+        if (!Number.isFinite(votes)) continue;
+
         totals[party] = (totals[party] ?? 0) + (votes ?? 0);
       }
     }

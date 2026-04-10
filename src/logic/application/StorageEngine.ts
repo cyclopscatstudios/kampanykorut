@@ -1,11 +1,15 @@
 import { singleton } from "tsyringe";
 import type { SessionKey } from "./StateEngine";
+import { createLogger } from "../logger";
 
 export type StorageType = "localStorage" | "sessionStorage";
+
+const log = createLogger("StorageEngine");
 
 @singleton()
 export class StorageEngine {
   constructor() {
+    log.debug("StorageEngine initialized");
     this.getItem = this.getItem.bind(this);
     this.getLocalStorageItem = this.getLocalStorageItem.bind(this);
   }

@@ -1,19 +1,25 @@
 import type { GameState } from "./CampaignEngine";
-import { type AppliedEffect, EffectType } from "./EffectApplier.types";
 import { createLogger } from "../logger";
 import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
 import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
 import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
 import type { CandidateListData } from "./ResultTransformer/VoteShareTransformer.types";
+import { EffectType, type AppliedEffect } from "../types/campaignEngine.types";
+import { inject } from "tsyringe";
 
 const log = createLogger("ResultModifier");
 
 export class ResultModifier {
   constructor(
-    private nationalSwingTransform: UnionSwingTransformer,
-    private pipelineTransform: VoteShareTransformer,
-    private districtTargetTransform: DistrictVoteTransformer,
-  ) {}
+    @inject(UnionSwingTransformer)
+    private unionSwingTransformer: UnionSwingTransformer,
+    @inject(VoteShareTransformer)
+    private voterShareTransformer: VoteShareTransformer,
+    @inject(DistrictVoteTransformer)
+    private districtVoteTransformer: DistrictVoteTransformer,
+  ) {
+    log.debug("ResultModifier initialized");
+  }
 
   apply(
     state: GameState,
@@ -72,12 +78,12 @@ export class ResultModifier {
   ) {
     log.info("Applying uniform swing", { appliedEffects });
     const candidateListData =
-      this.nationalSwingTransform.applyUniformSwingToDistricts(
+      this.unionSwingTransformer.applyUniformSwingToDistricts(
         state.candidateListData,
         appliedEffects?.baseShare,
         appliedEffects?.targetShare,
       );
-    const partyListData = this.nationalSwingTransform.applyUniformSwingToList(
+    const partyListData = this.unionSwingTransformer.applyUniformSwingToList(
       state.partyListData,
       state.candidateListData,
       appliedEffects.baseShare,
@@ -92,7 +98,7 @@ export class ResultModifier {
     appliedEffects: Extract<AppliedEffect, { type: EffectType.VoteAllocation }>,
   ) {
     log.info("Applying vote allocation", { appliedEffects });
-    const result = this.pipelineTransform.distributeVotesByPartyShare(
+    const result = this.voterShareTransformer.distributeVotesByPartyShare(
       state.candidateListData,
       state.partyListData,
       appliedEffects.newVotes,
@@ -118,7 +124,7 @@ export class ResultModifier {
     >,
   ) {
     log.info("Applying district vote transfer", { appliedEffects });
-    const result = this.districtTargetTransform.modifyDistricts(
+    const result = this.districtVoteTransformer.modifyDistricts(
       state.candidateListData,
       state.partyListData,
       appliedEffects.target,
@@ -134,7 +140,7 @@ export class ResultModifier {
     appliedEffects: Extract<AppliedEffect, { type: EffectType.TurnoutChange }>,
   ) {
     log.info("Applying turnout change", { appliedEffects });
-    const result = this.pipelineTransform.modifyByMotivation(
+    const result = this.voterShareTransformer.modifyByMotivation(
       state.candidateListData,
       state.partyListData,
       appliedEffects.motivationDelta,
@@ -150,6 +156,6 @@ export class ResultModifier {
     list: CandidateListData[],
     target: Record<string, number>,
   ) {
-    return this.districtTargetTransform.modifyListDistricts(list, target);
+    return this.districtVoteTransformer.modifyListDistricts(list, target);
   }
 }

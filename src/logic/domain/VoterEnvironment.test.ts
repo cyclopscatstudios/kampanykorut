@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { VoterEnvironment } from "./VoterEnvironment";
-import type { CandidateListData } from "./domain/ResultTransformer/VoteShareTransformer.types";
+import type { CandidateListData } from "./ResultTransformer/VoteShareTransformer.types";
 
 const makeDistrict = (
   partok: Record<string, number | undefined>,
@@ -19,7 +19,8 @@ describe("VoterEnvironment", () => {
   describe("constructor / getAvailableVoters", () => {
     it("calculates available voters as floor(eligibleVoters * maxTurnout / 100) minus current voters", () => {
       const listData = [makeDistrict({ fidesz: 1000, ellenzek: 500 })];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 10000,
         maxTurnout: 80,
         listData,
@@ -31,7 +32,8 @@ describe("VoterEnvironment", () => {
 
     it("handles districtSum ?? 0 branch when partok is empty (no votes to sum)", () => {
       const listData = [makeDistrict({})];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 5000,
         maxTurnout: 100,
         listData,
@@ -42,7 +44,8 @@ describe("VoterEnvironment", () => {
 
     it("handles partok with undefined values via votes ?? 0 in getVoters", () => {
       const listData = [makeDistrict({ fidesz: 2000, ellenzek: undefined })];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 10000,
         maxTurnout: 50,
         listData,
@@ -56,7 +59,8 @@ describe("VoterEnvironment", () => {
         makeDistrict({ a: 1000 }, { megyekod: 1, oevk: 1 }),
         makeDistrict({ b: 2000 }, { megyekod: 1, oevk: 2 }),
       ];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 20000,
         maxTurnout: 100,
         listData,
@@ -69,7 +73,8 @@ describe("VoterEnvironment", () => {
   describe("setVoters", () => {
     it("updates voters and recalculates getAvailableVoters", () => {
       const initial = [makeDistrict({ fidesz: 1000 })];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 10000,
         maxTurnout: 100,
         listData: initial,
@@ -83,7 +88,8 @@ describe("VoterEnvironment", () => {
 
     it("handles undefined partok values in new listData", () => {
       const initial = [makeDistrict({ fidesz: 500 })];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 10000,
         maxTurnout: 100,
         listData: initial,
@@ -100,15 +106,16 @@ describe("VoterEnvironment", () => {
       const listData = [
         makeDistrict({ fidesz: 3000 }, { valasztopolgar: 10000 }),
       ];
-      const env = new VoterEnvironment({
-        eligibleVoters: 100000,
-        maxTurnout: 100,
-        listData,
-      });
+      const env = new VoterEnvironment();
       const district = makeDistrict(
         { fidesz: 3000 },
         { valasztopolgar: 10000, oevk: 1, megyekod: 1 },
       );
+      env.configure({
+        eligibleVoters: 100000,
+        maxTurnout: 100,
+        listData,
+      });
       expect(env.getRemainingVoteCount(district)).toBe(7000);
     });
 
@@ -120,7 +127,8 @@ describe("VoterEnvironment", () => {
           { valasztopolgar: 8000, megyekod: 3, oevk: 5 },
         ),
       ];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 100000,
         maxTurnout: 100,
         listData,
@@ -143,7 +151,8 @@ describe("VoterEnvironment", () => {
       const listData = [
         makeDistrict({ fidesz: 500 }, { megyekod: 1, oevk: 1 }),
       ];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 100000,
         maxTurnout: 100,
         listData,
@@ -169,7 +178,8 @@ describe("VoterEnvironment", () => {
           { valasztopolgar: 5000, megyekod: 1, oevk: 1 },
         ),
       ];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 100000,
         maxTurnout: 100,
         listData,
@@ -187,7 +197,8 @@ describe("VoterEnvironment", () => {
       const listData = [
         makeDistrict({}, { valasztopolgar: 6000, megyekod: 1, oevk: 1 }),
       ];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 100000,
         maxTurnout: 100,
         listData,
@@ -213,7 +224,8 @@ describe("VoterEnvironment", () => {
           { valasztopolgar: 10000, megyekod: 1, oevk: 2 },
         ),
       ];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 100000,
         maxTurnout: 100,
         listData,
@@ -235,7 +247,8 @@ describe("VoterEnvironment", () => {
 
     it("returns 0 for an empty districts array", () => {
       const listData = [makeDistrict({ fidesz: 1000 })];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 10000,
         maxTurnout: 100,
         listData,
@@ -257,7 +270,8 @@ describe("VoterEnvironment", () => {
           partok: { fidesz: 500 },
         },
       ];
-      const env = new VoterEnvironment({
+      const env = new VoterEnvironment();
+      env.configure({
         eligibleVoters: 100000,
         maxTurnout: 100,
         listData,

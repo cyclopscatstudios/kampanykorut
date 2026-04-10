@@ -1,25 +1,21 @@
-import { useEngine } from "./useEngine";
+import { container } from "tsyringe";
 import { GameConfigEngine } from "../GameConfigEngine";
 import { useEffect, useState } from "react";
+import type { ElectionConfig } from "../../types/campaignEngine.types";
 
 export function useGameConfigEngine() {
-  const gameConfigEngine = useEngine(GameConfigEngine);
-
-  const [trackedEngine, setTrackedEngine] = useState(gameConfigEngine);
+  const engine = container.resolve(GameConfigEngine);
   const [gameConfig, setGameConfig] = useState(() =>
-    gameConfigEngine.getElectionConfig(),
+    engine.isConfigured() ? engine.getElectionConfig() : null,
   );
 
-  if (trackedEngine !== gameConfigEngine) {
-    setTrackedEngine(gameConfigEngine);
-    setGameConfig(gameConfigEngine.getElectionConfig());
-  }
-
   useEffect(() => {
-    return gameConfigEngine.subscribe(setGameConfig);
-  }, [gameConfigEngine]);
+    return engine.subscribe(setGameConfig);
+  }, [engine]);
 
   return {
     gameConfig,
+    updateGameConfig: (config: Partial<ElectionConfig>) =>
+      engine.updateGameConfig(config),
   };
 }

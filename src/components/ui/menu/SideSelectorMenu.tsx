@@ -17,7 +17,7 @@ export function SideSelectorMenu({ onClick, gameId }: SideSelectorMenuProps) {
     sides,
     selectedParty,
     selectedCandidate,
-    setSelectedCandidate,
+    handleCandidateChange,
     handlePartyChange,
     goBack,
     startGame,
@@ -63,7 +63,7 @@ export function SideSelectorMenu({ onClick, gameId }: SideSelectorMenuProps) {
           </Heading>
           <Dropdown<string>
             value={selectedCandidate}
-            onChange={setSelectedCandidate}
+            onChange={(e) => handleCandidateChange(selectedParty?.id ?? "", e)}
             options={candidateOptions}
             disabled={!selectedParty}
           />
@@ -80,7 +80,7 @@ export function SideSelectorMenu({ onClick, gameId }: SideSelectorMenuProps) {
       <Button
         className="mt-auto"
         disabled={!selectedCandidate}
-        onClick={startGame}
+        onClick={() => startGame()}
       >
         <Button.Text>Start Game</Button.Text>
       </Button>

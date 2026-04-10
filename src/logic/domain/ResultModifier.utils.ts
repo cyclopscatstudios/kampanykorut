@@ -1,8 +1,11 @@
 import type { DistrictResult } from "../../components/ui/map.utils";
+import { createLogger } from "../logger";
 import type {
   CandidateListData,
   Shares,
 } from "./ResultTransformer/VoteShareTransformer.types";
+
+const log = createLogger("ResultModifierUtils");
 
 export function calculateWinner(result?: DistrictResult | null) {
   if (!result) {
@@ -34,7 +37,9 @@ export function calculateWinner(result?: DistrictResult | null) {
 export function calcPercentages(
   totals: Record<string, number>,
 ): Shares & { _total: number } {
-  const sum = Object.values(totals).reduce((a, b) => a + b, 0);
+  const sum = Object.values(totals)
+    .filter((v) => !Number.isNaN(v))
+    .reduce((a, b) => a + b, 0);
   const result: Shares & { _total: number } = {} as any;
 
   if (!sum) {
@@ -49,6 +54,13 @@ export function calcPercentages(
   result._total = Object.values(result)
     .filter((v) => typeof v === "number")
     .reduce((a, b) => a + b, 0);
+
+  if (result._total > 1 || result._total < 0) {
+    log.error("Invalid total percentage", {
+      total: result._total,
+      percentages: result,
+    });
+  }
 
   return result;
 }
