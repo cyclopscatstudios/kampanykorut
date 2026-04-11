@@ -44,21 +44,6 @@ describe("GameConfigEngine", () => {
     });
   });
 
-  describe("getGameSettings", () => {
-    it("returns parsed settings from localStorage", () => {
-      const stored = { showAdvisorFeedback: false };
-      localStorageMock.getItem.mockReturnValue(JSON.stringify(stored));
-
-      expect(engine.getGameSettings()).toEqual(stored);
-    });
-
-    it("falls back to defaults when localStorage returns null", () => {
-      localStorageMock.getItem.mockReturnValue(null);
-
-      expect(engine.getGameSettings()).toEqual({ showAdvisorFeedback: true });
-    });
-  });
-
   describe("updateGameConfig", () => {
     it("merges partial config into existing config", () => {
       engine.updateGameConfig({ listSeats: 50 });

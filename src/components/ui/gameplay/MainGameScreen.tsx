@@ -13,10 +13,12 @@ import type {
   AnswerFeedback,
   PendingTurn,
 } from "../../../logic/types/campaignEngine.types";
+import { SettingsDialog } from "./SettingsDialog";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
 export function MainGameScreen({ gameId }: { gameId: string }) {
+  const [isOpen, setIsOpen] = useState(false);
   const [currentView, setCurrentView] = useState<CurrentView>("MapView");
   const [answer, setAnswer] = useState<string | undefined>();
   const [advisorFeedback, setAdvisorFeedback] = useState<AnswerFeedback | null>(
@@ -67,7 +69,8 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
   };
 
   return (
-    <ScreenWrapper loadSavedGame={loadSavedGame}>
+    <ScreenWrapper loadSavedGame={loadSavedGame} setIsOpen={setIsOpen}>
+      <SettingsDialog isOpen={isOpen} setIsOpen={setIsOpen} />
       <AdvisorModal
         advice={advisorFeedback?.text ?? ""}
         open={Boolean(advisorFeedback)}
@@ -109,21 +112,23 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
 
 function ScreenWrapper({
   children,
+  setIsOpen,
 }: {
   children: React.ReactNode;
   loadSavedGame: () => void;
+  setIsOpen: (val: boolean) => void;
 }) {
   return (
     <div className="w-full h-full">
       <div>
-        <MenuBar />
+        <MenuBar setIsOpen={setIsOpen} />
       </div>
       {children}
     </div>
   );
 }
 
-function MenuBar() {
+function MenuBar({ setIsOpen }: { setIsOpen: (val: boolean) => void }) {
   return (
     <div className="w-full border-b-2 border-blue-400">
       <div className="flex justify-between items-center mx-5">
@@ -176,7 +181,7 @@ function MenuBar() {
               LOAD
             </Text>
           </Button>
-          <Button variant="transparent">
+          <Button variant="transparent" onClick={() => setIsOpen(true)}>
             <Text
               weight="bold"
               color="lightBlue"

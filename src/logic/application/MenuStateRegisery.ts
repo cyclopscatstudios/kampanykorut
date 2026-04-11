@@ -1,6 +1,6 @@
-import type { MenuItemType, MenuState, MenuType } from "./AppStateMachine";
+import type { MenuItemType, MenuState, MenuType } from "./MenuStateMachine";
 
-export const AppStateRegistry: Record<
+export const MenuStateRegistry: Record<
   Exclude<MenuItemType, "back" | "gameLoader">,
   MenuState & { onTransition: MenuType }
 > = {
@@ -22,7 +22,7 @@ export const AppStateRegistry: Record<
   settings: {
     screenType: "menuScreen",
     menuType: "mainMenu",
-    onTransition: "mainMenu",
+    onTransition: "settingsMenu",
   },
   modMaker: {
     screenType: "gameScreen",

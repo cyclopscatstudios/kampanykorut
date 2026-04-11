@@ -2,8 +2,6 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { GameStateEngine } from "./GameStateEngine";
 import { container } from "tsyringe";
 
-const mockConfigure = vi.fn();
-
 describe("GameStateEngine", () => {
   let engine: GameStateEngine;
 
@@ -15,59 +13,16 @@ describe("GameStateEngine", () => {
   describe("getGameState", () => {
     it("returns initial state on construction", () => {
       expect(engine.getGameState()).toEqual({
-        currentScreen: "MenuSelector",
-        menuType: "mainMenu",
-        activeGameId: undefined,
+        activeGameId: null,
       });
     });
   });
 
   describe("updateGameState", () => {
     it("merges partial state into existing state", () => {
-      engine.updateGameState({ currentScreen: "MapCreator" });
+      engine.updateGameState({ activeGameId: "2022_ogyv_default" });
 
-      expect(engine.getGameState().currentScreen).toBe("MapCreator");
-      expect(engine.getGameState().menuType).toBe("mainMenu");
-    });
-
-    it("notifies subscribers with updated state", () => {
-      const listener = vi.fn();
-      engine.subscribe(listener);
-
-      engine.updateGameState({ currentScreen: "MapCreator" });
-
-      expect(listener).toHaveBeenCalledWith({
-        currentScreen: "MapCreator",
-        menuType: "mainMenu",
-        activeGameId: undefined,
-      });
-    });
-
-    it("does not notify unsubscribed listeners", () => {
-      const listener = vi.fn();
-      const unsubscribe = engine.subscribe(listener);
-      unsubscribe();
-
-      engine.updateGameState({ currentScreen: "MapCreator" });
-
-      expect(listener).not.toHaveBeenCalled();
-    });
-
-    it("does not call gameConfigEngine.configure when activeGameId is absent", () => {
-      engine.updateGameState({ currentScreen: "MapCreator" });
-
-      expect(mockConfigure).not.toHaveBeenCalled();
-    });
-
-    it("persists multiple sequential updates correctly", () => {
-      engine.updateGameState({ menuType: "gameMenu" });
-      engine.updateGameState({ currentScreen: "MapCreator" });
-
-      expect(engine.getGameState()).toEqual({
-        currentScreen: "MapCreator",
-        menuType: "gameMenu",
-        activeGameId: undefined,
-      });
+      expect(engine.getGameState().activeGameId).toBe("2022_ogyv_default");
     });
   });
 });

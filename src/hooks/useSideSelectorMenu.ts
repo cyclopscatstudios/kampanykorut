@@ -24,6 +24,8 @@ export function useSideSelectorMenu(
   const { gameConfig, updateGameConfig } = useGameConfigEngine();
   const { transition } = useAppStateMachine();
 
+  console.log({ gameConfig });
+
   const handlePartyChange = (partyId: string) => {
     const party = gameConfig?.playableSides.find((s) => s.id === partyId);
     setSelectedParty(party);

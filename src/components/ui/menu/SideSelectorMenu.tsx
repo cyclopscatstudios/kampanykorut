@@ -5,13 +5,15 @@ import { type MenuItem } from "./menu.types";
 import { Text } from "../Text";
 import { Icon } from "../Icon";
 import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
+import { useContext } from "react";
+import { GameStateContext } from "../../../util/GameStateContext";
 
 interface SideSelectorMenuProps {
-  gameId?: string;
   onClick: (item: MenuItem) => void;
 }
 
-export function SideSelectorMenu({ onClick, gameId }: SideSelectorMenuProps) {
+export function SideSelectorMenu({ onClick }: SideSelectorMenuProps) {
+  const gameStateContext = useContext(GameStateContext);
   const {
     gameConfig,
     sides,
@@ -22,7 +24,7 @@ export function SideSelectorMenu({ onClick, gameId }: SideSelectorMenuProps) {
     goBack,
     startGame,
     candidateOptions,
-  } = useSideSelectorMenu(gameId, onClick);
+  } = useSideSelectorMenu(gameStateContext.gameId, onClick);
 
   const partyAssets = selectedParty
     ? gameConfig?.electionAssets[selectedParty.id]

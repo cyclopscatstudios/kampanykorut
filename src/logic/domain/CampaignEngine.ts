@@ -18,10 +18,7 @@ import {
   type ConditionalRawEffect,
   type RawEffect,
 } from "../types/campaignEngine.types";
-
-export interface GameSettings {
-  showAdvisorFeedback: boolean;
-}
+import type { GameSettings } from "../application/SettingsEngine";
 
 export interface RawQuestion {
   id: string;

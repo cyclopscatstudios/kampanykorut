@@ -1,10 +1,9 @@
 import { inject, singleton } from "tsyringe";
 import type { MenuItem } from "../../components/ui/menu/menu.types";
-import { AppStateRegistry, gameMenuRegistery } from "./AppStateRegisery";
+import { MenuStateRegistry, gameMenuRegistery } from "./MenuStateRegisery";
 import { Emitter } from "./Emitter";
 import { StateEngine } from "./StateEngine";
 import { StorageEngine } from "./StorageEngine";
-import type { GameStateEngine } from "./GameStateEngine";
 import { createLogger } from "../logger";
 
 export type MenuType = (typeof gameMenuRegistery)[number];
@@ -29,15 +28,12 @@ export interface MenuState {
 const log = createLogger("AppStateMachine");
 
 @singleton()
-export class AppStateMachine extends Emitter<MenuState> {
+export class MenuStateMachine extends Emitter<MenuState> {
   private currentState: MenuState;
   private menuHistory: MenuType[];
 
-  constructor(
-    @inject(StateEngine) private stateEngine: StateEngine,
-    private gameStateEngine: GameStateEngine,
-  ) {
-    log.debug("AppStateMachine initialized");
+  constructor(@inject(StateEngine) private stateEngine: StateEngine) {
+    log.debug("MenuStateMachine initialized");
     super();
     this.menuHistory = ["mainMenu"];
     this.currentState = {
@@ -64,8 +60,6 @@ export class AppStateMachine extends Emitter<MenuState> {
     }
 
     if (to.id === "sideSelector") {
-      this.gameStateEngine.updateGameState({ activeGameId: to.gameId });
-      log.info(`Transitioning to side selector with game id of ${to.gameId}`);
       newState = {
         ...newState,
         ...to,
@@ -73,7 +67,6 @@ export class AppStateMachine extends Emitter<MenuState> {
     }
 
     if (to.id === "gameLoader") {
-      this.gameStateEngine.updateGameState({ currentScreen: "MapCreator" });
       log.info(`Transitioning to map creator with game id of ${to.gameId}`);
       newState = {
         ...newState,
@@ -81,17 +74,24 @@ export class AppStateMachine extends Emitter<MenuState> {
       };
     }
 
-    this.setCurrentState(newState);
+    this.setCurrentMenuState(newState);
     this.notify(newState);
   };
 
   private goBack() {
+    console.log(this.menuHistory);
     if (this.menuHistory.length > 1) {
       this.menuHistory = this.menuHistory.slice(0, -1);
     }
   }
 
   private getStateByMenuType(type: MenuItemType): MenuState {
+    if (type === "sideSelector") {
+      return {
+        menuType: "sideSelectorMenu",
+        screenType: "menuScreen",
+      };
+    }
     if (type === "gameLoader") {
       return {
         screenType: "gameScreen",
@@ -100,18 +100,18 @@ export class AppStateMachine extends Emitter<MenuState> {
     if (type === "back") {
       const previousMenu = this.menuHistory[this.menuHistory.length - 1];
       return {
-        screenType: "gameScreen",
+        screenType: "menuScreen",
         menuType: previousMenu,
       };
     }
-    const state = AppStateRegistry[type];
+    const state = MenuStateRegistry[type];
     return {
       ...state,
       menuType: state.onTransition,
     };
   }
 
-  private setCurrentState(state: MenuState) {
+  private setCurrentMenuState(state: MenuState) {
     if (!state.menuType) {
       this.currentState = {
         screenType: "gameScreen",

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { AppStateMachine } from "../AppStateMachine";
+import { MenuStateMachine } from "../MenuStateMachine";
 import { useEngine } from "./useEngine";
 
 export function useAppStateMachine() {
-  const stateMachine = useEngine(AppStateMachine);
+  const stateMachine = useEngine(MenuStateMachine);
 
   const [state, setState] = useState(stateMachine.getCurrentScreen());
 

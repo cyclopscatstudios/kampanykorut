@@ -9,6 +9,8 @@ import { Text } from "../Text";
 import { useState, type MouseEvent } from "react";
 import classNames from "classnames";
 import { Heading } from "../Heading";
+import { container } from "tsyringe";
+import { GameStateEngine } from "@/logic/application";
 
 export function GameLoaderMenu({
   onClick,
@@ -38,6 +40,7 @@ export function GameLoaderMenuList({
   onClick,
   hasBackButton = false,
 }: MenuListProps) {
+  const gameStateEngine = container.resolve(GameStateEngine);
   const [openedGameId, setOpenedGameId] = useState<string | undefined>(
     undefined,
   );
@@ -48,6 +51,7 @@ export function GameLoaderMenuList({
 
   const handleOnClick = (item: MenuItem | null) => {
     if (onClick && item) {
+      gameStateEngine.updateGameState({ activeGameId: item.gameId });
       onClick(item);
     }
   };
@@ -61,6 +65,8 @@ export function GameLoaderMenuList({
       setSelectedCampaign(null);
       return;
     }
+    console.log({ item });
+    gameStateEngine.updateGameState({ activeGameId: item.gameId });
     setSelectedCampaign(item);
   };
 

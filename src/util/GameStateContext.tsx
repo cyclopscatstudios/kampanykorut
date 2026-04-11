@@ -1,9 +1,9 @@
-import type { GameState } from "@/logic/application";
+import type { MenuState } from "@/logic/application";
 import { createContext } from "react";
 
-const defaultGameState: GameState = {
-  currentScreen: "MenuSelector",
+const defaultMenuState: MenuState = {
+  screenType: "menuScreen",
   menuType: "mainMenu",
 };
 
-export const GameStateContext = createContext<GameState>(defaultGameState);
+export const GameStateContext = createContext<MenuState>(defaultMenuState);

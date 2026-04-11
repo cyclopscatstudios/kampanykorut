@@ -11,7 +11,9 @@ export class StorageEngine {
   constructor() {
     log.debug("StorageEngine initialized");
     this.getItem = this.getItem.bind(this);
+    this.setItem = this.setItem.bind(this);
     this.getLocalStorageItem = this.getLocalStorageItem.bind(this);
+    this.getPrefixedKey = this.getPrefixedKey.bind(this);
   }
 
   getItem(key: SessionKey, storageType: StorageType) {

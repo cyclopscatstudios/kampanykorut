@@ -1,9 +1,8 @@
-import { StorageEngine } from "./StorageEngine";
 import { Emitter } from "./Emitter";
-import type { GameSettings } from "../domain";
 import type { ElectionConfig } from "../types/campaignEngine.types";
-import { singleton, inject } from "tsyringe";
+import { inject, singleton } from "tsyringe";
 import { createLogger } from "../logger";
+import { StorageEngine } from "./StorageEngine";
 
 const log = createLogger("GameConfigEngine");
 
@@ -15,6 +14,7 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
     log.debug("GameConfigEngine initialized");
     super();
     this.getElectionConfig = this.getElectionConfig.bind(this);
+    this.storage.setItem = this.storage.setItem.bind(this);
   }
 
   configure(electionConfig: ElectionConfig | null): void {
@@ -33,20 +33,10 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
     return this.electionConfig;
   }
 
-  getGameSettings(): GameSettings {
-    const stored = this.storage.getItem("settings", "localStorage");
-    return stored ? JSON.parse(stored) : { showAdvisorFeedback: true };
-  }
-
-  updateGameSettings(settings: Partial<GameSettings>): void {
-    const current = this.getGameSettings();
-    const updated = { ...current, ...settings };
-    this.storage.setItem("settings", JSON.stringify(updated), "localStorage");
-  }
-
   updateGameConfig(config: Partial<ElectionConfig>): void {
     const updated = { ...this.getElectionConfig(), ...config };
     this.electionConfig = updated;
+    this.storage.setItem("gameConfig", JSON.stringify(updated), "localStorage");
     this.notify(updated);
   }
 }

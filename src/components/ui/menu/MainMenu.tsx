@@ -43,7 +43,6 @@ export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
               id: "settings",
               text: settings,
               icon: "gear-fill",
-              disabled: true,
             },
             {
               id: "about",
