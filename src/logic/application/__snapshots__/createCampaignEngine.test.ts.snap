@@ -14,7 +14,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
           "parties": [],
           "thresholdPercent": 5,
         },
-        "events": Map {},
         "getElectionConfig": [Function],
         "listeners": [],
         "storage": StorageEngine {
@@ -31,7 +30,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
             "parties": [],
             "thresholdPercent": 5,
           },
-          "events": Map {},
           "getElectionConfig": [Function],
           "listeners": [],
           "storage": StorageEngine {
@@ -43,7 +41,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
         },
       },
       "stateHandler": StateHandler {
-        "events": Map {},
         "listeners": [],
         "state": {
           "currentConfig": undefined,
@@ -120,7 +117,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
           "parties": [],
           "thresholdPercent": 5,
         },
-        "events": Map {},
         "getElectionConfig": [Function],
         "listeners": [],
         "storage": StorageEngine {
@@ -174,7 +170,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       "parties": [],
       "thresholdPercent": 5,
     },
-    "events": Map {},
     "getElectionConfig": [Function],
     "listeners": [],
     "storage": StorageEngine {
