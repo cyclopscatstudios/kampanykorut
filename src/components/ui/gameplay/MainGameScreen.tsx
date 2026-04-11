@@ -2,18 +2,16 @@ import { useState } from "react";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
 import { useElectionState } from "@/logic/application";
-import { Button } from "../Button";
 import { FinalResultScreen } from "./FinalResultScreen/EndResultScreen";
 import type { DistrictResult } from "../map.utils";
 import { AdvisorModal } from "./AdvisorModal";
 import type { GameState } from "../../../logic/domain/CampaignEngine";
-import logo from "../../../assets/logo_reworked.png";
-import { Text } from "../Text";
 import type {
   AnswerFeedback,
   PendingTurn,
 } from "../../../logic/types/campaignEngine.types";
 import { SettingsDialog } from "./SettingsDialog";
+import { MenuBar } from "./GameMenuBar";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
@@ -124,83 +122,6 @@ function ScreenWrapper({
         <MenuBar setIsOpen={setIsOpen} />
       </div>
       {children}
-    </div>
-  );
-}
-
-function MenuBar({ setIsOpen }: { setIsOpen: (val: boolean) => void }) {
-  return (
-    <div className="w-full border-b-2 border-blue-400">
-      <div className="flex justify-between items-center mx-5">
-        <div className="flex justify-center items-center gap-2">
-          <div className="flex justify-center items-center">
-            <img src={logo} className="size-5 mr-3" />
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              KAMPÁNYKÖRÚT
-            </Text>
-          </div>
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              MAP
-            </Text>
-          </Button>
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              DASHBOARD
-            </Text>
-          </Button>
-        </div>
-        <div className="flex justify-center gap-2">
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              SAVE
-            </Text>
-          </Button>
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              LOAD
-            </Text>
-          </Button>
-          <Button variant="transparent" onClick={() => setIsOpen(true)}>
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              SETTINGS
-            </Text>
-          </Button>
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              LANGUAGE
-            </Text>
-          </Button>
-        </div>
-      </div>
     </div>
   );
 }
