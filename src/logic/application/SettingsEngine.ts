@@ -3,6 +3,7 @@ import { Emitter } from "./Emitter";
 import { StorageEngine } from "./StorageEngine";
 import { createLogger } from "../logger";
 import { supportedLanguages } from "../langs/languages";
+import i18n from "../../i18n";
 
 export type LanguageId = (typeof supportedLanguages)[number]["id"];
 
@@ -44,6 +45,9 @@ export class SettingsEngine extends Emitter<GameSettings> {
   updateGameSettings(settings: Partial<GameSettings>): void {
     const current = this.getGameSettings();
     const updated = { ...current, ...settings };
+    if (settings.language) {
+      i18n.changeLanguage(settings.language);
+    }
     this.notify(updated);
     this.storage.setItem("settings", JSON.stringify(updated), "localStorage");
   }

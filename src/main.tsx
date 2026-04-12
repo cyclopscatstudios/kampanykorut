@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import "./i18n";
 import "./di/container";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";

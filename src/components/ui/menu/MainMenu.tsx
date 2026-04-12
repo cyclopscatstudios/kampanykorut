@@ -1,4 +1,3 @@
-import { useTranslateLang } from "../../../logic/useTranslateLang";
 import { MenuList } from "../MenuList";
 import logo from "../../../assets/logo_reworked.png";
 import { MenuLayout } from "./MenuLayout";
@@ -6,13 +5,11 @@ import { type MenuItem } from "./menu.types";
 import { Text } from "../Text";
 import { quotes } from "../../../assets/jsons/quotes";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
   const [quote, setQuote] = useState(() => getRandomQuote());
-  const newGame = useTranslateLang("mainMenu.newGame");
-  const loadGame = useTranslateLang("mainMenu.loadGame");
-  const settings = useTranslateLang("mainMenu.settings");
-  const about = useTranslateLang("mainMenu.about");
+  const {t} = useTranslation();
 
   return (
     <div className="relative w-full h-full">
@@ -32,21 +29,21 @@ export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
       <MenuLayout>
         <MenuList
           listItems={[
-            { id: "newGame", text: newGame, icon: "play-circle-fill" },
+            { id: "newGame", text: t("mainMenu.newGame"), icon: "play-circle-fill" },
             {
               id: "loadGame",
-              text: loadGame,
+              text: t("mainMenu.loadGame"),
               icon: "clipboard-data-fill",
               disabled: true,
             },
             {
               id: "settings",
-              text: settings,
+              text: t("mainMenu.settings"),
               icon: "gear-fill",
             },
             {
               id: "about",
-              text: about,
+              text: t("mainMenu.about"),
               icon: "info-circle-fill",
               disabled: true,
             },
