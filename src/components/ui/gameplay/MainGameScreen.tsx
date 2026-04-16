@@ -12,11 +12,13 @@ import type {
 } from "../../../logic/types/campaignEngine.types";
 import { SettingsDialog } from "./SettingsDialog";
 import { MenuBar } from "./GameMenuBar";
+import { GameDialog } from "./GameDialog";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
 export function MainGameScreen({ gameId }: { gameId: string }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isSettingsOpen, setIsOpenSettings] = useState(false);
+  const [isSettingsGameMenu, setIsOpenGameMenu] = useState(false);
   const [currentView, setCurrentView] = useState<CurrentView>("MapView");
   const [answer, setAnswer] = useState<string | undefined>();
   const [advisorFeedback, setAdvisorFeedback] = useState<AnswerFeedback | null>(
@@ -67,8 +69,13 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
   };
 
   return (
-    <ScreenWrapper loadSavedGame={loadSavedGame} setIsOpen={setIsOpen}>
-      <SettingsDialog isOpen={isOpen} setIsOpen={setIsOpen} />
+    <ScreenWrapper
+      loadSavedGame={loadSavedGame}
+      setIsOpenSettings={setIsOpenSettings}
+      setIsOpenGameMenu={setIsOpenGameMenu}
+    >
+      <SettingsDialog isOpen={isSettingsOpen} setIsOpen={setIsOpenSettings} />
+      <GameDialog isOpen={isSettingsGameMenu} setIsOpen={setIsOpenGameMenu} />
       <AdvisorModal
         advice={advisorFeedback?.text ?? ""}
         open={Boolean(advisorFeedback)}
@@ -110,16 +117,21 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
 
 function ScreenWrapper({
   children,
-  setIsOpen,
+  setIsOpenGameMenu,
+  setIsOpenSettings,
 }: {
   children: React.ReactNode;
   loadSavedGame: () => void;
-  setIsOpen: (val: boolean) => void;
+  setIsOpenGameMenu: (val: boolean) => void;
+  setIsOpenSettings: (val: boolean) => void;
 }) {
   return (
     <div className="w-full h-full">
       <div>
-        <MenuBar setIsOpen={setIsOpen} />
+        <MenuBar
+          setIsOpenGameMenu={setIsOpenGameMenu}
+          setIsOpenSettings={setIsOpenSettings}
+        />
       </div>
       {children}
     </div>

@@ -38,19 +38,20 @@ container.registerInstance(SettingsEngine, settingsEngine);
 const gameConfigEngine = new GameConfigEngine(storageEngine);
 container.registerInstance(GameConfigEngine, gameConfigEngine);
 
+const stateEngine = new StateEngine(storageEngine);
+container.registerInstance(StateEngine, stateEngine);
+
+const menuStateEngine = new MenuStateMachine(stateEngine);
+container.registerInstance(MenuStateMachine, menuStateEngine);
+
 const gameStateEngine = new GameStateEngine(
   gameConfigEngine,
   voterEnvironment,
   districtGroupEngine,
   storageEngine,
+  menuStateEngine,
 );
 container.registerInstance(GameStateEngine, gameStateEngine);
-
-const stateEngine = new StateEngine(storageEngine);
-container.registerInstance(StateEngine, stateEngine);
-
-const appStateMachine = new MenuStateMachine(stateEngine);
-container.registerInstance(MenuStateMachine, appStateMachine);
 
 const unionSwingTransformer = new UnionSwingTransformer();
 container.registerInstance(UnionSwingTransformer, unionSwingTransformer);

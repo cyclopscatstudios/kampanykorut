@@ -8,6 +8,7 @@ import { createLogger } from "../logger";
 
 export type MenuType = (typeof gameMenuRegistery)[number];
 export type MenuItemType =
+  | "mainMenu"
   | "newGame"
   | "loadGame"
   | "modMaker"

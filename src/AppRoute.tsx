@@ -17,11 +17,15 @@ export function AppRoot({
     gameStateEngine.getGameState(),
   );
 
+  console.log({ gameState, menuState });
+
   useEffect(() => {
-    return (
-      gameStateEngine.subscribe(setGameState),
-      menuStateMachine.subscribe(setMenuState)
-    );
+    const unsubGameState = gameStateEngine.subscribe(setGameState);
+    const unsubMenuState = menuStateMachine.subscribe(setMenuState);
+    return () => {
+      unsubGameState();
+      unsubMenuState();
+    };
   }, [gameStateEngine, menuStateMachine]);
 
   return (

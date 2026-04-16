@@ -4,6 +4,11 @@ export const MenuStateRegistry: Record<
   Exclude<MenuItemType, "back" | "gameLoader">,
   MenuState & { onTransition: MenuType }
 > = {
+  mainMenu: {
+    screenType: "menuScreen",
+    menuType: "mainMenu",
+    onTransition: "mainMenu",
+  },
   newGame: {
     screenType: "menuScreen",
     menuType: "mainMenu",

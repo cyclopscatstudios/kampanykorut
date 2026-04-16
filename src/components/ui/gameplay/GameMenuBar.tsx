@@ -2,12 +2,23 @@ import { Text } from "../Text";
 import logo from "../../../assets/logo_reworked.png";
 import { Button } from "../Button";
 
-export function MenuBar({ setIsOpen }: { setIsOpen: (val: boolean) => void }) {
+export interface MenuBarProps {
+  setIsOpenSettings: (val: boolean) => void;
+  setIsOpenGameMenu: (val: boolean) => void;
+}
+
+export function MenuBar({
+  setIsOpenGameMenu,
+  setIsOpenSettings,
+}: MenuBarProps) {
   return (
     <div className="w-full border-b-2 border-blue-400">
       <div className="flex justify-between items-center mx-5">
         <div className="flex justify-center items-center gap-2">
-          <div className="flex justify-center items-center">
+          <div
+            className="flex justify-center items-center cursor-pointer"
+            onClick={() => setIsOpenGameMenu(true)}
+          >
             <img src={logo} className="size-5 mr-3" />
             <Text
               weight="bold"
@@ -55,7 +66,7 @@ export function MenuBar({ setIsOpen }: { setIsOpen: (val: boolean) => void }) {
               LOAD
             </Text>
           </Button>
-          <Button variant="transparent" onClick={() => setIsOpen(true)}>
+          <Button variant="transparent" onClick={() => setIsOpenSettings(true)}>
             <Text
               weight="bold"
               color="lightBlue"
