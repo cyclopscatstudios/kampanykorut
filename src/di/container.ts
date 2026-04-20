@@ -15,6 +15,7 @@ import {
 } from "@/logic/domain";
 import { DistrictGroupEngine } from "../logic/domain/DistrictGroupEngine";
 import { SettingsEngine } from "../logic/application/SettingsEngine";
+import { Navigation } from "../logic/application/navigation/Navigation";
 
 const emitter = new Emitter();
 container.registerInstance(Emitter, emitter);
@@ -40,11 +41,15 @@ container.registerInstance(GameConfigEngine, gameConfigEngine);
 const stateEngine = new StateEngine(storageEngine);
 container.registerInstance(StateEngine, stateEngine);
 
+const navigationService = new Navigation();
+container.registerInstance(Navigation, navigationService);
+
 const gameStateEngine = new GameStateEngine(
   gameConfigEngine,
   voterEnvironment,
   districtGroupEngine,
   storageEngine,
+  navigationService,
 );
 container.registerInstance(GameStateEngine, gameStateEngine);
 

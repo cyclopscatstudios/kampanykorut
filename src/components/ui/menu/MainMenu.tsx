@@ -39,7 +39,7 @@ export function MainMenu() {
               icon: "play-circle-fill",
             },
             {
-              id: MenuItemId.GameLoader,
+              id: MenuItemId.LoadSavedGame,
               text: loadGame,
               path: "load-game",
               icon: "clipboard-data-fill",

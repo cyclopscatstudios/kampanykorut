@@ -5,15 +5,15 @@ import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigation } from "../../../hooks/navigationHook";
 
 export function SettingsMenu() {
-  const navigate = useNavigate();
   const settingsEngine = container.resolve(SettingsEngine);
   const [settings, setSettings] = useState<GameSettings>(() =>
     settingsEngine.getGameSettings(),
   );
   const [settingsForm, setSettingsForm] = useState<GameSettings>(settings);
+  const { goBack } = useNavigation();
 
   const isEqual = JSON.stringify(settings) === JSON.stringify(settingsForm);
 
@@ -32,7 +32,7 @@ export function SettingsMenu() {
         setSettingsForm={setSettingsForm}
       />
       <div className="pt-5 flex justify-between">
-        <Button variant="tertiary" size="large" onClick={() => navigate(-1)}>
+        <Button variant="tertiary" size="large" onClick={goBack}>
           <Icon name="backspace-fill" />
           <Text weight="medium" color="lightBlue">
             back

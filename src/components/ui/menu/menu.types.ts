@@ -6,7 +6,7 @@ export enum MenuItemId {
   Settings = "settings",
   CampaignMode = "campaignMode",
   ClassicMode = "classicMode",
-  GameLoader = "gameLoader",
+  LoadSavedGame = "laodSavedGame",
   SideSelector = "sideSelector",
   Back = "back",
 }

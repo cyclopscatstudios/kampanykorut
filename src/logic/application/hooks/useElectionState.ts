@@ -9,8 +9,8 @@ import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
 import { container } from "tsyringe";
 import { SettingsEngine } from "../SettingsEngine";
 
-export function useElectionState(gameId: string) {
-  const config = gameModeRegistry[gameId];
+export function useElectionState(campaignId: string) {
+  const config = gameModeRegistry[campaignId];
   const { campaignEngine } = useMemo(
     () => createCampaignEngine(config),
     [config],

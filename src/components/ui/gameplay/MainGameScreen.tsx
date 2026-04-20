@@ -16,7 +16,7 @@ import { GameDialog } from "./GameDialog";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
-export function MainGameScreen({ gameId }: { gameId: string }) {
+export function MainGameScreen({ campaignId }: { campaignId: string }) {
   const [isSettingsOpen, setIsOpenSettings] = useState(false);
   const [isSettingsGameMenu, setIsOpenGameMenu] = useState(false);
   const [currentView, setCurrentView] = useState<CurrentView>("MapView");
@@ -25,6 +25,9 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
     null,
   );
   const [pendingTurn, setPendingTurn] = useState<PendingTurn | null>(null);
+  const [selectedDistrict, setSelectedDistrict] =
+    useState<DistrictResult | null>();
+
   const {
     state,
     config,
@@ -32,9 +35,7 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
     commitTurn,
     loadSavedGame,
     getFinalResults,
-  } = useElectionState(gameId);
-  const [selectedDistrict, setSelectedDistrict] =
-    useState<DistrictResult | null>();
+  } = useElectionState(campaignId);
 
   const applyTurnResult = (result: GameState) => {
     if (result.isEnded) {
@@ -48,7 +49,9 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
 
   const handleOnClick = (id?: string) => {
     const pending = processAnswer(id, selectedDistrict);
-    if (!pending) return;
+    if (!pending) {
+      return;
+    }
 
     if (pending.newGameState.advisorFeedback) {
       setAdvisorFeedback(pending.newGameState.advisorFeedback);
@@ -69,7 +72,7 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
   };
 
   return (
-    <ScreenWrapper
+    <GameScreenWrapper
       loadSavedGame={loadSavedGame}
       setIsOpenSettings={setIsOpenSettings}
       setIsOpenGameMenu={setIsOpenGameMenu}
@@ -111,11 +114,11 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
           cityName={selectedDistrict?.telepules}
         />
       )}
-    </ScreenWrapper>
+    </GameScreenWrapper>
   );
 }
 
-function ScreenWrapper({
+function GameScreenWrapper({
   children,
   setIsOpenGameMenu,
   setIsOpenSettings,
@@ -127,12 +130,10 @@ function ScreenWrapper({
 }) {
   return (
     <div className="w-full h-full">
-      <div>
-        <GameMenuBar
-          setIsOpenGameMenu={setIsOpenGameMenu}
-          setIsOpenSettings={setIsOpenSettings}
-        />
-      </div>
+      <GameMenuBar
+        setIsOpenGameMenu={setIsOpenGameMenu}
+        setIsOpenSettings={setIsOpenSettings}
+      />
       {children}
     </div>
   );

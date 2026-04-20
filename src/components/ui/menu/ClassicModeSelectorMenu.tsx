@@ -9,7 +9,7 @@ import classNames from "classnames";
 import { Heading } from "../Heading";
 import { container } from "tsyringe";
 import { GameStateEngine } from "@/logic/application";
-import { useNavigate } from "react-router";
+import { useNavigation } from "../../../hooks/navigationHook";
 
 export function ClassicModeSelectorMenu() {
   return (
@@ -33,14 +33,12 @@ interface CampaignSelectorMenuListProps {
 export function CampaignSelectorMenuList({
   campaignHeaders,
 }: CampaignSelectorMenuListProps) {
-  const navigate = useNavigate();
   const gameStateEngine = container.resolve(GameStateEngine);
-  const [openedGameId, setOpenedGameId] = useState<string | undefined>(
-    undefined,
-  );
+  const [openedGameId, setOpenedGameId] = useState<string | undefined>();
   const [selectedCampaign, setSelectedCampaign] =
     useState<CampaignHeader | null>(null);
   const backButton = useTranslateLang("menuList.button.back");
+  const { goBack, goToSideSelector } = useNavigation();
 
   const handleGameSelect = (
     item: CampaignHeader,
@@ -51,7 +49,7 @@ export function CampaignSelectorMenuList({
       setSelectedCampaign(null);
       return;
     }
-    gameStateEngine.updateGameState({ activeGameId: item.id });
+    gameStateEngine.updateGameState({ activeCampaignId: item.id });
     setSelectedCampaign(item);
   };
 
@@ -132,17 +130,12 @@ export function CampaignSelectorMenuList({
             block
             className="mb-1"
             disabled={!selectedCampaign}
-            onClick={() => navigate(`sides/${selectedCampaign?.id}`)}
+            onClick={() => goToSideSelector(selectedCampaign?.id ?? "")}
           >
             <Button.Text>Next</Button.Text>
           </Button>
           <li>
-            <Button
-              variant="tertiary"
-              size="large"
-              block
-              onClick={() => navigate(-1)}
-            >
+            <Button variant="tertiary" size="large" block onClick={goBack}>
               <Icon name="backspace-fill" />
               <Text weight="medium" color="lightBlue">
                 {backButton}

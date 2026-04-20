@@ -11,11 +11,11 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    // TODO: implement an error page
     errorElement: <div>error</div>,
     children: [
       { index: true, element: <MainMenu /> },
       { path: "settings", element: <SettingsMenu /> },
-
       {
         path: "new-game",
         element: <NewGameLayout />,
@@ -35,7 +35,6 @@ export const router = createBrowserRouter([
           },
         ],
       },
-
       { path: "game/:id", element: <MainGameScreenWrapper /> },
     ],
   },
