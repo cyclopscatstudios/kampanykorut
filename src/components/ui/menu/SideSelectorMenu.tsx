@@ -1,19 +1,14 @@
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
 import { Button } from "../Button";
-import { type MenuItem } from "./menu.types";
 import { Text } from "../Text";
 import { Icon } from "../Icon";
 import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
-import { useContext } from "react";
-import { GameStateContext } from "../../../util/GameStateContext";
+import { useLoaderData } from "react-router";
 
-interface SideSelectorMenuProps {
-  onClick: (item: MenuItem) => void;
-}
+export function SideSelectorMenu() {
+  const { config, id } = useLoaderData();
 
-export function SideSelectorMenu({ onClick }: SideSelectorMenuProps) {
-  const gameStateContext = useContext(GameStateContext);
   const {
     gameConfig,
     sides,
@@ -21,10 +16,10 @@ export function SideSelectorMenu({ onClick }: SideSelectorMenuProps) {
     selectedCandidate,
     handleCandidateChange,
     handlePartyChange,
-    goBack,
     startGame,
     candidateOptions,
-  } = useSideSelectorMenu(gameStateContext.gameId, onClick);
+    goBack,
+  } = useSideSelectorMenu(config);
 
   const partyAssets = selectedParty
     ? gameConfig?.electionAssets[selectedParty.id]
@@ -82,7 +77,7 @@ export function SideSelectorMenu({ onClick }: SideSelectorMenuProps) {
       <Button
         className="mt-auto"
         disabled={!selectedCandidate}
-        onClick={() => startGame()}
+        onClick={() => startGame(id)}
       >
         <Button.Text>Start Game</Button.Text>
       </Button>

@@ -82,7 +82,9 @@ export class CampaignEngine {
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
     private readonly advisorFeedback?: AdvisorFeedback[],
-  ) {}
+  ) {
+    log.debug("CampaignEngine initialized");
+  }
 
   createInitialState(baseResults?: Record<string, number>): GameState {
     let candidateListData = this.initialCandidateData;
@@ -95,6 +97,8 @@ export class CampaignEngine {
         baseResults,
         0,
       );
+
+      log.info("Create initial state with base result", baseApplied);
 
       candidateListData = baseApplied.candidateListData;
       partyListData = baseApplied.partyListData;

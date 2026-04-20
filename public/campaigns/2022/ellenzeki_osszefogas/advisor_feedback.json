@@ -1,0 +1,204 @@
+[
+  {
+    "questionId": "2022_ogyv-1",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ha meg akarod nyerni az ellenzékiek és az elbizonytalanodó fideszesek bizalmát, jó döntés a függetlenséged hangsúlyozása!"
+      },
+      {
+        "answerId": "B",
+        "text": "Fontos az egység fenntartása, de a túl nagy közelség veszélyes is lehet. Ne feledd: ez az összefogás kényszer szülte."
+      },
+      {
+        "answerId": "C",
+        "text": "Jól látod, hogy Gyurcsány Ferenc teher ennek az összefogásnak, de ez önmagában kevés lesz ahhoz, hogy magad mellé állítsd a bizonytalanokat. Ellenben elbizonytalaníthatja a hithű DK-s szavazókat."
+      },
+      {
+        "answerId": "D",
+        "text": "Az egyeztetés teljesen eredménytelenül zárul, és csak időpocsékolásnak bizonyul. Az ellenzéki pártok nem tudnak elfogadni téged, bár megígérik, hogy a nyilvánosságban jó arcot vágnak hozzá."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-2",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Nem rossz ötlet a jobboldali értékeid hangsúlyozása, de ne feledd, hogy az összefogás nagyobb részét még mindig inkább a liberális és baloldali szavazók adják."
+      },
+      {
+        "answerId": "B",
+        "text": "A magyar politika történetében egy szűk rétegen kívül még senkit nem sikerült pusztán szakpolitikával meggyőzni, valószínűleg most sem lesz ez másként."
+      },
+      {
+        "answerId": "C",
+        "text": "Érdekes irány, és akár működhet is, hiszen a Fidesz is rájött már, hogy az emberek ösztönösen vonzódnak a rendszerellenes vezetőkhöz."
+      },
+      {
+        "answerId": "D",
+        "text": "Fontos megbízni a szakmai stábban, de ha meg akarod szólítani az embereket, muszáj valamilyen személyes irányt is belevinned a történetbe."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-3",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Feszengős megjegyzések és egy-két párizses szendvics között végül sikerült valamiféle kompromisszumra jutni. Ez később még akár jól is jöhet."
+      },
+      {
+        "answerId": "C",
+        "text": "A baloldali értékek fontosságának hangsúlyozása és az orbáni rendszer bűneinek hosszas felsorolása után Gyurcsány Ferenc elégedetten dől hátra, hogy vele egyeztettél először. Kockázatos játszmába kezdtél, de lehet, hogy később még jól jöhet."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-4",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A teljes spontaneitás túl sok hibalehetőséget rejt. Egy rossz mondat könnyen napokig meghatározhatja a rólad szóló híreket."
+      },
+      {
+        "answerId": "B",
+        "text": "A jól meghatározott kulcsüzenetek segítenek kézben tartani a kommunikációt. Így kisebb az esélye, hogy elviszik a beszélgetést."
+      },
+      {
+        "answerId": "C",
+        "text": "Az utólagos helyreigazítás ritkán éri el ugyanazokat, akik az eredeti hibát látták. A percepciót nehéz visszafordítani, még ha formálisan igazad is van."
+      },
+      {
+        "answerId": "D",
+        "text": "A médiából való kivonulás jelentősen csökkenti az elérésedet. Ha nem te mondod el a történetedet, mások fogják megtenni helyetted."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-5",
+    "answers": [
+      {
+        "answerId": "B",
+        "text": "Jó választás! Keresni és koncentrálni kell a jelenlétet azokban a körzetekben ahol az előző választásokkor 50% alatt szerepelt a Fidesz"
+      },
+      {
+        "answerId": "D",
+        "text": "Elismerendő próbálkozás mindenhova eljutni, de a realitás az, hogy muszáj lesz kompomisszumokat hozni, hogy mely választókerületekre koncentrálsz."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-6",
+    "conditionalAnswers": [
+      {
+        "if": [
+          {
+            "questionId": "2022_ogyv-3",
+            "answerId": "C"
+          }
+        ],
+        "answer": {
+          "answerId": "D",
+          "text": "Meglepő módon megértően fogadja Gyurcsány Ferenc a kérésedet. Mivel vele egyeztettél először a pártvezetők közül, a DK végül biztosít téged a szükséges erőforrásokról."
+        }
+      }
+    ],
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A DK szavazóinak egy része fütyüléssel és fújolással reagál a rendezvényeden, és sem Gyurcsány Ferenc, sem Dobrev Klára nem hajlandó felvenni a telefont."
+      },
+      {
+        "answerId": "B",
+        "text": "A kormánypárti kommunikáció szerint ezzel végleg beigazolódott: valójában Gyurcsány Ferenc vezeti a koalíciót, amit már te sem próbálsz cáfolni."
+      },
+      {
+        "answerId": "C",
+        "text": "Ezzel egy dolgot biztosan elértél: sem a Fidesz szavazói, sem a DK tábora nem bízik igazán benned."
+      },
+      {
+        "answerId": "D",
+        "text": "Nehéz egyeztetések után sikerül elérni, hogy Gyurcsány Ferenc háttérbe húzódjon, de a DK által biztosított erőforrások egy részéről le kell mondanod."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-7",
+    "conditionalAnswers": [
+      {
+        "if": [
+          {
+            "questionId": "2022_ogyv-3",
+            "answerId": "A"
+          }
+        ],
+        "answer": {
+          "answerId": "C",
+          "text": "Jakab Péter kifejezetten pozitívan fogadja, hogy őt kerested meg elsőként a pártvezetők közül, és készséggel segít megszervezni a találkozókat a helyi jobbikos jelöltekkel."
+        }
+      }
+    ],
+    "answers": [
+      {
+        "answerId": "B",
+        "text": "A jobbikos szavazók elengedése komoly kockázat ebben a helyzetben, a Mi Hazánk viszont köszöni a lehetőséget."
+      },
+      {
+        "answerId": "C",
+        "text": "Az elképzelés működhetne, de Jakab Péter, a Jobbik elnöke nem mutat különösebb együttműködési szándékot."
+      },
+      {
+        "answerId": "D",
+        "text": "A jobbikos szavazók elengedése komoly kockázat ebben a helyzetben, a Mi Hazánk viszont köszöni a lehetőséget."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-8",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A kormánypárti médiagépezet már másnap ráerősített: „Márki-Zay Péter eltörölné a rezsicsökkentést.”"
+      },
+      {
+        "answerId": "B",
+        "text": "Politikailag védhető kompromisszumot kínáltál, de ellenfeleid gyorsan populistának bélyegezték a nagyvállalatokra hárított terheket."
+      },
+      {
+        "answerId": "C",
+        "text": "Sikerült elkerülnöd a rezsicsökkentés csapdáját, de ezzel át is engedted a témát a kormánypárti narratívának."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-9",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Megpróbáltál betörni az ellenfél médiaterébe, de a pálya erősen lejt: minden megszólalásod kockázatos terepen zajlik."
+      },
+      {
+        "answerId": "B",
+        "text": "Erősen építettél az online és független médiára, de ezzel főként a már meglévő támogatóidat érted el."
+      },
+      {
+        "answerId": "C",
+        "text": "Kiaknázatlan területre léptél. Bár ezek a médiumok nem érik el a kormánypárti gépezet szintjét, helyi szinten mégis hatással lehetnek."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-10",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Még ha igazad is van, az ellenzéki törzsszavazók között nem ez lesz a legnépszerűbb megnyilvánulásod."
+      },
+      {
+        "answerId": "B",
+        "text": "Még ha igazad is van, az ellenzéki törzsszavazók között nem ez lesz a legnépszerűbb megnyilvánulásod."
+      }
+    ]
+  }
+]

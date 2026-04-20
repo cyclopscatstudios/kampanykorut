@@ -1,7 +1,5 @@
-import { type MenuListProps } from "../MenuList";
 import { MenuLayout } from "./MenuLayout";
-import gameModes from "../../../assets/jsons/game_modes.json";
-import { MenuItemId, type MenuItem } from "./menu.types";
+import campaigns from "../../../assets/jsons/game_modes.json";
 import { useTranslateLang } from "../../../logic/useTranslateLang";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
@@ -11,62 +9,49 @@ import classNames from "classnames";
 import { Heading } from "../Heading";
 import { container } from "tsyringe";
 import { GameStateEngine } from "@/logic/application";
+import { useNavigate } from "react-router";
 
-export function GameLoaderMenu({
-  onClick,
-}: {
-  onClick?: (item: MenuItem) => void;
-}) {
+export function ClassicModeSelectorMenu() {
   return (
     <MenuLayout>
-      <GameLoaderMenuList
-        listItems={gameModes.map((gameMode) => ({
-          id: MenuItemId.SideSelector,
-          gameId: gameMode.gameId,
-          text: gameMode.name,
-          icon: "campaign",
-          iconSource: "svg",
-          description: gameMode.description,
-        }))}
-        hasBackButton
-        onClick={onClick}
-      />
+      <CampaignSelectorMenuList campaignHeaders={campaigns} />
     </MenuLayout>
   );
 }
 
-export function GameLoaderMenuList({
-  listItems,
-  onClick,
-  hasBackButton = false,
-}: MenuListProps) {
+interface CampaignHeader {
+  id: string;
+  label: string;
+  description: string;
+  campaignBanner: string;
+}
+
+interface CampaignSelectorMenuListProps {
+  campaignHeaders: CampaignHeader[];
+}
+
+export function CampaignSelectorMenuList({
+  campaignHeaders,
+}: CampaignSelectorMenuListProps) {
+  const navigate = useNavigate();
   const gameStateEngine = container.resolve(GameStateEngine);
   const [openedGameId, setOpenedGameId] = useState<string | undefined>(
     undefined,
   );
-  const [selectedCampaign, setSelectedCampaign] = useState<MenuItem | null>(
-    null,
-  );
+  const [selectedCampaign, setSelectedCampaign] =
+    useState<CampaignHeader | null>(null);
   const backButton = useTranslateLang("menuList.button.back");
 
-  const handleOnClick = (item: MenuItem | null) => {
-    if (onClick && item) {
-      gameStateEngine.updateGameState({ activeGameId: item.gameId });
-      onClick(item);
-    }
-  };
-
   const handleGameSelect = (
-    item: MenuItem,
+    item: CampaignHeader,
     event: MouseEvent<HTMLDivElement>,
   ) => {
     event.stopPropagation();
-    if (selectedCampaign?.gameId === item.gameId) {
+    if (selectedCampaign?.id === item.id) {
       setSelectedCampaign(null);
       return;
     }
-    console.log({ item });
-    gameStateEngine.updateGameState({ activeGameId: item.gameId });
+    gameStateEngine.updateGameState({ activeGameId: item.id });
     setSelectedCampaign(item);
   };
 
@@ -74,20 +59,17 @@ export function GameLoaderMenuList({
     <div className="size-full flex items-center justify-center">
       <div className="flex flex-col items-center justify-center">
         <Heading level={3} color="lightBlue" className="mb-6">
-          {selectedCampaign ? selectedCampaign.text : "Select a campaign"}
+          {selectedCampaign ? selectedCampaign.label : "Select a campaign"}
         </Heading>
-
         <ul className="w-[350px]">
-          {listItems.map((item, index) => {
-            const isSelected = selectedCampaign?.gameId === item.gameId;
-            const isOpen = openedGameId === item.gameId;
+          {campaignHeaders.map((item, index) => {
+            const isSelected = selectedCampaign?.id === item.id;
+            const isOpen = openedGameId === item.id;
 
             return (
               <li
-                key={item.gameId ?? index}
-                className={
-                  index !== listItems.length - 1 || hasBackButton ? "pb-4" : ""
-                }
+                key={item.id}
+                className={index !== campaignHeaders.length - 1 ? "pb-4" : ""}
               >
                 <div
                   className={classNames(
@@ -103,14 +85,14 @@ export function GameLoaderMenuList({
                     <div className="flex items-center gap-2">
                       <div className="max-w-[150px] shrink-0">
                         <img
-                          src="https://www.budakalasz.hu/wp-content/uploads/2022/01/BK_Valasztas_BANNERArtboard-3-1.jpg"
-                          alt={item.text}
+                          src={item.campaignBanner}
+                          alt={item.label}
                           className="h-auto w-full rounded-md object-cover"
                         />
                       </div>
 
                       <Text weight="medium" color="lightBlue">
-                        {item.text}
+                        {item.label}
                       </Text>
                     </div>
 
@@ -119,7 +101,7 @@ export function GameLoaderMenuList({
                       className="cursor-pointer text-center"
                       onClick={(e) => {
                         e.stopPropagation();
-                        setOpenedGameId(isOpen ? undefined : item.gameId);
+                        setOpenedGameId(isOpen ? undefined : item.id);
                       }}
                     >
                       {isOpen ? (
@@ -150,25 +132,23 @@ export function GameLoaderMenuList({
             block
             className="mb-1"
             disabled={!selectedCampaign}
-            onClick={() => handleOnClick(selectedCampaign)}
+            onClick={() => navigate(`sides/${selectedCampaign?.id}`)}
           >
             <Button.Text>Next</Button.Text>
           </Button>
-          {hasBackButton && (
-            <li>
-              <Button
-                variant="tertiary"
-                size="large"
-                block
-                onClick={() => onClick?.({ id: MenuItemId.Back, text: "Back" })}
-              >
-                <Icon name="backspace-fill" />
-                <Text weight="medium" color="lightBlue">
-                  {backButton}
-                </Text>
-              </Button>
-            </li>
-          )}
+          <li>
+            <Button
+              variant="tertiary"
+              size="large"
+              block
+              onClick={() => navigate(-1)}
+            >
+              <Icon name="backspace-fill" />
+              <Text weight="medium" color="lightBlue">
+                {backButton}
+              </Text>
+            </Button>
+          </li>
         </ul>
       </div>
     </div>

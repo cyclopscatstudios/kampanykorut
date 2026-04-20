@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ellenzeki_vezetesu_oevk",
+    "label": "ellenzéki vezetésű OEVK-k",
+    "districts": [
+      { "megyekod": 18, "oevk": 1 },
+      { "megyekod": 18, "oevk": 2 },
+      { "megyekod": 18, "oevk": 3 },
+      { "megyekod": 12, "oevk": 1 },
+      { "megyekod": 6, "oevk": 1 },
+      { "megyekod": 6, "oevk": 2 },
+      { "megyekod": 13, "oevk": 1 },
+      { "megyekod": 2, "oevk": 1 },
+      { "megyekod": 2, "oevk": 2 },
+      { "megyekod": 5, "oevk": 1 },
+      { "megyekod": 5, "oevk": 2 },
+      { "megyekod": 6, "oevk": 4 },
+      { "megyekod": 14, "oevk": 1 },
+      { "megyekod": 10, "oevk": 1 },
+      { "megyekod": 7, "oevk": 4 }
+    ]
+  }
+]

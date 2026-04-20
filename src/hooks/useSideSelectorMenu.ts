@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useGameConfigEngine } from "../logic/application/hooks/useGameConfigEngine";
-import { useAppStateMachine } from "../logic/application/hooks/useAppStateMachine";
-import { MenuItemId, type MenuItem } from "../components/ui/menu/menu.types";
-import type { PlayerSide } from "../logic/types/campaignEngine.types";
+import type {
+  ElectionConfig,
+  PlayerSide,
+} from "../logic/types/campaignEngine.types";
+import { useNavigate } from "react-router";
 
 type Party = {
   id: string;
@@ -13,21 +15,16 @@ type Party = {
   }[];
 };
 
-export function useSideSelectorMenu(
-  gameId: string | undefined,
-  onClick: (item: MenuItem) => void,
-) {
+export function useSideSelectorMenu(electionConfig: ElectionConfig) {
+  const navigate = useNavigate();
   const [selectedParty, setSelectedParty] = useState<Party | undefined>();
   const [selectedCandidate, setSelectedCandidate] = useState<
     string | undefined
   >();
-  const { gameConfig, updateGameConfig } = useGameConfigEngine();
-  const { transition } = useAppStateMachine();
-
-  console.log({ gameConfig });
+  const { updateGameConfig } = useGameConfigEngine();
 
   const handlePartyChange = (partyId: string) => {
-    const party = gameConfig?.playableSides.find((s) => s.id === partyId);
+    const party = electionConfig.playableSides.find((s) => s.id === partyId);
     setSelectedParty(party);
     const playerSide: PlayerSide = {
       partyId: partyId,
@@ -42,16 +39,11 @@ export function useSideSelectorMenu(
   };
 
   const goBack = () => {
-    transition({ id: MenuItemId.Back, text: "Back" });
+    navigate(-1);
   };
 
-  const startGame = () => {
-    onClick({
-      gameId,
-      onTransition: "gameLoader",
-      id: MenuItemId.GameLoader,
-      text: "Start Game",
-    });
+  const startGame = (id: string) => {
+    navigate(`/game/${id}`);
   };
 
   const candidateOptions =
@@ -61,15 +53,15 @@ export function useSideSelectorMenu(
     })) ?? [];
 
   return {
-    gameConfig,
-    sides: gameConfig?.playableSides ?? [],
+    gameConfig: electionConfig,
+    sides: electionConfig?.playableSides ?? [],
     selectedParty,
     selectedCandidate,
     setSelectedCandidate,
     handlePartyChange,
     handleCandidateChange,
-    goBack,
     startGame,
     candidateOptions,
+    goBack,
   };
 }

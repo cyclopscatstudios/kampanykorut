@@ -3,7 +3,6 @@ import {
   GameConfigEngine,
   StorageEngine,
   GameStateEngine,
-  MenuStateMachine,
   StateEngine,
   Emitter,
 } from "@/logic/application";
@@ -41,15 +40,11 @@ container.registerInstance(GameConfigEngine, gameConfigEngine);
 const stateEngine = new StateEngine(storageEngine);
 container.registerInstance(StateEngine, stateEngine);
 
-const menuStateEngine = new MenuStateMachine(stateEngine);
-container.registerInstance(MenuStateMachine, menuStateEngine);
-
 const gameStateEngine = new GameStateEngine(
   gameConfigEngine,
   voterEnvironment,
   districtGroupEngine,
   storageEngine,
-  menuStateEngine,
 );
 container.registerInstance(GameStateEngine, gameStateEngine);
 

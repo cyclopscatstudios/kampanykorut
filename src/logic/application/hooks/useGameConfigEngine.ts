@@ -6,7 +6,7 @@ import type { ElectionConfig } from "../../types/campaignEngine.types";
 export function useGameConfigEngine() {
   const engine = container.resolve(GameConfigEngine);
   const [gameConfig, setGameConfig] = useState(() =>
-    engine.isConfigured() ? engine.getElectionConfig() : null,
+    engine.getCurrentElectionConfig(),
   );
 
   useEffect(() => {

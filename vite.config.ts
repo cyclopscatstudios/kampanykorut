@@ -42,6 +42,7 @@ export default defineConfig({
     alias: {
       "@/logic/application": "/src/logic/application",
       "@/logic/domain": "/src/logic/domain",
+      "@/logic/types": "/src/logic/types",
     },
   },
 });

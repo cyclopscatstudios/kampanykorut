@@ -1,27 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import { useTranslateLang } from "../../logic/useTranslateLang";
 import { Button } from "./Button";
 import { Icon, type BootstrapIcon } from "./Icon";
-import { MenuItemId, type MenuItem } from "./menu/menu.types";
+import { type MenuItem } from "./menu/menu.types";
 import { Text } from "./Text";
 
 export interface MenuListProps {
   listItems: MenuItem[];
-  onClick?: (item: MenuItem) => void;
   hasBackButton?: boolean;
 }
 
-export function MenuList({
-  listItems,
-  onClick,
-  hasBackButton = false,
-}: MenuListProps) {
+export function MenuList({ listItems, hasBackButton = false }: MenuListProps) {
+  const navigate = useNavigate();
   const backButton = useTranslateLang("menuList.button.back");
-
-  const handleOnClick = (item: MenuItem) => {
-    if (onClick) {
-      onClick(item);
-    }
-  };
 
   return (
     <div>
@@ -37,7 +28,7 @@ export function MenuList({
               variant="tertiary"
               size="large"
               block
-              onClick={() => handleOnClick(item)}
+              onClick={() => navigate(item.path)}
               disabled={item.disabled}
             >
               <Icon
@@ -59,7 +50,7 @@ export function MenuList({
               variant="tertiary"
               size="large"
               block
-              onClick={() => onClick?.({ id: MenuItemId.Back, text: "Back" })}
+              onClick={() => navigate(-1)}
             >
               <Icon name="backspace-fill" />
               <Text weight="medium" color="lightBlue">

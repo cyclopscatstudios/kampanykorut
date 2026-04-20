@@ -11,7 +11,7 @@ import type {
   PendingTurn,
 } from "../../../logic/types/campaignEngine.types";
 import { SettingsDialog } from "./SettingsDialog";
-import { MenuBar } from "./GameMenuBar";
+import { GameMenuBar } from "./GameMenuBar";
 import { GameDialog } from "./GameDialog";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
@@ -128,7 +128,7 @@ function ScreenWrapper({
   return (
     <div className="w-full h-full">
       <div>
-        <MenuBar
+        <GameMenuBar
           setIsOpenGameMenu={setIsOpenGameMenu}
           setIsOpenSettings={setIsOpenSettings}
         />

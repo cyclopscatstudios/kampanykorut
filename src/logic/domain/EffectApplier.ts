@@ -74,7 +74,7 @@ export class EffectApplier {
     });
 
     const isDistrictBoosterAllowed =
-      this.gameConfigEngine.getElectionConfig().districtBoost;
+      this.gameConfigEngine.getCurrentElectionConfig()?.districtBoost;
 
     const canApplyeBoosterEffect = turn % 2 === 0;
 
@@ -94,7 +94,8 @@ export class EffectApplier {
   }
 
   private getBoosterEffect(district: DistrictResult): AppliedEffect | null {
-    const palyerSide = this.gameConfigEngine.getElectionConfig().playerSide;
+    const palyerSide =
+      this.gameConfigEngine.getCurrentElectionConfig()?.playerSide;
     if (!palyerSide) {
       return null;
     }

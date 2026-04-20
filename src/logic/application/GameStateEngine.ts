@@ -6,7 +6,6 @@ import { createLogger } from "../logger";
 import type { VoterEnvironment } from "../domain";
 import type { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
 import type { StorageEngine } from "./StorageEngine";
-import type { MenuStateMachine } from "./MenuStateMachine";
 
 export type GameState = {
   activeGameId: string | null;
@@ -27,7 +26,6 @@ export class GameStateEngine extends Emitter<GameState> {
     private voterEnvironment: VoterEnvironment,
     private districtGroupEngine: DistrictGroupEngine,
     private storage: StorageEngine,
-    private menuStateMachine: MenuStateMachine,
   ) {
     log.debug("GameStateEngine initialized");
     super();
@@ -36,6 +34,7 @@ export class GameStateEngine extends Emitter<GameState> {
   }
 
   updateGameState(gameState: Partial<GameState>) {
+    log.debug("Update game state with ", gameState);
     this.gameState = { ...this.gameState, ...gameState };
     if (gameState.activeGameId) {
       this.gameConfigEngine.configure(
@@ -58,9 +57,6 @@ export class GameStateEngine extends Emitter<GameState> {
     this.gameConfigEngine.configure(null);
     this.voterEnvironment.configure(null);
     this.districtGroupEngine.configure();
-    this.menuStateMachine.transition({ id: "mainMenu", text: "Main Menu" });
-    this.gameState = { activeGameId: null };
-    this.notify(this.gameState);
   }
 
   private getConfigByGameId(gameId: string) {

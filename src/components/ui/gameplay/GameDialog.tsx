@@ -6,12 +6,6 @@ import { GameStateEngine } from "@/logic/application";
 import { Modal } from "../Modal";
 import { useState } from "react";
 
-enum GameScreen {
-  DefaulGameScreen = "defaultGameScreen",
-  SavedGameSessions = "savedGameSessions",
-  saveCurrentGameSession = "savedGameSessions",
-}
-
 export function GameDialog({
   isOpen,
   setIsOpen,
