@@ -28,14 +28,8 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
   const [selectedDistrict, setSelectedDistrict] =
     useState<DistrictResult | null>();
 
-  const {
-    state,
-    config,
-    processAnswer,
-    commitTurn,
-    loadSavedGame,
-    getFinalResults,
-  } = useElectionState(campaignId);
+  const { state, config, processAnswer, commitTurn, getFinalResults } =
+    useElectionState(campaignId);
 
   const applyTurnResult = (result: GameState) => {
     if (result.isEnded) {
@@ -73,7 +67,6 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
 
   return (
     <GameScreenWrapper
-      loadSavedGame={loadSavedGame}
       setIsOpenSettings={setIsOpenSettings}
       setIsOpenGameMenu={setIsOpenGameMenu}
     >
@@ -124,7 +117,6 @@ function GameScreenWrapper({
   setIsOpenSettings,
 }: {
   children: React.ReactNode;
-  loadSavedGame: () => void;
   setIsOpenGameMenu: (val: boolean) => void;
   setIsOpenSettings: (val: boolean) => void;
 }) {

@@ -1,5 +1,4 @@
 import { MenuLayout } from "./MenuLayout";
-import campaigns from "../../../assets/jsons/game_modes.json";
 import { useTranslateLang } from "../../../logic/useTranslateLang";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
@@ -7,23 +6,21 @@ import { Text } from "../Text";
 import { useState, type MouseEvent } from "react";
 import classNames from "classnames";
 import { Heading } from "../Heading";
-import { container } from "tsyringe";
-import { GameStateEngine } from "@/logic/application";
+import { useGameConfigEngine } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
+import {
+  useGetCampaigns,
+  type CampaignHeader,
+} from "../../../logic/application/hooks/useGetCampaigns";
 
 export function ClassicModeSelectorMenu() {
+  const campaigns = useGetCampaigns();
+
   return (
     <MenuLayout>
       <CampaignSelectorMenuList campaignHeaders={campaigns} />
     </MenuLayout>
   );
-}
-
-interface CampaignHeader {
-  id: string;
-  label: string;
-  description: string;
-  campaignBanner: string;
 }
 
 interface CampaignSelectorMenuListProps {
@@ -33,7 +30,7 @@ interface CampaignSelectorMenuListProps {
 export function CampaignSelectorMenuList({
   campaignHeaders,
 }: CampaignSelectorMenuListProps) {
-  const gameStateEngine = container.resolve(GameStateEngine);
+  const { updateCampaignState } = useGameConfigEngine();
   const [openedGameId, setOpenedGameId] = useState<string | undefined>();
   const [selectedCampaign, setSelectedCampaign] =
     useState<CampaignHeader | null>(null);
@@ -49,7 +46,7 @@ export function CampaignSelectorMenuList({
       setSelectedCampaign(null);
       return;
     }
-    gameStateEngine.updateGameState({ activeCampaignId: item.id });
+    updateCampaignState({ campaignId: item.id });
     setSelectedCampaign(item);
   };
 

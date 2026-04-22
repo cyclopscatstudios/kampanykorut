@@ -1,29 +1,22 @@
-import { SettingsEngine, type GameSettings } from "@/logic/application";
+import { type GameSettings } from "@/logic/application";
 import { SettingsBody } from "../gameplay/SettingsDialog";
-import { container } from "tsyringe";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigation } from "../../../hooks/navigationHook";
+import { useSettings } from "../../../logic/application/hooks/useSettings";
 
 export function SettingsMenu() {
-  const settingsEngine = container.resolve(SettingsEngine);
-  const [settings, setSettings] = useState<GameSettings>(() =>
-    settingsEngine.getGameSettings(),
-  );
+  const { settings, updateSettings } = useSettings();
   const [settingsForm, setSettingsForm] = useState<GameSettings>(settings);
   const { goBack } = useNavigation();
 
   const isEqual = JSON.stringify(settings) === JSON.stringify(settingsForm);
 
   const saveChanges = () => {
-    settingsEngine.updateGameSettings({ ...settingsForm });
+    updateSettings({ ...settingsForm });
   };
-
-  useEffect(() => {
-    return settingsEngine.subscribe(setSettings);
-  }, []);
 
   return (
     <div>

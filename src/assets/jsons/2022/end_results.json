@@ -3,12 +3,12 @@
     "title": "Vereség az urnáknál",
     "subtitle": "Összefogva sem megy...",
     "description": "Ötödik alkalommal alakíthat kormányt Orbán Viktor Magyarországon, miután fölényesen megnyerte a 2022-es országgyűlési választást. Az ellenzéki együttműködés minden korábbi várakozással – és méréssel – szemben jelentős különbséggel kapott ki a Fidesz–KDNP-től.",
-    "imageUri": "src/assets/images/2022/ellenzek_vereseg_ketharmad.jpg"
+    "imageUri": "/src/assets/images/2022/ellenzek_vereseg_ketharmad.jpg"
   },
   "playerSideVictory": {
     "title": "Győzelem az urnáknál",
     "subtitle": "Fordulat Magyarországon",
     "description": "Történelmi eredmény született a 2022-es országgyűlési választáson: az ellenzéki összefogás többséget szerzett a parlamentben, ezzel véget vetve a Fidesz–KDNP több mint egy évtizedes kormányzásának. A közös jelöltek számos billegő körzetet is meg tudtak nyerni, miközben a listás szavazatokban is erős támogatást kaptak. A választás eredménye új politikai korszak kezdetét jelenti, amelyben az ellenzéki koalíció vállalja a kormányzás felelősségét és a kampány során ígért változások megvalósítását.",
-    "imageUri": "src/assets/images/2022/ellenzek_gyozelem.jpg"
+    "imageUri": "/src/assets/images/2022/ellenzek_gyozelem.jpg"
   }
 }

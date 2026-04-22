@@ -2,6 +2,7 @@ import { inject, singleton } from "tsyringe";
 import type { GameState } from "../domain/CampaignEngine";
 import { createLogger } from "../logger";
 import { StorageEngine } from "./StorageEngine";
+import type { IdGenerator } from "./IdGenerator";
 
 const log = createLogger("StorageEngine");
 
@@ -11,11 +12,17 @@ export type SessionKey =
   | "devSession"
   | "questionHistory"
   | "settings"
-  | "gameConfig";
+  | "gameConfig"
+  | "campaignSession";
 
 @singleton()
 export class StateEngine {
-  constructor(@inject(StorageEngine) private storage: StorageEngine) {
+  private sessionId: string | undefined;
+
+  constructor(
+    @inject(StorageEngine) private storage: StorageEngine,
+    @inject("IdGenerator") private generateId: IdGenerator,
+  ) {
     log.debug("StateEngine initialized");
     this.loadGameState = this.loadGameState.bind(this);
     this.loadSession = this.loadSession.bind(this);
@@ -30,10 +37,20 @@ export class StateEngine {
       return null;
     }
     if (sessionKey === "gameSession") {
-      return this.storage.setItem("gameSession", value, "localStorage");
+      const sessionId = this.getSessionId();
+      return this.storage.setItem(
+        `gameSession-${sessionId}`,
+        value,
+        "localStorage",
+      );
     }
     if (sessionKey === "questionHistory") {
-      return this.storage.setItem("questionHistory", value, "localStorage");
+      const sessionId = this.getSessionId();
+      return this.storage.setItem(
+        `questionHistory-${sessionId}`,
+        value,
+        "localStorage",
+      );
     }
     return this.storage.setItem("menuSession", value, "localStorage");
   }
@@ -42,7 +59,6 @@ export class StateEngine {
     if (sessionKey === "gameSession") {
       return this.loadGameState();
     }
-    return this.loadMenuSession();
   }
 
   private loadGameState() {
@@ -52,12 +68,6 @@ export class StateEngine {
       return null;
     }
     return this.safeParse(session) as GameState;
-  }
-
-  private loadMenuSession() {
-    const session = this.storage.getItem("menuSession", "localStorage");
-    // TODO: set return type to menu type
-    return this.safeParse(session) as any;
   }
 
   private safeParse<T>(value: string | null): T | null {
@@ -79,5 +89,15 @@ export class StateEngine {
     } catch (error) {
       log.error("failed to stringify value to storage", error);
     }
+  }
+
+  private getSessionId() {
+    if (this.sessionId) {
+      return this.sessionId;
+    }
+    const id = this.generateId();
+    this.sessionId = id;
+    this.storage.setItem("currentSessionId", id, "localStorage");
+    return id;
   }
 }

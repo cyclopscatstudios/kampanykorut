@@ -6,8 +6,7 @@ import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
 import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
-import { container } from "tsyringe";
-import { SettingsEngine } from "../SettingsEngine";
+import { useSettings } from "./useSettings";
 
 export function useElectionState(campaignId: string) {
   const config = gameModeRegistry[campaignId];
@@ -18,18 +17,13 @@ export function useElectionState(campaignId: string) {
   const [gameState, setGameState] = useState<GameState>(() =>
     campaignEngine.createInitialState(config.electionConfig.baseResults),
   );
-  const { loadSession, saveSession } = useStateEngine();
+  const { saveSession } = useStateEngine();
   const { getState, updateState } = useStateHandler();
-  const settingsEngine = container.resolve(SettingsEngine);
+  const { settings } = useSettings();
 
   useEffect(() => {
     updateState("currentConfig", config);
   }, [config, updateState]);
-
-  const loadSavedGame = () => {
-    const session = loadSession("gameSession");
-    setGameState(session);
-  };
 
   const processAnswer = (
     rawAnswer?: string,
@@ -48,12 +42,11 @@ export function useElectionState(campaignId: string) {
       selectedDistrict,
     };
     const history = getState("history") ?? [];
-    const gameSettings = settingsEngine.getGameSettings();
     const newGameState = campaignEngine.processTurn(
       gameState,
       decision,
       history,
-      gameSettings,
+      settings,
     );
 
     return {
@@ -106,7 +99,6 @@ export function useElectionState(campaignId: string) {
     config,
     processAnswer,
     commitTurn,
-    loadSavedGame,
     getFinalResults,
   };
 }

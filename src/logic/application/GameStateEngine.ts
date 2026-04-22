@@ -6,7 +6,6 @@ import { createLogger } from "../logger";
 import type { VoterEnvironment } from "../domain";
 import type { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
 import type { StorageEngine } from "./StorageEngine";
-import type { NavigationService } from "./navigation/NavigationService";
 
 export type GameState = {
   activeCampaignId: string | null;
@@ -27,7 +26,6 @@ export class GameStateEngine extends Emitter<GameState> {
     private voterEnvironment: VoterEnvironment,
     private districtGroupEngine: DistrictGroupEngine,
     private storage: StorageEngine,
-    private navigationService: NavigationService,
   ) {
     log.debug("GameStateEngine initialized");
     super();
@@ -59,7 +57,6 @@ export class GameStateEngine extends Emitter<GameState> {
     this.gameConfigEngine.configure(null);
     this.voterEnvironment.configure(null);
     this.districtGroupEngine.configure();
-    this.navigationService.go("/");
   }
 
   private getConfigByGameId(gameId: string) {

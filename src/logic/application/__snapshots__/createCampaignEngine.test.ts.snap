@@ -9,6 +9,8 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       "DEFAULT_MOTIVATION_DELTA": 99,
       "districtGroupEngine": undefined,
       "gameConfigEngine": GameConfigEngine {
+        "currentCampaignId": undefined,
+        "currentCampaignSession": null,
         "electionConfig": {
           "listSeats": 10,
           "parties": [],
@@ -24,6 +26,8 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       },
       "mandateCalculator": MandateCalculator {
         "configEngine": GameConfigEngine {
+          "currentCampaignId": undefined,
+          "currentCampaignSession": null,
           "electionConfig": {
             "listSeats": 10,
             "parties": [],
@@ -110,6 +114,8 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
     ],
     "mandateCalculator": MandateCalculator {
       "configEngine": GameConfigEngine {
+        "currentCampaignId": undefined,
+        "currentCampaignSession": null,
         "electionConfig": {
           "listSeats": 10,
           "parties": [],
@@ -162,6 +168,8 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
     },
   },
   "configEngine": GameConfigEngine {
+    "currentCampaignId": undefined,
+    "currentCampaignSession": null,
     "electionConfig": {
       "listSeats": 10,
       "parties": [],

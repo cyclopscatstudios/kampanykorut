@@ -5,9 +5,9 @@ import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
 import { supportedLanguages } from "../../../logic/langs/languages";
-import { container } from "tsyringe";
-import { SettingsEngine, type GameSettings } from "@/logic/application";
+import { type GameSettings } from "@/logic/application";
 import { useState } from "react";
+import { useSettings } from "../../../logic/application/hooks/useSettings";
 
 export function SettingsDialog({
   isOpen,
@@ -16,14 +16,13 @@ export function SettingsDialog({
   isOpen: boolean;
   setIsOpen: (val: boolean) => void;
 }) {
-  const settingsEngine = container.resolve(SettingsEngine);
-  const settings = settingsEngine.getGameSettings();
+  const { settings, updateSettings } = useSettings();
   const [settingsForm, setSettingsForm] = useState<GameSettings>(settings);
 
   const isEqual = JSON.stringify(settings) === JSON.stringify(settingsForm);
 
   const saveChanges = () => {
-    settingsEngine.updateGameSettings({ ...settingsForm });
+    updateSettings({ ...settingsForm });
     setIsOpen(false);
   };
 

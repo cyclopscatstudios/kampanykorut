@@ -1,15 +1,23 @@
 import { Emitter } from "./Emitter";
-import type { ElectionConfig } from "../types/campaignEngine.types";
+import type { ElectionConfig, PlayerSide } from "../types/campaignEngine.types";
 import { inject, singleton } from "tsyringe";
 import { createLogger } from "../logger";
 import { StorageEngine } from "./StorageEngine";
 import gameModes from "../../assets/jsons/game_modes.json";
+import { getDataPath } from "./PathResolver";
 
 const log = createLogger("GameConfigEngine");
+
+export interface CampaignState {
+  campaignId: string;
+  playerSide: PlayerSide;
+}
 
 @singleton()
 export class GameConfigEngine extends Emitter<ElectionConfig> {
   private electionConfig: ElectionConfig | null = null;
+  private currentCampaignId: string | undefined;
+  private currentCampaignSession: Partial<CampaignState> | null = null;
 
   constructor(@inject(StorageEngine) private storage: StorageEngine) {
     log.debug("GameConfigEngine initialized");
@@ -26,11 +34,46 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
     return this.electionConfig;
   }
 
+  getCurrentCampaignId() {
+    return this.currentCampaignId;
+  }
+
+  getCurrentCampaignSession() {
+    const storedCampaignSession = this.storage.getItem(
+      "campaignSession",
+      "localStorage",
+    );
+    const campaignSession = storedCampaignSession
+      ? (JSON.parse(storedCampaignSession) as CampaignState)
+      : null;
+    return this.currentCampaignSession || campaignSession;
+  }
+
   async getElectionConfigById(id?: string) {
     const configHeader = this.getConfigHeader(id);
-    const electionConfig = await this.loadElectionConfig(configHeader?.route);
+    const electionConfigPath = getDataPath(
+      "electionConfig",
+      configHeader?.route ?? "",
+    );
+    const electionConfig = await this.loadAssets(electionConfigPath);
+    this.currentCampaignId = id;
     this.electionConfig = electionConfig;
     return electionConfig;
+  }
+
+  updateCampaignState(session: Partial<CampaignState>) {
+    const currentCampaignSession = this.getCurrentCampaignSession();
+    let updated;
+    if (currentCampaignSession) {
+      updated = { ...currentCampaignSession };
+    }
+    updated = { ...updated, ...session };
+    this.currentCampaignSession = updated;
+    this.storage.setItem(
+      "campaignSession",
+      JSON.stringify(updated),
+      "localStorage",
+    );
   }
 
   updateGameConfig(config: Partial<ElectionConfig>): void {
@@ -50,7 +93,6 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
       return;
     }
     const configHeader = gameModes.find((config) => config.id === id);
-    console.log({ configHeader });
     if (!configHeader) {
       log.error("Config header was not found");
       return;
@@ -58,13 +100,11 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
     return configHeader;
   }
 
-  private async loadElectionConfig(
-    route?: string,
-  ): Promise<ElectionConfig | null> {
-    if (!route) {
+  private async loadAssets(path: string): Promise<ElectionConfig | null> {
+    if (!path) {
       return null;
     }
-    const res = await fetch(`/campaigns/${route}/election_config.json`);
+    const res = await fetch(path);
 
     if (!res.ok) {
       throw new Error("Invalid campaign");

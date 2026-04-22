@@ -1,5 +1,5 @@
 import { container } from "tsyringe";
-import { GameConfigEngine } from "../GameConfigEngine";
+import { GameConfigEngine, type CampaignState } from "../GameConfigEngine";
 import { useEffect, useState } from "react";
 import type { ElectionConfig } from "../../types/campaignEngine.types";
 
@@ -17,5 +17,7 @@ export function useGameConfigEngine() {
     gameConfig,
     updateGameConfig: (config: Partial<ElectionConfig>) =>
       engine.updateGameConfig(config),
+    updateCampaignState: (state: Partial<CampaignState>) =>
+      engine.updateCampaignState(state),
   };
 }

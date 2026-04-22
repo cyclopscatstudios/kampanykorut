@@ -24,7 +24,7 @@ export class StorageEngine {
     return this.getSessionStorageItem(prefixedKey);
   }
 
-  setItem(key: SessionKey, value: string, storageType: StorageType) {
+  setItem(key: string, value: string, storageType: StorageType) {
     const prefixedKey = this.getPrefixedKey(key);
     if (storageType === "localStorage") {
       return this.setLocalStorageItem(prefixedKey, value);
@@ -36,7 +36,7 @@ export class StorageEngine {
     localStorage.clear();
   }
 
-  private getPrefixedKey(key: SessionKey) {
+  private getPrefixedKey(key: string) {
     return `kampanykorut_${key}`;
   }
 

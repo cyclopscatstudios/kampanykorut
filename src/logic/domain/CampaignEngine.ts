@@ -175,7 +175,7 @@ export class CampaignEngine {
     const mandates = { ...state.results };
     // TODO fix this assertation
     return {
-      mandates,
+      ...mandates,
       winnerParty: {
         ...winnerParty,
         hasMajority,
