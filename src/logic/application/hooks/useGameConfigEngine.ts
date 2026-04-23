@@ -15,9 +15,10 @@ export function useGameConfigEngine() {
 
   return {
     gameConfig,
+    campaignState: engine.getCurrentCampaignSession(),
     updateGameConfig: (config: Partial<ElectionConfig>) =>
       engine.updateGameConfig(config),
-    updateCampaignState: (state: Partial<CampaignState>) =>
+    updateCampaignState: (state: Partial<CampaignState> | null) =>
       engine.updateCampaignState(state),
   };
 }

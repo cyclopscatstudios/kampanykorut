@@ -3,7 +3,7 @@ import { useTranslateLang } from "../../../logic/useTranslateLang";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
-import { useState, type MouseEvent } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import classNames from "classnames";
 import { Heading } from "../Heading";
 import { useGameConfigEngine } from "@/logic/application";
@@ -49,6 +49,10 @@ export function CampaignSelectorMenuList({
     updateCampaignState({ campaignId: item.id });
     setSelectedCampaign(item);
   };
+
+    useEffect(() => {
+      updateCampaignState(null);
+    }, []);
 
   return (
     <div className="size-full flex items-center justify-center">

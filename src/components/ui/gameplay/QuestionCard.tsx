@@ -2,12 +2,10 @@ import { Text } from "../Text";
 import { RadioGroup } from "../RadioGroup";
 import { Button } from "../Button";
 import type { CurrentView } from "./MainGameScreen";
-import mzpPortrait from "/images/2022/mzp-portrait.png";
-import ellenzekiOsszefogas from "/images/2022/ellenzeki-osszefogas.png";
-import slogan from "../../../assets/images/2022/ellenzeki_osszefogas_2022_kampany_szoveg.png";
 import { Icon } from "../Icon";
 import { Tooltip } from "../Tooltip";
 import { Heading } from "../Heading";
+import { useAssets } from "../../../hooks/useAssets";
 
 interface Answer {
   id: string;
@@ -38,6 +36,7 @@ export function QuestionCard({
   handleOnClick,
   cityName,
 }: Question) {
+  const { portrait, slogan, party_logo } = useAssets();
   return (
     <div className="h-[784px] flex flex-col p-4 bg-slate-900" data-testid={id}>
       <div className="w-full flex flex-col justify-center items-center mb-4">
@@ -88,7 +87,7 @@ export function QuestionCard({
         </div>
         <div className="flex items-end justify-center gap-4">
           <div className="h-[220px] border border-slate-600 rounded overflow-hidden">
-            <img src={mzpPortrait} className="w-full h-full object-cover" />
+            <img src={portrait} className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col justify-end items-center h-full">
             <div className="bg-slate-700 w-[350px] border border-slate-600 p-3 mb-5">
@@ -101,10 +100,7 @@ export function QuestionCard({
             </div>
           </div>
           <div className="h-[220px] border border-slate-600 rounded overflow-hidden">
-            <img
-              src={ellenzekiOsszefogas}
-              className="w-full h-full object-cover"
-            />
+            <img src={party_logo} className="w-full h-full object-cover" />
           </div>
         </div>
       </div>

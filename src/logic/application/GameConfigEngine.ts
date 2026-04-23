@@ -3,8 +3,9 @@ import type { ElectionConfig, PlayerSide } from "../types/campaignEngine.types";
 import { inject, singleton } from "tsyringe";
 import { createLogger } from "../logger";
 import { StorageEngine } from "./StorageEngine";
-import gameModes from "../../assets/jsons/game_modes.json";
 import { getDataPath } from "./PathResolver";
+import type { CampaignHeader } from "./hooks/useGetCampaigns";
+import { fetchJSON } from "./fetchJSON";
 
 const log = createLogger("GameConfigEngine");
 
@@ -50,18 +51,24 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
   }
 
   async getElectionConfigById(id?: string) {
-    const configHeader = this.getConfigHeader(id);
+    const configHeader = await this.getConfigHeader(id);
     const electionConfigPath = getDataPath(
       "electionConfig",
       configHeader?.route ?? "",
     );
-    const electionConfig = await this.loadAssets(electionConfigPath);
+    const electionConfig = await fetchJSON<ElectionConfig>(electionConfigPath);
     this.currentCampaignId = id;
     this.electionConfig = electionConfig;
     return electionConfig;
   }
 
-  updateCampaignState(session: Partial<CampaignState>) {
+  updateCampaignState(session: Partial<CampaignState> | null) {
+    if (!session) {
+      log.debug("Clearing campaign session");
+      this.currentCampaignSession = null;
+      this.storage.clearItem("campaignSession", "localStorage");
+      return;
+    }
     const currentCampaignSession = this.getCurrentCampaignSession();
     let updated;
     if (currentCampaignSession) {
@@ -87,29 +94,22 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
     this.notify(updated);
   }
 
-  private getConfigHeader(id?: string) {
+  private async getConfigHeader(
+    id?: string,
+  ): Promise<CampaignHeader | undefined> {
     if (!id) {
       log.error("Game mode id was not provided");
       return;
     }
-    const configHeader = gameModes.find((config) => config.id === id);
+    const pathToCampaigns = getDataPath("campaigns");
+    const campaigns = await fetchJSON<CampaignHeader[]>(pathToCampaigns);
+    const configHeader = campaigns?.find(
+      (config: CampaignHeader) => config.id === id,
+    );
     if (!configHeader) {
       log.error("Config header was not found");
       return;
     }
     return configHeader;
-  }
-
-  private async loadAssets(path: string): Promise<ElectionConfig | null> {
-    if (!path) {
-      return null;
-    }
-    const res = await fetch(path);
-
-    if (!res.ok) {
-      throw new Error("Invalid campaign");
-    }
-
-    return res.json();
   }
 }

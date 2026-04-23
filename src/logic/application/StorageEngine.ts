@@ -32,7 +32,15 @@ export class StorageEngine {
     return this.setSessionStorageItem(prefixedKey, value);
   }
 
-  clear() {
+  clearItem(key: string, storageType: StorageType) {
+    const prefixedKey = this.getPrefixedKey(key);
+    if (storageType === "localStorage") {
+      return localStorage.removeItem(prefixedKey);
+    }
+    return sessionStorage.removeItem(prefixedKey);
+  }
+
+  clearAll() {
     localStorage.clear();
   }
 

@@ -24,10 +24,9 @@ export function SideSelectorMenu() {
   const partyAssets = selectedParty
     ? gameConfig?.electionAssets[selectedParty.id]
     : undefined;
-
   const candidatePortrait =
     selectedCandidate && partyAssets
-      ? partyAssets.portrait[selectedCandidate]
+      ? partyAssets.portrait?.[selectedCandidate]
       : undefined;
 
   return (

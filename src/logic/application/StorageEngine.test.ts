@@ -72,7 +72,7 @@ describe("StorageEngine", () => {
 
   describe("clear", () => {
     it("should clear localStorage", () => {
-      engine.clear();
+      engine.clearAll();
 
       expect(localStorageMock.clear).toHaveBeenCalled();
     });
