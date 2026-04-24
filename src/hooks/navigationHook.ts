@@ -11,11 +11,16 @@ export function useNavigation() {
     navigate(`sides/${campaignId}`);
   };
 
-  const goToCampaign = (campaignId: string) => {
-    navigate(`/game/${campaignId}`);
+  const goToCampaign = (campaignId: string, sessionId: string) => {
+    navigate(`/game/${campaignId}?sessionId=${sessionId}`);
+  };
+
+  const goToMainMenu = () => {
+    navigate(`/`);
   };
 
   return {
+    goToMainMenu,
     goBack,
     goToSideSelector,
     goToCampaign,

@@ -7,7 +7,7 @@ export type IconSource = "bootstrap" | "svg";
 
 export type BootstrapIcon = keyof typeof icons;
 
-type IconSize = "normal" | "large";
+type IconSize = "normal" | "large" | "medium";
 
 export interface IconProps {
   name: BootstrapIcon;
@@ -48,6 +48,8 @@ function getIconSize(size: IconSize) {
       return "text-base";
     case "large":
       return "text-2xl";
+    case "medium":
+      return "text-xl";
     default:
       return "text-base";
   }
@@ -55,9 +57,10 @@ function getIconSize(size: IconSize) {
 
 function getIconColor(color: Colors) {
   switch (color) {
-    case "purple": {
+    case "white":
+      return "text-white";
+    case "purple":
       return "text-purple-500";
-    }
     case "lightBlue":
       return "text-blue-50";
     case "darkBlue":

@@ -13,7 +13,8 @@ export type SessionKey =
   | "questionHistory"
   | "settings"
   | "gameConfig"
-  | "campaignSession";
+  | "campaignSession"
+  | "currentSessionId";
 
 @singleton()
 export class StateEngine {
@@ -28,6 +29,16 @@ export class StateEngine {
     this.loadSession = this.loadSession.bind(this);
     this.safeStringify = this.safeStringify.bind(this);
     this.saveSession = this.saveSession.bind(this);
+    this.init();
+  }
+
+  init() {
+    if (this.shouldGenerateNewSessionId()) {
+      log.debug("Generating new session ID");
+      const id = this.generateId();
+      this.sessionId = id;
+      this.saveSessionId(id);
+    }
   }
 
   saveSession<T>(session: T, sessionKey: SessionKey) {
@@ -57,11 +68,30 @@ export class StateEngine {
 
   loadSession(sessionKey: SessionKey) {
     if (sessionKey === "gameSession") {
-      return this.loadGameState();
+      const session = this.loadGameState();
+      return session;
     }
   }
 
+  saveSessionId(sessionId: string) {
+    this.storage.setItem("currentSessionId", sessionId, "localStorage");
+  }
+
+  getSessionId() {
+    const sessionId = this.storage.getItem("currentSessionId", "localStorage");
+    if (sessionId) {
+      this.sessionId = sessionId;
+      return this.sessionId;
+    }
+    const id = this.generateId();
+    this.sessionId = id;
+    this.storage.setItem("currentSessionId", id, "localStorage");
+    return id;
+  }
+
   private loadGameState() {
+    const sessionId = this.getSessionId();
+    log.debug("Loading game session with sessionId:", sessionId);
     const session = this.storage.getItem("gameSession", "localStorage");
     if (!session) {
       log.debug("no session found, starting new game session");
@@ -91,13 +121,18 @@ export class StateEngine {
     }
   }
 
-  private getSessionId() {
-    if (this.sessionId) {
-      return this.sessionId;
+  private shouldGenerateNewSessionId() {
+    const { sessionId, pathname } = this.chechUrlParams();
+    if (pathname.includes("/game") && sessionId) {
+      return false;
     }
-    const id = this.generateId();
-    this.sessionId = id;
-    this.storage.setItem("currentSessionId", id, "localStorage");
-    return id;
+    return true;
+  }
+
+  private chechUrlParams() {
+    const { pathname } = window.location;
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get("sessionId");
+    return { sessionId, pathname };
   }
 }

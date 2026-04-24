@@ -13,12 +13,15 @@ import type {
 import { SettingsDialog } from "./SettingsDialog";
 import { GameMenuBar } from "./GameMenuBar";
 import { GameDialog } from "./GameDialog";
+import { Modal } from "../Modal";
+import { useNavigation } from "../../../hooks/navigationHook";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
 export function MainGameScreen({ campaignId }: { campaignId: string }) {
   const [isSettingsOpen, setIsOpenSettings] = useState(false);
-  const [isSettingsGameMenu, setIsOpenGameMenu] = useState(false);
+  const [isGameMenuOpen, setIsOpenGameMenu] = useState(false);
+  const [isExitModalOpen, setIsExitModalOpen] = useState(false);
   const [currentView, setCurrentView] = useState<CurrentView>("MapView");
   const [answer, setAnswer] = useState<string | undefined>();
   const [advisorFeedback, setAdvisorFeedback] = useState<AnswerFeedback | null>(
@@ -30,6 +33,8 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
 
   const { state, config, processAnswer, commitTurn, getFinalResults } =
     useElectionState(campaignId);
+
+  const { goToMainMenu } = useNavigation();
 
   const applyTurnResult = (result: GameState) => {
     if (result.isEnded) {
@@ -67,11 +72,24 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
 
   return (
     <GameScreenWrapper
+      isSettingsOpen={isSettingsOpen}
+      isGameMenuOpen={isGameMenuOpen}
+      isExitModalOpen={isExitModalOpen}
       setIsOpenSettings={setIsOpenSettings}
       setIsOpenGameMenu={setIsOpenGameMenu}
+      setIsExitModalOpen={setIsExitModalOpen}
     >
       <SettingsDialog isOpen={isSettingsOpen} setIsOpen={setIsOpenSettings} />
-      <GameDialog isOpen={isSettingsGameMenu} setIsOpen={setIsOpenGameMenu} />
+      <GameDialog isOpen={isGameMenuOpen} setIsOpen={setIsOpenGameMenu} />
+      {isExitModalOpen && (
+        <ConfirmExitGameModal
+          onCancel={() => setIsExitModalOpen(false)}
+          onConfirm={() => {
+            setIsExitModalOpen(false);
+            goToMainMenu();
+          }}
+        />
+      )}
       <AdvisorModal
         advice={advisorFeedback?.text ?? ""}
         open={Boolean(advisorFeedback)}
@@ -113,20 +131,51 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
 
 function GameScreenWrapper({
   children,
+  isSettingsOpen,
+  isGameMenuOpen,
+  isExitModalOpen,
   setIsOpenGameMenu,
   setIsOpenSettings,
+  setIsExitModalOpen,
 }: {
   children: React.ReactNode;
+  isSettingsOpen: boolean;
+  isGameMenuOpen: boolean;
+  isExitModalOpen: boolean;
   setIsOpenGameMenu: (val: boolean) => void;
   setIsOpenSettings: (val: boolean) => void;
+  setIsExitModalOpen: (val: boolean) => void;
 }) {
   return (
     <div className="w-full h-full">
       <GameMenuBar
+        isSettingsOpen={isSettingsOpen}
+        isGameMenuOpen={isGameMenuOpen}
+        isExitModalOpen={isExitModalOpen}
+        setIsExitModalOpen={setIsExitModalOpen}
         setIsOpenGameMenu={setIsOpenGameMenu}
         setIsOpenSettings={setIsOpenSettings}
       />
       {children}
     </div>
+  );
+}
+
+interface ConfirmExitGameModalProps {
+  onCancel: () => void;
+  onConfirm: () => void;
+}
+
+function ConfirmExitGameModal({
+  onCancel,
+  onConfirm,
+}: ConfirmExitGameModalProps) {
+  return (
+    <Modal
+      title="Attention"
+      description="Are you sure you want to exist the game?"
+      onCancel={onCancel}
+      onConfirm={onConfirm}
+    />
   );
 }

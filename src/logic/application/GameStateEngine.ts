@@ -41,12 +41,11 @@ export class GameStateEngine extends Emitter<GameState> {
         this.getConfigByGameId(gameState.activeCampaignId),
       );
     }
-    this.storage.setItem(
-      "gameConfig",
-      JSON.stringify(this.gameState),
-      "localStorage",
-    );
     this.notify(this.gameState);
+  }
+
+  getSavedGameSession() {
+    return this.storage.getItem("gameSession", "localStorage");
   }
 
   getGameState(): GameState {

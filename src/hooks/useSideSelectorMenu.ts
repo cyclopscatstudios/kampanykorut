@@ -5,6 +5,7 @@ import type {
   PlayerSide,
 } from "../logic/types/campaignEngine.types";
 import { useNavigation } from "./navigationHook";
+import { useStateEngine } from "../logic/application/hooks";
 
 type Party = {
   id: string;
@@ -22,6 +23,7 @@ export function useSideSelectorMenu(electionConfig: ElectionConfig) {
   >();
   const { updateCampaignState } = useGameConfigEngine();
   const { goBack, goToCampaign } = useNavigation();
+  const { sessionId } = useStateEngine();
 
   const handlePartyChange = (partyId: string) => {
     const party = electionConfig.playableSides.find((s) => s.id === partyId);
@@ -39,7 +41,7 @@ export function useSideSelectorMenu(electionConfig: ElectionConfig) {
   };
 
   const startGame = (id: string) => {
-    goToCampaign(id);
+    goToCampaign(id, sessionId);
   };
 
   const candidateOptions =

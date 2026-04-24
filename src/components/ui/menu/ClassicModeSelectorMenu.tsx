@@ -50,9 +50,9 @@ export function CampaignSelectorMenuList({
     setSelectedCampaign(item);
   };
 
-    useEffect(() => {
-      updateCampaignState(null);
-    }, []);
+  useEffect(() => {
+    updateCampaignState(null);
+  }, []);
 
   return (
     <div className="size-full flex items-center justify-center">
@@ -129,7 +129,7 @@ export function CampaignSelectorMenuList({
             variant="primary"
             size="large"
             block
-            className="mb-1"
+            className="mb-1 mt-5"
             disabled={!selectedCampaign}
             onClick={() => goToSideSelector(selectedCampaign?.id ?? "")}
           >

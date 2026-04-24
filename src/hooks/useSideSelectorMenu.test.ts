@@ -106,6 +106,8 @@ describe("useSideSelectorMenu", () => {
       result.current.startGame(GAME_ID);
     });
 
-    expect(mockNavigate).toHaveBeenCalledWith(`/game/${GAME_ID}`);
+    const navigatedTo = mockNavigate.mock.calls[0][0] as string;
+    expect(navigatedTo).toContain(`/game/${GAME_ID}`);
+    expect(navigatedTo).toMatch(/sessionId=[\w-]+/);
   });
 });
