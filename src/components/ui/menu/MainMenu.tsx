@@ -2,12 +2,12 @@ import { useTranslateLang } from "../../../logic/useTranslateLang";
 import { MenuList } from "../MenuList";
 import logo from "../../../assets/logo_reworked.png";
 import { MenuLayout } from "./MenuLayout";
-import { type MenuItem } from "./menu.types";
+import { MenuItemId } from "./menu.types";
 import { Text } from "../Text";
 import { quotes } from "../../../assets/jsons/quotes";
 import { useState } from "react";
 
-export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
+export function MainMenu() {
   const [quote, setQuote] = useState(() => getRandomQuote());
   const newGame = useTranslateLang("mainMenu.newGame");
   const loadGame = useTranslateLang("mainMenu.loadGame");
@@ -32,27 +32,33 @@ export function MainMenu({ onClick }: { onClick: (item: MenuItem) => void }) {
       <MenuLayout>
         <MenuList
           listItems={[
-            { id: "newGame", text: newGame, icon: "play-circle-fill" },
             {
-              id: "loadGame",
+              id: MenuItemId.NewGame,
+              text: newGame,
+              path: "new-game",
+              icon: "play-circle-fill",
+            },
+            {
+              id: MenuItemId.LoadSavedGame,
               text: loadGame,
+              path: "load-game",
               icon: "clipboard-data-fill",
               disabled: true,
             },
             {
-              id: "settings",
+              id: MenuItemId.Settings,
               text: settings,
+              path: "settings",
               icon: "gear-fill",
-              disabled: true,
             },
             {
-              id: "about",
+              id: MenuItemId.Back,
               text: about,
+              path: "about",
               icon: "info-circle-fill",
               disabled: true,
             },
           ]}
-          onClick={onClick}
         />
       </MenuLayout>
     </div>

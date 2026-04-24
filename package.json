@@ -26,11 +26,14 @@
     "classnames": "^2.5.1",
     "dotenv": "^17.2.4",
     "husky": "^9.1.7",
+    "lodash": "^4.18.1",
     "prettier": "^3.7.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router": "^7.10.1",
-    "tsyringe": "^4.10.0"
+    "react-router-dom": "^7.14.1",
+    "tsyringe": "^4.10.0",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.3",

@@ -1,20 +1,29 @@
-import { StorageEngine } from "./StorageEngine";
 import { Emitter } from "./Emitter";
-import type { GameSettings } from "../domain";
-import type { ElectionConfig } from "../types/campaignEngine.types";
-import { singleton, inject } from "tsyringe";
+import type { ElectionConfig, PlayerSide } from "../types/campaignEngine.types";
+import { inject, singleton } from "tsyringe";
 import { createLogger } from "../logger";
+import { StorageEngine } from "./StorageEngine";
+import { getDataPath } from "./PathResolver";
+import type { CampaignHeader } from "./hooks/useGetCampaigns";
+import { fetchJSON } from "./fetchJSON";
 
 const log = createLogger("GameConfigEngine");
+
+export interface CampaignState {
+  campaignId: string;
+  playerSide: PlayerSide;
+}
 
 @singleton()
 export class GameConfigEngine extends Emitter<ElectionConfig> {
   private electionConfig: ElectionConfig | null = null;
+  private currentCampaignId: string | undefined;
+  private currentCampaignSession: Partial<CampaignState> | null = null;
 
   constructor(@inject(StorageEngine) private storage: StorageEngine) {
     log.debug("GameConfigEngine initialized");
     super();
-    this.getElectionConfig = this.getElectionConfig.bind(this);
+    this.storage.setItem = this.storage.setItem.bind(this);
   }
 
   configure(electionConfig: ElectionConfig | null): void {
@@ -22,31 +31,85 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
     this.electionConfig = electionConfig;
   }
 
-  isConfigured(): boolean {
-    return this.electionConfig !== null;
-  }
-
-  getElectionConfig(): ElectionConfig {
-    if (!this.electionConfig) {
-      throw new Error("GameConfigEngine: configure() was not called yet");
-    }
+  getCurrentElectionConfig() {
     return this.electionConfig;
   }
 
-  getGameSettings(): GameSettings {
-    const stored = this.storage.getItem("settings", "localStorage");
-    return stored ? JSON.parse(stored) : { showAdvisorFeedback: true };
+  getCurrentCampaignId() {
+    return this.currentCampaignId;
   }
 
-  updateGameSettings(settings: Partial<GameSettings>): void {
-    const current = this.getGameSettings();
-    const updated = { ...current, ...settings };
-    this.storage.setItem("settings", JSON.stringify(updated), "localStorage");
+  getCurrentCampaignSession() {
+    const storedCampaignSession = this.storage.getItem(
+      "campaignSession",
+      "localStorage",
+    );
+    const campaignSession = storedCampaignSession
+      ? (JSON.parse(storedCampaignSession) as CampaignState)
+      : null;
+    return this.currentCampaignSession || campaignSession;
+  }
+
+  async getElectionConfigById(id?: string) {
+    const configHeader = await this.getConfigHeader(id);
+    const electionConfigPath = getDataPath(
+      "electionConfig",
+      configHeader?.route ?? "",
+    );
+    const electionConfig = await fetchJSON<ElectionConfig>(electionConfigPath);
+    this.currentCampaignId = id;
+    this.electionConfig = electionConfig;
+    return electionConfig;
+  }
+
+  updateCampaignState(session: Partial<CampaignState> | null) {
+    if (!session) {
+      log.debug("Clearing campaign session");
+      this.currentCampaignSession = null;
+      this.storage.clearItem("campaignSession", "localStorage");
+      return;
+    }
+    const currentCampaignSession = this.getCurrentCampaignSession();
+    let updated;
+    if (currentCampaignSession) {
+      updated = { ...currentCampaignSession };
+    }
+    updated = { ...updated, ...session };
+    this.currentCampaignSession = updated;
+    this.storage.setItem(
+      "campaignSession",
+      JSON.stringify(updated),
+      "localStorage",
+    );
   }
 
   updateGameConfig(config: Partial<ElectionConfig>): void {
-    const updated = { ...this.getElectionConfig(), ...config };
+    const currentElectionConfig = this.getCurrentElectionConfig();
+    if (!currentElectionConfig) {
+      return;
+    }
+    const updated = { ...currentElectionConfig, ...config };
     this.electionConfig = updated;
+    this.storage.setItem("gameConfig", JSON.stringify(updated), "localStorage");
     this.notify(updated);
+  }
+
+  private async getConfigHeader(
+    id?: string,
+  ): Promise<CampaignHeader | undefined> {
+    if (!id) {
+      log.error("Game mode id was not provided");
+      return;
+    }
+    const pathToCampaigns = getDataPath("campaigns");
+    const campaigns = await fetchJSON<CampaignHeader[]>(pathToCampaigns);
+    const configHeader = campaigns?.find(
+      (config: CampaignHeader) => config.id === id,
+    );
+    if (!configHeader) {
+      log.error("Config header was not found");
+      return;
+    }
+    return configHeader;
   }
 }

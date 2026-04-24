@@ -1,13 +1,9 @@
 import { useTranslateLang } from "../../../logic/useTranslateLang";
 import { MenuList } from "../MenuList";
-import { MenuItemId, type MenuItem } from "./menu.types";
+import { MenuItemId } from "./menu.types";
 import { MenuLayout } from "./MenuLayout";
 
-export function NewGameMenu({
-  onClick,
-}: {
-  onClick?: (item: MenuItem) => void;
-}) {
+export function NewGameMenu() {
   const classicMode = useTranslateLang("newGameMenu.classicMode");
   const campaignMode = useTranslateLang("newGameMenu.campaignMode");
 
@@ -18,18 +14,19 @@ export function NewGameMenu({
           {
             id: MenuItemId.ClassicMode,
             text: classicMode,
+            path: "classic",
             icon: "classic",
             iconSource: "svg",
           },
           {
             id: MenuItemId.CampaignMode,
             text: campaignMode,
+            path: "campaigns",
             icon: "campaign",
             iconSource: "svg",
             disabled: true,
           },
         ]}
-        onClick={onClick}
         hasBackButton
       />
     </MenuLayout>

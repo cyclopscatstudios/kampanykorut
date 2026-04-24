@@ -1,87 +1,74 @@
-import { type MenuListProps } from "../MenuList";
 import { MenuLayout } from "./MenuLayout";
-import gameModes from "../../../assets/jsons/game_modes.json";
-import { MenuItemId, type MenuItem } from "./menu.types";
 import { useTranslateLang } from "../../../logic/useTranslateLang";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
-import { useState, type MouseEvent } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import classNames from "classnames";
 import { Heading } from "../Heading";
+import { useGameConfigEngine } from "@/logic/application";
+import { useNavigation } from "../../../hooks/navigationHook";
+import {
+  useGetCampaigns,
+  type CampaignHeader,
+} from "../../../logic/application/hooks/useGetCampaigns";
 
-export function GameLoaderMenu({
-  onClick,
-}: {
-  onClick?: (item: MenuItem) => void;
-}) {
+export function ClassicModeSelectorMenu() {
+  const campaigns = useGetCampaigns();
+
   return (
     <MenuLayout>
-      <GameLoaderMenuList
-        listItems={gameModes.map((gameMode) => ({
-          id: MenuItemId.SideSelector,
-          gameId: gameMode.gameId,
-          text: gameMode.name,
-          icon: "campaign",
-          iconSource: "svg",
-          description: gameMode.description,
-        }))}
-        hasBackButton
-        onClick={onClick}
-      />
+      <CampaignSelectorMenuList campaignHeaders={campaigns} />
     </MenuLayout>
   );
 }
 
-export function GameLoaderMenuList({
-  listItems,
-  onClick,
-  hasBackButton = false,
-}: MenuListProps) {
-  const [openedGameId, setOpenedGameId] = useState<string | undefined>(
-    undefined,
-  );
-  const [selectedCampaign, setSelectedCampaign] = useState<MenuItem | null>(
-    null,
-  );
-  const backButton = useTranslateLang("menuList.button.back");
+interface CampaignSelectorMenuListProps {
+  campaignHeaders: CampaignHeader[];
+}
 
-  const handleOnClick = (item: MenuItem | null) => {
-    if (onClick && item) {
-      onClick(item);
-    }
-  };
+export function CampaignSelectorMenuList({
+  campaignHeaders,
+}: CampaignSelectorMenuListProps) {
+  const { updateCampaignState } = useGameConfigEngine();
+  const [openedGameId, setOpenedGameId] = useState<string | undefined>();
+  const [selectedCampaign, setSelectedCampaign] =
+    useState<CampaignHeader | null>(null);
+  const backButton = useTranslateLang("menuList.button.back");
+  const { goBack, goToSideSelector } = useNavigation();
 
   const handleGameSelect = (
-    item: MenuItem,
+    item: CampaignHeader,
     event: MouseEvent<HTMLDivElement>,
   ) => {
     event.stopPropagation();
-    if (selectedCampaign?.gameId === item.gameId) {
+    if (selectedCampaign?.id === item.id) {
       setSelectedCampaign(null);
       return;
     }
+    updateCampaignState({ campaignId: item.id });
     setSelectedCampaign(item);
   };
+
+  useEffect(() => {
+    updateCampaignState(null);
+  }, []);
 
   return (
     <div className="size-full flex items-center justify-center">
       <div className="flex flex-col items-center justify-center">
         <Heading level={3} color="lightBlue" className="mb-6">
-          {selectedCampaign ? selectedCampaign.text : "Select a campaign"}
+          {selectedCampaign ? selectedCampaign.label : "Select a campaign"}
         </Heading>
-
         <ul className="w-[350px]">
-          {listItems.map((item, index) => {
-            const isSelected = selectedCampaign?.gameId === item.gameId;
-            const isOpen = openedGameId === item.gameId;
+          {campaignHeaders.map((item, index) => {
+            const isSelected = selectedCampaign?.id === item.id;
+            const isOpen = openedGameId === item.id;
 
             return (
               <li
-                key={item.gameId ?? index}
-                className={
-                  index !== listItems.length - 1 || hasBackButton ? "pb-4" : ""
-                }
+                key={item.id}
+                className={index !== campaignHeaders.length - 1 ? "pb-4" : ""}
               >
                 <div
                   className={classNames(
@@ -97,14 +84,14 @@ export function GameLoaderMenuList({
                     <div className="flex items-center gap-2">
                       <div className="max-w-[150px] shrink-0">
                         <img
-                          src="https://www.budakalasz.hu/wp-content/uploads/2022/01/BK_Valasztas_BANNERArtboard-3-1.jpg"
-                          alt={item.text}
+                          src={item.campaignBanner}
+                          alt={item.label}
                           className="h-auto w-full rounded-md object-cover"
                         />
                       </div>
 
                       <Text weight="medium" color="lightBlue">
-                        {item.text}
+                        {item.label}
                       </Text>
                     </div>
 
@@ -113,7 +100,7 @@ export function GameLoaderMenuList({
                       className="cursor-pointer text-center"
                       onClick={(e) => {
                         e.stopPropagation();
-                        setOpenedGameId(isOpen ? undefined : item.gameId);
+                        setOpenedGameId(isOpen ? undefined : item.id);
                       }}
                     >
                       {isOpen ? (
@@ -142,27 +129,20 @@ export function GameLoaderMenuList({
             variant="primary"
             size="large"
             block
-            className="mb-1"
+            className="mb-1 mt-5"
             disabled={!selectedCampaign}
-            onClick={() => handleOnClick(selectedCampaign)}
+            onClick={() => goToSideSelector(selectedCampaign?.id ?? "")}
           >
             <Button.Text>Next</Button.Text>
           </Button>
-          {hasBackButton && (
-            <li>
-              <Button
-                variant="tertiary"
-                size="large"
-                block
-                onClick={() => onClick?.({ id: MenuItemId.Back, text: "Back" })}
-              >
-                <Icon name="backspace-fill" />
-                <Text weight="medium" color="lightBlue">
-                  {backButton}
-                </Text>
-              </Button>
-            </li>
-          )}
+          <li>
+            <Button variant="tertiary" size="large" block onClick={goBack}>
+              <Icon name="backspace-fill" />
+              <Text weight="medium" color="lightBlue">
+                {backButton}
+              </Text>
+            </Button>
+          </li>
         </ul>
       </div>
     </div>

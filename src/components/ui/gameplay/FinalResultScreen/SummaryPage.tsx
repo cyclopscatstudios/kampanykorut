@@ -1,16 +1,17 @@
 import { useMemo } from "react";
-import { container } from "tsyringe";
-import { StateHandler } from "@/logic/application";
 import type { FinalResults } from "@/logic/domain";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
 import { Heading } from "../../Heading";
 import { Text } from "../../Text";
 import type { RawParty } from "../../../../logic/types/campaignEngine.types";
+import type { Mandate } from "../../../../logic/domain/MandateCalculator.types";
+import { gameModeRegistry } from "../../../../logic/application/gameModeRegistery";
+import { useParams } from "../../../../hooks/useParamsHook";
 
 export function SummaryPage({ results }: { results: FinalResults }) {
-  const stateHandler = useMemo(() => container.resolve(StateHandler), []);
-  const currentConfig = stateHandler.get("currentConfig");
+  const { campaignId } = useParams();
+  const currentConfig = gameModeRegistry[campaignId ?? ""];
 
   const didPlayerWin =
     results.winnerParty?.party === currentConfig?.electionConfig.playerSide;
@@ -70,9 +71,12 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     </>
   );
 }
-// TODO: fix this later
-function buildPartiesFromResults(results: any, parties?: RawParty[]): Party[] {
-  return results.mandates.mandates.map((mandate: any) => {
+
+function buildPartiesFromResults(
+  results: FinalResults,
+  parties?: RawParty[],
+): Party[] {
+  return results.mandates.map((mandate: Mandate) => {
     const party = parties?.find((p) => p.id === mandate.party);
     return {
       color: party?.color ?? "#cccccc",

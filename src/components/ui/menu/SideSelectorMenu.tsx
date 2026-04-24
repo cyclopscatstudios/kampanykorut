@@ -1,17 +1,14 @@
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
 import { Button } from "../Button";
-import { type MenuItem } from "./menu.types";
 import { Text } from "../Text";
 import { Icon } from "../Icon";
 import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
+import { useLoaderData } from "react-router";
 
-interface SideSelectorMenuProps {
-  gameId?: string;
-  onClick: (item: MenuItem) => void;
-}
+export function SideSelectorMenu() {
+  const { config, id } = useLoaderData();
 
-export function SideSelectorMenu({ onClick, gameId }: SideSelectorMenuProps) {
   const {
     gameConfig,
     sides,
@@ -19,18 +16,17 @@ export function SideSelectorMenu({ onClick, gameId }: SideSelectorMenuProps) {
     selectedCandidate,
     handleCandidateChange,
     handlePartyChange,
-    goBack,
     startGame,
     candidateOptions,
-  } = useSideSelectorMenu(gameId, onClick);
+    goBack,
+  } = useSideSelectorMenu(config);
 
   const partyAssets = selectedParty
     ? gameConfig?.electionAssets[selectedParty.id]
     : undefined;
-
   const candidatePortrait =
     selectedCandidate && partyAssets
-      ? partyAssets.portrait[selectedCandidate]
+      ? partyAssets.portrait?.[selectedCandidate]
       : undefined;
 
   return (
@@ -80,7 +76,7 @@ export function SideSelectorMenu({ onClick, gameId }: SideSelectorMenuProps) {
       <Button
         className="mt-auto"
         disabled={!selectedCandidate}
-        onClick={() => startGame()}
+        onClick={() => startGame(id)}
       >
         <Button.Text>Start Game</Button.Text>
       </Button>

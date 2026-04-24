@@ -1,0 +1,1380 @@
+[
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 21300,
+      "fidesz": 18767,
+      "mkkp": 2842,
+      "megoldas_mozgalom": 472,
+      "mi_hazank": 1307,
+      "normalis_elet": 155
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 26398,
+      "fidesz": 21814,
+      "mkkp": 2963,
+      "megoldas_mozgalom": 484,
+      "mi_hazank": 1696,
+      "normalis_elet": 188
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 25194,
+      "fidesz": 21352,
+      "mkkp": 3717,
+      "megoldas_mozgalom": 449,
+      "mi_hazank": 1358,
+      "normalis_elet": 132
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 28872,
+      "fidesz": 23286,
+      "mkkp": 3231,
+      "megoldas_mozgalom": 539,
+      "mi_hazank": 1579,
+      "normalis_elet": 184
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 5,
+    "partok": {
+      "ellenzeki_osszefogas": 19909,
+      "fidesz": 15389,
+      "mkkp": 2523,
+      "megoldas_mozgalom": 519,
+      "mi_hazank": 1418,
+      "normalis_elet": 184
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 6,
+    "partok": {
+      "ellenzeki_osszefogas": 20946,
+      "fidesz": 18398,
+      "mkkp": 2570,
+      "megoldas_mozgalom": 421,
+      "mi_hazank": 1834,
+      "normalis_elet": 273
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 7,
+    "partok": {
+      "ellenzeki_osszefogas": 32590,
+      "fidesz": 19408,
+      "mkkp": 3115,
+      "megoldas_mozgalom": 763,
+      "mi_hazank": 2032,
+      "normalis_elet": 277
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 8,
+    "partok": {
+      "ellenzeki_osszefogas": 28824,
+      "fidesz": 20675,
+      "mkkp": 3129,
+      "megoldas_mozgalom": 689,
+      "mi_hazank": 2199,
+      "normalis_elet": 292
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 9,
+    "partok": {
+      "ellenzeki_osszefogas": 23083,
+      "fidesz": 21361,
+      "mkkp": 2297,
+      "megoldas_mozgalom": 702,
+      "mi_hazank": 2314,
+      "normalis_elet": 313
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 10,
+    "partok": {
+      "ellenzeki_osszefogas": 25941,
+      "fidesz": 21285,
+      "mkkp": 2761,
+      "megoldas_mozgalom": 736,
+      "mi_hazank": 2291,
+      "normalis_elet": 324
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 11,
+    "partok": {
+      "ellenzeki_osszefogas": 27830,
+      "fidesz": 21261,
+      "mkkp": 2671,
+      "megoldas_mozgalom": 889,
+      "mi_hazank": 2487,
+      "normalis_elet": 348
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 12,
+    "partok": {
+      "ellenzeki_osszefogas": 23379,
+      "fidesz": 22386,
+      "mkkp": 2399,
+      "megoldas_mozgalom": 775,
+      "mi_hazank": 2625,
+      "normalis_elet": 332
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 13,
+    "partok": {
+      "ellenzeki_osszefogas": 25784,
+      "fidesz": 23521,
+      "mkkp": 2589,
+      "megoldas_mozgalom": 785,
+      "mi_hazank": 2211,
+      "normalis_elet": 250
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 14,
+    "partok": {
+      "ellenzeki_osszefogas": 24907,
+      "fidesz": 24766,
+      "mkkp": 2472,
+      "megoldas_mozgalom": 852,
+      "mi_hazank": 2881,
+      "normalis_elet": 372
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 15,
+    "partok": {
+      "ellenzeki_osszefogas": 25936,
+      "fidesz": 25479,
+      "mkkp": 2418,
+      "megoldas_mozgalom": 792,
+      "mi_hazank": 2973,
+      "normalis_elet": 386
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 16,
+    "partok": {
+      "ellenzeki_osszefogas": 22167,
+      "fidesz": 21251,
+      "mkkp": 2331,
+      "megoldas_mozgalom": 658,
+      "mi_hazank": 2473,
+      "normalis_elet": 345
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 17,
+    "partok": {
+      "ellenzeki_osszefogas": 23699,
+      "fidesz": 22810,
+      "mkkp": 2259,
+      "megoldas_mozgalom": 714,
+      "mi_hazank": 2953,
+      "normalis_elet": 351
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "BUDAPEST",
+    "oevk": 18,
+    "partok": {
+      "ellenzeki_osszefogas": 28081,
+      "fidesz": 25101,
+      "mkkp": 3077,
+      "megoldas_mozgalom": 695,
+      "mi_hazank": 2472,
+      "normalis_elet": 310
+    }
+  },
+  {
+    "megyekod": 2,
+    "megye": "BARANYA",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 23401,
+      "fidesz": 21373,
+      "mkkp": 2512,
+      "megoldas_mozgalom": 516,
+      "mi_hazank": 2852,
+      "normalis_elet": 474
+    }
+  },
+  {
+    "megyekod": 2,
+    "megye": "BARANYA",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 21513,
+      "fidesz": 22913,
+      "mkkp": 2279,
+      "megoldas_mozgalom": 516,
+      "mi_hazank": 3094,
+      "normalis_elet": 563
+    }
+  },
+  {
+    "megyekod": 2,
+    "megye": "BARANYA",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 12448,
+      "fidesz": 25340,
+      "mkkp": 1023,
+      "megoldas_mozgalom": 428,
+      "mi_hazank": 3081,
+      "normalis_elet": 321
+    }
+  },
+  {
+    "megyekod": 2,
+    "megye": "BARANYA",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 14149,
+      "fidesz": 28830,
+      "mkkp": 1205,
+      "megoldas_mozgalom": 385,
+      "mi_hazank": 2730,
+      "normalis_elet": 342
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "BÁCS-KISKUN",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 13466,
+      "fidesz": 27159,
+      "mkkp": 1680,
+      "megoldas_mozgalom": 409,
+      "mi_hazank": 3389,
+      "normalis_elet": 432
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "BÁCS-KISKUN",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 17307,
+      "fidesz": 26442,
+      "mkkp": 2199,
+      "megoldas_mozgalom": 500,
+      "mi_hazank": 3398,
+      "normalis_elet": 537
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "BÁCS-KISKUN",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 13387,
+      "fidesz": 26022,
+      "mkkp": 1022,
+      "megoldas_mozgalom": 562,
+      "mi_hazank": 2832,
+      "normalis_elet": 378
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "BÁCS-KISKUN",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 12032,
+      "fidesz": 29297,
+      "mkkp": 1413,
+      "megoldas_mozgalom": 602,
+      "mi_hazank": 3792,
+      "normalis_elet": 346
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "BÁCS-KISKUN",
+    "oevk": 5,
+    "partok": {
+      "ellenzeki_osszefogas": 12201,
+      "fidesz": 24372,
+      "mkkp": 1158,
+      "megoldas_mozgalom": 375,
+      "mi_hazank": 4075,
+      "normalis_elet": 265
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "BÁCS-KISKUN",
+    "oevk": 6,
+    "partok": {
+      "ellenzeki_osszefogas": 12848,
+      "fidesz": 23506,
+      "mkkp": 962,
+      "megoldas_mozgalom": 320,
+      "mi_hazank": 3285,
+      "normalis_elet": 250
+    }
+  },
+  {
+    "megyekod": 4,
+    "megye": "BÉKÉS",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 18350,
+      "fidesz": 22551,
+      "mkkp": 1470,
+      "megoldas_mozgalom": 539,
+      "mi_hazank": 3728,
+      "normalis_elet": 502
+    }
+  },
+  {
+    "megyekod": 4,
+    "megye": "BÉKÉS",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 13114,
+      "fidesz": 25500,
+      "mkkp": 1229,
+      "megoldas_mozgalom": 460,
+      "mi_hazank": 3666,
+      "normalis_elet": 413
+    }
+  },
+  {
+    "megyekod": 4,
+    "megye": "BÉKÉS",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 14348,
+      "fidesz": 24620,
+      "mkkp": 1000,
+      "megoldas_mozgalom": 389,
+      "mi_hazank": 3047,
+      "normalis_elet": 348
+    }
+  },
+  {
+    "megyekod": 4,
+    "megye": "BÉKÉS",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 16512,
+      "fidesz": 23114,
+      "mkkp": 1059,
+      "megoldas_mozgalom": 280,
+      "mi_hazank": 3413,
+      "normalis_elet": 350
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 20710,
+      "fidesz": 23178,
+      "mkkp": 1412,
+      "megoldas_mozgalom": 688,
+      "mi_hazank": 3141,
+      "normalis_elet": 363
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 20031,
+      "fidesz": 21045,
+      "mkkp": 1515,
+      "megoldas_mozgalom": 570,
+      "mi_hazank": 3417,
+      "normalis_elet": 357
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 11554,
+      "fidesz": 24538,
+      "mkkp": 659,
+      "megoldas_mozgalom": 259,
+      "mi_hazank": 2874,
+      "normalis_elet": 337
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 15205,
+      "fidesz": 25028,
+      "mkkp": 1013,
+      "megoldas_mozgalom": 338,
+      "mi_hazank": 3374,
+      "normalis_elet": 352
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+    "oevk": 5,
+    "partok": {
+      "ellenzeki_osszefogas": 13076,
+      "fidesz": 27659,
+      "mkkp": 774,
+      "megoldas_mozgalom": 321,
+      "mi_hazank": 2599,
+      "normalis_elet": 277
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+    "oevk": 6,
+    "partok": {
+      "ellenzeki_osszefogas": 16958,
+      "fidesz": 28435,
+      "mkkp": 1029,
+      "megoldas_mozgalom": 487,
+      "mi_hazank": 3075,
+      "normalis_elet": 452
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "BORSOD-ABAÚJ-ZEMPLÉN",
+    "oevk": 7,
+    "partok": {
+      "ellenzeki_osszefogas": 14874,
+      "fidesz": 28386,
+      "mkkp": 1166,
+      "megoldas_mozgalom": 595,
+      "mi_hazank": 4108,
+      "normalis_elet": 426
+    }
+  },
+  {
+    "megyekod": 6,
+    "megye": "CSONGRÁD-CSANÁD",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 26674,
+      "fidesz": 21404,
+      "mkkp": 2629,
+      "megoldas_mozgalom": 816,
+      "mi_hazank": 3472,
+      "normalis_elet": 483
+    }
+  },
+  {
+    "megyekod": 6,
+    "megye": "CSONGRÁD-CSANÁD",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 24285,
+      "fidesz": 28222,
+      "mkkp": 2530,
+      "megoldas_mozgalom": 679,
+      "mi_hazank": 4756,
+      "normalis_elet": 419
+    }
+  },
+  {
+    "megyekod": 6,
+    "megye": "CSONGRÁD-CSANÁD",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 17314,
+      "fidesz": 29772,
+      "mkkp": 1614,
+      "megoldas_mozgalom": 550,
+      "mi_hazank": 4582,
+      "normalis_elet": 362
+    }
+  },
+  {
+    "megyekod": 6,
+    "megye": "CSONGRÁD-CSANÁD",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 21544,
+      "fidesz": 27953,
+      "mkkp": 1397,
+      "megoldas_mozgalom": 439,
+      "mi_hazank": 3810,
+      "normalis_elet": 356
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "FEJÉR",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 18528,
+      "fidesz": 21304,
+      "mkkp": 2060,
+      "megoldas_mozgalom": 599,
+      "mi_hazank": 2545,
+      "normalis_elet": 343
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "FEJÉR",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 15223,
+      "fidesz": 28021,
+      "mkkp": 1845,
+      "megoldas_mozgalom": 508,
+      "mi_hazank": 4257,
+      "normalis_elet": 435
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "FEJÉR",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 18159,
+      "fidesz": 31305,
+      "mkkp": 2225,
+      "megoldas_mozgalom": 754,
+      "mi_hazank": 3285,
+      "normalis_elet": 306
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "FEJÉR",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 18851,
+      "fidesz": 20663,
+      "mkkp": 1305,
+      "megoldas_mozgalom": 583,
+      "mi_hazank": 2758,
+      "normalis_elet": 375
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "FEJÉR",
+    "oevk": 5,
+    "partok": {
+      "ellenzeki_osszefogas": 10535,
+      "fidesz": 27512,
+      "mkkp": 1022,
+      "megoldas_mozgalom": 321,
+      "mi_hazank": 3083,
+      "normalis_elet": 364
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "GYŐR-MOSON-SOPRON",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 18436,
+      "fidesz": 23879,
+      "mkkp": 1812,
+      "megoldas_mozgalom": 754,
+      "mi_hazank": 2705,
+      "normalis_elet": 326
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "GYŐR-MOSON-SOPRON",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 16353,
+      "fidesz": 29848,
+      "mkkp": 1749,
+      "megoldas_mozgalom": 726,
+      "mi_hazank": 3664,
+      "normalis_elet": 426
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "GYŐR-MOSON-SOPRON",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 11071,
+      "fidesz": 33286,
+      "mkkp": 1250,
+      "megoldas_mozgalom": 540,
+      "mi_hazank": 2963,
+      "normalis_elet": 253
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "GYŐR-MOSON-SOPRON",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 17918,
+      "fidesz": 31080,
+      "mkkp": 1950,
+      "megoldas_mozgalom": 781,
+      "mi_hazank": 3831,
+      "normalis_elet": 416
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "GYŐR-MOSON-SOPRON",
+    "oevk": 5,
+    "partok": {
+      "ellenzeki_osszefogas": 17003,
+      "fidesz": 31420,
+      "mkkp": 1844,
+      "megoldas_mozgalom": 691,
+      "mi_hazank": 3113,
+      "normalis_elet": 464
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "HAJDÚ-BIHAR",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 18410,
+      "fidesz": 23853,
+      "mkkp": 1850,
+      "megoldas_mozgalom": 609,
+      "mi_hazank": 2790,
+      "normalis_elet": 311
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "HAJDÚ-BIHAR",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 17586,
+      "fidesz": 25587,
+      "mkkp": 1745,
+      "megoldas_mozgalom": 529,
+      "mi_hazank": 3120,
+      "normalis_elet": 477
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "HAJDÚ-BIHAR",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 13752,
+      "fidesz": 30732,
+      "mkkp": 1162,
+      "megoldas_mozgalom": 485,
+      "mi_hazank": 2990,
+      "normalis_elet": 344
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "HAJDÚ-BIHAR",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 9921,
+      "fidesz": 27435,
+      "mkkp": 752,
+      "megoldas_mozgalom": 310,
+      "mi_hazank": 2650,
+      "normalis_elet": 373
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "HAJDÚ-BIHAR",
+    "oevk": 5,
+    "partok": {
+      "ellenzeki_osszefogas": 12653,
+      "fidesz": 26857,
+      "mkkp": 942,
+      "megoldas_mozgalom": 384,
+      "mi_hazank": 3367,
+      "normalis_elet": 348
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "HAJDÚ-BIHAR",
+    "oevk": 6,
+    "partok": {
+      "ellenzeki_osszefogas": 13318,
+      "fidesz": 26108,
+      "mkkp": 1012,
+      "megoldas_mozgalom": 503,
+      "mi_hazank": 3402,
+      "normalis_elet": 458
+    }
+  },
+  {
+    "megyekod": 10,
+    "megye": "HEVES",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 20303,
+      "fidesz": 30150,
+      "mkkp": 1573,
+      "megoldas_mozgalom": 585,
+      "mi_hazank": 4010,
+      "normalis_elet": 405
+    }
+  },
+  {
+    "megyekod": 10,
+    "megye": "HEVES",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 18112,
+      "fidesz": 28439,
+      "mkkp": 1293,
+      "megoldas_mozgalom": 502,
+      "mi_hazank": 3675,
+      "normalis_elet": 434
+    }
+  },
+  {
+    "megyekod": 10,
+    "megye": "HEVES",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 15670,
+      "fidesz": 30527,
+      "mkkp": 1193,
+      "megoldas_mozgalom": 491,
+      "mi_hazank": 4164,
+      "normalis_elet": 356
+    }
+  },
+  {
+    "megyekod": 11,
+    "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 21078,
+      "fidesz": 25140,
+      "mkkp": 1723,
+      "megoldas_mozgalom": 652,
+      "mi_hazank": 4204,
+      "normalis_elet": 516
+    }
+  },
+  {
+    "megyekod": 11,
+    "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 14294,
+      "fidesz": 28196,
+      "mkkp": 978,
+      "megoldas_mozgalom": 525,
+      "mi_hazank": 2855,
+      "normalis_elet": 345
+    }
+  },
+  {
+    "megyekod": 11,
+    "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 12715,
+      "fidesz": 29807,
+      "mkkp": 875,
+      "megoldas_mozgalom": 350,
+      "mi_hazank": 2745,
+      "normalis_elet": 285
+    }
+  },
+  {
+    "megyekod": 11,
+    "megye": "JÁSZ-NAGYKUN-SZOLNOK",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 15779,
+      "fidesz": 24356,
+      "mkkp": 1156,
+      "megoldas_mozgalom": 319,
+      "mi_hazank": 4032,
+      "normalis_elet": 437
+    }
+  },
+  {
+    "megyekod": 12,
+    "megye": "KOMÁROM-ESZTERGOM",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 22363,
+      "fidesz": 25347,
+      "mkkp": 1954,
+      "megoldas_mozgalom": 695,
+      "mi_hazank": 3326,
+      "normalis_elet": 477
+    }
+  },
+  {
+    "megyekod": 12,
+    "megye": "KOMÁROM-ESZTERGOM",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 20303,
+      "fidesz": 27784,
+      "mkkp": 2046,
+      "megoldas_mozgalom": 455,
+      "mi_hazank": 3703,
+      "normalis_elet": 586
+    }
+  },
+  {
+    "megyekod": 12,
+    "megye": "KOMÁROM-ESZTERGOM",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 17770,
+      "fidesz": 30956,
+      "mkkp": 1648,
+      "megoldas_mozgalom": 689,
+      "mi_hazank": 4150,
+      "normalis_elet": 525
+    }
+  },
+  {
+    "megyekod": 13,
+    "megye": "NÓGRÁD",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 16204,
+      "fidesz": 27344,
+      "mkkp": 1033,
+      "megoldas_mozgalom": 356,
+      "mi_hazank": 3210,
+      "normalis_elet": 386
+    }
+  },
+  {
+    "megyekod": 13,
+    "megye": "NÓGRÁD",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 13610,
+      "fidesz": 32747,
+      "mkkp": 1160,
+      "megoldas_mozgalom": 455,
+      "mi_hazank": 4596,
+      "normalis_elet": 305
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 27112,
+      "fidesz": 30110,
+      "mkkp": 2754,
+      "megoldas_mozgalom": 811,
+      "mi_hazank": 3475,
+      "normalis_elet": 385
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 30872,
+      "fidesz": 33330,
+      "mkkp": 3985,
+      "megoldas_mozgalom": 810,
+      "mi_hazank": 3208,
+      "normalis_elet": 295
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 26868,
+      "fidesz": 34396,
+      "mkkp": 3736,
+      "megoldas_mozgalom": 812,
+      "mi_hazank": 3331,
+      "normalis_elet": 392
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 17902,
+      "fidesz": 30727,
+      "mkkp": 2266,
+      "megoldas_mozgalom": 514,
+      "mi_hazank": 3363,
+      "normalis_elet": 385
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 5,
+    "partok": {
+      "ellenzeki_osszefogas": 31683,
+      "fidesz": 33250,
+      "mkkp": 3667,
+      "megoldas_mozgalom": 1157,
+      "mi_hazank": 3890,
+      "normalis_elet": 531
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 6,
+    "partok": {
+      "ellenzeki_osszefogas": 25091,
+      "fidesz": 34312,
+      "mkkp": 2756,
+      "megoldas_mozgalom": 965,
+      "mi_hazank": 3961,
+      "normalis_elet": 411
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 7,
+    "partok": {
+      "ellenzeki_osszefogas": 24224,
+      "fidesz": 31481,
+      "mkkp": 2626,
+      "megoldas_mozgalom": 1062,
+      "mi_hazank": 4023,
+      "normalis_elet": 506
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 8,
+    "partok": {
+      "ellenzeki_osszefogas": 26733,
+      "fidesz": 30137,
+      "mkkp": 2468,
+      "megoldas_mozgalom": 816,
+      "mi_hazank": 3894,
+      "normalis_elet": 473
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 9,
+    "partok": {
+      "ellenzeki_osszefogas": 13631,
+      "fidesz": 30246,
+      "mkkp": 1252,
+      "megoldas_mozgalom": 559,
+      "mi_hazank": 3338,
+      "normalis_elet": 352
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 10,
+    "partok": {
+      "ellenzeki_osszefogas": 15189,
+      "fidesz": 30124,
+      "mkkp": 1633,
+      "megoldas_mozgalom": 630,
+      "mi_hazank": 3738,
+      "normalis_elet": 324
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 11,
+    "partok": {
+      "ellenzeki_osszefogas": 19895,
+      "fidesz": 34734,
+      "mkkp": 1998,
+      "megoldas_mozgalom": 809,
+      "mi_hazank": 3921,
+      "normalis_elet": 460
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "PEST",
+    "oevk": 12,
+    "partok": {
+      "ellenzeki_osszefogas": 13938,
+      "fidesz": 28501,
+      "mkkp": 1233,
+      "megoldas_mozgalom": 459,
+      "mi_hazank": 3386,
+      "normalis_elet": 412
+    }
+  },
+  {
+    "megyekod": 15,
+    "megye": "SOMOGY",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 16464,
+      "fidesz": 20877,
+      "mkkp": 1192,
+      "megoldas_mozgalom": 633,
+      "mi_hazank": 2781,
+      "normalis_elet": 297
+    }
+  },
+  {
+    "megyekod": 15,
+    "megye": "SOMOGY",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 11592,
+      "fidesz": 22263,
+      "mkkp": 613,
+      "megoldas_mozgalom": 295,
+      "mi_hazank": 1944,
+      "normalis_elet": 222
+    }
+  },
+  {
+    "megyekod": 15,
+    "megye": "SOMOGY",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 12585,
+      "fidesz": 25383,
+      "mkkp": 808,
+      "megoldas_mozgalom": 333,
+      "mi_hazank": 2570,
+      "normalis_elet": 204
+    }
+  },
+  {
+    "megyekod": 15,
+    "megye": "SOMOGY",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 15101,
+      "fidesz": 25266,
+      "mkkp": 1084,
+      "megoldas_mozgalom": 441,
+      "mi_hazank": 2652,
+      "normalis_elet": 370
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "SZABOLCS-SZATMÁR-BEREG",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 22082,
+      "fidesz": 23873,
+      "mkkp": 1407,
+      "megoldas_mozgalom": 789,
+      "mi_hazank": 3044,
+      "normalis_elet": 628
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "SZABOLCS-SZATMÁR-BEREG",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 14333,
+      "fidesz": 26445,
+      "mkkp": 919,
+      "megoldas_mozgalom": 429,
+      "mi_hazank": 2732,
+      "normalis_elet": 408
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "SZABOLCS-SZATMÁR-BEREG",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 13815,
+      "fidesz": 30663,
+      "mkkp": 754,
+      "megoldas_mozgalom": 514,
+      "mi_hazank": 2857,
+      "normalis_elet": 372
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "SZABOLCS-SZATMÁR-BEREG",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 10472,
+      "fidesz": 32486,
+      "mkkp": 535,
+      "megoldas_mozgalom": 264,
+      "mi_hazank": 2055,
+      "normalis_elet": 243
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "SZABOLCS-SZATMÁR-BEREG",
+    "oevk": 5,
+    "partok": {
+      "ellenzeki_osszefogas": 10763,
+      "fidesz": 31357,
+      "mkkp": 463,
+      "megoldas_mozgalom": 263,
+      "mi_hazank": 2808,
+      "normalis_elet": 266
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "SZABOLCS-SZATMÁR-BEREG",
+    "oevk": 6,
+    "partok": {
+      "ellenzeki_osszefogas": 11046,
+      "fidesz": 30966,
+      "mkkp": 569,
+      "megoldas_mozgalom": 319,
+      "mi_hazank": 2393,
+      "normalis_elet": 360
+    }
+  },
+  {
+    "megyekod": 17,
+    "megye": "TOLNA",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 13069,
+      "fidesz": 23200,
+      "mkkp": 1137,
+      "megoldas_mozgalom": 398,
+      "mi_hazank": 2383,
+      "normalis_elet": 260
+    }
+  },
+  {
+    "megyekod": 17,
+    "megye": "TOLNA",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 10383,
+      "fidesz": 23112,
+      "mkkp": 882,
+      "megoldas_mozgalom": 367,
+      "mi_hazank": 2845,
+      "normalis_elet": 358
+    }
+  },
+  {
+    "megyekod": 17,
+    "megye": "TOLNA",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 10721,
+      "fidesz": 24391,
+      "mkkp": 937,
+      "megoldas_mozgalom": 320,
+      "mi_hazank": 2769,
+      "normalis_elet": 359
+    }
+  },
+  {
+    "megyekod": 18,
+    "megye": "VAS",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 19233,
+      "fidesz": 27128,
+      "mkkp": 1784,
+      "megoldas_mozgalom": 515,
+      "mi_hazank": 2434,
+      "normalis_elet": 393
+    }
+  },
+  {
+    "megyekod": 18,
+    "megye": "VAS",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 13670,
+      "fidesz": 31003,
+      "mkkp": 1439,
+      "megoldas_mozgalom": 459,
+      "mi_hazank": 3073,
+      "normalis_elet": 382
+    }
+  },
+  {
+    "megyekod": 18,
+    "megye": "VAS",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 11454,
+      "fidesz": 31858,
+      "mkkp": 1119,
+      "megoldas_mozgalom": 366,
+      "mi_hazank": 2888,
+      "normalis_elet": 300
+    }
+  },
+  {
+    "megyekod": 19,
+    "megye": "VESZPRÉM",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 19637,
+      "fidesz": 24483,
+      "mkkp": 2106,
+      "megoldas_mozgalom": 659,
+      "mi_hazank": 3618,
+      "normalis_elet": 405
+    }
+  },
+  {
+    "megyekod": 19,
+    "megye": "VESZPRÉM",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 19232,
+      "fidesz": 26134,
+      "mkkp": 2019,
+      "megoldas_mozgalom": 620,
+      "mi_hazank": 3874,
+      "normalis_elet": 453
+    }
+  },
+  {
+    "megyekod": 19,
+    "megye": "VESZPRÉM",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 16626,
+      "fidesz": 24716,
+      "mkkp": 1505,
+      "megoldas_mozgalom": 345,
+      "mi_hazank": 3091,
+      "normalis_elet": 344
+    }
+  },
+  {
+    "megyekod": 19,
+    "megye": "VESZPRÉM",
+    "oevk": 4,
+    "partok": {
+      "ellenzeki_osszefogas": 12912,
+      "fidesz": 29105,
+      "mkkp": 1113,
+      "megoldas_mozgalom": 354,
+      "mi_hazank": 3083,
+      "normalis_elet": 312
+    }
+  },
+  {
+    "megyekod": 20,
+    "megye": "ZALA",
+    "oevk": 1,
+    "partok": {
+      "ellenzeki_osszefogas": 17517,
+      "fidesz": 31050,
+      "mkkp": 1640,
+      "megoldas_mozgalom": 655,
+      "mi_hazank": 3677,
+      "normalis_elet": 526
+    }
+  },
+  {
+    "megyekod": 20,
+    "megye": "ZALA",
+    "oevk": 2,
+    "partok": {
+      "ellenzeki_osszefogas": 14873,
+      "fidesz": 30951,
+      "mkkp": 1394,
+      "megoldas_mozgalom": 439,
+      "mi_hazank": 3371,
+      "normalis_elet": 468
+    }
+  },
+  {
+    "megyekod": 20,
+    "megye": "ZALA",
+    "oevk": 3,
+    "partok": {
+      "ellenzeki_osszefogas": 17520,
+      "fidesz": 26528,
+      "mkkp": 1153,
+      "megoldas_mozgalom": 381,
+      "mi_hazank": 3295,
+      "normalis_elet": 466
+    }
+  }
+]

@@ -2,22 +2,21 @@ import { renderHook, act } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import { container } from "tsyringe";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
-import { MenuItemId } from "../components/ui/menu/menu.types";
 import { GameConfigEngine } from "../logic/application/GameConfigEngine";
 import { gameModeRegistry } from "../logic/application/gameModeRegistery";
+import type { ElectionConfig } from "@/logic/types";
 
-const { mockTransition } = vi.hoisted(() => ({
-  mockTransition: vi.fn(),
+const { mockNavigate } = vi.hoisted(() => ({
+  mockNavigate: vi.fn(),
 }));
 
-vi.mock("../logic/application/hooks/useAppStateMachine", () => ({
-  useAppStateMachine: () => ({
-    state: { screenType: "menuScreen", menuType: "sideSelectorMenu" },
-    transition: mockTransition,
-  }),
+vi.mock("react-router", () => ({
+  useNavigate: () => mockNavigate,
 }));
 
 const GAME_ID = "2022_ogyv_default";
+const ELECTION_CONFIG: ElectionConfig =
+  gameModeRegistry[GAME_ID].electionConfig;
 
 describe("useSideSelectorMenu", () => {
   const localStorageMock = {
@@ -36,7 +35,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("returns sides from election config", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID, vi.fn()));
+    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
 
     expect(result.current.sides).toHaveLength(2);
     expect(result.current.sides[0].id).toBe("ellenzeki_osszefogas");
@@ -44,7 +43,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("has no selected party or candidate initially", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID, vi.fn()));
+    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
 
     expect(result.current.selectedParty).toBeUndefined();
     expect(result.current.selectedCandidate).toBeUndefined();
@@ -52,7 +51,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange sets the selected party", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID, vi.fn()));
+    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
@@ -62,7 +61,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange populates candidateOptions from the selected party", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID, vi.fn()));
+    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
@@ -76,7 +75,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange clears selectedCandidate when party changes", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID, vi.fn()));
+    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
@@ -91,31 +90,24 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("goBack calls transition with Back", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID, vi.fn()));
+    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
 
     act(() => {
       result.current.goBack();
     });
 
-    expect(mockTransition).toHaveBeenCalledWith({
-      id: MenuItemId.Back,
-      text: "Back",
-    });
+    expect(mockNavigate).toHaveBeenCalledWith(-1);
   });
 
-  it("startGame calls onClick with the gameLoader item", () => {
-    const onClick = vi.fn();
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID, onClick));
+  it("startGame navigates to the game route", () => {
+    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
 
     act(() => {
-      result.current.startGame();
+      result.current.startGame(GAME_ID);
     });
 
-    expect(onClick).toHaveBeenCalledWith({
-      gameId: GAME_ID,
-      onTransition: "gameLoader",
-      id: MenuItemId.GameLoader,
-      text: "Start Game",
-    });
+    const navigatedTo = mockNavigate.mock.calls[0][0] as string;
+    expect(navigatedTo).toContain(`/game/${GAME_ID}`);
+    expect(navigatedTo).toMatch(/sessionId=[\w-]+/);
   });
 });

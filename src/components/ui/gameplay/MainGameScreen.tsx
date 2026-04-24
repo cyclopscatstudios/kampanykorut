@@ -2,37 +2,39 @@ import { useState } from "react";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
 import { useElectionState } from "@/logic/application";
-import { Button } from "../Button";
 import { FinalResultScreen } from "./FinalResultScreen/EndResultScreen";
 import type { DistrictResult } from "../map.utils";
 import { AdvisorModal } from "./AdvisorModal";
 import type { GameState } from "../../../logic/domain/CampaignEngine";
-import logo from "../../../assets/logo_reworked.png";
-import { Text } from "../Text";
 import type {
   AnswerFeedback,
   PendingTurn,
 } from "../../../logic/types/campaignEngine.types";
+import { SettingsDialog } from "./SettingsDialog";
+import { GameMenuBar } from "./GameMenuBar";
+import { GameDialog } from "./GameDialog";
+import { Modal } from "../Modal";
+import { useNavigation } from "../../../hooks/navigationHook";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
-export function MainGameScreen({ gameId }: { gameId: string }) {
+export function MainGameScreen({ campaignId }: { campaignId: string }) {
+  const [isSettingsOpen, setIsOpenSettings] = useState(false);
+  const [isGameMenuOpen, setIsOpenGameMenu] = useState(false);
+  const [isExitModalOpen, setIsExitModalOpen] = useState(false);
   const [currentView, setCurrentView] = useState<CurrentView>("MapView");
   const [answer, setAnswer] = useState<string | undefined>();
   const [advisorFeedback, setAdvisorFeedback] = useState<AnswerFeedback | null>(
     null,
   );
   const [pendingTurn, setPendingTurn] = useState<PendingTurn | null>(null);
-  const {
-    state,
-    config,
-    processAnswer,
-    commitTurn,
-    loadSavedGame,
-    getFinalResults,
-  } = useElectionState(gameId);
   const [selectedDistrict, setSelectedDistrict] =
     useState<DistrictResult | null>();
+
+  const { state, config, processAnswer, commitTurn, getFinalResults } =
+    useElectionState(campaignId);
+
+  const { goToMainMenu } = useNavigation();
 
   const applyTurnResult = (result: GameState) => {
     if (result.isEnded) {
@@ -46,7 +48,9 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
 
   const handleOnClick = (id?: string) => {
     const pending = processAnswer(id, selectedDistrict);
-    if (!pending) return;
+    if (!pending) {
+      return;
+    }
 
     if (pending.newGameState.advisorFeedback) {
       setAdvisorFeedback(pending.newGameState.advisorFeedback);
@@ -67,7 +71,25 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
   };
 
   return (
-    <ScreenWrapper loadSavedGame={loadSavedGame}>
+    <GameScreenWrapper
+      isSettingsOpen={isSettingsOpen}
+      isGameMenuOpen={isGameMenuOpen}
+      isExitModalOpen={isExitModalOpen}
+      setIsOpenSettings={setIsOpenSettings}
+      setIsOpenGameMenu={setIsOpenGameMenu}
+      setIsExitModalOpen={setIsExitModalOpen}
+    >
+      <SettingsDialog isOpen={isSettingsOpen} setIsOpen={setIsOpenSettings} />
+      <GameDialog isOpen={isGameMenuOpen} setIsOpen={setIsOpenGameMenu} />
+      {isExitModalOpen && (
+        <ConfirmExitGameModal
+          onCancel={() => setIsExitModalOpen(false)}
+          onConfirm={() => {
+            setIsExitModalOpen(false);
+            goToMainMenu();
+          }}
+        />
+      )}
       <AdvisorModal
         advice={advisorFeedback?.text ?? ""}
         open={Boolean(advisorFeedback)}
@@ -103,99 +125,57 @@ export function MainGameScreen({ gameId }: { gameId: string }) {
           cityName={selectedDistrict?.telepules}
         />
       )}
-    </ScreenWrapper>
+    </GameScreenWrapper>
   );
 }
 
-function ScreenWrapper({
+function GameScreenWrapper({
   children,
+  isSettingsOpen,
+  isGameMenuOpen,
+  isExitModalOpen,
+  setIsOpenGameMenu,
+  setIsOpenSettings,
+  setIsExitModalOpen,
 }: {
   children: React.ReactNode;
-  loadSavedGame: () => void;
+  isSettingsOpen: boolean;
+  isGameMenuOpen: boolean;
+  isExitModalOpen: boolean;
+  setIsOpenGameMenu: (val: boolean) => void;
+  setIsOpenSettings: (val: boolean) => void;
+  setIsExitModalOpen: (val: boolean) => void;
 }) {
   return (
     <div className="w-full h-full">
-      <div>
-        <MenuBar />
-      </div>
+      <GameMenuBar
+        isSettingsOpen={isSettingsOpen}
+        isGameMenuOpen={isGameMenuOpen}
+        isExitModalOpen={isExitModalOpen}
+        setIsExitModalOpen={setIsExitModalOpen}
+        setIsOpenGameMenu={setIsOpenGameMenu}
+        setIsOpenSettings={setIsOpenSettings}
+      />
       {children}
     </div>
   );
 }
 
-function MenuBar() {
+interface ConfirmExitGameModalProps {
+  onCancel: () => void;
+  onConfirm: () => void;
+}
+
+function ConfirmExitGameModal({
+  onCancel,
+  onConfirm,
+}: ConfirmExitGameModalProps) {
   return (
-    <div className="w-full border-b-2 border-blue-400">
-      <div className="flex justify-between items-center mx-5">
-        <div className="flex justify-center items-center gap-2">
-          <div className="flex justify-center items-center">
-            <img src={logo} className="size-5 mr-3" />
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              KAMPÁNYKÖRÚT
-            </Text>
-          </div>
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              MAP
-            </Text>
-          </Button>
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              DASHBOARD
-            </Text>
-          </Button>
-        </div>
-        <div className="flex justify-center gap-2">
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              SAVE
-            </Text>
-          </Button>
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              LOAD
-            </Text>
-          </Button>
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              SETTINGS
-            </Text>
-          </Button>
-          <Button variant="transparent">
-            <Text
-              weight="bold"
-              color="lightBlue"
-              className="text-5xl mt-5 mb-5"
-            >
-              LANGUAGE
-            </Text>
-          </Button>
-        </div>
-      </div>
-    </div>
+    <Modal
+      title="Attention"
+      description="Are you sure you want to exist the game?"
+      onCancel={onCancel}
+      onConfirm={onConfirm}
+    />
   );
 }

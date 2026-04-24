@@ -5,12 +5,11 @@ import type { DistrictResult } from "../../../components/ui/map.utils";
 import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
-import { GameConfigEngine } from "../GameConfigEngine";
 import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
-import { container } from "tsyringe";
+import { useSettings } from "./useSettings";
 
-export function useElectionState(gameId: string) {
-  const config = gameModeRegistry[gameId];
+export function useElectionState(campaignId: string) {
+  const config = gameModeRegistry[campaignId];
   const { campaignEngine } = useMemo(
     () => createCampaignEngine(config),
     [config],
@@ -18,18 +17,13 @@ export function useElectionState(gameId: string) {
   const [gameState, setGameState] = useState<GameState>(() =>
     campaignEngine.createInitialState(config.electionConfig.baseResults),
   );
-  const { loadSession, saveSession } = useStateEngine();
+  const { saveSession } = useStateEngine();
   const { getState, updateState } = useStateHandler();
-  const gameConfigEngine = container.resolve(GameConfigEngine);
+  const { settings } = useSettings();
 
   useEffect(() => {
     updateState("currentConfig", config);
   }, [config, updateState]);
-
-  const loadSavedGame = () => {
-    const session = loadSession("gameSession");
-    setGameState(session);
-  };
 
   const processAnswer = (
     rawAnswer?: string,
@@ -48,12 +42,11 @@ export function useElectionState(gameId: string) {
       selectedDistrict,
     };
     const history = getState("history") ?? [];
-    const gameSettings = gameConfigEngine.getGameSettings();
     const newGameState = campaignEngine.processTurn(
       gameState,
       decision,
       history,
-      gameSettings,
+      settings,
     );
 
     return {
@@ -106,7 +99,6 @@ export function useElectionState(gameId: string) {
     config,
     processAnswer,
     commitTurn,
-    loadSavedGame,
     getFinalResults,
   };
 }

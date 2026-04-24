@@ -1,4 +1,4 @@
 {
-  "primaryAdvisorImageUri": "src/assets/images/2022/zarand_peter.png",
-  "secondaryAdvisorImageUri": "src/assets/images/2022/gurzo_akos.png"
+  "primaryAdvisorImageUri": "/src/assets/images/2022/zarand_peter.png",
+  "secondaryAdvisorImageUri": "/src/assets/images/2022/gurzo_akos.png"
 }

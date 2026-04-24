@@ -16,14 +16,16 @@ export type PartyVotesRaw = Record<PartyId, number | undefined>;
 export type CandidateMapRaw = Record<PartyId, string[] | undefined>;
 export type CandidateMap = Record<PartyId, string[]>;
 
+export type Mandate = {
+  party: string;
+  constituencySeats: number;
+  listSeats: number;
+  totalSeats: number;
+};
+
 export interface CalculateResults {
   totals: PartyVotes;
-  mandates: Array<{
-    party: string;
-    constituencySeats: number;
-    listSeats: number;
-    totalSeats: number;
-  }>;
+  mandates: Mandate[];
   constituencySeats: Record<string, number>;
   listSeats: Record<string, number>;
   compensation: {

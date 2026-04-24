@@ -1,5 +1,4 @@
 export const quotes = [
-  "„A demokrácia nem megoldás, hanem probléma, amelyet minden nap újra kell kezelni.” — Tamás Gáspár Miklós",
   "„A választás nem erkölcsi feloldozás, hanem technikai döntés következményekkel.” — Tamás Gáspár Miklós",
   "„A politika nem az igazság keresése, hanem a hatalom gyakorlása.” — Tamás Gáspár Miklós",
   "„A szabadság nem attól sérül, hogy elveszik, hanem attól, hogy megszokjuk a hiányát.” — Tamás Gáspár Miklós",
@@ -43,4 +42,5 @@ export const quotes = [
   "A demokrácia nem megoldás, hanem probléma, amit kezelni kell. — Tamás Gáspár Miklós",
   "A választás nem erkölcsi feloldozás. — Tamás Gáspár Miklós",
   "A rendszer nem attól demokratikus, hogy választás van. — Schiffer András",
+  "Cselekedjél úgy, mintha sorsdöntő tényező volnál! — Jászi Oszkár",
 ];

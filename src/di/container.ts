@@ -3,8 +3,8 @@ import {
   GameConfigEngine,
   StorageEngine,
   GameStateEngine,
-  AppStateMachine,
   StateEngine,
+  Emitter,
 } from "@/logic/application";
 import {
   DistrictVoteTransformer,
@@ -14,6 +14,12 @@ import {
   VoterEnvironment,
 } from "@/logic/domain";
 import { DistrictGroupEngine } from "../logic/domain/DistrictGroupEngine";
+import { SettingsEngine } from "../logic/application/SettingsEngine";
+import { Navigation } from "../logic/application/navigation/Navigation";
+import { uuidGenerator } from "../logic/application/IdGenerator";
+
+const emitter = new Emitter();
+container.registerInstance(Emitter, emitter);
 
 const storageEngine = new StorageEngine();
 container.registerInstance(StorageEngine, storageEngine);
@@ -27,8 +33,17 @@ container.registerInstance(DistrictVoteTransformer, districtVoteTransformer);
 const districtGroupEngine = new DistrictGroupEngine();
 container.registerInstance(DistrictGroupEngine, districtGroupEngine);
 
+const settingsEngine = new SettingsEngine(storageEngine);
+container.registerInstance(SettingsEngine, settingsEngine);
+
 const gameConfigEngine = new GameConfigEngine(storageEngine);
 container.registerInstance(GameConfigEngine, gameConfigEngine);
+
+const stateEngine = new StateEngine(storageEngine, uuidGenerator);
+container.registerInstance(StateEngine, stateEngine);
+
+const navigationService = new Navigation();
+container.registerInstance(Navigation, navigationService);
 
 const gameStateEngine = new GameStateEngine(
   gameConfigEngine,
@@ -37,12 +52,6 @@ const gameStateEngine = new GameStateEngine(
   storageEngine,
 );
 container.registerInstance(GameStateEngine, gameStateEngine);
-
-const stateEngine = new StateEngine(storageEngine);
-container.registerInstance(StateEngine, stateEngine);
-
-const appStateMachine = new AppStateMachine(stateEngine, gameStateEngine);
-container.registerInstance(AppStateMachine, appStateMachine);
 
 const unionSwingTransformer = new UnionSwingTransformer();
 container.registerInstance(UnionSwingTransformer, unionSwingTransformer);

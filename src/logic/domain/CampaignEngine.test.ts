@@ -48,6 +48,7 @@ describe("CampaignEngine", () => {
 
     const result = campaignEngine.processTurn(gameState, decision, [], {
       showAdvisorFeedback: true,
+      language: "en",
     });
     expect(result).toMatchSnapshot();
   });
@@ -67,6 +68,7 @@ describe("CampaignEngine", () => {
 
     const result = campaignEngine.processTurn(gameState, decision, [], {
       showAdvisorFeedback: true,
+      language: "en",
     });
     expect(result).toMatchSnapshot();
   });
@@ -83,6 +85,7 @@ describe("CampaignEngine", () => {
 
     const result = campaignEngine.processTurn(gameState, decision, [], {
       showAdvisorFeedback: true,
+      language: "en",
     });
     expect(result).toMatchSnapshot();
   });
@@ -104,6 +107,7 @@ describe("CampaignEngine", () => {
 
     const result = campaignEngine.processTurn(gameState, decision, [], {
       showAdvisorFeedback: true,
+      language: "en",
     });
     expect(result).toMatchSnapshot();
   });

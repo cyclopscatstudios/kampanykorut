@@ -4,8 +4,7 @@ import { Heading } from "../Heading";
 import { Text } from "../Text";
 import { Icon } from "../Icon";
 import type { AdvisorFeedbackAssets } from "../../../logic/types/campaignEngine.types";
-import { GameConfigEngine } from "@/logic/application";
-import { container } from "tsyringe";
+import { useSettings } from "../../../logic/application/hooks/useSettings";
 
 interface AdvisorModalProps {
   advice: string;
@@ -21,7 +20,7 @@ export function AdvisorModal({
   asset,
 }: AdvisorModalProps) {
   const [confirmationModal, setConfirmationModal] = useState(false);
-  const gameConfigEngine = container.resolve(GameConfigEngine);
+  const { updateSettings } = useSettings();
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -40,7 +39,7 @@ export function AdvisorModal({
   if (!open) return null;
 
   const handleDisable = () => {
-    gameConfigEngine.updateGameSettings({ showAdvisorFeedback: false });
+    updateSettings({ showAdvisorFeedback: false });
     setConfirmationModal(false);
     onClose();
   };

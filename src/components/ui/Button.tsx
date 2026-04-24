@@ -159,10 +159,12 @@ function ButtonText({
   );
 }
 
-function ButtonIcon({ name, size }: IconProps) {
+function ButtonIcon({ name, size, color }: IconProps) {
   const ctx = React.useContext(ButtonContext);
   const iconColor = getIconColor(ctx?.variant ?? "primary");
-  return <Icon name={name} size={size} color={ctx?.color ?? iconColor} />;
+  return (
+    <Icon name={name} size={size} color={color ?? ctx?.color ?? iconColor} />
+  );
 }
 
 function getIconColor(variant: ButtonVariant): Colors {

@@ -18,10 +18,7 @@ import {
   type ConditionalRawEffect,
   type RawEffect,
 } from "../types/campaignEngine.types";
-
-export interface GameSettings {
-  showAdvisorFeedback: boolean;
-}
+import type { GameSettings } from "../application/SettingsEngine";
 
 export interface RawQuestion {
   id: string;
@@ -85,7 +82,9 @@ export class CampaignEngine {
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
     private readonly advisorFeedback?: AdvisorFeedback[],
-  ) {}
+  ) {
+    log.debug("CampaignEngine initialized");
+  }
 
   createInitialState(baseResults?: Record<string, number>): GameState {
     let candidateListData = this.initialCandidateData;
@@ -98,6 +97,8 @@ export class CampaignEngine {
         baseResults,
         0,
       );
+
+      log.info("Create initial state with base result", baseApplied);
 
       candidateListData = baseApplied.candidateListData;
       partyListData = baseApplied.partyListData;
@@ -174,7 +175,7 @@ export class CampaignEngine {
     const mandates = { ...state.results };
     // TODO fix this assertation
     return {
-      mandates,
+      ...mandates,
       winnerParty: {
         ...winnerParty,
         hasMajority,

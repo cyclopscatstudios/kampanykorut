@@ -28,34 +28,9 @@ describe("GameConfigEngine", () => {
     engine.configure(baseElectionConfig);
   });
 
-  describe("configure", () => {
-    it("marks engine as configured", () => {
-      expect(engine.isConfigured()).toBe(true);
-    });
-
-    it("does not write to localStorage", () => {
-      expect(localStorageMock.setItem).not.toHaveBeenCalled();
-    });
-  });
-
   describe("getElectionConfig", () => {
     it("returns the config passed to the constructor", () => {
-      expect(engine.getElectionConfig()).toBe(baseElectionConfig);
-    });
-  });
-
-  describe("getGameSettings", () => {
-    it("returns parsed settings from localStorage", () => {
-      const stored = { showAdvisorFeedback: false };
-      localStorageMock.getItem.mockReturnValue(JSON.stringify(stored));
-
-      expect(engine.getGameSettings()).toEqual(stored);
-    });
-
-    it("falls back to defaults when localStorage returns null", () => {
-      localStorageMock.getItem.mockReturnValue(null);
-
-      expect(engine.getGameSettings()).toEqual({ showAdvisorFeedback: true });
+      expect(engine.getCurrentElectionConfig()).toBe(baseElectionConfig);
     });
   });
 
@@ -63,7 +38,7 @@ describe("GameConfigEngine", () => {
     it("merges partial config into existing config", () => {
       engine.updateGameConfig({ listSeats: 50 });
 
-      expect(engine.getElectionConfig()).toEqual({
+      expect(engine.getCurrentElectionConfig()).toEqual({
         ...baseElectionConfig,
         listSeats: 50,
       });

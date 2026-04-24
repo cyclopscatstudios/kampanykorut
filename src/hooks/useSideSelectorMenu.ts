@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useGameConfigEngine } from "../logic/application/hooks/useGameConfigEngine";
-import { useAppStateMachine } from "../logic/application/hooks/useAppStateMachine";
-import { MenuItemId, type MenuItem } from "../components/ui/menu/menu.types";
-import type { PlayerSide } from "../logic/types/campaignEngine.types";
+import type {
+  ElectionConfig,
+  PlayerSide,
+} from "../logic/types/campaignEngine.types";
+import { useNavigation } from "./navigationHook";
+import { useStateEngine } from "../logic/application/hooks";
 
 type Party = {
   id: string;
@@ -13,43 +16,32 @@ type Party = {
   }[];
 };
 
-export function useSideSelectorMenu(
-  gameId: string | undefined,
-  onClick: (item: MenuItem) => void,
-) {
+export function useSideSelectorMenu(electionConfig: ElectionConfig) {
   const [selectedParty, setSelectedParty] = useState<Party | undefined>();
   const [selectedCandidate, setSelectedCandidate] = useState<
     string | undefined
   >();
-  const { gameConfig, updateGameConfig } = useGameConfigEngine();
-  const { transition } = useAppStateMachine();
+  const { updateCampaignState } = useGameConfigEngine();
+  const { goBack, goToCampaign } = useNavigation();
+  const { sessionId } = useStateEngine();
 
   const handlePartyChange = (partyId: string) => {
-    const party = gameConfig?.playableSides.find((s) => s.id === partyId);
+    const party = electionConfig.playableSides.find((s) => s.id === partyId);
     setSelectedParty(party);
     const playerSide: PlayerSide = {
       partyId: partyId,
     };
-    updateGameConfig({ playerSide });
+    updateCampaignState({ playerSide });
     setSelectedCandidate(undefined);
   };
 
   const handleCandidateChange = (partyId: string, candidateId: string) => {
     setSelectedCandidate(candidateId);
-    updateGameConfig({ playerSide: { partyId, candidateId } });
+    updateCampaignState({ playerSide: { partyId, candidateId } });
   };
 
-  const goBack = () => {
-    transition({ id: MenuItemId.Back, text: "Back" });
-  };
-
-  const startGame = () => {
-    onClick({
-      gameId,
-      onTransition: "gameLoader",
-      id: MenuItemId.GameLoader,
-      text: "Start Game",
-    });
+  const startGame = (id: string) => {
+    goToCampaign(id, sessionId);
   };
 
   const candidateOptions =
@@ -59,15 +51,15 @@ export function useSideSelectorMenu(
     })) ?? [];
 
   return {
-    gameConfig,
-    sides: gameConfig?.playableSides ?? [],
+    gameConfig: electionConfig,
+    sides: electionConfig?.playableSides ?? [],
     selectedParty,
     selectedCandidate,
     setSelectedCandidate,
     handlePartyChange,
     handleCandidateChange,
-    goBack,
     startGame,
     candidateOptions,
+    goBack,
   };
 }

@@ -52,14 +52,14 @@ export class MandateCalculator {
 
     const allParties = new Set([
       ...Object.keys(constituencySeats),
-      ...Object.keys(listSeats),
+      ...Object.keys(listSeats ?? {}),
     ]);
 
     const mandates = [];
 
     for (const party of allParties) {
       const oevk = constituencySeats[party] ?? 0;
-      const list = listSeats[party] ?? 0;
+      const list = listSeats?.[party] ?? 0;
 
       mandates.push({
         party,
@@ -76,7 +76,7 @@ export class MandateCalculator {
       totals,
       mandates,
       constituencySeats,
-      listSeats,
+      listSeats: listSeats ?? {},
       compensation,
       percentages,
     };
@@ -221,7 +221,11 @@ export class MandateCalculator {
 
   // D'Hondt list seats
   private allocateListSeats(listVotes: PartyVotes, compensation: PartyVotes) {
-    const config = this.configEngine.getElectionConfig();
+    const config = this.configEngine.getCurrentElectionConfig();
+
+    if (!config) {
+      return;
+    }
 
     const totalListVotes = Object.values(listVotes).reduce((a, b) => a + b, 0);
 

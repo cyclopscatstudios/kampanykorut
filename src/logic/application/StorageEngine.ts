@@ -11,7 +11,9 @@ export class StorageEngine {
   constructor() {
     log.debug("StorageEngine initialized");
     this.getItem = this.getItem.bind(this);
+    this.setItem = this.setItem.bind(this);
     this.getLocalStorageItem = this.getLocalStorageItem.bind(this);
+    this.getPrefixedKey = this.getPrefixedKey.bind(this);
   }
 
   getItem(key: SessionKey, storageType: StorageType) {
@@ -22,7 +24,7 @@ export class StorageEngine {
     return this.getSessionStorageItem(prefixedKey);
   }
 
-  setItem(key: SessionKey, value: string, storageType: StorageType) {
+  setItem(key: string, value: string, storageType: StorageType) {
     const prefixedKey = this.getPrefixedKey(key);
     if (storageType === "localStorage") {
       return this.setLocalStorageItem(prefixedKey, value);
@@ -30,11 +32,19 @@ export class StorageEngine {
     return this.setSessionStorageItem(prefixedKey, value);
   }
 
-  clear() {
+  clearItem(key: string, storageType: StorageType) {
+    const prefixedKey = this.getPrefixedKey(key);
+    if (storageType === "localStorage") {
+      return localStorage.removeItem(prefixedKey);
+    }
+    return sessionStorage.removeItem(prefixedKey);
+  }
+
+  clearAll() {
     localStorage.clear();
   }
 
-  private getPrefixedKey(key: SessionKey) {
+  private getPrefixedKey(key: string) {
     return `kampanykorut_${key}`;
   }
 
