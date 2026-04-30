@@ -3,8 +3,8 @@ import {
   GameConfigEngine,
   StorageEngine,
   GameStateEngine,
-  StateEngine,
   Emitter,
+  StateHandler,
 } from "@/logic/application";
 import {
   DistrictVoteTransformer,
@@ -39,17 +39,19 @@ container.registerInstance(SettingsEngine, settingsEngine);
 const gameConfigEngine = new GameConfigEngine(storageEngine);
 container.registerInstance(GameConfigEngine, gameConfigEngine);
 
-const stateEngine = new StateEngine(storageEngine, uuidGenerator);
-container.registerInstance(StateEngine, stateEngine);
-
 const navigationService = new Navigation();
 container.registerInstance(Navigation, navigationService);
+
+const stateHandler = new StateHandler();
+container.registerInstance(StateHandler, stateHandler);
 
 const gameStateEngine = new GameStateEngine(
   gameConfigEngine,
   voterEnvironment,
   districtGroupEngine,
   storageEngine,
+  stateHandler,
+  uuidGenerator,
 );
 container.registerInstance(GameStateEngine, gameStateEngine);
 

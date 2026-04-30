@@ -7,18 +7,26 @@ export interface MenuBarProps {
   isSettingsOpen: boolean;
   isGameMenuOpen: boolean;
   isExitModalOpen: boolean;
+  isSavedGamesMenuOpen: boolean;
   setIsOpenSettings: (val: boolean) => void;
   setIsOpenGameMenu: (val: boolean) => void;
   setIsExitModalOpen: (val: boolean) => void;
+  setIsSavedGamesMenuOpen: (val: boolean) => void;
+  isSaveGameDialogOpen: boolean;
+  setIsSaveGameDialogOpen: (val: boolean) => void;
 }
 
 export function GameMenuBar({
   isSettingsOpen,
   isGameMenuOpen,
   isExitModalOpen,
+  isSaveGameDialogOpen,
   setIsOpenGameMenu,
   setIsOpenSettings,
   setIsExitModalOpen,
+  isSavedGamesMenuOpen,
+  setIsSavedGamesMenuOpen,
+  setIsSaveGameDialogOpen,
 }: MenuBarProps) {
   return (
     <div className="w-full border-b-2 border-blue-400">
@@ -50,19 +58,25 @@ export function GameMenuBar({
         </div>
         <div className="flex justify-center gap-2">
           <Tooltip content="Save game">
-            <Button variant="transparent">
+            <Button
+              variant="transparent"
+              onClick={() => setIsSaveGameDialogOpen(true)}
+            >
               <Button.Icon
                 name="file-earmark-arrow-down-fill"
-                color="white"
+                color={isSaveGameDialogOpen ? "darkBlue" : "white"}
                 size="medium"
               />
             </Button>
           </Tooltip>
           <Tooltip content="Load game">
-            <Button variant="transparent">
+            <Button
+              variant="transparent"
+              onClick={() => setIsSavedGamesMenuOpen(true)}
+            >
               <Button.Icon
                 name="file-earmark-arrow-up-fill"
-                color="white"
+                color={isSavedGamesMenuOpen ? "darkBlue" : "white"}
                 size="medium"
               />
             </Button>

@@ -1,24 +1,20 @@
 import { Emitter } from "./Emitter";
-import type { ElectionConfig, PlayerSide } from "../types/campaignEngine.types";
+import type { ElectionConfig } from "../types/campaignEngine.types";
 import { inject, singleton } from "tsyringe";
 import { createLogger } from "../logger";
 import { StorageEngine } from "./StorageEngine";
 import { getDataPath } from "./PathResolver";
 import type { CampaignHeader } from "./hooks/useGetCampaigns";
 import { fetchJSON } from "./fetchJSON";
+import type { CampaignState } from "./GameStateEngine";
 
 const log = createLogger("GameConfigEngine");
-
-export interface CampaignState {
-  campaignId: string;
-  playerSide: PlayerSide;
-}
 
 @singleton()
 export class GameConfigEngine extends Emitter<ElectionConfig> {
   private electionConfig: ElectionConfig | null = null;
-  private currentCampaignId: string | undefined;
   private currentCampaignSession: Partial<CampaignState> | null = null;
+  private configured = false;
 
   constructor(@inject(StorageEngine) private storage: StorageEngine) {
     log.debug("GameConfigEngine initialized");
@@ -27,21 +23,24 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
   }
 
   configure(electionConfig: ElectionConfig | null): void {
+    if (this.configured) {
+      log.debug(
+        "GameConfigEngine is already configured, skipping reconfiguration",
+      );
+      return;
+    }
     log.debug("Configuring game with election config", { electionConfig });
     this.electionConfig = electionConfig;
+    this.configured = true;
   }
 
   getCurrentElectionConfig() {
     return this.electionConfig;
   }
 
-  getCurrentCampaignId() {
-    return this.currentCampaignId;
-  }
-
   getCurrentCampaignSession() {
     const storedCampaignSession = this.storage.getItem(
-      "campaignSession",
+      "campaignState",
       "localStorage",
     );
     const campaignSession = storedCampaignSession
@@ -57,7 +56,6 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
       configHeader?.route ?? "",
     );
     const electionConfig = await fetchJSON<ElectionConfig>(electionConfigPath);
-    this.currentCampaignId = id;
     this.electionConfig = electionConfig;
     return electionConfig;
   }
@@ -66,7 +64,7 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
     if (!session) {
       log.debug("Clearing campaign session");
       this.currentCampaignSession = null;
-      this.storage.clearItem("campaignSession", "localStorage");
+      this.storage.clearItem("campaignState", "localStorage");
       return;
     }
     const currentCampaignSession = this.getCurrentCampaignSession();
@@ -77,7 +75,7 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
     updated = { ...updated, ...session };
     this.currentCampaignSession = updated;
     this.storage.setItem(
-      "campaignSession",
+      "campaignState",
       JSON.stringify(updated),
       "localStorage",
     );
