@@ -30,10 +30,10 @@ describe("StorageEngine", () => {
     it("should get item from localStorage with prefix", () => {
       localStorageMock.getItem.mockReturnValue("value");
 
-      const result = engine.getItem("gameSession", "localStorage");
+      const result = engine.getItem("electionConfig", "localStorage");
 
       expect(localStorageMock.getItem).toHaveBeenCalledWith(
-        "kampanykorut_gameSession",
+        "kampanykorut_electionConfig",
       );
       expect(result).toBe("value");
     });
@@ -52,10 +52,10 @@ describe("StorageEngine", () => {
 
   describe("setItem", () => {
     it("should set item in localStorage with prefix", () => {
-      engine.setItem("gameSession", "data", "localStorage");
+      engine.setItem("electionSession", "data", "localStorage");
 
       expect(localStorageMock.setItem).toHaveBeenCalledWith(
-        "kampanykorut_gameSession",
+        "kampanykorut_electionSession",
         "data",
       );
     });

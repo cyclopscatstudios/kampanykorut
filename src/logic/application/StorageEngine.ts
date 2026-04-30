@@ -1,8 +1,18 @@
 import { singleton } from "tsyringe";
-import type { SessionKey } from "./StateEngine";
 import { createLogger } from "../logger";
 
 export type StorageType = "localStorage" | "sessionStorage";
+
+export type SessionKey =
+  | "electionConfig"
+  | "menuSession"
+  | "devSession"
+  | "questionHistory"
+  | "settings"
+  | "gameConfig"
+  | "campaignState"
+  | "currentSessionId"
+  | "savedSessions";
 
 const log = createLogger("StorageEngine");
 
@@ -44,8 +54,12 @@ export class StorageEngine {
     localStorage.clear();
   }
 
-  private getPrefixedKey(key: string) {
+  getPrefixedKey(key: string) {
     return `kampanykorut_${key}`;
+  }
+
+  getKeyWithoutPrefix(prefixedKey: string) {
+    return prefixedKey.replace(/^kampanykorut_/, "");
   }
 
   private getLocalStorageItem(key: string) {

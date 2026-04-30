@@ -46,7 +46,7 @@ export function CampaignSelectorMenuList({
       setSelectedCampaign(null);
       return;
     }
-    updateCampaignState({ campaignId: item.id });
+    updateCampaignState({ activeCampaignId: item.id });
     setSelectedCampaign(item);
   };
 

@@ -15,6 +15,8 @@ import { GameMenuBar } from "./GameMenuBar";
 import { GameDialog } from "./GameDialog";
 import { Modal } from "../Modal";
 import { useNavigation } from "../../../hooks/navigationHook";
+import { SavedSessionsDialog } from "./SavedGameSessionsDialog";
+import { SaveGameSession } from "../menu/SaveGameSession";
 
 export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
 
@@ -22,6 +24,8 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
   const [isSettingsOpen, setIsOpenSettings] = useState(false);
   const [isGameMenuOpen, setIsOpenGameMenu] = useState(false);
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
+  const [isSavedGamesMenuOpen, setIsSavedGamesMenuOpen] = useState(false);
+  const [isSaveGameDialogOpen, setIsSaveGameDialogOpen] = useState(false);
   const [currentView, setCurrentView] = useState<CurrentView>("MapView");
   const [answer, setAnswer] = useState<string | undefined>();
   const [advisorFeedback, setAdvisorFeedback] = useState<AnswerFeedback | null>(
@@ -72,13 +76,25 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
 
   return (
     <GameScreenWrapper
+      isSaveGameDialogOpen={isSaveGameDialogOpen}
+      setIsSaveGameDialogOpen={setIsSaveGameDialogOpen}
       isSettingsOpen={isSettingsOpen}
       isGameMenuOpen={isGameMenuOpen}
       isExitModalOpen={isExitModalOpen}
       setIsOpenSettings={setIsOpenSettings}
       setIsOpenGameMenu={setIsOpenGameMenu}
       setIsExitModalOpen={setIsExitModalOpen}
+      isSavedGamesMenuOpen={isSavedGamesMenuOpen}
+      setIsSavedGamesMenuOpen={setIsSavedGamesMenuOpen}
     >
+      <SaveGameSession
+        isOpen={isSaveGameDialogOpen}
+        setIsOpen={setIsSaveGameDialogOpen}
+      />
+      <SavedSessionsDialog
+        isOpen={isSavedGamesMenuOpen}
+        setIsOpen={setIsSavedGamesMenuOpen}
+      />
       <SettingsDialog isOpen={isSettingsOpen} setIsOpen={setIsOpenSettings} />
       <GameDialog isOpen={isGameMenuOpen} setIsOpen={setIsOpenGameMenu} />
       {isExitModalOpen && (
@@ -134,17 +150,25 @@ function GameScreenWrapper({
   isSettingsOpen,
   isGameMenuOpen,
   isExitModalOpen,
+  isSavedGamesMenuOpen,
+  isSaveGameDialogOpen,
   setIsOpenGameMenu,
   setIsOpenSettings,
   setIsExitModalOpen,
+  setIsSavedGamesMenuOpen,
+  setIsSaveGameDialogOpen,
 }: {
   children: React.ReactNode;
   isSettingsOpen: boolean;
   isGameMenuOpen: boolean;
   isExitModalOpen: boolean;
+  isSavedGamesMenuOpen: boolean;
+  isSaveGameDialogOpen: boolean;
   setIsOpenGameMenu: (val: boolean) => void;
   setIsOpenSettings: (val: boolean) => void;
   setIsExitModalOpen: (val: boolean) => void;
+  setIsSavedGamesMenuOpen: (val: boolean) => void;
+  setIsSaveGameDialogOpen: (val: boolean) => void;
 }) {
   return (
     <div className="w-full h-full">
@@ -152,9 +176,13 @@ function GameScreenWrapper({
         isSettingsOpen={isSettingsOpen}
         isGameMenuOpen={isGameMenuOpen}
         isExitModalOpen={isExitModalOpen}
+        isSavedGamesMenuOpen={isSavedGamesMenuOpen}
+        isSaveGameDialogOpen={isSaveGameDialogOpen}
         setIsExitModalOpen={setIsExitModalOpen}
         setIsOpenGameMenu={setIsOpenGameMenu}
         setIsOpenSettings={setIsOpenSettings}
+        setIsSavedGamesMenuOpen={setIsSavedGamesMenuOpen}
+        setIsSaveGameDialogOpen={setIsSaveGameDialogOpen}
       />
       {children}
     </div>

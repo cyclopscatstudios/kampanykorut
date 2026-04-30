@@ -6,6 +6,7 @@ import { MainMenu } from "./components/ui/menu/MainMenu";
 import { NewGameMenu } from "./components/ui/menu/NewGameMenu";
 import { SettingsMenu } from "./components/ui/menu/SettingsMenu";
 import { SideSelectorMenu } from "./components/ui/menu/SideSelectorMenu";
+import { LoadSavedSessionsMenu } from "./components/ui/menu/LoadSavedGamesMenu";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <MainMenu /> },
       { path: "settings", element: <SettingsMenu /> },
+      { path: "load-game", element: <LoadSavedSessionsMenu /> },
       {
         path: "new-game",
         element: <NewGameLayout />,

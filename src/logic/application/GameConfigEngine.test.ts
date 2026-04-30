@@ -4,7 +4,7 @@ import type { ElectionConfig } from "../types/campaignEngine.types";
 import { container } from "tsyringe";
 
 const baseElectionConfig: ElectionConfig = {
-  listSeats: 93,
+  listSeats: 50,
   thresholdPercent: 5,
   parties: [],
   playableSides: [],

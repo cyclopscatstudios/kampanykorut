@@ -29,7 +29,7 @@ export function MainGameScreenWrapper() {
       return;
     }
 
-    gameStateEngine.updateGameState({ activeCampaignId: campaignId });
+    gameStateEngine.updateCampaignState({ activeCampaignId: campaignId });
   }, [campaignId, gameStateEngine]);
 
   return <MainGameScreen campaignId={campaignId!} />;

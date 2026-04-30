@@ -1,7 +1,8 @@
 import { container } from "tsyringe";
-import { GameConfigEngine, type CampaignState } from "../GameConfigEngine";
+import { GameConfigEngine } from "../GameConfigEngine";
 import { useEffect, useState } from "react";
 import type { ElectionConfig } from "../../types/campaignEngine.types";
+import type { CampaignState } from "../GameStateEngine";
 
 export function useGameConfigEngine() {
   const engine = container.resolve(GameConfigEngine);

@@ -43,7 +43,6 @@ export function MainMenu() {
               text: loadGame,
               path: "load-game",
               icon: "clipboard-data-fill",
-              disabled: true,
             },
             {
               id: MenuItemId.Settings,

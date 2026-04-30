@@ -89,7 +89,7 @@ export function useElectionState(campaignId: string) {
       saveSession(newHistoryItems, "questionHistory");
     }
     updateState("turnDecision", decision);
-    saveSession(newGameState, "gameSession");
+    saveSession(newGameState, "electionConfig");
     updateState("gameState", newGameState);
     setGameState(newGameState);
   };
