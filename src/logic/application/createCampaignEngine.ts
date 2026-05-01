@@ -6,11 +6,11 @@ import {
 } from "@/logic/domain";
 import { VoterEnvironment } from "../domain/VoterEnvironment";
 import { GameConfigEngine } from "./GameConfigEngine";
-import type { GameModeConfig } from "../types/campaignEngine.types";
+import type { CampaignConfig } from "../types/campaignEngine.types";
 import { container } from "tsyringe";
 import { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
 
-export function createCampaignEngine(config: GameModeConfig) {
+export function createCampaignEngine(config: CampaignConfig) {
   const configEngine = container.resolve(GameConfigEngine);
   configEngine.configure(config.electionConfig);
 

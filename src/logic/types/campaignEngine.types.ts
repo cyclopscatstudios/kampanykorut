@@ -172,7 +172,7 @@ export interface AdvisorFeedbackAssets {
   secondaryAdvisorImageUri: string;
 }
 
-export interface GameModeConfig {
+export interface CampaignConfig {
   electionConfig: ElectionConfig;
   voterEnvironmentConfig: VoterEnvironmentConfig;
   candidateListData: CandidateListData[];

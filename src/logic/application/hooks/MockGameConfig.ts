@@ -6,7 +6,7 @@ import {
 import type {
   EndResultProps,
   Asset,
-  GameModeConfig,
+  CampaignConfig,
 } from "../../types/campaignEngine.types";
 import type { VoterEnvironmentConfig } from "../../domain/VoterEnvironment";
 
@@ -39,4 +39,4 @@ export const mockGameConfig = {
   partyListData,
   endResults: mockEndResult,
   customGroups: [],
-} as unknown as GameModeConfig;
+} as unknown as CampaignConfig;

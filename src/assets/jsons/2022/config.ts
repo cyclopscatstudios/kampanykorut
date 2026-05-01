@@ -11,11 +11,11 @@ import feedback from "./ellenzeki_osszefogas/advisor_feedback.json";
 import feedbackAssets from "./ellenzeki_osszefogas/advisor_feedback_assets.json";
 import customGroups from "./custom_groups.json";
 import type {
-  GameModeConfig,
+  CampaignConfig,
   RawAnsweEffectProps,
 } from "../../../logic/types/campaignEngine.types";
 
-export const config2022: GameModeConfig = {
+export const config2022: CampaignConfig = {
   electionConfig,
   voterEnvironmentConfig: {
     ...voterEnvironmentRaw,
