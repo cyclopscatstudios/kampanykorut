@@ -5,7 +5,7 @@ import { useElectionState } from "@/logic/application";
 import { FinalResultScreen } from "./FinalResultScreen/EndResultScreen";
 import type { DistrictResult } from "../map.utils";
 import { AdvisorModal } from "./AdvisorModal";
-import type { GameState } from "../../../logic/domain/CampaignEngine";
+import type { CampaignState } from "../../../logic/domain/CampaignEngine";
 import type {
   AnswerFeedback,
   PendingTurn,
@@ -38,9 +38,11 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
   const { state, config, processAnswer, commitTurn, getFinalResults } =
     useElectionState(campaignId);
 
+  console.log({ state });
+
   const { goToMainMenu } = useNavigation();
 
-  const applyTurnResult = (result: GameState) => {
+  const applyTurnResult = (result: CampaignState) => {
     if (result.isEnded) {
       setCurrentView("FinalScreen");
       return;
@@ -120,7 +122,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
       {currentView === "MapView" ? (
         <MapCreator
           setCurrentView={setCurrentView}
-          candidateListData={state.candidateListData}
+          candidateListData={state.candidateListData ?? []}
           capitalCity={config.capitalCity}
           districts={config.districts}
           selectedDistrict={selectedDistrict}

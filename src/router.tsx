@@ -7,6 +7,7 @@ import { NewGameMenu } from "./components/ui/menu/NewGameMenu";
 import { SettingsMenu } from "./components/ui/menu/SettingsMenu";
 import { SideSelectorMenu } from "./components/ui/menu/SideSelectorMenu";
 import { LoadSavedSessionsMenu } from "./components/ui/menu/LoadSavedGamesMenu";
+import { newGameSelectorLoader } from "./components/loaders/newGameSelector.loader";
 
 export const router = createBrowserRouter([
   {
@@ -23,11 +24,14 @@ export const router = createBrowserRouter([
         element: <NewGameLayout />,
         children: [
           { index: true, element: <NewGameMenu /> },
-
           {
             path: "classic",
             children: [
-              { index: true, element: <ClassicModeSelectorMenu /> },
+              {
+                index: true,
+                element: <ClassicModeSelectorMenu />,
+                loader: newGameSelectorLoader,
+              },
               {
                 path: "sides/:campaignId",
                 element: <SideSelectorMenu />,

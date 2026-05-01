@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import type { Decision, GameState } from "../../domain/CampaignEngine";
+import type { Decision, CampaignState } from "../../domain/CampaignEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
 import type { DistrictResult } from "../../../components/ui/map.utils";
 import { gameModeRegistry } from "../gameModeRegistery";
@@ -7,6 +7,7 @@ import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
 import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
 import { useSettings } from "./useSettings";
+import { useCampaignStateEngine } from "./useCampaignStateEngine";
 
 export function useElectionState(campaignId: string) {
   const config = gameModeRegistry[campaignId];
@@ -14,10 +15,11 @@ export function useElectionState(campaignId: string) {
     () => createCampaignEngine(config),
     [config],
   );
-  const [gameState, setGameState] = useState<GameState>(() =>
+  const [gameState, setGameState] = useState<CampaignState>(() =>
     campaignEngine.createInitialState(config.electionConfig.baseResults),
   );
   const { saveSession } = useStateEngine();
+  const { updateCampaignState } = useCampaignStateEngine();
   const { getState, updateState } = useStateHandler();
   const { settings } = useSettings();
 
@@ -60,7 +62,7 @@ export function useElectionState(campaignId: string) {
     newGameState,
     decision,
     rawAnswer,
-  }: PendingTurn): GameState => {
+  }: PendingTurn): CampaignState => {
     preserveState(rawAnswer, decision, newGameState);
     return newGameState;
   };
@@ -76,7 +78,7 @@ export function useElectionState(campaignId: string) {
   const preserveState = (
     answer: string,
     decision: Decision,
-    newGameState: GameState,
+    newGameState: CampaignState,
   ) => {
     const historyEntry = {
       questionId: gameState.currentQuestion?.id ?? "",
@@ -89,7 +91,7 @@ export function useElectionState(campaignId: string) {
       saveSession(newHistoryItems, "questionHistory");
     }
     updateState("turnDecision", decision);
-    saveSession(newGameState, "electionConfig");
+    updateCampaignState(newGameState);
     updateState("gameState", newGameState);
     setGameState(newGameState);
   };

@@ -1,5 +1,5 @@
 import {
-  GameStateEngine,
+  CampaignStateEngine,
   type SavedCampaignSessionInfo,
 } from "@/logic/application";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
@@ -17,9 +17,10 @@ interface SaveGameSessionProps {
 }
 
 export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
-  const gameStateEngine = container.resolve(GameStateEngine);
+  const gameStateEngine = container.resolve(CampaignStateEngine);
   const { usedSlots, availableSlots } = gameStateEngine.getSessionSlots();
-  const activeCampaignId = gameStateEngine.getCampaignState().activeCampaignId;
+  const activeCampaignId =
+    gameStateEngine.getCampaignState().activeCampaignId ?? "";
 
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)} closeOnBackdrop>
@@ -29,9 +30,7 @@ export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
           activeCampaignId={activeCampaignId}
           availableSlots={availableSlots}
           usedSlots={usedSlots}
-          onSave={(name) =>
-            gameStateEngine.saveGameState(name)
-          }
+          onSave={(name) => gameStateEngine.saveCampaignStateManually(name)}
           onClose={() => setIsOpen(false)}
         />
       </DialogBody>

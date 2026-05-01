@@ -1,10 +1,10 @@
-import { GameConfigEngine } from "@/logic/application";
+import { ElectionConfigEngine } from "@/logic/application";
 import type { LoaderFunctionArgs } from "react-router";
 import { container } from "tsyringe";
 
 export async function sideSelectorLoader({ params }: LoaderFunctionArgs) {
   const campaignId = params.campaignId;
-  const gameConfigengine = container.resolve(GameConfigEngine);
-  const config = await gameConfigengine.getElectionConfigById(campaignId);
+  const electionConfigEngine = container.resolve(ElectionConfigEngine);
+  const config = await electionConfigEngine.getElectionConfigById(campaignId);
   return { config, id: campaignId };
 }

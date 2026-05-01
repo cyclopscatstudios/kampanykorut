@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useGameConfigEngine } from "../logic/application/hooks/useGameConfigEngine";
+import { useCampaignStateEngine } from "../logic/application/hooks/useCampaignStateEngine";
 import type {
   ElectionConfig,
   PlayerSide,
@@ -21,7 +21,7 @@ export function useSideSelectorMenu(electionConfig: ElectionConfig) {
   const [selectedCandidate, setSelectedCandidate] = useState<
     string | undefined
   >();
-  const { updateCampaignState } = useGameConfigEngine();
+  const { updateCampaignState } = useCampaignStateEngine();
   const { goBack, goToCampaign } = useNavigation();
   const { sessionId } = useStateEngine();
 

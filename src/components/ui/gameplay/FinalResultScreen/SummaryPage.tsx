@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { FinalResults } from "@/logic/domain";
+import { type FinalResults } from "@/logic/domain";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
 import { Heading } from "../../Heading";
@@ -8,13 +8,17 @@ import type { RawParty } from "../../../../logic/types/campaignEngine.types";
 import type { Mandate } from "../../../../logic/domain/MandateCalculator.types";
 import { gameModeRegistry } from "../../../../logic/application/gameModeRegistery";
 import { useParams } from "../../../../hooks/useParamsHook";
+import { container } from "tsyringe";
+import { CampaignStateEngine } from "@/logic/application";
 
 export function SummaryPage({ results }: { results: FinalResults }) {
   const { campaignId } = useParams();
+  const campaignStateEngine = container.resolve(CampaignStateEngine);
+  const campaignState = campaignStateEngine.getCampaignState();
   const currentConfig = gameModeRegistry[campaignId ?? ""];
 
   const didPlayerWin =
-    results.winnerParty?.party === currentConfig?.electionConfig.playerSide;
+    results.winnerParty?.party === campaignState.playerSide?.partyId;
   const assets = didPlayerWin
     ? currentConfig?.endResults.playerSideVictory
     : currentConfig?.endResults.playerSideDefeat;

@@ -3,7 +3,7 @@ import { StateHandler } from "../application/StateHandler";
 import { EffectApplier } from "./EffectApplier";
 import { candidateListData } from "./mocks/mockListData";
 import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
-import { GameConfigEngine } from "../application/GameConfigEngine";
+import { ElectionConfigEngine } from "../application/ElectionConfigEngine";
 import { EffectType } from "../types/campaignEngine.types";
 import type {
   RawEffect,
@@ -20,7 +20,7 @@ const electionConfig = {
   playableSides: [],
 };
 
-const electionConfigEngine = container.resolve(GameConfigEngine);
+const electionConfigEngine = container.resolve(ElectionConfigEngine);
 electionConfigEngine.configure(electionConfig);
 
 describe("ElectionEffectApplier – PartySwing", () => {

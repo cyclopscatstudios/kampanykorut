@@ -17,6 +17,7 @@ import {
   EffectType,
   type ConditionalRawEffect,
   type RawEffect,
+  type PlayerSide,
 } from "../types/campaignEngine.types";
 import type { GameSettings } from "../application/SettingsEngine";
 
@@ -33,12 +34,14 @@ export interface RawQuestion {
   blocks?: { questionId: string; answerId: string }[];
 }
 
-export interface GameState {
+export interface CampaignState {
+  activeCampaignId?: string | null;
+  playerSide?: PlayerSide;
   turn: number;
   currentQuestion?: RawQuestion;
   answerEffects?: Answer[];
-  candidateListData: CandidateListData[];
-  partyListData: PartyListData[];
+  candidateListData?: CandidateListData[];
+  partyListData?: PartyListData[];
   results?: CalculateResults;
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;
@@ -86,7 +89,7 @@ export class CampaignEngine {
     log.debug("CampaignEngine initialized");
   }
 
-  createInitialState(baseResults?: Record<string, number>): GameState {
+  createInitialState(baseResults?: Record<string, number>): CampaignState {
     let candidateListData = this.initialCandidateData;
     let partyListData = this.initialPartyData;
 
@@ -119,18 +122,18 @@ export class CampaignEngine {
   }
 
   processTurn(
-    state: GameState,
+    state: CampaignState,
     decision: Decision,
     history: Array<{ questionId: string; answerId: string }> = [],
     gameSettings: GameSettings,
-  ): GameState {
+  ): CampaignState {
     if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
       return state;
     }
     const appliedEffects = this.effectApplier.getAppliedEffects(
       decision.effects,
-      state.candidateListData,
+      state.candidateListData ?? [],
       state.turn,
       decision.conditionalEffects,
       decision.selectedDistrict,
@@ -166,7 +169,7 @@ export class CampaignEngine {
     return session;
   }
 
-  getFinalResults(state: GameState): FinalResults {
+  getFinalResults(state: CampaignState): FinalResults {
     const winnerParty = state.results?.mandates.reduce((max, party) => {
       return party.totalSeats > max.totalSeats ? party : max;
     }, state.results.mandates[0]);
@@ -247,7 +250,7 @@ export class CampaignEngine {
     baseResults: Record<string, number>,
     turn: number,
   ) {
-    const tempState: GameState = {
+    const tempState: CampaignState = {
       turn: 0,
       candidateListData,
       partyListData,

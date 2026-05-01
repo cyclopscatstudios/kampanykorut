@@ -1,13 +1,15 @@
 import { container } from "tsyringe";
 import {
-  GameConfigEngine,
+  ElectionConfigEngine,
   StorageEngine,
-  GameStateEngine,
+  CampaignStateEngine,
   Emitter,
   StateHandler,
 } from "@/logic/application";
 import {
   DistrictVoteTransformer,
+  EffectApplier,
+  MandateCalculator,
   ResultModifier,
   UnionSwingTransformer,
   VoteShareTransformer,
@@ -36,8 +38,8 @@ container.registerInstance(DistrictGroupEngine, districtGroupEngine);
 const settingsEngine = new SettingsEngine(storageEngine);
 container.registerInstance(SettingsEngine, settingsEngine);
 
-const gameConfigEngine = new GameConfigEngine(storageEngine);
-container.registerInstance(GameConfigEngine, gameConfigEngine);
+const electionConfigEngine = new ElectionConfigEngine(storageEngine);
+container.registerInstance(ElectionConfigEngine, electionConfigEngine);
 
 const navigationService = new Navigation();
 container.registerInstance(Navigation, navigationService);
@@ -45,15 +47,15 @@ container.registerInstance(Navigation, navigationService);
 const stateHandler = new StateHandler();
 container.registerInstance(StateHandler, stateHandler);
 
-const gameStateEngine = new GameStateEngine(
-  gameConfigEngine,
+const campaignStateEngine = new CampaignStateEngine(
+  electionConfigEngine,
   voterEnvironment,
   districtGroupEngine,
   storageEngine,
   stateHandler,
   uuidGenerator,
 );
-container.registerInstance(GameStateEngine, gameStateEngine);
+container.registerInstance(CampaignStateEngine, campaignStateEngine);
 
 const unionSwingTransformer = new UnionSwingTransformer();
 container.registerInstance(UnionSwingTransformer, unionSwingTransformer);
@@ -67,3 +69,14 @@ const resultModifier = new ResultModifier(
   districtVoteTransformer,
 );
 container.registerInstance(ResultModifier, resultModifier);
+
+const mandateCalculator = new MandateCalculator(electionConfigEngine);
+container.registerInstance(MandateCalculator, mandateCalculator);
+
+const effectApplier = new EffectApplier(
+  electionConfigEngine,
+  campaignStateEngine,
+  mandateCalculator,
+  stateHandler,
+);
+container.registerInstance(EffectApplier, effectApplier);

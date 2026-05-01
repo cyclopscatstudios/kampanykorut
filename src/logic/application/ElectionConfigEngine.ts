@@ -1,23 +1,21 @@
 import { Emitter } from "./Emitter";
 import type { ElectionConfig } from "../types/campaignEngine.types";
-import { inject, singleton } from "tsyringe";
+import { singleton } from "tsyringe";
 import { createLogger } from "../logger";
 import { StorageEngine } from "./StorageEngine";
 import { getDataPath } from "./PathResolver";
 import type { CampaignHeader } from "./hooks/useGetCampaigns";
 import { fetchJSON } from "./fetchJSON";
-import type { CampaignState } from "./GameStateEngine";
 
-const log = createLogger("GameConfigEngine");
+const log = createLogger("ElectionConfigEngine");
 
 @singleton()
-export class GameConfigEngine extends Emitter<ElectionConfig> {
+export class ElectionConfigEngine extends Emitter<ElectionConfig> {
   private electionConfig: ElectionConfig | null = null;
-  private currentCampaignSession: Partial<CampaignState> | null = null;
   private configured = false;
 
-  constructor(@inject(StorageEngine) private storage: StorageEngine) {
-    log.debug("GameConfigEngine initialized");
+  constructor(private storage: StorageEngine) {
+    log.debug("ElectionConfigEngine initialized");
     super();
     this.storage.setItem = this.storage.setItem.bind(this);
   }
@@ -25,29 +23,41 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
   configure(electionConfig: ElectionConfig | null): void {
     if (this.configured) {
       log.debug(
-        "GameConfigEngine is already configured, skipping reconfiguration",
+        "ElectionConfigEngine is already configured, skipping reconfiguration",
       );
       return;
     }
     log.debug("Configuring game with election config", { electionConfig });
     this.electionConfig = electionConfig;
+    this.storage.setItem(
+      "electionConfig",
+      JSON.stringify(electionConfig),
+      "localStorage",
+    );
     this.configured = true;
   }
 
   getCurrentElectionConfig() {
-    return this.electionConfig;
+    const storedConfig = this.storage.getItem("electionConfig", "localStorage");
+    const parsed = storedConfig
+      ? (JSON.parse(storedConfig) as ElectionConfig)
+      : null;
+    return this.electionConfig ?? parsed;
   }
 
-  getCurrentCampaignSession() {
+  /* getCurrentCampaignSession() {
+    const sessionId =
+      this.storage.getItem("currentSessionId", "localStorage") ?? "";
     const storedCampaignSession = this.storage.getItem(
       "campaignState",
       "localStorage",
+      sessionId,
     );
     const campaignSession = storedCampaignSession
       ? (JSON.parse(storedCampaignSession) as CampaignState)
       : null;
     return this.currentCampaignSession || campaignSession;
-  }
+  } */
 
   async getElectionConfigById(id?: string) {
     const configHeader = await this.getConfigHeader(id);
@@ -60,13 +70,14 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
     return electionConfig;
   }
 
-  updateCampaignState(session: Partial<CampaignState> | null) {
+  /* updateCampaignState(session: Partial<CampaignState> | null) {
     if (!session) {
       log.debug("Clearing campaign session");
       this.currentCampaignSession = null;
       this.storage.clearItem("campaignState", "localStorage");
       return;
     }
+    const sessionId = this.storage.getItem("currentSessionId", "localStorage");
     const currentCampaignSession = this.getCurrentCampaignSession();
     let updated;
     if (currentCampaignSession) {
@@ -75,22 +86,11 @@ export class GameConfigEngine extends Emitter<ElectionConfig> {
     updated = { ...updated, ...session };
     this.currentCampaignSession = updated;
     this.storage.setItem(
-      "campaignState",
+      `campaignState-${sessionId}`,
       JSON.stringify(updated),
       "localStorage",
     );
-  }
-
-  updateGameConfig(config: Partial<ElectionConfig>): void {
-    const currentElectionConfig = this.getCurrentElectionConfig();
-    if (!currentElectionConfig) {
-      return;
-    }
-    const updated = { ...currentElectionConfig, ...config };
-    this.electionConfig = updated;
-    this.storage.setItem("gameConfig", JSON.stringify(updated), "localStorage");
-    this.notify(updated);
-  }
+  } */
 
   private async getConfigHeader(
     id?: string,

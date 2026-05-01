@@ -26,10 +26,10 @@ export class StorageEngine {
     this.getPrefixedKey = this.getPrefixedKey.bind(this);
   }
 
-  getItem(key: SessionKey, storageType: StorageType) {
+  getItem(key: SessionKey, storageType: StorageType, suffix?: string) {
     const prefixedKey = this.getPrefixedKey(key);
     if (storageType === "localStorage") {
-      return this.getLocalStorageItem(prefixedKey);
+      return this.getLocalStorageItem(prefixedKey, suffix);
     }
     return this.getSessionStorageItem(prefixedKey);
   }
@@ -62,8 +62,12 @@ export class StorageEngine {
     return prefixedKey.replace(/^kampanykorut_/, "");
   }
 
-  private getLocalStorageItem(key: string) {
-    return localStorage.getItem(key);
+  private getLocalStorageItem(key: string, suffix?: string) {
+    let fullKey = key;
+    if (suffix) {
+      fullKey = `${key}-${suffix}`;
+    }
+    return localStorage.getItem(fullKey);
   }
 
   private setLocalStorageItem(key: string, value: string) {

@@ -1,8 +1,8 @@
 import { singleton } from "tsyringe";
-import type { Decision, GameState } from "../domain/CampaignEngine";
+import type { Decision, CampaignState } from "../domain/CampaignEngine";
 import { Emitter } from "./Emitter";
 import { createLogger } from "../logger";
-import type { RawEffect, GameModeConfig } from "../types/campaignEngine.types";
+import type { RawEffect, CampaignConfig } from "../types/campaignEngine.types";
 
 export interface HistoryItem {
   questionId: string;
@@ -15,9 +15,9 @@ export interface AffectedQuestion {
 }
 
 export interface StateHandlerType {
-  gameState: GameState;
+  gameState: CampaignState;
   turnDecision?: Decision;
-  currentConfig?: GameModeConfig;
+  currentConfig?: CampaignConfig;
   history?: HistoryItem[];
   affectedQuestions?: AffectedQuestion[];
 }

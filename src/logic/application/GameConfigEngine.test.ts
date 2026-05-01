@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { GameConfigEngine } from "./GameConfigEngine";
+import { ElectionConfigEngine } from "./ElectionConfigEngine";
 import type { ElectionConfig } from "../types/campaignEngine.types";
 import { container } from "tsyringe";
 
@@ -18,52 +18,19 @@ describe("GameConfigEngine", () => {
     clear: vi.fn(),
   };
 
-  let engine: GameConfigEngine;
+  let engine: ElectionConfigEngine;
 
   beforeEach(() => {
     vi.clearAllMocks();
     // @ts-expect-error global override
     global.localStorage = localStorageMock;
-    engine = container.resolve(GameConfigEngine);
+    engine = container.resolve(ElectionConfigEngine);
     engine.configure(baseElectionConfig);
   });
 
   describe("getElectionConfig", () => {
     it("returns the config passed to the constructor", () => {
       expect(engine.getCurrentElectionConfig()).toBe(baseElectionConfig);
-    });
-  });
-
-  describe("updateGameConfig", () => {
-    it("merges partial config into existing config", () => {
-      engine.updateGameConfig({ listSeats: 50 });
-
-      expect(engine.getCurrentElectionConfig()).toEqual({
-        ...baseElectionConfig,
-        listSeats: 50,
-      });
-    });
-
-    it("notifies subscribers with the updated config", () => {
-      const listener = vi.fn();
-      engine.subscribe(listener);
-
-      engine.updateGameConfig({ thresholdPercent: 10 });
-
-      expect(listener).toHaveBeenCalledWith({
-        ...baseElectionConfig,
-        thresholdPercent: 10,
-      });
-    });
-
-    it("does not notify unsubscribed listeners", () => {
-      const listener = vi.fn();
-      const unsubscribe = engine.subscribe(listener);
-      unsubscribe();
-
-      engine.updateGameConfig({ listSeats: 50 });
-
-      expect(listener).not.toHaveBeenCalled();
     });
   });
 });

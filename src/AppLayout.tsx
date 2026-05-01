@@ -1,8 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
 import FullscreenBackground from "./ui/Background";
-import { container } from "tsyringe";
-import { GameStateEngine } from "./logic/application";
+import { useCampaignStateEngine } from "./logic/application";
 import { useEffect } from "react";
 import { useParams } from "./hooks/useParamsHook";
 import { createLogger } from "./logic/logger";
@@ -21,7 +20,7 @@ export function RootLayout() {
 
 export function MainGameScreenWrapper() {
   const { campaignId } = useParams();
-  const gameStateEngine = container.resolve(GameStateEngine);
+  const { updateCampaignState } = useCampaignStateEngine();
 
   useEffect(() => {
     if (!campaignId) {
@@ -29,8 +28,8 @@ export function MainGameScreenWrapper() {
       return;
     }
 
-    gameStateEngine.updateCampaignState({ activeCampaignId: campaignId });
-  }, [campaignId, gameStateEngine]);
+    updateCampaignState({ activeCampaignId: campaignId });
+  }, [campaignId]);
 
   return <MainGameScreen campaignId={campaignId!} />;
 }
