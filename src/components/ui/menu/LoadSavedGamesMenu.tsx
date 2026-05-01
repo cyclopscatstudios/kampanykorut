@@ -1,5 +1,5 @@
 import {
-  GameStateEngine,
+  CampaignStateEngine,
   type SavedCampaignSessionInfo,
 } from "@/logic/application";
 import { SavedSessionsBody } from "../gameplay/SavedGameSessionsDialog";
@@ -13,7 +13,7 @@ import { useState } from "react";
 export function LoadSavedSessionsMenu() {
   const [selectedSession, setSelectedSession] =
     useState<SavedCampaignSessionInfo | null>(null);
-  const gameStateEngine = container.resolve(GameStateEngine);
+  const gameStateEngine = container.resolve(CampaignStateEngine);
   const savedSessions = gameStateEngine.getSavedGameSessions();
   const { goBack } = useNavigation();
   return (

@@ -1,19 +1,21 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { GameStateEngine } from "./GameStateEngine";
+import { CampaignStateEngine } from "./CampaignStateEngine";
 import { container } from "tsyringe";
 
 describe("GameStateEngine", () => {
-  let engine: GameStateEngine;
+  let engine: CampaignStateEngine;
 
   beforeEach(() => {
     vi.clearAllMocks();
-    engine = container.resolve(GameStateEngine);
+    engine = container.resolve(CampaignStateEngine);
   });
 
   describe("getGameState", () => {
     it("returns initial state on construction", () => {
       expect(engine.getCampaignState()).toEqual({
         activeCampaignId: null,
+        isEnded: false,
+        turn: 0,
       });
     });
   });

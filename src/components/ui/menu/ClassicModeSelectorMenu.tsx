@@ -6,7 +6,7 @@ import { Text } from "../Text";
 import { useEffect, useState, type MouseEvent } from "react";
 import classNames from "classnames";
 import { Heading } from "../Heading";
-import { useGameConfigEngine } from "@/logic/application";
+import { useCampaignStateEngine } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
 import {
   useGetCampaigns,
@@ -30,7 +30,7 @@ interface CampaignSelectorMenuListProps {
 export function CampaignSelectorMenuList({
   campaignHeaders,
 }: CampaignSelectorMenuListProps) {
-  const { updateCampaignState } = useGameConfigEngine();
+  const { updateCampaignState } = useCampaignStateEngine();
   const [openedGameId, setOpenedGameId] = useState<string | undefined>();
   const [selectedCampaign, setSelectedCampaign] =
     useState<CampaignHeader | null>(null);

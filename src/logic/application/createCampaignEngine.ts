@@ -5,13 +5,13 @@ import {
   ResultModifier,
 } from "@/logic/domain";
 import { VoterEnvironment } from "../domain/VoterEnvironment";
-import { GameConfigEngine } from "./GameConfigEngine";
+import { ElectionConfigEngine } from "./ElectionConfigEngine";
 import type { CampaignConfig } from "../types/campaignEngine.types";
 import { container } from "tsyringe";
 import { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
 
 export function createCampaignEngine(config: CampaignConfig) {
-  const configEngine = container.resolve(GameConfigEngine);
+  const configEngine = container.resolve(ElectionConfigEngine);
   configEngine.configure(config.electionConfig);
 
   const voterEnvironment = container.resolve(VoterEnvironment);

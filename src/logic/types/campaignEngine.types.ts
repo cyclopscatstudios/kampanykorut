@@ -4,7 +4,7 @@ import type {
   Shares,
   DistrictTarget,
   DistrictTargetGroup,
-  ElectionState,
+  CampaignState,
   Decision,
   CandidateListData,
   PartyListData,
@@ -112,7 +112,6 @@ export interface ElectionConfig {
   listSeats: number;
   thresholdPercent: number;
   districtBoost?: boolean;
-  playerSide?: PlayerSide;
   baseResults?: Record<string, number>;
   parties: RawParty[];
   playableSides: PlayableSide[];
@@ -162,7 +161,7 @@ export interface AnswerFeedback {
 }
 
 export interface PendingTurn {
-  newGameState: ElectionState;
+  newGameState: CampaignState;
   decision: Decision;
   rawAnswer: string;
 }

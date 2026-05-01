@@ -2,7 +2,7 @@ import { renderHook, act } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import { container } from "tsyringe";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
-import { GameConfigEngine } from "../logic/application/GameConfigEngine";
+import { ElectionConfigEngine } from "../logic/application/ElectionConfigEngine";
 import { gameModeRegistry } from "../logic/application/gameModeRegistery";
 import type { ElectionConfig } from "@/logic/types";
 
@@ -30,7 +30,7 @@ describe("useSideSelectorMenu", () => {
     // @ts-expect-error global override
     global.localStorage = localStorageMock;
     container
-      .resolve(GameConfigEngine)
+      .resolve(ElectionConfigEngine)
       .configure(gameModeRegistry[GAME_ID].electionConfig);
   });
 

@@ -1,11 +1,11 @@
 import { container } from "tsyringe";
-import { GameStateEngine } from "../GameStateEngine";
+import { CampaignStateEngine } from "../CampaignStateEngine";
 
 export function useStateEngine() {
-  const stateEngine = container.resolve(GameStateEngine);
+  const stateEngine = container.resolve(CampaignStateEngine);
 
   return {
     sessionId: stateEngine.getSessionId(),
-    saveSession: stateEngine.saveElectionState,
+    saveSession: stateEngine.saveState,
   };
 }

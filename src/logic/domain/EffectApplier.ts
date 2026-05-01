@@ -8,8 +8,8 @@ import type {
 import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
-import { GameConfigEngine } from "../application/GameConfigEngine";
-import { inject, injectable } from "tsyringe";
+import { ElectionConfigEngine } from "../application/ElectionConfigEngine";
+import { injectable } from "tsyringe";
 import type { DistrictResult } from "../../components/ui/map.utils";
 import { EffectType } from "../types/campaignEngine.types";
 import type {
@@ -18,6 +18,7 @@ import type {
   AppliedEffect,
   PartyShareParams,
 } from "../types/campaignEngine.types";
+import type { CampaignStateEngine } from "../application";
 
 const log = createLogger("EffectApplier");
 
@@ -27,9 +28,10 @@ export class EffectApplier {
   private DEFAULT_MOTIVATION_DELTA = 99;
 
   constructor(
-    @inject(GameConfigEngine) private gameConfigEngine: GameConfigEngine,
-    @inject(MandateCalculator) private mandateCalculator: MandateCalculator,
-    @inject(StateHandler) private stateHandler: StateHandler,
+    private gameConfigEngine: ElectionConfigEngine,
+    private campaignStateEngine: CampaignStateEngine,
+    private mandateCalculator: MandateCalculator,
+    private stateHandler: StateHandler,
   ) {
     log.debug("EffectApplier initialized");
   }
@@ -94,8 +96,7 @@ export class EffectApplier {
   }
 
   private getBoosterEffect(district: DistrictResult): AppliedEffect | null {
-    const palyerSide =
-      this.gameConfigEngine.getCurrentElectionConfig()?.playerSide;
+    const palyerSide = this.campaignStateEngine.getCampaignState().playerSide;
     if (!palyerSide) {
       return null;
     }
