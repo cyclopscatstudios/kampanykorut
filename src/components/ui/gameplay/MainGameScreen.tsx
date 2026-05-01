@@ -5,7 +5,7 @@ import { useElectionState } from "@/logic/application";
 import { FinalResultScreen } from "./FinalResultScreen/EndResultScreen";
 import type { DistrictResult } from "../map.utils";
 import { AdvisorModal } from "./AdvisorModal";
-import type { GameState } from "../../../logic/domain/CampaignEngine";
+import type { ElectionState } from "../../../logic/domain/CampaignEngine";
 import type {
   AnswerFeedback,
   PendingTurn,
@@ -40,7 +40,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
 
   const { goToMainMenu } = useNavigation();
 
-  const applyTurnResult = (result: GameState) => {
+  const applyTurnResult = (result: ElectionState) => {
     if (result.isEnded) {
       setCurrentView("FinalScreen");
       return;

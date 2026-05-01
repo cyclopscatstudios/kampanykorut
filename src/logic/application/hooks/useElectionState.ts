@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import type { Decision, GameState } from "../../domain/CampaignEngine";
+import type { Decision, ElectionState } from "../../domain/CampaignEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
 import type { DistrictResult } from "../../../components/ui/map.utils";
 import { gameModeRegistry } from "../gameModeRegistery";
@@ -14,7 +14,7 @@ export function useElectionState(campaignId: string) {
     () => createCampaignEngine(config),
     [config],
   );
-  const [gameState, setGameState] = useState<GameState>(() =>
+  const [gameState, setGameState] = useState<ElectionState>(() =>
     campaignEngine.createInitialState(config.electionConfig.baseResults),
   );
   const { saveSession } = useStateEngine();
@@ -60,7 +60,7 @@ export function useElectionState(campaignId: string) {
     newGameState,
     decision,
     rawAnswer,
-  }: PendingTurn): GameState => {
+  }: PendingTurn): ElectionState => {
     preserveState(rawAnswer, decision, newGameState);
     return newGameState;
   };
@@ -76,7 +76,7 @@ export function useElectionState(campaignId: string) {
   const preserveState = (
     answer: string,
     decision: Decision,
-    newGameState: GameState,
+    newGameState: ElectionState,
   ) => {
     const historyEntry = {
       questionId: gameState.currentQuestion?.id ?? "",

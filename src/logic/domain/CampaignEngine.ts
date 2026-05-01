@@ -33,7 +33,7 @@ export interface RawQuestion {
   blocks?: { questionId: string; answerId: string }[];
 }
 
-export interface GameState {
+export interface ElectionState {
   turn: number;
   currentQuestion?: RawQuestion;
   answerEffects?: Answer[];
@@ -86,7 +86,7 @@ export class CampaignEngine {
     log.debug("CampaignEngine initialized");
   }
 
-  createInitialState(baseResults?: Record<string, number>): GameState {
+  createInitialState(baseResults?: Record<string, number>): ElectionState {
     let candidateListData = this.initialCandidateData;
     let partyListData = this.initialPartyData;
 
@@ -119,11 +119,11 @@ export class CampaignEngine {
   }
 
   processTurn(
-    state: GameState,
+    state: ElectionState,
     decision: Decision,
     history: Array<{ questionId: string; answerId: string }> = [],
     gameSettings: GameSettings,
-  ): GameState {
+  ): ElectionState {
     if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
       return state;
@@ -166,7 +166,7 @@ export class CampaignEngine {
     return session;
   }
 
-  getFinalResults(state: GameState): FinalResults {
+  getFinalResults(state: ElectionState): FinalResults {
     const winnerParty = state.results?.mandates.reduce((max, party) => {
       return party.totalSeats > max.totalSeats ? party : max;
     }, state.results.mandates[0]);
@@ -247,7 +247,7 @@ export class CampaignEngine {
     baseResults: Record<string, number>,
     turn: number,
   ) {
-    const tempState: GameState = {
+    const tempState: ElectionState = {
       turn: 0,
       candidateListData,
       partyListData,

@@ -4,7 +4,7 @@ import type {
   Shares,
   DistrictTarget,
   DistrictTargetGroup,
-  GameState,
+  ElectionState,
   Decision,
   CandidateListData,
   PartyListData,
@@ -162,7 +162,7 @@ export interface AnswerFeedback {
 }
 
 export interface PendingTurn {
-  newGameState: GameState;
+  newGameState: ElectionState;
   decision: Decision;
   rawAnswer: string;
 }

@@ -1,4 +1,4 @@
-import type { GameState } from "./CampaignEngine";
+import type { ElectionState } from "./CampaignEngine";
 import { createLogger } from "../logger";
 import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
 import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
@@ -22,9 +22,9 @@ export class ResultModifier {
   }
 
   apply(
-    state: GameState,
+    state: ElectionState,
     appliedEffects?: AppliedEffect[],
-  ): Pick<GameState, "candidateListData" | "partyListData"> | null {
+  ): Pick<ElectionState, "candidateListData" | "partyListData"> | null {
     if (!appliedEffects?.length) {
       log.error("No applied effects provided to ResultModifier");
       return null;
@@ -50,9 +50,9 @@ export class ResultModifier {
   }
 
   private applySingleEffect(
-    state: GameState,
+    state: ElectionState,
     effect: AppliedEffect,
-  ): Pick<GameState, "candidateListData" | "partyListData"> | null {
+  ): Pick<ElectionState, "candidateListData" | "partyListData"> | null {
     switch (effect.type) {
       case EffectType.UniformSwing:
         return this.applyPartySwing(state, effect);
@@ -73,7 +73,7 @@ export class ResultModifier {
   }
 
   private applyPartySwing(
-    state: GameState,
+    state: ElectionState,
     appliedEffects: Extract<AppliedEffect, { type: EffectType.UniformSwing }>,
   ) {
     log.info("Applying uniform swing", { appliedEffects });
@@ -94,7 +94,7 @@ export class ResultModifier {
   }
 
   private applyShares(
-    state: GameState,
+    state: ElectionState,
     appliedEffects: Extract<AppliedEffect, { type: EffectType.VoteAllocation }>,
   ) {
     log.info("Applying vote allocation", { appliedEffects });
@@ -117,7 +117,7 @@ export class ResultModifier {
   }
 
   private applyDistrict(
-    state: GameState,
+    state: ElectionState,
     appliedEffects: Extract<
       AppliedEffect,
       { type: EffectType.DistrictVoteTransfer }
@@ -136,7 +136,7 @@ export class ResultModifier {
   }
 
   private applyMotivation(
-    state: GameState,
+    state: ElectionState,
     appliedEffects: Extract<AppliedEffect, { type: EffectType.TurnoutChange }>,
   ) {
     log.info("Applying turnout change", { appliedEffects });
