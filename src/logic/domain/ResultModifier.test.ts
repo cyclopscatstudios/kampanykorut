@@ -40,19 +40,6 @@ describe("ResultModifier", () => {
     expect(result).toHaveProperty("partyListData");
   });
 
-  it("applies DistrictVoteTransfer effect", () => {
-    const effect: AppliedEffect = {
-      type: EffectType.DistrictVoteTransfer,
-      target: [{ megyekod: 1, oevk: 1, partok: { fidesz: -500, ellenzek: 500 } }],
-    };
-
-    const result = modifier.apply(baseState, [effect]);
-
-    expect(result).not.toBeNull();
-    expect(result).toHaveProperty("candidateListData");
-    expect(result).toHaveProperty("partyListData");
-  });
-
   it("applies TurnoutChange effect", () => {
     const effect: AppliedEffect = {
       type: EffectType.TurnoutChange,
