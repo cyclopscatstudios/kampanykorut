@@ -21,11 +21,7 @@ const log = createLogger("CampaignStateEngine");
 @singleton()
 export class CampaignStateEngine extends Emitter<CampaignState> {
   private sessionId: string | undefined;
-  private campaignState: CampaignState | null = {
-    activeCampaignId: null,
-    turn: 0,
-    isEnded: false,
-  };
+  private campaignState: CampaignState | null = null;
 
   constructor(
     private gameConfigEngine: ElectionConfigEngine,
@@ -69,8 +65,13 @@ export class CampaignStateEngine extends Emitter<CampaignState> {
     };
   }
 
-  getCampaignState(): CampaignState {
-    const savedState = this.storage.getItem("campaignState", "localStorage");
+  getCampaignState(): CampaignState | null {
+    const sessionId = this.getSessionId();
+    const savedState = this.storage.getItem(
+      "campaignState",
+      "localStorage",
+      sessionId,
+    );
     const parsed = savedState ? JSON.parse(savedState) : null;
     return this.campaignState ?? parsed;
   }

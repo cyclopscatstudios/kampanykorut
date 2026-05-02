@@ -20,7 +20,7 @@ export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
   const gameStateEngine = container.resolve(CampaignStateEngine);
   const { usedSlots, availableSlots } = gameStateEngine.getSessionSlots();
   const activeCampaignId =
-    gameStateEngine.getCampaignState().activeCampaignId ?? "";
+    gameStateEngine.getCampaignState()?.activeCampaignId ?? "";
 
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)} closeOnBackdrop>

@@ -89,9 +89,17 @@ export class CampaignEngine {
     log.debug("CampaignEngine initialized");
   }
 
-  createInitialState(baseResults?: Record<string, number>): CampaignState {
+  createInitialState(
+    savedState: CampaignState | null,
+    baseResults?: Record<string, number>,
+  ): CampaignState {
     let candidateListData = this.initialCandidateData;
     let partyListData = this.initialPartyData;
+
+    if (savedState && savedState.candidateListData) {
+      log.info("initial state created from saved data");
+      return savedState;
+    }
 
     if (baseResults) {
       const baseApplied = this.applyBaseResults(

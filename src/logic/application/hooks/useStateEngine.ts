@@ -6,6 +6,7 @@ export function useStateEngine() {
 
   return {
     sessionId: stateEngine.getSessionId(),
+    currentState: stateEngine.getCampaignState(),
     saveSession: stateEngine.saveState,
   };
 }

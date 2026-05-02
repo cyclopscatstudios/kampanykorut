@@ -15,10 +15,13 @@ export function useElectionState(campaignId: string) {
     () => createCampaignEngine(config),
     [config],
   );
+  const { saveSession, currentState } = useStateEngine();
   const [gameState, setGameState] = useState<CampaignState>(() =>
-    campaignEngine.createInitialState(config.electionConfig.baseResults),
+    campaignEngine.createInitialState(
+      currentState,
+      config.electionConfig.baseResults,
+    ),
   );
-  const { saveSession } = useStateEngine();
   const { updateCampaignState } = useCampaignStateEngine();
   const { getState, updateState } = useStateHandler();
   const { settings } = useSettings();
@@ -88,7 +91,7 @@ export function useElectionState(campaignId: string) {
     if (historyItems) {
       const newHistoryItems = [...historyItems, historyEntry];
       updateState("history", newHistoryItems);
-      saveSession(newHistoryItems, "questionHistory");
+      saveSession(historyEntry, "questionHistory");
     }
     updateState("turnDecision", decision);
     updateCampaignState(newGameState);
