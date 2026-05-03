@@ -18,7 +18,7 @@ export function SummaryPage({ results }: { results: FinalResults }) {
   const currentConfig = gameModeRegistry[campaignId ?? ""];
 
   const didPlayerWin =
-    results.winnerParty?.party === campaignState.playerSide?.partyId;
+    results.winnerParty?.party === campaignState?.playerSide?.partyId;
   const assets = didPlayerWin
     ? currentConfig?.endResults.playerSideVictory
     : currentConfig?.endResults.playerSideDefeat;

@@ -8,6 +8,8 @@ import { SettingsMenu } from "./components/ui/menu/SettingsMenu";
 import { SideSelectorMenu } from "./components/ui/menu/SideSelectorMenu";
 import { LoadSavedSessionsMenu } from "./components/ui/menu/LoadSavedGamesMenu";
 import { newGameSelectorLoader } from "./components/loaders/newGameSelector.loader";
+import { fetchJSON } from "./logic/application/fetchJSON";
+import { getDataPath } from "./logic/application/PathResolver";
 
 export const router = createBrowserRouter([
   {
@@ -16,7 +18,7 @@ export const router = createBrowserRouter([
     // TODO: implement an error page
     errorElement: <div>error</div>,
     children: [
-      { index: true, element: <MainMenu /> },
+      { index: true, element: <MainMenu />, loader: mainMenuLoader },
       { path: "settings", element: <SettingsMenu /> },
       { path: "load-game", element: <LoadSavedSessionsMenu /> },
       {
@@ -45,3 +47,9 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
+
+async function mainMenuLoader() {
+  const path = getDataPath("quotes");
+  const quotes = await fetchJSON(path);
+  return quotes;
+}

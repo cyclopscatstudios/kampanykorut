@@ -96,7 +96,7 @@ export class EffectApplier {
   }
 
   private getBoosterEffect(district: DistrictResult): AppliedEffect | null {
-    const palyerSide = this.campaignStateEngine.getCampaignState().playerSide;
+    const palyerSide = this.campaignStateEngine.getCampaignState()?.playerSide;
     if (!palyerSide) {
       return null;
     }

@@ -1,4 +1,4 @@
-import { config2022 } from "../../assets/jsons/2022/config";
+import { config2022 } from "../../../public/campaigns/2022/config";
 import type { CampaignConfig } from "../types/campaignEngine.types";
 
 // TODO: this registery should be written by user action
