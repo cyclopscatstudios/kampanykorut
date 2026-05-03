@@ -28,7 +28,7 @@ export function useElectionState(campaignId: string) {
 
   useEffect(() => {
     updateState("currentConfig", config);
-  }, [config, updateState]);
+  }, [config]);
 
   const processAnswer = (
     rawAnswer?: string,
