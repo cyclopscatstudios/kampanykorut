@@ -20,22 +20,13 @@ export function GameDialogs({
 
   return (
     <>
-      <SaveGameSession
-        isOpen={activeDialog === "saveGame"}
-        setIsOpen={close}
-      />
+      <SaveGameSession isOpen={activeDialog === "saveGame"} setIsOpen={close} />
       <SavedSessionsDialog
         isOpen={activeDialog === "savedGames"}
         setIsOpen={close}
       />
-      <SettingsDialog
-        isOpen={activeDialog === "settings"}
-        setIsOpen={close}
-      />
-      <GameDialog
-        isOpen={activeDialog === "gameMenu"}
-        setIsOpen={close}
-      />
+      <SettingsDialog isOpen={activeDialog === "settings"} setIsOpen={close} />
+      <GameDialog isOpen={activeDialog === "gameMenu"} setIsOpen={close} />
       {activeDialog === "exit" && (
         <Modal
           title="Attention"

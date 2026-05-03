@@ -21,7 +21,11 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
 
   return (
     <div className="w-full h-full">
-      <GameMenuBar activeDialog={dialogs.activeDialog} onOpen={dialogs.open} actionDispatch={dispatch} />
+      <GameMenuBar
+        activeDialog={dialogs.activeDialog}
+        onOpen={dialogs.open}
+        actionDispatch={dispatch}
+      />
       <GameDialogs
         activeDialog={dialogs.activeDialog}
         onClose={dialogs.close}

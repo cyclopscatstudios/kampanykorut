@@ -1,6 +1,9 @@
 import { useReducer } from "react";
 import type { CampaignState } from "../../../../logic/domain/CampaignEngine";
-import type { AnswerFeedback, PendingTurn } from "../../../../logic/types/campaignEngine.types";
+import type {
+  AnswerFeedback,
+  PendingTurn,
+} from "../../../../logic/types/campaignEngine.types";
 import type { DistrictResult } from "../../map.utils";
 import type { CurrentView } from "../MainGameScreen";
 
@@ -48,7 +51,7 @@ const initialState: GameFlowState = {
   currentView: "MapView",
   answer: undefined,
   pendingAdvisor: null,
-  selectedDistrict: null
+  selectedDistrict: null,
 };
 
 type ProcessAnswer = (

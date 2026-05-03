@@ -8,11 +8,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
     "effectApplier": EffectApplier {
       "DEFAULT_MOTIVATION_DELTA": 99,
       "campaignStateEngine": CampaignStateEngine {
-        "campaignState": {
-          "activeCampaignId": null,
-          "isEnded": false,
-          "turn": 0,
-        },
+        "campaignState": null,
         "districtGroupEngine": DistrictGroupEngine {
           "districtGroups": [
             {

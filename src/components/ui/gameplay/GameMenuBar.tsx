@@ -9,10 +9,14 @@ import type { GameFlowAction } from "./hooks/useGameFlow";
 export interface MenuBarProps {
   activeDialog: DialogId;
   onOpen: (id: Exclude<DialogId, null>) => void;
-  actionDispatch: ActionDispatch<[action: GameFlowAction]>
+  actionDispatch: ActionDispatch<[action: GameFlowAction]>;
 }
 
-export function GameMenuBar({ activeDialog, onOpen, actionDispatch }: MenuBarProps) {
+export function GameMenuBar({
+  activeDialog,
+  onOpen,
+  actionDispatch,
+}: MenuBarProps) {
   return (
     <div className="w-full border-b-2 border-blue-400">
       <div className="flex justify-between items-center mx-5">
@@ -30,7 +34,12 @@ export function GameMenuBar({ activeDialog, onOpen, actionDispatch }: MenuBarPro
               KAMPÁNYKÖRÚT
             </Text>
           </div>
-          <Button variant="transparent" onClick={() => actionDispatch({ type: "CHANGE_VIEW", view: "MapView" })}>
+          <Button
+            variant="transparent"
+            onClick={() =>
+              actionDispatch({ type: "CHANGE_VIEW", view: "MapView" })
+            }
+          >
             <Button.Icon name="map-fill" color="white" size="medium" />
           </Button>
         </div>
