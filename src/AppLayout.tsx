@@ -11,7 +11,6 @@ const log = createLogger("AppLayout");
 
 export function RootLayout() {
   const path = useLoaderData();
-  console.log(path);
   return (
     <FullscreenBackground path={path}>
       <NavigationBinder />

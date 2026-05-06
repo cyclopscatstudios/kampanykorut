@@ -9,7 +9,6 @@ import { useLoaderData } from "react-router";
 
 export function MainMenu() {
   const { quotes } = useLoaderData();
-  console.log({ quotes });
   const [quote, setQuote] = useState(() => getRandomQuote(quotes));
   const newGame = useTranslateLang("mainMenu.newGame");
   const loadGame = useTranslateLang("mainMenu.loadGame");

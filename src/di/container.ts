@@ -54,6 +54,7 @@ const campaignStateEngine = new StateEngine(
   storageEngine,
   stateHandler,
   uuidGenerator,
+  navigationService,
 );
 container.registerInstance(StateEngine, campaignStateEngine);
 

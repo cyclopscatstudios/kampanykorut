@@ -701,6 +701,9 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
         "generateId": [Function],
         "getCampaignState": [Function],
         "listeners": [],
+        "navigation": Navigation {
+          "navigate": null,
+        },
         "safeStringify": [Function],
         "saveCampaignStateManually": [Function],
         "saveState": [Function],

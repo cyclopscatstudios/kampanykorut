@@ -21,7 +21,7 @@ export function SavedSessionsDialog({
   const [selectedSession, setSelectedSession] =
     useState<SavedCampaignSessionInfo | null>(null);
   return (
-    <Dialog open={isOpen} onClose={() => setIsOpen(false)} closeOnBackdrop>
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
       <DialogHeader>
         <Heading level={3} color="lightBlue">
           Load Game
@@ -39,7 +39,7 @@ export function SavedSessionsDialog({
           <Button variant="secondary" onClick={() => setIsOpen(false)}>
             <Button.Text>Cancel</Button.Text>
           </Button>
-          <Button disabled={!selectedSession}>
+          <Button onClick={() => gameStateEngine.loadState(selectedSession)}>
             <Button.Text>Load Game</Button.Text>
           </Button>
         </div>
@@ -61,16 +61,15 @@ export function SavedSessionsBody({
     <div
       className="max-h-[250px] flex flex-col gap-3 overflow-y-auto"
       tabIndex={0}
-      onBlur={() => setSelectedSession(null)}
     >
       {Object.keys(savedSessions).length === 0 && (
         <div>No saved game sessions found.</div>
       )}
       {savedSessions.map((value) => (
         <div
-          key={value.sessionId}
+          key={value.id}
           className={`p-3 border rounded cursor-pointer ${
-            selectedSession?.sessionId === value.sessionId
+            selectedSession?.id === value.id
               ? "bg-blue-200 border-blue-500"
               : "bg-blue-100/50 border-gray-300"
           }`}

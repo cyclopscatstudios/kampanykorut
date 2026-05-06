@@ -6,7 +6,6 @@ import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
 import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
 import { useSettings } from "./useSettings";
-import { useCampaignStateEngine } from "./useCampaignStateEngine";
 import { gameModeRegistry } from "../gameModeRegistery";
 
 export function useElectionState(campaignId: string) {
@@ -22,7 +21,6 @@ export function useElectionState(campaignId: string) {
       config.electionConfig.baseResults,
     ),
   );
-  const { updateCampaignState } = useCampaignStateEngine();
   const { getState, updateState } = useStateHandler();
   const { settings } = useSettings();
 
@@ -94,7 +92,7 @@ export function useElectionState(campaignId: string) {
       saveSession(historyEntry, "questionHistory");
     }
     updateState("turnDecision", decision);
-    updateCampaignState(newGameState);
+    saveSession(newGameState, "campaignState");
     updateState("gameState", newGameState);
     setGameState(newGameState);
   };

@@ -26,4 +26,13 @@ export class Navigation implements NavigationService {
     }
     this.navigate(-1);
   }
+
+  getUrlParams() {
+    return new URLSearchParams(window.location.search);
+  }
+
+  isUrlParamMatch(match: string) {
+    const path = window.location.pathname;
+    return path.includes(match);
+  }
 }

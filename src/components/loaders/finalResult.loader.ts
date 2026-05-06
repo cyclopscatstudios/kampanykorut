@@ -4,7 +4,6 @@ import { container } from "tsyringe";
 
 export function finalResultLoader({ params }: LoaderFunctionArgs) {
   const id = params.id;
-  console.log({ id });
   const stateEngine = container.resolve(StateEngine);
   const configEngine = container.resolve(ConfigEngine);
 
