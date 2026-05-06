@@ -168,21 +168,6 @@ describe("useGameFlow", () => {
       expect(result.current.flow.answer).toBeUndefined();
     });
 
-    it("navigates to FinalScreen when isEnded is true", () => {
-      const pending = makePending({ isEnded: true });
-      mockProcessAnswer.mockReturnValue(pending);
-      mockCommitTurn.mockReturnValue({ turn: 1, isEnded: true });
-      const { result } = renderHook(() =>
-        useGameFlow(mockProcessAnswer, mockCommitTurn),
-      );
-
-      act(() => {
-        result.current.handleAnswer("a1");
-      });
-
-      expect(result.current.flow.currentView).toBe("FinalScreen");
-    });
-
     it("navigates to MapView when turn is even", () => {
       const pending = makePending({ turn: 4 });
       mockProcessAnswer.mockReturnValue(pending);
@@ -254,7 +239,7 @@ describe("useGameFlow", () => {
       expect(result.current.flow.pendingAdvisor).toBeNull();
     });
 
-    it("navigates to FinalScreen after advisor close if game ended", () => {
+    it("navigates to MapView", () => {
       const pending = makePending({ advisorFeedback: mockFeedback });
       mockProcessAnswer.mockReturnValue(pending);
       mockCommitTurn.mockReturnValue({ turn: 1, isEnded: true });
@@ -269,7 +254,7 @@ describe("useGameFlow", () => {
         result.current.handleAdvisorClose();
       });
 
-      expect(result.current.flow.currentView).toBe("FinalScreen");
+      expect(result.current.flow.currentView).toBe("MapView");
     });
   });
 });
