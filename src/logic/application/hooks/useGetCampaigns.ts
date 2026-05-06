@@ -17,8 +17,7 @@ export function useGetCampaigns() {
   useEffect(() => {
     const loadCampaigns = async () => {
       try {
-        const campaignsData =
-          await fetchJSON<CampaignHeader[]>(pathToCampaigns);
+        const campaignsData = await fetchJSON<CampaignHeader[]>("campaigns");
         setCampaigns(campaignsData);
       } catch (error) {
         console.error("Error loading campaigns:", error);

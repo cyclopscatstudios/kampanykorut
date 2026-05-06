@@ -2,7 +2,7 @@ import { Button } from "../Button";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
 import { container } from "tsyringe";
-import { CampaignStateEngine } from "@/logic/application";
+import { StateEngine } from "@/logic/application";
 import { Modal } from "../Modal";
 import { useState } from "react";
 
@@ -39,7 +39,7 @@ export function GameDialog({
 }
 
 export function GameBody() {
-  const gameStateEngine = container.resolve(CampaignStateEngine);
+  const gameStateEngine = container.resolve(StateEngine);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (

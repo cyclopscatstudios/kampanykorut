@@ -1,13 +1,19 @@
-import img from "../assets/images/parlament_night.jpg";
 import classNames from "classnames";
 
-function FullscreenBackground({ children }: { children: React.ReactNode }) {
+function FullscreenBackground({
+  children,
+  path,
+}: {
+  children: React.ReactNode;
+  path: string;
+}) {
+  console.log({ path });
   return (
     <div
       style={{
         width: "100vw",
         height: "100vh",
-        backgroundImage: `url(${img})`,
+        backgroundImage: `url(${path})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

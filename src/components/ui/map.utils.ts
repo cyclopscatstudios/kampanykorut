@@ -20,6 +20,11 @@ export function getWinnerResults(
   const results = result.find(
     (er) => er.megyekod === Number(d.maz) && er.oevk === Number(d.evk),
   );
+
+  if (!results) {
+    throw new Error("District result not found");
+  }
+
   const entries = Object.entries(results?.partok ?? {}).filter(
     (entry): entry is [string, number] => typeof entry[1] === "number",
   );
@@ -28,12 +33,25 @@ export function getWinnerResults(
     current[1] > max[1] ? current : max,
   );
 
-  if (!results) {
-    throw new Error("District result not found");
-  }
+  const totalVotes = entries.reduce((sum, [, votes]) => sum + votes, 0);
+
+  const sorted = [...entries].sort((a, b) => b[1] - a[1]);
+
+  const [first, second] = sorted;
+
+  const firstVotes = first?.[1] ?? 0;
+  const secondVotes = second?.[1] ?? 0;
+
+  const voteDiff = firstVotes - secondVotes;
+
+  const diffPercentage = firstVotes > 0 ? (voteDiff / firstVotes) * 100 : 0;
+
   return {
     winner: winner as PartyName,
+    totalVotes,
     maxVotes,
+    voteDiff,
+    diffPercentage,
     ...results,
   };
 }

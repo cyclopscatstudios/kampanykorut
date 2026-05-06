@@ -1,9 +1,9 @@
 import { container } from "tsyringe";
-import { CampaignStateEngine } from "../CampaignStateEngine";
+import { StateEngine } from "../StateEngine";
 import type { CampaignState } from "@/logic/domain";
 
 export function useCampaignStateEngine() {
-  const engine = container.resolve(CampaignStateEngine);
+  const engine = container.resolve(StateEngine);
 
   return {
     updateCampaignState: (state: Partial<CampaignState> | null) =>

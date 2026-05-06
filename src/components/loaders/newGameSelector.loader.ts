@@ -1,8 +1,8 @@
 import { container } from "tsyringe";
-import { CampaignStateEngine } from "../../logic/application/CampaignStateEngine";
+import { StateEngine } from "../../logic/application/StateEngine";
 
 export function newGameSelectorLoader() {
-  const gameStateEngine = container.resolve(CampaignStateEngine);
+  const gameStateEngine = container.resolve(StateEngine);
   gameStateEngine.init();
   return null;
 }

@@ -2,30 +2,33 @@ import { useEffect, useMemo, useState } from "react";
 import type { Decision, CampaignState } from "../../domain/CampaignEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
 import type { DistrictResult } from "../../../components/ui/map.utils";
-import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
 import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
 import { useSettings } from "./useSettings";
 import { useCampaignStateEngine } from "./useCampaignStateEngine";
+import { gameModeRegistry } from "../gameModeRegistery";
 
 export function useElectionState(campaignId: string) {
   const config = gameModeRegistry[campaignId];
   const { campaignEngine } = useMemo(
-    () => createCampaignEngine(config),
-    [config],
+    () => createCampaignEngine(config, campaignId),
+    [config, campaignId],
   );
+  const { saveSession, currentState } = useStateEngine();
   const [gameState, setGameState] = useState<CampaignState>(() =>
-    campaignEngine.createInitialState(config.electionConfig.baseResults),
+    campaignEngine.createInitialState(
+      currentState,
+      config.electionConfig.baseResults,
+    ),
   );
-  const { saveSession } = useStateEngine();
   const { updateCampaignState } = useCampaignStateEngine();
   const { getState, updateState } = useStateHandler();
   const { settings } = useSettings();
 
   useEffect(() => {
     updateState("currentConfig", config);
-  }, [config, updateState]);
+  }, [config]);
 
   const processAnswer = (
     rawAnswer?: string,
@@ -88,7 +91,7 @@ export function useElectionState(campaignId: string) {
     if (historyItems) {
       const newHistoryItems = [...historyItems, historyEntry];
       updateState("history", newHistoryItems);
-      saveSession(newHistoryItems, "questionHistory");
+      saveSession(historyEntry, "questionHistory");
     }
     updateState("turnDecision", decision);
     updateCampaignState(newGameState);

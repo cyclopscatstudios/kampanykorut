@@ -1,10 +1,10 @@
-const DATA_PATHS = {
+export const DATA_PATHS = {
   campaigns: "/assets/jsons/game_modes.json",
+  quotes: "/assets/jsons/quotes.json",
   electionConfig: (route: string) => `/campaigns/${route}/election_config.json`,
+  background: "/parlament_night.jpg",
 } as const;
 
-export function getDataPath(key: "campaigns"): string;
-export function getDataPath(key: "electionConfig", route: string): string;
 export function getDataPath(
   key: keyof typeof DATA_PATHS,
   route?: string,

@@ -1,10 +1,10 @@
-import { CampaignStateEngine, ElectionConfigEngine } from "@/logic/application";
+import { StateEngine, ConfigEngine } from "@/logic/application";
 import { container } from "tsyringe";
 import { AssetService } from "../logic/application/AssetService";
 
 export function useAssets() {
-  const electionConfigEngine = container.resolve(ElectionConfigEngine);
-  const campaignStateEngine = container.resolve(CampaignStateEngine);
+  const electionConfigEngine = container.resolve(ConfigEngine);
+  const campaignStateEngine = container.resolve(StateEngine);
   const campaignState = campaignStateEngine.getCampaignState();
   const gameConfig = electionConfigEngine.getCurrentElectionConfig();
   if (!gameConfig || !campaignState) {

@@ -5,14 +5,17 @@ import {
   ResultModifier,
 } from "@/logic/domain";
 import { VoterEnvironment } from "../domain/VoterEnvironment";
-import { ElectionConfigEngine } from "./ElectionConfigEngine";
+import { ConfigEngine } from "./ConfigEngine";
 import type { CampaignConfig } from "../types/campaignEngine.types";
 import { container } from "tsyringe";
 import { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
 
-export function createCampaignEngine(config: CampaignConfig) {
-  const configEngine = container.resolve(ElectionConfigEngine);
-  configEngine.configure(config.electionConfig);
+export function createCampaignEngine(
+  config: CampaignConfig,
+  campaignId: string,
+) {
+  const configEngine = container.resolve(ConfigEngine);
+  configEngine.configure(config, campaignId);
 
   const voterEnvironment = container.resolve(VoterEnvironment);
   voterEnvironment.configure(config.voterEnvironmentConfig);

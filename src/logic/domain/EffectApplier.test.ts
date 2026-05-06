@@ -3,25 +3,28 @@ import { StateHandler } from "../application/StateHandler";
 import { EffectApplier } from "./EffectApplier";
 import { candidateListData } from "./mocks/mockListData";
 import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
-import { ElectionConfigEngine } from "../application/ElectionConfigEngine";
+import { ConfigEngine } from "../application/ConfigEngine";
 import { EffectType } from "../types/campaignEngine.types";
 import type {
   RawEffect,
   ConditionalRawEffect,
+  CampaignConfig,
 } from "../types/campaignEngine.types";
 
 let effectApplier: EffectApplier;
 
-const electionConfig = {
-  listSeats: 10,
-  thresholdPercent: 5,
-  parties: [],
-  electionAssets: {},
-  playableSides: [],
-};
+const config = {
+  electionConfig: {
+    listSeats: 10,
+    thresholdPercent: 5,
+    parties: [],
+    electionAssets: {},
+    playableSides: [],
+  },
+} as unknown as CampaignConfig;
 
-const electionConfigEngine = container.resolve(ElectionConfigEngine);
-electionConfigEngine.configure(electionConfig);
+const electionConfigEngine = container.resolve(ConfigEngine);
+electionConfigEngine.configure(config);
 
 describe("ElectionEffectApplier – PartySwing", () => {
   const stateHandler = container.resolve(StateHandler);

@@ -29,6 +29,7 @@ interface DistrictMapProps {
   selectedDistrict?: DistrictResult | null;
   wheel: ReturnType<typeof useWheelZoom>;
   viewBox: ViewBox;
+  isGameEnded?: boolean;
 }
 
 export function DistrictMap({
@@ -43,6 +44,7 @@ export function DistrictMap({
   selectedDistrict,
   wheel,
   viewBox,
+  isGameEnded,
 }: DistrictMapProps) {
   const [hovered, setHovered] = useState<string | null>(null);
   const [pressed, setPressed] = useState<string | null>(null);
@@ -87,8 +89,8 @@ export function DistrictMap({
         const simplified = simplifyDP(d.pts, simplifyTolerance);
         const pathD = buildPathD(simplified, bounds, scale, margin);
 
-        const { winner } = getWinnerResults(d, result);
-        const base = getPartyColor(winner);
+        const { winner, diffPercentage } = getWinnerResults(d, result);
+        const base = getPartyColor(winner, diffPercentage, isGameEnded);
         const hover = getPartyHoverColor(winner);
         const active = getPartyActiveColor(winner);
 

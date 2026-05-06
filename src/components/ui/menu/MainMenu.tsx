@@ -4,11 +4,13 @@ import logo from "../../../assets/logo_reworked.png";
 import { MenuLayout } from "./MenuLayout";
 import { MenuItemId } from "./menu.types";
 import { Text } from "../Text";
-import { quotes } from "../../../assets/jsons/quotes";
 import { useState } from "react";
+import { useLoaderData } from "react-router";
 
 export function MainMenu() {
-  const [quote, setQuote] = useState(() => getRandomQuote());
+  const { quotes } = useLoaderData();
+  console.log({ quotes });
+  const [quote, setQuote] = useState(() => getRandomQuote(quotes));
   const newGame = useTranslateLang("mainMenu.newGame");
   const loadGame = useTranslateLang("mainMenu.loadGame");
   const settings = useTranslateLang("mainMenu.settings");
@@ -22,7 +24,7 @@ export function MainMenu() {
           <Text weight="bold" color="lightBlue" className="text-5xl mt-5 mb-5">
             KAMPÁNYKÖRÚT
           </Text>
-          <div onClick={() => setQuote(() => getRandomQuote())}>
+          <div onClick={() => setQuote(() => getRandomQuote(quotes))}>
             <Text color="lightBlue" className="text-sm">
               {quote}
             </Text>
@@ -64,7 +66,7 @@ export function MainMenu() {
   );
 }
 
-function getRandomQuote() {
+function getRandomQuote(quotes: Array<string>) {
   const randomIndex = Math.floor(Math.random() * quotes.length);
   return quotes[randomIndex];
 }

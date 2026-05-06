@@ -112,3 +112,70 @@ describe("CampaignEngine", () => {
     expect(result).toMatchSnapshot();
   });
 });
+
+describe("CampaignEngine.createInitialState", () => {
+  let engine: CampaignEngine;
+
+  beforeAll(() => {
+    engine = new CampaignEngine(
+      candidateListData,
+      partyListData,
+      [],
+      [],
+      container.resolve(ResultModifier),
+      container.resolve(EffectApplier),
+      container.resolve(MandateCalculator),
+    );
+  });
+
+  it("creates fresh state when savedState is null", () => {
+    const result = engine.createInitialState(null);
+
+    expect(result.turn).toBe(0);
+    expect(result.isEnded).toBe(false);
+    expect(result.candidateListData).toEqual(candidateListData);
+  });
+
+  it("returns savedState directly when it has candidateListData", () => {
+    const savedState = {
+      turn: 5,
+      isEnded: false,
+      candidateListData,
+      partyListData,
+    };
+
+    const result = engine.createInitialState(savedState);
+
+    expect(result).toBe(savedState);
+    expect(result.turn).toBe(5);
+  });
+
+  it("creates fresh state when savedState has no candidateListData", () => {
+    const savedState = { turn: 3, isEnded: false };
+
+    const result = engine.createInitialState(savedState);
+
+    expect(result.turn).toBe(0);
+    expect(result.candidateListData).toEqual(candidateListData);
+  });
+
+  it("applies baseResults when creating fresh state", () => {
+    const baseResults = { fidesz: 0.45, ellenzek: 0.35 };
+
+    const withBase = engine.createInitialState(null, baseResults);
+    const withoutBase = engine.createInitialState(null);
+
+    expect(withBase.candidateListData).not.toEqual(
+      withoutBase.candidateListData,
+    );
+  });
+
+  it("baseResults are ignored when savedState has candidateListData", () => {
+    const savedState = { turn: 2, isEnded: false, candidateListData };
+    const baseResults = { fidesz: 0.99 };
+
+    const result = engine.createInitialState(savedState, baseResults);
+
+    expect(result).toBe(savedState);
+  });
+});

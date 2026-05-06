@@ -5,6 +5,7 @@ export type StorageType = "localStorage" | "sessionStorage";
 
 export type SessionKey =
   | "electionConfig"
+  | "campaignConfig"
   | "menuSession"
   | "devSession"
   | "questionHistory"
@@ -34,10 +35,15 @@ export class StorageEngine {
     return this.getSessionStorageItem(prefixedKey);
   }
 
-  setItem(key: string, value: string, storageType: StorageType) {
+  setItem(
+    key: string,
+    value: string,
+    storageType: StorageType,
+    suffix?: string,
+  ) {
     const prefixedKey = this.getPrefixedKey(key);
     if (storageType === "localStorage") {
-      return this.setLocalStorageItem(prefixedKey, value);
+      return this.setLocalStorageItem(prefixedKey, value, suffix);
     }
     return this.setSessionStorageItem(prefixedKey, value);
   }
@@ -70,8 +76,12 @@ export class StorageEngine {
     return localStorage.getItem(fullKey);
   }
 
-  private setLocalStorageItem(key: string, value: string) {
-    return localStorage.setItem(key, value);
+  private setLocalStorageItem(key: string, value: string, suffix?: string) {
+    let fullKey = key;
+    if (suffix) {
+      fullKey = `${key}-${suffix}`;
+    }
+    return localStorage.setItem(fullKey, value);
   }
 
   private getSessionStorageItem(key: string) {
