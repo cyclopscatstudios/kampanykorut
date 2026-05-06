@@ -15,15 +15,13 @@ import type {
   Shares,
 } from "./ResultTransformer/VoteShareTransformer.types";
 import { calcPercentages } from "./ResultModifier.utils";
-import { ElectionConfigEngine } from "../application/ElectionConfigEngine";
+import { ConfigEngine } from "../application/ConfigEngine";
 
 const log = createLogger("MandateCalculator");
 
 @injectable()
 export class MandateCalculator {
-  constructor(
-    @inject(ElectionConfigEngine) private configEngine: ElectionConfigEngine,
-  ) {
+  constructor(@inject(ConfigEngine) private configEngine: ConfigEngine) {
     log.debug("MandateCalculator initialized");
   }
 

@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { CampaignStateEngine } from "./CampaignStateEngine";
+import { StateEngine } from "./StateEngine";
 import { container } from "tsyringe";
 
 describe("GameStateEngine", () => {
-  let engine: CampaignStateEngine;
+  let engine: StateEngine;
 
   beforeEach(() => {
     vi.clearAllMocks();
-    engine = container.resolve(CampaignStateEngine);
+    engine = container.resolve(StateEngine);
   });
 
   describe("getGameState", () => {

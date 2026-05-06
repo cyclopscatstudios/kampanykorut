@@ -29,6 +29,7 @@ export function MapWrapper({
   className,
   width = 800,
   height = 550,
+  isGameEnded = false,
 }: {
   districts: DistrictPoligon[];
   fullView: boolean;
@@ -38,6 +39,7 @@ export function MapWrapper({
   className?: string;
   width?: number;
   height?: number;
+  isGameEnded?: boolean;
 }) {
   const initialView = fullView ? initialFullMapViewBox : initialCityMapView;
   const [viewBox, setViewBox] = useState<ViewBox>(initialView);
@@ -64,6 +66,7 @@ export function MapWrapper({
           selectedDistrict={selectedDistrict}
           viewBox={viewBox}
           wheel={wheel}
+          isGameEnded={isGameEnded}
         />
       </div>
       <div>

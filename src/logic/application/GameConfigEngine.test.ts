@@ -1,36 +1,39 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { ElectionConfigEngine } from "./ElectionConfigEngine";
-import type { ElectionConfig } from "../types/campaignEngine.types";
+import { ConfigEngine } from "./ConfigEngine";
+import type { CampaignConfig } from "../types/campaignEngine.types";
 import { container } from "tsyringe";
 
-const baseElectionConfig: ElectionConfig = {
-  listSeats: 50,
-  thresholdPercent: 5,
-  parties: [],
-  playableSides: [],
-  electionAssets: {},
-};
+const baseConfig: CampaignConfig = {
+  electionConfig: {
+    listSeats: 50,
+    thresholdPercent: 5,
+    parties: [],
+    playableSides: [],
+    electionAssets: {},
+  },
+} as unknown as CampaignConfig;
 
 describe("GameConfigEngine", () => {
   const localStorageMock = {
     getItem: vi.fn(),
     setItem: vi.fn(),
     clear: vi.fn(),
+    removeItem: vi.fn(),
   };
 
-  let engine: ElectionConfigEngine;
+  let engine: ConfigEngine;
 
   beforeEach(() => {
     vi.clearAllMocks();
     // @ts-expect-error global override
     global.localStorage = localStorageMock;
-    engine = container.resolve(ElectionConfigEngine);
-    engine.configure(baseElectionConfig);
+    engine = container.resolve(ConfigEngine);
+    engine.configure(baseConfig);
   });
 
   describe("getElectionConfig", () => {
     it("returns the config passed to the constructor", () => {
-      expect(engine.getCurrentElectionConfig()).toBe(baseElectionConfig);
+      expect(engine.getCurrentElectionConfig()).toBe(baseConfig.electionConfig);
     });
   });
 });

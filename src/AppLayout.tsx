@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
 import FullscreenBackground from "./ui/Background";
 import { useCampaignStateEngine } from "./logic/application";
@@ -10,8 +10,10 @@ import { NavigationBinder } from "./logic/application/navigation/NavigationBinde
 const log = createLogger("AppLayout");
 
 export function RootLayout() {
+  const path = useLoaderData();
+  console.log(path);
   return (
-    <FullscreenBackground>
+    <FullscreenBackground path={path}>
       <NavigationBinder />
       <Outlet />
     </FullscreenBackground>
@@ -31,7 +33,12 @@ export function MainGameScreenWrapper() {
     updateCampaignState({ activeCampaignId: campaignId });
   }, [campaignId]);
 
-  return <MainGameScreen campaignId={campaignId!} />;
+  return (
+    <>
+      <MainGameScreen campaignId={campaignId!} />
+      <Outlet />
+    </>
+  );
 }
 
 export function NewGameLayout() {

@@ -1,5 +1,5 @@
 import {
-  CampaignStateEngine,
+  StateEngine,
   type SavedCampaignSessionInfo,
 } from "@/logic/application";
 import { Button } from "../Button";
@@ -16,7 +16,7 @@ export function SavedSessionsDialog({
   isOpen: boolean;
   setIsOpen: (val: boolean) => void;
 }) {
-  const gameStateEngine = container.resolve(CampaignStateEngine);
+  const gameStateEngine = container.resolve(StateEngine);
   const savedSessions = gameStateEngine.getSavedGameSessions();
   const [selectedSession, setSelectedSession] =
     useState<SavedCampaignSessionInfo | null>(null);

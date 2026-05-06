@@ -1,20 +1,23 @@
-import { ElectionConfigEngine } from "../application/ElectionConfigEngine";
+import { ConfigEngine } from "../application/ConfigEngine";
+import type { CampaignConfig } from "../types";
 import { MandateCalculator } from "./MandateCalculator";
 import type { CombinedOevk } from "./MandateCalculator.types";
 import { container } from "tsyringe";
 
 describe("MandateCalculator", () => {
   const config = {
-    listSeats: 10,
-    thresholdPercent: 5,
-    parties: [],
-    electionAssets: {},
-    playableSides: [],
-  };
+    electionConfig: {
+      listSeats: 10,
+      thresholdPercent: 5,
+      parties: [],
+      electionAssets: {},
+      playableSides: [],
+    },
+  } as unknown as CampaignConfig;
 
-  const electionConfigEngine = container.resolve(ElectionConfigEngine);
-  electionConfigEngine.configure(config);
-  const calculator = new MandateCalculator(electionConfigEngine);
+  const configEngine = container.resolve(ConfigEngine);
+  configEngine.configure(config);
+  const calculator = new MandateCalculator(configEngine);
 
   describe("calculateConstituencySeats", () => {
     it("should count constituency seats", () => {
@@ -122,7 +125,7 @@ describe("MandateCalculator", () => {
         (a: number, b: number) => a + b,
         0,
       );
-      expect(totalSeats).toBe(config.listSeats);
+      expect(totalSeats).toBe(config.electionConfig.listSeats);
 
       expect(seats.fidesz).toBeGreaterThan(seats.ellenzek);
     });
@@ -157,7 +160,7 @@ describe("MandateCalculator", () => {
         compensation,
       );
 
-      expect(seats.fidesz).toBe(config.listSeats);
+      expect(seats.fidesz).toBe(config.electionConfig.listSeats);
     });
   });
 });

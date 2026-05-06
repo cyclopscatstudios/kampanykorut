@@ -1,6 +1,6 @@
 import { singleton } from "tsyringe";
 import { Emitter } from "./Emitter";
-import type { ElectionConfigEngine } from "./ElectionConfigEngine";
+import type { ConfigEngine } from "./ConfigEngine";
 import { createLogger } from "../logger";
 import type { CampaignState, VoterEnvironment } from "../domain";
 import type { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
@@ -19,12 +19,12 @@ const MAX_SAVED_SESSIONS = 5;
 const log = createLogger("CampaignStateEngine");
 
 @singleton()
-export class CampaignStateEngine extends Emitter<CampaignState> {
+export class StateEngine extends Emitter<CampaignState> {
   private sessionId: string | undefined;
   private campaignState: CampaignState | null = null;
 
   constructor(
-    private gameConfigEngine: ElectionConfigEngine,
+    private gameConfigEngine: ConfigEngine,
     private voterEnvironment: VoterEnvironment,
     private districtGroupEngine: DistrictGroupEngine,
     private storage: StorageEngine,

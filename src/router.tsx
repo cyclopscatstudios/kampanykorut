@@ -8,13 +8,16 @@ import { SettingsMenu } from "./components/ui/menu/SettingsMenu";
 import { SideSelectorMenu } from "./components/ui/menu/SideSelectorMenu";
 import { LoadSavedSessionsMenu } from "./components/ui/menu/LoadSavedGamesMenu";
 import { newGameSelectorLoader } from "./components/loaders/newGameSelector.loader";
-import { fetchJSON } from "./logic/application/fetchJSON";
-import { getDataPath } from "./logic/application/PathResolver";
+import { FinalResultScreen } from "./components/ui/gameplay/FinalResultScreen/EndResultScreen";
+import { finalResultLoader } from "./components/loaders/finalResult.loader";
+import { mainMenuLoader } from "./components/loaders/mainMenu.loader";
+import { rootLoader } from "./components/loaders/route.loader";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    loader: rootLoader,
     // TODO: implement an error page
     errorElement: <div>error</div>,
     children: [
@@ -43,13 +46,15 @@ export const router = createBrowserRouter([
           },
         ],
       },
-      { path: "game/:id", element: <MainGameScreenWrapper /> },
+      {
+        path: "game/:id",
+        element: <MainGameScreenWrapper />,
+      },
+      {
+        path: "game/:id/end-results",
+        element: <FinalResultScreen />,
+        loader: finalResultLoader,
+      },
     ],
   },
 ]);
-
-async function mainMenuLoader() {
-  const path = getDataPath("quotes");
-  const quotes = await fetchJSON(path);
-  return quotes;
-}

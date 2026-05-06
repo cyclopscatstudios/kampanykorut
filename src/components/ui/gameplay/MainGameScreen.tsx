@@ -7,7 +7,7 @@ import { useNavigation } from "../../../hooks/navigationHook";
 import { useDialogState } from "./hooks/useDialogState";
 import { useGameFlow } from "./hooks/useGameFlow";
 
-export type CurrentView = "MapView" | "QuestionView" | "FinalScreen";
+export type CurrentView = "MapView" | "QuestionView";
 
 export function MainGameScreen({ campaignId }: { campaignId: string }) {
   const { state, config, processAnswer, commitTurn, getFinalResults } =

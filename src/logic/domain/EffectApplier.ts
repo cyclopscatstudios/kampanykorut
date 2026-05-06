@@ -8,7 +8,7 @@ import type {
 import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
-import { ElectionConfigEngine } from "../application/ElectionConfigEngine";
+import { ConfigEngine } from "../application/ConfigEngine";
 import { injectable } from "tsyringe";
 import type { DistrictResult } from "../../components/ui/map.utils";
 import { EffectType } from "../types/campaignEngine.types";
@@ -18,7 +18,7 @@ import type {
   AppliedEffect,
   PartyShareParams,
 } from "../types/campaignEngine.types";
-import type { CampaignStateEngine } from "../application";
+import type { StateEngine } from "../application";
 
 const log = createLogger("EffectApplier");
 
@@ -28,8 +28,8 @@ export class EffectApplier {
   private DEFAULT_MOTIVATION_DELTA = 99;
 
   constructor(
-    private gameConfigEngine: ElectionConfigEngine,
-    private campaignStateEngine: CampaignStateEngine,
+    private gameConfigEngine: ConfigEngine,
+    private campaignStateEngine: StateEngine,
     private mandateCalculator: MandateCalculator,
     private stateHandler: StateHandler,
   ) {

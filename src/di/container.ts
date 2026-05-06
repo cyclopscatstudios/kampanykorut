@@ -1,8 +1,8 @@
 import { container } from "tsyringe";
 import {
-  ElectionConfigEngine,
+  ConfigEngine,
   StorageEngine,
-  CampaignStateEngine,
+  StateEngine,
   Emitter,
   StateHandler,
 } from "@/logic/application";
@@ -38,8 +38,8 @@ container.registerInstance(DistrictGroupEngine, districtGroupEngine);
 const settingsEngine = new SettingsEngine(storageEngine);
 container.registerInstance(SettingsEngine, settingsEngine);
 
-const electionConfigEngine = new ElectionConfigEngine(storageEngine);
-container.registerInstance(ElectionConfigEngine, electionConfigEngine);
+const electionConfigEngine = new ConfigEngine(storageEngine);
+container.registerInstance(ConfigEngine, electionConfigEngine);
 
 const navigationService = new Navigation();
 container.registerInstance(Navigation, navigationService);
@@ -47,7 +47,7 @@ container.registerInstance(Navigation, navigationService);
 const stateHandler = new StateHandler();
 container.registerInstance(StateHandler, stateHandler);
 
-const campaignStateEngine = new CampaignStateEngine(
+const campaignStateEngine = new StateEngine(
   electionConfigEngine,
   voterEnvironment,
   districtGroupEngine,
@@ -55,7 +55,7 @@ const campaignStateEngine = new CampaignStateEngine(
   stateHandler,
   uuidGenerator,
 );
-container.registerInstance(CampaignStateEngine, campaignStateEngine);
+container.registerInstance(StateEngine, campaignStateEngine);
 
 const unionSwingTransformer = new UnionSwingTransformer();
 container.registerInstance(UnionSwingTransformer, unionSwingTransformer);

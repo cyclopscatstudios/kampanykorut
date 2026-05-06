@@ -68,10 +68,6 @@ export function useGameFlow(
   const [flow, dispatch] = useReducer(gameFlowReducer, initialState);
 
   const applyTurnResult = (result: CampaignState) => {
-    if (result.isEnded) {
-      dispatch({ type: "CHANGE_VIEW", view: "FinalScreen" });
-      return;
-    }
     if (result.turn % 2 === 0) {
       dispatch({ type: "CHANGE_VIEW", view: "MapView" });
     }

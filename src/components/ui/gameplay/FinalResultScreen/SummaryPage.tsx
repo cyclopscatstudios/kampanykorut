@@ -6,16 +6,14 @@ import { Heading } from "../../Heading";
 import { Text } from "../../Text";
 import type { RawParty } from "../../../../logic/types/campaignEngine.types";
 import type { Mandate } from "../../../../logic/domain/MandateCalculator.types";
-import { gameModeRegistry } from "../../../../logic/application/gameModeRegistery";
-import { useParams } from "../../../../hooks/useParamsHook";
 import { container } from "tsyringe";
-import { CampaignStateEngine } from "@/logic/application";
+import { StateEngine, ConfigEngine } from "@/logic/application";
 
 export function SummaryPage({ results }: { results: FinalResults }) {
-  const { campaignId } = useParams();
-  const campaignStateEngine = container.resolve(CampaignStateEngine);
+  const campaignStateEngine = container.resolve(StateEngine);
+  const configEngine = container.resolve(ConfigEngine);
   const campaignState = campaignStateEngine.getCampaignState();
-  const currentConfig = gameModeRegistry[campaignId ?? ""];
+  const currentConfig = configEngine.getCampaignConfig();
 
   const didPlayerWin =
     results.winnerParty?.party === campaignState?.playerSide?.partyId;

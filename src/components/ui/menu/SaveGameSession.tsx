@@ -1,5 +1,5 @@
 import {
-  CampaignStateEngine,
+  StateEngine,
   type SavedCampaignSessionInfo,
 } from "@/logic/application";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
@@ -17,7 +17,7 @@ interface SaveGameSessionProps {
 }
 
 export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
-  const gameStateEngine = container.resolve(CampaignStateEngine);
+  const gameStateEngine = container.resolve(StateEngine);
   const { usedSlots, availableSlots } = gameStateEngine.getSessionSlots();
   const activeCampaignId =
     gameStateEngine.getCampaignState()?.activeCampaignId ?? "";

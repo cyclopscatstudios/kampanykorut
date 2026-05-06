@@ -2,18 +2,18 @@ import { useEffect, useMemo, useState } from "react";
 import type { Decision, CampaignState } from "../../domain/CampaignEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
 import type { DistrictResult } from "../../../components/ui/map.utils";
-import { gameModeRegistry } from "../gameModeRegistery";
 import { useStateEngine } from "./useStateEngine";
 import { useStateHandler } from "./useStateHandler";
 import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
 import { useSettings } from "./useSettings";
 import { useCampaignStateEngine } from "./useCampaignStateEngine";
+import { gameModeRegistry } from "../gameModeRegistery";
 
 export function useElectionState(campaignId: string) {
   const config = gameModeRegistry[campaignId];
   const { campaignEngine } = useMemo(
-    () => createCampaignEngine(config),
-    [config],
+    () => createCampaignEngine(config, campaignId),
+    [config, campaignId],
   );
   const { saveSession, currentState } = useStateEngine();
   const [gameState, setGameState] = useState<CampaignState>(() =>

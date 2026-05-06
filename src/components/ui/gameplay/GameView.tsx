@@ -4,7 +4,6 @@ import type { DistrictPoligon, DistrictResult } from "../map.utils";
 import type { CurrentView } from "./MainGameScreen";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
-import { FinalResultScreen } from "./FinalResultScreen/EndResultScreen";
 
 type GameViewConfig = {
   capitalCity: DistrictPoligon[];
@@ -30,16 +29,11 @@ export function GameView({
   config,
   answer,
   selectedDistrict,
-  getFinalResults,
   onAnswer,
   onSetAnswer,
   onSetView,
   onSetDistrict,
 }: GameViewProps) {
-  if (currentView === "FinalScreen") {
-    return <FinalResultScreen results={getFinalResults()} />;
-  }
-
   if (currentView === "QuestionView") {
     return (
       <QuestionCard

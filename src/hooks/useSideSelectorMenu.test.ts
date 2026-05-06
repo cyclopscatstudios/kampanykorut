@@ -2,7 +2,7 @@ import { renderHook, act } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import { container } from "tsyringe";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
-import { ElectionConfigEngine } from "../logic/application/ElectionConfigEngine";
+import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { gameModeRegistry } from "../logic/application/gameModeRegistery";
 import type { ElectionConfig } from "@/logic/types";
 
@@ -23,15 +23,14 @@ describe("useSideSelectorMenu", () => {
     getItem: vi.fn(),
     setItem: vi.fn(),
     clear: vi.fn(),
+    removeItem: vi.fn(),
   };
 
   beforeEach(() => {
     vi.clearAllMocks();
     // @ts-expect-error global override
     global.localStorage = localStorageMock;
-    container
-      .resolve(ElectionConfigEngine)
-      .configure(gameModeRegistry[GAME_ID].electionConfig);
+    container.resolve(ConfigEngine).configure({} as any);
   });
 
   it("returns sides from election config", () => {

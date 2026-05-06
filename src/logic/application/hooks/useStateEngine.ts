@@ -1,8 +1,8 @@
 import { container } from "tsyringe";
-import { CampaignStateEngine } from "../CampaignStateEngine";
+import { StateEngine } from "../StateEngine";
 
 export function useStateEngine() {
-  const stateEngine = container.resolve(CampaignStateEngine);
+  const stateEngine = container.resolve(StateEngine);
 
   return {
     sessionId: stateEngine.getSessionId(),
