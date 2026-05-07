@@ -6,7 +6,7 @@ import type { CampaignState, VoterEnvironment } from "../domain";
 import type { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
 import type { SessionKey, StorageEngine } from "./StorageEngine";
 import type { IdGenerator } from "./IdGenerator";
-import type { HistoryItem, StateHandler } from "./StateHandler";
+import type { HistoryItem } from "./StateHandler";
 import type { Navigation } from "./navigation/Navigation";
 import { gameModeRegistry } from "./gameModeRegistery";
 import { v4 as uuidv4 } from "uuid";
@@ -17,7 +17,6 @@ export type SavedCampaignSessionInfo = {
   campaignId: string;
   name: string;
   lastSaved?: string;
-  isSavedManually?: boolean;
 };
 
 const MAX_SAVED_SESSIONS = 5;
@@ -34,7 +33,6 @@ export class StateEngine extends Emitter<CampaignState> {
     private voterEnvironment: VoterEnvironment,
     private districtGroupEngine: DistrictGroupEngine,
     private storage: StorageEngine,
-    private stateHandler: StateHandler,
     private generateId: IdGenerator,
     private navigation: Navigation,
   ) {
@@ -44,7 +42,6 @@ export class StateEngine extends Emitter<CampaignState> {
     this.updateCampaignState = this.updateCampaignState.bind(this);
     this.safeStringify = this.safeStringify.bind(this);
     this.saveState = this.saveState.bind(this);
-    this.saveCampaignStateManually = this.saveCampaignStateManually.bind(this);
     this.init();
   }
 
@@ -57,11 +54,41 @@ export class StateEngine extends Emitter<CampaignState> {
     }
   }
 
+  getHistory(): HistoryItem[] | null {
+    const sessionId = this.getSessionId();
+    const history = this.storage.getItem(
+      "questionHistory",
+      "localStorage",
+      sessionId,
+    );
+    return history ? JSON.parse(history) : null;
+  }
+
   getSavedGameSessions() {
     const savedSessions = this.storage.getItem("savedSessions", "localStorage");
-    return savedSessions
-      ? (JSON.parse(savedSessions) as SavedCampaignSessionInfo[])
-      : [];
+    if (!savedSessions) {
+      return [];
+    }
+    const parsed = JSON.parse(savedSessions) as SavedCampaignSessionInfo[];
+    let needsMigration = false;
+    const migrated = parsed.map((s) => {
+      if (s.id) {
+        return s;
+      }
+      needsMigration = true;
+      return {
+        ...s,
+        id: uuidv4(),
+      };
+    });
+    if (needsMigration) {
+      this.storage.setItem(
+        "savedSessions",
+        JSON.stringify(migrated),
+        "localStorage",
+      );
+    }
+    return migrated;
   }
 
   getSessionSlots() {
@@ -95,19 +122,84 @@ export class StateEngine extends Emitter<CampaignState> {
     return id;
   }
 
-  saveCampaignStateManually(name?: string) {
-    const electionState = this.stateHandler.get("gameState");
-    const history = this.stateHandler.get("history");
-    this.saveState(electionState, "campaignState", name, true);
-    this.saveState(history, "questionHistory");
-    this.storage.setItem(
-      "campaignState",
-      JSON.stringify(this.campaignState),
+  loadState(session: SavedCampaignSessionInfo | null) {
+    if (!session) {
+      log.error("no session was provided");
+      return;
+    }
+    const { campaignId, sessionId } = session;
+    if (!campaignId || !sessionId) {
+      log.error("id was not found");
+      return;
+    }
+    const history = this.storage.getItem(
+      "questionHistory",
       "localStorage",
+      sessionId,
     );
+    if (!history) {
+      log.error("history was not found");
+      return;
+    }
+    this.saveSessionId(session.sessionId);
+    const config = gameModeRegistry[campaignId];
+    this.gameConfigEngine.configure(config, campaignId, true);
+    const route = `/game/${campaignId}?sessionId=${sessionId}`;
+    const isGameRoute = this.navigation.isUrlParamMatch("/game/");
+    if (!isGameRoute) {
+      this.navigation.go(route);
+      return;
+    }
+    window.location.reload();
   }
 
-  updateCampaignState(state: Partial<CampaignState> | null) {
+  saveState<T>(sessionKey: SessionKey, session: T) {
+    const value = this.safeStringify(session);
+    if (!value) {
+      log.error("no value was provided");
+      return null;
+    }
+    if (sessionKey === "campaignState") {
+      this.updateCampaignState(session as CampaignState);
+    }
+    if (sessionKey === "questionHistory") {
+      this.updateQuestionHistory(session as HistoryItem);
+    }
+  }
+
+  saveToSlot(sessionName?: string, existingId?: string) {
+    const sessionId = this.getSessionId();
+    const raw = this.storage.getItem(
+      "campaignState",
+      "localStorage",
+      sessionId,
+    );
+    const campaignId = raw
+      ? JSON.parse(raw).activeCampaignId
+      : this.campaignState?.activeCampaignId;
+    if (!campaignId) {
+      log.error("no campaign id found, skipping slot save");
+      return;
+    }
+    const sessionDate = this.getNormalizedDateString();
+    const name = sessionName ?? `auto-save-${campaignId}-${sessionDate}`;
+    this.saveSessionInfo({
+      id: existingId ?? uuidv4(),
+      sessionId,
+      campaignId,
+      name: name ?? "auto-save",
+      lastSaved: new Date().toISOString(),
+    });
+    log.debug("Session info updated for sessionId:", sessionId);
+  }
+
+  clearGameState() {
+    this.gameConfigEngine.configure(null);
+    this.voterEnvironment.configure(null);
+    this.districtGroupEngine.configure();
+  }
+
+  private updateCampaignState(state: Partial<CampaignState> | null) {
     if (!state) {
       log.debug("Clearing campaign session");
       const sessionId = this.getSessionId();
@@ -134,58 +226,6 @@ export class StateEngine extends Emitter<CampaignState> {
     log.debug("Election state saved for sessionId:", sessionId);
   }
 
-  loadState(session: SavedCampaignSessionInfo | null) {
-    if (!session) {
-      log.error("no session was provided");
-      return;
-    }
-    const { campaignId, sessionId } = session;
-    if (!campaignId || !sessionId) {
-      log.error("id was not found");
-      return;
-    }
-    const history = this.storage.getItem("questionHistory", "localStorage", sessionId);
-    if (!history) {
-      log.error("history was not found");
-      return;
-    }
-    this.saveSessionId(session.sessionId);
-    const config = gameModeRegistry[campaignId];
-    this.gameConfigEngine.configure(config, campaignId);
-    const isGameRoute = this.navigation.isUrlParamMatch("/game/");
-    if (!isGameRoute) {
-      const route = `/game/${campaignId}?sessionId=${sessionId}`;
-      return (window.location.href = route);
-    }
-    window.location.reload();
-  }
-
-  saveState<T>(
-    session: T,
-    sessionKey: SessionKey,
-    sessionName?: string,
-    isSavedManually?: boolean,
-  ) {
-    const value = this.safeStringify(session);
-    if (!value) {
-      log.error("no value was provided");
-      return null;
-    }
-    if (sessionKey === "campaignState") {
-      this.updateCampaignState(session as CampaignState);
-      this.saveToSlot(sessionName, isSavedManually);
-    }
-    if (sessionKey === "questionHistory") {
-      this.updateQuestionHistory(session as HistoryItem);
-    }
-  }
-
-  clearGameState() {
-    this.gameConfigEngine.configure(null);
-    this.voterEnvironment.configure(null);
-    this.districtGroupEngine.configure();
-  }
-
   private getCurrentCampaignState() {
     const sessionId = this.getSessionId();
     const storedCampaignState = this.storage.getItem(
@@ -197,27 +237,6 @@ export class StateEngine extends Emitter<CampaignState> {
       ? (JSON.parse(storedCampaignState) as CampaignState)
       : null;
     return this.campaignState ?? parsed;
-  }
-
-  private saveToSlot(
-    sessionName?: string,
-    isSavedManually?: boolean,
-  ) {
-    const sessionId = this.getSessionId();
-    const campaignId = JSON.parse(
-      this.storage.getItem("campaignState", "localStorage", sessionId) ?? "",
-    ).activeCampaignId;
-    const sessionDate = this.getNormalizedDateString();
-    const name = sessionName ?? `auto-save-${campaignId}-${sessionDate}`;
-    this.saveSessionInfo({
-      id: uuidv4(),
-      sessionId,
-      campaignId,
-      name: name ?? "auto-save",
-      lastSaved: new Date().toISOString(),
-      isSavedManually,
-    });
-    log.debug("Session info updated for sessionId:", sessionId);
   }
 
   private updateQuestionHistory(historyItem: HistoryItem) {
@@ -261,19 +280,13 @@ export class StateEngine extends Emitter<CampaignState> {
       updated = sessions.map((s) =>
         s.id === sessionInfo.id ? sessionInfo : s,
       );
-    } else if (!sessionInfo.isSavedManually) {
-      const existingAutosave = sessions.find(
-        (s) => !s.isSavedManually && s.sessionId === sessionInfo.sessionId,
-      );
-
-      if (existingAutosave) {
-        updated = sessions.map((s) =>
-          s.id === existingAutosave.id ? sessionInfo : s,
-        );
-      } else {
-        updated = [...sessions, sessionInfo];
-      }
     } else {
+      if (sessions.length >= MAX_SAVED_SESSIONS) {
+        log.error(
+          `cannot save: max ${MAX_SAVED_SESSIONS} saved sessions reached`,
+        );
+        return;
+      }
       updated = [...sessions, sessionInfo];
     }
 

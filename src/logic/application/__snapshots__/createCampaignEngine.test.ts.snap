@@ -705,22 +705,8 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
           "navigate": null,
         },
         "safeStringify": [Function],
-        "saveCampaignStateManually": [Function],
         "saveState": [Function],
         "sessionId": "fixed-test-session-id",
-        "stateHandler": StateHandler {
-          "listeners": [],
-          "state": {
-            "currentConfig": undefined,
-            "gameState": {
-              "candidateListData": [],
-              "isEnded": false,
-              "partyListData": [],
-              "turn": 0,
-            },
-            "history": [],
-          },
-        },
         "storage": StorageEngine {
           "getItem": [Function],
           "getLocalStorageItem": [Function],

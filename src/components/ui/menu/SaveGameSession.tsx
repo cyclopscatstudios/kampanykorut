@@ -30,7 +30,7 @@ export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
           activeCampaignId={activeCampaignId}
           availableSlots={availableSlots}
           usedSlots={usedSlots}
-          onSave={(name) => gameStateEngine.saveCampaignStateManually(name)}
+          onSave={(name, existingId) => gameStateEngine.saveToSlot(name, existingId)}
           onClose={() => setIsOpen(false)}
         />
       </DialogBody>
@@ -45,7 +45,7 @@ type SlotSelection =
 interface SaveGameSessionBodyProps {
   availableSlots: number;
   usedSlots: SavedCampaignSessionInfo[];
-  onSave: (name: string, existingSessionId?: string) => void;
+  onSave: (name: string, existingId?: string) => void;
   onClose: () => void;
   activeCampaignId: string | null;
 }
@@ -67,9 +67,9 @@ function SaveGameSessionBody({
     if (!selection) return;
     const name =
       selection.type === "used" ? selection.session.name : selection.name;
-    const existingSessionId =
-      selection.type === "used" ? selection.session.sessionId : undefined;
-    onSave(name, existingSessionId);
+    const existingId =
+      selection.type === "used" ? selection.session.id : undefined;
+    onSave(name, existingId);
     onClose();
   };
 

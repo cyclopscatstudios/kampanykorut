@@ -39,7 +39,10 @@ export function SavedSessionsDialog({
           <Button variant="secondary" onClick={() => setIsOpen(false)}>
             <Button.Text>Cancel</Button.Text>
           </Button>
-          <Button onClick={() => gameStateEngine.loadState(selectedSession)}>
+          <Button
+            disabled={!selectedSession}
+            onClick={() => gameStateEngine.loadState(selectedSession)}
+          >
             <Button.Text>Load Game</Button.Text>
           </Button>
         </div>
@@ -76,7 +79,6 @@ export function SavedSessionsBody({
           onClick={() => setSelectedSession(value)}
         >
           <div className="flex flex-col justify-center items-center">
-            <p>{value.sessionId}</p>
             <Text color="darkBlue" weight="bold">
               {value.name}
             </Text>

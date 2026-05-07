@@ -33,6 +33,7 @@ export function LoadSavedSessionsMenu() {
         <Button
           size="large"
           onClick={() => gameStateEngine.loadState(selectedSession)}
+          disabled={!selectedSession}
         >
           <Text weight="medium" color="lightBlue">
             Load game

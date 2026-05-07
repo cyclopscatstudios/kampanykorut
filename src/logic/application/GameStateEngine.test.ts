@@ -15,14 +15,4 @@ describe("GameStateEngine", () => {
       expect(engine.getCampaignState()).toEqual(null);
     });
   });
-
-  describe("updateGameState", () => {
-    it("merges partial state into existing state", () => {
-      engine.updateCampaignState({ activeCampaignId: "2022_ogyv_default" });
-
-      expect(engine.getCampaignState()?.activeCampaignId).toBe(
-        "2022_ogyv_default",
-      );
-    });
-  });
 });

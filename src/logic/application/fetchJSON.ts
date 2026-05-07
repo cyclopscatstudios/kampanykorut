@@ -12,7 +12,7 @@ export async function fetchJSON<T>(
     throw new Error(`Failed to load JSON: ${path}`);
   }
 
-  const data = res.json();
+  const data = await res.json();
   return data;
 }
 

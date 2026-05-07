@@ -52,7 +52,6 @@ const campaignStateEngine = new StateEngine(
   voterEnvironment,
   districtGroupEngine,
   storageEngine,
-  stateHandler,
   uuidGenerator,
   navigationService,
 );

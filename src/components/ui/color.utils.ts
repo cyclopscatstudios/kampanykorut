@@ -95,5 +95,9 @@ function getShadedColor(baseHex: string, percent: number): string {
     return hslToHex(h, s * 0.85, 55);
   }
 
+  if (percent < 20) {
+    return hslToHex(h, s * 0.95, 45);
+  }
+
   return baseHex;
 }
