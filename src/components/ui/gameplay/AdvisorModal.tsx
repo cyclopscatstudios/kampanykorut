@@ -86,7 +86,7 @@ export function AdvisorModal({
               variant="transparent"
               onClick={() => setConfirmationModal(true)}
             >
-              <Button.Icon name="eye-slash-fill" />
+              <Button.Icon name="eye-slash-fill" color="white" />
               <Button.Text>Turn off advisor insights</Button.Text>
             </Button>
 

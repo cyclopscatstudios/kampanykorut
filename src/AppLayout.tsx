@@ -1,7 +1,7 @@
 import { Outlet, useLoaderData } from "react-router-dom";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
 import FullscreenBackground from "./ui/Background";
-import { useCampaignStateEngine } from "./logic/application";
+import { useStateEngine } from "./logic/application";
 import { useEffect } from "react";
 import { useParams } from "./hooks/useParamsHook";
 import { createLogger } from "./logic/logger";
@@ -11,7 +11,6 @@ const log = createLogger("AppLayout");
 
 export function RootLayout() {
   const path = useLoaderData();
-  console.log(path);
   return (
     <FullscreenBackground path={path}>
       <NavigationBinder />
@@ -22,7 +21,7 @@ export function RootLayout() {
 
 export function MainGameScreenWrapper() {
   const { campaignId } = useParams();
-  const { updateCampaignState } = useCampaignStateEngine();
+  const { saveSession } = useStateEngine();
 
   useEffect(() => {
     if (!campaignId) {
@@ -30,7 +29,7 @@ export function MainGameScreenWrapper() {
       return;
     }
 
-    updateCampaignState({ activeCampaignId: campaignId });
+    saveSession("campaignState", { activeCampaignId: campaignId });
   }, [campaignId]);
 
   return (

@@ -7,7 +7,6 @@ function FullscreenBackground({
   children: React.ReactNode;
   path: string;
 }) {
-  console.log({ path });
   return (
     <div
       style={{

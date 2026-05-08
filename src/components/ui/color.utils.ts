@@ -33,7 +33,7 @@ function hexToHsl(hex: string) {
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   let h = 0,
-    s = 0
+    s = 0;
   const l = (max + min) / 2;
 
   if (max !== min) {
@@ -93,6 +93,10 @@ function getShadedColor(baseHex: string, percent: number): string {
 
   if (percent < 15) {
     return hslToHex(h, s * 0.85, 55);
+  }
+
+  if (percent < 20) {
+    return hslToHex(h, s * 0.95, 45);
   }
 
   return baseHex;

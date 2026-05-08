@@ -1,5 +1,4 @@
 import { container } from "tsyringe";
-import { StateHandler } from "../application/StateHandler";
 import { EffectApplier } from "./EffectApplier";
 import { candidateListData } from "./mocks/mockListData";
 import type { DistrictTarget } from "./ResultTransformer/VoteShareTransformer.types";
@@ -10,6 +9,7 @@ import type {
   ConditionalRawEffect,
   CampaignConfig,
 } from "../types/campaignEngine.types";
+import { StateEngine } from "../application";
 
 let effectApplier: EffectApplier;
 
@@ -23,11 +23,14 @@ const config = {
   },
 } as unknown as CampaignConfig;
 
+const FIXED_SESSION_ID = "fixed-test-session-id";
+
 const electionConfigEngine = container.resolve(ConfigEngine);
 electionConfigEngine.configure(config);
 
 describe("ElectionEffectApplier – PartySwing", () => {
-  const stateHandler = container.resolve(StateHandler);
+  const stateEngine = container.resolve(StateEngine);
+  (stateEngine as unknown as { sessionId: string }).sessionId = FIXED_SESSION_ID;
   beforeEach(() => {
     effectApplier = container.resolve(EffectApplier);
   });
@@ -148,7 +151,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
 
   describe("EffectApplier – Conditional Effects", () => {
     it("should apply replace conditional effect", () => {
-      stateHandler.set("history", [{ questionId: "q1", answerId: "a1" }]);
+      stateEngine.saveState("questionHistory", { questionId: "q1", answerId: "a1" });
       const effect: RawEffect = {
         type: EffectType.DistrictVoteTransfer,
         params: [
@@ -203,7 +206,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
       ]);
     });
     it("should apply merge conditional effect", () => {
-      stateHandler.set("history", [{ questionId: "q1", answerId: "a1" }]);
+      stateEngine.saveState("questionHistory", { questionId: "q1", answerId: "a1" });
       const effect: RawEffect = {
         type: EffectType.DistrictVoteTransfer,
         params: [

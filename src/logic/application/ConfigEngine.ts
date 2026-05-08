@@ -23,8 +23,12 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
     this.storage.setItem = this.storage.setItem.bind(this);
   }
 
-  configure(campaignConfig: CampaignConfig | null, id?: string): void {
-    if (this.configured) {
+  configure(
+    campaignConfig: CampaignConfig | null,
+    id?: string,
+    forced = false,
+  ): void {
+    if (this.configured && !forced) {
       log.debug("ConfigEngine is already configured, skipping reconfiguration");
       return;
     }

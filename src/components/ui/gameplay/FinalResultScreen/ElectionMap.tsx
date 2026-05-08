@@ -6,7 +6,6 @@ import type { CampaignConfig } from "@/logic/types";
 export function ElectionMap({ config }: { config: CampaignConfig }) {
   const stateEngine = container.resolve(StateEngine);
   const state = stateEngine.getCampaignState();
-  console.log({ config, state });
   return (
     <div className="w-[850px] h-[500px] p-4">
       <MapWrapper

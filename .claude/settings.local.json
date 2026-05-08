@@ -1,5 +1,9 @@
 {
   "permissions": {
-    "allow": ["Bash(npx vitest:*)", "Bash(npx tsc *)"]
+    "allow": [
+      "Bash(npx vitest:*)",
+      "Bash(npx tsc *)",
+      "Bash(git -C \"d:/hobby/kampanykorut\" diff main...HEAD --stat)"
+    ]
   }
 }

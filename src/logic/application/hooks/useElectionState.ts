@@ -1,12 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { Decision, CampaignState } from "../../domain/CampaignEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
 import type { DistrictResult } from "../../../components/ui/map.utils";
 import { useStateEngine } from "./useStateEngine";
-import { useStateHandler } from "./useStateHandler";
 import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
 import { useSettings } from "./useSettings";
-import { useCampaignStateEngine } from "./useCampaignStateEngine";
 import { gameModeRegistry } from "../gameModeRegistery";
 
 export function useElectionState(campaignId: string) {
@@ -15,20 +13,14 @@ export function useElectionState(campaignId: string) {
     () => createCampaignEngine(config, campaignId),
     [config, campaignId],
   );
-  const { saveSession, currentState } = useStateEngine();
+  const { saveSession, currentState, currentHistory } = useStateEngine();
   const [gameState, setGameState] = useState<CampaignState>(() =>
     campaignEngine.createInitialState(
       currentState,
       config.electionConfig.baseResults,
     ),
   );
-  const { updateCampaignState } = useCampaignStateEngine();
-  const { getState, updateState } = useStateHandler();
   const { settings } = useSettings();
-
-  useEffect(() => {
-    updateState("currentConfig", config);
-  }, [config]);
 
   const processAnswer = (
     rawAnswer?: string,
@@ -46,11 +38,10 @@ export function useElectionState(campaignId: string) {
       conditionalEffects: answer.conditionalEffects,
       selectedDistrict,
     };
-    const history = getState("history") ?? [];
     const newGameState = campaignEngine.processTurn(
       gameState,
       decision,
-      history,
+      currentHistory ?? [],
       settings,
     );
 
@@ -63,10 +54,10 @@ export function useElectionState(campaignId: string) {
 
   const commitTurn = ({
     newGameState,
-    decision,
     rawAnswer,
+    decision,
   }: PendingTurn): CampaignState => {
-    preserveState(rawAnswer, decision, newGameState);
+    preserveState(rawAnswer, newGameState, decision);
     return newGameState;
   };
 
@@ -80,22 +71,21 @@ export function useElectionState(campaignId: string) {
 
   const preserveState = (
     answer: string,
-    decision: Decision,
     newGameState: CampaignState,
+    decision: Decision,
   ) => {
+    const visitedDistrict = {
+      oevk: decision.selectedDistrict?.oevk,
+      megykod: decision.selectedDistrict?.megyekod,
+    };
     const historyEntry = {
       questionId: gameState.currentQuestion?.id ?? "",
       answerId: answer,
+      visitedDistrict,
+      turn: newGameState.turn,
     };
-    const historyItems = getState("history");
-    if (historyItems) {
-      const newHistoryItems = [...historyItems, historyEntry];
-      updateState("history", newHistoryItems);
-      saveSession(historyEntry, "questionHistory");
-    }
-    updateState("turnDecision", decision);
-    updateCampaignState(newGameState);
-    updateState("gameState", newGameState);
+    saveSession("questionHistory", historyEntry);
+    saveSession("campaignState", newGameState);
     setGameState(newGameState);
   };
 

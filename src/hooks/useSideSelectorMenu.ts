@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useCampaignStateEngine } from "../logic/application/hooks/useCampaignStateEngine";
 import type {
   ElectionConfig,
   PlayerSide,
@@ -21,7 +20,7 @@ export function useSideSelectorMenu(electionConfig: ElectionConfig) {
   const [selectedCandidate, setSelectedCandidate] = useState<
     string | undefined
   >();
-  const { updateCampaignState } = useCampaignStateEngine();
+  const { saveSession } = useStateEngine();
   const { goBack, goToCampaign } = useNavigation();
   const { sessionId } = useStateEngine();
 
@@ -31,13 +30,13 @@ export function useSideSelectorMenu(electionConfig: ElectionConfig) {
     const playerSide: PlayerSide = {
       partyId: partyId,
     };
-    updateCampaignState({ playerSide });
+    saveSession("campaignState", { playerSide });
     setSelectedCandidate(undefined);
   };
 
   const handleCandidateChange = (partyId: string, candidateId: string) => {
     setSelectedCandidate(candidateId);
-    updateCampaignState({ playerSide: { partyId, candidateId } });
+    saveSession("campaignState", { playerSide: { partyId, candidateId } });
   };
 
   const startGame = (id: string) => {

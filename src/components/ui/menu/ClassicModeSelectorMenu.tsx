@@ -6,7 +6,7 @@ import { Text } from "../Text";
 import { useEffect, useState, type MouseEvent } from "react";
 import classNames from "classnames";
 import { Heading } from "../Heading";
-import { useCampaignStateEngine } from "@/logic/application";
+import { useStateEngine } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
 import {
   useGetCampaigns,
@@ -30,7 +30,7 @@ interface CampaignSelectorMenuListProps {
 export function CampaignSelectorMenuList({
   campaignHeaders,
 }: CampaignSelectorMenuListProps) {
-  const { updateCampaignState } = useCampaignStateEngine();
+  const { saveSession } = useStateEngine();
   const [openedGameId, setOpenedGameId] = useState<string | undefined>();
   const [selectedCampaign, setSelectedCampaign] =
     useState<CampaignHeader | null>(null);
@@ -46,12 +46,12 @@ export function CampaignSelectorMenuList({
       setSelectedCampaign(null);
       return;
     }
-    updateCampaignState({ activeCampaignId: item.id });
+    saveSession("campaignState", { activeCampaignId: item.id });
     setSelectedCampaign(item);
   };
 
   useEffect(() => {
-    updateCampaignState(null);
+    saveSession("campaignState", null);
   }, []);
 
   return (

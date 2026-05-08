@@ -48,7 +48,7 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
             <div className="pl-5">
               <Button fullRounded onClick={onClick}>
                 <Button.Text>Visit district</Button.Text>
-                <Button.Icon name="arrow-right" />
+                <Button.Icon name="arrow-right" color="white" />
               </Button>
             </div>
           </div>

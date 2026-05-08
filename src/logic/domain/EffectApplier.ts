@@ -119,7 +119,7 @@ export class EffectApplier {
     }
 
     let finalEffects = [...baseEffects];
-    const history = this.stateHandler.get("history");
+    const history = this.campaignStateEngine.getHistory();
 
     if (!history?.length) {
       log.error("history is empty, but conditional effects are present");
