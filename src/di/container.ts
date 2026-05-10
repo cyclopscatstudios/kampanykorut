@@ -78,5 +78,6 @@ const effectApplier = new EffectApplier(
   campaignStateEngine,
   mandateCalculator,
   stateHandler,
+  districtGroupEngine,
 );
 container.registerInstance(EffectApplier, effectApplier);

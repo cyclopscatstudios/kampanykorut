@@ -30,7 +30,8 @@ electionConfigEngine.configure(config);
 
 describe("ElectionEffectApplier – PartySwing", () => {
   const stateEngine = container.resolve(StateEngine);
-  (stateEngine as unknown as { sessionId: string }).sessionId = FIXED_SESSION_ID;
+  (stateEngine as unknown as { sessionId: string }).sessionId =
+    FIXED_SESSION_ID;
   beforeEach(() => {
     effectApplier = container.resolve(EffectApplier);
   });
@@ -151,7 +152,10 @@ describe("ElectionEffectApplier – PartySwing", () => {
 
   describe("EffectApplier – Conditional Effects", () => {
     it("should apply replace conditional effect", () => {
-      stateEngine.saveState("questionHistory", { questionId: "q1", answerId: "a1" });
+      stateEngine.saveState("questionHistory", {
+        questionId: "q1",
+        answerId: "a1",
+      });
       const effect: RawEffect = {
         type: EffectType.DistrictVoteTransfer,
         params: [
@@ -206,7 +210,10 @@ describe("ElectionEffectApplier – PartySwing", () => {
       ]);
     });
     it("should apply merge conditional effect", () => {
-      stateEngine.saveState("questionHistory", { questionId: "q1", answerId: "a1" });
+      stateEngine.saveState("questionHistory", {
+        questionId: "q1",
+        answerId: "a1",
+      });
       const effect: RawEffect = {
         type: EffectType.DistrictVoteTransfer,
         params: [

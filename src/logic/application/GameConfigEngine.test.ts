@@ -81,7 +81,9 @@ describe("GameConfigEngine", () => {
       engine.configure(baseConfig, "campaign-1");
       engine.configure(otherConfig, "campaign-2", true);
 
-      expect(engine.getCurrentElectionConfig()).toBe(otherConfig.electionConfig);
+      expect(engine.getCurrentElectionConfig()).toBe(
+        otherConfig.electionConfig,
+      );
     });
 
     it("reconfigures while no id has been provided yet", () => {
@@ -89,7 +91,9 @@ describe("GameConfigEngine", () => {
       engine.configure(baseConfig);
       engine.configure(otherConfig);
 
-      expect(engine.getCurrentElectionConfig()).toBe(otherConfig.electionConfig);
+      expect(engine.getCurrentElectionConfig()).toBe(
+        otherConfig.electionConfig,
+      );
     });
   });
 });
