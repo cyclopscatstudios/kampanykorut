@@ -9,7 +9,7 @@ import { createLogger } from "../logger";
 import { StateHandler } from "../application/StateHandler";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
 import { ConfigEngine } from "../application/ConfigEngine";
-import { container, injectable } from "tsyringe";
+import { injectable } from "tsyringe";
 import type { DistrictResult } from "../../components/ui/map.utils";
 import { EffectType } from "../types/campaignEngine.types";
 import type {
