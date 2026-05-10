@@ -24,7 +24,6 @@ const log = createLogger("EffectApplier");
 
 @injectable()
 export class EffectApplier {
-  private districtGroupEngine?: DistrictGroupEngine;
   private DEFAULT_MOTIVATION_DELTA = 99;
 
   constructor(
@@ -32,6 +31,7 @@ export class EffectApplier {
     private campaignStateEngine: StateEngine,
     private mandateCalculator: MandateCalculator,
     private stateHandler: StateHandler,
+    private districtGroupEngine: DistrictGroupEngine,
   ) {
     log.debug("EffectApplier initialized");
   }
@@ -223,14 +223,8 @@ export class EffectApplier {
       return { type: EffectType.DistrictVoteTransfer, target };
     }
 
-    const districtGroupEngine = this.districtGroupEngine;
-
-    if (!districtGroupEngine) {
-      return { type: EffectType.DistrictVoteTransfer, target: [] };
-    }
-
     const finalTarget = target.flatMap((t) =>
-      districtGroupEngine
+      this.districtGroupEngine
         .getDistrictTargetByGroupIds([t.groupId])
         .flatMap((d) =>
           d.districts.map((district) => ({

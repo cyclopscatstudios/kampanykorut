@@ -1,17 +1,24 @@
 import { defaultGroups as DEFAULT_GROUPS } from "./DefaultGroups";
 import { createLogger } from "../logger";
 import type { DistrictGroup } from "../types/campaignEngine.types";
+import type { CandidateListData } from "./ResultTransformer";
+import { injectable } from "tsyringe";
 
 const log = createLogger("DistrictGroupEngine");
 
+@injectable()
 export class DistrictGroupEngine {
   private districtGroups: DistrictGroup[] = [];
+  private candidateListData: CandidateListData[] = [];
 
   constructor() {
     log.debug("DistrictGroupEngine initialized");
   }
 
-  configure(customGroups?: DistrictGroup[]) {
+  configure(
+    candidateListData: CandidateListData[],
+    customGroups?: DistrictGroup[],
+  ) {
     const groups = [...DEFAULT_GROUPS];
     if (customGroups) {
       log.debug("Configuring DistrictGroupEngine with custom district groups", {
@@ -20,6 +27,7 @@ export class DistrictGroupEngine {
       this.districtGroups = [...groups, ...customGroups];
     }
     this.districtGroups = groups;
+    this.candidateListData = candidateListData;
   }
 
   getDistrictTargetByGroupIds(ids: string[]) {
@@ -27,6 +35,18 @@ export class DistrictGroupEngine {
   }
 
   private getDistrictsByGroupId(id: string): DistrictGroup {
+    if (id === "osszes_oevk") {
+      const group =
+        this.districtGroups.find((group) => group.id === id) ??
+        this.districtGroups[0];
+      return {
+        ...group,
+        districts: this.candidateListData.map((data) => ({
+          megyekod: data.megyekod,
+          oevk: data.oevk,
+        })),
+      };
+    }
     return (
       this.districtGroups.find((group) => group.id === id) ??
       this.districtGroups[0]

@@ -10,6 +10,39 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       "campaignStateEngine": StateEngine {
         "campaignState": null,
         "districtGroupEngine": DistrictGroupEngine {
+          "candidateListData": [
+            {
+              "jeloltek": {
+                "ellenzek": [
+                  "Candidate B",
+                ],
+                "fidesz": [
+                  "Candidate A",
+                ],
+              },
+              "megye": "BP",
+              "megyekod": 1,
+              "oevk": 1,
+              "partok": {
+                "ellenzek": 11000,
+                "fidesz": 12000,
+                "mkkp": undefined,
+              },
+              "telepules": "",
+              "valasztopolgar": 600000,
+            },
+            {
+              "megye": "BP",
+              "megyekod": 1,
+              "oevk": 2,
+              "partok": {
+                "ellenzek": 9000,
+                "fidesz": 8000,
+              },
+              "telepules": "",
+              "valasztopolgar": 600000,
+            },
+          ],
           "districtGroups": [
             {
               "districts": [
@@ -563,6 +596,11 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
               "id": "kis_telepulesek",
               "label": "Kis települések",
             },
+            {
+              "districts": [],
+              "id": "osszes_oevk",
+              "label": "Összes OEVK",
+            },
           ],
         },
         "gameConfigEngine": ConfigEngine {
@@ -729,7 +767,600 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
           "voters": 40000,
         },
       },
-      "districtGroupEngine": undefined,
+      "districtGroupEngine": DistrictGroupEngine {
+        "candidateListData": [
+          {
+            "jeloltek": {
+              "ellenzek": [
+                "Candidate B",
+              ],
+              "fidesz": [
+                "Candidate A",
+              ],
+            },
+            "megye": "BP",
+            "megyekod": 1,
+            "oevk": 1,
+            "partok": {
+              "ellenzek": 11000,
+              "fidesz": 12000,
+              "mkkp": undefined,
+            },
+            "telepules": "",
+            "valasztopolgar": 600000,
+          },
+          {
+            "megye": "BP",
+            "megyekod": 1,
+            "oevk": 2,
+            "partok": {
+              "ellenzek": 9000,
+              "fidesz": 8000,
+            },
+            "telepules": "",
+            "valasztopolgar": 600000,
+          },
+        ],
+        "districtGroups": [
+          {
+            "districts": [
+              {
+                "megyekod": 20,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 20,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 20,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 18,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 18,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 18,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 8,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 8,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 8,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 8,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 8,
+                "oevk": 5,
+              },
+            ],
+            "id": "nyugati_megyek",
+            "label": "Nyugati megyék",
+          },
+          {
+            "districts": [
+              {
+                "megyekod": 9,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 9,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 9,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 9,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 9,
+                "oevk": 5,
+              },
+              {
+                "megyekod": 9,
+                "oevk": 6,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 5,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 6,
+              },
+              {
+                "megyekod": 4,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 4,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 4,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 4,
+                "oevk": 4,
+              },
+            ],
+            "id": "keleti_megyek",
+            "label": "Keleti megyék",
+          },
+          {
+            "districts": [
+              {
+                "megyekod": 5,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 5,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 6,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 7,
+              },
+              {
+                "megyekod": 10,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 10,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 10,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 13,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 13,
+                "oevk": 2,
+              },
+            ],
+            "id": "eszaki_megyek",
+            "label": "Északi megyék",
+          },
+          {
+            "districts": [
+              {
+                "megyekod": 2,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 2,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 2,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 2,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 15,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 15,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 15,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 15,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 17,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 17,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 17,
+                "oevk": 3,
+              },
+            ],
+            "id": "deli_megyek",
+            "label": "Déli megyék",
+          },
+          {
+            "districts": [
+              {
+                "megyekod": 14,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 6,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 10,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 11,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 12,
+              },
+              {
+                "megyekod": 2,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 2,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 6,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 10,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 10,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 18,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 18,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 12,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 7,
+                "oevk": 1,
+              },
+            ],
+            "id": "billego_korzetek",
+            "label": "Billegő körzetek",
+          },
+          {
+            "districts": [
+              {
+                "megyekod": 1,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 5,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 6,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 7,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 8,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 9,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 10,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 11,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 12,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 13,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 14,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 15,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 16,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 17,
+              },
+              {
+                "megyekod": 1,
+                "oevk": 18,
+              },
+              {
+                "megyekod": 6,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 2,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 8,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 9,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 1,
+              },
+            ],
+            "id": "nagyvarosok",
+            "label": "Nagyvárosok",
+          },
+          {
+            "districts": [
+              {
+                "megyekod": 7,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 12,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 9,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 9,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 9,
+                "oevk": 5,
+              },
+              {
+                "megyekod": 9,
+                "oevk": 6,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 6,
+              },
+              {
+                "megyekod": 5,
+                "oevk": 7,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 5,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 6,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 7,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 8,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 9,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 10,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 11,
+              },
+              {
+                "megyekod": 14,
+                "oevk": 12,
+              },
+            ],
+            "id": "vegyes_oevk",
+            "label": "Vegyes jellegű OEVK-k",
+          },
+          {
+            "districts": [
+              {
+                "megyekod": 13,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 13,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 17,
+                "oevk": 1,
+              },
+              {
+                "megyekod": 17,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 17,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 15,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 15,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 15,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 2,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 3,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 4,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 5,
+              },
+              {
+                "megyekod": 16,
+                "oevk": 6,
+              },
+            ],
+            "id": "kis_telepulesek",
+            "label": "Kis települések",
+          },
+          {
+            "districts": [],
+            "id": "osszes_oevk",
+            "label": "Összes OEVK",
+          },
+        ],
+      },
       "gameConfigEngine": ConfigEngine {
         "campaignConfig": {
           "answerEffect": [],

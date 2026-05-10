@@ -173,4 +173,9 @@ export const defaultGroups = [
       { megyekod: 16, oevk: 6 },
     ],
   },
+  {
+    id: "osszes_oevk",
+    label: "Összes OEVK",
+    districts: [],
+  },
 ];

@@ -21,7 +21,7 @@ export function createCampaignEngine(
   voterEnvironment.configure(config.voterEnvironmentConfig);
 
   const districtGroupEngine = container.resolve(DistrictGroupEngine);
-  districtGroupEngine.configure(config.customGroups);
+  districtGroupEngine.configure(config.candidateListData, config.customGroups);
 
   const campaignEngine = new CampaignEngine(
     config.candidateListData,

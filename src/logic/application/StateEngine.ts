@@ -196,7 +196,7 @@ export class StateEngine extends Emitter<CampaignState> {
   clearGameState() {
     this.gameConfigEngine.configure(null);
     this.voterEnvironment.configure(null);
-    this.districtGroupEngine.configure();
+    this.districtGroupEngine.configure([]);
   }
 
   private updateCampaignState(state: Partial<CampaignState> | null) {

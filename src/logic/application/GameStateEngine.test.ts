@@ -1,8 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import {
-  StateEngine,
-  type SavedCampaignSessionInfo,
-} from "./StateEngine";
+import { StateEngine, type SavedCampaignSessionInfo } from "./StateEngine";
 import { StorageEngine } from "./StorageEngine";
 import { ConfigEngine } from "./ConfigEngine";
 import { Navigation } from "./navigation/Navigation";
@@ -171,7 +168,11 @@ describe("StateEngine", () => {
     function seedCampaignState(campaignId = "c-test") {
       mem._map.set(
         `kampanykorut_campaignState-${FIXED_SESSION_ID}`,
-        JSON.stringify({ activeCampaignId: campaignId, turn: 0, isEnded: false }),
+        JSON.stringify({
+          activeCampaignId: campaignId,
+          turn: 0,
+          isEnded: false,
+        }),
       );
     }
 
@@ -256,9 +257,9 @@ describe("StateEngine", () => {
         mem._map.get("kampanykorut_savedSessions") ?? "[]",
       );
       expect(sessions).toHaveLength(5);
-      expect(sessions.map((s: SavedCampaignSessionInfo) => s.name)).not.toContain(
-        "one-too-many",
-      );
+      expect(
+        sessions.map((s: SavedCampaignSessionInfo) => s.name),
+      ).not.toContain("one-too-many");
     });
 
     it("still allows overwriting when at the cap", () => {
@@ -306,7 +307,8 @@ describe("StateEngine", () => {
       engine.saveState("questionHistory", { questionId: "q2", answerId: "a2" });
 
       const stored = JSON.parse(
-        mem._map.get(`kampanykorut_questionHistory-${FIXED_SESSION_ID}`) ?? "[]",
+        mem._map.get(`kampanykorut_questionHistory-${FIXED_SESSION_ID}`) ??
+          "[]",
       );
       expect(stored).toHaveLength(2);
       expect(stored[0].questionId).toBe("q1");

@@ -30,7 +30,9 @@ export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
           activeCampaignId={activeCampaignId}
           availableSlots={availableSlots}
           usedSlots={usedSlots}
-          onSave={(name, existingId) => gameStateEngine.saveToSlot(name, existingId)}
+          onSave={(name, existingId) =>
+            gameStateEngine.saveToSlot(name, existingId)
+          }
           onClose={() => setIsOpen(false)}
         />
       </DialogBody>
