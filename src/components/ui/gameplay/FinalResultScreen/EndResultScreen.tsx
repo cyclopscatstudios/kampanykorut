@@ -10,7 +10,7 @@ const screens = [
   { id: "electionMap", label: "endResult.menuBar.electionMap" },
   { id: "statistics", label: "endResult.menuBar.statistics" },
   { id: "history", label: "endResult.menuBar.history" },
-];
+] as const;
 
 type ActiveScreen = (typeof screens)[number]["id"];
 

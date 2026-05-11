@@ -13,7 +13,8 @@ export type SessionKey =
   | "gameConfig"
   | "campaignState"
   | "currentSessionId"
-  | "savedSessions";
+  | "savedSessions"
+  | "language";
 
 const log = createLogger("StorageEngine");
 

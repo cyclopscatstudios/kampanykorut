@@ -1,50 +1,53 @@
-[
-  {
-    "key": "mainMenu.newGame",
-    "lang": "New Game"
+{
+  "mainMenu": {
+    "newGame": "New Game",
+    "loadGame": "Load Game",
+    "modMaker": "Mod Maker",
+    "settings": "Settings",
+    "about": "About"
   },
-  {
-    "key": "mainMenu.loadGame",
-    "lang": "Load Game"
+  "newGameMenu": {
+    "classicMode": "Classic mode",
+    "campaignMode": "Campaign mode"
   },
-  {
-    "key": "mainMenu.modMaker",
-    "lang": "Mod Maker"
+  "menuList": {
+    "button": {
+      "back": "Back",
+      "save": "Save",
+      "next": "Next",
+      "start": "Start Game"
+    }
   },
-  {
-    "key": "mainMenu.settings",
-    "lang": "Settings"
+  "settingsMenu": {
+    "advisorFeedback": {
+      "label": "Show advisor feedback"
+    }
   },
-  {
-    "key": "mainMenu.about",
-    "lang": "About"
+  "loadSavedGamesMenu": {
+    "emptyLabel": "No saved game sessions found.",
+    "button": {
+      "load": "Load game"
+    }
   },
-  {
-    "key": "newGameMenu.classicMode",
-    "lang": "Classic mode"
+  "gameSelectorMenhu": {
+    "label": "Select a campaign"
   },
-  {
-    "key": "newGameMenu.campaignMode",
-    "lang": "Campaign mode"
+  "sideSelector": {
+    "party": {
+      "label": "Select a party",
+      "dropdown": "Selected party"
+    },
+    "candidate": {
+      "label": "Select a candidate",
+      "dropdown": "Selected candidate"
+    }
   },
-  {
-    "key": "menuList.button.back",
-    "lang": "Back"
-  },
-  {
-    "key": "endResult.menuBar.summary",
-    "lang": "Summary"
-  },
-  {
-    "key": "endResult.menuBar.electionMap",
-    "lang": "Election map"
-  },
-  {
-    "key": "endResult.menuBar.statistics",
-    "lang": "Statistics"
-  },
-  {
-    "key": "endResult.menuBar.history",
-    "lang": "History"
+  "endResult": {
+    "menuBar": {
+      "summary": "Summary",
+      "electionMap": "Election map",
+      "statistics": "Statistics",
+      "history": "History"
+    }
   }
-]
+}

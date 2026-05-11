@@ -1,50 +1,53 @@
-[
-  {
-    "key": "mainMenu.newGame",
-    "lang": "Új játék"
+{
+  "mainMenu": {
+    "newGame": "Új játék",
+    "loadGame": "Játék betöltése",
+    "modMaker": "Mod készítő",
+    "settings": "Beállítások",
+    "about": "A játékról"
   },
-  {
-    "key": "mainMenu.loadGame",
-    "lang": "Játék betöltése"
+  "newGameMenu": {
+    "classicMode": "Klasszikus mód",
+    "campaignMode": "Kampány mód"
   },
-  {
-    "key": "mainMenu.modMaker",
-    "lang": "Mod készítő"
+  "menuList": {
+    "button": {
+      "back": "Vissza",
+      "save": "Mentés",
+      "next": "Következő",
+      "start": "Játék elindítása"
+    }
   },
-  {
-    "key": "mainMenu.settings",
-    "lang": "Beállítások"
+  "settingsMenu": {
+    "advisorFeedback": {
+      "label": "Tanácsadói visszajelzések megjelenítése"
+    }
   },
-  {
-    "key": "mainMenu.about",
-    "lang": "A játékról"
+  "loadSavedGamesMenu": {
+    "emptyLabel": "Nem található mentett játék.",
+    "button": {
+      "load": "Játék betöltése"
+    }
   },
-  {
-    "key": "newGameMenu.classicMode",
-    "lang": "Klasszikus mód"
+  "gameSelectorMenhu": {
+    "label": "Válassz egy kampányt"
   },
-  {
-    "key": "newGameMenu.campaignMode",
-    "lang": "Kampány mód"
+  "sideSelector": {
+    "party": {
+      "label": "Válassz egy pártot",
+      "dropdown": "Választott párt"
+    },
+    "candidate": {
+      "label": "Válassz egy jelöltet",
+      "dropdown": "Választott jelölt"
+    }
   },
-  {
-    "key": "menuList.button.back",
-    "lang": "Vissza"
-  },
-  {
-    "key": "endResult.menuBar.summary",
-    "lang": "Összefoglaló"
-  },
-  {
-    "key": "endResult.menuBar.electionMap",
-    "lang": "Választási térkép"
-  },
-  {
-    "key": "endResult.menuBar.statistics",
-    "lang": "Statisztikák"
-  },
-  {
-    "key": "endResult.menuBar.history",
-    "lang": "Előzmények"
+  "endResult": {
+    "menuBar": {
+      "summary": "Összefoglaló",
+      "electionMap": "Választási térkép",
+      "statistics": "Statisztikák",
+      "history": "Előzmények"
+    }
   }
-]
+}

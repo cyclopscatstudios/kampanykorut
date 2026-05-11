@@ -8,6 +8,7 @@ import { supportedLanguages } from "../../../logic/langs/languages";
 import { type GameSettings } from "@/logic/application";
 import { useState } from "react";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
+import { t } from "i18next";
 
 export function SettingsDialog({
   isOpen,
@@ -67,7 +68,7 @@ export function SettingsBody({
   return (
     <div className="flex flex-col gap-5 h-full">
       <Checkbox
-        label="Show advisor feedback"
+        label={t("settingsMenu.advisorFeedback.label")}
         defaultChecked={settingsForm.showAdvisorFeedback}
         onChange={(e) =>
           setSettingsForm((prev: GameSettings) => ({

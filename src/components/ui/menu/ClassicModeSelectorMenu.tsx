@@ -12,6 +12,7 @@ import {
   useGetCampaigns,
   type CampaignHeader,
 } from "../../../logic/application/hooks/useGetCampaigns";
+import { t } from "i18next";
 
 export function ClassicModeSelectorMenu() {
   const campaigns = useGetCampaigns();
@@ -58,7 +59,9 @@ export function CampaignSelectorMenuList({
     <div className="size-full flex items-center justify-center">
       <div className="flex flex-col items-center justify-center">
         <Heading level={3} color="lightBlue" className="mb-6">
-          {selectedCampaign ? selectedCampaign.label : "Select a campaign"}
+          {selectedCampaign
+            ? selectedCampaign.label
+            : t("gameSelectorMenhu.label")}
         </Heading>
         <ul className="w-[350px]">
           {campaignHeaders.map((item, index) => {
@@ -133,7 +136,7 @@ export function CampaignSelectorMenuList({
             disabled={!selectedCampaign}
             onClick={() => goToSideSelector(selectedCampaign?.id ?? "")}
           >
-            <Button.Text>Next</Button.Text>
+            <Button.Text>{t("menuList.button.next")}</Button.Text>
           </Button>
           <li>
             <Button variant="tertiary" size="large" block onClick={goBack}>

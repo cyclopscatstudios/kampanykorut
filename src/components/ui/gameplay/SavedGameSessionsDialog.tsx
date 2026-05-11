@@ -8,6 +8,7 @@ import { Heading } from "../Heading";
 import { container } from "tsyringe";
 import { Text } from "../Text";
 import { useState } from "react";
+import { t } from "i18next";
 
 export function SavedSessionsDialog({
   isOpen,
@@ -66,7 +67,7 @@ export function SavedSessionsBody({
       tabIndex={0}
     >
       {Object.keys(savedSessions).length === 0 && (
-        <div>No saved game sessions found.</div>
+        <div>{t("loadSavedGamesMenu.emptyLabel")}</div>
       )}
       {savedSessions.map((value) => (
         <div
