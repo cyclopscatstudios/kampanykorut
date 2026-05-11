@@ -30,6 +30,7 @@ export function MenuList({ listItems, hasBackButton = false }: MenuListProps) {
               block
               onClick={() => navigate(item.path)}
               disabled={item.disabled}
+              testId={`menuItem-${item.id}`}
             >
               <Icon
                 name={item.icon as BootstrapIcon}

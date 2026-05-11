@@ -15,7 +15,8 @@
       "back": "Back",
       "save": "Save",
       "next": "Next",
-      "start": "Start Game"
+      "start": "Start Game",
+      "cancel": "Cancel"
     }
   },
   "settingsMenu": {
@@ -49,5 +50,32 @@
       "statistics": "Statistics",
       "history": "History"
     }
+  },
+  "gameMenuBar": {
+    "save": "Save game",
+    "laod": "Load game",
+    "settings": "Settings",
+    "quit": "Quit game"
+  },
+  "emptySlot": {
+    "label": "Empty slot"
+  },
+  "modal": {
+    "buttons": {
+      "confirm": "Confirm"
+    }
+  },
+  "exitDialog": {
+    "title": "Attention!",
+    "description": "Are you sure you want to exit the game?"
+  },
+  "bottomBar": {
+    "visitDistrict": "Visit district",
+    "swingFactor": "Swing factor",
+    "population": "Population",
+    "k": "K",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
   }
 }

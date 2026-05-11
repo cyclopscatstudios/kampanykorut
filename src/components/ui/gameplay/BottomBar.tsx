@@ -1,9 +1,11 @@
+import { t } from "i18next";
 import type { Colors } from "../../../types/color";
-import { SwingFactor } from "../../../types/utils";
+import { SwingFactorId } from "../../../types/utils";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import type { DistrictResult } from "../map.utils";
 import { Text } from "../Text";
+import type { SwingFactor } from "./MapCreator";
 
 interface BottomBarProps {
   data?: DistrictResult | null;
@@ -13,7 +15,7 @@ interface BottomBarProps {
 
 export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
   const population = Math.round((data?.valasztopolgar ?? 0) / 1000);
-  const textColor = getSwingFactorTextColor(swingFactor);
+  const textColor = getSwingFactorTextColor(swingFactor?.id);
 
   return (
     <div className="w-full h-20 bg-dark-blue flex justify-between items-center p-3">
@@ -35,19 +37,22 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
           <div className="flex items-center">
             <div>
               <Text color="gray" weight="medium">
-                Population
+                {t("bottomBar.population")}
               </Text>
-              <Text>{population}K</Text>
+              <Text>
+                {population}
+                {t("bottomBar.k")}
+              </Text>
             </div>
             <div className="pl-5">
               <Text color="gray" weight="medium">
-                Swing factor
+                {t("bottomBar.swingFactor")}
               </Text>
-              <Text color={textColor as Colors}>{swingFactor}</Text>
+              <Text color={textColor as Colors}>{swingFactor?.label}</Text>
             </div>
             <div className="pl-5">
               <Button fullRounded onClick={onClick}>
-                <Button.Text>Visit district</Button.Text>
+                <Button.Text> {t("bottomBar.visitDistrict")}</Button.Text>
                 <Button.Icon name="arrow-right" color="white" />
               </Button>
             </div>
@@ -58,17 +63,17 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
   );
 }
 
-function getSwingFactorTextColor(swingFactor?: SwingFactor) {
+function getSwingFactorTextColor(swingFactor?: SwingFactorId) {
   if (!swingFactor) {
     return "white";
   }
-  if (swingFactor === SwingFactor.High) {
+  if (swingFactor === SwingFactorId.High) {
     return "red";
   }
-  if (swingFactor === SwingFactor.Medium) {
+  if (swingFactor === SwingFactorId.Medium) {
     return "yellow";
   }
-  if (swingFactor === SwingFactor.Low) {
+  if (swingFactor === SwingFactorId.Low) {
     return "green";
   }
   return "white";

@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { Button } from "./Button";
 import { Heading } from "./Heading";
 import { Icon } from "./Icon";
@@ -46,11 +47,11 @@ export function Modal({ title, description, onCancel, onConfirm }: ModalProps) {
 
         <div className="flex gap-2 justify-center">
           <Button onClick={onConfirm}>
-            <Button.Text>Confirm</Button.Text>
+            <Button.Text>{t("modal.buttons.confirm")}</Button.Text>
           </Button>
 
           <Button onClick={onCancel} variant="secondary">
-            <Button.Text>Cancel</Button.Text>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
           </Button>
         </div>
       </div>

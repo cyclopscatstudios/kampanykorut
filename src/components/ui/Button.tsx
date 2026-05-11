@@ -17,6 +17,7 @@ interface ButtonProps {
   fullRounded?: boolean;
   className?: string;
   disabled?: boolean;
+  testId?: string;
 }
 
 function getButtonColors(
@@ -86,6 +87,7 @@ export function Button(props: ButtonProps) {
     block,
     fullRounded,
     disabled,
+    testId,
   } = props;
   const buttonColors = getButtonColors(variant, color, disabled);
   const borderColor = getBorderColor(color, variant, disabled);
@@ -93,6 +95,7 @@ export function Button(props: ButtonProps) {
   return (
     <ButtonContext.Provider value={{ ...props }}>
       <button
+        data-testId={testId}
         onClick={disabled ? undefined : onClick}
         className={classNames(
           "px-4 inline-flex items-center justify-center gap-2",

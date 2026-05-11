@@ -10,6 +10,7 @@ import { Icon } from "../Icon";
 import { useState } from "react";
 import { TextInput } from "../TextInput";
 import classNames from "classnames";
+import { t } from "i18next";
 
 interface SaveGameSessionProps {
   isOpen: boolean;
@@ -24,7 +25,7 @@ export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
 
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)} closeOnBackdrop>
-      <DialogHeader>Save Game</DialogHeader>
+      <DialogHeader> {t("gameMenuBar.save")}</DialogHeader>
       <DialogBody>
         <SaveGameSessionBody
           activeCampaignId={activeCampaignId}
@@ -129,12 +130,12 @@ function SaveGameSessionBody({
         <Button variant="tertiary" size="large" onClick={onClose}>
           <Icon name="backspace-fill" />
           <Text weight="medium" color="lightBlue">
-            Back
+            {t("menuList.button.cancel")}
           </Text>
         </Button>
         <Button size="large" disabled={!canSave} onClick={handleSave}>
           <Text weight="medium" color="lightBlue">
-            Save game
+            {t("gameMenuBar.save")}
           </Text>
         </Button>
       </div>
@@ -179,7 +180,7 @@ function EmptySlot({
             }}
           />
         ) : (
-          <Text color="lightBlue">Empty slot</Text>
+          <Text color="lightBlue">{t("emptySlot.label")}</Text>
         )}
       </div>
     </div>

@@ -25,7 +25,7 @@ export function SavedSessionsDialog({
     <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
       <DialogHeader>
         <Heading level={3} color="lightBlue">
-          Load Game
+          {t("loadSavedGamesMenu.button.load")}
         </Heading>
       </DialogHeader>
       <DialogBody>
@@ -38,13 +38,13 @@ export function SavedSessionsDialog({
       <DialogFooter>
         <div className="w-full flex justify-between">
           <Button variant="secondary" onClick={() => setIsOpen(false)}>
-            <Button.Text>Cancel</Button.Text>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
           </Button>
           <Button
             disabled={!selectedSession}
             onClick={() => gameStateEngine.loadState(selectedSession)}
           >
-            <Button.Text>Load Game</Button.Text>
+            <Button.Text>{t("loadSavedGamesMenu.button.load")}</Button.Text>
           </Button>
         </div>
       </DialogFooter>

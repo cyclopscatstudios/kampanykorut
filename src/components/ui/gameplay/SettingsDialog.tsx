@@ -32,7 +32,7 @@ export function SettingsDialog({
       <DialogHeader>
         <div>
           <Heading level={3} color="lightBlue">
-            Settings
+            {t("mainMenu.settings")}
           </Heading>
         </div>
       </DialogHeader>
@@ -47,10 +47,10 @@ export function SettingsDialog({
       <DialogFooter>
         <div className="w-full flex justify-between">
           <Button variant="secondary" onClick={() => setIsOpen(false)}>
-            <Button.Text>Cancel</Button.Text>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
           </Button>
           <Button onClick={saveChanges} disabled={isEqual}>
-            <Button.Text>Save</Button.Text>
+            <Button.Text>{t("menuList.button.save")}</Button.Text>
           </Button>
         </div>
       </DialogFooter>

@@ -15,7 +15,8 @@
       "back": "Vissza",
       "save": "Mentés",
       "next": "Következő",
-      "start": "Játék elindítása"
+      "start": "Játék elindítása",
+      "cancel": "Mégsem"
     }
   },
   "settingsMenu": {
@@ -49,5 +50,32 @@
       "statistics": "Statisztikák",
       "history": "Előzmények"
     }
+  },
+  "gameMenuBar": {
+    "save": "Játk mentése",
+    "laod": "Játék visszatöltése",
+    "settings": "Beállítások",
+    "quit": "Kilépés"
+  },
+  "emptySlot": {
+    "label": "Szabad hely"
+  },
+  "modal": {
+    "buttons": {
+      "confirm": "Megerősítés"
+    }
+  },
+  "exitDialog": {
+    "title": "Figyelem!",
+    "description": "Biztosan ki akarsz lépni a játékból?"
+  },
+  "bottomBar": {
+    "visitDistrict": "Látogass el a kerületbe",
+    "swingFactor": "Ingadozási tényező",
+    "population": "Lakosság",
+    "k": "E",
+    "high": "Magas",
+    "medium": "Közepes",
+    "low": "Alacsony"
   }
 }

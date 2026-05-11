@@ -5,6 +5,7 @@ import { Tooltip } from "../Tooltip";
 import type { DialogId } from "./hooks/useDialogState";
 import type { ActionDispatch } from "react";
 import type { GameFlowAction } from "./hooks/useGameFlow";
+import { t } from "i18next";
 
 export interface MenuBarProps {
   activeDialog: DialogId;
@@ -44,7 +45,7 @@ export function GameMenuBar({
           </Button>
         </div>
         <div className="flex justify-center gap-2">
-          <Tooltip content="Save game">
+          <Tooltip content={t("gameMenuBar.save")}>
             <Button variant="transparent" onClick={() => onOpen("saveGame")}>
               <Button.Icon
                 name="file-earmark-arrow-down-fill"
@@ -53,7 +54,7 @@ export function GameMenuBar({
               />
             </Button>
           </Tooltip>
-          <Tooltip content="Load game">
+          <Tooltip content={t("gameMenuBar.laod")}>
             <Button variant="transparent" onClick={() => onOpen("savedGames")}>
               <Button.Icon
                 name="file-earmark-arrow-up-fill"
@@ -62,7 +63,7 @@ export function GameMenuBar({
               />
             </Button>
           </Tooltip>
-          <Tooltip content="Settings">
+          <Tooltip content={t("gameMenuBar.settings")}>
             <Button variant="transparent" onClick={() => onOpen("settings")}>
               <Button.Icon
                 name="gear-fill"
@@ -71,7 +72,7 @@ export function GameMenuBar({
               />
             </Button>
           </Tooltip>
-          <Tooltip content="Quit game">
+          <Tooltip content={t("gameMenuBar.quit")}>
             <Button variant="transparent" onClick={() => onOpen("exit")}>
               <Button.Icon
                 name="x-square-fill"
