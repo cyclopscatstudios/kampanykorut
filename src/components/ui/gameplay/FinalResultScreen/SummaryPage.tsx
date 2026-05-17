@@ -15,8 +15,11 @@ export function SummaryPage({ results }: { results: FinalResults }) {
   const campaignState = campaignStateEngine.getCampaignState();
   const currentConfig = configEngine.getCampaignConfig();
 
-  const didPlayerWin =
-    results.winnerParty?.party === campaignState?.playerSide?.partyId;
+  const winner = results.mandates.reduce((max, current) =>
+    current.totalSeats > max.totalSeats ? current : max,
+  );
+
+  const didPlayerWin = winner.party === campaignState?.playerSide?.partyId;
   const assets = didPlayerWin
     ? currentConfig?.endResults.playerSideVictory
     : currentConfig?.endResults.playerSideDefeat;

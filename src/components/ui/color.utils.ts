@@ -1,8 +1,10 @@
 import {
+  backgroundColors,
   partyActiveColor,
   partyColors,
   partyHoverColor,
   PartyName,
+  type Colors,
 } from "../../types/color";
 
 export function getPartyColor(
@@ -100,4 +102,8 @@ function getShadedColor(baseHex: string, percent: number): string {
   }
 
   return baseHex;
+}
+
+export function getBaseBackgroundColor(color: Colors) {
+  return backgroundColors[color];
 }

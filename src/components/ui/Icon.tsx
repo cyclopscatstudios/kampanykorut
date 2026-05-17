@@ -65,5 +65,7 @@ function getIconColor(color: Colors) {
       return "text-blue-50";
     case "darkBlue":
       return "text-blue-900";
+    case "green":
+      return "text-green-800";
   }
 }

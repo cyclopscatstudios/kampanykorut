@@ -9,6 +9,7 @@ import { type GameSettings } from "@/logic/application";
 import { useState } from "react";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { t } from "i18next";
+import { toaster } from "./toaster";
 
 export function SettingsDialog({
   isOpen,
@@ -25,6 +26,7 @@ export function SettingsDialog({
   const saveChanges = () => {
     updateSettings({ ...settingsForm });
     setIsOpen(false);
+    toaster("Settings updated", "Success");
   };
 
   return (

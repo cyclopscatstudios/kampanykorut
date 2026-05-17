@@ -43,6 +43,7 @@ export class SettingsEngine extends Emitter<GameSettings> {
   }
 
   updateGameSettings(settings: Partial<GameSettings>): void {
+    console.log("update game settings called");
     const current = this.getGameSettings();
     const updated = { ...current, ...settings };
     if (settings.language) {
@@ -50,5 +51,7 @@ export class SettingsEngine extends Emitter<GameSettings> {
     }
     this.notify(updated);
     this.storage.setItem("settings", JSON.stringify(updated), "localStorage");
+
+    console.trace();
   }
 }

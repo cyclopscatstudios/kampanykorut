@@ -3,21 +3,28 @@ import logo from "../../../assets/logo_reworked.png";
 import { Button } from "../Button";
 import { Tooltip } from "../Tooltip";
 import type { DialogId } from "./hooks/useDialogState";
-import type { ActionDispatch } from "react";
+import { useState, type ActionDispatch } from "react";
 import type { GameFlowAction } from "./hooks/useGameFlow";
 import { t } from "i18next";
+import type { CampaignState } from "@/logic/domain";
+import type { CampaignConfig } from "@/logic/types";
 
 export interface MenuBarProps {
   activeDialog: DialogId;
   onOpen: (id: Exclude<DialogId, null>) => void;
   actionDispatch: ActionDispatch<[action: GameFlowAction]>;
+  state: CampaignState;
+  config: CampaignConfig;
 }
 
 export function GameMenuBar({
   activeDialog,
   onOpen,
   actionDispatch,
+  state,
+  config,
 }: MenuBarProps) {
+  const [info, setInfo] = useState("turn");
   return (
     <div className="w-full border-b-2 border-blue-400">
       <div className="flex justify-between items-center mx-5">
@@ -43,6 +50,16 @@ export function GameMenuBar({
           >
             <Button.Icon name="map-fill" color="white" size="medium" />
           </Button>
+        </div>
+        <div onClick={() => setInfo(info === "turn" ? "configName" : "turn")}>
+          {info === "turn" ? (
+            <TurnBadge
+              currentTurn={state.turn}
+              turns={config.questions.length}
+            />
+          ) : (
+            <Text size="lg">{config.electionConfig.title}</Text>
+          )}
         </div>
         <div className="flex justify-center gap-2">
           <Tooltip content={t("gameMenuBar.save")}>
@@ -83,6 +100,20 @@ export function GameMenuBar({
           </Tooltip>
         </div>
       </div>
+    </div>
+  );
+}
+
+function TurnBadge({
+  currentTurn,
+  turns,
+}: {
+  currentTurn: number;
+  turns: number;
+}) {
+  return (
+    <div className="bg-blue-50 p-1 rounded-full">
+      <Text color="darkBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
     </div>
   );
 }

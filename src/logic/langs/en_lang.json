@@ -77,5 +77,30 @@
     "high": "High",
     "medium": "Medium",
     "low": "Low"
+  },
+  "badge": {
+    "strategicDecision": {
+      "label": "Strategic decision",
+      "tooltip": "Your choice may influence how future questions unfold"
+    }
+  },
+  "questionCard": {
+    "buttons": {
+      "continue": "Continue",
+      "mapView": "Map view"
+    }
+  },
+  "advisorFeedback": {
+    "title": "Advisor feedback",
+    "buttons": {
+      "turnOff": "Turn off advisor insights",
+      "ok": "Ok"
+    },
+    "modal": {
+      "description": "You won’t receive strategic hints from advisors anymore.",
+      "buttons": {
+        "disable": "Disable"
+      }
+    }
   }
 }

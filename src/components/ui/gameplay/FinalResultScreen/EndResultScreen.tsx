@@ -22,23 +22,23 @@ export function FinalResultScreen() {
   return (
     <div className="m-2">
       <div className="bg-[#0f172a] p-5 rounded-xl border border-slate-200/65">
-        <div className="h-[620px] mb-3">
+        <div className="h-[620px] w-[1100px] mb-3">
           {activeScreen === "summaryPage" && <SummaryPage results={results} />}
           {activeScreen === "electionMap" && <ElectionMap config={config} />}
         </div>
-        <div className="flex gap-5 w-full justify-center">
-          {screens.map((screen) => {
-            return (
-              <Button
-                key={screen.id}
-                disabled={activeScreen === screen.id}
-                onClick={() => setActiveScreen(screen.id)}
-              >
-                <Button.Text>{t(screen.label)}</Button.Text>
-              </Button>
-            );
-          })}
-        </div>
+      </div>
+      <div className="flex gap-5 w-full justify-center mt-5">
+        {screens.map((screen) => {
+          return (
+            <Button
+              key={screen.id}
+              disabled={activeScreen === screen.id}
+              onClick={() => setActiveScreen(screen.id)}
+            >
+              <Button.Text>{t(screen.label)}</Button.Text>
+            </Button>
+          );
+        })}
       </div>
     </div>
   );

@@ -21,6 +21,7 @@ export function SavedSessionsDialog({
   const savedSessions = gameStateEngine.getSavedGameSessions();
   const [selectedSession, setSelectedSession] =
     useState<SavedCampaignSessionInfo | null>(null);
+
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
       <DialogHeader>

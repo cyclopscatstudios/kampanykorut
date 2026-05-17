@@ -95,7 +95,7 @@ export function Button(props: ButtonProps) {
   return (
     <ButtonContext.Provider value={{ ...props }}>
       <button
-        data-testId={testId}
+        data-testid={testId}
         onClick={disabled ? undefined : onClick}
         className={classNames(
           "px-4 inline-flex items-center justify-center gap-2",

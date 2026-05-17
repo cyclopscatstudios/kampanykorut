@@ -77,5 +77,30 @@
     "high": "Magas",
     "medium": "Közepes",
     "low": "Alacsony"
+  },
+  "badge": {
+    "strategicDecision": {
+      "label": "Stratégiai döntés",
+      "tooltip": "A választásod hatással lehet a jövőbeli kérdések alakulására"
+    }
+  },
+  "questionCard": {
+    "buttons": {
+      "continue": "Következő",
+      "mapView": "Térképnézet"
+    }
+  },
+  "advisorFeedback": {
+    "title": "Tanácsadói visszajelzés",
+    "buttons": {
+      "turnOff": "Tanácsadói javaslatokat elrejtése",
+      "ok": "Rendben"
+    },
+    "modal": {
+      "description": "Többé nem kapsz stratégiai tanácsokat a tanácsadóktól.",
+      "buttons": {
+        "disable": "Letiltás"
+      }
+    }
   }
 }

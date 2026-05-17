@@ -1,9 +1,13 @@
-import type { DistrictPoligon, DistrictResult } from "../map.utils";
+import {
+  getWinnerResultByDistrict,
+  type DistrictPoligon,
+  type DistrictResult,
+} from "../map.utils";
 import type { CurrentView } from "./MainGameScreen";
 import { MapWrapper } from "./MapWrapper";
 import { BottomBar } from "./BottomBar";
 import { SwingFactorId } from "../../../types/utils";
-import { calculateWinner, type CandidateListData } from "@/logic/domain";
+import { type CandidateListData } from "@/logic/domain";
 import { t } from "i18next";
 
 interface MapCreatorProps {
@@ -65,30 +69,38 @@ export function MapCreator({
   );
 }
 
-function getSwingFactor(district?: DistrictResult | null): SwingFactor {
-  const total = calculateWinner(district);
-  const winnerPercent =
-    total?.totalVotes === 0
-      ? 0
-      : Number(
-          (((total?.maxVotes ?? 0) / (total?.totalVotes ?? 0)) * 100).toFixed(
-            2,
-          ),
-        );
-  if (winnerPercent < 50) {
-    return {
-      label: t("bottomBar.high"),
-      id: SwingFactorId.High,
-    };
-  } else if (winnerPercent > 50 && winnerPercent < 60) {
-    return {
-      label: t("bottomBar.medium"),
-      id: SwingFactorId.Medium,
-    };
-  } else {
+function getSwingFactor(district?: DistrictResult | null) {
+  const results = getWinnerResultByDistrict(district);
+  if (!results) {
     return {
       label: t("bottomBar.low"),
       id: SwingFactorId.Low,
     };
   }
+  const { diffPercentage: percent } = results;
+
+  if (percent < 5) {
+    return {
+      label: t("bottomBar.high"),
+      id: SwingFactorId.High,
+    };
+  }
+
+  if (percent < 15) {
+    return {
+      label: t("bottomBar.medium"),
+      id: SwingFactorId.Medium,
+    };
+  }
+
+  if (percent < 20) {
+    return {
+      label: t("bottomBar.low"),
+      id: SwingFactorId.Low,
+    };
+  }
+  return {
+    label: t("bottomBar.low"),
+    id: SwingFactorId.Low,
+  };
 }

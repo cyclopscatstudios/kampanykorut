@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useWheelZoom, type ViewBox } from "../../hooks/useWheelZoom";
 import {
-  getWinnerResults,
+  getWinnerResultsByList,
   type DistrictPoligon,
   type DistrictResult,
 } from "../ui/map.utils";
@@ -65,20 +65,19 @@ export function DistrictMap({
   }));
 
   const bounds = computeBounds(projected);
-  const mapWidth = bounds.maxX - bounds.minX;
-  const mapHeight = bounds.maxY - bounds.minY;
-  const aspectRatio = mapWidth / mapHeight;
 
   const margin = 20;
   const scale = computeScale(bounds, width, height, margin);
 
   return (
     <svg
+      width={width}
+      height={height}
       style={{
-        aspectRatio,
         cursor: wheel.isPanning.current ? "grabbing" : "grab",
       }}
       viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`}
+      preserveAspectRatio="xMidYMid meet"
       onWheel={wheel.handleWheel}
       onMouseDown={wheel.handleMouseDown}
       onMouseMove={wheel.handleMouseMove}
@@ -89,7 +88,7 @@ export function DistrictMap({
         const simplified = simplifyDP(d.pts, simplifyTolerance);
         const pathD = buildPathD(simplified, bounds, scale, margin);
 
-        const { winner, diffPercentage } = getWinnerResults(d, result);
+        const { winner, diffPercentage } = getWinnerResultsByList(d, result);
         const base = getPartyColor(winner, diffPercentage, isGameEnded);
         const hover = getPartyHoverColor(winner);
         const active = getPartyActiveColor(winner);
@@ -122,10 +121,10 @@ export function DistrictMap({
               setHovered(null);
               setPressed(null);
             }}
-            onDoubleClick={() => onClick?.(getWinnerResults(d, result))}
+            onDoubleClick={() => onClick?.(getWinnerResultsByList(d, result))}
             onMouseDown={() => setPressed(id)}
             onMouseUp={() => setPressed(null)}
-            onClick={() => onClick?.(getWinnerResults(d, result))}
+            onClick={() => onClick?.(getWinnerResultsByList(d, result))}
           />
         );
       })}

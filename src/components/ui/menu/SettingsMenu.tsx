@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { t } from "i18next";
+import { toaster } from "../gameplay/toaster";
 
 export function SettingsMenu() {
   const { settings, updateSettings } = useSettings();
@@ -17,6 +18,7 @@ export function SettingsMenu() {
 
   const saveChanges = () => {
     updateSettings({ ...settingsForm });
+    toaster("Settings updated", "Success");
   };
 
   return (

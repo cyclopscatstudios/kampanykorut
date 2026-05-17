@@ -25,6 +25,8 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
         activeDialog={dialogs.activeDialog}
         onOpen={dialogs.open}
         actionDispatch={dispatch}
+        state={state}
+        config={config}
       />
       <GameDialogs
         activeDialog={dialogs.activeDialog}

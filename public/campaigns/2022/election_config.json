@@ -1,4 +1,5 @@
 {
+  "title": "2022: Országgyűlési választás",
   "listSeats": 93,
   "thresholdPercent": 5,
   "districtBoost": true,
@@ -13,7 +14,19 @@
       "name": "Ellenzéki összefogás",
       "color": "#20b2aa"
     },
-    { "id": "mi_hazank", "name": "Mi Hazánk", "color": "#688d1b" }
+    { "id": "mi_hazank", "name": "Mi Hazánk", "color": "#688d1b" },
+    { "id": "mkkp", "name": "Magyar Kétfarkú Kutya Párt", "color": "#d92229" },
+    {
+      "id": "megoldas_mozgalom",
+      "name": "Megoldás Mozgalom",
+      "color": "#aa0a0d"
+    },
+    {
+      "id": "normalis_elet",
+      "name": "Normális Élet Pártja",
+      "color": "#122649"
+    },
+    { "id": "munkaspart", "name": "Magyar Munkáspárt", "color": "#c5161d" }
   ],
   "playableSides": [
     {

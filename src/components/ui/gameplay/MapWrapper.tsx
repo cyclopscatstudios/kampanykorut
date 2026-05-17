@@ -7,8 +7,8 @@ import type { CandidateListData } from "@/logic/domain";
 import classNames from "classnames";
 
 const initialFullMapViewBox: ViewBox = {
-  x: 45,
-  y: -35,
+  x: 20,
+  y: -40,
   w: 750,
   h: 550,
 };
@@ -47,29 +47,28 @@ export function MapWrapper({
   const wheel = useWheelZoom(setViewBox, 1100, 800);
 
   return (
-    <>
-      <div
-        className={classNames(
-          "bg-blue-50/25  rounded-md flex items-center",
-          className,
-        )}
-      >
-        <DistrictMap
-          districts={districts}
-          result={results}
-          onClick={handleDistrict}
-          onDoubleClick={handleDistrict}
-          width={width}
-          height={height}
-          stroke="white"
-          strokeWidth={0.8}
-          selectedDistrict={selectedDistrict}
-          viewBox={viewBox}
-          wheel={wheel}
-          isGameEnded={isGameEnded}
-        />
-      </div>
-      <div>
+    <div
+      style={{ width, height }}
+      className={classNames(
+        "relative bg-blue-100/10 rounded-md overflow-hidden",
+        className,
+      )}
+    >
+      <DistrictMap
+        districts={districts}
+        result={results}
+        onClick={handleDistrict}
+        onDoubleClick={handleDistrict}
+        width={width}
+        height={height}
+        stroke="white"
+        strokeWidth={0.8}
+        selectedDistrict={selectedDistrict}
+        viewBox={viewBox}
+        wheel={wheel}
+        isGameEnded={isGameEnded}
+      />
+      <div className="absolute bottom-2 right-2 flex gap-1 rounded-md bg-slate-900/50 p-1 backdrop-blur-sm">
         <Button
           size="small"
           variant="transparent"
@@ -95,6 +94,6 @@ export function MapWrapper({
           <Button.Icon name="zoom-out" />
         </Button>
       </div>
-    </>
+    </div>
   );
 }
