@@ -1,15 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./.ladle/**/*.{ts,tsx,js,jsx}",
-  ],
-  theme: {
-    extend: {
-      colors: { "dark-blue": "#0f172a" },
-      fontFamily: { montserrat: ["Montserrat", "sans-serif"] },
-    },
-  },
-  plugins: [],
-};
+// Tailwind v4 — theme tokens are in src/index.css (@theme / @utility).
+// This file is kept for tooling compatibility only.
+module.exports = {};

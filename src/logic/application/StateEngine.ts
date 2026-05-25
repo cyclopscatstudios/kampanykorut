@@ -45,8 +45,8 @@ export class StateEngine extends Emitter<CampaignState> {
     this.init();
   }
 
-  init() {
-    if (this.shouldGenerateNewSessionId()) {
+  init(force = false) {
+    if (this.shouldGenerateNewSessionId(force)) {
       const id = this.generateId();
       log.debug("New session ID generated:", id);
       this.sessionId = id;
@@ -193,10 +193,49 @@ export class StateEngine extends Emitter<CampaignState> {
     log.debug("Session info updated for sessionId:", sessionId);
   }
 
+  cleanupUnsavedStates() {
+    const states = this.getSessionKeyWithPrefix();
+    const savedStates = this.getSavedGameSessions();
+
+    const savedSessionIds = new Set(savedStates.map((s) => s.sessionId));
+
+    const orphanedStates = states.filter((stateKey) => {
+      const sessionId = stateKey.replace("kampanykorut_campaignState-", "");
+
+      return !savedSessionIds.has(sessionId);
+    });
+
+    orphanedStates.forEach((key) => {
+      localStorage.removeItem(key);
+
+      log.debug("Cleared orphaned state with key:", key);
+    });
+  }
+
   clearGameState() {
     this.gameConfigEngine.configure(null);
     this.voterEnvironment.configure(null);
     this.districtGroupEngine.configure([]);
+    this.init(true);
+    window.location.reload();
+    // this.saveState('campaignState', { activeCampaignId: state?.activeCampaignId, playerSide: state?.playerSide } as CampaignState );
+  }
+
+  private getSessionKeyWithPrefix() {
+    const PREFIX = "kampanykorut_campaignState-";
+    const keys = [];
+
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+
+      if (!key?.startsWith(PREFIX)) {
+        continue;
+      }
+
+      keys.push(key);
+    }
+
+    return keys;
   }
 
   private updateCampaignState(state: Partial<CampaignState> | null) {
@@ -305,7 +344,10 @@ export class StateEngine extends Emitter<CampaignState> {
     }
   }
 
-  private shouldGenerateNewSessionId() {
+  private shouldGenerateNewSessionId(force: boolean) {
+    if (force) {
+      return true;
+    }
     const { sessionId, pathname } = this.chechUrlParams();
     if (pathname.includes("/game") && sessionId) {
       return false;

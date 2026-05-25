@@ -104,6 +104,9 @@ function getShadedColor(baseHex: string, percent: number): string {
   return baseHex;
 }
 
-export function getBaseBackgroundColor(color: Colors) {
+export function getBaseBackgroundColor(color?: Colors) {
+  if (!color) {
+    return "bg-gray-500";
+  }
   return backgroundColors[color];
 }

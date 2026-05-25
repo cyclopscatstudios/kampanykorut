@@ -49,6 +49,20 @@
       "electionMap": "Election map",
       "statistics": "Statistics",
       "history": "History"
+    },
+    "statistics": {
+      "menuBar": {
+        "overview": "Overview",
+        "districtDetails": "District details"
+      },
+      "overview": {
+        "constituencySeats": "Constituency seats",
+        "listSeats": "List seats",
+        "partyListResults": "Party list results",
+        "biggestVictories": "Biggest victories",
+        "biggestDefeats": "Biggest defeats",
+        "closestDistricts": "Closest districts"
+      }
     }
   },
   "gameMenuBar": {

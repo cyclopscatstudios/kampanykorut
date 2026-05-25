@@ -84,7 +84,7 @@ export function AdvisorModal({
           </div>
           <div className="bg-[#1d2840] flex justify-between p-3 rounded-b-xl">
             <Button
-              variant="transparent"
+              variant="tertiary"
               onClick={() => setConfirmationModal(true)}
             >
               <Button.Icon name="eye-slash-fill" color="white" />

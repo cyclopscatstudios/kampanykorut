@@ -38,7 +38,6 @@ export function QuestionCard({
   cityName,
 }: Question) {
   const { portrait, slogan, party_logo } = useAssets();
-  console.log({ answer });
   return (
     <div className="h-[784px] flex flex-col p-4 bg-slate-900" data-testid={id}>
       <div className="w-full flex flex-col justify-center items-center mb-4">
@@ -67,16 +66,17 @@ export function QuestionCard({
       </div>
       <div className="mt-2">
         <div className="flex justify-around mb-4">
+          <Button variant="secondary" onClick={() => setCurrentView("MapView")}>
+            <Button.Text>{t("questionCard.buttons.mapView")}</Button.Text>
+          </Button>
           <Button
             disabled={!answer}
+            variant="primary"
             onClick={() => {
               handleOnClick(answer);
             }}
           >
             <Button.Text>{t("questionCard.buttons.continue")}</Button.Text>
-          </Button>
-          <Button variant="secondary" onClick={() => setCurrentView("MapView")}>
-            <Button.Text>{t("questionCard.buttons.mapView")}</Button.Text>
           </Button>
         </div>
         <div className="flex items-end justify-center gap-4">

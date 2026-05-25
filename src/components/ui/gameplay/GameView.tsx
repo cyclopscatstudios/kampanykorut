@@ -1,6 +1,6 @@
 import type { CampaignState } from "../../../logic/domain/CampaignEngine";
 import type { FinalResults } from "@/logic/domain";
-import type { DistrictPoligon, DistrictResult } from "../map.utils";
+import type { DistrictPoligon, District } from "../map.utils";
 import type { CurrentView } from "./MainGameScreen";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
@@ -15,12 +15,12 @@ interface GameViewProps {
   state: CampaignState;
   config: GameViewConfig;
   answer: string | undefined;
-  selectedDistrict: DistrictResult | null;
+  selectedDistrict: District | null;
   getFinalResults: () => FinalResults;
   onAnswer: (id?: string) => void;
   onSetAnswer: (answer: string | undefined) => void;
   onSetView: (view: CurrentView) => void;
-  onSetDistrict: (district: DistrictResult | null) => void;
+  onSetDistrict: (district: District | null) => void;
 }
 
 export function GameView({

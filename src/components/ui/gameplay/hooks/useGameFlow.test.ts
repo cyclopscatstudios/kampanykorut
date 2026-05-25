@@ -6,7 +6,7 @@ import type {
   AnswerFeedback,
 } from "../../../../logic/types/campaignEngine.types";
 import type { CampaignState } from "../../../../logic/domain/CampaignEngine";
-import type { DistrictResult } from "../../map.utils";
+import type { District } from "../../map.utils";
 
 const makePending = (overrides: Partial<CampaignState> = {}): PendingTurn => ({
   newGameState: { turn: 1, isEnded: false, ...overrides },
@@ -48,7 +48,7 @@ describe("useGameFlow", () => {
 
   describe("dispatch actions", () => {
     it("SELECT_DISTRICT updates selectedDistrict", () => {
-      const district = { telepules: "Budapest" } as DistrictResult;
+      const district = { telepules: "Budapest" } as District;
       const { result } = renderHook(() =>
         useGameFlow(mockProcessAnswer, mockCommitTurn),
       );
@@ -119,7 +119,7 @@ describe("useGameFlow", () => {
     });
 
     it("passes selected district to processAnswer", () => {
-      const district = { telepules: "Pécs" } as DistrictResult;
+      const district = { telepules: "Pécs" } as District;
       const { result } = renderHook(() =>
         useGameFlow(mockProcessAnswer, mockCommitTurn),
       );

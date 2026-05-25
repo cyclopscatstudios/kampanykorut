@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import type { Decision, CampaignState } from "../../domain/CampaignEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
-import type { DistrictResult } from "../../../components/ui/map.utils";
+import type { District } from "../../../components/ui/map.utils";
 import { useStateEngine } from "./useStateEngine";
 import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
 import { useSettings } from "./useSettings";
@@ -24,7 +24,7 @@ export function useElectionState(campaignId: string) {
 
   const processAnswer = (
     rawAnswer?: string,
-    selectedDistrict?: DistrictResult | null,
+    selectedDistrict?: District | null,
   ): PendingTurn | undefined => {
     const answer = getAnswer(gameState?.answerEffects, rawAnswer);
     if (!rawAnswer || !gameState.currentQuestion || !answer?.effects) {

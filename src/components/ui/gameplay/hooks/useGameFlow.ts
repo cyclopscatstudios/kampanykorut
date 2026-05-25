@@ -4,7 +4,7 @@ import type {
   AnswerFeedback,
   PendingTurn,
 } from "../../../../logic/types/campaignEngine.types";
-import type { DistrictResult } from "../../map.utils";
+import type { District } from "../../map.utils";
 import type { CurrentView } from "../MainGameScreen";
 
 type PendingAdvisor = {
@@ -16,11 +16,11 @@ export type GameFlowState = {
   currentView: CurrentView;
   answer: string | undefined;
   pendingAdvisor: PendingAdvisor | null;
-  selectedDistrict: DistrictResult | null;
+  selectedDistrict: District | null;
 };
 
 export type GameFlowAction =
-  | { type: "SELECT_DISTRICT"; district: DistrictResult | null }
+  | { type: "SELECT_DISTRICT"; district: District | null }
   | { type: "SET_ANSWER"; answer: string | undefined }
   | { type: "SHOW_ADVISOR"; feedback: AnswerFeedback; turn: PendingTurn }
   | { type: "DISMISS_ADVISOR" }
@@ -56,7 +56,7 @@ const initialState: GameFlowState = {
 
 type ProcessAnswer = (
   answer?: string,
-  district?: DistrictResult | null,
+  district?: District | null,
 ) => PendingTurn | undefined;
 
 type CommitTurn = (pending: PendingTurn) => CampaignState;

@@ -3,7 +3,7 @@ import { useWheelZoom, type ViewBox } from "../../hooks/useWheelZoom";
 import {
   getWinnerResultsByList,
   type DistrictPoligon,
-  type DistrictResult,
+  type District,
 } from "../ui/map.utils";
 import { parsePolygon, projectPoints } from "./geometry";
 import { computeBounds, computeScale } from "./projection";
@@ -19,14 +19,14 @@ import type { CandidateListData } from "../../logic/domain/ResultTransformer/Vot
 interface DistrictMapProps {
   districts: DistrictPoligon[];
   result: CandidateListData[];
-  onClick?: (r: DistrictResult) => void;
-  onDoubleClick?: (r: DistrictResult) => void;
+  onClick?: (r: District) => void;
+  onDoubleClick?: (r: District) => void;
   width?: number;
   height?: number;
   stroke?: string;
   strokeWidth?: number;
   simplifyTolerance?: number;
-  selectedDistrict?: DistrictResult | null;
+  selectedDistrict?: District | null;
   wheel: ReturnType<typeof useWheelZoom>;
   viewBox: ViewBox;
   isGameEnded?: boolean;
@@ -37,7 +37,7 @@ export function DistrictMap({
   result,
   width = 1100,
   height = 800,
-  stroke = "#000",
+  stroke = "#00000033",
   strokeWidth = 0.7,
   simplifyTolerance = 0.00005,
   onClick,

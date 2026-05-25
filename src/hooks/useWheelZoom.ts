@@ -77,9 +77,11 @@ export function useWheelZoom(
   };
 }
 
+const MIN_VIEW_SIZE = 1;
+
 function zoomAt(vb: ViewBox, factor: number, cx = 0.5, cy = 0.5): ViewBox {
-  const newW = vb.w * factor;
-  const newH = vb.h * factor;
+  const newW = Math.max(MIN_VIEW_SIZE, vb.w * factor);
+  const newH = Math.max(MIN_VIEW_SIZE, vb.h * factor);
 
   return {
     x: vb.x + (vb.w - newW) * cx,

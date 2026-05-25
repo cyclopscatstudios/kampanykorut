@@ -1,4 +1,4 @@
-import type { DistrictResult } from "../../components/ui/map.utils";
+import type { District } from "../../components/ui/map.utils";
 import { createLogger } from "../logger";
 import type {
   CandidateListData,
@@ -7,7 +7,7 @@ import type {
 
 const log = createLogger("ResultModifierUtils");
 
-export function calculateWinner(result?: DistrictResult | null) {
+export function calculateWinner(result?: District | null) {
   if (!result) {
     return;
   }

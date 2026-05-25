@@ -49,6 +49,20 @@
       "electionMap": "Választási térkép",
       "statistics": "Statisztikák",
       "history": "Előzmények"
+    },
+    "statistics": {
+      "menuBar": {
+        "overview": "Összefoglaló",
+        "districtDetails": "Körzet részletek"
+      },
+      "overview": {
+        "constituencySeats": "Egyéni mandátumok",
+        "listSeats": "Listás mandátumok",
+        "partyListResults": "Pártilistás eredmények",
+        "biggestVictories": "Legnagyobb győzelmek",
+        "biggestDefeats": "Legnagyobb vereségek",
+        "closestDistricts": "Legszorosabb körzetek"
+      }
     }
   },
   "gameMenuBar": {

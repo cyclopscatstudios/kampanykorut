@@ -33,6 +33,7 @@ const colorClasses: Partial<Record<Colors, string>> = {
   white: "text-white",
   lightBlue: "text-blue-50",
   gray: "text-neutral-400",
+  blue: "text-blue-400",
   darkBlue: "text-blue-900",
   red: "text-red-600",
   yellow: "text-yellow-600",

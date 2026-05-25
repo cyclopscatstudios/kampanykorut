@@ -4,7 +4,7 @@ import {
   calcPercentages,
   getCapacity,
 } from "./ResultModifier.utils";
-import type { DistrictResult } from "../../components/ui/map.utils";
+import type { District } from "../../components/ui/map.utils";
 import type { CandidateListData } from "./ResultTransformer/VoteShareTransformer.types";
 
 const makeDistrict = (
@@ -22,8 +22,8 @@ const makeDistrict = (
 
 const makeDistrictResult = (
   partok: Record<string, number | undefined>,
-  overrides?: Partial<DistrictResult>,
-): DistrictResult => ({
+  overrides?: Partial<District>,
+): District => ({
   ...makeDistrict(partok),
   winner: "",
   ...overrides,

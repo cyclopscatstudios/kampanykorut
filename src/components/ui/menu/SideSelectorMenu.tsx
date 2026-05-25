@@ -76,19 +76,22 @@ export function SideSelectorMenu() {
           </div>
         </div>
       </div>
-      <Button
-        className="mt-auto"
-        disabled={!selectedCandidate}
-        onClick={() => startGame(id)}
-      >
-        <Button.Text>{t("menuList.button.start")}</Button.Text>
-      </Button>
-      <Button variant="tertiary" size="large" block onClick={goBack}>
-        <Icon name="backspace-fill" />
-        <Text weight="medium" color="lightBlue">
-          {t("menuList.button.back")}
-        </Text>
-      </Button>
+      <div className="w-full flex justify-between">
+        <Button variant="tertiary" size="large" onClick={goBack}>
+          <Icon name="backspace-fill" />
+          <Text weight="medium" color="lightBlue">
+            {t("menuList.button.back")}
+          </Text>
+        </Button>
+        <Button
+          variant="primary"
+          size="large"
+          disabled={!selectedCandidate}
+          onClick={() => startGame(id)}
+        >
+          <Button.Text>{t("menuList.button.start")}</Button.Text>
+        </Button>
+      </div>
     </div>
   );
 }

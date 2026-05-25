@@ -9,10 +9,12 @@ export type BootstrapIcon = keyof typeof icons;
 
 type IconSize = "normal" | "large" | "medium";
 
+export type IconColor = Colors | "currentColor";
+
 export interface IconProps {
   name: BootstrapIcon;
-  size?: IconSize;
-  color?: Colors;
+  size?: IconSize | number;
+  color?: IconColor;
   source?: IconSource;
   className?: string;
 }
@@ -24,20 +26,33 @@ export function Icon({
   source = "bootstrap",
   className,
 }: IconProps) {
-  const iconSize = getIconSize(size);
+  const iconSizeClass =
+    typeof size === "string" ? getIconSize(size) : undefined;
+  const iconSizeStyle =
+    typeof size === "number" ? { fontSize: size } : undefined;
   const iconColor = getIconColor(color);
 
   if (source === "svg") {
     const SvgIcon = svgIcons[name as keyof typeof svgIcons];
-
     if (!SvgIcon) return null;
-
-    return <SvgIcon className={classNames(iconSize, iconColor)} aria-hidden />;
+    return (
+      <SvgIcon
+        className={classNames(iconSizeClass, iconColor, className)}
+        style={iconSizeStyle}
+        aria-hidden
+      />
+    );
   }
 
   return (
     <i
-      className={classNames(`bi bi-${name}`, iconSize, iconColor, className)}
+      className={classNames(
+        `bi bi-${name}`,
+        iconSizeClass,
+        iconColor,
+        className,
+      )}
+      style={iconSizeStyle}
     />
   );
 }
@@ -55,8 +70,10 @@ function getIconSize(size: IconSize) {
   }
 }
 
-function getIconColor(color: Colors) {
+function getIconColor(color: IconColor): string {
   switch (color) {
+    case "currentColor":
+      return "";
     case "white":
       return "text-white";
     case "purple":
@@ -66,6 +83,12 @@ function getIconColor(color: Colors) {
     case "darkBlue":
       return "text-blue-900";
     case "green":
-      return "text-green-800";
+      return "text-green-600";
+    case "red":
+      return "text-red-600";
+    case "yellow":
+      return "text-yellow-400";
+    default:
+      return "";
   }
 }

@@ -1,7 +1,7 @@
 import type { CandidateListData } from "@/logic/domain";
 import type { PartyName } from "../../types/color";
 
-export type DistrictResult = {
+export type District = {
   winner: string;
   maxVotes?: number;
 } & CandidateListData;
@@ -56,7 +56,7 @@ export function getWinnerResultsByList(
   };
 }
 
-export function getWinnerResultByDistrict(district?: DistrictResult | null) {
+export function getWinnerResultByDistrict(district?: District | null) {
   if (!district) {
     return null;
   }

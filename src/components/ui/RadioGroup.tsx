@@ -1,3 +1,4 @@
+import { CommonWrapper } from "./CommonWrapper";
 import { Text } from "./Text";
 
 type RadioOption<T extends string = string> = {
@@ -34,25 +35,27 @@ export function RadioGroup<T extends string>({
         const id = `${name}-${option.value}`;
 
         return (
-          <label
-            key={option.value}
-            htmlFor={id}
-            className={`flex items-center gap-2 cursor-pointer p-4 bg-slate-800 ${
-              option.disabled ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          >
-            <Radio
-              id={id}
-              name={name}
-              value={option.value}
-              checked={value === option.value}
-              disabled={option.disabled}
-              onChange={() => onChange(option.value)}
-            />
-            <Text color="lightBlue" className={className}>
-              {option.label}
-            </Text>
-          </label>
+          <CommonWrapper>
+            <label
+              key={option.value}
+              htmlFor={id}
+              className={`flex items-center gap-2 cursor-pointer p-4 bg-slate-800 ${
+                option.disabled ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              <Radio
+                id={id}
+                name={name}
+                value={option.value}
+                checked={value === option.value}
+                disabled={option.disabled}
+                onChange={() => onChange(option.value)}
+              />
+              <Text color="lightBlue" className={className}>
+                {option.label}
+              </Text>
+            </label>
+          </CommonWrapper>
         );
       })}
     </div>

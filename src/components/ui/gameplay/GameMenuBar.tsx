@@ -1,5 +1,6 @@
 import { Text } from "../Text";
-import logo from "../../../assets/logo_reworked.png";
+import markdown from "../../../../brand-assets/svg/logo-wordmark-dark.svg";
+import logo from "../../../../brand-assets/svg/logo-mark.svg";
 import { Button } from "../Button";
 import { Tooltip } from "../Tooltip";
 import type { DialogId } from "./hooks/useDialogState";
@@ -12,12 +13,12 @@ import type { CampaignConfig } from "@/logic/types";
 export interface MenuBarProps {
   activeDialog: DialogId;
   onOpen: (id: Exclude<DialogId, null>) => void;
-  actionDispatch: ActionDispatch<[action: GameFlowAction]>;
-  state: CampaignState;
-  config: CampaignConfig;
+  actionDispatch?: ActionDispatch<[action: GameFlowAction]>;
+  state?: CampaignState;
+  config?: CampaignConfig;
 }
 
-export function GameMenuBar({
+export function TopMenuBar({
   activeDialog,
   onOpen,
   actionDispatch,
@@ -27,43 +28,41 @@ export function GameMenuBar({
   const [info, setInfo] = useState("turn");
   return (
     <div className="w-full border-b-2 border-blue-400">
-      <div className="flex justify-between items-center mx-5">
-        <div className="flex justify-center items-center gap-2">
+      <div className="h-[60px] flex justify-between items-center mx-2.5">
+        <div className="flex justify-between items-center gap-2">
           <div
             className="flex justify-center items-center cursor-pointer"
             onClick={() => onOpen("gameMenu")}
           >
-            <img src={logo} className="size-5 mr-3" />
-            <Text
-              weight="bold"
-              color={activeDialog === "gameMenu" ? "darkBlue" : "lightBlue"}
-              className="text-5xl mt-5 mb-5"
-            >
-              KAMPÁNYKÖRÚT
-            </Text>
+            <img src={logo} className="mr-1" width="40" height="40" />
+            <img src={markdown} className="mr-3" width="200" height="40" />
           </div>
-          <Button
-            variant="transparent"
-            onClick={() =>
-              actionDispatch({ type: "CHANGE_VIEW", view: "MapView" })
-            }
-          >
-            <Button.Icon name="map-fill" color="white" size="medium" />
-          </Button>
-        </div>
-        <div onClick={() => setInfo(info === "turn" ? "configName" : "turn")}>
-          {info === "turn" ? (
-            <TurnBadge
-              currentTurn={state.turn}
-              turns={config.questions.length}
-            />
-          ) : (
-            <Text size="lg">{config.electionConfig.title}</Text>
+          {actionDispatch && (
+            <Button
+              variant="tertiary"
+              onClick={() =>
+                actionDispatch({ type: "CHANGE_VIEW", view: "MapView" })
+              }
+            >
+              <Button.Icon name="map-fill" color="white" size="medium" />
+            </Button>
           )}
         </div>
+        {state && config && (
+          <div onClick={() => setInfo(info === "turn" ? "configName" : "turn")}>
+            {info === "turn" ? (
+              <TurnBadge
+                currentTurn={state.turn}
+                turns={config.questions.length}
+              />
+            ) : (
+              <Text size="lg">{config.electionConfig.title}</Text>
+            )}
+          </div>
+        )}
         <div className="flex justify-center gap-2">
           <Tooltip content={t("gameMenuBar.save")}>
-            <Button variant="transparent" onClick={() => onOpen("saveGame")}>
+            <Button variant="tertiary" onClick={() => onOpen("saveGame")}>
               <Button.Icon
                 name="file-earmark-arrow-down-fill"
                 color={activeDialog === "saveGame" ? "darkBlue" : "white"}
@@ -72,7 +71,7 @@ export function GameMenuBar({
             </Button>
           </Tooltip>
           <Tooltip content={t("gameMenuBar.laod")}>
-            <Button variant="transparent" onClick={() => onOpen("savedGames")}>
+            <Button variant="tertiary" onClick={() => onOpen("savedGames")}>
               <Button.Icon
                 name="file-earmark-arrow-up-fill"
                 color={activeDialog === "savedGames" ? "darkBlue" : "white"}
@@ -81,7 +80,7 @@ export function GameMenuBar({
             </Button>
           </Tooltip>
           <Tooltip content={t("gameMenuBar.settings")}>
-            <Button variant="transparent" onClick={() => onOpen("settings")}>
+            <Button variant="tertiary" onClick={() => onOpen("settings")}>
               <Button.Icon
                 name="gear-fill"
                 color={activeDialog === "settings" ? "darkBlue" : "white"}
@@ -90,7 +89,7 @@ export function GameMenuBar({
             </Button>
           </Tooltip>
           <Tooltip content={t("gameMenuBar.quit")}>
-            <Button variant="transparent" onClick={() => onOpen("exit")}>
+            <Button variant="tertiary" onClick={() => onOpen("exit")}>
               <Button.Icon
                 name="x-square-fill"
                 color={activeDialog === "exit" ? "darkBlue" : "white"}
@@ -112,8 +111,8 @@ function TurnBadge({
   turns: number;
 }) {
   return (
-    <div className="bg-blue-50 p-1 rounded-full">
-      <Text color="darkBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
+    <div className="bg-blue-400/10 rounded-md border border-blue-50/10 p-1">
+      <Text color="lightBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
     </div>
   );
 }
