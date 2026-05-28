@@ -5,6 +5,7 @@ import { container } from "tsyringe";
 import { StateEngine } from "@/logic/application";
 import { Modal } from "../Modal";
 import { useState } from "react";
+import { useNavigation } from "../../../hooks/navigationHook";
 
 export function GameDialog({
   isOpen,
@@ -38,22 +39,69 @@ export function GameDialog({
   );
 }
 
+interface ModalState {
+  isOpen: boolean;
+  type: "restart" | "campaignSelector" | null;
+}
+
 export function GameBody() {
   const gameStateEngine = container.resolve(StateEngine);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<ModalState>({
+    isOpen: false,
+    type: null,
+  });
+  const { goToCampaignSelector } = useNavigation();
 
   return (
     <div className="flex flex-col gap-5 h-full">
-      {isModalOpen && (
-        <ConfirmRestartModal
-          onCancel={() => setIsModalOpen(false)}
-          onConfirm={() => gameStateEngine.clearGameState()}
+      {isModalOpen.type === "campaignSelector" && (
+        <ConfirmCampaignSelectorModal
+          onCancel={() => setIsModalOpen({ isOpen: false, type: null })}
+          onConfirm={() => {
+            goToCampaignSelector();
+          }}
         />
       )}
-      <Button onClick={() => setIsModalOpen(true)}>
+      {isModalOpen.type === "restart" && (
+        <ConfirmRestartModal
+          onCancel={() => setIsModalOpen({ isOpen: false, type: null })}
+          onConfirm={() => gameStateEngine.clearGameState("restart")}
+        />
+      )}
+      <Button
+        variant="tertiary"
+        onClick={() =>
+          setIsModalOpen({ isOpen: true, type: "campaignSelector" })
+        }
+      >
+        <Button.Text>Campaign selector</Button.Text>
+      </Button>
+      <Button
+        variant="tertiary"
+        onClick={() => setIsModalOpen({ isOpen: true, type: "restart" })}
+      >
         <Button.Text>Restart</Button.Text>
       </Button>
     </div>
+  );
+}
+
+interface ConfirmCampaignSelectorModalProps {
+  onCancel: () => void;
+  onConfirm: () => void;
+}
+
+function ConfirmCampaignSelectorModal({
+  onCancel,
+  onConfirm,
+}: ConfirmCampaignSelectorModalProps) {
+  return (
+    <Modal
+      title="Campaign Selector"
+      description="Are you sure you want to return to the campaign selector?"
+      onCancel={onCancel}
+      onConfirm={onConfirm}
+    />
   );
 }
 

@@ -8,7 +8,7 @@ export type SessionKey =
   | "campaignConfig"
   | "menuSession"
   | "devSession"
-  | "questionHistory"
+  | "turnHistory"
   | "settings"
   | "gameConfig"
   | "campaignState"

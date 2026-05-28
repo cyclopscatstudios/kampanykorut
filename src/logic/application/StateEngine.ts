@@ -23,6 +23,8 @@ const MAX_SAVED_SESSIONS = 5;
 
 const log = createLogger("CampaignStateEngine");
 
+export type ClearTypes = "restart" | "exit";
+
 @singleton()
 export class StateEngine extends Emitter<CampaignState> {
   private sessionId: string | undefined;
@@ -57,7 +59,7 @@ export class StateEngine extends Emitter<CampaignState> {
   getHistory(): HistoryItem[] | null {
     const sessionId = this.getSessionId();
     const history = this.storage.getItem(
-      "questionHistory",
+      "turnHistory",
       "localStorage",
       sessionId,
     );
@@ -106,12 +108,23 @@ export class StateEngine extends Emitter<CampaignState> {
       "localStorage",
       sessionId,
     );
-    const parsed = savedState ? JSON.parse(savedState) : null;
-    return this.campaignState ?? parsed;
+    return savedState ? JSON.parse(savedState) : null;
+  }
+
+  getTurnHistory() {
+    const sessionId = this.getSessionId();
+    const history = this.storage.getItem(
+      "turnHistory",
+      "localStorage",
+      sessionId,
+    );
+    return history ? JSON.parse(history) : null;
   }
 
   getSessionId() {
-    const sessionId = this.storage.getItem("currentSessionId", "localStorage");
+    const urlSessionId = this.chechUrlParams().sessionId;
+    const sessionId =
+      urlSessionId || this.storage.getItem("currentSessionId", "localStorage");
     if (sessionId) {
       this.sessionId = sessionId;
       return this.sessionId;
@@ -133,7 +146,7 @@ export class StateEngine extends Emitter<CampaignState> {
       return;
     }
     const history = this.storage.getItem(
-      "questionHistory",
+      "turnHistory",
       "localStorage",
       sessionId,
     );
@@ -142,6 +155,12 @@ export class StateEngine extends Emitter<CampaignState> {
       return;
     }
     this.saveSessionId(session.sessionId);
+    const state = this.getCampaignStateById(session.sessionId);
+    if (!state) {
+      log.error("campaign state was not found");
+      return;
+    }
+    this.campaignState = state;
     const config = gameModeRegistry[campaignId];
     this.gameConfigEngine.configure(config, campaignId, true);
     const route = `/game/${campaignId}?sessionId=${sessionId}`;
@@ -162,8 +181,8 @@ export class StateEngine extends Emitter<CampaignState> {
     if (sessionKey === "campaignState") {
       this.updateCampaignState(session as CampaignState);
     }
-    if (sessionKey === "questionHistory") {
-      this.updateQuestionHistory(session as HistoryItem);
+    if (sessionKey === "turnHistory") {
+      this.updateTurnHistory(session as HistoryItem);
     }
   }
 
@@ -212,13 +231,23 @@ export class StateEngine extends Emitter<CampaignState> {
     });
   }
 
-  clearGameState() {
+  campaignSelectorScreen() {}
+
+  clearGameState(type: ClearTypes) {
+    const state = this.getCurrentCampaignState();
+    this.saveState("campaignState", null);
     this.gameConfigEngine.configure(null);
     this.voterEnvironment.configure(null);
     this.districtGroupEngine.configure([]);
-    this.init(true);
-    window.location.reload();
-    // this.saveState('campaignState', { activeCampaignId: state?.activeCampaignId, playerSide: state?.playerSide } as CampaignState );
+
+    if (type === "restart") {
+      this.init(true);
+      window.location.reload();
+      this.saveState("campaignState", {
+        activeCampaignId: state?.activeCampaignId,
+        playerSide: state?.playerSide,
+      } as CampaignState);
+    }
   }
 
   private getSessionKeyWithPrefix() {
@@ -250,6 +279,8 @@ export class StateEngine extends Emitter<CampaignState> {
     const sessionId = this.getSessionId();
     const currentCampaignState = this.getCurrentCampaignState();
 
+    console.log({ currentCampaignState });
+
     const updated = {
       ...(currentCampaignState ?? {}),
       ...state,
@@ -265,8 +296,18 @@ export class StateEngine extends Emitter<CampaignState> {
     log.debug("Election state saved for sessionId:", sessionId);
   }
 
+  private getCampaignStateById(id: string): CampaignState | null {
+    const storedCampaignState = this.storage.getItem(
+      "campaignState",
+      "localStorage",
+      id,
+    );
+    return storedCampaignState ? JSON.parse(storedCampaignState) : null;
+  }
+
   private getCurrentCampaignState() {
     const sessionId = this.getSessionId();
+    console.log({ sessionId });
     const storedCampaignState = this.storage.getItem(
       "campaignState",
       "localStorage",
@@ -275,13 +316,14 @@ export class StateEngine extends Emitter<CampaignState> {
     const parsed = storedCampaignState
       ? (JSON.parse(storedCampaignState) as CampaignState)
       : null;
-    return this.campaignState ?? parsed;
+    console.log({ parsed });
+    return parsed;
   }
 
-  private updateQuestionHistory(historyItem: HistoryItem) {
+  private updateTurnHistory(historyItem: HistoryItem) {
     const sessionId = this.getSessionId();
     const currentHistory = this.storage.getItem(
-      "questionHistory",
+      "turnHistory",
       "localStorage",
       sessionId,
     );
@@ -292,7 +334,7 @@ export class StateEngine extends Emitter<CampaignState> {
     }
     newHistory.push(historyItem);
     const value = JSON.stringify(newHistory);
-    this.storage.setItem(`questionHistory-${sessionId}`, value, "localStorage");
+    this.storage.setItem(`turnHistory-${sessionId}`, value, "localStorage");
     log.debug("Question history saved for sessionId:", sessionId);
   }
 

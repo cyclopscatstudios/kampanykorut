@@ -116,5 +116,8 @@
         "disable": "Disable"
       }
     }
+  },
+  "toaster": {
+    "settingsUpdated": "Settings updated successfully!"
   }
 }

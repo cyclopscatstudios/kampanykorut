@@ -152,7 +152,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
 
   describe("EffectApplier – Conditional Effects", () => {
     it("should apply replace conditional effect", () => {
-      stateEngine.saveState("questionHistory", {
+      stateEngine.saveState("turnHistory", {
         questionId: "q1",
         answerId: "a1",
       });
@@ -210,7 +210,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
       ]);
     });
     it("should apply merge conditional effect", () => {
-      stateEngine.saveState("questionHistory", {
+      stateEngine.saveState("turnHistory", {
         questionId: "q1",
         answerId: "a1",
       });

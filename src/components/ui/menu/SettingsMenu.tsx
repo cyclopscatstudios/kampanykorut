@@ -18,7 +18,7 @@ export function SettingsMenu() {
 
   const saveChanges = () => {
     updateSettings({ ...settingsForm });
-    toaster("Settings updated", "Success");
+    toaster(t("toaster.settingsUpdated"), "Success");
   };
 
   return (

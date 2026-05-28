@@ -68,7 +68,11 @@ export function SavedSessionsBody({
       tabIndex={0}
     >
       {Object.keys(savedSessions).length === 0 && (
-        <div>{t("loadSavedGamesMenu.emptyLabel")}</div>
+        <div>
+          <Text className="text-center">
+            {t("loadSavedGamesMenu.emptyLabel")}
+          </Text>
+        </div>
       )}
       {savedSessions.map((value) => (
         <div

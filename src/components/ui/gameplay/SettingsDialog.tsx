@@ -26,7 +26,7 @@ export function SettingsDialog({
   const saveChanges = () => {
     updateSettings({ ...settingsForm });
     setIsOpen(false);
-    toaster("Settings updated", "Success");
+    toaster(t("toaster.settingsUpdated"), "Success");
   };
 
   return (

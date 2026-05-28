@@ -12,14 +12,15 @@ import { FinalResultScreen } from "./components/ui/gameplay/FinalResultScreen/En
 import { finalResultLoader } from "./components/loaders/finalResult.loader";
 import { mainMenuLoader } from "./components/loaders/mainMenu.loader";
 import { rootLoader } from "./components/loaders/route.loader";
+import { mainGameScreenLoader } from "./components/loaders/mainGameScreen.loader";
+import { ErrorPage } from "./components/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     loader: rootLoader,
-    // TODO: implement an error page
-    errorElement: <div>error</div>,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <MainMenu />, loader: mainMenuLoader },
       { path: "settings", element: <SettingsMenu /> },
@@ -49,6 +50,7 @@ export const router = createBrowserRouter([
       {
         path: "game/:id",
         element: <MainGameScreenWrapper />,
+        loader: mainGameScreenLoader,
       },
       {
         path: "game/:id/end-results",

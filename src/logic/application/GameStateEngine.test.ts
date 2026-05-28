@@ -77,7 +77,7 @@ describe("StateEngine", () => {
       const { engine } = makeEngine();
       const items = [{ questionId: "q1", answerId: "a1" }];
       mem._map.set(
-        `kampanykorut_questionHistory-${FIXED_SESSION_ID}`,
+        `kampanykorut_turnHistory-${FIXED_SESSION_ID}`,
         JSON.stringify(items),
       );
 
@@ -303,12 +303,11 @@ describe("StateEngine", () => {
     it("routes questionHistory to updateQuestionHistory (appends)", () => {
       const { engine } = makeEngine();
 
-      engine.saveState("questionHistory", { questionId: "q1", answerId: "a1" });
-      engine.saveState("questionHistory", { questionId: "q2", answerId: "a2" });
+      engine.saveState("turnHistory", { questionId: "q1", answerId: "a1" });
+      engine.saveState("turnHistory", { questionId: "q2", answerId: "a2" });
 
       const stored = JSON.parse(
-        mem._map.get(`kampanykorut_questionHistory-${FIXED_SESSION_ID}`) ??
-          "[]",
+        mem._map.get(`kampanykorut_turnHistory-${FIXED_SESSION_ID}`) ?? "[]",
       );
       expect(stored).toHaveLength(2);
       expect(stored[0].questionId).toBe("q1");
@@ -338,8 +337,22 @@ describe("StateEngine", () => {
 
     function seedHistory(sessionId = "session-abc") {
       mem._map.set(
-        `kampanykorut_questionHistory-${sessionId}`,
+        `kampanykorut_turnHistory-${sessionId}`,
         JSON.stringify([{ questionId: "q1", answerId: "a1" }]),
+      );
+    }
+
+    function seedCampaignStateForSession(
+      sessionId = "session-abc",
+      campaignId = "2022_ogyv_default",
+    ) {
+      mem._map.set(
+        `kampanykorut_campaignState-${sessionId}`,
+        JSON.stringify({
+          activeCampaignId: campaignId,
+          turn: 3,
+          isEnded: false,
+        }),
       );
     }
 
@@ -379,6 +392,7 @@ describe("StateEngine", () => {
       const goSpy = vi.spyOn(navigation, "go").mockImplementation(() => {});
       const { engine } = makeEngine(navigation);
       seedHistory();
+      seedCampaignStateForSession();
 
       engine.loadState(validSession);
 
@@ -394,6 +408,7 @@ describe("StateEngine", () => {
       const { engine, configEngine } = makeEngine(navigation);
       const configureSpy = vi.spyOn(configEngine, "configure");
       seedHistory();
+      seedCampaignStateForSession();
 
       engine.loadState(validSession);
 
@@ -410,6 +425,7 @@ describe("StateEngine", () => {
       vi.spyOn(navigation, "go").mockImplementation(() => {});
       const { engine } = makeEngine(navigation);
       seedHistory();
+      seedCampaignStateForSession();
 
       engine.loadState(validSession);
 

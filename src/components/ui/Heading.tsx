@@ -21,6 +21,7 @@ const sizeClasses: Record<HeadingLevel, string> = {
 const colorClasses: Partial<Record<Colors, string>> = {
   white: "text-white",
   lightBlue: "text-blue-50",
+  blue: "text-blue-600",
   gray: "text-neutral-500",
   darkBlue: "text-blue-900",
   red: "text-red-600",

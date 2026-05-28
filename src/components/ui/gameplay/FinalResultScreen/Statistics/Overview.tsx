@@ -6,6 +6,7 @@ import type { CampaignConfig } from "@/logic/types";
 import type { StatisticResult } from "../statistics.utils";
 import { Text } from "../../../Text";
 import { t } from "i18next";
+import { SupportChart } from "./Chart";
 
 export function Overview({
   results,
@@ -14,8 +15,10 @@ export function Overview({
   largestVictories,
   largestDefeats,
   closestDistricts,
+  turnHistory,
 }: {
   state: CampaignState | null;
+  turnHistory: any[]; // TODO: type
   results: FinalResults;
   config: CampaignConfig;
   playerSide: string;
@@ -71,6 +74,9 @@ export function Overview({
           getParty={(e) => e.winnerParty ?? ""}
           renderValue={(e) => <Text>{e.percentageDifference.toFixed(1)}%</Text>}
         />
+      </div>
+      <div className="w-full mt-4">
+        <SupportChart turnHistory={turnHistory} config={config} />
       </div>
     </div>
   );

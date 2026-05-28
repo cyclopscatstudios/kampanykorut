@@ -24,7 +24,7 @@ export function LoadSavedSessionsMenu() {
         selectedSession={selectedSession}
         setSelectedSession={setSelectedSession}
       />
-      <div className="pt-5 flex justify-between">
+      <div className="min-w-[350px] pt-5 flex justify-between">
         <Button variant="tertiary" size="large" onClick={goBack}>
           <Icon name="backspace-fill" />
           <Text weight="medium" color="lightBlue">

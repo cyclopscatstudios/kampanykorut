@@ -116,5 +116,8 @@
         "disable": "Letiltás"
       }
     }
+  },
+  "toaster": {
+    "settingsUpdated": "Beállítások sikeresen frissültek!"
   }
 }

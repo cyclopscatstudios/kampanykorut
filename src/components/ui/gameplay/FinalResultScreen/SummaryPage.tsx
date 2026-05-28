@@ -9,6 +9,9 @@ import type { Mandate } from "../../../../logic/domain/MandateCalculator.types";
 import { container } from "tsyringe";
 import { StateEngine, ConfigEngine } from "@/logic/application";
 
+// TODO: this should come from the campaign config
+const MIN_SEATS_TO_WIN = 100;
+
 export function SummaryPage({ results }: { results: FinalResults }) {
   const campaignStateEngine = container.resolve(StateEngine);
   const configEngine = container.resolve(ConfigEngine);
@@ -19,7 +22,9 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     current.totalSeats > max.totalSeats ? current : max,
   );
 
-  const didPlayerWin = winner.party === campaignState?.playerSide?.partyId;
+  const didPlayerWin =
+    winner.party === campaignState?.playerSide?.partyId &&
+    winner.totalSeats >= MIN_SEATS_TO_WIN;
   const assets = didPlayerWin
     ? currentConfig?.endResults.playerSideVictory
     : currentConfig?.endResults.playerSideDefeat;

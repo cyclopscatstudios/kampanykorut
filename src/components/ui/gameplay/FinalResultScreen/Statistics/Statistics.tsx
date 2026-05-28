@@ -24,6 +24,7 @@ export function Statistics({
 }) {
   const stateEngine = container.resolve(StateEngine);
   const state = stateEngine.getCampaignState();
+  const turnHistory = stateEngine.getTurnHistory();
   const [currentTab, setCurrentTab] = useState<StatisticsTab>("overview");
   const playerSide = state?.playerSide?.partyId ?? "";
 
@@ -54,6 +55,7 @@ export function Statistics({
           largestVictories={largestVictories}
           closestDistricts={closestDistricts}
           state={state}
+          turnHistory={turnHistory}
           results={results}
           config={config}
           playerSide={playerSide}

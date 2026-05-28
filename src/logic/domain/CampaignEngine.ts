@@ -135,6 +135,7 @@ export class CampaignEngine {
     history: Array<{ questionId: string; answerId: string }> = [],
     gameSettings: GameSettings,
   ): CampaignState {
+    console.log({ state });
     if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
       return state;

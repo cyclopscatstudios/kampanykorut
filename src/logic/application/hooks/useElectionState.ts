@@ -6,6 +6,7 @@ import { useStateEngine } from "./useStateEngine";
 import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
 import { useSettings } from "./useSettings";
 import { gameModeRegistry } from "../gameModeRegistery";
+import { useNavigation } from "../../../hooks/navigationHook";
 
 export function useElectionState(campaignId: string) {
   const config = gameModeRegistry[campaignId];
@@ -13,7 +14,8 @@ export function useElectionState(campaignId: string) {
     () => createCampaignEngine(config, campaignId),
     [config, campaignId],
   );
-  const { saveSession, currentState, currentHistory } = useStateEngine();
+  const { saveSession, currentState, currentHistory, sessionId } =
+    useStateEngine();
   const [gameState, setGameState] = useState<CampaignState>(() =>
     campaignEngine.createInitialState(
       currentState,
@@ -21,6 +23,7 @@ export function useElectionState(campaignId: string) {
     ),
   );
   const { settings } = useSettings();
+  const { goToFinalResults } = useNavigation();
 
   const processAnswer = (
     rawAnswer?: string,
@@ -58,6 +61,9 @@ export function useElectionState(campaignId: string) {
     decision,
   }: PendingTurn): CampaignState => {
     preserveState(rawAnswer, newGameState, decision);
+    if (newGameState.isEnded) {
+      goToFinalResults(campaignId, sessionId);
+    }
     return newGameState;
   };
 
@@ -83,8 +89,9 @@ export function useElectionState(campaignId: string) {
       answerId: answer,
       visitedDistrict,
       turn: newGameState.turn,
+      results: newGameState.results,
     };
-    saveSession("questionHistory", historyEntry);
+    saveSession("turnHistory", historyEntry);
     saveSession("campaignState", newGameState);
     setGameState(newGameState);
   };
