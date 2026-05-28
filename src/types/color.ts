@@ -54,3 +54,17 @@ export const partyActiveColor: Record<PartyName, string> = {
   [PartyName.Munkaspart]: "#B7094C",
   [PartyName.Fuggetlen]: "#6C757D",
 };
+
+export const backgroundColors: Record<Colors, string> = {
+  red: "bg-red-600",
+  yellow: "bg-yellow-400",
+  green: "bg-green-600",
+  darkBlue: "bg-blue-900",
+  blue: "bg-blue-600",
+  lightBlue: "bg-sky-400",
+  silver: "bg-slate-300",
+  gray: "bg-gray-500",
+  white: "bg-white",
+  purple: "bg-purple-600",
+  transparent: "bg-transparent",
+};

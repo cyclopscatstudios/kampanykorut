@@ -10,8 +10,17 @@ const { mockNavigate } = vi.hoisted(() => ({
   mockNavigate: vi.fn(),
 }));
 
-vi.mock("react-router", () => ({
-  useNavigate: () => mockNavigate,
+vi.mock("./navigationHook", () => ({
+  useNavigation: () => ({
+    goBack: () => mockNavigate(-1),
+    goToCampaign: (id: string, sessionId: string) =>
+      mockNavigate(`/game/${id}?sessionId=${sessionId}`),
+    goToSideSelector: vi.fn(),
+    goToMainMenu: vi.fn(),
+    goToCampaignSelector: vi.fn(),
+    goToFinalResults: vi.fn(),
+    reloadPage: vi.fn(),
+  }),
 }));
 
 const GAME_ID = "2022_ogyv_default";

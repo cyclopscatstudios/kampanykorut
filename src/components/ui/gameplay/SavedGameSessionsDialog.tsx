@@ -8,6 +8,7 @@ import { Heading } from "../Heading";
 import { container } from "tsyringe";
 import { Text } from "../Text";
 import { useState } from "react";
+import { t } from "i18next";
 
 export function SavedSessionsDialog({
   isOpen,
@@ -20,11 +21,12 @@ export function SavedSessionsDialog({
   const savedSessions = gameStateEngine.getSavedGameSessions();
   const [selectedSession, setSelectedSession] =
     useState<SavedCampaignSessionInfo | null>(null);
+
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
       <DialogHeader>
         <Heading level={3} color="lightBlue">
-          Load Game
+          {t("loadSavedGamesMenu.button.load")}
         </Heading>
       </DialogHeader>
       <DialogBody>
@@ -37,13 +39,13 @@ export function SavedSessionsDialog({
       <DialogFooter>
         <div className="w-full flex justify-between">
           <Button variant="secondary" onClick={() => setIsOpen(false)}>
-            <Button.Text>Cancel</Button.Text>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
           </Button>
           <Button
             disabled={!selectedSession}
             onClick={() => gameStateEngine.loadState(selectedSession)}
           >
-            <Button.Text>Load Game</Button.Text>
+            <Button.Text>{t("loadSavedGamesMenu.button.load")}</Button.Text>
           </Button>
         </div>
       </DialogFooter>
@@ -66,7 +68,11 @@ export function SavedSessionsBody({
       tabIndex={0}
     >
       {Object.keys(savedSessions).length === 0 && (
-        <div>No saved game sessions found.</div>
+        <div>
+          <Text className="text-center">
+            {t("loadSavedGamesMenu.emptyLabel")}
+          </Text>
+        </div>
       )}
       {savedSessions.map((value) => (
         <div

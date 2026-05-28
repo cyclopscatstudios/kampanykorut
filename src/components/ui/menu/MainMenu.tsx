@@ -1,11 +1,12 @@
 import { useTranslateLang } from "../../../logic/useTranslateLang";
 import { MenuList } from "../MenuList";
-import logo from "../../../assets/logo_reworked.png";
+import logo from "../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { MenuLayout } from "./MenuLayout";
 import { MenuItemId } from "./menu.types";
 import { Text } from "../Text";
 import { useState } from "react";
 import { useLoaderData } from "react-router";
+import { buildInfo } from "../../../buildInfo";
 
 export function MainMenu() {
   const { quotes } = useLoaderData();
@@ -19,11 +20,11 @@ export function MainMenu() {
     <div className="relative w-full h-full">
       <div className="absolute top-0 left-0 w-full flex justify-center pt-8">
         <div className="flex flex-col items-center z-10">
-          <img src={logo} alt="Logo" className="w-15 h-15" />
-          <Text weight="bold" color="lightBlue" className="text-5xl mt-5 mb-5">
-            KAMPÁNYKÖRÚT
-          </Text>
-          <div onClick={() => setQuote(() => getRandomQuote(quotes))}>
+          <img src={logo} alt="Company Logo" width="300" height="200" />
+          <div
+            className="cursor-pointer"
+            onClick={() => setQuote(() => getRandomQuote(quotes))}
+          >
             <Text color="lightBlue" className="text-sm">
               {quote}
             </Text>
@@ -61,6 +62,15 @@ export function MainMenu() {
           ]}
         />
       </MenuLayout>
+      <div className="absolute bottom-3 left-0 right-0 px-4">
+        <div className="border-t border-gray-200/20 pt-2 flex justify-center">
+          <Text color="gray" size="xs">
+            {buildInfo.isDev
+              ? "dev"
+              : `v${buildInfo.version} · ${buildInfo.gitCommit}`}
+          </Text>
+        </div>
+      </div>
     </div>
   );
 }

@@ -7,6 +7,7 @@ export function useAssets() {
   const campaignStateEngine = container.resolve(StateEngine);
   const campaignState = campaignStateEngine.getCampaignState();
   const gameConfig = electionConfigEngine.getCurrentElectionConfig();
+  console.log({ campaignState, gameConfig });
   if (!gameConfig || !campaignState) {
     return {
       portrait: "",

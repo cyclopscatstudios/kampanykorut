@@ -3,9 +3,27 @@ import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import tailwindcss from "@tailwindcss/vite";
+import { readFileSync } from "node:fs";
+import { execSync } from "node:child_process";
+
+const pkg = JSON.parse(readFileSync("./package.json", "utf-8")) as {
+  version: string;
+};
+
+let gitCommit = "unknown";
+try {
+  gitCommit = execSync("git rev-parse --short HEAD").toString().trim();
+} catch {
+  // not a git repo or no commits yet
+}
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  define: {
+    __APP_VERSION__: JSON.stringify(pkg.version),
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
+    __GIT_COMMIT__: JSON.stringify(gitCommit),
+  },
   server: {
     port: 3000,
   },

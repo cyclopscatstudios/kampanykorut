@@ -7,7 +7,7 @@ import type {
 } from "./ResultTransformer/VoteShareTransformer.types";
 import type { CalculateResults } from "./MandateCalculator.types";
 import { createLogger } from "../logger";
-import type { DistrictResult } from "../../components/ui/map.utils";
+import type { District } from "../../components/ui/map.utils";
 import {
   type Answer,
   type AnswerFeedback,
@@ -52,7 +52,7 @@ export interface Decision {
   answerId: string;
   effects: RawEffect[];
   conditionalEffects?: ConditionalRawEffect[];
-  selectedDistrict?: DistrictResult | null;
+  selectedDistrict?: District | null;
 }
 
 export interface TurnResult {
@@ -135,6 +135,7 @@ export class CampaignEngine {
     history: Array<{ questionId: string; answerId: string }> = [],
     gameSettings: GameSettings,
   ): CampaignState {
+    console.log({ state });
     if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
       return state;

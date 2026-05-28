@@ -4,13 +4,15 @@ import { SummaryPage } from "./SummaryPage";
 import { useTranslate } from "../../../../logic/useTranslateLang";
 import { useLoaderData } from "react-router";
 import { ElectionMap } from "./ElectionMap";
+import { Statistics } from "./Statistics/Statistics";
+import { GameChrome } from "../GameChrome";
 
 const screens = [
   { id: "summaryPage", label: "endResult.menuBar.summary" },
   { id: "electionMap", label: "endResult.menuBar.electionMap" },
   { id: "statistics", label: "endResult.menuBar.statistics" },
   { id: "history", label: "endResult.menuBar.history" },
-];
+] as const;
 
 type ActiveScreen = (typeof screens)[number]["id"];
 
@@ -20,13 +22,20 @@ export function FinalResultScreen() {
   const t = useTranslate();
 
   return (
-    <div className="m-2">
-      <div className="bg-[#0f172a] p-5 rounded-xl border border-slate-200/65">
-        <div className="h-[620px] mb-3">
-          {activeScreen === "summaryPage" && <SummaryPage results={results} />}
-          {activeScreen === "electionMap" && <ElectionMap config={config} />}
+    <GameChrome>
+      <div className="m-2">
+        <div className="bg-[#0f172a] p-5 rounded-xl border border-slate-200/65">
+          <div className="h-[620px] w-[1100px] mb-3">
+            {activeScreen === "statistics" && (
+              <Statistics results={results} config={config} />
+            )}
+            {activeScreen === "summaryPage" && (
+              <SummaryPage results={results} />
+            )}
+            {activeScreen === "electionMap" && <ElectionMap config={config} />}
+          </div>
         </div>
-        <div className="flex gap-5 w-full justify-center">
+        <div className="flex gap-5 w-full justify-center mt-5">
           {screens.map((screen) => {
             return (
               <Button
@@ -40,6 +49,6 @@ export function FinalResultScreen() {
           })}
         </div>
       </div>
-    </div>
+    </GameChrome>
   );
 }

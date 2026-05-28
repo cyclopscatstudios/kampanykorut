@@ -8,12 +8,13 @@ export type SessionKey =
   | "campaignConfig"
   | "menuSession"
   | "devSession"
-  | "questionHistory"
+  | "turnHistory"
   | "settings"
   | "gameConfig"
   | "campaignState"
   | "currentSessionId"
-  | "savedSessions";
+  | "savedSessions"
+  | "language";
 
 const log = createLogger("StorageEngine");
 

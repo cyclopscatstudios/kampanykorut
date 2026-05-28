@@ -2,7 +2,7 @@ import classNames from "classnames";
 import type { Colors } from "../../types/color";
 
 type TextWeight = "light" | "normal" | "medium" | "bold";
-type TextSize = "sm" | "base" | "lg" | "xl";
+type TextSize = "xs" | "sm" | "base" | "lg" | "xl";
 type TextTag = "p" | "span" | "div" | "li" | "label";
 
 interface TextProps {
@@ -22,6 +22,7 @@ const weightClasses: Record<TextWeight, string> = {
 };
 
 const sizeClasses: Record<TextSize, string> = {
+  xs: "text-xs",
   sm: "text-sm",
   base: "text-base",
   lg: "text-lg",
@@ -32,6 +33,7 @@ const colorClasses: Partial<Record<Colors, string>> = {
   white: "text-white",
   lightBlue: "text-blue-50",
   gray: "text-neutral-400",
+  blue: "text-blue-400",
   darkBlue: "text-blue-900",
   red: "text-red-600",
   yellow: "text-yellow-600",

@@ -109,7 +109,9 @@ export type PlayerSide = {
 };
 
 export interface ElectionConfig {
+  title: string;
   listSeats: number;
+  allSeats: number;
   thresholdPercent: number;
   districtBoost?: boolean;
   baseResults?: Record<string, number>;

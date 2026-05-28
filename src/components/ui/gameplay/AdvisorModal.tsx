@@ -5,6 +5,7 @@ import { Text } from "../Text";
 import { Icon } from "../Icon";
 import type { AdvisorFeedbackAssets } from "../../../logic/types/campaignEngine.types";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
+import { t } from "i18next";
 
 interface AdvisorModalProps {
   advice: string;
@@ -58,7 +59,7 @@ export function AdvisorModal({
             <div className="flex justify-center items-center">
               <Icon color="purple" name="info-circle-fill" className="mr-3" />
               <Heading color="lightBlue" level={3}>
-                Advisor feedback
+                {t("advisorFeedback.title")}
               </Heading>
             </div>
           </div>
@@ -83,23 +84,23 @@ export function AdvisorModal({
           </div>
           <div className="bg-[#1d2840] flex justify-between p-3 rounded-b-xl">
             <Button
-              variant="transparent"
+              variant="tertiary"
               onClick={() => setConfirmationModal(true)}
             >
               <Button.Icon name="eye-slash-fill" color="white" />
-              <Button.Text>Turn off advisor insights</Button.Text>
+              <Button.Text>{t("advisorFeedback.buttons.turnOff")}</Button.Text>
             </Button>
 
             <Button className="w-[120px]" onClick={onClose}>
-              <Button.Text>Ok</Button.Text>
+              <Button.Text>{t("advisorFeedback.buttons.ok")}</Button.Text>
             </Button>
           </div>
         </div>
       </div>
       {confirmationModal && (
         <ConfirmationModal
-          title="Disable advisor feedback?"
-          description="You won’t receive strategic hints from advisors anymore."
+          title={t("exitDialog.title")}
+          description={t("advisorFeedback.modal.description")}
           onCancel={() => setConfirmationModal(false)}
           onConfirm={handleDisable}
         />
@@ -156,11 +157,13 @@ export function ConfirmationModal({
 
         <div className="flex gap-2 justify-center">
           <Button onClick={onConfirm}>
-            <Button.Text>Disable</Button.Text>
+            <Button.Text>
+              {t("advisorFeedback.modal.buttons.disable")}
+            </Button.Text>
           </Button>
 
           <Button onClick={onCancel} variant="secondary">
-            <Button.Text>Cancel</Button.Text>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
           </Button>
         </div>
       </div>

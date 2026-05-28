@@ -1,75 +1,116 @@
 import classNames from "classnames";
-import type { Colors } from "../../types/color";
 import React, { createContext } from "react";
 import { Icon, type IconProps } from "./Icon";
 
-type ButtonSize = "normal" | "small" | "large";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "tab"
+  | "subtab"
+  | "hero"
+  | "underline";
 
-type ButtonVariant = "primary" | "secondary" | "tertiary" | "transparent";
+export type ButtonSize = "sm" | "md" | "lg" | "normal" | "small" | "large";
 
-interface ButtonProps {
-  children: React.ReactNode;
+export interface ButtonProps {
+  children?: React.ReactNode;
   onClick?: () => void;
   variant?: ButtonVariant;
   size?: ButtonSize;
-  color?: Colors;
   block?: boolean;
-  fullRounded?: boolean;
-  className?: string;
+  iconOnly?: boolean;
+  selected?: boolean;
   disabled?: boolean;
+  className?: string;
+  testId?: string;
 }
 
-function getButtonColors(
+const sizeClasses: Record<ButtonSize, string> = {
+  sm: "h-[30px] px-3 text-xs gap-1.5",
+  md: "h-10 px-4 text-sm gap-2",
+  lg: "h-[50px] px-6 text-[15px] gap-2.5",
+  normal: "h-10 px-4 text-sm gap-2",
+  small: "h-[30px] px-3 text-xs gap-1.5",
+  large: "h-[50px] px-6 text-[15px] gap-2.5",
+};
+
+const iconOnlySizeClasses: Record<ButtonSize, string> = {
+  sm: "w-[30px] h-[30px] p-0",
+  md: "w-10 h-10 p-0",
+  lg: "w-[50px] h-[50px] p-0",
+  normal: "w-10 h-10 p-0",
+  small: "w-[30px] h-[30px] p-0",
+  large: "w-[50px] h-[50px] p-0",
+};
+
+const subtabSizeClasses: Record<ButtonSize, string> = {
+  sm: "text-[13px] py-1",
+  md: "text-sm py-2",
+  lg: "text-base py-2.5",
+  normal: "text-sm py-2",
+  small: "text-[13px] py-1",
+  large: "text-base py-2.5",
+};
+
+function variantClasses(
   variant: ButtonVariant,
-  color?: Colors,
-  disabled?: boolean,
-) {
+  selected: boolean,
+  disabled: boolean,
+): string {
   if (disabled) {
-    return "bg-gray-100/5";
+    return "bg-[rgba(148,163,184,0.08)] text-slate-500 shadow-btn-disabled cursor-not-allowed";
   }
-  if (variant === "secondary") {
-    return "bg-blue-50 hover:bg-blue-100 active:bg-blue-200";
-  }
-  if (variant === "tertiary") {
-    return "bg-slate-100/10 hover:bg-blue-500 active:bg-blue-600";
-  }
-  if (variant === "transparent") {
-    return "bg-transparent hover:bg-slate-100/10 active:bg-slate-200";
-  }
-  switch (color) {
-    case "blue":
-      return "bg-blue-900 hover:bg-blue-700 active:bg-blue-900";
-    case "darkBlue":
-      return "bg-dark-blue hover:bg-blue-900 active:bg-blue-900";
-    case "lightBlue":
-      return "bg-blue-50 hover:bg-blue-100 active:bg-blue-200";
-    case "red":
-      return "bg-red-600 hover:bg-red-400 active:bg-red-800";
-    case "transparent":
-      return "bg-transparent";
-    default:
-      return "bg-blue-900 hover:bg-blue-700 active:bg-blue-900";
-  }
-}
 
-function getBorderColor(
-  color?: Colors,
-  variant?: ButtonVariant,
-  disabled?: boolean,
-) {
-  if (disabled) {
-    return "";
-  }
-  if (variant === "tertiary") {
-    return "border border-slate-50/10";
-  }
-  switch (color) {
-    case "darkBlue":
-      return "border-blue-900";
-    case "lightBlue":
-      return "border-blue-50";
-    default:
-      return "border-blue-900";
+  switch (variant) {
+    case "primary":
+      return [
+        "bg-btn-primary text-slate-50",
+        "shadow-btn-primary",
+        "hover:bg-btn-primary-hover hover:shadow-btn-primary-hover",
+        "active:translate-y-px",
+      ].join(" ");
+
+    case "secondary":
+      return [
+        "bg-btn-secondary text-blue-900",
+        "shadow-btn-secondary",
+        "hover:bg-btn-secondary-hover hover:shadow-btn-secondary-hover",
+      ].join(" ");
+
+    case "tertiary":
+      return selected
+        ? [
+            "bg-[rgba(148,163,184,0.07)] text-blue-200",
+            "shadow-btn-tertiary backdrop-blur-md",
+            "border border-blue-400",
+            "hover:bg-[rgba(148,163,184,0.16)] hover:shadow-btn-tertiary-hover",
+          ].join(" ")
+        : [
+            "bg-[rgba(148,163,184,0.07)] text-slate-300",
+            "shadow-btn-tertiary backdrop-blur-md",
+            "hover:bg-[rgba(148,163,184,0.16)] hover:shadow-btn-tertiary-hover",
+          ].join(" ");
+
+    case "tab":
+      return selected
+        ? "bg-btn-primary text-slate-50 shadow-btn-tab-selected"
+        : "bg-[rgba(148,163,184,0.05)] text-slate-300 shadow-btn-tab-idle hover:bg-[rgba(148,163,184,0.12)] hover:shadow-btn-tab-idle-hover";
+
+    case "subtab":
+      return selected
+        ? "bg-transparent text-slate-50 font-bold underline decoration-blue-400 decoration-2 underline-offset-[10px] px-0.5"
+        : "bg-transparent text-slate-400 font-semibold hover:text-slate-300 px-0.5";
+
+    case "hero":
+      return [
+        "bg-[rgba(15,23,42,0.45)] text-slate-50 backdrop-blur-lg",
+        "shadow-btn-hero",
+        "hover:bg-[rgba(15,23,42,0.6)] hover:shadow-btn-hero-hover",
+      ].join(" ");
+
+    case "underline":
+      return "bg-transparent text-slate-300 px-0.5";
   }
 }
 
@@ -80,63 +121,46 @@ export function Button(props: ButtonProps) {
     children,
     onClick,
     variant = "primary",
-    size = "normal",
-    className,
-    color,
+    size = "md",
     block,
-    fullRounded,
-    disabled,
+    iconOnly,
+    selected = false,
+    disabled = false,
+    className,
+    testId,
   } = props;
-  const buttonColors = getButtonColors(variant, color, disabled);
-  const borderColor = getBorderColor(color, variant, disabled);
+
+  const isSubtab = variant === "subtab";
+
+  const sizeCls = iconOnly
+    ? iconOnlySizeClasses[size]
+    : isSubtab
+      ? subtabSizeClasses[size]
+      : sizeClasses[size];
 
   return (
-    <ButtonContext.Provider value={{ ...props }}>
+    <ButtonContext.Provider value={props}>
       <button
+        data-testid={testId}
         onClick={disabled ? undefined : onClick}
+        disabled={disabled}
         className={classNames(
-          "px-4 inline-flex items-center justify-center gap-2",
-          {
-            "cursor-pointer": !disabled,
-            "cursor-not-allowed": disabled,
-            "h-10": size === "normal",
-            "h-[50px] py-0.5": size === "large",
-            "h-[30px] py-0.5": size === "small",
-            "w-full": block,
-            "rounded-full": fullRounded,
-            "rounded-md ": !fullRounded,
-            "border-2": variant === "secondary",
-          },
+          "inline-flex items-center justify-center font-bold whitespace-nowrap",
+          "transition-[background,box-shadow,transform] duration-150 ease-out",
+          "font-montserrat tracking-[0.1px]",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-blue",
+          !isSubtab && "rounded-md",
+          sizeCls,
+          block && "w-full",
+          variantClasses(variant, selected, disabled),
+          !disabled && "cursor-pointer",
           className,
-          buttonColors,
-          borderColor,
         )}
       >
         {children}
       </button>
     </ButtonContext.Provider>
   );
-}
-
-function getButtonTextColor(
-  variant?: ButtonVariant,
-  color?: Colors,
-  disabled?: boolean,
-) {
-  if (disabled) {
-    return "text-gray-400";
-  }
-  if (variant === "secondary" || variant === "tertiary") {
-    return "text-blue-900";
-  }
-  switch (color) {
-    case "darkBlue":
-      return "text-blue-50";
-    case "lightBlue":
-      return "text-blue-900";
-    default:
-      return "text-blue-50";
-  }
 }
 
 function ButtonText({
@@ -146,32 +170,26 @@ function ButtonText({
   children: React.ReactNode;
   className?: string;
 }) {
-  const ctx = React.useContext(ButtonContext);
-  const textColor = getButtonTextColor(ctx?.variant, ctx?.color, ctx?.disabled);
-  return (
-    <span
-      className={classNames("font-bold", textColor, className, {
-        underline: ctx?.variant === "tertiary",
-      })}
-    >
-      {children}
-    </span>
-  );
+  return <span className={className}>{children}</span>;
 }
 
-function ButtonIcon({ name, size, color }: IconProps) {
+function ButtonIcon({ name, size: iconSize, color }: IconProps) {
   const ctx = React.useContext(ButtonContext);
-  const iconColor = getIconColor(ctx?.variant ?? "primary");
+  const sizeMap: Record<ButtonSize, number> = {
+    sm: 14,
+    md: 16,
+    lg: 18,
+    normal: 16,
+    small: 14,
+    large: 18,
+  };
   return (
-    <Icon name={name} size={size} color={color ?? ctx?.color ?? iconColor} />
+    <Icon
+      name={name}
+      size={iconSize ?? sizeMap[ctx?.size ?? "md"]}
+      color={color ?? "currentColor"}
+    />
   );
-}
-
-function getIconColor(variant: ButtonVariant): Colors {
-  if (variant === "secondary" || variant === "tertiary") {
-    return "darkBlue";
-  }
-  return "blue";
 }
 
 Button.Text = ButtonText;

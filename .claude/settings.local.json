@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npx vitest:*)",
       "Bash(npx tsc *)",
-      "Bash(git -C \"d:/hobby/kampanykorut\" diff main...HEAD --stat)"
+      "Bash(git -C \"d:/hobby/kampanykorut\" diff main...HEAD --stat)",
+      "Bash(npm run *)",
+      "Bash(kill %1)",
+      "Bash(wait)"
     ]
   }
 }

@@ -8,6 +8,8 @@ import { supportedLanguages } from "../../../logic/langs/languages";
 import { type GameSettings } from "@/logic/application";
 import { useState } from "react";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
+import { t } from "i18next";
+import { toaster } from "./toaster";
 
 export function SettingsDialog({
   isOpen,
@@ -24,6 +26,7 @@ export function SettingsDialog({
   const saveChanges = () => {
     updateSettings({ ...settingsForm });
     setIsOpen(false);
+    toaster(t("toaster.settingsUpdated"), "Success");
   };
 
   return (
@@ -31,7 +34,7 @@ export function SettingsDialog({
       <DialogHeader>
         <div>
           <Heading level={3} color="lightBlue">
-            Settings
+            {t("mainMenu.settings")}
           </Heading>
         </div>
       </DialogHeader>
@@ -46,10 +49,10 @@ export function SettingsDialog({
       <DialogFooter>
         <div className="w-full flex justify-between">
           <Button variant="secondary" onClick={() => setIsOpen(false)}>
-            <Button.Text>Cancel</Button.Text>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
           </Button>
           <Button onClick={saveChanges} disabled={isEqual}>
-            <Button.Text>Save</Button.Text>
+            <Button.Text>{t("menuList.button.save")}</Button.Text>
           </Button>
         </div>
       </DialogFooter>
@@ -67,7 +70,7 @@ export function SettingsBody({
   return (
     <div className="flex flex-col gap-5 h-full">
       <Checkbox
-        label="Show advisor feedback"
+        label={t("settingsMenu.advisorFeedback.label")}
         defaultChecked={settingsForm.showAdvisorFeedback}
         onChange={(e) =>
           setSettingsForm((prev: GameSettings) => ({

@@ -3,8 +3,7 @@ import { useTranslateLang } from "../../../logic/useTranslateLang";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
-import { useEffect, useState, type MouseEvent } from "react";
-import classNames from "classnames";
+import { useEffect, useState } from "react";
 import { Heading } from "../Heading";
 import { useStateEngine } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
@@ -12,6 +11,8 @@ import {
   useGetCampaigns,
   type CampaignHeader,
 } from "../../../logic/application/hooks/useGetCampaigns";
+import { t } from "i18next";
+import { Dropdown } from "../Dropdown";
 
 export function ClassicModeSelectorMenu() {
   const campaigns = useGetCampaigns();
@@ -31,24 +32,10 @@ export function CampaignSelectorMenuList({
   campaignHeaders,
 }: CampaignSelectorMenuListProps) {
   const { saveSession } = useStateEngine();
-  const [openedGameId, setOpenedGameId] = useState<string | undefined>();
   const [selectedCampaign, setSelectedCampaign] =
     useState<CampaignHeader | null>(null);
   const backButton = useTranslateLang("menuList.button.back");
   const { goBack, goToSideSelector } = useNavigation();
-
-  const handleGameSelect = (
-    item: CampaignHeader,
-    event: MouseEvent<HTMLDivElement>,
-  ) => {
-    event.stopPropagation();
-    if (selectedCampaign?.id === item.id) {
-      setSelectedCampaign(null);
-      return;
-    }
-    saveSession("campaignState", { activeCampaignId: item.id });
-    setSelectedCampaign(item);
-  };
 
   useEffect(() => {
     saveSession("campaignState", null);
@@ -56,94 +43,62 @@ export function CampaignSelectorMenuList({
 
   return (
     <div className="size-full flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center">
-        <Heading level={3} color="lightBlue" className="mb-6">
-          {selectedCampaign ? selectedCampaign.label : "Select a campaign"}
+      <div className="flex flex-col items-center justify-center gap-6 w-87.5">
+        <Heading level={3} color="lightBlue">
+          {selectedCampaign
+            ? selectedCampaign.label
+            : t("gameSelectorMenhu.label")}
         </Heading>
-        <ul className="w-[350px]">
-          {campaignHeaders.map((item, index) => {
-            const isSelected = selectedCampaign?.id === item.id;
-            const isOpen = openedGameId === item.id;
 
-            return (
-              <li
-                key={item.id}
-                className={index !== campaignHeaders.length - 1 ? "pb-4" : ""}
+        <Dropdown
+          options={campaignHeaders.map((campaign) => ({
+            label: campaign.label,
+            value: campaign.id,
+          }))}
+          onChange={(id) => {
+            const found = campaignHeaders.find((c) => c.id === id) ?? null;
+            setSelectedCampaign(found);
+            if (found)
+              saveSession("campaignState", { activeCampaignId: found.id });
+          }}
+        />
+
+        {selectedCampaign && (
+          <div className="w-full overflow-hidden rounded-md border border-blue-500/40">
+            <img
+              src={`/images/${selectedCampaign.route}/${selectedCampaign.campaignBanner}`}
+              alt={selectedCampaign.label}
+              className="h-auto w-full object-cover"
+            />
+            {selectedCampaign.description && (
+              <Text
+                weight="medium"
+                color="lightBlue"
+                className="px-3 py-2 text-xs"
               >
-                <div
-                  className={classNames(
-                    "border cursor-pointer overflow-hidden rounded-md",
-                    {
-                      "border-blue-500 bg-slate-100/30": isSelected,
-                      "border-slate-50/10 bg-slate-100/10": !isSelected,
-                    },
-                  )}
-                  onClick={(event) => handleGameSelect(item, event)}
-                >
-                  <div className="flex flex-col gap-2 p-2">
-                    <div className="flex items-center gap-2">
-                      <div className="max-w-[150px] shrink-0">
-                        <img
-                          src={item.campaignBanner}
-                          alt={item.label}
-                          className="h-auto w-full rounded-md object-cover"
-                        />
-                      </div>
+                {selectedCampaign.description}
+              </Text>
+            )}
+          </div>
+        )}
 
-                      <Text weight="medium" color="lightBlue">
-                        {item.label}
-                      </Text>
-                    </div>
-
-                    <button
-                      type="button"
-                      className="cursor-pointer text-center"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setOpenedGameId(isOpen ? undefined : item.id);
-                      }}
-                    >
-                      {isOpen ? (
-                        <div className="text-center">
-                          <Text
-                            weight="medium"
-                            color="lightBlue"
-                            className="w-full pb-2 text-center text-xs"
-                          >
-                            {item.description}
-                          </Text>
-                          <Icon name="arrow-up" />
-                        </div>
-                      ) : (
-                        <div className="text-center">
-                          <Icon name="arrow-down" />
-                        </div>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
+        <div className="flex w-full flex-col gap-2">
           <Button
             variant="primary"
             size="large"
             block
-            className="mb-1 mt-5"
             disabled={!selectedCampaign}
             onClick={() => goToSideSelector(selectedCampaign?.id ?? "")}
           >
-            <Button.Text>Next</Button.Text>
+            <Button.Text>{t("menuList.button.next")}</Button.Text>
           </Button>
-          <li>
-            <Button variant="tertiary" size="large" block onClick={goBack}>
-              <Icon name="backspace-fill" />
-              <Text weight="medium" color="lightBlue">
-                {backButton}
-              </Text>
-            </Button>
-          </li>
-        </ul>
+          <Button variant="tertiary" size="large" block onClick={goBack}>
+            <Icon name="backspace-fill" />
+            <Text weight="medium" color="lightBlue">
+              {backButton}
+            </Text>
+          </Button>
+        </div>
       </div>
     </div>
   );

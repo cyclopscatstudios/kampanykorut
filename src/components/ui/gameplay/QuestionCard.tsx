@@ -6,6 +6,7 @@ import { Icon } from "../Icon";
 import { Tooltip } from "../Tooltip";
 import { Heading } from "../Heading";
 import { useAssets } from "../../../hooks/useAssets";
+import { t } from "i18next";
 
 interface Answer {
   id: string;
@@ -43,19 +44,10 @@ export function QuestionCard({
         <div className="bg-slate-700 mb-4 p-2 rounded">
           {affects && (
             <Tooltip
-              content="Your choice may influence how future questions unfold."
-              position="bottom"
+              content={t("badge.strategicDecision.tooltip")}
+              position="right"
             >
-              <div className="flex items-center p-1 bg-slate-600 rounded-full mb-2">
-                <Icon
-                  name="exclamation-circle-fill"
-                  color="purple"
-                  className="mx-2"
-                />
-                <Text className="text-xs pr-1" color="lightBlue">
-                  Strategic decision
-                </Text>
-              </div>
+              <StrategicDecisionBadge />
             </Tooltip>
           )}
           <Heading level={4} color="lightBlue">
@@ -74,15 +66,17 @@ export function QuestionCard({
       </div>
       <div className="mt-2">
         <div className="flex justify-around mb-4">
+          <Button variant="secondary" onClick={() => setCurrentView("MapView")}>
+            <Button.Text>{t("questionCard.buttons.mapView")}</Button.Text>
+          </Button>
           <Button
+            disabled={!answer}
+            variant="primary"
             onClick={() => {
               handleOnClick(answer);
             }}
           >
-            <Button.Text>Continue</Button.Text>
-          </Button>
-          <Button variant="secondary" onClick={() => setCurrentView("MapView")}>
-            <Button.Text>Map view</Button.Text>
+            <Button.Text>{t("questionCard.buttons.continue")}</Button.Text>
           </Button>
         </div>
         <div className="flex items-end justify-center gap-4">
@@ -104,6 +98,17 @@ export function QuestionCard({
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function StrategicDecisionBadge() {
+  return (
+    <div className="flex items-center p-1 bg-slate-600 rounded-full mb-2">
+      <Icon name="exclamation-circle-fill" color="purple" className="mx-2" />
+      <Text className="text-xs pr-1" color="lightBlue">
+        {t("badge.strategicDecision.label")}
+      </Text>
     </div>
   );
 }

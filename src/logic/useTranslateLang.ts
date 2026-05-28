@@ -1,43 +1,12 @@
-import { useEffect, useState } from "react";
-import { eventEmitter } from "./EventEmitter";
-import hu_lang from "./langs/hu_lang.json";
-import en_lang from "./langs/en_lang.json";
+import { useTranslation } from "react-i18next";
+import type { ParseKeys } from "i18next";
 
-export function useTranslateLang(langKey: string) {
-  const [tJson, setTJson] = useState<{ key: string; lang: string }[]>(en_lang);
-
-  useEffect(() => {
-    const unsubscribe = eventEmitter.on("changeLanguage", (lang) => {
-      setTJson(lang === "hu" ? hu_lang : en_lang);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  const translate = tJson.find((l) => l.key === langKey);
-
-  return translate?.lang ?? "";
+export function useTranslateLang(langKey: ParseKeys) {
+  const { t } = useTranslation();
+  return t(langKey);
 }
 
 export function useTranslate() {
-  const [tJson, setTJson] = useState<{ key: string; lang: string }[]>(en_lang);
-
-  useEffect(() => {
-    const unsubscribe = eventEmitter.on("changeLanguage", (lang) => {
-      setTJson(lang === "hu" ? hu_lang : en_lang);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  const t = (langKey: string) => {
-    const translate = tJson.find((l) => l.key === langKey);
-    return translate?.lang ?? "";
-  };
-
+  const { t } = useTranslation();
   return t;
 }

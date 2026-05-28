@@ -5,6 +5,7 @@ import { Text } from "../Text";
 import { Icon } from "../Icon";
 import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
 import { useLoaderData } from "react-router";
+import { t } from "i18next";
 
 export function SideSelectorMenu() {
   const { config, id } = useLoaderData();
@@ -34,7 +35,7 @@ export function SideSelectorMenu() {
       <div className="flex justify-around w-full">
         <div>
           <Heading level={3} className="mb-2">
-            Select a party
+            {t("sideSelector.party.label")}
           </Heading>
           <Dropdown
             value={selectedParty?.id}
@@ -43,6 +44,7 @@ export function SideSelectorMenu() {
               label: side.name,
               value: side.id,
             }))}
+            placeholder={t("sideSelector.party.dropdown")}
           />
           <div className="h-70 border bg-gray-700 border-slate-600 rounded overflow-hidden mt-4">
             {partyAssets && (
@@ -55,13 +57,14 @@ export function SideSelectorMenu() {
         </div>
         <div>
           <Heading level={3} className="mb-2">
-            Select a candidate
+            {t("sideSelector.candidate.label")}
           </Heading>
           <Dropdown<string>
             value={selectedCandidate}
             onChange={(e) => handleCandidateChange(selectedParty?.id ?? "", e)}
             options={candidateOptions}
             disabled={!selectedParty}
+            placeholder={t("sideSelector.candidate.dropdown")}
           />
           <div className="h-70 w-[256px] border bg-gray-700 border-slate-600 rounded overflow-hidden mt-4">
             {candidatePortrait && (
@@ -73,19 +76,22 @@ export function SideSelectorMenu() {
           </div>
         </div>
       </div>
-      <Button
-        className="mt-auto"
-        disabled={!selectedCandidate}
-        onClick={() => startGame(id)}
-      >
-        <Button.Text>Start Game</Button.Text>
-      </Button>
-      <Button variant="tertiary" size="large" block onClick={goBack}>
-        <Icon name="backspace-fill" />
-        <Text weight="medium" color="lightBlue">
-          back
-        </Text>
-      </Button>
+      <div className="w-full flex justify-between">
+        <Button variant="tertiary" size="large" onClick={goBack}>
+          <Icon name="backspace-fill" />
+          <Text weight="medium" color="lightBlue">
+            {t("menuList.button.back")}
+          </Text>
+        </Button>
+        <Button
+          variant="primary"
+          size="large"
+          disabled={!selectedCandidate}
+          onClick={() => startGame(id)}
+        >
+          <Button.Text>{t("menuList.button.start")}</Button.Text>
+        </Button>
+      </div>
     </div>
   );
 }

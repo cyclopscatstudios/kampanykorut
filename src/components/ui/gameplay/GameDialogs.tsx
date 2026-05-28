@@ -4,6 +4,7 @@ import { SettingsDialog } from "./SettingsDialog";
 import { GameDialog } from "./GameDialog";
 import { Modal } from "../Modal";
 import type { DialogId } from "./hooks/useDialogState";
+import { t } from "i18next";
 
 interface GameDialogsProps {
   activeDialog: DialogId;
@@ -29,8 +30,8 @@ export function GameDialogs({
       <GameDialog isOpen={activeDialog === "gameMenu"} setIsOpen={close} />
       {activeDialog === "exit" && (
         <Modal
-          title="Attention"
-          description="Are you sure you want to exit the game?"
+          title={t("exitDialog.title")}
+          description={t("exitDialog.description")}
           onCancel={onClose}
           onConfirm={onConfirmExit}
         />

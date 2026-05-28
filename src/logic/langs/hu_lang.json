@@ -1,50 +1,123 @@
-[
-  {
-    "key": "mainMenu.newGame",
-    "lang": "Új játék"
+{
+  "mainMenu": {
+    "newGame": "Új játék",
+    "loadGame": "Játék betöltése",
+    "modMaker": "Mod készítő",
+    "settings": "Beállítások",
+    "about": "A játékról"
   },
-  {
-    "key": "mainMenu.loadGame",
-    "lang": "Játék betöltése"
+  "newGameMenu": {
+    "classicMode": "Klasszikus mód",
+    "campaignMode": "Kampány mód"
   },
-  {
-    "key": "mainMenu.modMaker",
-    "lang": "Mod készítő"
+  "menuList": {
+    "button": {
+      "back": "Vissza",
+      "save": "Mentés",
+      "next": "Következő",
+      "start": "Játék elindítása",
+      "cancel": "Mégsem"
+    }
   },
-  {
-    "key": "mainMenu.settings",
-    "lang": "Beállítások"
+  "settingsMenu": {
+    "advisorFeedback": {
+      "label": "Tanácsadói visszajelzések megjelenítése"
+    }
   },
-  {
-    "key": "mainMenu.about",
-    "lang": "A játékról"
+  "loadSavedGamesMenu": {
+    "emptyLabel": "Nem található mentett játék.",
+    "button": {
+      "load": "Játék betöltése"
+    }
   },
-  {
-    "key": "newGameMenu.classicMode",
-    "lang": "Klasszikus mód"
+  "gameSelectorMenhu": {
+    "label": "Válassz egy kampányt"
   },
-  {
-    "key": "newGameMenu.campaignMode",
-    "lang": "Kampány mód"
+  "sideSelector": {
+    "party": {
+      "label": "Válassz egy pártot",
+      "dropdown": "Választott párt"
+    },
+    "candidate": {
+      "label": "Válassz egy jelöltet",
+      "dropdown": "Választott jelölt"
+    }
   },
-  {
-    "key": "menuList.button.back",
-    "lang": "Vissza"
+  "endResult": {
+    "menuBar": {
+      "summary": "Összefoglaló",
+      "electionMap": "Választási térkép",
+      "statistics": "Statisztikák",
+      "history": "Előzmények"
+    },
+    "statistics": {
+      "menuBar": {
+        "overview": "Összefoglaló",
+        "districtDetails": "Körzet részletek"
+      },
+      "overview": {
+        "constituencySeats": "Egyéni mandátumok",
+        "listSeats": "Listás mandátumok",
+        "partyListResults": "Pártilistás eredmények",
+        "biggestVictories": "Legnagyobb győzelmek",
+        "biggestDefeats": "Legnagyobb vereségek",
+        "closestDistricts": "Legszorosabb körzetek"
+      }
+    }
   },
-  {
-    "key": "endResult.menuBar.summary",
-    "lang": "Összefoglaló"
+  "gameMenuBar": {
+    "save": "Játk mentése",
+    "laod": "Játék visszatöltése",
+    "settings": "Beállítások",
+    "quit": "Kilépés"
   },
-  {
-    "key": "endResult.menuBar.electionMap",
-    "lang": "Választási térkép"
+  "emptySlot": {
+    "label": "Szabad hely"
   },
-  {
-    "key": "endResult.menuBar.statistics",
-    "lang": "Statisztikák"
+  "modal": {
+    "buttons": {
+      "confirm": "Megerősítés"
+    }
   },
-  {
-    "key": "endResult.menuBar.history",
-    "lang": "Előzmények"
+  "exitDialog": {
+    "title": "Figyelem!",
+    "description": "Biztosan ki akarsz lépni a játékból?"
+  },
+  "bottomBar": {
+    "visitDistrict": "Látogass el a kerületbe",
+    "swingFactor": "Ingadozási tényező",
+    "population": "Lakosság",
+    "k": "E",
+    "high": "Magas",
+    "medium": "Közepes",
+    "low": "Alacsony"
+  },
+  "badge": {
+    "strategicDecision": {
+      "label": "Stratégiai döntés",
+      "tooltip": "A választásod hatással lehet a jövőbeli kérdések alakulására"
+    }
+  },
+  "questionCard": {
+    "buttons": {
+      "continue": "Következő",
+      "mapView": "Térképnézet"
+    }
+  },
+  "advisorFeedback": {
+    "title": "Tanácsadói visszajelzés",
+    "buttons": {
+      "turnOff": "Tanácsadói javaslatokat elrejtése",
+      "ok": "Rendben"
+    },
+    "modal": {
+      "description": "Többé nem kapsz stratégiai tanácsokat a tanácsadóktól.",
+      "buttons": {
+        "disable": "Letiltás"
+      }
+    }
+  },
+  "toaster": {
+    "settingsUpdated": "Beállítások sikeresen frissültek!"
   }
-]
+}

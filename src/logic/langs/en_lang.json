@@ -1,50 +1,123 @@
-[
-  {
-    "key": "mainMenu.newGame",
-    "lang": "New Game"
+{
+  "mainMenu": {
+    "newGame": "New Game",
+    "loadGame": "Load Game",
+    "modMaker": "Mod Maker",
+    "settings": "Settings",
+    "about": "About"
   },
-  {
-    "key": "mainMenu.loadGame",
-    "lang": "Load Game"
+  "newGameMenu": {
+    "classicMode": "Classic mode",
+    "campaignMode": "Campaign mode"
   },
-  {
-    "key": "mainMenu.modMaker",
-    "lang": "Mod Maker"
+  "menuList": {
+    "button": {
+      "back": "Back",
+      "save": "Save",
+      "next": "Next",
+      "start": "Start Game",
+      "cancel": "Cancel"
+    }
   },
-  {
-    "key": "mainMenu.settings",
-    "lang": "Settings"
+  "settingsMenu": {
+    "advisorFeedback": {
+      "label": "Show advisor feedback"
+    }
   },
-  {
-    "key": "mainMenu.about",
-    "lang": "About"
+  "loadSavedGamesMenu": {
+    "emptyLabel": "No saved game sessions found.",
+    "button": {
+      "load": "Load game"
+    }
   },
-  {
-    "key": "newGameMenu.classicMode",
-    "lang": "Classic mode"
+  "gameSelectorMenhu": {
+    "label": "Select a campaign"
   },
-  {
-    "key": "newGameMenu.campaignMode",
-    "lang": "Campaign mode"
+  "sideSelector": {
+    "party": {
+      "label": "Select a party",
+      "dropdown": "Selected party"
+    },
+    "candidate": {
+      "label": "Select a candidate",
+      "dropdown": "Selected candidate"
+    }
   },
-  {
-    "key": "menuList.button.back",
-    "lang": "Back"
+  "endResult": {
+    "menuBar": {
+      "summary": "Summary",
+      "electionMap": "Election map",
+      "statistics": "Statistics",
+      "history": "History"
+    },
+    "statistics": {
+      "menuBar": {
+        "overview": "Overview",
+        "districtDetails": "District details"
+      },
+      "overview": {
+        "constituencySeats": "Constituency seats",
+        "listSeats": "List seats",
+        "partyListResults": "Party list results",
+        "biggestVictories": "Biggest victories",
+        "biggestDefeats": "Biggest defeats",
+        "closestDistricts": "Closest districts"
+      }
+    }
   },
-  {
-    "key": "endResult.menuBar.summary",
-    "lang": "Summary"
+  "gameMenuBar": {
+    "save": "Save game",
+    "laod": "Load game",
+    "settings": "Settings",
+    "quit": "Quit game"
   },
-  {
-    "key": "endResult.menuBar.electionMap",
-    "lang": "Election map"
+  "emptySlot": {
+    "label": "Empty slot"
   },
-  {
-    "key": "endResult.menuBar.statistics",
-    "lang": "Statistics"
+  "modal": {
+    "buttons": {
+      "confirm": "Confirm"
+    }
   },
-  {
-    "key": "endResult.menuBar.history",
-    "lang": "History"
+  "exitDialog": {
+    "title": "Attention!",
+    "description": "Are you sure you want to exit the game?"
+  },
+  "bottomBar": {
+    "visitDistrict": "Visit district",
+    "swingFactor": "Swing factor",
+    "population": "Population",
+    "k": "K",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "badge": {
+    "strategicDecision": {
+      "label": "Strategic decision",
+      "tooltip": "Your choice may influence how future questions unfold"
+    }
+  },
+  "questionCard": {
+    "buttons": {
+      "continue": "Continue",
+      "mapView": "Map view"
+    }
+  },
+  "advisorFeedback": {
+    "title": "Advisor feedback",
+    "buttons": {
+      "turnOff": "Turn off advisor insights",
+      "ok": "Ok"
+    },
+    "modal": {
+      "description": "You won’t receive strategic hints from advisors anymore.",
+      "buttons": {
+        "disable": "Disable"
+      }
+    }
+  },
+  "toaster": {
+    "settingsUpdated": "Settings updated successfully!"
   }
-]
+}

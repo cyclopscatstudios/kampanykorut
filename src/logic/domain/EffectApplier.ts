@@ -10,7 +10,7 @@ import { StateHandler } from "../application/StateHandler";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
 import { ConfigEngine } from "../application/ConfigEngine";
 import { injectable } from "tsyringe";
-import type { DistrictResult } from "../../components/ui/map.utils";
+import type { District } from "../../components/ui/map.utils";
 import { EffectType } from "../types/campaignEngine.types";
 import type {
   RawEffect,
@@ -41,7 +41,7 @@ export class EffectApplier {
     candidateListData: CandidateListData[],
     turn: number,
     conditionalEffects?: ConditionalRawEffect[],
-    selectedDistrict?: DistrictResult | null,
+    selectedDistrict?: District | null,
   ): AppliedEffect[] {
     const resolvedEffects = this.resolveConditionalEffects(
       effects,
@@ -95,7 +95,7 @@ export class EffectApplier {
     return appliedEffects;
   }
 
-  private getBoosterEffect(district: DistrictResult): AppliedEffect | null {
+  private getBoosterEffect(district: District): AppliedEffect | null {
     const palyerSide = this.campaignStateEngine.getCampaignState()?.playerSide;
     if (!palyerSide) {
       return null;

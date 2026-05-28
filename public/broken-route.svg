@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="120" viewBox="0 0 220 120" fill="none">
+  <title>Letértünk az útvonalról — broken route mark</title>
+  
+  <path d="M 12 60 L 90 60" stroke="#3b65d4" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8" opacity="0.85"></path>
+  
+  <circle cx="12" cy="60" r="5" fill="#3b65d4"></circle>
+  
+  <path d="M 90 60 Q 110 60 118 44 T 138 70 T 162 50" stroke="#b91c1c" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8" fill="none"></path>
+  
+  <g transform="translate(174 50)">
+    <circle cx="0" cy="0" r="14" fill="#ffffff" stroke="#b91c1c" stroke-width="2"></circle>
+    <line x1="-5" y1="-5" x2="5" y2="5" stroke="#b91c1c" stroke-width="2.4" stroke-linecap="round"></line>
+    <line x1="5" y1="-5" x2="-5" y2="5" stroke="#b91c1c" stroke-width="2.4" stroke-linecap="round"></line>
+  </g>
+  
+  <path d="M 188 50 L 210 50" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 6" opacity="0.25"></path>
+</svg>
