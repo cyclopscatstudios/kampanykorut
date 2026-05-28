@@ -6,6 +6,9 @@ import { useLoaderData } from "react-router";
 import { ElectionMap } from "./ElectionMap";
 import { Statistics } from "./Statistics/Statistics";
 import { GameChrome } from "../GameChrome";
+import { TurnHistory } from "./TurnHistory";
+import { StateEngine } from "../../../../logic/application/StateEngine";
+import { container } from "tsyringe";
 
 const screens = [
   { id: "summaryPage", label: "endResult.menuBar.summary" },
@@ -19,6 +22,8 @@ type ActiveScreen = (typeof screens)[number]["id"];
 export function FinalResultScreen() {
   const { results, config } = useLoaderData();
   const [activeScreen, setActiveScreen] = useState<ActiveScreen>("summaryPage");
+  const stateEngine = container.resolve(StateEngine);
+  const history = stateEngine.getHistory();
   const t = useTranslate();
 
   return (
@@ -33,6 +38,7 @@ export function FinalResultScreen() {
               <SummaryPage results={results} />
             )}
             {activeScreen === "electionMap" && <ElectionMap config={config} />}
+            {activeScreen === "history" && <TurnHistory history={history} />}
           </div>
         </div>
         <div className="flex gap-5 w-full justify-center mt-5">

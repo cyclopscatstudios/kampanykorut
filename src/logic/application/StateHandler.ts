@@ -3,10 +3,15 @@ import type { Decision, CampaignState } from "../domain/CampaignEngine";
 import { Emitter } from "./Emitter";
 import { createLogger } from "../logger";
 import type { RawEffect, CampaignConfig } from "../types/campaignEngine.types";
+import type { CalculateResults } from "../domain/MandateCalculator.types";
+import type { CandidateListData } from "../domain";
 
 export interface HistoryItem {
   questionId: string;
   answerId: string;
+  visitedDistrict: Pick<CandidateListData, "oevk" | "megyekod">;
+  turn: number;
+  results: CalculateResults;
 }
 
 export interface AffectedQuestion {
