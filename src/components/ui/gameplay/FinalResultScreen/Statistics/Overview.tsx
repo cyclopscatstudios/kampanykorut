@@ -7,6 +7,7 @@ import type { StatisticResult } from "../statistics.utils";
 import { Text } from "../../../Text";
 import { t } from "i18next";
 import { SupportChart } from "./Chart";
+import type { HistoryItem } from "../../../../../logic/application/StateHandler";
 
 export function Overview({
   results,
@@ -18,7 +19,7 @@ export function Overview({
   turnHistory,
 }: {
   state: CampaignState | null;
-  turnHistory: any[]; // TODO: type
+  turnHistory: HistoryItem[];
   results: FinalResults;
   config: CampaignConfig;
   playerSide: string;
@@ -76,7 +77,11 @@ export function Overview({
         />
       </div>
       <div className="w-full mt-4">
-        <SupportChart turnHistory={turnHistory} config={config} />
+        <SupportChart
+          label={t("endResult.statistics.overview.supportTrendLabel")}
+          turnHistory={turnHistory}
+          config={config}
+        />
       </div>
     </div>
   );

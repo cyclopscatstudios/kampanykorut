@@ -29,9 +29,11 @@ function createChartData(history: HistoryEntry[]) {
 }
 
 export function SupportChart({
+  label,
   turnHistory,
   config,
 }: {
+  label: string;
   turnHistory: HistoryEntry[];
   config: CampaignConfig;
 }) {
@@ -41,19 +43,21 @@ export function SupportChart({
 
   return (
     <CommonWrapper block>
-      <div className="w-full h-[230px] p-2">
-        <div className="mb-4 text-white font-semibold">
-          Támogatottság alakulása
-        </div>
-
+      <div className="w-full h-[240px] p-2">
+        <div className="mb-4 text-white font-semibold">{label}</div>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <XAxis dataKey="turn" />
-
+          <LineChart
+            data={data}
+            margin={{
+              top: 5,
+              right: 20,
+              left: 0,
+              bottom: 25,
+            }}
+          >
+            <XAxis dataKey="turn" height={30} />
             <YAxis domain={[0, 60]} />
-
             <Tooltip />
-
             {parties.map((party) => {
               const color =
                 config.electionConfig.parties.find((p) => p.id === party)

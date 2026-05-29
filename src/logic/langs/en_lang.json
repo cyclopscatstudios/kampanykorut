@@ -61,8 +61,16 @@
         "partyListResults": "Party list results",
         "biggestVictories": "Biggest victories",
         "biggestDefeats": "Biggest defeats",
-        "closestDistricts": "Closest districts"
+        "closestDistricts": "Closest districts",
+        "supportTrendLabel": "Trends in support"
       }
+    },
+    "turnHistory": {
+      "label": "Turn history",
+      "historyItem": {
+        "day": "Day"
+      },
+      "turns": "turns"
     }
   },
   "gameMenuBar": {

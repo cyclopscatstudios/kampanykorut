@@ -61,12 +61,20 @@
         "partyListResults": "Pártilistás eredmények",
         "biggestVictories": "Legnagyobb győzelmek",
         "biggestDefeats": "Legnagyobb vereségek",
-        "closestDistricts": "Legszorosabb körzetek"
+        "closestDistricts": "Legszorosabb körzetek",
+        "supportTrendLabel": "Támogatottság alakulása"
       }
+    },
+    "turnHistory": {
+      "label": "Előzmények",
+      "historyItem": {
+        "day": "Nap"
+      },
+      "turns": "forduló"
     }
   },
   "gameMenuBar": {
-    "save": "Játk mentése",
+    "save": "Játék mentése",
     "laod": "Játék visszatöltése",
     "settings": "Beállítások",
     "quit": "Kilépés"
