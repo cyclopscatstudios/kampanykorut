@@ -59,7 +59,9 @@ function HistorySidebar({
               <Text color="gray" weight="bold">
                 {t("endResult.turnHistory.label")}
               </Text>
-              <Text color="gray">{history.length} {t("endResult.turnHistory.turns")}</Text>
+              <Text color="gray">
+                {history.length} {t("endResult.turnHistory.turns")}
+              </Text>
             </div>
           </div>
         </div>
@@ -108,7 +110,7 @@ function TurnHistoryItem({
       <div className="flex items-center gap-4">
         <div>
           <Text size="sm" weight="light" color="gray">
-            {t(("endResult.turnHistory.historyItem.day"))}
+            {t("endResult.turnHistory.historyItem.day")}
           </Text>
           <Text weight="bold" color="gray">
             {item.turn}
