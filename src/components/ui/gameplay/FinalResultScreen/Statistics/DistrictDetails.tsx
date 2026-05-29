@@ -5,7 +5,6 @@ import type {
 } from "@/logic/domain";
 import { Text } from "../../../Text";
 import { useMemo, useState } from "react";
-import { Button } from "../../../Button";
 import {
   calculateVotePercentages,
   getPartyById,
@@ -15,6 +14,8 @@ import { AdvancedProgressBar, ProgressBar } from "./ProgressBar";
 import type { CampaignConfig } from "../../../../../logic/types/campaignEngine.types";
 import classNames from "classnames";
 import { Badge } from "../../../Badge";
+import { SidebarPanel } from "../../../SidebarPanel";
+
 interface DistrictDetailsProps {
   state: CampaignState | null;
   results: FinalResults;
@@ -28,7 +29,9 @@ type CountyGroup = {
 };
 
 export function DistrictDetails({ state, config }: DistrictDetailsProps) {
-  const [selectedCounty, setSelectedCounty] = useState<number | null>(null);
+  const [selectedCounty, setSelectedCounty] = useState<
+    CountyGroup | undefined
+  >();
 
   const districts = state?.candidateListData ?? [];
 
@@ -38,28 +41,25 @@ export function DistrictDetails({ state, config }: DistrictDetailsProps) {
     () =>
       selectedCounty === null
         ? []
-        : districts.filter((d) => d.megyekod === selectedCounty),
+        : districts.filter((d) => d.megyekod === selectedCounty?.megyekod),
     [districts, selectedCounty],
   );
 
   return (
     <div className="flex w-full gap-2">
       <div className="max-h-[500px] w-[350px] overflow-y-auto pr-2">
-        {counties.map((county) => (
-          <Button
-            key={county.megyekod}
-            selected={selectedCounty === county.megyekod}
-            size="lg"
-            variant="tertiary"
-            block
-            className="mb-2"
-            onClick={() => setSelectedCounty(county.megyekod)}
-          >
-            {county.megye} {county.megyekod}
-          </Button>
-        ))}
+        <SidebarPanel
+          data={counties}
+          selected={selectedCounty}
+          onSelect={setSelectedCounty}
+          getKey={(county: CountyGroup) => county.megyekod}
+          renderItem={(county) => (
+            <>
+              {county.megye} {county.megyekod}
+            </>
+          )}
+        />
       </div>
-
       <div className="w-[750px] max-h-[500px] overflow-y-auto p-2">
         {selectedCountyDistricts.map((district) => (
           <DistrictCard

@@ -38,7 +38,9 @@ export function FinalResultScreen() {
               <SummaryPage results={results} />
             )}
             {activeScreen === "electionMap" && <ElectionMap config={config} />}
-            {activeScreen === "history" && <TurnHistory history={history} />}
+            {activeScreen === "history" && (
+              <TurnHistory history={history} config={config} />
+            )}
           </div>
         </div>
         <div className="flex gap-5 w-full justify-center mt-5">
