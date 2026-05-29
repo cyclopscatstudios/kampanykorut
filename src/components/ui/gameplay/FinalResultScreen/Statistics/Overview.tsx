@@ -78,7 +78,7 @@ export function Overview({
       </div>
       <div className="w-full mt-4">
         <SupportChart
-          label="Támogatottság alakulása"
+          label={t("endResult.statistics.overview.supportTrendLabel")}
           turnHistory={turnHistory}
           config={config}
         />

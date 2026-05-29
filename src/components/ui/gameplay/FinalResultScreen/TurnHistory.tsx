@@ -7,6 +7,7 @@ import { useState } from "react";
 import classNames from "classnames";
 import { RadioGroup } from "../../RadioGroup";
 import { noop } from "../../../../dev/FunctionUtils";
+import { t } from "i18next";
 
 interface TurnHistoryProps {
   history: HistoryItem[] | null;
@@ -56,9 +57,9 @@ function HistorySidebar({
           <div className="p-2">
             <div className="flex justify-between">
               <Text color="gray" weight="bold">
-                Turn history
+                {t("endResult.turnHistory.label")}
               </Text>
-              <Text color="gray">{history.length} turns</Text>
+              <Text color="gray">{history.length} {t("endResult.turnHistory.turns")}</Text>
             </div>
           </div>
         </div>
@@ -107,7 +108,7 @@ function TurnHistoryItem({
       <div className="flex items-center gap-4">
         <div>
           <Text size="sm" weight="light" color="gray">
-            Day
+            {t(("endResult.turnHistory.historyItem.day"))}
           </Text>
           <Text weight="bold" color="gray">
             {item.turn}
