@@ -2,6 +2,7 @@
 
 exports[`useElectionState > should initialize state 1`] = `
 {
+  "activeCampaignId": "2022_ogyv_default",
   "answerEffects": [
     {
       "effects": [

@@ -2,9 +2,8 @@ import { useState } from "react";
 import { type ViewBox, useWheelZoom } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
 import { Button } from "../Button";
-import type { DistrictPoligon, District } from "../map.utils";
-import type { CandidateListData } from "@/logic/domain";
 import classNames from "classnames";
+import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
 
 export function MapWrapper({
   districts,

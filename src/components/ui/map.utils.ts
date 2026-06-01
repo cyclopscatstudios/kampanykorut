@@ -1,17 +1,5 @@
-import type { CandidateListData } from "@/logic/domain";
-import type { PartyName } from "../../types/color";
-
-export type District = {
-  winner: string;
-  maxVotes?: number;
-} & CandidateListData;
-
-export type DistrictPoligon = {
-  maz: string;
-  evk: string;
-  centrum: string;
-  poligon: string;
-};
+import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
+import { PartyName } from "../../types/color";
 
 export function getWinnerResultsByList(
   d: DistrictPoligon,

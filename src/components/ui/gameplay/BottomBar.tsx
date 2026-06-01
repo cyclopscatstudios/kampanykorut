@@ -3,10 +3,10 @@ import type { Colors } from "../../../types/color";
 import { SwingFactorId } from "../../../types/utils";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
-import type { District } from "../map.utils";
 import { Text } from "../Text";
 import type { SwingFactor } from "./MapCreator";
 import { CommonWrapper } from "../CommonWrapper";
+import { District } from "@/shared/types";
 
 interface BottomBarProps {
   data?: District | null;

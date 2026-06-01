@@ -4,8 +4,7 @@ import { StorageEngine } from "./StorageEngine";
 import { ConfigEngine } from "./ConfigEngine";
 import { Navigation } from "./navigation/Navigation";
 import { container } from "tsyringe";
-import type { VoterEnvironment } from "../domain";
-import type { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
+import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
 
 const FIXED_SESSION_ID = "fixed-test-session-id";
 const FIXED_GENERATED_ID = "generated-uuid";

@@ -1,14 +1,14 @@
+import { ConfigEngine } from "./ConfigEngine";
+import { container } from "tsyringe";
+import { CampaignConfig } from "@/shared/types";
 import {
   CampaignEngine,
+  DistrictGroupEngine,
   EffectApplier,
   MandateCalculator,
   ResultModifier,
-} from "@/logic/domain";
-import { VoterEnvironment } from "../domain/VoterEnvironment";
-import { ConfigEngine } from "./ConfigEngine";
-import type { CampaignConfig } from "../types/campaignEngine.types";
-import { container } from "tsyringe";
-import { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
+  VoterEnvironment,
+} from "@/shared/domain";
 
 export function createCampaignEngine(
   config: CampaignConfig,

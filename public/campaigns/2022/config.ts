@@ -10,10 +10,7 @@ import endResults from "./end_results.json";
 import feedback from "./ellenzeki_osszefogas/advisor_feedback.json";
 import feedbackAssets from "./ellenzeki_osszefogas/advisor_feedback_assets.json";
 import customGroups from "./custom_groups.json";
-import type {
-  CampaignConfig,
-  RawAnsweEffectProps,
-} from "../../../src/logic/types";
+import { CampaignConfig, RawAnsweEffectProps } from "@/shared/types";
 
 export const config2022: CampaignConfig = {
   electionConfig,

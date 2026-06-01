@@ -1,6 +1,4 @@
 import { StateEngine } from "@/logic/application";
-import type { FinalResults } from "@/logic/domain";
-import type { CampaignConfig } from "@/logic/types";
 import { container } from "tsyringe";
 import {
   getClosestDistricts,
@@ -12,6 +10,7 @@ import { Overview } from "./Overview";
 import { Button } from "../../../Button";
 import { DistrictDetails } from "./DistrictDetails";
 import { t } from "i18next";
+import { CampaignConfig, FinalResults } from "@/shared/types";
 
 type StatisticsTab = "overview" | "district-details";
 

@@ -13,7 +13,7 @@
     "emitDecoratorMetadata": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
@@ -28,9 +28,11 @@
 
     "paths": {
       "@/logic/application": ["./src/logic/application"],
-      "@/logic/domain": ["./src/logic/domain"],
-      "@/logic/types": ["./src/logic/types"]
+      "@/logic/types": ["./src/logic/types"],
+      "@/shared/logger": ["./shared/logger/logger"],
+      "@/shared/domain": ["./shared/domain"],
+      "@/shared/types": ["./shared/types"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "shared"]
 }

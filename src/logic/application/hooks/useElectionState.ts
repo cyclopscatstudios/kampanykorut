@@ -1,12 +1,16 @@
 import { useMemo, useState } from "react";
-import type { Decision, CampaignState } from "../../domain/CampaignEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
-import type { District } from "../../../components/ui/map.utils";
 import { useStateEngine } from "./useStateEngine";
-import type { PendingTurn, Answer } from "../../types/campaignEngine.types";
 import { useSettings } from "./useSettings";
 import { gameModeRegistry } from "../gameModeRegistery";
 import { useNavigation } from "../../../hooks/navigationHook";
+import {
+  Answer,
+  CampaignState,
+  Decision,
+  District,
+  PendingTurn,
+} from "@/shared/types";
 
 export function useElectionState(campaignId: string) {
   const config = gameModeRegistry[campaignId];
@@ -18,8 +22,9 @@ export function useElectionState(campaignId: string) {
     useStateEngine();
   const [gameState, setGameState] = useState<CampaignState>(() =>
     campaignEngine.createInitialState(
+      campaignId,
       currentState,
-      config.electionConfig.baseResults,
+      config.electionConfig,
     ),
   );
   const { settings } = useSettings();

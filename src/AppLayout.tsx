@@ -4,7 +4,7 @@ import FullscreenBackground from "./ui/Background";
 import { useStateEngine } from "./logic/application";
 import { useEffect } from "react";
 import { useParams } from "./hooks/useParamsHook";
-import { createLogger } from "./logic/logger";
+import { createLogger } from "../shared/logger/logger";
 import { NavigationBinder } from "./logic/application/navigation/NavigationBinder";
 
 const log = createLogger("AppLayout");
@@ -30,7 +30,7 @@ export function MainGameScreenWrapper() {
     }
 
     saveSession("campaignState", { activeCampaignId: campaignId });
-  }, [campaignId]);
+  }, [saveSession, campaignId]);
 
   return (
     <>

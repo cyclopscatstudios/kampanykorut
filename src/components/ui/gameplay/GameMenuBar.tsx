@@ -7,8 +7,7 @@ import type { DialogId } from "./hooks/useDialogState";
 import { useState, type ActionDispatch } from "react";
 import type { GameFlowAction } from "./hooks/useGameFlow";
 import { t } from "i18next";
-import type { CampaignState } from "@/logic/domain";
-import type { CampaignConfig } from "@/logic/types";
+import { CampaignConfig, CampaignState } from "@/shared/types";
 
 export interface MenuBarProps {
   activeDialog: DialogId;

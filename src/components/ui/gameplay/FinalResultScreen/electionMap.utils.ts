@@ -1,4 +1,4 @@
-import type { CampaignConfig } from "@/logic/types";
+import { CampaignConfig } from "@/shared/types";
 
 export type VotePercentage = {
   votes?: number;

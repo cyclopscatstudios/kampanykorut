@@ -1,13 +1,12 @@
-import type { CampaignState, FinalResults } from "@/logic/domain";
 import { ListOverview } from "./ListOverview";
 import { MandateOverview } from "./MandateOverview";
 import { PercentagesOverview } from "./PercentagesOverview";
-import type { CampaignConfig } from "@/logic/types";
 import type { StatisticResult } from "../statistics.utils";
 import { Text } from "../../../Text";
 import { t } from "i18next";
 import { SupportChart } from "./Chart";
 import type { HistoryItem } from "../../../../../logic/application/StateHandler";
+import { CampaignConfig, CampaignState, FinalResults } from "@/shared/types";
 
 export function Overview({
   results,

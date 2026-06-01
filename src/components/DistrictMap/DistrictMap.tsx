@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { useWheelZoom, type ViewBox } from "../../hooks/useWheelZoom";
-import {
-  getWinnerResultsByList,
-  type DistrictPoligon,
-  type District,
-} from "../ui/map.utils";
+import { getWinnerResultsByList } from "../ui/map.utils";
 import { parsePolygon, projectPoints } from "./geometry";
 import { computeBounds, computeScale } from "./projection";
 import { buildPathD, simplifyDP } from "./path";
@@ -14,7 +10,7 @@ import {
   getPartyHoverColor,
   getPartyActiveColor,
 } from "../ui/color.utils";
-import type { CandidateListData } from "../../logic/domain/ResultTransformer/VoteShareTransformer.types";
+import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
 
 interface DistrictMapProps {
   districts: DistrictPoligon[];

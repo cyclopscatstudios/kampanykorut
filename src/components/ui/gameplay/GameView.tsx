@@ -1,6 +1,9 @@
-import type { CampaignState } from "../../../logic/domain/CampaignEngine";
-import type { FinalResults } from "@/logic/domain";
-import type { DistrictPoligon, District } from "../map.utils";
+import {
+  CampaignState,
+  District,
+  DistrictPoligon,
+  FinalResults,
+} from "@/shared/types";
 import type { CurrentView } from "./MainGameScreen";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";

@@ -1,10 +1,7 @@
 import { useState } from "react";
-import type {
-  ElectionConfig,
-  PlayerSide,
-} from "../logic/types/campaignEngine.types";
 import { useNavigation } from "./navigationHook";
 import { useStateEngine } from "../logic/application/hooks";
+import { ElectionConfig, PlayerSide } from "@/shared/types";
 
 type Party = {
   id: string;
