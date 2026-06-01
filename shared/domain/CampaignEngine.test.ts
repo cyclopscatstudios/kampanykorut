@@ -171,10 +171,10 @@ describe("CampaignEngine.createInitialState", () => {
   });
 
   it("applies baseResults when creating fresh state", () => {
-    const electionConfig: ElectionConfig = {
+    const electionConfig = {
       baseResults: { fidesz: 0.45, ellenzek: 0.35 },
       thresholdPercent: 5,
-    };
+    } as unknown as ElectionConfig;;
 
     const withBase = engine.createInitialState(
       "test-campaign",
@@ -195,10 +195,10 @@ describe("CampaignEngine.createInitialState", () => {
       isEnded: false,
       candidateListData,
     };
-    const electionConfig: ElectionConfig = {
+    const electionConfig = {
       baseResults: { fidesz: 0.99 },
       thresholdPercent: 5,
-    };
+    } as unknown as ElectionConfig;
 
     const result = engine.createInitialState(
       "test-campaign",
