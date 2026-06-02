@@ -1,10 +1,14 @@
 import { singleton } from "tsyringe";
-import type { Decision, CampaignState } from "../domain/CampaignEngine";
 import { Emitter } from "./Emitter";
-import { createLogger } from "../logger";
-import type { RawEffect, CampaignConfig } from "../types/campaignEngine.types";
-import type { CalculateResults } from "../domain/MandateCalculator.types";
-import type { CandidateListData } from "../domain";
+import { createLogger } from "../../../shared/logger/logger";
+import {
+  CalculateResults,
+  CampaignConfig,
+  CampaignState,
+  CandidateListData,
+  Decision,
+  RawEffect,
+} from "@/shared/types";
 
 export interface HistoryItem {
   questionId: string;
@@ -29,6 +33,7 @@ export interface StateHandlerType {
 
 const defaultState: StateHandlerType = {
   gameState: {
+    activeCampaignId: "default-id",
     candidateListData: [],
     partyListData: [],
     turn: 0,

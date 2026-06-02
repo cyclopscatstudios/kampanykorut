@@ -1,15 +1,20 @@
 import { renderHook, act } from "@testing-library/react";
 import { vi } from "vitest";
 import { useGameFlow } from "./useGameFlow";
-import type {
-  PendingTurn,
+import {
   AnswerFeedback,
-} from "../../../../logic/types/campaignEngine.types";
-import type { CampaignState } from "../../../../logic/domain/CampaignEngine";
-import type { District } from "../../map.utils";
+  CampaignState,
+  District,
+  PendingTurn,
+} from "@/shared/types";
 
 const makePending = (overrides: Partial<CampaignState> = {}): PendingTurn => ({
-  newGameState: { turn: 1, isEnded: false, ...overrides },
+  newGameState: {
+    activeCampaignId: "test",
+    turn: 1,
+    isEnded: false,
+    ...overrides,
+  },
   decision: { questionId: "q1", answerId: "a1", effects: [] },
   rawAnswer: "a1",
 });

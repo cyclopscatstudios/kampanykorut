@@ -1,4 +1,4 @@
-import type { CandidateListData } from "@/logic/domain";
+import { CandidateListData } from "@/shared/types";
 
 export interface StatisticResult {
   district: CandidateListData;

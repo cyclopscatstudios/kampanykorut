@@ -1,11 +1,10 @@
 import { MapWrapper } from "../MapWrapper";
 import { container } from "tsyringe";
 import { StateEngine } from "@/logic/application";
-import type { CampaignConfig } from "@/logic/types";
 import { useState } from "react";
-import type { District } from "../../map.utils";
 import { DistrictResult } from "./DistrictResult";
 import { calculateVotePercentages, getCandidates } from "./electionMap.utils";
+import { CampaignConfig, District } from "@/shared/types";
 
 export function ElectionMap({ config }: { config: CampaignConfig }) {
   const stateEngine = container.resolve(StateEngine);

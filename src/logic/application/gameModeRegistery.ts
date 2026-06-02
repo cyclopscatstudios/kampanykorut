@@ -1,5 +1,5 @@
+import { CampaignConfig } from "@/shared/types";
 import { config2022 } from "../../../public/campaigns/2022/config";
-import type { CampaignConfig } from "../types/campaignEngine.types";
 import { fetchJSON } from "./fetchJSON";
 import { DATA_PATHS, getDataPath } from "./PathResolver";
 

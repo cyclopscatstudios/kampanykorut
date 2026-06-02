@@ -1,11 +1,11 @@
 import { useReducer } from "react";
-import type { CampaignState } from "../../../../logic/domain/CampaignEngine";
-import type {
-  AnswerFeedback,
-  PendingTurn,
-} from "../../../../logic/types/campaignEngine.types";
-import type { District } from "../../map.utils";
 import type { CurrentView } from "../MainGameScreen";
+import {
+  AnswerFeedback,
+  CampaignState,
+  District,
+  PendingTurn,
+} from "@/shared/types";
 
 type PendingAdvisor = {
   feedback: AnswerFeedback;

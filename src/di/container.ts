@@ -6,19 +6,19 @@ import {
   Emitter,
   StateHandler,
 } from "@/logic/application";
+import { SettingsEngine } from "../logic/application/SettingsEngine";
+import { Navigation } from "../logic/application/navigation/Navigation";
+import { uuidGenerator } from "../logic/application/IdGenerator";
 import {
+  DistrictGroupEngine,
   DistrictVoteTransformer,
   EffectApplier,
   MandateCalculator,
   ResultModifier,
   UnionSwingTransformer,
-  VoteShareTransformer,
   VoterEnvironment,
-} from "@/logic/domain";
-import { DistrictGroupEngine } from "../logic/domain/DistrictGroupEngine";
-import { SettingsEngine } from "../logic/application/SettingsEngine";
-import { Navigation } from "../logic/application/navigation/Navigation";
-import { uuidGenerator } from "../logic/application/IdGenerator";
+  VoteShareTransformer,
+} from "@/shared/domain";
 
 const emitter = new Emitter();
 container.registerInstance(Emitter, emitter);
@@ -70,7 +70,7 @@ const resultModifier = new ResultModifier(
 );
 container.registerInstance(ResultModifier, resultModifier);
 
-const mandateCalculator = new MandateCalculator(electionConfigEngine);
+const mandateCalculator = new MandateCalculator();
 container.registerInstance(MandateCalculator, mandateCalculator);
 
 const effectApplier = new EffectApplier(

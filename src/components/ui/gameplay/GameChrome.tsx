@@ -4,8 +4,7 @@ import { useDialogState } from "./hooks/useDialogState";
 import { TopMenuBar } from "./GameMenuBar";
 import { GameDialogs } from "./GameDialogs";
 import type { GameFlowAction } from "./hooks/useGameFlow";
-import type { CampaignState } from "@/logic/domain";
-import type { CampaignConfig } from "@/logic/types";
+import { CampaignConfig, CampaignState } from "@/shared/types";
 
 interface GameChromeProps {
   children: ReactNode;

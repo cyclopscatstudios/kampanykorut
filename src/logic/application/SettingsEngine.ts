@@ -1,7 +1,7 @@
 import { inject, singleton } from "tsyringe";
 import { Emitter } from "./Emitter";
 import { StorageEngine } from "./StorageEngine";
-import { createLogger } from "../logger";
+import { createLogger } from "../../../shared/logger/logger";
 import { supportedLanguages } from "../langs/languages";
 import { setLanguage } from "../i18n/i18n";
 
@@ -43,7 +43,6 @@ export class SettingsEngine extends Emitter<GameSettings> {
   }
 
   updateGameSettings(settings: Partial<GameSettings>): void {
-    console.log("update game settings called");
     const current = this.getGameSettings();
     const updated = { ...current, ...settings };
     if (settings.language) {

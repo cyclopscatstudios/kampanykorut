@@ -1,14 +1,10 @@
-import {
-  getWinnerResultByDistrict,
-  type DistrictPoligon,
-  type District,
-} from "../map.utils";
 import type { CurrentView } from "./MainGameScreen";
 import { MapWrapper } from "./MapWrapper";
 import { BottomBar } from "./BottomBar";
 import { SwingFactorId } from "../../../types/utils";
-import { type CandidateListData } from "@/logic/domain";
 import { t } from "i18next";
+import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
+import { getWinnerResultByDistrict } from "../map.utils";
 
 interface MapCreatorProps {
   districts: DistrictPoligon[];

@@ -1,4 +1,3 @@
-import type { CampaignConfig } from "@/logic/types";
 import { Icon, type BootstrapIcon } from "../../../Icon";
 import type { StatisticResult } from "../statistics.utils";
 import { CommonWrapper } from "../../../CommonWrapper";
@@ -6,6 +5,7 @@ import { calculateVotePercentages } from "../electionMap.utils";
 import type { Colors } from "../../../../../types/color";
 import { ProgressBar } from "./ProgressBar";
 import { Text } from "../../../Text";
+import { CampaignConfig } from "@/shared/types";
 
 export function ListOverview({
   list,

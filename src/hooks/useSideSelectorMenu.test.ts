@@ -4,7 +4,7 @@ import { container } from "tsyringe";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
 import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { gameModeRegistry } from "../logic/application/gameModeRegistery";
-import type { ElectionConfig } from "@/logic/types";
+import { ElectionConfig } from "@/shared/types";
 
 const { mockNavigate } = vi.hoisted(() => ({
   mockNavigate: vi.fn(),

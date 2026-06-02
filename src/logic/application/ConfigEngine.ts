@@ -1,14 +1,10 @@
 import { Emitter } from "./Emitter";
-import type {
-  CampaignConfig,
-  ElectionConfig,
-} from "../types/campaignEngine.types";
 import { singleton } from "tsyringe";
-import { createLogger } from "../logger";
+import { createLogger } from "../../../shared/logger/logger";
 import { StorageEngine } from "./StorageEngine";
 import type { CampaignHeader } from "./hooks/useGetCampaigns";
 import { fetchJSON } from "./fetchJSON";
-import type { CampaignState } from "../domain";
+import { CampaignConfig, CampaignState, ElectionConfig } from "@/shared/types";
 
 const log = createLogger("ConfigEngine");
 

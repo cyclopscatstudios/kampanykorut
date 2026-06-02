@@ -7,8 +7,7 @@ import {
   Tooltip,
 } from "recharts";
 import { CommonWrapper } from "../../../CommonWrapper";
-import type { CampaignConfig } from "@/logic/types";
-
+import { CampaignConfig } from "@/shared/types";
 type HistoryEntry = {
   turn: number;
   results: {

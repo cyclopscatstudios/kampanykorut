@@ -1,8 +1,3 @@
-import type {
-  CampaignState,
-  CandidateListData,
-  FinalResults,
-} from "@/logic/domain";
 import { Text } from "../../../Text";
 import { useMemo, useState } from "react";
 import {
@@ -11,10 +6,15 @@ import {
   type VotePercentage,
 } from "../electionMap.utils";
 import { AdvancedProgressBar, ProgressBar } from "./ProgressBar";
-import type { CampaignConfig } from "../../../../../logic/types/campaignEngine.types";
 import classNames from "classnames";
 import { Badge } from "../../../Badge";
 import { SidebarPanel } from "../../../SidebarPanel";
+import {
+  CampaignConfig,
+  CampaignState,
+  CandidateListData,
+  FinalResults,
+} from "@/shared/types";
 
 interface DistrictDetailsProps {
   state: CampaignState | null;

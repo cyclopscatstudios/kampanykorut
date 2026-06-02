@@ -10,7 +10,7 @@ export function useSettings() {
 
   useEffect(() => {
     return settingsEngine.subscribe(setSettings);
-  }, []);
+  }, [settingsEngine]);
 
   return {
     settings,

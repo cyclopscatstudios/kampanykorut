@@ -1,15 +1,15 @@
 import { singleton } from "tsyringe";
 import { Emitter } from "./Emitter";
 import type { ConfigEngine } from "./ConfigEngine";
-import { createLogger } from "../logger";
-import type { CampaignState, VoterEnvironment } from "../domain";
-import type { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
+import { createLogger } from "../../../shared/logger/logger";
 import type { SessionKey, StorageEngine } from "./StorageEngine";
 import type { IdGenerator } from "./IdGenerator";
 import type { HistoryItem } from "./StateHandler";
 import type { Navigation } from "./navigation/Navigation";
 import { gameModeRegistry } from "./gameModeRegistery";
 import { v4 as uuidv4 } from "uuid";
+import { CampaignState } from "@/shared/types";
+import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
 
 export type SavedCampaignSessionInfo = {
   id: string;
@@ -279,8 +279,6 @@ export class StateEngine extends Emitter<CampaignState> {
     const sessionId = this.getSessionId();
     const currentCampaignState = this.getCurrentCampaignState();
 
-    console.log({ currentCampaignState });
-
     const updated = {
       ...(currentCampaignState ?? {}),
       ...state,
@@ -307,7 +305,6 @@ export class StateEngine extends Emitter<CampaignState> {
 
   private getCurrentCampaignState() {
     const sessionId = this.getSessionId();
-    console.log({ sessionId });
     const storedCampaignState = this.storage.getItem(
       "campaignState",
       "localStorage",
@@ -316,7 +313,6 @@ export class StateEngine extends Emitter<CampaignState> {
     const parsed = storedCampaignState
       ? (JSON.parse(storedCampaignState) as CampaignState)
       : null;
-    console.log({ parsed });
     return parsed;
   }
 

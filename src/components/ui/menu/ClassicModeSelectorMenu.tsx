@@ -39,7 +39,7 @@ export function CampaignSelectorMenuList({
 
   useEffect(() => {
     saveSession("campaignState", null);
-  }, []);
+  }, [saveSession]);
 
   return (
     <div className="size-full flex items-center justify-center">
