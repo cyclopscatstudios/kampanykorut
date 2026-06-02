@@ -84,8 +84,8 @@ export class CampaignEngine {
     decision: Decision,
     history: Array<{ questionId: string; answerId: string }> = [],
     gameSettings: GameSettings,
+    electionConfig: ElectionConfig,
   ): CampaignState {
-    console.log({ state });
     if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
       return state;
@@ -101,6 +101,7 @@ export class CampaignEngine {
     const calculated = this.mandateCalculator.calculate(
       modified?.candidateListData,
       modified?.partyListData,
+      electionConfig,
     );
 
     const nextTurn = state.turn + 1;

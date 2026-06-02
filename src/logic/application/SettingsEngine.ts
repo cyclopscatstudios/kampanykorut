@@ -43,7 +43,6 @@ export class SettingsEngine extends Emitter<GameSettings> {
   }
 
   updateGameSettings(settings: Partial<GameSettings>): void {
-    console.log("update game settings called");
     const current = this.getGameSettings();
     const updated = { ...current, ...settings };
     if (settings.language) {

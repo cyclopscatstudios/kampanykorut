@@ -51,6 +51,7 @@ export function useElectionState(campaignId: string) {
       decision,
       currentHistory ?? [],
       settings,
+      config.electionConfig,
     );
 
     return {

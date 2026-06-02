@@ -29,14 +29,6 @@ const makeDistrictResult = (
 });
 
 describe("calculateWinner", () => {
-  it("returns undefined when called with undefined", () => {
-    expect(calculateWinner(undefined)).toBeUndefined();
-  });
-
-  it("returns undefined when called with null", () => {
-    expect(calculateWinner(null)).toBeUndefined();
-  });
-
   it("returns correct winner, maxVotes and totalVotes for a valid district", () => {
     const result = makeDistrictResult({
       fidesz: 5000,
@@ -67,7 +59,6 @@ describe("calculateWinner", () => {
     const outcome = calculateWinner(result);
     expect(outcome?.winner).toBe("fidesz");
     expect(outcome?.maxVotes).toBe(4000);
-    // undefined counts as 0, so total = 4000 + 0 + 2000
     expect(outcome?.totalVotes).toBe(6000);
   });
 

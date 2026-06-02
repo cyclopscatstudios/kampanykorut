@@ -25,8 +25,6 @@ describe("VoterEnvironment", () => {
         maxTurnout: 80,
         listData,
       });
-      // maxAvailableVoters = floor(10000 * 80 / 100) = 8000
-      // voters = 1000 + 500 = 1500
       expect(env.getAvailableVoters()).toBe(6500);
     });
 
@@ -38,7 +36,6 @@ describe("VoterEnvironment", () => {
         maxTurnout: 100,
         listData,
       });
-      // voters = 0, maxAvailableVoters = 5000
       expect(env.getAvailableVoters()).toBe(5000);
     });
 
@@ -50,7 +47,6 @@ describe("VoterEnvironment", () => {
         maxTurnout: 50,
         listData,
       });
-      // voters = 2000 + 0 = 2000, maxAvailableVoters = 5000
       expect(env.getAvailableVoters()).toBe(3000);
     });
 
@@ -65,7 +61,6 @@ describe("VoterEnvironment", () => {
         maxTurnout: 100,
         listData,
       });
-      // voters = 3000, maxAvailableVoters = 20000
       expect(env.getAvailableVoters()).toBe(17000);
     });
   });
@@ -82,7 +77,6 @@ describe("VoterEnvironment", () => {
       expect(env.getAvailableVoters()).toBe(9000);
 
       env.setVoters([makeDistrict({ fidesz: 3000, ellenzek: 2000 })]);
-      // voters = 5000, maxAvailableVoters remains 10000
       expect(env.getAvailableVoters()).toBe(5000);
     });
 
@@ -96,7 +90,6 @@ describe("VoterEnvironment", () => {
       });
 
       env.setVoters([makeDistrict({ fidesz: undefined, ellenzek: undefined })]);
-      // voters = 0
       expect(env.getAvailableVoters()).toBe(10000);
     });
   });
@@ -120,7 +113,6 @@ describe("VoterEnvironment", () => {
     });
 
     it("falls back to voterBase when district.valasztopolgar is undefined", () => {
-      // Initial listData seeds the voterBase with valasztopolgar = 8000
       const listData = [
         makeDistrict(
           { fidesz: 1000 },
@@ -134,7 +126,6 @@ describe("VoterEnvironment", () => {
         listData,
       });
 
-      // District with undefined valasztopolgar — should fall back to voterBase (8000)
       const district: CandidateListData = {
         megyekod: 3,
         oevk: 5,
@@ -143,7 +134,6 @@ describe("VoterEnvironment", () => {
         valasztopolgar: undefined as unknown as number,
         partok: { fidesz: 2000 },
       };
-      // voterBase for 3-5 = 8000, votes = 2000 → remaining = 6000
       expect(env.getRemainingVoteCount(district)).toBe(6000);
     });
 
@@ -158,7 +148,6 @@ describe("VoterEnvironment", () => {
         listData,
       });
 
-      // District with unknown key (99-99) and no valasztopolgar
       const district: CandidateListData = {
         megyekod: 99,
         oevk: 99,
@@ -167,7 +156,6 @@ describe("VoterEnvironment", () => {
         valasztopolgar: undefined as unknown as number,
         partok: { fidesz: 100 },
       };
-      // voterBase not found → 0, votes = 100 → remaining = 0 - 100 = -100
       expect(env.getRemainingVoteCount(district)).toBe(-100);
     });
 
@@ -189,7 +177,6 @@ describe("VoterEnvironment", () => {
         { fidesz: 1000, ellenzek: undefined },
         { valasztopolgar: 5000, oevk: 1, megyekod: 1 },
       );
-      // allVoteCount = 1000 + 0 = 1000, remaining = 5000 - 1000 = 4000
       expect(env.getRemainingVoteCount(district)).toBe(4000);
     });
 
@@ -241,7 +228,6 @@ describe("VoterEnvironment", () => {
           { valasztopolgar: 10000, oevk: 2, megyekod: 1 },
         ),
       ];
-      // (10000 - 2000) + (10000 - 3000) = 8000 + 7000 = 15000
       expect(env.getRemainingVotesInDistricts(districts)).toBe(15000);
     });
 
@@ -259,7 +245,6 @@ describe("VoterEnvironment", () => {
 
   describe("setVoterBase (tested via getRemainingVoteCount fallback)", () => {
     it("stores row.valasztopolgar ?? 0 so undefined valasztopolgar rows store 0", () => {
-      // Seed with a district where valasztopolgar is undefined
       const listData: CandidateListData[] = [
         {
           megyekod: 5,
@@ -277,7 +262,6 @@ describe("VoterEnvironment", () => {
         listData,
       });
 
-      // Query with matching key but no valasztopolgar → voterBase should be 0
       const district: CandidateListData = {
         megyekod: 5,
         oevk: 3,
@@ -286,7 +270,6 @@ describe("VoterEnvironment", () => {
         valasztopolgar: undefined as unknown as number,
         partok: { fidesz: 200 },
       };
-      // voterBase = 0, votes = 200 → remaining = -200
       expect(env.getRemainingVoteCount(district)).toBe(-200);
     });
   });

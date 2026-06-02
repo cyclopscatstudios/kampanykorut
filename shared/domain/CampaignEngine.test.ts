@@ -21,6 +21,11 @@ const gameState = {
   isEnded: false,
 };
 
+const electionConfig = {
+  baseResults: { fidesz: 0.45, ellenzek: 0.35 },
+  thresholdPercent: 5,
+} as unknown as ElectionConfig;
+
 const getDecision = (effects: RawEffect[]): Decision => ({
   questionId: "q1",
   answerId: "a1",
@@ -52,10 +57,16 @@ describe("CampaignEngine", () => {
       },
     ]);
 
-    const result = campaignEngine.processTurn(gameState, decision, [], {
-      showAdvisorFeedback: true,
-      language: "en",
-    });
+    const result = campaignEngine.processTurn(
+      gameState,
+      decision,
+      [],
+      {
+        showAdvisorFeedback: true,
+        language: "en",
+      },
+      electionConfig,
+    );
     expect(result).toMatchSnapshot();
   });
   it("should apply party-share typed decision", () => {
@@ -72,10 +83,16 @@ describe("CampaignEngine", () => {
       },
     ]);
 
-    const result = campaignEngine.processTurn(gameState, decision, [], {
-      showAdvisorFeedback: true,
-      language: "en",
-    });
+    const result = campaignEngine.processTurn(
+      gameState,
+      decision,
+      [],
+      {
+        showAdvisorFeedback: true,
+        language: "en",
+      },
+      electionConfig,
+    );
     expect(result).toMatchSnapshot();
   });
   it("should apply motivation typed decision", () => {
@@ -89,10 +106,16 @@ describe("CampaignEngine", () => {
       },
     ]);
 
-    const result = campaignEngine.processTurn(gameState, decision, [], {
-      showAdvisorFeedback: true,
-      language: "en",
-    });
+    const result = campaignEngine.processTurn(
+      gameState,
+      decision,
+      [],
+      {
+        showAdvisorFeedback: true,
+        language: "en",
+      },
+      electionConfig,
+    );
     expect(result).toMatchSnapshot();
   });
   it("should apply district typed decision", () => {
@@ -111,10 +134,16 @@ describe("CampaignEngine", () => {
       },
     ]);
 
-    const result = campaignEngine.processTurn(gameState, decision, [], {
-      showAdvisorFeedback: true,
-      language: "en",
-    });
+    const result = campaignEngine.processTurn(
+      gameState,
+      decision,
+      [],
+      {
+        showAdvisorFeedback: true,
+        language: "en",
+      },
+      electionConfig,
+    );
     expect(result).toMatchSnapshot();
   });
 });
@@ -174,7 +203,7 @@ describe("CampaignEngine.createInitialState", () => {
     const electionConfig = {
       baseResults: { fidesz: 0.45, ellenzek: 0.35 },
       thresholdPercent: 5,
-    } as unknown as ElectionConfig;;
+    } as unknown as ElectionConfig;
 
     const withBase = engine.createInitialState(
       "test-campaign",

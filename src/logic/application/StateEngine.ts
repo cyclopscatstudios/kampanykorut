@@ -279,8 +279,6 @@ export class StateEngine extends Emitter<CampaignState> {
     const sessionId = this.getSessionId();
     const currentCampaignState = this.getCurrentCampaignState();
 
-    console.log({ currentCampaignState });
-
     const updated = {
       ...(currentCampaignState ?? {}),
       ...state,
@@ -307,7 +305,6 @@ export class StateEngine extends Emitter<CampaignState> {
 
   private getCurrentCampaignState() {
     const sessionId = this.getSessionId();
-    console.log({ sessionId });
     const storedCampaignState = this.storage.getItem(
       "campaignState",
       "localStorage",
@@ -316,7 +313,6 @@ export class StateEngine extends Emitter<CampaignState> {
     const parsed = storedCampaignState
       ? (JSON.parse(storedCampaignState) as CampaignState)
       : null;
-    console.log({ parsed });
     return parsed;
   }
 
