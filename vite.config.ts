@@ -5,6 +5,10 @@ import svgr from "vite-plugin-svgr";
 import tailwindcss from "@tailwindcss/vite";
 import { readFileSync } from "node:fs";
 import { execSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const pkg = JSON.parse(readFileSync("./package.json", "utf-8")) as {
   version: string;
@@ -58,11 +62,11 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@/logic/application": "/src/logic/application",
-      "@/logic/types": "/src/logic/types",
-      "@/shared/logger": "/shared/logger/logger",
-      "@/shared/domain": "/shared/domain",
-      "@/shared/types": "/shared/types",
+      "@/logic/application": path.resolve(__dirname, "src/logic/application"),
+      "@/logic/types": path.resolve(__dirname, "src/logic/types"),
+      "@/shared/logger": path.resolve(__dirname, "shared/logger/logger"),
+      "@/shared/domain": path.resolve(__dirname, "shared/domain"),
+      "@/shared/types": path.resolve(__dirname, "shared/types"),
     },
   },
 });

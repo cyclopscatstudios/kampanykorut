@@ -1,15 +1,7 @@
 import { container } from "tsyringe";
 import { ResultModifier } from "./ResultModifier";
-import { candidateListData, partyListData } from "./mocks/mockListData";
-import { AppliedEffect, CampaignState, EffectType } from "@/shared/types";
-
-const baseState: CampaignState = {
-  activeCampaignId: "test-campaign",
-  turn: 0,
-  isEnded: false,
-  candidateListData,
-  partyListData,
-};
+import { AppliedEffect, EffectType } from "@/shared/types";
+import { campaignState } from "./mocks/mockCampaignState";
 
 describe("ResultModifier", () => {
   let modifier: ResultModifier;
@@ -19,21 +11,21 @@ describe("ResultModifier", () => {
   });
 
   it("returns null when appliedEffects is empty", () => {
-    expect(modifier.apply(baseState, [])).toBeNull();
+    expect(modifier.apply(campaignState, [])).toBeNull();
   });
 
   it("returns null when appliedEffects is undefined", () => {
-    expect(modifier.apply(baseState, undefined)).toBeNull();
+    expect(modifier.apply(campaignState, undefined)).toBeNull();
   });
 
   it("applies VoteAllocation effect", () => {
     const effect: AppliedEffect = {
       type: EffectType.VoteAllocation,
       newVotes: 1000,
-      share: { fidesz: 0.6, ellenzek: 0.4 },
+      share: { party_a: 0.6, party_b: 0.4 },
     };
 
-    const result = modifier.apply(baseState, [effect]);
+    const result = modifier.apply(campaignState, [effect]);
 
     expect(result).not.toBeNull();
     expect(result).toHaveProperty("candidateListData");
@@ -43,10 +35,10 @@ describe("ResultModifier", () => {
   it("applies TurnoutChange effect", () => {
     const effect: AppliedEffect = {
       type: EffectType.TurnoutChange,
-      motivationDelta: { fidesz: 2, ellenzek: -1 },
+      motivationDelta: { party_a: 2, party_b: -1 },
     };
 
-    const result = modifier.apply(baseState, [effect]);
+    const result = modifier.apply(campaignState, [effect]);
 
     expect(result).not.toBeNull();
     expect(result).toHaveProperty("candidateListData");
@@ -56,11 +48,11 @@ describe("ResultModifier", () => {
   it("returns null for unknown effect type and skips it", () => {
     const unknownEffect = { type: "unknown-type" } as unknown as AppliedEffect;
 
-    const result = modifier.apply(baseState, [unknownEffect]);
+    const result = modifier.apply(campaignState, [unknownEffect]);
 
     expect(result).toEqual({
-      candidateListData: baseState.candidateListData,
-      partyListData: baseState.partyListData,
+      candidateListData: campaignState.candidateListData,
+      partyListData: campaignState.partyListData,
     });
   });
 
@@ -68,16 +60,16 @@ describe("ResultModifier", () => {
     const effects: AppliedEffect[] = [
       {
         type: EffectType.UniformSwing,
-        baseShare: { fidesz: 50 },
-        targetShare: { fidesz: 49 },
+        baseShare: { party_a: 50 },
+        targetShare: { party_a: 49 },
       },
       {
         type: EffectType.TurnoutChange,
-        motivationDelta: { fidesz: 1 },
+        motivationDelta: { party_a: 1 },
       },
     ];
 
-    const result = modifier.apply(baseState, effects);
+    const result = modifier.apply(campaignState, effects);
 
     expect(result).not.toBeNull();
     expect(result).toHaveProperty("candidateListData");

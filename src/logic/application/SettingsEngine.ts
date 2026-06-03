@@ -50,7 +50,5 @@ export class SettingsEngine extends Emitter<GameSettings> {
     }
     this.notify(updated);
     this.storage.setItem("settings", JSON.stringify(updated), "localStorage");
-
-    console.trace();
   }
 }

@@ -1,4 +1,3 @@
-import { describe, it, expect } from "vitest";
 import {
   calculateWinner,
   calcPercentages,
@@ -31,12 +30,12 @@ const makeDistrictResult = (
 describe("calculateWinner", () => {
   it("returns correct winner, maxVotes and totalVotes for a valid district", () => {
     const result = makeDistrictResult({
-      fidesz: 5000,
-      ellenzek: 3000,
-      egyeb: 1000,
+      party_a: 5000,
+      party_b: 3000,
+      party_c: 1000,
     });
     expect(calculateWinner(result)).toEqual({
-      winner: "fidesz",
+      winner: "party_a",
       maxVotes: 5000,
       totalVotes: 9000,
     });
@@ -52,12 +51,12 @@ describe("calculateWinner", () => {
 
   it("treats undefined partok values as 0 via the ?? branch", () => {
     const result = makeDistrictResult({
-      fidesz: 4000,
-      ellenzek: undefined,
-      egyeb: 2000,
+      party_a: 4000,
+      party_b: undefined,
+      party_c: 2000,
     });
     const outcome = calculateWinner(result);
-    expect(outcome?.winner).toBe("fidesz");
+    expect(outcome?.winner).toBe("party_a");
     expect(outcome?.maxVotes).toBe(4000);
     expect(outcome?.totalVotes).toBe(6000);
   });
@@ -89,9 +88,9 @@ describe("calcPercentages", () => {
   });
 
   it("returns correct fractions and _total ≈ 1 for non-zero values", () => {
-    const result = calcPercentages({ fidesz: 3, ellenzek: 1 });
-    expect(result.fidesz).toBeCloseTo(0.75);
-    expect(result.ellenzek).toBeCloseTo(0.25);
+    const result = calcPercentages({ party_a: 3, party_b: 1 });
+    expect(result.party_a).toBeCloseTo(0.75);
+    expect(result.party_b).toBeCloseTo(0.25);
     expect(result._total).toBeCloseTo(1);
   });
 
