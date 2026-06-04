@@ -16,6 +16,13 @@ export interface CampaignState {
   results?: CalculateResults;
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;
+  pollingOpnions?: PollingOpnions;
+}
+
+export interface PollingOpnions {
+  candidateListData: CandidateListData[];
+  partyListData?: PartyListData[];
+  percentages?: Record<string, number>;
 }
 
 export type PlayerSide = {

@@ -1,7 +1,7 @@
 import { container } from "tsyringe";
+import { campaignState } from "./mocks/mockCampaignState";
 import { ResultModifier } from "./ResultModifier";
 import { AppliedEffect, EffectType } from "@/shared/types";
-import { campaignState } from "./mocks/mockCampaignState";
 
 describe("ResultModifier", () => {
   let modifier: ResultModifier;

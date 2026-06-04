@@ -1,4 +1,5 @@
 import { container } from "tsyringe";
+import { PollsterEngine } from "../../shared/domain/PollsterEngine";
 import { uuidGenerator } from "../logic/application/IdGenerator";
 import { Navigation } from "../logic/application/navigation/Navigation";
 import { SettingsEngine } from "../logic/application/SettingsEngine";
@@ -19,7 +20,6 @@ import {
   VoterEnvironment,
   VoteShareTransformer,
 } from "@/shared/domain";
-import { PollsterEngine } from "../../shared/domain/PollsterEngine";
 
 const emitter = new Emitter();
 container.registerInstance(Emitter, emitter);
@@ -35,9 +35,6 @@ container.registerInstance(DistrictVoteTransformer, districtVoteTransformer);
 
 const districtGroupEngine = new DistrictGroupEngine();
 container.registerInstance(DistrictGroupEngine, districtGroupEngine);
-
-const pollsterEngine = new PollsterEngine();
-container.registerInstance(PollsterEngine, pollsterEngine);
 
 const settingsEngine = new SettingsEngine(storageEngine);
 container.registerInstance(SettingsEngine, settingsEngine);
@@ -85,3 +82,6 @@ const effectApplier = new EffectApplier(
   districtGroupEngine,
 );
 container.registerInstance(EffectApplier, effectApplier);
+
+const pollsterEngine = new PollsterEngine(mandateCalculator);
+container.registerInstance(PollsterEngine, pollsterEngine);

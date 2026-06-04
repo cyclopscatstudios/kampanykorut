@@ -1,17 +1,17 @@
+import { container } from "tsyringe";
+import { CampaignEngine } from "./CampaignEngine";
+import { EffectApplier } from "./EffectApplier";
+import { MandateCalculator } from "./MandateCalculator";
+import { campaignState } from "./mocks/mockCampaignState";
+import { mockElectionConfig } from "./mocks/mockElectionConfig";
+import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
+import { ResultModifier } from "./ResultModifier";
 import {
   Decision,
   EffectType,
   ElectionConfig,
   RawEffect,
 } from "@/shared/types";
-import { CampaignEngine } from "./CampaignEngine";
-import { EffectApplier } from "./EffectApplier";
-import { MandateCalculator } from "./MandateCalculator";
-import { ResultModifier } from "./ResultModifier";
-import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
-import { container } from "tsyringe";
-import { campaignState } from "./mocks/mockCampaignState";
-import { mockElectionConfig } from "./mocks/mockElectionConfig";
 
 let campaignEngine: CampaignEngine;
 

@@ -1,7 +1,10 @@
+import { createLogger } from "../logger/logger";
+import { defaultPollsters } from "./DefaultPollsters";
 import type { EffectApplier } from "./EffectApplier";
 import type { MandateCalculator } from "./MandateCalculator";
+import { PollsterEngine } from "./PollsterEngine";
 import type { ResultModifier } from "./ResultModifier";
-import { createLogger } from "../logger/logger";
+import { GameSettings } from "@/logic/application";
 import {
   AdvisorFeedback,
   CampaignState,
@@ -13,9 +16,9 @@ import {
   FinalResults,
   PartyListData,
   RawAnsweEffectProps,
+  RawEffect,
   RawQuestion,
 } from "@/shared/types";
-import { GameSettings } from "@/logic/application";
 
 const log = createLogger("CampaignEngine");
 
@@ -28,6 +31,7 @@ export class CampaignEngine {
     private resultModifier: ResultModifier,
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
+    private pollsterEngine: PollsterEngine,
     private readonly advisorFeedback?: AdvisorFeedback[],
   ) {
     log.debug("CampaignEngine initialized");
@@ -104,6 +108,9 @@ export class CampaignEngine {
       electionConfig,
     );
 
+    const polls = this.pollsterEngine.getPolls(state, electionConfig);
+    log.info("PollsterEngine provided poll results", { polls });
+
     const nextTurn = state.turn + 1;
 
     const session = {
@@ -124,9 +131,50 @@ export class CampaignEngine {
       ),
       results: calculated,
       isEnded: nextTurn >= this.questions.length,
+      pollingOpnions: this.getPollingOpnionData(state, electionConfig, polls),
     };
 
     return session;
+  }
+
+  private getPollingOpnionData(
+    state: CampaignState,
+    electionConfig: ElectionConfig,
+    polls?: Record<string, number>,
+  ) {
+    if (!polls || !state.candidateListData) {
+      return undefined;
+    }
+    const effect: RawEffect = {
+      type: EffectType.UniformSwing,
+      params: polls,
+    };
+    const appliedEffects = this.effectApplier.getAppliedEffects(
+      [effect],
+      state.candidateListData,
+      1,
+    );
+
+    const modified = this.resultModifier.apply(state, appliedEffects);
+    if (!modified?.candidateListData || !modified?.partyListData) {
+      log.warn("failed to apply poll effects for polling opinions", {
+        state,
+        polls,
+      });
+      return undefined;
+    }
+
+    const calculated = this.mandateCalculator.calculate(
+      modified?.candidateListData,
+      modified?.partyListData,
+      electionConfig,
+    );
+
+    return {
+      candidateListData: modified.candidateListData,
+      partyListData: modified.partyListData,
+      percentages: calculated?.percentages,
+    };
   }
 
   getFinalResults(state: CampaignState): FinalResults {

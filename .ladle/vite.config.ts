@@ -1,6 +1,6 @@
 import "reflect-metadata";
-import { defineConfig } from "vite";
 import path from "path";
+import { defineConfig } from "vite";
 
 const root = path.resolve(__dirname, "..");
 

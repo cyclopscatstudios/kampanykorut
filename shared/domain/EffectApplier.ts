@@ -1,7 +1,8 @@
-import { MandateCalculator } from "./MandateCalculator";
+import { injectable } from "tsyringe";
 import { createLogger } from "../logger/logger";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
-import { injectable } from "tsyringe";
+import { MandateCalculator } from "./MandateCalculator";
+import { ConfigEngine, StateEngine, StateHandler } from "@/logic/application";
 import {
   RawEffect,
   ConditionalRawEffect,
@@ -13,7 +14,6 @@ import {
   DistrictTargetGroup,
   District,
 } from "@/shared/types";
-import { ConfigEngine, StateEngine, StateHandler } from "@/logic/application";
 
 const log = createLogger("EffectApplier");
 

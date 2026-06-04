@@ -35,6 +35,7 @@ export function createCampaignEngine(
     container.resolve(ResultModifier),
     container.resolve(EffectApplier),
     container.resolve(MandateCalculator),
+    container.resolve(PollsterEngine),
     config.advisorFeedback,
   );
 

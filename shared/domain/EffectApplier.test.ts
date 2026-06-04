@@ -1,7 +1,4 @@
 import { container } from "tsyringe";
-import { EffectApplier } from "./EffectApplier";
-import { mockCandidateListData } from "./mocks/mockListData";
-import { CampaignConfig } from "../types/configs/campaign-config";
 import { ConfigEngine, StateEngine } from "../../src/logic/application";
 import {
   RawEffect,
@@ -9,7 +6,10 @@ import {
   ConditionalRawEffect,
   DistrictTarget,
 } from "../types";
+import { CampaignConfig } from "../types/configs/campaign-config";
+import { EffectApplier } from "./EffectApplier";
 import { mockElectionConfig } from "./mocks/mockElectionConfig";
+import { mockCandidateListData } from "./mocks/mockListData";
 
 let effectApplier: EffectApplier;
 

@@ -1,5 +1,5 @@
-import { DistrictGroupEngine } from "./DistrictGroupEngine";
 import { defaultGroups } from "./DefaultGroups";
+import { DistrictGroupEngine } from "./DistrictGroupEngine";
 
 // TODO: should use mocked groups instead of defaultGroups, but it would require a lot of boilerplate, so for now we just test with the real data
 describe("DistrictGroupEngine", () => {

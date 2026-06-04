@@ -56,7 +56,7 @@ export function GameView({
   return (
     <MapCreator
       setCurrentView={onSetView}
-      candidateListData={state.candidateListData ?? []}
+      candidateListData={state.pollingOpnions?.candidateListData ?? []}
       capitalCity={config.capitalCity}
       districts={config.districts}
       selectedDistrict={selectedDistrict}
