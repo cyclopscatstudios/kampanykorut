@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import classNames from "classnames";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "./Button";
 import { Text } from "./Text";
-import classNames from "classnames";
 
 type Option<T> = {
   label: string;

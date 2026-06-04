@@ -2,24 +2,111 @@
 
 exports[`CampaignEngine > should apply district typed decision 1`] = `
 {
-  "activeCampaignId": "test-campaign",
+  "activeCampaignId": "1995_test_campaign_id",
+  "advisorFeedback": {
+    "answerId": "B",
+    "text": "Your advisor thinks that this answer is decent, but it could have been better. They suggest that you should have chosen answer A, which would have given you a better chance at winning the election.",
+  },
+  "answerEffects": [
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": -1.4,
+            "party_b": 1,
+            "party_c": 0.4,
+          },
+          "type": "uniform-swing",
+        },
+        {
+          "params": {
+            "party_a": -0.8,
+          },
+          "type": "turnout-change",
+        },
+      ],
+      "id": "A",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 0.4,
+          },
+          "type": "uniform-swing",
+        },
+      ],
+      "id": "B",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 1.8,
+            "party_b": -1,
+          },
+          "type": "uniform-swing",
+        },
+        {
+          "params": {
+            "party_a": 0.8,
+          },
+          "type": "turnout-change",
+        },
+        {
+          "params": [
+            {
+              "amount": 1000,
+              "from": {
+                "party": "fidesz",
+                "type": "party",
+              },
+              "groupId": "ellenzeki_vezetesu_oevk",
+              "targetParty": "party_a",
+            },
+            {
+              "amount": 1000,
+              "from": {
+                "type": "bizonytalan",
+              },
+              "groupId": "ellenzeki_vezetesu_oevk",
+              "targetParty": "party_b",
+            },
+          ],
+          "type": "district-vote-transfer",
+        },
+      ],
+      "id": "C",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 0.5,
+          },
+          "type": "turnout-change",
+        },
+      ],
+      "id": "D",
+    },
+  ],
   "candidateListData": [
     {
       "jeloltek": {
-        "ellenzek": [
-          "Candidate B",
-        ],
-        "fidesz": [
+        "party_a": [
           "Candidate A",
+        ],
+        "party_b": [
+          "Candidate B",
         ],
       },
       "megye": "BP",
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 11000,
-        "fidesz": 12000,
-        "mkkp": undefined,
+        "party_a": 12000,
+        "party_b": 11000,
+        "party_c": undefined,
       },
       "telepules": "",
       "valasztopolgar": 600000,
@@ -29,13 +116,36 @@ exports[`CampaignEngine > should apply district typed decision 1`] = `
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 9000,
-        "fidesz": 8000,
+        "party_a": 9000,
+        "party_b": 8000,
       },
       "telepules": "",
       "valasztopolgar": 600000,
     },
   ],
+  "currentQuestion": {
+    "id": "1995_test_question_id",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "This is an answer with id A, and it is a very good answer that will lead to victory.",
+      },
+      {
+        "id": "B",
+        "label": "This is an answer with id B, and it is a decent answer that will lead to a close defeat.",
+      },
+      {
+        "id": "C",
+        "label": "This is an answer with id C, and it is a moderately good answer that will lead to a moderate outcome.",
+      },
+      {
+        "id": "D",
+        "label": "This is an answer with id D, and it is a poor answer that will lead to a defeat.",
+      },
+    ],
+    "question": "To be, or not to be: that is the question.",
+    "title": "Question title",
+  },
   "isEnded": false,
   "partyListData": [
     {
@@ -43,47 +153,193 @@ exports[`CampaignEngine > should apply district typed decision 1`] = `
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 40000,
-        "fidesz": 50000,
-        "mkkp": 3000,
+        "party_a": 50000,
+        "party_b": 40000,
+        "party_c": 3000,
       },
-      "telepules": "",
     },
     {
       "megye": "BP",
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 35000,
-        "fidesz": 30000,
+        "party_a": 30000,
+        "party_b": 35000,
       },
-      "telepules": "",
     },
   ],
-  "turn": 0,
+  "playerSide": {
+    "candidateId": "candidate_a",
+    "partyId": "party_a",
+  },
+  "results": {
+    "compensation": {
+      "losingVotes": {
+        "party_a": 947068,
+        "party_b": 126648,
+        "party_c": 307064,
+      },
+      "total": {
+        "party_a": 1344757,
+        "party_b": 126648,
+        "party_c": 307064,
+      },
+      "winnerCompensation": {
+        "party_a": 375288,
+        "party_b": 397689,
+      },
+    },
+    "constituencySeats": {
+      "party_a": 48,
+      "party_b": 58,
+    },
+    "listSeats": {
+      "party_a": 43,
+      "party_b": 43,
+      "party_c": 7,
+    },
+    "mandates": [
+      {
+        "constituencySeats": 48,
+        "listSeats": 43,
+        "party": "party_a",
+        "totalSeats": 91,
+      },
+      {
+        "constituencySeats": 58,
+        "listSeats": 43,
+        "party": "party_b",
+        "totalSeats": 101,
+      },
+      {
+        "constituencySeats": 0,
+        "listSeats": 7,
+        "party": "party_c",
+        "totalSeats": 7,
+      },
+    ],
+    "percentages": {
+      "party_a": 0.44456823645102844,
+      "party_b": 0.4487724331063556,
+      "party_c": 0.02375856043924297,
+    },
+    "totals": {
+      "party_a": 5000,
+      "party_b": 4000,
+      "party_c": 3000,
+    },
+  },
+  "turn": 8,
 }
 `;
 
 exports[`CampaignEngine > should apply motivation typed decision 1`] = `
 {
-  "activeCampaignId": "test-campaign",
+  "activeCampaignId": "1995_test_campaign_id",
+  "advisorFeedback": {
+    "answerId": "B",
+    "text": "Your advisor thinks that this answer is decent, but it could have been better. They suggest that you should have chosen answer A, which would have given you a better chance at winning the election.",
+  },
+  "answerEffects": [
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": -1.4,
+            "party_b": 1,
+            "party_c": 0.4,
+          },
+          "type": "uniform-swing",
+        },
+        {
+          "params": {
+            "party_a": -0.8,
+          },
+          "type": "turnout-change",
+        },
+      ],
+      "id": "A",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 0.4,
+          },
+          "type": "uniform-swing",
+        },
+      ],
+      "id": "B",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 1.8,
+            "party_b": -1,
+          },
+          "type": "uniform-swing",
+        },
+        {
+          "params": {
+            "party_a": 0.8,
+          },
+          "type": "turnout-change",
+        },
+        {
+          "params": [
+            {
+              "amount": 1000,
+              "from": {
+                "party": "fidesz",
+                "type": "party",
+              },
+              "groupId": "ellenzeki_vezetesu_oevk",
+              "targetParty": "party_a",
+            },
+            {
+              "amount": 1000,
+              "from": {
+                "type": "bizonytalan",
+              },
+              "groupId": "ellenzeki_vezetesu_oevk",
+              "targetParty": "party_b",
+            },
+          ],
+          "type": "district-vote-transfer",
+        },
+      ],
+      "id": "C",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 0.5,
+          },
+          "type": "turnout-change",
+        },
+      ],
+      "id": "D",
+    },
+  ],
   "candidateListData": [
     {
       "jeloltek": {
-        "ellenzek": [
-          "Candidate B",
-        ],
-        "fidesz": [
+        "party_a": [
           "Candidate A",
+        ],
+        "party_b": [
+          "Candidate B",
         ],
       },
       "megye": "BP",
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 11000,
-        "fidesz": 12000,
-        "mkkp": undefined,
+        "party_a": 12000,
+        "party_b": 11000,
+        "party_c": undefined,
       },
       "telepules": "",
       "valasztopolgar": 600000,
@@ -93,13 +349,36 @@ exports[`CampaignEngine > should apply motivation typed decision 1`] = `
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 9000,
-        "fidesz": 8000,
+        "party_a": 9000,
+        "party_b": 8000,
       },
       "telepules": "",
       "valasztopolgar": 600000,
     },
   ],
+  "currentQuestion": {
+    "id": "1995_test_question_id",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "This is an answer with id A, and it is a very good answer that will lead to victory.",
+      },
+      {
+        "id": "B",
+        "label": "This is an answer with id B, and it is a decent answer that will lead to a close defeat.",
+      },
+      {
+        "id": "C",
+        "label": "This is an answer with id C, and it is a moderately good answer that will lead to a moderate outcome.",
+      },
+      {
+        "id": "D",
+        "label": "This is an answer with id D, and it is a poor answer that will lead to a defeat.",
+      },
+    ],
+    "question": "To be, or not to be: that is the question.",
+    "title": "Question title",
+  },
   "isEnded": false,
   "partyListData": [
     {
@@ -107,47 +386,193 @@ exports[`CampaignEngine > should apply motivation typed decision 1`] = `
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 40000,
-        "fidesz": 50000,
-        "mkkp": 3000,
+        "party_a": 50000,
+        "party_b": 40000,
+        "party_c": 3000,
       },
-      "telepules": "",
     },
     {
       "megye": "BP",
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 35000,
-        "fidesz": 30000,
+        "party_a": 30000,
+        "party_b": 35000,
       },
-      "telepules": "",
     },
   ],
-  "turn": 0,
+  "playerSide": {
+    "candidateId": "candidate_a",
+    "partyId": "party_a",
+  },
+  "results": {
+    "compensation": {
+      "losingVotes": {
+        "party_a": 947068,
+        "party_b": 126648,
+        "party_c": 307064,
+      },
+      "total": {
+        "party_a": 1344757,
+        "party_b": 126648,
+        "party_c": 307064,
+      },
+      "winnerCompensation": {
+        "party_a": 375288,
+        "party_b": 397689,
+      },
+    },
+    "constituencySeats": {
+      "party_a": 48,
+      "party_b": 58,
+    },
+    "listSeats": {
+      "party_a": 43,
+      "party_b": 43,
+      "party_c": 7,
+    },
+    "mandates": [
+      {
+        "constituencySeats": 48,
+        "listSeats": 43,
+        "party": "party_a",
+        "totalSeats": 91,
+      },
+      {
+        "constituencySeats": 58,
+        "listSeats": 43,
+        "party": "party_b",
+        "totalSeats": 101,
+      },
+      {
+        "constituencySeats": 0,
+        "listSeats": 7,
+        "party": "party_c",
+        "totalSeats": 7,
+      },
+    ],
+    "percentages": {
+      "party_a": 0.44456823645102844,
+      "party_b": 0.4487724331063556,
+      "party_c": 0.02375856043924297,
+    },
+    "totals": {
+      "party_a": 5000,
+      "party_b": 4000,
+      "party_c": 3000,
+    },
+  },
+  "turn": 8,
 }
 `;
 
 exports[`CampaignEngine > should apply party-share typed decision 1`] = `
 {
-  "activeCampaignId": "test-campaign",
+  "activeCampaignId": "1995_test_campaign_id",
+  "advisorFeedback": {
+    "answerId": "B",
+    "text": "Your advisor thinks that this answer is decent, but it could have been better. They suggest that you should have chosen answer A, which would have given you a better chance at winning the election.",
+  },
+  "answerEffects": [
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": -1.4,
+            "party_b": 1,
+            "party_c": 0.4,
+          },
+          "type": "uniform-swing",
+        },
+        {
+          "params": {
+            "party_a": -0.8,
+          },
+          "type": "turnout-change",
+        },
+      ],
+      "id": "A",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 0.4,
+          },
+          "type": "uniform-swing",
+        },
+      ],
+      "id": "B",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 1.8,
+            "party_b": -1,
+          },
+          "type": "uniform-swing",
+        },
+        {
+          "params": {
+            "party_a": 0.8,
+          },
+          "type": "turnout-change",
+        },
+        {
+          "params": [
+            {
+              "amount": 1000,
+              "from": {
+                "party": "fidesz",
+                "type": "party",
+              },
+              "groupId": "ellenzeki_vezetesu_oevk",
+              "targetParty": "party_a",
+            },
+            {
+              "amount": 1000,
+              "from": {
+                "type": "bizonytalan",
+              },
+              "groupId": "ellenzeki_vezetesu_oevk",
+              "targetParty": "party_b",
+            },
+          ],
+          "type": "district-vote-transfer",
+        },
+      ],
+      "id": "C",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 0.5,
+          },
+          "type": "turnout-change",
+        },
+      ],
+      "id": "D",
+    },
+  ],
   "candidateListData": [
     {
       "jeloltek": {
-        "ellenzek": [
-          "Candidate B",
-        ],
-        "fidesz": [
+        "party_a": [
           "Candidate A",
+        ],
+        "party_b": [
+          "Candidate B",
         ],
       },
       "megye": "BP",
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 11000,
-        "fidesz": 12000,
-        "mkkp": undefined,
+        "party_a": 12000,
+        "party_b": 11000,
+        "party_c": undefined,
       },
       "telepules": "",
       "valasztopolgar": 600000,
@@ -157,13 +582,36 @@ exports[`CampaignEngine > should apply party-share typed decision 1`] = `
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 9000,
-        "fidesz": 8000,
+        "party_a": 9000,
+        "party_b": 8000,
       },
       "telepules": "",
       "valasztopolgar": 600000,
     },
   ],
+  "currentQuestion": {
+    "id": "1995_test_question_id",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "This is an answer with id A, and it is a very good answer that will lead to victory.",
+      },
+      {
+        "id": "B",
+        "label": "This is an answer with id B, and it is a decent answer that will lead to a close defeat.",
+      },
+      {
+        "id": "C",
+        "label": "This is an answer with id C, and it is a moderately good answer that will lead to a moderate outcome.",
+      },
+      {
+        "id": "D",
+        "label": "This is an answer with id D, and it is a poor answer that will lead to a defeat.",
+      },
+    ],
+    "question": "To be, or not to be: that is the question.",
+    "title": "Question title",
+  },
   "isEnded": false,
   "partyListData": [
     {
@@ -171,47 +619,193 @@ exports[`CampaignEngine > should apply party-share typed decision 1`] = `
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 40000,
-        "fidesz": 50000,
-        "mkkp": 3000,
+        "party_a": 50000,
+        "party_b": 40000,
+        "party_c": 3000,
       },
-      "telepules": "",
     },
     {
       "megye": "BP",
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 35000,
-        "fidesz": 30000,
+        "party_a": 30000,
+        "party_b": 35000,
       },
-      "telepules": "",
     },
   ],
-  "turn": 0,
+  "playerSide": {
+    "candidateId": "candidate_a",
+    "partyId": "party_a",
+  },
+  "results": {
+    "compensation": {
+      "losingVotes": {
+        "party_a": 947068,
+        "party_b": 126648,
+        "party_c": 307064,
+      },
+      "total": {
+        "party_a": 1344757,
+        "party_b": 126648,
+        "party_c": 307064,
+      },
+      "winnerCompensation": {
+        "party_a": 375288,
+        "party_b": 397689,
+      },
+    },
+    "constituencySeats": {
+      "party_a": 48,
+      "party_b": 58,
+    },
+    "listSeats": {
+      "party_a": 43,
+      "party_b": 43,
+      "party_c": 7,
+    },
+    "mandates": [
+      {
+        "constituencySeats": 48,
+        "listSeats": 43,
+        "party": "party_a",
+        "totalSeats": 91,
+      },
+      {
+        "constituencySeats": 58,
+        "listSeats": 43,
+        "party": "party_b",
+        "totalSeats": 101,
+      },
+      {
+        "constituencySeats": 0,
+        "listSeats": 7,
+        "party": "party_c",
+        "totalSeats": 7,
+      },
+    ],
+    "percentages": {
+      "party_a": 0.44456823645102844,
+      "party_b": 0.4487724331063556,
+      "party_c": 0.02375856043924297,
+    },
+    "totals": {
+      "party_a": 5000,
+      "party_b": 4000,
+      "party_c": 3000,
+    },
+  },
+  "turn": 8,
 }
 `;
 
 exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
 {
-  "activeCampaignId": "test-campaign",
+  "activeCampaignId": "1995_test_campaign_id",
+  "advisorFeedback": {
+    "answerId": "B",
+    "text": "Your advisor thinks that this answer is decent, but it could have been better. They suggest that you should have chosen answer A, which would have given you a better chance at winning the election.",
+  },
+  "answerEffects": [
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": -1.4,
+            "party_b": 1,
+            "party_c": 0.4,
+          },
+          "type": "uniform-swing",
+        },
+        {
+          "params": {
+            "party_a": -0.8,
+          },
+          "type": "turnout-change",
+        },
+      ],
+      "id": "A",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 0.4,
+          },
+          "type": "uniform-swing",
+        },
+      ],
+      "id": "B",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 1.8,
+            "party_b": -1,
+          },
+          "type": "uniform-swing",
+        },
+        {
+          "params": {
+            "party_a": 0.8,
+          },
+          "type": "turnout-change",
+        },
+        {
+          "params": [
+            {
+              "amount": 1000,
+              "from": {
+                "party": "fidesz",
+                "type": "party",
+              },
+              "groupId": "ellenzeki_vezetesu_oevk",
+              "targetParty": "party_a",
+            },
+            {
+              "amount": 1000,
+              "from": {
+                "type": "bizonytalan",
+              },
+              "groupId": "ellenzeki_vezetesu_oevk",
+              "targetParty": "party_b",
+            },
+          ],
+          "type": "district-vote-transfer",
+        },
+      ],
+      "id": "C",
+    },
+    {
+      "effects": [
+        {
+          "params": {
+            "party_a": 0.5,
+          },
+          "type": "turnout-change",
+        },
+      ],
+      "id": "D",
+    },
+  ],
   "candidateListData": [
     {
       "jeloltek": {
-        "ellenzek": [
-          "Candidate B",
-        ],
-        "fidesz": [
+        "party_a": [
           "Candidate A",
+        ],
+        "party_b": [
+          "Candidate B",
         ],
       },
       "megye": "BP",
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 11000,
-        "fidesz": 12000,
-        "mkkp": undefined,
+        "party_a": 12000,
+        "party_b": 11000,
+        "party_c": undefined,
       },
       "telepules": "",
       "valasztopolgar": 600000,
@@ -221,13 +815,36 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 9000,
-        "fidesz": 8000,
+        "party_a": 9000,
+        "party_b": 8000,
       },
       "telepules": "",
       "valasztopolgar": 600000,
     },
   ],
+  "currentQuestion": {
+    "id": "1995_test_question_id",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "This is an answer with id A, and it is a very good answer that will lead to victory.",
+      },
+      {
+        "id": "B",
+        "label": "This is an answer with id B, and it is a decent answer that will lead to a close defeat.",
+      },
+      {
+        "id": "C",
+        "label": "This is an answer with id C, and it is a moderately good answer that will lead to a moderate outcome.",
+      },
+      {
+        "id": "D",
+        "label": "This is an answer with id D, and it is a poor answer that will lead to a defeat.",
+      },
+    ],
+    "question": "To be, or not to be: that is the question.",
+    "title": "Question title",
+  },
   "isEnded": false,
   "partyListData": [
     {
@@ -235,23 +852,82 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 40000,
-        "fidesz": 50000,
-        "mkkp": 3000,
+        "party_a": 50000,
+        "party_b": 40000,
+        "party_c": 3000,
       },
-      "telepules": "",
     },
     {
       "megye": "BP",
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 35000,
-        "fidesz": 30000,
+        "party_a": 30000,
+        "party_b": 35000,
       },
-      "telepules": "",
     },
   ],
-  "turn": 0,
+  "playerSide": {
+    "candidateId": "candidate_a",
+    "partyId": "party_a",
+  },
+  "results": {
+    "compensation": {
+      "losingVotes": {
+        "party_a": 947068,
+        "party_b": 126648,
+        "party_c": 307064,
+      },
+      "total": {
+        "party_a": 1344757,
+        "party_b": 126648,
+        "party_c": 307064,
+      },
+      "winnerCompensation": {
+        "party_a": 375288,
+        "party_b": 397689,
+      },
+    },
+    "constituencySeats": {
+      "party_a": 48,
+      "party_b": 58,
+    },
+    "listSeats": {
+      "party_a": 43,
+      "party_b": 43,
+      "party_c": 7,
+    },
+    "mandates": [
+      {
+        "constituencySeats": 48,
+        "listSeats": 43,
+        "party": "party_a",
+        "totalSeats": 91,
+      },
+      {
+        "constituencySeats": 58,
+        "listSeats": 43,
+        "party": "party_b",
+        "totalSeats": 101,
+      },
+      {
+        "constituencySeats": 0,
+        "listSeats": 7,
+        "party": "party_c",
+        "totalSeats": 7,
+      },
+    ],
+    "percentages": {
+      "party_a": 0.44456823645102844,
+      "party_b": 0.4487724331063556,
+      "party_c": 0.02375856043924297,
+    },
+    "totals": {
+      "party_a": 5000,
+      "party_b": 4000,
+      "party_c": 3000,
+    },
+  },
+  "turn": 8,
 }
 `;

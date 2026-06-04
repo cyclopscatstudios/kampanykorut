@@ -1,5 +1,5 @@
-import { useTranslation } from "react-i18next";
 import type { ParseKeys } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export function useTranslateLang(langKey: ParseKeys) {
   const { t } = useTranslation();

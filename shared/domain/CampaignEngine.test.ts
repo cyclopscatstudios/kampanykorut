@@ -8,23 +8,12 @@ import { CampaignEngine } from "./CampaignEngine";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
 import { ResultModifier } from "./ResultModifier";
-import { candidateListData, partyListData } from "./mocks/mockListData";
+import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
 import { container } from "tsyringe";
+import { campaignState } from "./mocks/mockCampaignState";
+import { mockElectionConfig } from "./mocks/mockElectionConfig";
 
 let campaignEngine: CampaignEngine;
-
-const gameState = {
-  activeCampaignId: "test-campaign",
-  turn: 0,
-  candidateListData,
-  partyListData,
-  isEnded: false,
-};
-
-const electionConfig = {
-  baseResults: { fidesz: 0.45, ellenzek: 0.35 },
-  thresholdPercent: 5,
-} as unknown as ElectionConfig;
 
 const getDecision = (effects: RawEffect[]): Decision => ({
   questionId: "q1",
@@ -37,8 +26,8 @@ describe("CampaignEngine", () => {
     const resultModifier = container.resolve(ResultModifier);
 
     campaignEngine = new CampaignEngine(
-      candidateListData,
-      partyListData,
+      mockCandidateListData,
+      mockPartyListData,
       [],
       [],
       resultModifier,
@@ -51,21 +40,21 @@ describe("CampaignEngine", () => {
       {
         type: EffectType.UniformSwing,
         params: {
-          fidesz: 5,
-          opposition: -3,
+          party_a: 5,
+          party_b: -3,
         },
       },
     ]);
 
     const result = campaignEngine.processTurn(
-      gameState,
+      campaignState,
       decision,
       [],
       {
         showAdvisorFeedback: true,
         language: "en",
       },
-      electionConfig,
+      mockElectionConfig,
     );
     expect(result).toMatchSnapshot();
   });
@@ -76,22 +65,22 @@ describe("CampaignEngine", () => {
         params: {
           newVotes: 100000,
           share: {
-            fidesz: 0.6,
-            opposition: 0.4,
+            party_a: 0.6,
+            party_b: 0.4,
           },
         },
       },
     ]);
 
     const result = campaignEngine.processTurn(
-      gameState,
+      campaignState,
       decision,
       [],
       {
         showAdvisorFeedback: true,
         language: "en",
       },
-      electionConfig,
+      mockElectionConfig,
     );
     expect(result).toMatchSnapshot();
   });
@@ -100,21 +89,21 @@ describe("CampaignEngine", () => {
       {
         type: EffectType.TurnoutChange,
         params: {
-          fidesz: 4,
-          opposition: -2,
+          party_a: 4,
+          party_b: -2,
         },
       },
     ]);
 
     const result = campaignEngine.processTurn(
-      gameState,
+      campaignState,
       decision,
       [],
       {
         showAdvisorFeedback: true,
         language: "en",
       },
-      electionConfig,
+      mockElectionConfig,
     );
     expect(result).toMatchSnapshot();
   });
@@ -127,22 +116,22 @@ describe("CampaignEngine", () => {
             amount: 50,
             megyekod: 1,
             oevk: 1,
-            targetParty: "ellenzek",
-            from: { party: "fidesz", type: "party" },
+            targetParty: "party_b",
+            from: { party: "party_a", type: "party" },
           },
         ],
       },
     ]);
 
     const result = campaignEngine.processTurn(
-      gameState,
+      campaignState,
       decision,
       [],
       {
         showAdvisorFeedback: true,
         language: "en",
       },
-      electionConfig,
+      mockElectionConfig,
     );
     expect(result).toMatchSnapshot();
   });
@@ -153,8 +142,8 @@ describe("CampaignEngine.createInitialState", () => {
 
   beforeAll(() => {
     engine = new CampaignEngine(
-      candidateListData,
-      partyListData,
+      mockCandidateListData,
+      mockPartyListData,
       [],
       [],
       container.resolve(ResultModifier),
@@ -168,7 +157,7 @@ describe("CampaignEngine.createInitialState", () => {
 
     expect(result.turn).toBe(0);
     expect(result.isEnded).toBe(false);
-    expect(result.candidateListData).toEqual(candidateListData);
+    expect(result.candidateListData).toEqual(mockCandidateListData);
   });
 
   it("returns savedState directly when it has candidateListData", () => {
@@ -176,8 +165,8 @@ describe("CampaignEngine.createInitialState", () => {
       activeCampaignId: "test-campaign",
       turn: 5,
       isEnded: false,
-      candidateListData,
-      partyListData,
+      candidateListData: mockCandidateListData,
+      partyListData: mockPartyListData,
     };
 
     const result = engine.createInitialState("test-campaign", savedState);
@@ -196,12 +185,12 @@ describe("CampaignEngine.createInitialState", () => {
     const result = engine.createInitialState("test-campaign", savedState);
 
     expect(result.turn).toBe(0);
-    expect(result.candidateListData).toEqual(candidateListData);
+    expect(result.candidateListData).toEqual(mockCandidateListData);
   });
 
   it("applies baseResults when creating fresh state", () => {
     const electionConfig = {
-      baseResults: { fidesz: 0.45, ellenzek: 0.35 },
+      baseResults: { party_a: 3, party_b: -2 },
       thresholdPercent: 5,
     } as unknown as ElectionConfig;
 
@@ -222,10 +211,10 @@ describe("CampaignEngine.createInitialState", () => {
       activeCampaignId: "test-campaign",
       turn: 2,
       isEnded: false,
-      candidateListData,
+      candidateListData: mockCandidateListData,
     };
     const electionConfig = {
-      baseResults: { fidesz: 0.99 },
+      baseResults: { party_a: 99 },
       thresholdPercent: 5,
     } as unknown as ElectionConfig;
 

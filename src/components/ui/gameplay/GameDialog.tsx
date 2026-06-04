@@ -1,11 +1,11 @@
+import { useState } from "react";
+import { container } from "tsyringe";
+import { useNavigation } from "../../../hooks/navigationHook";
 import { Button } from "../Button";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
-import { container } from "tsyringe";
-import { StateEngine } from "@/logic/application";
 import { Modal } from "../Modal";
-import { useState } from "react";
-import { useNavigation } from "../../../hooks/navigationHook";
+import { StateEngine } from "@/logic/application";
 
 export function GameDialog({
   isOpen,

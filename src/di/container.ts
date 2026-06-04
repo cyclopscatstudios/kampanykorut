@@ -1,14 +1,14 @@
 import { container } from "tsyringe";
+import { uuidGenerator } from "../logic/application/IdGenerator";
+import { Navigation } from "../logic/application/navigation/Navigation";
+import { SettingsEngine } from "../logic/application/SettingsEngine";
 import {
   ConfigEngine,
-  StorageEngine,
-  StateEngine,
   Emitter,
+  StateEngine,
   StateHandler,
+  StorageEngine,
 } from "@/logic/application";
-import { SettingsEngine } from "../logic/application/SettingsEngine";
-import { Navigation } from "../logic/application/navigation/Navigation";
-import { uuidGenerator } from "../logic/application/IdGenerator";
 import {
   DistrictGroupEngine,
   DistrictVoteTransformer,

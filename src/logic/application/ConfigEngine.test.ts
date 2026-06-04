@@ -1,7 +1,7 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { container } from "tsyringe";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ConfigEngine } from "./ConfigEngine";
 import { StorageEngine } from "./StorageEngine";
-import { container } from "tsyringe";
 import { CampaignConfig } from "@/shared/types";
 
 const baseConfig: CampaignConfig = {

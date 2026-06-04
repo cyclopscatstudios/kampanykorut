@@ -1,10 +1,10 @@
 import {
   backgroundColors,
+  type Colors,
   partyActiveColor,
   partyColors,
   partyHoverColor,
   PartyName,
-  type Colors,
 } from "../../types/color";
 
 export function getPartyColor(

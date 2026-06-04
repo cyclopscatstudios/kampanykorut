@@ -1,12 +1,12 @@
-import { Text } from "../Text";
-import markdown from "../../../../brand-assets/svg/logo-wordmark-dark.svg";
+import { t } from "i18next";
+import { type ActionDispatch, useState } from "react";
 import logo from "../../../../brand-assets/svg/logo-mark.svg";
+import markdown from "../../../../brand-assets/svg/logo-wordmark-dark.svg";
 import { Button } from "../Button";
+import { Text } from "../Text";
 import { Tooltip } from "../Tooltip";
 import type { DialogId } from "./hooks/useDialogState";
-import { useState, type ActionDispatch } from "react";
 import type { GameFlowAction } from "./hooks/useGameFlow";
-import { t } from "i18next";
 import { CampaignConfig, CampaignState } from "@/shared/types";
 
 export interface MenuBarProps {

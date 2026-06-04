@@ -1,8 +1,8 @@
+import classNames from "classnames";
 import { useState } from "react";
-import { type ViewBox, useWheelZoom } from "../../../hooks/useWheelZoom";
+import { useWheelZoom, type ViewBox } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
 import { Button } from "../Button";
-import classNames from "classnames";
 import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
 
 export function MapWrapper({

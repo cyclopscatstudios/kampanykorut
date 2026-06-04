@@ -17,6 +17,6 @@ export async function fetchJSON<T>(
 }
 
 export async function getCampaignConfigByRoute(route: string) {
-  const module = await import(`/campaigns/${route}/config.ts`);
+  const module = await import(`../../../public/campaigns/${route}/config.ts`);
   return module.config2022;
 }

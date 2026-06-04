@@ -1,6 +1,6 @@
-import { container } from "tsyringe";
-import { SettingsEngine, type GameSettings } from "../SettingsEngine";
 import { useEffect, useState } from "react";
+import { container } from "tsyringe";
+import { type GameSettings, SettingsEngine } from "../SettingsEngine";
 
 export function useSettings() {
   const settingsEngine = container.resolve(SettingsEngine);

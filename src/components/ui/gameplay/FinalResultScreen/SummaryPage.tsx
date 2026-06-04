@@ -1,10 +1,10 @@
 import { useMemo } from "react";
-import { ImageWrapper } from "../ImageWrapper";
-import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
+import { container } from "tsyringe";
 import { Heading } from "../../Heading";
 import { Text } from "../../Text";
-import { container } from "tsyringe";
-import { StateEngine, ConfigEngine } from "@/logic/application";
+import { ImageWrapper } from "../ImageWrapper";
+import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
+import { ConfigEngine, StateEngine } from "@/logic/application";
 import { FinalResults, Mandate, RawParty } from "@/shared/types";
 
 // TODO: this should come from the campaign config

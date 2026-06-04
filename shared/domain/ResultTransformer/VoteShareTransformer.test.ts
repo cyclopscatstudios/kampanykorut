@@ -1,34 +1,19 @@
 import { container } from "tsyringe";
-import { candidateListData, partyListData } from "../mocks/mockListData";
+import {
+  mockCandidateListData,
+  mockPartyListData,
+} from "../mocks/mockListData";
 import { VoteShareTransformer } from "./VoteShareTransformer";
 import { CandidateListData, VoterEnvironmentConfig } from "@/shared/types";
 import { VoterEnvironment } from "../VoterEnvironment";
+import { voternvironmentConfig } from "../mocks/mockVoterEnvironmentConfig";
 
 let pipelineTransform: VoteShareTransformer;
-
-const config: VoterEnvironmentConfig = {
-  eligibleVoters: 20,
-  listData: [
-    {
-      megye: "Teszt",
-      megyekod: 1,
-      oevk: 1,
-      partok: { "party-a": 10, "party-b": 15 },
-      telepules: "Teszt",
-      jeloltek: {
-        "party-a": ["candidate A"],
-        "party-b": ["candidate B"],
-      },
-      valasztopolgar: 300,
-    },
-  ],
-  maxTurnout: 85,
-};
 
 describe("PipelineTransform", () => {
   beforeEach(() => {
     const voterEnviorment = container.resolve(VoterEnvironment);
-    voterEnviorment.configure(config);
+    voterEnviorment.configure(voternvironmentConfig);
     pipelineTransform = new VoteShareTransformer(voterEnviorment);
   });
 
@@ -235,8 +220,8 @@ describe("PipelineTransform", () => {
   describe("modifyByMotivation", () => {
     it("should modify votes by motivation target", () => {
       const result = pipelineTransform.modifyByMotivation(
-        candidateListData,
-        partyListData,
+        mockCandidateListData,
+        mockPartyListData,
         {
           fidesz: 10,
           ellenzek: -5,

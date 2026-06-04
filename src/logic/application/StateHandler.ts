@@ -1,6 +1,6 @@
 import { singleton } from "tsyringe";
-import { Emitter } from "./Emitter";
 import { createLogger } from "../../../shared/logger/logger";
+import { Emitter } from "./Emitter";
 import {
   CalculateResults,
   CampaignConfig,

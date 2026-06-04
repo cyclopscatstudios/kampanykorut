@@ -1,8 +1,8 @@
-import type { ReactNode, ActionDispatch } from "react";
+import type { ActionDispatch, ReactNode } from "react";
 import { useNavigation } from "../../../hooks/navigationHook";
-import { useDialogState } from "./hooks/useDialogState";
-import { TopMenuBar } from "./GameMenuBar";
 import { GameDialogs } from "./GameDialogs";
+import { TopMenuBar } from "./GameMenuBar";
+import { useDialogState } from "./hooks/useDialogState";
 import type { GameFlowAction } from "./hooks/useGameFlow";
 import { CampaignConfig, CampaignState } from "@/shared/types";
 

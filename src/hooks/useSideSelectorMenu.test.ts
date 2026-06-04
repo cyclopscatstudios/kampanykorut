@@ -1,9 +1,9 @@
-import { renderHook, act } from "@testing-library/react";
-import { vi, describe, it, expect, beforeEach } from "vitest";
+import { act, renderHook } from "@testing-library/react";
 import { container } from "tsyringe";
-import { useSideSelectorMenu } from "./useSideSelectorMenu";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { gameModeRegistry } from "../logic/application/gameModeRegistery";
+import { useSideSelectorMenu } from "./useSideSelectorMenu";
 import { ElectionConfig } from "@/shared/types";
 
 const { mockNavigate } = vi.hoisted(() => ({

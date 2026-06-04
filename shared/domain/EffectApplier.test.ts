@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
 import { EffectApplier } from "./EffectApplier";
-import { candidateListData } from "./mocks/mockListData";
+import { mockCandidateListData } from "./mocks/mockListData";
 import { CampaignConfig } from "../types/configs/campaign-config";
 import { ConfigEngine, StateEngine } from "../../src/logic/application";
 import {
@@ -9,17 +9,12 @@ import {
   ConditionalRawEffect,
   DistrictTarget,
 } from "../types";
+import { mockElectionConfig } from "./mocks/mockElectionConfig";
 
 let effectApplier: EffectApplier;
 
 const config = {
-  electionConfig: {
-    listSeats: 10,
-    thresholdPercent: 5,
-    parties: [],
-    electionAssets: {},
-    playableSides: [],
-  },
+  electionConfig: mockElectionConfig,
 } as unknown as CampaignConfig;
 
 const FIXED_SESSION_ID = "fixed-test-session-id";
@@ -39,20 +34,20 @@ describe("ElectionEffectApplier – PartySwing", () => {
     const effect: RawEffect = {
       type: EffectType.UniformSwing,
       params: {
-        fidesz: -1,
+        party_a: -1,
       },
     };
 
     const result = effectApplier.getAppliedEffects(
       [effect],
-      candidateListData,
+      mockCandidateListData,
       0,
     );
     expect(result).toEqual([
       {
         type: EffectType.UniformSwing,
-        baseShare: { fidesz: 50 },
-        targetShare: { fidesz: 49 },
+        baseShare: { party_a: 52.5 },
+        targetShare: { party_a: 51.5 },
       },
     ]);
   });
@@ -61,21 +56,21 @@ describe("ElectionEffectApplier – PartySwing", () => {
     const effect: RawEffect = {
       type: EffectType.TurnoutChange,
       params: {
-        fidesz: 0.5,
-        ellenzek: 1,
+        party_a: 0.5,
+        party_b: 1,
       },
     };
     const result = effectApplier.getAppliedEffects(
       [effect],
-      candidateListData,
+      mockCandidateListData,
       0,
     );
     expect(result).toEqual([
       {
         type: EffectType.TurnoutChange,
         motivationDelta: {
-          fidesz: 99.5,
-          ellenzek: 100,
+          party_a: 99.5,
+          party_b: 100,
         },
       },
     ]);
@@ -87,14 +82,14 @@ describe("ElectionEffectApplier – PartySwing", () => {
       params: {
         newVotes: 1000,
         share: {
-          fidesz: 0.6,
-          ellenzek: 0.4,
+          party_a: 0.6,
+          party_b: 0.4,
         },
       },
     };
     const result = effectApplier.getAppliedEffects(
       [effect],
-      candidateListData,
+      mockCandidateListData,
       0,
     );
     expect(result).toEqual([
@@ -102,8 +97,8 @@ describe("ElectionEffectApplier – PartySwing", () => {
         type: EffectType.VoteAllocation,
         newVotes: 1000,
         share: {
-          fidesz: 0.6,
-          ellenzek: 0.4,
+          party_a: 0.6,
+          party_b: 0.4,
         },
       },
     ]);
@@ -117,9 +112,9 @@ describe("ElectionEffectApplier – PartySwing", () => {
           amount: 100,
           megyekod: 1,
           oevk: 1,
-          targetParty: "fidesz",
+          targetParty: "party_a",
           from: {
-            party: "ellenzek",
+            party: "party_b",
             type: "party",
           },
         },
@@ -127,7 +122,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
     };
     const result = effectApplier.getAppliedEffects(
       [effect],
-      candidateListData,
+      mockCandidateListData,
       0,
     );
     expect(result).toEqual([
@@ -136,12 +131,12 @@ describe("ElectionEffectApplier – PartySwing", () => {
           {
             amount: 100,
             from: {
-              party: "ellenzek",
+              party: "party_b",
               type: "party",
             },
             megyekod: 1,
             oevk: 1,
-            targetParty: "fidesz",
+            targetParty: "party_a",
           },
         ],
         type: "district-vote-transfer",
@@ -162,7 +157,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
             amount: 100,
             megyekod: 1,
             oevk: 1,
-            targetParty: "fidesz",
+            targetParty: "party_a",
             from: {
               party: "ellenzek",
               type: "party",
@@ -193,7 +188,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
       };
       const result = effectApplier.getAppliedEffects(
         [effect],
-        candidateListData,
+        mockCandidateListData,
         0,
         [conditionalEffect],
       );
@@ -220,9 +215,9 @@ describe("ElectionEffectApplier – PartySwing", () => {
             amount: 100,
             megyekod: 1,
             oevk: 1,
-            targetParty: "fidesz",
+            targetParty: "party_a",
             from: {
-              party: "ellenzek",
+              party: "party_b",
               type: "party",
             },
           },
@@ -241,8 +236,8 @@ describe("ElectionEffectApplier – PartySwing", () => {
             params: {
               newVotes: 1000,
               share: {
-                fidesz: 0.6,
-                ellenzek: 0.4,
+                party_a: 0.6,
+                party_b: 0.4,
               },
             },
           },
@@ -251,7 +246,7 @@ describe("ElectionEffectApplier – PartySwing", () => {
       };
       const result = effectApplier.getAppliedEffects(
         [effect],
-        candidateListData,
+        mockCandidateListData,
         0,
         [conditionalEffect],
       );
@@ -261,12 +256,12 @@ describe("ElectionEffectApplier – PartySwing", () => {
             {
               amount: 100,
               from: {
-                party: "ellenzek",
+                party: "party_b",
                 type: "party",
               },
               megyekod: 1,
               oevk: 1,
-              targetParty: "fidesz",
+              targetParty: "party_a",
             },
           ],
           type: "district-vote-transfer",
@@ -275,8 +270,8 @@ describe("ElectionEffectApplier – PartySwing", () => {
           type: "vote-allocation",
           newVotes: 1000,
           share: {
-            fidesz: 0.6,
-            ellenzek: 0.4,
+            party_a: 0.6,
+            party_b: 0.4,
           },
         },
       ]);

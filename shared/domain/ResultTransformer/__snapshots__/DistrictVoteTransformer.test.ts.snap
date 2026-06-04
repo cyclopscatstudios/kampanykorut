@@ -5,20 +5,21 @@ exports[`DistrictTargetTransform > should apply district target correctly 1`] = 
   "newCandidateListData": [
     {
       "jeloltek": {
-        "ellenzek": [
-          "Candidate B",
-        ],
-        "fidesz": [
+        "party_a": [
           "Candidate A",
+        ],
+        "party_b": [
+          "Candidate B",
         ],
       },
       "megye": "BP",
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 11050,
-        "fidesz": 12000,
-        "mkkp": undefined,
+        "ellenzek": 50,
+        "party_a": 12000,
+        "party_b": 11000,
+        "party_c": undefined,
       },
       "telepules": "",
       "valasztopolgar": 600000,
@@ -28,8 +29,8 @@ exports[`DistrictTargetTransform > should apply district target correctly 1`] = 
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 9000,
-        "fidesz": 8000,
+        "party_a": 9000,
+        "party_b": 8000,
       },
       "telepules": "",
       "valasztopolgar": 600000,
@@ -41,21 +42,20 @@ exports[`DistrictTargetTransform > should apply district target correctly 1`] = 
       "megyekod": 1,
       "oevk": 1,
       "partok": {
-        "ellenzek": 40050,
-        "fidesz": 50000,
-        "mkkp": 3000,
+        "ellenzek": 50,
+        "party_a": 50000,
+        "party_b": 40000,
+        "party_c": 3000,
       },
-      "telepules": "",
     },
     {
       "megye": "BP",
       "megyekod": 1,
       "oevk": 2,
       "partok": {
-        "ellenzek": 35000,
-        "fidesz": 30000,
+        "party_a": 30000,
+        "party_b": 35000,
       },
-      "telepules": "",
     },
   ],
 }

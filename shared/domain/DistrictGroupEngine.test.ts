@@ -1,6 +1,7 @@
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
 import { defaultGroups } from "./DefaultGroups";
 
+// TODO: should use mocked groups instead of defaultGroups, but it would require a lot of boilerplate, so for now we just test with the real data
 describe("DistrictGroupEngine", () => {
   it("should return the correct district group for given group ids", () => {
     const engine = new DistrictGroupEngine();

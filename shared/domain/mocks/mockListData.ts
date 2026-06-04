@@ -1,18 +1,20 @@
-export const candidateListData = [
+import { CandidateListData, PartyListData } from "../../types/campaign";
+
+export const mockCandidateListData: CandidateListData[] = [
   {
     megyekod: 1,
     megye: "BP",
     oevk: 1,
     valasztopolgar: 600000,
     partok: {
-      fidesz: 12000,
-      ellenzek: 11000,
-      mkkp: undefined,
+      party_a: 12000,
+      party_b: 11000,
+      party_c: undefined,
     },
     telepules: "",
     jeloltek: {
-      fidesz: ["Candidate A"],
-      ellenzek: ["Candidate B"],
+      party_a: ["Candidate A"],
+      party_b: ["Candidate B"],
     },
   },
   {
@@ -22,32 +24,30 @@ export const candidateListData = [
     telepules: "",
     valasztopolgar: 600000,
     partok: {
-      ellenzek: 9000,
-      fidesz: 8000,
+      party_a: 9000,
+      party_b: 8000,
     },
   },
 ];
 
-export const partyListData = [
+export const mockPartyListData: PartyListData[] = [
   {
     megyekod: 1,
     megye: "BP",
     oevk: 1,
-    telepules: "",
     partok: {
-      fidesz: 50000,
-      ellenzek: 40000,
-      mkkp: 3000,
+      party_a: 50000,
+      party_b: 40000,
+      party_c: 3000,
     },
   },
   {
     megyekod: 1,
     megye: "BP",
     oevk: 2,
-    telepules: "",
     partok: {
-      fidesz: 30000,
-      ellenzek: 35000,
+      party_a: 30000,
+      party_b: 35000,
     },
   },
 ];

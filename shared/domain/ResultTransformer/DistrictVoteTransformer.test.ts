@@ -1,5 +1,8 @@
 import { container } from "tsyringe";
-import { candidateListData, partyListData } from "../mocks/mockListData";
+import {
+  mockCandidateListData,
+  mockPartyListData,
+} from "../mocks/mockListData";
 import { DistrictVoteTransformer } from "./DistrictVoteTransformer";
 import { DistrictTarget } from "@/shared/types";
 
@@ -15,8 +18,8 @@ describe("DistrictTargetTransform", () => {
       oevk: 1,
     };
     const result = districtTargetTransform.modifyDistricts(
-      candidateListData,
-      partyListData,
+      mockCandidateListData,
+      mockPartyListData,
       [districtTarget],
     );
 

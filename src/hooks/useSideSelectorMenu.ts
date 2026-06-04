@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigation } from "./navigationHook";
 import { useStateEngine } from "../logic/application/hooks";
+import { useNavigation } from "./navigationHook";
 import { ElectionConfig, PlayerSide } from "@/shared/types";
 
 type Party = {

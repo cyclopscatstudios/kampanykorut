@@ -1,17 +1,8 @@
-import { CampaignConfig, CombinedOevk } from "@/shared/types";
+import { CombinedOevk } from "@/shared/types";
 import { MandateCalculator } from "./MandateCalculator";
+import { mockElectionConfig } from "./mocks/mockElectionConfig";
 
 describe("MandateCalculator", () => {
-  const config = {
-    electionConfig: {
-      listSeats: 10,
-      thresholdPercent: 5,
-      parties: [],
-      electionAssets: {},
-      playableSides: [],
-    },
-  } as unknown as CampaignConfig;
-
   const calculator = new MandateCalculator();
 
   describe("calculateConstituencySeats", () => {
@@ -21,30 +12,21 @@ describe("MandateCalculator", () => {
           megyekod: 1,
           megye: "BUDAPEST",
           oevk: 1,
-          constituencyVotes: {
-            fidesz: 12000,
-            ellenzek: 11000,
-          },
+          constituencyVotes: { party_a: 12000, party_b: 11000 },
           listVotes: {},
         },
         {
           megyekod: 1,
           megye: "BUDAPEST",
           oevk: 2,
-          constituencyVotes: {
-            ellenzek: 9000,
-            fidesz: 8000,
-          },
+          constituencyVotes: { party_b: 9000, party_a: 8000 },
           listVotes: {},
         },
       ];
 
       const result = (calculator as any).calculateSeats(data);
 
-      expect(result).toEqual({
-        fidesz: 1,
-        ellenzek: 1,
-      });
+      expect(result).toEqual({ party_a: 1, party_b: 1 });
     });
 
     it("should handle empty constituencies", () => {
@@ -70,95 +52,70 @@ describe("MandateCalculator", () => {
           megyekod: 1,
           megye: "A",
           oevk: 1,
-          constituencyVotes: {
-            fidesz: 12000,
-            ellenzek: 10000,
-            mkkp: 1000,
-          },
+          constituencyVotes: { party_a: 12000, party_b: 10000, party_c: 1000 },
           listVotes: {},
         },
       ];
 
       const result = (calculator as any).calculateCompensation(data);
 
-      expect(result.losingVotes).toEqual({
-        ellenzek: 10000,
-        mkkp: 1000,
-      });
-
-      expect(result.winnerCompensation).toEqual({
-        fidesz: 1999,
-      });
-
+      expect(result.losingVotes).toEqual({ party_b: 10000, party_c: 1000 });
+      expect(result.winnerCompensation).toEqual({ party_a: 1999 });
       expect(result.total).toEqual({
-        ellenzek: 10000,
-        mkkp: 1000,
-        fidesz: 1999,
+        party_b: 10000,
+        party_c: 1000,
+        party_a: 1999,
       });
     });
   });
 
-  describe("allocateListSeats (D’Hondt)", () => {
+  describe("allocateListSeats (D'Hondt)", () => {
     it("should allocate list seats using D'Hondt method", () => {
       const listVotes = {
-        fidesz: 500_000,
-        ellenzek: 400_000,
-        mkkp: 100_000,
+        party_a: 500_000,
+        party_b: 400_000,
+        party_c: 100_000,
       };
-
-      const compensation = {
-        fidesz: 50_000,
-        ellenzek: 20_000,
-      };
+      const compensation = { party_a: 50_000, party_b: 20_000 };
 
       const seats = (calculator as any).allocateListSeats(
         listVotes,
         compensation,
-        config.electionConfig,
+        mockElectionConfig,
       );
 
       const totalSeats = (Object.values(seats) as number[]).reduce(
         (a: number, b: number) => a + b,
         0,
       );
-      expect(totalSeats).toBe(config.electionConfig.listSeats);
-
-      expect(seats.fidesz).toBeGreaterThan(seats.ellenzek);
+      expect(totalSeats).toBe(mockElectionConfig.listSeats);
+      expect(seats.party_a).toBeGreaterThan(seats.party_b);
     });
 
     it("should filter out parties below the threshold", () => {
-      const listVotes = {
-        fidesz: 800,
-        ellenzek: 150,
-        kispart: 20,
-      };
-
+      const listVotes = { party_a: 800, party_b: 150, party_c: 20 };
       const compensation = {};
 
       const seats = (calculator as any).allocateListSeats(
         listVotes,
         compensation,
-        config.electionConfig,
+        mockElectionConfig,
       );
 
-      expect(seats.kispart).toBeUndefined();
+      expect(seats.party_c).toBeUndefined();
     });
 
     it("should handle the case when only one party qualifies", () => {
-      const listVotes = {
-        fidesz: 1000,
-        kispart: 10,
-      };
-
+      const listVotes = { party_a: 1000, party_b: 10 };
       const compensation = {};
 
       const seats = (calculator as any).allocateListSeats(
         listVotes,
         compensation,
-        config.electionConfig,
+        mockElectionConfig,
       );
 
-      expect(seats.fidesz).toBe(config.electionConfig.listSeats);
+      expect(seats.party_a).toBe(mockElectionConfig.listSeats);
     });
   });
 });

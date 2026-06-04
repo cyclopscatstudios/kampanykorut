@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslateLang } from "../../logic/useTranslateLang";
 import { Button } from "./Button";
-import { Icon, type BootstrapIcon } from "./Icon";
+import { type BootstrapIcon, Icon } from "./Icon";
 import { type MenuItem } from "./menu/menu.types";
 import { Text } from "./Text";
 

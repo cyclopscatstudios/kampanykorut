@@ -1,10 +1,10 @@
+import { t } from "i18next";
 import { SaveGameSession } from "../menu/SaveGameSession";
+import { Modal } from "../Modal";
+import { GameDialog } from "./GameDialog";
+import type { DialogId } from "./hooks/useDialogState";
 import { SavedSessionsDialog } from "./SavedGameSessionsDialog";
 import { SettingsDialog } from "./SettingsDialog";
-import { GameDialog } from "./GameDialog";
-import { Modal } from "../Modal";
-import type { DialogId } from "./hooks/useDialogState";
-import { t } from "i18next";
 
 interface GameDialogsProps {
   activeDialog: DialogId;

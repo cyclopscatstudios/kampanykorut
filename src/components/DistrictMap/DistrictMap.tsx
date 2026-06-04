@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useWheelZoom, type ViewBox } from "../../hooks/useWheelZoom";
-import { getWinnerResultsByList } from "../ui/map.utils";
-import { parsePolygon, projectPoints } from "./geometry";
-import { computeBounds, computeScale } from "./projection";
-import { buildPathD, simplifyDP } from "./path";
-import { getFillColor } from "./color";
 import {
+  getPartyActiveColor,
   getPartyColor,
   getPartyHoverColor,
-  getPartyActiveColor,
 } from "../ui/color.utils";
+import { getWinnerResultsByList } from "../ui/map.utils";
+import { getFillColor } from "./color";
+import { parsePolygon, projectPoints } from "./geometry";
+import { buildPathD, simplifyDP } from "./path";
+import { computeBounds, computeScale } from "./projection";
 import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
 
 interface DistrictMapProps {

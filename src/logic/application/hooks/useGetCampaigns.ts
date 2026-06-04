@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getDataPath } from "../PathResolver";
 import { fetchJSON } from "../fetchJSON";
+import { getDataPath } from "../PathResolver";
+import { createLogger } from "@/shared/logger";
 
 export interface CampaignHeader {
   id: string;
@@ -9,6 +10,8 @@ export interface CampaignHeader {
   route: string;
   campaignBanner: string;
 }
+
+const log = createLogger("useGetCampaigns");
 
 export function useGetCampaigns() {
   const pathToCampaigns = getDataPath("campaigns");
@@ -20,7 +23,7 @@ export function useGetCampaigns() {
         const campaignsData = await fetchJSON<CampaignHeader[]>("campaigns");
         setCampaigns(campaignsData);
       } catch (error) {
-        console.error("Error loading campaigns:", error);
+        log.error("Error loading campaigns:", error);
       }
     };
 
