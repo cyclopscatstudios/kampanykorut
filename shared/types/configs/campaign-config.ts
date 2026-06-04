@@ -4,6 +4,7 @@ import { DistrictGroup } from "../district";
 import { RawAnsweEffectProps } from "../effects";
 import { EndResultProps } from "../end-result";
 import { DistrictPoligon } from "../map";
+import { Pollster } from "../pollsters";
 import { RawQuestion } from "../question";
 import { ElectionConfig } from "./election-config";
 import { VoterEnvironmentConfig } from "./voter-environment-config";
@@ -21,4 +22,5 @@ export interface CampaignConfig {
   advisorFeedback?: AdvisorFeedback[];
   advisorFeedbackAssets?: AdvisorFeedbackAssets;
   customGroups?: DistrictGroup[];
+  customPollsters?: Pollster[];
 }

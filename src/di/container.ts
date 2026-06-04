@@ -19,6 +19,7 @@ import {
   VoterEnvironment,
   VoteShareTransformer,
 } from "@/shared/domain";
+import { PollsterEngine } from "../../shared/domain/PollsterEngine";
 
 const emitter = new Emitter();
 container.registerInstance(Emitter, emitter);
@@ -34,6 +35,9 @@ container.registerInstance(DistrictVoteTransformer, districtVoteTransformer);
 
 const districtGroupEngine = new DistrictGroupEngine();
 container.registerInstance(DistrictGroupEngine, districtGroupEngine);
+
+const pollsterEngine = new PollsterEngine();
+container.registerInstance(PollsterEngine, pollsterEngine);
 
 const settingsEngine = new SettingsEngine(storageEngine);
 container.registerInstance(SettingsEngine, settingsEngine);

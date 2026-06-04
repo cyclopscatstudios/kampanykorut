@@ -5,6 +5,7 @@ import {
   DistrictGroupEngine,
   EffectApplier,
   MandateCalculator,
+  PollsterEngine,
   ResultModifier,
   VoterEnvironment,
 } from "@/shared/domain";
@@ -22,6 +23,9 @@ export function createCampaignEngine(
 
   const districtGroupEngine = container.resolve(DistrictGroupEngine);
   districtGroupEngine.configure(config.candidateListData, config.customGroups);
+
+  const pollsterEngine = container.resolve(PollsterEngine);
+  pollsterEngine.configure(config.customPollsters);
 
   const campaignEngine = new CampaignEngine(
     config.candidateListData,
