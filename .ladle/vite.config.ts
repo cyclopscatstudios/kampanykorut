@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite';
-import path from 'path';
+import "reflect-metadata";
+import { defineConfig } from "vite";
+import path from "path";
 
-const root = path.resolve(__dirname, '..');
+const root = path.resolve(__dirname, "..");
 
 export default defineConfig({
   resolve: {

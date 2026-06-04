@@ -1,9 +1,9 @@
 import { inject, singleton } from "tsyringe";
+import { createLogger } from "../../../shared/logger/logger";
+import { setLanguage } from "../i18n/i18n";
+import { supportedLanguages } from "../langs/languages";
 import { Emitter } from "./Emitter";
 import { StorageEngine } from "./StorageEngine";
-import { createLogger } from "../../../shared/logger/logger";
-import { supportedLanguages } from "../langs/languages";
-import { setLanguage } from "../i18n/i18n";
 
 export type LanguageId = (typeof supportedLanguages)[number]["id"];
 

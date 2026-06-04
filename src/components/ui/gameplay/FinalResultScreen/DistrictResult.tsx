@@ -1,7 +1,8 @@
-import { Text } from "../../Text";
+
 import { Badge } from "../../Badge";
-import { getPartyById, type Candidate } from "./electionMap.utils";
 import { CommonWrapper } from "../../CommonWrapper";
+import { Text } from "../../Text";
+import { type Candidate, getPartyById } from "./electionMap.utils";
 import { CampaignConfig, District, RawParty } from "@/shared/types";
 
 interface DistrictResultProps {

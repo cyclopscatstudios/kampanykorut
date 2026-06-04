@@ -1,11 +1,11 @@
+import { t } from "i18next";
+import { useLoaderData } from "react-router";
+import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
+import { Button } from "../Button";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
-import { Button } from "../Button";
-import { Text } from "../Text";
 import { Icon } from "../Icon";
-import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
-import { useLoaderData } from "react-router";
-import { t } from "i18next";
+import { Text } from "../Text";
 
 export function SideSelectorMenu() {
   const { config, id } = useLoaderData();

@@ -18,7 +18,7 @@ npm run lint          # Check ESLint issues
 npm run lint:fix      # Auto-fix ESLint issues
 npm run format        # Format with Prettier
 npm run format:check  # Check formatting without changes
-npm run storybook     # Storybook: port 6006
+npm run ladle         # Ladle: port 6006
 ```
 
 Run a single test file:
@@ -41,6 +41,7 @@ src/dev/               → Dev-only screens, accessible at /dev route.
 ```
 
 **Forbidden crossings:**
+
 - `shared/domain/` must not import from `src/`
 - `src/components/` must not contain calculation logic
 - `src/logic/domain/` does not exist — domain lives in the `shared/` package
@@ -84,17 +85,17 @@ public/campaigns/{route}/
 
 ## Domain Layer (`shared/domain/`)
 
-| Module | Responsibility |
-|--------|---------------|
-| `CampaignEngine` | Orchestrates game turns: applies decisions, triggers recalculation |
-| `MandateCalculator` | Vote share → parliamentary seats (proportional + OEVK + compensation) |
-| `EffectApplier` | Translates `RawEffect` objects into mutations on electoral data |
-| `ResultModifier` | Composes the transformer pipeline |
-| `VoteShareTransformer` | Party list vote share redistribution |
-| `UnionSwingTransformer` | Coalition overlap-based swing redistribution |
-| `DistrictVoteTransformer` | OEVK district-level vote redistribution |
-| `VoterEnvironment` | Turnout model (eligible voters → actual votes cast) |
-| `DistrictGroupEngine` | District grouping and filtering |
+| Module                    | Responsibility                                                        |
+| ------------------------- | --------------------------------------------------------------------- |
+| `CampaignEngine`          | Orchestrates game turns: applies decisions, triggers recalculation    |
+| `MandateCalculator`       | Vote share → parliamentary seats (proportional + OEVK + compensation) |
+| `EffectApplier`           | Translates `RawEffect` objects into mutations on electoral data       |
+| `ResultModifier`          | Composes the transformer pipeline                                     |
+| `VoteShareTransformer`    | Party list vote share redistribution                                  |
+| `UnionSwingTransformer`   | Coalition overlap-based swing redistribution                          |
+| `DistrictVoteTransformer` | OEVK district-level vote redistribution                               |
+| `VoterEnvironment`        | Turnout model (eligible voters → actual votes cast)                   |
+| `DistrictGroupEngine`     | District grouping and filtering                                       |
 
 `shared/domain/mocks/` — mock data for tests; do not modify outside of test context.
 
@@ -104,31 +105,31 @@ public/campaigns/{route}/
 
 ### Core Classes and Utilities
 
-| File | Responsibility |
-|------|---------------|
-| `Emitter.ts` | Generic pub-sub base class (protected `notify()`, public `subscribe()`) |
-| `StorageEngine.ts` | localStorage abstraction with prefixed keys |
-| `StateEngine.ts` | Game session persistence to localStorage (campaignState + turnHistory) |
-| `StateHandler.ts` | Game state event emitter (`@singleton`) |
-| `SettingsEngine.ts` | Game settings persistence to localStorage |
-| `ConfigEngine.ts` | Campaign config loading and caching to localStorage |
-| `AssetService.ts` | Asset URL resolution |
-| `IdGenerator.ts` | Unique session ID generation |
-| `PathResolver.ts` | JSON file path resolution from campaign route + key |
-| `fetchJSON.ts` | JSON fetching from the `public/` folder |
-| `gameModeRegistery.ts` | In-memory campaign registry (populated at startup) |
-| `createCampaignEngine.ts` | Factory: wires domain objects together via DI |
+| File                      | Responsibility                                                          |
+| ------------------------- | ----------------------------------------------------------------------- |
+| `Emitter.ts`              | Generic pub-sub base class (protected `notify()`, public `subscribe()`) |
+| `StorageEngine.ts`        | localStorage abstraction with prefixed keys                             |
+| `StateEngine.ts`          | Game session persistence to localStorage (campaignState + turnHistory)  |
+| `StateHandler.ts`         | Game state event emitter (`@singleton`)                                 |
+| `SettingsEngine.ts`       | Game settings persistence to localStorage                               |
+| `ConfigEngine.ts`         | Campaign config loading and caching to localStorage                     |
+| `AssetService.ts`         | Asset URL resolution                                                    |
+| `IdGenerator.ts`          | Unique session ID generation                                            |
+| `PathResolver.ts`         | JSON file path resolution from campaign route + key                     |
+| `fetchJSON.ts`            | JSON fetching from the `public/` folder                                 |
+| `gameModeRegistery.ts`    | In-memory campaign registry (populated at startup)                      |
+| `createCampaignEngine.ts` | Factory: wires domain objects together via DI                           |
 
 ### Hooks (`hooks/`)
 
-| Hook | Responsibility |
-|------|---------------|
+| Hook               | Responsibility                                            |
+| ------------------ | --------------------------------------------------------- |
 | `useElectionState` | Primary hook: game state ↔ UI (processAnswer, commitTurn) |
-| `useStateEngine` | Session management (sessionId, saveSession, currentState) |
-| `useSettings` | Reading and updating game settings |
-| `useStateHandler` | Binds StateHandler singleton events to React state |
-| `useEngine` | CampaignEngine hook |
-| `useGetCampaigns` | Loads available campaigns |
+| `useStateEngine`   | Session management (sessionId, saveSession, currentState) |
+| `useSettings`      | Reading and updating game settings                        |
+| `useStateHandler`  | Binds StateHandler singleton events to React state        |
+| `useEngine`        | CampaignEngine hook                                       |
+| `useGetCampaigns`  | Loads available campaigns                                 |
 
 ### Navigation (`navigation/`)
 
@@ -202,7 +203,9 @@ import { renderHook, act } from "@testing-library/react";
 const { result } = renderHook(() => useMyHook(), { wrapper: MemoryRouter });
 
 // Trigger state changes:
-act(() => { result.current.someAction(); });
+act(() => {
+  result.current.someAction();
+});
 ```
 
 **Preventing localStorage contamination** — if a test causes a write to localStorage (e.g. via `StateEngine` singleton during `commitTurn`), subsequent tests in the same file will read that persisted state. Fix:
@@ -217,7 +220,9 @@ afterEach(() => {
 
 ```ts
 class TestEmitter<T> extends Emitter<T> {
-  emit(event: T) { this.notify(event); }
+  emit(event: T) {
+    this.notify(event);
+  }
 }
 ```
 
@@ -228,8 +233,12 @@ class TestEmitter<T> extends Emitter<T> {
 **gameModeRegistry mock campaign** — when testing `useElectionState`, register a mock campaign:
 
 ```ts
-beforeAll(() => { gameModeRegistry[MOCK_ID] = mockConfig; });
-afterAll(() => { delete (gameModeRegistry as Record<string, unknown>)[MOCK_ID]; });
+beforeAll(() => {
+  gameModeRegistry[MOCK_ID] = mockConfig;
+});
+afterAll(() => {
+  delete (gameModeRegistry as Record<string, unknown>)[MOCK_ID];
+});
 ```
 
 ### What NOT to test

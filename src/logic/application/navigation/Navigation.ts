@@ -1,6 +1,6 @@
 import type { NavigateFunction } from "react-router-dom";
-import type { NavigationService } from "./NavigationService";
 import { createLogger } from "../../../../shared/logger/logger";
+import type { NavigationService } from "./NavigationService";
 
 const log = createLogger("NavigationService");
 

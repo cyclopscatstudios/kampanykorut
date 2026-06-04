@@ -1,12 +1,12 @@
-import { Text } from "../Text";
-import { RadioGroup } from "../RadioGroup";
-import { Button } from "../Button";
-import type { CurrentView } from "./MainGameScreen";
-import { Icon } from "../Icon";
-import { Tooltip } from "../Tooltip";
-import { Heading } from "../Heading";
-import { useAssets } from "../../../hooks/useAssets";
 import { t } from "i18next";
+import { useAssets } from "../../../hooks/useAssets";
+import { Button } from "../Button";
+import { Heading } from "../Heading";
+import { Icon } from "../Icon";
+import { RadioGroup } from "../RadioGroup";
+import { Text } from "../Text";
+import { Tooltip } from "../Tooltip";
+import type { CurrentView } from "./MainGameScreen";
 
 interface Answer {
   id: string;

@@ -1,15 +1,15 @@
-import { StateEngine } from "@/logic/application";
+import { t } from "i18next";
+import { useState } from "react";
 import { container } from "tsyringe";
+import { Button } from "../../../Button";
 import {
   getClosestDistricts,
   getLargestDefeats,
   getLargestVictories,
 } from "../statistics.utils";
-import { useState } from "react";
-import { Overview } from "./Overview";
-import { Button } from "../../../Button";
 import { DistrictDetails } from "./DistrictDetails";
-import { t } from "i18next";
+import { Overview } from "./Overview";
+import { StateEngine } from "@/logic/application";
 import { CampaignConfig, FinalResults } from "@/shared/types";
 
 type StatisticsTab = "overview" | "district-details";

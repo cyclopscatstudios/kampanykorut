@@ -1,10 +1,10 @@
+import { t } from "i18next";
 import { useEffect, useState } from "react";
+import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Button } from "../Button";
 import { Heading } from "../Heading";
-import { Text } from "../Text";
 import { Icon } from "../Icon";
-import { useSettings } from "../../../logic/application/hooks/useSettings";
-import { t } from "i18next";
+import { Text } from "../Text";
 import { AdvisorFeedbackAssets } from "@/shared/types";
 
 interface AdvisorModalProps {

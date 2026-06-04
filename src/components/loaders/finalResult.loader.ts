@@ -1,6 +1,6 @@
-import { StateEngine, ConfigEngine } from "@/logic/application";
 import type { LoaderFunctionArgs } from "react-router";
 import { container } from "tsyringe";
+import { ConfigEngine, StateEngine } from "@/logic/application";
 
 export function finalResultLoader({ params }: LoaderFunctionArgs) {
   const id = params.id;

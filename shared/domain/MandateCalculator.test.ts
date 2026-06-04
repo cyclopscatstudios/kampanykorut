@@ -61,13 +61,21 @@ describe("MandateCalculator", () => {
 
       expect(result.losingVotes).toEqual({ party_b: 10000, party_c: 1000 });
       expect(result.winnerCompensation).toEqual({ party_a: 1999 });
-      expect(result.total).toEqual({ party_b: 10000, party_c: 1000, party_a: 1999 });
+      expect(result.total).toEqual({
+        party_b: 10000,
+        party_c: 1000,
+        party_a: 1999,
+      });
     });
   });
 
   describe("allocateListSeats (D'Hondt)", () => {
     it("should allocate list seats using D'Hondt method", () => {
-      const listVotes = { party_a: 500_000, party_b: 400_000, party_c: 100_000 };
+      const listVotes = {
+        party_a: 500_000,
+        party_b: 400_000,
+        party_c: 100_000,
+      };
       const compensation = { party_a: 50_000, party_b: 20_000 };
 
       const seats = (calculator as any).allocateListSeats(

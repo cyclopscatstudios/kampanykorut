@@ -1,12 +1,12 @@
-import { type HistoryItem } from "@/logic/application";
-import { CommonWrapper } from "../../CommonWrapper";
-import { Text } from "../../Text";
-import { Heading } from "../../Heading";
-import { useState } from "react";
 import classNames from "classnames";
-import { RadioGroup } from "../../RadioGroup";
-import { noop } from "../../../../dev/FunctionUtils";
 import { t } from "i18next";
+import { useState } from "react";
+import { noop } from "../../../../dev/FunctionUtils";
+import { CommonWrapper } from "../../CommonWrapper";
+import { Heading } from "../../Heading";
+import { RadioGroup } from "../../RadioGroup";
+import { Text } from "../../Text";
+import { type HistoryItem } from "@/logic/application";
 import { CampaignConfig } from "@/shared/types";
 
 interface TurnHistoryProps {

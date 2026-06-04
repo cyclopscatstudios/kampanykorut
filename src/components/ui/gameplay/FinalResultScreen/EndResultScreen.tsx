@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { Button } from "../../Button";
-import { SummaryPage } from "./SummaryPage";
-import { useTranslate } from "../../../../logic/useTranslateLang";
 import { useLoaderData } from "react-router";
+import { container } from "tsyringe";
+import { StateEngine } from "../../../../logic/application/StateEngine";
+import { useTranslate } from "../../../../logic/useTranslateLang";
+import { Button } from "../../Button";
+import { GameChrome } from "../GameChrome";
 import { ElectionMap } from "./ElectionMap";
 import { Statistics } from "./Statistics/Statistics";
-import { GameChrome } from "../GameChrome";
+import { SummaryPage } from "./SummaryPage";
 import { TurnHistory } from "./TurnHistory";
-import { StateEngine } from "../../../../logic/application/StateEngine";
-import { container } from "tsyringe";
 
 const screens = [
   { id: "summaryPage", label: "endResult.menuBar.summary" },

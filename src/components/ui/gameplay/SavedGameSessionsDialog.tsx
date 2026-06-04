@@ -1,14 +1,14 @@
-import {
-  StateEngine,
-  type SavedCampaignSessionInfo,
-} from "@/logic/application";
-import { Button } from "../Button";
-import { DialogHeader, Dialog, DialogBody, DialogFooter } from "../Dialog";
-import { Heading } from "../Heading";
-import { container } from "tsyringe";
-import { Text } from "../Text";
-import { useState } from "react";
 import { t } from "i18next";
+import { useState } from "react";
+import { container } from "tsyringe";
+import { Button } from "../Button";
+import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
+import { Heading } from "../Heading";
+import { Text } from "../Text";
+import {
+  type SavedCampaignSessionInfo,
+  StateEngine,
+} from "@/logic/application";
 
 export function SavedSessionsDialog({
   isOpen,

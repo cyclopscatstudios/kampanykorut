@@ -1,9 +1,9 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
-import { StateEngine, type SavedCampaignSessionInfo } from "./StateEngine";
-import { StorageEngine } from "./StorageEngine";
+import { container } from "tsyringe";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ConfigEngine } from "./ConfigEngine";
 import { Navigation } from "./navigation/Navigation";
-import { container } from "tsyringe";
+import { type SavedCampaignSessionInfo, StateEngine } from "./StateEngine";
+import { StorageEngine } from "./StorageEngine";
 import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
 
 const FIXED_SESSION_ID = "fixed-test-session-id";

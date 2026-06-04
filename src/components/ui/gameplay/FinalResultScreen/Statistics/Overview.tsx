@@ -1,11 +1,11 @@
+import { t } from "i18next";
+import type { HistoryItem } from "../../../../../logic/application/StateHandler";
+import { Text } from "../../../Text";
+import type { StatisticResult } from "../statistics.utils";
+import { SupportChart } from "./Chart";
 import { ListOverview } from "./ListOverview";
 import { MandateOverview } from "./MandateOverview";
 import { PercentagesOverview } from "./PercentagesOverview";
-import type { StatisticResult } from "../statistics.utils";
-import { Text } from "../../../Text";
-import { t } from "i18next";
-import { SupportChart } from "./Chart";
-import type { HistoryItem } from "../../../../../logic/application/StateHandler";
 import { CampaignConfig, CampaignState, FinalResults } from "@/shared/types";
 
 export function Overview({

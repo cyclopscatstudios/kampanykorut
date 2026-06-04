@@ -1,7 +1,7 @@
-import { renderHook, act } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import { useElectionState } from "./useElectionState";
 import { gameModeRegistry } from "../gameModeRegistery";
+import { useElectionState } from "./useElectionState";
 import type { CampaignConfig, PendingTurn } from "@/shared/types";
 import { EffectType } from "@/shared/types";
 
@@ -49,8 +49,18 @@ const mockConfig: CampaignConfig = {
   questions: [],
   answerEffect: [],
   endResults: {
-    playerSideVictory: { imageUri: "", title: "Win", subtitle: "", description: "" },
-    playerSideDefeat: { imageUri: "", title: "Loss", subtitle: "", description: "" },
+    playerSideVictory: {
+      imageUri: "",
+      title: "Win",
+      subtitle: "",
+      description: "",
+    },
+    playerSideDefeat: {
+      imageUri: "",
+      title: "Loss",
+      subtitle: "",
+      description: "",
+    },
   },
 };
 
@@ -101,39 +111,35 @@ const mockConfigWithQuestion: CampaignConfig = {
 
 describe("useElectionState", () => {
   it("should initialize state", () => {
-    const { result } = renderHook(
-      () => useElectionState(MOCK_CAMPAIGN_ID),
-      { wrapper: MemoryRouter },
-    );
+    const { result } = renderHook(() => useElectionState(MOCK_CAMPAIGN_ID), {
+      wrapper: MemoryRouter,
+    });
 
     expect(result.current.state).toMatchSnapshot();
   });
 
   it("initial state has turn 0 and isEnded false", () => {
-    const { result } = renderHook(
-      () => useElectionState(MOCK_CAMPAIGN_ID),
-      { wrapper: MemoryRouter },
-    );
+    const { result } = renderHook(() => useElectionState(MOCK_CAMPAIGN_ID), {
+      wrapper: MemoryRouter,
+    });
 
     expect(result.current.state.turn).toBe(0);
     expect(result.current.state.isEnded).toBe(false);
   });
 
   it("processAnswer returns undefined when there is no current question", () => {
-    const { result } = renderHook(
-      () => useElectionState(MOCK_CAMPAIGN_ID),
-      { wrapper: MemoryRouter },
-    );
+    const { result } = renderHook(() => useElectionState(MOCK_CAMPAIGN_ID), {
+      wrapper: MemoryRouter,
+    });
 
     const pending = result.current.processAnswer("any-answer");
     expect(pending).toBeUndefined();
   });
 
   it("processAnswer returns undefined when rawAnswer is empty", () => {
-    const { result } = renderHook(
-      () => useElectionState(MOCK_CAMPAIGN_ID),
-      { wrapper: MemoryRouter },
-    );
+    const { result } = renderHook(() => useElectionState(MOCK_CAMPAIGN_ID), {
+      wrapper: MemoryRouter,
+    });
 
     expect(result.current.processAnswer(undefined)).toBeUndefined();
     expect(result.current.processAnswer("")).toBeUndefined();

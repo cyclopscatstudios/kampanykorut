@@ -66,7 +66,11 @@ describe("StateHandler", () => {
     });
 
     it("sets an optional key that was previously undefined", () => {
-      handler.set("turnDecision", { questionId: "q1", answerId: "a1", effects: [] });
+      handler.set("turnDecision", {
+        questionId: "q1",
+        answerId: "a1",
+        effects: [],
+      });
 
       expect(handler.get("turnDecision")?.questionId).toBe("q1");
     });

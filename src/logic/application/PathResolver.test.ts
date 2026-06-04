@@ -1,4 +1,4 @@
-import { getDataPath, DATA_PATHS } from "./PathResolver";
+import { DATA_PATHS, getDataPath } from "./PathResolver";
 
 describe("DATA_PATHS", () => {
   it("campaigns is a static string", () => {

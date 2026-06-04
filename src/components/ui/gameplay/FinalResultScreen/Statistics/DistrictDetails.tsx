@@ -1,14 +1,14 @@
-import { Text } from "../../../Text";
+import classNames from "classnames";
 import { useMemo, useState } from "react";
+import { Badge } from "../../../Badge";
+import { SidebarPanel } from "../../../SidebarPanel";
+import { Text } from "../../../Text";
 import {
   calculateVotePercentages,
   getPartyById,
   type VotePercentage,
 } from "../electionMap.utils";
 import { AdvancedProgressBar, ProgressBar } from "./ProgressBar";
-import classNames from "classnames";
-import { Badge } from "../../../Badge";
-import { SidebarPanel } from "../../../SidebarPanel";
 import {
   CampaignConfig,
   CampaignState,

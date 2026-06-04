@@ -1,6 +1,6 @@
-import { ConfigEngine } from "@/logic/application";
 import type { LoaderFunctionArgs } from "react-router";
 import { container } from "tsyringe";
+import { ConfigEngine } from "@/logic/application";
 
 export async function sideSelectorLoader({ params }: LoaderFunctionArgs) {
   const campaignId = params.campaignId;

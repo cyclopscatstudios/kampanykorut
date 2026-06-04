@@ -1,6 +1,5 @@
-import { ConfigEngine } from "./ConfigEngine";
 import { container } from "tsyringe";
-import { CampaignConfig } from "@/shared/types";
+import { ConfigEngine } from "./ConfigEngine";
 import {
   CampaignEngine,
   DistrictGroupEngine,
@@ -9,6 +8,7 @@ import {
   ResultModifier,
   VoterEnvironment,
 } from "@/shared/domain";
+import { CampaignConfig } from "@/shared/types";
 
 export function createCampaignEngine(
   config: CampaignConfig,

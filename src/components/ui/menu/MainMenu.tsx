@@ -1,12 +1,12 @@
-import { useTranslateLang } from "../../../logic/useTranslateLang";
-import { MenuList } from "../MenuList";
-import logo from "../../../../brand-assets/svg/logo-stacked-dark.svg";
-import { MenuLayout } from "./MenuLayout";
-import { MenuItemId } from "./menu.types";
-import { Text } from "../Text";
 import { useState } from "react";
 import { useLoaderData } from "react-router";
+import logo from "../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { buildInfo } from "../../../buildInfo";
+import { useTranslateLang } from "../../../logic/useTranslateLang";
+import { MenuList } from "../MenuList";
+import { Text } from "../Text";
+import { MenuItemId } from "./menu.types";
+import { MenuLayout } from "./MenuLayout";
 
 export function MainMenu() {
   const { quotes } = useLoaderData();

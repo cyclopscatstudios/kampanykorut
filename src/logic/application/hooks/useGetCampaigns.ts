@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getDataPath } from "../PathResolver";
 import { fetchJSON } from "../fetchJSON";
+import { getDataPath } from "../PathResolver";
 import { createLogger } from "@/shared/logger";
 
 export interface CampaignHeader {

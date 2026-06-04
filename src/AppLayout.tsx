@@ -1,11 +1,11 @@
-import { Outlet, useLoaderData } from "react-router-dom";
-import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
-import FullscreenBackground from "./ui/Background";
-import { useStateEngine } from "./logic/application";
 import { useEffect } from "react";
-import { useParams } from "./hooks/useParamsHook";
+import { Outlet, useLoaderData } from "react-router-dom";
 import { createLogger } from "../shared/logger/logger";
+import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
+import { useParams } from "./hooks/useParamsHook";
+import { useStateEngine } from "./logic/application";
 import { NavigationBinder } from "./logic/application/navigation/NavigationBinder";
+import FullscreenBackground from "./ui/Background";
 
 const log = createLogger("AppLayout");
 

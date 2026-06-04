@@ -1,5 +1,5 @@
-import ClassicIcon from "./classic.svg?react";
 import CampaignIcon from "./campaign.svg?react";
+import ClassicIcon from "./classic.svg?react";
 
 export const svgIcons = {
   classic: ClassicIcon,

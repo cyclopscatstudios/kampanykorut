@@ -6,6 +6,7 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import importPlugin from "eslint-plugin-import";
 import { defineConfig, globalIgnores } from "eslint/config";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 export default defineConfig([
   globalIgnores(["dist"]),
@@ -42,6 +43,16 @@ export default defineConfig([
               message: "Application layer cannot import from domain directly",
             },
           ],
+        },
+      ],
+      "import/order": [
+        "error",
+        {
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
+          "newlines-between": "never",
         },
       ],
     },

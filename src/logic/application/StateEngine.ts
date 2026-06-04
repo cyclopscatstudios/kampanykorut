@@ -1,15 +1,15 @@
 import { singleton } from "tsyringe";
-import { Emitter } from "./Emitter";
-import type { ConfigEngine } from "./ConfigEngine";
-import { createLogger } from "../../../shared/logger/logger";
-import type { SessionKey, StorageEngine } from "./StorageEngine";
-import type { IdGenerator } from "./IdGenerator";
-import type { HistoryItem } from "./StateHandler";
-import type { Navigation } from "./navigation/Navigation";
-import { gameModeRegistry } from "./gameModeRegistery";
 import { v4 as uuidv4 } from "uuid";
-import { CampaignState } from "@/shared/types";
+import { createLogger } from "../../../shared/logger/logger";
+import type { ConfigEngine } from "./ConfigEngine";
+import { Emitter } from "./Emitter";
+import { gameModeRegistry } from "./gameModeRegistery";
+import type { IdGenerator } from "./IdGenerator";
+import type { Navigation } from "./navigation/Navigation";
+import type { HistoryItem } from "./StateHandler";
+import type { SessionKey, StorageEngine } from "./StorageEngine";
 import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
+import { CampaignState } from "@/shared/types";
 
 export type SavedCampaignSessionInfo = {
   id: string;

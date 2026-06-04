@@ -1,10 +1,10 @@
 import {
-  LineChart,
   Line,
-  XAxis,
-  YAxis,
+  LineChart,
   ResponsiveContainer,
   Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 import { CommonWrapper } from "../../../CommonWrapper";
 import { CampaignConfig } from "@/shared/types";

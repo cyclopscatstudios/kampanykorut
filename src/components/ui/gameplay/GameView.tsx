@@ -1,12 +1,13 @@
+
+import type { CurrentView } from "./MainGameScreen";
+import { MapCreator } from "./MapCreator";
+import { QuestionCard } from "./QuestionCard";
 import {
   CampaignState,
   District,
   DistrictPoligon,
   FinalResults,
 } from "@/shared/types";
-import type { CurrentView } from "./MainGameScreen";
-import { MapCreator } from "./MapCreator";
-import { QuestionCard } from "./QuestionCard";
 
 type GameViewConfig = {
   capitalCity: DistrictPoligon[];

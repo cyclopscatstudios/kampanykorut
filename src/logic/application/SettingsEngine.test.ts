@@ -1,5 +1,5 @@
 import { vi } from "vitest";
-import { SettingsEngine, GameSettings } from "./SettingsEngine";
+import { GameSettings, SettingsEngine } from "./SettingsEngine";
 import { StorageEngine } from "./StorageEngine";
 
 const makeStorageMock = (storedValue: string | null = null) => ({
@@ -28,7 +28,10 @@ describe("SettingsEngine", () => {
     });
 
     it("loads stored settings on init", () => {
-      const stored = JSON.stringify({ showAdvisorFeedback: false, language: "hu" });
+      const stored = JSON.stringify({
+        showAdvisorFeedback: false,
+        language: "hu",
+      });
       const storage = makeStorageMock(stored);
       const engine = new SettingsEngine(storage as unknown as StorageEngine);
 
@@ -38,11 +41,16 @@ describe("SettingsEngine", () => {
     });
 
     it("re-saves the stored language to storage during initialization", () => {
-      const stored = JSON.stringify({ showAdvisorFeedback: true, language: "hu" });
+      const stored = JSON.stringify({
+        showAdvisorFeedback: true,
+        language: "hu",
+      });
       const storage = makeStorageMock(stored);
       new SettingsEngine(storage as unknown as StorageEngine);
 
-      const savedJson = (storage.setItem.mock.calls[0] as [string, string, string])[1];
+      const savedJson = (
+        storage.setItem.mock.calls[0] as [string, string, string]
+      )[1];
       const saved = JSON.parse(savedJson) as GameSettings;
       expect(saved.language).toBe("hu");
     });
@@ -59,7 +67,10 @@ describe("SettingsEngine", () => {
     });
 
     it("returns parsed settings when storage has a value", () => {
-      const stored = JSON.stringify({ showAdvisorFeedback: false, language: "hu" });
+      const stored = JSON.stringify({
+        showAdvisorFeedback: false,
+        language: "hu",
+      });
       const storage = makeStorageMock(stored);
       const engine = new SettingsEngine(storage as unknown as StorageEngine);
 
@@ -84,14 +95,19 @@ describe("SettingsEngine", () => {
     });
 
     it("merges partial updates with existing settings", () => {
-      const initial = JSON.stringify({ showAdvisorFeedback: false, language: "hu" });
+      const initial = JSON.stringify({
+        showAdvisorFeedback: false,
+        language: "hu",
+      });
       const storage = makeStorageMock(initial);
       const engine = new SettingsEngine(storage as unknown as StorageEngine);
       vi.clearAllMocks();
 
       engine.updateGameSettings({ showAdvisorFeedback: true });
 
-      const savedJson = (storage.setItem.mock.calls[0] as [string, string, string])[1];
+      const savedJson = (
+        storage.setItem.mock.calls[0] as [string, string, string]
+      )[1];
       const saved = JSON.parse(savedJson) as GameSettings;
       expect(saved.showAdvisorFeedback).toBe(true);
       expect(saved.language).toBe("hu");
@@ -104,20 +120,27 @@ describe("SettingsEngine", () => {
 
       engine.updateGameSettings({ language: "hu" });
 
-      const savedJson = (storage.setItem.mock.calls[0] as [string, string, string])[1];
+      const savedJson = (
+        storage.setItem.mock.calls[0] as [string, string, string]
+      )[1];
       const saved = JSON.parse(savedJson) as GameSettings;
       expect(saved.language).toBe("hu");
     });
 
     it("preserves the existing language when only other settings are updated", () => {
-      const initial = JSON.stringify({ showAdvisorFeedback: true, language: "hu" });
+      const initial = JSON.stringify({
+        showAdvisorFeedback: true,
+        language: "hu",
+      });
       const storage = makeStorageMock(initial);
       const engine = new SettingsEngine(storage as unknown as StorageEngine);
       vi.clearAllMocks();
 
       engine.updateGameSettings({ showAdvisorFeedback: false });
 
-      const savedJson = (storage.setItem.mock.calls[0] as [string, string, string])[1];
+      const savedJson = (
+        storage.setItem.mock.calls[0] as [string, string, string]
+      )[1];
       const saved = JSON.parse(savedJson) as GameSettings;
       expect(saved.language).toBe("hu");
     });
@@ -135,7 +158,10 @@ describe("SettingsEngine", () => {
     });
 
     it("subscribers receive the complete merged object, not just the partial", () => {
-      const initial = JSON.stringify({ showAdvisorFeedback: false, language: "hu" });
+      const initial = JSON.stringify({
+        showAdvisorFeedback: false,
+        language: "hu",
+      });
       const storage = makeStorageMock(initial);
       const engine = new SettingsEngine(storage as unknown as StorageEngine);
       const received: GameSettings[] = [];

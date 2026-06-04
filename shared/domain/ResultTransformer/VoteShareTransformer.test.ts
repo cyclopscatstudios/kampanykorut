@@ -1,5 +1,8 @@
 import { container } from "tsyringe";
-import { mockCandidateListData, mockPartyListData } from "../mocks/mockListData";
+import {
+  mockCandidateListData,
+  mockPartyListData,
+} from "../mocks/mockListData";
 import { VoteShareTransformer } from "./VoteShareTransformer";
 import { CandidateListData, VoterEnvironmentConfig } from "@/shared/types";
 import { VoterEnvironment } from "../VoterEnvironment";

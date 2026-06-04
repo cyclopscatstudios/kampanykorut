@@ -1,22 +1,27 @@
-import { renderHook, act } from "@testing-library/react";
-import { vi } from "vitest";
-import { useSettings } from "./useSettings";
+import { act, renderHook } from "@testing-library/react";
 import { container } from "tsyringe";
-import { SettingsEngine, type GameSettings } from "../SettingsEngine";
+import { vi } from "vitest";
+import { type GameSettings, SettingsEngine } from "../SettingsEngine";
+import { useSettings } from "./useSettings";
 
-const DEFAULT_SETTINGS: GameSettings = { showAdvisorFeedback: true, language: "en" };
+const DEFAULT_SETTINGS: GameSettings = {
+  showAdvisorFeedback: true,
+  language: "en",
+};
 
 describe("useSettings", () => {
   let settingsEngine: SettingsEngine;
   let capturedSubscriber: ((s: GameSettings) => void) | null;
-  let unsubscribeSpy: ReturnType<typeof vi.fn>;
+  let unsubscribeSpy: () => void;
 
   beforeEach(() => {
     settingsEngine = container.resolve(SettingsEngine);
     capturedSubscriber = null;
     unsubscribeSpy = vi.fn();
 
-    vi.spyOn(settingsEngine, "getGameSettings").mockReturnValue(DEFAULT_SETTINGS);
+    vi.spyOn(settingsEngine, "getGameSettings").mockReturnValue(
+      DEFAULT_SETTINGS,
+    );
     vi.spyOn(settingsEngine, "updateGameSettings").mockImplementation(() => {});
     vi.spyOn(settingsEngine, "subscribe").mockImplementation((fn) => {
       capturedSubscriber = fn;

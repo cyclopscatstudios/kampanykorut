@@ -1,5 +1,5 @@
-import { StateEngine } from "@/logic/application";
 import { container } from "tsyringe";
+import { StateEngine } from "@/logic/application";
 
 export function mainGameScreenLoader() {
   const stateEngine = container.resolve(StateEngine);

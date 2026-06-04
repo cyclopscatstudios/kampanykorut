@@ -1,13 +1,13 @@
-import { type GameSettings } from "@/logic/application";
-import { SettingsBody } from "../gameplay/SettingsDialog";
-import { Button } from "../Button";
-import { Icon } from "../Icon";
-import { Text } from "../Text";
+import { t } from "i18next";
 import { useState } from "react";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
-import { t } from "i18next";
+import { Button } from "../Button";
+import { SettingsBody } from "../gameplay/SettingsDialog";
 import { toaster } from "../gameplay/toaster";
+import { Icon } from "../Icon";
+import { Text } from "../Text";
+import { type GameSettings } from "@/logic/application";
 
 export function SettingsMenu() {
   const { settings, updateSettings } = useSettings();
