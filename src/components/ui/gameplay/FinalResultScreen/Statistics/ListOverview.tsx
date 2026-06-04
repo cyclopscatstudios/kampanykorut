@@ -1,4 +1,3 @@
-
 import type { Colors } from "../../../../../types/color";
 import { CommonWrapper } from "../../../CommonWrapper";
 import { type BootstrapIcon, Icon } from "../../../Icon";

@@ -1,4 +1,3 @@
-
 import type { CurrentView } from "./MainGameScreen";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
