@@ -2,7 +2,6 @@ import type { Story } from "@ladle/react";
 import { QuestionCard } from "../components/ui/gameplay/QuestionCard";
 import { noop } from "./FunctionUtils";
 import { useState } from "react";
-import { MemoryRouter } from "react-router-dom";
 
 export const Default: Story = () => {
   const [answer, setAnswer] = useState("");
