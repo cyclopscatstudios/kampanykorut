@@ -5,6 +5,7 @@ import { MandateCalculator } from "./MandateCalculator";
 import { campaignState } from "./mocks/mockCampaignState";
 import { mockElectionConfig } from "./mocks/mockElectionConfig";
 import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
+import { PollsterEngine } from "./PollsterEngine";
 import { ResultModifier } from "./ResultModifier";
 import {
   Decision,
@@ -33,6 +34,7 @@ describe("CampaignEngine", () => {
       resultModifier,
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
+      container.resolve(PollsterEngine),
     );
   });
   it("should apply the party-swing typed decision", () => {
@@ -149,11 +151,14 @@ describe("CampaignEngine.createInitialState", () => {
       container.resolve(ResultModifier),
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
+      container.resolve(PollsterEngine),
     );
   });
 
   it("creates fresh state when savedState is null", () => {
-    const result = engine.createInitialState("test-campaign", null);
+    const result = engine.createInitialState("test-campaign", null, {
+      parties: [{ id: "party_a" }, { id: "party_b" }, { id: "party_c" }],
+    } as ElectionConfig);
 
     expect(result.turn).toBe(0);
     expect(result.isEnded).toBe(false);
@@ -169,7 +174,9 @@ describe("CampaignEngine.createInitialState", () => {
       partyListData: mockPartyListData,
     };
 
-    const result = engine.createInitialState("test-campaign", savedState);
+    const result = engine.createInitialState("test-campaign", savedState, {
+      parties: [{ id: "party_a" }, { id: "party_b" }, { id: "party_c" }],
+    } as ElectionConfig);
 
     expect(result).toBe(savedState);
     expect(result.turn).toBe(5);
@@ -182,7 +189,9 @@ describe("CampaignEngine.createInitialState", () => {
       isEnded: false,
     };
 
-    const result = engine.createInitialState("test-campaign", savedState);
+    const result = engine.createInitialState("test-campaign", savedState, {
+      parties: [{ id: "party_a" }, { id: "party_b" }, { id: "party_c" }],
+    } as ElectionConfig);
 
     expect(result.turn).toBe(0);
     expect(result.candidateListData).toEqual(mockCandidateListData);
@@ -199,7 +208,9 @@ describe("CampaignEngine.createInitialState", () => {
       null,
       electionConfig,
     );
-    const withoutBase = engine.createInitialState("test-campaign", null);
+    const withoutBase = engine.createInitialState("test-campaign", null, {
+      parties: [{ id: "party_a" }, { id: "party_b" }, { id: "party_c" }],
+    } as ElectionConfig);
 
     expect(withBase.candidateListData).not.toEqual(
       withoutBase.candidateListData,

@@ -11,6 +11,7 @@ exports[`useElectionState > should initialize state 1`] = `
       "megyekod": 1,
       "oevk": 1,
       "partok": {
+        "_other": 0,
         "party_a": 3000,
         "party_b": 2000,
       },
@@ -26,6 +27,7 @@ exports[`useElectionState > should initialize state 1`] = `
       "megyekod": 1,
       "oevk": 1,
       "partok": {
+        "_other": 0,
         "party_a": 5000,
         "party_b": 4000,
       },
@@ -66,11 +68,13 @@ exports[`useElectionState > should initialize state 1`] = `
       },
     ],
     "percentages": {
+      "_other": 0,
       "_total": 1,
       "party_a": 0.6,
       "party_b": 0.4,
     },
     "totals": {
+      "_other": 0,
       "party_a": 3000,
       "party_b": 2000,
     },

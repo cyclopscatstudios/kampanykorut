@@ -16,6 +16,7 @@ exports[`DistrictTargetTransform > should apply district target correctly 1`] = 
       "megyekod": 1,
       "oevk": 1,
       "partok": {
+        "_other": 0,
         "ellenzek": 50,
         "party_a": 12000,
         "party_b": 11000,
@@ -29,6 +30,7 @@ exports[`DistrictTargetTransform > should apply district target correctly 1`] = 
       "megyekod": 1,
       "oevk": 2,
       "partok": {
+        "_other": 0,
         "party_a": 9000,
         "party_b": 8000,
       },

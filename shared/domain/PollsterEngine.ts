@@ -7,23 +7,29 @@ import { createLogger } from "@/shared/logger";
 
 const log = createLogger("PollsterEngine");
 
+export const AGGREGATE_POLLSTER_ID = "aggregate";
+
 @injectable()
 export class PollsterEngine {
   private pollsters: Pollster[] = [];
 
   constructor(private mandateCalculator: MandateCalculator) {
-    log.debug("PollsterEngine initialized");
+    log.debug("pollsterEngine initialized");
   }
 
   configure(customPollsters?: Pollster[]) {
     if (customPollsters) {
-      log.debug("Configuring PollsterEngine with custom pollsters", {
+      log.debug("configuring PollsterEngine with custom pollsters", {
         customPollsters,
       });
       this.pollsters = [...DEFAULT_POLLSTERS, ...customPollsters];
     } else {
       this.pollsters = [...DEFAULT_POLLSTERS];
     }
+  }
+
+  getPollsters() {
+    return this.pollsters;
   }
 
   getPolls(state: CampaignState, electionConfig: ElectionConfig) {
@@ -40,19 +46,22 @@ export class PollsterEngine {
       return;
     }
 
-    const allResults = this.pollsters.map((pollster) =>
-      this.applyMarginErrors(percentages, pollster),
-    );
-
     const partyIds = Object.keys(percentages).filter((k) => k !== "_total");
-    const averaged: Record<string, number> = {};
+    const differences: Record<string, number> = {};
 
     for (const partyId of partyIds) {
-      const sum = allResults.reduce((acc, r) => acc + (r[partyId] ?? 0), 0);
-      averaged[partyId] = sum / allResults.length;
+      const pollsterDiffs = this.pollsters.map((pollster) => {
+        const estimate = this.normalizeResults(
+          this.applyMarginErrors(percentages, pollster),
+        );
+        return (estimate[partyId] ?? 0) - (percentages[partyId] ?? 0);
+      });
+      differences[partyId] =
+        (pollsterDiffs.reduce((acc, d) => acc + d, 0) / pollsterDiffs.length) *
+        100;
     }
 
-    return this.normalizeResults(averaged);
+    return differences;
   }
 
   getPollsByPollsterId(
@@ -60,6 +69,9 @@ export class PollsterEngine {
     state: CampaignState,
     electionConfig: ElectionConfig,
   ) {
+    if (pollsterId === AGGREGATE_POLLSTER_ID) {
+      return this.getPolls(state, electionConfig);
+    }
     const actualResults = this.mandateCalculator.calculate(
       state.candidateListData,
       state.partyListData,
@@ -67,7 +79,7 @@ export class PollsterEngine {
     );
     const pollster = this.pollsters.find((p) => p.id === pollsterId);
     if (!pollster) {
-      log.error("Pollster not found for id", { pollsterId });
+      log.error("pollster not found for id", { pollsterId });
       return;
     }
     const percentages = actualResults?.percentages;
@@ -75,7 +87,18 @@ export class PollsterEngine {
       log.error("cannot get polls, missing actual results percentages");
       return;
     }
-    return this.normalizeResults(this.applyMarginErrors(percentages, pollster));
+    const pollEstimate = this.normalizeResults(
+      this.applyMarginErrors(percentages, pollster),
+    );
+    const differences: Record<string, number> = {};
+    for (const partyId in pollEstimate) {
+      if (partyId === "_total") {
+        continue;
+      }
+      differences[partyId] =
+        (pollEstimate[partyId] - (percentages[partyId] ?? 0)) * 100;
+    }
+    return differences;
   }
 
   private normalizeResults(

@@ -77,7 +77,13 @@
     "save": "Játék mentése",
     "laod": "Játék visszatöltése",
     "settings": "Beállítások",
-    "quit": "Kilépés"
+    "quit": "Kilépés",
+    "mapMenu": {
+      "polls": {
+        "menuLabel": "Közvélemény-kutatók",
+        "average": "Felmérések átlaga"
+      }
+    }
   },
   "emptySlot": {
     "label": "Szabad hely"

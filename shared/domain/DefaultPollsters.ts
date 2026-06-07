@@ -7,8 +7,8 @@ export const defaultPollsters: Pollster[] = [
     description:
       "A Medián egy magyarországi közvélemény-kutató intézet, amely rendszeresen készít politikai és társadalmi témájú felméréseket, és jelentős szereplő a magyar közvélemény-kutatásban.",
     errorMargin: {
-      min: 1.5,
-      max: 5.5,
+      min: 1,
+      max: 5,
     },
   },
   {
@@ -17,8 +17,8 @@ export const defaultPollsters: Pollster[] = [
     description:
       "A Závecz Research egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
     errorMargin: {
-      min: 3.5,
-      max: 6.5,
+      min: 1.5,
+      max: 5.5,
     },
     bias: [
       {
@@ -36,8 +36,8 @@ export const defaultPollsters: Pollster[] = [
     description:
       "A Publicus Intézet egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
     errorMargin: {
-      min: 4.5,
-      max: 7.5,
+      min: 2,
+      max: 6,
     },
     bias: [
       {
@@ -55,8 +55,8 @@ export const defaultPollsters: Pollster[] = [
     description:
       "A Nézőpont Intézet egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
     errorMargin: {
-      min: 3.5,
-      max: 6.5,
+      min: 1.5,
+      max: 5.5,
     },
     bias: [
       {
@@ -74,8 +74,8 @@ export const defaultPollsters: Pollster[] = [
     description:
       "Az Alapjogokért Központ egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
     errorMargin: {
-      min: 4.5,
-      max: 7.5,
+      min: 2,
+      max: 6,
     },
     bias: [
       {

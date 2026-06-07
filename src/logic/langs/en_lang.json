@@ -77,7 +77,13 @@
     "save": "Save game",
     "laod": "Load game",
     "settings": "Settings",
-    "quit": "Quit game"
+    "quit": "Quit game",
+    "mapMenu": {
+      "polls": {
+        "menuLabel": "Pollsters",
+        "average": "Polling average"
+      }
+    }
   },
   "emptySlot": {
     "label": "Empty slot"

@@ -1567,6 +1567,92 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       },
     ],
     "mandateCalculator": MandateCalculator {},
+    "pollsterEngine": PollsterEngine {
+      "mandateCalculator": MandateCalculator {},
+      "pollsters": [
+        {
+          "description": "A Medián egy magyarországi közvélemény-kutató intézet, amely rendszeresen készít politikai és társadalmi témájú felméréseket, és jelentős szereplő a magyar közvélemény-kutatásban.",
+          "errorMargin": {
+            "max": 5,
+            "min": 1,
+          },
+          "id": "median",
+          "label": "Medián",
+        },
+        {
+          "bias": [
+            {
+              "partyBias": {
+                "ellenzeki_osszefogas": 5,
+                "fidesz": -5,
+              },
+              "type": "result",
+            },
+          ],
+          "description": "A Závecz Research egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
+          "errorMargin": {
+            "max": 5.5,
+            "min": 1.5,
+          },
+          "id": "zavecz",
+          "label": "Závecz Research",
+        },
+        {
+          "bias": [
+            {
+              "partyBias": {
+                "ellenzeki_osszefogas": 5,
+                "fidesz": -10,
+              },
+              "type": "result",
+            },
+          ],
+          "description": "A Publicus Intézet egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
+          "errorMargin": {
+            "max": 6,
+            "min": 2,
+          },
+          "id": "publicus",
+          "label": "Publicus Intézet",
+        },
+        {
+          "bias": [
+            {
+              "partyBias": {
+                "ellenzeki_osszefogas": -5,
+                "fidesz": 5,
+              },
+              "type": "result",
+            },
+          ],
+          "description": "A Nézőpont Intézet egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
+          "errorMargin": {
+            "max": 5.5,
+            "min": 1.5,
+          },
+          "id": "nezopont",
+          "label": "Nézőpont Intézet",
+        },
+        {
+          "bias": [
+            {
+              "partyBias": {
+                "ellenzeki_osszefogas": -10,
+                "fidesz": 10,
+              },
+              "type": "result",
+            },
+          ],
+          "description": "Az Alapjogokért Központ egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
+          "errorMargin": {
+            "max": 6,
+            "min": 2,
+          },
+          "id": "alapjogokert",
+          "label": "Alapjogokért Központ",
+        },
+      ],
+    },
     "questions": [],
     "resultModifier": ResultModifier {
       "districtVoteTransformer": DistrictVoteTransformer {

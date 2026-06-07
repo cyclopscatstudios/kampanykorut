@@ -26,8 +26,7 @@
       "id": "normalis_elet",
       "name": "Normális Élet Pártja",
       "color": "#122649"
-    },
-    { "id": "munkaspart", "name": "Magyar Munkáspárt", "color": "#c5161d" }
+    }
   ],
   "playableSides": [
     {

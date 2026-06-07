@@ -6,6 +6,7 @@ import {
   District,
   DistrictPoligon,
   FinalResults,
+  PollingOpnions,
 } from "@/shared/types";
 
 type GameViewConfig = {
@@ -16,6 +17,7 @@ type GameViewConfig = {
 interface GameViewProps {
   currentView: CurrentView;
   state: CampaignState;
+  pollsData: PollingOpnions | null;
   config: GameViewConfig;
   answer: string | undefined;
   selectedDistrict: District | null;
@@ -29,6 +31,7 @@ interface GameViewProps {
 export function GameView({
   currentView,
   state,
+  pollsData,
   config,
   answer,
   selectedDistrict,
@@ -56,7 +59,9 @@ export function GameView({
   return (
     <MapCreator
       setCurrentView={onSetView}
-      candidateListData={state.pollingOpnions?.candidateListData ?? []}
+      candidateListData={
+        pollsData?.candidateListData ?? state.candidateListData ?? []
+      }
       capitalCity={config.capitalCity}
       districts={config.districts}
       selectedDistrict={selectedDistrict}

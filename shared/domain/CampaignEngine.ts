@@ -1,8 +1,7 @@
 import { createLogger } from "../logger/logger";
-import { defaultPollsters } from "./DefaultPollsters";
 import type { EffectApplier } from "./EffectApplier";
 import type { MandateCalculator } from "./MandateCalculator";
-import { PollsterEngine } from "./PollsterEngine";
+import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import type { ResultModifier } from "./ResultModifier";
 import { GameSettings } from "@/logic/application";
 import {
@@ -17,6 +16,7 @@ import {
   PartyListData,
   RawAnsweEffectProps,
   RawEffect,
+  RawParty,
   RawQuestion,
 } from "@/shared/types";
 
@@ -42,8 +42,14 @@ export class CampaignEngine {
     savedState: CampaignState | null,
     electionConfig?: ElectionConfig,
   ): CampaignState {
-    let candidateListData = this.initialCandidateData;
-    let partyListData = this.initialPartyData;
+    const { candidateListData: candidateData, partyListData: partyData } =
+      this.mergeUnknownPartiesToOther(
+        this.initialCandidateData,
+        this.initialPartyData,
+        electionConfig?.parties,
+      );
+    let candidateListData = candidateData;
+    let partyListData = partyData;
 
     const baseResults = electionConfig?.baseResults;
 
@@ -131,13 +137,13 @@ export class CampaignEngine {
       ),
       results: calculated,
       isEnded: nextTurn >= this.questions.length,
-      pollingOpnions: this.getPollingOpnionData(state, electionConfig, polls),
+      pollingOpnions: this.getPollProjection(state, electionConfig, polls),
     };
 
     return session;
   }
 
-  private getPollingOpnionData(
+  getPollProjection(
     state: CampaignState,
     electionConfig: ElectionConfig,
     polls?: Record<string, number>,
@@ -174,6 +180,7 @@ export class CampaignEngine {
       candidateListData: modified.candidateListData,
       partyListData: modified.partyListData,
       percentages: calculated?.percentages,
+      selectedPollsterId: AGGREGATE_POLLSTER_ID,
     };
   }
 
@@ -193,6 +200,59 @@ export class CampaignEngine {
         majorityType,
       },
     } as FinalResults;
+  }
+
+  private mergeUnknownPartiesToOther(
+    candidateListData: CandidateListData[],
+    partyListData: PartyListData[],
+    parties?: RawParty[],
+  ) {
+    const validPartyIds = new Set(parties?.map((p) => p.id));
+
+    const processPartok = (
+      partok: Record<string, number | undefined>,
+    ): Record<string, number | undefined> => {
+      const result: Record<string, number | undefined> = {};
+      let otherValue = partok._other ?? 0;
+
+      for (const [partyId, value] of Object.entries(partok)) {
+        if (partyId === "_other") {
+          continue;
+        }
+
+        if (validPartyIds.has(partyId)) {
+          result[partyId] = value;
+        } else {
+          otherValue += value ?? 0;
+        }
+      }
+
+      result._other = otherValue;
+
+      return result;
+    };
+
+    const filteredCandidateListData = candidateListData.map((row) => ({
+      ...row,
+      partok: processPartok(row.partok),
+      jeloltek: row.jeloltek
+        ? Object.fromEntries(
+            Object.entries(row.jeloltek).filter(([partyId]) =>
+              validPartyIds.has(partyId),
+            ),
+          )
+        : undefined,
+    }));
+
+    const filteredPartyListData = partyListData.map((row) => ({
+      ...row,
+      partok: processPartok(row.partok),
+    }));
+
+    return {
+      candidateListData: filteredCandidateListData as CandidateListData[],
+      partyListData: filteredPartyListData as PartyListData[],
+    };
   }
 
   private getAdivsorFeedback(

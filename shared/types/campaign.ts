@@ -23,6 +23,7 @@ export interface PollingOpnions {
   candidateListData: CandidateListData[];
   partyListData?: PartyListData[];
   percentages?: Record<string, number>;
+  selectedPollsterId?: string;
 }
 
 export type PlayerSide = {
