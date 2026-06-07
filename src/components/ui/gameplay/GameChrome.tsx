@@ -11,7 +11,7 @@ interface GameChromeProps {
   actionDispatch?: ActionDispatch<[action: GameFlowAction]>;
   state?: CampaignState;
   config?: CampaignConfig;
-  pollsterData: PollingOpnions | null;
+  pollsterData?: PollingOpnions | null;
   handlePollsterChange?: any;
 }
 

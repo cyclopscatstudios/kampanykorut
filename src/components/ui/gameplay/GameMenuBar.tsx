@@ -19,8 +19,12 @@ export interface MenuBarProps {
   actionDispatch?: ActionDispatch<[action: GameFlowAction]>;
   state?: CampaignState;
   config?: CampaignConfig;
-  pollsterData: PollingOpnions | null;
-  handlePollsterChange?: any;
+  pollsterData?: PollingOpnions | null;
+  handlePollsterChange?: (
+    id: string,
+    state?: CampaignState,
+    config?: CampaignConfig,
+  ) => void;
 }
 
 export function TopMenuBar({
@@ -79,7 +83,7 @@ export function TopMenuBar({
                 <MenuItem
                   key={pollster.id}
                   onClick={() =>
-                    handlePollsterChange(pollster.id, state, config)
+                    handlePollsterChange?.(pollster.id, state, config)
                   }
                 >
                   <div className="flex justify-between items-center px-2">
