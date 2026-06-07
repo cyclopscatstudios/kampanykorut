@@ -6,3 +6,4 @@ export * from "./ResultTransformer";
 export * from "./ResultModifier.utils";
 export * from "./VoterEnvironment";
 export * from "./DistrictGroupEngine";
+export * from "./PollsterEngine";

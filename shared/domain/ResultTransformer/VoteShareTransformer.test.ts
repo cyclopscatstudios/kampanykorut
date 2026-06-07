@@ -3,10 +3,10 @@ import {
   mockCandidateListData,
   mockPartyListData,
 } from "../mocks/mockListData";
+import { voternvironmentConfig } from "../mocks/mockVoterEnvironmentConfig";
+import { VoterEnvironment } from "../VoterEnvironment";
 import { VoteShareTransformer } from "./VoteShareTransformer";
 import { CandidateListData, VoterEnvironmentConfig } from "@/shared/types";
-import { VoterEnvironment } from "../VoterEnvironment";
-import { voternvironmentConfig } from "../mocks/mockVoterEnvironmentConfig";
 
 let pipelineTransform: VoteShareTransformer;
 

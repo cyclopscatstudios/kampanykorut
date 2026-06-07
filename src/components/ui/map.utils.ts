@@ -1,7 +1,6 @@
 import { PartyName } from "../../types/color";
 import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
 
-
 export function getWinnerResultsByList(
   d: DistrictPoligon,
   result: CandidateListData[],

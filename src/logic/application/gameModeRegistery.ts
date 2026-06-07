@@ -1,4 +1,3 @@
-
 import { config2022 } from "../../../public/campaigns/2022/config";
 import { fetchJSON } from "./fetchJSON";
 import { DATA_PATHS, getDataPath } from "./PathResolver";

@@ -10,6 +10,7 @@ export const mockCandidateListData: CandidateListData[] = [
       party_a: 12000,
       party_b: 11000,
       party_c: undefined,
+      _other: 0,
     },
     telepules: "",
     jeloltek: {
@@ -26,6 +27,7 @@ export const mockCandidateListData: CandidateListData[] = [
     partok: {
       party_a: 9000,
       party_b: 8000,
+      _other: 0,
     },
   },
 ];

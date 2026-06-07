@@ -1,4 +1,3 @@
-
 import { Badge } from "../../Badge";
 import { CommonWrapper } from "../../CommonWrapper";
 import { Text } from "../../Text";

@@ -9,6 +9,7 @@ import {
   CampaignState,
   Decision,
   District,
+  ElectionConfig,
   PendingTurn,
 } from "@/shared/types";
 
@@ -81,6 +82,14 @@ export function useElectionState(campaignId: string) {
     return campaignEngine.getFinalResults(gameState);
   };
 
+  const getMapDataByPolls = (
+    state: CampaignState,
+    config: ElectionConfig,
+    polls?: Record<string, number>,
+  ) => {
+    return campaignEngine.getPollProjection(state, config, polls);
+  };
+
   const preserveState = (
     answer: string,
     newGameState: CampaignState,
@@ -108,5 +117,6 @@ export function useElectionState(campaignId: string) {
     processAnswer,
     commitTurn,
     getFinalResults,
+    getMapDataByPolls,
   };
 }

@@ -1,5 +1,5 @@
-import { Answer } from "@/shared/types";
 import { mockCandidateListData, mockPartyListData } from "./mockListData";
+import { Answer } from "@/shared/types";
 
 export const campaignState = {
   activeCampaignId: "1995_test_campaign_id",

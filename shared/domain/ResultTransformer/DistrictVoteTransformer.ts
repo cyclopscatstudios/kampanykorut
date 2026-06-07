@@ -1,6 +1,6 @@
-import { VoterEnvironment } from "../VoterEnvironment";
-import { createLogger } from "../../logger/logger";
 import { inject, singleton } from "tsyringe";
+import { createLogger } from "../../logger/logger";
+import { VoterEnvironment } from "../VoterEnvironment";
 import {
   CandidateListData,
   DistrictTarget,

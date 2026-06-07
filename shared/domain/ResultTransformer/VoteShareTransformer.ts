@@ -1,5 +1,5 @@
-import { VoterEnvironment } from "../VoterEnvironment";
 import { inject, singleton } from "tsyringe";
+import { VoterEnvironment } from "../VoterEnvironment";
 import {
   CandidateListData,
   PartyId,

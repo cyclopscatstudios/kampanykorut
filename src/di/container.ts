@@ -1,4 +1,5 @@
 import { container } from "tsyringe";
+import { PollsterEngine } from "../../shared/domain/PollsterEngine";
 import { uuidGenerator } from "../logic/application/IdGenerator";
 import { Navigation } from "../logic/application/navigation/Navigation";
 import { SettingsEngine } from "../logic/application/SettingsEngine";
@@ -81,3 +82,6 @@ const effectApplier = new EffectApplier(
   districtGroupEngine,
 );
 container.registerInstance(EffectApplier, effectApplier);
+
+const pollsterEngine = new PollsterEngine(mandateCalculator);
+container.registerInstance(PollsterEngine, pollsterEngine);
