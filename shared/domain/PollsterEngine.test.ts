@@ -1,11 +1,11 @@
-import { Pollster } from "../types/pollsters";
-import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
-import { mockElectionConfig } from "./mocks/mockElectionConfig";
-import { defaultPollsters } from "./DefaultPollsters";
-import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
-import { MandateCalculator } from "./MandateCalculator";
-import { CampaignState } from "../types";
 import { Mock } from "vitest";
+import { CampaignState } from "../types";
+import { Pollster } from "../types/pollsters";
+import { defaultPollsters } from "./DefaultPollsters";
+import { MandateCalculator } from "./MandateCalculator";
+import { mockElectionConfig } from "./mocks/mockElectionConfig";
+import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
+import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 
 const MOCK_PERCENTAGES = {
   party_a: 0.5,
