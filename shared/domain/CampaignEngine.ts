@@ -161,7 +161,7 @@ export class CampaignEngine {
       1,
     );
 
-    const modified = this.resultModifier.apply(state, appliedEffects);
+    const modified = this.resultModifier.apply(state, appliedEffects, true);
     if (!modified?.candidateListData || !modified?.partyListData) {
       log.warn("failed to apply poll effects for polling opinions", {
         state,

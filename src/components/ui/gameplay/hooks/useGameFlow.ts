@@ -1,8 +1,8 @@
 import { useReducer } from "react";
-import type { CurrentView } from "../MainGameScreen";
 import {
   AnswerFeedback,
   CampaignState,
+  CurrentView,
   District,
   PendingTurn,
 } from "@/shared/types";
@@ -17,6 +17,7 @@ export type GameFlowState = {
   answer: string | undefined;
   pendingAdvisor: PendingAdvisor | null;
   selectedDistrict: District | null;
+  visitingDistrict: District | null;
 };
 
 export type GameFlowAction =
@@ -43,6 +44,13 @@ function gameFlowReducer(
     case "DISMISS_ADVISOR":
       return { ...state, pendingAdvisor: null, answer: undefined };
     case "CHANGE_VIEW":
+      if (action.view === "QuestionView") {
+        return {
+          ...state,
+          currentView: action.view,
+          visitingDistrict: state.selectedDistrict,
+        };
+      }
       return { ...state, currentView: action.view };
   }
 }
@@ -52,6 +60,7 @@ const initialState: GameFlowState = {
   answer: undefined,
   pendingAdvisor: null,
   selectedDistrict: null,
+  visitingDistrict: null,
 };
 
 type ProcessAnswer = (

@@ -3,7 +3,7 @@ import { useNavigation } from "../../../hooks/navigationHook";
 import { GameDialogs } from "./GameDialogs";
 import { TopMenuBar } from "./GameMenuBar";
 import { useDialogState } from "./hooks/useDialogState";
-import type { GameFlowAction } from "./hooks/useGameFlow";
+import type { GameFlowAction, GameFlowState } from "./hooks/useGameFlow";
 import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
 
 interface GameChromeProps {
@@ -13,6 +13,7 @@ interface GameChromeProps {
   config?: CampaignConfig;
   pollsterData?: PollingOpnions | null;
   handlePollsterChange?: any;
+  flow: GameFlowState;
 }
 
 export function GameChrome({
@@ -22,6 +23,7 @@ export function GameChrome({
   config,
   pollsterData,
   handlePollsterChange,
+  flow,
 }: GameChromeProps) {
   const dialogs = useDialogState();
   const { goToMainMenu } = useNavigation();
@@ -36,6 +38,7 @@ export function GameChrome({
         config={config}
         pollsterData={pollsterData}
         handlePollsterChange={handlePollsterChange}
+        flow={flow}
       />
       <GameDialogs
         activeDialog={dialogs.activeDialog}

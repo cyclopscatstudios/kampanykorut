@@ -17,6 +17,14 @@ export interface CampaignState {
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;
   pollingOpnions?: PollingOpnions;
+  campaignView?: CampaignView;
+}
+
+export type CurrentView = "MapView" | "QuestionView";
+
+export interface CampaignView {
+  type: CurrentView;
+  district?: Pick<CandidateListData, "megyekod" | "oevk">;
 }
 
 export interface PollingOpnions {

@@ -27,6 +27,7 @@ export class ResultModifier {
   apply(
     state: CampaignState,
     appliedEffects?: AppliedEffect[],
+    applyEffectForPollingData?: boolean,
   ): Pick<CampaignState, "candidateListData" | "partyListData"> | null {
     if (!appliedEffects?.length) {
       log.error("No applied effects provided to ResultModifier");
@@ -36,7 +37,11 @@ export class ResultModifier {
     let currentState = state;
 
     for (const effect of appliedEffects) {
-      const partial = this.applySingleEffect(currentState, effect);
+      const partial = this.applySingleEffect(
+        currentState,
+        effect,
+        applyEffectForPollingData,
+      );
 
       if (!partial) continue;
 
@@ -55,10 +60,11 @@ export class ResultModifier {
   private applySingleEffect(
     state: CampaignState,
     effect: AppliedEffect,
+    applyEffectForPollingData?: boolean,
   ): Pick<CampaignState, "candidateListData" | "partyListData"> | null {
     switch (effect.type) {
       case EffectType.UniformSwing:
-        return this.applyPartySwing(state, effect);
+        return this.applyPartySwing(state, effect, applyEffectForPollingData);
 
       case EffectType.VoteAllocation:
         return this.applyShares(state, effect);
@@ -78,8 +84,11 @@ export class ResultModifier {
   private applyPartySwing(
     state: CampaignState,
     appliedEffects: Extract<AppliedEffect, { type: EffectType.UniformSwing }>,
+    applyEffectForPollingData?: boolean,
   ) {
-    log.info("Applying uniform swing", { appliedEffects });
+    if (!applyEffectForPollingData) {
+      log.info("Applying uniform swing", { appliedEffects });
+    }
     const candidateListData =
       this.unionSwingTransformer.applyUniformSwingToDistricts(
         state.candidateListData ?? [],

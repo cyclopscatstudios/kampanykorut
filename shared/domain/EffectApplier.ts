@@ -38,7 +38,6 @@ export class EffectApplier {
     conditionalEffects?: ConditionalRawEffect[],
     selectedDistrict?: District | null,
   ): AppliedEffect[] {
-    console.log({ effects });
     const resolvedEffects = this.resolveConditionalEffects(
       effects,
       conditionalEffects,

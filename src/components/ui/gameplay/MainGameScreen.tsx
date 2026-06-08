@@ -4,17 +4,21 @@ import { AdvisorModal } from "./AdvisorModal";
 import { GameChrome } from "./GameChrome";
 import { GameView } from "./GameView";
 import { useGameFlow } from "./hooks/useGameFlow";
-import { useElectionState } from "@/logic/application";
+import { StateEngine, useElectionState } from "@/logic/application";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
-import { CampaignState, ElectionConfig, PollingOpnions } from "@/shared/types";
+import {
+  CampaignState,
+  CurrentView,
+  ElectionConfig,
+  PollingOpnions,
+} from "@/shared/types";
 
 const log = createLogger("MainGameScreen");
 
-export type CurrentView = "MapView" | "QuestionView";
-
 export function MainGameScreen({ campaignId }: { campaignId: string }) {
   const pollsterEngine = container.resolve(PollsterEngine);
+  const stateEngine = container.resolve(StateEngine);
   const {
     state,
     config,
@@ -56,6 +60,11 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     }
   };
 
+  const handleView = (view: CurrentView) => {
+    dispatch({ type: "CHANGE_VIEW", view });
+    stateEngine.updateCampaignState({ campaignView: { type: view } });
+  };
+
   return (
     <GameChrome
       actionDispatch={dispatch}
@@ -63,6 +72,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
       config={config}
       pollsterData={pollsterData}
       handlePollsterChange={handlePollsterChange}
+      flow={flow}
     >
       <AdvisorModal
         advice={flow.pendingAdvisor?.feedback.text ?? ""}
@@ -85,7 +95,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
         getFinalResults={getFinalResults}
         onAnswer={handleAnswer}
         onSetAnswer={(answer) => dispatch({ type: "SET_ANSWER", answer })}
-        onSetView={(view) => dispatch({ type: "CHANGE_VIEW", view })}
+        onSetView={handleView}
         onSetDistrict={(district) =>
           dispatch({ type: "SELECT_DISTRICT", district })
         }

@@ -267,7 +267,7 @@ export class StateEngine extends Emitter<CampaignState> {
     return keys;
   }
 
-  private updateCampaignState(state: Partial<CampaignState> | null) {
+  updateCampaignState(state: Partial<CampaignState> | null) {
     if (!state) {
       log.debug("Clearing campaign session");
       const sessionId = this.getSessionId();
