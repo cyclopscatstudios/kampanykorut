@@ -433,4 +433,57 @@ describe("StateEngine", () => {
       );
     });
   });
+
+  describe("updateCampaignState", () => {
+    it("persists the state to localStorage under the session key", () => {
+      const { engine } = makeEngine();
+
+      engine.updateCampaignState({
+        activeCampaignId: "c-1",
+        turn: 2,
+        isEnded: false,
+      });
+
+      const stored = mem._map.get(
+        `kampanykorut_campaignState-${FIXED_SESSION_ID}`,
+      );
+      expect(stored).toBeDefined();
+      const parsed = JSON.parse(stored!);
+      expect(parsed.activeCampaignId).toBe("c-1");
+      expect(parsed.turn).toBe(2);
+    });
+
+    it("merges partial state on top of existing state", () => {
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-1",
+        turn: 0,
+        isEnded: false,
+      });
+
+      engine.updateCampaignState({ turn: 5 });
+
+      const stored = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`)!,
+      );
+      expect(stored.activeCampaignId).toBe("c-1");
+      expect(stored.turn).toBe(5);
+    });
+
+    it("clears localStorage and in-memory state when called with null", () => {
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-1",
+        turn: 0,
+        isEnded: false,
+      });
+
+      engine.updateCampaignState(null);
+
+      expect(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`),
+      ).toBeUndefined();
+      expect(engine.getCampaignState()).toBeNull();
+    });
+  });
 });

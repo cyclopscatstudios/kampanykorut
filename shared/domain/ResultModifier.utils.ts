@@ -51,7 +51,7 @@ export function calcPercentages(
     .filter((v) => typeof v === "number")
     .reduce((a, b) => a + b, 0);
 
-  if (result._total > 1 || result._total < 0) {
+  if (Math.round(result._total) > 1 || result._total < 0) {
     log.error("Invalid total percentage", {
       total: result._total,
       percentages: result,

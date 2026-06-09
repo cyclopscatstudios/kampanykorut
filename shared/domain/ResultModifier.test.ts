@@ -75,4 +75,15 @@ describe("ResultModifier", () => {
     expect(result).toHaveProperty("candidateListData");
     expect(result).toHaveProperty("partyListData");
   });
+
+  it("applyEffectForPollingData flag does not affect computed result data", () => {
+    const effect: AppliedEffect = {
+      type: EffectType.UniformSwing,
+      baseShare: { party_a: 50 },
+      targetShare: { party_a: 49 },
+    };
+    const withoutFlag = modifier.apply(campaignState, [effect]);
+    const withFlag = modifier.apply(campaignState, [effect], true);
+    expect(withFlag).toEqual(withoutFlag);
+  });
 });

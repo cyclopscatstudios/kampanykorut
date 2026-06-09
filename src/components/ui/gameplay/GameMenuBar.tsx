@@ -9,7 +9,7 @@ import { Menu, MenuItem, SubMenu } from "../Menu";
 import { Text } from "../Text";
 import { Tooltip } from "../Tooltip";
 import type { DialogId } from "./hooks/useDialogState";
-import type { GameFlowAction } from "./hooks/useGameFlow";
+import type { GameFlowAction, GameFlowState } from "./hooks/useGameFlow";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
 import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
 
@@ -25,6 +25,7 @@ export interface MenuBarProps {
     state?: CampaignState,
     config?: CampaignConfig,
   ) => void;
+  flow?: GameFlowState;
 }
 
 export function TopMenuBar({
@@ -35,6 +36,7 @@ export function TopMenuBar({
   handlePollsterChange,
   state,
   config,
+  flow,
 }: MenuBarProps) {
   const [info, setInfo] = useState("turn");
   const pollsterEngine = container.resolve(PollsterEngine);
@@ -50,18 +52,14 @@ export function TopMenuBar({
             <img src={logo} className="mr-1" width="40" height="40" />
             <img src={markdown} className="mr-3" width="200" height="40" />
           </div>
-          {actionDispatch && (
+          {flow?.currentView === "MapView" && flow.visitingDistrict && (
             <Button
               variant="tertiary"
               onClick={() =>
-                actionDispatch({ type: "CHANGE_VIEW", view: "MapView" })
+                actionDispatch?.({ type: "CHANGE_VIEW", view: "QuestionView" })
               }
             >
-              <Button.Icon
-                name="window-fullscreen"
-                color="white"
-                size="medium"
-              />
+              <Button.Icon name="geo-alt-fill" color="white" size="medium" />
             </Button>
           )}
           <Menu

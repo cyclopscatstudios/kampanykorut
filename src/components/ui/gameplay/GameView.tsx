@@ -1,8 +1,8 @@
-import type { CurrentView } from "./MainGameScreen";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
 import {
   CampaignState,
+  CurrentView,
   District,
   DistrictPoligon,
   FinalResults,
