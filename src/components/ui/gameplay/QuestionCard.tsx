@@ -6,7 +6,7 @@ import { Icon } from "../Icon";
 import { RadioGroup } from "../RadioGroup";
 import { Text } from "../Text";
 import { Tooltip } from "../Tooltip";
-import type { CurrentView } from "./MainGameScreen";
+import { CurrentView } from "@/shared/types";
 
 interface Answer {
   id: string;

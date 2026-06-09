@@ -8,9 +8,9 @@ import { StateEngine, useElectionState } from "@/logic/application";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
 import {
+  CampaignConfig,
   CampaignState,
   CurrentView,
-  ElectionConfig,
   PollingOpnions,
 } from "@/shared/types";
 
@@ -47,11 +47,22 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
 
   const handlePollsterChange = (
     id: string,
-    state: CampaignState,
-    config: ElectionConfig,
+    state?: CampaignState,
+    config?: CampaignConfig,
   ) => {
-    const polls = pollsterEngine.getPollsByPollsterId(id, state, config);
-    const currentPollsterData = getMapDataByPolls(state, config, polls);
+    if (!state || !config) {
+      return;
+    }
+    const polls = pollsterEngine.getPollsByPollsterId(
+      id,
+      state,
+      config.electionConfig,
+    );
+    const currentPollsterData = getMapDataByPolls(
+      state,
+      config.electionConfig,
+      polls,
+    );
     if (currentPollsterData) {
       log.debug("Changing map view to pollster data", {
         pollsterId: id,

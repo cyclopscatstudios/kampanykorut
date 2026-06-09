@@ -12,8 +12,12 @@ interface GameChromeProps {
   state?: CampaignState;
   config?: CampaignConfig;
   pollsterData?: PollingOpnions | null;
-  handlePollsterChange?: any;
-  flow: GameFlowState;
+  handlePollsterChange?: (
+    id: string,
+    state?: CampaignState,
+    config?: CampaignConfig,
+  ) => void;
+  flow?: GameFlowState;
 }
 
 export function GameChrome({

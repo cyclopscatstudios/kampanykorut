@@ -25,7 +25,7 @@ export interface MenuBarProps {
     state?: CampaignState,
     config?: CampaignConfig,
   ) => void;
-  flow: GameFlowState;
+  flow?: GameFlowState;
 }
 
 export function TopMenuBar({
@@ -52,7 +52,7 @@ export function TopMenuBar({
             <img src={logo} className="mr-1" width="40" height="40" />
             <img src={markdown} className="mr-3" width="200" height="40" />
           </div>
-          {flow.currentView === "MapView" && flow.visitingDistrict && (
+          {flow?.currentView === "MapView" && flow.visitingDistrict && (
             <Button
               variant="tertiary"
               onClick={() =>
