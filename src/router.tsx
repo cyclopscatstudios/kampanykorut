@@ -21,6 +21,7 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     loader: rootLoader,
     errorElement: <ErrorPage />,
+    hydrateFallbackElement: <div>loading...</div>,
     children: [
       { index: true, element: <MainMenu />, loader: mainMenuLoader },
       { path: "settings", element: <SettingsMenu /> },
