@@ -104,6 +104,18 @@ describe("calcPercentages", () => {
     expect(result.egyparty).toBeCloseTo(1);
     expect(result._total).toBeCloseTo(1);
   });
+
+  it("remains stable with many parties that produce floating-point rounding", () => {
+    // 10 parties with equal votes: each fraction = 0.1, which is not exact in IEEE 754
+    const input = Object.fromEntries(
+      Array.from({ length: 10 }, (_, i) => [`p${i}`, 1]),
+    );
+    const result = calcPercentages(input);
+    expect(result._total).toBeCloseTo(1, 10);
+    for (let i = 0; i < 10; i++) {
+      expect(result[`p${i}`]).toBeCloseTo(0.1, 10);
+    }
+  });
 });
 
 describe("getCapacity", () => {
