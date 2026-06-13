@@ -36,11 +36,13 @@
   "sideSelector": {
     "party": {
       "label": "Select a party",
-      "dropdown": "Selected party"
+      "dropdown": "Selected party...",
+      "emptyState": "Select a party from the dropdown list — its logo and description will be displayed here."
     },
     "candidate": {
       "label": "Select a candidate",
-      "dropdown": "Selected candidate"
+      "dropdown": "Select candidate...",
+      "emptyState": "First select a party, then a candidate."
     }
   },
   "endResult": {

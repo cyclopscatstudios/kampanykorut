@@ -18,7 +18,7 @@ const mockConfig: CampaignConfig = {
       { id: "party_b", name: "Party B", color: "#0000ff" },
     ],
     playableSides: [],
-    electionAssets: {},
+    electionAssets: [],
   },
   voterEnvironmentConfig: {
     eligibleVoters: 1000,

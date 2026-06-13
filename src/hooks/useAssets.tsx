@@ -7,6 +7,7 @@ export function useAssets() {
   const campaignStateEngine = container.resolve(StateEngine);
   const campaignState = campaignStateEngine.getCampaignState();
   const gameConfig = electionConfigEngine.getCurrentElectionConfig();
+
   if (!gameConfig || !campaignState) {
     return {
       portrait: "",
@@ -16,6 +17,7 @@ export function useAssets() {
   }
   const partyId = campaignState?.playerSide?.partyId;
   const candidateId = campaignState?.playerSide?.candidateId;
+
   if (!partyId || !candidateId) {
     return {
       portrait: "",
@@ -24,15 +26,18 @@ export function useAssets() {
     };
   }
 
+  const candidate = gameConfig.electionAssets
+    .find((asset) => asset.id === partyId)
+    ?.candidateAssets.find((ca) => ca.id === candidateId);
+
   return {
-    portrait:
-      getAsset(gameConfig.electionAssets?.[partyId]?.portrait?.[candidateId]) ??
-      "",
-    slogan:
-      getAsset(gameConfig.electionAssets?.[partyId]?.slogan?.[candidateId]) ??
-      "",
+    portrait: getAsset(candidate?.portrait) ?? "",
+    slogan: getAsset(candidate?.slogan) ?? "",
     party_logo:
-      getAsset(gameConfig.electionAssets?.[partyId]?.party_logo) ?? "",
+      getAsset(
+        gameConfig.electionAssets.find((asset) => asset.id === partyId)
+          ?.party_logo,
+      ) ?? "",
   };
 }
 

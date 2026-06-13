@@ -9,6 +9,7 @@ export interface CampaignHeader {
   description: string;
   route: string;
   campaignBanner: string;
+  thinCampaignBanner?: string;
 }
 
 const log = createLogger("useGetCampaigns");
