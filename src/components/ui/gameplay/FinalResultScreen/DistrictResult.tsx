@@ -16,7 +16,7 @@ export function DistrictResult({
   config,
 }: DistrictResultProps) {
   return (
-    <CommonWrapper>
+    <CommonWrapper fullHeight={false}>
       <div className="w-[400px] h-[444px] shrink-0 p-2">
         <div className="text-center">
           <Text>

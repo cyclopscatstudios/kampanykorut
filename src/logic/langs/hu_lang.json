@@ -36,11 +36,13 @@
   "sideSelector": {
     "party": {
       "label": "Válassz egy pártot",
-      "dropdown": "Választott párt"
+      "dropdown": "Választott párt",
+      "emptyState": "Válassz pártot a legördülő listából — itt jelenik meg a párt logója és bemutatása."
     },
     "candidate": {
       "label": "Válassz egy jelöltet",
-      "dropdown": "Választott jelölt"
+      "dropdown": "Választott jelölt",
+      "emptyState": "Előbb válassz pártot, utána jelöltet."
     }
   },
   "endResult": {
@@ -83,6 +85,10 @@
         "menuLabel": "Közvélemény-kutatók",
         "average": "Felmérések átlaga"
       }
+    },
+    "kampanykorut": {
+      "campaignSelector": "Kampányválasztó",
+      "restart": "Újraindítás"
     }
   },
   "emptySlot": {
@@ -96,6 +102,13 @@
   "exitDialog": {
     "title": "Figyelem!",
     "description": "Biztosan ki akarsz lépni a játékból?"
+  },
+  "restartDialog": {
+    "description": "Biztosan újraindítod a jelenlegi kampányt?"
+  },
+  "campaignSelectorDialog": {
+    "title": "Kampányválasztó",
+    "description": "Biztosan visszatérsz a kampányválasztóhoz?"
   },
   "bottomBar": {
     "visitDistrict": "Látogass el a kerületbe",

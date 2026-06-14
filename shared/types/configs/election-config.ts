@@ -7,7 +7,7 @@ export interface ElectionConfig {
   baseResults?: Record<string, number>;
   parties: RawParty[];
   playableSides: PlayableSide[];
-  electionAssets: Record<string, ElectionAsset>;
+  electionAssets: ElectionAsset[];
 }
 
 export type RawParty = {
@@ -18,20 +18,26 @@ export type RawParty = {
 
 export interface PlayableSide {
   id: string;
-  name: string;
+  label: string;
   description?: string;
-  mainCandidates: Candidates[];
+  mainCandidates: Candidate[];
   playableCandidates?: string[];
 }
 
-export interface Candidates {
+export interface Candidate {
   id: string;
   label: string;
   description?: string;
 }
 
 export interface ElectionAsset {
-  portrait: Record<string, string>;
-  slogan: Record<string, string>;
+  id: string;
   party_logo: string;
+  candidateAssets: CandidateAsset[];
+}
+
+export interface CandidateAsset {
+  id: string;
+  portrait: string;
+  slogan: string;
 }

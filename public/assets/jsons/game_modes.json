@@ -5,6 +5,7 @@
     "description": "A 2022-es magyarországi országgyűlési választás a rendszerváltás óta eltelt időszak kilencedik általános parlamenti választása volt Magyarországon 2022.",
     "route": "2022",
     "tags": ["historical"],
-    "campaignBanner": "ogyv-2022-default-banner.png"
+    "campaignBanner": "ogyv-2022-default-banner.png",
+    "thinCampaignBanner": "ogyv-2022-default-banner-thin.png"
   }
 ]

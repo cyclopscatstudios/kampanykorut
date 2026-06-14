@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
 import { useNavigation } from "../../../hooks/navigationHook";
@@ -31,7 +32,7 @@ export function GameDialog({
       <DialogFooter>
         <div>
           <Button block variant="secondary" onClick={() => setIsOpen(false)}>
-            <Button.Text>Cancel</Button.Text>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
           </Button>
         </div>
       </DialogFooter>
@@ -74,13 +75,15 @@ export function GameBody() {
           setIsModalOpen({ isOpen: true, type: "campaignSelector" })
         }
       >
-        <Button.Text>Campaign selector</Button.Text>
+        <Button.Text>
+          {t("gameMenuBar.kampanykorut.campaignSelector")}
+        </Button.Text>
       </Button>
       <Button
         variant="tertiary"
         onClick={() => setIsModalOpen({ isOpen: true, type: "restart" })}
       >
-        <Button.Text>Restart</Button.Text>
+        <Button.Text>{t("gameMenuBar.kampanykorut.restart")}</Button.Text>
       </Button>
     </div>
   );
@@ -97,8 +100,8 @@ function ConfirmCampaignSelectorModal({
 }: ConfirmCampaignSelectorModalProps) {
   return (
     <Modal
-      title="Campaign Selector"
-      description="Are you sure you want to return to the campaign selector?"
+      title={t("campaignSelectorDialog.title")}
+      description={t("campaignSelectorDialog.description")}
       onCancel={onCancel}
       onConfirm={onConfirm}
     />
@@ -116,8 +119,8 @@ function ConfirmRestartModal({
 }: ConfirmRestartModalProps) {
   return (
     <Modal
-      title="Attention!"
-      description="Are you sure you want to restart the current campaign?"
+      title={t("exitDialog.title")}
+      description={t("restartDialog.description")}
       onCancel={onCancel}
       onConfirm={onConfirm}
     />

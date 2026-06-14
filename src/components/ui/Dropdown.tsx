@@ -17,6 +17,7 @@ type DropdownProps<T> = {
   renderLabel?: (selected?: Option<T>) => React.ReactNode;
   disabled?: boolean;
   optionDisabled?: boolean;
+  block?: boolean;
 };
 
 export function Dropdown<T>({
@@ -28,6 +29,7 @@ export function Dropdown<T>({
   renderLabel,
   disabled,
   optionDisabled,
+  block,
 }: DropdownProps<T>) {
   const [open, setOpen] = useState(false);
   const [internalValue, setInternalValue] = useState<T | undefined>(value);
@@ -54,13 +56,19 @@ export function Dropdown<T>({
   }, []);
 
   return (
-    <div ref={ref} className="relative w-64">
+    <div
+      ref={ref}
+      className={classNames("relative", {
+        "w-64": !block,
+      })}
+    >
       <Button
         variant="tertiary"
         size="large"
         onClick={() => setOpen((o) => !o)}
         className="w-full px-3 py-2 rounded-md text-left"
         disabled={disabled}
+        block={block}
       >
         {renderLabel
           ? renderLabel(selected)

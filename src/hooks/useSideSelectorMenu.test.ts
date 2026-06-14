@@ -45,9 +45,9 @@ describe("useSideSelectorMenu", () => {
   it("returns sides from election config", () => {
     const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
 
-    expect(result.current.sides).toHaveLength(2);
-    expect(result.current.sides[0].id).toBe("ellenzeki_osszefogas");
-    expect(result.current.sides[1].id).toBe("fidesz_kdnp");
+    expect(result.current.playableSides).toHaveLength(2);
+    expect(result.current.playableSides[0].value).toBe("ellenzeki_osszefogas");
+    expect(result.current.playableSides[1].value).toBe("fidesz_kdnp");
   });
 
   it("has no selected party or candidate initially", () => {
@@ -76,7 +76,7 @@ describe("useSideSelectorMenu", () => {
     });
 
     expect(result.current.candidateOptions).toEqual([
-      { label: "Marki-Zay Péter", value: "marki_zay_peter" },
+      { label: "Márki-Zay Péter", value: "marki_zay_peter" },
       { label: "Dobrev Klára", value: "dobrev_klara" },
       { label: "Karacsony Gergely", value: "karacsony_gergely" },
     ]);
@@ -87,7 +87,10 @@ describe("useSideSelectorMenu", () => {
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
-      result.current.setSelectedCandidate("marki_zay_peter");
+      result.current.setSelectedCandidate({
+        id: "marki_zay_peter",
+        label: "Márki-Zay Péter",
+      });
     });
 
     act(() => {

@@ -19,7 +19,7 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
   const textColor = getSwingFactorTextColor(swingFactor?.id);
 
   return (
-    <CommonWrapper block>
+    <CommonWrapper block fullHeight={false}>
       <div className="w-full h-20 bg-dark-blue flex justify-between items-center px-5">
         {data && (
           <>
