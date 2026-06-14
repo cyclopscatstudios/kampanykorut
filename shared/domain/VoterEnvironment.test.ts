@@ -1,4 +1,4 @@
-import { describe, expect,it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { CandidateListData } from "@/shared/types";
 import { VoterEnvironment } from "./VoterEnvironment";
 

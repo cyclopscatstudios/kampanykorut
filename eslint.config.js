@@ -46,7 +46,10 @@ export default defineConfig([
           ],
         },
       ],
-      "simple-import-sort/imports": ["error", { groups: [["^\\u0000", "^node:", "^@?\\w", "^", "^\\."]] }],
+      "simple-import-sort/imports": [
+        "error",
+        { groups: [["^\\u0000", "^node:", "^@?\\w", "^", "^\\."]] },
+      ],
       "simple-import-sort/exports": "error",
       "import/first": "error",
       "import/no-duplicates": "error",
