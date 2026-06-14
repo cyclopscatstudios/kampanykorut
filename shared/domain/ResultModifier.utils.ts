@@ -36,7 +36,7 @@ export function calcPercentages(
   const sum = Object.values(totals)
     .filter((v) => !Number.isNaN(v))
     .reduce((a, b) => a + b, 0);
-  const result: Record<string, number> & { _total: number } = {} as any;
+  const result: Record<string, number> & { _total: number } = { _total: 0 };
 
   if (!sum) {
     result._total = 0;

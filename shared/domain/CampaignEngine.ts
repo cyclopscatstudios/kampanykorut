@@ -42,6 +42,11 @@ export class CampaignEngine {
     savedState: CampaignState | null,
     electionConfig?: ElectionConfig,
   ): CampaignState {
+    if (savedState && savedState.candidateListData) {
+      log.info("initial state created from saved data");
+      return savedState;
+    }
+
     const { candidateListData: candidateData, partyListData: partyData } =
       this.mergeUnknownPartiesToOther(
         this.initialCandidateData,
@@ -53,12 +58,7 @@ export class CampaignEngine {
 
     const baseResults = electionConfig?.baseResults;
 
-    if (savedState && savedState.candidateListData) {
-      log.info("initial state created from saved data");
-      return savedState;
-    }
-
-    if (baseResults) {
+    if (baseResults && !savedState?.isBaseResultsAlreadyApplied) {
       const baseApplied = this.applyBaseResults(
         campaignId,
         candidateListData,
@@ -86,6 +86,7 @@ export class CampaignEngine {
         electionConfig,
       ),
       isEnded: false,
+      isBaseResultsAlreadyApplied: true,
     };
   }
 
@@ -118,6 +119,8 @@ export class CampaignEngine {
     log.info("PollsterEngine provided poll results", { polls });
 
     const nextTurn = state.turn + 1;
+    const candidateListData =
+      modified?.candidateListData ?? state.candidateListData;
 
     const session = {
       ...state,
@@ -127,7 +130,9 @@ export class CampaignEngine {
         this.answers,
         this.questions[nextTurn],
       ),
-      candidateListData: modified?.candidateListData ?? state.candidateListData,
+      candidateListData:
+        this.resultModifier.filterUnwantedValues(candidateListData) ??
+        state.candidateListData,
       partyListData: modified?.partyListData ?? state.partyListData,
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
@@ -249,6 +254,8 @@ export class CampaignEngine {
       partok: processPartok(row.partok),
     }));
 
+    log.debug("merging unknown parties to other");
+
     return {
       candidateListData: filteredCandidateListData as CandidateListData[],
       partyListData: filteredPartyListData as PartyListData[],
@@ -325,6 +332,7 @@ export class CampaignEngine {
       candidateListData,
       partyListData,
       isEnded: false,
+      isBaseResultsAlreadyApplied: true,
     };
 
     log.info("Applying base results to initial state", { baseResults });

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Answer,
   CampaignState,
@@ -30,6 +30,10 @@ export function useElectionState(campaignId: string) {
   );
   const { settings } = useSettings();
   const { goToFinalResults } = useNavigation();
+
+  useEffect(() => {
+    saveSession("campaignState", gameState);
+  }, [campaignEngine.createInitialState]);
 
   const processAnswer = (
     rawAnswer?: string,

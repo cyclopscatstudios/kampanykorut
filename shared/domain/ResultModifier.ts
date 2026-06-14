@@ -57,6 +57,25 @@ export class ResultModifier {
     };
   }
 
+  // this is a hack to filter out unwanted values
+  // TODO: fix the root cause later
+  filterUnwantedValues(districtCandidateData?: CandidateListData[]) {
+    if (!districtCandidateData) {
+      return;
+    }
+
+    return districtCandidateData.forEach((district) => {
+      return Object.entries(district.partok).filter(
+        ([party, votes]) =>
+          party !== "undefined" &&
+          votes !== undefined &&
+          votes !== null &&
+          votes !== null &&
+          !Number.isNaN(votes),
+      );
+    });
+  }
+
   private applySingleEffect(
     state: CampaignState,
     effect: AppliedEffect,

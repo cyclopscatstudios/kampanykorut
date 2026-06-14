@@ -55,13 +55,11 @@ export function MapCreator({
       </div>
       <div>
         <div className="h-40 mx-10">
-          {selectedDistrict && (
-            <BottomBar
-              data={selectedDistrict}
-              onClick={() => setCurrentView("QuestionView")}
-              swingFactor={swingFactor}
-            />
-          )}
+          <BottomBar
+            data={selectedDistrict}
+            onClick={() => setCurrentView("QuestionView")}
+            swingFactor={swingFactor}
+          />
         </div>
       </div>
     </div>

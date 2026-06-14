@@ -18,6 +18,7 @@ export interface CampaignState {
   advisorFeedback?: AnswerFeedback;
   pollingOpnions?: PollingOpnions;
   campaignView?: CampaignView;
+  isBaseResultsAlreadyApplied: boolean;
 }
 
 export type CurrentView = "MapView" | "QuestionView";

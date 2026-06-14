@@ -234,10 +234,15 @@
         "id": "A",
         "effects": [
           {
-            "groupId": "kis_telepulesek",
-            "targetParty": "ellenzeki_osszefogas",
-            "amount": 500,
-            "from": { "type": "party", "party": "fidesz" }
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "kis_telepulesek",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 500,
+                "from": { "type": "party", "party": "fidesz" }
+              }
+            ]
           },
           {
             "type": "district-vote-transfer",

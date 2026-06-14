@@ -57,7 +57,6 @@ export function MainMenu() {
               text: about,
               path: "about",
               icon: "info-circle-fill",
-              disabled: true,
             },
           ]}
         />
