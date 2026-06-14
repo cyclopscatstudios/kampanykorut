@@ -20,6 +20,7 @@ export default defineConfig([
     ],
     plugins: {
       import: importPlugin,
+      "simple-import-sort": simpleImportSort,
     },
     settings: {
       "import/resolver": {
@@ -45,16 +46,10 @@ export default defineConfig([
           ],
         },
       ],
-      "import/order": [
-        "error",
-        {
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
-          "newlines-between": "never",
-        },
-      ],
+      "simple-import-sort/imports": ["error", { groups: [["^\\u0000", "^node:", "^@?\\w", "^", "^\\."]] }],
+      "simple-import-sort/exports": "error",
+      "import/first": "error",
+      "import/no-duplicates": "error",
     },
   },
 ]);

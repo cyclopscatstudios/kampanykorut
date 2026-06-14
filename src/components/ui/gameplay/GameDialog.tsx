@@ -1,12 +1,12 @@
 import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
+import { StateEngine } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { Button } from "../Button";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
 import { Modal } from "../Modal";
-import { StateEngine } from "@/logic/application";
 
 export function GameDialog({
   isOpen,

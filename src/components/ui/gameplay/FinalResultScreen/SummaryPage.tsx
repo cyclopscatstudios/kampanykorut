@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { container } from "tsyringe";
+import { ConfigEngine, StateEngine } from "@/logic/application";
+import { FinalResults, Mandate, RawParty } from "@/shared/types";
 import { Heading } from "../../Heading";
 import { Text } from "../../Text";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
-import { ConfigEngine, StateEngine } from "@/logic/application";
-import { FinalResults, Mandate, RawParty } from "@/shared/types";
 
 // TODO: this should come from the campaign config
 const MIN_SEATS_TO_WIN = 100;

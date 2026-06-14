@@ -1,5 +1,11 @@
 import classNames from "classnames";
 import { useMemo, useState } from "react";
+import {
+  CampaignConfig,
+  CampaignState,
+  CandidateListData,
+  FinalResults,
+} from "@/shared/types";
 import { Badge } from "../../../Badge";
 import { SidebarPanel } from "../../../SidebarPanel";
 import { Text } from "../../../Text";
@@ -9,12 +15,6 @@ import {
   type VotePercentage,
 } from "../electionMap.utils";
 import { AdvancedProgressBar, ProgressBar } from "./ProgressBar";
-import {
-  CampaignConfig,
-  CampaignState,
-  CandidateListData,
-  FinalResults,
-} from "@/shared/types";
 
 interface DistrictDetailsProps {
   state: CampaignState | null;

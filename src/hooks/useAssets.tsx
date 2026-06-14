@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
-import { AssetService } from "../logic/application/AssetService";
 import { ConfigEngine, StateEngine } from "@/logic/application";
+import { AssetService } from "../logic/application/AssetService";
 
 export function useAssets() {
   const electionConfigEngine = container.resolve(ConfigEngine);

@@ -1,19 +1,19 @@
 import { injectable } from "tsyringe";
+import { ConfigEngine, StateEngine, StateHandler } from "@/logic/application";
+import {
+  AppliedEffect,
+  CandidateListData,
+  ConditionalRawEffect,
+  District,
+  DistrictTarget,
+  DistrictTargetGroup,
+  EffectType,
+  PartyShareParams,
+  RawEffect,
+} from "@/shared/types";
 import { createLogger } from "../logger/logger";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
 import { MandateCalculator } from "./MandateCalculator";
-import { ConfigEngine, StateEngine, StateHandler } from "@/logic/application";
-import {
-  RawEffect,
-  ConditionalRawEffect,
-  EffectType,
-  CandidateListData,
-  AppliedEffect,
-  DistrictTarget,
-  PartyShareParams,
-  DistrictTargetGroup,
-  District,
-} from "@/shared/types";
 
 const log = createLogger("EffectApplier");
 

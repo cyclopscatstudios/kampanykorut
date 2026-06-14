@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { t } from "i18next";
+import { CurrentView } from "@/shared/types";
 import { useAssets } from "../../../hooks/useAssets";
 import { Button } from "../Button";
 import { CommonWrapper } from "../CommonWrapper";
@@ -7,7 +8,6 @@ import { Heading } from "../Heading";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
 import { Tooltip } from "../Tooltip";
-import { CurrentView } from "@/shared/types";
 
 interface Answer {
   id: string;
@@ -57,8 +57,9 @@ export function QuestionCard({
         </div>
         {possibleAnswers.map((a, index) => (
           <AnswerRow
-            answer={a.label}
+            answer={a}
             index={index}
+            key={a.id}
             isSelected={a.id === answer}
             onClick={() => setAnswer(a.id)}
           />
@@ -115,7 +116,7 @@ function StrategicDecisionBadge() {
 
 interface QuestionRowProps {
   index: number;
-  answer: string;
+  answer: Answer;
   isSelected: boolean;
   onClick: (answer: string) => void;
 }
@@ -128,7 +129,7 @@ export function AnswerRow({
 }: QuestionRowProps) {
   const keys = ["A", "B", "C", "D"];
   return (
-    <div onClick={() => onClick(answer)} className="w-full mb-2">
+    <div onClick={() => onClick(answer.label)} className="w-full mb-2">
       <CommonWrapper
         block
         className={classNames("cursor-pointer", {
@@ -151,7 +152,7 @@ export function AnswerRow({
                 {keys[index]}
               </Text>
             </div>
-            <Text color={isSelected ? "white" : "gray"}>{answer}</Text>
+            <Text color={isSelected ? "white" : "gray"}>{answer.label}</Text>
           </div>
         </div>
       </CommonWrapper>

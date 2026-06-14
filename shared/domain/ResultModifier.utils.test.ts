@@ -1,9 +1,9 @@
+import { CandidateListData, District } from "@/shared/types";
 import {
-  calculateWinner,
   calcPercentages,
+  calculateWinner,
   getCapacity,
 } from "./ResultModifier.utils";
-import { CandidateListData, District } from "@/shared/types";
 
 const makeDistrict = (
   partok: Record<string, number | undefined>,

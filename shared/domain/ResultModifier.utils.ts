@@ -1,5 +1,5 @@
-import { createLogger } from "../logger/logger";
 import { CandidateListData, District } from "@/shared/types";
+import { createLogger } from "../logger/logger";
 
 const log = createLogger("ResultModifierUtils");
 

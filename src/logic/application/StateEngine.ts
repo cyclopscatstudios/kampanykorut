@@ -1,5 +1,7 @@
 import { singleton } from "tsyringe";
 import { v4 as uuidv4 } from "uuid";
+import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
+import { CampaignState } from "@/shared/types";
 import { createLogger } from "../../../shared/logger/logger";
 import type { ConfigEngine } from "./ConfigEngine";
 import { Emitter } from "./Emitter";
@@ -8,8 +10,6 @@ import type { IdGenerator } from "./IdGenerator";
 import type { Navigation } from "./navigation/Navigation";
 import type { HistoryItem } from "./StateHandler";
 import type { SessionKey, StorageEngine } from "./StorageEngine";
-import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
-import { CampaignState } from "@/shared/types";
 
 export type SavedCampaignSessionInfo = {
   id: string;
@@ -213,21 +213,32 @@ export class StateEngine extends Emitter<CampaignState> {
   }
 
   cleanupUnsavedStates() {
-    const states = this.getSessionKeyWithPrefix();
+    const states = this.getSessionKeyWithPrefix("kampanykorut_campaignState-");
+    const histories = this.getSessionKeyWithPrefix("kampanykorut_turnHistory-");
     const savedStates = this.getSavedGameSessions();
 
     const savedSessionIds = new Set(savedStates.map((s) => s.sessionId));
 
     const orphanedStates = states.filter((stateKey) => {
-      const sessionId = stateKey.replace("kampanykorut_campaignState-", "");
+      const state = stateKey.replace("kampanykorut_campaignState-", "");
 
-      return !savedSessionIds.has(sessionId);
+      return !savedSessionIds.has(state);
+    });
+
+    const orphanedTurnHistories = histories.filter((key) => {
+      const history = key.replace("kampanykorut_turnHistory-", "");
+
+      return !savedSessionIds.has(history);
     });
 
     orphanedStates.forEach((key) => {
       localStorage.removeItem(key);
-
       log.debug("Cleared orphaned state with key:", key);
+    });
+
+    orphanedTurnHistories.forEach((key) => {
+      localStorage.removeItem(key);
+      log.debug("Cleared orphaned history with key:", key);
     });
   }
 
@@ -250,14 +261,13 @@ export class StateEngine extends Emitter<CampaignState> {
     }
   }
 
-  private getSessionKeyWithPrefix() {
-    const PREFIX = "kampanykorut_campaignState-";
+  private getSessionKeyWithPrefix(prefix: string) {
     const keys = [];
 
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
 
-      if (!key?.startsWith(PREFIX)) {
+      if (!key?.startsWith(prefix)) {
         continue;
       }
 

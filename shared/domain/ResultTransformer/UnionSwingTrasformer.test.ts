@@ -1,5 +1,5 @@
-import { UnionSwingTransformer } from "./UnionSwingTransformer";
 import { CandidateListData } from "@/shared/types";
+import { UnionSwingTransformer } from "./UnionSwingTransformer";
 
 describe("NationalSwingTransform", () => {
   it("asd", () => {

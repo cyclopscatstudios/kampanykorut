@@ -1,6 +1,6 @@
-import { describe, it, expect } from "vitest";
-import { VoterEnvironment } from "./VoterEnvironment";
+import { describe, expect,it } from "vitest";
 import { CandidateListData } from "@/shared/types";
+import { VoterEnvironment } from "./VoterEnvironment";
 
 const makeDistrict = (
   partok: Record<string, number | undefined>,

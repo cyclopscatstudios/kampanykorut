@@ -1,7 +1,7 @@
+import { CampaignConfig } from "@/shared/types";
 import { config2022 } from "../../../public/campaigns/2022/config";
 import { fetchJSON } from "./fetchJSON";
 import { DATA_PATHS, getDataPath } from "./PathResolver";
-import { CampaignConfig } from "@/shared/types";
 
 // TODO: this registery should be written by user action
 export const gameModeRegistry: Record<string, CampaignConfig> = {

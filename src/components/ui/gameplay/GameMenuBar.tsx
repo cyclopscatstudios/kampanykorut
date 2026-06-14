@@ -1,6 +1,8 @@
 import { t } from "i18next";
 import { type ActionDispatch, useState } from "react";
 import { container } from "tsyringe";
+import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
+import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
 import logo from "../../../../brand-assets/svg/logo-mark.svg";
 import markdown from "../../../../brand-assets/svg/logo-wordmark-dark.svg";
 import { Navigation } from "../../../logic/application/navigation/Navigation";
@@ -11,8 +13,6 @@ import { Text } from "../Text";
 import { Tooltip } from "../Tooltip";
 import type { DialogId } from "./hooks/useDialogState";
 import type { GameFlowAction, GameFlowState } from "./hooks/useGameFlow";
-import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
-import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
 
 export interface MenuBarProps {
   activeDialog: DialogId;

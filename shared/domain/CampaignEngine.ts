@@ -1,8 +1,3 @@
-import { createLogger } from "../logger/logger";
-import type { EffectApplier } from "./EffectApplier";
-import type { MandateCalculator } from "./MandateCalculator";
-import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
-import type { ResultModifier } from "./ResultModifier";
 import { GameSettings } from "@/logic/application";
 import {
   AdvisorFeedback,
@@ -19,6 +14,11 @@ import {
   RawParty,
   RawQuestion,
 } from "@/shared/types";
+import { createLogger } from "../logger/logger";
+import type { EffectApplier } from "./EffectApplier";
+import type { MandateCalculator } from "./MandateCalculator";
+import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
+import type { ResultModifier } from "./ResultModifier";
 
 const log = createLogger("CampaignEngine");
 

@@ -6,8 +6,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { CommonWrapper } from "../../../CommonWrapper";
 import { CampaignConfig } from "@/shared/types";
+import { CommonWrapper } from "../../../CommonWrapper";
 type HistoryEntry = {
   turn: number;
   results: {

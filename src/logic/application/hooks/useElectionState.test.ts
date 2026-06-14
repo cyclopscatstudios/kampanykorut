@@ -1,9 +1,9 @@
 import { act, renderHook } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import { gameModeRegistry } from "../gameModeRegistery";
-import { useElectionState } from "./useElectionState";
 import type { CampaignConfig, PendingTurn } from "@/shared/types";
 import { EffectType } from "@/shared/types";
+import { gameModeRegistry } from "../gameModeRegistery";
+import { useElectionState } from "./useElectionState";
 
 const MOCK_CAMPAIGN_ID = "mock_campaign";
 

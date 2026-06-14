@@ -1,15 +1,15 @@
 import { t } from "i18next";
 import { useState } from "react";
-import { noop } from "../../../dev/FunctionUtils";
+import { type GameSettings } from "@/logic/application";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { supportedLanguages } from "../../../logic/langs/languages";
+import { noop } from "../../../logic/utils";
 import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
 import { toaster } from "./toaster";
-import { type GameSettings } from "@/logic/application";
 
 export function SettingsDialog({
   isOpen,
