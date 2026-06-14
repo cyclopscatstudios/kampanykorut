@@ -3,6 +3,7 @@ import { type ActionDispatch, useState } from "react";
 import { container } from "tsyringe";
 import logo from "../../../../brand-assets/svg/logo-mark.svg";
 import markdown from "../../../../brand-assets/svg/logo-wordmark-dark.svg";
+import { Navigation } from "../../../logic/application/navigation/Navigation";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { Menu, MenuItem, SubMenu } from "../Menu";
@@ -41,6 +42,9 @@ export function TopMenuBar({
   const [info, setInfo] = useState("turn");
   const pollsterEngine = container.resolve(PollsterEngine);
   const pollsters = pollsterEngine.getPollsters();
+  const navigationService = container.resolve(Navigation);
+  const endResultsScreen = navigationService.isUrlParamMatch("/end-results");
+
   return (
     <div className="w-full border-b-2 border-blue-400">
       <div className="h-[60px] flex justify-between items-center mx-2.5">
@@ -62,38 +66,40 @@ export function TopMenuBar({
               <Button.Icon name="geo-alt-fill" color="white" size="medium" />
             </Button>
           )}
-          <Menu
-            align="left"
-            trigger={
-              <Button variant="tertiary">
-                <Button.Icon name="map-fill" color="white" size="medium" />
-              </Button>
-            }
-          >
-            <SubMenu label={t("gameMenuBar.mapMenu.polls.menuLabel")}>
-              {[
-                ...pollsters,
-                {
-                  id: AGGREGATE_POLLSTER_ID,
-                  label: t("gameMenuBar.mapMenu.polls.average"),
-                },
-              ].map((pollster) => (
-                <MenuItem
-                  key={pollster.id}
-                  onClick={() =>
-                    handlePollsterChange?.(pollster.id, state, config)
-                  }
-                >
-                  <div className="flex justify-between items-center px-2">
-                    {pollster.label}
-                    {pollsterData?.selectedPollsterId === pollster.id && (
-                      <Icon name="check-lg" color="darkBlue" />
-                    )}
-                  </div>
-                </MenuItem>
-              ))}
-            </SubMenu>
-          </Menu>
+          {!endResultsScreen && (
+            <Menu
+              align="left"
+              trigger={
+                <Button variant="tertiary">
+                  <Button.Icon name="map-fill" color="white" size="medium" />
+                </Button>
+              }
+            >
+              <SubMenu label={t("gameMenuBar.mapMenu.polls.menuLabel")}>
+                {[
+                  ...pollsters,
+                  {
+                    id: AGGREGATE_POLLSTER_ID,
+                    label: t("gameMenuBar.mapMenu.polls.average"),
+                  },
+                ].map((pollster) => (
+                  <MenuItem
+                    key={pollster.id}
+                    onClick={() =>
+                      handlePollsterChange?.(pollster.id, state, config)
+                    }
+                  >
+                    <div className="flex justify-between items-center px-2">
+                      {pollster.label}
+                      {pollsterData?.selectedPollsterId === pollster.id && (
+                        <Icon name="check-lg" color="darkBlue" />
+                      )}
+                    </div>
+                  </MenuItem>
+                ))}
+              </SubMenu>
+            </Menu>
+          )}
         </div>
         {state && config && (
           <div onClick={() => setInfo(info === "turn" ? "configName" : "turn")}>

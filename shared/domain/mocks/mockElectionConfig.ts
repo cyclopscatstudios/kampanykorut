@@ -72,10 +72,10 @@ export const mockElectionConfig: ElectionConfig = {
         {
           id: "canidadate_a",
           portrait: "/images/mock/candidate-a.png",
-          slogan: "/images/mock/slogan-a.png"
-        }
+          slogan: "/images/mock/slogan-a.png",
+        },
       ],
-      party_logo: "/images/mock/party-a-logo.png"
+      party_logo: "/images/mock/party-a-logo.png",
     },
     {
       id: "party_b",
@@ -83,10 +83,10 @@ export const mockElectionConfig: ElectionConfig = {
         {
           id: "canidadate_c",
           portrait: "/images/mock/candidate-c.png",
-          slogan: "/images/mock/slogan-c.png"
-        }
+          slogan: "/images/mock/slogan-c.png",
+        },
       ],
-      party_logo: "/images/mock/party-c-logo.png"
-    }
-  ]
+      party_logo: "/images/mock/party-c-logo.png",
+    },
+  ],
 };

@@ -87,7 +87,10 @@ describe("useSideSelectorMenu", () => {
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
-      result.current.setSelectedCandidate({ id: "marki_zay_peter", label: "Márki-Zay Péter" });
+      result.current.setSelectedCandidate({
+        id: "marki_zay_peter",
+        label: "Márki-Zay Péter",
+      });
     });
 
     act(() => {

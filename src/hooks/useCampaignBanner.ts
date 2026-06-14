@@ -18,7 +18,7 @@ export function useCampaignBanner(
       const url = `/images/${match?.route}/${thin ? match?.thinCampaignBanner : match?.campaignBanner}`;
       setBannerUrl(url);
     });
-  }, [campaignId]);
+  }, [campaignId, thin]);
 
   return bannerUrl;
 }

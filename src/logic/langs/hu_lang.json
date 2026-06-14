@@ -85,6 +85,10 @@
         "menuLabel": "Közvélemény-kutatók",
         "average": "Felmérések átlaga"
       }
+    },
+    "kampanykorut": {
+      "campaignSelector": "Kampányválasztó",
+      "restart": "Újraindítás"
     }
   },
   "emptySlot": {
@@ -98,6 +102,13 @@
   "exitDialog": {
     "title": "Figyelem!",
     "description": "Biztosan ki akarsz lépni a játékból?"
+  },
+  "restartDialog": {
+    "description": "Biztosan újraindítod a jelenlegi kampányt?"
+  },
+  "campaignSelectorDialog": {
+    "title": "Kampányválasztó",
+    "description": "Biztosan visszatérsz a kampányválasztóhoz?"
   },
   "bottomBar": {
     "visitDistrict": "Látogass el a kerületbe",

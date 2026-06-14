@@ -1,9 +1,10 @@
+import classNames from "classnames";
 import { t } from "i18next";
 import { useAssets } from "../../../hooks/useAssets";
 import { Button } from "../Button";
+import { CommonWrapper } from "../CommonWrapper";
 import { Heading } from "../Heading";
 import { Icon } from "../Icon";
-import { RadioGroup } from "../RadioGroup";
 import { Text } from "../Text";
 import { Tooltip } from "../Tooltip";
 import { CurrentView } from "@/shared/types";
@@ -41,7 +42,7 @@ export function QuestionCard({
   return (
     <div className="h-[784px] flex flex-col p-4 bg-slate-900" data-testid={id}>
       <div className="w-full flex flex-col justify-center items-center mb-4">
-        <div className="bg-slate-700 mb-4 p-2 rounded">
+        <div className="w-full mb-4 p-2 border-l-3 border-blue-500">
           {affects && (
             <Tooltip
               content={t("badge.strategicDecision.tooltip")}
@@ -54,15 +55,14 @@ export function QuestionCard({
             {question}
           </Heading>
         </div>
-        <RadioGroup
-          name="possibleAnswer"
-          value={answer}
-          onChange={setAnswer}
-          options={possibleAnswers.map((q) => ({
-            value: q.id,
-            label: q.label,
-          }))}
-        />
+        {possibleAnswers.map((a, index) => (
+          <AnswerRow
+            answer={a.label}
+            index={index}
+            isSelected={a.id === answer}
+            onClick={() => setAnswer(a.id)}
+          />
+        ))}
       </div>
       <div className="mt-2">
         <div className="flex justify-around mb-4">
@@ -104,11 +104,57 @@ export function QuestionCard({
 
 function StrategicDecisionBadge() {
   return (
-    <div className="flex items-center p-1 bg-slate-600 rounded-full mb-2">
+    <div className="flex items-center p-1 bg-purple-600/25 border border-purple-300 rounded-full mb-2">
       <Icon name="exclamation-circle-fill" color="purple" className="mx-2" />
       <Text className="text-xs pr-1" color="lightBlue">
         {t("badge.strategicDecision.label")}
       </Text>
+    </div>
+  );
+}
+
+interface QuestionRowProps {
+  index: number;
+  answer: string;
+  isSelected: boolean;
+  onClick: (answer: string) => void;
+}
+
+export function AnswerRow({
+  answer,
+  index,
+  isSelected,
+  onClick,
+}: QuestionRowProps) {
+  const keys = ["A", "B", "C", "D"];
+  return (
+    <div onClick={() => onClick(answer)} className="w-full mb-2">
+      <CommonWrapper
+        block
+        className={classNames("cursor-pointer", {
+          "border-blue-500 shadow-lg shadow-blue-500/50": isSelected,
+        })}
+        customBorder={false}
+      >
+        <div className="w-full">
+          <div className="flex items-center m-4">
+            <div
+              className={classNames(
+                "size-[25px] rounded mr-2 flex shrink-0 items-center justify-center",
+                {
+                  "bg-blue-500": isSelected,
+                  "border border-gray-50/50": !isSelected,
+                },
+              )}
+            >
+              <Text weight="bold" color={isSelected ? "white" : "gray"}>
+                {keys[index]}
+              </Text>
+            </div>
+            <Text color={isSelected ? "white" : "gray"}>{answer}</Text>
+          </div>
+        </div>
+      </CommonWrapper>
     </div>
   );
 }
