@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
 import { useWheelZoom, type ViewBox } from "../../hooks/useWheelZoom";
 import {
   getPartyActiveColor,
@@ -10,7 +11,6 @@ import { getFillColor } from "./color";
 import { parsePolygon, projectPoints } from "./geometry";
 import { buildPathD, simplifyDP } from "./path";
 import { computeBounds, computeScale } from "./projection";
-import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
 
 interface DistrictMapProps {
   districts: DistrictPoligon[];

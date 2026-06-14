@@ -1,4 +1,10 @@
 import { container } from "tsyringe";
+import {
+  Decision,
+  EffectType,
+  ElectionConfig,
+  RawEffect,
+} from "@/shared/types";
 import { CampaignEngine } from "./CampaignEngine";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
@@ -7,12 +13,6 @@ import { mockElectionConfig } from "./mocks/mockElectionConfig";
 import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
 import { PollsterEngine } from "./PollsterEngine";
 import { ResultModifier } from "./ResultModifier";
-import {
-  Decision,
-  EffectType,
-  ElectionConfig,
-  RawEffect,
-} from "@/shared/types";
 
 let campaignEngine: CampaignEngine;
 

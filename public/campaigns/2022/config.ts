@@ -1,3 +1,4 @@
+import { CampaignConfig, RawAnsweEffectProps } from "@/shared/types";
 import capitalCity from "./budapest.json";
 import customGroups from "./custom_groups.json";
 import electionConfig from "./election_config.json";
@@ -10,7 +11,6 @@ import districts from "./oevk_2022.json";
 import candidateListData from "./oevk_constituency_results.json";
 import partyListData from "./oevk_list_results.json";
 import voterEnvironmentRaw from "./voter_environment_config.json";
-import { CampaignConfig, RawAnsweEffectProps } from "@/shared/types";
 
 export const config2022: CampaignConfig = {
   electionConfig,

@@ -1,12 +1,12 @@
 import { inject, singleton } from "tsyringe";
-import { createLogger } from "../../logger/logger";
-import { VoterEnvironment } from "../VoterEnvironment";
 import {
   CandidateListData,
   DistrictTarget,
   PartyListData,
   VoteSource,
 } from "@/shared/types";
+import { createLogger } from "../../logger/logger";
+import { VoterEnvironment } from "../VoterEnvironment";
 
 const log = createLogger("DistrictVoteTransformer");
 

@@ -1,9 +1,4 @@
 import { useMemo, useState } from "react";
-import { useNavigation } from "../../../hooks/navigationHook";
-import { createCampaignEngine } from "../createCampaignEngine";
-import { gameModeRegistry } from "../gameModeRegistery";
-import { useSettings } from "./useSettings";
-import { useStateEngine } from "./useStateEngine";
 import {
   Answer,
   CampaignState,
@@ -12,6 +7,11 @@ import {
   ElectionConfig,
   PendingTurn,
 } from "@/shared/types";
+import { useNavigation } from "../../../hooks/navigationHook";
+import { createCampaignEngine } from "../createCampaignEngine";
+import { gameModeRegistry } from "../gameModeRegistery";
+import { useSettings } from "./useSettings";
+import { useStateEngine } from "./useStateEngine";
 
 export function useElectionState(campaignId: string) {
   const config = gameModeRegistry[campaignId];

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useStateEngine } from "../logic/application/hooks";
-import { useNavigation } from "./navigationHook";
 import { createLogger } from "@/shared/logger";
 import { Candidate, ElectionConfig, PlayableSide } from "@/shared/types";
+import { useStateEngine } from "../logic/application/hooks";
+import { useNavigation } from "./navigationHook";
 
 const log = createLogger("useSideSelectorMenu");
 

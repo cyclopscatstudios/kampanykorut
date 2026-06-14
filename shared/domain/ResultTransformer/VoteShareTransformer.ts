@@ -1,11 +1,11 @@
 import { inject, singleton } from "tsyringe";
-import { VoterEnvironment } from "../VoterEnvironment";
 import {
   CandidateListData,
   PartyId,
   PartyListData,
   Share,
 } from "@/shared/types";
+import { VoterEnvironment } from "../VoterEnvironment";
 
 @singleton()
 export class VoteShareTransformer {

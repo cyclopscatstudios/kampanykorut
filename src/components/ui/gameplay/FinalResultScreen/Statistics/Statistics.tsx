@@ -1,6 +1,8 @@
 import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
+import { StateEngine } from "@/logic/application";
+import { CampaignConfig, FinalResults } from "@/shared/types";
 import { Button } from "../../../Button";
 import {
   getClosestDistricts,
@@ -9,8 +11,6 @@ import {
 } from "../statistics.utils";
 import { DistrictDetails } from "./DistrictDetails";
 import { Overview } from "./Overview";
-import { StateEngine } from "@/logic/application";
-import { CampaignConfig, FinalResults } from "@/shared/types";
 
 type StatisticsTab = "overview" | "district-details";
 

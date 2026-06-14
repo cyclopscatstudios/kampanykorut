@@ -1,9 +1,5 @@
 import { useState } from "react";
 import { container } from "tsyringe";
-import { AdvisorModal } from "./AdvisorModal";
-import { GameChrome } from "./GameChrome";
-import { GameView } from "./GameView";
-import { useGameFlow } from "./hooks/useGameFlow";
 import { StateEngine, useElectionState } from "@/logic/application";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
@@ -13,6 +9,10 @@ import {
   CurrentView,
   PollingOpnions,
 } from "@/shared/types";
+import { AdvisorModal } from "./AdvisorModal";
+import { GameChrome } from "./GameChrome";
+import { GameView } from "./GameView";
+import { useGameFlow } from "./hooks/useGameFlow";
 
 const log = createLogger("MainGameScreen");
 

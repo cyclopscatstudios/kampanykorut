@@ -1,5 +1,6 @@
 import { t } from "i18next";
 import { useEffect, useState } from "react";
+import { useStateEngine } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
 import {
   type CampaignHeader,
@@ -12,7 +13,6 @@ import { Heading } from "../Heading";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
 import { MenuLayout } from "./MenuLayout";
-import { useStateEngine } from "@/logic/application";
 
 export function ClassicModeSelectorMenu() {
   const campaigns = useGetCampaigns();

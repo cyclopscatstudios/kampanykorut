@@ -1,14 +1,14 @@
 import { inject } from "tsyringe";
-import { createLogger } from "../logger/logger";
-import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
-import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
-import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
 import {
   AppliedEffect,
   CampaignState,
   CandidateListData,
   EffectType,
 } from "@/shared/types";
+import { createLogger } from "../logger/logger";
+import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
+import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
+import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
 
 const log = createLogger("ResultModifier");
 

@@ -1,13 +1,13 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import { noop } from "../../../../dev/FunctionUtils";
+import { type HistoryItem } from "@/logic/application";
+import { CampaignConfig } from "@/shared/types";
+import { noop } from "../../../../logic/utils";
 import { CommonWrapper } from "../../CommonWrapper";
 import { Heading } from "../../Heading";
 import { Text } from "../../Text";
 import { AnswerRow } from "../QuestionCard";
-import { type HistoryItem } from "@/logic/application";
-import { CampaignConfig } from "@/shared/types";
 
 interface TurnHistoryProps {
   history: HistoryItem[] | null;
@@ -151,7 +151,7 @@ function QuestionCardItem({
         </Heading>
         {question?.possibleAnswers.map((a, index) => (
           <AnswerRow
-            answer={a.label}
+            answer={a}
             index={index}
             isSelected={a.id === item?.answerId}
             onClick={noop}

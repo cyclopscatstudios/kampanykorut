@@ -1,14 +1,14 @@
 import { t } from "i18next";
-import { SwingFactorId } from "../../../types/utils";
-import { getWinnerResultByDistrict } from "../map.utils";
-import { BottomBar } from "./BottomBar";
-import { MapWrapper } from "./MapWrapper";
 import {
   CandidateListData,
   CurrentView,
   District,
   DistrictPoligon,
 } from "@/shared/types";
+import { SwingFactorId } from "../../../types/utils";
+import { getWinnerResultByDistrict } from "../map.utils";
+import { BottomBar } from "./BottomBar";
+import { MapWrapper } from "./MapWrapper";
 
 interface MapCreatorProps {
   districts: DistrictPoligon[];

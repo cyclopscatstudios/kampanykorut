@@ -1,9 +1,9 @@
 import { injectable } from "tsyringe";
+import { createLogger } from "@/shared/logger";
 import { CampaignState, ElectionConfig } from "../types";
 import { Pollster } from "../types/pollsters";
 import { defaultPollsters as DEFAULT_POLLSTERS } from "./DefaultPollsters";
 import { MandateCalculator } from "./MandateCalculator";
-import { createLogger } from "@/shared/logger";
 
 const log = createLogger("PollsterEngine");
 

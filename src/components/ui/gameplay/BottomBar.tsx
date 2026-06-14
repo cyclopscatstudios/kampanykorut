@@ -1,4 +1,5 @@
 import { t } from "i18next";
+import { District } from "@/shared/types";
 import type { Colors } from "../../../types/color";
 import { SwingFactorId } from "../../../types/utils";
 import { Button } from "../Button";
@@ -6,7 +7,6 @@ import { CommonWrapper } from "../CommonWrapper";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
 import type { SwingFactor } from "./MapCreator";
-import { District } from "@/shared/types";
 
 interface BottomBarProps {
   data?: District | null;

@@ -2,15 +2,15 @@ import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
+import {
+  type SavedCampaignSessionInfo,
+  StateEngine,
+} from "@/logic/application";
 import { Button } from "../Button";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
 import { TextInput } from "../TextInput";
-import {
-  type SavedCampaignSessionInfo,
-  StateEngine,
-} from "@/logic/application";
 
 interface SaveGameSessionProps {
   isOpen: boolean;

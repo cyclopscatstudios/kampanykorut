@@ -1,5 +1,3 @@
-import { MapCreator } from "./MapCreator";
-import { QuestionCard } from "./QuestionCard";
 import {
   CampaignState,
   CurrentView,
@@ -8,6 +6,8 @@ import {
   FinalResults,
   PollingOpnions,
 } from "@/shared/types";
+import { MapCreator } from "./MapCreator";
+import { QuestionCard } from "./QuestionCard";
 
 type GameViewConfig = {
   capitalCity: DistrictPoligon[];
