@@ -64,16 +64,18 @@ export class ResultModifier {
       return;
     }
 
-    return districtCandidateData.forEach((district) => {
-      return Object.entries(district.partok).filter(
-        ([party, votes]) =>
-          party !== "undefined" &&
-          votes !== undefined &&
-          votes !== null &&
-          votes !== null &&
-          !Number.isNaN(votes),
-      );
-    });
+    return districtCandidateData.map((district) => ({
+      ...district,
+      partok: Object.fromEntries(
+        Object.entries(district.partok).filter(
+          ([party, votes]) =>
+            party !== "undefined" &&
+            votes !== undefined &&
+            votes !== null &&
+            !Number.isNaN(votes),
+        ),
+      ),
+    }));
   }
 
   private applySingleEffect(

@@ -32,7 +32,7 @@ export class PollsterEngine {
     return this.pollsters;
   }
 
-  getPolls(state: CampaignState, electionConfig: ElectionConfig) {
+  getPolls(state: CampaignState, electionConfig?: ElectionConfig) {
     const actualResults = this.mandateCalculator.calculate(
       state.candidateListData,
       state.partyListData,
@@ -61,6 +61,8 @@ export class PollsterEngine {
         100;
     }
 
+    log.info("PollsterEngine provided poll results", { differences });
+
     return differences;
   }
 
@@ -70,7 +72,9 @@ export class PollsterEngine {
     electionConfig: ElectionConfig,
   ) {
     if (pollsterId === AGGREGATE_POLLSTER_ID) {
-      return this.getPolls(state, electionConfig);
+      const differences = this.getPolls(state, electionConfig);
+      if (!differences) return undefined;
+      return { id: pollsterId, differences };
     }
     const actualResults = this.mandateCalculator.calculate(
       state.candidateListData,
@@ -98,7 +102,10 @@ export class PollsterEngine {
       differences[partyId] =
         (pollEstimate[partyId] - (percentages[partyId] ?? 0)) * 100;
     }
-    return differences;
+    return {
+      id: pollsterId,
+      differences,
+    };
   }
 
   private normalizeResults(

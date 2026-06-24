@@ -1,5 +1,4 @@
 import { inject, singleton } from "tsyringe";
-import { candidateListData } from "@/logic/application";
 import {
   CandidateListData,
   PartyId,
@@ -26,10 +25,7 @@ export class VoteShareTransformer {
     );
 
     if (totalVoters > remainingCapacity) {
-      return {
-        candidateListData,
-        partyListData,
-      };
+      return null;
     }
     const candidateList = this.distributeByCandidateList(
       districtCandidateData,

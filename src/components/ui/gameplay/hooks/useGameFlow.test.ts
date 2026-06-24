@@ -13,6 +13,7 @@ const makePending = (overrides: Partial<CampaignState> = {}): PendingTurn => ({
     activeCampaignId: "test",
     turn: 1,
     isEnded: false,
+    isBaseResultsAlreadyApplied: false,
     ...overrides,
   },
   decision: { questionId: "q1", answerId: "a1", effects: [] },

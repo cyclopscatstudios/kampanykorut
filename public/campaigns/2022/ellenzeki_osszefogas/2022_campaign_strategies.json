@@ -1,0 +1,36 @@
+[
+  {
+    "id": "strategy-1",
+    "label": "A pártok felett álló",
+    "conditions": [
+      {
+        "questionId": "2022_ogyv-1",
+        "answerId": "A"
+      },
+      {
+        "questionId": "2022_ogyv-2",
+        "answerId": "D"
+      }
+    ],
+    "reward": {
+      "minMatches": 2,
+      "effects": [
+        {
+          "type": "uniform-swing",
+          "params": { "ellenzeki_osszefogas": 4.5, "fidesz": -4.5 }
+        },
+        {
+          "type": "district-vote-transfer",
+          "params": [
+            {
+              "groupId": "osszes_oevk",
+              "targetParty": "ellenzeki_osszefogas",
+              "amount": 1000,
+              "from": { "type": "party", "party": "fidesz" }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

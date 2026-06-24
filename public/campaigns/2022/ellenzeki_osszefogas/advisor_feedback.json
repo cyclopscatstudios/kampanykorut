@@ -200,5 +200,52 @@
         "text": "Még ha igazad is van, az ellenzéki törzsszavazók között nem ez lesz a legnépszerűbb megnyilvánulásod."
       }
     ]
+  },
+  {
+    "questionId": "2022_ogyv-11",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Minden választás alap témája a gazdaság, nem beszélni róla az egyik legnagyobb ziccer amit egy politikus elkövethez egy választás előtt."
+      },
+      {
+        "answerId": "B",
+        "text": "Hiába a kokrétumok, semmi olyat nem mondtál el amit nem mondtak volna el mások is az elmúlt években."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-14",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Sztendert válasz, új szavazót nem hoz, de nem is visz el"
+      },
+      {
+        "answerId": "B",
+        "text": "Putyin felszólítására még a te szavazóid is elmosolyodnak.."
+      },
+      {
+        "answerId": "D",
+        "text": "Bár a bejelentésed bármiféle izgalom nélkül zajlott le, az hogy a határról jelentkeztél be mindneképp nagyobb médiaérdeklődést váltott ki."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-16",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Úgy nehéz lesz a kampánnyla foglalkozni, ha a mögötted lévő pártok nem tudnak együttműködni.."
+      },
+      {
+        "answerId": "B",
+        "text": "Fontos az egység látszata pártszinten, de ne feledd, hogy neked felül kell emelkedned a pártpolitikán!"
+      },
+      {
+        "answerId": "C",
+        "text": "A fideszes médiának lesz most min csámcsogni hogy nyílvánossá tetted a konfliktust."
+      }
+    ]
   }
 ]

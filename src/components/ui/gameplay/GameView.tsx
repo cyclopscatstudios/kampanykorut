@@ -21,7 +21,7 @@ interface GameViewProps {
   config: GameViewConfig;
   answer: string | undefined;
   selectedDistrict: District | null;
-  getFinalResults: () => FinalResults;
+  getFinalResults: () => FinalResults | null;
   onAnswer: (id?: string) => void;
   onSetAnswer: (answer: string | undefined) => void;
   onSetView: (view: CurrentView) => void;

@@ -1,5 +1,6 @@
 import { container } from "tsyringe";
 import {
+  CampaignState,
   Decision,
   EffectType,
   ElectionConfig,
@@ -166,12 +167,13 @@ describe("CampaignEngine.createInitialState", () => {
   });
 
   it("returns savedState directly when it has candidateListData", () => {
-    const savedState = {
+    const savedState: CampaignState = {
       activeCampaignId: "test-campaign",
       turn: 5,
       isEnded: false,
       candidateListData: mockCandidateListData,
       partyListData: mockPartyListData,
+      isBaseResultsAlreadyApplied: false,
     };
 
     const result = engine.createInitialState("test-campaign", savedState, {
@@ -187,6 +189,7 @@ describe("CampaignEngine.createInitialState", () => {
       activeCampaignId: "test-campaign",
       turn: 3,
       isEnded: false,
+      isBaseResultsAlreadyApplied: false,
     };
 
     const result = engine.createInitialState("test-campaign", savedState, {
@@ -223,6 +226,7 @@ describe("CampaignEngine.createInitialState", () => {
       turn: 2,
       isEnded: false,
       candidateListData: mockCandidateListData,
+      isBaseResultsAlreadyApplied: false,
     };
     const electionConfig = {
       baseResults: { party_a: 99 },

@@ -1502,6 +1502,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
           "gameState": {
             "activeCampaignId": "default-id",
             "candidateListData": [],
+            "isBaseResultsAlreadyApplied": false,
             "isEnded": false,
             "partyListData": [],
             "turn": 0,

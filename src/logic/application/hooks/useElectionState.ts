@@ -57,6 +57,7 @@ export function useElectionState(campaignId: string) {
       currentHistory ?? [],
       settings,
       config.electionConfig,
+      config.campaignStrategies,
     );
 
     return {
@@ -86,12 +87,34 @@ export function useElectionState(campaignId: string) {
     return campaignEngine.getFinalResults(gameState);
   };
 
-  const getMapDataByPolls = (
+  const getListDataByPollProjection = (
     state: CampaignState,
     config: ElectionConfig,
     polls?: Record<string, number>,
+    pollsterId?: string,
   ) => {
-    return campaignEngine.getPollProjection(state, config, polls);
+    const pollProjection = campaignEngine.getPollProjection(
+      state,
+      config,
+      polls,
+      pollsterId,
+    );
+
+    if (!pollProjection) {
+      return;
+    }
+
+    setGameState((prev) => ({
+      ...prev,
+      pollingOpnions: { ...pollProjection, selectedPollsterId: pollsterId },
+    }));
+
+    saveSession("campaignState", {
+      ...gameState,
+      pollingOpnions: { ...pollProjection, selectedPollsterId: pollsterId },
+    });
+
+    return pollProjection;
   };
 
   const preserveState = (
@@ -121,6 +144,6 @@ export function useElectionState(campaignId: string) {
     processAnswer,
     commitTurn,
     getFinalResults,
-    getMapDataByPolls,
+    getMapDataByPolls: getListDataByPollProjection,
   };
 }

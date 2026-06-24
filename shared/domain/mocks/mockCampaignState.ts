@@ -1,12 +1,13 @@
-import { Answer } from "@/shared/types";
+import { Answer, CampaignState } from "@/shared/types";
 import { mockCandidateListData, mockPartyListData } from "./mockListData";
 
-export const campaignState = {
+export const campaignState: CampaignState = {
   activeCampaignId: "1995_test_campaign_id",
   playerSide: {
     partyId: "party_a",
     candidateId: "candidate_a",
   },
+  isBaseResultsAlreadyApplied: false,
   turn: 8,
   currentQuestion: {
     id: "1995_test_question_id",

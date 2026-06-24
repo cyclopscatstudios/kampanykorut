@@ -69,18 +69,7 @@ export class UnionSwingTransformer {
       return parties;
     }
 
-    const filteredVotes = Object.fromEntries(
-      Object.entries(newVotes).filter(
-        ([party, votes]) =>
-          party !== "undefined" &&
-          votes !== undefined &&
-          votes !== null &&
-          votes !== null &&
-          !Number.isNaN(votes),
-      ),
-    );
-
-    return filteredVotes;
+    return newVotes;
   }
 
   private getVoterCapacity(
@@ -107,7 +96,7 @@ export class UnionSwingTransformer {
     ]);
 
     for (const p of parties) {
-      const base = baseShare[p] ?? baseShare[0];
+      const base = baseShare[p] ?? 0;
       const target = targetShare[p] ?? base;
       diff[p] = target - base;
     }
@@ -130,8 +119,8 @@ export class UnionSwingTransformer {
         continue;
       }
 
-      const deltaVotes = Math.round((total ?? 1) * (diffPercent / 100));
-      const oldVotes = result[party] ?? 1;
+      const deltaVotes = Math.round((total ?? 0) * (diffPercent / 100));
+      const oldVotes = result[party] ?? 0;
 
       const newVotes = oldVotes + deltaVotes;
 
