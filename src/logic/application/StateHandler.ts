@@ -38,7 +38,7 @@ const defaultState: StateHandlerType = {
     partyListData: [],
     turn: 0,
     isEnded: false,
-    isBaseResultsAlreadyApplied: false
+    isBaseResultsAlreadyApplied: false,
   },
   currentConfig: undefined,
   history: [],

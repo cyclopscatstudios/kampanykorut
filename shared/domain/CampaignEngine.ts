@@ -44,7 +44,11 @@ export class CampaignEngine {
     savedState: CampaignState | null,
     electionConfig?: ElectionConfig,
   ): CampaignState {
-    if (savedState && savedState.candidateListData && savedState.activeCampaignId === campaignId) {
+    if (
+      savedState &&
+      savedState.candidateListData &&
+      savedState.activeCampaignId === campaignId
+    ) {
       log.info("initial state created from saved data");
       return savedState;
     }
