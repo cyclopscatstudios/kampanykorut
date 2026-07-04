@@ -8,6 +8,7 @@ import {
 } from "@/shared/types";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
+import { VoteCountingScreen } from "./VoteCountingScreen/VoteCountingScreen";
 
 type GameViewConfig = {
   capitalCity: DistrictPoligon[];
@@ -57,6 +58,11 @@ export function GameView({
   }
 
   return (
+    /*<VoteCountingScreen
+      processedVotes={3286541}
+      totalVotes={5263035}
+      onComplete={() => {}} // 3mp után hívódik
+    />*/
     <MapCreator
       setCurrentView={onSetView}
       candidateListData={

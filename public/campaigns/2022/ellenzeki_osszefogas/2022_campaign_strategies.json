@@ -8,29 +8,36 @@
         "answerId": "A"
       },
       {
-        "questionId": "2022_ogyv-2",
+        "questionId": "2022_ogyv-7",
         "answerId": "D"
+      },
+      {
+        "questionId": "2022_ogyv-18",
+        "answerId": "B"
+      },
+      {
+        "questionId": "2022_ogyv-16",
+        "answerId": "C"
+      },
+      {
+        "questionId": "2022_ogyv-26",
+        "answerId": "D"
+      },
+      {
+        "questionId": "2022_ogyv-27",
+        "answerId": "C"
       }
     ],
-    "reward": {
-      "minMatches": 2,
-      "effects": [
-        {
-          "type": "uniform-swing",
-          "params": { "ellenzeki_osszefogas": 4.5, "fidesz": -4.5 }
-        },
-        {
-          "type": "district-vote-transfer",
-          "params": [
-            {
-              "groupId": "osszes_oevk",
-              "targetParty": "ellenzeki_osszefogas",
-              "amount": 1000,
-              "from": { "type": "party", "party": "fidesz" }
-            }
-          ]
-        }
-      ]
-    }
+    "rewards": [
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": { "ellenzeki_osszefogas": 1.5, "fidesz": -1.5 }
+          }
+        ]
+      }
+    ]
   }
 ]

@@ -146,5 +146,14 @@
   },
   "toaster": {
     "settingsUpdated": "Settings updated successfully!"
+  },
+  "voteCountingScreen": {
+    "steps": {
+      "pollingStations": "POLLING STATIONS REPORTING",
+      "votesCollected": "VOTES COLLECTED",
+      "votesCounted": "VOTES COUNTED",
+      "dataVerification": "DATA VERIFICATION",
+      "resultsCompiled": "RESULTS COMPILED"
+    }
   }
 }

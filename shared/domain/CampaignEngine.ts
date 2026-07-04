@@ -15,6 +15,7 @@ import {
   RawParty,
   RawQuestion,
   Strategy,
+  StrategyReward,
 } from "@/shared/types";
 import { createLogger } from "../logger/logger";
 import type { EffectApplier } from "./EffectApplier";
@@ -136,7 +137,8 @@ export class CampaignEngine {
       modified?.candidateListData,
     );
 
-    if (campaignStrategies) {
+    if (!this.questions[nextTurn] && campaignStrategies) {
+      log.info("apply campaign strategy");
       const { candidateListData: listData } = this.applyStrategy(
         campaignStrategies,
         history,
@@ -237,20 +239,34 @@ export class CampaignEngine {
             h.answerId === condition.answerId,
         ),
       ).length;
+
+      const reward = str.rewards
+        .filter((r) => matchCount >= r.minMatches)
+        .reduce<
+          StrategyReward | undefined
+        >((best, current) => (!best || current.minMatches > best.minMatches ? current : best), undefined);
+
       log.debug(
-        `campaign strategy for ${str.label} completed ${matchCount} out of minimum ${str.reward.minMatches}`,
+        `campaign strategy for ${str.label} completed ${matchCount} matches${reward ? `, applying reward for ${reward.minMatches} matches` : ", no reward"}`,
       );
-      if (str.reward.minMatches <= matchCount) {
-        log.info("campaign strategy fullfield for ", str.label);
-        const appliedEffects = this.effectApplier.getAppliedEffects(
-          str.reward.effects,
-          candidateListData,
-          state.turn,
-        );
-        const modified = this.resultModifier.apply(state, appliedEffects);
-        candidateListData = modified?.candidateListData ?? [];
-        partyListData = modified?.partyListData ?? [];
+
+      if (!reward) {
+        continue;
       }
+
+      log.info(
+        `campaign strategy fulfilled for ${str.label} (${reward.minMatches} matches)`,
+      );
+
+      const appliedEffects = this.effectApplier.getAppliedEffects(
+        reward.effects,
+        candidateListData,
+        state.turn,
+      );
+
+      const modified = this.resultModifier.apply(state, appliedEffects);
+      candidateListData = modified?.candidateListData ?? [];
+      partyListData = modified?.partyListData ?? [];
     }
 
     return {

@@ -146,5 +146,14 @@
   },
   "toaster": {
     "settingsUpdated": "Beállítások sikeresen frissültek!"
+  },
+  "voteCountingScreen": {
+    "steps": {
+      "pollingStations": "SZAVAZÓKÖRÖK BEÉRKEZÉSE",
+      "votesCollected": "SZAVAZATOK ÖSSZEGYŰJTÉSE",
+      "votesCounted": "SZAVAZATOK SZÁMLÁLÁSA",
+      "dataVerification": "ADATOK ELLENŐRZÉSE",
+      "resultsCompiled": "EREDMÉNYEK ÖSSZESÍTÉSE"
+    }
   }
 }

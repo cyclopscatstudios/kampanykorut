@@ -248,7 +248,8 @@
         "id": "D",
         "label": "Egyszerű, könnyen érthető üzenetekre építesz: mindenki jobban fog élni, ha kormányváltás lesz. A részleteket kevésbé hangsúlyozod."
       }
-    ]
+    ],
+    "affects": [{ "id": "B" }]
   },
   {
     "id": "2022_ogyv-12",
@@ -304,9 +305,9 @@
         "id": "D",
         "label": "Az Európai Unió egyre gyakrabban próbál beleszólni a tagállamok belügyeibe. Magyarországnak határozottabban kell kiállnia a szuverenitása mellett, még akkor is, ha ez konfliktusokkal jár."
       }
-    ]
+    ],
+    "affects": [{ "id": "A" }, { "id": "B" }, { "id": "C" }]
   },
-
   {
     "id": "2022_ogyv-15",
     "title": "Kulturális–identitás témák",
@@ -432,7 +433,7 @@
       },
       {
         "id": "B",
-        "label": "Készíttetsz egy rövid, vizuális „miért jobb neked” összefoglalót, amelyet minden kommunikációs csatornán terjesztesz."
+        "label": "Készíttetsz egy rövid, vizuális „miért jobb neked” összefoglalót, amelyet az országjárásod során osztasz szét a hallgatóság között."
       },
       {
         "id": "C",
@@ -463,7 +464,7 @@
       },
       {
         "id": "D",
-        "label": "Kiegyensúlyozott álláspontot képviselsz: nem küldünk katonákat és fegyvereket a háborúba, ugyanakkor elítéljük az orosz agressziót és szolidaritást vállalunk Ukrajnával."
+        "label": "Kiegyensúlyozott álláspontot képviselsz: ki kell maradnunk a háborúból, ugyanakkor elítéljük az orosz agressziót és szolidaritást vállalunk Ukrajnával."
       }
     ]
   },
@@ -487,29 +488,6 @@
       {
         "id": "D",
         "label": "A rendelkezésre álló erőforrásokat a legfontosabb billegő körzetekre összpontosítod, és oda küldesz célzott aktivistacsoportokat."
-      }
-    ]
-  },
-  {
-    "id": "2022_ogyv-23",
-    "title": "A külföldön élő magyarok megszólítása",
-    "question": "A határon túli magyar állampolgárok levélben szavazhatnak, míg a Nyugaton élő magyaroknak gyakran nagy távolságot kell megtenniük a konzulátusokig. Mekkora hangsúlyt fektetsz a külföldön élő magyar választók megszólítására?",
-    "possibleAnswers": [
-      {
-        "id": "A",
-        "label": "Felhívod a figyelmet a választási rendszer szerinted igazságtalan elemeire, különösen a levélszavazás és a külföldi szavazás eltérő szabályaira."
-      },
-      {
-        "id": "B",
-        "label": "Erőteljes mozgósító kampányt indítasz a nyugati magyar diaszpóra körében, és segítséget nyújtasz a szavazás megszervezéséhez."
-      },
-      {
-        "id": "C",
-        "label": "A kampány erőforrásait elsősorban a belföldi választókra összpontosítod, mert ott látod a nagyobb mozgósítási potenciált."
-      },
-      {
-        "id": "D",
-        "label": "Külön üzeneteket fogalmazol meg a külföldön élő magyarok számára, például a hazatérés, az egészségügy vagy az oktatás kérdéseiről."
       }
     ]
   },

@@ -4,7 +4,7 @@ export interface Strategy {
   id: string;
   label: string;
   conditions: StrategyAnswerCondition[];
-  reward: StrategyReward;
+  rewards: StrategyReward[];
 }
 
 export interface StrategyReward {

@@ -33,6 +33,7 @@ export function MapCreator({
   setSelectedDistrict,
 }: MapCreatorProps) {
   const swingFactor = getSwingFactor(selectedDistrict);
+  console.log({ selectedDistrict });
   return (
     <div className="flex flex-col h-full w-full">
       <div className="flex w-full h-full justify-center items-center gap-4">

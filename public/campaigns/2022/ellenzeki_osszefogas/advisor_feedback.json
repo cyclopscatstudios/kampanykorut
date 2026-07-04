@@ -4,19 +4,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Ha meg akarod nyerni az ellenzékiek és az elbizonytalanodó fideszesek bizalmát, jó döntés a függetlenséged hangsúlyozása!"
+        "text": "Jól teszed, ha hangsúlyozod a függetlenségedet. Sokan elsősorban azért szavaztak rád, mert elegük lett a hagyományos ellenzéki pártokból."
       },
       {
         "answerId": "B",
-        "text": "Fontos az egység fenntartása, de a túl nagy közelség veszélyes is lehet. Ne feledd: ez az összefogás kényszer szülte."
+        "text": "Fontos megőrizni az egységet, de a túlzott közelség veszélyes is lehet. Ne feledd: ezt az összefogást elsősorban a politikai kényszer hívta életre."
       },
       {
         "answerId": "C",
-        "text": "Jól látod, hogy Gyurcsány Ferenc teher ennek az összefogásnak, de ez önmagában kevés lesz ahhoz, hogy magad mellé állítsd a bizonytalanokat. Ellenben elbizonytalaníthatja a hithű DK-s szavazókat."
+        "text": "Jól látod, hogy Gyurcsány Ferenc és a DK sok választó szemében terhet jelent az összefogás számára. Ugyanakkor nagy hiba lenne elidegeníteni a baloldali és liberális szavazókat."
       },
       {
         "answerId": "D",
-        "text": "Az egyeztetés teljesen eredménytelenül zárul, és csak időpocsékolásnak bizonyul. Az ellenzéki pártok nem tudnak elfogadni téged, bár megígérik, hogy a nyilvánosságban jó arcot vágnak hozzá."
+        "text": "Érthető indulatok, de nem szerencsés a pártvezetőket nyilvánosan bírálni akkor, amikor egységet kellene mutatni."
       }
     ]
   },
@@ -25,19 +25,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Nem rossz ötlet a jobboldali értékeid hangsúlyozása, de ne feledd, hogy az összefogás nagyobb részét még mindig inkább a liberális és baloldali szavazók adják."
+        "text": "Nem rossz ötlet hangsúlyozni a jobboldali értékeidet, de ne feledd, hogy az összefogás támogatói között továbbra is a baloldali és liberális szavazók vannak többségben."
       },
       {
         "answerId": "B",
-        "text": "A magyar politika történetében egy szűk rétegen kívül még senkit nem sikerült pusztán szakpolitikával meggyőzni, valószínűleg most sem lesz ez másként."
+        "text": "A magyar politikában egy szűk rétegen kívül még senkit sem sikerült pusztán szakpolitikai érvekkel választást nyerni. Valószínűleg most sem ez lesz a döntő."
       },
       {
         "answerId": "C",
-        "text": "Érdekes irány, és akár működhet is, hiszen a Fidesz is rájött már, hogy az emberek ösztönösen vonzódnak a rendszerellenes vezetőkhöz."
+        "text": "A hódmezővásárhelyi győzelem jól mutatta, hogy az ellenzék számára működhet ez a stratégia. Érdemes erre példaként hivatkozni."
       },
       {
         "answerId": "D",
-        "text": "Fontos megbízni a szakmai stábban, de ha meg akarod szólítani az embereket, muszáj valamilyen személyes irányt is belevinned a történetbe."
+        "text": "Fontos megbízni a szakmai stábban, de a választók megszólításához önmagában ez kevés. Szükség van egy személyes irányra és hiteles történetre is."
       }
     ]
   },
@@ -46,11 +46,11 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Feszengős megjegyzések és egy-két párizses szendvics között végül sikerült valamiféle kompromisszumra jutni. Ez később még akár jól is jöhet."
+        "text": "Néhány feszengős megjegyzés és egy-két párizses szendvics mellett végül sikerült valamiféle kompromisszumra jutnotok. Ez később még jól jöhet."
       },
       {
         "answerId": "C",
-        "text": "A baloldali értékek fontosságának hangsúlyozása és az orbáni rendszer bűneinek hosszas felsorolása után Gyurcsány Ferenc elégedetten dől hátra, hogy vele egyeztettél először. Kockázatos játszmába kezdtél, de lehet, hogy később még jól jöhet."
+        "text": "Miután hosszan beszéltetek a baloldali értékek fontosságáról és az Orbán-rendszer bűneiről, Gyurcsány Ferenc elégedetten dől hátra, amiért vele egyeztettél elsőként. Kockázatos játszmába kezdtél, de később még a hasznodra válhat."
       }
     ]
   },
@@ -59,19 +59,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A teljes spontaneitás túl sok hibalehetőséget rejt. Egy rossz mondat könnyen napokig meghatározhatja a rólad szóló híreket."
+        "text": "A teljes spontaneitás túl sok hibalehetőséget rejt. Egy rosszul megfogalmazott mondat napokra meghatározhatja a rólad szóló híreket."
       },
       {
         "answerId": "B",
-        "text": "A jól meghatározott kulcsüzenetek segítenek kézben tartani a kommunikációt. Így kisebb az esélye, hogy elviszik a beszélgetést."
+        "text": "A jól meghatározott kulcsüzenetek segítenek kézben tartani a kommunikációt. Így kisebb az esélye, hogy a beszélgetés kedvezőtlen irányba terelődik."
       },
       {
         "answerId": "C",
-        "text": "Az utólagos helyreigazítás ritkán éri el ugyanazokat, akik az eredeti hibát látták. A percepciót nehéz visszafordítani, még ha formálisan igazad is van."
+        "text": "Az utólagos helyreigazítás ritkán jut el ugyanazokhoz, akik az eredeti hibát látták. A kialakult benyomást nehéz megváltoztatni, még akkor is, ha formálisan igazad van."
       },
       {
         "answerId": "D",
-        "text": "A médiából való kivonulás jelentősen csökkenti az elérésedet. Ha nem te mondod el a történetedet, mások fogják megtenni helyetted."
+        "text": "A médiából való kivonulás jelentősen csökkenti az elérésedet. Ha nem te mondod el a saját történetedet, mások fogják megtenni helyetted."
       }
     ]
   },
@@ -80,11 +80,11 @@
     "answers": [
       {
         "answerId": "B",
-        "text": "Jó választás! Keresni és koncentrálni kell a jelenlétet azokban a körzetekben ahol az előző választásokkor 50% alatt szerepelt a Fidesz"
+        "text": "Jó döntés! A kampányt érdemes azokra a választókerületekre összpontosítani, ahol a Fidesz az előző országgyűlési választáson 50% alatt végzett."
       },
       {
         "answerId": "D",
-        "text": "Elismerendő próbálkozás mindenhova eljutni, de a realitás az, hogy muszáj lesz kompomisszumokat hozni, hogy mely választókerületekre koncentrálsz."
+        "text": "Dicséretes cél, hogy mindenhová eljuss, de a valóságban muszáj lesz kompromisszumokat kötnöd. A kampány erőforrásait azokban a választókerületekben érdemes koncentrálni, ahol valódi esély kínálkozik."
       }
     ]
   },
@@ -100,26 +100,26 @@
         ],
         "answer": {
           "answerId": "D",
-          "text": "Meglepő módon megértően fogadja Gyurcsány Ferenc a kérésedet. Mivel vele egyeztettél először a pártvezetők közül, a DK végül biztosít téged a szükséges erőforrásokról."
+          "text": "Meglepő módon Gyurcsány Ferenc megértően fogadja a kérésedet. Mivel a pártvezetők közül vele egyeztettél elsőként, a DK végül biztosítja számodra a szükséges erőforrásokat."
         }
       }
     ],
     "answers": [
       {
         "answerId": "A",
-        "text": "A DK szavazóinak egy része fütyüléssel és fújolással reagál a rendezvényeden, és sem Gyurcsány Ferenc, sem Dobrev Klára nem hajlandó felvenni a telefont."
+        "text": "A DK szavazóinak egy része füttyel és fújolással fogadja a rendezvényedet, miközben sem Gyurcsány Ferenc, sem Dobrev Klára nem hajlandó ezek után veled szóba állni."
       },
       {
         "answerId": "B",
-        "text": "A kormánypárti kommunikáció szerint ezzel végleg beigazolódott: valójában Gyurcsány Ferenc vezeti a koalíciót, amit már te sem próbálsz cáfolni."
+        "text": "A kormánypárti kommunikáció szerint ezzel végleg bebizonyosodott, hogy valójában Gyurcsány Ferenc irányítja a koalíciót. Ezt a benyomást már te sem próbálod érdemben cáfolni."
       },
       {
         "answerId": "C",
-        "text": "Ezzel egy dolgot biztosan elértél: sem a Fidesz szavazói, sem a DK tábora nem bízik igazán benned."
+        "text": "Egy dolgot biztosan elértél: sem a Fidesz szavazói, sem a DK tábora nem bízik benned igazán."
       },
       {
         "answerId": "D",
-        "text": "Nehéz egyeztetések után sikerül elérni, hogy Gyurcsány Ferenc háttérbe húzódjon, de a DK által biztosított erőforrások egy részéről le kell mondanod."
+        "text": "Hosszú és nehéz egyeztetések után sikerül elérni, hogy Gyurcsány Ferenc háttérbe húzódjon, ezért viszont le kell mondanod a DK által biztosított erőforrások egy részéről."
       }
     ]
   },
@@ -135,22 +135,26 @@
         ],
         "answer": {
           "answerId": "C",
-          "text": "Jakab Péter kifejezetten pozitívan fogadja, hogy őt kerested meg elsőként a pártvezetők közül, és készséggel segít megszervezni a találkozókat a helyi jobbikos jelöltekkel."
+          "text": "Jakab Péter kifejezetten pozitívan fogadja, hogy a pártvezetők közül őt kerested meg elsőként. Ennek köszönhetően készségesen segít megszervezni a közös fórumokat a helyi jobbikos jelöltekkel."
         }
       }
     ],
     "answers": [
       {
+        "answerId": "A",
+        "text": "Bár néhány bizonytalan jobboldali választót megszólíthatsz ezzel, sok saját szavazódat is elbizonytalanítod. A kormánypárti média pedig azonnal ráépíti a saját narratíváját: Márki-Zay Péter és az ellenzék oltásellenes."
+      },
+      {
         "answerId": "B",
-        "text": "A jobbikos szavazók elengedése komoly kockázat ebben a helyzetben, a Mi Hazánk viszont köszöni a lehetőséget."
+        "text": "Az Európai Unió bírálata ugyan megszólíthat néhány EU-szkeptikus választót, de az EU-tagság támogatottsága továbbra is magas Magyarországon. Ezzel könnyen több szavazót veszíthetsz, mint amennyit nyersz."
       },
       {
         "answerId": "C",
-        "text": "Az elképzelés működhetne, de Jakab Péter, a Jobbik elnöke nem mutat különösebb együttműködési szándékot."
+        "text": "Ez működőképes stratégia lehetett volna, de Jakab Péter nem mutat különösebb hajlandóságot arra, hogy segítsen megszervezni a közös fórumokat."
       },
       {
         "answerId": "D",
-        "text": "A jobbikos szavazók elengedése komoly kockázat ebben a helyzetben, a Mi Hazánk viszont köszöni a lehetőséget."
+        "text": "Bár sok jobboldali választó továbbra is bizalmatlan veled szemben, a konzervatív múltad és hiteles fellépésed segít megerősíteni a jobboldali identitásodat."
       }
     ]
   },
@@ -159,15 +163,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A kormánypárti médiagépezet már másnap ráerősített: „Márki-Zay Péter eltörölné a rezsicsökkentést.”"
+        "text": "A kormánypárti médiagépezet már másnap ráerősít a kijelentésedre: „Márki-Zay Péter eltörölné a rezsicsökkentést.” Innentől ezt kell magyaráznod a kampányban."
       },
       {
         "answerId": "B",
-        "text": "Politikailag védhető kompromisszumot kínáltál, de ellenfeleid gyorsan populistának bélyegezték a nagyvállalatokra hárított terheket."
+        "text": "Valószínűleg ez a választás nem a zöldpolitikai kérdéseken fog eldőlni, ugyanakkor sok választót megnyugtathat, hogy nem akarod megszüntetni a rezsicsökkentést."
       },
       {
         "answerId": "C",
-        "text": "Sikerült elkerülnöd a rezsicsökkentés csapdáját, de ezzel át is engedted a témát a kormánypárti narratívának."
+        "text": "Sikerül elkerülnöd a rezsicsökkentés körüli vitát, de ezzel át is engeded a kezdeményezést a kormánypárti narratívának."
+      },
+      {
+        "answerId": "D",
+        "text": "Lehet, hogy hosszú távon igazad van, de kampányban kevés népszerűtlenebb üzenet létezik annál, mint amikor a lakosságot fogyasztáscsökkentésre szólítják fel."
       }
     ]
   },
@@ -176,15 +184,15 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Megpróbáltál betörni az ellenfél médiaterébe, de a pálya erősen lejt: minden megszólalásod kockázatos terepen zajlik."
+        "text": "Megpróbáltál betörni az ellenfél médiaterébe, de a pálya erősen lejt. Minden megszólalásod kockázatos terepen zajlik."
       },
       {
         "answerId": "B",
-        "text": "Erősen építettél az online és független médiára, de ezzel főként a már meglévő támogatóidat érted el."
+        "text": "Bár a független média közönségének jelentős része már eleve ellenzéki érzelmű, a nagy elérés így is értékes lehet. Ne számíts azonban arra, hogy ezek a médiumok közvetlenül segítik a kampányodat."
       },
       {
         "answerId": "C",
-        "text": "Kiaknázatlan területre léptél. Bár ezek a médiumok nem érik el a kormánypárti gépezet szintjét, helyi szinten mégis hatással lehetnek."
+        "text": "Kevésbé kihasznált terepre léptél. Bár ezek a médiumok nem érik el sem a kormánypárti médiagépezet, sem a nagy országos sajtó elérését, helyi szinten mégis komoly hatást gyakorolhatnak."
       }
     ]
   },
@@ -193,11 +201,15 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Még ha igazad is van, az ellenzéki törzsszavazók között nem ez lesz a legnépszerűbb megnyilvánulásod."
+        "text": "Még ha igazad is van, végső soron a választók döntik el, hogy kit és mit tartanak hitelesnek."
       },
       {
         "answerId": "B",
-        "text": "Még ha igazad is van, az ellenzéki törzsszavazók között nem ez lesz a legnépszerűbb megnyilvánulásod."
+        "text": "Lehet igazság abban, amit a képmutatásról mondasz, de arra is figyelned kell, hogy ne adj okot hasonló szerencsétlen kijelentésekre."
+      },
+      {
+        "answerId": "C",
+        "text": "Ilyen helyzetben a bocsánatkérés a legtisztább megoldás. Arra azonban figyelj, hogy ne a gyengeség benyomását keltse."
       }
     ]
   },
@@ -206,28 +218,76 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Minden választás alap témája a gazdaság, nem beszélni róla az egyik legnagyobb ziccer amit egy politikus elkövethez egy választás előtt."
+        "text": "A gazdaság minden választás egyik meghatározó témája. Nem beszélni róla az egyik legnagyobb hiba, amit egy politikus elkövethet egy kampány során."
       },
       {
         "answerId": "B",
-        "text": "Hiába a kokrétumok, semmi olyat nem mondtál el amit nem mondtak volna el mások is az elmúlt években."
+        "text": "A választók egyértelműen konkrétumokat várnak, de ez csak akkor működik igazán, ha hiteles személyes történetekkel és élményekkel is alá tudod támasztani őket."
       }
     ]
   },
   {
-    "questionId": "2022_ogyv-14",
+    "questionId": "2022_ogyv-12",
+    "conditionalAnswers": [
+      {
+        "if": [
+          {
+            "questionId": "2022_ogyv-11",
+            "answerId": "B"
+          }
+        ],
+        "answer": {
+          "answerId": "C",
+          "text": "Bár nem szólítottad meg közvetlenül az idősebb választókat, a személyes történetek bemutatása kimondottan segítenek a megítélésedben több más kérdésben is."
+        }
+      }
+    ],
     "answers": [
       {
         "answerId": "A",
-        "text": "Sztendert válasz, új szavazót nem hoz, de nem is visz el"
+        "text": "Ha az volt a célod, hogy elüldözd a nyugdíjas korú potenciális szavazóidat, akkor ezt biztosan sikerült elérned."
       },
       {
         "answerId": "B",
-        "text": "Putyin felszólítására még a te szavazóid is elmosolyodnak.."
+        "text": "Gazdaságilag fenntartható programot ígérsz, de önmagában ez még kevés ahhoz, hogy meggyőzd ezt a választói réteget."
+      },
+      {
+        "answerId": "C",
+        "text": "Bár nem szólítottad meg közvetlenül az idősebb választókat, a személyes történetek mégis segíthetnek közelebb kerülni hozzájuk."
       },
       {
         "answerId": "D",
-        "text": "Bár a bejelentésed bármiféle izgalom nélkül zajlott le, az hogy a határról jelentkeztél be mindneképp nagyobb médiaérdeklődést váltott ki."
+        "text": "A 444.hu szerint ez a kampányötlet az elmúlt harminc év egyik legkétségbeesettebb próbálkozása. Nehéz lenne ezzel vitatkozni."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-18",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez egy bevett és népszerű álláspont az EU-val kapcsolatban. Arra azonban figyelj, hogy a szuverenitás kérdése könnyen politikai csapdává válhat."
+      },
+      {
+        "answerId": "B",
+        "text": "A brüsszelezés néhány szövetségesednél felvont szemöldököket eredményezett, ugyanakkor a kormánypárti propagandának is megnehezítetted a dolgát a lejárató narratíva felépítésében."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-15",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Bár a gyermekvédelmi rendszerrel kapcsolatban több probléma is felmerült, az elmúlt években nem történt olyan nagy horderejű botrány, amelyre sikeresen felépíthetnéd a kampányodat."
+      },
+      {
+        "answerId": "B",
+        "text": "A „színjáték” szó használata visszhangot váltott ki a kormánypárti médiában, de a kijelentésed végül nem okozott komolyabb politikai botrányt."
+      },
+      {
+        "answerId": "C",
+        "text": "Érthető, hogy megpróbálod elkerülni az állásfoglalást, de ettől a téma még támadási felület marad az ellenzék számára. Ráadásul a saját törzsszavazóid egy része is elégedetlen lehet."
       }
     ]
   },
@@ -236,15 +296,337 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Úgy nehéz lesz a kampánnyla foglalkozni, ha a mögötted lévő pártok nem tudnak együttműködni.."
+        "text": "Nehéz lesz a kampányra koncentrálni, ha a mögötted álló pártok képtelenek együttműködni."
       },
       {
         "answerId": "B",
-        "text": "Fontos az egység látszata pártszinten, de ne feledd, hogy neked felül kell emelkedned a pártpolitikán!"
+        "text": "Fontos megőrizni a pártok közötti egység látszatát, de ne feledd: neked a pártpolitikai viták fölé kell emelkedned."
       },
       {
         "answerId": "C",
-        "text": "A fideszes médiának lesz most min csámcsogni hogy nyílvánossá tetted a konfliktust."
+        "text": "A kormánypárti médiának lesz min csámcsognia, miután nyilvánosságra hoztad a konfliktust. Ugyanakkor a választók egy része értékelheti az őszinteségedet."
+      },
+      {
+        "answerId": "D",
+        "text": "Bár sikerül átmenetileg helyreállítani az egységet, a belső pártpolitikai csatározások túl sok energiát emésztenek fel, ami a kampányod rovására mehet."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-17",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Populista válasz egy populista kérdésre. Kockázatos, de akár működhet is."
+      },
+      {
+        "answerId": "B",
+        "text": "Ha túl sok új témát nyitsz egyszerre, könnyen széttöredezik a kampányod. Érdemes inkább egy-két fontos ügyre koncentrálni."
+      },
+      {
+        "answerId": "C",
+        "text": "A korrupció sokak szemében már lerágott csont, de a választók egy része továbbra is érzékeny rá. Érdemes lehet a kampány egyik központi témájává tenni."
+      },
+      {
+        "answerId": "D",
+        "text": "Hadházy Ákos hiteles szereplője a korrupció elleni küzdelemnek, de ezt a kampányt nem ő vezeti. A választók elsősorban a te álláspontodra kíváncsiak."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-14",
+    "conditionalAnswers": [
+      {
+        "if": [
+          {
+            "questionId": "2022_ogyv-18",
+            "answerId": "C"
+          }
+        ],
+        "answer": {
+          "answerId": "A",
+          "text": "Korábbi megszólalásaid miatt a kormánypárti médiagépezet háborúpártisággal kezd vádolni. Hogy ez mennyire bizonyul hatásosnak, azt csak az idő dönti el."
+        }
+      },
+      {
+        "if": [
+          {
+            "questionId": "2022_ogyv-18",
+            "answerId": "A"
+          }
+        ],
+        "answer": {
+          "answerId": "A",
+          "text": "Korábbi megszólalásaid miatt a kormánypárti médiagépezet háborúpártisággal kezd vádolni. Hogy ez mennyire bizonyul hatásosnak, azt csak az idő dönti el."
+        }
+      }
+    ],
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Nincs azzal semmi baj, ha együttérzésedet fejezed ki Ukrajna iránt, de a választók egy része a háborúval kapcsolatos kijelentéseidet is kiemelt figyelemmel követi."
+      },
+      {
+        "answerId": "B",
+        "text": "Vlagyimir Putyin megfenyegetése legjobb esetben is közröhej tárgya lehet, rosszabb esetben pedig újabb muníciót ad a kormánypárti kommunikációnak."
+      },
+      {
+        "answerId": "C",
+        "text": "Egy ilyen érzékeny témában különösen fontos, hogy megválogasd a szavaidat. A túlzott óvatosság azonban könnyen bizonytalanságnak tűnhet."
+      },
+      {
+        "answerId": "D",
+        "text": "A politikában nem mindig a gyors reagálás a legjobb stratégia, de az ukrán határ mellől bejelentkezve sikerült nagyobb médiafigyelmet irányítanod a mondanivalódra."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-19",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Donald Tuskon kívül nem sikerült más jelentős külföldi szereplőt bevonni a kampányba, ráadásul az ő jelenléte sem hozott érdemi politikai előnyt."
+      },
+      {
+        "answerId": "B",
+        "text": "A kormánypárti kommunikációt ismerve jelen helyzetben ez tűnik a legbiztonságosabb stratégiának."
+      },
+      {
+        "answerId": "C",
+        "text": "Van igazság az érvelésedben, de a külföldi támogatók teljes kizárása talán túlságosan elzárkózó üzenetet közvetít."
+      },
+      {
+        "answerId": "D",
+        "text": "Ezzel akaratlanul is megerősíted a kormánypártok szuverenitásról szóló narratíváját, ami megnehezítheti a saját álláspontod hiteles képviseletét."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-20",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Hiába ismétled a program részleteit, a legtöbb választó nem hosszú szakpolitikai anyagokra kíváncsi. Az üzeneteidet egyszerűbben és közérthetőbben kell átadnod."
+      },
+      {
+        "answerId": "B",
+        "text": "Ha azt szeretnéd, hogy minél több emberhez eljusson a programod, ez jó iránynak tűnik."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-22",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A pártok jól ismerik a saját körzeteiket, de a külön működő aktivistahálózatok miatt sok erőforrás továbbra is kihasználatlan marad."
+      },
+      {
+        "answerId": "B",
+        "text": "A közös szervezés kezdetben súrlódásokkal jár, de hosszabb távon hatékonyabb mozgósítást eredményez."
+      },
+      {
+        "answerId": "C",
+        "text": "Az online kampány sok emberhez eljuthat, de önmagában nem pótolja a személyes jelenlétet és a helyi aktivisták munkáját."
+      },
+      {
+        "answerId": "D",
+        "text": "A billegő körzetekre összpontosított mozgósítás jóval hatékonyabb lehet, mint az erőforrások egyenletes szétosztása."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-24",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A TikTok új választókat is elérhet, ám egyelőre nincs akkora jelentősége ennek a felületnek, hogy valódi pluszt jelentsen."
+      },
+      {
+        "answerId": "C",
+        "text": "A Facebook továbbra is a legfontosabb kampányfelület, de ha kizárólag erre építesz, könnyen lemaradhatsz a fiatalabb korosztályról."
+      },
+      {
+        "answerId": "D",
+        "text": "Az influenszerekkel való együttműködés új közönségeket nyithat meg, ugyanakkor a kampány hitelességét is kockára teheti."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-25",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A személyes kihívás nem hozta meg a kívánt eredményt, és a vita létrejöttének maradék esélye is végleg szertefoszlott, már ha volt rá egyáltalán valós esély."
+      },
+      {
+        "answerId": "C",
+        "text": "Érdemes következetesen emlékeztetni a választókat arra, hogy Orbán Viktor továbbra sem hajlandó nyilvános vitára."
+      },
+      {
+        "answerId": "D",
+        "text": "Más kormánypárti politikusok kihívásával is napirenden tarthatod a vita ügyét, de ez aligha pótolja az Orbán Viktor elleni közvetlen megmérettetést."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-26",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A pártok saját hálózataira támaszkodhatsz, de ezzel könnyen lemondasz azokról a szimpatizánsokról, akik egyik párthoz sem kötődnek szorosan."
+      },
+      {
+        "answerId": "B",
+        "text": "A személyes mozgósítás segíthet túllépni a párthatárokon, de ehhez jelentős kampányerőforrásokra lesz szükség."
+      },
+      {
+        "answerId": "C",
+        "text": "Hiába fordítasz jelentős erőforrásokat a rendezvényre, ha annak szervezését teljes egészében a pártokra bízod. Ne feledd, hogy a közhangulat még ekkor sem kifejezetten a pártoknak kedvez."
+      },
+      {
+        "answerId": "D",
+        "text": "A személyes jelenléted és a jelentős mozgósításra fordított erőforrások segíthetnek nagy tömeget megmozgatni, ami komoly lendületet adhat a kampányodnak."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-27",
+    "conditionalAnswers": [
+      {
+        "if": [
+          {
+            "questionId": "2022_ogyv-3",
+            "answerId": "A"
+          }
+        ],
+        "answer": {
+          "answerId": "A",
+          "text": "Mivel a pártvezetők közül Jakab Péterrel egyeztettél elsőként, sikerül elérni, hogy Iványi Gábor legyen a közös jelölt. Megválasztására azonban a kormánypárti többség miatt továbbra is kevés az esély."
+        }
+      }
+    ],
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Iványi Gábor népszerű jelölt lehetne, ám korábbi, a Jobbikot érintő kijelentései miatt Jakab Péter nem támogatja a jelölését. Így könnyen előfordulhat, hogy az összefogás végül közös jelölt nélkül marad."
+      },
+      {
+        "answerId": "B",
+        "text": "Róna Péter szakmailag hiteles jelölt, ám magas életkora miatt nehezebben veheti fel a versenyt a fiatalabb Novák Katalinnal a nyilvánosság előtt."
+      },
+      {
+        "answerId": "C",
+        "text": "Egy ismert civil jelölt jól kifejezheti, hogy az összefogás túl kíván lépni a hagyományos pártpolitikán."
+      },
+      {
+        "answerId": "D",
+        "text": "A jelöltállítás elhagyása racionális döntésnek tűnhet, de könnyen azt az érzetet keltheti, hogy az ellenzék feladta a politikai kezdeményezést."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-29",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A kampány valóban a választók meggyőzéséről szól, de a szavazatszámlálók hiánya felesleges kockázatot jelenthet a választás napján."
+      },
+      {
+        "answerId": "B",
+        "text": "A szavazatszámlálók toborzása ugyan technikai szükségszerűség, mégis meglepően erős közösségi élményt és lelkesedést adhat az ellenzéki tábornak."
+      },
+      {
+        "answerId": "C",
+        "text": "A billegő körzetekre való összpontosítás racionális döntés, de könnyen maradhatnak lefedetlen települések az ország más részein."
+      },
+      {
+        "answerId": "D",
+        "text": "A pártok helyi szervezetei sokat segíthetnek a toborzásban, ugyanakkor ma már egyik ellenzéki párt sem képes akkora mozgósító erőt felmutatni, mint korábban."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-30",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A szoros verseny hangsúlyozása mozgósító erejű lehet, de vigyázz, hogy a választók egyik oldalról se érezzék lefutottnak a választást."
+      },
+      {
+        "answerId": "B",
+        "text": "A választási rendszer sajátosságaira való figyelmeztetés önmagában igaz, de könnyen azt az érzetet keltheti, hogy valójában nem bíztok a győzelemben."
+      },
+      {
+        "answerId": "C",
+        "text": "A közvélemény-kutatások háttérbe szorítása érthető stratégia, de ezzel átengedsz egy olyan témát, amely napokig uralhatja a közbeszédet."
+      },
+      {
+        "answerId": "D",
+        "text": "Az óvatosság indokolt, hiszen a közvélemény-kutatások nem szavaznak. Ugyanakkor a szakmai hitelességük megkérdőjelezése könnyen visszás üzenetet közvetíthet."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-31",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A magyarázkodás eljuttathatja a teljes mondanivalódat néhány választóhoz, de könnyen napirenden is tarthatja az ügyet."
+      },
+      {
+        "answerId": "B",
+        "text": "A részletes magyarázat hitelesebb képet adhat az álláspontodról, de kérdés, hogy eljut-e azokhoz, akik csak a kiragadott idézetet látták."
+      },
+      {
+        "answerId": "C",
+        "text": "A bocsánatkérés lezárhatja a vitát, ugyanakkor a politikai ellenfeleid ezt a gyengeség jeleként is igyekezhetnek bemutatni."
+      },
+      {
+        "answerId": "D",
+        "text": "Ha nem reagálsz, idővel valóban alábbhagyhat a botrány, de az első benyomást már nehéz lesz megváltoztatni."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-33",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A bocsánatkérés segíthet lezárni az ügyet, de önmagában nem garantálja, hogy a téma eltűnik a kampányból."
+      },
+      {
+        "answerId": "B",
+        "text": "A kettős mérce felvetése jogosnak tűnhet a saját szavazóid számára, de a bizonytalan választókat valószínűleg kevésbé győzi meg."
+      },
+      {
+        "answerId": "C",
+        "text": "A napirend átterelése gyakori kampányeszköz, de csak akkor működik, ha valóban sikerül új témát adnod a közbeszédnek."
+      },
+      {
+        "answerId": "D",
+        "text": "Ha kivárod, könnyen lehet, hogy a botrány magától lecseng. Arra azonban nincs garancia, hogy a választók is ilyen gyorsan túllépnek rajta."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-34",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A sokféle üzenettel több választói csoportot is megszólíthatsz, de a kampányod könnyen elveszítheti a fókuszát."
+      },
+      {
+        "answerId": "B",
+        "text": "Egy erős kulcsüzenet segíthet abban, hogy a kampány utolsó napjaiban is világos képet alakíts ki magadról a választókban."
+      },
+      {
+        "answerId": "C",
+        "text": "A demokrácia jövőjére építő üzenet mozgósító erejű lehet, ugyanakkor sok választó túlzónak is érezheti."
+      },
+      {
+        "answerId": "D",
+        "text": "A visszafogott kampány csökkentheti az újabb hibák esélyét, de ezzel az utolsó napok kezdeményezéséről is lemondhatsz."
       }
     ]
   }
