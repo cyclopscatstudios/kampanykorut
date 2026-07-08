@@ -1,31 +1,28 @@
 import {
+  CampaignConfig,
   CampaignState,
   CurrentView,
   District,
-  DistrictPoligon,
   FinalResults,
   PollingOpnions,
 } from "@/shared/types";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
-
-type GameViewConfig = {
-  capitalCity: DistrictPoligon[];
-  districts: DistrictPoligon[];
-};
+import { VoteCountingScreen } from "./VoteCountingScreen/VoteCountingScreen";
 
 interface GameViewProps {
   currentView: CurrentView;
   state: CampaignState;
   pollsData: PollingOpnions | null;
-  config: GameViewConfig;
+  config: CampaignConfig;
   answer: string | undefined;
   selectedDistrict: District | null;
-  getFinalResults: () => FinalResults;
+  getFinalResults: () => FinalResults | null;
   onAnswer: (id?: string) => void;
   onSetAnswer: (answer: string | undefined) => void;
   onSetView: (view: CurrentView) => void;
   onSetDistrict: (district: District | null) => void;
+  onVoteCountingComplete: () => void;
 }
 
 export function GameView({
@@ -39,6 +36,7 @@ export function GameView({
   onSetAnswer,
   onSetView,
   onSetDistrict,
+  onVoteCountingComplete,
 }: GameViewProps) {
   if (currentView === "QuestionView") {
     return (
@@ -52,6 +50,16 @@ export function GameView({
         setCurrentView={onSetView}
         handleOnClick={onAnswer}
         cityName={selectedDistrict?.telepules}
+      />
+    );
+  }
+
+  if (currentView === "VoteCountingView") {
+    return (
+      <VoteCountingScreen
+        onComplete={onVoteCountingComplete}
+        totalVotes={config.voterEnvironmentConfig.eligibleVoters}
+        processedVotes={state.results?.totals["_total"]}
       />
     );
   }

@@ -3,14 +3,16 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN yarn ci
 
 COPY . .
 
 ARG VITE_SUPABASE_URL
 ARG VITE_SUPABASE_ANON_KEY
+ARG GIT_COMMIT=unknown
+ENV GIT_COMMIT=$GIT_COMMIT
 
-RUN npm run build
+RUN yarn build
 
 FROM nginx:alpine AS runner
 

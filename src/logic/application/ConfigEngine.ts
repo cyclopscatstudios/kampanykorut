@@ -1,9 +1,15 @@
 import { singleton } from "tsyringe";
-import { CampaignConfig, CampaignState, ElectionConfig } from "@/shared/types";
+import {
+  CampaignConfig,
+  CampaignState,
+  ElectionConfig,
+  StrategyReward,
+} from "@/shared/types";
 import { createLogger } from "../../../shared/logger/logger";
 import { Emitter } from "./Emitter";
 import { fetchJSON } from "./fetchJSON";
 import type { CampaignHeader } from "./hooks/useGetCampaigns";
+import { HistoryItem } from "./StateHandler";
 import { StorageEngine } from "./StorageEngine";
 
 const log = createLogger("ConfigEngine");
@@ -64,6 +70,36 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
     );
     const parsed = config ? JSON.parse(config) : null;
     return this.campaignConfig ?? parsed;
+  }
+
+  getCampaignStrategies(
+    state: CampaignState,
+    config: CampaignConfig,
+    history: HistoryItem[],
+  ) {
+    const strategies = config.campaignStrategies?.filter(
+      (s) =>
+        s.target.party === state.playerSide?.partyId &&
+        s.target.candidate === state.playerSide?.candidateId,
+    );
+    return strategies?.map((strategy) => {
+      const matchCount = strategy.conditions.filter((condition) =>
+        history.some(
+          (h) =>
+            h.questionId === condition.questionId &&
+            h.answerId === condition.answerId,
+        ),
+      ).length;
+      const reward = strategy.rewards
+        .filter((r) => matchCount >= r.minMatches)
+        .reduce<
+          StrategyReward | undefined
+        >((best, current) => (!best || current.minMatches > best.minMatches ? current : best), undefined);
+      return {
+        ...strategy,
+        isCompleted: !!reward,
+      };
+    });
   }
 
   async getElectionConfigById(id?: string) {

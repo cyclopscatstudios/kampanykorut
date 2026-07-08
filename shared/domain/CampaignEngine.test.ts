@@ -1,5 +1,6 @@
 import { container } from "tsyringe";
 import {
+  CampaignState,
   Decision,
   EffectType,
   ElectionConfig,
@@ -28,13 +29,13 @@ describe("CampaignEngine", () => {
 
     campaignEngine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       resultModifier,
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
   it("should apply the party-swing typed decision", () => {
@@ -145,13 +146,13 @@ describe("CampaignEngine.createInitialState", () => {
   beforeAll(() => {
     engine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       container.resolve(ResultModifier),
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
 
@@ -166,12 +167,13 @@ describe("CampaignEngine.createInitialState", () => {
   });
 
   it("returns savedState directly when it has candidateListData", () => {
-    const savedState = {
+    const savedState: CampaignState = {
       activeCampaignId: "test-campaign",
       turn: 5,
       isEnded: false,
       candidateListData: mockCandidateListData,
       partyListData: mockPartyListData,
+      isBaseResultsAlreadyApplied: false,
     };
 
     const result = engine.createInitialState("test-campaign", savedState, {
@@ -187,6 +189,7 @@ describe("CampaignEngine.createInitialState", () => {
       activeCampaignId: "test-campaign",
       turn: 3,
       isEnded: false,
+      isBaseResultsAlreadyApplied: false,
     };
 
     const result = engine.createInitialState("test-campaign", savedState, {
@@ -223,6 +226,7 @@ describe("CampaignEngine.createInitialState", () => {
       turn: 2,
       isEnded: false,
       candidateListData: mockCandidateListData,
+      isBaseResultsAlreadyApplied: false,
     };
     const electionConfig = {
       baseResults: { party_a: 99 },
@@ -245,13 +249,13 @@ describe("CampaignEngine.createInitialState – mergeUnknownPartiesToOther", () 
   beforeAll(() => {
     engine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       container.resolve(ResultModifier),
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
 
@@ -302,13 +306,13 @@ describe("CampaignEngine.getPollProjection", () => {
   beforeAll(() => {
     engine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       container.resolve(ResultModifier),
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
 

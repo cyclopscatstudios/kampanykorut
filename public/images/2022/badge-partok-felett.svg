@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="disc" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#2a3550"></stop>
+      <stop offset="55%" stop-color="#141d33"></stop>
+      <stop offset="100%" stop-color="#0a1224"></stop>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fda4af"></stop>
+      <stop offset="50%" stop-color="#f43f5e"></stop>
+      <stop offset="100%" stop-color="#9f1239"></stop>
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fda4af"></stop>
+      <stop offset="100%" stop-color="#e11d48"></stop>
+    </linearGradient>
+    <linearGradient id="scaleGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff1f2"></stop>
+      <stop offset="100%" stop-color="#fda4af"></stop>
+    </linearGradient>
+  </defs>
+
+  
+  <circle cx="100" cy="100" r="94" fill="url(#ring)"></circle>
+  <circle cx="100" cy="100" r="94" fill="none" stroke="#fff1f2" stroke-opacity="0.35" stroke-width="1.5"></circle>
+  
+  <circle cx="100" cy="100" r="80" fill="url(#disc)"></circle>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#f43f5e" stroke-opacity="0.55" stroke-width="2"></circle>
+
+  
+  <g stroke="url(#leafGrad)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M38 130 C 30 108, 32 84, 46 62"></path>
+    <path d="M46 62 L 36 58 M 42 74 L 31 71 M 39 87 L 28 86 M 38 100 L 27 100 M 39 113 L 28 115"></path>
+    <path d="M162 130 C 170 108, 168 84, 154 62"></path>
+    <path d="M154 62 L 164 58 M 158 74 L 169 71 M 161 87 L 172 86 M 162 100 L 173 100 M 161 113 L 172 115"></path>
+  </g>
+
+  
+  <g transform="translate(100,96)" stroke="url(#scaleGrad)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="0" y1="-28" x2="0" y2="26"></line>
+    <line x1="-34" y1="-18" x2="34" y2="-18"></line>
+    <path d="M-34 -18 L -48 6 A 15 12 0 0 0 -20 6 Z"></path>
+    <path d="M34 -18 L 48 6 A 15 12 0 0 0 20 6 Z"></path>
+    <path d="M-14 26 L 14 26 L 10 34 L -10 34 Z" fill="url(#scaleGrad)" stroke="none"></path>
+    <circle cx="0" cy="-28" r="4.6" fill="url(#scaleGrad)" stroke="none"></circle>
+  </g>
+
+  
+  <path d="M52 158 L100 172 L148 158 L148 178 L100 192 L52 178 Z" fill="#7f1d3a"></path>
+  <path d="M52 158 L100 172 L148 158 L148 168 L100 182 L52 168 Z" fill="#f43f5e"></path>
+</svg>

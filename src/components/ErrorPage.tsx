@@ -1,4 +1,4 @@
-import errorImg from "../../public/broken-route.svg";
+import errorImg from "/broken-route.svg?url";
 import { useNavigation } from "../hooks/navigationHook";
 import { Button } from "./ui/Button";
 import { Heading } from "./ui/Heading";

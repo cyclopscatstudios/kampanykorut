@@ -8,3 +8,4 @@ export * from "./end-result";
 export * from "./mandate";
 export * from "./map";
 export * from "./question";
+export * from "./strategy";

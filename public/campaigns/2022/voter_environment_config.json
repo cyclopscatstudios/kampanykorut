@@ -1,4 +1,11 @@
 {
   "maxTurnout": 85,
-  "eligibleVoters": 8215304
+  "eligibleVoters": 7759337,
+  "turnoutHistory": [
+    {
+      "year": "2018",
+      "turnoutPercentage": 70.22,
+      "turnout": 5570797
+    }
+  ]
 }

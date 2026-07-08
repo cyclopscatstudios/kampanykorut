@@ -14,11 +14,13 @@ const pkg = JSON.parse(readFileSync("./package.json", "utf-8")) as {
   version: string;
 };
 
-let gitCommit = "unknown";
-try {
-  gitCommit = execSync("git rev-parse --short HEAD").toString().trim();
-} catch {
-  // not a git repo or no commits yet
+let gitCommit = process.env.GIT_COMMIT ?? "unknown";
+if (gitCommit === "unknown") {
+  try {
+    gitCommit = execSync("git rev-parse --short HEAD").toString().trim();
+  } catch {
+    // not a git repo or no commits yet
+  }
 }
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon

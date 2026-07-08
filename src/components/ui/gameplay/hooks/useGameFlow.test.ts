@@ -13,6 +13,7 @@ const makePending = (overrides: Partial<CampaignState> = {}): PendingTurn => ({
     activeCampaignId: "test",
     turn: 1,
     isEnded: false,
+    isBaseResultsAlreadyApplied: false,
     ...overrides,
   },
   decision: { questionId: "q1", answerId: "a1", effects: [] },
@@ -244,7 +245,25 @@ describe("useGameFlow", () => {
       expect(result.current.flow.pendingAdvisor).toBeNull();
     });
 
-    it("navigates to MapView", () => {
+    it("navigates to MapView when the campaign continues", () => {
+      const pending = makePending({ advisorFeedback: mockFeedback });
+      mockProcessAnswer.mockReturnValue(pending);
+      mockCommitTurn.mockReturnValue({ turn: 2, isEnded: false });
+      const { result } = renderHook(() =>
+        useGameFlow(mockProcessAnswer, mockCommitTurn),
+      );
+
+      act(() => {
+        result.current.handleAnswer("a1");
+      });
+      act(() => {
+        result.current.handleAdvisorClose();
+      });
+
+      expect(result.current.flow.currentView).toBe("MapView");
+    });
+
+    it("navigates to VoteCountingView when the campaign ends", () => {
       const pending = makePending({ advisorFeedback: mockFeedback });
       mockProcessAnswer.mockReturnValue(pending);
       mockCommitTurn.mockReturnValue({ turn: 1, isEnded: true });
@@ -259,7 +278,7 @@ describe("useGameFlow", () => {
         result.current.handleAdvisorClose();
       });
 
-      expect(result.current.flow.currentView).toBe("MapView");
+      expect(result.current.flow.currentView).toBe("VoteCountingView");
     });
   });
 });

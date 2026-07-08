@@ -1,3 +1,5 @@
+import { PartyListVotes } from "../campaign";
+
 export interface ElectionConfig {
   title: string;
   listSeats: number;
@@ -8,6 +10,7 @@ export interface ElectionConfig {
   parties: RawParty[];
   playableSides: PlayableSide[];
   electionAssets: ElectionAsset[];
+  partyListVotes: PartyListVotes;
 }
 
 export type RawParty = {

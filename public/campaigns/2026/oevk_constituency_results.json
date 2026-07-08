@@ -1,0 +1,2486 @@
+[
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 1,
+    "telepules": "Budapest 05. kerület",
+    "valasztopolgar": 73914,
+    "partok": {
+      "tisza": 37803,
+      "fidesz_kdnp": 18391,
+      "mi_hazank": 1948,
+      "mkkp": 978,
+      "dk": 770,
+      "a_szolidaritas_partja_munkaspart": 66
+    },
+    "jeloltek": {
+      "tisza": ["TANÁCS ZOLTÁN"],
+      "fidesz_kdnp": ["FAZEKAS CSILLA"],
+      "mi_hazank": ["NAGY ATTILA"],
+      "mkkp": ["SZINTAY ISTVÁN"],
+      "dk": ["HERFORT MARIETTA"],
+      "a_szolidaritas_partja_munkaspart": ["VÁRKONYI ZOLTÁN"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 2,
+    "telepules": "Budapest 08. kerület",
+    "valasztopolgar": 76449,
+    "partok": {
+      "tisza": 35772,
+      "fidesz_kdnp": 16512,
+      "mi_hazank": 1929,
+      "mkkp": 717,
+      "dk": 582,
+      "fuggetlen_csardi_antal": 511,
+      "a_szolidaritas_partja_munkaspart": 47
+    },
+    "jeloltek": {
+      "tisza": ["BÓDIS KRISZTA"],
+      "fidesz_kdnp": ["FERENCZ ORSOLYA"],
+      "mi_hazank": ["KVACSKAY KÁROLY"],
+      "mkkp": ["GERGELY ANDREA"],
+      "dk": ["HALMAI RICHÁRD"],
+      "fuggetlen_csardi_antal": ["CSÁRDI ANTAL"],
+      "a_szolidaritas_partja_munkaspart": ["SIMON GYÖRGY"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 3,
+    "telepules": "Budapest 12. kerület",
+    "valasztopolgar": 78431,
+    "partok": {
+      "tisza": 43112,
+      "fidesz_kdnp": 20248,
+      "mi_hazank": 2315,
+      "mkkp": 1112,
+      "dk": 860,
+      "a_szolidaritas_partja_munkaspart": 67
+    },
+    "jeloltek": {
+      "tisza": ["MAGYAR PÉTER"],
+      "fidesz_kdnp": ["STEINER ATTILA"],
+      "mi_hazank": ["GRUNDTNER ANDRÁS"],
+      "mkkp": ["BÜRGER ZOLTÁN"],
+      "dk": ["GRÉCZI ZSOLT"],
+      "a_szolidaritas_partja_munkaspart": ["BARABÁS GYÖRGY LÁSZLÓ"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 4,
+    "telepules": "Budapest 02. kerület",
+    "valasztopolgar": 80326,
+    "partok": {
+      "tisza": 45212,
+      "fidesz_kdnp": 19994,
+      "mi_hazank": 2103,
+      "mkkp": 990,
+      "dk": 819,
+      "fuggetlen_tordai_bence": 0
+    },
+    "jeloltek": {
+      "tisza": ["KONCZ ÁRON"],
+      "fidesz_kdnp": ["FÜLÖP ATTILA"],
+      "mi_hazank": ["BINDER CSABA"],
+      "mkkp": ["PILISI EMÍLIA"],
+      "dk": ["HEGYESI BEÁTA"],
+      "fuggetlen_tordai_bence": ["TORDAI BENCE"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 5,
+    "telepules": "Budapest 06. kerület",
+    "valasztopolgar": 76968,
+    "partok": {
+      "tisza": 42668,
+      "fidesz_kdnp": 14769,
+      "mi_hazank": 2344,
+      "dk": 1578,
+      "mkkp": 845
+    },
+    "jeloltek": {
+      "tisza": ["WEIGAND ISTVÁN"],
+      "fidesz_kdnp": ["KOVÁCS BALÁZS NORBERT"],
+      "mi_hazank": ["EDŐCS BEÁTA"],
+      "dk": ["KESZTHELYI DOROTTYA"],
+      "mkkp": ["OLÁH JÁNOS"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 6,
+    "telepules": "Budapest 14. kerület",
+    "valasztopolgar": 78254,
+    "partok": {
+      "tisza": 33953,
+      "fidesz_kdnp": 15612,
+      "fuggetlen_hadhazy_akos": 10207,
+      "mi_hazank": 2825,
+      "mkkp": 730,
+      "dk": 0
+    },
+    "jeloltek": {
+      "tisza": ["VELKEY GYÖRGY LÁSZLÓ"],
+      "fidesz_kdnp": ["RADICS BÉLA"],
+      "fuggetlen_hadhazy_akos": ["HADHÁZY ÁKOS"],
+      "mi_hazank": ["PÉRCSI VIKTÓRIA"],
+      "mkkp": ["NAGY DÁVID"],
+      "dk": ["KOMÁROMI ZOLTÁN"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 7,
+    "telepules": "Budapest 10. kerület",
+    "valasztopolgar": 75379,
+    "partok": {
+      "tisza": 38809,
+      "fidesz_kdnp": 17340,
+      "mi_hazank": 2561,
+      "dk": 1287,
+      "mkkp": 639,
+      "fuggetlen_vekony_csongor": 305
+    },
+    "jeloltek": {
+      "tisza": ["TRENTIN BALÁZS"],
+      "fidesz_kdnp": ["D. KOVÁCS RÓBERT ANTAL"],
+      "mi_hazank": ["CZEGLÉDI JÁNOS"],
+      "dk": ["ARATÓ GERGELY"],
+      "mkkp": ["KLING OND"],
+      "fuggetlen_vekony_csongor": ["VÉKONY CSONGOR"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 8,
+    "telepules": "Budapest 19. kerület",
+    "valasztopolgar": 79277,
+    "partok": {
+      "tisza": 40918,
+      "fidesz_kdnp": 18843,
+      "mi_hazank": 3184,
+      "mkkp": 1007,
+      "a_szolidaritas_partja_munkaspart": 277,
+      "fuggetlen_kunhalmi_agnes": 0
+    },
+    "jeloltek": {
+      "tisza": ["VIRÁGH GABRIELLA"],
+      "fidesz_kdnp": ["TARNAI RICHÁRD"],
+      "mi_hazank": ["FEKETE GYÖRGY"],
+      "mkkp": ["FERANCZ NORBERT"],
+      "a_szolidaritas_partja_munkaspart": ["KATONA TIBOR"],
+      "fuggetlen_kunhalmi_agnes": ["KUNHALMI ÁGNES"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 9,
+    "telepules": "Budapest 21. kerület",
+    "valasztopolgar": 75105,
+    "partok": {
+      "tisza": 36852,
+      "fidesz_kdnp": 17538,
+      "mi_hazank": 3164,
+      "dk": 1014,
+      "mkkp": 758,
+      "a_szolidaritas_partja_munkaspart": 134
+    },
+    "jeloltek": {
+      "tisza": ["KÁTAI-NÉMETH VILMOS"],
+      "fidesz_kdnp": ["KIRÁLY NÓRA"],
+      "mi_hazank": ["RIZMAYERNÉ CSIK ERZSÉBET"],
+      "dk": ["VADAI ATTILA"],
+      "mkkp": ["KISS KORNÉL"],
+      "a_szolidaritas_partja_munkaspart": ["PÁL ÉVA"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 10,
+    "telepules": "Budapest 22. kerület",
+    "valasztopolgar": 77060,
+    "partok": {
+      "tisza": 41542,
+      "fidesz_kdnp": 18829,
+      "mi_hazank": 3277,
+      "dk": 1184,
+      "mkkp": 914
+    },
+    "jeloltek": {
+      "tisza": ["KULCSÁR KRISZTIÁN"],
+      "fidesz_kdnp": ["KOCSONDI MÁRK"],
+      "mi_hazank": ["NOVÁK ELŐD"],
+      "dk": ["MOLNÁR GYULA"],
+      "mkkp": ["NEULINGER ÁGNES"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 11,
+    "telepules": "Budapest 03. kerület",
+    "valasztopolgar": 79524,
+    "partok": {
+      "tisza": 43122,
+      "fidesz_kdnp": 18685,
+      "mi_hazank": 3214,
+      "dk": 1228,
+      "mkkp": 823,
+      "fuggetlen_szabo_timea": 0,
+      "jobbik": 0
+    },
+    "jeloltek": {
+      "tisza": ["BODA NIKOLETTA"],
+      "fidesz_kdnp": ["GYEPES ÁDÁM"],
+      "mi_hazank": ["MAROSVÖLGYI ANNA"],
+      "dk": ["NAGY RICHÁRD GYÖRGY"],
+      "mkkp": ["TÓTH KÁLMÁN"],
+      "fuggetlen_szabo_timea": ["SZABÓ TIMEA"],
+      "jobbik": ["ZSIGA-KÁRPÁT DÁNIEL"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 12,
+    "telepules": "Budapest 13. kerület",
+    "valasztopolgar": 78751,
+    "partok": {
+      "tisza": 41359,
+      "fidesz_kdnp": 16505,
+      "mi_hazank": 2909,
+      "dk": 2625,
+      "mkkp": 877
+    },
+    "jeloltek": {
+      "tisza": ["JAKAB ZSUZSANNA"],
+      "fidesz_kdnp": ["ZSIGMOND BARNA PÁL"],
+      "mi_hazank": ["BALOG CSABA"],
+      "dk": ["VARJU LÁSZLÓ"],
+      "mkkp": ["NAGY DÁVID"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 13,
+    "telepules": "Budapest 15. kerület",
+    "valasztopolgar": 76565,
+    "partok": {
+      "tisza": 38873,
+      "fidesz_kdnp": 17368,
+      "mi_hazank": 3758,
+      "dk": 2564,
+      "mkkp": 802,
+      "a_szolidaritas_partja_munkaspart": 81
+    },
+    "jeloltek": {
+      "tisza": ["MÜLLER ANNA"],
+      "fidesz_kdnp": ["NÉMETH BALÁZS"],
+      "mi_hazank": ["BARTAL ANDRÁS"],
+      "dk": ["BARKÓCZI BALÁZS"],
+      "mkkp": ["BORKUTI BÁLINT"],
+      "a_szolidaritas_partja_munkaspart": ["KÖRMENDI GÁBOR ATTILA"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 14,
+    "telepules": "Budapest 16. kerület",
+    "valasztopolgar": 77330,
+    "partok": {
+      "tisza": 40491,
+      "fidesz_kdnp": 20990,
+      "mi_hazank": 2586,
+      "dk": 785,
+      "mkkp": 535,
+      "fuggetlen_daroczi_zoltan": 271,
+      "fuggetlen_szanyi_tibor": 152
+    },
+    "jeloltek": {
+      "tisza": ["SZABÓ ALEXANDRA"],
+      "fidesz_kdnp": ["SZATMÁRY KRISTÓF"],
+      "mi_hazank": ["ZSIDRÓ LÁSZLÓ"],
+      "dk": ["KOCSIS-CAKE OLIVIO"],
+      "mkkp": ["BOMBICZ TAMÁS"],
+      "fuggetlen_daroczi_zoltan": ["DARÓCZI ZOLTÁN"],
+      "fuggetlen_szanyi_tibor": ["SZANYI TIBOR"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 15,
+    "telepules": "Budapest 17. kerület",
+    "valasztopolgar": 79322,
+    "partok": {
+      "tisza": 41523,
+      "fidesz_kdnp": 20752,
+      "mi_hazank": 3386,
+      "dk": 1121,
+      "mkkp": 666,
+      "a_szolidaritas_partja_munkaspart": 105,
+      "nep": 77
+    },
+    "jeloltek": {
+      "tisza": ["PORCHER ÁRON"],
+      "fidesz_kdnp": ["DUNAI MÓNIKA"],
+      "mi_hazank": ["SOMOGYINÉ HATVANI ZSUZSANNA"],
+      "dk": ["GY. NÉMETH ERZSÉBET"],
+      "mkkp": ["SZIN RICHÁRD"],
+      "a_szolidaritas_partja_munkaspart": ["GÁL PÉTER"],
+      "nep": ["FARKAS TÍMEA"]
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest főváros",
+    "oevk": 16,
+    "telepules": "Budapest 23. kerület",
+    "valasztopolgar": 83447,
+    "partok": {
+      "tisza": 40693,
+      "fidesz_kdnp": 20127,
+      "mi_hazank": 3514,
+      "fuggetlen_hiller_istvan": 2132,
+      "dk": 793,
+      "mkkp": 674,
+      "fuggetlen_bereczki_miklos": 226,
+      "lmp_zoldek": 163,
+      "a_szolidaritas_partja_munkaspart": 51
+    },
+    "jeloltek": {
+      "tisza": ["TARR ZOLTÁN"],
+      "fidesz_kdnp": ["FÖLDESI GYULA"],
+      "mi_hazank": ["KOVÁCS ATTILA"],
+      "fuggetlen_hiller_istvan": ["HILLER ISTVÁN"],
+      "dk": ["BÁNYAI AMIR ATTILA"],
+      "mkkp": ["VALENTIN ANDRÁS"],
+      "fuggetlen_bereczki_miklos": ["BERECZKI MIKLÓS"],
+      "lmp_zoldek": ["SZABÓ-KELLNER KATALIN"],
+      "a_szolidaritas_partja_munkaspart": ["SZÉKELY SÁNDOR"]
+    }
+  },
+  {
+    "megyekod": 2,
+    "megye": "Baranya vármegye",
+    "oevk": 1,
+    "telepules": "Pécs",
+    "valasztopolgar": 70739,
+    "partok": {
+      "tisza": 35434,
+      "fidesz_kdnp": 16883,
+      "mi_hazank": 2475,
+      "dk": 794,
+      "mkkp": 439,
+      "fuggetlen_lajos_milan": 179,
+      "jobbik": 66
+    },
+    "jeloltek": {
+      "tisza": ["RUZSA DIÁNA"],
+      "fidesz_kdnp": ["CZIRÁKI ATTILA"],
+      "mi_hazank": ["VARGA TAMÁS"],
+      "dk": ["AUTH ISTVÁN"],
+      "mkkp": ["ZAKUPSZKI TAMÁS"],
+      "fuggetlen_lajos_milan": ["LAJOS MILÁN"],
+      "jobbik": ["GÁL ADRIENN"]
+    }
+  },
+  {
+    "megyekod": 2,
+    "megye": "Baranya vármegye",
+    "oevk": 2,
+    "telepules": "Pécs",
+    "valasztopolgar": 74934,
+    "partok": {
+      "tisza": 35893,
+      "fidesz_kdnp": 18121,
+      "mi_hazank": 3116,
+      "dk": 900,
+      "mkkp": 460,
+      "jobbik": 129
+    },
+    "jeloltek": {
+      "tisza": ["KOVÁCS ÁRON"],
+      "fidesz_kdnp": ["HOPPÁL PÉTER"],
+      "mi_hazank": ["SÁNDOR ZOLTÁN"],
+      "dk": ["DÉNES ISTVÁN"],
+      "mkkp": ["BAGYURA MÁRTON"],
+      "jobbik": ["KISS BEATRIX"]
+    }
+  },
+  {
+    "megyekod": 2,
+    "megye": "Baranya vármegye",
+    "oevk": 3,
+    "telepules": "Mohács",
+    "valasztopolgar": 68656,
+    "partok": {
+      "tisza": 25405,
+      "fidesz_kdnp": 23328,
+      "mi_hazank": 3033,
+      "dk": 496,
+      "jobbik": 199
+    },
+    "jeloltek": {
+      "tisza": ["RÓZSAHEGYI ÁRON"],
+      "fidesz_kdnp": ["HARGITAI JÁNOS"],
+      "mi_hazank": ["IPACS SÁNDOR"],
+      "dk": ["PÁGER FERENC"],
+      "jobbik": ["PETRIK BARBARA"]
+    }
+  },
+  {
+    "megyekod": 2,
+    "megye": "Baranya vármegye",
+    "oevk": 4,
+    "telepules": "Szigetvár",
+    "valasztopolgar": 73779,
+    "partok": {
+      "tisza": 27914,
+      "fidesz_kdnp": 23505,
+      "mi_hazank": 2600,
+      "dk": 530,
+      "mkkp": 306,
+      "jobbik": 204,
+      "neem": 42
+    },
+    "jeloltek": {
+      "tisza": ["KAPRONCZAI BALÁZS"],
+      "fidesz_kdnp": ["NAGY CSABA"],
+      "mi_hazank": ["ÁCS JÓZSEF"],
+      "dk": ["SZARKÁNDINÉ JERSZI KATALIN"],
+      "mkkp": ["ABDALLAH-MAGDY SZABRINA"],
+      "jobbik": ["KÁRPÁTI ZOLTÁN"],
+      "neem": ["BEKE ERZSÉBET"]
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "Bács-Kiskun vármegye",
+    "oevk": 1,
+    "telepules": "Kecskemét",
+    "valasztopolgar": 67906,
+    "partok": {
+      "tisza": 27753,
+      "fidesz_kdnp": 21063,
+      "mi_hazank": 3611,
+      "mkkp": 525
+    },
+    "jeloltek": {
+      "tisza": ["CSŐSZI ATTILA"],
+      "fidesz_kdnp": ["SALACZ LÁSZLÓ"],
+      "mi_hazank": ["ANDRÁS KÁROLY"],
+      "mkkp": ["PAPP DÁVID"]
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "Bács-Kiskun vármegye",
+    "oevk": 2,
+    "telepules": "Kecskemét",
+    "valasztopolgar": 71504,
+    "partok": {
+      "tisza": 32688,
+      "fidesz_kdnp": 20373,
+      "mi_hazank": 3461,
+      "mkkp": 555,
+      "dk": 452,
+      "a_szolidaritas_partja_munkaspart": 56,
+      "fuggetlen_szentgyorgyi_tibor_viktor": 0
+    },
+    "jeloltek": {
+      "tisza": ["MOLNÁR JÁNOS"],
+      "fidesz_kdnp": ["CSEH TAMÁS"],
+      "mi_hazank": ["HÓDI ZSUZSANNA"],
+      "mkkp": ["KARIKÓ ÁGNES"],
+      "dk": ["SIMON ANITA ÉVA"],
+      "a_szolidaritas_partja_munkaspart": ["BALANYI ISTVÁN"],
+      "fuggetlen_szentgyorgyi_tibor_viktor": ["SZENTGYÖRGYI TIBOR VIKTOR"]
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "Bács-Kiskun vármegye",
+    "oevk": 3,
+    "telepules": "Kalocsa",
+    "valasztopolgar": 63227,
+    "partok": {
+      "tisza": 24958,
+      "fidesz_kdnp": 20257,
+      "mi_hazank": 2952,
+      "dk": 754,
+      "fuggetlen_koszegi_mihaly": 377
+    },
+    "jeloltek": {
+      "tisza": ["JUDÁK ZSOLT"],
+      "fidesz_kdnp": ["FONT SÁNDOR"],
+      "mi_hazank": ["SZABÓ PATRIK"],
+      "dk": ["KÓKAI KATALIN"],
+      "fuggetlen_koszegi_mihaly": ["KŐSZEGI MIHÁLY"]
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "Bács-Kiskun vármegye",
+    "oevk": 4,
+    "telepules": "Kiskunfélegyháza",
+    "valasztopolgar": 70065,
+    "partok": {
+      "tisza": 27197,
+      "fidesz_kdnp": 22100,
+      "mi_hazank": 3639,
+      "dk": 340,
+      "fuggetlen_nagy_imre": 282,
+      "a_szolidaritas_partja_munkaspart": 89
+    },
+    "jeloltek": {
+      "tisza": ["KOVÁCS GYULA"],
+      "fidesz_kdnp": ["LEZSÁK SÁNDOR"],
+      "mi_hazank": ["ENDRE BÉLA"],
+      "dk": ["SARKADI PÁL"],
+      "fuggetlen_nagy_imre": ["NAGY IMRE"],
+      "a_szolidaritas_partja_munkaspart": ["HORVÁTH ANNAMÁRIA"]
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "Bács-Kiskun vármegye",
+    "oevk": 5,
+    "telepules": "Kiskunhalas",
+    "valasztopolgar": 65594,
+    "partok": {
+      "tisza": 24026,
+      "fidesz_kdnp": 19208,
+      "mi_hazank": 4058,
+      "dk": 590,
+      "fuggetlen_nemeth_szilveszter": 162,
+      "a_szolidaritas_partja_munkaspart": 34
+    },
+    "jeloltek": {
+      "tisza": ["KARSAI-JUHÁSZ KATALIN"],
+      "fidesz_kdnp": ["BÁNYAI GÁBOR"],
+      "mi_hazank": ["SZABADI ISTVÁN"],
+      "dk": ["NAGY SZABOLCS"],
+      "fuggetlen_nemeth_szilveszter": ["NÉMETH SZILVESZTER"],
+      "a_szolidaritas_partja_munkaspart": ["DOHI KITTI ERIKA"]
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "Bács-Kiskun vármegye",
+    "oevk": 6,
+    "telepules": "Baja",
+    "valasztopolgar": 62134,
+    "partok": {
+      "tisza": 24905,
+      "fidesz_kdnp": 18396,
+      "mi_hazank": 3088,
+      "dk": 399,
+      "a_szolidaritas_partja_munkaspart": 68
+    },
+    "jeloltek": {
+      "tisza": ["CSONTOS BENCE"],
+      "fidesz_kdnp": ["ZSIGÓ RÓBERT"],
+      "mi_hazank": ["ÉBERLING BALÁZS"],
+      "dk": ["SZÉKELY DÁNIEL"],
+      "a_szolidaritas_partja_munkaspart": ["NAGY GUSZTÁV"]
+    }
+  },
+  {
+    "megyekod": 4,
+    "megye": "Békés vármegye",
+    "oevk": 1,
+    "telepules": "Békéscsaba",
+    "valasztopolgar": 66019,
+    "partok": {
+      "tisza": 30631,
+      "fidesz_kdnp": 18322,
+      "mi_hazank": 3364,
+      "dk": 635,
+      "mkkp": 372
+    },
+    "jeloltek": {
+      "tisza": ["BODÓCZI ISTVÁN"],
+      "fidesz_kdnp": ["TAKÁCS ÁRPÁD"],
+      "mi_hazank": ["GYEBNÁR DÁVID"],
+      "dk": ["FÜLÖP ZOLTÁN"],
+      "mkkp": ["BAGI REA"]
+    }
+  },
+  {
+    "megyekod": 4,
+    "megye": "Békés vármegye",
+    "oevk": 2,
+    "telepules": "Békés",
+    "valasztopolgar": 66392,
+    "partok": {
+      "tisza": 25975,
+      "fidesz_kdnp": 20183,
+      "mi_hazank": 3464,
+      "dk": 459,
+      "mkkp": 285,
+      "jobbik": 139,
+      "a_szolidaritas_partja_munkaspart": 35
+    },
+    "jeloltek": {
+      "tisza": ["GOMBÁR DÁVID"],
+      "fidesz_kdnp": ["DANKÓ BÉLA"],
+      "mi_hazank": ["FÖLDESI MIHÁLY"],
+      "dk": ["GERGELY RÓBERT"],
+      "mkkp": ["CSIKÓS BOTOND"],
+      "jobbik": ["SZALKAI IMRE"],
+      "a_szolidaritas_partja_munkaspart": ["GALÓ CSABA"]
+    }
+  },
+  {
+    "megyekod": 4,
+    "megye": "Békés vármegye",
+    "oevk": 3,
+    "telepules": "Gyula",
+    "valasztopolgar": 65263,
+    "partok": {
+      "tisza": 26014,
+      "fidesz_kdnp": 20507,
+      "mi_hazank": 2585,
+      "dk": 371,
+      "mkkp": 307,
+      "a_szolidaritas_partja_munkaspart": 59
+    },
+    "jeloltek": {
+      "tisza": ["RÁKI ZSOLT"],
+      "fidesz_kdnp": ["KÓNYA ISTVÁN"],
+      "mi_hazank": ["VIDÓ ATTILA"],
+      "dk": ["MOLNÁR GÁBOR"],
+      "mkkp": ["MAGYAR GÁBOR"],
+      "a_szolidaritas_partja_munkaspart": ["FEJES TIBOR"]
+    }
+  },
+  {
+    "megyekod": 4,
+    "megye": "Békés vármegye",
+    "oevk": 4,
+    "telepules": "Orosháza",
+    "valasztopolgar": 68154,
+    "partok": {
+      "tisza": 27499,
+      "fidesz_kdnp": 17677,
+      "mi_hazank": 3032,
+      "fuggetlen_simonka_gyorgy": 1318,
+      "dk": 464,
+      "jobbik": 110,
+      "a_szolidaritas_partja_munkaspart": 90
+    },
+    "jeloltek": {
+      "tisza": ["GURZÓ MÁRIA"],
+      "fidesz_kdnp": ["ERDŐS NORBERT"],
+      "mi_hazank": ["SCHULTZ GÁBOR"],
+      "fuggetlen_simonka_gyorgy": ["SIMONKA GYÖRGY"],
+      "dk": ["VESELICZ TIBORNÉ"],
+      "jobbik": ["VIDÓ EDIT MÁRTA"],
+      "a_szolidaritas_partja_munkaspart": ["BÉKÉSI SÁNDOR"]
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "Borsod-Abaúj-Zemplén vármegye",
+    "oevk": 1,
+    "telepules": "Miskolc",
+    "valasztopolgar": 69135,
+    "partok": {
+      "tisza": 32545,
+      "fidesz_kdnp": 16921,
+      "mi_hazank": 2900,
+      "dk": 1083,
+      "mkkp": 322,
+      "fuggetlen_dohanyne_varro_anna": 273,
+      "jobbik": 92,
+      "a_szolidaritas_partja_munkaspart": 41
+    },
+    "jeloltek": {
+      "tisza": ["JUHÁSZ ROLAND"],
+      "fidesz_kdnp": ["CSÖBÖR KATALIN"],
+      "mi_hazank": ["MIKLÓS ÁRPÁD FERENC"],
+      "dk": ["JAKAB PÉTER"],
+      "mkkp": ["SZOLNOKI GÁBOR"],
+      "fuggetlen_dohanyne_varro_anna": ["DOHÁNYNÉ VARRÓ ANNA"],
+      "jobbik": ["KEREKES EDIT"],
+      "a_szolidaritas_partja_munkaspart": ["FARKAS DÁVID"]
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "Borsod-Abaúj-Zemplén vármegye",
+    "oevk": 2,
+    "telepules": "Miskolc",
+    "valasztopolgar": 68266,
+    "partok": {
+      "tisza": 31416,
+      "fidesz_kdnp": 16260,
+      "mi_hazank": 3173,
+      "dk": 498,
+      "fuggetlen_dohany_andras": 305,
+      "mkkp": 288,
+      "jobbik": 117,
+      "a_szolidaritas_partja_munkaspart": 32
+    },
+    "jeloltek": {
+      "tisza": ["CZIPA ANDRÁS"],
+      "fidesz_kdnp": ["HOLLÓSY ANDRÁS"],
+      "mi_hazank": ["PAKUSZA ZOLTÁN"],
+      "dk": ["MOKRAI MIHÁLY"],
+      "fuggetlen_dohany_andras": ["DOHÁNY ANDRÁS"],
+      "mkkp": ["BLAU VIRÁG"],
+      "jobbik": ["KOVÁCS IMRE ISTVÁN"],
+      "a_szolidaritas_partja_munkaspart": ["GYAPJAS SÁNDOR"]
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "Borsod-Abaúj-Zemplén vármegye",
+    "oevk": 3,
+    "telepules": "Ózd",
+    "valasztopolgar": 67593,
+    "partok": {
+      "fidesz_kdnp": 20983,
+      "tisza": 20399,
+      "mi_hazank": 2529,
+      "jobbik": 341,
+      "dk": 314,
+      "mkkp": 185,
+      "fuggetlen_bagdi_piroska_judit": 62,
+      "a_szolidaritas_partja_munkaspart": 46,
+      "kozeppart": 18,
+      "fuggetlen_harkaly_csaba": 0
+    },
+    "jeloltek": {
+      "fidesz_kdnp": ["CSUZDA GÁBOR"],
+      "tisza": ["NÉMETH CSILLA"],
+      "mi_hazank": ["VARGA BALÁZS"],
+      "jobbik": ["VILCSEK ERNŐ"],
+      "dk": ["MOLNÁR ZOLTÁN"],
+      "mkkp": ["DÖME ZSUZSANNA"],
+      "fuggetlen_bagdi_piroska_judit": ["BAGDI PIROSKA JUDIT"],
+      "a_szolidaritas_partja_munkaspart": ["PAPPNÉ SUSZTER ANNA"],
+      "kozeppart": ["MÁTÉ SÁNDOR"],
+      "fuggetlen_harkaly_csaba": ["HARKÁLY CSABA"]
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "Borsod-Abaúj-Zemplén vármegye",
+    "oevk": 4,
+    "telepules": "Kazincbarcika",
+    "valasztopolgar": 71309,
+    "partok": {
+      "tisza": 27645,
+      "fidesz_kdnp": 19506,
+      "mi_hazank": 3464,
+      "dk": 522,
+      "a_szolidaritas_partja_munkaspart": 107
+    },
+    "jeloltek": {
+      "tisza": ["HATALA-OROSZ CSABA"],
+      "fidesz_kdnp": ["DEMETER ZOLTÁN"],
+      "mi_hazank": ["FISZTER ZSUZSANNA"],
+      "dk": ["VARGA GERGŐ"],
+      "a_szolidaritas_partja_munkaspart": ["PAP FERENC"]
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "Borsod-Abaúj-Zemplén vármegye",
+    "oevk": 5,
+    "telepules": "Sátoraljaújhely",
+    "valasztopolgar": 70017,
+    "partok": {
+      "tisza": 25284,
+      "fidesz_kdnp": 21912,
+      "mi_hazank": 2284,
+      "dk": 327,
+      "mkkp": 198,
+      "jobbik": 117,
+      "fuggetlen_baloghne_rusznyak_sarolta": 68,
+      "kozeppart": 43,
+      "nep": 26,
+      "a_szolidaritas_partja_munkaspart": 16
+    },
+    "jeloltek": {
+      "tisza": ["LONTAY LÁSZLÓ"],
+      "fidesz_kdnp": ["BÁNNÉ DR. GÁL BOGLÁRKA"],
+      "mi_hazank": ["PASZTORNICZKY ISTVÁN"],
+      "dk": ["HAUSEL IMRE"],
+      "mkkp": ["MOLNÁR SÁMUEL LÁSZLÓ"],
+      "jobbik": ["ORMOS TAS ZSOLT"],
+      "fuggetlen_baloghne_rusznyak_sarolta": ["BALOGHNÉ RUSZNYÁK SAROLTA"],
+      "kozeppart": ["OLÁH ZSOLT"],
+      "nep": ["MAKULA GÁBRIEL"],
+      "a_szolidaritas_partja_munkaspart": ["MAGOSI RÓBERT"]
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "Borsod-Abaúj-Zemplén vármegye",
+    "oevk": 6,
+    "telepules": "Tiszaújváros",
+    "valasztopolgar": 73582,
+    "partok": {
+      "tisza": 28528,
+      "fidesz_kdnp": 24086,
+      "mi_hazank": 2563,
+      "dk": 378,
+      "jobbik": 115,
+      "a_szolidaritas_partja_munkaspart": 51
+    },
+    "jeloltek": {
+      "tisza": ["BIHARI ZOLTÁN"],
+      "fidesz_kdnp": ["KONCZ ZSÓFIA"],
+      "mi_hazank": ["NYITRAI ATTILA"],
+      "dk": ["WIEDERMANN ATTILA"],
+      "jobbik": ["SZLOBODNIK LÁSZLÓ"],
+      "a_szolidaritas_partja_munkaspart": ["SZABÓ GÉZA"]
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "Borsod-Abaúj-Zemplén vármegye",
+    "oevk": 7,
+    "telepules": "Mezőkövesd",
+    "valasztopolgar": 74213,
+    "partok": {
+      "tisza": 29812,
+      "fidesz_kdnp": 22217,
+      "mi_hazank": 3302,
+      "dk": 357,
+      "mkkp": 309,
+      "jobbik": 174,
+      "a_szolidaritas_partja_munkaspart": 37
+    },
+    "jeloltek": {
+      "tisza": ["CSÉZI ERZSÉBET"],
+      "fidesz_kdnp": ["TÁLLAI ANDRÁS"],
+      "mi_hazank": ["SZAJLAI JÁNOS"],
+      "dk": ["SERMER ÁDÁM"],
+      "mkkp": ["KOVÁTS GÁBOR"],
+      "jobbik": ["GÖNCZI GYÖRGY"],
+      "a_szolidaritas_partja_munkaspart": ["FORGÁCS VALTER ZSOLT"]
+    }
+  },
+  {
+    "megyekod": 6,
+    "megye": "Csongrád-Csanád vármegye",
+    "oevk": 1,
+    "telepules": "Szeged",
+    "valasztopolgar": 81952,
+    "partok": {
+      "tisza": 44478,
+      "fidesz_kdnp": 16030,
+      "mi_hazank": 3549,
+      "dk": 758,
+      "mkkp": 739,
+      "fuggetlen_szabo_sandor": 0
+    },
+    "jeloltek": {
+      "tisza": ["STUMPF PÉTER"],
+      "fidesz_kdnp": ["FARKAS LEVENTE"],
+      "mi_hazank": ["TIMÁR TAMÁS"],
+      "dk": ["NAGY BÉLA"],
+      "mkkp": ["JUHÁSZ MÁTÉ"],
+      "fuggetlen_szabo_sandor": ["SZABÓ SÁNDOR"]
+    }
+  },
+  {
+    "megyekod": 6,
+    "megye": "Csongrád-Csanád vármegye",
+    "oevk": 2,
+    "telepules": "Szeged",
+    "valasztopolgar": 80113,
+    "partok": {
+      "tisza": 36012,
+      "fidesz_kdnp": 20169,
+      "mi_hazank": 6231,
+      "mkkp": 624,
+      "dk": 549
+    },
+    "jeloltek": {
+      "tisza": ["GAJDA ATTILA"],
+      "fidesz_kdnp": ["MIHÁLFFY BÉLA"],
+      "mi_hazank": ["TOROCZKAI LÁSZLÓ"],
+      "mkkp": ["SIPOS IVETT"],
+      "dk": ["ÓHIDY ISTVÁN"]
+    }
+  },
+  {
+    "megyekod": 6,
+    "megye": "Csongrád-Csanád vármegye",
+    "oevk": 3,
+    "telepules": "Szentes",
+    "valasztopolgar": 77761,
+    "partok": {
+      "tisza": 30970,
+      "fidesz_kdnp": 20812,
+      "mi_hazank": 5492,
+      "dk": 3032,
+      "mkkp": 454,
+      "jobbik": 118
+    },
+    "jeloltek": {
+      "tisza": ["BÁRKÁNYI BENCE"],
+      "fidesz_kdnp": ["SZABÓ ISTVÁN"],
+      "mi_hazank": ["LACZKÓ ZSOLT"],
+      "dk": ["VARGA FERENC"],
+      "mkkp": ["SZÉLPÁL SZILÁRD"],
+      "jobbik": ["SZATMÁRI BÉLA"]
+    }
+  },
+  {
+    "megyekod": 6,
+    "megye": "Csongrád-Csanád vármegye",
+    "oevk": 4,
+    "telepules": "Hódmezővásárhely",
+    "valasztopolgar": 76377,
+    "partok": {
+      "tisza": 35419,
+      "fidesz_kdnp": 20188,
+      "mi_hazank": 3658,
+      "dk": 641,
+      "mkkp": 425,
+      "fuggetlen_leitner_szilard": 240,
+      "jobbik": 68,
+      "a_szolidaritas_partja_munkaspart": 54
+    },
+    "jeloltek": {
+      "tisza": ["FERENCZI GÁBOR"],
+      "fidesz_kdnp": ["CZIRBUS GÁBOR"],
+      "mi_hazank": ["VERES CSABA"],
+      "dk": ["MUCSI TAMÁS"],
+      "mkkp": ["PÁL ANNA VIKTÓRIA"],
+      "fuggetlen_leitner_szilard": ["LEITNER SZILÁRD"],
+      "jobbik": ["OTTLOKÁN RADOVÁN"],
+      "a_szolidaritas_partja_munkaspart": ["HEGYI ADRIÁN"]
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "Fejér vármegye",
+    "oevk": 1,
+    "telepules": "Székesfehérvár",
+    "valasztopolgar": 69963,
+    "partok": {
+      "tisza": 32654,
+      "fidesz_kdnp": 21032,
+      "mi_hazank": 3157,
+      "dk": 876,
+      "mkkp": 709,
+      "jobbik": 112,
+      "a_szolidaritas_partja_munkaspart": 27
+    },
+    "jeloltek": {
+      "tisza": ["CSISZÁR BÉLA"],
+      "fidesz_kdnp": ["VARGHA TAMÁS"],
+      "mi_hazank": ["VÉGH ANNAMÁRIA"],
+      "dk": ["FÖLDI JUDIT"],
+      "mkkp": ["PÁSZTOR ESZTER"],
+      "jobbik": ["LÁNGFALVI ATTILA"],
+      "a_szolidaritas_partja_munkaspart": ["TOMHAUSER FERENC"]
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "Fejér vármegye",
+    "oevk": 2,
+    "telepules": "Székesfehérvár",
+    "valasztopolgar": 66228,
+    "partok": {
+      "tisza": 29534,
+      "fidesz_kdnp": 20033,
+      "mi_hazank": 3644,
+      "mkkp": 544,
+      "dk": 533,
+      "fuggetlen_jancsek_sandor": 286,
+      "jobbik": 172,
+      "a_szolidaritas_partja_munkaspart": 33
+    },
+    "jeloltek": {
+      "tisza": ["BORICS MIHÁLY"],
+      "fidesz_kdnp": ["TÖRŐ GÁBOR"],
+      "mi_hazank": ["SCHMIDT ROLAND"],
+      "mkkp": ["BOKÁNYI BERTOLD"],
+      "dk": ["STRASSZER JÓZSEF"],
+      "fuggetlen_jancsek_sandor": ["JANCSEK SÁNDOR"],
+      "jobbik": ["FAZAKAS ATTILA"],
+      "a_szolidaritas_partja_munkaspart": ["LOSÓ ÉVA"]
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "Fejér vármegye",
+    "oevk": 3,
+    "telepules": "Bicske",
+    "valasztopolgar": 69239,
+    "partok": {
+      "tisza": 31342,
+      "fidesz_kdnp": 22225,
+      "mi_hazank": 2995,
+      "mkkp": 610,
+      "dk": 523,
+      "a_szolidaritas_partja_munkaspart": 58
+    },
+    "jeloltek": {
+      "tisza": ["BÖGI VIKTÓRIA"],
+      "fidesz_kdnp": ["TESSELY ZOLTÁN"],
+      "mi_hazank": ["SOM TAMÁS"],
+      "mkkp": ["PASZICSNYEK JÁNOS"],
+      "dk": ["KERTÉSZ ÉVA"],
+      "a_szolidaritas_partja_munkaspart": ["TOMHAUSER-CZEGLÉDI ESZTER"]
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "Fejér vármegye",
+    "oevk": 4,
+    "telepules": "Dunaújváros",
+    "valasztopolgar": 66729,
+    "partok": {
+      "tisza": 31758,
+      "fidesz_kdnp": 17199,
+      "mi_hazank": 2927,
+      "mkkp": 423,
+      "fuggetlen_jelinek_demien": 131,
+      "a_szolidaritas_partja_munkaspart": 56,
+      "dk": 0,
+      "jobbik": 0
+    },
+    "jeloltek": {
+      "tisza": ["NAGY ERVIN"],
+      "fidesz_kdnp": ["MÉSZÁROS LAJOS"],
+      "mi_hazank": ["ADAMASKY LŐRINC"],
+      "mkkp": ["BERÉNYI GÁBOR"],
+      "fuggetlen_jelinek_demien": ["JELINEK DEMIEN"],
+      "a_szolidaritas_partja_munkaspart": ["HADERSPRUNG ZSUZSANNA"],
+      "dk": ["SZABÓ ZSOLT"],
+      "jobbik": ["KVÁRIK ANITA"]
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "Fejér vármegye",
+    "oevk": 5,
+    "telepules": "Sárbogárd",
+    "valasztopolgar": 65460,
+    "partok": {
+      "fidesz_kdnp": 23008,
+      "tisza": 21981,
+      "mi_hazank": 3426,
+      "dk": 418,
+      "mkkp": 340
+    },
+    "jeloltek": {
+      "fidesz_kdnp": ["VARGA GÁBOR"],
+      "tisza": ["NAGY RICHÁRD"],
+      "mi_hazank": ["GIEBER LAJOS"],
+      "dk": ["MEZEI ZSOLT"],
+      "mkkp": ["VINKLÁR LÁSZLÓ"]
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "Győr-Moson-Sopron vármegye",
+    "oevk": 1,
+    "telepules": "Győr",
+    "valasztopolgar": 65652,
+    "partok": {
+      "tisza": 32318,
+      "fidesz_kdnp": 17568,
+      "mi_hazank": 2748,
+      "dk": 546,
+      "mkkp": 437,
+      "a_szolidaritas_partja_munkaspart": 52
+    },
+    "jeloltek": {
+      "tisza": ["DIÓSZEGI JUDIT"],
+      "fidesz_kdnp": ["SZELES SZABOLCS"],
+      "mi_hazank": ["KORÓDI ISTVÁN"],
+      "dk": ["KOMÁROMSZKY ATTILA"],
+      "mkkp": ["GONDA ESZTER"],
+      "a_szolidaritas_partja_munkaspart": ["BENCZE GÁBORNÉ"]
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "Győr-Moson-Sopron vármegye",
+    "oevk": 2,
+    "telepules": "Győr",
+    "valasztopolgar": 73257,
+    "partok": {
+      "tisza": 33263,
+      "fidesz_kdnp": 22419,
+      "mi_hazank": 3788,
+      "dk": 586,
+      "mkkp": 443,
+      "jobbik": 142
+    },
+    "jeloltek": {
+      "tisza": ["NÉHER ANDRÁS"],
+      "fidesz_kdnp": ["FEKETE DÁVID"],
+      "mi_hazank": ["PÓCS MIKLÓS"],
+      "dk": ["ORBÁN ADRIEN"],
+      "mkkp": ["BODÁCS KÁROLY"],
+      "jobbik": ["PÁPAI PETRA"]
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "Győr-Moson-Sopron vármegye",
+    "oevk": 3,
+    "telepules": "Csorna",
+    "valasztopolgar": 66633,
+    "partok": {
+      "fidesz_kdnp": 26151,
+      "tisza": 25509,
+      "mi_hazank": 2934,
+      "dk": 269,
+      "fuggetlen_samu_domonkos": 138,
+      "fuggetlen_meszaros_geza": 114,
+      "a_szolidaritas_partja_munkaspart": 31
+    },
+    "jeloltek": {
+      "fidesz_kdnp": ["GYOPÁROS ALPÁR"],
+      "tisza": ["BÓNA SZABOLCS"],
+      "mi_hazank": ["SZILÁGYI JÓZSEF"],
+      "dk": ["SZABÓ ZOLTÁN"],
+      "fuggetlen_samu_domonkos": ["SAMU DOMONKOS"],
+      "fuggetlen_meszaros_geza": ["MÉSZÁROS GÉZA"],
+      "a_szolidaritas_partja_munkaspart": ["NAGY FERENC"]
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "Győr-Moson-Sopron vármegye",
+    "oevk": 4,
+    "telepules": "Sopron",
+    "valasztopolgar": 75117,
+    "partok": {
+      "tisza": 33152,
+      "fidesz_kdnp": 25467,
+      "mi_hazank": 3660,
+      "dk": 707,
+      "fuggetlen_gerencser_norbert": 448,
+      "jobbik": 183,
+      "a_szolidaritas_partja_munkaspart": 50
+    },
+    "jeloltek": {
+      "tisza": ["HALLERNÉ DR. NAGY ANIKÓ"],
+      "fidesz_kdnp": ["BARCZA ATTILA"],
+      "mi_hazank": ["PISÁK ISTVÁN"],
+      "dk": ["SIMON ZOLTÁN"],
+      "fuggetlen_gerencser_norbert": ["GERENCSÉR NORBERT"],
+      "jobbik": ["RÁTKOVICS ROLAND ZSOLT"],
+      "a_szolidaritas_partja_munkaspart": ["NAGY-NÉMETH NÓRA"]
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "Győr-Moson-Sopron vármegye",
+    "oevk": 5,
+    "telepules": "Mosonmagyaróvár",
+    "valasztopolgar": 78547,
+    "partok": {
+      "tisza": 34231,
+      "fidesz_kdnp": 26435,
+      "mi_hazank": 3316,
+      "mkkp": 470,
+      "dk": 433
+    },
+    "jeloltek": {
+      "tisza": ["PORPÁCZY KRISZTINA"],
+      "fidesz_kdnp": ["NAGY ISTVÁN"],
+      "mi_hazank": ["CSOMA KRISZTIÁN"],
+      "mkkp": ["ZELENKA JÁNOS"],
+      "dk": ["NYITRAI-CSABAY LIZA CSILLA"]
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "Hajdú-Bihar vármegye",
+    "oevk": 1,
+    "telepules": "Debrecen",
+    "valasztopolgar": 65177,
+    "partok": {
+      "tisza": 31991,
+      "fidesz_kdnp": 17839,
+      "mi_hazank": 2825,
+      "dk": 533,
+      "mkkp": 450,
+      "jobbik": 78,
+      "a_szolidaritas_partja_munkaspart": 46
+    },
+    "jeloltek": {
+      "tisza": ["TÁRKÁNYI ZSOLT"],
+      "fidesz_kdnp": ["BARCSA LAJOS"],
+      "mi_hazank": ["SALÁNKINÉ KUTI ZSUZSANNA"],
+      "dk": ["VARGA ZOLTÁN"],
+      "mkkp": ["SASI-SZABÓ TAMÁS"],
+      "jobbik": ["KISS ZSOLT"],
+      "a_szolidaritas_partja_munkaspart": ["KOZMA ATTILA MÁTYÁS"]
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "Hajdú-Bihar vármegye",
+    "oevk": 2,
+    "telepules": "Debrecen",
+    "valasztopolgar": 69491,
+    "partok": {
+      "tisza": 32046,
+      "fidesz_kdnp": 19276,
+      "mi_hazank": 2672,
+      "dk": 472,
+      "mkkp": 427,
+      "jobbik": 122,
+      "a_szolidaritas_partja_munkaspart": 67
+    },
+    "jeloltek": {
+      "tisza": ["TOMPA ENIKŐ"],
+      "fidesz_kdnp": ["SZÉLES DIÁNA"],
+      "mi_hazank": ["VÖRÖS JÁNOS"],
+      "dk": ["VASZKÓ IMRE"],
+      "mkkp": ["RADECZKI CSONGOR"],
+      "jobbik": ["TÓTH-BEERI SZILVIA"],
+      "a_szolidaritas_partja_munkaspart": ["NAGY FERENC"]
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "Hajdú-Bihar vármegye",
+    "oevk": 3,
+    "telepules": "Debrecen",
+    "valasztopolgar": 77974,
+    "partok": {
+      "tisza": 29552,
+      "fidesz_kdnp": 24838,
+      "mi_hazank": 2920,
+      "dk": 343,
+      "mkkp": 293,
+      "jobbik": 95
+    },
+    "jeloltek": {
+      "tisza": ["CSÁK LÁSZLÓ"],
+      "fidesz_kdnp": ["ANTAL SZABOLCS"],
+      "mi_hazank": ["HUNYADI MÁTÉ"],
+      "dk": ["SZÖRÉNYI KÁROLY"],
+      "mkkp": ["RINGWALD PANKA"],
+      "jobbik": ["VÁRADI BARNA"]
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "Hajdú-Bihar vármegye",
+    "oevk": 4,
+    "telepules": "Berettyóújfalu",
+    "valasztopolgar": 67072,
+    "partok": {
+      "fidesz_kdnp": 23029,
+      "tisza": 21800,
+      "mi_hazank": 2723,
+      "dk": 305,
+      "mkkp": 242,
+      "a_szolidaritas_partja_munkaspart": 60
+    },
+    "jeloltek": {
+      "fidesz_kdnp": ["VITÁNYI ISTVÁN"],
+      "tisza": ["KOVÁCS PETRA JUDIT"],
+      "mi_hazank": ["REHÁKNÉ MENYHÁRT GABRIELLA"],
+      "dk": ["TONZOR PÉTER"],
+      "mkkp": ["BÉRES BALÁZS ÁKOS"],
+      "a_szolidaritas_partja_munkaspart": ["MOLNÁR MÁRIA"]
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "Hajdú-Bihar vármegye",
+    "oevk": 5,
+    "telepules": "Hajdúszoboszló",
+    "valasztopolgar": 68301,
+    "partok": {
+      "tisza": 25752,
+      "fidesz_kdnp": 22281,
+      "mi_hazank": 3034,
+      "dk": 335,
+      "kozeppart": 103
+    },
+    "jeloltek": {
+      "tisza": ["RUSZIN-SZENDI ROMULUSZ"],
+      "fidesz_kdnp": ["BODÓ SÁNDOR"],
+      "mi_hazank": ["SASS BULCSÚ"],
+      "dk": ["CSEFKÓ BALÁZS"],
+      "kozeppart": ["HORVÁT IMRÉNÉ"]
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "Hajdú-Bihar vármegye",
+    "oevk": 6,
+    "telepules": "Hajdúböszörmény",
+    "valasztopolgar": 68093,
+    "partok": {
+      "tisza": 26938,
+      "fidesz_kdnp": 19891,
+      "mi_hazank": 3984,
+      "dk": 756
+    },
+    "jeloltek": {
+      "tisza": ["GÖRÖGHNÉ BOCSKAI ÉVA"],
+      "fidesz_kdnp": ["PAPP ZSOLT"],
+      "mi_hazank": ["NAGY ZOLTÁN"],
+      "dk": ["CSIGE TAMÁS"]
+    }
+  },
+  {
+    "megyekod": 10,
+    "megye": "Heves vármegye",
+    "oevk": 1,
+    "telepules": "Eger",
+    "valasztopolgar": 79000,
+    "partok": {
+      "tisza": 35073,
+      "fidesz_kdnp": 23111,
+      "mi_hazank": 3428,
+      "fuggetlen_mirkoczki_adam": 505,
+      "dk": 435,
+      "mkkp": 390,
+      "neem": 207
+    },
+    "jeloltek": {
+      "tisza": ["BÓDIS PÉTER"],
+      "fidesz_kdnp": ["PAJTÓK GÁBOR"],
+      "mi_hazank": ["PÁPAI ÁKOS"],
+      "fuggetlen_mirkoczki_adam": ["MIRKÓCZKI ÁDÁM"],
+      "dk": ["BALLA PÉTER"],
+      "mkkp": ["BLAU SÁNDOR"],
+      "neem": ["PÓCS ALFRÉD"]
+    }
+  },
+  {
+    "megyekod": 10,
+    "megye": "Heves vármegye",
+    "oevk": 2,
+    "telepules": "Gyöngyös",
+    "valasztopolgar": 74007,
+    "partok": {
+      "tisza": 29694,
+      "fidesz_kdnp": 22789,
+      "mi_hazank": 3480,
+      "dk": 587,
+      "jobbik": 468,
+      "mkkp": 333,
+      "a_szolidaritas_partja_munkaspart": 136
+    },
+    "jeloltek": {
+      "tisza": ["KISS JÁNOS"],
+      "fidesz_kdnp": ["HORVÁTH LÁSZLÓ"],
+      "mi_hazank": ["SERES-POLYÁK KATALIN"],
+      "dk": ["VARGA JÁNOS"],
+      "jobbik": ["DUDÁS RÓBERT"],
+      "mkkp": ["GYŐRFFY PÉTER"],
+      "a_szolidaritas_partja_munkaspart": ["KOZMA PÉTER"]
+    }
+  },
+  {
+    "megyekod": 10,
+    "megye": "Heves vármegye",
+    "oevk": 3,
+    "telepules": "Hatvan",
+    "valasztopolgar": 78352,
+    "partok": {
+      "tisza": 30687,
+      "fidesz_kdnp": 24105,
+      "mi_hazank": 4861,
+      "dk": 431,
+      "a_szolidaritas_partja_munkaspart": 104,
+      "jobbik": 0
+    },
+    "jeloltek": {
+      "tisza": ["JUHÁSZ ÁRON"],
+      "fidesz_kdnp": ["SZABÓ ZSOLT"],
+      "mi_hazank": ["GREGUS RENÁTA"],
+      "dk": ["NAGY TIBOR BALÁZS"],
+      "a_szolidaritas_partja_munkaspart": ["NAGY ATTILA TIBOR"],
+      "jobbik": ["FARAGÓ TAMÁS"]
+    }
+  },
+  {
+    "megyekod": 11,
+    "megye": "Jász-Nagykun-Szolnok vármegye",
+    "oevk": 1,
+    "telepules": "Szolnok",
+    "valasztopolgar": 74779,
+    "partok": {
+      "tisza": 35110,
+      "fidesz_kdnp": 19362,
+      "mi_hazank": 3979,
+      "dk": 699,
+      "mkkp": 437,
+      "a_szolidaritas_partja_munkaspart": 84
+    },
+    "jeloltek": {
+      "tisza": ["ROST ANDREA"],
+      "fidesz_kdnp": ["BERKÓ ATTILA"],
+      "mi_hazank": ["KAPÁS ROLAND"],
+      "dk": ["MÉSZÁROS DÁVID"],
+      "mkkp": ["VICZÁN PÉTER"],
+      "a_szolidaritas_partja_munkaspart": ["BALOGH IMRE ATTILÁNÉ"]
+    }
+  },
+  {
+    "megyekod": 11,
+    "megye": "Jász-Nagykun-Szolnok vármegye",
+    "oevk": 2,
+    "telepules": "Jászberény",
+    "valasztopolgar": 69530,
+    "partok": {
+      "tisza": 27076,
+      "fidesz_kdnp": 21754,
+      "mi_hazank": 3144,
+      "fuggetlen_pinter_ferenc": 449,
+      "dk": 320,
+      "a_szolidaritas_partja_munkaspart": 65
+    },
+    "jeloltek": {
+      "tisza": ["HALMAI FERENC TIBOR"],
+      "fidesz_kdnp": ["PÓCS JÁNOS"],
+      "mi_hazank": ["KASSAB ADONIS"],
+      "fuggetlen_pinter_ferenc": ["PINTÉR FERENC"],
+      "dk": ["URBÁN IMRE"],
+      "a_szolidaritas_partja_munkaspart": ["BÓDI CSABA BENDEGÚZ"]
+    }
+  },
+  {
+    "megyekod": 11,
+    "megye": "Jász-Nagykun-Szolnok vármegye",
+    "oevk": 3,
+    "telepules": "Karcag",
+    "valasztopolgar": 72187,
+    "partok": {
+      "fidesz_kdnp": 24638,
+      "tisza": 24362,
+      "mi_hazank": 2828,
+      "dk": 373,
+      "fuggetlen_burai_erika": 65,
+      "kozeppart": 39,
+      "fuggetlen_turo_richard": 37,
+      "fuggetlen_turo_jeno": 26
+    },
+    "jeloltek": {
+      "fidesz_kdnp": ["F. KOVÁCS SÁNDOR"],
+      "tisza": ["KOVÁCS HUNOR KRISZTIÁN"],
+      "mi_hazank": ["SOMLAY RÓBERT"],
+      "dk": ["PARDI-OLÁH ROBERTA"],
+      "fuggetlen_burai_erika": ["BURAI ERIKA"],
+      "kozeppart": ["FEHÉR BENJÁMIN"],
+      "fuggetlen_turo_richard": ["TÚRÓ RICHÁRD"],
+      "fuggetlen_turo_jeno": ["TURÓ JENŐ"]
+    }
+  },
+  {
+    "megyekod": 11,
+    "megye": "Jász-Nagykun-Szolnok vármegye",
+    "oevk": 4,
+    "telepules": "Törökszentmiklós",
+    "valasztopolgar": 71419,
+    "partok": {
+      "tisza": 28857,
+      "fidesz_kdnp": 19879,
+      "mi_hazank": 3764,
+      "dk": 392,
+      "jobbik": 314,
+      "a_szolidaritas_partja_munkaspart": 57
+    },
+    "jeloltek": {
+      "tisza": ["FARKAS CSONGOR"],
+      "fidesz_kdnp": ["HERCZEG ZSOLT"],
+      "mi_hazank": ["SZABÓ BETTINA"],
+      "dk": ["SZEGEDI JÁNOS ATTILA"],
+      "jobbik": ["RÉVI ATTILA"],
+      "a_szolidaritas_partja_munkaspart": ["KONTRA ISTVÁN"]
+    }
+  },
+  {
+    "megyekod": 12,
+    "megye": "Komárom-Esztergom vármegye",
+    "oevk": 1,
+    "telepules": "Tatabánya",
+    "valasztopolgar": 77401,
+    "partok": {
+      "tisza": 36785,
+      "fidesz_kdnp": 20778,
+      "mi_hazank": 2581,
+      "dk": 857,
+      "mkkp": 510
+    },
+    "jeloltek": {
+      "tisza": ["SOPOV ILDIKÓ ÉVA"],
+      "fidesz_kdnp": ["BENCSIK JÁNOS"],
+      "mi_hazank": ["BODA BÁNK"],
+      "dk": ["VADAI ÁGNES"],
+      "mkkp": ["LADÁNYI LUCA"]
+    }
+  },
+  {
+    "megyekod": 12,
+    "megye": "Komárom-Esztergom vármegye",
+    "oevk": 2,
+    "telepules": "Esztergom",
+    "valasztopolgar": 80817,
+    "partok": {
+      "tisza": 36344,
+      "fidesz_kdnp": 23133,
+      "mi_hazank": 3475,
+      "dk": 559,
+      "mkkp": 414
+    },
+    "jeloltek": {
+      "tisza": ["RADNAI MÁRK"],
+      "fidesz_kdnp": ["ERŐS GÁBOR"],
+      "mi_hazank": ["LANTOS JÁNOS"],
+      "dk": ["FIZEL JÓZSEF"],
+      "mkkp": ["FÁBIÁN ÁRON BENDE"]
+    }
+  },
+  {
+    "megyekod": 12,
+    "megye": "Komárom-Esztergom vármegye",
+    "oevk": 3,
+    "telepules": "Komárom",
+    "valasztopolgar": 81088,
+    "partok": {
+      "tisza": 34000,
+      "fidesz_kdnp": 25061,
+      "mi_hazank": 4050,
+      "dk": 539,
+      "mkkp": 467
+    },
+    "jeloltek": {
+      "tisza": ["ÁRVAY NIKOLETT"],
+      "fidesz_kdnp": ["CZUNYINÉ DR. BERTALAN JUDIT"],
+      "mi_hazank": ["ÁBRAHÁM BARNABÁS"],
+      "dk": ["SALKOVICS RÓBERT"],
+      "mkkp": ["KÁTAI ALIZ"]
+    }
+  },
+  {
+    "megyekod": 13,
+    "megye": "Nógrád vármegye",
+    "oevk": 1,
+    "telepules": "Salgótarján",
+    "valasztopolgar": 71832,
+    "partok": {
+      "tisza": 28081,
+      "fidesz_kdnp": 21219,
+      "mi_hazank": 4176,
+      "a_szolidaritas_partja_munkaspart": 346,
+      "mkkp": 0
+    },
+    "jeloltek": {
+      "tisza": ["SZAFKÓ ZOLTÁN PÉTER"],
+      "fidesz_kdnp": ["BECSÓ ZSOLT"],
+      "mi_hazank": ["BAJNOK GYULA"],
+      "a_szolidaritas_partja_munkaspart": ["KRIZS NORBERT"],
+      "mkkp": ["CZVANCZIG LÁSZLÓ"]
+    }
+  },
+  {
+    "megyekod": 13,
+    "megye": "Nógrád vármegye",
+    "oevk": 2,
+    "telepules": "Balassagyarmat",
+    "valasztopolgar": 77051,
+    "partok": {
+      "fidesz_kdnp": 26418,
+      "tisza": 26207,
+      "mi_hazank": 5852,
+      "dk": 451,
+      "jobbik": 172,
+      "a_szolidaritas_partja_munkaspart": 162
+    },
+    "jeloltek": {
+      "fidesz_kdnp": ["BALLA MIHÁLY"],
+      "tisza": ["MOLNÁR ZOLTÁN"],
+      "mi_hazank": ["DÓCS DÁVID"],
+      "dk": ["GULYÁS NORBERT"],
+      "jobbik": ["JAKAB KOPPÁNY ATILLA"],
+      "a_szolidaritas_partja_munkaspart": ["FRANKFURTER ZSUZSANNA"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 1,
+    "telepules": "Érd",
+    "valasztopolgar": 79671,
+    "partok": {
+      "tisza": 40100,
+      "fidesz_kdnp": 21518,
+      "mi_hazank": 3606,
+      "dk": 815,
+      "mkkp": 672
+    },
+    "jeloltek": {
+      "tisza": ["JELENCSIK JÓZSEF"],
+      "fidesz_kdnp": ["KARDOSNÉ GYURKÓ KATALIN"],
+      "mi_hazank": ["SZALAI TIMEA"],
+      "dk": ["GYEKICZKI MÁRTON"],
+      "mkkp": ["BOROS DÁNIEL"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 2,
+    "telepules": "Budaörs",
+    "valasztopolgar": 77871,
+    "partok": {
+      "tisza": 42204,
+      "fidesz_kdnp": 20206,
+      "mi_hazank": 3350,
+      "dk": 738,
+      "mkkp": 683
+    },
+    "jeloltek": {
+      "tisza": ["PÓSFAI GÁBOR"],
+      "fidesz_kdnp": ["CZUCZOR GERGELY"],
+      "mi_hazank": ["GYÖRGY JÓZSEF"],
+      "dk": ["KELLER LÁSZLÓ"],
+      "mkkp": ["DANKA DÁVID"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 3,
+    "telepules": "Pilisvörösvár",
+    "valasztopolgar": 81963,
+    "partok": {
+      "tisza": 40789,
+      "fidesz_kdnp": 23798,
+      "mi_hazank": 4110,
+      "mkkp": 715,
+      "dk": 483,
+      "jobbik": 100,
+      "a_szolidaritas_partja_munkaspart": 43
+    },
+    "jeloltek": {
+      "tisza": ["BUJDOSÓ ANDREA ANNA"],
+      "fidesz_kdnp": ["MENCZER TAMÁS"],
+      "mi_hazank": ["BORVENDÉG ZSUZSANNA"],
+      "mkkp": ["FODOR BETTINA"],
+      "dk": ["VASVÁRI PÉTER LAJOS"],
+      "jobbik": ["DEÁK BALÁZS"],
+      "a_szolidaritas_partja_munkaspart": ["JECKEL NIKOLETTA"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 4,
+    "telepules": "Szentendre",
+    "valasztopolgar": 76341,
+    "partok": {
+      "tisza": 35920,
+      "fidesz_kdnp": 23234,
+      "mi_hazank": 3930,
+      "dk": 801,
+      "mkkp": 625,
+      "a_szolidaritas_partja_munkaspart": 72
+    },
+    "jeloltek": {
+      "tisza": ["TÓTHMAJOR BALÁZS"],
+      "fidesz_kdnp": ["VITÁLYOS ESZTER"],
+      "mi_hazank": ["PÁL BÉLA"],
+      "dk": ["KÁLMÁN OLGA"],
+      "mkkp": ["LACZKÓ KORNÉL"],
+      "a_szolidaritas_partja_munkaspart": ["SIMON JÓZSEF FERENC"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 5,
+    "telepules": "Dunakeszi",
+    "valasztopolgar": 75965,
+    "partok": {
+      "tisza": 40500,
+      "fidesz_kdnp": 19988,
+      "mi_hazank": 3192,
+      "dk": 768,
+      "mkkp": 664,
+      "jobbik": 84,
+      "a_szolidaritas_partja_munkaspart": 30
+    },
+    "jeloltek": {
+      "tisza": ["MISKOLCZI ORSOLYA"],
+      "fidesz_kdnp": ["TUZSON BENCE"],
+      "mi_hazank": ["BOGNÁR LÁSZLÓ"],
+      "dk": ["RÓNAI SÁNDOR"],
+      "mkkp": ["ÁDÁM EMESE"],
+      "jobbik": ["BÖJTE ZITA"],
+      "a_szolidaritas_partja_munkaspart": ["SZENTMIKLÓSI TAMÁS LÁSZLÓ"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 6,
+    "telepules": "Gödöllő",
+    "valasztopolgar": 76890,
+    "partok": {
+      "tisza": 39981,
+      "fidesz_kdnp": 21632,
+      "mi_hazank": 3369,
+      "dk": 542,
+      "mkkp": 504
+    },
+    "jeloltek": {
+      "tisza": ["LÁSZLÓ ENDRE MÁRTON"],
+      "fidesz_kdnp": ["HANKÓ BALÁZS"],
+      "mi_hazank": ["REGŐS BALÁZS"],
+      "dk": ["KARSAI ZSUZSÁNNA"],
+      "mkkp": ["BOLBÁS ILDIKÓ"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 7,
+    "telepules": "Pécel",
+    "valasztopolgar": 76365,
+    "partok": {
+      "tisza": 32478,
+      "fidesz_kdnp": 23779,
+      "mi_hazank": 3914,
+      "dk": 715,
+      "mkkp": 562
+    },
+    "jeloltek": {
+      "tisza": ["TROMPLER ILDIKÓ"],
+      "fidesz_kdnp": ["KATUS NORBERT"],
+      "mi_hazank": ["OROSZ PATRIK"],
+      "dk": ["NEMES GÁBOR"],
+      "mkkp": ["HANKÓ KLÁRA"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 8,
+    "telepules": "Vecsés",
+    "valasztopolgar": 70426,
+    "partok": {
+      "tisza": 33852,
+      "fidesz_kdnp": 18897,
+      "mi_hazank": 3545,
+      "dk": 518,
+      "mkkp": 506,
+      "jobbik": 140,
+      "a_szolidaritas_partja_munkaspart": 42
+    },
+    "jeloltek": {
+      "tisza": ["BALAJTI ISTVÁN"],
+      "fidesz_kdnp": ["SZŰCS LAJOS"],
+      "mi_hazank": ["SZABÓNÉ PAPP KLÁRA"],
+      "dk": ["HANEK GÁBOR"],
+      "mkkp": ["HARTVIG DÁNIEL"],
+      "jobbik": ["SAS ZOLTÁN"],
+      "a_szolidaritas_partja_munkaspart": ["KARTNIK KRISZTINA"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 9,
+    "telepules": "Ráckeve",
+    "valasztopolgar": 76078,
+    "partok": {
+      "tisza": 32930,
+      "fidesz_kdnp": 22330,
+      "mi_hazank": 4395,
+      "dk": 592,
+      "mkkp": 444,
+      "nep": 83,
+      "a_szolidaritas_partja_munkaspart": 43
+    },
+    "jeloltek": {
+      "tisza": ["BILISICS ZITA"],
+      "fidesz_kdnp": ["BÓNA ZOLTÁN"],
+      "mi_hazank": ["TASSI RÓBERT"],
+      "dk": ["JÓSZAI TEODÓRA"],
+      "mkkp": ["SOMODY FERENC BALÁZS"],
+      "nep": ["SÁNDOR ISTVÁN"],
+      "a_szolidaritas_partja_munkaspart": ["NAGY FERENC"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 10,
+    "telepules": "Szigetszentmiklós",
+    "valasztopolgar": 74474,
+    "partok": {
+      "tisza": 37930,
+      "fidesz_kdnp": 18215,
+      "mi_hazank": 3353,
+      "dk": 775,
+      "mkkp": 583,
+      "a_szolidaritas_partja_munkaspart": 119,
+      "jobbik": 97
+    },
+    "jeloltek": {
+      "tisza": ["PERTICSNÉ KÁCSOR ANDREA"],
+      "fidesz_kdnp": ["VÁNTSA BOTOND"],
+      "mi_hazank": ["BOTLÓ KORNÉL"],
+      "dk": ["KENÉZ ISTVÁN"],
+      "mkkp": ["CSIZMADIA CSEKE"],
+      "a_szolidaritas_partja_munkaspart": ["DOROGI GYULA"],
+      "jobbik": ["FODOR LAJOS"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 11,
+    "telepules": "Vác",
+    "valasztopolgar": 74824,
+    "partok": {
+      "tisza": 33592,
+      "fidesz_kdnp": 23314,
+      "mi_hazank": 3896,
+      "dk": 741,
+      "mkkp": 520
+    },
+    "jeloltek": {
+      "tisza": ["SZIMON RENÁTA"],
+      "fidesz_kdnp": ["RÉTVÁRI BENCE"],
+      "mi_hazank": ["PÁLI JENŐ"],
+      "dk": ["JUHÁSZ BÉLA"],
+      "mkkp": ["URBÁN DÁVID KILIÁN"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 12,
+    "telepules": "Monor",
+    "valasztopolgar": 73911,
+    "partok": {
+      "tisza": 28018,
+      "fidesz_kdnp": 22878,
+      "mi_hazank": 4066,
+      "dk": 460,
+      "mkkp": 387,
+      "jobbik": 0
+    },
+    "jeloltek": {
+      "tisza": ["POLGÁR GYÖRGY"],
+      "fidesz_kdnp": ["POGÁCSÁS TIBOR"],
+      "mi_hazank": ["LENDVAY ENDRE"],
+      "dk": ["MAGDICS MÓNIKA"],
+      "mkkp": ["URSZÁN TAMÁS"],
+      "jobbik": ["VINCZE MIKLÓS"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 13,
+    "telepules": "Dabas",
+    "valasztopolgar": 70090,
+    "partok": {
+      "tisza": 26676,
+      "fidesz_kdnp": 20912,
+      "mi_hazank": 6097,
+      "dk": 348,
+      "mkkp": 323,
+      "a_szolidaritas_partja_munkaspart": 118,
+      "nep": 43
+    },
+    "jeloltek": {
+      "tisza": ["HENDE MÁTÉ"],
+      "fidesz_kdnp": ["FELDMAN LÁSZLÓ"],
+      "mi_hazank": ["LÁSZLÓ ATTILA"],
+      "dk": ["MAGDICS MÁTÉ"],
+      "mkkp": ["SÁRKÖZI BETTI"],
+      "a_szolidaritas_partja_munkaspart": ["URBIN GYÖRGY"],
+      "nep": ["GÁSPÁR TIBOR JÓZSEF"]
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Pest vármegye",
+    "oevk": 14,
+    "telepules": "Cegléd",
+    "valasztopolgar": 73447,
+    "partok": {
+      "tisza": 28878,
+      "fidesz_kdnp": 22157,
+      "mi_hazank": 4256,
+      "dk": 558,
+      "mkkp": 0
+    },
+    "jeloltek": {
+      "tisza": ["MUHARI GERGELY"],
+      "fidesz_kdnp": ["FÖLDI LÁSZLÓ"],
+      "mi_hazank": ["BARTHA BARNA"],
+      "dk": ["KÖKÉNY GÁBOR KÁLMÁN"],
+      "mkkp": ["GÓR-NAGY GYÖRGY"]
+    }
+  },
+  {
+    "megyekod": 15,
+    "megye": "Somogy vármegye",
+    "oevk": 1,
+    "telepules": "Kaposvár",
+    "valasztopolgar": 59107,
+    "partok": {
+      "tisza": 27023,
+      "fidesz_kdnp": 15832,
+      "mi_hazank": 3242,
+      "dk": 545,
+      "mkkp": 270,
+      "jobbik": 98,
+      "a_szolidaritas_partja_munkaspart": 30
+    },
+    "jeloltek": {
+      "tisza": ["LŐRINCZ VIKTÓRIA"],
+      "fidesz_kdnp": ["GELENCSÉR ATTILA"],
+      "mi_hazank": ["ERDÉLYI ÁKOS"],
+      "dk": ["MOLNÁR PÉTER"],
+      "mkkp": ["MÉSZÁROS SZABOLCS"],
+      "jobbik": ["LEHOCZKI FERENC"],
+      "a_szolidaritas_partja_munkaspart": ["GULYÁS JÓZSEF"]
+    }
+  },
+  {
+    "megyekod": 15,
+    "megye": "Somogy vármegye",
+    "oevk": 2,
+    "telepules": "Barcs",
+    "valasztopolgar": 57032,
+    "partok": {
+      "tisza": 19785,
+      "fidesz_kdnp": 17581,
+      "mi_hazank": 1864,
+      "jobbik": 1819,
+      "dk": 511,
+      "a_szolidaritas_partja_munkaspart": 53
+    },
+    "jeloltek": {
+      "tisza": ["BENKE JÓZSEF"],
+      "fidesz_kdnp": ["KELEI ZITA"],
+      "mi_hazank": ["HALÁSZNÉ HUNYADI GYÖNGYI"],
+      "jobbik": ["ANDER BALÁZS"],
+      "dk": ["REMES GÁBOR"],
+      "a_szolidaritas_partja_munkaspart": ["DÓSA FERENC"]
+    }
+  },
+  {
+    "megyekod": 15,
+    "megye": "Somogy vármegye",
+    "oevk": 3,
+    "telepules": "Marcali",
+    "valasztopolgar": 60981,
+    "partok": {
+      "tisza": 22647,
+      "fidesz_kdnp": 20625,
+      "mi_hazank": 2811,
+      "dk": 521,
+      "jobbik": 305
+    },
+    "jeloltek": {
+      "tisza": ["BAKOS CSABA ATTILA"],
+      "fidesz_kdnp": ["MÓRING JÓZSEF ATTILA"],
+      "mi_hazank": ["JOZÓ TAMÁS"],
+      "dk": ["NÉMETH HELGA"],
+      "jobbik": ["KESZTYÜS ATTILA"]
+    }
+  },
+  {
+    "megyekod": 15,
+    "megye": "Somogy vármegye",
+    "oevk": 4,
+    "telepules": "Siófok",
+    "valasztopolgar": 63489,
+    "partok": {
+      "tisza": 25083,
+      "fidesz_kdnp": 21747,
+      "mi_hazank": 2300,
+      "dk": 598,
+      "mkkp": 375,
+      "irany_part": 109,
+      "jobbik": 60,
+      "a_szolidaritas_partja_munkaspart": 28
+    },
+    "jeloltek": {
+      "tisza": ["CSATÁRI ERNŐ"],
+      "fidesz_kdnp": ["WITZMANN MIHÁLY"],
+      "mi_hazank": ["PAPP KARULY BARNABÁS"],
+      "dk": ["BAKAI-NAGY ZITA"],
+      "mkkp": ["FENYVES DÁVID GYÖRGY"],
+      "irany_part": ["JÁMBOR PÉTER"],
+      "jobbik": ["TANBERGER TIBOR"],
+      "a_szolidaritas_partja_munkaspart": ["DELINÉ GRÁCZ GRÉTA"]
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "Szabolcs-Szatmár-Bereg vármegye",
+    "oevk": 1,
+    "telepules": "Nyíregyháza",
+    "valasztopolgar": 71764,
+    "partok": {
+      "tisza": 37691,
+      "fidesz_kdnp": 17264,
+      "mi_hazank": 2508,
+      "dk": 468,
+      "mkkp": 259
+    },
+    "jeloltek": {
+      "tisza": ["GAJDOS LÁSZLÓ"],
+      "fidesz_kdnp": ["HALKÓNÉ DR. RUDOLF ÉVA"],
+      "mi_hazank": ["KOVÁCS KOPPÁNY ZOLTÁN"],
+      "dk": ["BACSIKNÉ SZIGETI GABRIELLA"],
+      "mkkp": ["TÜRK ATTILA"]
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "Szabolcs-Szatmár-Bereg vármegye",
+    "oevk": 2,
+    "telepules": "Nyíregyháza",
+    "valasztopolgar": 70921,
+    "partok": {
+      "tisza": 27888,
+      "fidesz_kdnp": 21224,
+      "mi_hazank": 2957,
+      "dk": 384,
+      "jobbik": 0
+    },
+    "jeloltek": {
+      "tisza": ["SZAKÁCS PÉTER LAJOS"],
+      "fidesz_kdnp": ["VINNAI GYŐZŐ"],
+      "mi_hazank": ["BAKÓ JÓZSEF ISTVÁN"],
+      "dk": ["GYARMATI MIHÁLY"],
+      "jobbik": ["GYÜRE CSABA"]
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "Szabolcs-Szatmár-Bereg vármegye",
+    "oevk": 3,
+    "telepules": "Kisvárda",
+    "valasztopolgar": 75649,
+    "partok": {
+      "tisza": 28053,
+      "fidesz_kdnp": 24485,
+      "mi_hazank": 2506,
+      "dk": 446,
+      "magyar_igazsag_es_elet_partja": 196,
+      "a_szolidaritas_partja_munkaspart": 79
+    },
+    "jeloltek": {
+      "tisza": ["DICSŐ VIKTÓRIA"],
+      "fidesz_kdnp": ["SESZTÁK MIKLÓS"],
+      "mi_hazank": ["FEKETE BÉLA"],
+      "dk": ["SÁROSY ZOLTÁN"],
+      "magyar_igazsag_es_elet_partja": ["PERDIÁK JÁNOS"],
+      "a_szolidaritas_partja_munkaspart": ["TÓTH PÉTER PÁL"]
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "Szabolcs-Szatmár-Bereg vármegye",
+    "oevk": 4,
+    "telepules": "Vásárosnamény",
+    "valasztopolgar": 70013,
+    "partok": {
+      "fidesz_kdnp": 25166,
+      "tisza": 21670,
+      "mi_hazank": 2059,
+      "jobbik": 546,
+      "dk": 262,
+      "a_szolidaritas_partja_munkaspart": 40,
+      "nep": 27,
+      "kozeppart": 0
+    },
+    "jeloltek": {
+      "fidesz_kdnp": ["TILKI ATTILA"],
+      "tisza": ["SIMON ZSUZSÁNNA"],
+      "mi_hazank": ["KÁLMÁNDY ÁRPÁD"],
+      "jobbik": ["ADORJÁN BÉLA"],
+      "dk": ["KUBOVICSNÉ DR. BORBÉLY ANETT"],
+      "a_szolidaritas_partja_munkaspart": ["NAGY JÓZSEF LÁSZLÓ"],
+      "nep": ["GUBA ENDRE"],
+      "kozeppart": ["DEMETER KRISZTIÁN"]
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "Szabolcs-Szatmár-Bereg vármegye",
+    "oevk": 5,
+    "telepules": "Mátészalka",
+    "valasztopolgar": 70904,
+    "partok": {
+      "fidesz_kdnp": 25410,
+      "tisza": 22074,
+      "mi_hazank": 3262,
+      "dk": 317,
+      "a_szolidaritas_partja_munkaspart": 56,
+      "kozeppart": 44
+    },
+    "jeloltek": {
+      "fidesz_kdnp": ["KOVÁCS SÁNDOR"],
+      "tisza": ["BUGYA LÁSZLÓ"],
+      "mi_hazank": ["APÁTI ISTVÁN"],
+      "dk": ["DOMOKOS ZSUZSANNA"],
+      "a_szolidaritas_partja_munkaspart": ["KRÁLIK KÁROLY"],
+      "kozeppart": ["HORVÁTH ANTAL"]
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "Szabolcs-Szatmár-Bereg vármegye",
+    "oevk": 6,
+    "telepules": "Nyírbátor",
+    "valasztopolgar": 70408,
+    "partok": {
+      "tisza": 24831,
+      "fidesz_kdnp": 23713,
+      "mi_hazank": 2552,
+      "mkkp": 225,
+      "dk": 196,
+      "fuggetlen_lakatos_attila": 150,
+      "jobbik": 137,
+      "a_szolidaritas_partja_munkaspart": 27
+    },
+    "jeloltek": {
+      "tisza": ["BARNA-SZABÓ TÍMEA"],
+      "fidesz_kdnp": ["SIMON MIKLÓS"],
+      "mi_hazank": ["PARÉ ATTILA"],
+      "mkkp": ["TÓTH TAMARA"],
+      "dk": ["FARKAS KÁLMÁN"],
+      "fuggetlen_lakatos_attila": ["LAKATOS ATTILA"],
+      "jobbik": ["KISS SÁNDOR"],
+      "a_szolidaritas_partja_munkaspart": ["HUPEK JÁNOS"]
+    }
+  },
+  {
+    "megyekod": 17,
+    "megye": "Tolna vármegye",
+    "oevk": 1,
+    "telepules": "Szekszárd",
+    "valasztopolgar": 57094,
+    "partok": {
+      "tisza": 23026,
+      "fidesz_kdnp": 17654,
+      "mi_hazank": 3224,
+      "dk": 431,
+      "mkkp": 280,
+      "a_szolidaritas_partja_munkaspart": 36
+    },
+    "jeloltek": {
+      "tisza": ["SÁROSI JÓZSEF"],
+      "fidesz_kdnp": ["HORVÁTH ISTVÁN"],
+      "mi_hazank": ["BAKÓ NORBERT"],
+      "dk": ["PÉTERFALVINÉ KALMÁR PIROSKA"],
+      "mkkp": ["FARKAS LÁSZLÓ"],
+      "a_szolidaritas_partja_munkaspart": ["NAGY TAMÁS"]
+    }
+  },
+  {
+    "megyekod": 17,
+    "megye": "Tolna vármegye",
+    "oevk": 2,
+    "telepules": "Dombóvár",
+    "valasztopolgar": 56292,
+    "partok": {
+      "tisza": 20087,
+      "fidesz_kdnp": 19433,
+      "mi_hazank": 3113,
+      "dk": 359,
+      "jobbik": 69,
+      "a_szolidaritas_partja_munkaspart": 62
+    },
+    "jeloltek": {
+      "tisza": ["SZIJJÁRTÓ GÁBOR"],
+      "fidesz_kdnp": ["CSIBI KRISZTINA"],
+      "mi_hazank": ["DÚRÓ DÓRA"],
+      "dk": ["TAKÁCS LÁSZLÓ"],
+      "jobbik": ["KECSKEMÉTI ISTVÁN"],
+      "a_szolidaritas_partja_munkaspart": ["CSATÓ DÁNIEL"]
+    }
+  },
+  {
+    "megyekod": 17,
+    "megye": "Tolna vármegye",
+    "oevk": 3,
+    "telepules": "Paks",
+    "valasztopolgar": 56773,
+    "partok": {
+      "tisza": 20880,
+      "fidesz_kdnp": 19987,
+      "mi_hazank": 2662,
+      "dk": 416,
+      "a_szolidaritas_partja_munkaspart": 87,
+      "jobbik": 0
+    },
+    "jeloltek": {
+      "tisza": ["CSEH TAMÁS"],
+      "fidesz_kdnp": ["SÜLI JÁNOS"],
+      "mi_hazank": ["JANECSKA ZOLTÁN"],
+      "dk": ["DOBOS ERZSÉBET"],
+      "a_szolidaritas_partja_munkaspart": ["SZARKA SÁNDOR"],
+      "jobbik": ["BENCZE JÁNOS"]
+    }
+  },
+  {
+    "megyekod": 18,
+    "megye": "Vas vármegye",
+    "oevk": 1,
+    "telepules": "Szombathely",
+    "valasztopolgar": 67196,
+    "partok": {
+      "tisza": 31847,
+      "fidesz_kdnp": 21558,
+      "mi_hazank": 2652,
+      "mkkp": 491,
+      "fuggetlen_czegledy_csaba": 0
+    },
+    "jeloltek": {
+      "tisza": ["RÁPLI RÓBERT"],
+      "fidesz_kdnp": ["VÁMOS ZOLTÁN"],
+      "mi_hazank": ["DANKA LAJOS"],
+      "mkkp": ["KÓBER GYÖRGY MÁRK"],
+      "fuggetlen_czegledy_csaba": ["CZEGLÉDY CSABA"]
+    }
+  },
+  {
+    "megyekod": 18,
+    "megye": "Vas vármegye",
+    "oevk": 2,
+    "telepules": "Sárvár",
+    "valasztopolgar": 66913,
+    "partok": {
+      "fidesz_kdnp": 25700,
+      "tisza": 25452,
+      "mi_hazank": 3069,
+      "fuggetlen_magyar_peter": 909,
+      "dk": 440
+    },
+    "jeloltek": {
+      "fidesz_kdnp": ["ÁGH PÉTER"],
+      "tisza": ["STROMPOVÁ VIKTÓRIA"],
+      "mi_hazank": ["DALA FERENC"],
+      "fuggetlen_magyar_peter": ["MAGYAR PÉTER"],
+      "dk": ["DEÁK GÁBOR"]
+    }
+  },
+  {
+    "megyekod": 18,
+    "megye": "Vas vármegye",
+    "oevk": 3,
+    "telepules": "Körmend",
+    "valasztopolgar": 64940,
+    "partok": {
+      "fidesz_kdnp": 26186,
+      "tisza": 23226,
+      "mi_hazank": 3220,
+      "dk": 419,
+      "jobbik": 165
+    },
+    "jeloltek": {
+      "fidesz_kdnp": ["V.NÉMETH ZSOLT"],
+      "tisza": ["HORVÁTH NÁNDOR ZSOLT"],
+      "mi_hazank": ["TAKÁCS IMRE FERENC"],
+      "dk": ["LUDVÁN ZSOLT LÁSZLÓ"],
+      "jobbik": ["DEÁK LAJOS"]
+    }
+  },
+  {
+    "megyekod": 19,
+    "megye": "Veszprém vármegye",
+    "oevk": 1,
+    "telepules": "Veszprém",
+    "valasztopolgar": 68896,
+    "partok": {
+      "tisza": 33205,
+      "fidesz_kdnp": 20294,
+      "mi_hazank": 2871,
+      "dk": 516,
+      "mkkp": 510,
+      "jobbik": 64
+    },
+    "jeloltek": {
+      "tisza": ["GÁSPÁR LEVENTE"],
+      "fidesz_kdnp": ["OVÁDI PÉTER"],
+      "mi_hazank": ["LÁSZLÓ PÉTER"],
+      "dk": ["HRABOVSZKI LÁSZLÓ"],
+      "mkkp": ["SZÜCS ZOLTÁN"],
+      "jobbik": ["BUCZKÓ RÉKA"]
+    }
+  },
+  {
+    "megyekod": 19,
+    "megye": "Veszprém vármegye",
+    "oevk": 2,
+    "telepules": "Balatonfüred",
+    "valasztopolgar": 73585,
+    "partok": {
+      "tisza": 34477,
+      "fidesz_kdnp": 21304,
+      "mi_hazank": 3336,
+      "dk": 538,
+      "mkkp": 457,
+      "nep": 72
+    },
+    "jeloltek": {
+      "tisza": ["FORSTHOFFER ÁGNES"],
+      "fidesz_kdnp": ["HEGEDŰS BARBARA"],
+      "mi_hazank": ["SZABÓ MIKLÓS"],
+      "dk": ["PAÁL GÉZA"],
+      "mkkp": ["KISS LÍVIA"],
+      "nep": ["GŐDÉNY GYÖRGY"]
+    }
+  },
+  {
+    "megyekod": 19,
+    "megye": "Veszprém vármegye",
+    "oevk": 3,
+    "telepules": "Tapolca",
+    "valasztopolgar": 65381,
+    "partok": {
+      "tisza": 28223,
+      "fidesz_kdnp": 20749,
+      "mi_hazank": 2396,
+      "dk": 535,
+      "fuggetlen_nemeth_karoly": 247,
+      "jobbik": 78,
+      "a_szolidaritas_partja_munkaspart": 34,
+      "mkkp": 0
+    },
+    "jeloltek": {
+      "tisza": ["BALATINCZ PÉTER"],
+      "fidesz_kdnp": ["NAVRACSICS TIBOR"],
+      "mi_hazank": ["GERGELICS ÁDÁM"],
+      "dk": ["BAKK ISTVÁN"],
+      "fuggetlen_nemeth_karoly": ["NÉMETH KÁROLY"],
+      "jobbik": ["FÜLÖP LÁSZLÓNÉ"],
+      "a_szolidaritas_partja_munkaspart": ["VINCZE OLGA"],
+      "mkkp": ["SÁNDOR BALÁZS"]
+    }
+  },
+  {
+    "megyekod": 19,
+    "megye": "Veszprém vármegye",
+    "oevk": 4,
+    "telepules": "Pápa",
+    "valasztopolgar": 66523,
+    "partok": {
+      "tisza": 25455,
+      "fidesz_kdnp": 22881,
+      "mi_hazank": 3028,
+      "dk": 674,
+      "mkkp": 277,
+      "jobbik": 79
+    },
+    "jeloltek": {
+      "tisza": ["UJVÁRI SZILVIA"],
+      "fidesz_kdnp": ["TAKÁCS PÉTER"],
+      "mi_hazank": ["NARDAI PÉTER"],
+      "dk": ["MOLNÁR BÁLINT"],
+      "mkkp": ["DOMJÁN ÁKOS DONÁT"],
+      "jobbik": ["HORTOBÁGYI KATALIN"]
+    }
+  },
+  {
+    "megyekod": 20,
+    "megye": "Zala vármegye",
+    "oevk": 1,
+    "telepules": "Zalaegerszeg",
+    "valasztopolgar": 72857,
+    "partok": {
+      "tisza": 30995,
+      "fidesz_kdnp": 24981,
+      "mi_hazank": 2906,
+      "dk": 465,
+      "mkkp": 393,
+      "fuggetlen_koltai_tibor": 392,
+      "jobbik": 0
+    },
+    "jeloltek": {
+      "tisza": ["NAGY MÁRTA"],
+      "fidesz_kdnp": ["SZILASI GÁBOR"],
+      "mi_hazank": ["FARKAS ATTILA"],
+      "dk": ["PAPP ZOLTÁN"],
+      "mkkp": ["JUHÁSZ VERONIKA"],
+      "fuggetlen_koltai_tibor": ["KOLTAI TIBOR"],
+      "jobbik": ["BORSOS GYULA ZOLTÁN"]
+    }
+  },
+  {
+    "megyekod": 20,
+    "megye": "Zala vármegye",
+    "oevk": 2,
+    "telepules": "Keszthely",
+    "valasztopolgar": 72849,
+    "partok": {
+      "tisza": 27981,
+      "fidesz_kdnp": 25863,
+      "mi_hazank": 3327,
+      "dk": 483,
+      "mkkp": 400,
+      "jobbik": 144
+    },
+    "jeloltek": {
+      "tisza": ["VARGA BALÁZS"],
+      "fidesz_kdnp": ["NAGY BÁLINT"],
+      "mi_hazank": ["KISS FERENC"],
+      "dk": ["LISZKAI ERZSÉBET"],
+      "mkkp": ["KÓKAI MÁTYÁS"],
+      "jobbik": ["JUHÁSZ-BAUER ÁGOSTON BÁLINT"]
+    }
+  },
+  {
+    "megyekod": 20,
+    "megye": "Zala vármegye",
+    "oevk": 3,
+    "telepules": "Nagykanizsa",
+    "valasztopolgar": 69407,
+    "partok": {
+      "tisza": 30369,
+      "fidesz_kdnp": 20282,
+      "mi_hazank": 3297,
+      "dk": 793,
+      "a_szolidaritas_partja_munkaspart": 111
+    },
+    "jeloltek": {
+      "tisza": ["LOVKÓ CSABA"],
+      "fidesz_kdnp": ["CSERESNYÉS PÉTER"],
+      "mi_hazank": ["MATYIJCSIK SÁNDOR"],
+      "dk": ["BODÓ LÁSZLÓ"],
+      "a_szolidaritas_partja_munkaspart": ["SZABÓ LÁSZLÓ JÓZSEF"]
+    }
+  }
+]

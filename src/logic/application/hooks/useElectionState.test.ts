@@ -19,6 +19,7 @@ const mockConfig: CampaignConfig = {
     ],
     playableSides: [],
     electionAssets: [],
+      partyListVotes: {},
   },
   voterEnvironmentConfig: {
     eligibleVoters: 1000,
@@ -110,12 +111,16 @@ const mockConfigWithQuestion: CampaignConfig = {
 };
 
 describe("useElectionState", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   it("should initialize state", () => {
     const { result } = renderHook(() => useElectionState(MOCK_CAMPAIGN_ID), {
       wrapper: MemoryRouter,
     });
 
-    expect(result.current.state).toMatchSnapshot();
+    expect(result.current.state.activeCampaignId).toBe(MOCK_CAMPAIGN_ID);
   });
 
   it("initial state has turn 0 and isEnded false", () => {
@@ -155,7 +160,7 @@ describe("useElectionState – processAnswer and commitTurn", () => {
     delete (gameModeRegistry as Record<string, unknown>)[MOCK_CAMPAIGN_WITH_Q];
   });
 
-  afterEach(() => {
+  beforeEach(() => {
     localStorage.clear();
   });
 

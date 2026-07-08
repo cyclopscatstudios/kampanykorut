@@ -1,9 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { ElectionConfig } from "@/shared/types";
 import { ConfigEngine } from "../logic/application/ConfigEngine";
-import { gameModeRegistry } from "../logic/application/gameModeRegistery";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
 
 const { mockNavigate } = vi.hoisted(() => ({
@@ -24,8 +22,6 @@ vi.mock("./navigationHook", () => ({
 }));
 
 const GAME_ID = "2022_ogyv_default";
-const ELECTION_CONFIG: ElectionConfig =
-  gameModeRegistry[GAME_ID].electionConfig;
 
 describe("useSideSelectorMenu", () => {
   const localStorageMock = {
@@ -43,7 +39,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("returns sides from election config", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
+    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
 
     expect(result.current.playableSides).toHaveLength(2);
     expect(result.current.playableSides[0].value).toBe("ellenzeki_osszefogas");
@@ -51,7 +47,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("has no selected party or candidate initially", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
+    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
 
     expect(result.current.selectedParty).toBeUndefined();
     expect(result.current.selectedCandidate).toBeUndefined();
@@ -59,7 +55,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange sets the selected party", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
+    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
@@ -69,7 +65,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange populates candidateOptions from the selected party", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
+    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
@@ -83,7 +79,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange clears selectedCandidate when party changes", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
+    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
@@ -101,7 +97,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("goBack calls transition with Back", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
+    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
 
     act(() => {
       result.current.goBack();
@@ -111,7 +107,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("startGame navigates to the game route", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(ELECTION_CONFIG));
+    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
 
     act(() => {
       result.current.startGame(GAME_ID);

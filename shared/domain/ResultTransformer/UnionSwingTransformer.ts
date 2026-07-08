@@ -63,10 +63,12 @@ export class UnionSwingTransformer {
     const partyDiffs = this.getDiff(baseShare, targetShare);
     const newVotes = this.applyDiffToDistrict(parties, partyDiffs);
     const sumNewVotes = this.sumVotes(newVotes);
+
     if (sumNewVotes > capacity) {
       log.error("swing exceeds capacity, change ignored");
       return parties;
     }
+
     return newVotes;
   }
 

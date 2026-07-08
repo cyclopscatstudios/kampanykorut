@@ -6,6 +6,7 @@ import { EndResultProps } from "../end-result";
 import { DistrictPoligon } from "../map";
 import { Pollster } from "../pollsters";
 import { RawQuestion } from "../question";
+import { Strategy } from "../strategy";
 import { ElectionConfig } from "./election-config";
 import { VoterEnvironmentConfig } from "./voter-environment-config";
 
@@ -13,7 +14,7 @@ export interface CampaignConfig {
   electionConfig: ElectionConfig;
   voterEnvironmentConfig: VoterEnvironmentConfig;
   candidateListData: CandidateListData[];
-  partyListData: PartyListData[];
+  partyListData?: PartyListData[];
   districts: DistrictPoligon[];
   capitalCity: DistrictPoligon[];
   questions: RawQuestion[];
@@ -23,4 +24,5 @@ export interface CampaignConfig {
   advisorFeedbackAssets?: AdvisorFeedbackAssets;
   customGroups?: DistrictGroup[];
   customPollsters?: Pollster[];
+  campaignStrategies?: Strategy[];
 }
