@@ -33,7 +33,11 @@ export function calculateWinner(result?: District | null) {
 export function calcPercentages(
   totals: Record<string, number>,
 ): Record<string, number> & { _total: number } {
-  const sum = Object.values(totals)
+  const partyEntries = Object.entries(totals).filter(
+    ([party]) => party !== "_total",
+  );
+  const sum = partyEntries
+    .map(([, votes]) => votes)
     .filter((v) => !Number.isNaN(v))
     .reduce((a, b) => a + b, 0);
   const result: Record<string, number> & { _total: number } = { _total: 0 };
@@ -43,7 +47,7 @@ export function calcPercentages(
     return result;
   }
 
-  for (const [party, votes] of Object.entries(totals)) {
+  for (const [party, votes] of partyEntries) {
     result[party] = votes / sum;
   }
 

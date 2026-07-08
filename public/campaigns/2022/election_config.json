@@ -28,6 +28,15 @@
       "color": "#122649"
     }
   ],
+  "partyListVotes": {
+    "fidesz": 2809238,
+    "ellenzeki_osszefogas": 1936297,
+    "mi_hazank": 329651,
+    "mkkp": 183416,
+    "megoldas_mozgalom": 58670,
+    "normalis_elet": 39119,
+    "_other": 30635
+  },
   "playableSides": [
     {
       "id": "ellenzeki_osszefogas",

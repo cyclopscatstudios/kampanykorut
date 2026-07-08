@@ -29,13 +29,13 @@ describe("CampaignEngine", () => {
 
     campaignEngine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       resultModifier,
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
   it("should apply the party-swing typed decision", () => {
@@ -146,13 +146,13 @@ describe("CampaignEngine.createInitialState", () => {
   beforeAll(() => {
     engine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       container.resolve(ResultModifier),
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
 
@@ -249,13 +249,13 @@ describe("CampaignEngine.createInitialState – mergeUnknownPartiesToOther", () 
   beforeAll(() => {
     engine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       container.resolve(ResultModifier),
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
 
@@ -306,13 +306,13 @@ describe("CampaignEngine.getPollProjection", () => {
   beforeAll(() => {
     engine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       container.resolve(ResultModifier),
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
 

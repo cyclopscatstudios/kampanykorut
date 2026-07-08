@@ -2,6 +2,10 @@
   {
     "id": "strategy-1",
     "label": "A pártok felett álló",
+    "target": {
+      "party": "ellenzeki_osszefogas",
+      "candidate": "marki_zay_peter"
+    },
     "conditions": [
       {
         "questionId": "2022_ogyv-1",
@@ -34,10 +38,44 @@
         "effects": [
           {
             "type": "uniform-swing",
-            "params": { "ellenzeki_osszefogas": 1.5, "fidesz": -1.5 }
+            "params": {
+              "ellenzeki_osszefogas": 2.5,
+              "fidesz": -1.5,
+              "mkkp": -1
+            }
           }
         ]
       }
-    ]
+    ],
+    "asset": {
+      "badge": "/images/2022/badge-partok-felett.svg"
+    }
+  },
+  {
+    "id": "strategy-2",
+    "label": "Az ellenzék vezére",
+    "target": {
+      "party": "ellenzeki_osszefogas",
+      "candidate": "marki_zay_peter"
+    },
+    "conditions": [],
+    "rewards": [
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "ellenzeki_osszefogas": 2.5,
+              "fidesz": -1.5,
+              "mkkp": -1
+            }
+          }
+        ]
+      }
+    ],
+    "asset": {
+      "badge": "/images/2022/badge-ellenzek-vezere.svg"
+    }
   }
 ]

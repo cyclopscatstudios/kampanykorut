@@ -1,5 +1,10 @@
 import { t } from "i18next";
 import { useLoaderData } from "react-router";
+import { CampaignConfig } from "../../../../shared/types/configs";
+import {
+  Candidate,
+  PlayableSide,
+} from "../../../../shared/types/configs/election-config";
 import { useCampaignBanner } from "../../../hooks/useCampaignBanner";
 import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
 import { useGetCampaigns } from "../../../logic/application/hooks/useGetCampaigns";
@@ -9,9 +14,10 @@ import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
+import { Tooltip } from "../Tooltip";
 
 export function SideSelectorMenu() {
-  const { config, id } = useLoaderData();
+  const { id } = useLoaderData();
 
   const {
     selectedParty,
@@ -23,7 +29,8 @@ export function SideSelectorMenu() {
     candidateOptions,
     goBack,
     assets,
-  } = useSideSelectorMenu(config);
+    campaignConfig,
+  } = useSideSelectorMenu(id);
 
   const bannerImg = useCampaignBanner(id, true);
   const campaigns = useGetCampaigns();
@@ -37,6 +44,13 @@ export function SideSelectorMenu() {
             {currentCampaign?.label}
           </Heading>
           <Text>{currentCampaign?.description}</Text>
+        </div>
+        <div className="absolute bottom-0 right-0 w-[500px] p-2 z-10 flex flex-col gap-2 items-end">
+          <BadgeDisplay
+            config={campaignConfig}
+            party={selectedParty}
+            candidate={selectedCandidate}
+          />
         </div>
         {bannerImg && (
           <CommonWrapper block>
@@ -182,4 +196,51 @@ function SelectorItem<T extends { label: string; value: string }>({
       </div>
     </CommonWrapper>
   );
+}
+
+function BadgeDisplay({
+  config,
+  party,
+  candidate,
+}: {
+  config: CampaignConfig;
+  party?: PlayableSide;
+  candidate?: Candidate;
+}) {
+  const badges = getBadgesForTarget(config, party, candidate);
+  return (
+    <div className="bg-slate-800/40 rounded-lg p-5 backdrop-blur-sm border border-blue-50/30">
+      <Tooltip content="asd">
+        <div className="flex items-center mb-2">
+          <Icon name="info-circle" size="xs" className="mr-1" />
+          <Text size="xs">Elérhető jelvények</Text>
+        </div>
+      </Tooltip>
+      <div className="flex flex-row gap-2 justify-center">
+        {badges?.map((badge) => (
+          <Tooltip content={badge.label}>
+            <div>
+              <img
+                key={badge.id}
+                src={badge.asset?.badge}
+                alt={badge.label}
+                className="w-12 h-12"
+              />
+            </div>
+          </Tooltip>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function getBadgesForTarget(
+  config: CampaignConfig,
+  party?: PlayableSide,
+  candidate?: Candidate,
+) {
+  const strategies = config.campaignStrategies?.filter(
+    (s) => s.target.party === party?.id && s.target.candidate === candidate?.id,
+  );
+  return strategies;
 }

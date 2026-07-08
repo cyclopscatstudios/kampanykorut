@@ -28,13 +28,13 @@ const log = createLogger("CampaignEngine");
 export class CampaignEngine {
   constructor(
     private readonly initialCandidateData: CandidateListData[],
-    private readonly initialPartyData: PartyListData[],
     private readonly questions: RawQuestion[],
     private readonly answers: RawAnsweEffectProps[],
     private resultModifier: ResultModifier,
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
     private pollsterEngine: PollsterEngine,
+        private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
   ) {
     log.debug("CampaignEngine initialized");
@@ -315,7 +315,7 @@ export class CampaignEngine {
 
   private mergeUnknownPartiesToOther(
     candidateListData: CandidateListData[],
-    partyListData: PartyListData[],
+    partyListData?: PartyListData[],
     parties?: RawParty[],
   ) {
     const validPartyIds = new Set(parties?.map((p) => p.id));
@@ -355,7 +355,7 @@ export class CampaignEngine {
         : undefined,
     }));
 
-    const filteredPartyListData = partyListData.map((row) => ({
+    const filteredPartyListData = partyListData?.map((row) => ({
       ...row,
       partok: processPartok(row.partok),
     }));

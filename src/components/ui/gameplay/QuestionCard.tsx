@@ -41,7 +41,7 @@ export function QuestionCard({
   const { portrait, slogan, party_logo } = useAssets();
   return (
     <div className="h-[784px] flex flex-col p-4 bg-slate-900" data-testid={id}>
-      <div className="w-full flex flex-col justify-center items-center mb-4">
+      <div className="w-full flex flex-col justify-center items-center mb-4 max-h-[500px] overflow-y-auto">
         <div className="w-full mb-4 p-2 border-l-3 border-blue-500">
           {affects && (
             <Tooltip

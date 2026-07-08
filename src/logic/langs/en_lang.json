@@ -50,12 +50,14 @@
       "summary": "Summary",
       "electionMap": "Election map",
       "statistics": "Statistics",
-      "history": "History"
+      "history": "History",
+      "achivements": "Achivements"
     },
     "statistics": {
       "menuBar": {
         "overview": "Overview",
-        "districtDetails": "District details"
+        "districtDetails": "District details",
+        "turnoutDetails": "Turnout details"
       },
       "overview": {
         "constituencySeats": "Constituency seats",
@@ -65,6 +67,11 @@
         "biggestDefeats": "Biggest defeats",
         "closestDistricts": "Closest districts",
         "supportTrendLabel": "Trends in support"
+      },
+      "turnoutDetails": {
+        "nationalTurnout": "National turnout",
+        "votesCast": "Votes cast",
+        "turnoutChange": "Change from previous election"
       }
     },
     "turnHistory": {
@@ -154,6 +161,12 @@
       "votesCounted": "VOTES COUNTED",
       "dataVerification": "DATA VERIFICATION",
       "resultsCompiled": "RESULTS COMPILED"
+    },
+    "screen": {
+      "voteCounting": "VOTE COUNTING",
+      "votesCounted": "Votes are being counted...",
+      "processedVotes": "Processed Votes",
+      "pleaseWait": "Please wait"
     }
   }
 }

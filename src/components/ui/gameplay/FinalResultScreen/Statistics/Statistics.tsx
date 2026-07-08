@@ -9,10 +9,16 @@ import {
   getLargestDefeats,
   getLargestVictories,
 } from "../statistics.utils";
+import { Achievements } from "./Achievements";
 import { DistrictDetails } from "./DistrictDetails";
 import { Overview } from "./Overview";
+import { TurnoutDetails } from "./TurnoutDetails";
 
-type StatisticsTab = "overview" | "district-details";
+type StatisticsTab =
+  | "overview"
+  | "district-details"
+  | "turnout-details"
+  | "achievements";
 
 export function Statistics({
   results,
@@ -63,6 +69,12 @@ export function Statistics({
       {currentTab === "district-details" && (
         <DistrictDetails state={state} results={results} config={config} />
       )}
+      {currentTab === "turnout-details" && (
+        <TurnoutDetails state={state} config={config} />
+      )}
+      {currentTab === "achievements" && (
+        <Achievements state={state} config={config} />
+      )}
     </div>
   );
 }
@@ -93,6 +105,22 @@ function StatisticsButtonBar({
         <Button.Text>
           {t("endResult.statistics.menuBar.districtDetails")}
         </Button.Text>
+      </Button>
+      <Button
+        selected={currentTab === "turnout-details"}
+        variant="subtab"
+        onClick={() => setCurrentTab("turnout-details")}
+      >
+        <Button.Text>
+          {t("endResult.statistics.menuBar.turnoutDetails")}
+        </Button.Text>
+      </Button>
+      <Button
+        selected={currentTab === "achievements"}
+        variant="subtab"
+        onClick={() => setCurrentTab("achievements")}
+      >
+        <Button.Text>{t("endResult.menuBar.achivements")}</Button.Text>
       </Button>
     </div>
   );

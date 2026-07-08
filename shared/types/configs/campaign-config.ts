@@ -14,7 +14,7 @@ export interface CampaignConfig {
   electionConfig: ElectionConfig;
   voterEnvironmentConfig: VoterEnvironmentConfig;
   candidateListData: CandidateListData[];
-  partyListData: PartyListData[];
+  partyListData?: PartyListData[];
   districts: DistrictPoligon[];
   capitalCity: DistrictPoligon[];
   questions: RawQuestion[];

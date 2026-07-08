@@ -13,6 +13,7 @@ export interface CampaignState {
   answerEffects?: Answer[];
   candidateListData?: CandidateListData[];
   partyListData?: PartyListData[];
+  partyListVotes?: PartyListVotes;
   results?: CalculateResults;
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;
@@ -21,7 +22,7 @@ export interface CampaignState {
   isBaseResultsAlreadyApplied: boolean;
 }
 
-export type CurrentView = "MapView" | "QuestionView";
+export type CurrentView = "MapView" | "QuestionView" | "VoteCountingView";
 
 export interface CampaignView {
   type: CurrentView;
@@ -56,6 +57,8 @@ export interface PartyListData {
   oevk: number;
   partok: Record<string, number | undefined>;
 }
+
+export type PartyListVotes = Record<string, number>;
 
 export interface CalculateResults {
   totals: PartyVotes;

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { t } from "i18next";
+import { useEffect, useState } from "react";
 import { step1, step2, step3, step4, step5 } from "./icons";
 
 type Step = {
@@ -69,7 +69,7 @@ export function VoteCountingScreen({
   useEffect(() => {
     const timer = setTimeout(() => {
       onComplete?.();
-    }, 1000);
+    }, 4000);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -123,10 +123,10 @@ export function VoteCountingScreen({
           textShadow: "0 2px 16px rgba(0,0,0,0.7)",
         }}
       >
-        SZAVAZATSZÁMLÁLÁS
+        {t("voteCountingScreen.screen.voteCounting")}
       </h1>
       <p className="text-gray-300 text-lg mb-8 tracking-wide">
-        A szavazatok összesítése folyamatban van...
+        {t("voteCountingScreen.screen.votesCounted")}
       </p>
       <div
         className="text-white font-bold mb-4 leading-none"
@@ -158,7 +158,7 @@ export function VoteCountingScreen({
         </div>
       </div>
       <p className="text-gray-300 text-base mb-10 tracking-wide">
-        Feldolgozott szavazatok:{" "}
+        {t("voteCountingScreen.screen.processedVotes")}{" "}
         <span className="text-white font-semibold">{processedVotes}</span>
         {" / "}
         <span className="text-white font-semibold">{totalVotes}</span>
@@ -240,7 +240,7 @@ export function VoteCountingScreen({
           />
         </svg>
         <span className="tracking-widest font-semibold text-sm uppercase">
-          Kérjük, várjon...
+          {t("voteCountingScreen.screen.pleaseWait")}
         </span>
       </div>
     </div>

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { createLogger } from "@/shared/logger";
-import { Candidate, ElectionConfig, PlayableSide } from "@/shared/types";
+import { Candidate, PlayableSide } from "@/shared/types";
+import { gameModeRegistry } from "../logic/application/gameModeRegistery";
 import { useStateEngine } from "../logic/application/hooks";
 import { useNavigation } from "./navigationHook";
 
 const log = createLogger("useSideSelectorMenu");
 
-export function useSideSelectorMenu(electionConfig: ElectionConfig) {
+export function useSideSelectorMenu(id: string) {
   const [selectedParty, setSelectedParty] = useState<
     PlayableSide | undefined
   >();
@@ -16,9 +17,12 @@ export function useSideSelectorMenu(electionConfig: ElectionConfig) {
   const { saveSession } = useStateEngine();
   const { goBack, goToCampaign } = useNavigation();
   const { sessionId } = useStateEngine();
+  const campaignConfig = gameModeRegistry[id];
 
   const handlePartyChange = (partyId: string) => {
-    const party = electionConfig.playableSides.find((s) => s.id === partyId);
+    const party = campaignConfig.electionConfig.playableSides.find(
+      (s) => s.id === partyId,
+    );
     if (!party) {
       log.error("party was not found");
       return;
@@ -53,12 +57,12 @@ export function useSideSelectorMenu(electionConfig: ElectionConfig) {
     })) ?? [];
 
   const playableSides =
-    electionConfig.playableSides.map((side) => ({
+    campaignConfig.electionConfig.playableSides.map((side) => ({
       label: side.label,
       value: side.id,
     })) ?? [];
 
-  const partyAssets = electionConfig.electionAssets.find(
+  const partyAssets = campaignConfig.electionConfig.electionAssets.find(
     (asset) => asset.id === selectedParty?.id,
   );
 
@@ -70,7 +74,7 @@ export function useSideSelectorMenu(electionConfig: ElectionConfig) {
   };
 
   return {
-    electionConfig,
+    campaignConfig,
     playableSides,
     candidateOptions,
     selectedParty,

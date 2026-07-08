@@ -73,10 +73,11 @@ export function useElectionState(campaignId: string) {
     decision,
   }: PendingTurn): CampaignState => {
     preserveState(rawAnswer, newGameState, decision);
-    if (newGameState.isEnded) {
-      goToFinalResults(campaignId, sessionId);
-    }
     return newGameState;
+  };
+
+  const finishCampaign = () => {
+    goToFinalResults(campaignId, sessionId);
   };
 
   const getAnswer = (answers?: Answer[], answerId?: string) => {
@@ -143,6 +144,7 @@ export function useElectionState(campaignId: string) {
     config,
     processAnswer,
     commitTurn,
+    finishCampaign,
     getFinalResults,
     getMapDataByPolls: getListDataByPollProjection,
   };

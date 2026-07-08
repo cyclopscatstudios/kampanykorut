@@ -29,13 +29,13 @@ export function createCampaignEngine(
 
   const campaignEngine = new CampaignEngine(
     config.candidateListData,
-    config.partyListData,
     config.questions,
     config.answerEffect,
     container.resolve(ResultModifier),
     container.resolve(EffectApplier),
     container.resolve(MandateCalculator),
     container.resolve(PollsterEngine),
+    config.partyListData,
     config.advisorFeedback,
   );
 

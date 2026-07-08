@@ -50,12 +50,14 @@
       "summary": "Összefoglaló",
       "electionMap": "Választási térkép",
       "statistics": "Statisztikák",
-      "history": "Előzmények"
+      "history": "Előzmények",
+      "achivements": "Eredmények"
     },
     "statistics": {
       "menuBar": {
         "overview": "Összefoglaló",
-        "districtDetails": "Körzet részletek"
+        "districtDetails": "Körzet részletek",
+        "turnoutDetails": "Részvételi adatok"
       },
       "overview": {
         "constituencySeats": "Egyéni mandátumok",
@@ -65,6 +67,11 @@
         "biggestDefeats": "Legnagyobb vereségek",
         "closestDistricts": "Legszorosabb körzetek",
         "supportTrendLabel": "Támogatottság alakulása"
+      },
+      "turnoutDetails": {
+        "nationalTurnout": "Országos részvétel",
+        "votesCast": "Leadott szavazatok",
+        "turnoutChange": "Változás előző választáshoz képest"
       }
     },
     "turnHistory": {
@@ -154,6 +161,12 @@
       "votesCounted": "SZAVAZATOK SZÁMLÁLÁSA",
       "dataVerification": "ADATOK ELLENŐRZÉSE",
       "resultsCompiled": "EREDMÉNYEK ÖSSZESÍTÉSE"
+    },
+    "screen": {
+      "voteCounting": "SZAVAZATSZÁMLÁLÁS",
+      "votesCounted": "A szavazatok összesítése folyamatban van...",
+      "processedVotes": "Feldolgozott szavazatok",
+      "pleaseWait": "Kérjük, várjon..."
     }
   }
 }

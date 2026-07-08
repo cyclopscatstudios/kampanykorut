@@ -18,6 +18,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     config,
     processAnswer,
     commitTurn,
+    finishCampaign,
     getFinalResults,
     getMapDataByPolls,
   } = useElectionState(campaignId);
@@ -84,6 +85,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
         onSetDistrict={(district) =>
           dispatch({ type: "SELECT_DISTRICT", district })
         }
+        onVoteCountingComplete={finishCampaign}
       />
     </GameChrome>
   );
