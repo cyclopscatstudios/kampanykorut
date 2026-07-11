@@ -46,15 +46,20 @@ export class PollsterEngine {
       return;
     }
 
-    const partyIds = Object.keys(percentages).filter((k) => k !== "_total");
+    const partyIds = Object.keys(percentages.candidateListResults).filter(
+      (k) => k !== "_total",
+    );
     const differences: Record<string, number> = {};
 
     for (const partyId of partyIds) {
       const pollsterDiffs = this.pollsters.map((pollster) => {
         const estimate = this.normalizeResults(
-          this.applyMarginErrors(percentages, pollster),
+          this.applyMarginErrors(percentages.candidateListResults, pollster),
         );
-        return (estimate[partyId] ?? 0) - (percentages[partyId] ?? 0);
+        return (
+          (estimate[partyId] ?? 0) -
+          (percentages.candidateListResults[partyId] ?? 0)
+        );
       });
       differences[partyId] =
         (pollsterDiffs.reduce((acc, d) => acc + d, 0) / pollsterDiffs.length) *
@@ -92,7 +97,7 @@ export class PollsterEngine {
       return;
     }
     const pollEstimate = this.normalizeResults(
-      this.applyMarginErrors(percentages, pollster),
+      this.applyMarginErrors(percentages.candidateListResults, pollster),
     );
     const differences: Record<string, number> = {};
     for (const partyId in pollEstimate) {
@@ -100,7 +105,9 @@ export class PollsterEngine {
         continue;
       }
       differences[partyId] =
-        (pollEstimate[partyId] - (percentages[partyId] ?? 0)) * 100;
+        (pollEstimate[partyId] -
+          (percentages.candidateListResults[partyId] ?? 0)) *
+        100;
     }
     return {
       id: pollsterId,

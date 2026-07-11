@@ -8,9 +8,16 @@ import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 
 const MOCK_PERCENTAGES = {
-  party_a: 0.5,
-  party_b: 0.5,
-  _total: 1,
+  candidateListResults: {
+    party_a: 0.5,
+    party_b: 0.5,
+    _total: 1,
+  },
+  partyListResults: {
+    party_a: 0.5,
+    party_b: 0.5,
+    _total: 1,
+  },
 };
 
 const mockMandateCalculator = {

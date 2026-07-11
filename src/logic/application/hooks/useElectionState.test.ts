@@ -19,7 +19,7 @@ const mockConfig: CampaignConfig = {
     ],
     playableSides: [],
     electionAssets: [],
-      partyListVotes: {},
+    partyListVotes: {},
   },
   voterEnvironmentConfig: {
     eligibleVoters: 1000,

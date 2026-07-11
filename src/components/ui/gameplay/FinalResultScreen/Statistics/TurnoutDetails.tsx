@@ -13,11 +13,11 @@ export function TurnoutDetails({ state, config }: TurnoutDetailsProps) {
   return (
     <div className="flex items-center justify-center gap-2">
       <NationalTurnoutPercentage
-        turnout={state?.results?.totals["_total"] ?? 0}
+        turnout={state?.results?.totals.partyListResults["_total"] ?? 0}
         eligibleVoters={config.voterEnvironmentConfig.eligibleVoters}
       />
       <VotesCast
-        turnout={state?.results?.totals["_total"] ?? 0}
+        turnout={state?.results?.totals.partyListResults["_total"] ?? 0}
         eligibleVoters={config.voterEnvironmentConfig.eligibleVoters}
       />
       <PrevousTurnout config={config} state={state} />
@@ -28,7 +28,7 @@ export function TurnoutDetails({ state, config }: TurnoutDetailsProps) {
 function PrevousTurnout({ config, state }: TurnoutDetailsProps) {
   const previousTurnout = config.voterEnvironmentConfig.turnoutHistory?.[0];
   const nationWideTurnout = getNationWideTurnoutPercentage(
-    state?.results?.totals["_total"] ?? 0,
+    state?.results?.totals.partyListResults["_total"] ?? 0,
     config.voterEnvironmentConfig.eligibleVoters,
   );
   const difference =

@@ -6,21 +6,16 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { HistoryItem } from "@/logic/application";
 import { CampaignConfig } from "@/shared/types";
 import { CommonWrapper } from "../../../CommonWrapper";
-type HistoryEntry = {
-  turn: number;
-  results: {
-    percentages: Record<string, number>;
-  };
-};
 
-function createChartData(history: HistoryEntry[]) {
+function createChartData(history: HistoryItem[]) {
   return history.map((entry) => ({
     turn: `n. ${entry.turn}`,
 
     ...Object.fromEntries(
-      Object.entries(entry.results.percentages)
+      Object.entries(entry.results.percentages.partyListResults)
         .filter(([key]) => key !== "_total" && key !== "_other")
         .map(([party, value]) => [party, Number((value * 100).toFixed(1))]),
     ),
@@ -33,7 +28,7 @@ export function SupportChart({
   config,
 }: {
   label: string;
-  turnHistory: HistoryEntry[];
+  turnHistory: HistoryItem[];
   config: CampaignConfig;
 }) {
   const data = createChartData(turnHistory);

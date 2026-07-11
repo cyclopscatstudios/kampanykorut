@@ -27,7 +27,7 @@ export function Overview({
   closestDistricts: StatisticResult[];
 }) {
   const party = results.mandates.find((party) => party.party === playerSide);
-  const percentage = results.percentages[playerSide];
+  const percentage = results.percentages.partyListResults[playerSide];
 
   return (
     <div className="flex flex-col justify-center items-center">
