@@ -472,8 +472,6 @@ export class CampaignEngine {
 
     const results = this.resultModifier.apply(tempState, appliedEffects);
 
-    console.log({ results });
-
     return {
       candidateListData: results?.candidateListData ?? candidateListData,
       partyListData: results?.partyListData ?? partyListData,

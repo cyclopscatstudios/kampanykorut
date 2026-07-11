@@ -43,7 +43,6 @@ export function SideSelectorMenu() {
           <Heading color="white" level={3}>
             {currentCampaign?.label}
           </Heading>
-          <Text>{currentCampaign?.description}</Text>
         </div>
         <div className="absolute bottom-0 right-0 w-[500px] p-2 z-10 flex flex-col gap-2 items-end">
           <BadgeDisplay

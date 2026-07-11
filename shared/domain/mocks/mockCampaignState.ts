@@ -132,7 +132,7 @@ export const campaignState: CampaignState = {
         party_a: 5000,
         party_b: 4000,
         party_c: 3000,
-      }
+      },
     },
     mandates: [
       {
@@ -189,7 +189,7 @@ export const campaignState: CampaignState = {
         party_a: 0.44456823645102844,
         party_b: 0.4487724331063556,
         party_c: 0.02375856043924297,
-      }
+      },
     },
   },
   isEnded: false,
