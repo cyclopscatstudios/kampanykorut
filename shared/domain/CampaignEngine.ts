@@ -10,6 +10,7 @@ import {
   ElectionConfig,
   FinalResults,
   PartyListData,
+  PartyListVotes,
   RawAnsweEffectProps,
   RawEffect,
   RawParty,
@@ -34,7 +35,7 @@ export class CampaignEngine {
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
     private pollsterEngine: PollsterEngine,
-        private readonly initialPartyData?: PartyListData[],
+    private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
   ) {
     log.debug("CampaignEngine initialized");
@@ -62,6 +63,7 @@ export class CampaignEngine {
       );
     let candidateListData = candidateData;
     let partyListData = partyData;
+    let partyListVotes = electionConfig?.partyListVotes;
 
     const baseResults = electionConfig?.baseResults;
 
@@ -72,12 +74,14 @@ export class CampaignEngine {
         partyListData,
         baseResults,
         0,
+        electionConfig.partyListVotes,
       );
 
       log.info("Create initial state with base result", baseApplied);
 
       candidateListData = baseApplied.candidateListData;
       partyListData = baseApplied.partyListData;
+      partyListVotes = baseApplied.partyListVotes;
     }
 
     const initialState = {
@@ -87,10 +91,12 @@ export class CampaignEngine {
       answerEffects: this.getAnswerEffects(this.answers, this.questions[0]),
       candidateListData,
       partyListData,
+      partyListVotes,
       results: this.mandateCalculator.calculate(
         candidateListData,
         partyListData,
         electionConfig,
+        partyListVotes,
       ),
       isEnded: false,
       isBaseResultsAlreadyApplied: true,
@@ -137,22 +143,28 @@ export class CampaignEngine {
       modified?.candidateListData,
     );
 
+    let partyListVotes = modified?.partyListVotes;
+
     if (!this.questions[nextTurn] && campaignStrategies) {
       log.info("apply campaign strategy");
-      const { candidateListData: listData } = this.applyStrategy(
-        campaignStrategies,
-        history,
-        state,
-        modified?.candidateListData ?? [],
-        modified?.partyListData ?? [],
-      );
+      const { candidateListData: listData, partyListVotes: listVotes } =
+        this.applyStrategy(
+          campaignStrategies,
+          history,
+          state,
+          modified?.candidateListData ?? [],
+          modified?.partyListData ?? [],
+          modified?.partyListVotes,
+        );
       candidateListData = listData;
+      partyListVotes = listVotes;
     }
 
     const calculated = this.mandateCalculator.calculate(
       candidateListData,
       modified?.partyListData,
       electionConfig,
+      partyListVotes,
     );
 
     const session = {
@@ -165,6 +177,7 @@ export class CampaignEngine {
       ),
       candidateListData: candidateListData ?? state.candidateListData,
       partyListData: modified?.partyListData ?? state.partyListData,
+      partyListVotes: partyListVotes ?? state.partyListVotes,
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
         state.currentQuestion,
@@ -211,11 +224,13 @@ export class CampaignEngine {
       modified?.candidateListData,
       modified?.partyListData,
       electionConfig,
+      modified.partyListVotes,
     );
 
     return {
       candidateListData: modified.candidateListData,
       partyListData: modified.partyListData,
+      partyListVotes: modified.partyListVotes,
       percentages: calculated?.percentages,
       selectedPollsterId: id,
     };
@@ -227,9 +242,11 @@ export class CampaignEngine {
     state: CampaignState,
     data1: CandidateListData[],
     data2: PartyListData[],
+    data3?: PartyListVotes,
   ) {
     let candidateListData = data1 ?? [];
     let partyListData = data2 ?? [];
+    let partyListVotes = data3;
 
     for (const str of strategy) {
       const matchCount = str.conditions.filter((condition) =>
@@ -267,11 +284,13 @@ export class CampaignEngine {
       const modified = this.resultModifier.apply(state, appliedEffects);
       candidateListData = modified?.candidateListData ?? [];
       partyListData = modified?.partyListData ?? [];
+      partyListVotes = modified?.partyListVotes;
     }
 
     return {
       candidateListData,
       partyListData,
+      partyListVotes,
     };
   }
 
@@ -431,6 +450,7 @@ export class CampaignEngine {
     partyListData: PartyListData[],
     baseResults: Record<string, number>,
     turn: number,
+    partyListVotes: PartyListVotes,
   ) {
     const tempState: CampaignState = {
       activeCampaignId: campaignId,
@@ -439,6 +459,7 @@ export class CampaignEngine {
       partyListData,
       isEnded: false,
       isBaseResultsAlreadyApplied: true,
+      partyListVotes,
     };
 
     log.info("Applying base results to initial state", { baseResults });
@@ -451,9 +472,12 @@ export class CampaignEngine {
 
     const results = this.resultModifier.apply(tempState, appliedEffects);
 
+    console.log({ results });
+
     return {
       candidateListData: results?.candidateListData ?? candidateListData,
       partyListData: results?.partyListData ?? partyListData,
+      partyListVotes: results?.partyListVotes ?? partyListVotes,
     };
   }
 

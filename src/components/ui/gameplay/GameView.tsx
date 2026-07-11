@@ -59,7 +59,7 @@ export function GameView({
       <VoteCountingScreen
         onComplete={onVoteCountingComplete}
         totalVotes={config.voterEnvironmentConfig.eligibleVoters}
-        processedVotes={state.results?.totals["_total"]}
+        processedVotes={state.results?.totals.partyListResults["_total"]}
       />
     );
   }

@@ -26,8 +26,9 @@ export class MandateCalculator {
     districtCandidateData?: CandidateListData[],
     districtPartyData?: PartyListData[],
     electionConfig?: ElectionConfig,
+    partyListVotes?: PartyVotes,
   ): CalculateResults | undefined {
-    if (!districtCandidateData || !districtPartyData || !electionConfig) {
+    if (!districtCandidateData || !electionConfig) {
       log.error("Missing input data for mandate calculation");
       return undefined;
     }
@@ -44,8 +45,14 @@ export class MandateCalculator {
       }
     }
 
+    let listVotes = listTotals;
+
+    if (partyListVotes && Object.keys(partyListVotes).length > 0) {
+      listVotes = partyListVotes;
+    }
+
     const listSeats = this.allocateListSeats(
-      listTotals,
+      listVotes,
       compensation.total,
       electionConfig,
     );
@@ -69,16 +76,38 @@ export class MandateCalculator {
       });
     }
 
-    const totals = this.sumPartyTotals(districtCandidateData);
-    const percentages = this.calculatePercentages(totals);
+    const totalsByCandidateList = this.sumPartyTotals(districtCandidateData);
+    const percentagesByCandidateList = this.calculatePercentages(
+      totalsByCandidateList,
+    );
+
+    const totalsByPartyList = this.sumPartyListTotals(listVotes);
+    const percentagesByPartyList = this.calculatePercentages(totalsByPartyList);
 
     return {
-      totals,
+      totals: {
+        candidateListResults: totalsByCandidateList,
+        partyListResults: totalsByPartyList,
+      },
       mandates,
       constituencySeats,
       listSeats: listSeats ?? {},
       compensation,
-      percentages,
+      percentages: {
+        candidateListResults: percentagesByCandidateList,
+        partyListResults: percentagesByPartyList,
+      },
+    };
+  }
+
+  public sumPartyListTotals<T extends Record<string, number>>(votes: T) {
+    const total = Object.entries(votes)
+      .filter(([key]) => key !== "_total")
+      .reduce((sum, [, value]) => sum + value, 0);
+
+    return {
+      ...votes,
+      _total: total,
     };
   }
 
@@ -106,7 +135,7 @@ export class MandateCalculator {
 
   private merge(
     updatedCandidateData: CandidateListData[],
-    updatedPartyData: PartyListData[],
+    updatedPartyData?: PartyListData[],
   ) {
     const map = new Map<string, CombinedOevk>();
 
@@ -123,14 +152,16 @@ export class MandateCalculator {
       });
     }
 
-    for (const l of updatedPartyData) {
-      const key = `${l.megyekod}-${l.oevk}`;
-      const row = map.get(key);
-      if (!row) {
-        continue;
-      }
+    if (updatedPartyData) {
+      for (const l of updatedPartyData) {
+        const key = `${l.megyekod}-${l.oevk}`;
+        const row = map.get(key);
+        if (!row) {
+          continue;
+        }
 
-      row.listVotes = this.cleanVotes(l.partok);
+        row.listVotes = this.cleanVotes(l.partok);
+      }
     }
 
     return [...map.values()];
@@ -251,6 +282,7 @@ export class MandateCalculator {
 
     for (let i = 0; i < config.listSeats; i++) {
       const q = quotients[i];
+      if (!q) break;
       seats[q.party] = (seats[q.party] ?? 0) + 1;
     }
 

@@ -1,4 +1,9 @@
-import { CandidateListData, PartyListData, Share } from "@/shared/types";
+import {
+  CandidateListData,
+  PartyListData,
+  PartyListVotes,
+  Share,
+} from "@/shared/types";
 import { createLogger } from "../../logger/logger";
 
 const log = createLogger("NationalSwingTransform");
@@ -52,6 +57,35 @@ export class UnionSwingTransformer {
         },
       };
     });
+  }
+
+  applyUniformSwingToListVotes(
+    baseShare: Share,
+    targetShare: Share,
+    partyListVotes?: PartyListVotes,
+  ): PartyListVotes | undefined {
+    if (!partyListVotes) {
+      return;
+    }
+    const partyDiffs = this.getDiff(baseShare, targetShare);
+    const total = this.sumVotes(partyListVotes);
+
+    const newVotes: PartyListVotes = {};
+
+    const parties = new Set([
+      ...Object.keys(partyListVotes),
+      ...Object.keys(partyDiffs),
+    ]);
+
+    for (const party of parties) {
+      const share =
+        total > 0 ? ((partyListVotes[party] ?? 0) / total) * 100 : 0;
+      const newShare = share + (partyDiffs[party] ?? 0);
+
+      newVotes[party] = Math.max(0, Math.round((newShare / 100) * total));
+    }
+
+    return newVotes;
   }
 
   private getAppliedSwing(

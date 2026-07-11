@@ -12,7 +12,7 @@
     { "id": "fidesz", "name": "Fidesz–KDNP", "color": "#F28E2B" },
     {
       "id": "ellenzeki_osszefogas",
-      "name": "Ellenzéki összefogás",
+      "name": "Egységben Magyarországért",
       "color": "#20b2aa"
     },
     { "id": "mi_hazank", "name": "Mi Hazánk", "color": "#688d1b" },
@@ -40,7 +40,7 @@
   "playableSides": [
     {
       "id": "ellenzeki_osszefogas",
-      "label": "Ellenzéki összefogás",
+      "label": "Egységben Magyarországért",
       "description": "A korábban egymással versengő ellenzéki pártok 2022-re közös listán indultak, hogy egyesített erővel váltsák le a kormányt – ugyanakkor az ideológiai különbségek és belső feszültségek komoly kihívást jelentettek számukra.",
       "mainCandidates": [
         {

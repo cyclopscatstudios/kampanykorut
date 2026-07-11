@@ -28,7 +28,10 @@ export class ResultModifier {
     state: CampaignState,
     appliedEffects?: AppliedEffect[],
     applyEffectForPollingData?: boolean,
-  ): Pick<CampaignState, "candidateListData" | "partyListData"> | null {
+  ): Pick<
+    CampaignState,
+    "candidateListData" | "partyListData" | "partyListVotes"
+  > | null {
     if (!appliedEffects?.length) {
       log.error("No applied effects provided to ResultModifier");
       return null;
@@ -54,6 +57,7 @@ export class ResultModifier {
     return {
       candidateListData: currentState.candidateListData,
       partyListData: currentState.partyListData,
+      partyListVotes: currentState.partyListVotes,
     };
   }
 
@@ -82,7 +86,10 @@ export class ResultModifier {
     state: CampaignState,
     effect: AppliedEffect,
     applyEffectForPollingData?: boolean,
-  ): Pick<CampaignState, "candidateListData" | "partyListData"> | null {
+  ): Pick<
+    CampaignState,
+    "candidateListData" | "partyListData" | "partyListVotes"
+  > | null {
     switch (effect.type) {
       case EffectType.UniformSwing:
         return this.applyPartySwing(state, effect, applyEffectForPollingData);
@@ -122,8 +129,14 @@ export class ResultModifier {
       appliedEffects.baseShare,
       appliedEffects.targetShare,
     );
+    const partyListVotes =
+      this.unionSwingTransformer.applyUniformSwingToListVotes(
+        appliedEffects.baseShare,
+        appliedEffects.targetShare,
+        state.partyListVotes,
+      );
 
-    return { candidateListData, partyListData };
+    return { candidateListData, partyListData, partyListVotes };
   }
 
   private applyShares(
@@ -136,6 +149,8 @@ export class ResultModifier {
       state.partyListData ?? [],
       appliedEffects.newVotes,
       appliedEffects.share,
+      true,
+      state.partyListVotes,
     );
 
     if (!result) {
@@ -146,6 +161,7 @@ export class ResultModifier {
     return {
       candidateListData: result.candidateList,
       partyListData: result.partyList,
+      partyListVotes: result.partyListVotes,
     };
   }
 
@@ -161,10 +177,12 @@ export class ResultModifier {
       state.candidateListData ?? [],
       state.partyListData ?? [],
       appliedEffects.target,
+      state.partyListVotes,
     );
     return {
       candidateListData: result.newCandidateListData,
       partyListData: result.newPartyListData,
+      partyListVotes: result.newPartyListVotes,
     };
   }
 

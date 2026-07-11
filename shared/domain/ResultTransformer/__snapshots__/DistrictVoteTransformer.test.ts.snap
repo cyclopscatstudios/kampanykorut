@@ -60,5 +60,6 @@ exports[`DistrictTargetTransform > should apply district target correctly 1`] = 
       },
     },
   ],
+  "newPartyListVotes": undefined,
 }
 `;
