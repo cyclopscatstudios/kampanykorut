@@ -44,6 +44,7 @@ export function GameChrome({
         handlePollsterChange={handlePollsterChange}
         flow={flow}
       />
+      <div className="h-15.5 shrink-0" />
       <GameDialogs
         activeDialog={dialogs.activeDialog}
         onClose={dialogs.close}

@@ -2,7 +2,12 @@ import { t } from "i18next";
 import { type ActionDispatch, useState } from "react";
 import { container } from "tsyringe";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
-import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
+import {
+  CampaignConfig,
+  CampaignState,
+  PollingOpnions,
+  RawParty,
+} from "@/shared/types";
 import logo from "../../../../brand-assets/svg/logo-mark.svg";
 import markdown from "../../../../brand-assets/svg/logo-wordmark-dark.svg";
 import { Navigation } from "../../../logic/application/navigation/Navigation";
@@ -13,6 +18,7 @@ import { Text } from "../Text";
 import { Tooltip } from "../Tooltip";
 import type { DialogId } from "./hooks/useDialogState";
 import type { GameFlowAction, GameFlowState } from "./hooks/useGameFlow";
+import classNames from "classnames";
 
 export interface MenuBarProps {
   activeDialog: DialogId;
@@ -44,10 +50,14 @@ export function TopMenuBar({
   const pollsters = pollsterEngine.getPollsters();
   const navigationService = container.resolve(Navigation);
   const endResultsScreen = navigationService.isUrlParamMatch("/end-results");
+  const { title, parties, year } = { ...config?.electionConfig };
+  const currentParty = parties?.find(
+    (party) => party.id === state?.playerSide?.partyId,
+  );
 
   return (
-    <div className="w-full border-b-2 border-blue-400">
-      <div className="h-[60px] flex justify-between items-center mx-2.5">
+    <div className="fixed inset-x-0 top-0 z-40 w-full border-b-2 border-blue-400 bg-[rgba(15,23,42,0.92)]">
+      <div className="h-[80px] flex justify-between items-center mx-2.5">
         <div className="flex justify-between items-center gap-2">
           <div
             className="flex justify-center items-center cursor-pointer"
@@ -100,6 +110,7 @@ export function TopMenuBar({
               </SubMenu>
             </Menu>
           )}
+          <CampaignBadge party={currentParty} title={title} year={year} />
         </div>
         {state && config && (
           <div onClick={() => setInfo(info === "turn" ? "configName" : "turn")}>
@@ -167,5 +178,37 @@ function TurnBadge({
     <div className="bg-blue-400/10 rounded-md border border-blue-50/10 p-1">
       <Text color="lightBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
     </div>
+  );
+}
+
+function CampaignBadge({
+  party,
+  title,
+  year,
+}: {
+  party?: RawParty;
+  title?: string;
+  year?: string;
+}) {
+  const tooltipContent = `${year}:${title} - ${party?.name}`;
+  return (
+    <Tooltip content={tooltipContent} position="bottom">
+      <div className="bg-blue-900/50 p-2 rounded-full border border-blue-50/25">
+        <div className="flex items-center">
+          <div
+            className={classNames("size-[25px] rounded-full mr-1.5")}
+            style={{ backgroundColor: party?.color }}
+          />
+          <div className="mx-1">
+            <Text size="xs" weight="bold">
+              {year}
+            </Text>
+            <Text size="xs" weight="medium">
+              {title}
+            </Text>
+          </div>
+        </div>
+      </div>
+    </Tooltip>
   );
 }

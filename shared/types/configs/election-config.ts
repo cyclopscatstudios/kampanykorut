@@ -2,6 +2,7 @@ import { PartyListVotes } from "../campaign";
 
 export interface ElectionConfig {
   title: string;
+  year: string;
   listSeats: number;
   allSeats: number;
   thresholdPercent: number;

@@ -2,6 +2,7 @@ import { ElectionConfig } from "@/shared/types";
 
 export const mockElectionConfig: ElectionConfig = {
   title: "Mock Election",
+  year: "2010",
   listSeats: 100,
   allSeats: 200,
   thresholdPercent: 5,

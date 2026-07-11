@@ -92,6 +92,7 @@ export class CampaignEngine {
       candidateListData,
       partyListData,
       partyListVotes,
+      playerSide: savedState?.playerSide,
       results: this.mandateCalculator.calculate(
         candidateListData,
         partyListData,

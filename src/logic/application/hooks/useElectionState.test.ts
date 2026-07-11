@@ -10,6 +10,7 @@ const MOCK_CAMPAIGN_ID = "mock_campaign";
 const mockConfig: CampaignConfig = {
   electionConfig: {
     title: "Mock Election",
+    year: "2010",
     listSeats: 10,
     allSeats: 20,
     thresholdPercent: 5,
