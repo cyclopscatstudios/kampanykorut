@@ -60,6 +60,16 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
       handlePollsterChange={handlePollsterChange}
       flow={flow}
     >
+      <div className="flex w-full h-[5px] overflow-hidden">
+        {config.electionConfig.parties.map((party) => (
+          <div
+            key={party.id}
+            className="flex-1"
+            style={{ backgroundColor: party.color }}
+            title={party.name}
+          />
+        ))}
+      </div>
       <AdvisorModal
         advice={flow.pendingAdvisor?.feedback.text ?? ""}
         open={Boolean(flow.pendingAdvisor)}

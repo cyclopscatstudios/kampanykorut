@@ -10,6 +10,7 @@ export interface CampaignHeader {
   route: string;
   campaignBanner: string;
   thinCampaignBanner?: string;
+  isPublished?: boolean;
 }
 
 const log = createLogger("useGetCampaigns");

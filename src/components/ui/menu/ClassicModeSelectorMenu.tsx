@@ -16,10 +16,15 @@ import { MenuLayout } from "./MenuLayout";
 
 export function ClassicModeSelectorMenu() {
   const campaigns = useGetCampaigns();
+  const debugMode = window.debugMode;
+
+  const filtered = !debugMode?.enabled
+    ? campaigns.filter((camapign) => camapign.isPublished)
+    : campaigns;
 
   return (
     <MenuLayout>
-      <CampaignSelectorMenuList campaignHeaders={campaigns} />
+      <CampaignSelectorMenuList campaignHeaders={filtered} />
     </MenuLayout>
   );
 }

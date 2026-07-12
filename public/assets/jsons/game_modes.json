@@ -6,7 +6,8 @@
     "route": "2022",
     "tags": ["historical"],
     "campaignBanner": "ogyv-2022-default-banner.png",
-    "thinCampaignBanner": "ogyv-2022-default-banner-thin.png"
+    "thinCampaignBanner": "ogyv-2022-default-banner-thin.png",
+    "isPublished": true
   },
   {
     "id": "2026_tavaszi_szel",
@@ -15,6 +16,7 @@
     "route": "2026",
     "tags": ["historical"],
     "campaignBanner": "2026_tavaszi_szel_vizet_araszt-banner.png",
-    "thinCampaignBanner": "2026_tavaszi_szel-banner-thin.png"
+    "thinCampaignBanner": "2026_tavaszi_szel-banner-thin.png",
+    "isPublished": false
   }
 ]
