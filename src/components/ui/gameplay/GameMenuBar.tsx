@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { t } from "i18next";
 import { type ActionDispatch, useState } from "react";
 import { container } from "tsyringe";
@@ -18,7 +19,6 @@ import { Text } from "../Text";
 import { Tooltip } from "../Tooltip";
 import type { DialogId } from "./hooks/useDialogState";
 import type { GameFlowAction, GameFlowState } from "./hooks/useGameFlow";
-import classNames from "classnames";
 
 export interface MenuBarProps {
   activeDialog: DialogId;
@@ -68,12 +68,12 @@ export function TopMenuBar({
           </div>
           {flow?.currentView === "MapView" && flow.visitingDistrict && (
             <Button
-              variant="tertiary"
+              variant="underline"
               onClick={() =>
                 actionDispatch?.({ type: "CHANGE_VIEW", view: "QuestionView" })
               }
             >
-              <Button.Icon name="geo-alt-fill" color="white" size="medium" />
+              <Button.Icon name="geo-alt-fill" color="purple" size="medium" />
             </Button>
           )}
           {!endResultsScreen && (
@@ -92,28 +92,49 @@ export function TopMenuBar({
                     id: AGGREGATE_POLLSTER_ID,
                     label: t("gameMenuBar.mapMenu.polls.average"),
                   },
-                ].map((pollster) => (
-                  <MenuItem
-                    key={pollster.id}
-                    onClick={() =>
-                      handlePollsterChange?.(pollster.id, state, config)
+                ]
+                  .sort((a, b) => {
+                    if (a.id === AGGREGATE_POLLSTER_ID) {
+                      return -1;
                     }
-                  >
-                    <div className="flex justify-between items-center px-2">
-                      {pollster.label}
-                      {pollsterData?.selectedPollsterId === pollster.id && (
-                        <Icon name="check-lg" color="darkBlue" />
-                      )}
-                    </div>
-                  </MenuItem>
-                ))}
+                    if (b.id === AGGREGATE_POLLSTER_ID) {
+                      return 1;
+                    }
+                    if (!a.label || !b.label) {
+                      return 0;
+                    }
+                    return a.label.localeCompare(b.label);
+                  })
+                  .map((pollster) => (
+                    <MenuItem
+                      key={pollster.id}
+                      onClick={() =>
+                        handlePollsterChange?.(pollster.id, state, config)
+                      }
+                    >
+                      <div className="flex justify-between items-center px-2 gap-2">
+                        <div className="flex items-center gap-2">
+                          <PollsterIcon id={pollster.id} />
+                          {pollster.label}
+                        </div>
+                        {pollsterData?.selectedPollsterId === pollster.id && (
+                          <Icon name="check-lg" color="darkBlue" />
+                        )}
+                      </div>
+                    </MenuItem>
+                  ))}
               </SubMenu>
             </Menu>
           )}
-          <CampaignBadge party={currentParty} title={title} year={year} />
+          <div className="ml-5">
+            <CampaignBadge party={currentParty} title={title} year={year} />
+          </div>
         </div>
         {state && config && (
-          <div onClick={() => setInfo(info === "turn" ? "configName" : "turn")}>
+          <div
+            onClick={() => setInfo(info === "turn" ? "configName" : "turn")}
+            className="text-center"
+          >
             {info === "turn" ? (
               <TurnBadge
                 currentTurn={state.turn}
@@ -125,7 +146,7 @@ export function TopMenuBar({
           </div>
         )}
         <div className="flex justify-center gap-2">
-          <Tooltip content={t("gameMenuBar.save")}>
+          <Tooltip content={t("gameMenuBar.save")} position="bottom">
             <Button variant="tertiary" onClick={() => onOpen("saveGame")}>
               <Button.Icon
                 name="file-earmark-arrow-down-fill"
@@ -134,7 +155,7 @@ export function TopMenuBar({
               />
             </Button>
           </Tooltip>
-          <Tooltip content={t("gameMenuBar.laod")}>
+          <Tooltip content={t("gameMenuBar.laod")} position="bottom">
             <Button variant="tertiary" onClick={() => onOpen("savedGames")}>
               <Button.Icon
                 name="file-earmark-arrow-up-fill"
@@ -143,7 +164,7 @@ export function TopMenuBar({
               />
             </Button>
           </Tooltip>
-          <Tooltip content={t("gameMenuBar.settings")}>
+          <Tooltip content={t("gameMenuBar.settings")} position="bottom">
             <Button variant="tertiary" onClick={() => onOpen("settings")}>
               <Button.Icon
                 name="gear-fill"
@@ -152,7 +173,7 @@ export function TopMenuBar({
               />
             </Button>
           </Tooltip>
-          <Tooltip content={t("gameMenuBar.quit")}>
+          <Tooltip content={t("gameMenuBar.quit")} position="bottom">
             <Button variant="tertiary" onClick={() => onOpen("exit")}>
               <Button.Icon
                 name="x-square-fill"
@@ -164,6 +185,32 @@ export function TopMenuBar({
         </div>
       </div>
     </div>
+  );
+}
+
+function PollsterIcon({ id }: { id: string }) {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    if (id === AGGREGATE_POLLSTER_ID) {
+      return (
+        <Icon
+          name="reception-3"
+          className="size-5 rounded-full object-cover"
+          color="red"
+        />
+      );
+    }
+    return <div className="size-5 rounded-full bg-blue-400/20" />;
+  }
+
+  return (
+    <img
+      src={`/images/shared/pollsters/${id}.png`}
+      alt=""
+      className="size-5 rounded-full object-cover"
+      onError={() => setFailed(true)}
+    />
   );
 }
 
@@ -190,7 +237,7 @@ function CampaignBadge({
   title?: string;
   year?: string;
 }) {
-  const tooltipContent = `${year}:${title} - ${party?.name}`;
+  const tooltipContent = `${year}: ${title} - ${party?.name}`;
   return (
     <Tooltip content={tooltipContent} position="bottom">
       <div className="bg-blue-900/50 p-2 rounded-full border border-blue-50/25">

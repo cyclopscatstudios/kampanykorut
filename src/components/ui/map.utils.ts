@@ -1,13 +1,23 @@
 import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
 import { PartyName } from "../../types/color";
 
+export function resultsKey(megyekod: number, oevk: number) {
+  return `${megyekod}-${oevk}`;
+}
+
+export function buildResultsIndex(result: CandidateListData[]) {
+  const index = new Map<string, CandidateListData>();
+  for (const er of result) {
+    index.set(resultsKey(er.megyekod, er.oevk), er);
+  }
+  return index;
+}
+
 export function getWinnerResultsByList(
   d: DistrictPoligon,
-  result: CandidateListData[],
+  resultIndex: Map<string, CandidateListData>,
 ) {
-  const results = result.find(
-    (er) => er.megyekod === Number(d.maz) && er.oevk === Number(d.evk),
-  );
+  const results = resultIndex.get(resultsKey(Number(d.maz), Number(d.evk)));
 
   if (!results) {
     throw new Error("District result not found");

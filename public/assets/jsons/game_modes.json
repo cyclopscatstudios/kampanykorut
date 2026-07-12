@@ -9,11 +9,12 @@
     "thinCampaignBanner": "ogyv-2022-default-banner-thin.png"
   },
   {
-    "id": "2026_tavaszi_szel_vizet_araszt",
-    "label": "2026: Tavaszi szél vizet áraszt?",
+    "id": "2026_tavaszi_szel",
+    "label": "2026: Tavaszi szél",
     "description": "A kegyelmi botrány után alapjaiban változott meg a magyar politika. Magyar Péter, Varga Judit korábbi igazságügyi miniszter volt férje színre lépésével felkavarodott a hazai politikai állóvíz. Az európai parlamenti választáson az általa vezetett TISZA Párt közel 30%-os eredményt ért el, míg a Fidesz történetének egyik leggyengébb EP-listás szereplését produkálta. A 2026-os országgyűlési választáson a Fidesz első számú kihívója egyértelműen a TISZA Párt lesz. A választásig azonban még hosszú út vezet: miközben egyre több politikai kihívás és botrány nehezíti a kormánypárt helyzetét, Magyar Péternek országos szervezetté kell építenie pártját, hiteles alternatívát kell felmutatnia a választóknak, és meg kell birkóznia a kampány során várható támadásokkal és saját politikai kihívásaival. Vajon sikerül megtörni a Fidesz több mint másfél évtizedes kormányzását, vagy Orbán Viktor ismét győzelemre vezeti pártját? A döntés ezúttal is a választók kezében van.",
     "route": "2026",
     "tags": ["historical"],
-    "campaignBanner": "2026_tavaszi_szel_vizet_araszt-banner.png"
+    "campaignBanner": "2026_tavaszi_szel_vizet_araszt-banner.png",
+    "thinCampaignBanner": "2026_tavaszi_szel-banner-thin.png"
   }
 ]

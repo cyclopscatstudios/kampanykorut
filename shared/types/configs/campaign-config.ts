@@ -16,7 +16,6 @@ export interface CampaignConfig {
   candidateListData: CandidateListData[];
   partyListData?: PartyListData[];
   districts: DistrictPoligon[];
-  capitalCity: DistrictPoligon[];
   questions: RawQuestion[];
   answerEffect: RawAnsweEffectProps[];
   endResults: EndResultProps;

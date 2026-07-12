@@ -1,5 +1,4 @@
 import { CampaignConfig, RawAnsweEffectProps, Strategy } from "@/shared/types";
-import capitalCity from "./budapest.json";
 import customGroups from "./custom_groups.json";
 import electionConfig from "./election_config.json";
 import answerEffect from "./ellenzeki_osszefogas/2022_answer_effects.json";
@@ -22,7 +21,6 @@ export const config2022: CampaignConfig = {
   candidateListData,
   partyListData,
   districts,
-  capitalCity,
   questions,
   answerEffect: answerEffect as RawAnsweEffectProps[],
   endResults,

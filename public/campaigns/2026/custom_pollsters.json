@@ -1,0 +1,32 @@
+[
+  {
+    "id": "21kutato",
+    "label": "21 Kutatóközpont",
+    "errorMargin": {
+      "min": 1,
+      "max": 5
+    }
+  },
+  {
+    "id": "xxi-szazad",
+    "label": "XXI. Század Intézet",
+    "errorMargin": {
+      "min": 3,
+      "max": 8
+    },
+    "bias": [
+      {
+        "type": "result",
+        "partyBias": {
+          "tisza": -10,
+          "fidesz": 8,
+          "dk": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "nezopont",
+    "exclude": true
+  }
+]

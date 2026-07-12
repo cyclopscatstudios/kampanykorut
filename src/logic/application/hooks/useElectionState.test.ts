@@ -47,7 +47,6 @@ const mockConfig: CampaignConfig = {
     },
   ],
   districts: [],
-  capitalCity: [],
   questions: [],
   answerEffect: [],
   endResults: {

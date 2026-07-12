@@ -1,4 +1,5 @@
 import { GameSettings } from "@/logic/application";
+import { createLogger } from "@/shared/logger";
 import {
   AdvisorFeedback,
   CalculateResults,
@@ -18,7 +19,6 @@ import {
   Strategy,
   StrategyReward,
 } from "@/shared/types";
-import { createLogger } from "../logger/logger";
 import type { EffectApplier } from "./EffectApplier";
 import type { MandateCalculator } from "./MandateCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";

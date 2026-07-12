@@ -18,14 +18,23 @@ export class PollsterEngine {
   }
 
   configure(customPollsters?: Pollster[]) {
+    const pollsters = new Map(DEFAULT_POLLSTERS.map((p) => [p.id, p]));
+
     if (customPollsters) {
       log.debug("configuring PollsterEngine with custom pollsters", {
         customPollsters,
       });
-      this.pollsters = [...DEFAULT_POLLSTERS, ...customPollsters];
-    } else {
-      this.pollsters = [...DEFAULT_POLLSTERS];
+
+      for (const pollster of customPollsters) {
+        if (pollster.exclude) {
+          pollsters.delete(pollster.id);
+        } else {
+          pollsters.set(pollster.id, pollster);
+        }
+      }
     }
+
+    this.pollsters = [...pollsters.values()];
   }
 
   getPollsters() {
@@ -57,7 +66,7 @@ export class PollsterEngine {
           this.applyMarginErrors(percentages.candidateListResults, pollster),
         );
         return (
-          (estimate[partyId] ?? 0) -
+          (estimate?.[partyId] ?? 0) -
           (percentages.candidateListResults[partyId] ?? 0)
         );
       });
@@ -115,9 +124,10 @@ export class PollsterEngine {
     };
   }
 
-  private normalizeResults(
-    results: Record<string, number>,
-  ): Record<string, number> {
+  private normalizeResults(results?: Record<string, number>) {
+    if (!results) {
+      return;
+    }
     const normalized = { ...results };
     const total = Object.values(normalized).reduce((sum, v) => sum + v, 0);
     if (total > 0) {
@@ -140,10 +150,13 @@ export class PollsterEngine {
     pollster: Pollster,
   ) {
     const bias = this.getBiasResults(pollster);
+    if (!pollster.errorMargin) {
+      return;
+    }
     const globalError =
       this.getRandomMargin(
-        -pollster.errorMargin.max,
-        pollster.errorMargin.max,
+        -pollster.errorMargin?.max,
+        pollster.errorMargin?.max,
       ) / 100;
     const results: Record<string, number> = {};
 

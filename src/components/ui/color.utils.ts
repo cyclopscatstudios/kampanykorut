@@ -12,6 +12,7 @@ export function getPartyColor(
   diff: number,
   isGameEnded?: boolean,
 ): string {
+  // TODO: colors should come from config, fix this ASAP
   const color = partyColors[party];
   if (isGameEnded) {
     return color;
