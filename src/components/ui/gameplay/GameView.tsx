@@ -3,6 +3,7 @@ import {
   CampaignState,
   CurrentView,
   District,
+  DistrictPoligon,
   FinalResults,
   PollingOpnions,
 } from "@/shared/types";
@@ -64,16 +65,22 @@ export function GameView({
     );
   }
 
+  const capitalCity = getCapitalCity(config.districts);
+
   return (
     <MapCreator
       setCurrentView={onSetView}
       candidateListData={
         pollsData?.candidateListData ?? state.candidateListData ?? []
       }
-      capitalCity={config.capitalCity}
+      capitalCity={capitalCity}
       districts={config.districts}
       selectedDistrict={selectedDistrict}
       setSelectedDistrict={onSetDistrict}
     />
   );
+}
+
+function getCapitalCity(districts: DistrictPoligon[]) {
+  return districts.filter((district) => district.maz.startsWith("01"));
 }

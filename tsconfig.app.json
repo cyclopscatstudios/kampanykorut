@@ -29,10 +29,10 @@
     "paths": {
       "@/logic/application": ["./src/logic/application"],
       "@/logic/types": ["./src/logic/types"],
-      "@/shared/logger": ["./shared/logger/logger"],
+      "@/shared/logger": ["./shared/logger"],
       "@/shared/domain": ["./shared/domain"],
       "@/shared/types": ["./shared/types"]
     }
   },
-  "include": ["src", "shared"]
+  "include": ["src", "shared", "public"]
 }

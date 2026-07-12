@@ -7,7 +7,7 @@
     "valasztopolgar": 73914,
     "partok": {
       "tisza": 37803,
-      "fidesz_kdnp": 18391,
+      "fidesz": 18391,
       "mi_hazank": 1948,
       "mkkp": 978,
       "dk": 770,
@@ -15,7 +15,7 @@
     },
     "jeloltek": {
       "tisza": ["TANÁCS ZOLTÁN"],
-      "fidesz_kdnp": ["FAZEKAS CSILLA"],
+      "fidesz": ["FAZEKAS CSILLA"],
       "mi_hazank": ["NAGY ATTILA"],
       "mkkp": ["SZINTAY ISTVÁN"],
       "dk": ["HERFORT MARIETTA"],
@@ -30,7 +30,7 @@
     "valasztopolgar": 76449,
     "partok": {
       "tisza": 35772,
-      "fidesz_kdnp": 16512,
+      "fidesz": 16512,
       "mi_hazank": 1929,
       "mkkp": 717,
       "dk": 582,
@@ -39,7 +39,7 @@
     },
     "jeloltek": {
       "tisza": ["BÓDIS KRISZTA"],
-      "fidesz_kdnp": ["FERENCZ ORSOLYA"],
+      "fidesz": ["FERENCZ ORSOLYA"],
       "mi_hazank": ["KVACSKAY KÁROLY"],
       "mkkp": ["GERGELY ANDREA"],
       "dk": ["HALMAI RICHÁRD"],
@@ -55,7 +55,7 @@
     "valasztopolgar": 78431,
     "partok": {
       "tisza": 43112,
-      "fidesz_kdnp": 20248,
+      "fidesz": 20248,
       "mi_hazank": 2315,
       "mkkp": 1112,
       "dk": 860,
@@ -63,7 +63,7 @@
     },
     "jeloltek": {
       "tisza": ["MAGYAR PÉTER"],
-      "fidesz_kdnp": ["STEINER ATTILA"],
+      "fidesz": ["STEINER ATTILA"],
       "mi_hazank": ["GRUNDTNER ANDRÁS"],
       "mkkp": ["BÜRGER ZOLTÁN"],
       "dk": ["GRÉCZI ZSOLT"],
@@ -78,7 +78,7 @@
     "valasztopolgar": 80326,
     "partok": {
       "tisza": 45212,
-      "fidesz_kdnp": 19994,
+      "fidesz": 19994,
       "mi_hazank": 2103,
       "mkkp": 990,
       "dk": 819,
@@ -86,7 +86,7 @@
     },
     "jeloltek": {
       "tisza": ["KONCZ ÁRON"],
-      "fidesz_kdnp": ["FÜLÖP ATTILA"],
+      "fidesz": ["FÜLÖP ATTILA"],
       "mi_hazank": ["BINDER CSABA"],
       "mkkp": ["PILISI EMÍLIA"],
       "dk": ["HEGYESI BEÁTA"],
@@ -101,14 +101,14 @@
     "valasztopolgar": 76968,
     "partok": {
       "tisza": 42668,
-      "fidesz_kdnp": 14769,
+      "fidesz": 14769,
       "mi_hazank": 2344,
       "dk": 1578,
       "mkkp": 845
     },
     "jeloltek": {
       "tisza": ["WEIGAND ISTVÁN"],
-      "fidesz_kdnp": ["KOVÁCS BALÁZS NORBERT"],
+      "fidesz": ["KOVÁCS BALÁZS NORBERT"],
       "mi_hazank": ["EDŐCS BEÁTA"],
       "dk": ["KESZTHELYI DOROTTYA"],
       "mkkp": ["OLÁH JÁNOS"]
@@ -122,7 +122,7 @@
     "valasztopolgar": 78254,
     "partok": {
       "tisza": 33953,
-      "fidesz_kdnp": 15612,
+      "fidesz": 15612,
       "fuggetlen_hadhazy_akos": 10207,
       "mi_hazank": 2825,
       "mkkp": 730,
@@ -130,7 +130,7 @@
     },
     "jeloltek": {
       "tisza": ["VELKEY GYÖRGY LÁSZLÓ"],
-      "fidesz_kdnp": ["RADICS BÉLA"],
+      "fidesz": ["RADICS BÉLA"],
       "fuggetlen_hadhazy_akos": ["HADHÁZY ÁKOS"],
       "mi_hazank": ["PÉRCSI VIKTÓRIA"],
       "mkkp": ["NAGY DÁVID"],
@@ -145,7 +145,7 @@
     "valasztopolgar": 75379,
     "partok": {
       "tisza": 38809,
-      "fidesz_kdnp": 17340,
+      "fidesz": 17340,
       "mi_hazank": 2561,
       "dk": 1287,
       "mkkp": 639,
@@ -153,7 +153,7 @@
     },
     "jeloltek": {
       "tisza": ["TRENTIN BALÁZS"],
-      "fidesz_kdnp": ["D. KOVÁCS RÓBERT ANTAL"],
+      "fidesz": ["D. KOVÁCS RÓBERT ANTAL"],
       "mi_hazank": ["CZEGLÉDI JÁNOS"],
       "dk": ["ARATÓ GERGELY"],
       "mkkp": ["KLING OND"],
@@ -168,7 +168,7 @@
     "valasztopolgar": 79277,
     "partok": {
       "tisza": 40918,
-      "fidesz_kdnp": 18843,
+      "fidesz": 18843,
       "mi_hazank": 3184,
       "mkkp": 1007,
       "a_szolidaritas_partja_munkaspart": 277,
@@ -176,7 +176,7 @@
     },
     "jeloltek": {
       "tisza": ["VIRÁGH GABRIELLA"],
-      "fidesz_kdnp": ["TARNAI RICHÁRD"],
+      "fidesz": ["TARNAI RICHÁRD"],
       "mi_hazank": ["FEKETE GYÖRGY"],
       "mkkp": ["FERANCZ NORBERT"],
       "a_szolidaritas_partja_munkaspart": ["KATONA TIBOR"],
@@ -191,7 +191,7 @@
     "valasztopolgar": 75105,
     "partok": {
       "tisza": 36852,
-      "fidesz_kdnp": 17538,
+      "fidesz": 17538,
       "mi_hazank": 3164,
       "dk": 1014,
       "mkkp": 758,
@@ -199,7 +199,7 @@
     },
     "jeloltek": {
       "tisza": ["KÁTAI-NÉMETH VILMOS"],
-      "fidesz_kdnp": ["KIRÁLY NÓRA"],
+      "fidesz": ["KIRÁLY NÓRA"],
       "mi_hazank": ["RIZMAYERNÉ CSIK ERZSÉBET"],
       "dk": ["VADAI ATTILA"],
       "mkkp": ["KISS KORNÉL"],
@@ -214,14 +214,14 @@
     "valasztopolgar": 77060,
     "partok": {
       "tisza": 41542,
-      "fidesz_kdnp": 18829,
+      "fidesz": 18829,
       "mi_hazank": 3277,
       "dk": 1184,
       "mkkp": 914
     },
     "jeloltek": {
       "tisza": ["KULCSÁR KRISZTIÁN"],
-      "fidesz_kdnp": ["KOCSONDI MÁRK"],
+      "fidesz": ["KOCSONDI MÁRK"],
       "mi_hazank": ["NOVÁK ELŐD"],
       "dk": ["MOLNÁR GYULA"],
       "mkkp": ["NEULINGER ÁGNES"]
@@ -235,7 +235,7 @@
     "valasztopolgar": 79524,
     "partok": {
       "tisza": 43122,
-      "fidesz_kdnp": 18685,
+      "fidesz": 18685,
       "mi_hazank": 3214,
       "dk": 1228,
       "mkkp": 823,
@@ -244,7 +244,7 @@
     },
     "jeloltek": {
       "tisza": ["BODA NIKOLETTA"],
-      "fidesz_kdnp": ["GYEPES ÁDÁM"],
+      "fidesz": ["GYEPES ÁDÁM"],
       "mi_hazank": ["MAROSVÖLGYI ANNA"],
       "dk": ["NAGY RICHÁRD GYÖRGY"],
       "mkkp": ["TÓTH KÁLMÁN"],
@@ -260,14 +260,14 @@
     "valasztopolgar": 78751,
     "partok": {
       "tisza": 41359,
-      "fidesz_kdnp": 16505,
+      "fidesz": 16505,
       "mi_hazank": 2909,
       "dk": 2625,
       "mkkp": 877
     },
     "jeloltek": {
       "tisza": ["JAKAB ZSUZSANNA"],
-      "fidesz_kdnp": ["ZSIGMOND BARNA PÁL"],
+      "fidesz": ["ZSIGMOND BARNA PÁL"],
       "mi_hazank": ["BALOG CSABA"],
       "dk": ["VARJU LÁSZLÓ"],
       "mkkp": ["NAGY DÁVID"]
@@ -281,7 +281,7 @@
     "valasztopolgar": 76565,
     "partok": {
       "tisza": 38873,
-      "fidesz_kdnp": 17368,
+      "fidesz": 17368,
       "mi_hazank": 3758,
       "dk": 2564,
       "mkkp": 802,
@@ -289,7 +289,7 @@
     },
     "jeloltek": {
       "tisza": ["MÜLLER ANNA"],
-      "fidesz_kdnp": ["NÉMETH BALÁZS"],
+      "fidesz": ["NÉMETH BALÁZS"],
       "mi_hazank": ["BARTAL ANDRÁS"],
       "dk": ["BARKÓCZI BALÁZS"],
       "mkkp": ["BORKUTI BÁLINT"],
@@ -304,7 +304,7 @@
     "valasztopolgar": 77330,
     "partok": {
       "tisza": 40491,
-      "fidesz_kdnp": 20990,
+      "fidesz": 20990,
       "mi_hazank": 2586,
       "dk": 785,
       "mkkp": 535,
@@ -313,7 +313,7 @@
     },
     "jeloltek": {
       "tisza": ["SZABÓ ALEXANDRA"],
-      "fidesz_kdnp": ["SZATMÁRY KRISTÓF"],
+      "fidesz": ["SZATMÁRY KRISTÓF"],
       "mi_hazank": ["ZSIDRÓ LÁSZLÓ"],
       "dk": ["KOCSIS-CAKE OLIVIO"],
       "mkkp": ["BOMBICZ TAMÁS"],
@@ -329,7 +329,7 @@
     "valasztopolgar": 79322,
     "partok": {
       "tisza": 41523,
-      "fidesz_kdnp": 20752,
+      "fidesz": 20752,
       "mi_hazank": 3386,
       "dk": 1121,
       "mkkp": 666,
@@ -338,7 +338,7 @@
     },
     "jeloltek": {
       "tisza": ["PORCHER ÁRON"],
-      "fidesz_kdnp": ["DUNAI MÓNIKA"],
+      "fidesz": ["DUNAI MÓNIKA"],
       "mi_hazank": ["SOMOGYINÉ HATVANI ZSUZSANNA"],
       "dk": ["GY. NÉMETH ERZSÉBET"],
       "mkkp": ["SZIN RICHÁRD"],
@@ -354,7 +354,7 @@
     "valasztopolgar": 83447,
     "partok": {
       "tisza": 40693,
-      "fidesz_kdnp": 20127,
+      "fidesz": 20127,
       "mi_hazank": 3514,
       "fuggetlen_hiller_istvan": 2132,
       "dk": 793,
@@ -365,7 +365,7 @@
     },
     "jeloltek": {
       "tisza": ["TARR ZOLTÁN"],
-      "fidesz_kdnp": ["FÖLDESI GYULA"],
+      "fidesz": ["FÖLDESI GYULA"],
       "mi_hazank": ["KOVÁCS ATTILA"],
       "fuggetlen_hiller_istvan": ["HILLER ISTVÁN"],
       "dk": ["BÁNYAI AMIR ATTILA"],
@@ -383,7 +383,7 @@
     "valasztopolgar": 70739,
     "partok": {
       "tisza": 35434,
-      "fidesz_kdnp": 16883,
+      "fidesz": 16883,
       "mi_hazank": 2475,
       "dk": 794,
       "mkkp": 439,
@@ -392,7 +392,7 @@
     },
     "jeloltek": {
       "tisza": ["RUZSA DIÁNA"],
-      "fidesz_kdnp": ["CZIRÁKI ATTILA"],
+      "fidesz": ["CZIRÁKI ATTILA"],
       "mi_hazank": ["VARGA TAMÁS"],
       "dk": ["AUTH ISTVÁN"],
       "mkkp": ["ZAKUPSZKI TAMÁS"],
@@ -408,7 +408,7 @@
     "valasztopolgar": 74934,
     "partok": {
       "tisza": 35893,
-      "fidesz_kdnp": 18121,
+      "fidesz": 18121,
       "mi_hazank": 3116,
       "dk": 900,
       "mkkp": 460,
@@ -416,7 +416,7 @@
     },
     "jeloltek": {
       "tisza": ["KOVÁCS ÁRON"],
-      "fidesz_kdnp": ["HOPPÁL PÉTER"],
+      "fidesz": ["HOPPÁL PÉTER"],
       "mi_hazank": ["SÁNDOR ZOLTÁN"],
       "dk": ["DÉNES ISTVÁN"],
       "mkkp": ["BAGYURA MÁRTON"],
@@ -431,14 +431,14 @@
     "valasztopolgar": 68656,
     "partok": {
       "tisza": 25405,
-      "fidesz_kdnp": 23328,
+      "fidesz": 23328,
       "mi_hazank": 3033,
       "dk": 496,
       "jobbik": 199
     },
     "jeloltek": {
       "tisza": ["RÓZSAHEGYI ÁRON"],
-      "fidesz_kdnp": ["HARGITAI JÁNOS"],
+      "fidesz": ["HARGITAI JÁNOS"],
       "mi_hazank": ["IPACS SÁNDOR"],
       "dk": ["PÁGER FERENC"],
       "jobbik": ["PETRIK BARBARA"]
@@ -452,7 +452,7 @@
     "valasztopolgar": 73779,
     "partok": {
       "tisza": 27914,
-      "fidesz_kdnp": 23505,
+      "fidesz": 23505,
       "mi_hazank": 2600,
       "dk": 530,
       "mkkp": 306,
@@ -461,7 +461,7 @@
     },
     "jeloltek": {
       "tisza": ["KAPRONCZAI BALÁZS"],
-      "fidesz_kdnp": ["NAGY CSABA"],
+      "fidesz": ["NAGY CSABA"],
       "mi_hazank": ["ÁCS JÓZSEF"],
       "dk": ["SZARKÁNDINÉ JERSZI KATALIN"],
       "mkkp": ["ABDALLAH-MAGDY SZABRINA"],
@@ -477,13 +477,13 @@
     "valasztopolgar": 67906,
     "partok": {
       "tisza": 27753,
-      "fidesz_kdnp": 21063,
+      "fidesz": 21063,
       "mi_hazank": 3611,
       "mkkp": 525
     },
     "jeloltek": {
       "tisza": ["CSŐSZI ATTILA"],
-      "fidesz_kdnp": ["SALACZ LÁSZLÓ"],
+      "fidesz": ["SALACZ LÁSZLÓ"],
       "mi_hazank": ["ANDRÁS KÁROLY"],
       "mkkp": ["PAPP DÁVID"]
     }
@@ -496,7 +496,7 @@
     "valasztopolgar": 71504,
     "partok": {
       "tisza": 32688,
-      "fidesz_kdnp": 20373,
+      "fidesz": 20373,
       "mi_hazank": 3461,
       "mkkp": 555,
       "dk": 452,
@@ -505,7 +505,7 @@
     },
     "jeloltek": {
       "tisza": ["MOLNÁR JÁNOS"],
-      "fidesz_kdnp": ["CSEH TAMÁS"],
+      "fidesz": ["CSEH TAMÁS"],
       "mi_hazank": ["HÓDI ZSUZSANNA"],
       "mkkp": ["KARIKÓ ÁGNES"],
       "dk": ["SIMON ANITA ÉVA"],
@@ -521,14 +521,14 @@
     "valasztopolgar": 63227,
     "partok": {
       "tisza": 24958,
-      "fidesz_kdnp": 20257,
+      "fidesz": 20257,
       "mi_hazank": 2952,
       "dk": 754,
       "fuggetlen_koszegi_mihaly": 377
     },
     "jeloltek": {
       "tisza": ["JUDÁK ZSOLT"],
-      "fidesz_kdnp": ["FONT SÁNDOR"],
+      "fidesz": ["FONT SÁNDOR"],
       "mi_hazank": ["SZABÓ PATRIK"],
       "dk": ["KÓKAI KATALIN"],
       "fuggetlen_koszegi_mihaly": ["KŐSZEGI MIHÁLY"]
@@ -542,7 +542,7 @@
     "valasztopolgar": 70065,
     "partok": {
       "tisza": 27197,
-      "fidesz_kdnp": 22100,
+      "fidesz": 22100,
       "mi_hazank": 3639,
       "dk": 340,
       "fuggetlen_nagy_imre": 282,
@@ -550,7 +550,7 @@
     },
     "jeloltek": {
       "tisza": ["KOVÁCS GYULA"],
-      "fidesz_kdnp": ["LEZSÁK SÁNDOR"],
+      "fidesz": ["LEZSÁK SÁNDOR"],
       "mi_hazank": ["ENDRE BÉLA"],
       "dk": ["SARKADI PÁL"],
       "fuggetlen_nagy_imre": ["NAGY IMRE"],
@@ -565,7 +565,7 @@
     "valasztopolgar": 65594,
     "partok": {
       "tisza": 24026,
-      "fidesz_kdnp": 19208,
+      "fidesz": 19208,
       "mi_hazank": 4058,
       "dk": 590,
       "fuggetlen_nemeth_szilveszter": 162,
@@ -573,7 +573,7 @@
     },
     "jeloltek": {
       "tisza": ["KARSAI-JUHÁSZ KATALIN"],
-      "fidesz_kdnp": ["BÁNYAI GÁBOR"],
+      "fidesz": ["BÁNYAI GÁBOR"],
       "mi_hazank": ["SZABADI ISTVÁN"],
       "dk": ["NAGY SZABOLCS"],
       "fuggetlen_nemeth_szilveszter": ["NÉMETH SZILVESZTER"],
@@ -588,14 +588,14 @@
     "valasztopolgar": 62134,
     "partok": {
       "tisza": 24905,
-      "fidesz_kdnp": 18396,
+      "fidesz": 18396,
       "mi_hazank": 3088,
       "dk": 399,
       "a_szolidaritas_partja_munkaspart": 68
     },
     "jeloltek": {
       "tisza": ["CSONTOS BENCE"],
-      "fidesz_kdnp": ["ZSIGÓ RÓBERT"],
+      "fidesz": ["ZSIGÓ RÓBERT"],
       "mi_hazank": ["ÉBERLING BALÁZS"],
       "dk": ["SZÉKELY DÁNIEL"],
       "a_szolidaritas_partja_munkaspart": ["NAGY GUSZTÁV"]
@@ -609,14 +609,14 @@
     "valasztopolgar": 66019,
     "partok": {
       "tisza": 30631,
-      "fidesz_kdnp": 18322,
+      "fidesz": 18322,
       "mi_hazank": 3364,
       "dk": 635,
       "mkkp": 372
     },
     "jeloltek": {
       "tisza": ["BODÓCZI ISTVÁN"],
-      "fidesz_kdnp": ["TAKÁCS ÁRPÁD"],
+      "fidesz": ["TAKÁCS ÁRPÁD"],
       "mi_hazank": ["GYEBNÁR DÁVID"],
       "dk": ["FÜLÖP ZOLTÁN"],
       "mkkp": ["BAGI REA"]
@@ -630,7 +630,7 @@
     "valasztopolgar": 66392,
     "partok": {
       "tisza": 25975,
-      "fidesz_kdnp": 20183,
+      "fidesz": 20183,
       "mi_hazank": 3464,
       "dk": 459,
       "mkkp": 285,
@@ -639,7 +639,7 @@
     },
     "jeloltek": {
       "tisza": ["GOMBÁR DÁVID"],
-      "fidesz_kdnp": ["DANKÓ BÉLA"],
+      "fidesz": ["DANKÓ BÉLA"],
       "mi_hazank": ["FÖLDESI MIHÁLY"],
       "dk": ["GERGELY RÓBERT"],
       "mkkp": ["CSIKÓS BOTOND"],
@@ -655,7 +655,7 @@
     "valasztopolgar": 65263,
     "partok": {
       "tisza": 26014,
-      "fidesz_kdnp": 20507,
+      "fidesz": 20507,
       "mi_hazank": 2585,
       "dk": 371,
       "mkkp": 307,
@@ -663,7 +663,7 @@
     },
     "jeloltek": {
       "tisza": ["RÁKI ZSOLT"],
-      "fidesz_kdnp": ["KÓNYA ISTVÁN"],
+      "fidesz": ["KÓNYA ISTVÁN"],
       "mi_hazank": ["VIDÓ ATTILA"],
       "dk": ["MOLNÁR GÁBOR"],
       "mkkp": ["MAGYAR GÁBOR"],
@@ -678,7 +678,7 @@
     "valasztopolgar": 68154,
     "partok": {
       "tisza": 27499,
-      "fidesz_kdnp": 17677,
+      "fidesz": 17677,
       "mi_hazank": 3032,
       "fuggetlen_simonka_gyorgy": 1318,
       "dk": 464,
@@ -687,7 +687,7 @@
     },
     "jeloltek": {
       "tisza": ["GURZÓ MÁRIA"],
-      "fidesz_kdnp": ["ERDŐS NORBERT"],
+      "fidesz": ["ERDŐS NORBERT"],
       "mi_hazank": ["SCHULTZ GÁBOR"],
       "fuggetlen_simonka_gyorgy": ["SIMONKA GYÖRGY"],
       "dk": ["VESELICZ TIBORNÉ"],
@@ -703,7 +703,7 @@
     "valasztopolgar": 69135,
     "partok": {
       "tisza": 32545,
-      "fidesz_kdnp": 16921,
+      "fidesz": 16921,
       "mi_hazank": 2900,
       "dk": 1083,
       "mkkp": 322,
@@ -713,7 +713,7 @@
     },
     "jeloltek": {
       "tisza": ["JUHÁSZ ROLAND"],
-      "fidesz_kdnp": ["CSÖBÖR KATALIN"],
+      "fidesz": ["CSÖBÖR KATALIN"],
       "mi_hazank": ["MIKLÓS ÁRPÁD FERENC"],
       "dk": ["JAKAB PÉTER"],
       "mkkp": ["SZOLNOKI GÁBOR"],
@@ -730,7 +730,7 @@
     "valasztopolgar": 68266,
     "partok": {
       "tisza": 31416,
-      "fidesz_kdnp": 16260,
+      "fidesz": 16260,
       "mi_hazank": 3173,
       "dk": 498,
       "fuggetlen_dohany_andras": 305,
@@ -740,7 +740,7 @@
     },
     "jeloltek": {
       "tisza": ["CZIPA ANDRÁS"],
-      "fidesz_kdnp": ["HOLLÓSY ANDRÁS"],
+      "fidesz": ["HOLLÓSY ANDRÁS"],
       "mi_hazank": ["PAKUSZA ZOLTÁN"],
       "dk": ["MOKRAI MIHÁLY"],
       "fuggetlen_dohany_andras": ["DOHÁNY ANDRÁS"],
@@ -756,7 +756,7 @@
     "telepules": "Ózd",
     "valasztopolgar": 67593,
     "partok": {
-      "fidesz_kdnp": 20983,
+      "fidesz": 20983,
       "tisza": 20399,
       "mi_hazank": 2529,
       "jobbik": 341,
@@ -768,7 +768,7 @@
       "fuggetlen_harkaly_csaba": 0
     },
     "jeloltek": {
-      "fidesz_kdnp": ["CSUZDA GÁBOR"],
+      "fidesz": ["CSUZDA GÁBOR"],
       "tisza": ["NÉMETH CSILLA"],
       "mi_hazank": ["VARGA BALÁZS"],
       "jobbik": ["VILCSEK ERNŐ"],
@@ -788,14 +788,14 @@
     "valasztopolgar": 71309,
     "partok": {
       "tisza": 27645,
-      "fidesz_kdnp": 19506,
+      "fidesz": 19506,
       "mi_hazank": 3464,
       "dk": 522,
       "a_szolidaritas_partja_munkaspart": 107
     },
     "jeloltek": {
       "tisza": ["HATALA-OROSZ CSABA"],
-      "fidesz_kdnp": ["DEMETER ZOLTÁN"],
+      "fidesz": ["DEMETER ZOLTÁN"],
       "mi_hazank": ["FISZTER ZSUZSANNA"],
       "dk": ["VARGA GERGŐ"],
       "a_szolidaritas_partja_munkaspart": ["PAP FERENC"]
@@ -809,7 +809,7 @@
     "valasztopolgar": 70017,
     "partok": {
       "tisza": 25284,
-      "fidesz_kdnp": 21912,
+      "fidesz": 21912,
       "mi_hazank": 2284,
       "dk": 327,
       "mkkp": 198,
@@ -821,7 +821,7 @@
     },
     "jeloltek": {
       "tisza": ["LONTAY LÁSZLÓ"],
-      "fidesz_kdnp": ["BÁNNÉ DR. GÁL BOGLÁRKA"],
+      "fidesz": ["BÁNNÉ DR. GÁL BOGLÁRKA"],
       "mi_hazank": ["PASZTORNICZKY ISTVÁN"],
       "dk": ["HAUSEL IMRE"],
       "mkkp": ["MOLNÁR SÁMUEL LÁSZLÓ"],
@@ -840,7 +840,7 @@
     "valasztopolgar": 73582,
     "partok": {
       "tisza": 28528,
-      "fidesz_kdnp": 24086,
+      "fidesz": 24086,
       "mi_hazank": 2563,
       "dk": 378,
       "jobbik": 115,
@@ -848,7 +848,7 @@
     },
     "jeloltek": {
       "tisza": ["BIHARI ZOLTÁN"],
-      "fidesz_kdnp": ["KONCZ ZSÓFIA"],
+      "fidesz": ["KONCZ ZSÓFIA"],
       "mi_hazank": ["NYITRAI ATTILA"],
       "dk": ["WIEDERMANN ATTILA"],
       "jobbik": ["SZLOBODNIK LÁSZLÓ"],
@@ -863,7 +863,7 @@
     "valasztopolgar": 74213,
     "partok": {
       "tisza": 29812,
-      "fidesz_kdnp": 22217,
+      "fidesz": 22217,
       "mi_hazank": 3302,
       "dk": 357,
       "mkkp": 309,
@@ -872,7 +872,7 @@
     },
     "jeloltek": {
       "tisza": ["CSÉZI ERZSÉBET"],
-      "fidesz_kdnp": ["TÁLLAI ANDRÁS"],
+      "fidesz": ["TÁLLAI ANDRÁS"],
       "mi_hazank": ["SZAJLAI JÁNOS"],
       "dk": ["SERMER ÁDÁM"],
       "mkkp": ["KOVÁTS GÁBOR"],
@@ -888,7 +888,7 @@
     "valasztopolgar": 81952,
     "partok": {
       "tisza": 44478,
-      "fidesz_kdnp": 16030,
+      "fidesz": 16030,
       "mi_hazank": 3549,
       "dk": 758,
       "mkkp": 739,
@@ -896,7 +896,7 @@
     },
     "jeloltek": {
       "tisza": ["STUMPF PÉTER"],
-      "fidesz_kdnp": ["FARKAS LEVENTE"],
+      "fidesz": ["FARKAS LEVENTE"],
       "mi_hazank": ["TIMÁR TAMÁS"],
       "dk": ["NAGY BÉLA"],
       "mkkp": ["JUHÁSZ MÁTÉ"],
@@ -911,14 +911,14 @@
     "valasztopolgar": 80113,
     "partok": {
       "tisza": 36012,
-      "fidesz_kdnp": 20169,
+      "fidesz": 20169,
       "mi_hazank": 6231,
       "mkkp": 624,
       "dk": 549
     },
     "jeloltek": {
       "tisza": ["GAJDA ATTILA"],
-      "fidesz_kdnp": ["MIHÁLFFY BÉLA"],
+      "fidesz": ["MIHÁLFFY BÉLA"],
       "mi_hazank": ["TOROCZKAI LÁSZLÓ"],
       "mkkp": ["SIPOS IVETT"],
       "dk": ["ÓHIDY ISTVÁN"]
@@ -932,7 +932,7 @@
     "valasztopolgar": 77761,
     "partok": {
       "tisza": 30970,
-      "fidesz_kdnp": 20812,
+      "fidesz": 20812,
       "mi_hazank": 5492,
       "dk": 3032,
       "mkkp": 454,
@@ -940,7 +940,7 @@
     },
     "jeloltek": {
       "tisza": ["BÁRKÁNYI BENCE"],
-      "fidesz_kdnp": ["SZABÓ ISTVÁN"],
+      "fidesz": ["SZABÓ ISTVÁN"],
       "mi_hazank": ["LACZKÓ ZSOLT"],
       "dk": ["VARGA FERENC"],
       "mkkp": ["SZÉLPÁL SZILÁRD"],
@@ -955,7 +955,7 @@
     "valasztopolgar": 76377,
     "partok": {
       "tisza": 35419,
-      "fidesz_kdnp": 20188,
+      "fidesz": 20188,
       "mi_hazank": 3658,
       "dk": 641,
       "mkkp": 425,
@@ -965,7 +965,7 @@
     },
     "jeloltek": {
       "tisza": ["FERENCZI GÁBOR"],
-      "fidesz_kdnp": ["CZIRBUS GÁBOR"],
+      "fidesz": ["CZIRBUS GÁBOR"],
       "mi_hazank": ["VERES CSABA"],
       "dk": ["MUCSI TAMÁS"],
       "mkkp": ["PÁL ANNA VIKTÓRIA"],
@@ -982,7 +982,7 @@
     "valasztopolgar": 69963,
     "partok": {
       "tisza": 32654,
-      "fidesz_kdnp": 21032,
+      "fidesz": 21032,
       "mi_hazank": 3157,
       "dk": 876,
       "mkkp": 709,
@@ -991,7 +991,7 @@
     },
     "jeloltek": {
       "tisza": ["CSISZÁR BÉLA"],
-      "fidesz_kdnp": ["VARGHA TAMÁS"],
+      "fidesz": ["VARGHA TAMÁS"],
       "mi_hazank": ["VÉGH ANNAMÁRIA"],
       "dk": ["FÖLDI JUDIT"],
       "mkkp": ["PÁSZTOR ESZTER"],
@@ -1007,7 +1007,7 @@
     "valasztopolgar": 66228,
     "partok": {
       "tisza": 29534,
-      "fidesz_kdnp": 20033,
+      "fidesz": 20033,
       "mi_hazank": 3644,
       "mkkp": 544,
       "dk": 533,
@@ -1017,7 +1017,7 @@
     },
     "jeloltek": {
       "tisza": ["BORICS MIHÁLY"],
-      "fidesz_kdnp": ["TÖRŐ GÁBOR"],
+      "fidesz": ["TÖRŐ GÁBOR"],
       "mi_hazank": ["SCHMIDT ROLAND"],
       "mkkp": ["BOKÁNYI BERTOLD"],
       "dk": ["STRASSZER JÓZSEF"],
@@ -1034,7 +1034,7 @@
     "valasztopolgar": 69239,
     "partok": {
       "tisza": 31342,
-      "fidesz_kdnp": 22225,
+      "fidesz": 22225,
       "mi_hazank": 2995,
       "mkkp": 610,
       "dk": 523,
@@ -1042,7 +1042,7 @@
     },
     "jeloltek": {
       "tisza": ["BÖGI VIKTÓRIA"],
-      "fidesz_kdnp": ["TESSELY ZOLTÁN"],
+      "fidesz": ["TESSELY ZOLTÁN"],
       "mi_hazank": ["SOM TAMÁS"],
       "mkkp": ["PASZICSNYEK JÁNOS"],
       "dk": ["KERTÉSZ ÉVA"],
@@ -1057,7 +1057,7 @@
     "valasztopolgar": 66729,
     "partok": {
       "tisza": 31758,
-      "fidesz_kdnp": 17199,
+      "fidesz": 17199,
       "mi_hazank": 2927,
       "mkkp": 423,
       "fuggetlen_jelinek_demien": 131,
@@ -1067,7 +1067,7 @@
     },
     "jeloltek": {
       "tisza": ["NAGY ERVIN"],
-      "fidesz_kdnp": ["MÉSZÁROS LAJOS"],
+      "fidesz": ["MÉSZÁROS LAJOS"],
       "mi_hazank": ["ADAMASKY LŐRINC"],
       "mkkp": ["BERÉNYI GÁBOR"],
       "fuggetlen_jelinek_demien": ["JELINEK DEMIEN"],
@@ -1083,14 +1083,14 @@
     "telepules": "Sárbogárd",
     "valasztopolgar": 65460,
     "partok": {
-      "fidesz_kdnp": 23008,
+      "fidesz": 23008,
       "tisza": 21981,
       "mi_hazank": 3426,
       "dk": 418,
       "mkkp": 340
     },
     "jeloltek": {
-      "fidesz_kdnp": ["VARGA GÁBOR"],
+      "fidesz": ["VARGA GÁBOR"],
       "tisza": ["NAGY RICHÁRD"],
       "mi_hazank": ["GIEBER LAJOS"],
       "dk": ["MEZEI ZSOLT"],
@@ -1105,7 +1105,7 @@
     "valasztopolgar": 65652,
     "partok": {
       "tisza": 32318,
-      "fidesz_kdnp": 17568,
+      "fidesz": 17568,
       "mi_hazank": 2748,
       "dk": 546,
       "mkkp": 437,
@@ -1113,7 +1113,7 @@
     },
     "jeloltek": {
       "tisza": ["DIÓSZEGI JUDIT"],
-      "fidesz_kdnp": ["SZELES SZABOLCS"],
+      "fidesz": ["SZELES SZABOLCS"],
       "mi_hazank": ["KORÓDI ISTVÁN"],
       "dk": ["KOMÁROMSZKY ATTILA"],
       "mkkp": ["GONDA ESZTER"],
@@ -1128,7 +1128,7 @@
     "valasztopolgar": 73257,
     "partok": {
       "tisza": 33263,
-      "fidesz_kdnp": 22419,
+      "fidesz": 22419,
       "mi_hazank": 3788,
       "dk": 586,
       "mkkp": 443,
@@ -1136,7 +1136,7 @@
     },
     "jeloltek": {
       "tisza": ["NÉHER ANDRÁS"],
-      "fidesz_kdnp": ["FEKETE DÁVID"],
+      "fidesz": ["FEKETE DÁVID"],
       "mi_hazank": ["PÓCS MIKLÓS"],
       "dk": ["ORBÁN ADRIEN"],
       "mkkp": ["BODÁCS KÁROLY"],
@@ -1150,7 +1150,7 @@
     "telepules": "Csorna",
     "valasztopolgar": 66633,
     "partok": {
-      "fidesz_kdnp": 26151,
+      "fidesz": 26151,
       "tisza": 25509,
       "mi_hazank": 2934,
       "dk": 269,
@@ -1159,7 +1159,7 @@
       "a_szolidaritas_partja_munkaspart": 31
     },
     "jeloltek": {
-      "fidesz_kdnp": ["GYOPÁROS ALPÁR"],
+      "fidesz": ["GYOPÁROS ALPÁR"],
       "tisza": ["BÓNA SZABOLCS"],
       "mi_hazank": ["SZILÁGYI JÓZSEF"],
       "dk": ["SZABÓ ZOLTÁN"],
@@ -1176,7 +1176,7 @@
     "valasztopolgar": 75117,
     "partok": {
       "tisza": 33152,
-      "fidesz_kdnp": 25467,
+      "fidesz": 25467,
       "mi_hazank": 3660,
       "dk": 707,
       "fuggetlen_gerencser_norbert": 448,
@@ -1185,7 +1185,7 @@
     },
     "jeloltek": {
       "tisza": ["HALLERNÉ DR. NAGY ANIKÓ"],
-      "fidesz_kdnp": ["BARCZA ATTILA"],
+      "fidesz": ["BARCZA ATTILA"],
       "mi_hazank": ["PISÁK ISTVÁN"],
       "dk": ["SIMON ZOLTÁN"],
       "fuggetlen_gerencser_norbert": ["GERENCSÉR NORBERT"],
@@ -1201,14 +1201,14 @@
     "valasztopolgar": 78547,
     "partok": {
       "tisza": 34231,
-      "fidesz_kdnp": 26435,
+      "fidesz": 26435,
       "mi_hazank": 3316,
       "mkkp": 470,
       "dk": 433
     },
     "jeloltek": {
       "tisza": ["PORPÁCZY KRISZTINA"],
-      "fidesz_kdnp": ["NAGY ISTVÁN"],
+      "fidesz": ["NAGY ISTVÁN"],
       "mi_hazank": ["CSOMA KRISZTIÁN"],
       "mkkp": ["ZELENKA JÁNOS"],
       "dk": ["NYITRAI-CSABAY LIZA CSILLA"]
@@ -1222,7 +1222,7 @@
     "valasztopolgar": 65177,
     "partok": {
       "tisza": 31991,
-      "fidesz_kdnp": 17839,
+      "fidesz": 17839,
       "mi_hazank": 2825,
       "dk": 533,
       "mkkp": 450,
@@ -1231,7 +1231,7 @@
     },
     "jeloltek": {
       "tisza": ["TÁRKÁNYI ZSOLT"],
-      "fidesz_kdnp": ["BARCSA LAJOS"],
+      "fidesz": ["BARCSA LAJOS"],
       "mi_hazank": ["SALÁNKINÉ KUTI ZSUZSANNA"],
       "dk": ["VARGA ZOLTÁN"],
       "mkkp": ["SASI-SZABÓ TAMÁS"],
@@ -1247,7 +1247,7 @@
     "valasztopolgar": 69491,
     "partok": {
       "tisza": 32046,
-      "fidesz_kdnp": 19276,
+      "fidesz": 19276,
       "mi_hazank": 2672,
       "dk": 472,
       "mkkp": 427,
@@ -1256,7 +1256,7 @@
     },
     "jeloltek": {
       "tisza": ["TOMPA ENIKŐ"],
-      "fidesz_kdnp": ["SZÉLES DIÁNA"],
+      "fidesz": ["SZÉLES DIÁNA"],
       "mi_hazank": ["VÖRÖS JÁNOS"],
       "dk": ["VASZKÓ IMRE"],
       "mkkp": ["RADECZKI CSONGOR"],
@@ -1272,7 +1272,7 @@
     "valasztopolgar": 77974,
     "partok": {
       "tisza": 29552,
-      "fidesz_kdnp": 24838,
+      "fidesz": 24838,
       "mi_hazank": 2920,
       "dk": 343,
       "mkkp": 293,
@@ -1280,7 +1280,7 @@
     },
     "jeloltek": {
       "tisza": ["CSÁK LÁSZLÓ"],
-      "fidesz_kdnp": ["ANTAL SZABOLCS"],
+      "fidesz": ["ANTAL SZABOLCS"],
       "mi_hazank": ["HUNYADI MÁTÉ"],
       "dk": ["SZÖRÉNYI KÁROLY"],
       "mkkp": ["RINGWALD PANKA"],
@@ -1294,7 +1294,7 @@
     "telepules": "Berettyóújfalu",
     "valasztopolgar": 67072,
     "partok": {
-      "fidesz_kdnp": 23029,
+      "fidesz": 23029,
       "tisza": 21800,
       "mi_hazank": 2723,
       "dk": 305,
@@ -1302,7 +1302,7 @@
       "a_szolidaritas_partja_munkaspart": 60
     },
     "jeloltek": {
-      "fidesz_kdnp": ["VITÁNYI ISTVÁN"],
+      "fidesz": ["VITÁNYI ISTVÁN"],
       "tisza": ["KOVÁCS PETRA JUDIT"],
       "mi_hazank": ["REHÁKNÉ MENYHÁRT GABRIELLA"],
       "dk": ["TONZOR PÉTER"],
@@ -1318,14 +1318,14 @@
     "valasztopolgar": 68301,
     "partok": {
       "tisza": 25752,
-      "fidesz_kdnp": 22281,
+      "fidesz": 22281,
       "mi_hazank": 3034,
       "dk": 335,
       "kozeppart": 103
     },
     "jeloltek": {
       "tisza": ["RUSZIN-SZENDI ROMULUSZ"],
-      "fidesz_kdnp": ["BODÓ SÁNDOR"],
+      "fidesz": ["BODÓ SÁNDOR"],
       "mi_hazank": ["SASS BULCSÚ"],
       "dk": ["CSEFKÓ BALÁZS"],
       "kozeppart": ["HORVÁT IMRÉNÉ"]
@@ -1339,13 +1339,13 @@
     "valasztopolgar": 68093,
     "partok": {
       "tisza": 26938,
-      "fidesz_kdnp": 19891,
+      "fidesz": 19891,
       "mi_hazank": 3984,
       "dk": 756
     },
     "jeloltek": {
       "tisza": ["GÖRÖGHNÉ BOCSKAI ÉVA"],
-      "fidesz_kdnp": ["PAPP ZSOLT"],
+      "fidesz": ["PAPP ZSOLT"],
       "mi_hazank": ["NAGY ZOLTÁN"],
       "dk": ["CSIGE TAMÁS"]
     }
@@ -1358,7 +1358,7 @@
     "valasztopolgar": 79000,
     "partok": {
       "tisza": 35073,
-      "fidesz_kdnp": 23111,
+      "fidesz": 23111,
       "mi_hazank": 3428,
       "fuggetlen_mirkoczki_adam": 505,
       "dk": 435,
@@ -1367,7 +1367,7 @@
     },
     "jeloltek": {
       "tisza": ["BÓDIS PÉTER"],
-      "fidesz_kdnp": ["PAJTÓK GÁBOR"],
+      "fidesz": ["PAJTÓK GÁBOR"],
       "mi_hazank": ["PÁPAI ÁKOS"],
       "fuggetlen_mirkoczki_adam": ["MIRKÓCZKI ÁDÁM"],
       "dk": ["BALLA PÉTER"],
@@ -1383,7 +1383,7 @@
     "valasztopolgar": 74007,
     "partok": {
       "tisza": 29694,
-      "fidesz_kdnp": 22789,
+      "fidesz": 22789,
       "mi_hazank": 3480,
       "dk": 587,
       "jobbik": 468,
@@ -1392,7 +1392,7 @@
     },
     "jeloltek": {
       "tisza": ["KISS JÁNOS"],
-      "fidesz_kdnp": ["HORVÁTH LÁSZLÓ"],
+      "fidesz": ["HORVÁTH LÁSZLÓ"],
       "mi_hazank": ["SERES-POLYÁK KATALIN"],
       "dk": ["VARGA JÁNOS"],
       "jobbik": ["DUDÁS RÓBERT"],
@@ -1408,7 +1408,7 @@
     "valasztopolgar": 78352,
     "partok": {
       "tisza": 30687,
-      "fidesz_kdnp": 24105,
+      "fidesz": 24105,
       "mi_hazank": 4861,
       "dk": 431,
       "a_szolidaritas_partja_munkaspart": 104,
@@ -1416,7 +1416,7 @@
     },
     "jeloltek": {
       "tisza": ["JUHÁSZ ÁRON"],
-      "fidesz_kdnp": ["SZABÓ ZSOLT"],
+      "fidesz": ["SZABÓ ZSOLT"],
       "mi_hazank": ["GREGUS RENÁTA"],
       "dk": ["NAGY TIBOR BALÁZS"],
       "a_szolidaritas_partja_munkaspart": ["NAGY ATTILA TIBOR"],
@@ -1431,7 +1431,7 @@
     "valasztopolgar": 74779,
     "partok": {
       "tisza": 35110,
-      "fidesz_kdnp": 19362,
+      "fidesz": 19362,
       "mi_hazank": 3979,
       "dk": 699,
       "mkkp": 437,
@@ -1439,7 +1439,7 @@
     },
     "jeloltek": {
       "tisza": ["ROST ANDREA"],
-      "fidesz_kdnp": ["BERKÓ ATTILA"],
+      "fidesz": ["BERKÓ ATTILA"],
       "mi_hazank": ["KAPÁS ROLAND"],
       "dk": ["MÉSZÁROS DÁVID"],
       "mkkp": ["VICZÁN PÉTER"],
@@ -1454,7 +1454,7 @@
     "valasztopolgar": 69530,
     "partok": {
       "tisza": 27076,
-      "fidesz_kdnp": 21754,
+      "fidesz": 21754,
       "mi_hazank": 3144,
       "fuggetlen_pinter_ferenc": 449,
       "dk": 320,
@@ -1462,7 +1462,7 @@
     },
     "jeloltek": {
       "tisza": ["HALMAI FERENC TIBOR"],
-      "fidesz_kdnp": ["PÓCS JÁNOS"],
+      "fidesz": ["PÓCS JÁNOS"],
       "mi_hazank": ["KASSAB ADONIS"],
       "fuggetlen_pinter_ferenc": ["PINTÉR FERENC"],
       "dk": ["URBÁN IMRE"],
@@ -1476,7 +1476,7 @@
     "telepules": "Karcag",
     "valasztopolgar": 72187,
     "partok": {
-      "fidesz_kdnp": 24638,
+      "fidesz": 24638,
       "tisza": 24362,
       "mi_hazank": 2828,
       "dk": 373,
@@ -1486,7 +1486,7 @@
       "fuggetlen_turo_jeno": 26
     },
     "jeloltek": {
-      "fidesz_kdnp": ["F. KOVÁCS SÁNDOR"],
+      "fidesz": ["F. KOVÁCS SÁNDOR"],
       "tisza": ["KOVÁCS HUNOR KRISZTIÁN"],
       "mi_hazank": ["SOMLAY RÓBERT"],
       "dk": ["PARDI-OLÁH ROBERTA"],
@@ -1504,7 +1504,7 @@
     "valasztopolgar": 71419,
     "partok": {
       "tisza": 28857,
-      "fidesz_kdnp": 19879,
+      "fidesz": 19879,
       "mi_hazank": 3764,
       "dk": 392,
       "jobbik": 314,
@@ -1512,7 +1512,7 @@
     },
     "jeloltek": {
       "tisza": ["FARKAS CSONGOR"],
-      "fidesz_kdnp": ["HERCZEG ZSOLT"],
+      "fidesz": ["HERCZEG ZSOLT"],
       "mi_hazank": ["SZABÓ BETTINA"],
       "dk": ["SZEGEDI JÁNOS ATTILA"],
       "jobbik": ["RÉVI ATTILA"],
@@ -1527,14 +1527,14 @@
     "valasztopolgar": 77401,
     "partok": {
       "tisza": 36785,
-      "fidesz_kdnp": 20778,
+      "fidesz": 20778,
       "mi_hazank": 2581,
       "dk": 857,
       "mkkp": 510
     },
     "jeloltek": {
       "tisza": ["SOPOV ILDIKÓ ÉVA"],
-      "fidesz_kdnp": ["BENCSIK JÁNOS"],
+      "fidesz": ["BENCSIK JÁNOS"],
       "mi_hazank": ["BODA BÁNK"],
       "dk": ["VADAI ÁGNES"],
       "mkkp": ["LADÁNYI LUCA"]
@@ -1548,14 +1548,14 @@
     "valasztopolgar": 80817,
     "partok": {
       "tisza": 36344,
-      "fidesz_kdnp": 23133,
+      "fidesz": 23133,
       "mi_hazank": 3475,
       "dk": 559,
       "mkkp": 414
     },
     "jeloltek": {
       "tisza": ["RADNAI MÁRK"],
-      "fidesz_kdnp": ["ERŐS GÁBOR"],
+      "fidesz": ["ERŐS GÁBOR"],
       "mi_hazank": ["LANTOS JÁNOS"],
       "dk": ["FIZEL JÓZSEF"],
       "mkkp": ["FÁBIÁN ÁRON BENDE"]
@@ -1569,14 +1569,14 @@
     "valasztopolgar": 81088,
     "partok": {
       "tisza": 34000,
-      "fidesz_kdnp": 25061,
+      "fidesz": 25061,
       "mi_hazank": 4050,
       "dk": 539,
       "mkkp": 467
     },
     "jeloltek": {
       "tisza": ["ÁRVAY NIKOLETT"],
-      "fidesz_kdnp": ["CZUNYINÉ DR. BERTALAN JUDIT"],
+      "fidesz": ["CZUNYINÉ DR. BERTALAN JUDIT"],
       "mi_hazank": ["ÁBRAHÁM BARNABÁS"],
       "dk": ["SALKOVICS RÓBERT"],
       "mkkp": ["KÁTAI ALIZ"]
@@ -1590,14 +1590,14 @@
     "valasztopolgar": 71832,
     "partok": {
       "tisza": 28081,
-      "fidesz_kdnp": 21219,
+      "fidesz": 21219,
       "mi_hazank": 4176,
       "a_szolidaritas_partja_munkaspart": 346,
       "mkkp": 0
     },
     "jeloltek": {
       "tisza": ["SZAFKÓ ZOLTÁN PÉTER"],
-      "fidesz_kdnp": ["BECSÓ ZSOLT"],
+      "fidesz": ["BECSÓ ZSOLT"],
       "mi_hazank": ["BAJNOK GYULA"],
       "a_szolidaritas_partja_munkaspart": ["KRIZS NORBERT"],
       "mkkp": ["CZVANCZIG LÁSZLÓ"]
@@ -1610,7 +1610,7 @@
     "telepules": "Balassagyarmat",
     "valasztopolgar": 77051,
     "partok": {
-      "fidesz_kdnp": 26418,
+      "fidesz": 26418,
       "tisza": 26207,
       "mi_hazank": 5852,
       "dk": 451,
@@ -1618,7 +1618,7 @@
       "a_szolidaritas_partja_munkaspart": 162
     },
     "jeloltek": {
-      "fidesz_kdnp": ["BALLA MIHÁLY"],
+      "fidesz": ["BALLA MIHÁLY"],
       "tisza": ["MOLNÁR ZOLTÁN"],
       "mi_hazank": ["DÓCS DÁVID"],
       "dk": ["GULYÁS NORBERT"],
@@ -1634,14 +1634,14 @@
     "valasztopolgar": 79671,
     "partok": {
       "tisza": 40100,
-      "fidesz_kdnp": 21518,
+      "fidesz": 21518,
       "mi_hazank": 3606,
       "dk": 815,
       "mkkp": 672
     },
     "jeloltek": {
       "tisza": ["JELENCSIK JÓZSEF"],
-      "fidesz_kdnp": ["KARDOSNÉ GYURKÓ KATALIN"],
+      "fidesz": ["KARDOSNÉ GYURKÓ KATALIN"],
       "mi_hazank": ["SZALAI TIMEA"],
       "dk": ["GYEKICZKI MÁRTON"],
       "mkkp": ["BOROS DÁNIEL"]
@@ -1655,14 +1655,14 @@
     "valasztopolgar": 77871,
     "partok": {
       "tisza": 42204,
-      "fidesz_kdnp": 20206,
+      "fidesz": 20206,
       "mi_hazank": 3350,
       "dk": 738,
       "mkkp": 683
     },
     "jeloltek": {
       "tisza": ["PÓSFAI GÁBOR"],
-      "fidesz_kdnp": ["CZUCZOR GERGELY"],
+      "fidesz": ["CZUCZOR GERGELY"],
       "mi_hazank": ["GYÖRGY JÓZSEF"],
       "dk": ["KELLER LÁSZLÓ"],
       "mkkp": ["DANKA DÁVID"]
@@ -1676,7 +1676,7 @@
     "valasztopolgar": 81963,
     "partok": {
       "tisza": 40789,
-      "fidesz_kdnp": 23798,
+      "fidesz": 23798,
       "mi_hazank": 4110,
       "mkkp": 715,
       "dk": 483,
@@ -1685,7 +1685,7 @@
     },
     "jeloltek": {
       "tisza": ["BUJDOSÓ ANDREA ANNA"],
-      "fidesz_kdnp": ["MENCZER TAMÁS"],
+      "fidesz": ["MENCZER TAMÁS"],
       "mi_hazank": ["BORVENDÉG ZSUZSANNA"],
       "mkkp": ["FODOR BETTINA"],
       "dk": ["VASVÁRI PÉTER LAJOS"],
@@ -1701,7 +1701,7 @@
     "valasztopolgar": 76341,
     "partok": {
       "tisza": 35920,
-      "fidesz_kdnp": 23234,
+      "fidesz": 23234,
       "mi_hazank": 3930,
       "dk": 801,
       "mkkp": 625,
@@ -1709,7 +1709,7 @@
     },
     "jeloltek": {
       "tisza": ["TÓTHMAJOR BALÁZS"],
-      "fidesz_kdnp": ["VITÁLYOS ESZTER"],
+      "fidesz": ["VITÁLYOS ESZTER"],
       "mi_hazank": ["PÁL BÉLA"],
       "dk": ["KÁLMÁN OLGA"],
       "mkkp": ["LACZKÓ KORNÉL"],
@@ -1724,7 +1724,7 @@
     "valasztopolgar": 75965,
     "partok": {
       "tisza": 40500,
-      "fidesz_kdnp": 19988,
+      "fidesz": 19988,
       "mi_hazank": 3192,
       "dk": 768,
       "mkkp": 664,
@@ -1733,7 +1733,7 @@
     },
     "jeloltek": {
       "tisza": ["MISKOLCZI ORSOLYA"],
-      "fidesz_kdnp": ["TUZSON BENCE"],
+      "fidesz": ["TUZSON BENCE"],
       "mi_hazank": ["BOGNÁR LÁSZLÓ"],
       "dk": ["RÓNAI SÁNDOR"],
       "mkkp": ["ÁDÁM EMESE"],
@@ -1749,14 +1749,14 @@
     "valasztopolgar": 76890,
     "partok": {
       "tisza": 39981,
-      "fidesz_kdnp": 21632,
+      "fidesz": 21632,
       "mi_hazank": 3369,
       "dk": 542,
       "mkkp": 504
     },
     "jeloltek": {
       "tisza": ["LÁSZLÓ ENDRE MÁRTON"],
-      "fidesz_kdnp": ["HANKÓ BALÁZS"],
+      "fidesz": ["HANKÓ BALÁZS"],
       "mi_hazank": ["REGŐS BALÁZS"],
       "dk": ["KARSAI ZSUZSÁNNA"],
       "mkkp": ["BOLBÁS ILDIKÓ"]
@@ -1770,14 +1770,14 @@
     "valasztopolgar": 76365,
     "partok": {
       "tisza": 32478,
-      "fidesz_kdnp": 23779,
+      "fidesz": 23779,
       "mi_hazank": 3914,
       "dk": 715,
       "mkkp": 562
     },
     "jeloltek": {
       "tisza": ["TROMPLER ILDIKÓ"],
-      "fidesz_kdnp": ["KATUS NORBERT"],
+      "fidesz": ["KATUS NORBERT"],
       "mi_hazank": ["OROSZ PATRIK"],
       "dk": ["NEMES GÁBOR"],
       "mkkp": ["HANKÓ KLÁRA"]
@@ -1791,7 +1791,7 @@
     "valasztopolgar": 70426,
     "partok": {
       "tisza": 33852,
-      "fidesz_kdnp": 18897,
+      "fidesz": 18897,
       "mi_hazank": 3545,
       "dk": 518,
       "mkkp": 506,
@@ -1800,7 +1800,7 @@
     },
     "jeloltek": {
       "tisza": ["BALAJTI ISTVÁN"],
-      "fidesz_kdnp": ["SZŰCS LAJOS"],
+      "fidesz": ["SZŰCS LAJOS"],
       "mi_hazank": ["SZABÓNÉ PAPP KLÁRA"],
       "dk": ["HANEK GÁBOR"],
       "mkkp": ["HARTVIG DÁNIEL"],
@@ -1816,7 +1816,7 @@
     "valasztopolgar": 76078,
     "partok": {
       "tisza": 32930,
-      "fidesz_kdnp": 22330,
+      "fidesz": 22330,
       "mi_hazank": 4395,
       "dk": 592,
       "mkkp": 444,
@@ -1825,7 +1825,7 @@
     },
     "jeloltek": {
       "tisza": ["BILISICS ZITA"],
-      "fidesz_kdnp": ["BÓNA ZOLTÁN"],
+      "fidesz": ["BÓNA ZOLTÁN"],
       "mi_hazank": ["TASSI RÓBERT"],
       "dk": ["JÓSZAI TEODÓRA"],
       "mkkp": ["SOMODY FERENC BALÁZS"],
@@ -1841,7 +1841,7 @@
     "valasztopolgar": 74474,
     "partok": {
       "tisza": 37930,
-      "fidesz_kdnp": 18215,
+      "fidesz": 18215,
       "mi_hazank": 3353,
       "dk": 775,
       "mkkp": 583,
@@ -1850,7 +1850,7 @@
     },
     "jeloltek": {
       "tisza": ["PERTICSNÉ KÁCSOR ANDREA"],
-      "fidesz_kdnp": ["VÁNTSA BOTOND"],
+      "fidesz": ["VÁNTSA BOTOND"],
       "mi_hazank": ["BOTLÓ KORNÉL"],
       "dk": ["KENÉZ ISTVÁN"],
       "mkkp": ["CSIZMADIA CSEKE"],
@@ -1866,14 +1866,14 @@
     "valasztopolgar": 74824,
     "partok": {
       "tisza": 33592,
-      "fidesz_kdnp": 23314,
+      "fidesz": 23314,
       "mi_hazank": 3896,
       "dk": 741,
       "mkkp": 520
     },
     "jeloltek": {
       "tisza": ["SZIMON RENÁTA"],
-      "fidesz_kdnp": ["RÉTVÁRI BENCE"],
+      "fidesz": ["RÉTVÁRI BENCE"],
       "mi_hazank": ["PÁLI JENŐ"],
       "dk": ["JUHÁSZ BÉLA"],
       "mkkp": ["URBÁN DÁVID KILIÁN"]
@@ -1887,7 +1887,7 @@
     "valasztopolgar": 73911,
     "partok": {
       "tisza": 28018,
-      "fidesz_kdnp": 22878,
+      "fidesz": 22878,
       "mi_hazank": 4066,
       "dk": 460,
       "mkkp": 387,
@@ -1895,7 +1895,7 @@
     },
     "jeloltek": {
       "tisza": ["POLGÁR GYÖRGY"],
-      "fidesz_kdnp": ["POGÁCSÁS TIBOR"],
+      "fidesz": ["POGÁCSÁS TIBOR"],
       "mi_hazank": ["LENDVAY ENDRE"],
       "dk": ["MAGDICS MÓNIKA"],
       "mkkp": ["URSZÁN TAMÁS"],
@@ -1910,7 +1910,7 @@
     "valasztopolgar": 70090,
     "partok": {
       "tisza": 26676,
-      "fidesz_kdnp": 20912,
+      "fidesz": 20912,
       "mi_hazank": 6097,
       "dk": 348,
       "mkkp": 323,
@@ -1919,7 +1919,7 @@
     },
     "jeloltek": {
       "tisza": ["HENDE MÁTÉ"],
-      "fidesz_kdnp": ["FELDMAN LÁSZLÓ"],
+      "fidesz": ["FELDMAN LÁSZLÓ"],
       "mi_hazank": ["LÁSZLÓ ATTILA"],
       "dk": ["MAGDICS MÁTÉ"],
       "mkkp": ["SÁRKÖZI BETTI"],
@@ -1935,14 +1935,14 @@
     "valasztopolgar": 73447,
     "partok": {
       "tisza": 28878,
-      "fidesz_kdnp": 22157,
+      "fidesz": 22157,
       "mi_hazank": 4256,
       "dk": 558,
       "mkkp": 0
     },
     "jeloltek": {
       "tisza": ["MUHARI GERGELY"],
-      "fidesz_kdnp": ["FÖLDI LÁSZLÓ"],
+      "fidesz": ["FÖLDI LÁSZLÓ"],
       "mi_hazank": ["BARTHA BARNA"],
       "dk": ["KÖKÉNY GÁBOR KÁLMÁN"],
       "mkkp": ["GÓR-NAGY GYÖRGY"]
@@ -1956,7 +1956,7 @@
     "valasztopolgar": 59107,
     "partok": {
       "tisza": 27023,
-      "fidesz_kdnp": 15832,
+      "fidesz": 15832,
       "mi_hazank": 3242,
       "dk": 545,
       "mkkp": 270,
@@ -1965,7 +1965,7 @@
     },
     "jeloltek": {
       "tisza": ["LŐRINCZ VIKTÓRIA"],
-      "fidesz_kdnp": ["GELENCSÉR ATTILA"],
+      "fidesz": ["GELENCSÉR ATTILA"],
       "mi_hazank": ["ERDÉLYI ÁKOS"],
       "dk": ["MOLNÁR PÉTER"],
       "mkkp": ["MÉSZÁROS SZABOLCS"],
@@ -1981,7 +1981,7 @@
     "valasztopolgar": 57032,
     "partok": {
       "tisza": 19785,
-      "fidesz_kdnp": 17581,
+      "fidesz": 17581,
       "mi_hazank": 1864,
       "jobbik": 1819,
       "dk": 511,
@@ -1989,7 +1989,7 @@
     },
     "jeloltek": {
       "tisza": ["BENKE JÓZSEF"],
-      "fidesz_kdnp": ["KELEI ZITA"],
+      "fidesz": ["KELEI ZITA"],
       "mi_hazank": ["HALÁSZNÉ HUNYADI GYÖNGYI"],
       "jobbik": ["ANDER BALÁZS"],
       "dk": ["REMES GÁBOR"],
@@ -2004,14 +2004,14 @@
     "valasztopolgar": 60981,
     "partok": {
       "tisza": 22647,
-      "fidesz_kdnp": 20625,
+      "fidesz": 20625,
       "mi_hazank": 2811,
       "dk": 521,
       "jobbik": 305
     },
     "jeloltek": {
       "tisza": ["BAKOS CSABA ATTILA"],
-      "fidesz_kdnp": ["MÓRING JÓZSEF ATTILA"],
+      "fidesz": ["MÓRING JÓZSEF ATTILA"],
       "mi_hazank": ["JOZÓ TAMÁS"],
       "dk": ["NÉMETH HELGA"],
       "jobbik": ["KESZTYÜS ATTILA"]
@@ -2025,7 +2025,7 @@
     "valasztopolgar": 63489,
     "partok": {
       "tisza": 25083,
-      "fidesz_kdnp": 21747,
+      "fidesz": 21747,
       "mi_hazank": 2300,
       "dk": 598,
       "mkkp": 375,
@@ -2035,7 +2035,7 @@
     },
     "jeloltek": {
       "tisza": ["CSATÁRI ERNŐ"],
-      "fidesz_kdnp": ["WITZMANN MIHÁLY"],
+      "fidesz": ["WITZMANN MIHÁLY"],
       "mi_hazank": ["PAPP KARULY BARNABÁS"],
       "dk": ["BAKAI-NAGY ZITA"],
       "mkkp": ["FENYVES DÁVID GYÖRGY"],
@@ -2052,14 +2052,14 @@
     "valasztopolgar": 71764,
     "partok": {
       "tisza": 37691,
-      "fidesz_kdnp": 17264,
+      "fidesz": 17264,
       "mi_hazank": 2508,
       "dk": 468,
       "mkkp": 259
     },
     "jeloltek": {
       "tisza": ["GAJDOS LÁSZLÓ"],
-      "fidesz_kdnp": ["HALKÓNÉ DR. RUDOLF ÉVA"],
+      "fidesz": ["HALKÓNÉ DR. RUDOLF ÉVA"],
       "mi_hazank": ["KOVÁCS KOPPÁNY ZOLTÁN"],
       "dk": ["BACSIKNÉ SZIGETI GABRIELLA"],
       "mkkp": ["TÜRK ATTILA"]
@@ -2073,14 +2073,14 @@
     "valasztopolgar": 70921,
     "partok": {
       "tisza": 27888,
-      "fidesz_kdnp": 21224,
+      "fidesz": 21224,
       "mi_hazank": 2957,
       "dk": 384,
       "jobbik": 0
     },
     "jeloltek": {
       "tisza": ["SZAKÁCS PÉTER LAJOS"],
-      "fidesz_kdnp": ["VINNAI GYŐZŐ"],
+      "fidesz": ["VINNAI GYŐZŐ"],
       "mi_hazank": ["BAKÓ JÓZSEF ISTVÁN"],
       "dk": ["GYARMATI MIHÁLY"],
       "jobbik": ["GYÜRE CSABA"]
@@ -2094,7 +2094,7 @@
     "valasztopolgar": 75649,
     "partok": {
       "tisza": 28053,
-      "fidesz_kdnp": 24485,
+      "fidesz": 24485,
       "mi_hazank": 2506,
       "dk": 446,
       "magyar_igazsag_es_elet_partja": 196,
@@ -2102,7 +2102,7 @@
     },
     "jeloltek": {
       "tisza": ["DICSŐ VIKTÓRIA"],
-      "fidesz_kdnp": ["SESZTÁK MIKLÓS"],
+      "fidesz": ["SESZTÁK MIKLÓS"],
       "mi_hazank": ["FEKETE BÉLA"],
       "dk": ["SÁROSY ZOLTÁN"],
       "magyar_igazsag_es_elet_partja": ["PERDIÁK JÁNOS"],
@@ -2116,7 +2116,7 @@
     "telepules": "Vásárosnamény",
     "valasztopolgar": 70013,
     "partok": {
-      "fidesz_kdnp": 25166,
+      "fidesz": 25166,
       "tisza": 21670,
       "mi_hazank": 2059,
       "jobbik": 546,
@@ -2126,7 +2126,7 @@
       "kozeppart": 0
     },
     "jeloltek": {
-      "fidesz_kdnp": ["TILKI ATTILA"],
+      "fidesz": ["TILKI ATTILA"],
       "tisza": ["SIMON ZSUZSÁNNA"],
       "mi_hazank": ["KÁLMÁNDY ÁRPÁD"],
       "jobbik": ["ADORJÁN BÉLA"],
@@ -2143,7 +2143,7 @@
     "telepules": "Mátészalka",
     "valasztopolgar": 70904,
     "partok": {
-      "fidesz_kdnp": 25410,
+      "fidesz": 25410,
       "tisza": 22074,
       "mi_hazank": 3262,
       "dk": 317,
@@ -2151,7 +2151,7 @@
       "kozeppart": 44
     },
     "jeloltek": {
-      "fidesz_kdnp": ["KOVÁCS SÁNDOR"],
+      "fidesz": ["KOVÁCS SÁNDOR"],
       "tisza": ["BUGYA LÁSZLÓ"],
       "mi_hazank": ["APÁTI ISTVÁN"],
       "dk": ["DOMOKOS ZSUZSANNA"],
@@ -2167,7 +2167,7 @@
     "valasztopolgar": 70408,
     "partok": {
       "tisza": 24831,
-      "fidesz_kdnp": 23713,
+      "fidesz": 23713,
       "mi_hazank": 2552,
       "mkkp": 225,
       "dk": 196,
@@ -2177,7 +2177,7 @@
     },
     "jeloltek": {
       "tisza": ["BARNA-SZABÓ TÍMEA"],
-      "fidesz_kdnp": ["SIMON MIKLÓS"],
+      "fidesz": ["SIMON MIKLÓS"],
       "mi_hazank": ["PARÉ ATTILA"],
       "mkkp": ["TÓTH TAMARA"],
       "dk": ["FARKAS KÁLMÁN"],
@@ -2194,7 +2194,7 @@
     "valasztopolgar": 57094,
     "partok": {
       "tisza": 23026,
-      "fidesz_kdnp": 17654,
+      "fidesz": 17654,
       "mi_hazank": 3224,
       "dk": 431,
       "mkkp": 280,
@@ -2202,7 +2202,7 @@
     },
     "jeloltek": {
       "tisza": ["SÁROSI JÓZSEF"],
-      "fidesz_kdnp": ["HORVÁTH ISTVÁN"],
+      "fidesz": ["HORVÁTH ISTVÁN"],
       "mi_hazank": ["BAKÓ NORBERT"],
       "dk": ["PÉTERFALVINÉ KALMÁR PIROSKA"],
       "mkkp": ["FARKAS LÁSZLÓ"],
@@ -2217,7 +2217,7 @@
     "valasztopolgar": 56292,
     "partok": {
       "tisza": 20087,
-      "fidesz_kdnp": 19433,
+      "fidesz": 19433,
       "mi_hazank": 3113,
       "dk": 359,
       "jobbik": 69,
@@ -2225,7 +2225,7 @@
     },
     "jeloltek": {
       "tisza": ["SZIJJÁRTÓ GÁBOR"],
-      "fidesz_kdnp": ["CSIBI KRISZTINA"],
+      "fidesz": ["CSIBI KRISZTINA"],
       "mi_hazank": ["DÚRÓ DÓRA"],
       "dk": ["TAKÁCS LÁSZLÓ"],
       "jobbik": ["KECSKEMÉTI ISTVÁN"],
@@ -2240,7 +2240,7 @@
     "valasztopolgar": 56773,
     "partok": {
       "tisza": 20880,
-      "fidesz_kdnp": 19987,
+      "fidesz": 19987,
       "mi_hazank": 2662,
       "dk": 416,
       "a_szolidaritas_partja_munkaspart": 87,
@@ -2248,7 +2248,7 @@
     },
     "jeloltek": {
       "tisza": ["CSEH TAMÁS"],
-      "fidesz_kdnp": ["SÜLI JÁNOS"],
+      "fidesz": ["SÜLI JÁNOS"],
       "mi_hazank": ["JANECSKA ZOLTÁN"],
       "dk": ["DOBOS ERZSÉBET"],
       "a_szolidaritas_partja_munkaspart": ["SZARKA SÁNDOR"],
@@ -2263,14 +2263,14 @@
     "valasztopolgar": 67196,
     "partok": {
       "tisza": 31847,
-      "fidesz_kdnp": 21558,
+      "fidesz": 21558,
       "mi_hazank": 2652,
       "mkkp": 491,
       "fuggetlen_czegledy_csaba": 0
     },
     "jeloltek": {
       "tisza": ["RÁPLI RÓBERT"],
-      "fidesz_kdnp": ["VÁMOS ZOLTÁN"],
+      "fidesz": ["VÁMOS ZOLTÁN"],
       "mi_hazank": ["DANKA LAJOS"],
       "mkkp": ["KÓBER GYÖRGY MÁRK"],
       "fuggetlen_czegledy_csaba": ["CZEGLÉDY CSABA"]
@@ -2283,14 +2283,14 @@
     "telepules": "Sárvár",
     "valasztopolgar": 66913,
     "partok": {
-      "fidesz_kdnp": 25700,
+      "fidesz": 25700,
       "tisza": 25452,
       "mi_hazank": 3069,
       "fuggetlen_magyar_peter": 909,
       "dk": 440
     },
     "jeloltek": {
-      "fidesz_kdnp": ["ÁGH PÉTER"],
+      "fidesz": ["ÁGH PÉTER"],
       "tisza": ["STROMPOVÁ VIKTÓRIA"],
       "mi_hazank": ["DALA FERENC"],
       "fuggetlen_magyar_peter": ["MAGYAR PÉTER"],
@@ -2304,14 +2304,14 @@
     "telepules": "Körmend",
     "valasztopolgar": 64940,
     "partok": {
-      "fidesz_kdnp": 26186,
+      "fidesz": 26186,
       "tisza": 23226,
       "mi_hazank": 3220,
       "dk": 419,
       "jobbik": 165
     },
     "jeloltek": {
-      "fidesz_kdnp": ["V.NÉMETH ZSOLT"],
+      "fidesz": ["V.NÉMETH ZSOLT"],
       "tisza": ["HORVÁTH NÁNDOR ZSOLT"],
       "mi_hazank": ["TAKÁCS IMRE FERENC"],
       "dk": ["LUDVÁN ZSOLT LÁSZLÓ"],
@@ -2326,7 +2326,7 @@
     "valasztopolgar": 68896,
     "partok": {
       "tisza": 33205,
-      "fidesz_kdnp": 20294,
+      "fidesz": 20294,
       "mi_hazank": 2871,
       "dk": 516,
       "mkkp": 510,
@@ -2334,7 +2334,7 @@
     },
     "jeloltek": {
       "tisza": ["GÁSPÁR LEVENTE"],
-      "fidesz_kdnp": ["OVÁDI PÉTER"],
+      "fidesz": ["OVÁDI PÉTER"],
       "mi_hazank": ["LÁSZLÓ PÉTER"],
       "dk": ["HRABOVSZKI LÁSZLÓ"],
       "mkkp": ["SZÜCS ZOLTÁN"],
@@ -2349,7 +2349,7 @@
     "valasztopolgar": 73585,
     "partok": {
       "tisza": 34477,
-      "fidesz_kdnp": 21304,
+      "fidesz": 21304,
       "mi_hazank": 3336,
       "dk": 538,
       "mkkp": 457,
@@ -2357,7 +2357,7 @@
     },
     "jeloltek": {
       "tisza": ["FORSTHOFFER ÁGNES"],
-      "fidesz_kdnp": ["HEGEDŰS BARBARA"],
+      "fidesz": ["HEGEDŰS BARBARA"],
       "mi_hazank": ["SZABÓ MIKLÓS"],
       "dk": ["PAÁL GÉZA"],
       "mkkp": ["KISS LÍVIA"],
@@ -2372,7 +2372,7 @@
     "valasztopolgar": 65381,
     "partok": {
       "tisza": 28223,
-      "fidesz_kdnp": 20749,
+      "fidesz": 20749,
       "mi_hazank": 2396,
       "dk": 535,
       "fuggetlen_nemeth_karoly": 247,
@@ -2382,7 +2382,7 @@
     },
     "jeloltek": {
       "tisza": ["BALATINCZ PÉTER"],
-      "fidesz_kdnp": ["NAVRACSICS TIBOR"],
+      "fidesz": ["NAVRACSICS TIBOR"],
       "mi_hazank": ["GERGELICS ÁDÁM"],
       "dk": ["BAKK ISTVÁN"],
       "fuggetlen_nemeth_karoly": ["NÉMETH KÁROLY"],
@@ -2399,7 +2399,7 @@
     "valasztopolgar": 66523,
     "partok": {
       "tisza": 25455,
-      "fidesz_kdnp": 22881,
+      "fidesz": 22881,
       "mi_hazank": 3028,
       "dk": 674,
       "mkkp": 277,
@@ -2407,7 +2407,7 @@
     },
     "jeloltek": {
       "tisza": ["UJVÁRI SZILVIA"],
-      "fidesz_kdnp": ["TAKÁCS PÉTER"],
+      "fidesz": ["TAKÁCS PÉTER"],
       "mi_hazank": ["NARDAI PÉTER"],
       "dk": ["MOLNÁR BÁLINT"],
       "mkkp": ["DOMJÁN ÁKOS DONÁT"],
@@ -2422,7 +2422,7 @@
     "valasztopolgar": 72857,
     "partok": {
       "tisza": 30995,
-      "fidesz_kdnp": 24981,
+      "fidesz": 24981,
       "mi_hazank": 2906,
       "dk": 465,
       "mkkp": 393,
@@ -2431,7 +2431,7 @@
     },
     "jeloltek": {
       "tisza": ["NAGY MÁRTA"],
-      "fidesz_kdnp": ["SZILASI GÁBOR"],
+      "fidesz": ["SZILASI GÁBOR"],
       "mi_hazank": ["FARKAS ATTILA"],
       "dk": ["PAPP ZOLTÁN"],
       "mkkp": ["JUHÁSZ VERONIKA"],
@@ -2447,7 +2447,7 @@
     "valasztopolgar": 72849,
     "partok": {
       "tisza": 27981,
-      "fidesz_kdnp": 25863,
+      "fidesz": 25863,
       "mi_hazank": 3327,
       "dk": 483,
       "mkkp": 400,
@@ -2455,7 +2455,7 @@
     },
     "jeloltek": {
       "tisza": ["VARGA BALÁZS"],
-      "fidesz_kdnp": ["NAGY BÁLINT"],
+      "fidesz": ["NAGY BÁLINT"],
       "mi_hazank": ["KISS FERENC"],
       "dk": ["LISZKAI ERZSÉBET"],
       "mkkp": ["KÓKAI MÁTYÁS"],
@@ -2470,14 +2470,14 @@
     "valasztopolgar": 69407,
     "partok": {
       "tisza": 30369,
-      "fidesz_kdnp": 20282,
+      "fidesz": 20282,
       "mi_hazank": 3297,
       "dk": 793,
       "a_szolidaritas_partja_munkaspart": 111
     },
     "jeloltek": {
       "tisza": ["LOVKÓ CSABA"],
-      "fidesz_kdnp": ["CSERESNYÉS PÉTER"],
+      "fidesz": ["CSERESNYÉS PÉTER"],
       "mi_hazank": ["MATYIJCSIK SÁNDOR"],
       "dk": ["BODÓ LÁSZLÓ"],
       "a_szolidaritas_partja_munkaspart": ["SZABÓ LÁSZLÓ JÓZSEF"]

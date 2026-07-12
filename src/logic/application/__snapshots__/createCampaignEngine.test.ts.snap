@@ -1572,6 +1572,14 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       "mandateCalculator": MandateCalculator {},
       "pollsters": [
         {
+          "bias": [
+            {
+              "partyBias": {
+                "mi_hazank": -1,
+              },
+              "type": "result",
+            },
+          ],
           "description": "A Medián egy magyarországi közvélemény-kutató intézet, amely rendszeresen készít politikai és társadalmi témájú felméréseket, és jelentős szereplő a magyar közvélemény-kutatásban.",
           "errorMargin": {
             "max": 5,

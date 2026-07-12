@@ -28,9 +28,12 @@ export function SupportChart({
   config,
 }: {
   label: string;
-  turnHistory: HistoryItem[];
+  turnHistory?: HistoryItem[];
   config: CampaignConfig;
 }) {
+  if (!turnHistory) {
+    return null;
+  }
   const data = createChartData(turnHistory);
   const parties = Object.keys(data[0] ?? {}).filter((key) => key !== "turn");
 

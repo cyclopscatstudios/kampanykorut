@@ -1,10 +1,12 @@
 import { container } from "tsyringe";
 import {
   CampaignState,
+  CandidateListData,
   Decision,
   EffectType,
   ElectionConfig,
   RawEffect,
+  RawParty,
 } from "@/shared/types";
 import { CampaignEngine } from "./CampaignEngine";
 import { EffectApplier } from "./EffectApplier";
@@ -297,6 +299,92 @@ describe("CampaignEngine.createInitialState – mergeUnknownPartiesToOther", () 
         ._other ?? 0;
     // party_c was undefined in candidateListData row 0, so _other should not grow
     expect(otherWithoutC).toBe(otherWithAll);
+  });
+});
+
+describe("CampaignEngine.mergeUnknownPartiesToOther (direct)", () => {
+  let engine: CampaignEngine;
+
+  beforeAll(() => {
+    engine = new CampaignEngine(
+      mockCandidateListData,
+      [],
+      [],
+      container.resolve(ResultModifier),
+      container.resolve(EffectApplier),
+      container.resolve(MandateCalculator),
+      container.resolve(PollsterEngine),
+      mockPartyListData,
+    );
+  });
+
+  const callMergeUnknownPartiesToOther = (
+    candidateListData: CandidateListData[],
+    parties: RawParty[],
+  ) =>
+    (
+      engine as unknown as {
+        mergeUnknownPartiesToOther: (
+          candidateListData: CandidateListData[],
+          partyListData: undefined,
+          parties: RawParty[],
+        ) => { candidateListData: CandidateListData[] };
+      }
+    ).mergeUnknownPartiesToOther(candidateListData, undefined, parties);
+
+  const candidateListData: CandidateListData[] = [
+    {
+      megyekod: 1,
+      megye: "Budapest főváros",
+      oevk: 1,
+      telepules: "Budapest 05. kerület",
+      valasztopolgar: 73914,
+      partok: {
+        tisza: 37803,
+        fidesz: 18391,
+        mi_hazank: 1948,
+        mkkp: 978,
+        dk: 770,
+        a_szolidaritas_partja_munkaspart: 66,
+      },
+      jeloltek: {
+        tisza: ["TANÁCS ZOLTÁN"],
+        fidesz: ["FAZEKAS CSILLA"],
+        mi_hazank: ["NAGY ATTILA"],
+        mkkp: ["SZINTAY ISTVÁN"],
+        dk: ["HERFORT MARIETTA"],
+        a_szolidaritas_partja_munkaspart: ["VÁRKONYI ZOLTÁN"],
+      },
+    },
+  ];
+
+  const parties: RawParty[] = [
+    { id: "tisza", name: "Tisztelet és Szabadság Párt", color: "#88E8FF" },
+    { id: "fidesz", name: "Fidesz–KDNP", color: "#F28E2B" },
+    { id: "mi_hazank", name: "Mi Hazánk", color: "#688d1b" },
+    { id: "mkkp", name: "Magyar Kétfarkú Kutya Párt", color: "#d92229" },
+    { id: "dk", name: "Demokratikus Koalíció", color: "#2A61A4" },
+  ];
+
+  it("merges the party missing from the config into _other and drops its candidate", () => {
+    const result = callMergeUnknownPartiesToOther(candidateListData, parties);
+    const [row] = result.candidateListData;
+
+    expect(row.partok).toEqual({
+      tisza: 37803,
+      fidesz: 18391,
+      mi_hazank: 1948,
+      mkkp: 978,
+      dk: 770,
+      _other: 66,
+    });
+    expect(row.jeloltek).toEqual({
+      tisza: ["TANÁCS ZOLTÁN"],
+      fidesz: ["FAZEKAS CSILLA"],
+      mi_hazank: ["NAGY ATTILA"],
+      mkkp: ["SZINTAY ISTVÁN"],
+      dk: ["HERFORT MARIETTA"],
+    });
   });
 });
 

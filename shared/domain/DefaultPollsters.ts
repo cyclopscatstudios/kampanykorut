@@ -10,6 +10,14 @@ export const defaultPollsters: Pollster[] = [
       min: 1,
       max: 5,
     },
+    bias: [
+      {
+        type: "result",
+        partyBias: {
+          mi_hazank: -1,
+        },
+      },
+    ],
   },
   {
     id: "zavecz",

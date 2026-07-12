@@ -66,7 +66,7 @@ export default defineConfig({
     alias: {
       "@/logic/application": path.resolve(__dirname, "src/logic/application"),
       "@/logic/types": path.resolve(__dirname, "src/logic/types"),
-      "@/shared/logger": path.resolve(__dirname, "shared/logger/logger"),
+      "@/shared/logger": path.resolve(__dirname, "shared/logger"),
       "@/shared/domain": path.resolve(__dirname, "shared/domain"),
       "@/shared/types": path.resolve(__dirname, "shared/types"),
     },

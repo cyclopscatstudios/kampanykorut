@@ -101,7 +101,7 @@ export function Tooltip({
             }}
             className="pointer-events-none transition-opacity duration-200 opacity-100"
           >
-            <div className="rounded-md bg-black px-2 py-1 text-sm text-white shadow-lg">
+            <div className="rounded-md px-2 py-1 text-sm bg-white border border-gray-300 shadow-lg">
               {content}
             </div>
           </div>,
