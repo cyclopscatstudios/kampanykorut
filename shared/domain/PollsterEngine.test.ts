@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it,Mock, vi  } from "vitest";
+import { beforeEach, describe, expect, it, Mock, vi } from "vitest";
 import { CampaignState } from "../types";
 import { Pollster } from "../types/pollsters";
 import { defaultPollsters } from "./DefaultPollsters";
