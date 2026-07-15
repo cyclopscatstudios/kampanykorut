@@ -5,3 +5,4 @@ export * from "./useGetCampaigns";
 export * from "./useSettings";
 export * from "./useStateEngine";
 export * from "./useStateHandler";
+export * from "./useTranslateLang";

@@ -14,7 +14,8 @@ export type SessionKey =
   | "campaignState"
   | "currentSessionId"
   | "savedSessions"
-  | "language";
+  | "language"
+  | "debugMode";
 
 const log = createLogger("StorageEngine");
 

@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { container } from "tsyringe";
 import { createLogger } from "@/shared/logger";
 import { Candidate, PlayableSide } from "@/shared/types";
-import { gameModeRegistry } from "../logic/application/gameModeRegistery";
+import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { useStateEngine } from "../logic/application/hooks";
 import { useNavigation } from "./navigationHook";
 
@@ -17,7 +18,7 @@ export function useSideSelectorMenu(id: string) {
   const { saveSession } = useStateEngine();
   const { goBack, goToCampaign } = useNavigation();
   const { sessionId } = useStateEngine();
-  const campaignConfig = gameModeRegistry[id];
+  const campaignConfig = container.resolve(ConfigEngine).getCampaignConfig(id);
 
   const handlePartyChange = (partyId: string) => {
     const party = campaignConfig.electionConfig.playableSides.find(

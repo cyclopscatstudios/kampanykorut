@@ -4,10 +4,12 @@ export type VotePercentage = {
   votes?: number;
   percentage: number;
   isWinner?: boolean;
+  candidates?: string[];
 };
 
 export function calculateVotePercentages(
   votes?: Record<string, number | undefined>,
+  candidates?: Record<string, string[] | undefined>,
 ): Record<string, VotePercentage> | undefined {
   if (!votes) {
     return;
@@ -29,6 +31,7 @@ export function calculateVotePercentages(
           (((voteCount ?? 0) / (totalVotes ?? 0)) * 100).toFixed(2),
         ),
         isWinner: (voteCount ?? 0) === maxVotes,
+        candidates: candidates?.[party],
       },
     ]),
   );

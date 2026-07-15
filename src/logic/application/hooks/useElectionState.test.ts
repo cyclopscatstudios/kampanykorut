@@ -1,9 +1,12 @@
 import { act, renderHook } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
+import { container } from "tsyringe";
 import type { CampaignConfig, PendingTurn } from "@/shared/types";
 import { EffectType } from "@/shared/types";
-import { gameModeRegistry } from "../gameModeRegistery";
+import { ConfigEngine } from "../ConfigEngine";
 import { useElectionState } from "./useElectionState";
+
+const configEngine = container.resolve(ConfigEngine);
 
 const MOCK_CAMPAIGN_ID = "mock_campaign";
 
@@ -66,11 +69,11 @@ const mockConfig: CampaignConfig = {
 };
 
 beforeAll(() => {
-  gameModeRegistry[MOCK_CAMPAIGN_ID] = mockConfig;
+  configEngine.configure(mockConfig, MOCK_CAMPAIGN_ID, true);
 });
 
 afterAll(() => {
-  delete (gameModeRegistry as Record<string, unknown>)[MOCK_CAMPAIGN_ID];
+  configEngine.configure(null, undefined, true);
 });
 
 const MOCK_CAMPAIGN_WITH_Q = "mock_campaign_with_q";
@@ -153,11 +156,11 @@ describe("useElectionState", () => {
 
 describe("useElectionState – processAnswer and commitTurn", () => {
   beforeAll(() => {
-    gameModeRegistry[MOCK_CAMPAIGN_WITH_Q] = mockConfigWithQuestion;
+    configEngine.configure(mockConfigWithQuestion, MOCK_CAMPAIGN_WITH_Q, true);
   });
 
   afterAll(() => {
-    delete (gameModeRegistry as Record<string, unknown>)[MOCK_CAMPAIGN_WITH_Q];
+    configEngine.configure(null, undefined, true);
   });
 
   beforeEach(() => {

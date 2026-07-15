@@ -22,6 +22,7 @@ export function ElectionMap({ config }: { config: CampaignConfig }) {
         handleDistrict={(e) => setDistrict(e)}
         width={750}
         height={444}
+        electionConfig={config.electionConfig}
       />
       <DistrictResult
         candidates={candidates}

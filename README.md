@@ -4,19 +4,19 @@ An interactive election simulation game built with React and TypeScript. Players
 
 ## Overview
 
-**Kampánykörút** (Campaign Circuit) is a domain-driven, fully-typed election simulation game where:
+**Kampánykörút** is a domain-driven, fully-typed election simulation game where:
 
 - Players make decisions during campaign turns
 - Each decision applies effects to electoral data (vote shares, candidate lists, demographics)
 - Results are calculated in real-time using deterministic mandate algorithms
-- Supports 2022 and 2024 Hungarian election data and configurations
 
 ## Tech Stack
 
 - **Frontend**: React 19.2 + TypeScript 5
-- **Build Tool**: Vite 5
+- **Build Tool**: Vite 7
 - **Styling**: Tailwind CSS 4
-- **Testing**: Vitest + @testing-library/react
+- **Testing**: Vitest + @testing-library/react, Playwright (e2e & component tests)
+- **Component Explorer**: Ladle
 - **State Management**: tsyringe (dependency injection)
 - **Code Quality**: ESLint, Prettier, Husky
 
@@ -26,31 +26,31 @@ Following domain-driven design principles with strict separation of concerns:
 
 ```
 src/
-├── logic/
-│   ├── domain/              # Pure business logic (no React)
-│   │   ├── CampaignEngine   # Main game orchestrator
-│   │   ├── ElectionEngine   # Vote & mandate calculations
-│   │   ├── EffectApplier    # Applies policy effects to data
-│   │   └── MandateCalculator # Converts votes to seats
-│   ├── application/         # Orchestration & state management
-│   │   ├── StateEngine      # Game state machine
-│   │   ├── GameLoaderEngine # Campaign setup & initialization
-│   │   └── StorageEngine    # Persistent data management
-│   └── hooks/               # Custom React hooks
 ├── components/
-│   ├── ui/                  # Reusable UI components
-│   │   ├── gameplay/        # Game-specific UI
-│   │   ├── menu/            # Menu screens
-│   │   └── icons/           # Bootstrap icon components
-│   ├── DistrictMap/         # Electoral district visualization
-│   └── ui/                  # Core UI (Button, Text, RadioGroup, etc.)
-├── assets/
-│   ├── jsons/               # Game configuration & data
-│   │   ├── 2022/           # 2022 election data & configs
-│   │   ├── 2024/           # 2024 election data & configs
-│   │   ├── game_modes.json # Game mode definitions
-│   │   └── quotes.ts       # Game quotes/narrative
-└── types/                   # Shared TypeScript types
+│   ├── DistrictMap/         # SVG electoral map rendering (geometry, projection, coloring)
+│   ├── loaders/             # react-router data loaders
+│   └── ui/
+│       ├── gameplay/        # In-game screens & chrome (GameChrome, TopBar, MapCreator, FinalResultScreen, ...)
+│       ├── menu/            # Menu screens (MainMenu, SideSelectorMenu, SettingsMenu, ...)
+│       └── icons/           # Icon registry
+├── debug/                   # Runtime debug-mode toggle (window.debugMode)
+├── di/                      # tsyringe container wiring
+├── hooks/                   # Cross-cutting React hooks
+├── logic/
+│   ├── application/         # Orchestration: engines, hooks, navigation, DI factories
+│   ├── i18n/                # i18next setup
+│   ├── infra/                # External service clients (Supabase)
+│   └── langs/               # Translation files (en, hu)
+└── types/                    # App-local TypeScript types
+
+shared/                       # Framework-agnostic package
+├── domain/                   # Pure business logic (no React) — engines, transformers, mocks
+├── types/                     # Domain TypeScript types + campaign configs
+└── logger/                    # Logging utility
+
+public/
+├── assets/jsons/             # Global data shared across every campaign (game_modes.json, quotes.json)
+└── campaigns/{route}/        # Per-campaign election data & content (see Data Formats below)
 ```
 
 ## Core Invariants
@@ -94,8 +94,9 @@ Compiles TypeScript and optimizes with Vite.
 ### Testing
 
 ```bash
-npm run test          # Run tests in watch mode
-npm run test:ui       # Run tests with UI
+npm run test           # Run unit tests (Vitest, watch mode)
+npm run playwright      # Playwright e2e tests, UI mode
+npm run playwright:ct   # Playwright component tests, UI mode
 ```
 
 ### Code Quality
@@ -107,11 +108,10 @@ npm run format        # Format code with Prettier
 npm run format:check  # Check formatting without changes
 ```
 
-### Storybook
+### Component Explorer (Ladle)
 
 ```bash
-npm run storybook        # Start Storybook dev server
-npm run build-storybook  # Build static Storybook
+npm run ladle  # Start Ladle dev server at http://localhost:6006
 ```
 
 ## Game Mechanics
@@ -155,10 +155,11 @@ Located in `public/campaigns/{year}/`:
 - `oevk_{year}.json` - District boundary and electoral data
 - `election_config.json` - Election-specific rules and parameters
 - `custom_groups.json` - Campaign-specific district groups (see [Campaign Data (JSON)](#campaign-data-json) below)
+- `custom_pollsters.json` - Optional campaign-specific pollster definitions (fed into `PollsterEngine`)
 
 Located in `public/assets/jsons/`:
 
-- `game_modes.json` - Available campaign scenarios
+- `game_modes.json` - Available campaign scenarios. Each entry may set `isPublished: false` to hide it from the campaign selector (see [Debug Mode](#debug-mode) below).
 - `quotes.json` - Narrative quotes shown during gameplay
 
 ### Internationalization
@@ -167,6 +168,14 @@ Supports multiple languages, located in `src/logic/langs/`:
 
 - `en_lang.json` - English
 - `hu_lang.json` - Hungarian
+
+### Debug Mode
+
+Campaigns with `isPublished: false` in `game_modes.json` are hidden from the campaign selector by default. Toggle visibility at runtime from the browser console:
+
+```js
+window.debugMode.toggle();
+```
 
 ## Campaign Data (JSON)
 
@@ -316,7 +325,7 @@ Optional. Unlike `answer_effects`, strategies aren't resolved turn by turn — t
 | `rewards`    | yes      | `{ minMatches: number, effects: Effect[] }[]` | Tiers of effects, unlocked once the match count reaches `minMatches`. Only the effects of the _highest_ satisfied tier are applied — lower tiers are not combined. |
 | `asset`      | no       | `{ badge?: string }`                          | Optional badge image path shown when the strategy is fulfilled.                                                                                                    |
 
-> **Note:** a strategy whose `conditions` array is empty can never be fulfilled unless a reward's `minMatches` is `0` — the match count is always `0` regardless of the player's answers. `strategy-2` in `2022_campaign_strategies.json` currently ships this way and never triggers; likely an unfinished entry rather than intended behavior.
+> **Note:** a strategy whose `conditions` array is empty can never be fulfilled unless a reward's `minMatches` is `0` — the match count is always `0` regardless of the player's answers. `strategy-2` in `2022_campaign_strategies.json` currently ships this way and never triggers;
 
 ## Performance Considerations
 
@@ -344,4 +353,4 @@ This project follows strict architectural guidelines:
 
 ## License
 
-[Add your license here]
+All rights reserved — see [LICENSE](LICENSE).

@@ -1,5 +1,10 @@
 import { useCallback, useMemo, useState } from "react";
-import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
+import {
+  CandidateListData,
+  District,
+  DistrictPoligon,
+  ElectionConfig,
+} from "@/shared/types";
 import { useWheelZoom, type ViewBox } from "../../hooks/useWheelZoom";
 import {
   getPartyActiveColor,
@@ -28,6 +33,7 @@ interface DistrictMapProps {
   wheel: ReturnType<typeof useWheelZoom>;
   viewBox: ViewBox;
   isGameEnded?: boolean;
+  electionConfig?: ElectionConfig;
 }
 
 function getDistrictId(e: { target: EventTarget | null }) {
@@ -49,6 +55,7 @@ export function DistrictMap({
   wheel,
   viewBox,
   isGameEnded,
+  electionConfig,
 }: DistrictMapProps) {
   const [hovered, setHovered] = useState<string | null>(null);
   const [pressed, setPressed] = useState<string | null>(null);
@@ -87,6 +94,9 @@ export function DistrictMap({
 
         const winnerResult = getWinnerResultsByList(d, resultIndex);
         const { winner, diffPercentage } = winnerResult;
+        const partyColor =
+          electionConfig?.parties.find((party) => party.id === winner)?.color ??
+          "";
 
         return {
           id,
@@ -94,9 +104,9 @@ export function DistrictMap({
           oevk: Number(d.evk),
           pathD,
           winnerResult,
-          base: getPartyColor(winner, diffPercentage, isGameEnded),
-          hover: getPartyHoverColor(winner),
-          active: getPartyActiveColor(winner),
+          base: getPartyColor(partyColor, diffPercentage, isGameEnded),
+          hover: getPartyHoverColor(partyColor, diffPercentage),
+          active: getPartyActiveColor(partyColor, diffPercentage),
         };
       }),
     [projected, simplifyTolerance, bounds, scale, resultIndex, isGameEnded],

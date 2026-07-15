@@ -1,8 +1,61 @@
 import { act, renderHook } from "@testing-library/react";
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import type { CampaignConfig } from "@/shared/types";
 import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
+
+const mockConfig: CampaignConfig = {
+  electionConfig: {
+    title: "Mock Election",
+    year: "2022",
+    listSeats: 10,
+    allSeats: 20,
+    thresholdPercent: 5,
+    parties: [],
+    playableSides: [
+      {
+        id: "ellenzeki_osszefogas",
+        label: "Ellenzéki Összefogás",
+        mainCandidates: [
+          { id: "marki_zay_peter", label: "Márki-Zay Péter" },
+          { id: "dobrev_klara", label: "Dobrev Klára" },
+          { id: "karacsony_gergely", label: "Karacsony Gergely" },
+        ],
+      },
+      {
+        id: "fidesz_kdnp",
+        label: "Fidesz-KDNP",
+        mainCandidates: [],
+      },
+    ],
+    electionAssets: [],
+    partyListVotes: {},
+  },
+  voterEnvironmentConfig: {
+    eligibleVoters: 1000,
+    maxTurnout: 0.7,
+    listData: [],
+  },
+  candidateListData: [],
+  districts: [],
+  questions: [],
+  answerEffect: [],
+  endResults: {
+    playerSideVictory: {
+      imageUri: "",
+      title: "",
+      subtitle: "",
+      description: "",
+    },
+    playerSideDefeat: {
+      imageUri: "",
+      title: "",
+      subtitle: "",
+      description: "",
+    },
+  },
+};
 
 const { mockNavigate } = vi.hoisted(() => ({
   mockNavigate: vi.fn(),
@@ -35,7 +88,7 @@ describe("useSideSelectorMenu", () => {
     vi.clearAllMocks();
     // @ts-expect-error global override
     global.localStorage = localStorageMock;
-    container.resolve(ConfigEngine).configure({} as any);
+    container.resolve(ConfigEngine).configure(mockConfig, GAME_ID, true);
   });
 
   it("returns sides from election config", () => {

@@ -1,12 +1,14 @@
 import { t } from "i18next";
 import { useEffect, useState } from "react";
-import { useStateEngine } from "@/logic/application";
-import { useNavigation } from "../../../hooks/navigationHook";
+import { container } from "tsyringe";
 import {
   type CampaignHeader,
+  StorageEngine,
   useGetCampaigns,
-} from "../../../logic/application/hooks/useGetCampaigns";
-import { useTranslateLang } from "../../../logic/useTranslateLang";
+  useStateEngine,
+} from "@/logic/application";
+import { useNavigation } from "../../../hooks/navigationHook";
+import { useTranslateLang } from "../../../logic/application/hooks/useTranslateLang";
 import { Button } from "../Button";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
@@ -16,9 +18,11 @@ import { MenuLayout } from "./MenuLayout";
 
 export function ClassicModeSelectorMenu() {
   const campaigns = useGetCampaigns();
-  const debugMode = window.debugMode;
+  const storage = container.resolve(StorageEngine);
+  const debugMode = storage.getItem("debugMode", "localStorage") ?? "false";
+  const enabled = JSON.parse(debugMode);
 
-  const filtered = !debugMode?.enabled
+  const filtered = !enabled
     ? campaigns.filter((camapign) => camapign.isPublished)
     : campaigns;
 
@@ -67,7 +71,6 @@ export function CampaignSelectorMenuList({
               saveSession("campaignState", { activeCampaignId: found.id });
           }}
         />
-
         {selectedCampaign && (
           <div className="flex w-full gap-4 rounded-md border border-blue-500/40 p-3">
             <img
@@ -86,7 +89,6 @@ export function CampaignSelectorMenuList({
             )}
           </div>
         )}
-
         <div className="flex w-full gap-2">
           <Button variant="tertiary" size="large" block onClick={goBack}>
             <Icon name="backspace-fill" />

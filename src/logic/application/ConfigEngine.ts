@@ -7,19 +7,19 @@ import {
 } from "@/shared/types";
 import { createLogger } from "../../../shared/logger/logger";
 import { Emitter } from "./Emitter";
-import { fetchJSON } from "./fetchJSON";
-import type { CampaignHeader } from "./hooks/useGetCampaigns";
-import { HistoryItem } from "./StateHandler";
+import { HistoryItem, StateHandler } from "./StateHandler";
 import { StorageEngine } from "./StorageEngine";
 
 const log = createLogger("ConfigEngine");
 
 @singleton()
 export class ConfigEngine extends Emitter<CampaignConfig> {
-  private campaignConfig: CampaignConfig | null = null;
   private configured = false;
 
-  constructor(private storage: StorageEngine) {
+  constructor(
+    private storage: StorageEngine,
+    private stateHandler: StateHandler,
+  ) {
     log.debug("ElectionConfigEngine initialized");
     super();
     this.storage.setItem = this.storage.setItem.bind(this);
@@ -39,8 +39,10 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
   }
 
   getCurrentElectionConfig() {
-    if (this.campaignConfig?.electionConfig) {
-      return this.campaignConfig.electionConfig;
+    const electionConfig =
+      this.stateHandler.get("campaignConfig")?.electionConfig;
+    if (electionConfig) {
+      return electionConfig;
     }
     const sessionId = this.storage.getItem("currentSessionId", "localStorage");
     const state = this.storage.getItem(
@@ -62,14 +64,17 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
   }
 
   getCampaignConfig(id?: string): CampaignConfig {
+    const inMemory = this.stateHandler.get("campaignConfig");
+    if (inMemory) {
+      return inMemory;
+    }
     const campaignId = id ?? this.getActiveCampaignId() ?? "";
-    const config = this.storage.getItem(
+    const stored = this.storage.getItem(
       "campaignConfig",
       "localStorage",
       campaignId,
     );
-    const parsed = config ? JSON.parse(config) : null;
-    return this.campaignConfig ?? parsed;
+    return (stored ? JSON.parse(stored) : null) as CampaignConfig;
   }
 
   getCampaignStrategies(
@@ -102,15 +107,6 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
     });
   }
 
-  async getElectionConfigById(id?: string) {
-    const configHeader = await this.getConfigHeader(id);
-    const electionConfig = await fetchJSON<ElectionConfig>(
-      "electionConfig",
-      configHeader?.route,
-    );
-    return electionConfig;
-  }
-
   private getActiveCampaignId() {
     const sessionId = this.storage.getItem("currentSessionId", "localStorage");
     const state = this.storage.getItem(
@@ -127,7 +123,7 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
   }
 
   private setCampaignConfig(config: CampaignConfig | null, id?: string) {
-    this.campaignConfig = config;
+    this.stateHandler.set("campaignConfig", config);
     if (!id) {
       log.debug("Clearing campaign config");
       return this.storage.clearItem("campaignConfig", "localStorage");
@@ -135,23 +131,5 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
     const value = JSON.stringify(config);
     this.storage.setItem("campaignConfig", value, "localStorage", id);
     this.configured = true;
-  }
-
-  private async getConfigHeader(
-    id?: string,
-  ): Promise<CampaignHeader | undefined> {
-    if (!id) {
-      log.error("Game mode id was not provided");
-      return;
-    }
-    const campaigns = await fetchJSON<CampaignHeader[]>("campaigns");
-    const configHeader = campaigns?.find(
-      (config: CampaignHeader) => config.id === id,
-    );
-    if (!configHeader) {
-      log.error("Config header was not found");
-      return;
-    }
-    return configHeader;
   }
 }

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useTranslateLang } from "../../../logic/useTranslateLang";
+import { useTranslateLang } from "../../../logic/application/hooks/useTranslateLang";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { PdfViewer } from "../PdfViewer";
@@ -9,7 +9,7 @@ export function AboutMenu() {
   const navigate = useNavigate();
   const backButton = useTranslateLang("menuList.button.back");
   return (
-    <div className="w-full m-5">
+    <div className="m-5">
       <PdfViewer />
       <div className="mt-4">
         <Button

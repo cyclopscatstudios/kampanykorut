@@ -16,7 +16,16 @@ export async function fetchJSON<T>(
   return data;
 }
 
-export async function getCampaignConfigByRoute(route: string) {
-  const module = await import(`../../../public/campaigns/${route}/config.ts`);
-  return module.config2022;
+export async function fetchCampaignFile<T>(
+  route: string,
+  relativePath: string,
+): Promise<T> {
+  const path = `/campaigns/${route}/${relativePath}`;
+  const res = await fetch(path);
+
+  if (!res.ok) {
+    throw new Error(`Failed to load JSON: ${path}`);
+  }
+
+  return await res.json();
 }
