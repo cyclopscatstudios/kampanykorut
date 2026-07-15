@@ -1,4 +1,5 @@
-import { CandidateListData, District } from "@/shared/types";
+import { describe, expect, it } from "vitest";
+import { CandidateListData, District } from "../types";
 import {
   calcPercentages,
   calculateWinner,

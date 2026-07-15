@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { CampaignConfig } from "@/shared/types";
+import { CampaignConfig } from "../../../shared/types";
 import { ConfigEngine } from "./ConfigEngine";
 import { StateHandler } from "./StateHandler";
 import { StorageEngine } from "./StorageEngine";

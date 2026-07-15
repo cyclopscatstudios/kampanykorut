@@ -1,4 +1,5 @@
-import { CombinedOevk } from "@/shared/types";
+import { describe, expect, it } from "vitest";
+import { CombinedOevk } from "../types";
 import { MandateCalculator } from "./MandateCalculator";
 import { mockElectionConfig } from "./mocks/mockElectionConfig";
 

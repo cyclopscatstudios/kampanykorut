@@ -1,4 +1,5 @@
 import { container } from "tsyringe";
+import { beforeEach, describe, expect, it } from "vitest";
 import { ConfigEngine, StateEngine } from "../../src/logic/application";
 import {
   ConditionalRawEffect,

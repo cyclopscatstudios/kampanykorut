@@ -1,5 +1,6 @@
 import { container } from "tsyringe";
-import { AppliedEffect, EffectType } from "@/shared/types";
+import { beforeEach, describe, expect, it } from "vitest";
+import { AppliedEffect, EffectType } from "../types";
 import { campaignState } from "./mocks/mockCampaignState";
 import { ResultModifier } from "./ResultModifier";
 
