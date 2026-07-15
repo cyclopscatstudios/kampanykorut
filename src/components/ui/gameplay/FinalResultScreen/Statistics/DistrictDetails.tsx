@@ -85,7 +85,6 @@ function DistrictCard({ district, config }: DistrictCardProps) {
       district.partok,
       district.jeloltek,
     );
-    console.log({ district });
 
     return Object.fromEntries(
       Object.entries(percentages ?? {})
