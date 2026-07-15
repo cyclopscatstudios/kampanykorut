@@ -3,7 +3,7 @@ import { t } from "i18next";
 import { useState } from "react";
 import { type HistoryItem } from "@/logic/application";
 import { CampaignConfig } from "@/shared/types";
-import { noop } from "../../../../logic/utils";
+import { noop } from "../../../../logic/application/utils";
 import { CommonWrapper } from "../../CommonWrapper";
 import { Heading } from "../../Heading";
 import { Text } from "../../Text";

@@ -1,31 +1,33 @@
-import {
-  backgroundColors,
-  type Colors,
-  partyActiveColor,
-  partyColors,
-  partyHoverColor,
-  PartyName,
-} from "../../types/color";
+import { backgroundColors, type Colors } from "../../types/color";
 
 export function getPartyColor(
-  party: PartyName,
+  partyColor: string,
   diff: number,
   isGameEnded?: boolean,
 ): string {
-  // TODO: colors should come from config, fix this ASAP
-  const color = partyColors[party];
   if (isGameEnded) {
-    return color;
+    return partyColor;
   }
-  return getShadedColor(color, diff);
+
+  return getShadedColor(partyColor, diff);
 }
 
-export function getPartyHoverColor(party: PartyName): string {
-  return partyHoverColor[party];
+export function getPartyHoverColor(color: string, diff: number): string {
+  const shadedColor = getShadedColor(color, diff);
+  return adjustLightness(shadedColor, 0.25);
 }
 
-export function getPartyActiveColor(party: PartyName): string {
-  return partyActiveColor[party];
+export function getPartyActiveColor(color: string, diff: number): string {
+  const shadedColor = getShadedColor(color, diff);
+  return adjustLightness(shadedColor, -0.45);
+}
+
+export function adjustLightness(baseHex: string, factor: number): string {
+  const { h, s, l } = hexToHsl(baseHex);
+
+  const newL = factor >= 0 ? l + (100 - l) * factor : l * (1 + factor);
+
+  return hslToHex(h, s, Math.max(0, Math.min(100, newL)));
 }
 
 function hexToHsl(hex: string) {

@@ -1,14 +1,13 @@
 import { container } from "tsyringe";
 import { createCampaignEngine } from "./createCampaignEngine";
 import { mockGameConfig } from "./hooks/MockGameConfig";
-import { StateEngine } from "./StateEngine";
+import { StateHandler } from "./StateHandler";
 
 const FIXED_SESSION_ID = "fixed-test-session-id";
 
 describe("createCampaignEngine", () => {
   beforeEach(() => {
-    const engine = container.resolve(StateEngine);
-    (engine as unknown as { sessionId: string }).sessionId = FIXED_SESSION_ID;
+    container.resolve(StateHandler).set("sessionId", FIXED_SESSION_ID);
   });
 
   it("should create a new campaign engine instance", () => {

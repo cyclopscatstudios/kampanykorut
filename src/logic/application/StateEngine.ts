@@ -5,10 +5,13 @@ import { CampaignState } from "@/shared/types";
 import { createLogger } from "../../../shared/logger/logger";
 import type { ConfigEngine } from "./ConfigEngine";
 import { Emitter } from "./Emitter";
-import { gameModeRegistry } from "./gameModeRegistery";
 import type { IdGenerator } from "./IdGenerator";
 import type { Navigation } from "./navigation/Navigation";
-import type { HistoryItem } from "./StateHandler";
+import {
+  DEFAULT_CAMPAIGN_ID,
+  type HistoryItem,
+  type StateHandler,
+} from "./StateHandler";
 import type { SessionKey, StorageEngine } from "./StorageEngine";
 
 export type SavedCampaignSessionInfo = {
@@ -27,9 +30,6 @@ export type ClearTypes = "restart" | "exit";
 
 @singleton()
 export class StateEngine extends Emitter<CampaignState> {
-  private sessionId: string | undefined;
-  private campaignState: CampaignState | null = null;
-
   constructor(
     private gameConfigEngine: ConfigEngine,
     private voterEnvironment: VoterEnvironment,
@@ -37,6 +37,7 @@ export class StateEngine extends Emitter<CampaignState> {
     private storage: StorageEngine,
     private generateId: IdGenerator,
     private navigation: Navigation,
+    private stateHandler: StateHandler,
   ) {
     log.debug("CampaignStateEngine initialized");
     super();
@@ -51,7 +52,6 @@ export class StateEngine extends Emitter<CampaignState> {
     if (this.shouldGenerateNewSessionId(force)) {
       const id = this.generateId();
       log.debug("New session ID generated:", id);
-      this.sessionId = id;
       this.saveSessionId(id);
     }
   }
@@ -126,11 +126,14 @@ export class StateEngine extends Emitter<CampaignState> {
     const sessionId =
       urlSessionId || this.storage.getItem("currentSessionId", "localStorage");
     if (sessionId) {
-      this.sessionId = sessionId;
-      return this.sessionId;
+      const saveSessionId = this.stateHandler.get("sessionId");
+      if (saveSessionId !== sessionId) {
+        this.stateHandler.set("sessionId", sessionId);
+      }
+      return sessionId;
     }
     const id = this.generateId();
-    this.sessionId = id;
+    this.stateHandler.set("sessionId", id);
     this.storage.setItem("currentSessionId", id, "localStorage");
     return id;
   }
@@ -160,9 +163,9 @@ export class StateEngine extends Emitter<CampaignState> {
       log.error("campaign state was not found");
       return;
     }
-    this.campaignState = state;
-    const config = gameModeRegistry[campaignId];
-    this.gameConfigEngine.configure(config, campaignId, true);
+
+    this.stateHandler.set("campaignState", state);
+
     const route = `/game/${campaignId}?sessionId=${sessionId}`;
     const isGameRoute = this.navigation.isUrlParamMatch("/game/");
     if (!isGameRoute) {
@@ -195,8 +198,8 @@ export class StateEngine extends Emitter<CampaignState> {
     );
     const campaignId = raw
       ? JSON.parse(raw).activeCampaignId
-      : this.campaignState?.activeCampaignId;
-    if (!campaignId) {
+      : this.stateHandler.get("campaignState")?.activeCampaignId;
+    if (!campaignId || campaignId === DEFAULT_CAMPAIGN_ID) {
       log.error("no campaign id found, skipping slot save");
       return;
     }
@@ -281,7 +284,7 @@ export class StateEngine extends Emitter<CampaignState> {
     if (!state) {
       log.debug("Clearing campaign session");
       const sessionId = this.getSessionId();
-      this.campaignState = null;
+      this.stateHandler.set("campaignState", null);
       this.storage.clearItem(`campaignState-${sessionId}`, "localStorage");
       return;
     }
@@ -294,7 +297,7 @@ export class StateEngine extends Emitter<CampaignState> {
       ...state,
     } as CampaignState;
 
-    this.campaignState = updated;
+    this.stateHandler.set("campaignState", updated);
 
     this.storage.setItem(
       `campaignState-${sessionId}`,
@@ -345,6 +348,7 @@ export class StateEngine extends Emitter<CampaignState> {
   }
 
   private saveSessionId(sessionId: string) {
+    this.stateHandler.set("sessionId", sessionId);
     this.storage.setItem("currentSessionId", sessionId, "localStorage");
   }
 

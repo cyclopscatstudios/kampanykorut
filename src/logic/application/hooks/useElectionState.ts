@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { container } from "tsyringe";
 import {
   Answer,
   CampaignState,
@@ -8,13 +9,13 @@ import {
   PendingTurn,
 } from "@/shared/types";
 import { useNavigation } from "../../../hooks/navigationHook";
+import { ConfigEngine } from "../ConfigEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
-import { gameModeRegistry } from "../gameModeRegistery";
 import { useSettings } from "./useSettings";
 import { useStateEngine } from "./useStateEngine";
 
 export function useElectionState(campaignId: string) {
-  const config = gameModeRegistry[campaignId];
+  const config = container.resolve(ConfigEngine).getCampaignConfig(campaignId);
   const { campaignEngine } = useMemo(
     () => createCampaignEngine(config, campaignId),
     [config, campaignId],

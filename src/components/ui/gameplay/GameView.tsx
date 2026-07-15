@@ -77,6 +77,7 @@ export function GameView({
       districts={config.districts}
       selectedDistrict={selectedDistrict}
       setSelectedDistrict={onSetDistrict}
+      electionConfig={config.electionConfig}
     />
   );
 }

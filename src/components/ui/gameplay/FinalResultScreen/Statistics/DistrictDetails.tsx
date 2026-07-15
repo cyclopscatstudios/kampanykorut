@@ -81,7 +81,11 @@ interface DistrictCardProps {
 function DistrictCard({ district, config }: DistrictCardProps) {
   const [selectedParty, setSelectedParty] = useState<string | null>(null);
   const votePercentage = useMemo(() => {
-    const percentages = calculateVotePercentages(district.partok);
+    const percentages = calculateVotePercentages(
+      district.partok,
+      district.jeloltek,
+    );
+    console.log({ district });
 
     return Object.fromEntries(
       Object.entries(percentages ?? {})
@@ -194,7 +198,7 @@ function PartyDetails({
           className="size-[15px] rounded mr-2"
           style={{ backgroundColor: data.color }}
         />
-        <Text>{partyName}</Text>
+        <Text>{selectedParty === partyId ? data.candidates : partyName}</Text>
       </div>
       <div className="w-[250px] flex items-center">
         <ProgressBar

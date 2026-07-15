@@ -39,14 +39,14 @@ container.registerInstance(DistrictGroupEngine, districtGroupEngine);
 const settingsEngine = new SettingsEngine(storageEngine);
 container.registerInstance(SettingsEngine, settingsEngine);
 
-const electionConfigEngine = new ConfigEngine(storageEngine);
+const stateHandler = new StateHandler();
+container.registerInstance(StateHandler, stateHandler);
+
+const electionConfigEngine = new ConfigEngine(storageEngine, stateHandler);
 container.registerInstance(ConfigEngine, electionConfigEngine);
 
 const navigationService = new Navigation();
 container.registerInstance(Navigation, navigationService);
-
-const stateHandler = new StateHandler();
-container.registerInstance(StateHandler, stateHandler);
 
 const campaignStateEngine = new StateEngine(
   electionConfigEngine,
@@ -55,6 +55,7 @@ const campaignStateEngine = new StateEngine(
   storageEngine,
   uuidGenerator,
   navigationService,
+  stateHandler,
 );
 container.registerInstance(StateEngine, campaignStateEngine);
 

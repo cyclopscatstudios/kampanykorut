@@ -4,6 +4,7 @@ import {
   CurrentView,
   District,
   DistrictPoligon,
+  ElectionConfig,
 } from "@/shared/types";
 import { SwingFactorId } from "../../../types/utils";
 import { getWinnerResultByDistrict } from "../map.utils";
@@ -17,6 +18,7 @@ interface MapCreatorProps {
   setCurrentView: (currentView: CurrentView) => void;
   selectedDistrict?: District | null;
   setSelectedDistrict: (district: District | null) => void;
+  electionConfig?: ElectionConfig;
 }
 
 export type SwingFactor = {
@@ -31,6 +33,7 @@ export function MapCreator({
   setCurrentView,
   selectedDistrict,
   setSelectedDistrict,
+  electionConfig,
 }: MapCreatorProps) {
   const swingFactor = getSwingFactor(selectedDistrict);
   return (
@@ -43,6 +46,7 @@ export function MapCreator({
           results={candidateListData}
           handleDistrict={setSelectedDistrict}
           selectedDistrict={selectedDistrict}
+          electionConfig={electionConfig}
         />
         <MapWrapper
           width={400}
@@ -51,6 +55,7 @@ export function MapCreator({
           results={candidateListData}
           handleDistrict={setSelectedDistrict}
           selectedDistrict={selectedDistrict}
+          electionConfig={electionConfig}
         />
       </div>
       <div>

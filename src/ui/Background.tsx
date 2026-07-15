@@ -22,7 +22,7 @@ function FullscreenBackground({
       <div className="flex items-center justify-center w-full h-full">
         <div
           className={classNames(
-            "w-[1200px] h-[850px] bg-[rgba(15,23,42,0.92)] rounded-sm shadow-xl shadow-black/60 relative overflow-hidden",
+            "size-full md:w-[1200px] md:h-[850px] bg-[rgba(15,23,42,0.92)] rounded-sm shadow-xl shadow-black/60 relative overflow-hidden",
           )}
         >
           <div className="flex items-center justify-center w-full h-full">

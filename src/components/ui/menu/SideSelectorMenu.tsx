@@ -1,5 +1,7 @@
+import classNames from "classnames";
 import { t } from "i18next";
 import { useLoaderData } from "react-router";
+import { useMediaQuery } from "usehooks-ts";
 import { CampaignConfig } from "../../../../shared/types/configs";
 import {
   Candidate,
@@ -35,9 +37,10 @@ export function SideSelectorMenu() {
   const bannerImg = useCampaignBanner(id, true);
   const campaigns = useGetCampaigns();
   const currentCampaign = campaigns.find((c) => c.id === id) ?? null;
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <div className="h-[850px] w-[1200px] bg-slate-800 flex flex-col gap-6 p-4">
+    <div className="size-full md:h-[850px] md:w-[1200px] bg-slate-800 flex flex-col gap-6 p-4">
       <div className="relative">
         <div className="absolute bottom-0 w-[650px] p-2 z-10">
           <Heading color="white" level={3}>
@@ -45,22 +48,31 @@ export function SideSelectorMenu() {
           </Heading>
         </div>
         <div className="absolute bottom-0 right-0 w-[500px] p-2 z-10 flex flex-col gap-2 items-end">
-          <BadgeDisplay
-            config={campaignConfig}
-            party={selectedParty}
-            candidate={selectedCandidate}
-          />
+          {isDesktop && (
+            <BadgeDisplay
+              config={campaignConfig}
+              party={selectedParty}
+              candidate={selectedCandidate}
+            />
+          )}
         </div>
         {bannerImg && (
           <CommonWrapper block>
             <img
               src={bannerImg}
-              className="h-[200px] w-full object-cover rounded-m brightness-75"
+              className="h-[100px] md:h-[200px] w-full object-cover rounded-m brightness-75"
             />
           </CommonWrapper>
         )}
       </div>
-      <div className="flex justify-around w-full">
+      <div
+        className={classNames(
+          "flex flex-col md:flex-row justify-around w-full",
+          {
+            "h-full gap-2": !isDesktop,
+          },
+        )}
+      >
         <SelectorItem
           label={t("sideSelector.party.label")}
           entityAsset={{
@@ -88,32 +100,47 @@ export function SideSelectorMenu() {
           disabled={!selectedParty}
         />
       </div>
-      <div className="w-full flex justify-between imtes-center">
-        <Button variant="tertiary" size="large" onClick={goBack}>
+      <div
+        className={classNames(
+          "w-full flex flex-col-reverse md:flex-row justify-between imtes-center",
+          {
+            "mt-auto gap-2": !isDesktop,
+          },
+        )}
+      >
+        <Button
+          variant="tertiary"
+          size="large"
+          onClick={goBack}
+          block={!isDesktop}
+        >
           <Icon name="backspace-fill" />
           <Text weight="medium" color="lightBlue">
             {t("menuList.button.back")}
           </Text>
         </Button>
-        <div className="flex justify-between w-[450px]">
-          {selectedParty && (
-            <div className="flex">
-              <Icon name="check-circle" color="green" className="mr-2" />
-              <Text weight="medium">{selectedParty?.label}</Text>
-            </div>
-          )}
-          {selectedCandidate && (
-            <div className="flex">
-              <Icon name="check-circle" color="green" className="mr-2" />
-              <Text weight="medium">{selectedCandidate?.label}</Text>
-            </div>
-          )}
-        </div>
+        {isDesktop && (
+          <div className="flex justify-between items-center w-[450px]">
+            {selectedParty && (
+              <div className="flex">
+                <Icon name="check-circle" color="green" className="mr-2" />
+                <Text weight="medium">{selectedParty?.label}</Text>
+              </div>
+            )}
+            {selectedCandidate && (
+              <div className="flex">
+                <Icon name="check-circle" color="green" className="mr-2" />
+                <Text weight="medium">{selectedCandidate?.label}</Text>
+              </div>
+            )}
+          </div>
+        )}
         <Button
           variant="primary"
           size="large"
           disabled={!selectedCandidate}
           onClick={() => startGame(id)}
+          block={!isDesktop}
         >
           <Button.Text>{t("menuList.button.start")}</Button.Text>
         </Button>
@@ -146,8 +173,8 @@ function SelectorItem<T extends { label: string; value: string }>({
   isPartySelector,
 }: SelectorItemProps<T>) {
   return (
-    <CommonWrapper className="mr-4">
-      <div className="w-[574px] box-border p-4 border-t-2 border-blue-400">
+    <CommonWrapper className="md:mr-4">
+      <div className="md:w-[574px] box-border p-4 border-t-2 border-blue-400">
         <div className="flex items-baseline">
           <Text size="xs" className="mr-2" color="gray">
             {isPartySelector ? "2.1" : "2.2"}
@@ -168,7 +195,7 @@ function SelectorItem<T extends { label: string; value: string }>({
           disabled={disabled}
         />
         {selectedElement ? (
-          <div className="flex">
+          <div className="hidden md:flex">
             <div className="h-70 w-[200px] border bg-gray-700 border-slate-600 rounded overflow-hidden mt-4">
               {asset && (
                 <img src={asset} className="w-full h-full object-cover" />
@@ -182,7 +209,7 @@ function SelectorItem<T extends { label: string; value: string }>({
             </div>
           </div>
         ) : (
-          <div className="h-70 w-full border border-dashed bg-gray-800/50 border-slate-400 rounded overflow-hidden mt-4">
+          <div className="hidden md:block h-70 w-full border border-dashed bg-gray-800/50 border-slate-400 rounded overflow-hidden mt-4">
             <div className="w-full h-full flex justify-center items-center">
               <div className="w-[450px]">
                 <Text size="sm" color="gray">
@@ -207,29 +234,32 @@ function BadgeDisplay({
   candidate?: Candidate;
 }) {
   const badges = getBadgesForTarget(config, party, candidate);
+
   return (
-    <div className="bg-slate-800/40 rounded-lg p-5 backdrop-blur-sm border border-blue-50/30">
-      <Tooltip content="asd">
+    <Tooltip
+      content={t("translation:sideSelector.badgeDisplay.tooltipContent")}
+    >
+      <div className="bg-slate-800/40 rounded-lg p-5 backdrop-blur-sm border border-blue-50/30">
         <div className="flex items-center mb-2">
           <Icon name="info-circle" size="xs" className="mr-1" />
-          <Text size="xs">Elérhető jelvények</Text>
+          <Text size="xs">{t("sideSelector.badgeDisplay.label")}</Text>
         </div>
-      </Tooltip>
-      <div className="flex flex-row gap-2 justify-center">
-        {badges?.map((badge) => (
-          <Tooltip content={badge.label}>
-            <div>
-              <img
-                key={badge.id}
-                src={badge.asset?.badge}
-                alt={badge.label}
-                className="w-12 h-12"
-              />
-            </div>
-          </Tooltip>
-        ))}
+        <div className="flex flex-row gap-2 justify-center">
+          {badges?.map((badge) => (
+            <Tooltip content={badge.label} key={badge.id}>
+              <div>
+                <img
+                  key={badge.id}
+                  src={badge.asset?.badge}
+                  alt={badge.label}
+                  className="w-12 h-12"
+                />
+              </div>
+            </Tooltip>
+          ))}
+        </div>
       </div>
-    </div>
+    </Tooltip>
   );
 }
 

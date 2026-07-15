@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useTranslateLang } from "../../logic/useTranslateLang";
+import { useTranslateLang } from "../../logic/application/hooks/useTranslateLang";
 import { Button } from "./Button";
 import { type BootstrapIcon, Icon } from "./Icon";
 import { type MenuItem } from "./menu/menu.types";
@@ -16,7 +16,7 @@ export function MenuList({ listItems, hasBackButton = false }: MenuListProps) {
 
   return (
     <div>
-      <ul className="w-[450px]">
+      <ul className="w-[300px] mx-2 md:w-[450px]">
         {listItems.map((item, index) => (
           <li
             key={index}

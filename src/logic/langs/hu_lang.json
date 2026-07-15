@@ -43,6 +43,10 @@
       "label": "Válassz egy jelöltet",
       "dropdown": "Választott jelölt",
       "emptyState": "Előbb válassz pártot, utána jelöltet."
+    },
+    "badgeDisplay": {
+      "label": "Elérhető jelvények",
+      "tooltipContent": "A kampányhoz tartozó elérhető eredmények jelvényei"
     }
   },
   "endResult": {

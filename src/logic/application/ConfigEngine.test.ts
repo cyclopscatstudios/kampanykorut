@@ -1,7 +1,8 @@
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { CampaignConfig } from "@/shared/types";
+import { CampaignConfig } from "../../../shared/types";
 import { ConfigEngine } from "./ConfigEngine";
+import { StateHandler } from "./StateHandler";
 import { StorageEngine } from "./StorageEngine";
 
 const baseConfig: CampaignConfig = {
@@ -40,7 +41,7 @@ describe("GameConfigEngine", () => {
 
   describe("getCurrentElectionConfig", () => {
     it("returns the in-memory config after configure()", () => {
-      const engine = new ConfigEngine(new StorageEngine());
+      const engine = new ConfigEngine(new StorageEngine(), new StateHandler());
       engine.configure(baseConfig);
 
       expect(engine.getCurrentElectionConfig()).toBe(baseConfig.electionConfig);
@@ -53,14 +54,14 @@ describe("GameConfigEngine", () => {
     });
 
     it("returns undefined when no config is set and storage is empty", () => {
-      const engine = new ConfigEngine(new StorageEngine());
+      const engine = new ConfigEngine(new StorageEngine(), new StateHandler());
       localStorageMock.getItem.mockReturnValue(null);
 
       expect(engine.getCurrentElectionConfig()).toBeUndefined();
     });
 
     it("does not throw when localStorage state is null", () => {
-      const engine = new ConfigEngine(new StorageEngine());
+      const engine = new ConfigEngine(new StorageEngine(), new StateHandler());
       localStorageMock.getItem.mockReturnValue(null);
 
       expect(() => engine.getCurrentElectionConfig()).not.toThrow();
@@ -69,7 +70,7 @@ describe("GameConfigEngine", () => {
 
   describe("configure", () => {
     it("skips reconfiguration when already configured and forced is false", () => {
-      const engine = new ConfigEngine(new StorageEngine());
+      const engine = new ConfigEngine(new StorageEngine(), new StateHandler());
       engine.configure(baseConfig, "campaign-1");
       engine.configure(otherConfig, "campaign-2");
 
@@ -77,7 +78,7 @@ describe("GameConfigEngine", () => {
     });
 
     it("reconfigures when forced is true", () => {
-      const engine = new ConfigEngine(new StorageEngine());
+      const engine = new ConfigEngine(new StorageEngine(), new StateHandler());
       engine.configure(baseConfig, "campaign-1");
       engine.configure(otherConfig, "campaign-2", true);
 
@@ -87,7 +88,7 @@ describe("GameConfigEngine", () => {
     });
 
     it("reconfigures while no id has been provided yet", () => {
-      const engine = new ConfigEngine(new StorageEngine());
+      const engine = new ConfigEngine(new StorageEngine(), new StateHandler());
       engine.configure(baseConfig);
       engine.configure(otherConfig);
 

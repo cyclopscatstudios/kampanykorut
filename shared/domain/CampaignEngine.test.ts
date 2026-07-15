@@ -1,4 +1,5 @@
 import { container } from "tsyringe";
+import { beforeAll, describe, expect, it } from "vitest";
 import {
   CampaignState,
   CandidateListData,
@@ -7,7 +8,7 @@ import {
   ElectionConfig,
   RawEffect,
   RawParty,
-} from "@/shared/types";
+} from "../types";
 import { CampaignEngine } from "./CampaignEngine";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";

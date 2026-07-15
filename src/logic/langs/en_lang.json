@@ -43,6 +43,10 @@
       "label": "Select a candidate",
       "dropdown": "Select candidate...",
       "emptyState": "First select a party, then a candidate."
+    },
+    "badgeDisplay": {
+      "label": "Available badges",
+      "tooltipContent": "Badges for achievements available in this campaign"
     }
   },
   "endResult": {

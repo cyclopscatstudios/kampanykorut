@@ -1,4 +1,4 @@
-import { useTranslateLang } from "../../../logic/useTranslateLang";
+import { useTranslateLang } from "../../../logic/application/hooks/useTranslateLang";
 import { MenuList } from "../MenuList";
 import { MenuItemId } from "./menu.types";
 import { MenuLayout } from "./MenuLayout";

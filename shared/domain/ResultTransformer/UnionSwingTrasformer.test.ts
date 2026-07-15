@@ -1,4 +1,5 @@
-import { CandidateListData } from "@/shared/types";
+import { describe, expect, it } from "vitest";
+import { CandidateListData } from "../../types";
 import { UnionSwingTransformer } from "./UnionSwingTransformer";
 
 describe("NationalSwingTransform", () => {
