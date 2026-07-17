@@ -1,0 +1,57 @@
+{
+  "title": "Test Campaign",
+  "year": "_0001_",
+  "listSeats": 93,
+  "allSeats": 199,
+  "thresholdPercent": 5,
+  "districtBoost": true,
+  "baseResults": {
+    "green_party": -5,
+    "red_party": 5,
+    "_other": 1
+  },
+  "parties": [
+    {
+      "id": "green_party",
+      "name": "Green Party",
+      "color": "#008000"
+    },
+    {
+      "id": "red_party",
+      "name": "Red Party",
+      "color": "#FF0000"
+    }
+  ],
+  "partyListVotes": {
+    "green_party": 10000,
+    "red_party": 15000,
+    "yellow_party": 5000
+  },
+  "playableSides": [
+    {
+      "id": "green_party",
+      "label": "Green Party",
+      "description": "Something something Green party",
+      "mainCandidates": [
+        {
+          "id": "john_doe",
+          "label": "John Doe",
+          "description": "todo"
+        }
+      ]
+    }
+  ],
+    "electionAssets": [
+    {
+      "id": "green_party",
+      "candidateAssets": [
+        {
+          "id": "john_doe",
+          "portrait": "/images/_0001_/john_doe_portrait.png",
+          "slogan": "/images/_0001_/campaign_slogan.png"
+        }
+      ],
+      "party_logo": "/images/_0001_/green_party.png"
+    }
+  ]
+}

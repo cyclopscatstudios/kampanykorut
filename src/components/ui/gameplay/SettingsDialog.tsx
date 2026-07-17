@@ -70,6 +70,7 @@ export function SettingsBody({
   return (
     <div className="flex flex-col gap-5 h-full">
       <Checkbox
+        id="showAdvisorFeedback"
         label={t("settingsMenu.advisorFeedback.label")}
         defaultChecked={settingsForm.showAdvisorFeedback}
         onChange={(e) =>
@@ -80,6 +81,7 @@ export function SettingsBody({
         }
       />
       <Dropdown
+        id="changeLanguage"
         options={[...supportedLanguages].map((lang) => ({
           label: lang.label,
           value: lang.id,
