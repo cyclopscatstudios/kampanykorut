@@ -15,7 +15,7 @@
     "ladle": "npx ladle serve",
     "prepare": "husky",
     "test-ct": "playwright test -c playwright-ct.config.ts",
-    "playwright": "playwright test --ui",
+    "playwright": "playwright test",
     "playwright:ct": "playwright test --config=playwright-ct.config.ts --ui"
   },
   "dependencies": {
