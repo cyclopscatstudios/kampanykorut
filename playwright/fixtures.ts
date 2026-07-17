@@ -1,10 +1,13 @@
 // fixtures.ts
-import { test as base, expect } from '@playwright/test';
+import { expect, test as base } from "@playwright/test";
 
 export const test = base.extend({
   page: async ({ page }, use) => {
     await page.addInitScript(() => {
-      (globalThis as any).localStorage.setItem("kampanykorut_debugMode", "true");
+      (globalThis as any).localStorage.setItem(
+        "kampanykorut_debugMode",
+        "true",
+      );
     });
 
     await use(page);

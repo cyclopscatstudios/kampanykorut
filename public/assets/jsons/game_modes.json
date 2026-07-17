@@ -25,7 +25,7 @@
     "description": "something something test campaign",
     "route": "_0001_",
     "tags": ["test"],
-        "campaignBanner": "default-banner.png",
+    "campaignBanner": "default-banner.png",
     "thinCampaignBanner": "default-banner-thin.png",
     "isPublished": false
   }
