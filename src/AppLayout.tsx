@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import { container } from "tsyringe";
 import { createLogger } from "../shared/logger/logger";
+import { GAME_HEADER_SLOT_ID } from "./components/ui/gameplay/gameHeaderSlot";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
 import { useParams } from "./hooks/useParamsHook";
 import { StateEngine, useStateEngine } from "./logic/application";
@@ -23,10 +24,15 @@ export function RootLayout() {
   }, [navigation, stateEngine]);
 
   return (
-    <FullscreenBackground path={path}>
-      <NavigationBinder />
-      <Outlet />
-    </FullscreenBackground>
+    <div className="flex flex-col w-screen h-screen bg-[#0f172a]">
+      <div id={GAME_HEADER_SLOT_ID} />
+      <div className="flex-1 min-h-0">
+        <FullscreenBackground path={path}>
+          <NavigationBinder />
+          <Outlet />
+        </FullscreenBackground>
+      </div>
+    </div>
   );
 }
 

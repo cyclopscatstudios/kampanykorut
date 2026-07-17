@@ -40,7 +40,7 @@ export function QuestionCard({
 }: Question) {
   const { portrait, slogan, party_logo } = useAssets();
   return (
-    <div className="h-[784px] flex flex-col p-4 bg-slate-900" data-testid={id}>
+    <div className="flex flex-col p-4 bg-slate-900" data-testid={id}>
       <div className="w-full flex flex-col justify-center items-center mb-4 max-h-[500px] overflow-y-auto">
         <div className="w-full mb-4 p-2 border-l-3 border-blue-500">
           {affects && (
@@ -51,7 +51,7 @@ export function QuestionCard({
               <StrategicDecisionBadge />
             </Tooltip>
           )}
-          <Heading level={4} color="lightBlue">
+          <Heading level={5} color="lightBlue">
             {question}
           </Heading>
         </div>
@@ -70,6 +70,16 @@ export function QuestionCard({
           <Button variant="secondary" onClick={() => setCurrentView("MapView")}>
             <Button.Text>{t("questionCard.buttons.mapView")}</Button.Text>
           </Button>
+          <div className="bg-slate-700 w-[350px] border border-slate-600 p-3 mb-3">
+            <Text
+              color="lightBlue"
+              weight="bold"
+              className="text-center"
+              size="sm"
+            >
+              {cityName}
+            </Text>
+          </div>
           <Button
             disabled={!answer}
             variant="primary"
@@ -81,20 +91,15 @@ export function QuestionCard({
           </Button>
         </div>
         <div className="flex items-end justify-center gap-4">
-          <div className="h-[220px] border border-slate-600 rounded overflow-hidden">
+          <div className="h-[150px] border border-slate-600 rounded overflow-hidden">
             <img src={portrait} className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col justify-end items-center h-full">
-            <div className="bg-slate-700 w-[350px] border border-slate-600 p-3 mb-5">
-              <Text color="lightBlue" weight="bold" className="text-center">
-                {cityName}
-              </Text>
-            </div>
             <div className="h-[150px] w-[350px] border border-slate-600 rounded overflow-hidden">
               <img src={slogan} className="w-full h-full object-cover" />
             </div>
           </div>
-          <div className="h-[220px] border border-slate-600 rounded overflow-hidden">
+          <div className="h-[150px] border border-slate-600 rounded overflow-hidden">
             <img src={party_logo} className="w-full h-full object-cover" />
           </div>
         </div>

@@ -1,14 +1,12 @@
-import type { ActionDispatch, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { GameDialogs } from "./GameDialogs";
+import { GameHeader } from "./GameHeader";
 import { useDialogState } from "./hooks/useDialogState";
-import type { GameFlowAction, GameFlowState } from "./hooks/useGameFlow";
-import { TopMenuBar } from "./TopBar";
 
 interface GameChromeProps {
   children: ReactNode;
-  actionDispatch?: ActionDispatch<[action: GameFlowAction]>;
   state?: CampaignState;
   config?: CampaignConfig;
   pollsterData?: PollingOpnions | null;
@@ -17,43 +15,43 @@ interface GameChromeProps {
     state?: CampaignState,
     config?: CampaignConfig,
   ) => void;
-  flow?: GameFlowState;
 }
 
 export function GameChrome({
   children,
-  actionDispatch,
   state,
   config,
   pollsterData,
   handlePollsterChange,
-  flow,
 }: GameChromeProps) {
   const dialogs = useDialogState();
   const { goToMainMenu } = useNavigation();
 
   return (
-    <div className="w-full h-full">
-      <TopMenuBar
+    <>
+      <GameHeader
         activeDialog={dialogs.activeDialog}
         onOpen={dialogs.open}
-        actionDispatch={actionDispatch}
         state={state}
         config={config}
         pollsterData={pollsterData}
         handlePollsterChange={handlePollsterChange}
-        flow={flow}
       />
-      <div className="h-15.5 shrink-0" />
-      <GameDialogs
-        activeDialog={dialogs.activeDialog}
-        onClose={dialogs.close}
-        onConfirmExit={() => {
-          dialogs.close();
-          goToMainMenu();
-        }}
-      />
-      {children}
-    </div>
+      <GameMain>
+        <GameDialogs
+          activeDialog={dialogs.activeDialog}
+          onClose={dialogs.close}
+          onConfirmExit={() => {
+            dialogs.close();
+            goToMainMenu();
+          }}
+        />
+        {children}
+      </GameMain>
+    </>
   );
+}
+
+function GameMain({ children }: { children: ReactNode }) {
+  return <main className="w-full h-full">{children}</main>;
 }

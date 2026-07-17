@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { t } from "i18next";
-import { type ActionDispatch, useState } from "react";
+import { useLayoutEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { container } from "tsyringe";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
 import {
@@ -17,13 +18,12 @@ import { Icon } from "../Icon";
 import { Menu, MenuItem, SubMenu } from "../Menu";
 import { Text } from "../Text";
 import { Tooltip } from "../Tooltip";
+import { GAME_HEADER_SLOT_ID } from "./gameHeaderSlot";
 import type { DialogId } from "./hooks/useDialogState";
-import type { GameFlowAction, GameFlowState } from "./hooks/useGameFlow";
 
-export interface MenuBarProps {
+export interface GameHeaderProps {
   activeDialog: DialogId;
   onOpen: (id: Exclude<DialogId, null>) => void;
-  actionDispatch?: ActionDispatch<[action: GameFlowAction]>;
   state?: CampaignState;
   config?: CampaignConfig;
   pollsterData?: PollingOpnions | null;
@@ -32,20 +32,18 @@ export interface MenuBarProps {
     state?: CampaignState,
     config?: CampaignConfig,
   ) => void;
-  flow?: GameFlowState;
 }
 
-export function TopMenuBar({
+export function GameHeader({
   activeDialog,
   onOpen,
-  actionDispatch,
   pollsterData,
   handlePollsterChange,
   state,
   config,
-  flow,
-}: MenuBarProps) {
+}: GameHeaderProps) {
   const [info, setInfo] = useState("turn");
+  const [slot, setSlot] = useState<HTMLElement | null>(null);
   const pollsterEngine = container.resolve(PollsterEngine);
   const pollsters = pollsterEngine.getPollsters();
   const navigationService = container.resolve(Navigation);
@@ -55,27 +53,26 @@ export function TopMenuBar({
     (party) => party.id === state?.playerSide?.partyId,
   );
 
-  return (
-    <div className="fixed inset-x-0 top-0 z-40 w-full border-b-2 border-blue-400 bg-[rgba(15,23,42,0.92)]">
+  useLayoutEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSlot(document.getElementById(GAME_HEADER_SLOT_ID));
+  }, []);
+
+  if (!slot) {
+    return null;
+  }
+
+  return createPortal(
+    <header className="w-full border-b-2 border-blue-400 bg-[rgba(15,23,42,0.92)]">
       <div className="h-[80px] flex justify-between items-center mx-2.5">
         <div className="flex justify-between items-center gap-2">
           <div
             className="flex justify-center items-center cursor-pointer"
             onClick={() => onOpen("gameMenu")}
           >
-            <img src={logo} className="mr-1" width="40" height="40" />
-            <img src={markdown} className="mr-3" width="200" height="40" />
+            <img src={logo} className="mr-1" width="30" height="30" />
+            <img src={markdown} className="mr-3" width="200" height="30" />
           </div>
-          {flow?.currentView === "MapView" && flow.visitingDistrict && (
-            <Button
-              variant="underline"
-              onClick={() =>
-                actionDispatch?.({ type: "CHANGE_VIEW", view: "QuestionView" })
-              }
-            >
-              <Button.Icon name="geo-alt-fill" color="purple" size="medium" />
-            </Button>
-          )}
           {!endResultsScreen && (
             <Menu
               align="left"
@@ -184,7 +181,8 @@ export function TopMenuBar({
           </Tooltip>
         </div>
       </div>
-    </div>
+    </header>,
+    slot,
   );
 }
 
@@ -240,8 +238,8 @@ function CampaignBadge({
   const tooltipContent = `${year}: ${title} - ${party?.name}`;
   return (
     <Tooltip content={tooltipContent} position="bottom">
-      <div className="bg-blue-900/50 p-2 rounded-full border border-blue-50/25">
-        <div className="flex items-center">
+      <div className="h-[40px] flex items-center justify-center bg-blue-900/50 p-2 rounded-full border border-blue-50/25">
+        <div className="h-[40px] flex items-center justify-center">
           <div
             className={classNames("size-[25px] rounded-full mr-1.5")}
             style={{ backgroundColor: party?.color }}
@@ -250,7 +248,7 @@ function CampaignBadge({
             <Text size="xs" weight="bold">
               {year}
             </Text>
-            <Text size="xs" weight="medium">
+            <Text size="xs" weight="light">
               {title}
             </Text>
           </div>

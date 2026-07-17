@@ -37,8 +37,8 @@ export function MapCreator({
 }: MapCreatorProps) {
   const swingFactor = getSwingFactor(selectedDistrict);
   return (
-    <div className="flex flex-col h-full w-full">
-      <div className="flex w-full h-full justify-center items-center gap-4">
+    <div className="flex flex-col h-full justify-center items-center">
+      <div className="flex gap-4 mb-4">
         <MapWrapper
           width={700}
           height={450}
@@ -47,6 +47,7 @@ export function MapCreator({
           handleDistrict={setSelectedDistrict}
           selectedDistrict={selectedDistrict}
           electionConfig={electionConfig}
+          className="w-full"
         />
         <MapWrapper
           width={400}
@@ -58,14 +59,12 @@ export function MapCreator({
           electionConfig={electionConfig}
         />
       </div>
-      <div>
-        <div className="h-40 mx-10">
-          <BottomBar
-            data={selectedDistrict}
-            onClick={() => setCurrentView("QuestionView")}
-            swingFactor={swingFactor}
-          />
-        </div>
+      <div className="w-[1118px]">
+        <BottomBar
+          data={selectedDistrict}
+          onClick={() => setCurrentView("QuestionView")}
+          swingFactor={swingFactor}
+        />
       </div>
     </div>
   );

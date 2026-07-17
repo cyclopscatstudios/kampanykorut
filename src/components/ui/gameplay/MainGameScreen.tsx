@@ -53,12 +53,10 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
 
   return (
     <GameChrome
-      actionDispatch={dispatch}
       state={state}
       config={config}
       pollsterData={state.pollingOpnions ?? null}
       handlePollsterChange={handlePollsterChange}
-      flow={flow}
     >
       <div className="flex w-full h-[5px] overflow-hidden">
         {config.electionConfig.parties.map((party) => (

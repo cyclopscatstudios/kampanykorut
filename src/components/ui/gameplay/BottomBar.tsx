@@ -20,7 +20,7 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
 
   return (
     <CommonWrapper block fullHeight={false}>
-      <div className="w-full h-20 bg-dark-blue flex justify-between items-center">
+      <div className="h-20 bg-dark-blue flex justify-between items-center">
         {data ? (
           <>
             <div className="flex items-center px-5">

@@ -40,7 +40,7 @@ export function SideSelectorMenu() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <div className="size-full md:h-[850px] md:w-[1200px] bg-slate-800 flex flex-col gap-6 p-4">
+    <div className="size-full md:h-[750px] md:w-[1200px] bg-slate-800 flex flex-col gap-6 p-4">
       <div className="relative">
         <div className="absolute bottom-0 w-[650px] p-2 z-10">
           <Heading color="white" level={3}>
