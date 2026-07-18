@@ -174,7 +174,7 @@ function SelectorItem<T extends { label: string; value: string }>({
   entityAsset,
   disabled,
   isPartySelector,
-  testId
+  testId,
 }: SelectorItemProps<T>) {
   return (
     <CommonWrapper className="md:mr-4">

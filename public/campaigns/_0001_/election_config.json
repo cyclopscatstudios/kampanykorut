@@ -37,6 +37,75 @@
           "id": "john_doe",
           "label": "John Doe",
           "description": "todo"
+        },
+        {
+          "id": "emma_wilson",
+          "label": "Emma Wilson",
+          "description": "todo"
+        },
+        {
+          "id": "liam_carter",
+          "label": "Liam Carter",
+          "description": "todo"
+        },
+        {
+          "id": "olivia_harris",
+          "label": "Olivia Harris",
+          "description": "todo"
+        }
+      ]
+    },
+    {
+      "id": "red_party",
+      "label": "Red Party",
+      "description": "Something something Red party",
+      "mainCandidates": [
+        {
+          "id": "john_doe",
+          "label": "John Doe",
+          "description": "todo"
+        },
+        {
+          "id": "sophia_martin",
+          "label": "Sophia Martin",
+          "description": "todo"
+        },
+        {
+          "id": "noah_clark",
+          "label": "Noah Clark",
+          "description": "todo"
+        },
+        {
+          "id": "ethan_walker",
+          "label": "Ethan Walker",
+          "description": "todo"
+        }
+      ]
+    },
+    {
+      "id": "yellow_party",
+      "label": "Yellow Party",
+      "description": "Something something Yellow party",
+      "mainCandidates": [
+        {
+          "id": "lucas_adams",
+          "label": "Lucas Adams",
+          "description": "todo"
+        },
+        {
+          "id": "ava_bennett",
+          "label": "Ava Bennett",
+          "description": "todo"
+        },
+        {
+          "id": "mia_cooper",
+          "label": "Mia Cooper",
+          "description": "todo"
+        },
+        {
+          "id": "jackson_foster",
+          "label": "Jackson Foster",
+          "description": "todo"
         }
       ]
     }
