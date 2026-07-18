@@ -10,7 +10,9 @@ import { RouterProvider } from "react-router-dom";
 import { initDevApi } from "./initApi";
 import { router } from "./router";
 
-initDevApi();
+if (import.meta.env.DEV || import.meta.env.PLAYWRIGHT === "true") {
+  initDevApi();
+}
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

@@ -38,6 +38,8 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
+    env:
+      PLAYWRIGHT: "true"
 
     steps:
       - uses: actions/checkout@v4
