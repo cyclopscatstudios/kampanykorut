@@ -17,13 +17,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Enable Corepack
-        run: |
-          corepack enable
+          cache: "yarn"
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: yarn install --frozen-lockfile
 
       - name: Lint
         run: yarn lint
@@ -48,32 +45,23 @@ jobs:
       PLAYWRIGHT: "true"
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: yarn
 
-      - name: Enable Corepack
-        run: |
-          corepack enable
-
-      - name: Cache Playwright Browsers
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
-      - name: Install dependencies
-        run: yarn install --immutable
+      - run: yarn install --frozen-lockfile
 
-      - name: Install Playwright
-        run: npx playwright install chromium --with-deps
+      - run: npx playwright install chromium --with-deps
 
-      - name: Run Playwright tests
-        run: yarn playwright test
+      - run: yarn playwright test
 
       - name: Upload Playwright Artifacts
         if: always()
@@ -88,7 +76,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-
     permissions:
       contents: read
       packages: write
@@ -96,15 +83,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Enable Corepack
-        run: |
-          corepack enable
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -118,9 +96,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+          tags: ghcr.io/${{ github.repository }}:latest,ghcr.io/${{ github.repository }}:${{ github.sha }}
           build-args: |
             VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}
             VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}
