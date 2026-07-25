@@ -11,7 +11,7 @@ test("side selector", async ({ page, getCampaignState }) => {
   await page.getByTestId("candidateSelector").click();
   await page.getByTestId("emma_wilson").click();
 
-  await expect((await getCampaignState())?.playerSide).toStrictEqual({
+  expect((await getCampaignState())?.playerSide).toStrictEqual({
     partyId: "green_party",
     candidateId: "emma_wilson",
   });
@@ -19,7 +19,7 @@ test("side selector", async ({ page, getCampaignState }) => {
   await page.getByTestId("partySelector").click();
   await page.getByTestId("red_party").click();
 
-  await expect((await getCampaignState())?.playerSide).toStrictEqual({
+  expect((await getCampaignState())?.playerSide).toStrictEqual({
     partyId: "red_party",
   });
 });

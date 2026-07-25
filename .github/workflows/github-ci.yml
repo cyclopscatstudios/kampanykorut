@@ -38,7 +38,10 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+
     env:
+      CI: "true"
       PLAYWRIGHT: "true"
 
     steps:
@@ -49,18 +52,25 @@ jobs:
           node-version: 20
           cache: yarn
 
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
       - run: yarn install --frozen-lockfile
 
-      - run: npx playwright install --with-deps
+      - run: npx playwright install chromium --with-deps
 
       - run: yarn playwright test
 
-      - name: Upload Playwright Report
+      - name: Upload Playwright Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
-          path: playwright-report/
+          name: playwright-artifacts
+          path: |
+            playwright-report/
+            test-results/
 
   docker:
     runs-on: ubuntu-latest

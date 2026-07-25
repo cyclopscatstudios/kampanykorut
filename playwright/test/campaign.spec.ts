@@ -11,6 +11,7 @@ test.beforeEach(async ({ page, seedCampaign }) => {
   );
 });
 
-test("campaign", async ({}) => {
+test("campaign", async ({ page }) => {
+  await page.pause();
   // todo
 });

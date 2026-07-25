@@ -6,17 +6,17 @@
     "telepules": "Budapest 05. kerület",
     "valasztopolgar": 73914,
     "partok": {
-      "tisza": 37803,
-      "fidesz": 18391,
-      "mi_hazank": 1948,
+      "green_party": 37803,
+      "red_party": 18391,
+      "yellow_party": 1948,
       "mkkp": 978,
       "dk": 770,
       "a_szolidaritas_partja_munkaspart": 66
     },
     "jeloltek": {
-      "tisza": ["TANÁCS ZOLTÁN"],
-      "fidesz": ["FAZEKAS CSILLA"],
-      "mi_hazank": ["NAGY ATTILA"],
+      "green_party": ["TANÁCS ZOLTÁN"],
+      "red_party": ["FAZEKAS CSILLA"],
+      "yellow_party": ["NAGY ATTILA"],
       "mkkp": ["SZINTAY ISTVÁN"],
       "dk": ["HERFORT MARIETTA"],
       "a_szolidaritas_partja_munkaspart": ["VÁRKONYI ZOLTÁN"]
@@ -29,18 +29,18 @@
     "telepules": "Budapest 08. kerület",
     "valasztopolgar": 76449,
     "partok": {
-      "tisza": 35772,
-      "fidesz": 16512,
-      "mi_hazank": 1929,
+      "green_party": 35772,
+      "red_party": 16512,
+      "yellow_party": 1929,
       "mkkp": 717,
       "dk": 582,
       "fuggetlen_csardi_antal": 511,
       "a_szolidaritas_partja_munkaspart": 47
     },
     "jeloltek": {
-      "tisza": ["BÓDIS KRISZTA"],
-      "fidesz": ["FERENCZ ORSOLYA"],
-      "mi_hazank": ["KVACSKAY KÁROLY"],
+      "green_party": ["BÓDIS KRISZTA"],
+      "red_party": ["FERENCZ ORSOLYA"],
+      "yellow_party": ["KVACSKAY KÁROLY"],
       "mkkp": ["GERGELY ANDREA"],
       "dk": ["HALMAI RICHÁRD"],
       "fuggetlen_csardi_antal": ["CSÁRDI ANTAL"],
@@ -54,17 +54,17 @@
     "telepules": "Budapest 12. kerület",
     "valasztopolgar": 78431,
     "partok": {
-      "tisza": 43112,
-      "fidesz": 20248,
-      "mi_hazank": 2315,
+      "green_party": 43112,
+      "red_party": 20248,
+      "yellow_party": 2315,
       "mkkp": 1112,
       "dk": 860,
       "a_szolidaritas_partja_munkaspart": 67
     },
     "jeloltek": {
-      "tisza": ["MAGYAR PÉTER"],
-      "fidesz": ["STEINER ATTILA"],
-      "mi_hazank": ["GRUNDTNER ANDRÁS"],
+      "green_party": ["MAGYAR PÉTER"],
+      "red_party": ["STEINER ATTILA"],
+      "yellow_party": ["GRUNDTNER ANDRÁS"],
       "mkkp": ["BÜRGER ZOLTÁN"],
       "dk": ["GRÉCZI ZSOLT"],
       "a_szolidaritas_partja_munkaspart": ["BARABÁS GYÖRGY LÁSZLÓ"]
@@ -77,17 +77,17 @@
     "telepules": "Budapest 02. kerület",
     "valasztopolgar": 80326,
     "partok": {
-      "tisza": 45212,
-      "fidesz": 19994,
-      "mi_hazank": 2103,
+      "green_party": 45212,
+      "red_party": 19994,
+      "yellow_party": 2103,
       "mkkp": 990,
       "dk": 819,
       "fuggetlen_tordai_bence": 0
     },
     "jeloltek": {
-      "tisza": ["KONCZ ÁRON"],
-      "fidesz": ["FÜLÖP ATTILA"],
-      "mi_hazank": ["BINDER CSABA"],
+      "green_party": ["KONCZ ÁRON"],
+      "red_party": ["FÜLÖP ATTILA"],
+      "yellow_party": ["BINDER CSABA"],
       "mkkp": ["PILISI EMÍLIA"],
       "dk": ["HEGYESI BEÁTA"],
       "fuggetlen_tordai_bence": ["TORDAI BENCE"]
@@ -100,16 +100,16 @@
     "telepules": "Budapest 06. kerület",
     "valasztopolgar": 76968,
     "partok": {
-      "tisza": 42668,
-      "fidesz": 14769,
-      "mi_hazank": 2344,
+      "green_party": 42668,
+      "red_party": 14769,
+      "yellow_party": 2344,
       "dk": 1578,
       "mkkp": 845
     },
     "jeloltek": {
-      "tisza": ["WEIGAND ISTVÁN"],
-      "fidesz": ["KOVÁCS BALÁZS NORBERT"],
-      "mi_hazank": ["EDŐCS BEÁTA"],
+      "green_party": ["WEIGAND ISTVÁN"],
+      "red_party": ["KOVÁCS BALÁZS NORBERT"],
+      "yellow_party": ["EDŐCS BEÁTA"],
       "dk": ["KESZTHELYI DOROTTYA"],
       "mkkp": ["OLÁH JÁNOS"]
     }
@@ -121,18 +121,18 @@
     "telepules": "Budapest 14. kerület",
     "valasztopolgar": 78254,
     "partok": {
-      "tisza": 33953,
-      "fidesz": 15612,
+      "green_party": 33953,
+      "red_party": 15612,
       "fuggetlen_hadhazy_akos": 10207,
-      "mi_hazank": 2825,
+      "yellow_party": 2825,
       "mkkp": 730,
       "dk": 0
     },
     "jeloltek": {
-      "tisza": ["VELKEY GYÖRGY LÁSZLÓ"],
-      "fidesz": ["RADICS BÉLA"],
+      "green_party": ["VELKEY GYÖRGY LÁSZLÓ"],
+      "red_party": ["RADICS BÉLA"],
       "fuggetlen_hadhazy_akos": ["HADHÁZY ÁKOS"],
-      "mi_hazank": ["PÉRCSI VIKTÓRIA"],
+      "yellow_party": ["PÉRCSI VIKTÓRIA"],
       "mkkp": ["NAGY DÁVID"],
       "dk": ["KOMÁROMI ZOLTÁN"]
     }
@@ -144,17 +144,17 @@
     "telepules": "Budapest 10. kerület",
     "valasztopolgar": 75379,
     "partok": {
-      "tisza": 38809,
-      "fidesz": 17340,
-      "mi_hazank": 2561,
+      "green_party": 38809,
+      "red_party": 17340,
+      "yellow_party": 2561,
       "dk": 1287,
       "mkkp": 639,
       "fuggetlen_vekony_csongor": 305
     },
     "jeloltek": {
-      "tisza": ["TRENTIN BALÁZS"],
-      "fidesz": ["D. KOVÁCS RÓBERT ANTAL"],
-      "mi_hazank": ["CZEGLÉDI JÁNOS"],
+      "green_party": ["TRENTIN BALÁZS"],
+      "red_party": ["D. KOVÁCS RÓBERT ANTAL"],
+      "yellow_party": ["CZEGLÉDI JÁNOS"],
       "dk": ["ARATÓ GERGELY"],
       "mkkp": ["KLING OND"],
       "fuggetlen_vekony_csongor": ["VÉKONY CSONGOR"]
@@ -167,17 +167,17 @@
     "telepules": "Budapest 19. kerület",
     "valasztopolgar": 79277,
     "partok": {
-      "tisza": 40918,
-      "fidesz": 18843,
-      "mi_hazank": 3184,
+      "green_party": 40918,
+      "red_party": 18843,
+      "yellow_party": 3184,
       "mkkp": 1007,
       "a_szolidaritas_partja_munkaspart": 277,
       "fuggetlen_kunhalmi_agnes": 0
     },
     "jeloltek": {
-      "tisza": ["VIRÁGH GABRIELLA"],
-      "fidesz": ["TARNAI RICHÁRD"],
-      "mi_hazank": ["FEKETE GYÖRGY"],
+      "green_party": ["VIRÁGH GABRIELLA"],
+      "red_party": ["TARNAI RICHÁRD"],
+      "yellow_party": ["FEKETE GYÖRGY"],
       "mkkp": ["FERANCZ NORBERT"],
       "a_szolidaritas_partja_munkaspart": ["KATONA TIBOR"],
       "fuggetlen_kunhalmi_agnes": ["KUNHALMI ÁGNES"]
@@ -190,17 +190,17 @@
     "telepules": "Budapest 21. kerület",
     "valasztopolgar": 75105,
     "partok": {
-      "tisza": 36852,
-      "fidesz": 17538,
-      "mi_hazank": 3164,
+      "green_party": 36852,
+      "red_party": 17538,
+      "yellow_party": 3164,
       "dk": 1014,
       "mkkp": 758,
       "a_szolidaritas_partja_munkaspart": 134
     },
     "jeloltek": {
-      "tisza": ["KÁTAI-NÉMETH VILMOS"],
-      "fidesz": ["KIRÁLY NÓRA"],
-      "mi_hazank": ["RIZMAYERNÉ CSIK ERZSÉBET"],
+      "green_party": ["KÁTAI-NÉMETH VILMOS"],
+      "red_party": ["KIRÁLY NÓRA"],
+      "yellow_party": ["RIZMAYERNÉ CSIK ERZSÉBET"],
       "dk": ["VADAI ATTILA"],
       "mkkp": ["KISS KORNÉL"],
       "a_szolidaritas_partja_munkaspart": ["PÁL ÉVA"]
@@ -213,16 +213,16 @@
     "telepules": "Budapest 22. kerület",
     "valasztopolgar": 77060,
     "partok": {
-      "tisza": 41542,
-      "fidesz": 18829,
-      "mi_hazank": 3277,
+      "green_party": 41542,
+      "red_party": 18829,
+      "yellow_party": 3277,
       "dk": 1184,
       "mkkp": 914
     },
     "jeloltek": {
-      "tisza": ["KULCSÁR KRISZTIÁN"],
-      "fidesz": ["KOCSONDI MÁRK"],
-      "mi_hazank": ["NOVÁK ELŐD"],
+      "green_party": ["KULCSÁR KRISZTIÁN"],
+      "red_party": ["KOCSONDI MÁRK"],
+      "yellow_party": ["NOVÁK ELŐD"],
       "dk": ["MOLNÁR GYULA"],
       "mkkp": ["NEULINGER ÁGNES"]
     }
@@ -234,18 +234,18 @@
     "telepules": "Budapest 03. kerület",
     "valasztopolgar": 79524,
     "partok": {
-      "tisza": 43122,
-      "fidesz": 18685,
-      "mi_hazank": 3214,
+      "green_party": 43122,
+      "red_party": 18685,
+      "yellow_party": 3214,
       "dk": 1228,
       "mkkp": 823,
       "fuggetlen_szabo_timea": 0,
       "jobbik": 0
     },
     "jeloltek": {
-      "tisza": ["BODA NIKOLETTA"],
-      "fidesz": ["GYEPES ÁDÁM"],
-      "mi_hazank": ["MAROSVÖLGYI ANNA"],
+      "green_party": ["BODA NIKOLETTA"],
+      "red_party": ["GYEPES ÁDÁM"],
+      "yellow_party": ["MAROSVÖLGYI ANNA"],
       "dk": ["NAGY RICHÁRD GYÖRGY"],
       "mkkp": ["TÓTH KÁLMÁN"],
       "fuggetlen_szabo_timea": ["SZABÓ TIMEA"],
@@ -259,16 +259,16 @@
     "telepules": "Budapest 13. kerület",
     "valasztopolgar": 78751,
     "partok": {
-      "tisza": 41359,
-      "fidesz": 16505,
-      "mi_hazank": 2909,
+      "green_party": 41359,
+      "red_party": 16505,
+      "yellow_party": 2909,
       "dk": 2625,
       "mkkp": 877
     },
     "jeloltek": {
-      "tisza": ["JAKAB ZSUZSANNA"],
-      "fidesz": ["ZSIGMOND BARNA PÁL"],
-      "mi_hazank": ["BALOG CSABA"],
+      "green_party": ["JAKAB ZSUZSANNA"],
+      "red_party": ["ZSIGMOND BARNA PÁL"],
+      "yellow_party": ["BALOG CSABA"],
       "dk": ["VARJU LÁSZLÓ"],
       "mkkp": ["NAGY DÁVID"]
     }
@@ -280,17 +280,17 @@
     "telepules": "Budapest 15. kerület",
     "valasztopolgar": 76565,
     "partok": {
-      "tisza": 38873,
-      "fidesz": 17368,
-      "mi_hazank": 3758,
+      "green_party": 38873,
+      "red_party": 17368,
+      "yellow_party": 3758,
       "dk": 2564,
       "mkkp": 802,
       "a_szolidaritas_partja_munkaspart": 81
     },
     "jeloltek": {
-      "tisza": ["MÜLLER ANNA"],
-      "fidesz": ["NÉMETH BALÁZS"],
-      "mi_hazank": ["BARTAL ANDRÁS"],
+      "green_party": ["MÜLLER ANNA"],
+      "red_party": ["NÉMETH BALÁZS"],
+      "yellow_party": ["BARTAL ANDRÁS"],
       "dk": ["BARKÓCZI BALÁZS"],
       "mkkp": ["BORKUTI BÁLINT"],
       "a_szolidaritas_partja_munkaspart": ["KÖRMENDI GÁBOR ATTILA"]
@@ -303,18 +303,18 @@
     "telepules": "Budapest 16. kerület",
     "valasztopolgar": 77330,
     "partok": {
-      "tisza": 40491,
-      "fidesz": 20990,
-      "mi_hazank": 2586,
+      "green_party": 40491,
+      "red_party": 20990,
+      "yellow_party": 2586,
       "dk": 785,
       "mkkp": 535,
       "fuggetlen_daroczi_zoltan": 271,
       "fuggetlen_szanyi_tibor": 152
     },
     "jeloltek": {
-      "tisza": ["SZABÓ ALEXANDRA"],
-      "fidesz": ["SZATMÁRY KRISTÓF"],
-      "mi_hazank": ["ZSIDRÓ LÁSZLÓ"],
+      "green_party": ["SZABÓ ALEXANDRA"],
+      "red_party": ["SZATMÁRY KRISTÓF"],
+      "yellow_party": ["ZSIDRÓ LÁSZLÓ"],
       "dk": ["KOCSIS-CAKE OLIVIO"],
       "mkkp": ["BOMBICZ TAMÁS"],
       "fuggetlen_daroczi_zoltan": ["DARÓCZI ZOLTÁN"],
@@ -328,18 +328,18 @@
     "telepules": "Budapest 17. kerület",
     "valasztopolgar": 79322,
     "partok": {
-      "tisza": 41523,
-      "fidesz": 20752,
-      "mi_hazank": 3386,
+      "green_party": 41523,
+      "red_party": 20752,
+      "yellow_party": 3386,
       "dk": 1121,
       "mkkp": 666,
       "a_szolidaritas_partja_munkaspart": 105,
       "nep": 77
     },
     "jeloltek": {
-      "tisza": ["PORCHER ÁRON"],
-      "fidesz": ["DUNAI MÓNIKA"],
-      "mi_hazank": ["SOMOGYINÉ HATVANI ZSUZSANNA"],
+      "green_party": ["PORCHER ÁRON"],
+      "red_party": ["DUNAI MÓNIKA"],
+      "yellow_party": ["SOMOGYINÉ HATVANI ZSUZSANNA"],
       "dk": ["GY. NÉMETH ERZSÉBET"],
       "mkkp": ["SZIN RICHÁRD"],
       "a_szolidaritas_partja_munkaspart": ["GÁL PÉTER"],
@@ -353,9 +353,9 @@
     "telepules": "Budapest 23. kerület",
     "valasztopolgar": 83447,
     "partok": {
-      "tisza": 40693,
-      "fidesz": 20127,
-      "mi_hazank": 3514,
+      "green_party": 40693,
+      "red_party": 20127,
+      "yellow_party": 3514,
       "fuggetlen_hiller_istvan": 2132,
       "dk": 793,
       "mkkp": 674,
@@ -364,9 +364,9 @@
       "a_szolidaritas_partja_munkaspart": 51
     },
     "jeloltek": {
-      "tisza": ["TARR ZOLTÁN"],
-      "fidesz": ["FÖLDESI GYULA"],
-      "mi_hazank": ["KOVÁCS ATTILA"],
+      "green_party": ["TARR ZOLTÁN"],
+      "red_party": ["FÖLDESI GYULA"],
+      "yellow_party": ["KOVÁCS ATTILA"],
       "fuggetlen_hiller_istvan": ["HILLER ISTVÁN"],
       "dk": ["BÁNYAI AMIR ATTILA"],
       "mkkp": ["VALENTIN ANDRÁS"],
@@ -382,18 +382,18 @@
     "telepules": "Pécs",
     "valasztopolgar": 70739,
     "partok": {
-      "tisza": 35434,
-      "fidesz": 16883,
-      "mi_hazank": 2475,
+      "green_party": 35434,
+      "red_party": 16883,
+      "yellow_party": 2475,
       "dk": 794,
       "mkkp": 439,
       "fuggetlen_lajos_milan": 179,
       "jobbik": 66
     },
     "jeloltek": {
-      "tisza": ["RUZSA DIÁNA"],
-      "fidesz": ["CZIRÁKI ATTILA"],
-      "mi_hazank": ["VARGA TAMÁS"],
+      "green_party": ["RUZSA DIÁNA"],
+      "red_party": ["CZIRÁKI ATTILA"],
+      "yellow_party": ["VARGA TAMÁS"],
       "dk": ["AUTH ISTVÁN"],
       "mkkp": ["ZAKUPSZKI TAMÁS"],
       "fuggetlen_lajos_milan": ["LAJOS MILÁN"],
@@ -407,17 +407,17 @@
     "telepules": "Pécs",
     "valasztopolgar": 74934,
     "partok": {
-      "tisza": 35893,
-      "fidesz": 18121,
-      "mi_hazank": 3116,
+      "green_party": 35893,
+      "red_party": 18121,
+      "yellow_party": 3116,
       "dk": 900,
       "mkkp": 460,
       "jobbik": 129
     },
     "jeloltek": {
-      "tisza": ["KOVÁCS ÁRON"],
-      "fidesz": ["HOPPÁL PÉTER"],
-      "mi_hazank": ["SÁNDOR ZOLTÁN"],
+      "green_party": ["KOVÁCS ÁRON"],
+      "red_party": ["HOPPÁL PÉTER"],
+      "yellow_party": ["SÁNDOR ZOLTÁN"],
       "dk": ["DÉNES ISTVÁN"],
       "mkkp": ["BAGYURA MÁRTON"],
       "jobbik": ["KISS BEATRIX"]
@@ -430,16 +430,16 @@
     "telepules": "Mohács",
     "valasztopolgar": 68656,
     "partok": {
-      "tisza": 25405,
-      "fidesz": 23328,
-      "mi_hazank": 3033,
+      "green_party": 25405,
+      "red_party": 23328,
+      "yellow_party": 3033,
       "dk": 496,
       "jobbik": 199
     },
     "jeloltek": {
-      "tisza": ["RÓZSAHEGYI ÁRON"],
-      "fidesz": ["HARGITAI JÁNOS"],
-      "mi_hazank": ["IPACS SÁNDOR"],
+      "green_party": ["RÓZSAHEGYI ÁRON"],
+      "red_party": ["HARGITAI JÁNOS"],
+      "yellow_party": ["IPACS SÁNDOR"],
       "dk": ["PÁGER FERENC"],
       "jobbik": ["PETRIK BARBARA"]
     }
@@ -451,18 +451,18 @@
     "telepules": "Szigetvár",
     "valasztopolgar": 73779,
     "partok": {
-      "tisza": 27914,
-      "fidesz": 23505,
-      "mi_hazank": 2600,
+      "green_party": 27914,
+      "red_party": 23505,
+      "yellow_party": 2600,
       "dk": 530,
       "mkkp": 306,
       "jobbik": 204,
       "neem": 42
     },
     "jeloltek": {
-      "tisza": ["KAPRONCZAI BALÁZS"],
-      "fidesz": ["NAGY CSABA"],
-      "mi_hazank": ["ÁCS JÓZSEF"],
+      "green_party": ["KAPRONCZAI BALÁZS"],
+      "red_party": ["NAGY CSABA"],
+      "yellow_party": ["ÁCS JÓZSEF"],
       "dk": ["SZARKÁNDINÉ JERSZI KATALIN"],
       "mkkp": ["ABDALLAH-MAGDY SZABRINA"],
       "jobbik": ["KÁRPÁTI ZOLTÁN"],
@@ -476,15 +476,15 @@
     "telepules": "Kecskemét",
     "valasztopolgar": 67906,
     "partok": {
-      "tisza": 27753,
-      "fidesz": 21063,
-      "mi_hazank": 3611,
+      "green_party": 27753,
+      "red_party": 21063,
+      "yellow_party": 3611,
       "mkkp": 525
     },
     "jeloltek": {
-      "tisza": ["CSŐSZI ATTILA"],
-      "fidesz": ["SALACZ LÁSZLÓ"],
-      "mi_hazank": ["ANDRÁS KÁROLY"],
+      "green_party": ["CSŐSZI ATTILA"],
+      "red_party": ["SALACZ LÁSZLÓ"],
+      "yellow_party": ["ANDRÁS KÁROLY"],
       "mkkp": ["PAPP DÁVID"]
     }
   },
@@ -495,18 +495,18 @@
     "telepules": "Kecskemét",
     "valasztopolgar": 71504,
     "partok": {
-      "tisza": 32688,
-      "fidesz": 20373,
-      "mi_hazank": 3461,
+      "green_party": 32688,
+      "red_party": 20373,
+      "yellow_party": 3461,
       "mkkp": 555,
       "dk": 452,
       "a_szolidaritas_partja_munkaspart": 56,
       "fuggetlen_szentgyorgyi_tibor_viktor": 0
     },
     "jeloltek": {
-      "tisza": ["MOLNÁR JÁNOS"],
-      "fidesz": ["CSEH TAMÁS"],
-      "mi_hazank": ["HÓDI ZSUZSANNA"],
+      "green_party": ["MOLNÁR JÁNOS"],
+      "red_party": ["CSEH TAMÁS"],
+      "yellow_party": ["HÓDI ZSUZSANNA"],
       "mkkp": ["KARIKÓ ÁGNES"],
       "dk": ["SIMON ANITA ÉVA"],
       "a_szolidaritas_partja_munkaspart": ["BALANYI ISTVÁN"],
@@ -520,16 +520,16 @@
     "telepules": "Kalocsa",
     "valasztopolgar": 63227,
     "partok": {
-      "tisza": 24958,
-      "fidesz": 20257,
-      "mi_hazank": 2952,
+      "green_party": 24958,
+      "red_party": 20257,
+      "yellow_party": 2952,
       "dk": 754,
       "fuggetlen_koszegi_mihaly": 377
     },
     "jeloltek": {
-      "tisza": ["JUDÁK ZSOLT"],
-      "fidesz": ["FONT SÁNDOR"],
-      "mi_hazank": ["SZABÓ PATRIK"],
+      "green_party": ["JUDÁK ZSOLT"],
+      "red_party": ["FONT SÁNDOR"],
+      "yellow_party": ["SZABÓ PATRIK"],
       "dk": ["KÓKAI KATALIN"],
       "fuggetlen_koszegi_mihaly": ["KŐSZEGI MIHÁLY"]
     }
@@ -541,17 +541,17 @@
     "telepules": "Kiskunfélegyháza",
     "valasztopolgar": 70065,
     "partok": {
-      "tisza": 27197,
-      "fidesz": 22100,
-      "mi_hazank": 3639,
+      "green_party": 27197,
+      "red_party": 22100,
+      "yellow_party": 3639,
       "dk": 340,
       "fuggetlen_nagy_imre": 282,
       "a_szolidaritas_partja_munkaspart": 89
     },
     "jeloltek": {
-      "tisza": ["KOVÁCS GYULA"],
-      "fidesz": ["LEZSÁK SÁNDOR"],
-      "mi_hazank": ["ENDRE BÉLA"],
+      "green_party": ["KOVÁCS GYULA"],
+      "red_party": ["LEZSÁK SÁNDOR"],
+      "yellow_party": ["ENDRE BÉLA"],
       "dk": ["SARKADI PÁL"],
       "fuggetlen_nagy_imre": ["NAGY IMRE"],
       "a_szolidaritas_partja_munkaspart": ["HORVÁTH ANNAMÁRIA"]
@@ -564,17 +564,17 @@
     "telepules": "Kiskunhalas",
     "valasztopolgar": 65594,
     "partok": {
-      "tisza": 24026,
-      "fidesz": 19208,
-      "mi_hazank": 4058,
+      "green_party": 24026,
+      "red_party": 19208,
+      "yellow_party": 4058,
       "dk": 590,
       "fuggetlen_nemeth_szilveszter": 162,
       "a_szolidaritas_partja_munkaspart": 34
     },
     "jeloltek": {
-      "tisza": ["KARSAI-JUHÁSZ KATALIN"],
-      "fidesz": ["BÁNYAI GÁBOR"],
-      "mi_hazank": ["SZABADI ISTVÁN"],
+      "green_party": ["KARSAI-JUHÁSZ KATALIN"],
+      "red_party": ["BÁNYAI GÁBOR"],
+      "yellow_party": ["SZABADI ISTVÁN"],
       "dk": ["NAGY SZABOLCS"],
       "fuggetlen_nemeth_szilveszter": ["NÉMETH SZILVESZTER"],
       "a_szolidaritas_partja_munkaspart": ["DOHI KITTI ERIKA"]
@@ -587,16 +587,16 @@
     "telepules": "Baja",
     "valasztopolgar": 62134,
     "partok": {
-      "tisza": 24905,
-      "fidesz": 18396,
-      "mi_hazank": 3088,
+      "green_party": 24905,
+      "red_party": 18396,
+      "yellow_party": 3088,
       "dk": 399,
       "a_szolidaritas_partja_munkaspart": 68
     },
     "jeloltek": {
-      "tisza": ["CSONTOS BENCE"],
-      "fidesz": ["ZSIGÓ RÓBERT"],
-      "mi_hazank": ["ÉBERLING BALÁZS"],
+      "green_party": ["CSONTOS BENCE"],
+      "red_party": ["ZSIGÓ RÓBERT"],
+      "yellow_party": ["ÉBERLING BALÁZS"],
       "dk": ["SZÉKELY DÁNIEL"],
       "a_szolidaritas_partja_munkaspart": ["NAGY GUSZTÁV"]
     }
@@ -608,16 +608,16 @@
     "telepules": "Békéscsaba",
     "valasztopolgar": 66019,
     "partok": {
-      "tisza": 30631,
-      "fidesz": 18322,
-      "mi_hazank": 3364,
+      "green_party": 30631,
+      "red_party": 18322,
+      "yellow_party": 3364,
       "dk": 635,
       "mkkp": 372
     },
     "jeloltek": {
-      "tisza": ["BODÓCZI ISTVÁN"],
-      "fidesz": ["TAKÁCS ÁRPÁD"],
-      "mi_hazank": ["GYEBNÁR DÁVID"],
+      "green_party": ["BODÓCZI ISTVÁN"],
+      "red_party": ["TAKÁCS ÁRPÁD"],
+      "yellow_party": ["GYEBNÁR DÁVID"],
       "dk": ["FÜLÖP ZOLTÁN"],
       "mkkp": ["BAGI REA"]
     }
@@ -629,18 +629,18 @@
     "telepules": "Békés",
     "valasztopolgar": 66392,
     "partok": {
-      "tisza": 25975,
-      "fidesz": 20183,
-      "mi_hazank": 3464,
+      "green_party": 25975,
+      "red_party": 20183,
+      "yellow_party": 3464,
       "dk": 459,
       "mkkp": 285,
       "jobbik": 139,
       "a_szolidaritas_partja_munkaspart": 35
     },
     "jeloltek": {
-      "tisza": ["GOMBÁR DÁVID"],
-      "fidesz": ["DANKÓ BÉLA"],
-      "mi_hazank": ["FÖLDESI MIHÁLY"],
+      "green_party": ["GOMBÁR DÁVID"],
+      "red_party": ["DANKÓ BÉLA"],
+      "yellow_party": ["FÖLDESI MIHÁLY"],
       "dk": ["GERGELY RÓBERT"],
       "mkkp": ["CSIKÓS BOTOND"],
       "jobbik": ["SZALKAI IMRE"],
@@ -654,17 +654,17 @@
     "telepules": "Gyula",
     "valasztopolgar": 65263,
     "partok": {
-      "tisza": 26014,
-      "fidesz": 20507,
-      "mi_hazank": 2585,
+      "green_party": 26014,
+      "red_party": 20507,
+      "yellow_party": 2585,
       "dk": 371,
       "mkkp": 307,
       "a_szolidaritas_partja_munkaspart": 59
     },
     "jeloltek": {
-      "tisza": ["RÁKI ZSOLT"],
-      "fidesz": ["KÓNYA ISTVÁN"],
-      "mi_hazank": ["VIDÓ ATTILA"],
+      "green_party": ["RÁKI ZSOLT"],
+      "red_party": ["KÓNYA ISTVÁN"],
+      "yellow_party": ["VIDÓ ATTILA"],
       "dk": ["MOLNÁR GÁBOR"],
       "mkkp": ["MAGYAR GÁBOR"],
       "a_szolidaritas_partja_munkaspart": ["FEJES TIBOR"]
@@ -677,18 +677,18 @@
     "telepules": "Orosháza",
     "valasztopolgar": 68154,
     "partok": {
-      "tisza": 27499,
-      "fidesz": 17677,
-      "mi_hazank": 3032,
+      "green_party": 27499,
+      "red_party": 17677,
+      "yellow_party": 3032,
       "fuggetlen_simonka_gyorgy": 1318,
       "dk": 464,
       "jobbik": 110,
       "a_szolidaritas_partja_munkaspart": 90
     },
     "jeloltek": {
-      "tisza": ["GURZÓ MÁRIA"],
-      "fidesz": ["ERDŐS NORBERT"],
-      "mi_hazank": ["SCHULTZ GÁBOR"],
+      "green_party": ["GURZÓ MÁRIA"],
+      "red_party": ["ERDŐS NORBERT"],
+      "yellow_party": ["SCHULTZ GÁBOR"],
       "fuggetlen_simonka_gyorgy": ["SIMONKA GYÖRGY"],
       "dk": ["VESELICZ TIBORNÉ"],
       "jobbik": ["VIDÓ EDIT MÁRTA"],
@@ -702,9 +702,9 @@
     "telepules": "Miskolc",
     "valasztopolgar": 69135,
     "partok": {
-      "tisza": 32545,
-      "fidesz": 16921,
-      "mi_hazank": 2900,
+      "green_party": 32545,
+      "red_party": 16921,
+      "yellow_party": 2900,
       "dk": 1083,
       "mkkp": 322,
       "fuggetlen_dohanyne_varro_anna": 273,
@@ -712,9 +712,9 @@
       "a_szolidaritas_partja_munkaspart": 41
     },
     "jeloltek": {
-      "tisza": ["JUHÁSZ ROLAND"],
-      "fidesz": ["CSÖBÖR KATALIN"],
-      "mi_hazank": ["MIKLÓS ÁRPÁD FERENC"],
+      "green_party": ["JUHÁSZ ROLAND"],
+      "red_party": ["CSÖBÖR KATALIN"],
+      "yellow_party": ["MIKLÓS ÁRPÁD FERENC"],
       "dk": ["JAKAB PÉTER"],
       "mkkp": ["SZOLNOKI GÁBOR"],
       "fuggetlen_dohanyne_varro_anna": ["DOHÁNYNÉ VARRÓ ANNA"],
@@ -729,9 +729,9 @@
     "telepules": "Miskolc",
     "valasztopolgar": 68266,
     "partok": {
-      "tisza": 31416,
-      "fidesz": 16260,
-      "mi_hazank": 3173,
+      "green_party": 31416,
+      "red_party": 16260,
+      "yellow_party": 3173,
       "dk": 498,
       "fuggetlen_dohany_andras": 305,
       "mkkp": 288,
@@ -739,9 +739,9 @@
       "a_szolidaritas_partja_munkaspart": 32
     },
     "jeloltek": {
-      "tisza": ["CZIPA ANDRÁS"],
-      "fidesz": ["HOLLÓSY ANDRÁS"],
-      "mi_hazank": ["PAKUSZA ZOLTÁN"],
+      "green_party": ["CZIPA ANDRÁS"],
+      "red_party": ["HOLLÓSY ANDRÁS"],
+      "yellow_party": ["PAKUSZA ZOLTÁN"],
       "dk": ["MOKRAI MIHÁLY"],
       "fuggetlen_dohany_andras": ["DOHÁNY ANDRÁS"],
       "mkkp": ["BLAU VIRÁG"],
@@ -756,9 +756,9 @@
     "telepules": "Ózd",
     "valasztopolgar": 67593,
     "partok": {
-      "fidesz": 20983,
-      "tisza": 20399,
-      "mi_hazank": 2529,
+      "red_party": 20983,
+      "green_party": 20399,
+      "yellow_party": 22529,
       "jobbik": 341,
       "dk": 314,
       "mkkp": 185,
@@ -768,9 +768,9 @@
       "fuggetlen_harkaly_csaba": 0
     },
     "jeloltek": {
-      "fidesz": ["CSUZDA GÁBOR"],
-      "tisza": ["NÉMETH CSILLA"],
-      "mi_hazank": ["VARGA BALÁZS"],
+      "red_party": ["CSUZDA GÁBOR"],
+      "green_party": ["NÉMETH CSILLA"],
+      "yellow_party": ["VARGA BALÁZS"],
       "jobbik": ["VILCSEK ERNŐ"],
       "dk": ["MOLNÁR ZOLTÁN"],
       "mkkp": ["DÖME ZSUZSANNA"],
@@ -787,16 +787,16 @@
     "telepules": "Kazincbarcika",
     "valasztopolgar": 71309,
     "partok": {
-      "tisza": 27645,
-      "fidesz": 19506,
-      "mi_hazank": 3464,
+      "green_party": 27645,
+      "red_party": 19506,
+      "yellow_party": 3464,
       "dk": 522,
       "a_szolidaritas_partja_munkaspart": 107
     },
     "jeloltek": {
-      "tisza": ["HATALA-OROSZ CSABA"],
-      "fidesz": ["DEMETER ZOLTÁN"],
-      "mi_hazank": ["FISZTER ZSUZSANNA"],
+      "green_party": ["HATALA-OROSZ CSABA"],
+      "red_party": ["DEMETER ZOLTÁN"],
+      "yellow_party": ["FISZTER ZSUZSANNA"],
       "dk": ["VARGA GERGŐ"],
       "a_szolidaritas_partja_munkaspart": ["PAP FERENC"]
     }
@@ -808,9 +808,9 @@
     "telepules": "Sátoraljaújhely",
     "valasztopolgar": 70017,
     "partok": {
-      "tisza": 25284,
-      "fidesz": 21912,
-      "mi_hazank": 2284,
+      "green_party": 25284,
+      "red_party": 21912,
+      "yellow_party": 2284,
       "dk": 327,
       "mkkp": 198,
       "jobbik": 117,
@@ -820,9 +820,9 @@
       "a_szolidaritas_partja_munkaspart": 16
     },
     "jeloltek": {
-      "tisza": ["LONTAY LÁSZLÓ"],
-      "fidesz": ["BÁNNÉ DR. GÁL BOGLÁRKA"],
-      "mi_hazank": ["PASZTORNICZKY ISTVÁN"],
+      "green_party": ["LONTAY LÁSZLÓ"],
+      "red_party": ["BÁNNÉ DR. GÁL BOGLÁRKA"],
+      "yellow_party": ["PASZTORNICZKY ISTVÁN"],
       "dk": ["HAUSEL IMRE"],
       "mkkp": ["MOLNÁR SÁMUEL LÁSZLÓ"],
       "jobbik": ["ORMOS TAS ZSOLT"],
@@ -836,20 +836,20 @@
     "megyekod": 5,
     "megye": "Borsod-Abaúj-Zemplén vármegye",
     "oevk": 6,
-    "telepules": "Tiszaújváros",
+    "telepules": "green_partyújváros",
     "valasztopolgar": 73582,
     "partok": {
-      "tisza": 28528,
-      "fidesz": 24086,
-      "mi_hazank": 2563,
+      "green_party": 28528,
+      "red_party": 24086,
+      "yellow_party": 2563,
       "dk": 378,
       "jobbik": 115,
       "a_szolidaritas_partja_munkaspart": 51
     },
     "jeloltek": {
-      "tisza": ["BIHARI ZOLTÁN"],
-      "fidesz": ["KONCZ ZSÓFIA"],
-      "mi_hazank": ["NYITRAI ATTILA"],
+      "green_party": ["BIHARI ZOLTÁN"],
+      "red_party": ["KONCZ ZSÓFIA"],
+      "yellow_party": ["NYITRAI ATTILA"],
       "dk": ["WIEDERMANN ATTILA"],
       "jobbik": ["SZLOBODNIK LÁSZLÓ"],
       "a_szolidaritas_partja_munkaspart": ["SZABÓ GÉZA"]
@@ -862,18 +862,18 @@
     "telepules": "Mezőkövesd",
     "valasztopolgar": 74213,
     "partok": {
-      "tisza": 29812,
-      "fidesz": 22217,
-      "mi_hazank": 3302,
+      "green_party": 29812,
+      "red_party": 22217,
+      "yellow_party": 3302,
       "dk": 357,
       "mkkp": 309,
       "jobbik": 174,
       "a_szolidaritas_partja_munkaspart": 37
     },
     "jeloltek": {
-      "tisza": ["CSÉZI ERZSÉBET"],
-      "fidesz": ["TÁLLAI ANDRÁS"],
-      "mi_hazank": ["SZAJLAI JÁNOS"],
+      "green_party": ["CSÉZI ERZSÉBET"],
+      "red_party": ["TÁLLAI ANDRÁS"],
+      "yellow_party": ["SZAJLAI JÁNOS"],
       "dk": ["SERMER ÁDÁM"],
       "mkkp": ["KOVÁTS GÁBOR"],
       "jobbik": ["GÖNCZI GYÖRGY"],
@@ -887,17 +887,17 @@
     "telepules": "Szeged",
     "valasztopolgar": 81952,
     "partok": {
-      "tisza": 44478,
-      "fidesz": 16030,
-      "mi_hazank": 3549,
+      "green_party": 44478,
+      "red_party": 16030,
+      "yellow_party": 3549,
       "dk": 758,
       "mkkp": 739,
       "fuggetlen_szabo_sandor": 0
     },
     "jeloltek": {
-      "tisza": ["STUMPF PÉTER"],
-      "fidesz": ["FARKAS LEVENTE"],
-      "mi_hazank": ["TIMÁR TAMÁS"],
+      "green_party": ["STUMPF PÉTER"],
+      "red_party": ["FARKAS LEVENTE"],
+      "yellow_party": ["TIMÁR TAMÁS"],
       "dk": ["NAGY BÉLA"],
       "mkkp": ["JUHÁSZ MÁTÉ"],
       "fuggetlen_szabo_sandor": ["SZABÓ SÁNDOR"]
@@ -910,16 +910,16 @@
     "telepules": "Szeged",
     "valasztopolgar": 80113,
     "partok": {
-      "tisza": 36012,
-      "fidesz": 20169,
-      "mi_hazank": 6231,
+      "green_party": 36012,
+      "red_party": 20169,
+      "yellow_party": 6231,
       "mkkp": 624,
       "dk": 549
     },
     "jeloltek": {
-      "tisza": ["GAJDA ATTILA"],
-      "fidesz": ["MIHÁLFFY BÉLA"],
-      "mi_hazank": ["TOROCZKAI LÁSZLÓ"],
+      "green_party": ["GAJDA ATTILA"],
+      "red_party": ["MIHÁLFFY BÉLA"],
+      "yellow_party": ["TOROCZKAI LÁSZLÓ"],
       "mkkp": ["SIPOS IVETT"],
       "dk": ["ÓHIDY ISTVÁN"]
     }
@@ -931,17 +931,17 @@
     "telepules": "Szentes",
     "valasztopolgar": 77761,
     "partok": {
-      "tisza": 30970,
-      "fidesz": 20812,
-      "mi_hazank": 5492,
+      "green_party": 30970,
+      "red_party": 20812,
+      "yellow_party": 5492,
       "dk": 3032,
       "mkkp": 454,
       "jobbik": 118
     },
     "jeloltek": {
-      "tisza": ["BÁRKÁNYI BENCE"],
-      "fidesz": ["SZABÓ ISTVÁN"],
-      "mi_hazank": ["LACZKÓ ZSOLT"],
+      "green_party": ["BÁRKÁNYI BENCE"],
+      "red_party": ["SZABÓ ISTVÁN"],
+      "yellow_party": ["LACZKÓ ZSOLT"],
       "dk": ["VARGA FERENC"],
       "mkkp": ["SZÉLPÁL SZILÁRD"],
       "jobbik": ["SZATMÁRI BÉLA"]
@@ -954,9 +954,9 @@
     "telepules": "Hódmezővásárhely",
     "valasztopolgar": 76377,
     "partok": {
-      "tisza": 35419,
-      "fidesz": 20188,
-      "mi_hazank": 3658,
+      "green_party": 35419,
+      "red_party": 20188,
+      "yellow_party": 3658,
       "dk": 641,
       "mkkp": 425,
       "fuggetlen_leitner_szilard": 240,
@@ -964,9 +964,9 @@
       "a_szolidaritas_partja_munkaspart": 54
     },
     "jeloltek": {
-      "tisza": ["FERENCZI GÁBOR"],
-      "fidesz": ["CZIRBUS GÁBOR"],
-      "mi_hazank": ["VERES CSABA"],
+      "green_party": ["FERENCZI GÁBOR"],
+      "red_party": ["CZIRBUS GÁBOR"],
+      "yellow_party": ["VERES CSABA"],
       "dk": ["MUCSI TAMÁS"],
       "mkkp": ["PÁL ANNA VIKTÓRIA"],
       "fuggetlen_leitner_szilard": ["LEITNER SZILÁRD"],
@@ -981,18 +981,18 @@
     "telepules": "Székesfehérvár",
     "valasztopolgar": 69963,
     "partok": {
-      "tisza": 32654,
-      "fidesz": 21032,
-      "mi_hazank": 3157,
+      "green_party": 32654,
+      "red_party": 21032,
+      "yellow_party": 3157,
       "dk": 876,
       "mkkp": 709,
       "jobbik": 112,
       "a_szolidaritas_partja_munkaspart": 27
     },
     "jeloltek": {
-      "tisza": ["CSISZÁR BÉLA"],
-      "fidesz": ["VARGHA TAMÁS"],
-      "mi_hazank": ["VÉGH ANNAMÁRIA"],
+      "green_party": ["CSISZÁR BÉLA"],
+      "red_party": ["VARGHA TAMÁS"],
+      "yellow_party": ["VÉGH ANNAMÁRIA"],
       "dk": ["FÖLDI JUDIT"],
       "mkkp": ["PÁSZTOR ESZTER"],
       "jobbik": ["LÁNGFALVI ATTILA"],
@@ -1006,9 +1006,9 @@
     "telepules": "Székesfehérvár",
     "valasztopolgar": 66228,
     "partok": {
-      "tisza": 29534,
-      "fidesz": 20033,
-      "mi_hazank": 3644,
+      "green_party": 29534,
+      "red_party": 20033,
+      "yellow_party": 3644,
       "mkkp": 544,
       "dk": 533,
       "fuggetlen_jancsek_sandor": 286,
@@ -1016,9 +1016,9 @@
       "a_szolidaritas_partja_munkaspart": 33
     },
     "jeloltek": {
-      "tisza": ["BORICS MIHÁLY"],
-      "fidesz": ["TÖRŐ GÁBOR"],
-      "mi_hazank": ["SCHMIDT ROLAND"],
+      "green_party": ["BORICS MIHÁLY"],
+      "red_party": ["TÖRŐ GÁBOR"],
+      "yellow_party": ["SCHMIDT ROLAND"],
       "mkkp": ["BOKÁNYI BERTOLD"],
       "dk": ["STRASSZER JÓZSEF"],
       "fuggetlen_jancsek_sandor": ["JANCSEK SÁNDOR"],
@@ -1033,17 +1033,17 @@
     "telepules": "Bicske",
     "valasztopolgar": 69239,
     "partok": {
-      "tisza": 31342,
-      "fidesz": 22225,
-      "mi_hazank": 2995,
+      "green_party": 31342,
+      "red_party": 22225,
+      "yellow_party": 2995,
       "mkkp": 610,
       "dk": 523,
       "a_szolidaritas_partja_munkaspart": 58
     },
     "jeloltek": {
-      "tisza": ["BÖGI VIKTÓRIA"],
-      "fidesz": ["TESSELY ZOLTÁN"],
-      "mi_hazank": ["SOM TAMÁS"],
+      "green_party": ["BÖGI VIKTÓRIA"],
+      "red_party": ["TESSELY ZOLTÁN"],
+      "yellow_party": ["SOM TAMÁS"],
       "mkkp": ["PASZICSNYEK JÁNOS"],
       "dk": ["KERTÉSZ ÉVA"],
       "a_szolidaritas_partja_munkaspart": ["TOMHAUSER-CZEGLÉDI ESZTER"]
@@ -1056,9 +1056,9 @@
     "telepules": "Dunaújváros",
     "valasztopolgar": 66729,
     "partok": {
-      "tisza": 31758,
-      "fidesz": 17199,
-      "mi_hazank": 2927,
+      "green_party": 31758,
+      "red_party": 17199,
+      "yellow_party": 2927,
       "mkkp": 423,
       "fuggetlen_jelinek_demien": 131,
       "a_szolidaritas_partja_munkaspart": 56,
@@ -1066,9 +1066,9 @@
       "jobbik": 0
     },
     "jeloltek": {
-      "tisza": ["NAGY ERVIN"],
-      "fidesz": ["MÉSZÁROS LAJOS"],
-      "mi_hazank": ["ADAMASKY LŐRINC"],
+      "green_party": ["NAGY ERVIN"],
+      "red_party": ["MÉSZÁROS LAJOS"],
+      "yellow_party": ["ADAMASKY LŐRINC"],
       "mkkp": ["BERÉNYI GÁBOR"],
       "fuggetlen_jelinek_demien": ["JELINEK DEMIEN"],
       "a_szolidaritas_partja_munkaspart": ["HADERSPRUNG ZSUZSANNA"],
@@ -1083,16 +1083,16 @@
     "telepules": "Sárbogárd",
     "valasztopolgar": 65460,
     "partok": {
-      "fidesz": 23008,
-      "tisza": 21981,
-      "mi_hazank": 3426,
+      "red_party": 23008,
+      "green_party": 21981,
+      "yellow_party": 3426,
       "dk": 418,
       "mkkp": 340
     },
     "jeloltek": {
-      "fidesz": ["VARGA GÁBOR"],
-      "tisza": ["NAGY RICHÁRD"],
-      "mi_hazank": ["GIEBER LAJOS"],
+      "red_party": ["VARGA GÁBOR"],
+      "green_party": ["NAGY RICHÁRD"],
+      "yellow_party": ["GIEBER LAJOS"],
       "dk": ["MEZEI ZSOLT"],
       "mkkp": ["VINKLÁR LÁSZLÓ"]
     }
@@ -1104,17 +1104,17 @@
     "telepules": "Győr",
     "valasztopolgar": 65652,
     "partok": {
-      "tisza": 32318,
-      "fidesz": 17568,
-      "mi_hazank": 2748,
+      "green_party": 32318,
+      "red_party": 17568,
+      "yellow_party": 2748,
       "dk": 546,
       "mkkp": 437,
       "a_szolidaritas_partja_munkaspart": 52
     },
     "jeloltek": {
-      "tisza": ["DIÓSZEGI JUDIT"],
-      "fidesz": ["SZELES SZABOLCS"],
-      "mi_hazank": ["KORÓDI ISTVÁN"],
+      "green_party": ["DIÓSZEGI JUDIT"],
+      "red_party": ["SZELES SZABOLCS"],
+      "yellow_party": ["KORÓDI ISTVÁN"],
       "dk": ["KOMÁROMSZKY ATTILA"],
       "mkkp": ["GONDA ESZTER"],
       "a_szolidaritas_partja_munkaspart": ["BENCZE GÁBORNÉ"]
@@ -1127,17 +1127,17 @@
     "telepules": "Győr",
     "valasztopolgar": 73257,
     "partok": {
-      "tisza": 33263,
-      "fidesz": 22419,
-      "mi_hazank": 3788,
+      "green_party": 33263,
+      "red_party": 22419,
+      "yellow_party": 3788,
       "dk": 586,
       "mkkp": 443,
       "jobbik": 142
     },
     "jeloltek": {
-      "tisza": ["NÉHER ANDRÁS"],
-      "fidesz": ["FEKETE DÁVID"],
-      "mi_hazank": ["PÓCS MIKLÓS"],
+      "green_party": ["NÉHER ANDRÁS"],
+      "red_party": ["FEKETE DÁVID"],
+      "yellow_party": ["PÓCS MIKLÓS"],
       "dk": ["ORBÁN ADRIEN"],
       "mkkp": ["BODÁCS KÁROLY"],
       "jobbik": ["PÁPAI PETRA"]
@@ -1150,18 +1150,18 @@
     "telepules": "Csorna",
     "valasztopolgar": 66633,
     "partok": {
-      "fidesz": 26151,
-      "tisza": 25509,
-      "mi_hazank": 2934,
+      "red_party": 26151,
+      "green_party": 25509,
+      "yellow_party": 2934,
       "dk": 269,
       "fuggetlen_samu_domonkos": 138,
       "fuggetlen_meszaros_geza": 114,
       "a_szolidaritas_partja_munkaspart": 31
     },
     "jeloltek": {
-      "fidesz": ["GYOPÁROS ALPÁR"],
-      "tisza": ["BÓNA SZABOLCS"],
-      "mi_hazank": ["SZILÁGYI JÓZSEF"],
+      "red_party": ["GYOPÁROS ALPÁR"],
+      "green_party": ["BÓNA SZABOLCS"],
+      "yellow_party": ["SZILÁGYI JÓZSEF"],
       "dk": ["SZABÓ ZOLTÁN"],
       "fuggetlen_samu_domonkos": ["SAMU DOMONKOS"],
       "fuggetlen_meszaros_geza": ["MÉSZÁROS GÉZA"],
@@ -1175,18 +1175,18 @@
     "telepules": "Sopron",
     "valasztopolgar": 75117,
     "partok": {
-      "tisza": 33152,
-      "fidesz": 25467,
-      "mi_hazank": 3660,
+      "green_party": 33152,
+      "red_party": 25467,
+      "yellow_party": 3660,
       "dk": 707,
       "fuggetlen_gerencser_norbert": 448,
       "jobbik": 183,
       "a_szolidaritas_partja_munkaspart": 50
     },
     "jeloltek": {
-      "tisza": ["HALLERNÉ DR. NAGY ANIKÓ"],
-      "fidesz": ["BARCZA ATTILA"],
-      "mi_hazank": ["PISÁK ISTVÁN"],
+      "green_party": ["HALLERNÉ DR. NAGY ANIKÓ"],
+      "red_party": ["BARCZA ATTILA"],
+      "yellow_party": ["PISÁK ISTVÁN"],
       "dk": ["SIMON ZOLTÁN"],
       "fuggetlen_gerencser_norbert": ["GERENCSÉR NORBERT"],
       "jobbik": ["RÁTKOVICS ROLAND ZSOLT"],
@@ -1200,16 +1200,16 @@
     "telepules": "Mosonmagyaróvár",
     "valasztopolgar": 78547,
     "partok": {
-      "tisza": 34231,
-      "fidesz": 26435,
-      "mi_hazank": 3316,
+      "green_party": 34231,
+      "red_party": 26435,
+      "yellow_party": 3316,
       "mkkp": 470,
       "dk": 433
     },
     "jeloltek": {
-      "tisza": ["PORPÁCZY KRISZTINA"],
-      "fidesz": ["NAGY ISTVÁN"],
-      "mi_hazank": ["CSOMA KRISZTIÁN"],
+      "green_party": ["PORPÁCZY KRISZTINA"],
+      "red_party": ["NAGY ISTVÁN"],
+      "yellow_party": ["CSOMA KRISZTIÁN"],
       "mkkp": ["ZELENKA JÁNOS"],
       "dk": ["NYITRAI-CSABAY LIZA CSILLA"]
     }
@@ -1221,18 +1221,18 @@
     "telepules": "Debrecen",
     "valasztopolgar": 65177,
     "partok": {
-      "tisza": 31991,
-      "fidesz": 17839,
-      "mi_hazank": 2825,
+      "green_party": 31991,
+      "red_party": 17839,
+      "yellow_party": 2825,
       "dk": 533,
       "mkkp": 450,
       "jobbik": 78,
       "a_szolidaritas_partja_munkaspart": 46
     },
     "jeloltek": {
-      "tisza": ["TÁRKÁNYI ZSOLT"],
-      "fidesz": ["BARCSA LAJOS"],
-      "mi_hazank": ["SALÁNKINÉ KUTI ZSUZSANNA"],
+      "green_party": ["TÁRKÁNYI ZSOLT"],
+      "red_party": ["BARCSA LAJOS"],
+      "yellow_party": ["SALÁNKINÉ KUTI ZSUZSANNA"],
       "dk": ["VARGA ZOLTÁN"],
       "mkkp": ["SASI-SZABÓ TAMÁS"],
       "jobbik": ["KISS ZSOLT"],
@@ -1246,18 +1246,18 @@
     "telepules": "Debrecen",
     "valasztopolgar": 69491,
     "partok": {
-      "tisza": 32046,
-      "fidesz": 19276,
-      "mi_hazank": 2672,
+      "green_party": 32046,
+      "red_party": 19276,
+      "yellow_party": 2672,
       "dk": 472,
       "mkkp": 427,
       "jobbik": 122,
       "a_szolidaritas_partja_munkaspart": 67
     },
     "jeloltek": {
-      "tisza": ["TOMPA ENIKŐ"],
-      "fidesz": ["SZÉLES DIÁNA"],
-      "mi_hazank": ["VÖRÖS JÁNOS"],
+      "green_party": ["TOMPA ENIKŐ"],
+      "red_party": ["SZÉLES DIÁNA"],
+      "yellow_party": ["VÖRÖS JÁNOS"],
       "dk": ["VASZKÓ IMRE"],
       "mkkp": ["RADECZKI CSONGOR"],
       "jobbik": ["TÓTH-BEERI SZILVIA"],
@@ -1271,17 +1271,17 @@
     "telepules": "Debrecen",
     "valasztopolgar": 77974,
     "partok": {
-      "tisza": 29552,
-      "fidesz": 24838,
-      "mi_hazank": 2920,
+      "green_party": 29552,
+      "red_party": 24838,
+      "yellow_party": 2920,
       "dk": 343,
       "mkkp": 293,
       "jobbik": 95
     },
     "jeloltek": {
-      "tisza": ["CSÁK LÁSZLÓ"],
-      "fidesz": ["ANTAL SZABOLCS"],
-      "mi_hazank": ["HUNYADI MÁTÉ"],
+      "green_party": ["CSÁK LÁSZLÓ"],
+      "red_party": ["ANTAL SZABOLCS"],
+      "yellow_party": ["HUNYADI MÁTÉ"],
       "dk": ["SZÖRÉNYI KÁROLY"],
       "mkkp": ["RINGWALD PANKA"],
       "jobbik": ["VÁRADI BARNA"]
@@ -1294,17 +1294,17 @@
     "telepules": "Berettyóújfalu",
     "valasztopolgar": 67072,
     "partok": {
-      "fidesz": 23029,
-      "tisza": 21800,
-      "mi_hazank": 2723,
+      "red_party": 23029,
+      "green_party": 21800,
+      "yellow_party": 2723,
       "dk": 305,
       "mkkp": 242,
       "a_szolidaritas_partja_munkaspart": 60
     },
     "jeloltek": {
-      "fidesz": ["VITÁNYI ISTVÁN"],
-      "tisza": ["KOVÁCS PETRA JUDIT"],
-      "mi_hazank": ["REHÁKNÉ MENYHÁRT GABRIELLA"],
+      "red_party": ["VITÁNYI ISTVÁN"],
+      "green_party": ["KOVÁCS PETRA JUDIT"],
+      "yellow_party": ["REHÁKNÉ MENYHÁRT GABRIELLA"],
       "dk": ["TONZOR PÉTER"],
       "mkkp": ["BÉRES BALÁZS ÁKOS"],
       "a_szolidaritas_partja_munkaspart": ["MOLNÁR MÁRIA"]
@@ -1317,16 +1317,16 @@
     "telepules": "Hajdúszoboszló",
     "valasztopolgar": 68301,
     "partok": {
-      "tisza": 25752,
-      "fidesz": 22281,
-      "mi_hazank": 3034,
+      "green_party": 25752,
+      "red_party": 22281,
+      "yellow_party": 3034,
       "dk": 335,
       "kozeppart": 103
     },
     "jeloltek": {
-      "tisza": ["RUSZIN-SZENDI ROMULUSZ"],
-      "fidesz": ["BODÓ SÁNDOR"],
-      "mi_hazank": ["SASS BULCSÚ"],
+      "green_party": ["RUSZIN-SZENDI ROMULUSZ"],
+      "red_party": ["BODÓ SÁNDOR"],
+      "yellow_party": ["SASS BULCSÚ"],
       "dk": ["CSEFKÓ BALÁZS"],
       "kozeppart": ["HORVÁT IMRÉNÉ"]
     }
@@ -1338,15 +1338,15 @@
     "telepules": "Hajdúböszörmény",
     "valasztopolgar": 68093,
     "partok": {
-      "tisza": 26938,
-      "fidesz": 19891,
-      "mi_hazank": 3984,
+      "green_party": 26938,
+      "red_party": 19891,
+      "yellow_party": 3984,
       "dk": 756
     },
     "jeloltek": {
-      "tisza": ["GÖRÖGHNÉ BOCSKAI ÉVA"],
-      "fidesz": ["PAPP ZSOLT"],
-      "mi_hazank": ["NAGY ZOLTÁN"],
+      "green_party": ["GÖRÖGHNÉ BOCSKAI ÉVA"],
+      "red_party": ["PAPP ZSOLT"],
+      "yellow_party": ["NAGY ZOLTÁN"],
       "dk": ["CSIGE TAMÁS"]
     }
   },
@@ -1357,18 +1357,18 @@
     "telepules": "Eger",
     "valasztopolgar": 79000,
     "partok": {
-      "tisza": 35073,
-      "fidesz": 23111,
-      "mi_hazank": 3428,
+      "green_party": 35073,
+      "red_party": 23111,
+      "yellow_party": 3428,
       "fuggetlen_mirkoczki_adam": 505,
       "dk": 435,
       "mkkp": 390,
       "neem": 207
     },
     "jeloltek": {
-      "tisza": ["BÓDIS PÉTER"],
-      "fidesz": ["PAJTÓK GÁBOR"],
-      "mi_hazank": ["PÁPAI ÁKOS"],
+      "green_party": ["BÓDIS PÉTER"],
+      "red_party": ["PAJTÓK GÁBOR"],
+      "yellow_party": ["PÁPAI ÁKOS"],
       "fuggetlen_mirkoczki_adam": ["MIRKÓCZKI ÁDÁM"],
       "dk": ["BALLA PÉTER"],
       "mkkp": ["BLAU SÁNDOR"],
@@ -1382,18 +1382,18 @@
     "telepules": "Gyöngyös",
     "valasztopolgar": 74007,
     "partok": {
-      "tisza": 29694,
-      "fidesz": 22789,
-      "mi_hazank": 3480,
+      "green_party": 29694,
+      "red_party": 22789,
+      "yellow_party": 3480,
       "dk": 587,
       "jobbik": 468,
       "mkkp": 333,
       "a_szolidaritas_partja_munkaspart": 136
     },
     "jeloltek": {
-      "tisza": ["KISS JÁNOS"],
-      "fidesz": ["HORVÁTH LÁSZLÓ"],
-      "mi_hazank": ["SERES-POLYÁK KATALIN"],
+      "green_party": ["KISS JÁNOS"],
+      "red_party": ["HORVÁTH LÁSZLÓ"],
+      "yellow_party": ["SERES-POLYÁK KATALIN"],
       "dk": ["VARGA JÁNOS"],
       "jobbik": ["DUDÁS RÓBERT"],
       "mkkp": ["GYŐRFFY PÉTER"],
@@ -1407,17 +1407,17 @@
     "telepules": "Hatvan",
     "valasztopolgar": 78352,
     "partok": {
-      "tisza": 30687,
-      "fidesz": 24105,
-      "mi_hazank": 4861,
+      "green_party": 30687,
+      "red_party": 24105,
+      "yellow_party": 4861,
       "dk": 431,
       "a_szolidaritas_partja_munkaspart": 104,
       "jobbik": 0
     },
     "jeloltek": {
-      "tisza": ["JUHÁSZ ÁRON"],
-      "fidesz": ["SZABÓ ZSOLT"],
-      "mi_hazank": ["GREGUS RENÁTA"],
+      "green_party": ["JUHÁSZ ÁRON"],
+      "red_party": ["SZABÓ ZSOLT"],
+      "yellow_party": ["GREGUS RENÁTA"],
       "dk": ["NAGY TIBOR BALÁZS"],
       "a_szolidaritas_partja_munkaspart": ["NAGY ATTILA TIBOR"],
       "jobbik": ["FARAGÓ TAMÁS"]
@@ -1430,17 +1430,17 @@
     "telepules": "Szolnok",
     "valasztopolgar": 74779,
     "partok": {
-      "tisza": 35110,
-      "fidesz": 19362,
-      "mi_hazank": 3979,
+      "green_party": 35110,
+      "red_party": 19362,
+      "yellow_party": 3979,
       "dk": 699,
       "mkkp": 437,
       "a_szolidaritas_partja_munkaspart": 84
     },
     "jeloltek": {
-      "tisza": ["ROST ANDREA"],
-      "fidesz": ["BERKÓ ATTILA"],
-      "mi_hazank": ["KAPÁS ROLAND"],
+      "green_party": ["ROST ANDREA"],
+      "red_party": ["BERKÓ ATTILA"],
+      "yellow_party": ["KAPÁS ROLAND"],
       "dk": ["MÉSZÁROS DÁVID"],
       "mkkp": ["VICZÁN PÉTER"],
       "a_szolidaritas_partja_munkaspart": ["BALOGH IMRE ATTILÁNÉ"]
@@ -1453,17 +1453,17 @@
     "telepules": "Jászberény",
     "valasztopolgar": 69530,
     "partok": {
-      "tisza": 27076,
-      "fidesz": 21754,
-      "mi_hazank": 3144,
+      "green_party": 27076,
+      "red_party": 21754,
+      "yellow_party": 3144,
       "fuggetlen_pinter_ferenc": 449,
       "dk": 320,
       "a_szolidaritas_partja_munkaspart": 65
     },
     "jeloltek": {
-      "tisza": ["HALMAI FERENC TIBOR"],
-      "fidesz": ["PÓCS JÁNOS"],
-      "mi_hazank": ["KASSAB ADONIS"],
+      "green_party": ["HALMAI FERENC TIBOR"],
+      "red_party": ["PÓCS JÁNOS"],
+      "yellow_party": ["KASSAB ADONIS"],
       "fuggetlen_pinter_ferenc": ["PINTÉR FERENC"],
       "dk": ["URBÁN IMRE"],
       "a_szolidaritas_partja_munkaspart": ["BÓDI CSABA BENDEGÚZ"]
@@ -1476,9 +1476,9 @@
     "telepules": "Karcag",
     "valasztopolgar": 72187,
     "partok": {
-      "fidesz": 24638,
-      "tisza": 24362,
-      "mi_hazank": 2828,
+      "red_party": 24638,
+      "green_party": 24362,
+      "yellow_party": 2828,
       "dk": 373,
       "fuggetlen_burai_erika": 65,
       "kozeppart": 39,
@@ -1486,9 +1486,9 @@
       "fuggetlen_turo_jeno": 26
     },
     "jeloltek": {
-      "fidesz": ["F. KOVÁCS SÁNDOR"],
-      "tisza": ["KOVÁCS HUNOR KRISZTIÁN"],
-      "mi_hazank": ["SOMLAY RÓBERT"],
+      "red_party": ["F. KOVÁCS SÁNDOR"],
+      "green_party": ["KOVÁCS HUNOR KRISZTIÁN"],
+      "yellow_party": ["SOMLAY RÓBERT"],
       "dk": ["PARDI-OLÁH ROBERTA"],
       "fuggetlen_burai_erika": ["BURAI ERIKA"],
       "kozeppart": ["FEHÉR BENJÁMIN"],
@@ -1503,17 +1503,17 @@
     "telepules": "Törökszentmiklós",
     "valasztopolgar": 71419,
     "partok": {
-      "tisza": 28857,
-      "fidesz": 19879,
-      "mi_hazank": 3764,
+      "green_party": 28857,
+      "red_party": 19879,
+      "yellow_party": 3764,
       "dk": 392,
       "jobbik": 314,
       "a_szolidaritas_partja_munkaspart": 57
     },
     "jeloltek": {
-      "tisza": ["FARKAS CSONGOR"],
-      "fidesz": ["HERCZEG ZSOLT"],
-      "mi_hazank": ["SZABÓ BETTINA"],
+      "green_party": ["FARKAS CSONGOR"],
+      "red_party": ["HERCZEG ZSOLT"],
+      "yellow_party": ["SZABÓ BETTINA"],
       "dk": ["SZEGEDI JÁNOS ATTILA"],
       "jobbik": ["RÉVI ATTILA"],
       "a_szolidaritas_partja_munkaspart": ["KONTRA ISTVÁN"]
@@ -1526,16 +1526,16 @@
     "telepules": "Tatabánya",
     "valasztopolgar": 77401,
     "partok": {
-      "tisza": 36785,
-      "fidesz": 20778,
-      "mi_hazank": 2581,
+      "green_party": 36785,
+      "red_party": 20778,
+      "yellow_party": 2581,
       "dk": 857,
       "mkkp": 510
     },
     "jeloltek": {
-      "tisza": ["SOPOV ILDIKÓ ÉVA"],
-      "fidesz": ["BENCSIK JÁNOS"],
-      "mi_hazank": ["BODA BÁNK"],
+      "green_party": ["SOPOV ILDIKÓ ÉVA"],
+      "red_party": ["BENCSIK JÁNOS"],
+      "yellow_party": ["BODA BÁNK"],
       "dk": ["VADAI ÁGNES"],
       "mkkp": ["LADÁNYI LUCA"]
     }
@@ -1547,16 +1547,16 @@
     "telepules": "Esztergom",
     "valasztopolgar": 80817,
     "partok": {
-      "tisza": 36344,
-      "fidesz": 23133,
-      "mi_hazank": 3475,
+      "green_party": 36344,
+      "red_party": 23133,
+      "yellow_party": 3475,
       "dk": 559,
       "mkkp": 414
     },
     "jeloltek": {
-      "tisza": ["RADNAI MÁRK"],
-      "fidesz": ["ERŐS GÁBOR"],
-      "mi_hazank": ["LANTOS JÁNOS"],
+      "green_party": ["RADNAI MÁRK"],
+      "red_party": ["ERŐS GÁBOR"],
+      "yellow_party": ["LANTOS JÁNOS"],
       "dk": ["FIZEL JÓZSEF"],
       "mkkp": ["FÁBIÁN ÁRON BENDE"]
     }
@@ -1568,16 +1568,16 @@
     "telepules": "Komárom",
     "valasztopolgar": 81088,
     "partok": {
-      "tisza": 34000,
-      "fidesz": 25061,
-      "mi_hazank": 4050,
+      "green_party": 34000,
+      "red_party": 25061,
+      "yellow_party": 4050,
       "dk": 539,
       "mkkp": 467
     },
     "jeloltek": {
-      "tisza": ["ÁRVAY NIKOLETT"],
-      "fidesz": ["CZUNYINÉ DR. BERTALAN JUDIT"],
-      "mi_hazank": ["ÁBRAHÁM BARNABÁS"],
+      "green_party": ["ÁRVAY NIKOLETT"],
+      "red_party": ["CZUNYINÉ DR. BERTALAN JUDIT"],
+      "yellow_party": ["ÁBRAHÁM BARNABÁS"],
       "dk": ["SALKOVICS RÓBERT"],
       "mkkp": ["KÁTAI ALIZ"]
     }
@@ -1589,16 +1589,16 @@
     "telepules": "Salgótarján",
     "valasztopolgar": 71832,
     "partok": {
-      "tisza": 28081,
-      "fidesz": 21219,
-      "mi_hazank": 4176,
+      "green_party": 28081,
+      "red_party": 21219,
+      "yellow_party": 4176,
       "a_szolidaritas_partja_munkaspart": 346,
       "mkkp": 0
     },
     "jeloltek": {
-      "tisza": ["SZAFKÓ ZOLTÁN PÉTER"],
-      "fidesz": ["BECSÓ ZSOLT"],
-      "mi_hazank": ["BAJNOK GYULA"],
+      "green_party": ["SZAFKÓ ZOLTÁN PÉTER"],
+      "red_party": ["BECSÓ ZSOLT"],
+      "yellow_party": ["BAJNOK GYULA"],
       "a_szolidaritas_partja_munkaspart": ["KRIZS NORBERT"],
       "mkkp": ["CZVANCZIG LÁSZLÓ"]
     }
@@ -1610,17 +1610,17 @@
     "telepules": "Balassagyarmat",
     "valasztopolgar": 77051,
     "partok": {
-      "fidesz": 26418,
-      "tisza": 26207,
-      "mi_hazank": 5852,
+      "red_party": 26418,
+      "green_party": 26207,
+      "yellow_party": 5852,
       "dk": 451,
       "jobbik": 172,
       "a_szolidaritas_partja_munkaspart": 162
     },
     "jeloltek": {
-      "fidesz": ["BALLA MIHÁLY"],
-      "tisza": ["MOLNÁR ZOLTÁN"],
-      "mi_hazank": ["DÓCS DÁVID"],
+      "red_party": ["BALLA MIHÁLY"],
+      "green_party": ["MOLNÁR ZOLTÁN"],
+      "yellow_party": ["DÓCS DÁVID"],
       "dk": ["GULYÁS NORBERT"],
       "jobbik": ["JAKAB KOPPÁNY ATILLA"],
       "a_szolidaritas_partja_munkaspart": ["FRANKFURTER ZSUZSANNA"]
@@ -1633,16 +1633,16 @@
     "telepules": "Érd",
     "valasztopolgar": 79671,
     "partok": {
-      "tisza": 40100,
-      "fidesz": 21518,
-      "mi_hazank": 3606,
+      "green_party": 40100,
+      "red_party": 21518,
+      "yellow_party": 3606,
       "dk": 815,
       "mkkp": 672
     },
     "jeloltek": {
-      "tisza": ["JELENCSIK JÓZSEF"],
-      "fidesz": ["KARDOSNÉ GYURKÓ KATALIN"],
-      "mi_hazank": ["SZALAI TIMEA"],
+      "green_party": ["JELENCSIK JÓZSEF"],
+      "red_party": ["KARDOSNÉ GYURKÓ KATALIN"],
+      "yellow_party": ["SZALAI TIMEA"],
       "dk": ["GYEKICZKI MÁRTON"],
       "mkkp": ["BOROS DÁNIEL"]
     }
@@ -1654,16 +1654,16 @@
     "telepules": "Budaörs",
     "valasztopolgar": 77871,
     "partok": {
-      "tisza": 42204,
-      "fidesz": 20206,
-      "mi_hazank": 3350,
+      "green_party": 42204,
+      "red_party": 20206,
+      "yellow_party": 3350,
       "dk": 738,
       "mkkp": 683
     },
     "jeloltek": {
-      "tisza": ["PÓSFAI GÁBOR"],
-      "fidesz": ["CZUCZOR GERGELY"],
-      "mi_hazank": ["GYÖRGY JÓZSEF"],
+      "green_party": ["PÓSFAI GÁBOR"],
+      "red_party": ["CZUCZOR GERGELY"],
+      "yellow_party": ["GYÖRGY JÓZSEF"],
       "dk": ["KELLER LÁSZLÓ"],
       "mkkp": ["DANKA DÁVID"]
     }
@@ -1675,18 +1675,18 @@
     "telepules": "Pilisvörösvár",
     "valasztopolgar": 81963,
     "partok": {
-      "tisza": 40789,
-      "fidesz": 23798,
-      "mi_hazank": 4110,
+      "green_party": 40789,
+      "red_party": 23798,
+      "yellow_party": 4110,
       "mkkp": 715,
       "dk": 483,
       "jobbik": 100,
       "a_szolidaritas_partja_munkaspart": 43
     },
     "jeloltek": {
-      "tisza": ["BUJDOSÓ ANDREA ANNA"],
-      "fidesz": ["MENCZER TAMÁS"],
-      "mi_hazank": ["BORVENDÉG ZSUZSANNA"],
+      "green_party": ["BUJDOSÓ ANDREA ANNA"],
+      "red_party": ["MENCZER TAMÁS"],
+      "yellow_party": ["BORVENDÉG ZSUZSANNA"],
       "mkkp": ["FODOR BETTINA"],
       "dk": ["VASVÁRI PÉTER LAJOS"],
       "jobbik": ["DEÁK BALÁZS"],
@@ -1700,17 +1700,17 @@
     "telepules": "Szentendre",
     "valasztopolgar": 76341,
     "partok": {
-      "tisza": 35920,
-      "fidesz": 23234,
-      "mi_hazank": 3930,
+      "green_party": 35920,
+      "red_party": 23234,
+      "yellow_party": 3930,
       "dk": 801,
       "mkkp": 625,
       "a_szolidaritas_partja_munkaspart": 72
     },
     "jeloltek": {
-      "tisza": ["TÓTHMAJOR BALÁZS"],
-      "fidesz": ["VITÁLYOS ESZTER"],
-      "mi_hazank": ["PÁL BÉLA"],
+      "green_party": ["TÓTHMAJOR BALÁZS"],
+      "red_party": ["VITÁLYOS ESZTER"],
+      "yellow_party": ["PÁL BÉLA"],
       "dk": ["KÁLMÁN OLGA"],
       "mkkp": ["LACZKÓ KORNÉL"],
       "a_szolidaritas_partja_munkaspart": ["SIMON JÓZSEF FERENC"]
@@ -1723,18 +1723,18 @@
     "telepules": "Dunakeszi",
     "valasztopolgar": 75965,
     "partok": {
-      "tisza": 40500,
-      "fidesz": 19988,
-      "mi_hazank": 3192,
+      "green_party": 40500,
+      "red_party": 19988,
+      "yellow_party": 3192,
       "dk": 768,
       "mkkp": 664,
       "jobbik": 84,
       "a_szolidaritas_partja_munkaspart": 30
     },
     "jeloltek": {
-      "tisza": ["MISKOLCZI ORSOLYA"],
-      "fidesz": ["TUZSON BENCE"],
-      "mi_hazank": ["BOGNÁR LÁSZLÓ"],
+      "green_party": ["MISKOLCZI ORSOLYA"],
+      "red_party": ["TUZSON BENCE"],
+      "yellow_party": ["BOGNÁR LÁSZLÓ"],
       "dk": ["RÓNAI SÁNDOR"],
       "mkkp": ["ÁDÁM EMESE"],
       "jobbik": ["BÖJTE ZITA"],
@@ -1748,16 +1748,16 @@
     "telepules": "Gödöllő",
     "valasztopolgar": 76890,
     "partok": {
-      "tisza": 39981,
-      "fidesz": 21632,
-      "mi_hazank": 3369,
+      "green_party": 39981,
+      "red_party": 21632,
+      "yellow_party": 3369,
       "dk": 542,
       "mkkp": 504
     },
     "jeloltek": {
-      "tisza": ["LÁSZLÓ ENDRE MÁRTON"],
-      "fidesz": ["HANKÓ BALÁZS"],
-      "mi_hazank": ["REGŐS BALÁZS"],
+      "green_party": ["LÁSZLÓ ENDRE MÁRTON"],
+      "red_party": ["HANKÓ BALÁZS"],
+      "yellow_party": ["REGŐS BALÁZS"],
       "dk": ["KARSAI ZSUZSÁNNA"],
       "mkkp": ["BOLBÁS ILDIKÓ"]
     }
@@ -1769,16 +1769,16 @@
     "telepules": "Pécel",
     "valasztopolgar": 76365,
     "partok": {
-      "tisza": 32478,
-      "fidesz": 23779,
-      "mi_hazank": 3914,
+      "green_party": 32478,
+      "red_party": 23779,
+      "yellow_party": 3914,
       "dk": 715,
       "mkkp": 562
     },
     "jeloltek": {
-      "tisza": ["TROMPLER ILDIKÓ"],
-      "fidesz": ["KATUS NORBERT"],
-      "mi_hazank": ["OROSZ PATRIK"],
+      "green_party": ["TROMPLER ILDIKÓ"],
+      "red_party": ["KATUS NORBERT"],
+      "yellow_party": ["OROSZ PATRIK"],
       "dk": ["NEMES GÁBOR"],
       "mkkp": ["HANKÓ KLÁRA"]
     }
@@ -1790,18 +1790,18 @@
     "telepules": "Vecsés",
     "valasztopolgar": 70426,
     "partok": {
-      "tisza": 33852,
-      "fidesz": 18897,
-      "mi_hazank": 3545,
+      "green_party": 33852,
+      "red_party": 18897,
+      "yellow_party": 3545,
       "dk": 518,
       "mkkp": 506,
       "jobbik": 140,
       "a_szolidaritas_partja_munkaspart": 42
     },
     "jeloltek": {
-      "tisza": ["BALAJTI ISTVÁN"],
-      "fidesz": ["SZŰCS LAJOS"],
-      "mi_hazank": ["SZABÓNÉ PAPP KLÁRA"],
+      "green_party": ["BALAJTI ISTVÁN"],
+      "red_party": ["SZŰCS LAJOS"],
+      "yellow_party": ["SZABÓNÉ PAPP KLÁRA"],
       "dk": ["HANEK GÁBOR"],
       "mkkp": ["HARTVIG DÁNIEL"],
       "jobbik": ["SAS ZOLTÁN"],
@@ -1815,18 +1815,18 @@
     "telepules": "Ráckeve",
     "valasztopolgar": 76078,
     "partok": {
-      "tisza": 32930,
-      "fidesz": 22330,
-      "mi_hazank": 4395,
+      "green_party": 32930,
+      "red_party": 22330,
+      "yellow_party": 4395,
       "dk": 592,
       "mkkp": 444,
       "nep": 83,
       "a_szolidaritas_partja_munkaspart": 43
     },
     "jeloltek": {
-      "tisza": ["BILISICS ZITA"],
-      "fidesz": ["BÓNA ZOLTÁN"],
-      "mi_hazank": ["TASSI RÓBERT"],
+      "green_party": ["BILISICS ZITA"],
+      "red_party": ["BÓNA ZOLTÁN"],
+      "yellow_party": ["TASSI RÓBERT"],
       "dk": ["JÓSZAI TEODÓRA"],
       "mkkp": ["SOMODY FERENC BALÁZS"],
       "nep": ["SÁNDOR ISTVÁN"],
@@ -1840,18 +1840,18 @@
     "telepules": "Szigetszentmiklós",
     "valasztopolgar": 74474,
     "partok": {
-      "tisza": 37930,
-      "fidesz": 18215,
-      "mi_hazank": 3353,
+      "green_party": 37930,
+      "red_party": 18215,
+      "yellow_party": 3353,
       "dk": 775,
       "mkkp": 583,
       "a_szolidaritas_partja_munkaspart": 119,
       "jobbik": 97
     },
     "jeloltek": {
-      "tisza": ["PERTICSNÉ KÁCSOR ANDREA"],
-      "fidesz": ["VÁNTSA BOTOND"],
-      "mi_hazank": ["BOTLÓ KORNÉL"],
+      "green_party": ["PERTICSNÉ KÁCSOR ANDREA"],
+      "red_party": ["VÁNTSA BOTOND"],
+      "yellow_party": ["BOTLÓ KORNÉL"],
       "dk": ["KENÉZ ISTVÁN"],
       "mkkp": ["CSIZMADIA CSEKE"],
       "a_szolidaritas_partja_munkaspart": ["DOROGI GYULA"],
@@ -1865,16 +1865,16 @@
     "telepules": "Vác",
     "valasztopolgar": 74824,
     "partok": {
-      "tisza": 33592,
-      "fidesz": 23314,
-      "mi_hazank": 3896,
+      "green_party": 33592,
+      "red_party": 23314,
+      "yellow_party": 3896,
       "dk": 741,
       "mkkp": 520
     },
     "jeloltek": {
-      "tisza": ["SZIMON RENÁTA"],
-      "fidesz": ["RÉTVÁRI BENCE"],
-      "mi_hazank": ["PÁLI JENŐ"],
+      "green_party": ["SZIMON RENÁTA"],
+      "red_party": ["RÉTVÁRI BENCE"],
+      "yellow_party": ["PÁLI JENŐ"],
       "dk": ["JUHÁSZ BÉLA"],
       "mkkp": ["URBÁN DÁVID KILIÁN"]
     }
@@ -1886,17 +1886,17 @@
     "telepules": "Monor",
     "valasztopolgar": 73911,
     "partok": {
-      "tisza": 28018,
-      "fidesz": 22878,
-      "mi_hazank": 4066,
+      "green_party": 28018,
+      "red_party": 22878,
+      "yellow_party": 4066,
       "dk": 460,
       "mkkp": 387,
       "jobbik": 0
     },
     "jeloltek": {
-      "tisza": ["POLGÁR GYÖRGY"],
-      "fidesz": ["POGÁCSÁS TIBOR"],
-      "mi_hazank": ["LENDVAY ENDRE"],
+      "green_party": ["POLGÁR GYÖRGY"],
+      "red_party": ["POGÁCSÁS TIBOR"],
+      "yellow_party": ["LENDVAY ENDRE"],
       "dk": ["MAGDICS MÓNIKA"],
       "mkkp": ["URSZÁN TAMÁS"],
       "jobbik": ["VINCZE MIKLÓS"]
@@ -1909,18 +1909,18 @@
     "telepules": "Dabas",
     "valasztopolgar": 70090,
     "partok": {
-      "tisza": 26676,
-      "fidesz": 20912,
-      "mi_hazank": 6097,
+      "green_party": 26676,
+      "red_party": 20912,
+      "yellow_party": 6097,
       "dk": 348,
       "mkkp": 323,
       "a_szolidaritas_partja_munkaspart": 118,
       "nep": 43
     },
     "jeloltek": {
-      "tisza": ["HENDE MÁTÉ"],
-      "fidesz": ["FELDMAN LÁSZLÓ"],
-      "mi_hazank": ["LÁSZLÓ ATTILA"],
+      "green_party": ["HENDE MÁTÉ"],
+      "red_party": ["FELDMAN LÁSZLÓ"],
+      "yellow_party": ["LÁSZLÓ ATTILA"],
       "dk": ["MAGDICS MÁTÉ"],
       "mkkp": ["SÁRKÖZI BETTI"],
       "a_szolidaritas_partja_munkaspart": ["URBIN GYÖRGY"],
@@ -1934,16 +1934,16 @@
     "telepules": "Cegléd",
     "valasztopolgar": 73447,
     "partok": {
-      "tisza": 28878,
-      "fidesz": 22157,
-      "mi_hazank": 4256,
+      "green_party": 28878,
+      "red_party": 22157,
+      "yellow_party": 4256,
       "dk": 558,
       "mkkp": 0
     },
     "jeloltek": {
-      "tisza": ["MUHARI GERGELY"],
-      "fidesz": ["FÖLDI LÁSZLÓ"],
-      "mi_hazank": ["BARTHA BARNA"],
+      "green_party": ["MUHARI GERGELY"],
+      "red_party": ["FÖLDI LÁSZLÓ"],
+      "yellow_party": ["BARTHA BARNA"],
       "dk": ["KÖKÉNY GÁBOR KÁLMÁN"],
       "mkkp": ["GÓR-NAGY GYÖRGY"]
     }
@@ -1955,18 +1955,18 @@
     "telepules": "Kaposvár",
     "valasztopolgar": 59107,
     "partok": {
-      "tisza": 27023,
-      "fidesz": 15832,
-      "mi_hazank": 3242,
+      "green_party": 27023,
+      "red_party": 15832,
+      "yellow_party": 3242,
       "dk": 545,
       "mkkp": 270,
       "jobbik": 98,
       "a_szolidaritas_partja_munkaspart": 30
     },
     "jeloltek": {
-      "tisza": ["LŐRINCZ VIKTÓRIA"],
-      "fidesz": ["GELENCSÉR ATTILA"],
-      "mi_hazank": ["ERDÉLYI ÁKOS"],
+      "green_party": ["LŐRINCZ VIKTÓRIA"],
+      "red_party": ["GELENCSÉR ATTILA"],
+      "yellow_party": ["ERDÉLYI ÁKOS"],
       "dk": ["MOLNÁR PÉTER"],
       "mkkp": ["MÉSZÁROS SZABOLCS"],
       "jobbik": ["LEHOCZKI FERENC"],
@@ -1980,17 +1980,17 @@
     "telepules": "Barcs",
     "valasztopolgar": 57032,
     "partok": {
-      "tisza": 19785,
-      "fidesz": 17581,
-      "mi_hazank": 1864,
+      "green_party": 19785,
+      "red_party": 17581,
+      "yellow_party": 1864,
       "jobbik": 1819,
       "dk": 511,
       "a_szolidaritas_partja_munkaspart": 53
     },
     "jeloltek": {
-      "tisza": ["BENKE JÓZSEF"],
-      "fidesz": ["KELEI ZITA"],
-      "mi_hazank": ["HALÁSZNÉ HUNYADI GYÖNGYI"],
+      "green_party": ["BENKE JÓZSEF"],
+      "red_party": ["KELEI ZITA"],
+      "yellow_party": ["HALÁSZNÉ HUNYADI GYÖNGYI"],
       "jobbik": ["ANDER BALÁZS"],
       "dk": ["REMES GÁBOR"],
       "a_szolidaritas_partja_munkaspart": ["DÓSA FERENC"]
@@ -2003,16 +2003,16 @@
     "telepules": "Marcali",
     "valasztopolgar": 60981,
     "partok": {
-      "tisza": 22647,
-      "fidesz": 20625,
-      "mi_hazank": 2811,
+      "green_party": 22647,
+      "red_party": 20625,
+      "yellow_party": 2811,
       "dk": 521,
       "jobbik": 305
     },
     "jeloltek": {
-      "tisza": ["BAKOS CSABA ATTILA"],
-      "fidesz": ["MÓRING JÓZSEF ATTILA"],
-      "mi_hazank": ["JOZÓ TAMÁS"],
+      "green_party": ["BAKOS CSABA ATTILA"],
+      "red_party": ["MÓRING JÓZSEF ATTILA"],
+      "yellow_party": ["JOZÓ TAMÁS"],
       "dk": ["NÉMETH HELGA"],
       "jobbik": ["KESZTYÜS ATTILA"]
     }
@@ -2024,9 +2024,9 @@
     "telepules": "Siófok",
     "valasztopolgar": 63489,
     "partok": {
-      "tisza": 25083,
-      "fidesz": 21747,
-      "mi_hazank": 2300,
+      "green_party": 25083,
+      "red_party": 21747,
+      "yellow_party": 2300,
       "dk": 598,
       "mkkp": 375,
       "irany_part": 109,
@@ -2034,9 +2034,9 @@
       "a_szolidaritas_partja_munkaspart": 28
     },
     "jeloltek": {
-      "tisza": ["CSATÁRI ERNŐ"],
-      "fidesz": ["WITZMANN MIHÁLY"],
-      "mi_hazank": ["PAPP KARULY BARNABÁS"],
+      "green_party": ["CSATÁRI ERNŐ"],
+      "red_party": ["WITZMANN MIHÁLY"],
+      "yellow_party": ["PAPP KARULY BARNABÁS"],
       "dk": ["BAKAI-NAGY ZITA"],
       "mkkp": ["FENYVES DÁVID GYÖRGY"],
       "irany_part": ["JÁMBOR PÉTER"],
@@ -2051,16 +2051,16 @@
     "telepules": "Nyíregyháza",
     "valasztopolgar": 71764,
     "partok": {
-      "tisza": 37691,
-      "fidesz": 17264,
-      "mi_hazank": 2508,
+      "green_party": 37691,
+      "red_party": 17264,
+      "yellow_party": 2508,
       "dk": 468,
       "mkkp": 259
     },
     "jeloltek": {
-      "tisza": ["GAJDOS LÁSZLÓ"],
-      "fidesz": ["HALKÓNÉ DR. RUDOLF ÉVA"],
-      "mi_hazank": ["KOVÁCS KOPPÁNY ZOLTÁN"],
+      "green_party": ["GAJDOS LÁSZLÓ"],
+      "red_party": ["HALKÓNÉ DR. RUDOLF ÉVA"],
+      "yellow_party": ["KOVÁCS KOPPÁNY ZOLTÁN"],
       "dk": ["BACSIKNÉ SZIGETI GABRIELLA"],
       "mkkp": ["TÜRK ATTILA"]
     }
@@ -2072,16 +2072,16 @@
     "telepules": "Nyíregyháza",
     "valasztopolgar": 70921,
     "partok": {
-      "tisza": 27888,
-      "fidesz": 21224,
-      "mi_hazank": 2957,
+      "green_party": 27888,
+      "red_party": 21224,
+      "yellow_party": 2957,
       "dk": 384,
       "jobbik": 0
     },
     "jeloltek": {
-      "tisza": ["SZAKÁCS PÉTER LAJOS"],
-      "fidesz": ["VINNAI GYŐZŐ"],
-      "mi_hazank": ["BAKÓ JÓZSEF ISTVÁN"],
+      "green_party": ["SZAKÁCS PÉTER LAJOS"],
+      "red_party": ["VINNAI GYŐZŐ"],
+      "yellow_party": ["BAKÓ JÓZSEF ISTVÁN"],
       "dk": ["GYARMATI MIHÁLY"],
       "jobbik": ["GYÜRE CSABA"]
     }
@@ -2093,17 +2093,17 @@
     "telepules": "Kisvárda",
     "valasztopolgar": 75649,
     "partok": {
-      "tisza": 28053,
-      "fidesz": 24485,
-      "mi_hazank": 2506,
+      "green_party": 28053,
+      "red_party": 24485,
+      "yellow_party": 2506,
       "dk": 446,
       "magyar_igazsag_es_elet_partja": 196,
       "a_szolidaritas_partja_munkaspart": 79
     },
     "jeloltek": {
-      "tisza": ["DICSŐ VIKTÓRIA"],
-      "fidesz": ["SESZTÁK MIKLÓS"],
-      "mi_hazank": ["FEKETE BÉLA"],
+      "green_party": ["DICSŐ VIKTÓRIA"],
+      "red_party": ["SESZTÁK MIKLÓS"],
+      "yellow_party": ["FEKETE BÉLA"],
       "dk": ["SÁROSY ZOLTÁN"],
       "magyar_igazsag_es_elet_partja": ["PERDIÁK JÁNOS"],
       "a_szolidaritas_partja_munkaspart": ["TÓTH PÉTER PÁL"]
@@ -2116,9 +2116,9 @@
     "telepules": "Vásárosnamény",
     "valasztopolgar": 70013,
     "partok": {
-      "fidesz": 25166,
-      "tisza": 21670,
-      "mi_hazank": 2059,
+      "red_party": 25166,
+      "green_party": 21670,
+      "yellow_party": 2059,
       "jobbik": 546,
       "dk": 262,
       "a_szolidaritas_partja_munkaspart": 40,
@@ -2126,9 +2126,9 @@
       "kozeppart": 0
     },
     "jeloltek": {
-      "fidesz": ["TILKI ATTILA"],
-      "tisza": ["SIMON ZSUZSÁNNA"],
-      "mi_hazank": ["KÁLMÁNDY ÁRPÁD"],
+      "red_party": ["TILKI ATTILA"],
+      "green_party": ["SIMON ZSUZSÁNNA"],
+      "yellow_party": ["KÁLMÁNDY ÁRPÁD"],
       "jobbik": ["ADORJÁN BÉLA"],
       "dk": ["KUBOVICSNÉ DR. BORBÉLY ANETT"],
       "a_szolidaritas_partja_munkaspart": ["NAGY JÓZSEF LÁSZLÓ"],
@@ -2143,17 +2143,17 @@
     "telepules": "Mátészalka",
     "valasztopolgar": 70904,
     "partok": {
-      "fidesz": 25410,
-      "tisza": 22074,
-      "mi_hazank": 3262,
+      "red_party": 25410,
+      "green_party": 22074,
+      "yellow_party": 3262,
       "dk": 317,
       "a_szolidaritas_partja_munkaspart": 56,
       "kozeppart": 44
     },
     "jeloltek": {
-      "fidesz": ["KOVÁCS SÁNDOR"],
-      "tisza": ["BUGYA LÁSZLÓ"],
-      "mi_hazank": ["APÁTI ISTVÁN"],
+      "red_party": ["KOVÁCS SÁNDOR"],
+      "green_party": ["BUGYA LÁSZLÓ"],
+      "yellow_party": ["APÁTI ISTVÁN"],
       "dk": ["DOMOKOS ZSUZSANNA"],
       "a_szolidaritas_partja_munkaspart": ["KRÁLIK KÁROLY"],
       "kozeppart": ["HORVÁTH ANTAL"]
@@ -2166,9 +2166,9 @@
     "telepules": "Nyírbátor",
     "valasztopolgar": 70408,
     "partok": {
-      "tisza": 24831,
-      "fidesz": 23713,
-      "mi_hazank": 2552,
+      "green_party": 24831,
+      "red_party": 23713,
+      "yellow_party": 2552,
       "mkkp": 225,
       "dk": 196,
       "fuggetlen_lakatos_attila": 150,
@@ -2176,9 +2176,9 @@
       "a_szolidaritas_partja_munkaspart": 27
     },
     "jeloltek": {
-      "tisza": ["BARNA-SZABÓ TÍMEA"],
-      "fidesz": ["SIMON MIKLÓS"],
-      "mi_hazank": ["PARÉ ATTILA"],
+      "green_party": ["BARNA-SZABÓ TÍMEA"],
+      "red_party": ["SIMON MIKLÓS"],
+      "yellow_party": ["PARÉ ATTILA"],
       "mkkp": ["TÓTH TAMARA"],
       "dk": ["FARKAS KÁLMÁN"],
       "fuggetlen_lakatos_attila": ["LAKATOS ATTILA"],
@@ -2193,17 +2193,17 @@
     "telepules": "Szekszárd",
     "valasztopolgar": 57094,
     "partok": {
-      "tisza": 23026,
-      "fidesz": 17654,
-      "mi_hazank": 3224,
+      "green_party": 23026,
+      "red_party": 17654,
+      "yellow_party": 3224,
       "dk": 431,
       "mkkp": 280,
       "a_szolidaritas_partja_munkaspart": 36
     },
     "jeloltek": {
-      "tisza": ["SÁROSI JÓZSEF"],
-      "fidesz": ["HORVÁTH ISTVÁN"],
-      "mi_hazank": ["BAKÓ NORBERT"],
+      "green_party": ["SÁROSI JÓZSEF"],
+      "red_party": ["HORVÁTH ISTVÁN"],
+      "yellow_party": ["BAKÓ NORBERT"],
       "dk": ["PÉTERFALVINÉ KALMÁR PIROSKA"],
       "mkkp": ["FARKAS LÁSZLÓ"],
       "a_szolidaritas_partja_munkaspart": ["NAGY TAMÁS"]
@@ -2216,17 +2216,17 @@
     "telepules": "Dombóvár",
     "valasztopolgar": 56292,
     "partok": {
-      "tisza": 20087,
-      "fidesz": 19433,
-      "mi_hazank": 3113,
+      "green_party": 20087,
+      "red_party": 19433,
+      "yellow_party": 3113,
       "dk": 359,
       "jobbik": 69,
       "a_szolidaritas_partja_munkaspart": 62
     },
     "jeloltek": {
-      "tisza": ["SZIJJÁRTÓ GÁBOR"],
-      "fidesz": ["CSIBI KRISZTINA"],
-      "mi_hazank": ["DÚRÓ DÓRA"],
+      "green_party": ["SZIJJÁRTÓ GÁBOR"],
+      "red_party": ["CSIBI KRISZTINA"],
+      "yellow_party": ["DÚRÓ DÓRA"],
       "dk": ["TAKÁCS LÁSZLÓ"],
       "jobbik": ["KECSKEMÉTI ISTVÁN"],
       "a_szolidaritas_partja_munkaspart": ["CSATÓ DÁNIEL"]
@@ -2239,17 +2239,17 @@
     "telepules": "Paks",
     "valasztopolgar": 56773,
     "partok": {
-      "tisza": 20880,
-      "fidesz": 19987,
-      "mi_hazank": 2662,
+      "green_party": 20880,
+      "red_party": 19987,
+      "yellow_party": 2662,
       "dk": 416,
       "a_szolidaritas_partja_munkaspart": 87,
       "jobbik": 0
     },
     "jeloltek": {
-      "tisza": ["CSEH TAMÁS"],
-      "fidesz": ["SÜLI JÁNOS"],
-      "mi_hazank": ["JANECSKA ZOLTÁN"],
+      "green_party": ["CSEH TAMÁS"],
+      "red_party": ["SÜLI JÁNOS"],
+      "yellow_party": ["JANECSKA ZOLTÁN"],
       "dk": ["DOBOS ERZSÉBET"],
       "a_szolidaritas_partja_munkaspart": ["SZARKA SÁNDOR"],
       "jobbik": ["BENCZE JÁNOS"]
@@ -2262,16 +2262,16 @@
     "telepules": "Szombathely",
     "valasztopolgar": 67196,
     "partok": {
-      "tisza": 31847,
-      "fidesz": 21558,
-      "mi_hazank": 2652,
+      "green_party": 31847,
+      "red_party": 21558,
+      "yellow_party": 2652,
       "mkkp": 491,
       "fuggetlen_czegledy_csaba": 0
     },
     "jeloltek": {
-      "tisza": ["RÁPLI RÓBERT"],
-      "fidesz": ["VÁMOS ZOLTÁN"],
-      "mi_hazank": ["DANKA LAJOS"],
+      "green_party": ["RÁPLI RÓBERT"],
+      "red_party": ["VÁMOS ZOLTÁN"],
+      "yellow_party": ["DANKA LAJOS"],
       "mkkp": ["KÓBER GYÖRGY MÁRK"],
       "fuggetlen_czegledy_csaba": ["CZEGLÉDY CSABA"]
     }
@@ -2283,16 +2283,16 @@
     "telepules": "Sárvár",
     "valasztopolgar": 66913,
     "partok": {
-      "fidesz": 25700,
-      "tisza": 25452,
-      "mi_hazank": 3069,
+      "red_party": 25700,
+      "green_party": 25452,
+      "yellow_party": 3069,
       "fuggetlen_magyar_peter": 909,
       "dk": 440
     },
     "jeloltek": {
-      "fidesz": ["ÁGH PÉTER"],
-      "tisza": ["STROMPOVÁ VIKTÓRIA"],
-      "mi_hazank": ["DALA FERENC"],
+      "red_party": ["ÁGH PÉTER"],
+      "green_party": ["STROMPOVÁ VIKTÓRIA"],
+      "yellow_party": ["DALA FERENC"],
       "fuggetlen_magyar_peter": ["MAGYAR PÉTER"],
       "dk": ["DEÁK GÁBOR"]
     }
@@ -2304,16 +2304,16 @@
     "telepules": "Körmend",
     "valasztopolgar": 64940,
     "partok": {
-      "fidesz": 26186,
-      "tisza": 23226,
-      "mi_hazank": 3220,
+      "red_party": 26186,
+      "green_party": 23226,
+      "yellow_party": 3220,
       "dk": 419,
       "jobbik": 165
     },
     "jeloltek": {
-      "fidesz": ["V.NÉMETH ZSOLT"],
-      "tisza": ["HORVÁTH NÁNDOR ZSOLT"],
-      "mi_hazank": ["TAKÁCS IMRE FERENC"],
+      "red_party": ["V.NÉMETH ZSOLT"],
+      "green_party": ["HORVÁTH NÁNDOR ZSOLT"],
+      "yellow_party": ["TAKÁCS IMRE FERENC"],
       "dk": ["LUDVÁN ZSOLT LÁSZLÓ"],
       "jobbik": ["DEÁK LAJOS"]
     }
@@ -2325,17 +2325,17 @@
     "telepules": "Veszprém",
     "valasztopolgar": 68896,
     "partok": {
-      "tisza": 33205,
-      "fidesz": 20294,
-      "mi_hazank": 2871,
+      "green_party": 33205,
+      "red_party": 20294,
+      "yellow_party": 2871,
       "dk": 516,
       "mkkp": 510,
       "jobbik": 64
     },
     "jeloltek": {
-      "tisza": ["GÁSPÁR LEVENTE"],
-      "fidesz": ["OVÁDI PÉTER"],
-      "mi_hazank": ["LÁSZLÓ PÉTER"],
+      "green_party": ["GÁSPÁR LEVENTE"],
+      "red_party": ["OVÁDI PÉTER"],
+      "yellow_party": ["LÁSZLÓ PÉTER"],
       "dk": ["HRABOVSZKI LÁSZLÓ"],
       "mkkp": ["SZÜCS ZOLTÁN"],
       "jobbik": ["BUCZKÓ RÉKA"]
@@ -2348,17 +2348,17 @@
     "telepules": "Balatonfüred",
     "valasztopolgar": 73585,
     "partok": {
-      "tisza": 34477,
-      "fidesz": 21304,
-      "mi_hazank": 3336,
+      "green_party": 34477,
+      "red_party": 21304,
+      "yellow_party": 3336,
       "dk": 538,
       "mkkp": 457,
       "nep": 72
     },
     "jeloltek": {
-      "tisza": ["FORSTHOFFER ÁGNES"],
-      "fidesz": ["HEGEDŰS BARBARA"],
-      "mi_hazank": ["SZABÓ MIKLÓS"],
+      "green_party": ["FORSTHOFFER ÁGNES"],
+      "red_party": ["HEGEDŰS BARBARA"],
+      "yellow_party": ["SZABÓ MIKLÓS"],
       "dk": ["PAÁL GÉZA"],
       "mkkp": ["KISS LÍVIA"],
       "nep": ["GŐDÉNY GYÖRGY"]
@@ -2371,9 +2371,9 @@
     "telepules": "Tapolca",
     "valasztopolgar": 65381,
     "partok": {
-      "tisza": 28223,
-      "fidesz": 20749,
-      "mi_hazank": 2396,
+      "green_party": 28223,
+      "red_party": 20749,
+      "yellow_party": 2396,
       "dk": 535,
       "fuggetlen_nemeth_karoly": 247,
       "jobbik": 78,
@@ -2381,9 +2381,9 @@
       "mkkp": 0
     },
     "jeloltek": {
-      "tisza": ["BALATINCZ PÉTER"],
-      "fidesz": ["NAVRACSICS TIBOR"],
-      "mi_hazank": ["GERGELICS ÁDÁM"],
+      "green_party": ["BALATINCZ PÉTER"],
+      "red_party": ["NAVRACSICS TIBOR"],
+      "yellow_party": ["GERGELICS ÁDÁM"],
       "dk": ["BAKK ISTVÁN"],
       "fuggetlen_nemeth_karoly": ["NÉMETH KÁROLY"],
       "jobbik": ["FÜLÖP LÁSZLÓNÉ"],
@@ -2398,17 +2398,17 @@
     "telepules": "Pápa",
     "valasztopolgar": 66523,
     "partok": {
-      "tisza": 25455,
-      "fidesz": 22881,
-      "mi_hazank": 3028,
+      "green_party": 25455,
+      "red_party": 22881,
+      "yellow_party": 3028,
       "dk": 674,
       "mkkp": 277,
       "jobbik": 79
     },
     "jeloltek": {
-      "tisza": ["UJVÁRI SZILVIA"],
-      "fidesz": ["TAKÁCS PÉTER"],
-      "mi_hazank": ["NARDAI PÉTER"],
+      "green_party": ["UJVÁRI SZILVIA"],
+      "red_party": ["TAKÁCS PÉTER"],
+      "yellow_party": ["NARDAI PÉTER"],
       "dk": ["MOLNÁR BÁLINT"],
       "mkkp": ["DOMJÁN ÁKOS DONÁT"],
       "jobbik": ["HORTOBÁGYI KATALIN"]
@@ -2421,18 +2421,18 @@
     "telepules": "Zalaegerszeg",
     "valasztopolgar": 72857,
     "partok": {
-      "tisza": 30995,
-      "fidesz": 24981,
-      "mi_hazank": 2906,
+      "green_party": 30995,
+      "red_party": 24981,
+      "yellow_party": 2906,
       "dk": 465,
       "mkkp": 393,
       "fuggetlen_koltai_tibor": 392,
       "jobbik": 0
     },
     "jeloltek": {
-      "tisza": ["NAGY MÁRTA"],
-      "fidesz": ["SZILASI GÁBOR"],
-      "mi_hazank": ["FARKAS ATTILA"],
+      "green_party": ["NAGY MÁRTA"],
+      "red_party": ["SZILASI GÁBOR"],
+      "yellow_party": ["FARKAS ATTILA"],
       "dk": ["PAPP ZOLTÁN"],
       "mkkp": ["JUHÁSZ VERONIKA"],
       "fuggetlen_koltai_tibor": ["KOLTAI TIBOR"],
@@ -2446,17 +2446,17 @@
     "telepules": "Keszthely",
     "valasztopolgar": 72849,
     "partok": {
-      "tisza": 27981,
-      "fidesz": 25863,
-      "mi_hazank": 3327,
+      "green_party": 27981,
+      "red_party": 25863,
+      "yellow_party": 3327,
       "dk": 483,
       "mkkp": 400,
       "jobbik": 144
     },
     "jeloltek": {
-      "tisza": ["VARGA BALÁZS"],
-      "fidesz": ["NAGY BÁLINT"],
-      "mi_hazank": ["KISS FERENC"],
+      "green_party": ["VARGA BALÁZS"],
+      "red_party": ["NAGY BÁLINT"],
+      "yellow_party": ["KISS FERENC"],
       "dk": ["LISZKAI ERZSÉBET"],
       "mkkp": ["KÓKAI MÁTYÁS"],
       "jobbik": ["JUHÁSZ-BAUER ÁGOSTON BÁLINT"]
@@ -2469,16 +2469,16 @@
     "telepules": "Nagykanizsa",
     "valasztopolgar": 69407,
     "partok": {
-      "tisza": 30369,
-      "fidesz": 20282,
-      "mi_hazank": 3297,
+      "green_party": 30369,
+      "red_party": 20282,
+      "yellow_party": 3297,
       "dk": 793,
       "a_szolidaritas_partja_munkaspart": 111
     },
     "jeloltek": {
-      "tisza": ["LOVKÓ CSABA"],
-      "fidesz": ["CSERESNYÉS PÉTER"],
-      "mi_hazank": ["MATYIJCSIK SÁNDOR"],
+      "green_party": ["LOVKÓ CSABA"],
+      "red_party": ["CSERESNYÉS PÉTER"],
+      "yellow_party": ["MATYIJCSIK SÁNDOR"],
       "dk": ["BODÓ LÁSZLÓ"],
       "a_szolidaritas_partja_munkaspart": ["SZABÓ LÁSZLÓ JÓZSEF"]
     }

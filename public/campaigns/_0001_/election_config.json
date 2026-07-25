@@ -8,6 +8,7 @@
   "baseResults": {
     "green_party": -5,
     "red_party": 5,
+    "yellow_party": 8,
     "_other": 1
   },
   "parties": [
@@ -20,6 +21,11 @@
       "id": "red_party",
       "name": "Red Party",
       "color": "#FF0000"
+    },
+    {
+      "id": "yellow_party",
+      "name": "Yellow Party",
+      "color": "#FFFF00"
     }
   ],
   "partyListVotes": {
