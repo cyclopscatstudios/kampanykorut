@@ -18,6 +18,7 @@ type DropdownProps<T> = {
   disabled?: boolean;
   optionDisabled?: boolean;
   block?: boolean;
+  id?: string;
 };
 
 export function Dropdown<T>({
@@ -30,6 +31,7 @@ export function Dropdown<T>({
   disabled,
   optionDisabled,
   block,
+  id,
 }: DropdownProps<T>) {
   const [open, setOpen] = useState(false);
   const [internalValue, setInternalValue] = useState<T | undefined>(value);
@@ -69,6 +71,7 @@ export function Dropdown<T>({
         className="w-full px-3 py-2 rounded-md text-left"
         disabled={disabled}
         block={block}
+        testId={id}
       >
         {renderLabel
           ? renderLabel(selected)
@@ -85,6 +88,7 @@ export function Dropdown<T>({
 
             return (
               <div
+                data-testid={option.value}
                 key={key}
                 onClick={() => handleSelect(option.value)}
                 className={classNames(

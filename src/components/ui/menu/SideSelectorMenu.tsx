@@ -85,6 +85,7 @@ export function SideSelectorMenu() {
           handleOnChange={handlePartyChange}
           avatar={assets.partyAssets?.party_logo}
           isPartySelector
+          testId="partySelector"
         />
         <SelectorItem
           label={t("sideSelector.candidate.label")}
@@ -98,6 +99,7 @@ export function SideSelectorMenu() {
             description: selectedCandidate?.description ?? "",
           }}
           disabled={!selectedParty}
+          testId="candidateSelector"
         />
       </div>
       <div
@@ -159,6 +161,7 @@ interface SelectorItemProps<T extends { label: string; value: string }> {
   entityAsset: { label: string; description: string };
   disabled?: boolean;
   isPartySelector?: boolean;
+  testId?: string;
 }
 
 function SelectorItem<T extends { label: string; value: string }>({
@@ -171,6 +174,7 @@ function SelectorItem<T extends { label: string; value: string }>({
   entityAsset,
   disabled,
   isPartySelector,
+  testId,
 }: SelectorItemProps<T>) {
   return (
     <CommonWrapper className="md:mr-4">
@@ -193,6 +197,7 @@ function SelectorItem<T extends { label: string; value: string }>({
           placeholder={t("sideSelector.party.dropdown")}
           block
           disabled={disabled}
+          id={testId}
         />
         {selectedElement ? (
           <div className="hidden md:flex">

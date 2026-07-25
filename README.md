@@ -1,26 +1,30 @@
 # Kampánykörút – Election Simulation Game
 
+<p align="center">
+  <img src="public/kampanykorut-demo.gif" width="900" alt="Gameplay preview">
+</p>
+
 An interactive election simulation game built with React and TypeScript. Players make strategic policy decisions that dynamically affect election results, candidate demographics, and party support across Hungarian electoral districts.
 
-## Overview
+## 🗳️ Overview
 
 **Kampánykörút** is a domain-driven, fully-typed election simulation game where:
 
-- Players make decisions during campaign turns
-- Each decision applies effects to electoral data (vote shares, candidate lists, demographics)
-- Results are calculated in real-time using deterministic mandate algorithms
+- 🎯 Players make decisions during campaign turns
+- ⚡ Each decision applies effects to electoral data (vote shares, candidate lists, demographics)
+- 📊 Results are calculated in real-time using deterministic mandate algorithms
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- **Frontend**: React 19.2 + TypeScript 5
-- **Build Tool**: Vite 7
-- **Styling**: Tailwind CSS 4
-- **Testing**: Vitest + @testing-library/react, Playwright (e2e & component tests)
-- **Component Explorer**: Ladle
-- **State Management**: tsyringe (dependency injection)
-- **Code Quality**: ESLint, Prettier, Husky
+- ⚛️ **Frontend**: React 19.2 + TypeScript 5
+- ⚡ **Build Tool**: Vite 7
+- 🎨 **Styling**: Tailwind CSS 4
+- 🧪 **Testing**: Vitest + @testing-library/react, Playwright (e2e & component tests)
+- 📖 **Component Explorer**: Ladle
+- 🧩 **State Management**: tsyringe (dependency injection)
+- ✅ **Code Quality**: ESLint, Prettier, Husky
 
-## Project Architecture
+## 🏗️ Project Architecture
 
 Following domain-driven design principles with strict separation of concerns:
 
@@ -53,7 +57,7 @@ public/
 └── campaigns/{route}/        # Per-campaign election data & content (see Data Formats below)
 ```
 
-## Core Invariants
+## 🔒 Core Invariants
 
 The domain enforces strict constraints:
 
@@ -62,12 +66,12 @@ The domain enforces strict constraints:
 3. **Delta Equilibrium**: Vote redistribution must balance (DeltaSum ≈ 0)
 4. **Domain Purity**: No React imports or side effects in `/domain`
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- npm or yarn
+- 🟢 Node.js 18+
+- 📦 npm or yarn
 
 ### Installation
 
@@ -114,60 +118,60 @@ npm run format:check  # Check formatting without changes
 npm run ladle  # Start Ladle dev server at http://localhost:6006
 ```
 
-## Game Mechanics
+## 🎮 Game Mechanics
 
 ### Campaign Engine
 
 The `CampaignEngine` orchestrates gameplay:
 
-- Manages game state across turns
-- Applies player decisions to electoral data
-- Calculates mandate results after each decision
-- Integrates with effect systems and calculators
+- 🕹️ Manages game state across turns
+- ⚡ Applies player decisions to electoral data
+- 🧮 Calculates mandate results after each decision
+- 🔗 Integrates with effect systems and calculators
 
 ### Decision Effects
 
 Player decisions trigger `RawEffect` objects that modify:
 
-- **Candidate lists**: Demographics, qualifications, recognition
-- **Party data**: Vote shares, supporter energy, momentum
-- **Electoral dynamics**: Redistribution between parties and districts
+- 👤 **Candidate lists**: Demographics, qualifications, recognition
+- 🏛️ **Party data**: Vote shares, supporter energy, momentum
+- 🗺️ **Electoral dynamics**: Redistribution between parties and districts
 
 ### Result Calculation
 
 The `MandateCalculator` converts vote shares to parliamentary seats using Hungarian electoral rules:
 
-- Proportional representation system
-- Single-mandate district voting
-- Compensation list allocation
+- ⚖️ Proportional representation system
+- 📍 Single-mandate district voting
+- 📋 Compensation list allocation
 
-## Data Formats
+## 📁 Data Formats
 
 Game data lives under two top-level folders in `public/`:
 
-- `public/campaigns/{year}/` - election-year data (district results, configuration) plus, per party, the campaign content itself (questions, effects, strategies, advisor feedback)
-- `public/assets/jsons/` - global data shared across every campaign
+- 🗳️ `public/campaigns/{year}/` - election-year data (district results, configuration) plus, per party, the campaign content itself (questions, effects, strategies, advisor feedback)
+- 🌐 `public/assets/jsons/` - global data shared across every campaign
 
 ### Election Configuration
 
 Located in `public/campaigns/{year}/`:
 
-- `oevk_{year}.json` - District boundary and electoral data
-- `election_config.json` - Election-specific rules and parameters
-- `custom_groups.json` - Campaign-specific district groups (see [Campaign Data (JSON)](#campaign-data-json) below)
-- `custom_pollsters.json` - Optional campaign-specific pollster definitions (fed into `PollsterEngine`)
+- 🗺️ `oevk_{year}.json` - District boundary and electoral data
+- ⚙️ `election_config.json` - Election-specific rules and parameters
+- 🧩 `custom_groups.json` - Campaign-specific district groups (see [Campaign Data (JSON)](#campaign-data-json) below)
+- 📊 `custom_pollsters.json` - Optional campaign-specific pollster definitions (fed into `PollsterEngine`)
 
 Located in `public/assets/jsons/`:
 
-- `game_modes.json` - Available campaign scenarios. Each entry may set `isPublished: false` to hide it from the campaign selector (see [Debug Mode](#debug-mode) below).
-- `quotes.json` - Narrative quotes shown during gameplay
+- 🎮 `game_modes.json` - Available campaign scenarios. Each entry may set `isPublished: false` to hide it from the campaign selector (see [Debug Mode](#debug-mode) below).
+- 💬 `quotes.json` - Narrative quotes shown during gameplay
 
 ### Internationalization
 
 Supports multiple languages, located in `src/logic/langs/`:
 
-- `en_lang.json` - English
-- `hu_lang.json` - Hungarian
+- 🇬🇧 `en_lang.json` - English
+- 🇭🇺 `hu_lang.json` - Hungarian
 
 ### Debug Mode
 
@@ -327,30 +331,30 @@ Optional. Unlike `answer_effects`, strategies aren't resolved turn by turn — t
 
 > **Note:** a strategy whose `conditions` array is empty can never be fulfilled unless a reward's `minMatches` is `0` — the match count is always `0` regardless of the player's answers. `strategy-2` in `2022_campaign_strategies.json` currently ships this way and never triggers;
 
-## Performance Considerations
+## ⚡ Performance Considerations
 
-- Heavy components are memoized to prevent unnecessary re-renders
-- Objects are created outside render functions when possible
-- Stable keys used in lists to optimize reconciliation
-- Domain logic executes synchronously for deterministic results
+- 🧠 Heavy components are memoized to prevent unnecessary re-renders
+- 📦 Objects are created outside render functions when possible
+- 🔑 Stable keys used in lists to optimize reconciliation
+- 🎯 Domain logic executes synchronously for deterministic results
 
-## Testing Strategy
+## 🧪 Testing Strategy
 
 Every transformer and calculator includes tests for:
 
-- Happy path (normal operation)
-- Zero-delta case (no effect)
-- Edge redistribution cases (boundary conditions)
+- ✅ Happy path (normal operation)
+- ⚪ Zero-delta case (no effect)
+- 🔍 Edge redistribution cases (boundary conditions)
 
-## Contributing
+## 🤝 Contributing
 
 This project follows strict architectural guidelines:
 
-- Domain logic must remain pure and deterministic
-- UI components should not contain calculation logic
-- All game rules are enforced via domain invariants
-- Tests should validate both happy paths and edge cases
+- 🧬 Domain logic must remain pure and deterministic
+- 🎨 UI components should not contain calculation logic
+- 🔒 All game rules are enforced via domain invariants
+- ✅ Tests should validate both happy paths and edge cases
 
-## License
+## 📄 License
 
 All rights reserved — see [LICENSE](LICENSE).

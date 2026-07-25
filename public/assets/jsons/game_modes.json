@@ -18,5 +18,15 @@
     "campaignBanner": "2026_tavaszi_szel_vizet_araszt-banner.png",
     "thinCampaignBanner": "2026_tavaszi_szel-banner-thin.png",
     "isPublished": false
+  },
+  {
+    "id": "0001_test_campaign",
+    "label": "0001: Test Campaign",
+    "description": "something something test campaign",
+    "route": "_0001_",
+    "tags": ["test"],
+    "campaignBanner": "default-banner.png",
+    "thinCampaignBanner": "default-banner-thin.png",
+    "isPublished": false
   }
 ]

@@ -34,7 +34,12 @@ export function SettingsMenu() {
             {t("menuList.button.back")}
           </Text>
         </Button>
-        <Button size="large" onClick={saveChanges} disabled={isEqual}>
+        <Button
+          size="large"
+          onClick={saveChanges}
+          disabled={isEqual}
+          testId="saveButton"
+        >
           <Text weight="medium" color="lightBlue">
             {t("menuList.button.save")}
           </Text>
