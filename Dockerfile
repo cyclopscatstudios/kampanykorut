@@ -6,7 +6,7 @@ RUN corepack enable
 
 COPY package.json yarn.lock .yarnrc.yml ./
 
-RUN corepack yarn install --immutable
+RUN yarn install --immutable
 
 COPY . .
 
@@ -15,7 +15,7 @@ ARG VITE_SUPABASE_ANON_KEY
 ARG GIT_COMMIT=unknown
 ENV GIT_COMMIT=$GIT_COMMIT
 
-RUN corepack yarn build
+RUN yarn build
 
 FROM nginx:alpine AS runner
 
