@@ -57,7 +57,7 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
-      - run: yarn install --frozen-lockfile
+      - run: npx playwright install --with-deps
 
       - run: npx playwright install chromium --with-deps
 
