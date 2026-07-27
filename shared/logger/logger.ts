@@ -81,3 +81,4 @@ export function createLogger(scope: string) {
       logger.error(`[${scope}] ${msg}`, data),
   };
 }
+
