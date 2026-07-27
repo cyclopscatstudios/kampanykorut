@@ -6,6 +6,7 @@ export type DialogId =
   | "exit"
   | "savedGames"
   | "saveGame"
+  | "bugReporter"
   | null;
 
 export function useDialogState() {

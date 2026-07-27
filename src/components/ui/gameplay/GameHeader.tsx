@@ -170,6 +170,14 @@ export function GameHeader({
               />
             </Button>
           </Tooltip>
+          <Tooltip content="Report a bug" position="bottom">
+            <Button variant="tertiary" onClick={() => onOpen("bugReporter")}>
+              <Button.Icon
+                name="bug-fill"
+                color={activeDialog === "bugReporter" ? "darkBlue" : "white"}
+              ></Button.Icon>
+            </Button>
+          </Tooltip>
           <Tooltip content={t("gameMenuBar.quit")} position="bottom">
             <Button variant="tertiary" onClick={() => onOpen("exit")}>
               <Button.Icon
