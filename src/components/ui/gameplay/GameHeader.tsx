@@ -18,6 +18,7 @@ import { Icon } from "../Icon";
 import { Menu, MenuItem, SubMenu } from "../Menu";
 import { Text } from "../Text";
 import { Tooltip } from "../Tooltip";
+import { BugReporterButton } from "./BugReporter/BugReporterButton";
 import { GAME_HEADER_SLOT_ID } from "./gameHeaderSlot";
 import type { DialogId } from "./hooks/useDialogState";
 
@@ -170,6 +171,11 @@ export function GameHeader({
               />
             </Button>
           </Tooltip>
+          <BugReporterButton
+            onChange={() => onOpen("bugReporter")}
+            variant="top"
+            iconColor={activeDialog === "bugReporter" ? "darkBlue" : "white"}
+          />
           <Tooltip content={t("gameMenuBar.quit")} position="bottom">
             <Button variant="tertiary" onClick={() => onOpen("exit")}>
               <Button.Icon

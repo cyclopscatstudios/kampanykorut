@@ -1,5 +1,9 @@
 import "reflect-metadata";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig, devices } from "@playwright/experimental-ct-react";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -27,6 +31,21 @@ export default defineConfig({
 
     /* Port to use for Playwright component endpoint. */
     ctPort: 3100,
+
+    ctViteConfig: {
+      resolve: {
+        alias: {
+          "@/logic/application": path.resolve(
+            __dirname,
+            "src/logic/application",
+          ),
+          "@/logic/types": path.resolve(__dirname, "src/logic/types"),
+          "@/shared/logger": path.resolve(__dirname, "shared/logger"),
+          "@/shared/domain": path.resolve(__dirname, "shared/domain"),
+          "@/shared/types": path.resolve(__dirname, "shared/types"),
+        },
+      },
+    },
   },
 
   testMatch: "**/*.pw.tsx",

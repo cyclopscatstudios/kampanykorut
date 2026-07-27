@@ -1,6 +1,7 @@
 import { t } from "i18next";
 import { SaveGameSession } from "../menu/SaveGameSession";
 import { Modal } from "../Modal";
+import { BugReporterModal } from "./BugReporter/BugReporterModal";
 import { GameDialog } from "./GameDialog";
 import type { DialogId } from "./hooks/useDialogState";
 import { SavedSessionsDialog } from "./SavedGameSessionsDialog";
@@ -28,6 +29,10 @@ export function GameDialogs({
       />
       <SettingsDialog isOpen={activeDialog === "settings"} setIsOpen={close} />
       <GameDialog isOpen={activeDialog === "gameMenu"} setIsOpen={close} />
+      <BugReporterModal
+        isOpen={activeDialog === "bugReporter"}
+        setIsOpen={close}
+      />
       {activeDialog === "exit" && (
         <Modal
           title={t("exitDialog.title")}

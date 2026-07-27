@@ -172,5 +172,20 @@
       "processedVotes": "Feldolgozott szavazatok",
       "pleaseWait": "Kérjük, várjon..."
     }
+  },
+  "bugReporter": {
+    "title": "Hiba bejelentése",
+    "report": "Jelentés",
+    "warningText": "A hibabejelentéshez GitHub-fiókra lesz szükséged.",
+    "palceholder": {
+      "title": "Írd le röviden a problémát",
+      "description": "Mi történt? Mit vártál helyette?",
+      "steps": "1. Menj oda...\n2. Kattints a...\n3. Megjelenik a hibaüzenet..."
+    },
+    "label": {
+      "title": "Cím",
+      "description": "Leírás",
+      "steps": "A hiba reprodukálásának lépései"
+    }
   }
 }
