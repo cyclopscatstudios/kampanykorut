@@ -1,7 +1,7 @@
 import { t } from "i18next";
 import { Dispatch, SetStateAction, useState } from "react";
 import { container } from "tsyringe";
-import { ConfigEngine } from "@/logic/application";
+import { ConfigEngine, Navigation } from "@/logic/application";
 import { Button } from "../../Button";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../../Dialog";
 import { Heading } from "../../Heading";
@@ -126,6 +126,8 @@ function BugReporterBody({
 
 function openGitHubIssue(report: BugReport) {
   const configEngine = container.resolve(ConfigEngine);
+  const navigationService = container.resolve(Navigation);
+  const isCampaignActive = navigationService.isUrlParamMatch("/game");
   const config = configEngine.getCurrentElectionConfig();
   const owner = "pankamacskastudios";
   const repo = "kampanykorut";
@@ -141,7 +143,7 @@ function openGitHubIssue(report: BugReport) {
 
     ## Environment
 
-    - Campaign: ${config?.title ?? "-"}
+    - Campaign: ${isCampaignActive && config?.title ? config.title : "-"}
     - URL: ${window.location.href}
     - Browser: ${navigator.userAgent}
     - Version: ${import.meta.env.VITE_APP_VERSION ?? "unknown"}
