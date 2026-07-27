@@ -149,7 +149,7 @@ public/
 
 Game data lives under two top-level folders in `public/`:
 
-- 🗳️ `public/campaigns/{year}/` - election-year data (district results, configuration) plus, per party, the campaign content itself (questions, effects, strategies, advisor feedback)
+- 🗳️ `public/campaigns/{year}/` - election-year data (district results, configuration) plus, per party, the campaign content itself (questions, effects, strategies, advisor feedback) — see [CAMPAIGN.md](CAMPAIGN.md) for the full file format documentation
 - 🌐 `public/assets/jsons/` - global data shared across every campaign
 
 ### Election Configuration
@@ -158,7 +158,7 @@ Located in `public/campaigns/{year}/`:
 
 - 🗺️ `oevk_{year}.json` - District boundary and electoral data
 - ⚙️ `election_config.json` - Election-specific rules and parameters
-- 🧩 `custom_groups.json` - Campaign-specific district groups (see [Campaign Data (JSON)](#campaign-data-json) below)
+- 🧩 `custom_groups.json` - Campaign-specific district groups (see [CAMPAIGN.md](CAMPAIGN.md))
 - 📊 `custom_pollsters.json` - Optional campaign-specific pollster definitions (fed into `PollsterEngine`)
 
 Located in `public/assets/jsons/`:

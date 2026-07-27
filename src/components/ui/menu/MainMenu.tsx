@@ -3,11 +3,10 @@ import { useLoaderData } from "react-router";
 import logo from "../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { buildInfo } from "../../../buildInfo";
 import { useTranslateLang } from "../../../logic/application/hooks/useTranslateLang";
-import { Button } from "../Button";
+import { BugReporterButton } from "../gameplay/BugReporter/BugReporterButton";
 import { BugReporterModal } from "../gameplay/BugReporter/BugReporterModal";
 import { MenuList } from "../MenuList";
 import { Text } from "../Text";
-import { Tooltip } from "../Tooltip";
 import { MenuItemId } from "./menu.types";
 import { MenuLayout } from "./MenuLayout";
 
@@ -23,11 +22,10 @@ export function MainMenu() {
   return (
     <div className="relative w-full h-full">
       <div className="absolute top-0 right-0 p-4 flex gap-2 z-20">
-        <Tooltip content="Report a bug" position="bottom">
-          <Button variant="underline" onClick={() => setOpenBugReporter(true)}>
-            <Button.Icon name="bug-fill"></Button.Icon>
-          </Button>
-        </Tooltip>
+        <BugReporterButton
+          onChange={() => setOpenBugReporter(true)}
+          variant="main"
+        />
       </div>
       <div className="absolute top-0 left-0 w-full flex justify-center pt-8">
         <div className="flex flex-col items-center z-10">
