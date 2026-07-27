@@ -1,3 +1,5 @@
+import * as Sentry from "@sentry/react";
+
 type LogLevel = "debug" | "info" | "warn" | "error";
 
 interface LogPayload {
@@ -26,7 +28,23 @@ function log(level: LogLevel, payload: LogPayload) {
   }
 
   if (isProd) {
-    // TODO: send to remote logging (Sentry, Datadog, stb.)
+    if (level === "error") {
+      if (data instanceof Error) {
+        Sentry.captureException(data, { extra: { message, ...context } });
+      } else {
+        Sentry.captureMessage(message, {
+          level: "error",
+          extra: { data, ...context },
+        });
+      }
+    } else {
+      Sentry.addBreadcrumb({
+        category: level,
+        message,
+        level: level === "warn" ? "warning" : "info",
+        data: { ...context, data },
+      });
+    }
   }
 }
 
