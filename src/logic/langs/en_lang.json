@@ -172,5 +172,20 @@
       "processedVotes": "Processed Votes",
       "pleaseWait": "Please wait"
     }
+  },
+  "bugReporter": {
+    "title": "Report a bug",
+    "report": "Report",
+    "warningText": "You'll need a GitHub account to submit a bug report.",
+    "palceholder": {
+      "title": "Briefly describe the problem",
+      "description": "What happened? What did you expect instead?",
+      "steps": "1. Go to...\n2. Click...\n3. See the error..."
+    },
+    "label": {
+      "title": "Title",
+      "description": "Description",
+      "steps": "Steps to reproduce"
+    }
   }
 }
