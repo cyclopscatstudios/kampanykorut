@@ -4,6 +4,7 @@ import { container } from "tsyringe";
 import { createLogger } from "../shared/logger/logger";
 import { GAME_HEADER_SLOT_ID } from "./components/ui/gameplay/gameHeaderSlot";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
+import { useHealthCheckPolling } from "./hooks/useHealthCheckPolling";
 import { useParams } from "./hooks/useParamsHook";
 import { StateEngine, useStateEngine } from "./logic/application";
 import { Navigation } from "./logic/application/navigation/Navigation";
@@ -16,6 +17,8 @@ export function RootLayout() {
   const path = useLoaderData();
   const stateEngine = container.resolve(StateEngine);
   const navigation = container.resolve(Navigation);
+
+  useHealthCheckPolling();
 
   useEffect(() => {
     if (!navigation.isUrlParamMatch("/game")) {
