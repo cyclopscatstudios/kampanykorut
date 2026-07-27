@@ -14,11 +14,13 @@ const pkg = JSON.parse(readFileSync("./package.json", "utf-8")) as {
   version: string;
 };
 
-let gitCommit = "unknown";
-try {
-  gitCommit = execSync("git rev-parse --short HEAD").toString().trim();
-} catch {
-  // not a git repo or no commits yet
+let gitCommit = process.env.GIT_COMMIT ?? "unknown";
+if (gitCommit === "unknown") {
+  try {
+    gitCommit = execSync("git rev-parse --short HEAD").toString().trim();
+  } catch {
+    // not a git repo or no commits yet
+  }
 }
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
@@ -67,7 +69,7 @@ export default defineConfig({
     alias: {
       "@/logic/application": path.resolve(__dirname, "src/logic/application"),
       "@/logic/types": path.resolve(__dirname, "src/logic/types"),
-      "@/shared/logger": path.resolve(__dirname, "shared/logger/logger"),
+      "@/shared/logger": path.resolve(__dirname, "shared/logger"),
       "@/shared/domain": path.resolve(__dirname, "shared/domain"),
       "@/shared/types": path.resolve(__dirname, "shared/types"),
     },

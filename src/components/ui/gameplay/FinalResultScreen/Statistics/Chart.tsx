@@ -6,22 +6,17 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { CommonWrapper } from "../../../CommonWrapper";
+import { HistoryItem } from "@/logic/application";
 import { CampaignConfig } from "@/shared/types";
-type HistoryEntry = {
-  turn: number;
-  results: {
-    percentages: Record<string, number>;
-  };
-};
+import { CommonWrapper } from "../../../CommonWrapper";
 
-function createChartData(history: HistoryEntry[]) {
+function createChartData(history: HistoryItem[]) {
   return history.map((entry) => ({
     turn: `n. ${entry.turn}`,
 
     ...Object.fromEntries(
-      Object.entries(entry.results.percentages)
-        .filter(([key]) => key !== "_total")
+      Object.entries(entry.results.percentages.partyListResults)
+        .filter(([key]) => key !== "_total" && key !== "_other")
         .map(([party, value]) => [party, Number((value * 100).toFixed(1))]),
     ),
   }));
@@ -33,11 +28,13 @@ export function SupportChart({
   config,
 }: {
   label: string;
-  turnHistory: HistoryEntry[];
+  turnHistory?: HistoryItem[];
   config: CampaignConfig;
 }) {
+  if (!turnHistory) {
+    return null;
+  }
   const data = createChartData(turnHistory);
-
   const parties = Object.keys(data[0] ?? {}).filter((key) => key !== "turn");
 
   return (
@@ -58,15 +55,16 @@ export function SupportChart({
             <YAxis domain={[0, 60]} />
             <Tooltip />
             {parties.map((party) => {
-              const color =
-                config.electionConfig.parties.find((p) => p.id === party)
-                  ?.color ?? "#3B82F6";
+              const p = config.electionConfig.parties.find(
+                (p) => p.id === party,
+              );
               return (
                 <Line
+                  name={p?.name}
                   key={party}
                   type="monotone"
                   dataKey={party}
-                  stroke={color}
+                  stroke={p?.color}
                   strokeWidth={2}
                   dot={true}
                 />

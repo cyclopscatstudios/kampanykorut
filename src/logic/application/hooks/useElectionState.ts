@@ -1,9 +1,5 @@
-import { useMemo, useState } from "react";
-import { useNavigation } from "../../../hooks/navigationHook";
-import { createCampaignEngine } from "../createCampaignEngine";
-import { gameModeRegistry } from "../gameModeRegistery";
-import { useSettings } from "./useSettings";
-import { useStateEngine } from "./useStateEngine";
+import { useEffect, useMemo, useState } from "react";
+import { container } from "tsyringe";
 import {
   Answer,
   CampaignState,
@@ -12,9 +8,14 @@ import {
   ElectionConfig,
   PendingTurn,
 } from "@/shared/types";
+import { useNavigation } from "../../../hooks/navigationHook";
+import { ConfigEngine } from "../ConfigEngine";
+import { createCampaignEngine } from "../createCampaignEngine";
+import { useSettings } from "./useSettings";
+import { useStateEngine } from "./useStateEngine";
 
 export function useElectionState(campaignId: string) {
-  const config = gameModeRegistry[campaignId];
+  const config = container.resolve(ConfigEngine).getCampaignConfig(campaignId);
   const { campaignEngine } = useMemo(
     () => createCampaignEngine(config, campaignId),
     [config, campaignId],
@@ -30,6 +31,10 @@ export function useElectionState(campaignId: string) {
   );
   const { settings } = useSettings();
   const { goToFinalResults } = useNavigation();
+
+  useEffect(() => {
+    saveSession("campaignState", gameState);
+  }, [campaignEngine.createInitialState]);
 
   const processAnswer = (
     rawAnswer?: string,
@@ -53,6 +58,7 @@ export function useElectionState(campaignId: string) {
       currentHistory ?? [],
       settings,
       config.electionConfig,
+      config.campaignStrategies,
     );
 
     return {
@@ -68,10 +74,11 @@ export function useElectionState(campaignId: string) {
     decision,
   }: PendingTurn): CampaignState => {
     preserveState(rawAnswer, newGameState, decision);
-    if (newGameState.isEnded) {
-      goToFinalResults(campaignId, sessionId);
-    }
     return newGameState;
+  };
+
+  const finishCampaign = () => {
+    goToFinalResults(campaignId, sessionId);
   };
 
   const getAnswer = (answers?: Answer[], answerId?: string) => {
@@ -82,12 +89,34 @@ export function useElectionState(campaignId: string) {
     return campaignEngine.getFinalResults(gameState);
   };
 
-  const getMapDataByPolls = (
+  const getListDataByPollProjection = (
     state: CampaignState,
     config: ElectionConfig,
     polls?: Record<string, number>,
+    pollsterId?: string,
   ) => {
-    return campaignEngine.getPollProjection(state, config, polls);
+    const pollProjection = campaignEngine.getPollProjection(
+      state,
+      config,
+      polls,
+      pollsterId,
+    );
+
+    if (!pollProjection) {
+      return;
+    }
+
+    setGameState((prev) => ({
+      ...prev,
+      pollingOpnions: { ...pollProjection, selectedPollsterId: pollsterId },
+    }));
+
+    saveSession("campaignState", {
+      ...gameState,
+      pollingOpnions: { ...pollProjection, selectedPollsterId: pollsterId },
+    });
+
+    return pollProjection;
   };
 
   const preserveState = (
@@ -116,7 +145,8 @@ export function useElectionState(campaignId: string) {
     config,
     processAnswer,
     commitTurn,
+    finishCampaign,
     getFinalResults,
-    getMapDataByPolls,
+    getMapDataByPolls: getListDataByPollProjection,
   };
 }

@@ -1,12 +1,13 @@
+import { Answer, CampaignState } from "@/shared/types";
 import { mockCandidateListData, mockPartyListData } from "./mockListData";
-import { Answer } from "@/shared/types";
 
-export const campaignState = {
+export const campaignState: CampaignState = {
   activeCampaignId: "1995_test_campaign_id",
   playerSide: {
     partyId: "party_a",
     candidateId: "candidate_a",
   },
+  isBaseResultsAlreadyApplied: false,
   turn: 8,
   currentQuestion: {
     id: "1995_test_question_id",
@@ -122,9 +123,16 @@ export const campaignState = {
   ] as Answer[],
   results: {
     totals: {
-      party_a: 5000,
-      party_b: 4000,
-      party_c: 3000,
+      candidateListResults: {
+        party_a: 5000,
+        party_b: 4000,
+        party_c: 3000,
+      },
+      partyListResults: {
+        party_a: 5000,
+        party_b: 4000,
+        party_c: 3000,
+      },
     },
     mandates: [
       {
@@ -172,9 +180,16 @@ export const campaignState = {
       },
     },
     percentages: {
-      party_a: 0.44456823645102844,
-      party_b: 0.4487724331063556,
-      party_c: 0.02375856043924297,
+      candidateListResults: {
+        party_a: 0.44456823645102844,
+        party_b: 0.4487724331063556,
+        party_c: 0.02375856043924297,
+      },
+      partyListResults: {
+        party_a: 0.44456823645102844,
+        party_b: 0.4487724331063556,
+        party_c: 0.02375856043924297,
+      },
     },
   },
   isEnded: false,

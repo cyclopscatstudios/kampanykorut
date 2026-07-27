@@ -1,10 +1,11 @@
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
 import { ConfigEngine } from "./ConfigEngine";
 import { Navigation } from "./navigation/Navigation";
 import { type SavedCampaignSessionInfo, StateEngine } from "./StateEngine";
+import { StateHandler } from "./StateHandler";
 import { StorageEngine } from "./StorageEngine";
-import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
 
 const FIXED_SESSION_ID = "fixed-test-session-id";
 const FIXED_GENERATED_ID = "generated-uuid";
@@ -29,7 +30,8 @@ function makeEngine(
   generateId: () => string = () => FIXED_GENERATED_ID,
 ) {
   const storage = new StorageEngine();
-  const configEngine = new ConfigEngine(storage);
+  const stateHandler = new StateHandler();
+  const configEngine = new ConfigEngine(storage, stateHandler);
   const voterEnv = { configure: vi.fn() } as unknown as VoterEnvironment;
   const districtGroupEngine = {
     configure: vi.fn(),
@@ -42,9 +44,10 @@ function makeEngine(
     storage,
     generateId,
     navigation,
+    stateHandler,
   );
   (engine as unknown as { sessionId: string }).sessionId = FIXED_SESSION_ID;
-  return { engine, configEngine, navigation };
+  return { engine, configEngine, navigation, stateHandler };
 }
 
 describe("StateEngine", () => {
@@ -192,12 +195,13 @@ describe("StateEngine", () => {
     });
 
     it("falls back to in-memory campaignState when storage is empty", () => {
-      const { engine } = makeEngine();
-      (engine as unknown as { campaignState: object }).campaignState = {
+      const { engine, stateHandler } = makeEngine();
+      stateHandler.set("campaignState", {
         activeCampaignId: "c-mem",
         turn: 0,
         isEnded: false,
-      };
+        isBaseResultsAlreadyApplied: false,
+      });
 
       engine.saveToSlot("from-memory");
 
@@ -397,24 +401,6 @@ describe("StateEngine", () => {
 
       expect(goSpy).toHaveBeenCalledWith(
         `/game/${validSession.campaignId}?sessionId=${validSession.sessionId}`,
-      );
-    });
-
-    it("force-configures the ConfigEngine with the loaded campaign", () => {
-      window.history.pushState({}, "", "/load-game");
-      const navigation = new Navigation();
-      vi.spyOn(navigation, "go").mockImplementation(() => {});
-      const { engine, configEngine } = makeEngine(navigation);
-      const configureSpy = vi.spyOn(configEngine, "configure");
-      seedHistory();
-      seedCampaignStateForSession();
-
-      engine.loadState(validSession);
-
-      expect(configureSpy).toHaveBeenCalledWith(
-        expect.anything(),
-        validSession.campaignId,
-        true,
       );
     });
 

@@ -1,8 +1,8 @@
+import { CampaignConfig, District, RawParty } from "@/shared/types";
 import { Badge } from "../../Badge";
 import { CommonWrapper } from "../../CommonWrapper";
 import { Text } from "../../Text";
 import { type Candidate, getPartyById } from "./electionMap.utils";
-import { CampaignConfig, District, RawParty } from "@/shared/types";
 
 interface DistrictResultProps {
   district: District | null;
@@ -16,7 +16,7 @@ export function DistrictResult({
   config,
 }: DistrictResultProps) {
   return (
-    <CommonWrapper>
+    <CommonWrapper fullHeight={false}>
       <div className="w-[400px] h-[444px] shrink-0 p-2">
         <div className="text-center">
           <Text>

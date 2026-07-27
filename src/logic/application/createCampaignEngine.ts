@@ -1,5 +1,4 @@
 import { container } from "tsyringe";
-import { ConfigEngine } from "./ConfigEngine";
 import {
   CampaignEngine,
   DistrictGroupEngine,
@@ -10,6 +9,7 @@ import {
   VoterEnvironment,
 } from "@/shared/domain";
 import { CampaignConfig } from "@/shared/types";
+import { ConfigEngine } from "./ConfigEngine";
 
 export function createCampaignEngine(
   config: CampaignConfig,
@@ -29,13 +29,13 @@ export function createCampaignEngine(
 
   const campaignEngine = new CampaignEngine(
     config.candidateListData,
-    config.partyListData,
     config.questions,
     config.answerEffect,
     container.resolve(ResultModifier),
     container.resolve(EffectApplier),
     container.resolve(MandateCalculator),
     container.resolve(PollsterEngine),
+    config.partyListData,
     config.advisorFeedback,
   );
 

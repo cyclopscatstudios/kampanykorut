@@ -8,7 +8,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
     "effectApplier": EffectApplier {
       "DEFAULT_MOTIVATION_DELTA": 99,
       "campaignStateEngine": StateEngine {
-        "campaignState": null,
         "districtGroupEngine": DistrictGroupEngine {
           "candidateListData": [
             {
@@ -604,94 +603,166 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
           ],
         },
         "gameConfigEngine": ConfigEngine {
-          "campaignConfig": {
-            "answerEffect": [],
-            "candidateListData": [
-              {
-                "jeloltek": {
-                  "ellenzek": [
-                    "Candidate B",
+          "configured": false,
+          "listeners": [],
+          "stateHandler": StateHandler {
+            "listeners": [],
+            "state": {
+              "campaignConfig": {
+                "answerEffect": [],
+                "candidateListData": [
+                  {
+                    "jeloltek": {
+                      "ellenzek": [
+                        "Candidate B",
+                      ],
+                      "fidesz": [
+                        "Candidate A",
+                      ],
+                    },
+                    "megye": "BP",
+                    "megyekod": 1,
+                    "oevk": 1,
+                    "partok": {
+                      "ellenzek": 11000,
+                      "fidesz": 12000,
+                      "mkkp": undefined,
+                    },
+                    "telepules": "",
+                    "valasztopolgar": 600000,
+                  },
+                  {
+                    "megye": "BP",
+                    "megyekod": 1,
+                    "oevk": 2,
+                    "partok": {
+                      "ellenzek": 9000,
+                      "fidesz": 8000,
+                    },
+                    "telepules": "",
+                    "valasztopolgar": 600000,
+                  },
+                ],
+                "capitalCity": [
+                  {
+                    "centrum": "",
+                    "evk": "",
+                    "maz": "",
+                    "poligon": "",
+                  },
+                ],
+                "customGroups": [],
+                "districts": [
+                  {
+                    "centrum": "",
+                    "evk": "",
+                    "maz": "",
+                    "poligon": "",
+                  },
+                ],
+                "electionConfig": {
+                  "listSeats": 10,
+                  "parties": [],
+                  "thresholdPercent": 5,
+                },
+                "endResults": {
+                  "playerSideDefeat": {},
+                  "playerSideVictory": {},
+                },
+                "partyListData": [
+                  {
+                    "megye": "BP",
+                    "megyekod": 1,
+                    "oevk": 1,
+                    "partok": {
+                      "ellenzek": 40000,
+                      "fidesz": 50000,
+                      "mkkp": 3000,
+                    },
+                    "telepules": "",
+                  },
+                  {
+                    "megye": "BP",
+                    "megyekod": 1,
+                    "oevk": 2,
+                    "partok": {
+                      "ellenzek": 35000,
+                      "fidesz": 30000,
+                    },
+                    "telepules": "",
+                  },
+                ],
+                "questions": [],
+                "voterEnvironmentConfig": {
+                  "eligibleVoters": 8215304,
+                  "listData": [
+                    {
+                      "jeloltek": {
+                        "ellenzek": [
+                          "Candidate B",
+                        ],
+                        "fidesz": [
+                          "Candidate A",
+                        ],
+                      },
+                      "megye": "BP",
+                      "megyekod": 1,
+                      "oevk": 1,
+                      "partok": {
+                        "ellenzek": 11000,
+                        "fidesz": 12000,
+                        "mkkp": undefined,
+                      },
+                      "telepules": "",
+                      "valasztopolgar": 600000,
+                    },
+                    {
+                      "megye": "BP",
+                      "megyekod": 1,
+                      "oevk": 2,
+                      "partok": {
+                        "ellenzek": 9000,
+                        "fidesz": 8000,
+                      },
+                      "telepules": "",
+                      "valasztopolgar": 600000,
+                    },
                   ],
-                  "fidesz": [
-                    "Candidate A",
-                  ],
+                  "maxTurnout": 85,
                 },
-                "megye": "BP",
-                "megyekod": 1,
-                "oevk": 1,
-                "partok": {
-                  "ellenzek": 11000,
-                  "fidesz": 12000,
-                  "mkkp": undefined,
-                },
-                "telepules": "",
-                "valasztopolgar": 600000,
               },
-              {
-                "megye": "BP",
-                "megyekod": 1,
-                "oevk": 2,
-                "partok": {
-                  "ellenzek": 9000,
-                  "fidesz": 8000,
-                },
-                "telepules": "",
-                "valasztopolgar": 600000,
+              "campaignState": {
+                "activeCampaignId": "default-id",
+                "isBaseResultsAlreadyApplied": false,
+                "isEnded": false,
+                "turn": 0,
               },
-            ],
-            "capitalCity": [
-              {
-                "centrum": "",
-                "evk": "",
-                "maz": "",
-                "poligon": "",
-              },
-            ],
-            "customGroups": [],
-            "districts": [
-              {
-                "centrum": "",
-                "evk": "",
-                "maz": "",
-                "poligon": "",
-              },
-            ],
-            "electionConfig": {
-              "listSeats": 10,
-              "parties": [],
-              "thresholdPercent": 5,
+              "history": [],
+              "sessionId": "fixed-test-session-id",
+              "turnDecision": null,
             },
-            "endResults": {
-              "playerSideDefeat": {},
-              "playerSideVictory": {},
-            },
-            "partyListData": [
-              {
-                "megye": "BP",
-                "megyekod": 1,
-                "oevk": 1,
-                "partok": {
-                  "ellenzek": 40000,
-                  "fidesz": 50000,
-                  "mkkp": 3000,
-                },
-                "telepules": "",
-              },
-              {
-                "megye": "BP",
-                "megyekod": 1,
-                "oevk": 2,
-                "partok": {
-                  "ellenzek": 35000,
-                  "fidesz": 30000,
-                },
-                "telepules": "",
-              },
-            ],
-            "questions": [],
-            "voterEnvironmentConfig": {
-              "eligibleVoters": 8215304,
-              "listData": [
+          },
+          "storage": StorageEngine {
+            "getItem": [Function],
+            "getLocalStorageItem": [Function],
+            "getPrefixedKey": [Function],
+            "setItem": [Function],
+          },
+        },
+        "generateId": [Function],
+        "getCampaignState": [Function],
+        "listeners": [],
+        "navigation": Navigation {
+          "navigate": null,
+        },
+        "safeStringify": [Function],
+        "saveState": [Function],
+        "stateHandler": StateHandler {
+          "listeners": [],
+          "state": {
+            "campaignConfig": {
+              "answerEffect": [],
+              "candidateListData": [
                 {
                   "jeloltek": {
                     "ellenzek": [
@@ -724,27 +795,105 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
                   "valasztopolgar": 600000,
                 },
               ],
-              "maxTurnout": 85,
+              "capitalCity": [
+                {
+                  "centrum": "",
+                  "evk": "",
+                  "maz": "",
+                  "poligon": "",
+                },
+              ],
+              "customGroups": [],
+              "districts": [
+                {
+                  "centrum": "",
+                  "evk": "",
+                  "maz": "",
+                  "poligon": "",
+                },
+              ],
+              "electionConfig": {
+                "listSeats": 10,
+                "parties": [],
+                "thresholdPercent": 5,
+              },
+              "endResults": {
+                "playerSideDefeat": {},
+                "playerSideVictory": {},
+              },
+              "partyListData": [
+                {
+                  "megye": "BP",
+                  "megyekod": 1,
+                  "oevk": 1,
+                  "partok": {
+                    "ellenzek": 40000,
+                    "fidesz": 50000,
+                    "mkkp": 3000,
+                  },
+                  "telepules": "",
+                },
+                {
+                  "megye": "BP",
+                  "megyekod": 1,
+                  "oevk": 2,
+                  "partok": {
+                    "ellenzek": 35000,
+                    "fidesz": 30000,
+                  },
+                  "telepules": "",
+                },
+              ],
+              "questions": [],
+              "voterEnvironmentConfig": {
+                "eligibleVoters": 8215304,
+                "listData": [
+                  {
+                    "jeloltek": {
+                      "ellenzek": [
+                        "Candidate B",
+                      ],
+                      "fidesz": [
+                        "Candidate A",
+                      ],
+                    },
+                    "megye": "BP",
+                    "megyekod": 1,
+                    "oevk": 1,
+                    "partok": {
+                      "ellenzek": 11000,
+                      "fidesz": 12000,
+                      "mkkp": undefined,
+                    },
+                    "telepules": "",
+                    "valasztopolgar": 600000,
+                  },
+                  {
+                    "megye": "BP",
+                    "megyekod": 1,
+                    "oevk": 2,
+                    "partok": {
+                      "ellenzek": 9000,
+                      "fidesz": 8000,
+                    },
+                    "telepules": "",
+                    "valasztopolgar": 600000,
+                  },
+                ],
+                "maxTurnout": 85,
+              },
             },
-          },
-          "configured": false,
-          "listeners": [],
-          "storage": StorageEngine {
-            "getItem": [Function],
-            "getLocalStorageItem": [Function],
-            "getPrefixedKey": [Function],
-            "setItem": [Function],
+            "campaignState": {
+              "activeCampaignId": "default-id",
+              "isBaseResultsAlreadyApplied": false,
+              "isEnded": false,
+              "turn": 0,
+            },
+            "history": [],
+            "sessionId": "fixed-test-session-id",
+            "turnDecision": null,
           },
         },
-        "generateId": [Function],
-        "getCampaignState": [Function],
-        "listeners": [],
-        "navigation": Navigation {
-          "navigate": null,
-        },
-        "safeStringify": [Function],
-        "saveState": [Function],
-        "sessionId": "fixed-test-session-id",
         "storage": StorageEngine {
           "getItem": [Function],
           "getLocalStorageItem": [Function],
@@ -1362,6 +1511,485 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
         ],
       },
       "gameConfigEngine": ConfigEngine {
+        "configured": false,
+        "listeners": [],
+        "stateHandler": StateHandler {
+          "listeners": [],
+          "state": {
+            "campaignConfig": {
+              "answerEffect": [],
+              "candidateListData": [
+                {
+                  "jeloltek": {
+                    "ellenzek": [
+                      "Candidate B",
+                    ],
+                    "fidesz": [
+                      "Candidate A",
+                    ],
+                  },
+                  "megye": "BP",
+                  "megyekod": 1,
+                  "oevk": 1,
+                  "partok": {
+                    "ellenzek": 11000,
+                    "fidesz": 12000,
+                    "mkkp": undefined,
+                  },
+                  "telepules": "",
+                  "valasztopolgar": 600000,
+                },
+                {
+                  "megye": "BP",
+                  "megyekod": 1,
+                  "oevk": 2,
+                  "partok": {
+                    "ellenzek": 9000,
+                    "fidesz": 8000,
+                  },
+                  "telepules": "",
+                  "valasztopolgar": 600000,
+                },
+              ],
+              "capitalCity": [
+                {
+                  "centrum": "",
+                  "evk": "",
+                  "maz": "",
+                  "poligon": "",
+                },
+              ],
+              "customGroups": [],
+              "districts": [
+                {
+                  "centrum": "",
+                  "evk": "",
+                  "maz": "",
+                  "poligon": "",
+                },
+              ],
+              "electionConfig": {
+                "listSeats": 10,
+                "parties": [],
+                "thresholdPercent": 5,
+              },
+              "endResults": {
+                "playerSideDefeat": {},
+                "playerSideVictory": {},
+              },
+              "partyListData": [
+                {
+                  "megye": "BP",
+                  "megyekod": 1,
+                  "oevk": 1,
+                  "partok": {
+                    "ellenzek": 40000,
+                    "fidesz": 50000,
+                    "mkkp": 3000,
+                  },
+                  "telepules": "",
+                },
+                {
+                  "megye": "BP",
+                  "megyekod": 1,
+                  "oevk": 2,
+                  "partok": {
+                    "ellenzek": 35000,
+                    "fidesz": 30000,
+                  },
+                  "telepules": "",
+                },
+              ],
+              "questions": [],
+              "voterEnvironmentConfig": {
+                "eligibleVoters": 8215304,
+                "listData": [
+                  {
+                    "jeloltek": {
+                      "ellenzek": [
+                        "Candidate B",
+                      ],
+                      "fidesz": [
+                        "Candidate A",
+                      ],
+                    },
+                    "megye": "BP",
+                    "megyekod": 1,
+                    "oevk": 1,
+                    "partok": {
+                      "ellenzek": 11000,
+                      "fidesz": 12000,
+                      "mkkp": undefined,
+                    },
+                    "telepules": "",
+                    "valasztopolgar": 600000,
+                  },
+                  {
+                    "megye": "BP",
+                    "megyekod": 1,
+                    "oevk": 2,
+                    "partok": {
+                      "ellenzek": 9000,
+                      "fidesz": 8000,
+                    },
+                    "telepules": "",
+                    "valasztopolgar": 600000,
+                  },
+                ],
+                "maxTurnout": 85,
+              },
+            },
+            "campaignState": {
+              "activeCampaignId": "default-id",
+              "isBaseResultsAlreadyApplied": false,
+              "isEnded": false,
+              "turn": 0,
+            },
+            "history": [],
+            "sessionId": "fixed-test-session-id",
+            "turnDecision": null,
+          },
+        },
+        "storage": StorageEngine {
+          "getItem": [Function],
+          "getLocalStorageItem": [Function],
+          "getPrefixedKey": [Function],
+          "setItem": [Function],
+        },
+      },
+      "mandateCalculator": MandateCalculator {},
+      "stateHandler": StateHandler {
+        "listeners": [],
+        "state": {
+          "campaignConfig": {
+            "answerEffect": [],
+            "candidateListData": [
+              {
+                "jeloltek": {
+                  "ellenzek": [
+                    "Candidate B",
+                  ],
+                  "fidesz": [
+                    "Candidate A",
+                  ],
+                },
+                "megye": "BP",
+                "megyekod": 1,
+                "oevk": 1,
+                "partok": {
+                  "ellenzek": 11000,
+                  "fidesz": 12000,
+                  "mkkp": undefined,
+                },
+                "telepules": "",
+                "valasztopolgar": 600000,
+              },
+              {
+                "megye": "BP",
+                "megyekod": 1,
+                "oevk": 2,
+                "partok": {
+                  "ellenzek": 9000,
+                  "fidesz": 8000,
+                },
+                "telepules": "",
+                "valasztopolgar": 600000,
+              },
+            ],
+            "capitalCity": [
+              {
+                "centrum": "",
+                "evk": "",
+                "maz": "",
+                "poligon": "",
+              },
+            ],
+            "customGroups": [],
+            "districts": [
+              {
+                "centrum": "",
+                "evk": "",
+                "maz": "",
+                "poligon": "",
+              },
+            ],
+            "electionConfig": {
+              "listSeats": 10,
+              "parties": [],
+              "thresholdPercent": 5,
+            },
+            "endResults": {
+              "playerSideDefeat": {},
+              "playerSideVictory": {},
+            },
+            "partyListData": [
+              {
+                "megye": "BP",
+                "megyekod": 1,
+                "oevk": 1,
+                "partok": {
+                  "ellenzek": 40000,
+                  "fidesz": 50000,
+                  "mkkp": 3000,
+                },
+                "telepules": "",
+              },
+              {
+                "megye": "BP",
+                "megyekod": 1,
+                "oevk": 2,
+                "partok": {
+                  "ellenzek": 35000,
+                  "fidesz": 30000,
+                },
+                "telepules": "",
+              },
+            ],
+            "questions": [],
+            "voterEnvironmentConfig": {
+              "eligibleVoters": 8215304,
+              "listData": [
+                {
+                  "jeloltek": {
+                    "ellenzek": [
+                      "Candidate B",
+                    ],
+                    "fidesz": [
+                      "Candidate A",
+                    ],
+                  },
+                  "megye": "BP",
+                  "megyekod": 1,
+                  "oevk": 1,
+                  "partok": {
+                    "ellenzek": 11000,
+                    "fidesz": 12000,
+                    "mkkp": undefined,
+                  },
+                  "telepules": "",
+                  "valasztopolgar": 600000,
+                },
+                {
+                  "megye": "BP",
+                  "megyekod": 1,
+                  "oevk": 2,
+                  "partok": {
+                    "ellenzek": 9000,
+                    "fidesz": 8000,
+                  },
+                  "telepules": "",
+                  "valasztopolgar": 600000,
+                },
+              ],
+              "maxTurnout": 85,
+            },
+          },
+          "campaignState": {
+            "activeCampaignId": "default-id",
+            "isBaseResultsAlreadyApplied": false,
+            "isEnded": false,
+            "turn": 0,
+          },
+          "history": [],
+          "sessionId": "fixed-test-session-id",
+          "turnDecision": null,
+        },
+      },
+    },
+    "initialCandidateData": [
+      {
+        "jeloltek": {
+          "ellenzek": [
+            "Candidate B",
+          ],
+          "fidesz": [
+            "Candidate A",
+          ],
+        },
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 11000,
+          "fidesz": 12000,
+          "mkkp": undefined,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 9000,
+          "fidesz": 8000,
+        },
+        "telepules": "",
+        "valasztopolgar": 600000,
+      },
+    ],
+    "initialPartyData": [
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 1,
+        "partok": {
+          "ellenzek": 40000,
+          "fidesz": 50000,
+          "mkkp": 3000,
+        },
+        "telepules": "",
+      },
+      {
+        "megye": "BP",
+        "megyekod": 1,
+        "oevk": 2,
+        "partok": {
+          "ellenzek": 35000,
+          "fidesz": 30000,
+        },
+        "telepules": "",
+      },
+    ],
+    "mandateCalculator": MandateCalculator {},
+    "pollsterEngine": PollsterEngine {
+      "mandateCalculator": MandateCalculator {},
+      "pollsters": [
+        {
+          "bias": [
+            {
+              "partyBias": {
+                "mi_hazank": -1,
+              },
+              "type": "result",
+            },
+          ],
+          "description": "A Medián egy magyarországi közvélemény-kutató intézet, amely rendszeresen készít politikai és társadalmi témájú felméréseket, és jelentős szereplő a magyar közvélemény-kutatásban.",
+          "errorMargin": {
+            "max": 5,
+            "min": 1,
+          },
+          "id": "median",
+          "label": "Medián",
+        },
+        {
+          "bias": [
+            {
+              "partyBias": {
+                "ellenzeki_osszefogas": 5,
+                "fidesz": -5,
+              },
+              "type": "result",
+            },
+          ],
+          "description": "A Závecz Research egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
+          "errorMargin": {
+            "max": 5.5,
+            "min": 1.5,
+          },
+          "id": "zavecz",
+          "label": "Závecz Research",
+        },
+        {
+          "bias": [
+            {
+              "partyBias": {
+                "ellenzeki_osszefogas": 5,
+                "fidesz": -10,
+              },
+              "type": "result",
+            },
+          ],
+          "description": "A Publicus Intézet egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
+          "errorMargin": {
+            "max": 6,
+            "min": 2,
+          },
+          "id": "publicus",
+          "label": "Publicus Intézet",
+        },
+        {
+          "bias": [
+            {
+              "partyBias": {
+                "ellenzeki_osszefogas": -5,
+                "fidesz": 5,
+              },
+              "type": "result",
+            },
+          ],
+          "description": "A Nézőpont Intézet egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
+          "errorMargin": {
+            "max": 5.5,
+            "min": 1.5,
+          },
+          "id": "nezopont",
+          "label": "Nézőpont Intézet",
+        },
+        {
+          "bias": [
+            {
+              "partyBias": {
+                "ellenzeki_osszefogas": -10,
+                "fidesz": 10,
+              },
+              "type": "result",
+            },
+          ],
+          "description": "Az Alapjogokért Központ egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
+          "errorMargin": {
+            "max": 6,
+            "min": 2,
+          },
+          "id": "alapjogokert",
+          "label": "Alapjogokért Központ",
+        },
+      ],
+    },
+    "questions": [],
+    "resultModifier": ResultModifier {
+      "districtVoteTransformer": DistrictVoteTransformer {
+        "voterEnvironment": VoterEnvironment {
+          "maxAvailableVoters": 6983008,
+          "voterBases": [
+            {
+              "id": "1-1",
+              "valasztopolgar": 600000,
+            },
+            {
+              "id": "1-2",
+              "valasztopolgar": 600000,
+            },
+          ],
+          "voters": 40000,
+        },
+      },
+      "unionSwingTransformer": UnionSwingTransformer {},
+      "voterShareTransformer": VoteShareTransformer {
+        "voterEnviroment": VoterEnvironment {
+          "maxAvailableVoters": 6983008,
+          "voterBases": [
+            {
+              "id": "1-1",
+              "valasztopolgar": 600000,
+            },
+            {
+              "id": "1-2",
+              "valasztopolgar": 600000,
+            },
+          ],
+          "voters": 40000,
+        },
+      },
+    },
+  },
+  "configEngine": ConfigEngine {
+    "configured": false,
+    "listeners": [],
+    "stateHandler": StateHandler {
+      "listeners": [],
+      "state": {
         "campaignConfig": {
           "answerEffect": [],
           "candidateListData": [
@@ -1485,337 +2113,17 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
             "maxTurnout": 85,
           },
         },
-        "configured": false,
-        "listeners": [],
-        "storage": StorageEngine {
-          "getItem": [Function],
-          "getLocalStorageItem": [Function],
-          "getPrefixedKey": [Function],
-          "setItem": [Function],
+        "campaignState": {
+          "activeCampaignId": "default-id",
+          "isBaseResultsAlreadyApplied": false,
+          "isEnded": false,
+          "turn": 0,
         },
-      },
-      "mandateCalculator": MandateCalculator {},
-      "stateHandler": StateHandler {
-        "listeners": [],
-        "state": {
-          "currentConfig": undefined,
-          "gameState": {
-            "activeCampaignId": "default-id",
-            "candidateListData": [],
-            "isEnded": false,
-            "partyListData": [],
-            "turn": 0,
-          },
-          "history": [],
-        },
+        "history": [],
+        "sessionId": "fixed-test-session-id",
+        "turnDecision": null,
       },
     },
-    "initialCandidateData": [
-      {
-        "jeloltek": {
-          "ellenzek": [
-            "Candidate B",
-          ],
-          "fidesz": [
-            "Candidate A",
-          ],
-        },
-        "megye": "BP",
-        "megyekod": 1,
-        "oevk": 1,
-        "partok": {
-          "ellenzek": 11000,
-          "fidesz": 12000,
-          "mkkp": undefined,
-        },
-        "telepules": "",
-        "valasztopolgar": 600000,
-      },
-      {
-        "megye": "BP",
-        "megyekod": 1,
-        "oevk": 2,
-        "partok": {
-          "ellenzek": 9000,
-          "fidesz": 8000,
-        },
-        "telepules": "",
-        "valasztopolgar": 600000,
-      },
-    ],
-    "initialPartyData": [
-      {
-        "megye": "BP",
-        "megyekod": 1,
-        "oevk": 1,
-        "partok": {
-          "ellenzek": 40000,
-          "fidesz": 50000,
-          "mkkp": 3000,
-        },
-        "telepules": "",
-      },
-      {
-        "megye": "BP",
-        "megyekod": 1,
-        "oevk": 2,
-        "partok": {
-          "ellenzek": 35000,
-          "fidesz": 30000,
-        },
-        "telepules": "",
-      },
-    ],
-    "mandateCalculator": MandateCalculator {},
-    "pollsterEngine": PollsterEngine {
-      "mandateCalculator": MandateCalculator {},
-      "pollsters": [
-        {
-          "description": "A Medián egy magyarországi közvélemény-kutató intézet, amely rendszeresen készít politikai és társadalmi témájú felméréseket, és jelentős szereplő a magyar közvélemény-kutatásban.",
-          "errorMargin": {
-            "max": 5,
-            "min": 1,
-          },
-          "id": "median",
-          "label": "Medián",
-        },
-        {
-          "bias": [
-            {
-              "partyBias": {
-                "ellenzeki_osszefogas": 5,
-                "fidesz": -5,
-              },
-              "type": "result",
-            },
-          ],
-          "description": "A Závecz Research egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
-          "errorMargin": {
-            "max": 5.5,
-            "min": 1.5,
-          },
-          "id": "zavecz",
-          "label": "Závecz Research",
-        },
-        {
-          "bias": [
-            {
-              "partyBias": {
-                "ellenzeki_osszefogas": 5,
-                "fidesz": -10,
-              },
-              "type": "result",
-            },
-          ],
-          "description": "A Publicus Intézet egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
-          "errorMargin": {
-            "max": 6,
-            "min": 2,
-          },
-          "id": "publicus",
-          "label": "Publicus Intézet",
-        },
-        {
-          "bias": [
-            {
-              "partyBias": {
-                "ellenzeki_osszefogas": -5,
-                "fidesz": 5,
-              },
-              "type": "result",
-            },
-          ],
-          "description": "A Nézőpont Intézet egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
-          "errorMargin": {
-            "max": 5.5,
-            "min": 1.5,
-          },
-          "id": "nezopont",
-          "label": "Nézőpont Intézet",
-        },
-        {
-          "bias": [
-            {
-              "partyBias": {
-                "ellenzeki_osszefogas": -10,
-                "fidesz": 10,
-              },
-              "type": "result",
-            },
-          ],
-          "description": "Az Alapjogokért Központ egy magyarországi közvélemény-kutató intézet, amely politikai és társadalmi témájú felméréseket készít, és jelentős szereplő a magyar közvélemény-kutatásban.",
-          "errorMargin": {
-            "max": 6,
-            "min": 2,
-          },
-          "id": "alapjogokert",
-          "label": "Alapjogokért Központ",
-        },
-      ],
-    },
-    "questions": [],
-    "resultModifier": ResultModifier {
-      "districtVoteTransformer": DistrictVoteTransformer {
-        "voterEnvironment": VoterEnvironment {
-          "maxAvailableVoters": 6983008,
-          "voterBases": [
-            {
-              "id": "1-1",
-              "valasztopolgar": 600000,
-            },
-            {
-              "id": "1-2",
-              "valasztopolgar": 600000,
-            },
-          ],
-          "voters": 40000,
-        },
-      },
-      "unionSwingTransformer": UnionSwingTransformer {},
-      "voterShareTransformer": VoteShareTransformer {
-        "voterEnviroment": VoterEnvironment {
-          "maxAvailableVoters": 6983008,
-          "voterBases": [
-            {
-              "id": "1-1",
-              "valasztopolgar": 600000,
-            },
-            {
-              "id": "1-2",
-              "valasztopolgar": 600000,
-            },
-          ],
-          "voters": 40000,
-        },
-      },
-    },
-  },
-  "configEngine": ConfigEngine {
-    "campaignConfig": {
-      "answerEffect": [],
-      "candidateListData": [
-        {
-          "jeloltek": {
-            "ellenzek": [
-              "Candidate B",
-            ],
-            "fidesz": [
-              "Candidate A",
-            ],
-          },
-          "megye": "BP",
-          "megyekod": 1,
-          "oevk": 1,
-          "partok": {
-            "ellenzek": 11000,
-            "fidesz": 12000,
-            "mkkp": undefined,
-          },
-          "telepules": "",
-          "valasztopolgar": 600000,
-        },
-        {
-          "megye": "BP",
-          "megyekod": 1,
-          "oevk": 2,
-          "partok": {
-            "ellenzek": 9000,
-            "fidesz": 8000,
-          },
-          "telepules": "",
-          "valasztopolgar": 600000,
-        },
-      ],
-      "capitalCity": [
-        {
-          "centrum": "",
-          "evk": "",
-          "maz": "",
-          "poligon": "",
-        },
-      ],
-      "customGroups": [],
-      "districts": [
-        {
-          "centrum": "",
-          "evk": "",
-          "maz": "",
-          "poligon": "",
-        },
-      ],
-      "electionConfig": {
-        "listSeats": 10,
-        "parties": [],
-        "thresholdPercent": 5,
-      },
-      "endResults": {
-        "playerSideDefeat": {},
-        "playerSideVictory": {},
-      },
-      "partyListData": [
-        {
-          "megye": "BP",
-          "megyekod": 1,
-          "oevk": 1,
-          "partok": {
-            "ellenzek": 40000,
-            "fidesz": 50000,
-            "mkkp": 3000,
-          },
-          "telepules": "",
-        },
-        {
-          "megye": "BP",
-          "megyekod": 1,
-          "oevk": 2,
-          "partok": {
-            "ellenzek": 35000,
-            "fidesz": 30000,
-          },
-          "telepules": "",
-        },
-      ],
-      "questions": [],
-      "voterEnvironmentConfig": {
-        "eligibleVoters": 8215304,
-        "listData": [
-          {
-            "jeloltek": {
-              "ellenzek": [
-                "Candidate B",
-              ],
-              "fidesz": [
-                "Candidate A",
-              ],
-            },
-            "megye": "BP",
-            "megyekod": 1,
-            "oevk": 1,
-            "partok": {
-              "ellenzek": 11000,
-              "fidesz": 12000,
-              "mkkp": undefined,
-            },
-            "telepules": "",
-            "valasztopolgar": 600000,
-          },
-          {
-            "megye": "BP",
-            "megyekod": 1,
-            "oevk": 2,
-            "partok": {
-              "ellenzek": 9000,
-              "fidesz": 8000,
-            },
-            "telepules": "",
-            "valasztopolgar": 600000,
-          },
-        ],
-        "maxTurnout": 85,
-      },
-    },
-    "configured": false,
-    "listeners": [],
     "storage": StorageEngine {
       "getItem": [Function],
       "getLocalStorageItem": [Function],

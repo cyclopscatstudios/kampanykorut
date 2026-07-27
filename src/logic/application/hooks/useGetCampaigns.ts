@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { createLogger } from "@/shared/logger";
 import { fetchJSON } from "../fetchJSON";
 import { getDataPath } from "../PathResolver";
-import { createLogger } from "@/shared/logger";
 
 export interface CampaignHeader {
   id: string;
@@ -9,6 +9,8 @@ export interface CampaignHeader {
   description: string;
   route: string;
   campaignBanner: string;
+  thinCampaignBanner?: string;
+  isPublished?: boolean;
 }
 
 const log = createLogger("useGetCampaigns");

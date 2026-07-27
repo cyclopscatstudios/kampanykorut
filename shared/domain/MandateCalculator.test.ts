@@ -1,6 +1,7 @@
+import { describe, expect, it } from "vitest";
+import { CombinedOevk } from "../types";
 import { MandateCalculator } from "./MandateCalculator";
 import { mockElectionConfig } from "./mocks/mockElectionConfig";
-import { CombinedOevk } from "@/shared/types";
 
 describe("MandateCalculator", () => {
   const calculator = new MandateCalculator();

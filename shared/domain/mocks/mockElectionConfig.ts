@@ -2,6 +2,7 @@ import { ElectionConfig } from "@/shared/types";
 
 export const mockElectionConfig: ElectionConfig = {
   title: "Mock Election",
+  year: "2010",
   listSeats: 100,
   allSeats: 200,
   thresholdPercent: 5,
@@ -11,7 +12,7 @@ export const mockElectionConfig: ElectionConfig = {
     party_a: 3,
     party_b: -2,
   },
-
+  partyListVotes: {},
   parties: [
     {
       id: "party_a",
@@ -33,7 +34,7 @@ export const mockElectionConfig: ElectionConfig = {
   playableSides: [
     {
       id: "party_a",
-      name: "Party A",
+      label: "Party A",
       description: "Mock description for Party A.",
 
       mainCandidates: [
@@ -52,7 +53,7 @@ export const mockElectionConfig: ElectionConfig = {
     },
     {
       id: "party_b",
-      name: "Party B",
+      label: "Party B",
 
       mainCandidates: [
         {
@@ -65,29 +66,28 @@ export const mockElectionConfig: ElectionConfig = {
     },
   ],
 
-  electionAssets: {
-    party_a: {
-      portrait: {
-        candidate_a: "/images/mock/candidate-a.png",
-      },
-
-      slogan: {
-        candidate_a: "/images/mock/slogan-a.png",
-      },
-
+  electionAssets: [
+    {
+      id: "party_a",
+      candidateAssets: [
+        {
+          id: "canidadate_a",
+          portrait: "/images/mock/candidate-a.png",
+          slogan: "/images/mock/slogan-a.png",
+        },
+      ],
       party_logo: "/images/mock/party-a-logo.png",
     },
-
-    party_b: {
-      portrait: {
-        candidate_c: "/images/mock/candidate-c.png",
-      },
-
-      slogan: {
-        candidate_c: "/images/mock/slogan-c.png",
-      },
-
-      party_logo: "/images/mock/party-b-logo.png",
+    {
+      id: "party_b",
+      candidateAssets: [
+        {
+          id: "canidadate_c",
+          portrait: "/images/mock/candidate-c.png",
+          slogan: "/images/mock/slogan-c.png",
+        },
+      ],
+      party_logo: "/images/mock/party-c-logo.png",
     },
-  },
+  ],
 };

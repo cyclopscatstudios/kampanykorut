@@ -1,4 +1,4 @@
-import { Mock } from "vitest";
+import { beforeEach, describe, expect, it, Mock, vi } from "vitest";
 import { CampaignState } from "../types";
 import { Pollster } from "../types/pollsters";
 import { defaultPollsters } from "./DefaultPollsters";
@@ -8,9 +8,16 @@ import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 
 const MOCK_PERCENTAGES = {
-  party_a: 0.5,
-  party_b: 0.5,
-  _total: 1,
+  candidateListResults: {
+    party_a: 0.5,
+    party_b: 0.5,
+    _total: 1,
+  },
+  partyListResults: {
+    party_a: 0.5,
+    party_b: 0.5,
+    _total: 1,
+  },
 };
 
 const mockMandateCalculator = {
@@ -23,6 +30,7 @@ const mockState: CampaignState = {
   isEnded: false,
   candidateListData: mockCandidateListData,
   partyListData: mockPartyListData,
+  isBaseResultsAlreadyApplied: false,
 };
 
 describe("PollsterEngine.configure", () => {
@@ -141,9 +149,9 @@ describe("PollsterEngine.getPollsByPollsterId", () => {
       mockState,
       mockElectionConfig,
     )!;
-    expect(result).toHaveProperty("party_a");
-    expect(result).toHaveProperty("party_b");
-    expect(result).not.toHaveProperty("_total");
+    expect(result.differences).toHaveProperty("party_a");
+    expect(result.differences).toHaveProperty("party_b");
+    expect(result.differences).not.toHaveProperty("_total");
   });
 
   it("positive bias shifts the difference in the positive direction", () => {
@@ -163,9 +171,9 @@ describe("PollsterEngine.getPollsByPollsterId", () => {
     )!;
 
     // party_a gets +10pp bias → poll overestimates it → positive difference
-    expect(result.party_a).toBeGreaterThan(0);
+    expect(result.differences.party_a).toBeGreaterThan(0);
     // party_b gets no bias but party_a absorbs more share → party_b underestimated
-    expect(result.party_b).toBeLessThan(0);
+    expect(result.differences.party_b).toBeLessThan(0);
   });
 
   it("zero error margin and no bias produces near-zero differences", () => {
@@ -183,7 +191,7 @@ describe("PollsterEngine.getPollsByPollsterId", () => {
       mockElectionConfig,
     )!;
 
-    expect(result.party_a).toBeCloseTo(0, 5);
-    expect(result.party_b).toBeCloseTo(0, 5);
+    expect(result.differences.party_a).toBeCloseTo(0, 5);
+    expect(result.differences.party_b).toBeCloseTo(0, 5);
   });
 });

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLoaderData } from "react-router";
 import logo from "../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { buildInfo } from "../../../buildInfo";
-import { useTranslateLang } from "../../../logic/useTranslateLang";
+import { useTranslateLang } from "../../../logic/application/hooks/useTranslateLang";
 import { MenuList } from "../MenuList";
 import { Text } from "../Text";
 import { MenuItemId } from "./menu.types";
@@ -20,9 +20,9 @@ export function MainMenu() {
     <div className="relative w-full h-full">
       <div className="absolute top-0 left-0 w-full flex justify-center pt-8">
         <div className="flex flex-col items-center z-10">
-          <img src={logo} alt="Company Logo" width="300" height="200" />
+          <img src={logo} alt="Company Logo" className="w-48 md:w-72 h-auto" />
           <div
-            className="cursor-pointer"
+            className="cursor-pointer w-[300px] md:w-full"
             onClick={() => setQuote(() => getRandomQuote(quotes))}
           >
             <Text color="lightBlue" className="text-sm">
@@ -57,7 +57,6 @@ export function MainMenu() {
               text: about,
               path: "about",
               icon: "info-circle-fill",
-              disabled: true,
             },
           ]}
         />

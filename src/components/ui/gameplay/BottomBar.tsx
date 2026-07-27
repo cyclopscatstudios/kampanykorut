@@ -1,4 +1,5 @@
 import { t } from "i18next";
+import { District } from "@/shared/types";
 import type { Colors } from "../../../types/color";
 import { SwingFactorId } from "../../../types/utils";
 import { Button } from "../Button";
@@ -6,7 +7,6 @@ import { CommonWrapper } from "../CommonWrapper";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
 import type { SwingFactor } from "./MapCreator";
-import { District } from "@/shared/types";
 
 interface BottomBarProps {
   data?: District | null;
@@ -19,11 +19,11 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
   const textColor = getSwingFactorTextColor(swingFactor?.id);
 
   return (
-    <CommonWrapper block>
-      <div className="w-full h-20 bg-dark-blue flex justify-between items-center px-5">
-        {data && (
+    <CommonWrapper block fullHeight={false}>
+      <div className="h-20 bg-dark-blue flex justify-between items-center">
+        {data ? (
           <>
-            <div className="flex items-center">
+            <div className="flex items-center px-5">
               <Icon
                 name="geo-alt-fill"
                 className="text-fuchsia-600"
@@ -52,7 +52,7 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
                 </Text>
                 <Text color={textColor as Colors}>{swingFactor?.label}</Text>
               </div>
-              <div className="pl-5">
+              <div className="px-5">
                 <Button onClick={onClick}>
                   <Button.Text> {t("bottomBar.visitDistrict")}</Button.Text>
                   <Button.Icon name="arrow-right" color="white" />
@@ -60,6 +60,12 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
               </div>
             </div>
           </>
+        ) : (
+          <div className="bg-gray-800/50 size-full flex justify-center items-center">
+            <Text weight="light" color="gray">
+              Válassz egy körzetet...
+            </Text>
+          </div>
         )}
       </div>
     </CommonWrapper>

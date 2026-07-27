@@ -7,7 +7,7 @@ export type IconSource = "bootstrap" | "svg";
 
 export type BootstrapIcon = keyof typeof icons;
 
-type IconSize = "normal" | "large" | "medium";
+type IconSize = "xs" | "sm" | "normal" | "large" | "medium";
 
 export type IconColor = Colors | "currentColor";
 
@@ -59,6 +59,10 @@ export function Icon({
 
 function getIconSize(size: IconSize) {
   switch (size) {
+    case "xs":
+      return "text-xs";
+    case "sm":
+      return "text-sm";
     case "normal":
       return "text-base";
     case "large":

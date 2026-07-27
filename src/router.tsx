@@ -8,6 +8,7 @@ import { newGameSelectorLoader } from "./components/loaders/newGameSelector.load
 import { rootLoader } from "./components/loaders/route.loader";
 import { sideSelectorLoader } from "./components/loaders/sideSelector.loader";
 import { FinalResultScreen } from "./components/ui/gameplay/FinalResultScreen/EndResultScreen";
+import { AboutMenu } from "./components/ui/menu/AboutMenu";
 import { ClassicModeSelectorMenu } from "./components/ui/menu/ClassicModeSelectorMenu";
 import { LoadSavedSessionsMenu } from "./components/ui/menu/LoadSavedGamesMenu";
 import { MainMenu } from "./components/ui/menu/MainMenu";
@@ -21,10 +22,12 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     loader: rootLoader,
     errorElement: <ErrorPage />,
+    hydrateFallbackElement: <div>loading...</div>,
     children: [
       { index: true, element: <MainMenu />, loader: mainMenuLoader },
       { path: "settings", element: <SettingsMenu /> },
       { path: "load-game", element: <LoadSavedSessionsMenu /> },
+      { path: "about", element: <AboutMenu /> },
       {
         path: "new-game",
         element: <NewGameLayout />,

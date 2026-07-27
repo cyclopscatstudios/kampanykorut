@@ -1,9 +1,10 @@
+import { describe, expect, it } from "vitest";
+import { CandidateListData, District } from "../types";
 import {
-  calculateWinner,
   calcPercentages,
+  calculateWinner,
   getCapacity,
 } from "./ResultModifier.utils";
-import { CandidateListData, District } from "@/shared/types";
 
 const makeDistrict = (
   partok: Record<string, number | undefined>,

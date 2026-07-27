@@ -1,4 +1,5 @@
 import { t } from "i18next";
+import { CampaignConfig, CampaignState, FinalResults } from "@/shared/types";
 import type { HistoryItem } from "../../../../../logic/application/StateHandler";
 import { Text } from "../../../Text";
 import type { StatisticResult } from "../statistics.utils";
@@ -6,7 +7,6 @@ import { SupportChart } from "./Chart";
 import { ListOverview } from "./ListOverview";
 import { MandateOverview } from "./MandateOverview";
 import { PercentagesOverview } from "./PercentagesOverview";
-import { CampaignConfig, CampaignState, FinalResults } from "@/shared/types";
 
 export function Overview({
   results,
@@ -27,7 +27,7 @@ export function Overview({
   closestDistricts: StatisticResult[];
 }) {
   const party = results.mandates.find((party) => party.party === playerSide);
-  const percentage = results.percentages[playerSide];
+  const percentage = results.percentages.partyListResults[playerSide];
 
   return (
     <div className="flex flex-col justify-center items-center">

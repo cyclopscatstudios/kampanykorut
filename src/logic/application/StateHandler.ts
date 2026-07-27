@@ -1,6 +1,4 @@
 import { singleton } from "tsyringe";
-import { createLogger } from "../../../shared/logger/logger";
-import { Emitter } from "./Emitter";
 import {
   CalculateResults,
   CampaignConfig,
@@ -9,6 +7,8 @@ import {
   Decision,
   RawEffect,
 } from "@/shared/types";
+import { createLogger } from "../../../shared/logger/logger";
+import { Emitter } from "./Emitter";
 
 export interface HistoryItem {
   questionId: string;
@@ -24,22 +24,25 @@ export interface AffectedQuestion {
 }
 
 export interface StateHandlerType {
-  gameState: CampaignState;
-  turnDecision?: Decision;
-  currentConfig?: CampaignConfig;
+  campaignState: CampaignState | null;
+  sessionId?: string;
+  turnDecision?: Decision | null;
+  campaignConfig: CampaignConfig | null;
   history?: HistoryItem[];
   affectedQuestions?: AffectedQuestion[];
 }
 
+export const DEFAULT_CAMPAIGN_ID = "default-id";
+
 const defaultState: StateHandlerType = {
-  gameState: {
-    activeCampaignId: "default-id",
-    candidateListData: [],
-    partyListData: [],
+  campaignState: {
+    activeCampaignId: DEFAULT_CAMPAIGN_ID,
     turn: 0,
     isEnded: false,
+    isBaseResultsAlreadyApplied: false,
   },
-  currentConfig: undefined,
+  campaignConfig: null,
+  turnDecision: null,
   history: [],
 };
 

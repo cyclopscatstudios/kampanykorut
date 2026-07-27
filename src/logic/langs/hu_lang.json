@@ -36,11 +36,17 @@
   "sideSelector": {
     "party": {
       "label": "Válassz egy pártot",
-      "dropdown": "Választott párt"
+      "dropdown": "Választott párt",
+      "emptyState": "Válassz pártot a legördülő listából — itt jelenik meg a párt logója és bemutatása."
     },
     "candidate": {
       "label": "Válassz egy jelöltet",
-      "dropdown": "Választott jelölt"
+      "dropdown": "Választott jelölt",
+      "emptyState": "Előbb válassz pártot, utána jelöltet."
+    },
+    "badgeDisplay": {
+      "label": "Elérhető jelvények",
+      "tooltipContent": "A kampányhoz tartozó elérhető eredmények jelvényei"
     }
   },
   "endResult": {
@@ -48,12 +54,14 @@
       "summary": "Összefoglaló",
       "electionMap": "Választási térkép",
       "statistics": "Statisztikák",
-      "history": "Előzmények"
+      "history": "Előzmények",
+      "achivements": "Eredmények"
     },
     "statistics": {
       "menuBar": {
         "overview": "Összefoglaló",
-        "districtDetails": "Körzet részletek"
+        "districtDetails": "Körzet részletek",
+        "turnoutDetails": "Részvételi adatok"
       },
       "overview": {
         "constituencySeats": "Egyéni mandátumok",
@@ -63,6 +71,11 @@
         "biggestDefeats": "Legnagyobb vereségek",
         "closestDistricts": "Legszorosabb körzetek",
         "supportTrendLabel": "Támogatottság alakulása"
+      },
+      "turnoutDetails": {
+        "nationalTurnout": "Országos részvétel",
+        "votesCast": "Leadott szavazatok",
+        "turnoutChange": "Változás előző választáshoz képest"
       }
     },
     "turnHistory": {
@@ -83,6 +96,10 @@
         "menuLabel": "Közvélemény-kutatók",
         "average": "Felmérések átlaga"
       }
+    },
+    "kampanykorut": {
+      "campaignSelector": "Kampányválasztó",
+      "restart": "Újraindítás"
     }
   },
   "emptySlot": {
@@ -97,8 +114,15 @@
     "title": "Figyelem!",
     "description": "Biztosan ki akarsz lépni a játékból?"
   },
+  "restartDialog": {
+    "description": "Biztosan újraindítod a jelenlegi kampányt?"
+  },
+  "campaignSelectorDialog": {
+    "title": "Kampányválasztó",
+    "description": "Biztosan visszatérsz a kampányválasztóhoz?"
+  },
   "bottomBar": {
-    "visitDistrict": "Látogass el a kerületbe",
+    "visitDistrict": "Látogass el a körzetbe",
     "swingFactor": "Ingadozási tényező",
     "population": "Lakosság",
     "k": "E",
@@ -133,5 +157,20 @@
   },
   "toaster": {
     "settingsUpdated": "Beállítások sikeresen frissültek!"
+  },
+  "voteCountingScreen": {
+    "steps": {
+      "pollingStations": "SZAVAZÓKÖRÖK BEÉRKEZÉSE",
+      "votesCollected": "SZAVAZATOK ÖSSZEGYŰJTÉSE",
+      "votesCounted": "SZAVAZATOK SZÁMLÁLÁSA",
+      "dataVerification": "ADATOK ELLENŐRZÉSE",
+      "resultsCompiled": "EREDMÉNYEK ÖSSZESÍTÉSE"
+    },
+    "screen": {
+      "voteCounting": "SZAVAZATSZÁMLÁLÁS",
+      "votesCounted": "A szavazatok összesítése folyamatban van...",
+      "processedVotes": "Feldolgozott szavazatok",
+      "pleaseWait": "Kérjük, várjon..."
+    }
   }
 }

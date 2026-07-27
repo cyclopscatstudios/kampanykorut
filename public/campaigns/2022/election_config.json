@@ -1,18 +1,19 @@
 {
-  "title": "2022: Országgyűlési választás",
+  "title": "Béke vs Remény",
+  "year": "2022",
   "listSeats": 93,
   "allSeats": 199,
   "thresholdPercent": 5,
   "districtBoost": true,
   "baseResults": {
-    "ellenzeki_osszefogas": 4,
-    "fidesz": -5
+    "ellenzeki_osszefogas": 3,
+    "fidesz": -3
   },
   "parties": [
     { "id": "fidesz", "name": "Fidesz–KDNP", "color": "#F28E2B" },
     {
       "id": "ellenzeki_osszefogas",
-      "name": "Ellenzéki összefogás",
+      "name": "Egységben Magyarországért",
       "color": "#20b2aa"
     },
     { "id": "mi_hazank", "name": "Mi Hazánk", "color": "#688d1b" },
@@ -28,15 +29,24 @@
       "color": "#122649"
     }
   ],
+  "partyListVotes": {
+    "fidesz": 2809238,
+    "ellenzeki_osszefogas": 1936297,
+    "mi_hazank": 329651,
+    "mkkp": 183416,
+    "megoldas_mozgalom": 58670,
+    "normalis_elet": 39119,
+    "_other": 30635
+  },
   "playableSides": [
     {
       "id": "ellenzeki_osszefogas",
-      "name": "Ellenzéki összefogás",
+      "label": "Egységben Magyarországért",
       "description": "A korábban egymással versengő ellenzéki pártok 2022-re közös listán indultak, hogy egyesített erővel váltsák le a kormányt – ugyanakkor az ideológiai különbségek és belső feszültségek komoly kihívást jelentettek számukra.",
       "mainCandidates": [
         {
           "id": "marki_zay_peter",
-          "label": "Marki-Zay Péter",
+          "label": "Márki-Zay Péter",
           "description": "Hódmezővásárhely polgármestere, pártfüggetlen jelöltként nyerte meg az előválasztást, kívülről érkező politikusként a korrupcióellenességet és a politikai megújulást képviselte."
         },
         { "id": "dobrev_klara", "label": "Dobrev Klára" },
@@ -46,19 +56,21 @@
     },
     {
       "id": "fidesz_kdnp",
-      "name": "Fidesz–KDNP",
+      "label": "Fidesz–KDNP",
       "mainCandidates": [{ "id": "orban_viktor", "label": "Orban Viktor" }]
     }
   ],
-  "electionAssets": {
-    "ellenzeki_osszefogas": {
-      "portrait": {
-        "marki_zay_peter": "/images/2022/mzp-portrait.png"
-      },
-      "slogan": {
-        "marki_zay_peter": "/images/2022/ellenzeki_osszefogas_2022_kampany_szoveg.png"
-      },
+  "electionAssets": [
+    {
+      "id": "ellenzeki_osszefogas",
+      "candidateAssets": [
+        {
+          "id": "marki_zay_peter",
+          "portrait": "/images/2022/mzp-portrait.png",
+          "slogan": "/images/2022/ellenzeki_osszefogas_2022_kampany_szoveg.png"
+        }
+      ],
       "party_logo": "/images/2022/ellenzeki-osszefogas.png"
     }
-  }
+  ]
 }

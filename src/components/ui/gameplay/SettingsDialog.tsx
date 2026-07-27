@@ -1,7 +1,8 @@
 import { t } from "i18next";
 import { useState } from "react";
-import { noop } from "../../../dev/FunctionUtils";
+import { type GameSettings } from "@/logic/application";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
+import { noop } from "../../../logic/application/utils";
 import { supportedLanguages } from "../../../logic/langs/languages";
 import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
@@ -9,7 +10,6 @@ import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
 import { toaster } from "./toaster";
-import { type GameSettings } from "@/logic/application";
 
 export function SettingsDialog({
   isOpen,
@@ -70,6 +70,7 @@ export function SettingsBody({
   return (
     <div className="flex flex-col gap-5 h-full">
       <Checkbox
+        id="showAdvisorFeedback"
         label={t("settingsMenu.advisorFeedback.label")}
         defaultChecked={settingsForm.showAdvisorFeedback}
         onChange={(e) =>
@@ -80,6 +81,7 @@ export function SettingsBody({
         }
       />
       <Dropdown
+        id="changeLanguage"
         options={[...supportedLanguages].map((lang) => ({
           label: lang.label,
           value: lang.id,

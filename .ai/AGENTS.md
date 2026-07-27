@@ -37,8 +37,10 @@ shared/types/          → TypeScript type definitions. No logic, no React.
 shared/logger/         → Logger utility.
 src/logic/application/ → Domain orchestration: hooks, state machine, persistence, DI.
 src/components/        → React UI only. No calculation logic.
-src/dev/               → Dev-only screens, accessible at /dev route.
+src/debug/             → Runtime debug-mode toggle (window.debugMode), wired up in main.tsx.
 ```
+
+There is no dedicated dev-only route. Unpublished campaigns (`isPublished: false` in `game_modes.json`) are hidden from the campaign selector unless `window.debugMode.enabled` is toggled on from the browser console.
 
 **Forbidden crossings:**
 
@@ -63,6 +65,7 @@ The `route` field in `game_modes.json` maps to the folder name under `public/cam
 
 ```
 public/campaigns/{route}/
+  manifest.json                 # CampaignManifest field -> relative JSON file path (drives loadCampaignConfig)
   election_config.json          # Parties, total seats, list seats, threshold %, playable sides
   voter_environment_config.json # Eligible voters, max turnout, list data
   oevk_{year}.json              # OEVK district-level candidate and vote data
@@ -70,32 +73,38 @@ public/campaigns/{route}/
   oevk_list_results.json        # Party list results
   budapest.json                 # Budapest district map (GeoJSON-like polygon data)
   custom_groups.json            # Custom coalition groupings
+  custom_pollsters.json         # Optional campaign-specific pollster definitions
   end_results.json              # End-game images and text (victory/defeat)
 
-  {side}/                       # Playable side (e.g. "ellenzeki_osszefogas")
-    questions.json              # Campaign questions (id, title, question, possibleAnswers)
-    answer_effects.json         # Per-answer effects (RawEffect array)
-    advisor_feedback.json       # Advisor feedback texts
-    advisor_feedback_assets.json# Advisor feedback image assets
+  {side}/                       # Playable side (e.g. "ellenzeki_osszefogas"), referenced from manifest.json
+    {year}_questions.json              # Campaign questions (id, title, question, possibleAnswers)
+    {year}_answer_effects.json         # Per-answer effects (RawEffect array)
+    {year}_campaign_strategies.json    # Optional end-of-game strategy rewards
+    advisor_feedback.json              # Advisor feedback texts
+    advisor_feedback_assets.json       # Advisor feedback image assets
 ```
 
-> **Future plan:** `public/campaigns/_0001_/` is a placeholder for user-created campaigns.
+`manifest.json`'s keys are the `CampaignManifest` fields (`shared/types/configs/campaign-manifest.ts`); values are paths relative to the campaign folder — filenames and nesting under `{side}/` are just convention, `loadCampaignConfig` only cares about the manifest. `electionConfig`, `voterEnvironmentConfig`, `candidateListData`, `districts`, `endResults` are required; everything else (`questions`, `answerEffect`, `partyListData`, `advisorFeedback`, `advisorFeedbackAssets`, `customGroups`, `customPollsters`, `campaignStrategies`) is optional and defaults to an empty array/undefined when omitted — this is what lets an unpublished campaign (`isPublished: false` in `game_modes.json`) be built up incrementally with no code changes: just JSON data + `manifest.json` in the folder, plus an entry in `game_modes.json`.
 
 ---
 
 ## Domain Layer (`shared/domain/`)
 
-| Module                    | Responsibility                                                        |
-| ------------------------- | --------------------------------------------------------------------- |
-| `CampaignEngine`          | Orchestrates game turns: applies decisions, triggers recalculation    |
-| `MandateCalculator`       | Vote share → parliamentary seats (proportional + OEVK + compensation) |
-| `EffectApplier`           | Translates `RawEffect` objects into mutations on electoral data       |
-| `ResultModifier`          | Composes the transformer pipeline                                     |
-| `VoteShareTransformer`    | Party list vote share redistribution                                  |
-| `UnionSwingTransformer`   | Coalition overlap-based swing redistribution                          |
-| `DistrictVoteTransformer` | OEVK district-level vote redistribution                               |
-| `VoterEnvironment`        | Turnout model (eligible voters → actual votes cast)                   |
-| `DistrictGroupEngine`     | District grouping and filtering                                       |
+| Module                    | Responsibility                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------ |
+| `CampaignEngine`          | Orchestrates game turns: applies decisions, triggers recalculation                   |
+| `MandateCalculator`       | Vote share → parliamentary seats (proportional + OEVK + compensation)                |
+| `EffectApplier`           | Translates `RawEffect` objects into mutations on electoral data                      |
+| `ResultModifier`          | Composes the transformer pipeline                                                    |
+| `VoteShareTransformer`    | Party list vote share redistribution                                                 |
+| `UnionSwingTransformer`   | Coalition overlap-based swing redistribution                                         |
+| `DistrictVoteTransformer` | OEVK district-level vote redistribution                                              |
+| `VoterEnvironment`        | Turnout model (eligible voters → actual votes cast)                                  |
+| `DistrictGroupEngine`     | District grouping and filtering                                                      |
+| `PollsterEngine`          | Manages `Pollster` configs (bias/error margin), produces aggregate polling opinions  |
+| `DefaultGroups.ts`        | Built-in district groups (e.g. `nyugati_megyek`, `keleti_megyek`)                    |
+| `DefaultPollsters.ts`     | Built-in pollster definitions (e.g. "Medián")                                        |
+| `ResultModifier.utils.ts` | Shared helpers (e.g. `calcPercentages`) used by `MandateCalculator`/`ResultModifier` |
 
 `shared/domain/mocks/` — mock data for tests; do not modify outside of test context.
 
@@ -105,31 +114,32 @@ public/campaigns/{route}/
 
 ### Core Classes and Utilities
 
-| File                      | Responsibility                                                          |
-| ------------------------- | ----------------------------------------------------------------------- |
-| `Emitter.ts`              | Generic pub-sub base class (protected `notify()`, public `subscribe()`) |
-| `StorageEngine.ts`        | localStorage abstraction with prefixed keys                             |
-| `StateEngine.ts`          | Game session persistence to localStorage (campaignState + turnHistory)  |
-| `StateHandler.ts`         | Game state event emitter (`@singleton`)                                 |
-| `SettingsEngine.ts`       | Game settings persistence to localStorage                               |
-| `ConfigEngine.ts`         | Campaign config loading and caching to localStorage                     |
-| `AssetService.ts`         | Asset URL resolution                                                    |
-| `IdGenerator.ts`          | Unique session ID generation                                            |
-| `PathResolver.ts`         | JSON file path resolution from campaign route + key                     |
-| `fetchJSON.ts`            | JSON fetching from the `public/` folder                                 |
-| `gameModeRegistery.ts`    | In-memory campaign registry (populated at startup)                      |
-| `createCampaignEngine.ts` | Factory: wires domain objects together via DI                           |
+| File                       | Responsibility                                                                                 |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `Emitter.ts`               | Generic pub-sub base class (protected `notify()`, public `subscribe()`)                        |
+| `StorageEngine.ts`         | localStorage abstraction with prefixed keys                                                    |
+| `StateEngine.ts`           | Game session persistence to localStorage (campaignState + turnHistory)                         |
+| `StateHandler.ts`          | Game state event emitter (`@singleton`)                                                        |
+| `SettingsEngine.ts`        | Game settings persistence to localStorage                                                      |
+| `ConfigEngine.ts`          | Campaign config loading and caching to localStorage                                            |
+| `AssetService.ts`          | Asset URL resolution                                                                           |
+| `IdGenerator.ts`           | Unique session ID generation                                                                   |
+| `PathResolver.ts`          | JSON file path resolution from campaign route + key                                            |
+| `fetchJSON.ts`             | JSON fetching from the `public/` folder                                                        |
+| `loadCampaignConfig.ts`    | Fetches a campaign's `manifest.json` + referenced files, caches the assembled `CampaignConfig` |
+| `getCampaignHeaderById.ts` | Resolves a campaign id to its `game_modes.json` header (route, label, ...)                     |
+| `createCampaignEngine.ts`  | Factory: wires domain objects together via DI                                                  |
 
 ### Hooks (`hooks/`)
 
-| Hook               | Responsibility                                            |
-| ------------------ | --------------------------------------------------------- |
-| `useElectionState` | Primary hook: game state ↔ UI (processAnswer, commitTurn) |
-| `useStateEngine`   | Session management (sessionId, saveSession, currentState) |
-| `useSettings`      | Reading and updating game settings                        |
-| `useStateHandler`  | Binds StateHandler singleton events to React state        |
-| `useEngine`        | CampaignEngine hook                                       |
-| `useGetCampaigns`  | Loads available campaigns                                 |
+| Hook               | Responsibility                                                                                              |
+| ------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `useElectionState` | Primary hook: game state ↔ UI (processAnswer, commitTurn)                                                   |
+| `useStateEngine`   | Session management (sessionId, saveSession, currentState)                                                   |
+| `useSettings`      | Reading and updating game settings                                                                          |
+| `useStateHandler`  | Binds StateHandler singleton events to React state                                                          |
+| `useEngine`        | Generic DI resolver: `container.resolve(cls)`                                                               |
+| `useGetCampaigns`  | Loads `game_modes.json` headers; filters out `isPublished: false` entries unless `window.debugMode.enabled` |
 
 ### Navigation (`navigation/`)
 
@@ -230,16 +240,20 @@ class TestEmitter<T> extends Emitter<T> {
 
 **DI singleton state between test files** — singleton instances live for the entire test run. If you mutate their state, clean up: `vi.restoreAllMocks()`, `localStorage.clear()`.
 
-**gameModeRegistry mock campaign** — when testing `useElectionState`, register a mock campaign:
+**Mock campaign config** — when testing `useElectionState`/`useSideSelectorMenu`, seed the `ConfigEngine` singleton directly instead of hitting the network-backed `loadCampaignConfig`:
 
 ```ts
+const configEngine = container.resolve(ConfigEngine);
+
 beforeAll(() => {
-  gameModeRegistry[MOCK_ID] = mockConfig;
+  configEngine.configure(mockConfig, MOCK_ID, true);
 });
 afterAll(() => {
-  delete (gameModeRegistry as Record<string, unknown>)[MOCK_ID];
+  configEngine.configure(null, undefined, true);
 });
 ```
+
+The `forced: true` flag is required — `ConfigEngine.configure` no-ops once it has been configured once in the process.
 
 ### What NOT to test
 

@@ -1,4 +1,6 @@
 import { container } from "tsyringe";
+import { beforeEach, describe, expect, it } from "vitest";
+import { CandidateListData, VoterEnvironmentConfig } from "../../types";
 import {
   mockCandidateListData,
   mockPartyListData,
@@ -6,7 +8,6 @@ import {
 import { voternvironmentConfig } from "../mocks/mockVoterEnvironmentConfig";
 import { VoterEnvironment } from "../VoterEnvironment";
 import { VoteShareTransformer } from "./VoteShareTransformer";
-import { CandidateListData, VoterEnvironmentConfig } from "@/shared/types";
 
 let pipelineTransform: VoteShareTransformer;
 

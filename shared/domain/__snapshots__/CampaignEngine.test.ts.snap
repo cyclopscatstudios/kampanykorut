@@ -148,6 +148,7 @@ exports[`CampaignEngine > should apply district typed decision 1`] = `
     "question": "To be, or not to be: that is the question.",
     "title": "Question title",
   },
+  "isBaseResultsAlreadyApplied": false,
   "isEnded": false,
   "partyListData": [
     {
@@ -221,14 +222,28 @@ exports[`CampaignEngine > should apply district typed decision 1`] = `
       },
     ],
     "percentages": {
-      "party_a": 0.44456823645102844,
-      "party_b": 0.4487724331063556,
-      "party_c": 0.02375856043924297,
+      "candidateListResults": {
+        "party_a": 0.44456823645102844,
+        "party_b": 0.4487724331063556,
+        "party_c": 0.02375856043924297,
+      },
+      "partyListResults": {
+        "party_a": 0.44456823645102844,
+        "party_b": 0.4487724331063556,
+        "party_c": 0.02375856043924297,
+      },
     },
     "totals": {
-      "party_a": 5000,
-      "party_b": 4000,
-      "party_c": 3000,
+      "candidateListResults": {
+        "party_a": 5000,
+        "party_b": 4000,
+        "party_c": 3000,
+      },
+      "partyListResults": {
+        "party_a": 5000,
+        "party_b": 4000,
+        "party_c": 3000,
+      },
     },
   },
   "turn": 8,
@@ -383,6 +398,7 @@ exports[`CampaignEngine > should apply motivation typed decision 1`] = `
     "question": "To be, or not to be: that is the question.",
     "title": "Question title",
   },
+  "isBaseResultsAlreadyApplied": false,
   "isEnded": false,
   "partyListData": [
     {
@@ -456,14 +472,28 @@ exports[`CampaignEngine > should apply motivation typed decision 1`] = `
       },
     ],
     "percentages": {
-      "party_a": 0.44456823645102844,
-      "party_b": 0.4487724331063556,
-      "party_c": 0.02375856043924297,
+      "candidateListResults": {
+        "party_a": 0.44456823645102844,
+        "party_b": 0.4487724331063556,
+        "party_c": 0.02375856043924297,
+      },
+      "partyListResults": {
+        "party_a": 0.44456823645102844,
+        "party_b": 0.4487724331063556,
+        "party_c": 0.02375856043924297,
+      },
     },
     "totals": {
-      "party_a": 5000,
-      "party_b": 4000,
-      "party_c": 3000,
+      "candidateListResults": {
+        "party_a": 5000,
+        "party_b": 4000,
+        "party_c": 3000,
+      },
+      "partyListResults": {
+        "party_a": 5000,
+        "party_b": 4000,
+        "party_c": 3000,
+      },
     },
   },
   "turn": 8,
@@ -618,6 +648,7 @@ exports[`CampaignEngine > should apply party-share typed decision 1`] = `
     "question": "To be, or not to be: that is the question.",
     "title": "Question title",
   },
+  "isBaseResultsAlreadyApplied": false,
   "isEnded": false,
   "partyListData": [
     {
@@ -691,14 +722,28 @@ exports[`CampaignEngine > should apply party-share typed decision 1`] = `
       },
     ],
     "percentages": {
-      "party_a": 0.44456823645102844,
-      "party_b": 0.4487724331063556,
-      "party_c": 0.02375856043924297,
+      "candidateListResults": {
+        "party_a": 0.44456823645102844,
+        "party_b": 0.4487724331063556,
+        "party_c": 0.02375856043924297,
+      },
+      "partyListResults": {
+        "party_a": 0.44456823645102844,
+        "party_b": 0.4487724331063556,
+        "party_c": 0.02375856043924297,
+      },
     },
     "totals": {
-      "party_a": 5000,
-      "party_b": 4000,
-      "party_c": 3000,
+      "candidateListResults": {
+        "party_a": 5000,
+        "party_b": 4000,
+        "party_c": 3000,
+      },
+      "partyListResults": {
+        "party_a": 5000,
+        "party_b": 4000,
+        "party_c": 3000,
+      },
     },
   },
   "turn": 8,
@@ -853,6 +898,7 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
     "question": "To be, or not to be: that is the question.",
     "title": "Question title",
   },
+  "isBaseResultsAlreadyApplied": false,
   "isEnded": false,
   "partyListData": [
     {
@@ -926,14 +972,28 @@ exports[`CampaignEngine > should apply the party-swing typed decision 1`] = `
       },
     ],
     "percentages": {
-      "party_a": 0.44456823645102844,
-      "party_b": 0.4487724331063556,
-      "party_c": 0.02375856043924297,
+      "candidateListResults": {
+        "party_a": 0.44456823645102844,
+        "party_b": 0.4487724331063556,
+        "party_c": 0.02375856043924297,
+      },
+      "partyListResults": {
+        "party_a": 0.44456823645102844,
+        "party_b": 0.4487724331063556,
+        "party_c": 0.02375856043924297,
+      },
     },
     "totals": {
-      "party_a": 5000,
-      "party_b": 4000,
-      "party_c": 3000,
+      "candidateListResults": {
+        "party_a": 5000,
+        "party_b": 4000,
+        "party_c": 3000,
+      },
+      "partyListResults": {
+        "party_a": 5000,
+        "party_b": 4000,
+        "party_c": 3000,
+      },
     },
   },
   "turn": 8,

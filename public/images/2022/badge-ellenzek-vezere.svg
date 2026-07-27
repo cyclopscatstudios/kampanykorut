@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="disc2" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#243352"></stop>
+      <stop offset="55%" stop-color="#131c33"></stop>
+      <stop offset="100%" stop-color="#0a1224"></stop>
+    </radialGradient>
+    <linearGradient id="ring2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#bfdbfe"></stop>
+      <stop offset="50%" stop-color="#3b82f6"></stop>
+      <stop offset="100%" stop-color="#1d4ed8"></stop>
+    </linearGradient>
+    <linearGradient id="leafGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bfdbfe"></stop>
+      <stop offset="100%" stop-color="#2563eb"></stop>
+    </linearGradient>
+    <linearGradient id="flagGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eff6ff"></stop>
+      <stop offset="100%" stop-color="#93c5fd"></stop>
+    </linearGradient>
+  </defs>
+
+  
+  <circle cx="100" cy="100" r="94" fill="url(#ring2)"></circle>
+  <circle cx="100" cy="100" r="94" fill="none" stroke="#eff6ff" stroke-opacity="0.35" stroke-width="1.5"></circle>
+  
+  <circle cx="100" cy="100" r="80" fill="url(#disc2)"></circle>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#3b82f6" stroke-opacity="0.55" stroke-width="2"></circle>
+
+  
+  <g stroke="url(#leafGrad2)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M38 130 C 30 108, 32 84, 46 62"></path>
+    <path d="M46 62 L 36 58 M 42 74 L 31 71 M 39 87 L 28 86 M 38 100 L 27 100 M 39 113 L 28 115"></path>
+    <path d="M162 130 C 170 108, 168 84, 154 62"></path>
+    <path d="M154 62 L 164 58 M 158 74 L 169 71 M 161 87 L 172 86 M 162 100 L 173 100 M 161 113 L 172 115"></path>
+  </g>
+
+  
+  <g transform="translate(100,100)">
+    <line x1="-6" y1="34" x2="-6" y2="-34" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round"></line>
+    <circle cx="-6" cy="-36" r="4.5" fill="#e2e8f0"></circle>
+    <path d="M-6 -30 L 30 -22 L 14 -10 L 30 2 L -6 8 Z" fill="url(#flagGrad)"></path>
+    <rect x="-12" y="30" width="12" height="8" rx="2" fill="#1d4ed8"></rect>
+  </g>
+
+  
+  <path d="M52 158 L100 172 L148 158 L148 178 L100 192 L52 178 Z" fill="#1e3a8a"></path>
+  <path d="M52 158 L100 172 L148 158 L148 168 L100 182 L52 168 Z" fill="#3b82f6"></path>
+</svg>

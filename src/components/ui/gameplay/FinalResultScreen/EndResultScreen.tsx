@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router";
 import { container } from "tsyringe";
+import { useTranslate } from "../../../../logic/application/hooks/useTranslateLang";
 import { StateEngine } from "../../../../logic/application/StateEngine";
-import { useTranslate } from "../../../../logic/useTranslateLang";
 import { Button } from "../../Button";
 import { GameChrome } from "../GameChrome";
 import { ElectionMap } from "./ElectionMap";
@@ -25,9 +25,10 @@ export function FinalResultScreen() {
   const stateEngine = container.resolve(StateEngine);
   const history = stateEngine.getHistory();
   const t = useTranslate();
+  const state = stateEngine.getCampaignState();
 
   return (
-    <GameChrome>
+    <GameChrome config={config} state={state ?? undefined}>
       <div className="m-2">
         <div className="bg-[#0f172a] p-5 rounded-xl border border-slate-200/65">
           <div className="h-[620px] w-[1100px] mb-3">

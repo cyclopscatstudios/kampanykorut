@@ -2,45 +2,45 @@
   {
     "id": "2022_ogyv-1",
     "title": "Elfogadod-e a közös jelöltséget?",
-    "question": "2021 őszén megnyered az ellenzéki előválasztást, így te leszel az összefogás közös miniszterelnök-jelöltje. A pártok között még van bizalmatlanság, de a nyilvánosságban nagy a várakozás.",
+    "question": "2021 őszén megnyered az ellenzéki előválasztást, így te leszel az összefogás közös miniszterelnök-jelöltje. A pártok között továbbra is van némi bizalmatlanság, ugyanakkor a nyilvánosság részéről nagy a várakozás. Hogyan pozicionálod magad a győzelem után?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nyilvánosan hangsúlyozod a függetlenségedet: „Én senkinek nem vagyok az embere, a pártok csak eszközök a rendszer leváltásához.”"
+        "label": "Megköszönöd az összes ellenzéki párt támogatását, de hangsúlyozod, hogy elsősorban nem a pártokat, hanem a változást akaró magyarokat képviseled."
       },
       {
         "id": "B",
-        "label": "Az első nagy kampánybeszédben külön-külön megdicséred az összes részt vevő pártot és vezetőjét: „Mostantól egy csapat vagyunk.”"
+        "label": "Az egység fontosságát hangsúlyozva külön is megköszönöd minden részt vevő párt és vezető támogatását."
       },
       {
         "id": "C",
-        "label": "Kijelented, hogy „a régi baloldal is hibázott”, és időnként kritizálod Gyurcsány Ferencet."
+        "label": "Igyekszel távolságot tartani a DK-tól és a régi baloldaltól, és jobbközép erőként próbálod újradefiniálni az ellenzéket."
       },
       {
         "id": "D",
-        "label": "Először zárt ajtók mögött egyeztetsz a pártelnökökkel, és csak ezután tartasz nagy nyilvános beszédet."
+        "label": "Élesen bírálod az ellenzéki pártok működését és vezetőit, hogy hangsúlyozd a pártok felett álló, független szerepedet."
       }
     ]
   },
   {
     "id": "2022_ogyv-2",
-    "question": "A választók egy része nem tudja pontosan, ki is Márki-Zay: konzervatív, liberális vagy független jelölt? Hogyan határozod meg magadat a kampányban?",
+    "question": "A választók egy része nem tudja pontosan, ki is Márki-Zay Péter: konzervatív, liberális vagy a hagyományos politikai oldalak felett álló jelölt? Hogyan határozod meg magadat a kampányban?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A személyes történetedet emeled központi narratívává: hét gyermek, külföldi munkatapasztalat, keresztény értékek."
+        "label": "A személyes történetedet emeled a kampány középpontjába: hét gyermek édesapja vagy, külföldi munkatapasztalattal rendelkezel, és fontosak számodra a keresztény értékek."
       },
       {
         "id": "B",
-        "label": "Minimalizálod a személyes történetet, és inkább szakpolitikai programként kommunikálod a kampányt."
+        "label": "A személyes történeted helyett a szakpolitikai programot helyezed előtérbe, és elsősorban a konkrét javaslataidról beszélsz."
       },
       {
         "id": "C",
-        "label": "A Hódmezővásárhelyen felépített rendszerellenes kihívó szerepben lépsz fel országos szinten is."
+        "label": "Hódmezővásárhely történetét állítod a középpontba, hangsúlyozva, hogy te vagy az a jelölt, aki már bizonyította: a Fidesz legyőzhető."
       },
       {
         "id": "D",
-        "label": "A kampánystábodra bízod a személyes brand felépítését."
+        "label": "A személyes márka építését nagyrészt a kampánystábodra bízod, és az általuk kidolgozott kommunikációs stratégiát követed."
       }
     ]
   },
@@ -70,30 +70,30 @@
   {
     "id": "2022_ogyv-4",
     "title": "Ellenőrzött üzenet vagy spontán Márki-Zay?",
-    "question": "Sok interjú és élő bejelentkezés vár rád. Hogyan készülsz fel ezekre a helyzetekre?",
+    "question": "A kampány során számos interjú és élő bejelentkezés vár rád. Hogyan készülsz fel ezekre a szereplésekre?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Minden interjú és Facebook-live teljesen spontán marad."
+        "label": "A választók az őszinte és közvetlen stílusodat kedvelik, ezért minden interjú teljesen spontán marad."
       },
       {
         "id": "B",
-        "label": "Minden nagyobb interjú előtt kapsz egy hárompontos üzenetlistát, és ezekhez térsz vissza."
+        "label": "Nem bízod a véletlenre a kommunikációt: minden fontosabb interjú előtt kapsz egy hárompontos üzenetlistát a tanácsadóidtól, és ezekhez próbálsz következetesen visszatérni."
       },
       {
         "id": "C",
-        "label": "Fact-check csapatot hozol létre, amely azonnal reagál az elszólásokra."
+        "label": "Az interjúk továbbra is spontánok maradnak, de létrehozol egy fact-check csapatot, amely gyorsan javítja az esetleges tévedéseidet."
       },
       {
         "id": "D",
-        "label": "Bojkottálod a teljes médiát."
+        "label": "Igyekszel kerülni a nagyobb interjúkat, és inkább a saját felületeiden keresztül kommunikálsz a választókkal."
       }
     ]
   },
   {
     "id": "2022_ogyv-5",
     "title": "Vidék vagy Budapest?",
-    "question": "Az ellenzék Budapesten erős, de a választás a vidéki egyéni körzetekben dől el. Mely területekre koncentrálsz?",
+    "question": "Az ellenzék Budapesten és a nagyvárosokban erős, de a választás az egyéni körzetekben dől el. Mely területekre koncentrálsz elsőre?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -116,92 +116,92 @@
   {
     "id": "2022_ogyv-6",
     "title": "Mit kezdesz Gyurcsány Ferenccel?",
-    "question": "A kormánypárt következetesen azt állítja, hogy valójában Gyurcsány Ferenc irányítja az ellenzéket. Ugyanakkor a DK kulcsszereplője az összefogásnak, nélküle a kampány is nehezebb lenne. Hogyan kezeled ezt a helyzetet?",
+    "question": "A kormánypárt következetesen azt állítja, hogy valójában Gyurcsány Ferenc irányítja az ellenzéket. Ugyanakkor a DK az összefogás egyik legfontosabb szereplője, és nélküle a kampány is jóval nehezebb lenne. Hogyan kezeled ezt a helyzetet?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nyilvánosan elhatárolódsz tőle, és kritizálod a 2010 előtti kormányzását."
+        "label": "Nyilvánosan elhatárolódsz Gyurcsány Ferenctől, és kritikusan beszélsz a 2010 előtti baloldali kormányok teljesítményéről."
       },
       {
         "id": "B",
-        "label": "Közösen léptek fel kampányrendezvényeken, de egyértelművé teszed, hogy te vezeted az összefogást."
+        "label": "Közösen lépsz fel a DK politikusaival kampányrendezvényeken, ugyanakkor egyértelművé teszed, hogy az összefogás vezetője te vagy."
       },
       {
         "id": "C",
-        "label": "Azt hangsúlyozod, hogy a múlt hibái mellett a jelenlegi kormány tevékenysége sokkal súlyosabb következményekkel jár."
+        "label": "Azt hangsúlyozod, hogy a múlt vitái helyett a jelen problémáival kell foglalkozni, és a jelenlegi kormány tevékenységét bírálod."
       },
       {
         "id": "D",
-        "label": "A háttérben arra kéred, hogy a kampányban kevésbé legyen látható."
+        "label": "A háttérben arra kéred Gyurcsány Ferencet, hogy a kampány során minél kevésbé legyen a nyilvánosság középpontjában."
       }
     ]
   },
   {
     "id": "2022_ogyv-7",
-    "title": "Jobbik szavazók megtartása",
-    "question": "A Jobbik egykori táborának egy része nehezen fogadja el a közös listát baloldali pártokkal, és Mi Hazánk aktívan vadássza őket.",
+    "title": "A Jobbik szavazóinak megtartása",
+    "question": "A Jobbik korábbi szavazóinak egy része nehezen fogadja el a baloldali pártokkal kötött összefogást, és fennáll a veszélye, hogy közülük sokan a Mi Hazánkhoz pártolnak. Hogyan próbálod megszólítani őket?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A kampányban teljes mellszélességgel vállalod, hogy a Jobbik múltja lezárt fejezet."
+        "label": "A Mi Hazánk egyik fő üzenete a Covid-szkepticizmus és az oltások kritikája, ezért óvatosan te is hangsúlyozod a járványkezelés vitatható döntéseit."
       },
       {
         "id": "B",
-        "label": "Távolságot tartasz a Jobbiktól, inkább a városi liberális szavazókra koncentrálsz."
+        "label": "A Mi Hazánk egyik fő üzenete az EU-szkepticizmus, ezért időnként te is kritikusabban szólalsz meg az Európai Unióval kapcsolatban."
       },
       {
         "id": "C",
-        "label": "Célzott vidéki fórumokat tartasz, ahol a Jobbik helyi politikusai mutatnak be téged a szavazóiknak."
+        "label": "Nem helyezed a hangsúlyt a Jobbikra mint pártra, de a jobboldalibb vidéki térségekben helyi jobbikos politikusokkal közösen tartasz fórumokat."
       },
       {
         "id": "D",
-        "label": "A Jobbikot visszafogod a kampányban, nehogy a baloldali törzsszavazók elforduljanak."
+        "label": "Nem helyezed a hangsúlyt a Jobbikra mint pártra, hanem a jobboldali szavazók előtt saját konzervatív és jobboldali értékrendedet hangsúlyozod a fórumokon."
       }
     ]
   },
   {
     "id": "2022_ogyv-8",
     "title": "A rezsicsökkentés narratívája",
-    "question": "A Fidesz évek óta a rezsicsökkentés védelmével kampányol. Bármilyen változtatási javaslatot azzal támadnak, hogy „az ellenzék eltörölné a rezsicsökkentést.”",
+    "question": "A rezsicsökkentés évek óta a Fidesz egyik legnépszerűbb politikai üzenete. A kormánypártok folyamatosan azt állítják, hogy egy ellenzéki győzelem esetén megszűnne. Hogyan reagálsz erre a támadásra?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nyíltan kimondod, hogy a rezsicsökkentés jelenlegi formájában fenntarthatatlan, ezért át kell alakítani, ugyanakkor a lakossági kedvezményeket meg kell őrizni."
+        "label": "Őszintén beszélsz a problémáról: a jelenlegi rendszer hosszú távon nem fenntartható, ezért reformokra van szükség, de a lakossági támogatásokat meg kell őrizni."
       },
       {
         "id": "B",
-        "label": "Kijelented, hogy a lakossági rezsicsökkentéshez nem nyúl az ellenzék, viszont a nagyfogyasztó vállalatok kedvezményeit megszüntetnéd."
+        "label": "Egyértelművé teszed, hogy senkitől nem vennéd el a rezsicsökkentést. Azt hangsúlyozod, hogy annak fenntarthatóságát energiafüggetlenséggel és megújuló energiaforrásokkal biztosítanád."
       },
       {
         "id": "C",
-        "label": "Elkerülöd a témát, és inkább a korrupcióra és a jogállamiságra helyezed a hangsúlyt."
+        "label": "Nem próbálod megvédeni magad ezen a terepen. A rezsicsökkentés helyett a korrupcióról, az egészségügyről és a megélhetési válságról beszélsz."
       },
       {
         "id": "D",
-        "label": "A rezsicsökkentés helyett egy átfogó hőszigetelési és energiahatékonysági programot hirdetsz meg."
+        "label": "Országos lakásfelújítási és hőszigetelési programot hirdetsz. Azt üzened, hogy a legjobb rezsicsökkentés az, ha eleve kevesebb energiát kell felhasználni."
       }
     ]
   },
   {
     "id": "2022_ogyv-9",
-    "title": "Fidesz médiatúlsúly kezelése",
-    "question": " A kormánypárti média óriási fölényben van, rádiós, televíziós, online felületeken is. Hogyan próbálod meg ellensúlyozni a hatásukat?",
+    "title": "A médiatúlsúly ellensúlyozása",
+    "question": "A kormánypártok jelentős médiatúlsúllyal rendelkeznek: televíziók, rádiók, újságok és online felületek sokasága támogatja az üzeneteiket. Milyen kommunikációs stratégiát választasz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Rendszeresen elmész kormánypárti műsorokba, polgármesterséged alatt szereztél elég tapasztalatot az ilyen viták megnyeréséhez."
+        "label": "Elfogadod a kormánypárti médiaszerepléseket és vitákat. Úgy gondolod, hogy minden elérhető fórumon meg kell szólítanod a bizonytalan választókat."
       },
       {
         "id": "B",
-        "label": "Kifejezetten a független online médiumokra és influenszerekre építesz, és minden hívást elfogadsz."
+        "label": "A független médiára, közösségi oldalakra és ellenzéki véleményformálókra építed a kampány kommunikációját."
       },
       {
         "id": "C",
-        "label": "Az ellenzéki városok médiumait veszed célba, legyen az városi újság, tv csatorna, vagy social media."
+        "label": "Az ellenzéki vezetésű önkormányzatok, helyi médiumok és civil szervezetek hálózatára támaszkodva próbálod eljuttatni az üzeneteidet a választókhoz."
       },
       {
         "id": "D",
-        "label": "Saját aktivista hálózatot vedsz be akik bejárják a környékeket és szórólapozással juttatják el az üzeneteidet."
+        "label": "A hagyományos médiát megkerülve országos aktivistahálózatot építesz. Ajtóról ajtóra járva, szórólapokkal és személyes találkozásokkal próbálod megszólítani a választókat."
       }
     ]
   },
@@ -219,57 +219,58 @@
       },
       {
         "id": "C",
-        "label": "Bocsánatot kérsz, ha bárkit megsértettél, és elmagyarázod, hogy a kijelentésed a propaganda kritikájára irányult."
+        "label": "Ha bárkit megbántottam, elnézést kérek. A problémám nem az emberek magánéletével van, hanem a képmutatással."
       },
       {
         "id": "D",
-        "label": "Azt mondod, hogy a kijelentésedet félreértelmezték, és a média kiforgatta a szavaidat."
+        "label": "Azt mondod, hogy a kijelentésedet félreértelmezték, és a propaganda kiforgatta a szavaidat."
       }
     ]
   },
   {
     "id": "2022_ogyv-11",
     "title": "Gazdasági üzenet: infláció és bérek",
-    "question": "A pandémia óta a gazdasági helyzet romlik, az infláció nő, és sokan bizonytalannak érzik a jövőt. Hogyan kommunikálod a gazdasági kérdéseket a kampányban?",
+    "question": "Az infláció emelkedik, a megélhetés egyre drágább, és sok választó bizonytalannak érzi a jövőt. Milyen gazdasági üzenettel kampányolsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A kampány fő témája a korrupció és a jogállam, a gazdaságról kevesebbet beszélsz."
+        "label": "A kampány középpontjában továbbra is a korrupció és a jogállamiság áll. Azt hangsúlyozod, hogy a gazdasági problémák gyökere a rendszerszintű korrupció."
       },
       {
         "id": "B",
-        "label": "Konkrét számokról beszélsz: minimálbérről, pedagógusbérekről és nyugdíjakról."
+        "label": "Konkrét ígéretekkel kampányolsz: béremelésekről, adócsökkentésekről, nyugdíjakról és a megélhetési költségek csökkentéséről beszélsz."
       },
       {
         "id": "C",
-        "label": "A gazdasági programot szakértőkkel közös beszélgetésekben mutatod be."
+        "label": "Szakértői programot mutatsz be. Közgazdászokkal és szakpolitikusokkal támasztod alá, hogyan kezelnéd az inflációt és a gazdasági nehézségeket."
       },
       {
         "id": "D",
-        "label": "A gazdasági kérdéseket teljesen a szakértőidre bízod."
+        "label": "Egyszerű, könnyen érthető üzenetekre építesz: mindenki jobban fog élni, ha kormányváltás lesz. A részleteket kevésbé hangsúlyozod."
       }
-    ]
+    ],
+    "affects": [{ "id": "B" }]
   },
   {
     "id": "2022_ogyv-12",
-    "title": "Nyugdíjasok megnyerése",
-    "question": "A Fidesz hagyományosan erős a nyugdíjasok körében (13. havi nyugdíj, Erzsébet-utalvány stb.). Hogyan próbálod megszólítani őket?",
+    "title": "A nyugdíjas szavazók megszólítása",
+    "question": "A nyugdíjasok a választások egyik legaktívabb és legfontosabb szavazói csoportját jelentik. A Fidesz hosszú ideje erős támogatottsággal rendelkezik körükben. Milyen stratégiával próbálod megnyerni őket?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Kritizálod a 13. havi nyugdíjat, mert szerinted igazságtalan és hosszú távon fenntarthatatlan."
+        "label": "Nyíltan bírálod a 13. havi nyugdíjat, mert szerinted igazságtalan, hogy a magas nyugdíjjal rendelkezők ugyanakkora plusz juttatást kapnak, mint a legszegényebb idősek."
       },
       {
         "id": "B",
-        "label": "Megígéred, hogy megtartod a 13. havi nyugdíjat, de igazságosabb nyugdíjminimumot vezetsz be."
+        "label": "Garantálod a 13. havi nyugdíj megtartását, emellett célzott támogatásokat és magasabb nyugdíjminimumot ígérsz a legkisebb nyugdíjból élőknek."
       },
       {
         "id": "C",
-        "label": "Nem külön célcsoportként kezeled a nyugdíjasokat, minden választót ugyanazzal az üzenettel szólítasz meg."
+        "label": "Nem külön ígéretekkel kampányolsz. Inkább országjárásod során meghallgatod az idősek problémáit, és az általános programod részeként kínálsz megoldásokat számukra."
       },
       {
         "id": "D",
-        "label": "Külön nyugdíjas programot hirdetsz, és aktívan jelen vagy nyugdíjasklubokban és helyi rendezvényeken."
+        "label": "Külön nyugdíjas kampányt indítasz, és a téma képviseletében nagyobb szerepet adsz a tapasztaltabb, idősebb szavazók körében népszerűbb DK-s és MSZP-s politikusoknak."
       }
     ]
   },
@@ -284,26 +285,28 @@
     ]
   },
   {
-    "id": "2022_ogyv-14",
-    "question": "2022. február 24-én Oroszország megtámadja Ukrajnát. Orbán Viktor hamarosan élő bejelentkezést ígér a Facebookon. Hogyan reagálsz a háború kitörésére?",
+    "id": "2022_ogyv-18",
+    "title": "Szuverenitás vagy nyugati integráció?",
+    "question": "Az elmúlt években egyre több vita alakult ki Magyarország és az Európai Unió között. Hogyan beszélsz az ország helyéről Európában és a nyugati szövetségi rendszerben?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Megelőzöd Orbánt egy videóval, amelyben elítéled az orosz agressziót és együttérzésedet fejezed ki Ukrajna felé."
+        "label": "Szent István óta a Nyugathoz tartozunk. Magyarország helye az Európai Unióban és a NATO-ban van, de a nemzeti érdekeket minden fórumon határozottan képviselni kell."
       },
       {
         "id": "B",
-        "label": "Indulatos posztban szólítod fel Vlagyimir Putyint a támadás leállítására."
+        "label": "Az Európai Unió fontos szövetségesünk, de Brüsszelnek tiszteletben kell tartania a tagállamok önállóságát. Egy erős Európát szeretnél, amely nem akarja központilag irányítani a nemzeteket."
       },
       {
         "id": "C",
-        "label": "Megvárod a stábod stratégiai közleményét, amelyet a médiának is kiküldtök."
+        "label": "Magyarország biztonságát és jólétét az Európai Unió és a NATO garantálja. A közös európai fellépésre és a szorosabb együttműködésre helyezed a hangsúlyt."
       },
       {
         "id": "D",
-        "label": "Az ukrán határhoz utazol, és onnan jelentkezel be, reagálva Orbán bejelentésére."
+        "label": "Az Európai Unió egyre gyakrabban próbál beleszólni a tagállamok belügyeibe. Magyarországnak határozottabban kell kiállnia a szuverenitása mellett, még akkor is, ha ez konfliktusokkal jár."
       }
-    ]
+    ],
+    "affects": [{ "id": "A" }, { "id": "B" }, { "id": "C" }]
   },
   {
     "id": "2022_ogyv-15",
@@ -331,23 +334,23 @@
   {
     "id": "2022_ogyv-16",
     "title": "Belső fegyelem az összefogásban",
-    "question": "Az ellenzéki pártok között időnként nyilvános viták és kiszivárgó konfliktusok jelennek meg, ami rontja az egység képét. Hogyan próbálod kezelni a feszültséget?",
+    "question": "Az ellenzéki pártok között időnként nyilvános viták és kiszivárgó konfliktusok jelennek meg, ami rontja az egység képét. Hogyan próbálod kezelni a feszültségeket?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Rájuk hagyod a vitákat, mert a kampányra akarsz koncentrálni."
+        "label": "Úgy gondolod, hogy ezek a viták nem befolyásolják érdemben a kampányt, ezért nem avatkozol közbe, és a kampányolásra koncentrálsz."
       },
       {
         "id": "B",
-        "label": "Rendszeres egyeztetéseket szervezel a pártvezetőkkel és szóvivőkkel."
+        "label": "Rendszeres egyeztetéseket szervezel a pártvezetőkkel és szóvivőkkel, hogy még időben elsimítsátok az ellentéteket."
       },
       {
         "id": "C",
-        "label": "Nyilvánosan figyelmezteted őket, hogy a belső konfliktusok Orbán malmára hajtják a vizet."
+        "label": "Nyilvánosan figyelmezteted a pártokat, hogy a belső konfliktusok csak Orbán Viktor és a Fidesz érdekeit szolgálják."
       },
       {
         "id": "D",
-        "label": "Zárt ajtók mögött tartasz megbeszélést a pártvezetőkkel, és egységet kérsz tőlük."
+        "label": "Zárt ajtók mögött hívod össze a pártvezetőket, és egységet, valamint nagyobb fegyelmet kérsz tőlük."
       }
     ]
   },
@@ -358,7 +361,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Kiválasztasz 1–2 emblématikus ügyet, és minden fórumon ezekről beszélsz."
+        "label": "Minden korrupciós ügyet egyetlen kérdésre vezetsz vissza: ha ezt a pénzt nem lopják el, mire lehetett volna költeni"
       },
       {
         "id": "B",
@@ -375,48 +378,47 @@
     ]
   },
   {
-    "id": "2022_ogyv-18",
-    "title": "EU–kapcsolat keretezése",
-    "question": "A Fidesz és az Európai Unió kapcsolata az elmúlt években jelentősen megromlott, miközben az országban erősödnek az EU-kritikus hangok. Milyen üzeneteket fogalmazol meg az EU-val kapcsolatban?",
+    "id": "2022_ogyv-14",
+    "question": "2022. február 24-én Oroszország megtámadja Ukrajnát. Orbán Viktor hamarosan rendkívüli bejelentkezést ígér a Facebookon. Hogyan reagálsz a háború kitörésére?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Az EU-t használod „pálcaként”: azt hangsúlyozod, hogy Brüsszel majd rákényszeríti a kormányt a szabályok betartására."
+        "label": "Megelőzöd Orbánt egy videóüzenettel, amelyben elítéled az orosz agressziót, és együttérzésedet fejezed ki Ukrajna népe felé."
       },
       {
         "id": "B",
-        "label": "Azt hangsúlyozod, hogy Magyarország az EU része, és az uniós pénz a magyar embereket illeti, nem a NER-elit magánvagyonát."
+        "label": "Egy indulatos hangvételű bejegyzésben szólítod fel Vlagyimir Putyint a támadás azonnali leállítására."
       },
       {
         "id": "C",
-        "label": "Erősebb szuverenista retorikát használsz, és időnként EU-kritikus megjegyzéseket is teszel, hogy megszólítsd a jobbikos szavazókat."
+        "label": "Megvárod, amíg a stábod kidolgozza a hivatalos álláspontot, majd közleményt adtok ki a sajtónak és a választóknak."
       },
       {
         "id": "D",
-        "label": "Kerülöd az EU témáját a kampányban, mert szerinted a választók többségét nem ez foglalkoztatja."
+        "label": "Az ukrán határhoz utazol, és onnan jelentkezel be, reagálva Orbán Viktor bejelentésére és a háborúval kapcsolatos állításaira."
       }
     ]
   },
   {
     "id": "2022_ogyv-19",
     "title": "Külföldi szereplők bevonása",
-    "question": "A választás nemzetközi figyelmet kap, és külföldi politikusok is szívesen megszólalnának az ügyben. Hogyan kezeled a növekvő külföldi figyelmet?",
+    "question": "A választás nemzetközi figyelmet kap, és több külföldi politikus is szimpátiáját fejezi ki az ellenzék iránt. Hogyan kezeled a növekvő nemzetközi figyelmet?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Meghívsz ismert nyugati politikusokat kampányolni, és közös rendezvényeken jelensz meg velük, hogy kontrasztot teremts Orbán nemzetközi elszigetelődésével."
+        "label": "Meghívsz ismert nyugati politikusokat kampányrendezvényekre, hogy hangsúlyozd: Magyarország nincs egyedül Európában."
       },
       {
         "id": "B",
-        "label": "Megkéred őket, hogy csak visszafogott jelzéseket adjanak, és hagyják a kampány fő terepét a magyar szereplőknek."
+        "label": "Üdvözlöd a támogatásukat, de arra kéred őket, hogy maradjanak a háttérben, és hagyják a kampányt a magyar szereplőkre."
       },
       {
         "id": "C",
-        "label": "Kifejezetten kéred, hogy ne avatkozzanak be a kampányba, mert a Fidesz könnyen külföldi befolyásként állíthatná be."
+        "label": "Kifejezetten kéred, hogy ne kapcsolódjanak be a kampányba, mert a Fidesz könnyen külföldi befolyásként állíthatná be a szerepvállalásukat."
       },
       {
         "id": "D",
-        "label": "A kampány során rendszeresen idézed Orbánt kritizáló nyilatkozataikat, és videókat teszel közzé róluk, hogy hangsúlyozd a nemzetközi elszigeteltségét."
+        "label": "Rendszeresen hivatkozol a nemzetközi sajtó és külföldi politikusok Orbánt bíráló véleményeire, hogy rámutass Magyarország romló nemzetközi megítélésére."
       }
     ]
   },
@@ -427,176 +429,153 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Ragaszkodsz a részletességhez: a program teljes formában, PDF-ben elérhető a honlapon, aki akarja, elolvassa."
+        "label": "Megpróbálod minél szélesebb körbe eljuttatni az ellenzéki programot, hogy minél több ember elovlassa"
       },
       {
         "id": "B",
-        "label": "Készíttetsz egy rövid, vizuális „miért jobb neked” összefoglalót, amelyet minden kommunikációs csatornán terjesztesz."
+        "label": "Készíttetsz egy rövid, vizuális „miért jobb neked” összefoglalót, amelyet az országjárásod során osztasz szét a hallgatóság között."
       },
       {
         "id": "C",
-        "label": "Inkább szlogenekre és érzelmekre építesz, például „normális országot” és „korszakváltást” ígérsz."
+        "label": "A program teljes egésze helyett inkább rövid címszavakat és szlogeneket kommunikálsz belőle."
       },
       {
         "id": "D",
-        "label": "A programot főleg szakmai vitákon és értelmiségi fórumokon magyarázod, a szélesebb közönséget kevésbé célzod."
+        "label": "Egy teljes, több órás műsort szentelsz a progrma bemutatásának az ellenzéki pártok vezetőivel."
       }
     ]
   },
   {
     "id": "2022_ogyv-21",
     "title": "Az orosz–ukrán háború kitörése",
-    "question": "A háború kitörése után a Fidesz azt kommunikálja, hogy csak ők állnak a béke pártján, mindenki más háborút akar. Milyen üzenetet fogalmazol meg a helyzettel kapcsolatban?",
+    "question": "A háború kitörése után a Fidesz azt kommunikálja, hogy csak ők állnak a béke pártján, míg ellenfeleik belesodornák az országot a konfliktusba. Milyen üzenetet fogalmazol meg a helyzettel kapcsolatban?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Az EU és a NATO hivatalos álláspontjához igazodsz, és az ott elhangzó üzeneteket hangsúlyozod."
+        "label": "A nyugati szövetségi rendszerrel való együttműködés fontosságát hangsúlyozod, és kiállsz az Európai Unió és a NATO közös fellépése mellett."
       },
       {
         "id": "B",
-        "label": "Azt hangsúlyozod: mi is békét akarunk, de Putyinnal nem lehet barátkozni, Magyarország helye a nyugati szövetségi rendszerben van."
+        "label": "Azt hangsúlyozod: mi is békét akarunk, de Putyin agresszióját nem lehet figyelmen kívül hagyni. Magyarország helye a nyugati szövetségi rendszerben van."
       },
       {
         "id": "C",
-        "label": "Minimalizálod a témát a kampányban, nehogy olyan vitába sodródj, ahol a Fidesz uralja a narratívát."
+        "label": "Igyekszel háttérbe szorítani a témát a kampányban, nehogy egy olyan vitába sodródj, ahol a Fidesz uralja a napirendet."
       },
       {
         "id": "D",
-        "label": "Kiegyensúlyozott üzenetet fogalmazol meg: nem küldünk katonát és fegyvert, de elítéljük az agressziót és szolidárisak vagyunk Ukrajnával."
+        "label": "Kiegyensúlyozott álláspontot képviselsz: ki kell maradnunk a háborúból, ugyanakkor elítéljük az orosz agressziót és szolidaritást vállalunk Ukrajnával."
       }
     ]
   },
   {
     "id": "2022_ogyv-22",
     "title": "Aktivistahálózat szervezése",
-    "question": "A Fidesz évek óta építi a Kubatov-listákat és a helyi aktivistahálózatát, miközben az ellenzéki szervezetek sokszor széttagoltan működnek. Hogyan próbálod kezelni ezt a helyzetet?",
+    "question": "A Fidesz évek óta építi helyi aktivistahálózatát és adatbázisait, miközben az ellenzéki pártok szervezetei sokszor külön működnek. Hogyan próbálod javítani a mozgósítás hatékonyságát?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A pártokra bízod a mozgósítást: mindenki a saját aktivistahálózatát szervezi, mert egy közös rendszer túl sok feszültséget okozna."
+        "label": "A pártokra bízod a mozgósítást: mindenki a saját aktivistahálózatára és helyi tapasztalataira épít."
       },
       {
         "id": "B",
-        "label": "Megpróbálod egységbe szervezni a pártok aktivistahálózatát, még ha ez konfliktusokkal is jár."
+        "label": "Megpróbálod közös rendszerbe szervezni az ellenzéki pártok aktivistáit, még akkor is, ha ez kezdetben súrlódásokkal jár."
       },
       {
         "id": "C",
-        "label": "Az online kampányra koncentrálsz, mert a terepmunka túl sok energiát igényel."
+        "label": "Az online kampányra és a közösségi médiára helyezed a hangsúlyt, mert így jóval több választót érhetsz el rövidebb idő alatt."
       },
       {
         "id": "D",
-        "label": "Kisebb „kommandókat” küldesz a billegő körzetekbe, de átfogó szervezettség nélkül."
-      }
-    ]
-  },
-  {
-    "id": "2022_ogyv-23",
-    "title": "Szavazásra ösztönzés külföldön",
-    "question": "A határon túli magyar állampolgárok döntően levélben szavazhatnak, míg a Nyugaton élőknek konzuli szavazókörökbe kell menniük. Mekkora hangsúlyt fektetsz a külföldön élő szavazókra?",
-    "possibleAnswers": [
-      {
-        "id": "A",
-        "label": "Kampányt indítasz a levélszavazás eltörléséért, mert szerinted igazságtalan és nehezen ellenőrizhető."
-      },
-      {
-        "id": "B",
-        "label": "Erősen mozgósítod a nyugati magyar diaszpórát: információs kampányt indítasz és utazási segítséget szervezel a konzulátusokra."
-      },
-      {
-        "id": "C",
-        "label": "Minimalizálod a külföldi szavazókra fordított energiát, mert számuk jóval kisebb a belföldi szavazókénál."
-      },
-      {
-        "id": "D",
-        "label": "Külön üzeneteket fogalmazol meg a külföldön dolgozó magyaroknak (például egészségügy, oktatás, hazatérés feltételei)."
+        "label": "A rendelkezésre álló erőforrásokat a legfontosabb billegő körzetekre összpontosítod, és oda küldesz célzott aktivistacsoportokat."
       }
     ]
   },
   {
     "id": "2022_ogyv-24",
-    "question": "A Fidesz hatalmas erőforrásokkal van jelen az interneten, de a fiatalabb platformokon kevésbé domináns. Egy jól célzott jelenlét új szavazókat hozhat, de könnyen félremehet. Mit teszel?",
+    "question": "A Fidesz jelentős erőforrásokkal van jelen az interneten, de a fiatalabb korosztály által használt platformokon kevésbé domináns. Egy jól célzott online jelenlét új szavazókat hozhat, de könnyen hiteltelenné is válhat. Mit teszel?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Kifejezetten fiatalokra szabott TikTok-videókat kezdesz gyártani humorral, mémekkel és aktuális trendekkel."
+        "label": "Kifejezetten fiataloknak szóló TikTok-videókat kezdesz készíteni humorral, mémekkel és az aktuális trendekre építve."
       },
       {
         "id": "B",
-        "label": "Komoly hangvételű, jól vágott YouTube-videókat készítesz „MZP magyarázza” címmel, ahol 3 percben elmondod az adott témát."
+        "label": "Jól szerkesztett, rövid YouTube-videókat készítesz „MZP magyarázza” címmel, amelyekben közérthetően mutatod be az egyes témákat."
       },
       {
         "id": "C",
-        "label": "Csak a Facebookra fókuszálsz, mert ott érhető el az ország nagy része, és nem akarsz szétaprózódni."
+        "label": "Továbbra is elsősorban a Facebookra koncentrálsz, mert ott érheted el a legtöbb választót, és nem akarod szétforgácsolni az erőforrásaidat."
       },
       {
         "id": "D",
-        "label": "Profi influenszerekkel működsz együtt: ők készítik a tartalmakat, te csak megjelensz bennük."
+        "label": "Népszerű influenszerekkel működsz együtt, akik saját stílusukban mutatják be a kampány üzeneteit."
       }
     ]
   },
   {
     "id": "2022_ogyv-25",
-    "question": "Orbán Viktort többször kérdezték arról, lesz-e miniszterelnök-jelölti vita, de eddig a nevedet sem volt hajlandó kimondani. Mit teszel, hogy mégis létrejöjjön egy vita?",
+    "question": "Orbán Viktort többször is megkérdezték, vállalna-e miniszterelnök-jelölti vitát, de eddig még a nevedet sem volt hajlandó kimondani. Mit teszel annak érdekében, hogy mégis létrejöjjön egy vita?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nyilvánosan kihívod, és személyesen is felkeresed, hogy mindenki lássa: kerüli a vitát."
+        "label": "Nyilvánosan kihívod Orbánt egy vitára, és személyesen is megpróbálod átadni neki a felkérést, hogy mindenki lássa: kerüli a megmérettetést."
       },
       {
         "id": "B",
-        "label": "Videós kihívást teszel közzé a Facebookon, és megpróbálod minél szélesebb körben eljuttatni."
+        "label": "Videós kihívást teszel közzé a közösségi médiában, és megpróbálod minél több emberhez eljuttatni az üzenetet."
       },
       {
         "id": "C",
-        "label": "Ha nem jelenik meg, nélküle rendezed meg a vitát."
+        "label": "Rendszeresen emlékezteted a választókat arra, hogy Orbán nem hajlandó vitázni, miközben te bármikor készen állnál a nyilvános vitára."
       },
       {
         "id": "D",
-        "label": "Ha nem vállalja a vitát, más kormánypárti politikust hívsz ki, például Lázár Jánost."
+        "label": "Ha Orbán nem vállalja a vitát, más ismert kormánypárti politikusokat hívsz ki, például Lázár Jánost."
       }
     ]
   },
   {
     "id": "2022_ogyv-26",
-    "question": "Közeleg március 15-e. A Fidesz ismét békemenetet szervez, amelyen várhatóan hatalmas tömeg vesz részt. Milyen rendezvényt szervezzen az ellenzéki összefogás?",
+    "question": "Közeleg március 15-e. A Fidesz ismét Békemenetet szervez, amelyen várhatóan hatalmas tömeg vesz részt. Milyen rendezvényt szervez az ellenzéki összefogás?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A szervezést a különböző ellenzéki pártokra bízzuk. A pártvezetők képesek lehetnek elegendő embert mozgósítani ahhoz, hogy felvegyük a versenyt a Fidesz rendezvényével."
+        "label": "A szervezést az ellenzéki pártokra bízod. Úgy gondolod, hogy a pártok saját hálózataikon keresztül elegendő embert tudnak mozgósítani."
       },
       {
         "id": "B",
-        "label": "Kihagyjuk a pártpolitikát: személyesen szólítom fel az ellenzéki érzelmű választókat, hogy jöjjenek el a rendezvényre."
+        "label": "A pártok helyett közvetlenül a választókhoz fordulsz, és személyesen hívod meg az ellenzéki érzelmű embereket a rendezvényre."
       },
       {
         "id": "C",
-        "label": "A szervezést a pártokra bízzuk, de a kampányerőforrásaink jelentős részét a mozgósításra fordítjuk, hogy minél nagyobb tömeg gyűljön össze."
+        "label": "A szervezést a pártokra bízod, de a kampány jelentős részét a rendezvény népszerűsítésére és a mozgósításra fordítod."
       },
       {
         "id": "D",
-        "label": "Személyesen hívom az ellenzéki szavazókat a rendezvényre, és a kampányerőforrásaink jelentős részét is a mozgósításra fordítjuk."
+        "label": "Személyesen vezeted a mozgósítást, és a kampány erőforrásainak jelentős részét is arra fordítod, hogy minél többen vegyenek részt a rendezvényen."
       }
     ]
   },
   {
     "id": "2022_ogyv-27",
-    "question": "Áder János köztársasági elnök mandátuma a végéhez közeledik. A Fidesz–KDNP jelöltje Novák Katalin lesz. Bár az ellenzék jelöltjének megválasztása a kormánypárti többség miatt szinte esélytelen, kit jelöljön az ellenzéki összefogás köztársasági elnöknek?",
+    "question": "Áder János köztársasági elnöki mandátuma a végéhez közeledik. A Fidesz–KDNP Novák Katalint jelöli az államfői posztra. Bár a kormánypárti parlamenti többség miatt az ellenzéki jelölt megválasztására kevés az esély, kit jelöljön az ellenzéki összefogás?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Iványi Gábort."
+        "label": "Iványi Gábort, a társadalmi szolidaritás és a keresztény értékek hiteles képviselőjét."
       },
       {
         "id": "B",
-        "label": "Róna Pétert."
+        "label": "Róna Pétert, a nemzetközileg ismert közgazdászt és jogászt."
       },
       {
         "id": "C",
-        "label": "Egy ismert civil szervezet vezetőjét."
+        "label": "Egy széles körben ismert civil szereplőt, aki a pártpolitikán kívülről érkezik."
       },
       {
         "id": "D",
-        "label": "Senkit, kormánypárti többség mellett nincs reális esély az ellenzéki jelölt megválasztására."
+        "label": "Nem állítasz jelöltet, mert a kormánypárti többség mellett nincs reális esély az ellenzéki jelölt megválasztására."
       }
     ]
   },
@@ -624,134 +603,112 @@
   },
   {
     "id": "2022_ogyv-29",
-    "question": "Felmerülnek aggályok a választások tisztaságával kapcsolatban. Bár nemzetközi megfigyelők is jelen lesznek, az ellenzéknek is delegálnia kellene szavazatszámlálókat. Hogyan reagálsz?",
+    "question": "Felmerülnek aggályok a választások tisztaságával kapcsolatban. Bár nemzetközi megfigyelők is érkeznek, az ellenzéknek is delegálnia kellene szavazatszámlálókat az ország különböző pontjaira. Hogyan reagálsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Kerülöd a témát, nehogy azt mondják, hogy „előre csalást kiáltasz”, ha túl sokat foglalkoznál vele még úgy tűnne, hogy a vereségre készülsz."
+        "label": "A kampányt és az országjárást helyezed előtérbe, mert szerinted a választás eredményét elsősorban a választók meggyőzésével lehet befolyásolni."
       },
       {
         "id": "B",
-        "label": "Országos kampányt indítasz szavazatszámlálók toborzására, képzésekkel és egyszerű regisztrációval."
+        "label": "Országos kampányt indítasz szavazatszámlálók toborzására, képzésekkel és egyszerű jelentkezési lehetőségekkel."
       },
       {
         "id": "C",
-        "label": "Csak a legfontosabb billegő körzetekbe küldesz embereket, hogy ne vigyen el túl sok erőforrást, és több fókusz maradjon a kampányra."
+        "label": "Elsősorban a legfontosabb billegő körzetekre koncentrálsz, hogy a kampányra és a választás védelmére is jusson elegendő erőforrás."
       },
       {
         "id": "D",
-        "label": "A szavazatszámlálók toborzását a pártokra bízod központi koordináció nélkül, ha személyesen túl sokat foglalkoznál vele még úgy tűnne, hogy a vereségre készülsz."
+        "label": "A szavazatszámlálók szervezését az ellenzéki pártokra bízod, amelyek helyi hálózataikon keresztül hatékonyabban érhetik el a jelentkezőket."
       }
     ]
   },
   {
     "id": "2022_ogyv-30",
     "title": "Reagálás a közvélemény-kutatásokra",
-    "question": "A választás előtti hetekben a közvélemény-kutatások szoros versenyt mutatnak, de a választási rendszer miatt ez még mindig az ellenzék vereségét jelentheti. Hogyan kommunikálsz erről?",
+    "question": "A választás előtti hetekben a közvélemény-kutatások szoros versenyt mutatnak. Ugyanakkor a választási rendszer sajátosságai miatt ez még nem feltétlenül jelent kedvező helyzetet az ellenzék számára. Hogyan kommunikálsz erről?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Azt hangsúlyozod, hogy fej-fej mellett álltok, és csak néhány szavazaton múlhat a győzelem."
+        "label": "Azt hangsúlyozod, hogy fej fej mellett álltok, és akár néhány szavazaton is múlhat a választás végeredménye."
       },
       {
         "id": "B",
-        "label": "Azt kommunikálod, hogy hátrányban vagytok, és csak nagyon magas részvétellel lehet fordítani."
+        "label": "Arra figyelmeztetsz, hogy a szoros kutatási eredmények ellenére az ellenzéknek továbbra is jelentős mozgósításra van szüksége a győzelemhez."
       },
       {
         "id": "C",
-        "label": "Figyelmen kívül hagyod a kutatásokat, mert szerinted az átlagos választókat nem érdeklik."
+        "label": "Nem helyezel nagy hangsúlyt a közvélemény-kutatásokra, mert szerinted a választókat inkább a mindennapi problémáik foglalkoztatják."
       },
       {
         "id": "D",
-        "label": "Megkérdőjelezed a kutatások hitelességét, és arra kéred a támogatókat, hogy ne hagyják magukat eltántorítani."
+        "label": "Óvatosságra intesz a közvélemény-kutatásokkal kapcsolatban, és arra kéred a támogatókat, hogy az eredményektől függetlenül menjenek el szavazni."
       }
     ]
   },
   {
     "id": "2022_ogyv-31",
-    "question": "A kormánypárti médiában terjed egy videó rólad, amelyben az illegális bevándorlás ellenzőiről és a rezsicsökkentés támogatóiról azt mondod: „sötétben tartott, trágyával etetett gombák”. Hogyan magyarázod a kijelentést?",
+    "question": "A kormánypárti médiában terjedni kezd egy videórészlet, amelyben az illegális bevándorlás ellenzőiről és a rezsicsökkentés támogatóiról azt mondod: „sötétben tartott, trágyával etetett gombák”. Hogyan reagálsz a kialakult helyzetre?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Kijelented, hogy félremagyarázták a szavaidat, és elmondod, hogy valójában mire gondoltál."
+        "label": "Kijelented, hogy félremagyarázták a szavaidat, és elmagyarázod, valójában mire gondoltál."
       },
       {
         "id": "B",
-        "label": "Egy videóban részletesen kifejted az álláspontodat, és megpróbálod kontextusba helyezni a mondatot."
+        "label": "Egy videóban részletesen kifejted az álláspontodat, és kontextusba helyezed a kijelentést."
       },
       {
         "id": "C",
-        "label": "Bocsánatot kérsz a sértő megfogalmazásért, és hangsúlyozod, hogy nem akartad megbántani a választókat."
+        "label": "Bocsánatot kérsz a sértő megfogalmazásért, és hangsúlyozod, hogy nem akartad megbántani az érintett választókat."
       },
       {
         "id": "D",
-        "label": "Nem reagálsz külön, inkább más témákkal próbálod elterelni a figyelmet."
-      }
-    ]
-  },
-  {
-    "id": "2022_ogyv-32",
-    "question": "Az RTL beleegyezett, hogy megrendezi a miniszterelnök-jelölti vitát, de Orbán Viktor nélkül. Milyen formában kerüljön adásba a műsor?",
-    "possibleAnswers": [
-      {
-        "id": "A",
-        "label": "Élő műsor legyen spontán kérdésekkel, az esti híradó után, 20:00 és 22:00 között."
-      },
-      {
-        "id": "B",
-        "label": "Élő műsor legyen előre megküldött kérdésekkel, az esti híradó előtt, 17:00 és 19:00 között."
-      },
-      {
-        "id": "C",
-        "label": "Felvételről menjen spontán kérdésekkel, az esti híradó után, 20:00 és 22:00 között."
-      },
-      {
-        "id": "D",
-        "label": "Felvételről menjen előre megküldött kérdésekkel, az esti híradó előtt, 17:00 és 19:00 között."
+        "label": "Nem reagálsz külön a vitára, hanem más témákra helyezed a kampány hangsúlyát."
       }
     ]
   },
   {
     "id": "2022_ogyv-33",
-    "question": "A kormánypárti médiát ismét egy félresikerült kijelentésed járja be, amelyben „aberrált fideszesekről” beszéltél. Hogyan reagálsz?",
+    "question": "A kormánypárti médiában ismét egy félresikerült kijelentésed kerül a középpontba, amelyben „aberrált fideszesekről” beszéltél. Hogyan reagálsz a kialakult helyzetre?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Bocsánatot kérsz: sajnálod, ha bárkit megsértettél, és elismered, hogy rosszul fogalmaztál."
+        "label": "Bocsánatot kérsz: sajnálod, ha bárkit megsértettél, és elismered, hogy szerencsétlenül fogalmaztál."
       },
       {
         "id": "B",
-        "label": "Rámutatsz, hogy a kormánypárti média is rendszeresen durva kifejezéseket használ az ellenzékkel szemben."
+        "label": "Rámutatsz, hogy a kormánypárti média és politikusok is rendszeresen használnak sértő kifejezéseket az ellenzékkel szemben."
       },
       {
         "id": "C",
-        "label": "Nem kérsz bocsánatot, inkább támadó üzemmódba kapcsolsz."
+        "label": "Nem a kijelentésre helyezed a hangsúlyt, hanem arra, hogy a kormányoldal ismét egy mondat körüli vitával próbálja elterelni a figyelmet a valódi problémákról."
       },
       {
         "id": "D",
-        "label": "Nem foglalkozol vele külön, mert szerinted idővel elül a botrány."
+        "label": "Nem reagálsz külön az ügyre, mert úgy gondolod, hogy a botrány néhány nap alatt elveszíti a jelentőségét."
       }
     ]
   },
   {
     "id": "2022_ogyv-34",
-    "question": "Közeledik a szavazás napja, az üzenetek már beégtek, és a legtöbb ember eldöntötte már, hogy fog dönteni a szavazóurnáknál. Mit csinálsz az utolsó héten?",
+    "question": "Közeledik a szavazás napja. A legtöbb választó már kialakította a véleményét, a kampány fő üzenetei pedig eljutottak az emberekhez. Mivel töltöd az utolsó hetet?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Minden nap más témáról beszélsz, hogy minél szélesebb legyen az agenda."
+        "label": "Minden nap más témát emelsz a kampány középpontjába, hogy minél több választói csoportot tudj megszólítani."
       },
       {
         "id": "B",
-        "label": "Egyetlen kulcsüzenetre fókuszálsz (“ha változást akarsz, most kell elmenned szavazni”), és ezt ismétled mindenhol."
+        "label": "Egyetlen kulcsüzenetre, a változás reményére építed az utolsó hetet, és ezt hangsúlyozod minden megszólalásodban."
       },
       {
         "id": "C",
-        "label": "Negatív kampányba kapcsolsz: törzsközönségnek szóló, erősen Fidesz–ellenes üzeneteket nyomsz."
+        "label": "Arra figyelmeztetsz, hogy ez lehet az utolsó alkalom, amikor Orbán Viktor demokratikus választáson leváltható."
       },
       {
         "id": "D",
-        "label": "Visszaveszel az eseményekből, nehogy újabb elszólásod legyen."
+        "label": "Visszafogod a szerepléseidet, hogy elkerüld az újabb vitákat vagy félreérthető kijelentéseket, és hagyod, hogy az eddigi kampányüzenetek hassanak."
       }
     ]
   }

@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import {
+  CandidateListData,
+  District,
+  DistrictPoligon,
+  ElectionConfig,
+} from "@/shared/types";
 import { useWheelZoom, type ViewBox } from "../../hooks/useWheelZoom";
 import {
   getPartyActiveColor,
   getPartyColor,
   getPartyHoverColor,
 } from "../ui/color.utils";
-import { getWinnerResultsByList } from "../ui/map.utils";
+import { buildResultsIndex, getWinnerResultsByList } from "../ui/map.utils";
 import { getFillColor } from "./color";
 import { parsePolygon, projectPoints } from "./geometry";
 import { buildPathD, simplifyDP } from "./path";
 import { computeBounds, computeScale } from "./projection";
-import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
+
+const MARGIN = 20;
 
 interface DistrictMapProps {
   districts: DistrictPoligon[];
@@ -22,10 +29,16 @@ interface DistrictMapProps {
   stroke?: string;
   strokeWidth?: number;
   simplifyTolerance?: number;
-  selectedDistrict?: District | null;
+  selectedDistrict?: { megyekod: number; oevk: number } | null;
   wheel: ReturnType<typeof useWheelZoom>;
   viewBox: ViewBox;
   isGameEnded?: boolean;
+  electionConfig?: ElectionConfig;
+}
+
+function getDistrictId(e: { target: EventTarget | null }) {
+  const target = e.target as Element | null;
+  return target?.closest<SVGPathElement>("path[data-id]")?.dataset.id ?? null;
 }
 
 export function DistrictMap({
@@ -37,33 +50,126 @@ export function DistrictMap({
   strokeWidth = 0.7,
   simplifyTolerance = 0.00005,
   onClick,
+  onDoubleClick,
   selectedDistrict,
   wheel,
   viewBox,
   isGameEnded,
+  electionConfig,
 }: DistrictMapProps) {
   const [hovered, setHovered] = useState<string | null>(null);
   const [pressed, setPressed] = useState<string | null>(null);
 
+  const projected = useMemo(() => {
+    if (!districts?.length) {
+      return [];
+    }
+
+    const parsed = districts.map((d) => parsePolygon(d.poligon));
+    const allPoints = parsed.flat();
+    const avgLat = allPoints.reduce((s, p) => s + p.lat, 0) / allPoints.length;
+    const cosLat = Math.cos((avgLat * Math.PI) / 180);
+
+    return districts.map((d, i) => ({
+      ...d,
+      pts: projectPoints(parsed[i], cosLat),
+    }));
+  }, [districts]);
+
+  const bounds = useMemo(() => computeBounds(projected), [projected]);
+
+  const scale = useMemo(
+    () => computeScale(bounds, width, height, MARGIN),
+    [bounds, width, height],
+  );
+
+  const resultIndex = useMemo(() => buildResultsIndex(result), [result]);
+
+  const renderData = useMemo(
+    () =>
+      projected.map((d) => {
+        const id = `${d.maz}-${d.evk}`;
+        const simplified = simplifyDP(d.pts, simplifyTolerance);
+        const pathD = buildPathD(simplified, bounds, scale, MARGIN);
+
+        const winnerResult = getWinnerResultsByList(d, resultIndex);
+        const { winner, diffPercentage } = winnerResult;
+        const partyColor =
+          electionConfig?.parties.find((party) => party.id === winner)?.color ??
+          "";
+
+        return {
+          id,
+          megyekod: Number(d.maz),
+          oevk: Number(d.evk),
+          pathD,
+          winnerResult,
+          base: getPartyColor(partyColor, diffPercentage, isGameEnded),
+          hover: getPartyHoverColor(partyColor, diffPercentage),
+          active: getPartyActiveColor(partyColor, diffPercentage),
+        };
+      }),
+    [projected, simplifyTolerance, bounds, scale, resultIndex, isGameEnded],
+  );
+
+  const byId = useMemo(
+    () => new Map(renderData.map((item) => [item.id, item])),
+    [renderData],
+  );
+
+  const handleMouseOver = useCallback((e: React.MouseEvent) => {
+    const id = getDistrictId(e);
+    if (id) {
+      setHovered(id);
+    }
+  }, []);
+
+  const handleMouseOut = useCallback(() => {
+    setHovered(null);
+    setPressed(null);
+  }, []);
+
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      wheel.handleMouseDown(e);
+      const id = getDistrictId(e);
+      if (id) {
+        setPressed(id);
+      }
+    },
+    [wheel],
+  );
+
+  const handleMouseUp = useCallback(() => {
+    wheel.handleMouseUp();
+    setPressed(null);
+  }, [wheel]);
+
+  const handleClick = useCallback(
+    (e: React.MouseEvent) => {
+      const id = getDistrictId(e);
+      const item = id ? byId.get(id) : undefined;
+      if (item) {
+        onClick?.(item.winnerResult);
+      }
+    },
+    [byId, onClick],
+  );
+
+  const handleDoubleClick = useCallback(
+    (e: React.MouseEvent) => {
+      const id = getDistrictId(e);
+      const item = id ? byId.get(id) : undefined;
+      if (item) {
+        onDoubleClick?.(item.winnerResult);
+      }
+    },
+    [byId, onDoubleClick],
+  );
+
   if (!districts?.length) {
     return null;
   }
-
-  const allPoints = districts.flatMap((d) => parsePolygon(d.poligon));
-
-  const avgLat = allPoints.reduce((s, p) => s + p.lat, 0) / allPoints.length;
-
-  const cosLat = Math.cos((avgLat * Math.PI) / 180);
-
-  const projected = districts.map((d) => ({
-    ...d,
-    pts: projectPoints(parsePolygon(d.poligon), cosLat),
-  }));
-
-  const bounds = computeBounds(projected);
-
-  const margin = 20;
-  const scale = computeScale(bounds, width, height, margin);
 
   return (
     <svg
@@ -75,52 +181,39 @@ export function DistrictMap({
       viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`}
       preserveAspectRatio="xMidYMid meet"
       onWheel={wheel.handleWheel}
-      onMouseDown={wheel.handleMouseDown}
+      onMouseDown={handleMouseDown}
       onMouseMove={wheel.handleMouseMove}
-      onMouseUp={wheel.handleMouseUp}
+      onMouseUp={handleMouseUp}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
     >
-      {projected.map((d) => {
-        const id = `${d.maz}-${d.evk}`;
-        const simplified = simplifyDP(d.pts, simplifyTolerance);
-        const pathD = buildPathD(simplified, bounds, scale, margin);
-
-        const { winner, diffPercentage } = getWinnerResultsByList(d, result);
-        const base = getPartyColor(winner, diffPercentage, isGameEnded);
-        const hover = getPartyHoverColor(winner);
-        const active = getPartyActiveColor(winner);
-
+      {renderData.map((item) => {
         const isSelected =
           selectedDistrict &&
-          Number(d.maz) === selectedDistrict.megyekod &&
-          Number(d.evk) === selectedDistrict.oevk;
+          item.megyekod === selectedDistrict.megyekod &&
+          item.oevk === selectedDistrict.oevk;
 
         const fill = getFillColor({
-          id,
+          id: item.id,
           hovered,
           pressed,
           isSelected: isSelected ?? false,
-          base,
-          hover,
-          active,
+          base: item.base,
+          hover: item.hover,
+          active: item.active,
         });
 
         return (
           <path
-            key={id}
-            d={pathD}
+            key={item.id}
+            data-id={item.id}
+            d={item.pathD}
             fill={fill}
             style={{ cursor: "pointer" }}
             stroke={stroke}
             strokeWidth={strokeWidth}
-            onMouseEnter={() => setHovered(id)}
-            onMouseLeave={() => {
-              setHovered(null);
-              setPressed(null);
-            }}
-            onDoubleClick={() => onClick?.(getWinnerResultsByList(d, result))}
-            onMouseDown={() => setPressed(id)}
-            onMouseUp={() => setPressed(null)}
-            onClick={() => onClick?.(getWinnerResultsByList(d, result))}
           />
         );
       })}

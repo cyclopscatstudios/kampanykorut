@@ -13,14 +13,16 @@ export interface CampaignState {
   answerEffects?: Answer[];
   candidateListData?: CandidateListData[];
   partyListData?: PartyListData[];
+  partyListVotes?: PartyListVotes;
   results?: CalculateResults;
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;
   pollingOpnions?: PollingOpnions;
   campaignView?: CampaignView;
+  isBaseResultsAlreadyApplied: boolean;
 }
 
-export type CurrentView = "MapView" | "QuestionView";
+export type CurrentView = "MapView" | "QuestionView" | "VoteCountingView";
 
 export interface CampaignView {
   type: CurrentView;
@@ -30,7 +32,7 @@ export interface CampaignView {
 export interface PollingOpnions {
   candidateListData: CandidateListData[];
   partyListData?: PartyListData[];
-  percentages?: Record<string, number>;
+  percentages?: PartyResults;
   selectedPollsterId?: string;
 }
 
@@ -56,8 +58,10 @@ export interface PartyListData {
   partok: Record<string, number | undefined>;
 }
 
+export type PartyListVotes = Record<string, number>;
+
 export interface CalculateResults {
-  totals: PartyVotes;
+  totals: PartyResults;
   mandates: Mandate[];
   constituencySeats: Record<string, number>;
   listSeats: Record<string, number>;
@@ -66,7 +70,12 @@ export interface CalculateResults {
     winnerCompensation: PartyVotes;
     total: PartyVotes;
   };
-  percentages: Record<string, number>;
+  percentages: PartyResults;
+}
+
+export interface PartyResults {
+  candidateListResults: Record<string, number>;
+  partyListResults: Record<string, number>;
 }
 
 export interface Decision {

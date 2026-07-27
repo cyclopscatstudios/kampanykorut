@@ -1,4 +1,14 @@
 import { container } from "tsyringe";
+import { beforeAll, describe, expect, it } from "vitest";
+import {
+  CampaignState,
+  CandidateListData,
+  Decision,
+  EffectType,
+  ElectionConfig,
+  RawEffect,
+  RawParty,
+} from "../types";
 import { CampaignEngine } from "./CampaignEngine";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
@@ -7,12 +17,6 @@ import { mockElectionConfig } from "./mocks/mockElectionConfig";
 import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
 import { PollsterEngine } from "./PollsterEngine";
 import { ResultModifier } from "./ResultModifier";
-import {
-  Decision,
-  EffectType,
-  ElectionConfig,
-  RawEffect,
-} from "@/shared/types";
 
 let campaignEngine: CampaignEngine;
 
@@ -28,13 +32,13 @@ describe("CampaignEngine", () => {
 
     campaignEngine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       resultModifier,
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
   it("should apply the party-swing typed decision", () => {
@@ -145,13 +149,13 @@ describe("CampaignEngine.createInitialState", () => {
   beforeAll(() => {
     engine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       container.resolve(ResultModifier),
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
 
@@ -166,12 +170,13 @@ describe("CampaignEngine.createInitialState", () => {
   });
 
   it("returns savedState directly when it has candidateListData", () => {
-    const savedState = {
+    const savedState: CampaignState = {
       activeCampaignId: "test-campaign",
       turn: 5,
       isEnded: false,
       candidateListData: mockCandidateListData,
       partyListData: mockPartyListData,
+      isBaseResultsAlreadyApplied: false,
     };
 
     const result = engine.createInitialState("test-campaign", savedState, {
@@ -187,6 +192,7 @@ describe("CampaignEngine.createInitialState", () => {
       activeCampaignId: "test-campaign",
       turn: 3,
       isEnded: false,
+      isBaseResultsAlreadyApplied: false,
     };
 
     const result = engine.createInitialState("test-campaign", savedState, {
@@ -223,6 +229,7 @@ describe("CampaignEngine.createInitialState", () => {
       turn: 2,
       isEnded: false,
       candidateListData: mockCandidateListData,
+      isBaseResultsAlreadyApplied: false,
     };
     const electionConfig = {
       baseResults: { party_a: 99 },
@@ -245,13 +252,13 @@ describe("CampaignEngine.createInitialState – mergeUnknownPartiesToOther", () 
   beforeAll(() => {
     engine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       container.resolve(ResultModifier),
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
 
@@ -296,19 +303,105 @@ describe("CampaignEngine.createInitialState – mergeUnknownPartiesToOther", () 
   });
 });
 
-describe("CampaignEngine.getPollProjection", () => {
+describe("CampaignEngine.mergeUnknownPartiesToOther (direct)", () => {
   let engine: CampaignEngine;
 
   beforeAll(() => {
     engine = new CampaignEngine(
       mockCandidateListData,
-      mockPartyListData,
       [],
       [],
       container.resolve(ResultModifier),
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      mockPartyListData,
+    );
+  });
+
+  const callMergeUnknownPartiesToOther = (
+    candidateListData: CandidateListData[],
+    parties: RawParty[],
+  ) =>
+    (
+      engine as unknown as {
+        mergeUnknownPartiesToOther: (
+          candidateListData: CandidateListData[],
+          partyListData: undefined,
+          parties: RawParty[],
+        ) => { candidateListData: CandidateListData[] };
+      }
+    ).mergeUnknownPartiesToOther(candidateListData, undefined, parties);
+
+  const candidateListData: CandidateListData[] = [
+    {
+      megyekod: 1,
+      megye: "Budapest főváros",
+      oevk: 1,
+      telepules: "Budapest 05. kerület",
+      valasztopolgar: 73914,
+      partok: {
+        tisza: 37803,
+        fidesz: 18391,
+        mi_hazank: 1948,
+        mkkp: 978,
+        dk: 770,
+        a_szolidaritas_partja_munkaspart: 66,
+      },
+      jeloltek: {
+        tisza: ["TANÁCS ZOLTÁN"],
+        fidesz: ["FAZEKAS CSILLA"],
+        mi_hazank: ["NAGY ATTILA"],
+        mkkp: ["SZINTAY ISTVÁN"],
+        dk: ["HERFORT MARIETTA"],
+        a_szolidaritas_partja_munkaspart: ["VÁRKONYI ZOLTÁN"],
+      },
+    },
+  ];
+
+  const parties: RawParty[] = [
+    { id: "tisza", name: "Tisztelet és Szabadság Párt", color: "#88E8FF" },
+    { id: "fidesz", name: "Fidesz–KDNP", color: "#F28E2B" },
+    { id: "mi_hazank", name: "Mi Hazánk", color: "#688d1b" },
+    { id: "mkkp", name: "Magyar Kétfarkú Kutya Párt", color: "#d92229" },
+    { id: "dk", name: "Demokratikus Koalíció", color: "#2A61A4" },
+  ];
+
+  it("merges the party missing from the config into _other and drops its candidate", () => {
+    const result = callMergeUnknownPartiesToOther(candidateListData, parties);
+    const [row] = result.candidateListData;
+
+    expect(row.partok).toEqual({
+      tisza: 37803,
+      fidesz: 18391,
+      mi_hazank: 1948,
+      mkkp: 978,
+      dk: 770,
+      _other: 66,
+    });
+    expect(row.jeloltek).toEqual({
+      tisza: ["TANÁCS ZOLTÁN"],
+      fidesz: ["FAZEKAS CSILLA"],
+      mi_hazank: ["NAGY ATTILA"],
+      mkkp: ["SZINTAY ISTVÁN"],
+      dk: ["HERFORT MARIETTA"],
+    });
+  });
+});
+
+describe("CampaignEngine.getPollProjection", () => {
+  let engine: CampaignEngine;
+
+  beforeAll(() => {
+    engine = new CampaignEngine(
+      mockCandidateListData,
+      [],
+      [],
+      container.resolve(ResultModifier),
+      container.resolve(EffectApplier),
+      container.resolve(MandateCalculator),
+      container.resolve(PollsterEngine),
+      mockPartyListData,
     );
   });
 

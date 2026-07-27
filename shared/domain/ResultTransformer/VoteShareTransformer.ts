@@ -1,11 +1,12 @@
 import { inject, singleton } from "tsyringe";
-import { VoterEnvironment } from "../VoterEnvironment";
 import {
   CandidateListData,
   PartyId,
   PartyListData,
+  PartyListVotes,
   Share,
 } from "@/shared/types";
+import { VoterEnvironment } from "../VoterEnvironment";
 
 @singleton()
 export class VoteShareTransformer {
@@ -19,6 +20,7 @@ export class VoteShareTransformer {
     totalVoters: number,
     partyShares: Share,
     distributeOnPartyList = true,
+    partyListVotes?: PartyListVotes,
   ) {
     const remainingCapacity = this.voterEnviroment.getRemainingVotesInDistricts(
       districtCandidateData,
@@ -44,9 +46,16 @@ export class VoteShareTransformer {
       );
     }
 
+    const newPartyListVotes = this.distributeByPartyListVotes(
+      partyListVotes,
+      totalVoters,
+      partyShares,
+    );
+
     return {
       candidateList,
       partyList,
+      partyListVotes: newPartyListVotes,
     };
   }
 
@@ -116,6 +125,30 @@ export class VoteShareTransformer {
         party,
         distributed,
       );
+    }
+
+    return result;
+  }
+
+  private distributeByPartyListVotes(
+    partyListVotes: PartyListVotes | undefined,
+    totalVoters: number,
+    partyShares: Share,
+  ): PartyListVotes | undefined {
+    if (!partyListVotes) {
+      return undefined;
+    }
+
+    const result = { ...partyListVotes };
+
+    for (const [party, share] of Object.entries(partyShares)) {
+      const votesForParty = Math.round(totalVoters * share);
+
+      if (votesForParty === 0) {
+        continue;
+      }
+
+      result[party] = (result[party] ?? 0) + votesForParty;
     }
 
     return result;

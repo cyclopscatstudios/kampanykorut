@@ -1,25 +1,34 @@
 import { t } from "i18next";
 import { useEffect, useState } from "react";
-import { useNavigation } from "../../../hooks/navigationHook";
+import { container } from "tsyringe";
 import {
   type CampaignHeader,
+  StorageEngine,
   useGetCampaigns,
-} from "../../../logic/application/hooks/useGetCampaigns";
-import { useTranslateLang } from "../../../logic/useTranslateLang";
+  useStateEngine,
+} from "@/logic/application";
+import { useNavigation } from "../../../hooks/navigationHook";
+import { useTranslateLang } from "../../../logic/application/hooks/useTranslateLang";
 import { Button } from "../Button";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
 import { MenuLayout } from "./MenuLayout";
-import { useStateEngine } from "@/logic/application";
 
 export function ClassicModeSelectorMenu() {
   const campaigns = useGetCampaigns();
+  const storage = container.resolve(StorageEngine);
+  const debugMode = storage.getItem("debugMode", "localStorage") ?? "false";
+  const enabled = JSON.parse(debugMode);
+
+  const filtered = !enabled
+    ? campaigns.filter((camapign) => camapign.isPublished)
+    : campaigns;
 
   return (
     <MenuLayout>
-      <CampaignSelectorMenuList campaignHeaders={campaigns} />
+      <CampaignSelectorMenuList campaignHeaders={filtered} />
     </MenuLayout>
   );
 }
@@ -43,7 +52,7 @@ export function CampaignSelectorMenuList({
 
   return (
     <div className="size-full flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center gap-6 w-87.5">
+      <div className="flex flex-col items-center justify-center gap-6 w-112.5">
         <Heading level={3} color="lightBlue">
           {selectedCampaign
             ? selectedCampaign.label
@@ -62,27 +71,31 @@ export function CampaignSelectorMenuList({
               saveSession("campaignState", { activeCampaignId: found.id });
           }}
         />
-
         {selectedCampaign && (
-          <div className="w-full overflow-hidden rounded-md border border-blue-500/40">
+          <div className="flex w-full gap-4 rounded-md border border-blue-500/40 p-3">
             <img
               src={`/images/${selectedCampaign.route}/${selectedCampaign.campaignBanner}`}
               alt={selectedCampaign.label}
-              className="h-auto w-full object-cover"
+              className="h-32 w-32 shrink-0 rounded-md object-cover"
             />
             {selectedCampaign.description && (
               <Text
                 weight="medium"
                 color="lightBlue"
-                className="px-3 py-2 text-xs"
+                className="max-h-32 overflow-y-auto pr-2 text-xs"
               >
                 {selectedCampaign.description}
               </Text>
             )}
           </div>
         )}
-
-        <div className="flex w-full flex-col gap-2">
+        <div className="flex w-full gap-2">
+          <Button variant="tertiary" size="large" block onClick={goBack}>
+            <Icon name="backspace-fill" />
+            <Text weight="medium" color="lightBlue">
+              {backButton}
+            </Text>
+          </Button>
           <Button
             variant="primary"
             size="large"
@@ -91,12 +104,6 @@ export function CampaignSelectorMenuList({
             onClick={() => goToSideSelector(selectedCampaign?.id ?? "")}
           >
             <Button.Text>{t("menuList.button.next")}</Button.Text>
-          </Button>
-          <Button variant="tertiary" size="large" block onClick={goBack}>
-            <Icon name="backspace-fill" />
-            <Text weight="medium" color="lightBlue">
-              {backButton}
-            </Text>
           </Button>
         </div>
       </div>

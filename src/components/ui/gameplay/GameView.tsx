@@ -1,6 +1,5 @@
-import { MapCreator } from "./MapCreator";
-import { QuestionCard } from "./QuestionCard";
 import {
+  CampaignConfig,
   CampaignState,
   CurrentView,
   District,
@@ -8,24 +7,23 @@ import {
   FinalResults,
   PollingOpnions,
 } from "@/shared/types";
-
-type GameViewConfig = {
-  capitalCity: DistrictPoligon[];
-  districts: DistrictPoligon[];
-};
+import { MapCreator } from "./MapCreator";
+import { QuestionCard } from "./QuestionCard";
+import { VoteCountingScreen } from "./VoteCountingScreen/VoteCountingScreen";
 
 interface GameViewProps {
   currentView: CurrentView;
   state: CampaignState;
   pollsData: PollingOpnions | null;
-  config: GameViewConfig;
+  config: CampaignConfig;
   answer: string | undefined;
   selectedDistrict: District | null;
-  getFinalResults: () => FinalResults;
+  getFinalResults: () => FinalResults | null;
   onAnswer: (id?: string) => void;
   onSetAnswer: (answer: string | undefined) => void;
   onSetView: (view: CurrentView) => void;
   onSetDistrict: (district: District | null) => void;
+  onVoteCountingComplete: () => void;
 }
 
 export function GameView({
@@ -39,6 +37,7 @@ export function GameView({
   onSetAnswer,
   onSetView,
   onSetDistrict,
+  onVoteCountingComplete,
 }: GameViewProps) {
   if (currentView === "QuestionView") {
     return (
@@ -56,16 +55,33 @@ export function GameView({
     );
   }
 
+  if (currentView === "VoteCountingView") {
+    return (
+      <VoteCountingScreen
+        onComplete={onVoteCountingComplete}
+        totalVotes={config.voterEnvironmentConfig.eligibleVoters}
+        processedVotes={state.results?.totals.partyListResults["_total"]}
+      />
+    );
+  }
+
+  const capitalCity = getCapitalCity(config.districts);
+
   return (
     <MapCreator
       setCurrentView={onSetView}
       candidateListData={
         pollsData?.candidateListData ?? state.candidateListData ?? []
       }
-      capitalCity={config.capitalCity}
+      capitalCity={capitalCity}
       districts={config.districts}
       selectedDistrict={selectedDistrict}
       setSelectedDistrict={onSetDistrict}
+      electionConfig={config.electionConfig}
     />
   );
+}
+
+function getCapitalCity(districts: DistrictPoligon[]) {
+  return districts.filter((district) => district.maz.startsWith("01"));
 }

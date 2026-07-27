@@ -1,14 +1,15 @@
 import { t } from "i18next";
-import { SwingFactorId } from "../../../types/utils";
-import { getWinnerResultByDistrict } from "../map.utils";
-import { BottomBar } from "./BottomBar";
-import { MapWrapper } from "./MapWrapper";
 import {
   CandidateListData,
   CurrentView,
   District,
   DistrictPoligon,
+  ElectionConfig,
 } from "@/shared/types";
+import { SwingFactorId } from "../../../types/utils";
+import { getWinnerResultByDistrict } from "../map.utils";
+import { BottomBar } from "./BottomBar";
+import { MapWrapper } from "./MapWrapper";
 
 interface MapCreatorProps {
   districts: DistrictPoligon[];
@@ -17,6 +18,7 @@ interface MapCreatorProps {
   setCurrentView: (currentView: CurrentView) => void;
   selectedDistrict?: District | null;
   setSelectedDistrict: (district: District | null) => void;
+  electionConfig?: ElectionConfig;
 }
 
 export type SwingFactor = {
@@ -31,11 +33,12 @@ export function MapCreator({
   setCurrentView,
   selectedDistrict,
   setSelectedDistrict,
+  electionConfig,
 }: MapCreatorProps) {
   const swingFactor = getSwingFactor(selectedDistrict);
   return (
-    <div className="flex flex-col h-full w-full">
-      <div className="flex w-full h-full justify-center items-center gap-4">
+    <div className="flex flex-col h-full justify-center items-center">
+      <div className="flex gap-4 mb-4">
         <MapWrapper
           width={700}
           height={450}
@@ -43,6 +46,8 @@ export function MapCreator({
           results={candidateListData}
           handleDistrict={setSelectedDistrict}
           selectedDistrict={selectedDistrict}
+          electionConfig={electionConfig}
+          className="w-full"
         />
         <MapWrapper
           width={400}
@@ -51,18 +56,15 @@ export function MapCreator({
           results={candidateListData}
           handleDistrict={setSelectedDistrict}
           selectedDistrict={selectedDistrict}
+          electionConfig={electionConfig}
         />
       </div>
-      <div>
-        <div className="h-40 mx-10">
-          {selectedDistrict && (
-            <BottomBar
-              data={selectedDistrict}
-              onClick={() => setCurrentView("QuestionView")}
-              swingFactor={swingFactor}
-            />
-          )}
-        </div>
+      <div className="w-[1118px]">
+        <BottomBar
+          data={selectedDistrict}
+          onClick={() => setCurrentView("QuestionView")}
+          swingFactor={swingFactor}
+        />
       </div>
     </div>
   );

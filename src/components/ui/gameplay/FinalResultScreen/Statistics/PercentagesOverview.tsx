@@ -17,7 +17,7 @@ export function PercentagesOverview({
         </Text>
         <span className="flex items-baseline justify-center">
           <Heading level={3} className="mr-1">
-            {percentage} %
+            {Math.round(percentage * 100) / 100} %
           </Heading>
         </span>
       </div>

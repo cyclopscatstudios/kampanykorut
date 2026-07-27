@@ -1,18 +1,12 @@
-import { useState } from "react";
 import { container } from "tsyringe";
+import { StateEngine, useElectionState } from "@/logic/application";
+import { PollsterEngine } from "@/shared/domain";
+import { createLogger } from "@/shared/logger";
+import { CampaignConfig, CampaignState, CurrentView } from "@/shared/types";
 import { AdvisorModal } from "./AdvisorModal";
 import { GameChrome } from "./GameChrome";
 import { GameView } from "./GameView";
 import { useGameFlow } from "./hooks/useGameFlow";
-import { StateEngine, useElectionState } from "@/logic/application";
-import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
-import { createLogger } from "@/shared/logger";
-import {
-  CampaignConfig,
-  CampaignState,
-  CurrentView,
-  PollingOpnions,
-} from "@/shared/types";
 
 const log = createLogger("MainGameScreen");
 
@@ -24,25 +18,13 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     config,
     processAnswer,
     commitTurn,
+    finishCampaign,
     getFinalResults,
     getMapDataByPolls,
   } = useElectionState(campaignId);
   const { flow, dispatch, handleAnswer, handleAdvisorClose } = useGameFlow(
     processAnswer,
     commitTurn,
-  );
-  const defaultPolls = pollsterEngine.getPollsByPollsterId(
-    AGGREGATE_POLLSTER_ID,
-    state,
-    config.electionConfig,
-  );
-  const defaultPollsterData = getMapDataByPolls(
-    state,
-    config.electionConfig,
-    defaultPolls,
-  );
-  const [pollsterData, setPollsterData] = useState<PollingOpnions | null>(
-    defaultPollsterData ?? null,
   );
 
   const handlePollsterChange = (
@@ -53,22 +35,15 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     if (!state || !config) {
       return;
     }
+
     const polls = pollsterEngine.getPollsByPollsterId(
       id,
       state,
       config.electionConfig,
     );
-    const currentPollsterData = getMapDataByPolls(
-      state,
-      config.electionConfig,
-      polls,
-    );
-    if (currentPollsterData) {
-      log.debug("Changing map view to pollster data", {
-        pollsterId: id,
-      });
-      setPollsterData({ ...currentPollsterData, selectedPollsterId: id });
-    }
+
+    log.debug("Changing map view to pollster data", { pollsterId: id });
+    getMapDataByPolls(state, config.electionConfig, polls?.differences, id);
   };
 
   const handleView = (view: CurrentView) => {
@@ -78,13 +53,21 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
 
   return (
     <GameChrome
-      actionDispatch={dispatch}
       state={state}
       config={config}
-      pollsterData={pollsterData}
+      pollsterData={state.pollingOpnions ?? null}
       handlePollsterChange={handlePollsterChange}
-      flow={flow}
     >
+      <div className="flex w-full h-[5px] overflow-hidden">
+        {config.electionConfig.parties.map((party) => (
+          <div
+            key={party.id}
+            className="flex-1"
+            style={{ backgroundColor: party.color }}
+            title={party.name}
+          />
+        ))}
+      </div>
       <AdvisorModal
         advice={flow.pendingAdvisor?.feedback.text ?? ""}
         open={Boolean(flow.pendingAdvisor)}
@@ -99,7 +82,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
       <GameView
         currentView={flow.currentView}
         state={state}
-        pollsData={pollsterData}
+        pollsData={state.pollingOpnions ?? null}
         config={config}
         answer={flow.answer}
         selectedDistrict={flow.selectedDistrict}
@@ -110,6 +93,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
         onSetDistrict={(district) =>
           dispatch({ type: "SELECT_DISTRICT", district })
         }
+        onVoteCountingComplete={finishCampaign}
       />
     </GameChrome>
   );

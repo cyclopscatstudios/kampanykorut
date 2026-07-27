@@ -1,5 +1,6 @@
 import { t } from "i18next";
 import { useState } from "react";
+import { type GameSettings } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Button } from "../Button";
@@ -7,7 +8,6 @@ import { SettingsBody } from "../gameplay/SettingsDialog";
 import { toaster } from "../gameplay/toaster";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
-import { type GameSettings } from "@/logic/application";
 
 export function SettingsMenu() {
   const { settings, updateSettings } = useSettings();
@@ -34,7 +34,12 @@ export function SettingsMenu() {
             {t("menuList.button.back")}
           </Text>
         </Button>
-        <Button size="large" onClick={saveChanges} disabled={isEqual}>
+        <Button
+          size="large"
+          onClick={saveChanges}
+          disabled={isEqual}
+          testId="saveButton"
+        >
           <Text weight="medium" color="lightBlue">
             {t("menuList.button.save")}
           </Text>

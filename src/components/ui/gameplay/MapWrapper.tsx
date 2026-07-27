@@ -1,9 +1,14 @@
 import classNames from "classnames";
 import { useState } from "react";
+import {
+  CandidateListData,
+  District,
+  DistrictPoligon,
+  ElectionConfig,
+} from "@/shared/types";
 import { useWheelZoom, type ViewBox } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
 import { Button } from "../Button";
-import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
 
 export function MapWrapper({
   districts,
@@ -16,6 +21,7 @@ export function MapWrapper({
   isGameEnded = false,
   stroke = "#000000FF",
   view,
+  electionConfig,
 }: {
   districts: DistrictPoligon[];
   handleDistrict?: (r: District) => void;
@@ -27,6 +33,7 @@ export function MapWrapper({
   isGameEnded?: boolean;
   stroke?: string;
   view?: ViewBox;
+  electionConfig?: ElectionConfig;
 }) {
   const initialView = view ?? { x: 0, y: 0, w: width, h: height };
   const [viewBox, setViewBox] = useState<ViewBox>(initialView);
@@ -58,6 +65,7 @@ export function MapWrapper({
         viewBox={viewBox}
         wheel={wheel}
         isGameEnded={isGameEnded}
+        electionConfig={electionConfig}
       />
       <div className="absolute bottom-2 right-2 flex gap-1">
         <Button

@@ -1,14 +1,14 @@
 import { inject } from "tsyringe";
-import { createLogger } from "../logger/logger";
-import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
-import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
-import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
+import { createLogger } from "@/shared/logger";
 import {
   AppliedEffect,
   CampaignState,
   CandidateListData,
   EffectType,
 } from "@/shared/types";
+import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
+import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
+import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
 
 const log = createLogger("ResultModifier");
 
@@ -28,7 +28,10 @@ export class ResultModifier {
     state: CampaignState,
     appliedEffects?: AppliedEffect[],
     applyEffectForPollingData?: boolean,
-  ): Pick<CampaignState, "candidateListData" | "partyListData"> | null {
+  ): Pick<
+    CampaignState,
+    "candidateListData" | "partyListData" | "partyListVotes"
+  > | null {
     if (!appliedEffects?.length) {
       log.error("No applied effects provided to ResultModifier");
       return null;
@@ -54,14 +57,39 @@ export class ResultModifier {
     return {
       candidateListData: currentState.candidateListData,
       partyListData: currentState.partyListData,
+      partyListVotes: currentState.partyListVotes,
     };
+  }
+
+  // this is a hack to filter out unwanted values
+  // TODO: fix the root cause later
+  filterUnwantedValues(districtCandidateData?: CandidateListData[]) {
+    if (!districtCandidateData) {
+      return;
+    }
+
+    return districtCandidateData.map((district) => ({
+      ...district,
+      partok: Object.fromEntries(
+        Object.entries(district.partok).filter(
+          ([party, votes]) =>
+            party !== "undefined" &&
+            votes !== undefined &&
+            votes !== null &&
+            !Number.isNaN(votes),
+        ),
+      ),
+    }));
   }
 
   private applySingleEffect(
     state: CampaignState,
     effect: AppliedEffect,
     applyEffectForPollingData?: boolean,
-  ): Pick<CampaignState, "candidateListData" | "partyListData"> | null {
+  ): Pick<
+    CampaignState,
+    "candidateListData" | "partyListData" | "partyListVotes"
+  > | null {
     switch (effect.type) {
       case EffectType.UniformSwing:
         return this.applyPartySwing(state, effect, applyEffectForPollingData);
@@ -101,8 +129,14 @@ export class ResultModifier {
       appliedEffects.baseShare,
       appliedEffects.targetShare,
     );
+    const partyListVotes =
+      this.unionSwingTransformer.applyUniformSwingToListVotes(
+        appliedEffects.baseShare,
+        appliedEffects.targetShare,
+        state.partyListVotes,
+      );
 
-    return { candidateListData, partyListData };
+    return { candidateListData, partyListData, partyListVotes };
   }
 
   private applyShares(
@@ -115,6 +149,8 @@ export class ResultModifier {
       state.partyListData ?? [],
       appliedEffects.newVotes,
       appliedEffects.share,
+      true,
+      state.partyListVotes,
     );
 
     if (!result) {
@@ -125,6 +161,7 @@ export class ResultModifier {
     return {
       candidateListData: result.candidateList,
       partyListData: result.partyList,
+      partyListVotes: result.partyListVotes,
     };
   }
 
@@ -140,10 +177,12 @@ export class ResultModifier {
       state.candidateListData ?? [],
       state.partyListData ?? [],
       appliedEffects.target,
+      state.partyListVotes,
     );
     return {
       candidateListData: result.newCandidateListData,
       partyListData: result.newPartyListData,
+      partyListVotes: result.newPartyListVotes,
     };
   }
 

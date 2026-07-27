@@ -1,5 +1,11 @@
 import classNames from "classnames";
 import { useMemo, useState } from "react";
+import {
+  CampaignConfig,
+  CampaignState,
+  CandidateListData,
+  FinalResults,
+} from "@/shared/types";
 import { Badge } from "../../../Badge";
 import { SidebarPanel } from "../../../SidebarPanel";
 import { Text } from "../../../Text";
@@ -9,12 +15,6 @@ import {
   type VotePercentage,
 } from "../electionMap.utils";
 import { AdvancedProgressBar, ProgressBar } from "./ProgressBar";
-import {
-  CampaignConfig,
-  CampaignState,
-  CandidateListData,
-  FinalResults,
-} from "@/shared/types";
 
 interface DistrictDetailsProps {
   state: CampaignState | null;
@@ -81,7 +81,10 @@ interface DistrictCardProps {
 function DistrictCard({ district, config }: DistrictCardProps) {
   const [selectedParty, setSelectedParty] = useState<string | null>(null);
   const votePercentage = useMemo(() => {
-    const percentages = calculateVotePercentages(district.partok);
+    const percentages = calculateVotePercentages(
+      district.partok,
+      district.jeloltek,
+    );
 
     return Object.fromEntries(
       Object.entries(percentages ?? {})
@@ -194,7 +197,7 @@ function PartyDetails({
           className="size-[15px] rounded mr-2"
           style={{ backgroundColor: data.color }}
         />
-        <Text>{partyName}</Text>
+        <Text>{selectedParty === partyId ? data.candidates : partyName}</Text>
       </div>
       <div className="w-[250px] flex items-center">
         <ProgressBar

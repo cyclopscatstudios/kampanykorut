@@ -36,11 +36,17 @@
   "sideSelector": {
     "party": {
       "label": "Select a party",
-      "dropdown": "Selected party"
+      "dropdown": "Selected party...",
+      "emptyState": "Select a party from the dropdown list — its logo and description will be displayed here."
     },
     "candidate": {
       "label": "Select a candidate",
-      "dropdown": "Selected candidate"
+      "dropdown": "Select candidate...",
+      "emptyState": "First select a party, then a candidate."
+    },
+    "badgeDisplay": {
+      "label": "Available badges",
+      "tooltipContent": "Badges for achievements available in this campaign"
     }
   },
   "endResult": {
@@ -48,12 +54,14 @@
       "summary": "Summary",
       "electionMap": "Election map",
       "statistics": "Statistics",
-      "history": "History"
+      "history": "History",
+      "achivements": "Achivements"
     },
     "statistics": {
       "menuBar": {
         "overview": "Overview",
-        "districtDetails": "District details"
+        "districtDetails": "District details",
+        "turnoutDetails": "Turnout details"
       },
       "overview": {
         "constituencySeats": "Constituency seats",
@@ -63,6 +71,11 @@
         "biggestDefeats": "Biggest defeats",
         "closestDistricts": "Closest districts",
         "supportTrendLabel": "Trends in support"
+      },
+      "turnoutDetails": {
+        "nationalTurnout": "National turnout",
+        "votesCast": "Votes cast",
+        "turnoutChange": "Change from previous election"
       }
     },
     "turnHistory": {
@@ -83,6 +96,10 @@
         "menuLabel": "Pollsters",
         "average": "Polling average"
       }
+    },
+    "kampanykorut": {
+      "campaignSelector": "Campaign selector",
+      "restart": "Restart"
     }
   },
   "emptySlot": {
@@ -96,6 +113,13 @@
   "exitDialog": {
     "title": "Attention!",
     "description": "Are you sure you want to exit the game?"
+  },
+  "restartDialog": {
+    "description": "Are you sure you want to restart the current campaign?"
+  },
+  "campaignSelectorDialog": {
+    "title": "Campaign selector",
+    "description": "Are you sure you want to return to the campaign selector?"
   },
   "bottomBar": {
     "visitDistrict": "Visit district",
@@ -133,5 +157,20 @@
   },
   "toaster": {
     "settingsUpdated": "Settings updated successfully!"
+  },
+  "voteCountingScreen": {
+    "steps": {
+      "pollingStations": "POLLING STATIONS REPORTING",
+      "votesCollected": "VOTES COLLECTED",
+      "votesCounted": "VOTES COUNTED",
+      "dataVerification": "DATA VERIFICATION",
+      "resultsCompiled": "RESULTS COMPILED"
+    },
+    "screen": {
+      "voteCounting": "VOTE COUNTING",
+      "votesCounted": "Votes are being counted...",
+      "processedVotes": "Processed Votes",
+      "pleaseWait": "Please wait"
+    }
   }
 }

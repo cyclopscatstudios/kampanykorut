@@ -1,5 +1,5 @@
 import { singleton } from "tsyringe";
-import { createLogger } from "../logger/logger";
+import { createLogger } from "@/shared/logger";
 import { CandidateListData, VoterEnvironmentConfig } from "@/shared/types";
 
 type VoterBase = {

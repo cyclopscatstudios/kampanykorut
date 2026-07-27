@@ -1,13 +1,13 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import { noop } from "../../../../dev/FunctionUtils";
-import { CommonWrapper } from "../../CommonWrapper";
-import { Heading } from "../../Heading";
-import { RadioGroup } from "../../RadioGroup";
-import { Text } from "../../Text";
 import { type HistoryItem } from "@/logic/application";
 import { CampaignConfig } from "@/shared/types";
+import { noop } from "../../../../logic/application/utils";
+import { CommonWrapper } from "../../CommonWrapper";
+import { Heading } from "../../Heading";
+import { Text } from "../../Text";
+import { AnswerRow } from "../QuestionCard";
 
 interface TurnHistoryProps {
   history: HistoryItem[] | null;
@@ -149,21 +149,14 @@ function QuestionCardItem({
         <Heading level={4} color="lightBlue" className="mb-4">
           {question?.question}
         </Heading>
-        <ul>
-          <RadioGroup
-            name="possibleAnswer"
-            value={
-              question?.possibleAnswers.find((a) => a.id === item?.answerId)
-                ?.id || ""
-            }
-            onChange={noop}
-            options={question?.possibleAnswers.map((q) => ({
-              value: q.id,
-              label: q.label,
-              disabled: q.id !== item?.answerId,
-            }))}
+        {question?.possibleAnswers.map((a, index) => (
+          <AnswerRow
+            answer={a}
+            index={index}
+            isSelected={a.id === item?.answerId}
+            onClick={noop}
           />
-        </ul>
+        ))}
       </div>
     </CommonWrapper>
   );

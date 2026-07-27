@@ -1,19 +1,19 @@
 import { injectable } from "tsyringe";
-import { createLogger } from "../logger/logger";
+import { ConfigEngine, StateEngine, StateHandler } from "@/logic/application";
+import { createLogger } from "@/shared/logger";
+import {
+  AppliedEffect,
+  CandidateListData,
+  ConditionalRawEffect,
+  District,
+  DistrictTarget,
+  DistrictTargetGroup,
+  EffectType,
+  PartyShareParams,
+  RawEffect,
+} from "@/shared/types";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
 import { MandateCalculator } from "./MandateCalculator";
-import { ConfigEngine, StateEngine, StateHandler } from "@/logic/application";
-import {
-  RawEffect,
-  ConditionalRawEffect,
-  EffectType,
-  CandidateListData,
-  AppliedEffect,
-  DistrictTarget,
-  PartyShareParams,
-  DistrictTargetGroup,
-  District,
-} from "@/shared/types";
 
 const log = createLogger("EffectApplier");
 
@@ -222,8 +222,7 @@ export class EffectApplier {
       this.districtGroupEngine
         .getDistrictTargetByGroupIds([t.groupId])
         .flatMap((d) =>
-          // TODO fix this any type
-          d.districts.map((district: any) => ({
+          d.districts.map((district) => ({
             megyekod: district.megyekod,
             oevk: district.oevk,
             amount: t.amount,
@@ -258,7 +257,7 @@ export class EffectApplier {
       delta[party] = this.DEFAULT_MOTIVATION_DELTA + percentage;
 
       if (delta[party] > 100) {
-        log.error(`delta number for ${party} cannot be bigger then 100`);
+        log.warn(`delta number for ${party} cannot be bigger then 100`);
         delta[party] = 100;
       }
     }

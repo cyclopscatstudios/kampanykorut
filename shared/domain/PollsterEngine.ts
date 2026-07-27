@@ -1,9 +1,9 @@
 import { injectable } from "tsyringe";
+import { createLogger } from "@/shared/logger";
 import { CampaignState, ElectionConfig } from "../types";
 import { Pollster } from "../types/pollsters";
 import { defaultPollsters as DEFAULT_POLLSTERS } from "./DefaultPollsters";
 import { MandateCalculator } from "./MandateCalculator";
-import { createLogger } from "@/shared/logger";
 
 const log = createLogger("PollsterEngine");
 
@@ -18,21 +18,30 @@ export class PollsterEngine {
   }
 
   configure(customPollsters?: Pollster[]) {
+    const pollsters = new Map(DEFAULT_POLLSTERS.map((p) => [p.id, p]));
+
     if (customPollsters) {
       log.debug("configuring PollsterEngine with custom pollsters", {
         customPollsters,
       });
-      this.pollsters = [...DEFAULT_POLLSTERS, ...customPollsters];
-    } else {
-      this.pollsters = [...DEFAULT_POLLSTERS];
+
+      for (const pollster of customPollsters) {
+        if (pollster.exclude) {
+          pollsters.delete(pollster.id);
+        } else {
+          pollsters.set(pollster.id, pollster);
+        }
+      }
     }
+
+    this.pollsters = [...pollsters.values()];
   }
 
   getPollsters() {
     return this.pollsters;
   }
 
-  getPolls(state: CampaignState, electionConfig: ElectionConfig) {
+  getPolls(state: CampaignState, electionConfig?: ElectionConfig) {
     const actualResults = this.mandateCalculator.calculate(
       state.candidateListData,
       state.partyListData,
@@ -46,20 +55,27 @@ export class PollsterEngine {
       return;
     }
 
-    const partyIds = Object.keys(percentages).filter((k) => k !== "_total");
+    const partyIds = Object.keys(percentages.candidateListResults).filter(
+      (k) => k !== "_total",
+    );
     const differences: Record<string, number> = {};
 
     for (const partyId of partyIds) {
       const pollsterDiffs = this.pollsters.map((pollster) => {
         const estimate = this.normalizeResults(
-          this.applyMarginErrors(percentages, pollster),
+          this.applyMarginErrors(percentages.candidateListResults, pollster),
         );
-        return (estimate[partyId] ?? 0) - (percentages[partyId] ?? 0);
+        return (
+          (estimate?.[partyId] ?? 0) -
+          (percentages.candidateListResults[partyId] ?? 0)
+        );
       });
       differences[partyId] =
         (pollsterDiffs.reduce((acc, d) => acc + d, 0) / pollsterDiffs.length) *
         100;
     }
+
+    log.info("PollsterEngine provided poll results", { differences });
 
     return differences;
   }
@@ -70,7 +86,9 @@ export class PollsterEngine {
     electionConfig: ElectionConfig,
   ) {
     if (pollsterId === AGGREGATE_POLLSTER_ID) {
-      return this.getPolls(state, electionConfig);
+      const differences = this.getPolls(state, electionConfig);
+      if (!differences) return undefined;
+      return { id: pollsterId, differences };
     }
     const actualResults = this.mandateCalculator.calculate(
       state.candidateListData,
@@ -88,7 +106,7 @@ export class PollsterEngine {
       return;
     }
     const pollEstimate = this.normalizeResults(
-      this.applyMarginErrors(percentages, pollster),
+      this.applyMarginErrors(percentages.candidateListResults, pollster),
     );
     const differences: Record<string, number> = {};
     for (const partyId in pollEstimate) {
@@ -96,14 +114,20 @@ export class PollsterEngine {
         continue;
       }
       differences[partyId] =
-        (pollEstimate[partyId] - (percentages[partyId] ?? 0)) * 100;
+        (pollEstimate[partyId] -
+          (percentages.candidateListResults[partyId] ?? 0)) *
+        100;
     }
-    return differences;
+    return {
+      id: pollsterId,
+      differences,
+    };
   }
 
-  private normalizeResults(
-    results: Record<string, number>,
-  ): Record<string, number> {
+  private normalizeResults(results?: Record<string, number>) {
+    if (!results) {
+      return;
+    }
     const normalized = { ...results };
     const total = Object.values(normalized).reduce((sum, v) => sum + v, 0);
     if (total > 0) {
@@ -126,10 +150,13 @@ export class PollsterEngine {
     pollster: Pollster,
   ) {
     const bias = this.getBiasResults(pollster);
+    if (!pollster.errorMargin) {
+      return;
+    }
     const globalError =
       this.getRandomMargin(
-        -pollster.errorMargin.max,
-        pollster.errorMargin.max,
+        -pollster.errorMargin?.max,
+        pollster.errorMargin?.max,
       ) / 100;
     const results: Record<string, number> = {};
 
