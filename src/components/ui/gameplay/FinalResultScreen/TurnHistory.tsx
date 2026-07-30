@@ -12,9 +12,16 @@ import { AnswerRow } from "../QuestionCard";
 interface TurnHistoryProps {
   history: HistoryItem[] | null;
   config: CampaignConfig;
+  playerSideId?: string;
+  playerCandidateId?: string;
 }
 
-export function TurnHistory({ history, config }: TurnHistoryProps) {
+export function TurnHistory({
+  history,
+  config,
+  playerSideId,
+  playerCandidateId,
+}: TurnHistoryProps) {
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<
     HistoryItem | undefined
   >(undefined);
@@ -28,11 +35,18 @@ export function TurnHistory({ history, config }: TurnHistoryProps) {
       <HistorySidebar
         history={history}
         config={config}
+        playerSideId={playerSideId}
+        playerCandidateId={playerCandidateId}
         selectedHistoryItem={selectedHistoryItem}
         setSelectedHistoryItem={setSelectedHistoryItem}
       />
       {selectedHistoryItem && (
-        <QuestionCardItem item={selectedHistoryItem} config={config} />
+        <QuestionCardItem
+          item={selectedHistoryItem}
+          config={config}
+          playerSideId={playerSideId}
+          playerCandidateId={playerCandidateId}
+        />
       )}
     </div>
   );
@@ -41,6 +55,8 @@ export function TurnHistory({ history, config }: TurnHistoryProps) {
 function HistorySidebar({
   history,
   config,
+  playerSideId,
+  playerCandidateId,
   selectedHistoryItem,
   setSelectedHistoryItem,
 }: TurnHistoryProps & {
@@ -70,6 +86,8 @@ function HistorySidebar({
             key={item.questionId + item.answerId + index}
             item={item}
             config={config}
+            playerSideId={playerSideId}
+            playerCandidateId={playerCandidateId}
             selectedHistoryItem={selectedHistoryItem}
             setSelectedHistoryItem={setSelectedHistoryItem}
           />
@@ -82,15 +100,24 @@ function HistorySidebar({
 function TurnHistoryItem({
   item,
   config,
+  playerSideId,
+  playerCandidateId,
   selectedHistoryItem,
   setSelectedHistoryItem,
 }: {
   item: HistoryItem;
   config: CampaignConfig;
+  playerSideId?: string;
+  playerCandidateId?: string;
   selectedHistoryItem: HistoryItem | undefined;
   setSelectedHistoryItem: (item: HistoryItem | undefined) => void;
 }) {
-  const question = getQuestionById(item.questionId, config);
+  const question = getQuestionById(
+    item.questionId,
+    config,
+    playerSideId,
+    playerCandidateId,
+  );
   return (
     <div
       className={classNames(
@@ -126,18 +153,38 @@ function TurnHistoryItem({
   );
 }
 
-function getQuestionById(questionId: string, config: CampaignConfig) {
-  return config.questions.find((q) => q.id === questionId);
+function getQuestionById(
+  questionId: string,
+  config: CampaignConfig,
+  playerSideId?: string,
+  playerCandidateId?: string,
+) {
+  const questions =
+    playerSideId && playerCandidateId
+      ? config.playableSides?.[playerSideId]?.[playerCandidateId]?.questions
+      : Object.values(config.playableSides ?? {}).flatMap((side) =>
+          Object.values(side).flatMap((c) => c.questions),
+        );
+  return questions?.find((q) => q.id === questionId);
 }
 
 function QuestionCardItem({
   item,
   config,
+  playerSideId,
+  playerCandidateId,
 }: {
   item: HistoryItem | null;
   config: CampaignConfig;
+  playerSideId?: string;
+  playerCandidateId?: string;
 }) {
-  const question = getQuestionById(item?.questionId || "", config);
+  const question = getQuestionById(
+    item?.questionId || "",
+    config,
+    playerSideId,
+    playerCandidateId,
+  );
 
   if (!question) {
     return null;

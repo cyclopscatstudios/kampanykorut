@@ -20,12 +20,19 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     current.totalSeats > max.totalSeats ? current : max,
   );
 
+  const playerSideId = campaignState?.playerSide?.partyId;
+  const playerCandidateId = campaignState?.playerSide?.candidateId;
+  const sideEndResults =
+    playerSideId && playerCandidateId
+      ? currentConfig?.playableSides?.[playerSideId]?.[playerCandidateId]
+          ?.endResults
+      : undefined;
+
   const didPlayerWin =
-    winner.party === campaignState?.playerSide?.partyId &&
-    winner.totalSeats >= MIN_SEATS_TO_WIN;
+    winner.party === playerSideId && winner.totalSeats >= MIN_SEATS_TO_WIN;
   const assets = didPlayerWin
-    ? currentConfig?.endResults.playerSideVictory
-    : currentConfig?.endResults.playerSideDefeat;
+    ? sideEndResults?.playerSideVictory
+    : sideEndResults?.playerSideDefeat;
 
   const parties = useMemo(
     () =>

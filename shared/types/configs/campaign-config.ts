@@ -10,18 +10,24 @@ import { Strategy } from "../strategy";
 import { ElectionConfig } from "./election-config";
 import { VoterEnvironmentConfig } from "./voter-environment-config";
 
+export interface CandidateConfig {
+  questions: RawQuestion[];
+  answerEffect: RawAnsweEffectProps[];
+  campaignStrategies?: Strategy[];
+  advisorFeedback?: AdvisorFeedback[];
+  advisorFeedbackAssets?: AdvisorFeedbackAssets;
+  endResults?: EndResultProps;
+}
+
+export type PlayableSideConfig = Record<string, CandidateConfig>;
+
 export interface CampaignConfig {
   electionConfig: ElectionConfig;
   voterEnvironmentConfig: VoterEnvironmentConfig;
   candidateListData: CandidateListData[];
   partyListData?: PartyListData[];
   districts: DistrictPoligon[];
-  questions: RawQuestion[];
-  answerEffect: RawAnsweEffectProps[];
-  endResults: EndResultProps;
-  advisorFeedback?: AdvisorFeedback[];
-  advisorFeedbackAssets?: AdvisorFeedbackAssets;
   customGroups?: DistrictGroup[];
   customPollsters?: Pollster[];
-  campaignStrategies?: Strategy[];
+  playableSides?: Record<string, PlayableSideConfig>;
 }

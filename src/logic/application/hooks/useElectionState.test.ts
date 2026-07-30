@@ -50,20 +50,26 @@ const mockConfig: CampaignConfig = {
     },
   ],
   districts: [],
-  questions: [],
-  answerEffect: [],
-  endResults: {
-    playerSideVictory: {
-      imageUri: "",
-      title: "Win",
-      subtitle: "",
-      description: "",
-    },
-    playerSideDefeat: {
-      imageUri: "",
-      title: "Loss",
-      subtitle: "",
-      description: "",
+  playableSides: {
+    mock_side: {
+      mock_candidate: {
+        questions: [],
+        answerEffect: [],
+        endResults: {
+          playerSideVictory: {
+            imageUri: "",
+            title: "Win",
+            subtitle: "",
+            description: "",
+          },
+          playerSideDefeat: {
+            imageUri: "",
+            title: "Loss",
+            subtitle: "",
+            description: "",
+          },
+        },
+      },
     },
   },
 };
@@ -80,37 +86,43 @@ const MOCK_CAMPAIGN_WITH_Q = "mock_campaign_with_q";
 
 const mockConfigWithQuestion: CampaignConfig = {
   ...mockConfig,
-  questions: [
-    {
-      id: "q1",
-      title: "Test Q",
-      question: "Test?",
-      possibleAnswers: [
-        { id: "a1", label: "Answer 1" },
-        { id: "a2", label: "Answer 2" },
-      ],
+  playableSides: {
+    mock_side: {
+      mock_candidate: {
+        questions: [
+          {
+            id: "q1",
+            title: "Test Q",
+            question: "Test?",
+            possibleAnswers: [
+              { id: "a1", label: "Answer 1" },
+              { id: "a2", label: "Answer 2" },
+            ],
+          },
+        ],
+        answerEffect: [
+          {
+            id: "q1",
+            answers: [
+              {
+                id: "a1",
+                effects: [
+                  {
+                    type: EffectType.UniformSwing,
+                    params: { party_a: 2, party_b: -2 },
+                  },
+                ],
+              },
+              {
+                id: "a2",
+                effects: [],
+              },
+            ],
+          },
+        ],
+      },
     },
-  ],
-  answerEffect: [
-    {
-      id: "q1",
-      answers: [
-        {
-          id: "a1",
-          effects: [
-            {
-              type: EffectType.UniformSwing,
-              params: { party_a: 2, party_b: -2 },
-            },
-          ],
-        },
-        {
-          id: "a2",
-          effects: [],
-        },
-      ],
-    },
-  ],
+  },
 };
 
 describe("useElectionState", () => {

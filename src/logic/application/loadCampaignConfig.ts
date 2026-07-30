@@ -1,4 +1,10 @@
-import { CampaignConfig, CampaignManifest } from "@/shared/types";
+import {
+  CampaignConfig,
+  CampaignManifest,
+  CandidateConfig,
+  CandidateManifest,
+  PlayableSideConfig,
+} from "@/shared/types";
 import { fetchCampaignFile } from "./fetchJSON";
 import { getCampaignHeaderById } from "./getCampaignHeaderById";
 
@@ -17,6 +23,76 @@ export function loadCampaignConfig(
   return promise;
 }
 
+async function loadCandidateConfig(
+  route: string,
+  paths: CandidateManifest,
+): Promise<CandidateConfig> {
+  const [
+    questions,
+    answerEffect,
+    campaignStrategies,
+    advisorFeedback,
+    advisorFeedbackAssets,
+    endResults,
+  ] = await Promise.all([
+    paths.questions
+      ? fetchCampaignFile<CandidateConfig["questions"]>(route, paths.questions)
+      : Promise.resolve([]),
+    paths.answerEffect
+      ? fetchCampaignFile<CandidateConfig["answerEffect"]>(
+          route,
+          paths.answerEffect,
+        )
+      : Promise.resolve([]),
+    paths.campaignStrategies
+      ? fetchCampaignFile<CandidateConfig["campaignStrategies"]>(
+          route,
+          paths.campaignStrategies,
+        )
+      : Promise.resolve(undefined),
+    paths.advisorFeedback
+      ? fetchCampaignFile<CandidateConfig["advisorFeedback"]>(
+          route,
+          paths.advisorFeedback,
+        )
+      : Promise.resolve(undefined),
+    paths.advisorFeedbackAssets
+      ? fetchCampaignFile<CandidateConfig["advisorFeedbackAssets"]>(
+          route,
+          paths.advisorFeedbackAssets,
+        )
+      : Promise.resolve(undefined),
+    paths.endResults
+      ? fetchCampaignFile<CandidateConfig["endResults"]>(
+          route,
+          paths.endResults,
+        )
+      : Promise.resolve(undefined),
+  ]);
+
+  return {
+    questions,
+    answerEffect,
+    campaignStrategies,
+    advisorFeedback,
+    advisorFeedbackAssets,
+    endResults,
+  };
+}
+
+async function loadSideConfig(
+  route: string,
+  candidatePaths: Record<string, CandidateManifest>,
+): Promise<PlayableSideConfig> {
+  const result: PlayableSideConfig = {};
+  await Promise.all(
+    Object.entries(candidatePaths).map(async ([candidateId, paths]) => {
+      result[candidateId] = await loadCandidateConfig(route, paths);
+    }),
+  );
+  return result;
+}
+
 async function fetchCampaignConfig(
   campaignId: string,
 ): Promise<CampaignConfig> {
@@ -30,25 +106,60 @@ async function fetchCampaignConfig(
     "manifest.json",
   );
 
-  const entries = await Promise.all(
-    (Object.entries(manifest) as [keyof CampaignManifest, string][]).map(
-      async ([key, relativePath]) =>
-        [
-          key,
-          await fetchCampaignFile<unknown>(header.route, relativePath),
-        ] as const,
-    ),
+  const commonKeys = [
+    "electionConfig",
+    "voterEnvironmentConfig",
+    "candidateListData",
+    "districts",
+    "partyListData",
+    "customGroups",
+    "customPollsters",
+  ] as const;
+
+  const commonEntries = await Promise.all(
+    commonKeys
+      .filter((key) => manifest[key] !== undefined)
+      .map(
+        async (key) =>
+          [
+            key,
+            await fetchCampaignFile<unknown>(
+              header.route,
+              manifest[key] as string,
+            ),
+          ] as const,
+      ),
   );
 
-  const data = Object.fromEntries(entries) as unknown as CampaignConfig;
+  const commonData = Object.fromEntries(commonEntries) as Omit<
+    CampaignConfig,
+    "playableSides" | "voterEnvironmentConfig"
+  > & {
+    voterEnvironmentConfig: CampaignConfig["voterEnvironmentConfig"];
+    candidateListData: CampaignConfig["candidateListData"];
+  };
+
+  const playableSides: Record<string, PlayableSideConfig> = {};
+  if (manifest.playableSides) {
+    await Promise.all(
+      Object.entries(manifest.playableSides).map(
+        async ([partyId, candidatePaths]) => {
+          playableSides[partyId] = await loadSideConfig(
+            header.route,
+            candidatePaths,
+          );
+        },
+      ),
+    );
+  }
 
   return {
-    ...data,
-    questions: data.questions ?? [],
-    answerEffect: data.answerEffect ?? [],
+    ...commonData,
     voterEnvironmentConfig: {
-      ...data.voterEnvironmentConfig,
-      listData: data.candidateListData,
+      ...commonData.voterEnvironmentConfig,
+      listData: commonData.candidateListData,
     },
+    playableSides:
+      Object.keys(playableSides).length > 0 ? playableSides : undefined,
   };
 }

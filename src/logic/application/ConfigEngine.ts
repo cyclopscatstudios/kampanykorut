@@ -82,7 +82,13 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
     config: CampaignConfig,
     history: HistoryItem[],
   ) {
-    const strategies = config.campaignStrategies?.filter(
+    const sideStrategies =
+      state.playerSide?.partyId && state.playerSide?.candidateId
+        ? config.playableSides?.[state.playerSide.partyId]?.[
+            state.playerSide.candidateId
+          ]?.campaignStrategies
+        : undefined;
+    const strategies = sideStrategies?.filter(
       (s) =>
         s.target.party === state.playerSide?.partyId &&
         s.target.candidate === state.playerSide?.candidateId,

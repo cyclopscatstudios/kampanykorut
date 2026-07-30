@@ -74,9 +74,13 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
         onClose={handleAdvisorClose}
         asset={{
           primaryAdvisorImageUri:
-            config.advisorFeedbackAssets?.primaryAdvisorImageUri ?? "",
+            config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
+              state.playerSide?.candidateId ?? ""
+            ]?.advisorFeedbackAssets?.primaryAdvisorImageUri ?? "",
           secondaryAdvisorImageUri:
-            config.advisorFeedbackAssets?.secondaryAdvisorImageUri ?? "",
+            config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
+              state.playerSide?.candidateId ?? ""
+            ]?.advisorFeedbackAssets?.secondaryAdvisorImageUri ?? "",
         }}
       />
       <GameView

@@ -273,7 +273,9 @@ function getBadgesForTarget(
   party?: PlayableSide,
   candidate?: Candidate,
 ) {
-  const strategies = config.campaignStrategies?.filter(
+  const strategies = config.playableSides?.[party?.id ?? ""]?.[
+    candidate?.id ?? ""
+  ]?.campaignStrategies?.filter(
     (s) => s.target.party === party?.id && s.target.candidate === candidate?.id,
   );
   return strategies;
