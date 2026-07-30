@@ -66,22 +66,22 @@
       "candidateAssets": [
         {
           "id": "marki_zay_peter",
-          "portrait": "/images/2022/mzp-portrait.png",
-          "slogan": "/images/2022/ellenzeki_osszefogas_2022_kampany_szoveg.png"
+          "portrait": "/images/2022_beke-vs-remeny/mzp-portrait.png",
+          "slogan": "/images/2022_beke-vs-remeny/ellenzeki_osszefogas_2022_kampany_szoveg.png"
         }
       ],
-      "party_logo": "/images/2022/ellenzeki-osszefogas.png"
+      "party_logo": "/images/2022_beke-vs-remeny/ellenzeki-osszefogas.png"
     },
     {
       "id": "fidesz",
       "candidateAssets": [
         {
           "id": "orban_viktor",
-          "portrait": "/images/2022/ov-portrait.png",
-          "slogan": "/images/2022/fidesz_2022_kampany_szoveg.png"
+          "portrait": "/images/2022_beke-vs-remeny/ov-portrait.png",
+          "slogan": "/images/2022_beke-vs-remeny/fidesz_2022_kampany_szoveg.png"
         }
       ],
-      "party_logo": "/images/2022/fidesz.png"
+      "party_logo": "/images/2022_beke-vs-remeny/fidesz.png"
     }
   ]
 }

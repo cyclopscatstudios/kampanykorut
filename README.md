@@ -149,22 +149,11 @@ public/
 
 Game data lives under two top-level folders in `public/`:
 
-- 🗳️ `public/campaigns/{year}/` - election-year data (district results, configuration) plus, per party, the campaign content itself (questions, effects, strategies, advisor feedback) — see [CAMPAIGN.md](CAMPAIGN.md) for the full file format documentation
+- 🗳️ `public/campaigns/{year_title}/` - election-year data (district results, configuration) plus, per party, the campaign content itself (questions, effects, strategies, advisor feedback)
 - 🌐 `public/assets/jsons/` - global data shared across every campaign
+- 🖼️ `public/assets/images/{year_title}` - images releated to the campaigns
 
-### Election Configuration
-
-Located in `public/campaigns/{year}/`:
-
-- 🗺️ `oevk_{year}.json` - District boundary and electoral data
-- ⚙️ `election_config.json` - Election-specific rules and parameters
-- 🧩 `custom_groups.json` - Campaign-specific district groups (see [CAMPAIGN.md](CAMPAIGN.md))
-- 📊 `custom_pollsters.json` - Optional campaign-specific pollster definitions (fed into `PollsterEngine`)
-
-Located in `public/assets/jsons/`:
-
-- 🎮 `game_modes.json` - Available campaign scenarios. Each entry may set `isPublished: false` to hide it from the campaign selector (see [Debug Mode](#debug-mode) below).
-- 💬 `quotes.json` - Narrative quotes shown during gameplay
+### See [CAMPAIGN.md](CAMPAIGN.md) for the full file format documentation
 
 ### Internationalization
 
@@ -178,7 +167,7 @@ Supports multiple languages, located in `src/logic/langs/`:
 Campaigns with `isPublished: false` in `game_modes.json` are hidden from the campaign selector by default. Toggle visibility at runtime from the browser console:
 
 ```js
-window.debugMode.toggle();
+window.debugMode.enable();
 ```
 
 ## ⚡ Performance Considerations

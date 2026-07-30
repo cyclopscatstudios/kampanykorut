@@ -48,9 +48,9 @@
       }
     ],
     "asset": {
-      "badge": "/images/2022/badge-partok-felett.svg"
+      "badge": "/images/2022_beke-vs-remeny/badge-partok-felett.svg"
     }
-  },
+  }, 
   {
     "id": "strategy-2",
     "label": "Az ellenzék vezére",
@@ -75,7 +75,7 @@
       }
     ],
     "asset": {
-      "badge": "/images/2022/badge-ellenzek-vezere.svg"
+      "badge": "/images/2022_beke-vs-remeny/badge-ellenzek-vezere.svg"
     }
   }
 ]

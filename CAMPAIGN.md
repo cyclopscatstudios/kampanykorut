@@ -1,6 +1,6 @@
 ## Campaign Data (JSON)
 
-Each playable campaign lives under `public/campaigns/{year}/{partyId}/` (e.g. `public/campaigns/2022/ellenzeki_osszefogas/`) and is driven turn by turn by a pair of files: a **questions** file and a matching **answer effects** file. This section documents both. Other files in the same folder (`{year}_campaign_strategies.json`, `advisor_feedback.json`, …) follow a similar shape and will be documented separately.
+Each playable campaign lives under `public/campaigns/{year_title}/{partyId}/` (e.g. `public/campaigns/2022_beke-vs-remeny/ellenzeki_osszefogas/`) and is driven turn by turn by a pair of files: a **questions** file and a matching **answer effects** file. This section documents both. Other files in the same folder (`{year}_campaign_strategies.json`, `advisor_feedback.json`, …) follow a similar shape and will be documented separately.
 
 ### `{year}_questions.json`
 
