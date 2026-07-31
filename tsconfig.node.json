@@ -28,7 +28,8 @@
       "@/logic/types": ["./src/logic/types"],
       "@/shared/logger": ["./shared/logger"],
       "@/shared/domain": ["./shared/domain"],
-      "@/shared/types": ["./shared/types"]
+      "@/shared/types": ["./shared/types"],
+      "@/shared/ui": ["./shared/ui"]
     }
   },
   "include": ["vite.config.ts", "playwright.config.ts", "playwright/**/*.ts"]

@@ -69,6 +69,7 @@ export default defineConfig({
       "@/shared/logger": path.resolve(__dirname, "shared/logger"),
       "@/shared/domain": path.resolve(__dirname, "shared/domain"),
       "@/shared/types": path.resolve(__dirname, "shared/types"),
+      "@/shared/ui": path.resolve(__dirname, "shared/ui"),
     },
   },
 });

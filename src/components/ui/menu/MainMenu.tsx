@@ -5,10 +5,10 @@ import { buildInfo } from "../../../buildInfo";
 import { useTranslateLang } from "../../../logic/application/hooks/useTranslateLang";
 import { BugReporterButton } from "../gameplay/BugReporter/BugReporterButton";
 import { BugReporterModal } from "../gameplay/BugReporter/BugReporterModal";
-import { MenuList } from "../MenuList";
+import { MenuList } from "../../../../shared/ui/menu/MenuList";
 import { Text } from "../Text";
 import { MenuItemId } from "./menu.types";
-import { MenuLayout } from "./MenuLayout";
+import { MenuLayout } from "../../../../shared/ui/menu/MenuLayout";
 
 export function MainMenu() {
   const [openBugReporter, setOpenBugReporter] = useState(false);

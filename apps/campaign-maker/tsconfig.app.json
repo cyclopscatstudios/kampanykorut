@@ -20,7 +20,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "paths": {
+      "@/shared/ui": ["../../shared/ui"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "../../shared/ui"]
 }

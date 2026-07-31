@@ -12,6 +12,7 @@ export default defineConfig({
       "@/shared/logger": path.resolve(root, "shared/logger"),
       "@/shared/domain": path.resolve(root, "shared/domain"),
       "@/shared/types": path.resolve(root, "shared/types"),
+      "@/shared/ui": path.resolve(root, "shared/ui")
     },
   },
 });

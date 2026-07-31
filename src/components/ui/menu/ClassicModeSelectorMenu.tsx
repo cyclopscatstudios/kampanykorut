@@ -14,7 +14,7 @@ import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
-import { MenuLayout } from "./MenuLayout";
+import { MenuLayout } from "../../../../shared/ui/menu/MenuLayout";
 
 export function ClassicModeSelectorMenu() {
   const campaigns = useGetCampaigns();
