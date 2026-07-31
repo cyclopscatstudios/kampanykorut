@@ -6,8 +6,10 @@
   "thresholdPercent": 5,
   "districtBoost": true,
   "baseResults": {
-    "ellenzeki_osszefogas": 3,
-    "fidesz": -3
+    "ellenzeki_osszefogas": {
+      "ellenzeki_osszefogas": 3,
+      "fidesz": -3
+    }
   },
   "parties": [
     { "id": "fidesz", "name": "Fidesz–KDNP", "color": "#F28E2B" },

@@ -45,6 +45,7 @@ export class CampaignEngine {
     campaignId: string,
     savedState: CampaignState | null,
     electionConfig?: ElectionConfig,
+    palyerSideId?: string
   ): CampaignState {
     if (
       savedState &&
@@ -64,8 +65,9 @@ export class CampaignEngine {
     let candidateListData = candidateData;
     let partyListData = partyData;
     let partyListVotes = electionConfig?.partyListVotes;
+    const id = palyerSideId ?? "";
 
-    const baseResults = electionConfig?.baseResults;
+    const baseResults = electionConfig?.baseResults?.[id];
 
     if (baseResults && !savedState?.isBaseResultsAlreadyApplied) {
       const baseApplied = this.applyBaseResults(

@@ -7,7 +7,7 @@ export interface ElectionConfig {
   allSeats: number;
   thresholdPercent: number;
   districtBoost?: boolean;
-  baseResults?: Record<string, number>;
+  baseResults?: Record<string, Record<string, number>>;
   parties: RawParty[];
   playableSides: PlayableSide[];
   electionAssets: ElectionAsset[];
