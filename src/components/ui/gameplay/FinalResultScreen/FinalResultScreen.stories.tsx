@@ -108,20 +108,28 @@ const mockResults = {
 } as FinalResults;
 
 const mockConfig = {
-  endResults: {
-    playerSideVictory: {
-      imageUri: "",
-      title: "Győzelem!",
-      subtitle: "A kampányod sikerrel zárult.",
-      description:
-        "A választók bizalmat szavaztak neked, és pártod megnyerte a választásokat.",
-    },
-    playerSideDefeat: {
-      imageUri: "",
-      title: "Vereség",
-      subtitle: "A kampányod nem járt sikerrel.",
-      description:
-        "A választók nem szavaztak elég bizalmat, pártod ellenzékben marad.",
+  playableSides: {
+    ellenzeki_osszefogas: {
+      marki_zay_peter: {
+        questions: [],
+        answerEffect: [],
+        endResults: {
+          playerSideVictory: {
+            imageUri: "",
+            title: "Győzelem!",
+            subtitle: "A kampányod sikerrel zárult.",
+            description:
+              "A választók bizalmat szavaztak neked, és pártod megnyerte a választásokat.",
+          },
+          playerSideDefeat: {
+            imageUri: "",
+            title: "Vereség",
+            subtitle: "A kampányod nem járt sikerrel.",
+            description:
+              "A választók nem szavaztak elég bizalmat, pártod ellenzékben marad.",
+          },
+        },
+      },
     },
   },
 } as unknown as CampaignConfig;

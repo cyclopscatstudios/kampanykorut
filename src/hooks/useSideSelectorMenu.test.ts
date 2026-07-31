@@ -39,22 +39,6 @@ const mockConfig: CampaignConfig = {
   },
   candidateListData: [],
   districts: [],
-  questions: [],
-  answerEffect: [],
-  endResults: {
-    playerSideVictory: {
-      imageUri: "",
-      title: "",
-      subtitle: "",
-      description: "",
-    },
-    playerSideDefeat: {
-      imageUri: "",
-      title: "",
-      subtitle: "",
-      description: "",
-    },
-  },
 };
 
 const { mockNavigate } = vi.hoisted(() => ({

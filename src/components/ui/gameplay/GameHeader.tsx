@@ -136,7 +136,11 @@ export function GameHeader({
             {info === "turn" ? (
               <TurnBadge
                 currentTurn={state.turn}
-                turns={config.questions.length}
+                turns={
+                  config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
+                    state.playerSide?.candidateId ?? ""
+                  ]?.questions?.length ?? 0
+                }
               />
             ) : (
               <Text size="lg">{config.electionConfig.title}</Text>

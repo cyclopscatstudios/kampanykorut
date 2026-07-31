@@ -40,7 +40,12 @@ export function FinalResultScreen() {
             )}
             {activeScreen === "electionMap" && <ElectionMap config={config} />}
             {activeScreen === "history" && (
-              <TurnHistory history={history} config={config} />
+              <TurnHistory
+                history={history}
+                config={config}
+                playerSideId={state?.playerSide?.partyId}
+                playerCandidateId={state?.playerSide?.candidateId}
+              />
             )}
           </div>
         </div>

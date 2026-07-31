@@ -6,8 +6,10 @@
   "thresholdPercent": 5,
   "districtBoost": true,
   "baseResults": {
-    "ellenzeki_osszefogas": 3,
-    "fidesz": -3
+    "ellenzeki_osszefogas": {
+      "ellenzeki_osszefogas": 3,
+      "fidesz": -3
+    }
   },
   "parties": [
     { "id": "fidesz", "name": "Fidesz–KDNP", "color": "#F28E2B" },
@@ -55,7 +57,7 @@
       "playableCandidates": ["marki_zay_peter"]
     },
     {
-      "id": "fidesz_kdnp",
+      "id": "fidesz",
       "label": "Fidesz–KDNP",
       "mainCandidates": [{ "id": "orban_viktor", "label": "Orban Viktor" }]
     }
@@ -66,11 +68,22 @@
       "candidateAssets": [
         {
           "id": "marki_zay_peter",
-          "portrait": "/images/2022/mzp-portrait.png",
-          "slogan": "/images/2022/ellenzeki_osszefogas_2022_kampany_szoveg.png"
+          "portrait": "/images/2022_beke-vs-remeny/mzp-portrait.png",
+          "slogan": "/images/2022_beke-vs-remeny/ellenzeki_osszefogas_2022_kampany_szoveg.png"
         }
       ],
-      "party_logo": "/images/2022/ellenzeki-osszefogas.png"
+      "party_logo": "/images/2022_beke-vs-remeny/ellenzeki-osszefogas.png"
+    },
+    {
+      "id": "fidesz",
+      "candidateAssets": [
+        {
+          "id": "orban_viktor",
+          "portrait": "/images/2022_beke-vs-remeny/ov-portrait.png",
+          "slogan": "/images/2022_beke-vs-remeny/fidesz_2022_kampany_szoveg.png"
+        }
+      ],
+      "party_logo": "/images/2022_beke-vs-remeny/fidesz.png"
     }
   ]
 }

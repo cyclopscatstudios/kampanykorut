@@ -609,7 +609,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
             "listeners": [],
             "state": {
               "campaignConfig": {
-                "answerEffect": [],
                 "candidateListData": [
                   {
                     "jeloltek": {
@@ -665,10 +664,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
                   "parties": [],
                   "thresholdPercent": 5,
                 },
-                "endResults": {
-                  "playerSideDefeat": {},
-                  "playerSideVictory": {},
-                },
                 "partyListData": [
                   {
                     "megye": "BP",
@@ -692,7 +687,18 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
                     "telepules": "",
                   },
                 ],
-                "questions": [],
+                "playableSides": {
+                  "mock_side": {
+                    "mock_candidate": {
+                      "answerEffect": [],
+                      "endResults": {
+                        "playerSideDefeat": {},
+                        "playerSideVictory": {},
+                      },
+                      "questions": [],
+                    },
+                  },
+                },
                 "voterEnvironmentConfig": {
                   "eligibleVoters": 8215304,
                   "listData": [
@@ -761,7 +767,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
           "listeners": [],
           "state": {
             "campaignConfig": {
-              "answerEffect": [],
               "candidateListData": [
                 {
                   "jeloltek": {
@@ -817,10 +822,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
                 "parties": [],
                 "thresholdPercent": 5,
               },
-              "endResults": {
-                "playerSideDefeat": {},
-                "playerSideVictory": {},
-              },
               "partyListData": [
                 {
                   "megye": "BP",
@@ -844,7 +845,18 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
                   "telepules": "",
                 },
               ],
-              "questions": [],
+              "playableSides": {
+                "mock_side": {
+                  "mock_candidate": {
+                    "answerEffect": [],
+                    "endResults": {
+                      "playerSideDefeat": {},
+                      "playerSideVictory": {},
+                    },
+                    "questions": [],
+                  },
+                },
+              },
               "voterEnvironmentConfig": {
                 "eligibleVoters": 8215304,
                 "listData": [
@@ -1517,7 +1529,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
           "listeners": [],
           "state": {
             "campaignConfig": {
-              "answerEffect": [],
               "candidateListData": [
                 {
                   "jeloltek": {
@@ -1573,10 +1584,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
                 "parties": [],
                 "thresholdPercent": 5,
               },
-              "endResults": {
-                "playerSideDefeat": {},
-                "playerSideVictory": {},
-              },
               "partyListData": [
                 {
                   "megye": "BP",
@@ -1600,7 +1607,18 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
                   "telepules": "",
                 },
               ],
-              "questions": [],
+              "playableSides": {
+                "mock_side": {
+                  "mock_candidate": {
+                    "answerEffect": [],
+                    "endResults": {
+                      "playerSideDefeat": {},
+                      "playerSideVictory": {},
+                    },
+                    "questions": [],
+                  },
+                },
+              },
               "voterEnvironmentConfig": {
                 "eligibleVoters": 8215304,
                 "listData": [
@@ -1662,7 +1680,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
         "listeners": [],
         "state": {
           "campaignConfig": {
-            "answerEffect": [],
             "candidateListData": [
               {
                 "jeloltek": {
@@ -1718,10 +1735,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
               "parties": [],
               "thresholdPercent": 5,
             },
-            "endResults": {
-              "playerSideDefeat": {},
-              "playerSideVictory": {},
-            },
             "partyListData": [
               {
                 "megye": "BP",
@@ -1745,7 +1758,18 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
                 "telepules": "",
               },
             ],
-            "questions": [],
+            "playableSides": {
+              "mock_side": {
+                "mock_candidate": {
+                  "answerEffect": [],
+                  "endResults": {
+                    "playerSideDefeat": {},
+                    "playerSideVictory": {},
+                  },
+                  "questions": [],
+                },
+              },
+            },
             "voterEnvironmentConfig": {
               "eligibleVoters": 8215304,
               "listData": [
@@ -1991,7 +2015,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       "listeners": [],
       "state": {
         "campaignConfig": {
-          "answerEffect": [],
           "candidateListData": [
             {
               "jeloltek": {
@@ -2047,10 +2070,6 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
             "parties": [],
             "thresholdPercent": 5,
           },
-          "endResults": {
-            "playerSideDefeat": {},
-            "playerSideVictory": {},
-          },
           "partyListData": [
             {
               "megye": "BP",
@@ -2074,7 +2093,18 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
               "telepules": "",
             },
           ],
-          "questions": [],
+          "playableSides": {
+            "mock_side": {
+              "mock_candidate": {
+                "answerEffect": [],
+                "endResults": {
+                  "playerSideDefeat": {},
+                  "playerSideVictory": {},
+                },
+                "questions": [],
+              },
+            },
+          },
           "voterEnvironmentConfig": {
             "eligibleVoters": 8215304,
             "listData": [

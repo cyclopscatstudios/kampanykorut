@@ -33,7 +33,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <div className={`flex flex-col gap-1 ${wrapperClassName}`}>
         <label
-          data-testId={id}
+          data-testid={id}
           htmlFor={checkboxId}
           className={`flex items-center gap-2 cursor-pointer ${
             disabled ? "opacity-50 cursor-not-allowed" : ""

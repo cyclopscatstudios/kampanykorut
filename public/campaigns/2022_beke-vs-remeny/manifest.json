@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "metadata":  {
+    "version": "1.0.0",
+    "author": "Bekó Dániel",
+    "createdAt": "2026-07-31T07:00:00Z",
+    "updatedAt": "2026-07-31T07:00:00Z"
+  },
+  "files": {
+    "electionConfig": "election_config.json",
+    "voterEnvironmentConfig": "voter_environment_config.json",
+    "candidateListData": "oevk_constituency_results.json",
+    "partyListData": "oevk_list_results.json",
+    "districts": "oevk_2022.json",
+    "customGroups": "custom_groups.json",
+    "playableSides": {
+      "ellenzeki_osszefogas": {
+        "marki_zay_peter": {
+          "questions": "ellenzeki_osszefogas/marki_zay_peter/2022_questions.json",
+          "answerEffect": "ellenzeki_osszefogas/marki_zay_peter/2022_answer_effects.json",
+          "campaignStrategies": "ellenzeki_osszefogas/marki_zay_peter/2022_campaign_strategies.json",
+          "advisorFeedback": "ellenzeki_osszefogas/marki_zay_peter/advisor_feedback.json",
+          "advisorFeedbackAssets": "ellenzeki_osszefogas/marki_zay_peter/advisor_feedback_assets.json",
+          "endResults": "ellenzeki_osszefogas/marki_zay_peter/end_results.json"
+        }
+      }
+    }
+  }
+}

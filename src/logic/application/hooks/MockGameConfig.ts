@@ -2,7 +2,6 @@ import {
   Asset,
   CampaignConfig,
   DistrictPoligon,
-  EndResultProps,
   VoterEnvironmentConfig,
 } from "@/shared/types";
 
@@ -73,20 +72,26 @@ const electionConfig = {
 const mockDistricts: DistrictPoligon[] = [
   { centrum: "", evk: "", maz: "", poligon: "" },
 ];
-const mockEndResult: EndResultProps = {
+const mockEndResult = {
   playerSideDefeat: {} as Asset,
   playerSideVictory: {} as Asset,
 };
 
 export const mockGameConfig = {
-  answerEffect: [],
-  questions: [],
   capitalCity: mockDistricts,
   districts: mockDistricts,
   electionConfig,
   voterEnvironmentConfig,
   candidateListData,
   partyListData,
-  endResults: mockEndResult,
   customGroups: [],
+  playableSides: {
+    mock_side: {
+      mock_candidate: {
+        questions: [],
+        answerEffect: [],
+        endResults: mockEndResult,
+      },
+    },
+  },
 } as unknown as CampaignConfig;

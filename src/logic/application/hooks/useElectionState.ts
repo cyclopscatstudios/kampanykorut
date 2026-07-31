@@ -16,17 +16,21 @@ import { useStateEngine } from "./useStateEngine";
 
 export function useElectionState(campaignId: string) {
   const config = container.resolve(ConfigEngine).getCampaignConfig(campaignId);
-  const { campaignEngine } = useMemo(
-    () => createCampaignEngine(config, campaignId),
-    [config, campaignId],
-  );
   const { saveSession, currentState, currentHistory, sessionId } =
     useStateEngine();
+  const playerSideId = currentState?.playerSide?.partyId;
+  const playerCandidateId = currentState?.playerSide?.candidateId;
+  const { campaignEngine } = useMemo(
+    () =>
+      createCampaignEngine(config, campaignId, playerSideId, playerCandidateId),
+    [config, campaignId, playerSideId, playerCandidateId],
+  );
   const [gameState, setGameState] = useState<CampaignState>(() =>
     campaignEngine.createInitialState(
       campaignId,
       currentState,
       config.electionConfig,
+      playerSideId
     ),
   );
   const { settings } = useSettings();
@@ -58,7 +62,10 @@ export function useElectionState(campaignId: string) {
       currentHistory ?? [],
       settings,
       config.electionConfig,
-      config.campaignStrategies,
+      playerSideId && playerCandidateId
+        ? config.playableSides?.[playerSideId]?.[playerCandidateId]
+            ?.campaignStrategies
+        : undefined,
     );
 
     return {
