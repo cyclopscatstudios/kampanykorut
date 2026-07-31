@@ -9,8 +9,10 @@ export const mockElectionConfig: ElectionConfig = {
   districtBoost: true,
 
   baseResults: {
-    party_a: 3,
-    party_b: -2,
+    party_a: {
+      party_a: 3,
+      party_b: -2,
+    }
   },
   partyListVotes: {},
   parties: [
