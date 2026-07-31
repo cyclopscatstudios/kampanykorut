@@ -19,22 +19,24 @@ jobs:
           node-version: 20
           cache: "yarn"
 
+      - run: corepack enable
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Lint
-        run: yarn lint
+        run: yarn workspace kampanykorut lint
         continue-on-error: true
 
       - name: Format check
-        run: yarn format:check
+        run: yarn workspace kampanykorut format:check
         continue-on-error: true
 
       - name: Build
-        run: yarn build
+        run: yarn workspace kampanykorut build
 
       - name: Tests
-        run: yarn test -- --coverage
+        run: yarn workspace kampanykorut test -- --coverage
 
   e2e:
     runs-on: ubuntu-latest
@@ -57,13 +59,15 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
+      - run: corepack enable
+
       - run: yarn install --frozen-lockfile
 
       - run: npx playwright install --with-deps
 
       - run: npx playwright install chromium --with-deps
 
-      - run: yarn playwright test
+      - run: yarn workspace kampanykorut playwright
 
       - name: Upload Playwright Artifacts
         if: always()
@@ -71,8 +75,8 @@ jobs:
         with:
           name: playwright-artifacts
           path: |
-            playwright-report/
-            test-results/
+            apps/kampanykorut/playwright-report/
+            apps/kampanykorut/test-results/
 
   component-tests:
     runs-on: ubuntu-latest
@@ -91,11 +95,13 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
+      - run: corepack enable
+
       - run: yarn install --frozen-lockfile
 
       - run: npx playwright install --with-deps
 
-      - run: yarn test-ct
+      - run: yarn workspace kampanykorut test-ct
 
       - name: Upload Playwright CT Artifacts
         if: always()
@@ -103,8 +109,8 @@ jobs:
         with:
           name: playwright-ct-artifacts
           path: |
-            playwright-report/
-            test-results/
+            apps/kampanykorut/playwright-report/
+            apps/kampanykorut/test-results/
 
   docker:
     runs-on: ubuntu-latest

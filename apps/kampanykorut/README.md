@@ -196,4 +196,4 @@ This project follows strict architectural guidelines:
 
 ## 📄 License
 
-All rights reserved — see [LICENSE](LICENSE).
+All rights reserved — see [LICENSE](../../LICENSE).
