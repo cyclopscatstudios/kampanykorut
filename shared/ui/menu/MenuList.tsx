@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslateLang } from "../../logic/hooks";
+import { BootstrapIcon } from "../../types";
+import { type MenuItem } from "../../types/menu.types";
 import { Button, ButtonVariant } from "../Button";
 import { Icon } from "../Icon";
-import { type MenuItem } from "../../types/menu.types";
 import { Text } from "../Text";
-import { BootstrapIcon } from "../../types";
-import { useTranslateLang } from "../../logic/hooks";
 
 export interface MenuListProps {
   listItems: MenuItem[];
