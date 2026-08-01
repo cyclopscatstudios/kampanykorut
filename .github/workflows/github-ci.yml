@@ -67,7 +67,7 @@ jobs:
 
       - run: npx playwright install chromium --with-deps
 
-      - run: yarn workspace kampanykorut playwright
+      - run: yarn workspace kampanykorut run playwright
 
       - name: Upload Playwright Artifacts
         if: always()
@@ -101,7 +101,7 @@ jobs:
 
       - run: npx playwright install --with-deps
 
-      - run: yarn workspace kampanykorut test-ct
+      - run: yarn workspace kampanykorut run test-ct
 
       - name: Upload Playwright CT Artifacts
         if: always()
