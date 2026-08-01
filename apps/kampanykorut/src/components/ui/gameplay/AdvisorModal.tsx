@@ -1,11 +1,11 @@
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { AdvisorFeedbackAssets } from "@/shared/types";
-import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Button } from "../../../../../../shared/ui/Button";
-import { Heading } from "../Heading";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
+import { useSettings } from "../../../logic/application/hooks/useSettings";
+import { Heading } from "../Heading";
 
 interface AdvisorModalProps {
   advice: string;

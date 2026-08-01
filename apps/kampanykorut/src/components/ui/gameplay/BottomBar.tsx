@@ -1,11 +1,11 @@
 import { t } from "i18next";
 import { District } from "@/shared/types";
 import type { Colors } from "../../../../../../shared/types/color";
-import { SwingFactorId } from "../../../types/utils";
 import { Button } from "../../../../../../shared/ui/Button";
-import { CommonWrapper } from "../CommonWrapper";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
+import { SwingFactorId } from "../../../types/utils";
+import { CommonWrapper } from "../CommonWrapper";
 import type { SwingFactor } from "./MapCreator";
 
 interface BottomBarProps {

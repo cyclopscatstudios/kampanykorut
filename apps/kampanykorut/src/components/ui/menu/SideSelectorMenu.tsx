@@ -7,15 +7,15 @@ import {
   Candidate,
   PlayableSide,
 } from "@/shared/types/configs/election-config";
+import { Button } from "../../../../../../shared/ui/Button";
+import { Icon } from "../../../../../../shared/ui/Icon";
+import { Text } from "../../../../../../shared/ui/Text";
 import { useCampaignBanner } from "../../../hooks/useCampaignBanner";
 import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
 import { useGetCampaigns } from "../../../logic/application/hooks/useGetCampaigns";
-import { Button } from "../../../../../../shared/ui/Button";
 import { CommonWrapper } from "../CommonWrapper";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
 import { Tooltip } from "../Tooltip";
 
 export function SideSelectorMenu() {

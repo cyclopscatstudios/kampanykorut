@@ -3,10 +3,10 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { container } from "tsyringe";
 import { ConfigEngine, Navigation } from "@/logic/application";
 import { Button } from "../../../../../../../shared/ui/Button";
-import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../../Dialog";
-import { Heading } from "../../Heading";
 import { Icon } from "../../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../../shared/ui/Text";
+import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../../Dialog";
+import { Heading } from "../../Heading";
 import { TextInput } from "../../TextInput";
 import { Tooltip } from "../../Tooltip";
 

@@ -1,4 +1,5 @@
 import { singleton } from "tsyringe";
+import { createLogger } from "@/shared/logger/logger";
 import {
   CalculateResults,
   CampaignConfig,
@@ -7,7 +8,6 @@ import {
   Decision,
   RawEffect,
 } from "@/shared/types";
-import { createLogger } from "@/shared/logger/logger";
 import { Emitter } from "./Emitter";
 
 export interface HistoryItem {

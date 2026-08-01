@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { container } from "tsyringe";
 import { ConfigEngine, StateEngine } from "@/logic/application";
 import { FinalResults, Mandate, RawParty } from "@/shared/types";
-import { Heading } from "../../Heading";
 import { Text } from "../../../../../../../shared/ui/Text";
+import { Heading } from "../../Heading";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
 

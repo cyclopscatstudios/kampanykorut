@@ -6,9 +6,9 @@ import {
   DistrictPoligon,
   ElectionConfig,
 } from "@/shared/types";
+import { Button } from "../../../../../../shared/ui/Button";
 import { useWheelZoom, type ViewBox } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
-import { Button } from "../../../../../../shared/ui/Button";
 
 export function MapWrapper({
   districts,

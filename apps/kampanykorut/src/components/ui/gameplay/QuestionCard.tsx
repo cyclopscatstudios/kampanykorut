@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { CurrentView } from "@/shared/types";
-import { useAssets } from "../../../hooks/useAssets";
 import { Button } from "../../../../../../shared/ui/Button";
-import { CommonWrapper } from "../CommonWrapper";
-import { Heading } from "../Heading";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
+import { useAssets } from "../../../hooks/useAssets";
+import { CommonWrapper } from "../CommonWrapper";
+import { Heading } from "../Heading";
 import { Tooltip } from "../Tooltip";
 
 interface Answer {

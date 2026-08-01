@@ -6,9 +6,9 @@ import {
   StateEngine,
 } from "@/logic/application";
 import { Button } from "../../../../../../shared/ui/Button";
+import { Text } from "../../../../../../shared/ui/Text";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
-import { Text } from "../../../../../../shared/ui/Text";
 
 export function SavedSessionsDialog({
   isOpen,

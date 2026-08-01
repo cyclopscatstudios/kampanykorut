@@ -1,4 +1,4 @@
-import { test, expect } from "../helpers/fixtures";
+import { expect,test } from "../helpers/fixtures";
 
 test("side selector", async ({ page, getCampaignState }) => {
   await page.goto("/new-game/classic/sides/0001_test_campaign");

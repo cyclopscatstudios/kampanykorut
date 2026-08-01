@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router";
+import { MenuItemId } from "@/shared/types";
+import { MenuList, Text } from "@/shared/ui";
+import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
 import logo from "../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { buildInfo } from "../../../buildInfo";
-import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
 import { BugReporterButton } from "../gameplay/BugReporter/BugReporterButton";
 import { BugReporterModal } from "../gameplay/BugReporter/BugReporterModal";
 import { MenuLayout } from "./MenuLayout";
-import { MenuList, Text } from "@/shared/ui";
-import { MenuItemId } from "@/shared/types";
 
 export function MainMenu() {
   const [openBugReporter, setOpenBugReporter] = useState(false);

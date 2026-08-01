@@ -1,13 +1,13 @@
 import { t } from "i18next";
 import { useState } from "react";
 import { type GameSettings } from "@/logic/application";
-import { useNavigation } from "../../../hooks/navigationHook";
-import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Button } from "../../../../../../shared/ui/Button";
-import { SettingsBody } from "../gameplay/SettingsDialog";
-import { toaster } from "../gameplay/toaster";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
+import { useNavigation } from "../../../hooks/navigationHook";
+import { useSettings } from "../../../logic/application/hooks/useSettings";
+import { SettingsBody } from "../gameplay/SettingsDialog";
+import { toaster } from "../gameplay/toaster";
 
 export function SettingsMenu() {
   const { settings, updateSettings } = useSettings();

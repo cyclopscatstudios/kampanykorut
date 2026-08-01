@@ -7,9 +7,9 @@ import {
   StateEngine,
 } from "@/logic/application";
 import { Button } from "../../../../../../shared/ui/Button";
-import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
+import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { TextInput } from "../TextInput";
 
 interface SaveGameSessionProps {

@@ -1,11 +1,11 @@
 import { BootstrapIcon, CampaignConfig } from "@/shared/types";
+import { Icon } from "@/shared/ui";
 import type { Colors } from "../../../../../../../../shared/types/color";
-import { CommonWrapper } from "../../../CommonWrapper";
 import { Text } from "../../../../../../../../shared/ui/Text";
+import { CommonWrapper } from "../../../CommonWrapper";
 import { calculateVotePercentages } from "../electionMap.utils";
 import type { StatisticResult } from "../statistics.utils";
 import { ProgressBar } from "./ProgressBar";
-import { Icon } from "@/shared/ui";
 
 export function ListOverview({
   list,

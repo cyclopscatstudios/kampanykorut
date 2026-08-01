@@ -9,7 +9,14 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 export default defineConfig([
-  globalIgnores(["dist", "playwright"]),
+  globalIgnores([
+    "**/dist",
+    "**/coverage",
+    "**/playwright-report",
+    "**/test-results",
+    "playwright",
+    "apps/campaign-maker",
+  ]),
   {
     files: ["**/*.{ts,tsx}"],
     extends: [
@@ -31,7 +38,7 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-    ignores: ["src/dev/*"],
+    ignores: ["apps/kampanykorut/src/dev/*"],
     rules: {
       "@typescript-eslint/no-explicit-any": "warn",
       "import/no-restricted-paths": [
@@ -39,8 +46,8 @@ export default defineConfig([
         {
           zones: [
             {
-              target: "./src/logic/domain",
-              from: "./src/logic/application",
+              target: "./apps/kampanykorut/src/logic/domain",
+              from: "./apps/kampanykorut/src/logic/application",
               message: "Application layer cannot import from domain directly",
             },
           ],

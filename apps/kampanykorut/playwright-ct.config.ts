@@ -32,6 +32,9 @@ export default defineConfig({
     /* Port to use for Playwright component endpoint. */
     ctPort: 3100,
 
+    /* Directory holding the component test mount harness (index.html/index.tsx). */
+    ctTemplateDir: "ct-template",
+
     ctViteConfig: {
       resolve: {
         alias: {

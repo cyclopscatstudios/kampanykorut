@@ -1,8 +1,8 @@
 import { singleton } from "tsyringe";
 import { v4 as uuidv4 } from "uuid";
 import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
-import { CampaignState } from "@/shared/types";
 import { createLogger } from "@/shared/logger/logger";
+import { CampaignState } from "@/shared/types";
 import type { ConfigEngine } from "./ConfigEngine";
 import { Emitter } from "./Emitter";
 import type { IdGenerator } from "./IdGenerator";

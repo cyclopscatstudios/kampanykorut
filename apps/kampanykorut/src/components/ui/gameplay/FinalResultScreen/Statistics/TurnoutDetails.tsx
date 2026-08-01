@@ -1,8 +1,8 @@
 import { t } from "i18next";
 import { CampaignConfig, CampaignState } from "@/shared/types";
+import { Text } from "../../../../../../../../shared/ui/Text";
 import { CommonWrapper } from "../../../CommonWrapper";
 import { Heading } from "../../../Heading";
-import { Text } from "../../../../../../../../shared/ui/Text";
 
 interface TurnoutDetailsProps {
   state: CampaignState | null;

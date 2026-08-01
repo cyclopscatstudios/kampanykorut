@@ -6,9 +6,9 @@ import {
   CandidateListData,
   FinalResults,
 } from "@/shared/types";
+import { Text } from "../../../../../../../../shared/ui/Text";
 import { Badge } from "../../../Badge";
 import { SidebarPanel } from "../../../SidebarPanel";
-import { Text } from "../../../../../../../../shared/ui/Text";
 import {
   calculateVotePercentages,
   getPartyById,
