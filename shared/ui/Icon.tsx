@@ -1,11 +1,7 @@
-import icons from "bootstrap-icons/font/bootstrap-icons.json";
 import classNames from "classnames";
-import type { Colors } from "../../types/color";
+import type { Colors } from "../types/color";
 import { svgIcons } from "./icons";
-
-export type IconSource = "bootstrap" | "svg";
-
-export type BootstrapIcon = keyof typeof icons;
+import { BootstrapIcon, IconSource } from "../types";
 
 type IconSize = "xs" | "sm" | "normal" | "large" | "medium";
 

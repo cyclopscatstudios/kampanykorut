@@ -1,8 +1,8 @@
 import errorImg from "/broken-route.svg?url";
 import { useNavigation } from "../hooks/navigationHook";
-import { Button } from "./ui/Button";
+import { Button } from "../../../../shared/ui/Button";
 import { Heading } from "./ui/Heading";
-import { Text } from "./ui/Text";
+import { Text } from "../../../../shared/ui/Text";
 
 export function ErrorPage() {
   const { goToMainMenu, reloadPage } = useNavigation();

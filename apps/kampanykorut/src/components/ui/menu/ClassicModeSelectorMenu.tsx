@@ -8,12 +8,12 @@ import {
   useStateEngine,
 } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
-import { useTranslateLang } from "../../../logic/application/hooks/useTranslateLang";
-import { Button } from "../Button";
+import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
+import { Button } from "../../../../../../shared/ui/Button";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
-import { Icon } from "../Icon";
-import { Text } from "../Text";
+import { Icon } from "../../../../../../shared/ui/Icon";
+import { Text } from "../../../../../../shared/ui/Text";
 import { MenuLayout } from "./MenuLayout";
 
 export function ClassicModeSelectorMenu() {

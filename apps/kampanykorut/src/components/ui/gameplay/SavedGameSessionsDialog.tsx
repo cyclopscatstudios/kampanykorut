@@ -5,10 +5,10 @@ import {
   type SavedCampaignSessionInfo,
   StateEngine,
 } from "@/logic/application";
-import { Button } from "../Button";
+import { Button } from "../../../../../../shared/ui/Button";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
-import { Text } from "../Text";
+import { Text } from "../../../../../../shared/ui/Text";
 
 export function SavedSessionsDialog({
   isOpen,

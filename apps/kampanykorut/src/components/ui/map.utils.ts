@@ -1,5 +1,5 @@
 import { CandidateListData, District, DistrictPoligon } from "@/shared/types";
-import { PartyName } from "../../types/color";
+import { PartyName } from "../../../../../shared/types/color";
 
 export function resultsKey(megyekod: number, oevk: number) {
   return `${megyekod}-${oevk}`;

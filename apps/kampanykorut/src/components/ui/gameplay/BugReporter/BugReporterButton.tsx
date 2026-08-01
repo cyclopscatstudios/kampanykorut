@@ -1,5 +1,5 @@
 import { t } from "i18next";
-import { Button } from "../../Button";
+import { Button } from "../../../../../../../shared/ui/Button";
 import { Tooltip } from "../../Tooltip";
 
 interface BugReporterButtonProps {

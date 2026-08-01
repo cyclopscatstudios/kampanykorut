@@ -6,7 +6,7 @@ import { CampaignConfig } from "@/shared/types";
 import { noop } from "../../../../logic/application/utils";
 import { CommonWrapper } from "../../CommonWrapper";
 import { Heading } from "../../Heading";
-import { Text } from "../../Text";
+import { Text } from "../../../../../../../shared/ui/Text";
 import { AnswerRow } from "../QuestionCard";
 
 interface TurnHistoryProps {

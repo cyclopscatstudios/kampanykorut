@@ -3,11 +3,11 @@ import { useState } from "react";
 import { type GameSettings } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
-import { Button } from "../Button";
+import { Button } from "../../../../../../shared/ui/Button";
 import { SettingsBody } from "../gameplay/SettingsDialog";
 import { toaster } from "../gameplay/toaster";
-import { Icon } from "../Icon";
-import { Text } from "../Text";
+import { Icon } from "../../../../../../shared/ui/Icon";
+import { Text } from "../../../../../../shared/ui/Text";
 
 export function SettingsMenu() {
   const { settings, updateSettings } = useSettings();

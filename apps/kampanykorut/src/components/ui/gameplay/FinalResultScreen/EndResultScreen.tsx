@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router";
 import { container } from "tsyringe";
-import { useTranslate } from "../../../../logic/application/hooks/useTranslateLang";
+import { useTranslate } from "../../../../../../../shared/logic/hooks/useTranslateLang";
 import { StateEngine } from "../../../../logic/application/StateEngine";
-import { Button } from "../../Button";
+import { Button } from "../../../../../../../shared/ui/Button";
 import { GameChrome } from "../GameChrome";
 import { ElectionMap } from "./ElectionMap";
 import { Statistics } from "./Statistics/Statistics";

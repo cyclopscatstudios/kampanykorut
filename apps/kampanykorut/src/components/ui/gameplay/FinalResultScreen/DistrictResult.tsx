@@ -1,7 +1,7 @@
 import { CampaignConfig, District, RawParty } from "@/shared/types";
 import { Badge } from "../../Badge";
 import { CommonWrapper } from "../../CommonWrapper";
-import { Text } from "../../Text";
+import { Text } from "../../../../../../../shared/ui/Text";
 import { type Candidate, getPartyById } from "./electionMap.utils";
 
 interface DistrictResultProps {

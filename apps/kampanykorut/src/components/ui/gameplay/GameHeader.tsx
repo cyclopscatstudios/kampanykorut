@@ -13,10 +13,10 @@ import {
 import logo from "../../../../brand-assets/svg/logo-mark.svg";
 import markdown from "../../../../brand-assets/svg/logo-wordmark-dark.svg";
 import { Navigation } from "../../../logic/application/navigation/Navigation";
-import { Button } from "../Button";
-import { Icon } from "../Icon";
+import { Button } from "../../../../../../shared/ui/Button";
+import { Icon } from "../../../../../../shared/ui/Icon";
 import { Menu, MenuItem, SubMenu } from "../Menu";
-import { Text } from "../Text";
+import { Text } from "../../../../../../shared/ui/Text";
 import { Tooltip } from "../Tooltip";
 import { BugReporterButton } from "./BugReporter/BugReporterButton";
 import { GAME_HEADER_SLOT_ID } from "./gameHeaderSlot";

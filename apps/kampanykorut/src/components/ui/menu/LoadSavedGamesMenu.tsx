@@ -6,10 +6,10 @@ import {
   StateEngine,
 } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
-import { Button } from "../Button";
+import { Button } from "../../../../../../shared/ui/Button";
 import { SavedSessionsBody } from "../gameplay/SavedGameSessionsDialog";
-import { Icon } from "../Icon";
-import { Text } from "../Text";
+import { Icon } from "../../../../../../shared/ui/Icon";
+import { Text } from "../../../../../../shared/ui/Text";
 
 export function LoadSavedSessionsMenu() {
   const [selectedSession, setSelectedSession] =

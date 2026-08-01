@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
-import { Button } from "./Button";
-import { Text } from "./Text";
+import { Button } from "../../../../../shared/ui/Button";
+import { Text } from "../../../../../shared/ui/Text";
 
 type Option<T> = {
   label: string;

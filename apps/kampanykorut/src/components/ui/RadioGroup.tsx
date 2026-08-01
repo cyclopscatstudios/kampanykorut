@@ -1,5 +1,5 @@
 import { CommonWrapper } from "./CommonWrapper";
-import { Text } from "./Text";
+import { Text } from "../../../../../shared/ui/Text";
 
 type RadioOption<T extends string = string> = {
   value: T;

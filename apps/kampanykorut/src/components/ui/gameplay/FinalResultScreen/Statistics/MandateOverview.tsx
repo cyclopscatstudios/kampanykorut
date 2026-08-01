@@ -1,6 +1,6 @@
 import { CommonWrapper } from "../../../CommonWrapper";
 import { Heading } from "../../../Heading";
-import { Text } from "../../../Text";
+import { Text } from "../../../../../../../../shared/ui/Text";
 
 export function MandateOverview({
   mandates,

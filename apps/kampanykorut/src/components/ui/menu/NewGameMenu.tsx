@@ -1,6 +1,6 @@
-import { useTranslateLang } from "../../../logic/application/hooks/useTranslateLang";
-import { MenuList } from "../MenuList";
-import { MenuItemId } from "./menu.types";
+import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
+import { MenuList } from "../../../../../../shared/ui/menu/MenuList";
+import { MenuItemId } from "../../../../../../shared/types/menu.types";
 import { MenuLayout } from "./MenuLayout";
 
 export function NewGameMenu() {

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { container } from "tsyringe";
 import { StateEngine } from "@/logic/application";
 import { CampaignConfig, FinalResults } from "@/shared/types";
-import { Button } from "../../../Button";
+import { Button } from "../../../../../../../../shared/ui/Button";
 import {
   getClosestDistricts,
   getLargestDefeats,

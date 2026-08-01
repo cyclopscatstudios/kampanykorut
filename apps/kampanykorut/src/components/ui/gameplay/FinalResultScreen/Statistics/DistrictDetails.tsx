@@ -8,7 +8,7 @@ import {
 } from "@/shared/types";
 import { Badge } from "../../../Badge";
 import { SidebarPanel } from "../../../SidebarPanel";
-import { Text } from "../../../Text";
+import { Text } from "../../../../../../../../shared/ui/Text";
 import {
   calculateVotePercentages,
   getPartyById,

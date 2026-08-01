@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { container } from "tsyringe";
 import { ConfigEngine, StateEngine } from "@/logic/application";
 import { CampaignConfig, CampaignState } from "@/shared/types";
-import { Icon } from "../../../Icon";
+import { Icon } from "../../../../../../../../shared/ui/Icon";
 import { Tooltip } from "../../../Tooltip";
 
 interface AchievmentsProps {

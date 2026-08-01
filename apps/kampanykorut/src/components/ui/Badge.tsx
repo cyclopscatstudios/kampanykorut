@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import type { Colors } from "../../types/color";
+import type { Colors } from "../../../../../shared/types/color";
 import { getBaseBackgroundColor } from "./color.utils";
-import { Icon } from "./Icon";
-import { Text } from "./Text";
+import { Icon } from "../../../../../shared/ui/Icon";
+import { Text } from "../../../../../shared/ui/Text";
 
 interface BadgeProps {
   icon?: string;

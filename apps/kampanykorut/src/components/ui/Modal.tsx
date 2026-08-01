@@ -1,8 +1,8 @@
 import { t } from "i18next";
-import { Button } from "./Button";
+import { Button } from "../../../../../shared/ui/Button";
 import { Heading } from "./Heading";
-import { Icon } from "./Icon";
-import { Text } from "./Text";
+import { Icon } from "../../../../../shared/ui/Icon";
+import { Text } from "../../../../../shared/ui/Text";
 
 interface ModalProps {
   title: string;

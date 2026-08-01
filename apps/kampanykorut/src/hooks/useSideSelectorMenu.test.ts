@@ -1,11 +1,10 @@
 import { act, renderHook } from "@testing-library/react";
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { CampaignConfig } from "@/shared/types";
 import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
 
-const mockConfig: CampaignConfig = {
+const mockConfig = {
   electionConfig: {
     title: "Mock Election",
     year: "2022",

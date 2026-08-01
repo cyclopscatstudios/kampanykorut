@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { ConfigEngine, StateEngine } from "@/logic/application";
 import { FinalResults, Mandate, RawParty } from "@/shared/types";
 import { Heading } from "../../Heading";
-import { Text } from "../../Text";
+import { Text } from "../../../../../../../shared/ui/Text";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
 

@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useTranslateLang } from "../../logic/application/hooks/useTranslateLang";
-import { Button, ButtonVariant } from "./Button";
-import { type BootstrapIcon, Icon } from "./Icon";
-import { type MenuItem } from "./menu/menu.types";
-import { Text } from "./Text";
+import { Button, ButtonVariant } from "../Button";
+import { Icon } from "../Icon";
+import { type MenuItem } from "../../types/menu.types";
+import { Text } from "../Text";
+import { BootstrapIcon } from "../../types";
+import { useTranslateLang } from "../../logic/hooks";
 
 export interface MenuListProps {
   listItems: MenuItem[];
@@ -11,7 +12,11 @@ export interface MenuListProps {
   hasBackButton?: boolean;
 }
 
-export function MenuList({ listItems, hasBackButton = false, variant = "tertiary" }: MenuListProps) {
+export function MenuList({
+  listItems,
+  hasBackButton = false,
+  variant = "tertiary",
+}: MenuListProps) {
   const navigate = useNavigate();
   const backButton = useTranslateLang("menuList.button.back");
 

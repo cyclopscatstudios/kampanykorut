@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router";
-import { useTranslateLang } from "../../../logic/application/hooks/useTranslateLang";
-import { Button } from "../Button";
-import { Icon } from "../Icon";
+import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
+import { Button } from "../../../../../../shared/ui/Button";
+import { Icon } from "../../../../../../shared/ui/Icon";
 import { PdfViewer } from "../PdfViewer";
-import { Text } from "../Text";
+import { Text } from "../../../../../../shared/ui/Text";
 
 export function AboutMenu() {
   const navigate = useNavigate();

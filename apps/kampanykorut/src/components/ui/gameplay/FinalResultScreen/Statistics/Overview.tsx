@@ -1,7 +1,7 @@
 import { t } from "i18next";
 import { CampaignConfig, CampaignState, FinalResults } from "@/shared/types";
 import type { HistoryItem } from "../../../../../logic/application/StateHandler";
-import { Text } from "../../../Text";
+import { Text } from "../../../../../../../../shared/ui/Text";
 import type { StatisticResult } from "../statistics.utils";
 import { SupportChart } from "./Chart";
 import { ListOverview } from "./ListOverview";

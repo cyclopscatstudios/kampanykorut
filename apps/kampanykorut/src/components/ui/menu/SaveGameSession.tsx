@@ -6,10 +6,10 @@ import {
   type SavedCampaignSessionInfo,
   StateEngine,
 } from "@/logic/application";
-import { Button } from "../Button";
+import { Button } from "../../../../../../shared/ui/Button";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
-import { Icon } from "../Icon";
-import { Text } from "../Text";
+import { Icon } from "../../../../../../shared/ui/Icon";
+import { Text } from "../../../../../../shared/ui/Text";
 import { TextInput } from "../TextInput";
 
 interface SaveGameSessionProps {

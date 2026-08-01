@@ -3,7 +3,7 @@ import { useState } from "react";
 import { container } from "tsyringe";
 import { StateEngine } from "@/logic/application";
 import { useNavigation } from "../../../hooks/navigationHook";
-import { Button } from "../Button";
+import { Button } from "../../../../../../shared/ui/Button";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
 import { Modal } from "../Modal";

@@ -1,4 +1,4 @@
-import type { IconSource } from "../Icon";
+import { IconSource } from "./icon";
 
 export enum MenuItemId {
   // kampanykorut

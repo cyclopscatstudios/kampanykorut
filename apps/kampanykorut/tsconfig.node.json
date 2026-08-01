@@ -31,7 +31,11 @@
       "@/shared/domain": ["../../shared/domain"],
       "@/shared/domain/*": ["../../shared/domain/*"],
       "@/shared/types": ["../../shared/types"],
-      "@/shared/types/*": ["../../shared/types/*"]
+      "@/shared/types/*": ["../../shared/types/*"],
+      "@/shared/logic": ["../../shared/logic"],
+      "@/shared/logic/*": ["../../shared/logic/*"],
+      "@/shared/ui": ["../../shared/ui"],
+      "@/shared/ui/*": ["../../shared/ui/*"]
     }
   },
   "include": ["vite.config.ts", "playwright.config.ts", "playwright/**/*.ts"]

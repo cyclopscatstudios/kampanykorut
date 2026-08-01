@@ -4,7 +4,7 @@ import { type GameSettings } from "@/logic/application";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { noop } from "../../../logic/application/utils";
 import { supportedLanguages } from "../../../logic/langs/languages";
-import { Button } from "../Button";
+import { Button } from "../../../../../../shared/ui/Button";
 import { Checkbox } from "../Checkbox";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
 import { Dropdown } from "../Dropdown";

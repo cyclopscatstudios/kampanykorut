@@ -1,5 +1,5 @@
-import "./logic/infra/sentry";
 import "reflect-metadata";
+import "./logic/infra/sentry";
 import "./di/container";
 import "./logic/i18n/i18n";
 import "bootstrap-icons/font/bootstrap-icons.css";

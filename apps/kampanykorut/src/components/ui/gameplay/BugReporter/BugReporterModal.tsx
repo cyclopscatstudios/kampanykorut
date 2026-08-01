@@ -2,11 +2,11 @@ import { t } from "i18next";
 import { Dispatch, SetStateAction, useState } from "react";
 import { container } from "tsyringe";
 import { ConfigEngine, Navigation } from "@/logic/application";
-import { Button } from "../../Button";
+import { Button } from "../../../../../../../shared/ui/Button";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../../Dialog";
 import { Heading } from "../../Heading";
-import { Icon } from "../../Icon";
-import { Text } from "../../Text";
+import { Icon } from "../../../../../../../shared/ui/Icon";
+import { Text } from "../../../../../../../shared/ui/Text";
 import { TextInput } from "../../TextInput";
 import { Tooltip } from "../../Tooltip";
 
