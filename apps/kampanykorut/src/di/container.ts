@@ -16,7 +16,7 @@ import {
   VoterEnvironment,
   VoteShareTransformer,
 } from "@/shared/domain";
-import { PollsterEngine } from "../../shared/domain/PollsterEngine";
+import { PollsterEngine } from "@/shared/domain/PollsterEngine";
 import { uuidGenerator } from "../logic/application/IdGenerator";
 import { Navigation } from "../logic/application/navigation/Navigation";
 import { SettingsEngine } from "../logic/application/SettingsEngine";

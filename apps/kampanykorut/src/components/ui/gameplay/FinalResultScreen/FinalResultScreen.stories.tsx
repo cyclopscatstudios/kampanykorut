@@ -3,7 +3,7 @@ import { createMemoryRouter, RouterProvider } from "react-router";
 import { container } from "tsyringe";
 import { StorageEngine } from "@/logic/application";
 import { CampaignConfig, FinalResults } from "@/shared/types";
-import { campaignState } from "../../../../../shared/domain/mocks/mockCampaignState";
+import { campaignState } from "@/shared/domain/mocks/mockCampaignState";
 import FullscreenBackground from "../../../../ui/Background";
 import { FinalResultScreen } from "./EndResultScreen";
 

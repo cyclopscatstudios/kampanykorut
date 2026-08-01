@@ -1,5 +1,5 @@
 import { inject, singleton } from "tsyringe";
-import { createLogger } from "../../../shared/logger/logger";
+import { createLogger } from "@/shared/logger/logger";
 import { setLanguage } from "../i18n/i18n";
 import { supportedLanguages } from "../langs/languages";
 import { Emitter } from "./Emitter";

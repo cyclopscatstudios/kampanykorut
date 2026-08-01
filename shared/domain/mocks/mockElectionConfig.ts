@@ -12,7 +12,7 @@ export const mockElectionConfig: ElectionConfig = {
     party_a: {
       party_a: 3,
       party_b: -2,
-    }
+    },
   },
   partyListVotes: {},
   parties: [

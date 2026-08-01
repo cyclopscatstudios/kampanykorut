@@ -5,7 +5,7 @@ import {
   ElectionConfig,
   StrategyReward,
 } from "@/shared/types";
-import { createLogger } from "../../../shared/logger/logger";
+import { createLogger } from "@/shared/logger/logger";
 import { Emitter } from "./Emitter";
 import { HistoryItem, StateHandler } from "./StateHandler";
 import { StorageEngine } from "./StorageEngine";

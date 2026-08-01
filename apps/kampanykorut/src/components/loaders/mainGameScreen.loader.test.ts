@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { CampaignConfig } from "../../../shared/types";
+import { CampaignConfig } from "@/shared/types";
 import { ConfigEngine } from "../../logic/application/ConfigEngine";
 import { StateEngine } from "../../logic/application/StateEngine";
 import { mainGameScreenLoader } from "./mainGameScreen.loader";

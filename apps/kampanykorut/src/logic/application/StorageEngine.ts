@@ -1,5 +1,5 @@
 import { singleton } from "tsyringe";
-import { createLogger } from "../../../shared/logger/logger";
+import { createLogger } from "@/shared/logger/logger";
 
 export type StorageType = "localStorage" | "sessionStorage";
 

@@ -30,7 +30,7 @@ export function useElectionState(campaignId: string) {
       campaignId,
       currentState,
       config.electionConfig,
-      playerSideId
+      playerSideId,
     ),
   );
   const { settings } = useSettings();

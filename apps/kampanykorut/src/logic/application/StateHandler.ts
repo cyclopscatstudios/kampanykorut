@@ -7,7 +7,7 @@ import {
   Decision,
   RawEffect,
 } from "@/shared/types";
-import { createLogger } from "../../../shared/logger/logger";
+import { createLogger } from "@/shared/logger/logger";
 import { Emitter } from "./Emitter";
 
 export interface HistoryItem {

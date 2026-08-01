@@ -29,11 +29,14 @@
     "paths": {
       "@/logic/application": ["./src/logic/application"],
       "@/logic/types": ["./src/logic/types"],
-      "@/shared/logger": ["./shared/logger"],
-      "@/shared/domain": ["./shared/domain"],
-      "@/shared/types": ["./shared/types"]
+      "@/shared/logger": ["../../shared/logger"],
+      "@/shared/logger/*": ["../../shared/logger/*"],
+      "@/shared/domain": ["../../shared/domain"],
+      "@/shared/domain/*": ["../../shared/domain/*"],
+      "@/shared/types": ["../../shared/types"],
+      "@/shared/types/*": ["../../shared/types/*"]
     }
   },
-  "include": ["src", "shared", "public"],
+  "include": ["src", "../../shared", "public"],
   "exclude": ["**/*.test.ts", "**/*.test.tsx"]
 }

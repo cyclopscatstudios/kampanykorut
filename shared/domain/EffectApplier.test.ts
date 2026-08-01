@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it } from "vitest";
-import { ConfigEngine, StateEngine } from "../../src/logic/application";
+import { ConfigEngine, StateEngine } from "@/logic/application";
 import {
   ConditionalRawEffect,
   DistrictTarget,

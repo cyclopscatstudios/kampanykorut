@@ -2,11 +2,11 @@ import classNames from "classnames";
 import { t } from "i18next";
 import { useLoaderData } from "react-router";
 import { useMediaQuery } from "usehooks-ts";
-import { CampaignConfig } from "../../../../shared/types/configs";
+import { CampaignConfig } from "@/shared/types/configs";
 import {
   Candidate,
   PlayableSide,
-} from "../../../../shared/types/configs/election-config";
+} from "@/shared/types/configs/election-config";
 import { useCampaignBanner } from "../../../hooks/useCampaignBanner";
 import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
 import { useGetCampaigns } from "../../../logic/application/hooks/useGetCampaigns";

@@ -45,7 +45,7 @@ export class CampaignEngine {
     campaignId: string,
     savedState: CampaignState | null,
     electionConfig?: ElectionConfig,
-    palyerSideId?: string
+    palyerSideId?: string,
   ): CampaignState {
     if (
       savedState &&

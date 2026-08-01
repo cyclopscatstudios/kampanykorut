@@ -1,4 +1,4 @@
-import { createLogger } from "../../../shared/logger/logger";
+import { createLogger } from "@/shared/logger/logger";
 
 export type Listener<T> = (event: T) => void;
 

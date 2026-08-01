@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import { container } from "tsyringe";
-import { createLogger } from "../shared/logger/logger";
+import { createLogger } from "@/shared/logger/logger";
 import { GAME_HEADER_SLOT_ID } from "./components/ui/gameplay/gameHeaderSlot";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
 import { useParams } from "./hooks/useParamsHook";

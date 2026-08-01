@@ -1,6 +1,7 @@
 import type { IconSource } from "../Icon";
 
 export enum MenuItemId {
+  // kampanykorut
   NewGame = "newGame",
   ModMaker = "modMaker",
   Settings = "settings",
@@ -8,6 +9,9 @@ export enum MenuItemId {
   ClassicMode = "classicMode",
   LoadSavedGame = "laodSavedGame",
   SideSelector = "sideSelector",
+  // campaign-maker
+  NewCampaign = "newCampaign",
+  // shared
   Back = "back",
 }
 
