@@ -26,11 +26,9 @@ jobs:
 
       - name: Lint
         run: yarn lint
-        continue-on-error: true
 
       - name: Format check
         run: yarn format:check
-        continue-on-error: true
 
       - name: Build
         run: yarn workspace kampanykorut build
