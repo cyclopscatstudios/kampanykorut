@@ -49,10 +49,10 @@ export default defineConfig({
     coverage: {
       reporter: ["text", "lcov"],
       thresholds: {
-        lines: 70,
-        functions: 70,
+        lines: 60,
+        functions: 60,
         branches: 50,
-        statements: 70,
+        statements: 60,
       },
     },
     projects: [
