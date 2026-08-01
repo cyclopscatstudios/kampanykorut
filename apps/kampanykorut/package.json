@@ -6,11 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "test": "vitest",
-    "playwright": "playwright test",
-    "playwright:headed": "playwright test --ui --headed",
-    "test-ct": "playwright test -c playwright-ct.config.ts",
-    "playwright:ct": "playwright test --config=playwright-ct.config.ts --ui"
+    "preview": "vite preview"
   }
 }

@@ -10,7 +10,9 @@ import { defineConfig } from "vitest/config";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const pkg = JSON.parse(readFileSync("./package.json", "utf-8")) as {
+const pkg = JSON.parse(
+  readFileSync(path.resolve(__dirname, "./package.json"), "utf-8"),
+) as {
   version: string;
 };
 
@@ -25,6 +27,7 @@ if (gitCommit === "unknown") {
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  root: __dirname,
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
     __BUILD_DATE__: JSON.stringify(new Date().toISOString()),

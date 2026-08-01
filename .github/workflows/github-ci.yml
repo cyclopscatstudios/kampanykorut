@@ -25,18 +25,18 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Lint
-        run: yarn workspace kampanykorut lint
+        run: yarn lint
         continue-on-error: true
 
       - name: Format check
-        run: yarn workspace kampanykorut format:check
+        run: yarn format:check
         continue-on-error: true
 
       - name: Build
         run: yarn workspace kampanykorut build
 
       - name: Tests
-        run: yarn workspace kampanykorut test -- --coverage
+        run: yarn test -- --coverage
 
   e2e:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
 
       - run: npx playwright install chromium --with-deps
 
-      - run: yarn workspace kampanykorut run playwright
+      - run: yarn playwright
 
       - name: Upload Playwright Artifacts
         if: always()
@@ -101,7 +101,7 @@ jobs:
 
       - run: npx playwright install --with-deps
 
-      - run: yarn workspace kampanykorut run test-ct
+      - run: yarn test-ct
 
       - name: Upload Playwright CT Artifacts
         if: always()
