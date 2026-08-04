@@ -1,6 +1,5 @@
 import { injectable } from "tsyringe";
-import { ConfigEngine, StateEngine, StateHandler } from "@/logic/application";
-import { createLogger } from "@/shared/logger";
+import { createLogger } from "../logger";
 import {
   AppliedEffect,
   CandidateListData,
@@ -9,9 +8,10 @@ import {
   DistrictTarget,
   DistrictTargetGroup,
   EffectType,
+  HistoryItem,
   PartyShareParams,
   RawEffect,
-} from "@/shared/types";
+} from "../types";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
 import { MandateCalculator } from "./MandateCalculator";
 
@@ -22,10 +22,7 @@ export class EffectApplier {
   private DEFAULT_MOTIVATION_DELTA = 99;
 
   constructor(
-    private gameConfigEngine: ConfigEngine,
-    private campaignStateEngine: StateEngine,
     private mandateCalculator: MandateCalculator,
-    private stateHandler: StateHandler,
     private districtGroupEngine: DistrictGroupEngine,
   ) {
     log.debug("EffectApplier initialized");
@@ -37,10 +34,14 @@ export class EffectApplier {
     turn: number,
     conditionalEffects?: ConditionalRawEffect[],
     selectedDistrict?: District | null,
+    districtBoost?: boolean,
+    playerSidePartyId?: string,
+    history?: HistoryItem[],
   ): AppliedEffect[] {
     const resolvedEffects = this.resolveConditionalEffects(
       effects,
       conditionalEffects,
+      history,
     );
 
     const appliedEffects: AppliedEffect[] = [];
@@ -70,17 +71,13 @@ export class EffectApplier {
       }
     });
 
-    const isDistrictBoosterAllowed =
-      this.gameConfigEngine.getCurrentElectionConfig()?.districtBoost;
-
     const canApplyeBoosterEffect = turn % 2 === 0;
 
-    if (
-      isDistrictBoosterAllowed &&
-      selectedDistrict &&
-      canApplyeBoosterEffect
-    ) {
-      const boosterEffect = this.getBoosterEffect(selectedDistrict);
+    if (districtBoost && selectedDistrict && canApplyeBoosterEffect) {
+      const boosterEffect = this.getBoosterEffect(
+        selectedDistrict,
+        playerSidePartyId,
+      );
       if (boosterEffect) {
         log.info("Add boosterEffect to district ", selectedDistrict);
         return [...appliedEffects, boosterEffect];
@@ -90,9 +87,11 @@ export class EffectApplier {
     return appliedEffects;
   }
 
-  private getBoosterEffect(district: District): AppliedEffect | null {
-    const palyerSide = this.campaignStateEngine.getCampaignState()?.playerSide;
-    if (!palyerSide) {
+  private getBoosterEffect(
+    district: District,
+    playerSidePartyId?: string,
+  ): AppliedEffect | null {
+    if (!playerSidePartyId) {
       return null;
     }
     const boosterTarget: DistrictTarget = {
@@ -100,7 +99,7 @@ export class EffectApplier {
       oevk: district.oevk,
       amount: 500,
       from: { type: "bizonytalan" },
-      targetParty: palyerSide.partyId,
+      targetParty: playerSidePartyId,
     };
     return { type: EffectType.DistrictVoteTransfer, target: [boosterTarget] };
   }
@@ -108,13 +107,13 @@ export class EffectApplier {
   private resolveConditionalEffects(
     baseEffects: RawEffect[],
     conditionalEffects?: ConditionalRawEffect[],
+    history?: HistoryItem[],
   ): RawEffect[] {
-    if (!conditionalEffects?.length) {
+    if (!conditionalEffects?.length || !history) {
       return baseEffects;
     }
 
     let finalEffects = [...baseEffects];
-    const history = this.campaignStateEngine.getHistory();
 
     if (!history?.length) {
       log.error("history is empty, but conditional effects are present");
@@ -265,9 +264,8 @@ export class EffectApplier {
   }
 
   private handleEffectError(effect: RawEffect) {
-    const decision = this.stateHandler.get("turnDecision");
     log.error(
-      `Provided effect type for answer id ${decision?.answerId} to question ${decision?.questionId} is not a valid effect: ${effect.type}`,
+      `Provided effect type for answer to question is not a valid effect: ${effect.type}`,
     );
     return null;
   }

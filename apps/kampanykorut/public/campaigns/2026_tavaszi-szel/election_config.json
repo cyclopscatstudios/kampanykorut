@@ -6,11 +6,14 @@
   "thresholdPercent": 5,
   "districtBoost": true,
   "baseResults": {
-    "tisza": -20,
-    "fidesz": 6,
-    "dk": 5,
-    "mkkp": 3,
-    "_other": 5
+    "tisza": {
+      "tisza": -20,
+      "fidesz": 6,
+      "dk": 5,
+      "mi_hazank": 1.5,
+      "mkkp": 3,
+      "_other": 5
+    }
   },
   "parties": [
     {
@@ -51,11 +54,11 @@
       "candidateAssets": [
         {
           "id": "magyar_peter",
-          "portrait": "/images/2026/mp-portrait.png",
-          "slogan": "/images/2026/tisza-part-2026_kampany_szoveg.png"
+          "portrait": "/images/2026_tavaszi-szel/mp-portrait.png",
+          "slogan": "/images/2026_tavaszi-szel/tisza-part-2026_kampany_szoveg.png"
         }
       ],
-      "party_logo": "/images/2026/tisza-part.png"
+      "party_logo": "/images/2026_tavaszi-szel/tisza-part.png"
     }
   ]
 }

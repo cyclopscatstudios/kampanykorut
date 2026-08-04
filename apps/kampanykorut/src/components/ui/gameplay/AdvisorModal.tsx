@@ -6,12 +6,13 @@ import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Heading } from "../Heading";
+import { Tooltip } from "../Tooltip";
 
 interface AdvisorModalProps {
   advice: string;
   open: boolean;
   onClose: () => void;
-  asset: AdvisorFeedbackAssets;
+  asset?: AdvisorFeedbackAssets;
 }
 
 export function AdvisorModal({
@@ -64,16 +65,25 @@ export function AdvisorModal({
             </div>
           </div>
           <div className="flex gap-5 justify-center py-3">
-            {[asset.primaryAdvisorImageUri, asset.secondaryAdvisorImageUri].map(
-              (img, i) => (
+            {[
+              asset?.primaryAdvisorImageUri,
+              asset?.secondaryAdvisorImageUri,
+            ].map((img, i) => (
+              <Tooltip
+                content={
+                  i === 0
+                    ? (asset?.primaryAdvisorName ?? "")
+                    : (asset?.secondaryAdvisorName ?? "")
+                }
+              >
                 <div
                   key={i}
                   className="w-[100px] h-[100px] border border-[#4462aa] rounded-xl overflow-hidden"
                 >
                   <img src={img} className="w-full h-full object-cover" />
                 </div>
-              ),
-            )}
+              </Tooltip>
+            ))}
           </div>
           <div className="mx-3">
             <div className="bg-[#1d2840] p-3 rounded-xl">

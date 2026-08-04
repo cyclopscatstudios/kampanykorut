@@ -1,0 +1,674 @@
+[
+  {
+    "questionId": "2022_ogyv_fidesz-1",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Gyorsan alkalmazkodtál, és közben megőrizted a már felépített Gyurcsány-narratívát. A petíció ráadásul továbbra is alkalmas a támogatói adatbázis frissítésére."
+      },
+      {
+        "answerId": "B",
+        "text": "Márki-Zay valóban új ellenfél, de egy teljesen új kampány felépítése időbe kerül. Közben lemondtál arról a figuráról, akit a jobboldali és bizonytalan választók már jól ismernek és erősen elutasítanak."
+      },
+      {
+        "answerId": "C",
+        "text": "A higgadt felkészülés nem rossz döntés, de az előválasztás után néhány napig minden figyelem Márki-Zayra irányul. Ha ekkor nem határozod meg őt, megteheti saját maga."
+      },
+      {
+        "answerId": "D",
+        "text": "Gyurcsány továbbra is erős ellenfélkép, de Márki-Zay előválasztási győzelmét nem lehet egyszerűen figyelmen kívül hagyni. A túl látványos hallgatás bizonytalanságot sugall."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-2",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A Gyurcsány-korszak emléke sok választó számára erősebb, mint Márki-Zay önmeghatározása. Az egyszerű üzenet hatásos, bár a túlzás a bizonytalanok egy részénél visszaüthet."
+      },
+      {
+        "answerId": "B",
+        "text": "A konzervatív hitelesség támadása nehezíti Márki-Zay betörését a jobboldali táborba. Arra ügyelj, hogy a vita közben ne te tedd országosan ismertté a saját üzeneteit."
+      },
+      {
+        "answerId": "C",
+        "text": "A hatpárti koalíció valóban sebezhető a kormányzóképesség kérdésében. Ez az üzenet főleg akkor működik, ha konkrét ellenzéki konfliktusokkal is alá tudod támasztani."
+      },
+      {
+        "answerId": "D",
+        "text": "Államférfiúi megközelítés, de a szakpolitikai vita láthatóságot és legitim kihívói szerepet ad Márki-Zaynak. Egy választási kampányban nem feltétlenül az nyer, akinek hosszabb az eredménylistája."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-3",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A hagyományos médiatér továbbra is komoly előnyünk, de a kampány gyors reakcióit és a fiatalabb választókat nem érdemes teljesen átengedni az internetnek."
+      },
+      {
+        "answerId": "B",
+        "text": "A kutatások szerint a Facebook már a választók jelentős részének elsődleges hírforrása. A gyorsan vágott videók különösen jól használhatók egy sokat és hosszan beszélő ellenféllel szemben."
+      },
+      {
+        "answerId": "C",
+        "text": "A választást 106 egyéni körzetben is meg kell nyerni. A helyi beruházás kézzelfogható érv, de egységes országos történet nélkül a kampány könnyen széttöredezik."
+      },
+      {
+        "answerId": "D",
+        "text": "A személyes jelenlét emberközelivé tesz, de a spontán helyzeteket az ellenfél is rögzíti. Miniszterelnökként az időd a kampány egyik legszűkösebb erőforrása."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-4",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Államférfiúi döntés, de az ellenzék így egyedül kapja meg a nap politikai lendületét. A saját tábor egy része személyesen akar látni a küzdelem kezdetén."
+      },
+      {
+        "answerId": "B",
+        "text": "A hatalmas tömeg erőt és szervezettséget mutatott, a szuverenitás pedig összekötötte a régi és az új konfliktusokat. A párt és az állam közötti határ ettől még tovább halványult."
+      },
+      {
+        "answerId": "C",
+        "text": "Az eredmények fontosak, de október 23-án a választók erős történelmi és érzelmi keretet várnak. Egy száraz mérleg kevésbé mozgósít, mint egy világos konfliktus."
+      },
+      {
+        "answerId": "D",
+        "text": "A gépezet nélküled is működik, de egy miniszterelnöki kampányban a legfontosabb rendezvényekről való távolmaradást gyengeségként értelmezhetik."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-5",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Egy sokat beszélő ellenfél folyamatosan szállítja az alapanyagot. A gyorsaság döntő: mire megérkezik a magyarázat, az eredeti részlet már milliókhoz juthat el."
+      },
+      {
+        "answerId": "B",
+        "text": "A szakpolitikai támadás hitelesebb a bizonytalanok előtt, és közvetlenül kapcsolható a népszerű kormányzati intézkedésekhez. Kevesebb a látványos botrány, de kisebb a visszaütés veszélye is."
+      },
+      {
+        "answerId": "C",
+        "text": "A pozitív kampány önmagában ritkán elég egy szoros versenyben. Ha nem te keretezed Márki-Zay hibáit, azok könnyen egyszerű elszólások maradnak."
+      },
+      {
+        "answerId": "D",
+        "text": "Az ismétlés működik, de a túladagolt személyeskedés fárasztja a bizonytalanokat, és a Mi Hazánk tiltakozó szavazóinak is muníciót adhat a teljes politikai elit ellen."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-6",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Járványügyileg erős és differenciált válasz, de minden új kötelezettség szavazókat tolhat a Mi Hazánk felé. Akkor védhető, ha a szabályok rövidek és kiszámíthatók maradnak."
+      },
+      {
+        "answerId": "B",
+        "text": "Egyensúlyt teremtesz az egészségvédelem és a működő ország ígérete között. A politikai nyereségért cserébe vállalod, hogy a rossz halálozási adatokért továbbra is a kormányt teszik felelőssé."
+      },
+      {
+        "answerId": "C",
+        "text": "A helyi alkalmazkodás rugalmas, de az eltérő szabályok gyorsan zavarossá válhatnak. A felelősséget megosztottad, az elismerést viszont aligha."
+      },
+      {
+        "answerId": "D",
+        "text": "A nyitva tartás védi a gazdaságot és kevésbé táplálja a korlátozásellenes pártot. Ha a kórházak túlterhelődnek, a döntés utólag könnyen tűnik veszélyes tétlenségnek."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-7",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Felelős költségvetési döntés, de nehéz elmagyarázni, miért maradnak el a már belengetett juttatások éppen egy erős növekedési év után."
+      },
+      {
+        "answerId": "B",
+        "text": "A családok és a fiatalok megszólítása hosszú távú befektetés. Az idősebbek és a rendvédelmi dolgozók viszont joggal kérdezhetik, rájuk miért nem jutott."
+      },
+      {
+        "answerId": "C",
+        "text": "A nyugdíjasok és a fegyveres testületek magas részvételű, szervezett csoportok. A családpolitikai márka mégis sérülhet, ha a gyermekeseknek ígért visszatérítés elmarad."
+      },
+      {
+        "answerId": "D",
+        "text": "Választási szempontból a legszélesebb azonnali hatás. Az ellenzék osztogatásnak nevezi, a költségvetési ár pedig majd a választás után jelentkezik."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-8",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Egyszerű, minden autós számára azonnal érthető intézkedés. Minél tovább tart azonban, annál több ellátási és költségvetési kockázatot halmoz fel."
+      },
+      {
+        "answerId": "B",
+        "text": "Gazdaságilag célzottabb megoldás, de adminisztrációt igényel, és a benzinkútnál mindenki továbbra is a magas árat látja."
+      },
+      {
+        "answerId": "C",
+        "text": "Piacbarátabb beavatkozás, amely gyorsan csökkentheti az árat. Kevésbé látványos viszont, mint egy kerek, minden plakáton elmondható 480 forintos határ."
+      },
+      {
+        "answerId": "D",
+        "text": "Költségvetésileg és ellátásbiztonsági szempontból védhető tartalékolás. A választó azonban a kúton azonnal fizet, a célzott segítséget pedig később és kevésbé látványosan érzékeli."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-9",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A halasztással kifogtad a szelet egy népszerű ellenzéki ügy vitorlájából. A kínai kapcsolat hívei csalódottak lehetnek, de a választásig nem kell egy nehéz budapesti vitát megnyerned."
+      },
+      {
+        "answerId": "B",
+        "text": "A beruházásnak lehet gazdasági és diplomáciai értéke, de a kampányban a kínai hitel, a Diákváros és a helyi tiltakozás sokkal könnyebben érthető ellenérv."
+      },
+      {
+        "answerId": "C",
+        "text": "A népszavazás ígérete hitelesítheti a nyitottságodat, de egyben elismeri, hogy az ellenzék fontos kérdést talált. Ráadásul most már neked is teljesítened kell az ígéretet."
+      },
+      {
+        "answerId": "D",
+        "text": "A napirendváltás leköti Karácsonyt, de Márki-Zay győzelme után már nem ő a fő ellenfél. Egy túlhúzott fővárosi ügy vidéken alig hoz szavazatot."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-10",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A gyors lemondás és a mentelmi jog felfüggesztése elválasztotta a pártot a gyanúsítottól. A botrány nem tűnik el, de nehezebb eltussolást kiáltani."
+      },
+      {
+        "answerId": "B",
+        "text": "Jogállami érvnek hangzik és elkerüli az azonnali ítélethirdetést. Kampányban mégis minden új nyomozati részlet azt kérdezi majd, miért maradt fideszes képviselő a gyanúsított."
+      },
+      {
+        "answerId": "C",
+        "text": "A teljes feltárás hiteles korrupcióellenes válasz lehet, ugyanakkor olyan részleteket is felszínre hozhat, amelyeket választás előtt nem tudsz ellenőrizni."
+      },
+      {
+        "answerId": "D",
+        "text": "Az intézményi távolságtartás csökkenti a miniszterelnök személyes kockázatát. Ha azonban a tárca válaszai hiányosak, a hallgatás gyorsan központilag szervezett elzárkózásnak látszik."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-11",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A jelölés egyszerre erősíti a családpolitikai márkát és tompítja a Fidesz férfiközpontú képét. A döntés azt is sugallja, hogy győzelemre készülsz, nem intézményi háborúra."
+      },
+      {
+        "answerId": "B",
+        "text": "Egy független tekintély valóban enyhíthetné a megosztottságot, de a saját tábor joggal kérdezheti, miért mondasz le önként a kétharmados felhatalmazás egyik fontos döntéséről."
+      },
+      {
+        "answerId": "C",
+        "text": "Biztosításként értelmezhető egy vereség esetére, csakhogy a védekező jelölés azt üzeni: te magad sem vagy biztos a győzelemben."
+      },
+      {
+        "answerId": "D",
+        "text": "A törzstábor lelkes, de Kövér személye a bizonytalanokat és az ellenzéket is erősen mozgósítja. Az államfői szerephez szélesebb elfogadottság előnyösebb."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-12",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A kamatstop könnyen kommunikálható védelmi intézkedés, és időben átnyúlik a választáson. A bankrendszerre hárított költség és a hosszabbítás kérdése később jelentkezik."
+      },
+      {
+        "answerId": "B",
+        "text": "Célzott és olcsóbb megoldás, de a feltételek vitákat szülnek, miközben sok középosztálybeli adós kimarad a védelemből."
+      },
+      {
+        "answerId": "C",
+        "text": "A hitelkiváltás tartósabb segítség lehet, de lassú, önkéntes és kevésbé látványos. A választók azonnali garanciát várnak a következő törlesztőrészletükre."
+      },
+      {
+        "answerId": "D",
+        "text": "Közgazdaságilag következetes álláspont, politikailag viszont azt üzeni, hogy a kormány magára hagyja a családokat az emelkedő kamatokkal."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-13",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A választó a boltban rögtön látja a beavatkozást, az intézkedés listája pedig könnyen megjegyezhető. A hiányt, a keresztárazást és a kereskedők veszteségét majd később kell kezelni."
+      },
+      {
+        "answerId": "B",
+        "text": "Szélesebb körű és tisztább eszköz, de drága a költségvetésnek, és nincs garancia arra, hogy a teljes csökkentés megjelenik a polcokon."
+      },
+      {
+        "answerId": "C",
+        "text": "A segítség oda jut, ahol a legnagyobb szükség van rá. A középosztály viszont továbbra is ugyanazokat az árakat fizeti, ezért kevésbé érzi a kormány védelmét."
+      },
+      {
+        "answerId": "D",
+        "text": "Az összesített jövedelem valóban nőhet, de a választók naponta találkoznak az árcédulákkal. A drágulás figyelmen kívül hagyása gyorsan felülírhatja a pozitív gazdasági üzeneteket."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-14",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A két szavazás összekapcsolása plusz okot ad a törzstábornak a részvételre. Az ellenzék érvénytelen szavazásra buzdíthat, de ehhez neki is beszélnie kell a te témádról."
+      },
+      {
+        "answerId": "B",
+        "text": "Tisztább kampányt kapsz, viszont lemondasz egy erős identitáspolitikai mozgósító eszközről, és külön népszavazáson az érvényesség még nehezebben biztosítható."
+      },
+      {
+        "answerId": "C",
+        "text": "Megőrzöd a mozgósítás egy részét anélkül, hogy minden üzenetet a kultúrharc alá rendelnél. A félgőzzel vitt népszavazás azonban saját támogatóid számára is kevésbé tűnik sorsdöntőnek."
+      },
+      {
+        "answerId": "D",
+        "text": "Csökkented a megosztottságot, de a visszavonulást a Mi Hazánk és a saját kemény magod is elvi vereségként értelmezheti."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-15",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Egyetlen mondatban kapcsolja össze a pozitív teljesítményt és Gyurcsány visszatérésének veszélyét. Akkor a legerősebb, ha az egész addigi kampány ugyanezt a keretet építette."
+      },
+      {
+        "answerId": "B",
+        "text": "A stabilitás vonzó, de a „Folytatjuk” tizenkét év után fáradtságot is sugallhat. Nem mondja meg, mitől kell félni és miért kell újra mozgósítani."
+      },
+      {
+        "answerId": "C",
+        "text": "Kézzelfogható, barátságos üzenet, különösen akkor, ha a juttatások már megérkeztek. Az egyedülállók és a gyermektelenek kevésbé érzik magukat benne."
+      },
+      {
+        "answerId": "D",
+        "text": "A védelem bevált fideszes keret, és a Mi Hazánktól is visszavehet szavazókat. Ha túl sok különböző ellenséget sorolsz fel, a kampány elveszítheti a fókuszát."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-16",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Stratégiailag biztonságos: nem adsz egyenrangú kihívói státuszt Márki-Zaynak. A vita elutasítása önmagában aligha visz el szavazókat, de az ellenfél végig napirenden tarthatja."
+      },
+      {
+        "answerId": "B",
+        "text": "A tapasztalat neked kedvezhet, de egy élő vita mindig kockázat. Márki-Zay már a részvétellel országos, egyenrangú kihívóként jelenik meg."
+      },
+      {
+        "answerId": "C",
+        "text": "A szakpolitikai viták mutatnak némi nyitottságot, mégsem teszik kockára a miniszterelnöki pozíciót. Könnyen úgy tűnhet azonban, hogy mások mögé bújsz."
+      },
+      {
+        "answerId": "D",
+        "text": "Ügyes kerülőút: közvetlen és kontrollált egyszerre. Csak arra figyelj, hogy a valóban bizonytalan kérdezők kevésbé kiszámíthatók, mint egy előre felkészített riporter."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-17",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Rövid távon tapasztalt közvetítőként és a rezsicsökkentés védelmezőjeként jelensz meg. Ha azonban Putyin mégis támad, a friss moszkvai képek és a „békemisszió” súlyos magyarázatra szorulnak."
+      },
+      {
+        "answerId": "B",
+        "text": "Óvatos döntés, amely komolyan veszi a szövetségesi hírszerzési figyelmeztetéseket. A kampányban viszont úgy tűnhet, hogy külföldi nyomásra feladtad az önálló magyar energiapolitikát."
+      },
+      {
+        "answerId": "C",
+        "text": "Elvi és előrelátó fellépés lenne, de Putyin aligha fogadja jól a nyilvános figyelmeztetést. Hazai ellenfeleid pedig így is a moszkvai látogatás képeit használják majd."
+      },
+      {
+        "answerId": "D",
+        "text": "Szétválasztod a szükséges energetikai egyeztetést és a miniszterelnöki politikai gesztust. Kevesebb a látványos siker, de kisebb a személyes kockázat is."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-18",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Egy budapesti mandátum politikailag értékes, de itt minden új szavazat drágább. Közben olyan vidéki körzeteket is kockáztatsz, amelyek nélkül nincs kétharmad."
+      },
+      {
+        "answerId": "B",
+        "text": "A mandátumoptimalizálás logikus terepe. A billegő körzetekben néhány száz vagy ezer szavazat többet érhet, mint tízezer plusz voks egy biztos körzetben."
+      },
+      {
+        "answerId": "C",
+        "text": "A vidéki fölény adja a Fidesz rendszerének alapját, és a magas részvétel listán is segít. A már biztos körzetek további erősítése azonban kevesebb új mandátumot hozhat."
+      },
+      {
+        "answerId": "D",
+        "text": "A pártszervezet egységes marad, de az erőforrások nem egyformán hasznosulnak. Egy választási rendszerben, ahol az egyéni győztes mindent visz, az egyenlő elosztás ritkán optimális."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-19",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Az elérés és az üzenetfegyelem maximális, de a választási megfigyelők és az ellenzék joggal beszélhetnek az állami erőforrások pártcélú használatáról. Ez az ellenfelet is mozgósíthatja."
+      },
+      {
+        "answerId": "B",
+        "text": "A gyakorlatban erős szinergiát hagysz meg, miközben legalább a formális határok léteznek. Ettől a pálya még nem lesz egyenlő, de kisebb a nyílt visszaélés látszata."
+      },
+      {
+        "answerId": "C",
+        "text": "Demokratikus szempontból ez teremti a legtisztább versenyt. Kampánystratégiailag viszont önként feladsz egy olyan előnyt, amellyel a Fidesz évek óta számol."
+      },
+      {
+        "answerId": "D",
+        "text": "A feladatok kiszervezése jogilag és finanszírozásilag kevésbé átlátható. Az üzenet eljut, de a túl sok félhivatalos szereplő felett kisebb a központi kontroll."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-20",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A választók már a számlájukon és a pénztárcájukban látják a felsorolt intézkedések egy részét. A pozitív mérleget egyetlen, jól ismert ellenfélképpel zárod le."
+      },
+      {
+        "answerId": "B",
+        "text": "A veszélyérzet mozgósít, de túl korán elhasználhatod az összes konfliktust. Ha minden egyszerre fenyeget, egyik sem marad igazán hihető."
+      },
+      {
+        "answerId": "C",
+        "text": "Egy kormányzó párttól elvárható a következő ciklus programja, mégis kockázatos új ígéretekkel elhomályosítani a már kifizetett és népszerű intézkedéseket."
+      },
+      {
+        "answerId": "D",
+        "text": "Előrelátó és felelősségteljes lehetne, ha valóban háború fenyeget. A belpolitikai tábor azonban világos választási üzenet nélkül marad a kampány nyitányán."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-21",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A sértettek hangja hitelesebb, mint a miniszterelnök felháborodása, és nem húz le személyes sárdobálásba. Az üzenet azonban lassabban és kevésbé egységesen terjed."
+      },
+      {
+        "answerId": "B",
+        "text": "A kivágott mondatok pontosan illeszkednek a „vidéket lenéző baloldal” régi történetébe. A korábban felépített digitális gépezet ezt különösen gyorsan felerősíti."
+      },
+      {
+        "answerId": "C",
+        "text": "A kontextus tisztességesebb képet ad, de egyben átveszed az ellenzék vitáját arról, hogy a kormány félrevezeti-e az embereket. Ez nem a te pályád."
+      },
+      {
+        "answerId": "D",
+        "text": "A humor növeli a megosztást és a felismerhetőséget, de túl sok mém komolytalanná teheti a kampányt. A bizonytalan választó nem feltétlenül akar egész nap politikai gúnyvideókat látni."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-22",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Gyorsan visszatértél a szövetségi főáramba, miközben a kimaradás ígéretével saját politikai pozíciót is teremtettél. A friss moszkvai békemisszió után azonban a fordulat nehezebben hiteles."
+      },
+      {
+        "answerId": "B",
+        "text": "Nemzetközileg tiszta és erkölcsileg egyértelmű válasz. A tizenkét éve épített keleti nyitás hirtelen feladása viszont belpolitikai zavart okoz, a radikális jobboldal pedig árulást kiált."
+      },
+      {
+        "answerId": "C",
+        "text": "A közvetítői szerepet és a tárgyalás elsőbbségét őrzöd. Az invázió képei mellett a felelősség megnevezésének elhalasztása azonban nem semlegességnek, hanem Moszkva kímélésének tűnhet."
+      },
+      {
+        "answerId": "D",
+        "text": "A gyakorlati intézkedés vezetői kontrollt mutat, az összehangolt nyilatkozat pedig szövetségesi fegyelmet. Az első órákban mégis nyitva hagyod a kampány legfontosabb erkölcsi kérdését."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-23",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Megőrzöd az uniós egységet, mégis világos hazai érdeket jelölsz ki. A kettős álláspont támadható, de a választók számára egyszerre jelent biztonságot és kiszámíthatóságot."
+      },
+      {
+        "answerId": "B",
+        "text": "A kemény szuverenista álláspont átvihet szavazókat a Mi Hazánktól, de az invázió első heteiben egy teljes vétó Putyin védelmének tűnik, és elveszítheti a mérsékelt jobboldalt."
+      },
+      {
+        "answerId": "C",
+        "text": "Stratégiailag csökkentené az orosz függést, de néhány hét alatt nem pótolható az energia. A választók közvetlenül a rezsiszámlájuktól és az ellátásbiztonságtól tartanak."
+      },
+      {
+        "answerId": "D",
+        "text": "A pragmatizmus rugalmasnak látszik, válságban azonban következetlenséget sugall. Sem a szövetségesek, sem a saját tábor nem tudja, hol húzódik a magyar álláspont."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-24",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Világosan megkülönbözteted a közeli háború valódi menekültjeit a 2015-ben használt migrációs kerettől, miközben a fegyverek ügyében a kimaradás üzenetét erősíted."
+      },
+      {
+        "answerId": "B",
+        "text": "Szövetségi szempontból következetes, de a kampányban nehéz megakadályozni, hogy a fegyverszállítást az ország közvetlen háborús részvételeként mutassák be."
+      },
+      {
+        "answerId": "C",
+        "text": "Az ellenőrzött tranzit összeegyeztethető a korábbi határvédelmi üzenettel, és korlátozza a hosszú távú állami terhet. A rangsorolás és a gyors továbbutaztatás mégis részvétlennek hathat a háború első napjaiban."
+      },
+      {
+        "answerId": "D",
+        "text": "A civil és egyházi hálózat gyors, rugalmas és hiteles lehet, miközben az állam a logisztikát adja. A politikai kockázat akkor nő meg, ha a széttagolt rendszerben ellátási hibák jelennek meg."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-25",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Egyetlen, mindenkit személyesen érintő konfliktusba sűríted a kampányt. Az üzenet csak akkor marad ellenálló, ha korábbi válságdöntéseidből is valóban a kimaradás következik."
+      },
+      {
+        "answerId": "B",
+        "text": "Nehezebben cáfolható és a bizonytalanok előtt hitelesebb, miközben a kormányzati tapasztalatot teszi központi előnnyé. Kevesebb érzelmet termel, ezért erősebb szervezeti finis kell mögé."
+      },
+      {
+        "answerId": "C",
+        "text": "Válságban az államférfiúi hang új választókat nyithat meg és csökkenti a visszaütés veszélyét. A saját tábort azonban kevésbé mozgósítja, az ellenzék pedig tovább kampányolhat."
+      },
+      {
+        "answerId": "D",
+        "text": "Nem teszed fel az egész választást egyetlen kiszámíthatatlan válságra, és megőrzöd az ősz óta épített kampányeszközöket. A túl sok párhuzamos üzenet viszont gyengítheti a háború által teremtett éles választást."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-26",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Világos alkut kínálsz: a szövetségi szankciókat addig támogatod, amíg a magyar háztartások energiaellátását nem veszélyeztetik. A hosszú távú függőség kérdése ettől még megmarad."
+      },
+      {
+        "answerId": "B",
+        "text": "Gazdaságilag kezelhetőbb rendszert és hosszabb távú alkalmazkodást kínálsz. Kampányban azonban már a sávhatár említése is rezsiemelésként terjedhet, hacsak korábbi árpolitikád nem készítette elő a célzott támogatást."
+      },
+      {
+        "answerId": "C",
+        "text": "A rövid távú biztonságot hosszú távú alkalmazkodással kapcsolod össze. A program hiteles lehet, de a drága és lassú beruházások nem nyugtatják meg azonnal a következő számlától tartó választót."
+      },
+      {
+        "answerId": "D",
+        "text": "Egyszerű és erős konfliktus, amely a korábbi Gyurcsány-kampányra is ráépül. A „minden körülmények között” ígéret gazdaságilag veszélyes, de ennek ára csak később látszik."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-27",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A korábbi hetek üzenete most tömegben és képekben is testet ölt. A kampány teljesen a biztonság kérdésére állt át, az ellenzék pedig védekező helyzetbe került."
+      },
+      {
+        "answerId": "B",
+        "text": "Kormányfői és emberi kép, amely nehezebben támadható. A saját tábor azonban a kampány legnagyobb erődemonstrációját várta, és a határhelyszín nem pótolja a százezres tömeget."
+      },
+      {
+        "answerId": "C",
+        "text": "Háború idején méltányolható gesztus, de az ellenzéknek ingyen adsz egyenrangú nemzeti szerepet, miközben a saját mozgósító gépezetedet leállítod."
+      },
+      {
+        "answerId": "D",
+        "text": "Megőrzöd az erőt és az államférfiúi hangot, de nem használod ki teljesen azt a konfliktust, amelyre az egész márciusi kampány épült."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-28",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A válasz megőrzi az együttérzés és a magyar érdek közötti egyensúlyt. Különösen hiteles, ha korábban is következetesen támogattad a szankciókat az energia kivételével."
+      },
+      {
+        "answerId": "B",
+        "text": "Zelenszkij váratlanul új arcot ad a már kifáradni kezdő háborús kampánynak. A személyes konfliktus erősen mozgósít, de az ukrán elnök támadása az ellenzéki tábort is felrázhatja."
+      },
+      {
+        "answerId": "C",
+        "text": "Látványos diplomáciai nyitás anélkül, hogy azonnal feladnád az energia- és biztonságpolitikai vörös vonalakat. Következetes humanitárius politika után hitelesebb, keményebb békekampány után viszont védekezésnek tűnhet."
+      },
+      {
+        "answerId": "D",
+        "text": "Nem engeded át a napirendet egy külföldi vezetőnek, de a hallgatásban nincs válasz arra a kérdésre, amelyről már az egész ország beszél."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-29",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A különbség valós, a nyílt szakításból pedig egyik fél sem profitál. A lengyel kapcsolat később még fontos lehet az uniós vitákban."
+      },
+      {
+        "answerId": "B",
+        "text": "Érthetően védi a különböző nemzeti érdekeket, és nem személyes támadás Lengyelország ellen. A nyilvános vita még így is láthatóvá teszi, mennyire egyedül maradt a magyar álláspont a régióban."
+      },
+      {
+        "answerId": "C",
+        "text": "Javítja a szövetségesi kapcsolatot, ám a kampány közepén elbizonytalanítja a saját békeüzenetedet. A Mi Hazánk azonnal a nyugati háborús politika követőjének nevez."
+      },
+      {
+        "answerId": "D",
+        "text": "Gyakorlati ügyekben új partnereket mutatsz fel, ami csökkentheti az elszigeteltség képét. Egy alkalmi koalíció azonban nem pótolja automatikusan a lengyel kapcsolat uniós politikai súlyát."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-30",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A nyugati gazdasági sikerek erős érvet adnak, de az ingázó és városias térségekben az ellenzék is versenyképes. Egy személyes látogatás néhány szoros körzetet átfordíthat."
+      },
+      {
+        "answerId": "B",
+        "text": "A Fidesz itt alapvetően erős, a részvétel maximalizálása pedig listán és egyéniben is sokat ér. Arra vigyázz, hogy ne csak biztos körzetekben gyűjts felesleges többletet."
+      },
+      {
+        "answerId": "C",
+        "text": "A városi és vidéki szavazók keveredése miatt több valóban billegő körzetet érhetsz el. A helyi jelöltek és ügyek ismerete nélkül azonban a központi üzenet kevés lehet."
+      },
+      {
+        "answerId": "D",
+        "text": "Az ipari múlt, a megélhetés és a biztonság egyszerre szólítható meg. A falvakban erős szervezet, a városokban keményebb ellenzéki verseny vár."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-31",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A Fidesz egyik legnagyobb szervezeti előnye éppen az, hogy a támogatás nem marad puszta közvélemény-kutatási adat. A módszer rendkívül hatékony, de komoly adatvédelmi aggályokat vet fel."
+      },
+      {
+        "answerId": "B",
+        "text": "Kevesebb emberrel nagyobb mandátumhatást érsz el. Ha korábban is ezekre a körzetekre építettél, a helyi adat és az aktivistahálózat most összeadódik."
+      },
+      {
+        "answerId": "C",
+        "text": "Jogilag és etikailag ez a legtisztább adatkezelés, de sok régi támogatót elveszítesz a mozgósításból. Egy szoros választáson a szervezet önkéntes gyengítése mandátumokba kerülhet."
+      },
+      {
+        "answerId": "D",
+        "text": "Gyors és olcsó, különösen erős digitális kampány mellett. A személytelen üzenet viszont könnyen spamnek tűnik, és az ellenzéki szavazókat is emlékeztetheti a részvételre."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv_fidesz-32",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Egyetlen, a háború óta következetesen épített üzenet uralja a finist. A választó pontosan tudja, miért kérsz még egy szavazatot, a szervezet pedig tudja, kit kell elvinnie az urnához."
+      },
+      {
+        "answerId": "B",
+        "text": "Minden csoport talál benne valamit, de az utolsó héten a túl sok érv kiolthatja egymást. A kampányfinisben az ismétlés gyakran többet ér az újabb felsorolásnál."
+      },
+      {
+        "answerId": "C",
+        "text": "A kompetencia és a folytonosság megnyugtathatja a bizonytalanokat, a háttérben futó szervezet pedig részben védi a részvételt. Ha a győzelmi hangulat túl erős, néhány támogató így is feleslegesnek érezheti a saját szavazatát."
+      },
+      {
+        "answerId": "D",
+        "text": "A mérsékelt hang csökkenti az ellenzéki riadót és nyithat a középen. A stabil többség kevésbé mozgósító cél, ezért csak akkor működik, ha a kampány korábban már elvégezte az érzelmi munkát."
+      }
+    ]
+  }
+]

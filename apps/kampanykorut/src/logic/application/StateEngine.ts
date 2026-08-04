@@ -2,16 +2,12 @@ import { singleton } from "tsyringe";
 import { v4 as uuidv4 } from "uuid";
 import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
 import { createLogger } from "@/shared/logger/logger";
-import { CampaignState } from "@/shared/types";
+import { CampaignState, HistoryItem } from "@/shared/types";
 import type { ConfigEngine } from "./ConfigEngine";
 import { Emitter } from "./Emitter";
 import type { IdGenerator } from "./IdGenerator";
 import type { Navigation } from "./navigation/Navigation";
-import {
-  DEFAULT_CAMPAIGN_ID,
-  type HistoryItem,
-  type StateHandler,
-} from "./StateHandler";
+import { DEFAULT_CAMPAIGN_ID, type StateHandler } from "./StateHandler";
 import type { SessionKey, StorageEngine } from "./StorageEngine";
 
 export type SavedCampaignSessionInfo = {

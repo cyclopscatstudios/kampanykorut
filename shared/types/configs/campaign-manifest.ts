@@ -9,7 +9,7 @@ export interface CandidateManifest {
 
 export type PlayableSideManifest = Record<string, CandidateManifest>;
 
-export interface CampaignManifest {
+export interface CampaignManifestFiles {
   electionConfig: string;
   voterEnvironmentConfig: string;
   candidateListData: string;
@@ -18,4 +18,17 @@ export interface CampaignManifest {
   customGroups?: string;
   customPollsters?: string;
   playableSides?: Record<string, PlayableSideManifest>;
+}
+
+export interface CampaignManifestMetadata {
+  version: string;
+  author?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface CampaignManifest {
+  schemaVersion: number;
+  metadata?: CampaignManifestMetadata;
+  files: CampaignManifestFiles;
 }

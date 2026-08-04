@@ -1,6 +1,6 @@
 import { t } from "i18next";
 import { useState } from "react";
-import { type GameSettings } from "@/logic/application";
+import { GameSettings } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";

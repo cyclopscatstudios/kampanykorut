@@ -8,6 +8,8 @@ export interface AnswerFeedback {
 export interface AdvisorFeedbackAssets {
   primaryAdvisorImageUri: string;
   secondaryAdvisorImageUri: string;
+  primaryAdvisorName?: string;
+  secondaryAdvisorName?: string;
 }
 
 export interface AdvisorFeedback {

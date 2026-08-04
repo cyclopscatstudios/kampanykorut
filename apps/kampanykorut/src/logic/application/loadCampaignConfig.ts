@@ -105,6 +105,7 @@ async function fetchCampaignConfig(
     header.route,
     "manifest.json",
   );
+  const files = manifest.files;
 
   const commonKeys = [
     "electionConfig",
@@ -118,14 +119,14 @@ async function fetchCampaignConfig(
 
   const commonEntries = await Promise.all(
     commonKeys
-      .filter((key) => manifest[key] !== undefined)
+      .filter((key) => files[key] !== undefined)
       .map(
         async (key) =>
           [
             key,
             await fetchCampaignFile<unknown>(
               header.route,
-              manifest[key] as string,
+              files[key] as string,
             ),
           ] as const,
       ),
@@ -140,9 +141,9 @@ async function fetchCampaignConfig(
   };
 
   const playableSides: Record<string, PlayableSideConfig> = {};
-  if (manifest.playableSides) {
+  if (files.playableSides) {
     await Promise.all(
-      Object.entries(manifest.playableSides).map(
+      Object.entries(files.playableSides).map(
         async ([partyId, candidatePaths]) => {
           playableSides[partyId] = await loadSideConfig(
             header.route,

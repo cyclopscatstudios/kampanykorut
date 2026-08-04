@@ -1,5 +1,4 @@
-import { GameSettings } from "@/logic/application";
-import { createLogger } from "@/shared/logger";
+import { createLogger } from "../logger";
 import {
   AdvisorFeedback,
   CalculateResults,
@@ -10,6 +9,8 @@ import {
   EffectType,
   ElectionConfig,
   FinalResults,
+  GameSettings,
+  HistoryItem,
   PartyListData,
   PartyListVotes,
   RawAnsweEffectProps,
@@ -18,7 +19,7 @@ import {
   RawQuestion,
   Strategy,
   StrategyReward,
-} from "@/shared/types";
+} from "../types";
 import type { EffectApplier } from "./EffectApplier";
 import type { MandateCalculator } from "./MandateCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
@@ -121,10 +122,12 @@ export class CampaignEngine {
   processTurn(
     state: CampaignState,
     decision: Decision,
-    history: Array<{ questionId: string; answerId: string }> = [],
+    history: HistoryItem[],
     gameSettings: GameSettings,
     electionConfig: ElectionConfig,
     campaignStrategies?: Strategy[],
+    districtBoost?: boolean,
+    playerSidePartyId?: string,
   ): CampaignState {
     if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
@@ -136,6 +139,9 @@ export class CampaignEngine {
       state.turn,
       decision.conditionalEffects,
       decision.selectedDistrict,
+      districtBoost,
+      playerSidePartyId,
+      history,
     );
     const modified = this.resultModifier.apply(state, appliedEffects);
 

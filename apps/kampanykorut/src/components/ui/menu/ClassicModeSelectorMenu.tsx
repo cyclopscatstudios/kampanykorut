@@ -10,11 +10,11 @@ import {
 import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
+import { MenuLayout } from "../../../../../../shared/ui/menu/MenuLayout";
 import { Text } from "../../../../../../shared/ui/Text";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
-import { MenuLayout } from "./MenuLayout";
 
 export function ClassicModeSelectorMenu() {
   const campaigns = useGetCampaigns();

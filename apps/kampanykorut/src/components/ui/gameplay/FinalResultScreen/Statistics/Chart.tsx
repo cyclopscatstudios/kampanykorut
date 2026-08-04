@@ -6,8 +6,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { HistoryItem } from "@/logic/application";
-import { CampaignConfig } from "@/shared/types";
+import { CampaignConfig, HistoryItem } from "@/shared/types";
 import { CommonWrapper } from "../../../CommonWrapper";
 
 function createChartData(history: HistoryItem[]) {

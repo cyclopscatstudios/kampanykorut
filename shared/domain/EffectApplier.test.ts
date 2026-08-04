@@ -1,32 +1,18 @@
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it } from "vitest";
-import { ConfigEngine, StateEngine } from "@/logic/application";
 import {
   ConditionalRawEffect,
   DistrictTarget,
   EffectType,
+  HistoryItem,
   RawEffect,
 } from "../types";
-import { CampaignConfig } from "../types/configs/campaign-config";
 import { EffectApplier } from "./EffectApplier";
-import { mockElectionConfig } from "./mocks/mockElectionConfig";
 import { mockCandidateListData } from "./mocks/mockListData";
 
 let effectApplier: EffectApplier;
 
-const config = {
-  electionConfig: mockElectionConfig,
-} as unknown as CampaignConfig;
-
-const FIXED_SESSION_ID = "fixed-test-session-id";
-
-const electionConfigEngine = container.resolve(ConfigEngine);
-electionConfigEngine.configure(config);
-
 describe("ElectionEffectApplier – PartySwing", () => {
-  const stateEngine = container.resolve(StateEngine);
-  (stateEngine as unknown as { sessionId: string }).sessionId =
-    FIXED_SESSION_ID;
   beforeEach(() => {
     effectApplier = container.resolve(EffectApplier);
   });
@@ -147,10 +133,6 @@ describe("ElectionEffectApplier – PartySwing", () => {
 
   describe("EffectApplier – Conditional Effects", () => {
     it("should apply replace conditional effect", () => {
-      stateEngine.saveState("turnHistory", {
-        questionId: "q1",
-        answerId: "a1",
-      });
       const effect: RawEffect = {
         type: EffectType.DistrictVoteTransfer,
         params: [
@@ -192,6 +174,15 @@ describe("ElectionEffectApplier – PartySwing", () => {
         mockCandidateListData,
         0,
         [conditionalEffect],
+        undefined,
+        undefined,
+        undefined,
+        [
+          {
+            questionId: "q1",
+            answerId: "a1",
+          } as HistoryItem,
+        ],
       );
       expect(result).toEqual([
         {
@@ -205,10 +196,6 @@ describe("ElectionEffectApplier – PartySwing", () => {
       ]);
     });
     it("should apply merge conditional effect", () => {
-      stateEngine.saveState("turnHistory", {
-        questionId: "q1",
-        answerId: "a1",
-      });
       const effect: RawEffect = {
         type: EffectType.DistrictVoteTransfer,
         params: [
@@ -250,6 +237,15 @@ describe("ElectionEffectApplier – PartySwing", () => {
         mockCandidateListData,
         0,
         [conditionalEffect],
+        undefined,
+        undefined,
+        undefined,
+        [
+          {
+            questionId: "q1",
+            answerId: "a1",
+          } as HistoryItem,
+        ],
       );
       expect(result).toEqual([
         {

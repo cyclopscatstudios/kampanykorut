@@ -66,6 +66,8 @@ export function useElectionState(campaignId: string) {
         ? config.playableSides?.[playerSideId]?.[playerCandidateId]
             ?.campaignStrategies
         : undefined,
+      config.electionConfig.districtBoost,
+      playerSideId,
     );
 
     return {

@@ -72,16 +72,11 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
         advice={flow.pendingAdvisor?.feedback.text ?? ""}
         open={Boolean(flow.pendingAdvisor)}
         onClose={handleAdvisorClose}
-        asset={{
-          primaryAdvisorImageUri:
-            config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
-              state.playerSide?.candidateId ?? ""
-            ]?.advisorFeedbackAssets?.primaryAdvisorImageUri ?? "",
-          secondaryAdvisorImageUri:
-            config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
-              state.playerSide?.candidateId ?? ""
-            ]?.advisorFeedbackAssets?.secondaryAdvisorImageUri ?? "",
-        }}
+        asset={
+          config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
+            state.playerSide?.candidateId ?? ""
+          ]?.advisorFeedbackAssets
+        }
       />
       <GameView
         currentView={flow.currentView}

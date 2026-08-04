@@ -1,5 +1,5 @@
 import { injectable } from "tsyringe";
-import { createLogger } from "@/shared/logger";
+import { createLogger } from "../logger";
 import { CampaignState, ElectionConfig } from "../types";
 import { Pollster } from "../types/pollsters";
 import { defaultPollsters as DEFAULT_POLLSTERS } from "./DefaultPollsters";

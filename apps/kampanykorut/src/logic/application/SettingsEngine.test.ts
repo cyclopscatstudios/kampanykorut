@@ -1,5 +1,6 @@
 import { vi } from "vitest";
-import { GameSettings, SettingsEngine } from "./SettingsEngine";
+import { GameSettings } from "@/shared/types";
+import { SettingsEngine } from "./SettingsEngine";
 import { StorageEngine } from "./StorageEngine";
 
 const makeStorageMock = (storedValue: string | null = null) => ({

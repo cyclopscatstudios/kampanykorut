@@ -75,13 +75,7 @@ container.registerInstance(ResultModifier, resultModifier);
 const mandateCalculator = new MandateCalculator();
 container.registerInstance(MandateCalculator, mandateCalculator);
 
-const effectApplier = new EffectApplier(
-  electionConfigEngine,
-  campaignStateEngine,
-  mandateCalculator,
-  stateHandler,
-  districtGroupEngine,
-);
+const effectApplier = new EffectApplier(mandateCalculator, districtGroupEngine);
 container.registerInstance(EffectApplier, effectApplier);
 
 const pollsterEngine = new PollsterEngine(mandateCalculator);

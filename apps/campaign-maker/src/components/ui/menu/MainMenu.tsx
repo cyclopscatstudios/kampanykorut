@@ -1,13 +1,12 @@
-import { MenuLayout } from "../../../../../kampanykorut/src/components/ui/menu/MenuLayout";
-import { MenuList } from "../../../../../kampanykorut/src/components/ui/MenuList";
-import { MenuItemId } from "../../../../../kampanykorut/src/components/ui/menu/menu.types";
+import { MenuLayout, MenuList } from "@/shared/ui";
+import { MenuItemId } from "@/shared/types";
 
 export function MainMenu() {
   return (
-    <div className="relative w-full h-full">
+    <div className="size-full flex items-center justify-center">
       <MenuLayout>
         <MenuList
-          variant="primary"
+          variant="hero"
           listItems={[
             {
               id: MenuItemId.NewCampaign,

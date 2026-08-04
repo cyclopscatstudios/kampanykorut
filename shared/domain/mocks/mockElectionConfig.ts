@@ -1,4 +1,4 @@
-import { ElectionConfig } from "@/shared/types";
+import { ElectionConfig } from "../../types";
 
 export const mockElectionConfig: ElectionConfig = {
   title: "Mock Election",

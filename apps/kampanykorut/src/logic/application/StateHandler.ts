@@ -1,22 +1,13 @@
 import { singleton } from "tsyringe";
 import { createLogger } from "@/shared/logger/logger";
 import {
-  CalculateResults,
   CampaignConfig,
   CampaignState,
-  CandidateListData,
   Decision,
+  HistoryItem,
   RawEffect,
 } from "@/shared/types";
 import { Emitter } from "./Emitter";
-
-export interface HistoryItem {
-  questionId: string;
-  answerId: string;
-  visitedDistrict: Pick<CandidateListData, "oevk" | "megyekod">;
-  turn: number;
-  results: CalculateResults;
-}
 
 export interface AffectedQuestion {
   questionId: string;

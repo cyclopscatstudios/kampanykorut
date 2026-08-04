@@ -37,18 +37,23 @@ describe("StateHandler", () => {
   describe("set", () => {
     it("updates the stored value for the given key", () => {
       const state = handler.get("campaignState");
-      handler.set("campaignState", { ...(state ?? null), turn: 3 });
+
+      handler.set("campaignState", {
+        ...state!,
+        turn: 3,
+      });
 
       expect(handler.get("campaignState")?.turn).toBe(3);
     });
 
     it("successive set() calls accumulate correctly", () => {
       handler.set("campaignState", {
-        ...handler.get("campaignState"),
+        ...handler.get("campaignState")!,
         turn: 1,
       });
+
       handler.set("campaignState", {
-        ...handler.get("campaignState"),
+        ...handler.get("campaignState")!,
         turn: 2,
       });
 
@@ -60,7 +65,7 @@ describe("StateHandler", () => {
       handler.subscribe((state) => received.push(state));
 
       handler.set("campaignState", {
-        ...handler.get("campaignState"),
+        ...handler.get("campaignState")!,
         turn: 5,
       });
 
@@ -70,14 +75,18 @@ describe("StateHandler", () => {
 
     it("notifies on every set() call", () => {
       const turns: number[] = [];
-      handler.subscribe((state) => turns.push(state.campaignState?.turn));
+
+      handler.subscribe((state) => {
+        turns.push(state.campaignState!.turn);
+      });
 
       handler.set("campaignState", {
-        ...handler.get("campaignState"),
+        ...handler.get("campaignState")!,
         turn: 1,
       });
+
       handler.set("campaignState", {
-        ...handler.get("campaignState"),
+        ...handler.get("campaignState")!,
         turn: 2,
       });
 
@@ -96,12 +105,13 @@ describe("StateHandler", () => {
 
     it("two independent instances do not share state", () => {
       const other = new StateHandler();
+
       handler.set("campaignState", {
-        ...handler.get("campaignState"),
+        ...handler.get("campaignState")!,
         turn: 99,
       });
 
-      expect(other.get("campaignState").turn)?.toBe(0);
+      expect(other.get("campaignState")!.turn).toBe(0);
     });
   });
 });

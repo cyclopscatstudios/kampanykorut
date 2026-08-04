@@ -9,6 +9,10 @@
     "ellenzeki_osszefogas": {
       "ellenzeki_osszefogas": 3,
       "fidesz": -3
+    },
+    "fidesz": {
+      "ellenzeki_osszefogas": 8,
+      "fidesz": -8
     }
   },
   "parties": [
@@ -59,7 +63,14 @@
     {
       "id": "fidesz",
       "label": "Fidesz–KDNP",
-      "mainCandidates": [{ "id": "orban_viktor", "label": "Orban Viktor" }]
+      "description": "A 2010 óta kormányzó pártszövetség, amely a 2022-es választásokon is a kormányzás folytatását tűzte ki célul, a gazdasági stabilitás és a nemzeti érdekek védelme mellett.",
+      "mainCandidates": [
+        {
+          "id": "orban_viktor",
+          "label": "Orbán Viktor",
+          "description": "A párt elnöke, a kormányzás folytatásának és a nemzeti érdekek védelmének támogatása mellett."
+        }
+      ]
     }
   ],
   "electionAssets": [

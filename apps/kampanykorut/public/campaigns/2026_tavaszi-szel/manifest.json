@@ -1,8 +1,24 @@
 {
-  "electionConfig": "election_config.json",
-  "voterEnvironmentConfig": "voter_environment_config.json",
-  "candidateListData": "oevk_constituency_results.json",
-  "districts": "oevk_2024.json",
-  "endResults": "end_results.json",
-  "customPollsters": "custom_pollsters.json"
+  "schemaVersion": 1,
+  "metadata": {
+    "version": "1.0.0"
+  },
+  "files": {
+    "electionConfig": "election_config.json",
+    "voterEnvironmentConfig": "voter_environment_config.json",
+    "candidateListData": "oevk_constituency_results.json",
+    "districts": "oevk_2024.json",
+    "endResults": "end_results.json",
+    "customPollsters": "custom_pollsters.json",
+    "playableSides": {
+      "tisza": {
+        "magyar_peter": {
+          "questions": "tisza/magyar_peter/2026_tisza_questions_v2.json",
+          "answerEffect": "tisza/magyar_peter/2026_tisza_answer_effects_v2.json",
+          "advisorFeedback": "tisza/magyar_peter/2026_tisza_advisor_feedback_v2.json",
+          "advisorFeedbackAssets": "tisza/magyar_peter/advisor_feedback_assets.json"
+        }
+      }
+    }
+  }
 }

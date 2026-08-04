@@ -1,6 +1,12 @@
 {
-  "electionConfig": "election_config.json",
-  "voterEnvironmentConfig": "voter_environment_config.json",
-  "candidateListData": "oevk_constituency_results.json",
-  "districts": "oevk_2024.json"
+  "schemaVersion": 1,
+  "metadata": {
+    "version": "1.0.0"
+  },
+  "files": {
+    "electionConfig": "election_config.json",
+    "voterEnvironmentConfig": "voter_environment_config.json",
+    "candidateListData": "oevk_constituency_results.json",
+    "districts": "oevk_2024.json"
+  }
 }

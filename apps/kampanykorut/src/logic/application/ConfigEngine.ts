@@ -4,10 +4,11 @@ import {
   CampaignConfig,
   CampaignState,
   ElectionConfig,
+  HistoryItem,
   StrategyReward,
 } from "@/shared/types";
 import { Emitter } from "./Emitter";
-import { HistoryItem, StateHandler } from "./StateHandler";
+import { StateHandler } from "./StateHandler";
 import { StorageEngine } from "./StorageEngine";
 
 const log = createLogger("ConfigEngine");

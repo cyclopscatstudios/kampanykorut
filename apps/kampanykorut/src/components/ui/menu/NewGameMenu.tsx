@@ -1,7 +1,7 @@
 import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
 import { MenuItemId } from "../../../../../../shared/types/menu.types";
+import { MenuLayout } from "../../../../../../shared/ui/menu/MenuLayout";
 import { MenuList } from "../../../../../../shared/ui/menu/MenuList";
-import { MenuLayout } from "./MenuLayout";
 
 export function NewGameMenu() {
   const classicMode = useTranslateLang("newGameMenu.classicMode");

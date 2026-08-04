@@ -1,16 +1,9 @@
 import { inject, singleton } from "tsyringe";
 import { createLogger } from "@/shared/logger/logger";
+import { GameSettings, LanguageId } from "@/shared/types";
 import { setLanguage } from "../i18n/i18n";
-import { supportedLanguages } from "../langs/languages";
 import { Emitter } from "./Emitter";
 import { StorageEngine } from "./StorageEngine";
-
-export type LanguageId = (typeof supportedLanguages)[number]["id"];
-
-export interface GameSettings {
-  showAdvisorFeedback: boolean;
-  language: LanguageId;
-}
 
 const log = createLogger("SettingsEngine");
 

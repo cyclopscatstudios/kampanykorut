@@ -3,11 +3,11 @@ import { useLoaderData } from "react-router";
 import { MenuItemId } from "@/shared/types";
 import { MenuList, Text } from "@/shared/ui";
 import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
+import { MenuLayout } from "../../../../../../shared/ui/menu/MenuLayout";
 import logo from "../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { buildInfo } from "../../../buildInfo";
 import { BugReporterButton } from "../gameplay/BugReporter/BugReporterButton";
 import { BugReporterModal } from "../gameplay/BugReporter/BugReporterModal";
-import { MenuLayout } from "./MenuLayout";
 
 export function MainMenu() {
   const [openBugReporter, setOpenBugReporter] = useState(false);

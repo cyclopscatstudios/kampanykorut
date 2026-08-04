@@ -1,11 +1,11 @@
 import { inject } from "tsyringe";
-import { createLogger } from "@/shared/logger";
+import { createLogger } from "../logger";
 import {
   AppliedEffect,
   CampaignState,
   CandidateListData,
   EffectType,
-} from "@/shared/types";
+} from "../types";
 import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
 import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
 import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";
@@ -175,8 +175,8 @@ export class ResultModifier {
     log.info("Applying district vote transfer", { appliedEffects });
     const result = this.districtVoteTransformer.modifyDistricts(
       state.candidateListData ?? [],
-      state.partyListData ?? [],
       appliedEffects.target,
+      state.partyListData,
       state.partyListVotes,
     );
     return {

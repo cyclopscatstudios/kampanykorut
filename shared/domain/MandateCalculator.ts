@@ -1,5 +1,5 @@
 import { injectable } from "tsyringe";
-import { createLogger } from "@/shared/logger";
+import { createLogger } from "../logger";
 import {
   CalculateResults,
   CandidateListData,
@@ -11,7 +11,7 @@ import {
   PartyListData,
   PartyVotes,
   PartyVotesRaw,
-} from "@/shared/types";
+} from "../types";
 import { calcPercentages } from "./ResultModifier.utils";
 
 const log = createLogger("MandateCalculator");

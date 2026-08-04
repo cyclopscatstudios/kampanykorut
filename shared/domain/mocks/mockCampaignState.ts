@@ -1,4 +1,4 @@
-import { Answer, CampaignState } from "@/shared/types";
+import { Answer, CampaignState } from "../../types";
 import { mockCandidateListData, mockPartyListData } from "./mockListData";
 
 export const campaignState: CampaignState = {
