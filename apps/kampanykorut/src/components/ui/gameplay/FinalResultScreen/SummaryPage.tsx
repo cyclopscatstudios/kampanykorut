@@ -20,6 +20,8 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     current.totalSeats > max.totalSeats ? current : max,
   );
 
+  const noWinner = winner.totalSeats < MIN_SEATS_TO_WIN;
+
   const playerSideId = campaignState?.playerSide?.partyId;
   const playerCandidateId = campaignState?.playerSide?.candidateId;
   const sideEndResults =
@@ -34,6 +36,8 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     ? sideEndResults?.playerSideVictory
     : sideEndResults?.playerSideDefeat;
 
+  const noWinnerAssets = sideEndResults?.deadlock;
+
   const parties = useMemo(
     () =>
       buildPartiesFromResults(results, currentConfig?.electionConfig.parties),
@@ -44,17 +48,21 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     <>
       <div className="border-b border-slate-200/65 p-3">
         <Heading color="lightBlue" className="text-center mb-1">
-          {assets?.title}
+          {noWinner ? noWinnerAssets?.title : assets?.title}
         </Heading>
         <Text color="gray" className="text-center text-sm">
-          {assets?.subtitle}
+          {noWinner ? noWinnerAssets?.subtitle : assets?.subtitle}
         </Text>
       </div>
       <div className="pb-5">
         <div className="flex gap-6 px-6 pt-5">
           <div className="basis-1/2">
             <ImageWrapper
-              src={assets?.imageUri ?? ""}
+              src={
+                noWinner
+                  ? (noWinnerAssets?.imageUri ?? "")
+                  : (assets?.imageUri ?? "")
+              }
               type="final"
               className={`object-cover rounded-xl ${
                 didPlayerWin ? "" : "grayscale"
@@ -63,7 +71,7 @@ export function SummaryPage({ results }: { results: FinalResults }) {
           </div>
           <div className="basis-1/2">
             <Text color="gray" className="leading-relaxed">
-              {assets?.description}
+              {noWinner ? noWinnerAssets?.description : assets?.description}
             </Text>
           </div>
         </div>

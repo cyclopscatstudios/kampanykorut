@@ -26,10 +26,11 @@
       },
       "fidesz": {
         "orban_viktor": {
-          "questions": "fidesz/orban_viktor/2022_fidesz_questions_vol2.json",
-          "answerEffect": "fidesz/orban_viktor/2022_fidesz_answer_effects_vol2.json",
-          "advisorFeedback": "fidesz/orban_viktor/2022_fidesz_advisor_feedback_vol2.json",
-          "advisorFeedbackAssets": "fidesz/orban_viktor/2022_fidesz_advisor_feedback_assets.json"
+          "questions": "fidesz/orban_viktor/2022_fidesz_questions.json",
+          "answerEffect": "fidesz/orban_viktor/2022_fidesz_answer_effects.json",
+          "advisorFeedback": "fidesz/orban_viktor/2022_fidesz_advisor_feedback.json",
+          "advisorFeedbackAssets": "fidesz/orban_viktor/2022_fidesz_advisor_feedback_assets.json",
+          "endResults": "fidesz/orban_viktor/end_results.json"
         }
       }
     }

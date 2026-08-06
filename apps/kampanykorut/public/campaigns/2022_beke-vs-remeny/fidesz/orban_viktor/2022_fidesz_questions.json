@@ -162,19 +162,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Szigorú korlátozásokat és széles körű oltási kötelezettséget vezetsz be, mert az emberéletek védelme fontosabb a kampánynál."
+        "label": "Országos védettségiigazolvány-követelményt és célzott oltási kötelezettséget vezetsz be a veszélyeztetett munkahelyeken, szükség esetén rövid regionális korlátozásokkal."
       },
       {
         "id": "B",
-        "label": "Oltási akcióheteket, emlékeztető oltást és zárt téri maszkviselést hirdetsz, de elutasítod az újabb általános lezárást."
+        "label": "Oltási akcióheteket, emlékeztető oltást és zárt téri maszkviselést hirdetsz, de az iskolákat és a gazdaságot nyitva tartod."
       },
       {
         "id": "C",
-        "label": "A döntést a munkáltatókra és az intézményekre bízod, a kormány pedig elsősorban tájékoztató kampányt folytat."
+        "label": "Egységes minimumszabályokat adsz, de a további szigorítást a munkáltatókra és intézményekre bízod, helyi járványadatok alapján."
       },
       {
         "id": "D",
-        "label": "Nem vezetsz be új korlátozásokat, és kijelented, hogy a járványügyi védekezés mindenki egyéni felelőssége."
+        "label": "A magas átoltottságra hivatkozva nem hozol új kötelező korlátozásokat; kórházi kapacitást bővítesz és az önkéntes védekezést ösztönzöd."
       }
     ]
   },
@@ -234,7 +234,7 @@
       },
       {
         "id": "D",
-        "label": "Nem avatkozol be: elmondod, hogy a világpiaci energiaárakat a magyar kormány nem tudja tartósan felülírni."
+        "label": "Elutasítod az általános árstopot; a költségvetési mozgásteret stratégiai készletekre és a leginkább rászoruló ingázók célzott kompenzációjára tartalékolod."
       }
     ],
     "affects": [
@@ -286,7 +286,7 @@
       },
       {
         "id": "B",
-        "label": "Kiállsz mellette, amíg jogerős ítélet nem születik, és politikai időzítésű ügyészségi támadásról beszélsz."
+        "label": "Völner felfüggeszti párt- és kormányzati feladatait, de az ártatlanság vélelmére hivatkozva nem mond le a mandátumáról, amíg az ügyészség nem mutat be vádiratot."
       },
       {
         "id": "C",
@@ -294,7 +294,7 @@
       },
       {
         "id": "D",
-        "label": "Nem szólalsz meg, és arra utasítod a kormánypárti médiát, hogy a lehető legkevesebbet foglalkozzon az üggyel."
+        "label": "A miniszterelnöki kommunikációt távol tartod az ügytől; a lemondást bejelentitek, a további tájékoztatást pedig kizárólag az ügyészségre és az igazságügyi miniszterre bízod."
       }
     ]
   },
@@ -464,7 +464,7 @@
   {
     "id": "2022_ogyv_fidesz-17",
     "title": "Moszkvai út a háború árnyékában",
-    "question": "2022. február 1-jére találkozót egyeztettél Vlagyimir Putyinnal. Az amerikai és brit partnerek egyre komolyabb orosz támadási előkészületekre figyelmeztetnek, miközben Magyarországnak további földgázra lenne szüksége. Mit teszel?",
+    "question": "2022. február 1-jére találkozót egyeztettél Vlagyimir Putyinnal. Az amerikai és brit partnerek támadási előkészületekre figyelmeztetnek, de az európai értékelések még nem egységesek, miközben Magyarországnak további földgázra lenne szüksége. Mit teszel?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -610,11 +610,11 @@
       },
       {
         "id": "C",
-        "label": "„Orosz–ukrán konfliktusról” és orosz biztonsági igényekről beszélsz, miközben mindkét felet azonnali tűzszünetre szólítod fel."
+        "label": "Kiegyensúlyozott semlegességi nyilatkozatot adsz: elítéled a civil áldozatokat és az erőszakot, de a szövetségesi egyeztetésig nem nevezel meg kizárólagos felelőst, hanem azonnali tűzszünetet sürgetsz."
       },
       {
         "id": "D",
-        "label": "Megvárod az EU és a NATO rendkívüli ülését, és csak az egyeztetett közös álláspont után szólalsz meg."
+        "label": "Rövid technikai nyilatkozatban elrendeled a válságstáb és a határvédelem felállítását, a politikai értékeléssel pedig megvárod az aznapi EU- és NATO-egyeztetést."
       }
     ],
     "affects": [
@@ -684,11 +684,16 @@
       },
       {
         "id": "C",
-        "label": "Lezárod a határt, és csak a kárpátaljai magyaroknak, valamint előzetesen ellenőrzött ukrán családoknak adsz belépést."
+        "label": "Szigorúan ellenőrzött tranzitrendszert vezetsz be: elsőbbséget kapnak a kárpátaljai magyarok és a családok, a többiek ideiglenes központokból uniós áthelyezést kérhetnek."
       },
       {
         "id": "D",
-        "label": "A menekültek ellátását civilekre és önkormányzatokra bízod, a kormány pedig kizárólag a határbiztonságra koncentrál."
+        "label": "A kormány finanszírozza az ellátást és a közlekedést, de a napi segélyezést az egyházakra, civilekre és önkormányzatokra bízza; az állam a regisztrációra és határbiztonságra koncentrál."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
       }
     ]
   },
@@ -699,19 +704,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A választást a „háború vagy béke” kérdésévé teszed: azt állítod, csak a Fidesz garantálja, hogy Magyarország kimaradjon a konfliktusból."
+        "label": "Élesen a „háború vagy béke” kérdésévé teszed a választást, Márki-Zay mondatát pedig annak bizonyítékaként használod, hogy csak a Fidesz garantálja a kimaradást."
       },
       {
         "id": "B",
-        "label": "Pontosan idézed Márki-Zayt, de nem állítod, hogy önként háborúba küldené az országot; inkább a saját óvatosabb politikádat hangsúlyozod."
+        "label": "Pontosan idézed Márki-Zayt, majd a felelős hivatalban lévő vezető szerepére építesz: bemutatod, mit enged és mit nem enged a magyar NATO-tagság."
       },
       {
         "id": "C",
-        "label": "Nem használod fel a mondatot, mert háborús helyzetben nem akarsz belpolitikai kampányt építeni a félelemre."
+        "label": "Nemzeti egységet hirdetsz, átmenetileg felfüggeszted a háborúval kapcsolatos pártpolitikai támadásokat, és kizárólag a kormány válságkezelését mutatod be."
       },
       {
         "id": "D",
-        "label": "Maradsz a korábbi fő üzenetnél: a valódi veszély továbbra is Gyurcsány visszatérése és a baloldali gazdaságpolitika."
+        "label": "Kétpályás kampányt folytatsz: a biztonság mellett továbbra is napirenden tartod a juttatásokat, a rezsicsökkentést és a Gyurcsány-korszak visszatérésének kockázatát."
       }
     ],
     "affects": [
@@ -740,7 +745,7 @@
       },
       {
         "id": "B",
-        "label": "Őszintén kimondod, hogy a korlátlan rezsicsökkentés nem tartható fenn; célzott támogatást ígérsz az átlag alatti fogyasztóknak."
+        "label": "Kétszintű, fenntartható garanciát ígérsz: az átlagfogyasztásig marad a kedvezményes ár, a nagyfogyasztók piaci árat fizetnek, a megtakarításból pedig szigetelési program indul."
       },
       {
         "id": "C",
@@ -790,7 +795,7 @@
       },
       {
         "id": "C",
-        "label": "Elfogadod a kritikát, és bejelented, hogy Magyarország felülvizsgálja az orosz energia és a fegyverátszállítás ügyében képviselt álláspontját."
+        "label": "Közvetlen tárgyalást ajánlasz Zelenszkijnek és növeled a humanitárius támogatást, de fenntartod az energiaembargóval és a közvetlen fegyverátszállítással kapcsolatos vörös vonalakat."
       },
       {
         "id": "D",
@@ -809,7 +814,7 @@
       },
       {
         "id": "B",
-        "label": "Visszatámadsz: a lengyel vezetés felelőtlenül közel viszi Közép-Európát a háborúhoz."
+        "label": "Nyilvánosan megvéded a magyar különutat: elismered a lengyel biztonsági félelmeket, de kijelented, hogy Budapest nem másolhat egy eltérő energiahelyzetben hozott varsói döntést."
       },
       {
         "id": "C",
@@ -817,7 +822,7 @@
       },
       {
         "id": "D",
-        "label": "A lengyel kapcsolat helyett Szerbiát, Törökországot és más pragmatikus partnereket mutatsz be az önálló magyar külpolitika szövetségeseiként."
+        "label": "A V4 helyett átmeneti regionális koalíciót építesz az energiaellátás és a határvédelem ügyében Ausztriával, Szerbiával, Szlovéniával és más pragmatikus partnerekkel."
       }
     ]
   },
@@ -851,7 +856,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Teljes országos ajtókopogtatást: a választás napján minden ismert támogatót addig keresnek, amíg el nem jut az urnához."
+        "label": "Teljes országos személyes mozgósítást rendelsz el: az ismert támogatókat több hullámban emlékeztetik, az időseknek és nehezen mozgóknak pedig szabályos utazási segítséget szerveznek."
       },
       {
         "id": "B",
@@ -864,6 +869,14 @@
       {
         "id": "D",
         "label": "A személyes megkeresés helyett országos SMS- és közösségimédia-kampányt indítasz minden elérhető címre."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
       }
     ]
   },
@@ -882,11 +895,11 @@
       },
       {
         "id": "C",
-        "label": "A biztos győzelmet hangsúlyozod, és már a következő kormány első száz napjáról beszélsz."
+        "label": "Győztes, kormányzóképes erőt mutatsz: bemutatod a következő kabinet első száz napját, miközben a helyi szervezetek csendben folytatják a mozgósítást."
       },
       {
         "id": "D",
-        "label": "A kétharmad veszélyéről beszélő ellenzéki kampányra válaszolva mérsékelt hangot ütsz meg, és egyszerű többséghez kérsz felhatalmazást."
+        "label": "Mérsékelt nemzeti egységüzenettel zársz: stabil kormányzati többséghez kérsz felhatalmazást, és kerülöd a kétharmad vagy az ellenzék megsemmisítésének nyelvét."
       }
     ]
   }

@@ -3,6 +3,7 @@ import { CalculateResults } from "./campaign";
 export interface EndResultProps {
   playerSideDefeat: Asset;
   playerSideVictory: Asset;
+  deadlock: Asset;
 }
 
 export interface Asset {

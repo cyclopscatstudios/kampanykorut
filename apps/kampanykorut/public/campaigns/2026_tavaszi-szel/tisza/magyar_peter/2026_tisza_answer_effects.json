@@ -1,6 +1,6 @@
 [
   {
-    "id": "2026_ogyv_tisza-1",
+    "id": "2026_ogyv_tisza_v2-1",
     "answers": [
       {
         "id": "A",
@@ -8,10 +8,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.55,
-              "dk": 0.25,
-              "mkkp": 0.15,
-              "fidesz": 0.1
+              "tisza": 0.652,
+              "dk": -0.437,
+              "mkkp": -0.182,
+              "fidesz": -0.185
             }
           }
         ]
@@ -22,11 +22,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": 0.02,
-              "fidesz": -0.01,
-              "dk": -0.01,
-              "mkkp": -0.01,
-              "mi_hazank": 0.02
+              "tisza": 1.043,
+              "fidesz": -0.269,
+              "dk": -0.607,
+              "mkkp": -0.287
             }
           }
         ]
@@ -37,11 +36,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.18,
-              "fidesz": -0.08,
-              "dk": 0.12,
-              "mkkp": 0.12,
-              "mi_hazank": 0.02
+              "tisza": 0.893,
+              "fidesz": -0.302,
+              "dk": -0.522,
+              "mkkp": -0.202,
+              "mi_hazank": 0.013
             }
           }
         ]
@@ -52,11 +51,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.12,
-              "fidesz": -0.2,
-              "dk": 0.16,
-              "mkkp": 0.1,
-              "mi_hazank": 0.06
+              "tisza": 0.932,
+              "fidesz": -0.38,
+              "dk": -0.496,
+              "mkkp": -0.215,
+              "mi_hazank": 0.039
             }
           },
           {
@@ -65,7 +64,7 @@
               {
                 "groupId": "nagyvarosok_oevk",
                 "targetParty": "dk",
-                "amount": 500,
+                "amount": 350,
                 "from": {
                   "type": "party",
                   "party": "tisza"
@@ -78,7 +77,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-2",
+    "id": "2026_ogyv_tisza_v2-2",
     "answers": [
       {
         "id": "A",
@@ -86,8 +85,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.12,
-              "fidesz": 0.05
+              "tisza": 0.592,
+              "fidesz": -0.127,
+              "mi_hazank": -0.01,
+              "mkkp": -0.06,
+              "dk": -0.09
             }
           }
         ]
@@ -98,7 +100,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "mi_hazank": 0.02
+              "tisza": 0.689,
+              "fidesz": -0.173,
+              "mi_hazank": -0.01,
+              "mkkp": -0.06,
+              "dk": -0.09
             }
           }
         ]
@@ -109,8 +115,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.08,
-              "fidesz": 0.03
+              "tisza": 0.618,
+              "fidesz": -0.141,
+              "mi_hazank": -0.01,
+              "mkkp": -0.06,
+              "dk": -0.09
             }
           }
         ]
@@ -121,10 +130,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.7,
-              "fidesz": 0.25,
-              "mi_hazank": 0.18,
-              "dk": 0.12
+              "tisza": 0.215,
+              "fidesz": 0.003,
+              "mi_hazank": 0.107,
+              "dk": -0.012,
+              "mkkp": -0.06
             }
           }
         ]
@@ -132,7 +142,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-3",
+    "id": "2026_ogyv_tisza_v2-3",
     "answers": [
       {
         "id": "A",
@@ -140,8 +150,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.12,
-              "fidesz": 0.04
+              "tisza": 0.932,
+              "fidesz": -0.224,
+              "mi_hazank": -0.02,
+              "mkkp": -0.28,
+              "dk": -0.51
             }
           }
         ]
@@ -152,10 +165,25 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.02,
-              "fidesz": 0.01,
-              "mi_hazank": 0.02
+              "tisza": 1.017,
+              "fidesz": -0.257,
+              "mi_hazank": -0.02,
+              "mkkp": -0.28,
+              "dk": -0.51
             }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "vegyes_oevk",
+                "targetParty": "tisza",
+                "amount": 250,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
           }
         ]
       },
@@ -165,10 +193,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.32,
-              "fidesz": 0.12,
-              "mi_hazank": 0.06,
-              "mkkp": 0.04
+              "tisza": 0.802,
+              "fidesz": -0.172,
+              "mi_hazank": 0.019,
+              "mkkp": -0.254,
+              "dk": -0.51
             }
           }
         ]
@@ -179,15 +208,17 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.85,
-              "fidesz": 0.35,
-              "mi_hazank": 0.1
+              "tisza": 0.458,
+              "fidesz": -0.023,
+              "mi_hazank": 0.045,
+              "mkkp": -0.28,
+              "dk": -0.51
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "tisza": -0.45
+              "tisza": -0.293
             }
           }
         ]
@@ -195,7 +226,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-4",
+    "id": "2026_ogyv_tisza_v2-4",
     "answers": [
       {
         "id": "A",
@@ -203,68 +234,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.35,
-              "fidesz": 0.2,
-              "mi_hazank": 0.12,
-              "dk": 0.03
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.02,
+              "tisza": 0.283,
               "fidesz": 0.01,
-              "mi_hazank": 0.02
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.45,
-              "fidesz": 0.15,
-              "mi_hazank": 0.18,
-              "dk": 0.06
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.22,
-              "fidesz": 0.1,
-              "mi_hazank": 0.06
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-5",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.05,
-              "fidesz": -0.03,
-              "mi_hazank": 0.02
+              "mi_hazank": 0.028,
+              "dk": 0.019
             }
           }
         ]
@@ -275,8 +248,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": 0.02,
-              "fidesz": -0.01
+              "tisza": 0.517,
+              "fidesz": -0.127,
+              "mi_hazank": -0.05
             }
           }
         ]
@@ -287,9 +261,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.18,
-              "fidesz": 0.09,
-              "mkkp": 0.03
+              "tisza": 0.217,
+              "fidesz": -0.022,
+              "mi_hazank": 0.067,
+              "dk": 0.039
             }
           }
         ]
@@ -300,9 +275,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.52,
-              "fidesz": 0.22,
-              "dk": 0.08
+              "tisza": 0.367,
+              "fidesz": -0.055,
+              "mi_hazank": -0.011
             }
           }
         ]
@@ -310,7 +285,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-6",
+    "id": "2026_ogyv_tisza_v2-5",
     "answers": [
       {
         "id": "A",
@@ -318,9 +293,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": 0.04,
-              "fidesz": -0.03,
-              "mi_hazank": 0.02
+              "tisza": 0.938,
+              "fidesz": -0.246,
+              "mkkp": -0.06,
+              "dk": -0.17
             }
           }
         ]
@@ -331,8 +307,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.3,
-              "fidesz": 0.16
+              "tisza": 0.892,
+              "fidesz": -0.226,
+              "dk": -0.183,
+              "mkkp": -0.06
             }
           }
         ]
@@ -343,15 +321,16 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.8,
-              "fidesz": 0.35,
-              "mkkp": 0.08
+              "tisza": 0.918,
+              "fidesz": -0.233,
+              "mkkp": -0.06,
+              "dk": -0.17
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "tisza": -0.12
+              "tisza": -0.019
             }
           }
         ]
@@ -362,8 +341,16 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.08,
-              "fidesz": 0.08
+              "tisza": 0.905,
+              "fidesz": -0.219,
+              "mkkp": -0.06,
+              "dk": -0.17
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.019
             }
           }
         ]
@@ -371,7 +358,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-7",
+    "id": "2026_ogyv_tisza_v2-6",
     "answers": [
       {
         "id": "A",
@@ -379,9 +366,87 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.06,
-              "fidesz": 0.04,
-              "mi_hazank": 0.02
+              "tisza": 0.716,
+              "fidesz": -0.193,
+              "mi_hazank": -0.01
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "kis_telepulesek",
+                "targetParty": "tisza",
+                "amount": 150,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.475,
+              "fidesz": -0.056,
+              "mi_hazank": -0.01
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.15,
+              "fidesz": 0.067,
+              "mkkp": 0.052,
+              "mi_hazank": -0.01
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.078
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.618,
+              "fidesz": -0.108,
+              "mi_hazank": -0.01
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-7",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.31,
+              "fidesz": -0.06,
+              "mkkp": -0.03,
+              "dk": -0.09
             }
           },
           {
@@ -398,9 +463,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.36,
-              "fidesz": 0.16,
-              "dk": 0.04
+              "tisza": -0.02,
+              "fidesz": 0.08,
+              "dk": -0.05,
+              "mkkp": -0.03
             }
           }
         ]
@@ -411,10 +477,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.55,
-              "fidesz": 0.22,
-              "dk": 0.08,
-              "mkkp": 0.05
+              "tisza": -0.21,
+              "fidesz": 0.14,
+              "dk": -0.01,
+              "mkkp": 0.02
             }
           }
         ]
@@ -425,82 +491,26 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.9,
-              "fidesz": 0.35,
-              "mi_hazank": 0.08
+              "tisza": -1.66,
+              "fidesz": 0.77,
+              "mi_hazank": 0.2,
+              "mkkp": -0.03,
+              "dk": -0.09
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "tisza": -0.25
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-8",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "mi_hazank": 0.02
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.18,
+              "tisza": -0.5,
               "fidesz": 0.12
             }
           }
         ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.85,
-              "fidesz": 0.4,
-              "mi_hazank": 0.08
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "fidesz": 0.12
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.12,
-              "fidesz": 0.07
-            }
-          }
-        ]
       }
     ]
   },
   {
-    "id": "2026_ogyv_tisza-9",
+    "id": "2026_ogyv_tisza_v2-8",
     "answers": [
       {
         "id": "A",
@@ -508,15 +518,16 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.22,
-              "fidesz": 0.18
+              "tisza": 0.575,
+              "fidesz": -0.146,
+              "mkkp": -0.22,
+              "dk": -0.26
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "fidesz": 0.12,
-              "tisza": -0.06
+              "tisza": 0.026
             }
           }
         ]
@@ -527,9 +538,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.01,
-              "fidesz": 0.01,
-              "mi_hazank": 0.01
+              "tisza": 0.549,
+              "fidesz": -0.133,
+              "mkkp": -0.22,
+              "dk": -0.26
             }
           }
         ]
@@ -540,165 +552,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.2,
-              "fidesz": 0.08
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.1,
-              "fidesz": 0.06
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-10",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.17,
-              "fidesz": 0.09,
-              "mi_hazank": 0.01
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.1
-            }
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-7",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.15,
-                  "fidesz": -0.08
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-7",
-                "answerId": "D"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -1.5,
-                  "fidesz": 0.8,
-                  "mi_hazank": 0.2
-                }
-              },
-              {
-                "type": "turnout-change",
-                "params": {
-                  "tisza": -0.45
-                }
-              }
-            ],
-            "mode": "replace"
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.75,
-              "fidesz": 0.4,
-              "mi_hazank": 0.08
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.2
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.45,
-              "fidesz": 0.22,
-              "mkkp": 0.04
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.12
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -1.15,
-              "fidesz": 0.55,
-              "mi_hazank": 0.12,
-              "dk": 0.08
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.35
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-11",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.22,
-              "fidesz": -0.15,
-              "mi_hazank": -0.2
+              "tisza": 0.582,
+              "fidesz": -0.139,
+              "mkkp": -0.22,
+              "dk": -0.26
             }
           },
           {
@@ -707,10 +564,9 @@
               {
                 "groupId": "kis_telepulesek",
                 "targetParty": "tisza",
-                "amount": 350,
+                "amount": 150,
                 "from": {
-                  "type": "party",
-                  "party": "mi_hazank"
+                  "type": "bizonytalan"
                 }
               }
             ]
@@ -718,13 +574,62 @@
         ]
       },
       {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.543,
+              "fidesz": -0.133,
+              "mkkp": -0.22,
+              "dk": -0.26
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-9",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.177,
+              "fidesz": -0.028,
+              "mi_hazank": -0.01,
+              "mkkp": -0.06,
+              "dk": -0.09
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.052
+            }
+          }
+        ]
+      },
+      {
         "id": "B",
         "effects": [
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": 0.08,
-              "fidesz": -0.04
+              "tisza": 0.373,
+              "fidesz": -0.093,
+              "mi_hazank": -0.01,
+              "mkkp": -0.06,
+              "dk": -0.09
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.019
             }
           }
         ]
@@ -735,15 +640,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.15,
-              "fidesz": 0.1,
-              "mi_hazank": 0.03
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.08
+              "tisza": 0.347,
+              "fidesz": -0.087,
+              "mi_hazank": -0.01,
+              "mkkp": -0.06,
+              "dk": -0.09
             }
           }
         ]
@@ -754,16 +655,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -2,
-              "fidesz": 1,
-              "mi_hazank": 0.25
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "fidesz": 0.25,
-              "tisza": -0.45
+              "tisza": 0.288,
+              "fidesz": -0.087,
+              "mkkp": -0.041,
+              "mi_hazank": -0.01,
+              "dk": -0.09
             }
           }
         ]
@@ -771,7 +667,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-12",
+    "id": "2026_ogyv_tisza_v2-10",
     "answers": [
       {
         "id": "A",
@@ -779,89 +675,16 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.02,
-              "fidesz": 0.01,
-              "mi_hazank": 0.01
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.42,
-              "fidesz": 0.18
+              "tisza": 0.24,
+              "fidesz": -0.04,
+              "mkkp": -0.06,
+              "dk": -0.09
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "tisza": -0.18
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.12,
-              "fidesz": -0.02
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.6,
-              "dk": 0.24,
-              "mkkp": 0.08,
-              "fidesz": 0.08
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-13",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.07,
-              "fidesz": 0.05,
-              "mi_hazank": 0.02
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.04
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.06,
-              "fidesz": 0.03
+              "tisza": -0.02
             }
           }
         ],
@@ -869,7 +692,273 @@
           {
             "if": [
               {
-                "questionId": "2026_ogyv_tisza-3",
+                "questionId": "2026_ogyv_tisza_v2-7",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.16,
+                  "fidesz": -0.07
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.03
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.29,
+              "fidesz": -0.06,
+              "mkkp": -0.06,
+              "dk": -0.09
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.06,
+              "fidesz": 0.04,
+              "mkkp": -0.03,
+              "dk": -0.09
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.05
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.14,
+              "mkkp": -0.06,
+              "dk": -0.09
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.02
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-11",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.788,
+              "fidesz": -0.246,
+              "mi_hazank": -0.24,
+              "dk": -0.04
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.013
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.562,
+              "fidesz": -0.146,
+              "mi_hazank": -0.04,
+              "dk": -0.04
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.458,
+              "fidesz": -0.087,
+              "mi_hazank": -0.027,
+              "dk": -0.04
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.013
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.445,
+              "fidesz": -0.087,
+              "mi_hazank": -0.04,
+              "dk": -0.04
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-12",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.347,
+              "fidesz": -0.087,
+              "mkkp": -0.03,
+              "dk": -0.09
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.067,
+              "fidesz": 0.037,
+              "mkkp": -0.03,
+              "dk": -0.09
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.117
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.418,
+              "fidesz": -0.093,
+              "mkkp": -0.03,
+              "dk": -0.09
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": -0.05,
+              "dk": 0.066,
+              "mkkp": 0.022,
+              "fidesz": -0.028
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-13",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.359,
+              "fidesz": -0.087,
+              "mi_hazank": -0.02,
+              "mkkp": -0.03,
+              "dk": -0.04
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.007
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.314,
+              "fidesz": -0.067,
+              "mi_hazank": -0.02,
+              "mkkp": -0.03,
+              "dk": -0.04
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-3",
                 "answerId": "B"
               }
             ],
@@ -877,9 +966,17 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "tisza": 0.28,
-                  "fidesz": -0.16,
-                  "mi_hazank": -0.24
+                  "tisza": 0.733,
+                  "fidesz": -0.252,
+                  "mi_hazank": -0.22,
+                  "mkkp": -0.03,
+                  "dk": -0.04
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.033
                 }
               },
               {
@@ -888,9 +985,23 @@
                   {
                     "groupId": "kis_telepulesek",
                     "targetParty": "tisza",
-                    "amount": 350,
+                    "amount": 250,
                     "from": {
                       "type": "bizonytalan"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "district-vote-transfer",
+                "params": [
+                  {
+                    "groupId": "billego_korzetek",
+                    "targetParty": "tisza",
+                    "amount": 400,
+                    "from": {
+                      "type": "party",
+                      "party": "fidesz"
                     }
                   }
                 ]
@@ -901,7 +1012,7 @@
           {
             "if": [
               {
-                "questionId": "2026_ogyv_tisza-3",
+                "questionId": "2026_ogyv_tisza_v2-3",
                 "answerId": "D"
               }
             ],
@@ -909,15 +1020,17 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "tisza": -0.75,
-                  "fidesz": 0.35,
-                  "mi_hazank": 0.12
+                  "tisza": 0.113,
+                  "fidesz": 0.024,
+                  "mi_hazank": -0.02,
+                  "mkkp": -0.03,
+                  "dk": -0.04
                 }
               },
               {
                 "type": "turnout-change",
                 "params": {
-                  "tisza": -0.18
+                  "tisza": -0.052
                 }
               }
             ],
@@ -931,502 +1044,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.18,
-              "dk": 0.1,
-              "mi_hazank": 0.08
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -1.15,
-              "fidesz": 0.55,
-              "mi_hazank": 0.18
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.3
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-14",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.35,
-              "fidesz": 0.12,
-              "dk": 0.05
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "fidesz": 0.04
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.02,
-              "fidesz": -0.01,
-              "mi_hazank": 0.01
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.28,
-              "fidesz": 0.12,
-              "mkkp": 0.04
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -1.3,
-              "fidesz": 0.65,
-              "mi_hazank": 0.18,
-              "dk": 0.08
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-15",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.06,
-              "fidesz": 0.04,
-              "mi_hazank": 0.01
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.02,
-              "fidesz": 0.01
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.15,
-              "fidesz": 0.08,
-              "dk": 0.03
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.55,
-              "fidesz": 0.28,
-              "mi_hazank": 0.08
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "fidesz": 0.08
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-16",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.05,
-              "fidesz": 0.03,
-              "mi_hazank": 0.01
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": 0.02
-            }
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-3",
-                "answerId": "B"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.12,
-                  "fidesz": -0.06
-                }
-              },
-              {
-                "type": "turnout-change",
-                "params": {
-                  "tisza": 0.18
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-3",
-                "answerId": "D"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.55,
-                  "fidesz": 0.25
-                }
-              },
-              {
-                "type": "turnout-change",
-                "params": {
-                  "tisza": -0.2
-                }
-              }
-            ],
-            "mode": "replace"
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.2,
-              "fidesz": 0.08
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.08
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.18,
-              "fidesz": 0.1,
-              "mkkp": 0.03
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.06
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.65,
-              "fidesz": 0.22,
-              "mkkp": 0.08,
-              "dk": 0.05
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.15
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-17",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.08,
-              "fidesz": -0.02,
-              "dk": 0.02
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.1,
-              "fidesz": -0.05,
-              "mi_hazank": -0.2
-            }
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-5",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.14,
-                  "fidesz": -0.08
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-5",
-                "answerId": "D"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.65,
-                  "fidesz": 0.32,
-                  "dk": 0.08
-                }
-              }
-            ],
-            "mode": "replace"
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.13,
-              "fidesz": 0.1,
-              "mi_hazank": 0.01
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.12
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -2.15,
-              "fidesz": 1.15,
-              "mi_hazank": 0.3,
-              "dk": 0.1
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "fidesz": 0.3,
-              "tisza": -0.45
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-18",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.03,
-              "fidesz": -0.01,
-              "mi_hazank": -0.01
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.05,
-              "fidesz": 0.03
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.24,
-              "fidesz": 0.1,
-              "mi_hazank": 0.08,
-              "dk": 0.02
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.85,
-              "fidesz": 0.3,
-              "mi_hazank": 0.32
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-19",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.08,
-              "fidesz": 0.16,
-              "dk": -0.1,
-              "mkkp": -0.08,
-              "mi_hazank": 0.1
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.18,
+              "tisza": 0.307,
+              "dk": -0.014,
+              "mkkp": -0.017,
               "fidesz": -0.08,
-              "dk": -0.04,
-              "mkkp": -0.05,
-              "mi_hazank": 0.02
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.04,
-              "dk": 0.01,
-              "mkkp": 0.01,
-              "fidesz": 0.02,
-              "mi_hazank": 0.01
+              "mi_hazank": -0.02
             }
           }
         ]
@@ -1437,826 +1059,28 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.8,
-              "fidesz": 0.22,
-              "dk": 0.22,
-              "mkkp": 0.18,
-              "mi_hazank": 0.16
+              "tisza": 0.386,
+              "fidesz": -0.093,
+              "mi_hazank": -0.02,
+              "mkkp": -0.03,
+              "dk": -0.04
             }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-20",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
+          },
           {
-            "type": "uniform-swing",
+            "type": "turnout-change",
             "params": {
-              "tisza": 0.1,
-              "fidesz": -0.07,
-              "mi_hazank": 0.01
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.05,
-              "fidesz": -0.02
+              "tisza": 0.026
             }
           },
           {
             "type": "district-vote-transfer",
             "params": [
               {
-                "groupId": "kis_telepulesek",
-                "targetParty": "fidesz",
-                "amount": 450,
+                "groupId": "vegyes_oevk",
+                "targetParty": "tisza",
+                "amount": 150,
                 "from": {
-                  "type": "party",
-                  "party": "tisza"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.2,
-              "fidesz": 0.1,
-              "mkkp": 0.04
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.7,
-              "fidesz": 0.32,
-              "mi_hazank": 0.08
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.22
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-21",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.01,
-              "fidesz": -0.01
-            }
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-4",
-                "answerId": "B"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.15,
-                  "fidesz": -0.08,
-                  "mi_hazank": -0.05
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-4",
-                "answerId": "C"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.6,
-                  "fidesz": 0.3,
-                  "mi_hazank": 0.12
-                }
-              }
-            ],
-            "mode": "replace"
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.14,
-              "fidesz": 0.07,
-              "mi_hazank": 0.03
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.85,
-              "fidesz": 0.45,
-              "mi_hazank": 0.18,
-              "dk": 0.02
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "fidesz": 0.12
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.38,
-              "fidesz": 0.12,
-              "mi_hazank": 0.14
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-22",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.12,
-              "fidesz": -0.02
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.65,
-              "fidesz": 0.32,
-              "mi_hazank": 0.06
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.12
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.34,
-              "fidesz": 0.19,
-              "mi_hazank": 0.01
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.1
-            }
-          },
-          {
-            "type": "district-vote-transfer",
-            "params": [
-              {
-                "groupId": "billego_korzetek",
-                "targetParty": "fidesz",
-                "amount": 500,
-                "from": {
-                  "type": "party",
-                  "party": "tisza"
-                }
-              }
-            ]
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-14",
-                "answerId": "B"
-              },
-              {
-                "questionId": "2026_ogyv_tisza-16",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.22,
-                  "fidesz": -0.12
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-14",
-                "answerId": "D"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.8,
-                  "fidesz": 0.4,
-                  "mi_hazank": 0.12
-                }
-              }
-            ],
-            "mode": "replace"
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -1.35,
-              "fidesz": 0.68,
-              "mi_hazank": 0.22,
-              "dk": 0.1
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "fidesz": 0.18,
-              "tisza": -0.3
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-23",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.45,
-              "fidesz": 0.18
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.12
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.05,
-              "fidesz": 0.03,
-              "mi_hazank": 0.01
-            }
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-2",
-                "answerId": "B"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.08,
-                  "fidesz": -0.04
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-2",
-                "answerId": "D"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.55,
-                  "fidesz": 0.28,
-                  "mi_hazank": 0.08
-                }
-              }
-            ],
-            "mode": "replace"
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.65,
-              "fidesz": 0.3,
-              "mi_hazank": 0.1
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.32,
-              "fidesz": 0.15
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-24",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.05,
-              "fidesz": 0.02,
-              "mi_hazank": 0.01
-            }
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-9",
-                "answerId": "B"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.12,
-                  "fidesz": -0.06
-                }
-              },
-              {
-                "type": "turnout-change",
-                "params": {
-                  "tisza": 0.15
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-9",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.35,
-                  "fidesz": 0.18
-                }
-              },
-              {
-                "type": "turnout-change",
-                "params": {
-                  "fidesz": 0.1
-                }
-              }
-            ],
-            "mode": "merge"
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.02,
-              "fidesz": -0.01
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": 0.05
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.38,
-              "fidesz": 0.2
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.12
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -1.25,
-              "fidesz": 0.65,
-              "mi_hazank": 0.15
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "fidesz": 0.25,
-              "tisza": -0.2
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-25",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.18,
-              "fidesz": -0.08,
-              "mi_hazank": -0.2
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.03
-            }
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.24,
-              "fidesz": 0.13,
-              "mi_hazank": 0.01
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.15
-            }
-          },
-          {
-            "type": "district-vote-transfer",
-            "params": [
-              {
-                "groupId": "billego_korzetek",
-                "targetParty": "fidesz",
-                "amount": 400,
-                "from": {
-                  "type": "party",
-                  "party": "tisza"
-                }
-              }
-            ]
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-3",
-                "answerId": "B"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.06,
-                  "fidesz": -0.03
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-3",
-                "answerId": "C"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.55,
-                  "fidesz": 0.25,
-                  "mi_hazank": 0.08
-                }
-              }
-            ],
-            "mode": "replace"
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.75,
-              "fidesz": 0.3,
-              "mi_hazank": 0.08
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.3
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -2.1,
-              "fidesz": 0.85,
-              "mi_hazank": 0.22,
-              "mkkp": 0.08
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.55
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-26",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": 0.04,
-              "fidesz": -0.02,
-              "mi_hazank": 0.01
-            }
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-25",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.16,
-                  "fidesz": -0.08
-                }
-              },
-              {
-                "type": "turnout-change",
-                "params": {
-                  "tisza": 0.08
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-25",
-                "answerId": "B"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.1,
-                  "fidesz": 0.05
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-3",
-                "answerId": "D"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.7,
-                  "fidesz": 0.3,
-                  "mi_hazank": 0.1
-                }
-              }
-            ],
-            "mode": "replace"
-          }
-        ]
-      },
-      {
-        "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.12,
-              "fidesz": 0.05
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.06
-            }
-          }
-        ]
-      },
-      {
-        "id": "C",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.42,
-              "dk": 0.15,
-              "mkkp": 0.1,
-              "fidesz": 0.07
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.08
-            }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.52,
-              "fidesz": 0.25,
-              "mkkp": 0.05
-            }
-          },
-          {
-            "type": "district-vote-transfer",
-            "params": [
-              {
-                "groupId": "billego_korzetek",
-                "targetParty": "fidesz",
-                "amount": 550,
-                "from": {
-                  "type": "party",
-                  "party": "tisza"
+                  "type": "bizonytalan"
                 }
               }
             ]
@@ -2266,7 +1090,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-27",
+    "id": "2026_ogyv_tisza_v2-14",
     "answers": [
       {
         "id": "A",
@@ -2274,49 +1098,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": 0.06,
-              "fidesz": -0.05,
-              "mi_hazank": 0.01
+              "tisza": 0.905,
+              "dk": -0.418,
+              "fidesz": -0.187,
+              "mkkp": -0.17
             }
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-11",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.12,
-                  "fidesz": -0.08
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-11",
-                "answerId": "D"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.5,
-                  "fidesz": 0.22,
-                  "mi_hazank": 0.08
-                }
-              }
-            ],
-            "mode": "replace"
           }
         ]
       },
@@ -2326,8 +1112,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.06,
-              "fidesz": 0.03
+              "tisza": 0.918,
+              "fidesz": -0.239,
+              "dk": -0.366,
+              "mkkp": -0.17
             }
           }
         ]
@@ -2338,15 +1126,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -1.1,
-              "fidesz": 0.48,
-              "mi_hazank": 0.18
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.18
+              "tisza": 0.892,
+              "fidesz": -0.226,
+              "mkkp": -0.203,
+              "dk": -0.327
             }
           }
         ]
@@ -2357,9 +1140,16 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.38,
-              "fidesz": 0.16,
-              "dk": 0.04
+              "tisza": 0.827,
+              "fidesz": -0.213,
+              "dk": -0.307,
+              "mkkp": -0.17
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.013
             }
           }
         ]
@@ -2367,7 +1157,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-28",
+    "id": "2026_ogyv_tisza_v2-15",
     "answers": [
       {
         "id": "A",
@@ -2375,54 +1165,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.17,
-              "fidesz": 0.08,
-              "mi_hazank": 0.01
+              "tisza": 0.549,
+              "fidesz": -0.139,
+              "mi_hazank": -0.04
             }
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-14",
-                "answerId": "B"
-              },
-              {
-                "questionId": "2026_ogyv_tisza-22",
-                "answerId": "C"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.22,
-                  "fidesz": -0.12,
-                  "mi_hazank": -0.03
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-22",
-                "answerId": "B"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.65,
-                  "fidesz": 0.32,
-                  "mi_hazank": 0.08
-                }
-              }
-            ],
-            "mode": "replace"
           }
         ]
       },
@@ -2432,8 +1178,15 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.08,
-              "fidesz": 0.04
+              "tisza": 0.562,
+              "fidesz": -0.139,
+              "mi_hazank": -0.04
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.039
             }
           }
         ]
@@ -2444,16 +1197,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -1,
-              "fidesz": 0.48,
-              "mi_hazank": 0.14,
-              "dk": 0.05
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "tisza": -0.2
+              "tisza": 0.523,
+              "fidesz": -0.127,
+              "mi_hazank": -0.04
             }
           }
         ]
@@ -2464,15 +1210,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.72,
-              "fidesz": 0.28,
-              "dk": 0.05
-            }
-          },
-          {
-            "type": "turnout-change",
-            "params": {
-              "fidesz": 0.06
+              "tisza": 0.445,
+              "fidesz": -0.087,
+              "mi_hazank": -0.021
             }
           }
         ]
@@ -2480,7 +1220,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-29",
+    "id": "2026_ogyv_tisza_v2-16",
     "answers": [
       {
         "id": "A",
@@ -2488,86 +1228,66 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.27,
-              "fidesz": 0.13,
-              "mi_hazank": 0.01
+              "tisza": 0.905,
+              "fidesz": -0.226,
+              "mkkp": -0.22,
+              "dk": -0.34
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "tisza": -0.12
+              "tisza": 0.065
             }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "vegyes_oevk",
+                "targetParty": "tisza",
+                "amount": 300,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
           }
         ],
         "conditionalEffects": [
           {
             "if": [
               {
-                "questionId": "2026_ogyv_tisza-7",
-                "answerId": "A"
-              },
-              {
-                "questionId": "2026_ogyv_tisza-10",
-                "answerId": "A"
+                "questionId": "2026_ogyv_tisza_v2-3",
+                "answerId": "B"
               }
             ],
             "effects": [
               {
                 "type": "uniform-swing",
                 "params": {
-                  "tisza": 0.22,
-                  "fidesz": -0.12
+                  "tisza": 0.104,
+                  "fidesz": -0.046
                 }
               },
               {
                 "type": "turnout-change",
                 "params": {
-                  "tisza": 0.05
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-7",
-                "answerId": "D"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -1.8,
-                  "fidesz": 0.9,
-                  "mi_hazank": 0.2
+                  "tisza": 0.078
                 }
               },
               {
-                "type": "turnout-change",
-                "params": {
-                  "tisza": -0.5
-                }
-              }
-            ],
-            "mode": "replace"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-25",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.08,
-                  "fidesz": -0.04
-                }
+                "type": "district-vote-transfer",
+                "params": [
+                  {
+                    "groupId": "kis_telepulesek",
+                    "targetParty": "tisza",
+                    "amount": 250,
+                    "from": {
+                      "type": "bizonytalan"
+                    }
+                  }
+                ]
               }
             ],
             "mode": "merge"
@@ -2580,14 +1300,16 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.38,
-              "fidesz": 0.18
+              "tisza": 0.892,
+              "fidesz": -0.219,
+              "mkkp": -0.22,
+              "dk": -0.34
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "tisza": -0.08
+              "tisza": 0.033
             }
           }
         ]
@@ -2598,15 +1320,16 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -1.45,
-              "fidesz": 0.72,
-              "mi_hazank": 0.15
+              "tisza": 0.905,
+              "fidesz": -0.219,
+              "mkkp": -0.233,
+              "dk": -0.34
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "tisza": -0.35
+              "tisza": 0.026
             }
           }
         ]
@@ -2617,11 +1340,10 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -1,
-              "fidesz": 0.38,
-              "mi_hazank": 0.14,
-              "dk": 0.06,
-              "mkkp": 0.05
+              "tisza": 0.873,
+              "dk": -0.353,
+              "mkkp": -0.233,
+              "fidesz": -0.2
             }
           }
         ]
@@ -2629,7 +1351,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-30",
+    "id": "2026_ogyv_tisza_v2-17",
     "answers": [
       {
         "id": "A",
@@ -2637,9 +1359,17 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.62,
-              "fidesz": 0.28,
-              "mi_hazank": 0.12
+              "tisza": 0.36,
+              "fidesz": -0.09,
+              "mi_hazank": -0.01,
+              "mkkp": -0.03,
+              "dk": -0.09
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.02
             }
           }
         ]
@@ -2650,72 +1380,12 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.18,
-              "fidesz": 0.09,
-              "mi_hazank": 0.01
+              "tisza": 0.67,
+              "fidesz": -0.22,
+              "mi_hazank": -0.21,
+              "mkkp": -0.03,
+              "dk": -0.09
             }
-          }
-        ],
-        "conditionalEffects": [
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-4",
-                "answerId": "B"
-              },
-              {
-                "questionId": "2026_ogyv_tisza-21",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.22,
-                  "fidesz": -0.12,
-                  "mi_hazank": -0.1
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-4",
-                "answerId": "C"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.75,
-                  "fidesz": 0.35,
-                  "mi_hazank": 0.16
-                }
-              }
-            ],
-            "mode": "replace"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-15",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.06,
-                  "fidesz": -0.03
-                }
-              }
-            ],
-            "mode": "merge"
           }
         ]
       },
@@ -2725,41 +1395,17 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.72,
-              "fidesz": 0.38,
-              "mi_hazank": 0.16,
-              "dk": 0.02
+              "tisza": 0.22,
+              "fidesz": -0.01,
+              "mi_hazank": -0.01,
+              "mkkp": -0.03,
+              "dk": -0.09
             }
-          }
-        ]
-      },
-      {
-        "id": "D",
-        "effects": [
+          },
           {
-            "type": "uniform-swing",
+            "type": "turnout-change",
             "params": {
-              "tisza": -0.35,
-              "fidesz": 0.18,
-              "mi_hazank": 0.05
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2026_ogyv_tisza-31",
-    "answers": [
-      {
-        "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "tisza": -0.06,
-              "fidesz": 0.03,
-              "mi_hazank": -0.01
+              "tisza": -0.04
             }
           }
         ],
@@ -2767,51 +1413,7 @@
           {
             "if": [
               {
-                "questionId": "2026_ogyv_tisza-18",
-                "answerId": "A"
-              },
-              {
-                "questionId": "2026_ogyv_tisza-27",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": 0.16,
-                  "fidesz": -0.08,
-                  "mi_hazank": -0.12
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-19",
-                "answerId": "D"
-              }
-            ],
-            "effects": [
-              {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.6,
-                  "fidesz": 0.18,
-                  "dk": 0.14,
-                  "mkkp": 0.1,
-                  "mi_hazank": 0.1
-                }
-              }
-            ],
-            "mode": "replace"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-28",
+                "questionId": "2026_ogyv_tisza_v2-5",
                 "answerId": "A"
               }
             ],
@@ -2822,6 +1424,236 @@
                   "tisza": 0.1,
                   "fidesz": -0.05
                 }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.02
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.29,
+              "fidesz": -0.06,
+              "mi_hazank": -0.01,
+              "mkkp": -0.03,
+              "dk": -0.09
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.02
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-18",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.703,
+              "fidesz": -0.179,
+              "mi_hazank": -0.053,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.637,
+              "fidesz": -0.141,
+              "mi_hazank": -0.04,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.514,
+              "fidesz": -0.095,
+              "mi_hazank": 0.012,
+              "dk": -0.067,
+              "mkkp": -0.05
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.118,
+              "fidesz": 0.035,
+              "mi_hazank": 0.168,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-19",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.618,
+              "fidesz": -0.056,
+              "dk": -0.405,
+              "mkkp": -0.332,
+              "mi_hazank": 0.025
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.937,
+              "fidesz": -0.272,
+              "dk": -0.366,
+              "mkkp": -0.313,
+              "mi_hazank": -0.227
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.657,
+              "dk": -0.333,
+              "mkkp": -0.273,
+              "fidesz": -0.16,
+              "mi_hazank": -0.04
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.15,
+              "fidesz": -0.017,
+              "dk": -0.197,
+              "mkkp": -0.163,
+              "mi_hazank": 0.064
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-20",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 1.448,
+              "fidesz": -0.376,
+              "mi_hazank": -0.04,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.052
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "kis_telepulesek",
+                "targetParty": "tisza",
+                "amount": 350,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-9",
+                "answerId": "B"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-10",
+                "answerId": "A"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-15",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.293,
+                  "fidesz": -0.104
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.065
+                }
               }
             ],
             "mode": "merge"
@@ -2829,7 +1661,539 @@
           {
             "if": [
               {
-                "questionId": "2026_ogyv_tisza-29",
+                "questionId": "2026_ogyv_tisza_v2-9",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.13,
+                  "fidesz": 0.039
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.033
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-10",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.098,
+                  "fidesz": 0.033
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.026
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-15",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.098,
+                  "fidesz": 0.026
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.026
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 1.715,
+              "fidesz": -0.483,
+              "mi_hazank": -0.04,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.052
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "tisza",
+                "amount": 400,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "tisza",
+                "amount": 500,
+                "from": {
+                  "type": "party",
+                  "party": "fidesz"
+                }
+              }
+            ]
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-9",
+                "answerId": "B"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-10",
+                "answerId": "A"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-15",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.293,
+                  "fidesz": -0.104
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.065
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-9",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.13,
+                  "fidesz": 0.039
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.033
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-10",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.098,
+                  "fidesz": 0.033
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.026
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-15",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.098,
+                  "fidesz": 0.026
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.026
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 1.408,
+              "fidesz": -0.356,
+              "mi_hazank": -0.04,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.039
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "vegyes_oevk",
+                "targetParty": "tisza",
+                "amount": 300,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-9",
+                "answerId": "B"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-10",
+                "answerId": "A"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-15",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.293,
+                  "fidesz": -0.104
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.065
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-9",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.13,
+                  "fidesz": 0.039
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.033
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-10",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.098,
+                  "fidesz": 0.033
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.026
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-15",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.098,
+                  "fidesz": 0.026
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.026
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 1.376,
+              "fidesz": -0.349,
+              "mi_hazank": -0.04,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.013
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-9",
+                "answerId": "B"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-10",
+                "answerId": "A"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-15",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.293,
+                  "fidesz": -0.104
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.065
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-9",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.13,
+                  "fidesz": 0.039
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.033
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-10",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.098,
+                  "fidesz": 0.033
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.026
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-15",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.098,
+                  "fidesz": 0.026
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": -0.026
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-21",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.689,
+              "fidesz": -0.173,
+              "mi_hazank": -0.097
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-4",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.098,
+                  "fidesz": -0.052,
+                  "mi_hazank": -0.033
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-4",
                 "answerId": "C"
               }
             ],
@@ -2837,9 +2201,9 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "tisza": -0.7,
-                  "fidesz": 0.35,
-                  "mi_hazank": 0.08
+                  "tisza": 0.28,
+                  "fidesz": 0.035,
+                  "mi_hazank": -0.012
                 }
               }
             ],
@@ -2853,10 +2217,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.22,
-              "fidesz": 0.1,
-              "dk": 0.03,
-              "mi_hazank": 0.04
+              "tisza": 0.579,
+              "fidesz": -0.114,
+              "mi_hazank": -0.071
             }
           }
         ]
@@ -2867,9 +2230,16 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.48,
-              "fidesz": 0.2,
-              "mi_hazank": 0.16
+              "tisza": 0.118,
+              "fidesz": 0.133,
+              "mi_hazank": 0.027,
+              "dk": 0.013
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "fidesz": 0.078
             }
           }
         ]
@@ -2880,16 +2250,461 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.9,
-              "dk": 0.32,
-              "mkkp": 0.2,
-              "fidesz": 0.12
+              "tisza": 0.423,
+              "fidesz": -0.082,
+              "mi_hazank": 0.001
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-22",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.866,
+              "fidesz": -0.213,
+              "mi_hazank": -0.03,
+              "mkkp": -0.05,
+              "dk": -0.26
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.814,
+              "fidesz": -0.187,
+              "mi_hazank": -0.03,
+              "mkkp": -0.05,
+              "dk": -0.26
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "fidesz": 0.15,
+              "tisza": -0.013
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.879,
+              "fidesz": -0.219,
+              "mi_hazank": -0.03,
+              "mkkp": -0.05,
+              "dk": -0.26
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.019
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-14",
+                "answerId": "B"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-16",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.104,
+                  "fidesz": -0.052,
+                  "dk": -0.019
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.827,
+              "fidesz": -0.174,
+              "dk": -0.312,
+              "mi_hazank": -0.03,
+              "mkkp": -0.05
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.013
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-23",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.392,
+              "fidesz": -0.099,
+              "mi_hazank": -0.02
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.052
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.373,
+              "fidesz": -0.093,
+              "mi_hazank": -0.02
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.013
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.347,
+              "fidesz": -0.073,
+              "mi_hazank": -0.02
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.262,
+              "fidesz": -0.047,
+              "mi_hazank": -0.02
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.013
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-24",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.821,
+              "fidesz": -0.193,
+              "mi_hazank": -0.03,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "tisza",
+                "amount": 250,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-9",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.078,
+                  "fidesz": -0.039
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.098
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-9",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.227,
+                  "fidesz": 0.117
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "fidesz": 0.065
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 1.053,
+              "fidesz": -0.287,
+              "mi_hazank": -0.03,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.033
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.593,
+              "fidesz": -0.07,
+              "mi_hazank": -0.03,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.078
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.027,
+              "fidesz": 0.223,
+              "mi_hazank": 0.068,
+              "mkkp": -0.05,
+              "dk": -0.08
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "fidesz": 0.163,
+              "tisza": -0.13
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-25",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.38,
+              "fidesz": -0.09
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.29,
+              "fidesz": -0.06
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.02
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-3",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.08,
+                  "fidesz": -0.04
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.03
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.26,
+              "fidesz": -0.06
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.04
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-3",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.08
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.02,
+              "fidesz": 0.06,
+              "mkkp": 0.04
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
               "tisza": -0.12
             }
           }
@@ -2898,7 +2713,7 @@
     ]
   },
   {
-    "id": "2026_ogyv_tisza-32",
+    "id": "2026_ogyv_tisza_v2-26",
     "answers": [
       {
         "id": "A",
@@ -2906,9 +2721,484 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.27,
-              "fidesz": 0.13,
-              "mi_hazank": 0.01
+              "tisza": 0.879,
+              "fidesz": -0.219,
+              "mi_hazank": -0.02,
+              "mkkp": -0.05,
+              "dk": -0.17
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "vegyes_oevk",
+                "targetParty": "tisza",
+                "amount": 250,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-25",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.104,
+                  "fidesz": -0.052
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.052
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-25",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": -0.065,
+                  "fidesz": 0.033
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-3",
+                "answerId": "D"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.385,
+                  "fidesz": -0.005,
+                  "mi_hazank": 0.045,
+                  "mkkp": -0.05,
+                  "dk": -0.17
+                }
+              }
+            ],
+            "mode": "replace"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.762,
+              "fidesz": -0.167,
+              "mi_hazank": -0.02,
+              "mkkp": -0.05,
+              "dk": -0.17
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.039
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.567,
+              "dk": -0.072,
+              "mkkp": 0.015,
+              "fidesz": -0.154,
+              "mi_hazank": -0.02
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.052
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.502,
+              "fidesz": -0.037,
+              "mkkp": -0.017,
+              "mi_hazank": -0.02,
+              "dk": -0.17
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "fidesz",
+                "amount": 350,
+                "from": {
+                  "type": "party",
+                  "party": "tisza"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-27",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.75,
+              "fidesz": -0.22,
+              "mi_hazank": -0.04,
+              "mkkp": -0.05,
+              "dk": -0.17
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-11",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.12,
+                  "fidesz": -0.08
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-11",
+                "answerId": "D"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.17,
+                  "fidesz": 0.06,
+                  "mi_hazank": 0.04,
+                  "mkkp": -0.05,
+                  "dk": -0.17
+                }
+              }
+            ],
+            "mode": "replace"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.61,
+              "fidesz": -0.13,
+              "mi_hazank": -0.04,
+              "mkkp": -0.05,
+              "dk": -0.17
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": -1.13,
+              "fidesz": 0.56,
+              "mi_hazank": 0.14,
+              "dk": -0.11,
+              "mkkp": -0.05
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.22
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.29,
+              "dk": -0.13,
+              "mi_hazank": -0.04,
+              "mkkp": -0.05
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-28",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 1.062,
+              "fidesz": -0.276,
+              "mi_hazank": -0.03,
+              "mkkp": -0.22,
+              "dk": -0.26
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-14",
+                "answerId": "B"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-22",
+                "answerId": "C"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.117,
+                  "fidesz": -0.058,
+                  "mi_hazank": -0.019
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 1.056,
+              "fidesz": -0.269,
+              "mi_hazank": -0.03,
+              "mkkp": -0.22,
+              "dk": -0.26
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 1.268,
+              "fidesz": -0.349,
+              "mi_hazank": -0.03,
+              "mkkp": -0.22,
+              "dk": -0.26
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.019
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "vegyes_oevk",
+                "targetParty": "tisza",
+                "amount": 200,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 1.036,
+              "fidesz": -0.263,
+              "mkkp": -0.233,
+              "mi_hazank": -0.03,
+              "dk": -0.26
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-29",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.26,
+              "fidesz": -0.05,
+              "mi_hazank": -0.01
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.01
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-7",
+                "answerId": "A"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-10",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.14,
+                  "fidesz": -0.06
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.03
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-25",
+                "answerId": "B"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.08,
+                  "fidesz": -0.03
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.32,
+              "fidesz": -0.07,
+              "mi_hazank": -0.01
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.08
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.28,
+              "fidesz": -0.05,
+              "mi_hazank": -0.01
             }
           },
           {
@@ -2917,20 +3207,67 @@
               "tisza": 0.02
             }
           }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": -1.06,
+              "fidesz": 0.44,
+              "mi_hazank": 0.11,
+              "dk": 0.04
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": -0.18
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-30",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.267,
+              "fidesz": 0.022,
+              "mi_hazank": -0.012
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.566,
+              "fidesz": -0.108,
+              "mi_hazank": -0.09
+            }
+          }
         ],
         "conditionalEffects": [
           {
             "if": [
               {
-                "questionId": "2026_ogyv_tisza-3",
+                "questionId": "2026_ogyv_tisza_v2-4",
                 "answerId": "B"
               },
               {
-                "questionId": "2026_ogyv_tisza-20",
-                "answerId": "A"
-              },
-              {
-                "questionId": "2026_ogyv_tisza-26",
+                "questionId": "2026_ogyv_tisza_v2-21",
                 "answerId": "A"
               }
             ],
@@ -2938,15 +3275,246 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "tisza": 0.28,
-                  "fidesz": -0.16,
-                  "mi_hazank": -0.08
+                  "tisza": 0.143,
+                  "fidesz": -0.078,
+                  "mi_hazank": -0.065
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-4",
+                "answerId": "C"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.182,
+                  "fidesz": 0.067,
+                  "mi_hazank": 0.014
+                }
+              }
+            ],
+            "mode": "replace"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-15",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.039,
+                  "fidesz": -0.019
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.202,
+              "fidesz": 0.087,
+              "mi_hazank": 0.014,
+              "dk": 0.013
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.443,
+              "fidesz": -0.043,
+              "mi_hazank": -0.057
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-31",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.892,
+              "fidesz": -0.226,
+              "mi_hazank": -0.123,
+              "mkkp": -0.17,
+              "dk": -0.17
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-18",
+                "answerId": "A"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-27",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.091,
+                  "fidesz": -0.046,
+                  "mi_hazank": -0.052
+                }
+              }
+            ],
+            "mode": "merge"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.898,
+              "fidesz": -0.219,
+              "dk": -0.203,
+              "mi_hazank": -0.11,
+              "mkkp": -0.17
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.026
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.866,
+              "fidesz": -0.239,
+              "mi_hazank": -0.143,
+              "dk": -0.151,
+              "mkkp": -0.157
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.886,
+              "fidesz": -0.213,
+              "dk": -0.196,
+              "mkkp": -0.189,
+              "mi_hazank": -0.11
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.019
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026_ogyv_tisza_v2-32",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 1.245,
+              "fidesz": -0.316,
+              "mi_hazank": -0.09
+            }
+          },
+          {
+            "type": "turnout-change",
+            "params": {
+              "tisza": 0.033
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "tisza",
+                "amount": 350,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-3",
+                "answerId": "B"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-20",
+                "answerId": "A"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-26",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "tisza": 0.163,
+                  "fidesz": -0.085
                 }
               },
               {
                 "type": "turnout-change",
                 "params": {
-                  "tisza": 0.42
+                  "tisza": 0.26
                 }
               },
               {
@@ -2955,7 +3523,7 @@
                   {
                     "groupId": "billego_korzetek",
                     "targetParty": "tisza",
-                    "amount": 900,
+                    "amount": 600,
                     "from": {
                       "type": "party",
                       "party": "fidesz"
@@ -2969,41 +3537,27 @@
           {
             "if": [
               {
-                "questionId": "2026_ogyv_tisza-25",
-                "answerId": "A"
-              }
-            ],
-            "effects": [
-              {
-                "type": "turnout-change",
-                "params": {
-                  "tisza": 0.16
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
-              {
-                "questionId": "2026_ogyv_tisza-25",
+                "questionId": "2026_ogyv_tisza_v2-9",
                 "answerId": "B"
-              }
-            ],
-            "effects": [
+              },
               {
-                "type": "turnout-change",
-                "params": {
-                  "tisza": -0.08
-                }
-              }
-            ],
-            "mode": "merge"
-          },
-          {
-            "if": [
+                "questionId": "2026_ogyv_tisza_v2-10",
+                "answerId": "A"
+              },
               {
-                "questionId": "2026_ogyv_tisza-9",
+                "questionId": "2026_ogyv_tisza_v2-15",
+                "answerId": "A"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-23",
+                "answerId": "B"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-25",
+                "answerId": "B"
+              },
+              {
+                "questionId": "2026_ogyv_tisza_v2-29",
                 "answerId": "A"
               }
             ],
@@ -3011,18 +3565,35 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "tisza": -0.45,
-                  "fidesz": 0.25
+                  "tisza": 0.163,
+                  "fidesz": -0.065
                 }
               },
               {
                 "type": "turnout-change",
                 "params": {
-                  "fidesz": 0.15
+                  "tisza": 0.13
                 }
               }
             ],
-            "mode": "replace"
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-25",
+                "answerId": "C"
+              }
+            ],
+            "effects": [
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.052
+                }
+              }
+            ],
+            "mode": "merge"
           }
         ]
       },
@@ -3032,42 +3603,63 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.42,
-              "fidesz": 0.18
+              "tisza": 1.613,
+              "fidesz": -0.469,
+              "mi_hazank": -0.09
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "tisza": -0.12
+              "tisza": 0.065
             }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "tisza",
+                "amount": 700,
+                "from": {
+                  "type": "party",
+                  "party": "fidesz"
+                }
+              }
+            ]
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "billego_korzetek",
+                "targetParty": "tisza",
+                "amount": 600,
+                "from": {
+                  "type": "party",
+                  "party": "fidesz"
+                }
+              }
+            ]
           }
         ],
         "conditionalEffects": [
           {
             "if": [
               {
-                "questionId": "2026_ogyv_tisza-9",
+                "questionId": "2026_ogyv_tisza_v2-26",
                 "answerId": "A"
               }
             ],
             "effects": [
               {
-                "type": "uniform-swing",
-                "params": {
-                  "tisza": -0.9,
-                  "fidesz": 0.45
-                }
-              },
-              {
                 "type": "turnout-change",
                 "params": {
-                  "tisza": -0.2,
-                  "fidesz": 0.15
+                  "tisza": 0.104
                 }
               }
             ],
-            "mode": "replace"
+            "mode": "merge"
           }
         ]
       },
@@ -3077,16 +3669,62 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.55,
-              "fidesz": 0.25,
-              "mi_hazank": 0.05
+              "tisza": 1.232,
+              "fidesz": -0.316,
+              "mi_hazank": -0.123
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "tisza": -0.3
+              "tisza": 0.117
             }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "kis_telepulesek",
+                "targetParty": "tisza",
+                "amount": 450,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "2026_ogyv_tisza_v2-20",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "turnout-change",
+                "params": {
+                  "tisza": 0.078
+                }
+              },
+              {
+                "type": "district-vote-transfer",
+                "params": [
+                  {
+                    "groupId": "kis_telepulesek",
+                    "targetParty": "tisza",
+                    "amount": 250,
+                    "from": {
+                      "type": "party",
+                      "party": "mi_hazank"
+                    }
+                  }
+                ]
+              }
+            ],
+            "mode": "merge"
           }
         ]
       },
@@ -3096,26 +3734,26 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.28,
-              "fidesz": 0.1
+              "tisza": 1.258,
+              "fidesz": -0.309,
+              "mi_hazank": -0.09
             }
           },
           {
             "type": "turnout-change",
             "params": {
-              "tisza": 0.08
+              "tisza": 0.163
             }
           },
           {
             "type": "district-vote-transfer",
             "params": [
               {
-                "groupId": "billego_korzetek",
-                "targetParty": "fidesz",
-                "amount": 650,
+                "groupId": "vegyes_oevk",
+                "targetParty": "tisza",
+                "amount": 300,
                 "from": {
-                  "type": "party",
-                  "party": "tisza"
+                  "type": "bizonytalan"
                 }
               }
             ]

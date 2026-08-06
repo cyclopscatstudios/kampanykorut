@@ -13,9 +13,9 @@
     "playableSides": {
       "tisza": {
         "magyar_peter": {
-          "questions": "tisza/magyar_peter/2026_tisza_questions_v2.json",
-          "answerEffect": "tisza/magyar_peter/2026_tisza_answer_effects_v2.json",
-          "advisorFeedback": "tisza/magyar_peter/2026_tisza_advisor_feedback_v2.json",
+          "questions": "tisza/magyar_peter/2026_tisza_questions.json",
+          "answerEffect": "tisza/magyar_peter/2026_tisza_answer_effects.json",
+          "advisorFeedback": "tisza/magyar_peter/2026_tisza_advisor_feedback.json",
           "advisorFeedbackAssets": "tisza/magyar_peter/advisor_feedback_assets.json"
         }
       }

@@ -109,19 +109,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Egészségügyi szempontból védhető döntés, de a korlátozások a saját táborban is ellenállást váltanak ki, a radikális jobboldal pedig azonnal szabadságharcos szerepbe helyezi magát."
+        "text": "Járványügyileg erős és differenciált válasz, de minden új kötelezettség szavazókat tolhat a Mi Hazánk felé. Akkor védhető, ha a szabályok rövidek és kiszámíthatók maradnak."
       },
       {
         "answerId": "B",
-        "text": "A kompromisszum egyszerre tartotta fenn az oltáspárti kormány képét és a működő gazdaság ígéretét. A járvány súlyosságához képest azonban sokan elégtelennek tarthatják."
+        "text": "Egyensúlyt teremtesz az egészségvédelem és a működő ország ígérete között. A politikai nyereségért cserébe vállalod, hogy a rossz halálozási adatokért továbbra is a kormányt teszik felelőssé."
       },
       {
         "answerId": "C",
-        "text": "Megosztottad a politikai felelősséget, de ezzel kiszámíthatatlan szabályozás alakult ki. A választók végül így is a kormánytól várnak világos irányt."
+        "text": "A helyi alkalmazkodás rugalmas, de az eltérő szabályok gyorsan zavarossá válhatnak. A felelősséget megosztottad, az elismerést viszont aligha."
       },
       {
         "answerId": "D",
-        "text": "A korlátozások elkerülése rövid távon népszerű lehet, de a romló adatok és a kórházak terhelése mellett könnyen a kormányzati cselekvésképtelenség bizonyítékává válik."
+        "text": "A nyitva tartás védi a gazdaságot és kevésbé táplálja a korlátozásellenes pártot. Ha a kórházak túlterhelődnek, a döntés utólag könnyen tűnik veszélyes tétlenségnek."
       }
     ]
   },
@@ -163,7 +163,7 @@
       },
       {
         "answerId": "D",
-        "text": "Hosszú távon lehet igazad, de választás előtt az a kormány gyengeségének tűnik, ha egy mindennapi problémára csak a világpiacra mutat."
+        "text": "Költségvetésileg és ellátásbiztonsági szempontból védhető tartalékolás. A választó azonban a kúton azonnal fizet, a célzott segítséget pedig később és kevésbé látványosan érzékeli."
       }
     ]
   },
@@ -197,7 +197,7 @@
       },
       {
         "answerId": "B",
-        "text": "A jogerős ítéletig valóban jár az ártatlanság vélelme, politikailag viszont egy vesztegetéssel gyanúsított államtitkár védelme minden új részlettel egyre drágább lesz."
+        "text": "Jogállami érvnek hangzik és elkerüli az azonnali ítélethirdetést. Kampányban mégis minden új nyomozati részlet azt kérdezi majd, miért maradt fideszes képviselő a gyanúsított."
       },
       {
         "answerId": "C",
@@ -205,7 +205,7 @@
       },
       {
         "answerId": "D",
-        "text": "A médiatúlsúly csökkenti az ügy elérését, de a teljes hallgatás maga válhat bizonyítékká az ellenzéki narratívában. Az interneten a történet így is terjed."
+        "text": "Az intézményi távolságtartás csökkenti a miniszterelnök személyes kockázatát. Ha azonban a tárca válaszai hiányosak, a hallgatás gyorsan központilag szervezett elzárkózásnak látszik."
       }
     ]
   },
@@ -453,11 +453,11 @@
       },
       {
         "answerId": "C",
-        "text": "A tűzszünet kívánatos, de az agresszor és a megtámadott fél összemosása az invázió első napján mentegetésnek hangzik. A Putyinnal ápolt kapcsolat most súlyos teherré válik."
+        "text": "A közvetítői szerepet és a tárgyalás elsőbbségét őrzöd. Az invázió képei mellett a felelősség megnevezésének elhalasztása azonban nem semlegességnek, hanem Moszkva kímélésének tűnhet."
       },
       {
         "answerId": "D",
-        "text": "A szövetségi egyeztetés fontos, de válsághelyzetben a választók órákon belül vezetői iránymutatást várnak. A hallgatást felkészületlenségként értelmezik."
+        "text": "A gyakorlati intézkedés vezetői kontrollt mutat, az összehangolt nyilatkozat pedig szövetségesi fegyelmet. Az első órákban mégis nyitva hagyod a kampány legfontosabb erkölcsi kérdését."
       }
     ]
   },
@@ -495,11 +495,11 @@
       },
       {
         "answerId": "C",
-        "text": "A szigor a radikális jobboldalon népszerű lehet, de a szomszédos országból érkező nők és gyermekek visszafordítása a mérsékelt fideszesek számára is vállalhatatlan."
+        "text": "Az ellenőrzött tranzit összeegyeztethető a korábbi határvédelmi üzenettel, és korlátozza a hosszú távú állami terhet. A rangsorolás és a gyors továbbutaztatás mégis részvétlennek hathat a háború első napjaiban."
       },
       {
         "answerId": "D",
-        "text": "A civilek valóban óriási munkát végeznek, de egy szomszédos háború menekültválsága állami koordinációt követel. A távolmaradás nem illik az erős kormány képéhez."
+        "text": "A civil és egyházi hálózat gyors, rugalmas és hiteles lehet, miközben az állam a logisztikát adja. A politikai kockázat akkor nő meg, ha a széttagolt rendszerben ellátási hibák jelennek meg."
       }
     ]
   },
@@ -508,19 +508,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Megtaláltad a kampány addig hiányzó, szinte mindenkit érintő 80–20-as témáját. A leegyszerűsítés túlmegy az eredeti mondaton, de a félelem és a biztonság logikája rendkívül erős."
+        "text": "Egyetlen, mindenkit személyesen érintő konfliktusba sűríted a kampányt. Az üzenet csak akkor marad ellenálló, ha korábbi válságdöntéseidből is valóban a kimaradás következik."
       },
       {
         "answerId": "B",
-        "text": "Tisztességesebb és nehezebben cáfolható változat. Kevésbé elementáris, viszont a bizonytalanok előtt hitelesebb marad, és nem tesz teljesen függővé egyetlen félelemüzenettől."
+        "text": "Nehezebben cáfolható és a bizonytalanok előtt hitelesebb, miközben a kormányzati tapasztalatot teszi központi előnnyé. Kevesebb érzelmet termel, ezért erősebb szervezeti finis kell mögé."
       },
       {
         "answerId": "C",
-        "text": "Államférfiúi önkorlátozás, de az ellenzék nem kap érte jutalmat, te pedig lemondasz a kampány legerősebb váratlan lehetőségéről."
+        "text": "Válságban az államférfiúi hang új választókat nyithat meg és csökkenti a visszaütés veszélyét. A saját tábort azonban kevésbé mozgósítja, az ellenzék pedig tovább kampányolhat."
       },
       {
         "answerId": "D",
-        "text": "A Gyurcsány-keret továbbra is működik, de a szomszédban kitört háború egyik napról a másikra átírta a választók fontossági sorrendjét. Aki nem alkalmazkodik, elveszíti a napirendet."
+        "text": "Nem teszed fel az egész választást egyetlen kiszámíthatatlan válságra, és megőrzöd az ősz óta épített kampányeszközöket. A túl sok párhuzamos üzenet viszont gyengítheti a háború által teremtett éles választást."
       }
     ]
   },
@@ -533,7 +533,7 @@
       },
       {
         "answerId": "B",
-        "text": "A háború után valóban egyre nehezebb fenntartani a korlátlan rendszert, de választás előtt kevés veszélyesebb mondat létezik annál, hogy emelkedhet a rezsi."
+        "text": "Gazdaságilag kezelhetőbb rendszert és hosszabb távú alkalmazkodást kínálsz. Kampányban azonban már a sávhatár említése is rezsiemelésként terjedhet, hacsak korábbi árpolitikád nem készítette elő a célzott támogatást."
       },
       {
         "answerId": "C",
@@ -579,7 +579,7 @@
       },
       {
         "answerId": "C",
-        "text": "Nemzetközi elszigeteltséget oldhat, belpolitikailag viszont az utolsó héten feladod mindazt, amit a kimaradásról és a rezsibiztonságról mondtál."
+        "text": "Látványos diplomáciai nyitás anélkül, hogy azonnal feladnád az energia- és biztonságpolitikai vörös vonalakat. Következetes humanitárius politika után hitelesebb, keményebb békekampány után viszont védekezésnek tűnhet."
       },
       {
         "answerId": "D",
@@ -596,7 +596,7 @@
       },
       {
         "answerId": "B",
-        "text": "A háborús kimaradás üzenetébe illik, de egy régi szövetséges megtámadása azt mutatja, hogy a magyar politika nemcsak Brüsszelben, hanem saját régiójában is elszigetelődik."
+        "text": "Érthetően védi a különböző nemzeti érdekeket, és nem személyes támadás Lengyelország ellen. A nyilvános vita még így is láthatóvá teszi, mennyire egyedül maradt a magyar álláspont a régióban."
       },
       {
         "answerId": "C",
@@ -604,7 +604,7 @@
       },
       {
         "answerId": "D",
-        "text": "Önállóságot mutat, de egyik felsorolt partner sem pótolja Lengyelország súlyát az EU-ban. A keleti és déli nyitás a háború első heteiben különösen gyanús lehet."
+        "text": "Gyakorlati ügyekben új partnereket mutatsz fel, ami csökkentheti az elszigeteltség képét. Egy alkalmi koalíció azonban nem pótolja automatikusan a lengyel kapcsolat uniós politikai súlyát."
       }
     ]
   },
@@ -663,11 +663,11 @@
       },
       {
         "answerId": "C",
-        "text": "A győztes kisugárzás vonzó, de a már biztosnak hitt szavazó könnyebben marad otthon. Közben az ellenzéknek erős mozgósító érvet adsz a kétharmad megakadályozására."
+        "text": "A kompetencia és a folytonosság megnyugtathatja a bizonytalanokat, a háttérben futó szervezet pedig részben védi a részvételt. Ha a győzelmi hangulat túl erős, néhány támogató így is feleslegesnek érezheti a saját szavazatát."
       },
       {
         "answerId": "D",
-        "text": "A mérsékelt hang megnyugtathat néhány bizonytalant, de a saját tábor nem egyszerű adminisztrációra, hanem történelmi tétre mozdul meg. Az utolsó héten veszélyes lefelé alkudni a célt."
+        "text": "A mérsékelt hang csökkenti az ellenzéki riadót és nyithat a középen. A stabil többség kevésbé mozgósító cél, ezért csak akkor működik, ha a kampány korábban már elvégezte az érzelmi munkát."
       }
     ]
   }
