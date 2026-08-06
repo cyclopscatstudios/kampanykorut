@@ -68,6 +68,12 @@ const mockConfig: CampaignConfig = {
             subtitle: "",
             description: "",
           },
+          deadlock: {
+            imageUri: "",
+            title: "Deadlock",
+            subtitle: "",
+            description: "",
+          }
         },
       },
     },
