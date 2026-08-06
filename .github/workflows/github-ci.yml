@@ -19,19 +19,19 @@ jobs:
           node-version: 20
           cache: "yarn"
 
+      - run: corepack enable
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Lint
         run: yarn lint
-        continue-on-error: true
 
       - name: Format check
         run: yarn format:check
-        continue-on-error: true
 
       - name: Build
-        run: yarn build
+        run: yarn workspace kampanykorut build
 
       - name: Tests
         run: yarn test -- --coverage
@@ -57,13 +57,15 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
+      - run: corepack enable
+
       - run: yarn install --frozen-lockfile
 
       - run: npx playwright install --with-deps
 
       - run: npx playwright install chromium --with-deps
 
-      - run: yarn playwright test
+      - run: yarn playwright
 
       - name: Upload Playwright Artifacts
         if: always()
@@ -91,6 +93,8 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
+      - run: corepack enable
+
       - run: yarn install --frozen-lockfile
 
       - run: npx playwright install --with-deps
@@ -103,8 +107,8 @@ jobs:
         with:
           name: playwright-ct-artifacts
           path: |
-            playwright-report/
-            test-results/
+            apps/kampanykorut/playwright-report/
+            apps/kampanykorut/test-results/
 
   docker:
     runs-on: ubuntu-latest

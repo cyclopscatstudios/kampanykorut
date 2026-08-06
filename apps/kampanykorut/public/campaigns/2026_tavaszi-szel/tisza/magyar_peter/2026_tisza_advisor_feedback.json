@@ -1,0 +1,674 @@
+[
+  {
+    "questionId": "2026_ogyv_tisza_v2-1",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A parlamenti matematika csábító, de a választók éppen most bontották le a régi ellenzéki konstrukciót. Ha másnap visszaépítjük, legalább a bontási törmelék még kéznél van."
+      },
+      {
+        "answerId": "B",
+        "text": "Így megőrzöd az új erő jellegét anélkül, hogy megsértenéd azokat, akik tegnap még más pártra szavaztak. A vezetőiket nem kell átvennünk ahhoz, hogy a választóikat komolyan vegyük."
+      },
+      {
+        "answerId": "C",
+        "text": "A szakítás egyértelmű, és néhány kiábrándult jobboldali tapsolni fog. A DK-s és kutyapárti szavazó viszont nem biztos, hogy attól szeret meg minket, hogy politikai lomtalanításnak nevezzük."
+      },
+      {
+        "answerId": "D",
+        "text": "A Fidesz pereméről valóban lehet hozni szavazókat, de egy választást nem csak a jobb oldal jobb szélén lehet megnyerni. A budapesti és nagyvárosi ellenzéki tartalékot ezzel önként a polcon hagyjuk."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-2",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Következetes maradsz, és nem adsz könnyű támadási felületet. Cserébe lemondasz egy olyan európai hídfőállásról, amelyet a Fidesz évekkel korábban saját kezűleg hagyott ott."
+      },
+      {
+        "answerId": "B",
+        "text": "A közösségi felhatalmazás tompítja az ígéretmódosítás árát, az EPP pedig intézményi hátországot ad. Mostantól viszont minden brüsszeli kézfogásról készül majd egy „gazdája elé járul” feliratú kép."
+      },
+      {
+        "answerId": "C",
+        "text": "Megőrzöd a formális függetlenséget, viszont elesel a frakció szakmai és politikai infrastruktúrájától. Brüsszelben a magány romantikus, csak bizottsági helyeket nehéz vele szerezni."
+      },
+      {
+        "answerId": "D",
+        "text": "Ezzel talán elbizonytalanítasz néhány fideszes szavazót, de elveszíted a hiteles európai alternatíva szerepét. Orbán leváltásához nem feltétlenül az a legrövidebb út, ha beköltözünk mellé ugyanabba a folyosóba."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-3",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A fegyelem csökkenti a kínos elszólások esélyét, de két év alatt nem lehet minden falusi kitelepülést a központból mikromenedzselni. A Kubatov-listát sem egyetlen túlórázó gyakornok építette."
+      },
+      {
+        "answerId": "B",
+        "text": "Ez lassabban látványos, viszont valódi helyi jelenlétet épít. A központ adja a korlátokat, a helyiek pedig tudják, melyik piacra nem érdemes hétfő hajnalban standot vinni."
+      },
+      {
+        "answerId": "C",
+        "text": "A mozgalom gyorsan nő, de vele együtt nő a botránykockázat és a helyi kiskirályok száma is. A szabadság szép dolog, amíg három szomszédos Sziget nem ad ki négy egymásnak ellentmondó közleményt."
+      },
+      {
+        "answerId": "D",
+        "text": "Egy ideig a pártelnök valóban elviszi a hátán a mozgalmat. Választás napján azonban 10 000-nél több szavazókör lesz, és Magyar Péterből továbbra is csak egy darab áll rendelkezésre."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-4",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Brüsszelben tiszta és könnyen érthető pozíció, itthon viszont a Fidesz pontosan erre a képre vár: TISZA-logó, fegyverszállítás, piros nyíl. A bizonytalanok egy része nem a lábjegyzetet fogja elolvasni."
+      },
+      {
+        "answerId": "B",
+        "text": "A pozíció bonyolultabb egy óriásplakátnál, de összeköti a nyugati orientációt a társadalom háborús óvatosságával. A külpolitika ritkán fér rá egy söralátétre, pedig a kampánystáb nagyon szereti a söralátéteket."
+      },
+      {
+        "answerId": "C",
+        "text": "Rövid távon csökkented a Fidesz támadási felületét, hosszú távon viszont megszűnik a különbség köztünk és a kormány között. Ha az eredeti békepárti márka ott van a polcon, a másolatért ritkán fizetnek többet."
+      },
+      {
+        "answerId": "D",
+        "text": "A megélhetés valóban fontosabb, de a hallgatásból a Fidesz tetszőleges külpolitikát rajzol ránk. Az üres vászon sajnos a propaganda kedvenc műfaja."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-5",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Erős, könnyen érthető bizonyítékot viszel a választók elé, de minden látogatásnál adatvédelmi és méltósági aknamezőn járunk. A hőmérő pontos műszer; a politikai környezet kevésbé."
+      },
+      {
+        "answerId": "B",
+        "text": "Kevesebb a látvány és kisebb a személyes kockázat, cserébe az ügyet nehezebb egyetlen képpel elmagyarázni. Egy négyszáz oldalas PDF még nem nyert választást, de kormányprogramot már mentett meg."
+      },
+      {
+        "answerId": "C",
+        "text": "Hitelesebb lehet a pillanat, de egy beteg vagy dolgozó akaratlan szerepeltetése gyorsan visszaüthet. A spontaneitás jó kampányeszköz, amíg nem lesz belőle személyiségi jogi tananyag."
+      },
+      {
+        "answerId": "D",
+        "text": "A lendület megmarad és folyamatosan érkeznek az adatok, de a vezető személyes jelenléte nélkül kisebb lehet az áttörés. Nem minden problémát kell saját kézzel megmérni – csak el kell érni, hogy higgyenek annak, aki megtette."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-6",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A cselekvő ellenzék képe erős, főleg ha a segítség valódi és nem akadályozza a védekezést. A sáros nadrág működik, de a vízügyi szakértelmet továbbra sem a Facebook-lájkok mérik."
+      },
+      {
+        "answerId": "B",
+        "text": "A kritika egy része ülhet, de a képernyőn Orbán a gáton áll, mi pedig a pulpitusnál. Árvíznél a választó hajlamos előnyben részesíteni azt, akin gumicsizma van."
+      },
+      {
+        "answerId": "C",
+        "text": "A mozgósítás látványos, de párhuzamos irányítás egy veszélyhelyzetben felelőtlen. A homokzsák nem lesz nehezebb a logótól, a koordináció viszont igen."
+      },
+      {
+        "answerId": "D",
+        "text": "Emberileg kifogástalan, politikailag önfeladó. Segítünk, de a nyilvánosságban csak a kormány kompetenciaképe marad meg; a választók nem gondolatolvasók."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-7",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A jogi és szervezeti válasz elválasztja a magánéleti konfliktust a párt működésétől. Ettől még fájni fog, ha felvételek jönnek, csak legalább nem minden reggel improvizáljuk újra az igazságot."
+      },
+      {
+        "answerId": "B",
+        "text": "A hallgatás néha fegyelmezettség, itt inkább szabadon hagyott adásidő. Ha valóban vannak órányi felvételek, ez nem egy egynapos időjárás-jelentés."
+      },
+      {
+        "answerId": "C",
+        "text": "A saját tábor egy része élvezni fogja a visszavágást, a bizonytalanok viszont újabb magánéleti háborút látnak. Egy lejáratást nem feltétlenül az tesz semmissé, ha gyorsabban gyártunk egy másikat."
+      },
+      {
+        "answerId": "D",
+        "text": "Talán nyersz néhány hetet, de a kampány sorsa innentől annak a kezében van, akitől éppen megvetted a hallgatást. Ez nem válságkezelés, hanem havi előfizetés a következő válságra."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-8",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Egyszerre mutatsz nyomást és menekülőutat a médiablokád ellen. A tüntetés hírt gyárt, a saját csatorna pedig akkor is működik, amikor a híradó ismét véletlenül nem talál bennünket."
+      },
+      {
+        "answerId": "B",
+        "text": "Intézményileg erős és kevésbé kockázatos, de lassabb út. A keresetlevél ritkán vonul végig a Nagykörúton, viszont később bizonyíték lehet arra, hogy nem csak panaszkodtunk."
+      },
+      {
+        "answerId": "C",
+        "text": "Nem töröd át közvetlenül a közmédia falát, viszont olyan választókat érsz el, akikhez a budapesti tüntetés képe már szűrve jutna el. Kevésbé drámai, politikailag viszont nem feltétlenül kisebb."
+      },
+      {
+        "answerId": "D",
+        "text": "A vitakövetelés jól érthető és kormányzóképes szerepet sugall, de a közmédia egyszerűen nemet mondhat. Ebben az esetben egy elegáns meghívóval maradunk, vendég nélkül."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-9",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ha valódi a forrás, nagy ügyet nyerhetsz; ha nem, pontosan azt kapja, amit akart: két napot a kampányodból. A titkos információ értéke bizonytalan, a törölt megállók száma viszont könyvelhető."
+      },
+      {
+        "answerId": "B",
+        "text": "Nem te hallod elsőként a történetet, ezért valamennyi kontrollról lemondasz. Cserébe a kampány nem áll meg minden alkalommal, amikor valaki azt mondja, hogy ismeri Rogán Antal egyik sofőrét."
+      },
+      {
+        "answerId": "C",
+        "text": "Megőrzöd a lendület nagy részét és első kézből mérheted fel a forrást, viszont fáradtan, szűk időkeretben kell döntened. Ez nem tökéletes biztonság, hanem használható kompromisszum."
+      },
+      {
+        "answerId": "D",
+        "text": "Kiszűrheted a provokátort és véded magad a csapdától, de egy valódi, félő forrás is visszaléphet. Tiszta szabály, nem feltétlenül maximális információhozam."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-10",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Vállalod a politikai árat, de nem engeded, hogy a felvételek hetekre átvegyék a kampány menetrendjét. A bocsánatkérés nem radír; arra viszont jó, hogy ne nekünk kelljen naponta új hazugságot adminisztrálni."
+      },
+      {
+        "answerId": "B",
+        "text": "Alaposabban lezárhatod az ügyet, de a kampány ritmusa és az ellenfél időzítése között most az utóbbi győz. Két nap nem a világ, csak éppen két nap alatt nyolc település maradhat ki."
+      },
+      {
+        "answerId": "C",
+        "text": "A saját tábor egy része összezár, a bizonytalanok viszont továbbra is hallják az eredeti mondatokat. A lehallgatás botrány, de nem automatikus felmentés arra, ami a felvételen van."
+      },
+      {
+        "answerId": "D",
+        "text": "Nem adsz további oxigént az ügynek és a lendület sem szakad meg, de a hallgatás könnyen tűnhet menekülésnek. Ez a stratégia akkor működik, ha a következő felvétel nem rosszabb az előzőnél – amit sajnos nem mi szerkesztünk."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-11",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Nem adsz hosszú vágóképet, és a kampány ritmusa sem törik meg. Hátránya, hogy a helyszínen úgy tűnhet, kitértél a konfliktus elől; az önuralom ritkán olyan látványos, mint két mikrofon közötti ordítás."
+      },
+      {
+        "answerId": "B",
+        "text": "Megmutatod, hogy nem futsz el, mégsem engeded teljesen személyessé válni a jelenetet. A szakértői mondatból az ordibálásban talán csak a kötőszó hallatszik, de legalább van mondat."
+      },
+      {
+        "answerId": "C",
+        "text": "Nem hátrálsz meg, és sokan a kormányzati agressziót látják. De a gyermekotthon előtt két felnőtt férfi kiabál egymással; a jelenet mozgósít, miközben a kormányzóképességből lecsíp."
+      },
+      {
+        "answerId": "D",
+        "text": "Elkerülöd a méltatlan jelenetet és véded a gyerekeket a politikai cirkusztól, de Menczer kapja a nap egyetlen használható képét. Tisztességes visszavonulás, kommunikációs veszteséggel."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-12",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Napirendet formálsz, miközben nem teszed fel a teljes szervezetet Orbán döntésére. A kettős ütemterv kevésbé romantikus, de a kampánytervezés amúgy sem szerelmeslevél."
+      },
+      {
+        "answerId": "B",
+        "text": "Ha Orbán meglepően együttműködő, készen állsz. Ha nem, ősszel kiégett aktivisták és üres kassza marad; a miniszterelnök sajnos nem a mi projekttervünkből dolgozik."
+      },
+      {
+        "answerId": "C",
+        "text": "Kevesebb címlapot kapsz, viszont több használható hónapot. A fegyelmezett felkészülés utólag okosnak tűnhet, bár közben átengedi az évkezdő politikai kezdeményezést a Fidesznek."
+      },
+      {
+        "answerId": "D",
+        "text": "A nyomás nagyobbnak látszik, de visszanyitod az összefogás kérdését, amelyből a TISZA éppen kilépett. A kormány aligha ijed meg, a saját táborunk viszont joggal kérdez rá az útvonalra."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-13",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Megóvod a márkát egy valószínű vereségtől, miközben legalább szervezeti tapasztalatot szerzel. Nem teljes főpróba, de több annál, mint otthonról elemezni a részvételt."
+      },
+      {
+        "answerId": "B",
+        "text": "Kockáztatod a vereség képét, de adatot, aktivistát és jelölti rutint nyersz. Erős Szigetekkel befektetés, gyenge háttérrel drága terepgyakorlat."
+      },
+      {
+        "answerId": "C",
+        "text": "Szorosabbá teheted az eredményt és gesztust teszel a régi ellenzéki tábornak, közben más párt infrastruktúráját építed. A kölcsönjelölt nem lesz automatikusan tiszás jelölt 2026-ban."
+      },
+      {
+        "answerId": "D",
+        "text": "Nem kapsz mérhető jelölti eredményt, viszont olcsón teszteled a gépezetet. A kampánylabor hátránya, hogy a választási bizottság nem oszt mandátumot a gondosan kitöltött értékelőlapért."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-14",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Gyorsabban bontod a DK megélhetési táborát és könnyű kommunikálni, viszont nagyobb fedezeti vitát nyitsz. A választó érti a számlát; a költségvetés később kéri el a blokkot."
+      },
+      {
+        "answerId": "B",
+        "text": "Kormányzati ajánlatnak látszik, nem kívánságlistának, de egyszerre sok üzenetet kell elmagyarázni. A részletes program természetes ellensége a tizenöt másodperces videó."
+      },
+      {
+        "answerId": "C",
+        "text": "Fideszes és kutyapárti vállalkozókat nyithatsz meg, miközben kevesebbet mondasz a nyugdíjasoknak és alacsony keresetűeknek. Jó növekedési terv, kevésbé teljes társadalmi szerződés."
+      },
+      {
+        "answerId": "D",
+        "text": "A kormányzóképességet erősíti és később hitelesítheti a programot, de most kevés vigaszt ad annak, aki a pénztárnál számolgat. Felelős mondat, korlátozott azonnali lelkesedéssel."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-15",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Kevesebb első kézből kapott titok, több intézményi kontroll. Aki kormányzásra készül, annak előbb-utóbb el kell fogadnia, hogy nem személyesen ő végzi az összes háttérellenőrzést."
+      },
+      {
+        "answerId": "B",
+        "text": "Gyorsan és közvetlenül szerzel információt, de ismét egy külső szereplő írja át a menetrendedet. Lehet, hogy megér két megállót – az a kérdés, hány hasonló ajánlat érkezik még áprilisig."
+      },
+      {
+        "answerId": "C",
+        "text": "Megkapod a tudását kisebb támadási felülettel, de elrejted annak politikai jelzését, hogy magas rangú állami szereplők elhagyják a rendszert. Biztonságosabb, kevésbé erős igazolás."
+      },
+      {
+        "answerId": "D",
+        "text": "Erős képet és hírt kapsz, de minden korábbi juttatása a teljes TISZA hitelességi tesztjévé válik. A tábornoki rang nem helyettesíti a due diligence-et, csak drágábbá teszi a hiányát."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-16",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A konzultáció egyszerre programalkotás és szervezeti stresszteszt. Drágább és lassabb, de megmutatja, hogy a Szigetek nem csupán profilképek egy csoportban."
+      },
+      {
+        "answerId": "B",
+        "text": "Szakmailag tisztább eredményt kapsz és kevesebb erőforrást égetsz el, de nem teszteled a teljes aktivistahálózatot. Közvélemény-kutatásnak erősebb, mozgalomépítésnek soványabb."
+      },
+      {
+        "answerId": "C",
+        "text": "Gyors, olcsó és módszertanilag vállalható kompromisszum, bár kevésbé látványos országos hadművelet. A két adatbázis legalább nem tesz úgy, mintha ugyanaz lenne."
+      },
+      {
+        "answerId": "D",
+        "text": "Kevesebb mozgósítás, több használható részlet. Később hitelesebb programot írhatunk belőle, de most nem lesz egymilliós szám a színpad mögötti kijelzőn."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-17",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Erős határvonalat húzol és gyorsan lezárod a személyi kérdést, de elismered az ellenfél teljes keretezését, miközben elveszítesz egy szakpolitikai embert. Tiszta vágás, valamennyi saját szövettel együtt."
+      },
+      {
+        "answerId": "B",
+        "text": "Nem tagadod a hibát, de nem adod át a teljes ügy értelmezését sem. Rövid távon életben tartja a vitát, hosszú távon konzisztens marad az uniós és korrupcióellenes álláspont."
+      },
+      {
+        "answerId": "C",
+        "text": "Megőrzöd a saját képviselőd mozgásterét és nem hagyod, hogy a Fidesz végleg átírja a mondatot, de a késői korrekció drágább a korainál. A napirend visszavétele működhet, ha már van hiteles saját ügyünk."
+      },
+      {
+        "answerId": "D",
+        "text": "Kisebb nyilvános önkritika, kisebb szervezeti veszteség és megmaradó lendület. Az ellenfél ezt menekítésnek nevezi majd, de legalább nem ugyanazzal a mondattal kezdődik minden következő fórum."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-18",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Nemzeti ügyet veszel vissza Orbántól úgy, hogy közben tiszteletben tartod a határt és az ottani választók döntését. A gyaloglás hosszú, de legalább minden kilométerben van egy sajtókép és néhány valódi beszélgetés."
+      },
+      {
+        "answerId": "B",
+        "text": "Elkerülöd a külpolitikai kockázatot, viszont átengeded a nemzetpolitikai kezdeményezést. A közlemény gyorsabban ér Nagyváradra, csak kevesebb ember áll meg miatta az út szélén."
+      },
+      {
+        "answerId": "C",
+        "text": "Egyértelműen szembemész Simionnal, de ugyanazt a beavatkozást követed el, amit Orbánnál bírálsz. A jó jelölt melletti rossz módszer továbbra is rossz módszer."
+      },
+      {
+        "answerId": "D",
+        "text": "Talán versenybe szállsz néhány radikális szavazóért, közben elidegeníted az RMDSZ-t és relativizálod Simion korábbi magyarellenes politikáját. Nemzetpolitikai sakkból ez leginkább saját királyunk leütése."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-19",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Egyértelműen kiállsz a szabadság mellett, és nagyvárosi szavazókat nyersz. Ugyanakkor a Fidesz sikeresen egyetlen kulturális törésvonalra szűkítheti a TISZA teljes ajánlatát, főleg vidéken."
+      },
+      {
+        "answerId": "B",
+        "text": "Jogállami, következetes pozíció, amely nem teszi a pártot a rendezvény tulajdonosává. Lesz, aki túl soknak, más túl kevésnek érzi – a hídépítés rendszerint mindkét partról kap kritikát."
+      },
+      {
+        "answerId": "C",
+        "text": "Megőrzöd a széles koalíciót, de a legnagyobb szabadságjogi demonstráció idején óvatos távolságtartásnak látszik. Politikailag működhet, erkölcsileg száraz íz marad utána."
+      },
+      {
+        "answerId": "D",
+        "text": "Talán csökkented a jobboldali támadást, de eljátszod a jogállami alternatíva hitelét és visszaterelsz városi szavazókat a DK-hoz és az MKKP-hoz. Az eredeti tiltópárt továbbra is hitelesebb lesz tiltásban."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-20",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A személyes jelenlét lassan bontja le a Fidesz területi fölényét, miközben vállalod, hogy nem te reagálsz elsőként minden botrányra. A lendület ára némi kommunikációs kontroll."
+      },
+      {
+        "answerId": "B",
+        "text": "Hatékonyabban építhetsz mandátumtöbbséget, de kimaradnak olyan területek, ahol csak később derülne ki a növekedési lehetőség. Jó választási matematika, szűkebb országos történet."
+      },
+      {
+        "answerId": "C",
+        "text": "Több helyre juttok el és elkezded leválasztani a kampányt egyetlen emberről, cserébe kisebb tömeg jöhet ott, ahol a plakáton szereplő név nincs a színpadon. Kormánycsapatot épít, személyes hullámot mérsékel."
+      },
+      {
+        "answerId": "D",
+        "text": "Jobban kézben tartod a napirendet, de az országjárás könnyen hírműsorrá válik, amelynek témáit az ellenfél választja. Gyors kommunikáció, kisebb területi beágyazódás."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-21",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Világos erkölcsi és biztonságpolitikai álláspontot adsz a katonai eszkaláció ígérete nélkül. A pontosság itt erősebb, mint a „mindkét fél” köd, különösen Kárpátalja mellett."
+      },
+      {
+        "answerId": "B",
+        "text": "Emberséges és óvatos, de éppen ugyanazt a hiányt hagyod a mondatban, amely miatt Sulyokot bírálják. A passzív szerkezet nem állítja meg a rakétát, csak elrejti az alanyt."
+      },
+      {
+        "answerId": "C",
+        "text": "A válasz egyértelmű, de átlépi a társadalom és a korábbi TISZA-álláspont határát. A Fidesz kampánystábjában valaki most rendeli meg a pezsgőt és a plakátpapírt."
+      },
+      {
+        "answerId": "D",
+        "text": "A békeigény népszerű, de egy konkrét civil célpont elleni támadásnál a szimmetria valóságtagadásnak hat. Ha minden mondatban mindkét felet hibáztatjuk, előbb-utóbb a tényeket is elveszítjük."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-22",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Gyorsan zárja a félelmet és megőrzi a későbbi mozgástered egy részét, de kevesebb konkrétumot ad a magasabb jövedelmekről. Politikai tűzoltás, még nem teljes adókódex."
+      },
+      {
+        "answerId": "B",
+        "text": "Nem hagyod, hogy egy kiszivárgott félmondat diktálja a programot, viszont hetekig marad hely a találgatásnak. Szakmailag indokolható halasztás, kommunikációsan kamatozó tartozás."
+      },
+      {
+        "answerId": "C",
+        "text": "Sok támadási felületet adsz, de számszerű vitára kényszeríted az ellenfelet. Akkor erős, ha a korábbi gazdasági ajánlat és a konzultáció valóban ugyanabba az irányba mutat."
+      },
+      {
+        "answerId": "D",
+        "text": "Tisztább és szociálisan erősebb ajánlat, amely a DK felől hozhat szavazókat, de a magasabb jövedelmű bizonytalanokat és fideszeseket könnyebben riasztja. Nem titkos program, hanem nyílt célcsoportválasztás."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-23",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Erős jogállami gesztus és első kézből kontrollálod az ügyet, de az eljárás időzítését átadod a magyar hatóságoknak. Elvi győzelem lehet, kampánynaptárat ritkán mellékelnek hozzá."
+      },
+      {
+        "answerId": "B",
+        "text": "Nem menekülsz a kérdés elől, mégsem engeded át a kampány menetrendjét az eljárásnak. Kevésbé látványos erkölcsi gesztus, működőképesebb munkamegosztás."
+      },
+      {
+        "answerId": "C",
+        "text": "Átláthatóvá teszed a politikai dimenziót és nem szakítod meg a turnét, de az ellenfél joggal mondhatja, hogy időt nyersz. Védelem és halasztás egyszerre."
+      },
+      {
+        "answerId": "D",
+        "text": "Összezárhatja a tábort, de ismét az ellenfél ügyére reagálva töltöd a saját országjárásodat. A napirendet megnyered, csak sajnos nem te választottad."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-24",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A tömeg megmutatja az erőt, az új országjárás pedig munkává alakítja a lelkesedést. Jó, ha a menet vége nem a színpad, hanem a következő reggeli körzeti feladatlista."
+      },
+      {
+        "answerId": "B",
+        "text": "A helyi hálózatot erősíted, de lemondasz az országos erődemonstrációról egy olyan napon, amikor minden kamera tömeget keres. Szervezetileg okos, szimbolikusan halk."
+      },
+      {
+        "answerId": "C",
+        "text": "Nem lehet kevesebb embert fotózni, ha nincs rendezvény – viszont többet sem. A kormány ezt gyengeségként fogja keretezni, és ezúttal még vágóképet sem kell keresnie."
+      },
+      {
+        "answerId": "D",
+        "text": "A konfliktus garantálja a világsajtót, de egyetlen lökés vagy palack elég a kampány átírásához. Választást akarunk nyerni, nem tömegoszlatási esettanulmányt."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-25",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A felelősségvállalás látható és gyors lehet, de ismét egy szakmai válság húzza ki a vezetőt a kampányból. Ha a párt csak akkor működik, amikor Magyar személyesen ül a hibajegyen, az maga is biztonsági rés."
+      },
+      {
+        "answerId": "B",
+        "text": "Kevesebb személyes kontroll, de azt bizonyítod, hogy a szervezet vezető nélkül is tud válságot kezelni. A rövid közlés nem zár le mindent, csak nem engedi, hogy a teljes kampány helpdeskké változzon."
+      },
+      {
+        "answerId": "C",
+        "text": "Radikálisan csökkented az újabb digitális kockázatot, de elveszíted a gyors adatvezérelt szervezés egy részét. Drága biztosítás, amely erős helyi hálózattal működhet."
+      },
+      {
+        "answerId": "D",
+        "text": "Nem engeded, hogy egy ellenséges akció leállítsa a rendszert, de egy későbbi bizonyíték a támadásnál is nagyobb bizalmi kárt okozhat. A magabiztosság és a vakrepülés között itt vékony a tűzfal."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-26",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A központi minőségbiztosítást helyi legitimációval kötöd össze, és a vesztesekből is csapatot építesz. A folyamat bonyolult, de a demokrácia általában az – ezért nem excelben választjuk ki titokban az országot."
+      },
+      {
+        "answerId": "B",
+        "text": "Gyors és kontrollált, kevesebb technikai kockázattal. A helyi aktivisták azonban olyan jelöltért dolgoznak majd, akit először ugyanabból a közleményből ismertek meg, mint a Fidesz."
+      },
+      {
+        "answerId": "C",
+        "text": "Csökkenti a szavazatmegosztás kockázatát, de visszahozza az összefogási alkukat és idegen szervezeteket enged a jelöltállításba. A TISZA lehet ernyő, csak ne váljon újra hatpárti sátorrá az első szélben."
+      },
+      {
+        "answerId": "D",
+        "text": "A név gyorsan épít ismertséget, de a helyi ügyeknél és a jelölti vitában hamar elfogyhat a kölcsönzött csillogás. A választókerület nem castingműsor, még ha a plakát jól is néz ki."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-27",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A felháborodást intézményi ajánlattá alakítod, miközben nem használod újra politikai eszközként a bántalmazott gyerekeket. Ez kevésbé látványos, mint névsort olvasni, de sokkal közelebb van a kormányzáshoz."
+      },
+      {
+        "answerId": "B",
+        "text": "A politikai felelősség kérdése jogos, de az áldozatoknak másnap is működő rendszer kell. A lemondás követelés, nem gyermekvédelmi szolgáltatás."
+      },
+      {
+        "answerId": "C",
+        "text": "Rövid távon uralod a napirendet, de egyetlen téves vád az egész ügyet visszafordíthatja a kormány javára, az áldozatokat pedig újra háttérbe tolja. A düh nem helyettesíti a bizonyítékot."
+      },
+      {
+        "answerId": "D",
+        "text": "A visszafogottság tisztességes szándékból jön, de a hallgatás az intézményi felelőtlenséget védi. Politikai megoldást ígérni nem ugyanaz, mint kampánykellékké tenni az áldozatokat."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-28",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Kormányzóképes ajánlatot adsz és lezárod a titkos program vitáját, cserébe minden oldalszámhoz külön támadást kapsz. Ez a részletes program természetes élővilága."
+      },
+      {
+        "answerId": "B",
+        "text": "Fegyelmezett kampánytermék és ellenőrizhető is, de a kevésbé látványos részleteket kevesen olvassák el. A melléklet léte nem garantálja, hogy a kormánymédia is odalapoz."
+      },
+      {
+        "answerId": "C",
+        "text": "Hosszabb ideig uralhatod a napirendet és a program kapcsolódik az országjáráshoz, viszont az ellenfél az első és az utolsó fejezet között tovább beszélhet titkos részletekről."
+      },
+      {
+        "answerId": "D",
+        "text": "Erősíti a szakmai hitelt és csökkenti a technikai hibák személyes árát, de azt a benyomást keltheti, hogy a jelölt kerüli a részleteket. Jó munkamegosztás, ha a csapat arcai már ismertek."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-29",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Elveszed a zsarolás meglepetéserejét anélkül, hogy egész nap a saját magánéletedről beszélnél. Csak akkor működik, ha most nem hagysz ki egy később bizonyítható részletet."
+      },
+      {
+        "answerId": "B",
+        "text": "Nagyobb kontrollt és bizonyítható átláthatóságot kapsz, de egy még meg sem jelent anyag máris elvett egy napot. Lehet olcsó biztosítás, lehet drágán megvásárolt üres fenyegetés."
+      },
+      {
+        "answerId": "C",
+        "text": "Nem hagyod, hogy egy „Coming soon” felirat vezesse a kampányt, de átadod az első megszólalás előnyét az oldal gazdájának. Fegyelmezett kivárás, valódi meglepetési kockázattal."
+      },
+      {
+        "answerId": "D",
+        "text": "Kölcsönös elrettentésnek szánod, de hitelesíted a magánéleti zsarolást mint kampányeszközt. A mocsárban az ellenfélnek tizenhat év hazai pályaelőnye van."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-30",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Rövid távon versenybe szállsz a biztonsági témáért, de bizonyíték nélkül az ellenfél narratíváját erősíted. A választó az eredeti válságmenedzsert választja, nem a hirtelen felvett munkaruhát."
+      },
+      {
+        "answerId": "B",
+        "text": "A tényellenőrzést összekötöd a háztartások biztonságával, nem kell sem Zelenszkij, sem Putyin szóvivőjévé válni. Válságban a csővezeték nyomása fontosabb adat, mint a Facebook-poszt hangereje."
+      },
+      {
+        "answerId": "C",
+        "text": "Stratégiai irányként védhető, azonnali kampányígéretként ellátási és árkockázat. A függetlenséghez hálózat, szerződés és idő kell; a morális fölény nem fűti ki a lakást."
+      },
+      {
+        "answerId": "D",
+        "text": "A közszolgáltatási fókusz helyes, de egy ellátási válság közepén a hallgatás kormányzati alkalmatlanságnak látszik. A miniszterelnök-jelöltnek néha akkor is van külpolitikája, ha éppen nem kérte."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-31",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Széles győzelmi koalíciót épít és megnyugtatja a kormányváltástól félőket, de kevésbé tüzelheti a legerősebben elszámoltatást követelő tábort. A mérséklet most nem halkság, hanem célcsoport."
+      },
+      {
+        "answerId": "B",
+        "text": "Erősítheti a DK felől és a bizonytalanok között elért áttörést, miközben kevésbé válaszol arra, mitől nem épül vissza ugyanaz a rendszer más színben. Konyhaasztalnál erős, alkotmányjogból rövidebb."
+      },
+      {
+        "answerId": "C",
+        "text": "Fideszes és Mi Hazánkhoz húzó választókat nyithat meg, viszont összemossa a saját témádat az ellenfél legerősebb kampányával. Területet foglalhatsz, de az ő térképén."
+      },
+      {
+        "answerId": "D",
+        "text": "Erősen mozgósítja a rendszerkritikus ellenzéki tábort és tisztább a puszta börtönretorikánál, de a kormányváltás utáni hétköznapi életből kevesebbet mutat. Jó záróügy, ha a programot már korábban elhitték."
+      }
+    ]
+  },
+  {
+    "questionId": "2026_ogyv_tisza_v2-32",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A látványos országjárást összekötöd a láthatatlan választásnapi gépezettel. Drága és szervezetigényes megoldás; a 141. mandátumot azonban ritkán egyetlen jó beszéd hozza."
+      },
+      {
+        "answerId": "B",
+        "text": "Kevesebb országos látványért több közvetlen mandátumesélyt veszel. Akkor erős, ha jól azonosítottuk a billegőket; rossz modell esetén elképesztő hatékonysággal kopogtatunk a tizenhatodik helyen."
+      },
+      {
+        "answerId": "C",
+        "text": "Nagyot nyerhetsz az alacsony részvételű térségekben és a Mi Hazánk küszöbét is veszélyeztetheted, de néhány városi billegőt kevésbé biztosítasz. Területi terjeszkedés, koncentrált kockázattal."
+      },
+      {
+        "answerId": "D",
+        "text": "Egyszerű, pozitív és listán erős stratégia, de a magyar rendszer nem pusztán országos népszerűségi verseny. Sok plusz szavazatot szerezhetsz ott is, ahol már az első is elég lett volna."
+      }
+    ]
+  }
+]

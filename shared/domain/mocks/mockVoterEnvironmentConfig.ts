@@ -1,4 +1,4 @@
-import { VoterEnvironmentConfig } from "@/shared/types";
+import { VoterEnvironmentConfig } from "../../types";
 
 export const voternvironmentConfig: VoterEnvironmentConfig = {
   eligibleVoters: 200,

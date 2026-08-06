@@ -1,12 +1,12 @@
 import { inject, singleton } from "tsyringe";
-import { createLogger } from "@/shared/logger";
+import { createLogger } from "../../logger";
 import {
   CandidateListData,
   DistrictTarget,
   PartyListData,
   PartyListVotes,
   VoteSource,
-} from "@/shared/types";
+} from "../../types";
 import { VoterEnvironment } from "../VoterEnvironment";
 
 const log = createLogger("DistrictVoteTransformer");
@@ -19,38 +19,43 @@ export class DistrictVoteTransformer {
 
   modifyDistricts(
     districtCandidateData: CandidateListData[],
-    partyListData: PartyListData[],
     districtTargets: DistrictTarget[],
+    partyListData?: PartyListData[],
     partyListVotes?: PartyListVotes,
   ) {
     const key = (megyekod: number, oevk: number) => `${megyekod}_${oevk}`;
 
-    const partyIndex = new Map(
-      partyListData.map((row, i) => [key(row.megyekod, row.oevk), i]),
-    );
+    const partyIndex = partyListData
+      ? new Map(partyListData.map((row, i) => [key(row.megyekod, row.oevk), i]))
+      : undefined;
+
     const candidateIndex = new Map(
       districtCandidateData.map((row, i) => [key(row.megyekod, row.oevk), i]),
     );
 
-    const newPartyListData = [...partyListData];
+    const newPartyListData = partyListData ? [...partyListData] : undefined;
     const newCandidateListData = [...districtCandidateData];
     let newPartyListVotes = partyListVotes ? { ...partyListVotes } : undefined;
 
+    console.log({ partyListData, newPartyListData });
+
     for (const target of districtTargets) {
       const k = key(target.megyekod, target.oevk);
-      const pi = partyIndex.get(k);
+      const pi = partyIndex?.get(k);
       const ci = candidateIndex.get(k);
 
-      if (pi === undefined) {
-        log.warn(
-          `provided target ${JSON.stringify(target)}'s district was not found in the party data`,
-        );
-      } else {
-        newPartyListData[pi] = this.applyPartyTarget(
-          newPartyListData[pi],
-          ci !== undefined ? districtCandidateData[ci] : undefined,
-          target,
-        );
+      if (partyListData?.length && newPartyListData?.length) {
+        if (pi === undefined) {
+          log.warn(
+            `provided target ${JSON.stringify(target)}'s district was not found in the party data`,
+          );
+        } else {
+          newPartyListData[pi] = this.applyPartyTarget(
+            newPartyListData[pi],
+            ci !== undefined ? districtCandidateData[ci] : undefined,
+            target,
+          );
+        }
       }
 
       if (ci !== undefined) {

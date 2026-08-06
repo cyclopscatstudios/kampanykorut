@@ -1,0 +1,31 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.spec.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vitest/globals", "node", "vite/client"],
+    "jsx": "react-jsx",
+
+    "paths": {
+      "@/logic/application": ["./src/logic/application"],
+      "@/logic/types": ["./src/logic/types"],
+      "@/shared/logger": ["../../shared/logger"],
+      "@/shared/logger/*": ["../../shared/logger/*"],
+      "@/shared/domain": ["../../shared/domain"],
+      "@/shared/domain/*": ["../../shared/domain/*"],
+      "@/shared/types": ["../../shared/types"],
+      "@/shared/types/*": ["../../shared/types/*"],
+      "@/shared/logic": ["../../shared/logic"],
+      "@/shared/logic/*": ["../../shared/logic/*"],
+      "@/shared/ui": ["../../shared/ui"],
+      "@/shared/ui/*": ["../../shared/ui/*"]
+    }
+  },
+  "include": [
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "../../shared/**/*.test.ts"
+  ]
+}

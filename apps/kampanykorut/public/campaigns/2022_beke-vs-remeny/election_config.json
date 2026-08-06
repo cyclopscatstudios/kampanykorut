@@ -1,0 +1,100 @@
+{
+  "title": "Béke vs Remény",
+  "year": "2022",
+  "listSeats": 93,
+  "allSeats": 199,
+  "thresholdPercent": 5,
+  "districtBoost": true,
+  "baseResults": {
+    "ellenzeki_osszefogas": {
+      "ellenzeki_osszefogas": 3,
+      "fidesz": -3
+    },
+    "fidesz": {
+      "ellenzeki_osszefogas": 8,
+      "fidesz": -8
+    }
+  },
+  "parties": [
+    { "id": "fidesz", "name": "Fidesz–KDNP", "color": "#F28E2B" },
+    {
+      "id": "ellenzeki_osszefogas",
+      "name": "Egységben Magyarországért",
+      "color": "#20b2aa"
+    },
+    { "id": "mi_hazank", "name": "Mi Hazánk", "color": "#688d1b" },
+    { "id": "mkkp", "name": "Magyar Kétfarkú Kutya Párt", "color": "#d92229" },
+    {
+      "id": "megoldas_mozgalom",
+      "name": "Megoldás Mozgalom",
+      "color": "#aa0a0d"
+    },
+    {
+      "id": "normalis_elet",
+      "name": "Normális Élet Pártja",
+      "color": "#122649"
+    }
+  ],
+  "partyListVotes": {
+    "fidesz": 2809238,
+    "ellenzeki_osszefogas": 1936297,
+    "mi_hazank": 329651,
+    "mkkp": 183416,
+    "megoldas_mozgalom": 58670,
+    "normalis_elet": 39119,
+    "_other": 30635
+  },
+  "playableSides": [
+    {
+      "id": "ellenzeki_osszefogas",
+      "label": "Egységben Magyarországért",
+      "description": "A korábban egymással versengő ellenzéki pártok 2022-re közös listán indultak, hogy egyesített erővel váltsák le a kormányt – ugyanakkor az ideológiai különbségek és belső feszültségek komoly kihívást jelentettek számukra.",
+      "mainCandidates": [
+        {
+          "id": "marki_zay_peter",
+          "label": "Márki-Zay Péter",
+          "description": "Hódmezővásárhely polgármestere, pártfüggetlen jelöltként nyerte meg az előválasztást, kívülről érkező politikusként a korrupcióellenességet és a politikai megújulást képviselte."
+        },
+        { "id": "dobrev_klara", "label": "Dobrev Klára" },
+        { "id": "karacsony_gergely", "label": "Karacsony Gergely" }
+      ],
+      "playableCandidates": ["marki_zay_peter"]
+    },
+    {
+      "id": "fidesz",
+      "label": "Fidesz–KDNP",
+      "description": "A 2010 óta kormányzó pártszövetség, amely a 2022-es választásokon is a kormányzás folytatását tűzte ki célul, a gazdasági stabilitás és a nemzeti érdekek védelme mellett.",
+      "mainCandidates": [
+        {
+          "id": "orban_viktor",
+          "label": "Orbán Viktor",
+          "description": "A párt elnöke, a kormányzás folytatásának és a nemzeti érdekek védelmének támogatása mellett."
+        }
+      ]
+    }
+  ],
+  "electionAssets": [
+    {
+      "id": "ellenzeki_osszefogas",
+      "candidateAssets": [
+        {
+          "id": "marki_zay_peter",
+          "portrait": "/images/2022_beke-vs-remeny/mzp-portrait.png",
+          "slogan": "/images/2022_beke-vs-remeny/ellenzeki_osszefogas_2022_kampany_szoveg.png"
+        }
+      ],
+      "party_logo": "/images/2022_beke-vs-remeny/ellenzeki-osszefogas.png"
+    },
+    {
+      "id": "fidesz",
+      "candidateAssets": [
+        {
+          "id": "orban_viktor",
+          "portrait": "/images/2022_beke-vs-remeny/ov-portrait.png",
+          "slogan": "/images/2022_beke-vs-remeny/fidesz_2022_kampany_szoveg.png"
+        }
+      ],
+      "party_logo": "/images/2022_beke-vs-remeny/fidesz.png"
+    }
+  ]
+}

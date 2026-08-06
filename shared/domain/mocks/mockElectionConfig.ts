@@ -1,4 +1,4 @@
-import { ElectionConfig } from "@/shared/types";
+import { ElectionConfig } from "../../types";
 
 export const mockElectionConfig: ElectionConfig = {
   title: "Mock Election",
@@ -12,7 +12,7 @@ export const mockElectionConfig: ElectionConfig = {
     party_a: {
       party_a: 3,
       party_b: -2,
-    }
+    },
   },
   partyListVotes: {},
   parties: [

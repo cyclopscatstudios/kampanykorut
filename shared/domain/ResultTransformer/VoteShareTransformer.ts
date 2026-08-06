@@ -5,7 +5,7 @@ import {
   PartyListData,
   PartyListVotes,
   Share,
-} from "@/shared/types";
+} from "../../types";
 import { VoterEnvironment } from "../VoterEnvironment";
 
 @singleton()

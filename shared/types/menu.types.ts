@@ -1,0 +1,26 @@
+import { IconSource } from "./icon";
+
+export enum MenuItemId {
+  // kampanykorut
+  NewGame = "newGame",
+  ModMaker = "modMaker",
+  Settings = "settings",
+  CampaignMode = "campaignMode",
+  ClassicMode = "classicMode",
+  LoadSavedGame = "laodSavedGame",
+  SideSelector = "sideSelector",
+  // campaign-maker
+  NewCampaign = "newCampaign",
+  // shared
+  Back = "back",
+}
+
+export type MenuItem = {
+  id: MenuItemId;
+  text: string;
+  path: string;
+  icon?: string;
+  iconSource?: IconSource;
+  description?: string;
+  disabled?: boolean;
+};

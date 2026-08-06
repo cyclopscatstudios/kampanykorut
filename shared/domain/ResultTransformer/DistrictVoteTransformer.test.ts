@@ -20,8 +20,8 @@ describe("DistrictTargetTransform", () => {
     };
     const result = districtTargetTransform.modifyDistricts(
       mockCandidateListData,
-      mockPartyListData,
       [districtTarget],
+      mockPartyListData,
     );
 
     expect(result).toMatchSnapshot();

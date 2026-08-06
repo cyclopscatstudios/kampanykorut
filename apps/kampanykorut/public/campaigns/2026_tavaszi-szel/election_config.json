@@ -1,0 +1,64 @@
+{
+  "title": "Tavaszi szél",
+  "year": "2026",
+  "listSeats": 93,
+  "allSeats": 199,
+  "thresholdPercent": 5,
+  "districtBoost": true,
+  "baseResults": {
+    "tisza": {
+      "tisza": -20,
+      "fidesz": 6,
+      "dk": 5,
+      "mi_hazank": 1.5,
+      "mkkp": 3,
+      "_other": 5
+    }
+  },
+  "parties": [
+    {
+      "id": "tisza",
+      "name": "Tisztelet és Szabadság Párt",
+      "color": "#88E8FF"
+    },
+    { "id": "fidesz", "name": "Fidesz–KDNP", "color": "#F28E2B" },
+    { "id": "mi_hazank", "name": "Mi Hazánk", "color": "#688d1b" },
+    { "id": "mkkp", "name": "Magyar Kétfarkú Kutya Párt", "color": "#d92229" },
+    { "id": "dk", "name": "Demokratikus Koalíció", "color": "#2A61A4" }
+  ],
+  "partyListVotes": {
+    "tisza": 3385890,
+    "fidesz": 2458337,
+    "mi_hazank": 358372,
+    "dk": 70298,
+    "mkkp": 51965,
+    "_other": 41871
+  },
+  "playableSides": [
+    {
+      "id": "tisza",
+      "label": "Tisztelet és Szabadság Párt",
+      "description": "2020-ban alapították, de országos jelentőséget 2024-ben szerzett, amikor Magyar Péter listavezetésével elindult az európai parlamenti és Budapesten az önkormányzati választáson. Mindössze három hónap építkezéssel, országos szervezet nélkül mindkét választáson a második helyen végzett, ami a magyar politikában példátlanul gyors felemelkedést jelent, ezzel a 2010 óta kormányzó Fidesz első számú kihívójává vált.",
+      "mainCandidates": [
+        {
+          "id": "magyar_peter",
+          "label": "Magyar Péter",
+          "description": "Politikus, jogász, diplomata a Talpra Magyarok Közösségének vezetője, a Tisztelet és Szabadság (TISZA) Párt elnöke."
+        }
+      ]
+    }
+  ],
+  "electionAssets": [
+    {
+      "id": "tisza",
+      "candidateAssets": [
+        {
+          "id": "magyar_peter",
+          "portrait": "/images/2026_tavaszi-szel/mp-portrait.png",
+          "slogan": "/images/2026_tavaszi-szel/tisza-part-2026_kampany_szoveg.png"
+        }
+      ],
+      "party_logo": "/images/2026_tavaszi-szel/tisza-part.png"
+    }
+  ]
+}
