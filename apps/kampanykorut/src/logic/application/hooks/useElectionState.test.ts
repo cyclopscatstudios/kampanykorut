@@ -73,7 +73,7 @@ const mockConfig: CampaignConfig = {
             title: "Deadlock",
             subtitle: "",
             description: "",
-          }
+          },
         },
       },
     },
