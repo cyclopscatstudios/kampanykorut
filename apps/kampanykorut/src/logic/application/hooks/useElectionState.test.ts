@@ -14,6 +14,7 @@ const mockConfig: CampaignConfig = {
   electionConfig: {
     title: "Mock Election",
     year: "2010",
+    districtMap: "2011",
     listSeats: 10,
     allSeats: 20,
     thresholdPercent: 5,

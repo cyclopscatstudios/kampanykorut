@@ -3,11 +3,13 @@ import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
+import { CampaignConfig } from "@/shared/types/configs/campaign-config";
 
-const mockConfig = {
+const mockConfig: CampaignConfig = {
   electionConfig: {
     title: "Mock Election",
     year: "2022",
+    districtMap: "2011",
     listSeats: 10,
     allSeats: 20,
     thresholdPercent: 5,
