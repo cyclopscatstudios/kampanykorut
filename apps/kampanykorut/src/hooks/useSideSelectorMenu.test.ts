@@ -1,9 +1,9 @@
 import { act, renderHook } from "@testing-library/react";
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { CampaignConfig } from "@/shared/types/configs/campaign-config";
 import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
-import { CampaignConfig } from "@/shared/types/configs/campaign-config";
 
 const mockConfig: CampaignConfig = {
   electionConfig: {
