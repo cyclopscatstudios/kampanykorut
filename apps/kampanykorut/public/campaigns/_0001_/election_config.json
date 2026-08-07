@@ -4,6 +4,7 @@
   "listSeats": 93,
   "allSeats": 199,
   "thresholdPercent": 5,
+  "districtMap": "2024",
   "districtBoost": true,
   "baseResults": {
     "green_party": -5,

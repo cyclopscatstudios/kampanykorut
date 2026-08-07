@@ -3,11 +3,14 @@ import { createLogger } from "@/shared/logger/logger";
 import {
   CampaignConfig,
   CampaignState,
+  DistrictMapType,
+  DistrictPoligon,
   ElectionConfig,
   HistoryItem,
   StrategyReward,
 } from "@/shared/types";
 import { Emitter } from "./Emitter";
+import { fetchJSON } from "./fetchJSON";
 import { StateHandler } from "./StateHandler";
 import { StorageEngine } from "./StorageEngine";
 
@@ -76,6 +79,25 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
       campaignId,
     );
     return (stored ? JSON.parse(stored) : null) as CampaignConfig;
+  }
+
+  getDistrictMapByType(
+    districtMapType: DistrictMapType,
+  ): Promise<DistrictPoligon[]> {
+    const districtMapName = this.getDistrictMapNameByType(districtMapType);
+    return fetchJSON<DistrictPoligon[]>("districtMap", districtMapName);
+  }
+
+  private getDistrictMapNameByType(districtMapType: DistrictMapType): string {
+    switch (districtMapType) {
+      case "2011":
+        return "oevk_2011";
+      case "2024":
+        return "oevk_2024";
+      default:
+        log.error("Unknown district map type", { districtMapType });
+        return "oevk_2011";
+    }
   }
 
   getCampaignStrategies(
