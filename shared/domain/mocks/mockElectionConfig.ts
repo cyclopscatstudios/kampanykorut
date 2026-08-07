@@ -7,7 +7,7 @@ export const mockElectionConfig: ElectionConfig = {
   allSeats: 200,
   thresholdPercent: 5,
   districtBoost: true,
-districtMap: "2011",
+  districtMap: "2011",
   baseResults: {
     party_a: {
       party_a: 3,
