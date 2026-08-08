@@ -64,7 +64,7 @@
       },
       {
         "id": "D",
-        "label": "Nem építesz területi hálózatot; a személyes országjárásra, a közösségi médiára és Magyar Péter ismertségére bízod a mozgósítást."
+        "label": "Nem építesz területi hálózatot, a személyes országjárásra, a közösségi médiára és ismertségedre bízod a mozgósítást."
       }
     ],
     "affects": [
@@ -79,7 +79,7 @@
   {
     "id": "2026_ogyv_tisza_v2-4",
     "title": "Orbán „békemissziója” és a TISZA külpolitikai helye",
-    "question": "2024 júliusában Orbán Viktor Kijev után Moszkvába és Pekingbe utazik, amit „békemissziónak” nevez. Az Európai Parlament elítélő állásfoglalást készít; a TISZA egyszerre akar nyugati szövetséges és háborúellenes, magyar érdekű párt maradni. Hogyan szavaztok és kommunikáltok?",
+    "question": "2024 júliusában Orbán Viktor Kijev után Moszkvába és Pekingbe utazik, amit „békemissziónak” nevez. Az Európai Parlament elítélő állásfoglalást készít, a TISZA egyszerre akar nyugati szövetséges és háborúellenes, magyar érdekű párt maradni. Hogyan szavaztok és kommunikáltok?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -87,7 +87,7 @@
       },
       {
         "id": "B",
-        "label": "Elutasítjátok Orbán különutas moszkvai diplomáciáját, de nem támogatjátok Magyarország kollektív büntetését vagy a fegyverszállítás fokozását; az EU- és NATO-tagságot magyar nemzeti érdeknek nevezitek."
+        "label": "Elutasítjátok Orbán különutas moszkvai diplomáciáját, de nem támogatjátok Magyarország kollektív büntetését vagy a fegyverszállítás fokozását, az EU- és NATO-tagságot magyar nemzeti érdeknek nevezitek."
       },
       {
         "id": "C",
@@ -118,7 +118,7 @@
       },
       {
         "id": "B",
-        "label": "Orvosokkal és műszaki szakértőkkel országos fehér könyvet készítesz, Magyar Péter pedig csak a legsúlyosabb három intézményt látogatja meg."
+        "label": "Orvosokkal és műszaki szakértőkkel országos fehér könyvet készíttetsz, személyesen pedig csak a legsúlyosabb három intézményt látogatod meg."
       },
       {
         "id": "C",
@@ -126,7 +126,7 @@
       },
       {
         "id": "D",
-        "label": "Helyi orvosokból és betegszervezetekből jelzőhálózatot építesz, miközben Magyar Péter megtartja az országjárás eredeti menetrendjét."
+        "label": "Helyi orvosokból és betegszervezetekből jelzőhálózatot építtetsz, miközben megtartod az országjárás eredeti menetrendjét."
       }
     ],
     "affects": [
@@ -220,7 +220,7 @@
       },
       {
         "id": "B",
-        "label": "Biztonsági, jogi és újságírói háttérrel rendelkező kis csapat ellenőrzi és fogadja, te pedig megtartod az összes vidéki állomást; csak hitelesítés után kapcsolódsz be."
+        "label": "Biztonsági, jogi és újságírói háttérrel rendelkező kis csapat ellenőrzi és fogadja, te pedig megtartod az összes vidéki állomást, csak hitelesítés után kapcsolódsz be."
       },
       {
         "id": "C",
@@ -305,7 +305,7 @@
   {
     "id": "2026_ogyv_tisza_v2-12",
     "title": "Előrehozott választást követelsz?",
-    "question": "2024. december 31-én újévi beszédet mondasz, majd 2025. január 6-tól kampányüzemmódot hirdetsz. A TISZA vezet néhány mérésben, de még nincs kész jelölti gárda és teljes program; Orbánnak pedig nem kötelessége előrehozni a választást. Mi legyen a követelés?",
+    "question": "2024. december 31-én újévi beszédet mondasz, majd 2025. január 6-tól kampányüzemmódot hirdetsz. A TISZA vezet néhány mérésben, de még nincs kész jelölti gárda és teljes program, Orbánnak pedig nem kötelessége előrehozni a választást. Mi legyen a követelés?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -317,7 +317,7 @@
       },
       {
         "id": "C",
-        "label": "Nem követelsz előrehozott választást; csendben, 2026-ra építed fel a jelölteket, a programot és a pénzügyi tartalékot."
+        "label": "Nem követelsz előrehozott választást, csendben, 2026-ra építed fel a jelölteket, a programot és a pénzügyi tartalékot."
       },
       {
         "id": "D",
@@ -332,7 +332,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nem indítasz jelöltet, de megfigyelőket, aktivistákat és adatgyűjtő csapatot küldesz; a távolmaradást nem teszed a kampány fő üzenetévé."
+        "label": "Nem indítasz jelöltet, de megfigyelőket, aktivistákat és adatgyűjtő csapatot küldesz, a távolmaradást nem teszed a kampány fő üzenetévé."
       },
       {
         "id": "B",
@@ -367,7 +367,7 @@
       },
       {
         "id": "D",
-        "label": "A költségvetési stabilitást, az euró előkészítését és a fokozatos reformot teszed központba; nagy juttatásokat csak a hiány rendezése után ígérsz."
+        "label": "A költségvetési stabilitást, az euró előkészítését és a fokozatos reformot teszed központba, nagy juttatásokat csak a hiány rendezése után ígérsz."
       }
     ],
     "affects": [
@@ -379,11 +379,11 @@
   {
     "id": "2026_ogyv_tisza_v2-15",
     "title": "Ruszin-Szendi Romulusz csatlakozik",
-    "question": "2025. február 15-én Ruszin-Szendi Romulusz volt vezérkari főnök honvédelmi információkat és szakmai segítséget ajánl a TISZA-nak. Az átvilágítás még nem teljes, ő viszont személyesen Magyarral akar több órán át egyeztetni egy kétnapos vidéki út közben. Hogyan építed be úgy, hogy a lehetőség és a kampány ritmusa se vesszen el?",
+    "question": "2025. február 15-én Ruszin-Szendi Romulusz volt vezérkari főnök honvédelmi információkat és szakmai segítséget ajánl a TISZA-nak. Az átvilágítás még nem teljes, ő viszont személyesen veled akar több órán át egyeztetni egy kétnapos vidéki út közben. Hogyan építed be úgy, hogy a lehetőség és a kampány ritmusa se vesszen el?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A szakmai és jogi csapat előzetesen átvilágítja, az országjárás menetrendje marad, Magyar pedig egy előre ütemezett, nyilvános szakpolitikai beszélgetésen kapcsolódik be."
+        "label": "A szakmai és jogi csapat előzetesen átvilágítja, az országjárás menetrendje marad, te pedig egy előre ütemezett, nyilvános szakpolitikai beszélgetésen kapcsolódsz be."
       },
       {
         "id": "B",
@@ -454,7 +454,7 @@
       },
       {
         "id": "D",
-        "label": "Kollár megtartja a mandátumát, de kikerül a hazai kampánykommunikációból; a szakpolitikai érvet más képviselők viszik tovább, az országjárás pedig nem áll le."
+        "label": "Kollár megtartja a mandátumát, de kikerül a hazai kampánykommunikációból, a szakpolitikai érvet más képviselők viszik tovább, az országjárás pedig nem áll le."
       }
     ]
   },
@@ -516,7 +516,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Több mint száz vidéki települést jársz végig, különösen a fideszes kisvárosokat és falvakat; a napi ügyek kezelését külön stáb végzi."
+        "label": "Több mint száz vidéki települést jársz végig, különösen a fideszes kisvárosokat és falvakat, a napi ügyek kezelését külön stáb végzi."
       },
       {
         "id": "B",
@@ -524,11 +524,11 @@
       },
       {
         "id": "C",
-        "label": "A turnét megosztod Magyar Péter, a szakértők és a leendő körzeti arcok között; Magyar csak a nagyobb állomásokon jelenik meg."
+        "label": "A turnét megosztod közted, a szakértők és a leendő körzeti arcok között. Te csak a nagyobb állomásokon jelensz meg."
       },
       {
         "id": "D",
-        "label": "Kevesebb vidéki megállót tartasz, viszont Magyar minden nagy országos ügyre még aznap személyesen reagál egy kampánybuszból működő médiastábbal."
+        "label": "Kevesebb vidéki megállót tartasz, viszont minden nagy országos ügyre még aznap személyesen reagálsz egy kampánybuszból működő médiastábbal."
       }
     ],
     "affects": [
@@ -576,7 +576,7 @@
       },
       {
         "id": "B",
-        "label": "Közlöd az adópolitika alapelveit, de a pontos kulcsokat csak a teljes programmal együtt publikálod; addig független szakértők számolják a változatokat."
+        "label": "Közlöd az adópolitika alapelveit, de a pontos kulcsokat csak a teljes programmal együtt publikálod, addig független szakértők számolják a változatokat."
       },
       {
         "id": "C",
@@ -596,7 +596,7 @@
   {
     "id": "2026_ogyv_tisza_v2-23",
     "title": "Magyar Péter mentelmi joga",
-    "question": "2025. szeptember 23-án az Európai Parlament jogi szakbizottsága elutasítja a mentelmi jogod felfüggesztését a budapesti szórakozóhelyen elvett és Dunába dobott telefon ügyében. A Fidesz szerint Brüsszel bújtat a magyar igazságszolgáltatás elől; te politikai eljárástól tartasz. Mi legyen a nyilvános álláspont?",
+    "question": "2025. szeptember 23-án az Európai Parlament jogi szakbizottsága elutasítja a mentelmi jogod felfüggesztését a budapesti szórakozóhelyen elvett és Dunába dobott telefon ügyében. A Fidesz szerint Brüsszel bújtat a magyar igazságszolgáltatás elől, te politikai eljárástól tartasz. Mi legyen a nyilvános álláspont?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -651,11 +651,11 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Magyar Péter három napra átveszi a válság irányítását, lemondja az állomásait, és személyesen vezeti a technikai, jogi és felhasználói tájékoztatást."
+        "label": "Három napra átveszed a válság irányítását, lemondod az állomásaid, és személyesen vezeted a technikai, jogi és felhasználói tájékoztatást."
       },
       {
         "id": "B",
-        "label": "Külön incidenscsapat vizsgálja az adatbázist, értesíti az érintetteket és a hatóságot; Magyar röviden vállalja a politikai felelősséget, majd folytatja a körutat."
+        "label": "Külön incidenscsapat vizsgálja az adatbázist, értesíti az érintetteket és a hatóságot. Röviden vállalod a politikai felelősséget, majd folytatod a körutat."
       },
       {
         "id": "C",
@@ -685,7 +685,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Központi átvilágítás után körzetenként három jelöltet mutatsz be; az első körben a helyi TISZA-közösség, a másodikban minden regisztrált választó dönt, majd valamennyi vesztest bevonod a kampányba."
+        "label": "Központi átvilágítás után körzetenként három jelöltet mutatsz be, az első körben a helyi TISZA-közösség, a másodikban minden regisztrált választó dönt, majd valamennyi vesztest bevonod a kampányba."
       },
       {
         "id": "B",
@@ -753,14 +753,14 @@
       },
       {
         "id": "D",
-        "label": "Független szakértői testület publikálja a költségvetési számokat, Magyar pedig csak a politikai prioritásokat és a garanciákat ismerteti."
+        "label": "Független szakértői testület publikálja a költségvetési számokat, te pedig csak a politikai prioritásokat és a garanciákat ismerteted."
       }
     ]
   },
   {
     "id": "2026_ogyv_tisza_v2-29",
     "title": "Megjelenik a radnaimark.hu",
-    "question": "2026. február 10-én a radnaimark.hu oldalon egy hálószobai ágy képe jelenik meg „Coming soon” felirattal, majd 2024. augusztus 3-i dátummal. Radnai Márk tagadja, hogy járt volna ott; te felismered a lakást, ahol Vogel Evelinnel intim kapcsolatod volt, és attól tartasz, hogy titkos vagy manipulált videó készülhetett. Hogyan reagálsz a még meg sem jelent anyagra?",
+    "question": "2026. február 10-én a radnaimark.hu oldalon egy hálószobai ágy képe jelenik meg „Coming soon” felirattal, majd 2024. augusztus 3-i dátummal. Radnai Márk tagadja, hogy járt volna ott, te felismered a lakást, ahol Vogel Evelinnel intim kapcsolatod volt, és attól tartasz, hogy titkos vagy manipulált videó készülhetett. Hogyan reagálsz a még meg sem jelent anyagra?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -772,7 +772,7 @@
       },
       {
         "id": "C",
-        "label": "Nem erősíted fel az előzetest; megvárod, megjelenik-e ellenőrizhető anyag, miközben a jogi csapat csendben felkészül."
+        "label": "Nem erősíted fel az előzetest, megvárod, megjelenik-e ellenőrizhető anyag, miközben a jogi csapat csendben felkészül."
       },
       {
         "id": "D",

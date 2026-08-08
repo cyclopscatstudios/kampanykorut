@@ -136,6 +136,5 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository }}:latest,ghcr.io/${{ github.repository }}:${{ github.sha }}
           build-args: |
-            VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}
-            VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}
+            VITE_SENTRY_DSN=${{ secrets.VITE_SENTRY_DSN }}
             GIT_COMMIT=${{ github.sha }}
