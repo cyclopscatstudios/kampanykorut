@@ -74,7 +74,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A hagyományos televíziókra, rádiókra és országos plakátkampányra támaszkodsz; ezekkel lehet a legtöbb választót fegyelmezetten elérni."
+        "label": "A hagyományos televíziókra, rádiókra és országos plakátkampányra támaszkodsz, ezekkel lehet a legtöbb választót fegyelmezetten elérni."
       },
       {
         "id": "B",
@@ -123,7 +123,7 @@
       },
       {
         "id": "D",
-        "label": "Nem veszel részt személyesen; a mozgósítást a CÖF-re és a Fidesz helyi szervezeteire bízod."
+        "label": "Nem veszel részt személyesen, a mozgósítást a CÖF-re és a Fidesz helyi szervezeteire bízod."
       }
     ]
   },
@@ -142,7 +142,7 @@
       },
       {
         "id": "C",
-        "label": "Nem idézgeted az ellenfelet; a saját pozitív kampányodat nem akarod napi botrányokra lecserélni."
+        "label": "Nem idézgeted az ellenfelet, a saját pozitív kampányodat nem akarod napi botrányokra lecserélni."
       },
       {
         "id": "D",
@@ -174,7 +174,7 @@
       },
       {
         "id": "D",
-        "label": "A magas átoltottságra hivatkozva nem hozol új kötelező korlátozásokat; kórházi kapacitást bővítesz és az önkéntes védekezést ösztönzöd."
+        "label": "A magas átoltottságra hivatkozva nem hozol új kötelező korlátozásokat, kórházi kapacitást bővítesz és az önkéntes védekezést ösztönzöd."
       }
     ]
   },
@@ -185,7 +185,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Csak a minimálbér-emelést és a korábban már bejelentett támogatásokat hajtod végre; nem kockáztatod a költségvetési egyensúlyt."
+        "label": "Csak a minimálbér-emelést és a korábban már bejelentett támogatásokat hajtod végre, nem kockáztatod a költségvetési egyensúlyt."
       },
       {
         "id": "B",
@@ -234,7 +234,7 @@
       },
       {
         "id": "D",
-        "label": "Elutasítod az általános árstopot; a költségvetési mozgásteret stratégiai készletekre és a leginkább rászoruló ingázók célzott kompenzációjára tartalékolod."
+        "label": "Elutasítod az általános árstopot, a költségvetési mozgásteret stratégiai készletekre és a leginkább rászoruló ingázók célzott kompenzációjára tartalékolod."
       }
     ],
     "affects": [
@@ -294,7 +294,7 @@
       },
       {
         "id": "D",
-        "label": "A miniszterelnöki kommunikációt távol tartod az ügytől; a lemondást bejelentitek, a további tájékoztatást pedig kizárólag az ügyészségre és az igazságügyi miniszterre bízod."
+        "label": "A miniszterelnöki kommunikációt távol tartod az ügytől, a lemondást bejelentitek, a további tájékoztatást pedig kizárólag az ügyészségre és az igazságügyi miniszterre bízod."
       }
     ]
   },
@@ -340,7 +340,7 @@
       },
       {
         "id": "D",
-        "label": "Nem avatkozol be a szerződésekbe; a jegybank feladata, hogy az inflációt kamatemeléssel megfékezze."
+        "label": "Nem avatkozol be a szerződésekbe, a jegybank feladata, hogy az inflációt kamatemeléssel megfékezze."
       }
     ]
   },
@@ -363,7 +363,7 @@
       },
       {
         "id": "D",
-        "label": "Nem vezetsz be új intézkedést; a béremelések és a családi juttatások ellensúlyozzák a drágulást."
+        "label": "Nem vezetsz be új intézkedést, a béremelések és a családi juttatások ellensúlyozzák a drágulást."
       }
     ]
   },
@@ -441,7 +441,7 @@
   {
     "id": "2022_ogyv_fidesz-16",
     "title": "Miniszterelnök-jelölti vita",
-    "question": "Márki-Zay Péter nyilvános miniszterelnök-jelölti vitára hív. 2006 óta hivatalban lévő kormányfőként nem vettél részt ilyen vitán; a részvétel legitimálhatja az ellenfelet, az elutasítás viszont támadható. Mit teszel?",
+    "question": "Márki-Zay Péter nyilvános miniszterelnök-jelölti vitára hív. 2006 óta hivatalban lévő kormányfőként nem vettél részt ilyen vitán, a részvétel legitimálhatja az ellenfelet, az elutasítás viszont támadható. Mit teszel?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -517,7 +517,7 @@
       },
       {
         "id": "D",
-        "label": "Minden körzet azonos központi támogatást kap; nem akarod előre leírni egyetlen jelöltedet sem."
+        "label": "Minden körzet azonos központi támogatást kap, nem akarod előre leírni egyetlen jelöltedet sem."
       }
     ],
     "affects": [
@@ -533,7 +533,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A kormányzati és pártüzeneteket teljesen összehangolod; a választók számára úgyis a kormány teljesítménye a tét."
+        "label": "A kormányzati és pártüzeneteket teljesen összehangolod, a választók számára úgyis a kormány teljesítménye a tét."
       },
       {
         "id": "B",
@@ -579,7 +579,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Orbánként nem reagálsz személyesen; helyi jelöltek és hétköznapi támogatók mondják el, miért érzik sértőnek a kijelentéseket."
+        "label": "Nnem reagálsz személyesen, helyi jelöltek és hétköznapi támogatók mondják el, miért érzik sértőnek a kijelentéseket."
       },
       {
         "id": "B",
@@ -688,7 +688,7 @@
       },
       {
         "id": "D",
-        "label": "A kormány finanszírozza az ellátást és a közlekedést, de a napi segélyezést az egyházakra, civilekre és önkormányzatokra bízza; az állam a regisztrációra és határbiztonságra koncentrál."
+        "label": "A kormány finanszírozza az ellátást és a közlekedést, de a napi segélyezést az egyházakra, civilekre és önkormányzatokra bízza, az állam a regisztrációra és határbiztonságra koncentrál."
       }
     ],
     "affects": [
@@ -776,7 +776,7 @@
       },
       {
         "id": "D",
-        "label": "Megtartod a Békemenetet, de a beszédben nem támadod az ellenzéket; kizárólag 1848-ról, a menekültek segítéséről és a nemzeti egységről beszélsz."
+        "label": "Megtartod a Békemenetet, de a beszédben nem támadod az ellenzéket, kizárólag 1848-ról, a menekültek segítéséről és a nemzeti egységről beszélsz."
       }
     ]
   },
@@ -799,7 +799,7 @@
       },
       {
         "id": "D",
-        "label": "Nem reagálsz nyilvánosan; nem akarod, hogy egy külföldi vezető határozza meg a magyar választási kampány utolsó hetét."
+        "label": "Nem reagálsz nyilvánosan, nem akarod, hogy egy külföldi vezető határozza meg a magyar választási kampány utolsó hetét."
       }
     ]
   },
