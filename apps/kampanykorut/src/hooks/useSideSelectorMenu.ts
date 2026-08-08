@@ -4,6 +4,7 @@ import { createLogger } from "@/shared/logger";
 import { Candidate, PlayableSide } from "@/shared/types";
 import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { useStateEngine } from "../logic/application/hooks";
+import { AnalyticsEvent, track } from "../logic/infra/posthog/track";
 import { useNavigation } from "./navigationHook";
 
 const log = createLogger("useSideSelectorMenu");
@@ -49,6 +50,12 @@ export function useSideSelectorMenu(id: string) {
 
   const startGame = (id: string) => {
     goToCampaign(id, sessionId);
+    track(AnalyticsEvent.CAMPAIGN_STARTED, {
+      campaignId: id,
+      sessionId,
+      partyId: selectedParty?.id,
+      candidateId: selectedCandidate?.id,
+    });
   };
 
   const candidateOptions =

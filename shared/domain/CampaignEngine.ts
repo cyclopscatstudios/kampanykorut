@@ -133,6 +133,7 @@ export class CampaignEngine {
       log.info("Game has ended.");
       return state;
     }
+
     const appliedEffects = this.effectApplier.getAppliedEffects(
       decision.effects,
       state.candidateListData ?? [],
