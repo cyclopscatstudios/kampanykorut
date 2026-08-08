@@ -57,13 +57,6 @@ export function useSideSelectorMenu(id: string) {
       value: c.id,
     })) ?? [];
 
-  console.log({
-    campaignConfig,
-    selectedParty,
-    selectedCandidate,
-    candidateOptions,
-  });
-
   const playableSides =
     campaignConfig.electionConfig.playableSides.map((side) => ({
       label: side.label,

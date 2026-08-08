@@ -9,8 +9,7 @@ import {
 import { ConfigEngine } from "./ConfigEngine";
 import { fetchCampaignFile } from "./fetchJSON";
 import { getCampaignHeaderById } from "./getCampaignHeaderById";
-
-const cache = new Map<string, Promise<CampaignConfig>>();
+import { cache } from "./loadCampaignConfig.utils";
 
 export function loadCampaignConfig(
   campaignId: string,

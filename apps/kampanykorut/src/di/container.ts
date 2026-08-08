@@ -1,12 +1,5 @@
 import { container } from "tsyringe";
 import {
-  ConfigEngine,
-  Emitter,
-  StateEngine,
-  StateHandler,
-  StorageEngine,
-} from "@/logic/application";
-import {
   DistrictGroupEngine,
   DistrictVoteTransformer,
   EffectApplier,
@@ -17,9 +10,14 @@ import {
   VoteShareTransformer,
 } from "@/shared/domain";
 import { PollsterEngine } from "@/shared/domain/PollsterEngine";
+import { ConfigEngine } from "../logic/application/ConfigEngine";
+import { Emitter } from "../logic/application/Emitter";
 import { uuidGenerator } from "../logic/application/IdGenerator";
 import { Navigation } from "../logic/application/navigation/Navigation";
 import { SettingsEngine } from "../logic/application/SettingsEngine";
+import { StateEngine } from "../logic/application/StateEngine";
+import { StateHandler } from "../logic/application/StateHandler";
+import { StorageEngine } from "../logic/application/StorageEngine";
 
 const emitter = new Emitter();
 container.registerInstance(Emitter, emitter);
