@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router";
 import { container } from "tsyringe";
+import { createLogger } from "@/shared/logger/logger";
+import { FinalResults } from "@/shared/types";
 import { useTranslate } from "../../../../../../../shared/logic/hooks/useTranslateLang";
 import { Button } from "../../../../../../../shared/ui/Button";
 import { StateEngine } from "../../../../logic/application/StateEngine";
@@ -9,6 +11,8 @@ import { ElectionMap } from "./ElectionMap";
 import { Statistics } from "./Statistics/Statistics";
 import { SummaryPage } from "./SummaryPage";
 import { TurnHistory } from "./TurnHistory";
+
+const log = createLogger("FinalResultScreen");
 
 const screens = [
   { id: "summaryPage", label: "endResult.menuBar.summary" },
@@ -26,6 +30,10 @@ export function FinalResultScreen() {
   const history = stateEngine.getHistory();
   const t = useTranslate();
   const state = stateEngine.getCampaignState();
+
+  // check the result of `_other`, which aggregates party-list votes cast for minor/other parties
+  // `_other` is not an actual party and should not be displayed in the UI
+  inspectResults(results);
 
   return (
     <GameChrome config={config} state={state ?? undefined}>
@@ -65,4 +73,18 @@ export function FinalResultScreen() {
       </div>
     </GameChrome>
   );
+}
+
+function inspectResults(results: FinalResults) {
+  const otherPercentage = results.percentages.partyListResults["_other"];
+  const otherVoteCount = results.totals.partyListResults["_other"];
+  if (otherPercentage > 0.01) {
+    log.warn(
+      "the _other vote share is greater than 1%. This is not necessarily an error, but check the campaign configuration if this was not intended.",
+      {
+        otherPercentage,
+        otherVoteCount,
+      },
+    );
+  }
 }

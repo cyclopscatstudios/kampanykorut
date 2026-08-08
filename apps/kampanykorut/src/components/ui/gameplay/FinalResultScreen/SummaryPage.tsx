@@ -99,13 +99,20 @@ function buildPartiesFromResults(
   results: FinalResults,
   parties?: RawParty[],
 ): Party[] {
-  return results.mandates.map((mandate: Mandate) => {
-    const party = parties?.find((p) => p.id === mandate.party);
-    return {
-      color: party?.color ?? "#cccccc",
-      id: party?.name ?? mandate.party,
-      name: party?.name ?? mandate.party,
-      seats: mandate.totalSeats,
-    };
-  });
+  return results.mandates
+    .filter(filterUnwantedParties)
+    .map((mandate: Mandate) => {
+      const party = parties?.find((p) => p.id === mandate.party);
+
+      return {
+        color: party?.color ?? "#cccccc",
+        id: party?.name ?? mandate.party,
+        name: party?.name ?? mandate.party,
+        seats: mandate.totalSeats,
+      };
+    });
+}
+
+function filterUnwantedParties(mandate: Mandate): boolean {
+  return !mandate.party.startsWith("_");
 }
