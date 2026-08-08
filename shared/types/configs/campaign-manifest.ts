@@ -13,7 +13,6 @@ export interface CampaignManifestFiles {
   electionConfig: string;
   voterEnvironmentConfig: string;
   candidateListData: string;
-  districts: string;
   partyListData?: string;
   customGroups?: string;
   customPollsters?: string;

@@ -12,7 +12,11 @@ export interface ElectionConfig {
   playableSides: PlayableSide[];
   electionAssets: ElectionAsset[];
   partyListVotes: PartyListVotes;
+  districtMap: DistrictMapType;
 }
+
+// the year when the electoral district map was adopted.
+export type DistrictMapType = "2011" | "2024";
 
 export type RawParty = {
   id: string;

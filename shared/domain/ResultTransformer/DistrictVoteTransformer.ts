@@ -37,8 +37,6 @@ export class DistrictVoteTransformer {
     const newCandidateListData = [...districtCandidateData];
     let newPartyListVotes = partyListVotes ? { ...partyListVotes } : undefined;
 
-    console.log({ partyListData, newPartyListData });
-
     for (const target of districtTargets) {
       const k = key(target.megyekod, target.oevk);
       const pi = partyIndex?.get(k);

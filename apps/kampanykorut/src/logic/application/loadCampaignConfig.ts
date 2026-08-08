@@ -1,3 +1,4 @@
+import { container } from "tsyringe";
 import {
   CampaignConfig,
   CampaignManifest,
@@ -5,10 +6,10 @@ import {
   CandidateManifest,
   PlayableSideConfig,
 } from "@/shared/types";
+import { ConfigEngine } from "./ConfigEngine";
 import { fetchCampaignFile } from "./fetchJSON";
 import { getCampaignHeaderById } from "./getCampaignHeaderById";
-
-const cache = new Map<string, Promise<CampaignConfig>>();
+import { cache } from "./loadCampaignConfig.utils";
 
 export function loadCampaignConfig(
   campaignId: string,
@@ -111,7 +112,6 @@ async function fetchCampaignConfig(
     "electionConfig",
     "voterEnvironmentConfig",
     "candidateListData",
-    "districts",
     "partyListData",
     "customGroups",
     "customPollsters",
@@ -134,11 +134,15 @@ async function fetchCampaignConfig(
 
   const commonData = Object.fromEntries(commonEntries) as Omit<
     CampaignConfig,
-    "playableSides" | "voterEnvironmentConfig"
+    "playableSides" | "voterEnvironmentConfig" | "districts"
   > & {
     voterEnvironmentConfig: CampaignConfig["voterEnvironmentConfig"];
     candidateListData: CampaignConfig["candidateListData"];
   };
+
+  const districts = await container
+    .resolve(ConfigEngine)
+    .getDistrictMapByType(commonData.electionConfig.districtMap);
 
   const playableSides: Record<string, PlayableSideConfig> = {};
   if (files.playableSides) {
@@ -156,6 +160,7 @@ async function fetchCampaignConfig(
 
   return {
     ...commonData,
+    districts,
     voterEnvironmentConfig: {
       ...commonData.voterEnvironmentConfig,
       listData: commonData.candidateListData,

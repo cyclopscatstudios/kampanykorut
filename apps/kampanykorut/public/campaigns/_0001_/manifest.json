@@ -6,7 +6,6 @@
   "files": {
     "electionConfig": "election_config.json",
     "voterEnvironmentConfig": "voter_environment_config.json",
-    "candidateListData": "oevk_constituency_results.json",
-    "districts": "oevk_2024.json"
+    "candidateListData": "oevk_constituency_results.json"
   }
 }

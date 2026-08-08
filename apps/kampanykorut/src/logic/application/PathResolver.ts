@@ -2,6 +2,7 @@ export const DATA_PATHS = {
   campaigns: "/assets/jsons/game_modes.json",
   quotes: "/assets/jsons/quotes.json",
   electionConfig: (route: string) => `/campaigns/${route}/election_config.json`,
+  districtMap: (map: string) => `/assets/jsons/shared/${map}.json`,
   background: "/parlament_night.jpg",
 } as const;
 

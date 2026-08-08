@@ -10,7 +10,6 @@ export async function sideSelectorLoader({ params }: LoaderFunctionArgs) {
   }
 
   const config = await loadCampaignConfig(campaignId);
-  console.log({ config });
   container.resolve(ConfigEngine).configure(config, campaignId, true);
 
   return { config, id: campaignId };

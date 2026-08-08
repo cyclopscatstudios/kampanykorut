@@ -11,7 +11,6 @@
     "voterEnvironmentConfig": "voter_environment_config.json",
     "candidateListData": "oevk_constituency_results.json",
     "partyListData": "oevk_list_results.json",
-    "districts": "oevk_2022.json",
     "customGroups": "custom_groups.json",
     "playableSides": {
       "ellenzeki_osszefogas": {
