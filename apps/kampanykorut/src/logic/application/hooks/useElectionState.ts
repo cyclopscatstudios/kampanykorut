@@ -9,6 +9,7 @@ import {
   PendingTurn,
 } from "@/shared/types";
 import { useNavigation } from "../../../hooks/navigationHook";
+import { AnalyticsEvent, track } from "../../infra/posthog/track";
 import { ConfigEngine } from "../ConfigEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
 import { useSettings } from "./useSettings";
@@ -48,6 +49,15 @@ export function useElectionState(campaignId: string) {
     if (!rawAnswer || !gameState.currentQuestion || !answer?.effects) {
       return;
     }
+
+    track(AnalyticsEvent.QUESTION_ANSWERED, {
+      campaignId,
+      sessionId,
+      partyId: gameState.playerSide?.partyId,
+      candidateId: gameState.playerSide?.candidateId,
+      questionId: gameState.currentQuestion?.id,
+      answerId: rawAnswer,
+    });
 
     const decision: Decision = {
       answerId: rawAnswer,
@@ -95,6 +105,13 @@ export function useElectionState(campaignId: string) {
   };
 
   const getFinalResults = () => {
+    track(AnalyticsEvent.CAMPAIGN_FINISHED, {
+      campaignId,
+      sessionId,
+      partyId: gameState.playerSide?.partyId,
+      candidateId: gameState.playerSide?.candidateId,
+      results: gameState.results,
+    });
     return campaignEngine.getFinalResults(gameState);
   };
 

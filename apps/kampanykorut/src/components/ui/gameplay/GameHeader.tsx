@@ -10,11 +10,11 @@ import {
   PollingOpnions,
   RawParty,
 } from "@/shared/types";
+import logo from "../../../../../../brand-assets/svg/logo-mark.svg";
+import markdown from "../../../../../../brand-assets/svg/logo-wordmark-dark.svg";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
-import logo from "../../../../brand-assets/svg/logo-mark.svg";
-import markdown from "../../../../brand-assets/svg/logo-wordmark-dark.svg";
 import { Navigation } from "../../../logic/application/navigation/Navigation";
 import { Menu, MenuItem, SubMenu } from "../Menu";
 import { Tooltip } from "../Tooltip";

@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "../tailwind-theme/theme.css";
+@source "../apps/kampanykorut/src";
+@source "../shared";
