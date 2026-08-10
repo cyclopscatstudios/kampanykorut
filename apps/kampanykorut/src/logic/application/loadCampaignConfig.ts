@@ -16,7 +16,7 @@ export function loadCampaignConfig(
 ): Promise<CampaignConfig> {
   const cached = cache.get(campaignId);
   if (cached) {
-    console.log("cached config loaded", {cached});
+    console.log("cached config loaded", { cached });
     return cached;
   }
 
