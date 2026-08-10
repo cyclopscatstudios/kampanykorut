@@ -1,8 +1,8 @@
 import type { LoaderFunctionArgs } from "react-router";
 import { container } from "tsyringe";
 import { ConfigEngine } from "@/logic/application";
-import { loadCampaignConfig } from "../../logic/application/loadCampaignConfig";
 import { createLogger } from "@/shared/logger";
+import { loadCampaignConfig } from "../../logic/application/loadCampaignConfig";
 
 const log = createLogger("sideSelectorLoader");
 
