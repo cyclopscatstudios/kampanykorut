@@ -8,14 +8,37 @@ const log = createLogger("sideSelectorLoader");
 
 export async function sideSelectorLoader({ params }: LoaderFunctionArgs) {
   const campaignId = params.campaignId;
+
   if (!campaignId) {
-    log.error("campaign id not found");
+    log.error("Campaign id not found");
     return { config: null, id: campaignId };
   }
 
-  const config = await loadCampaignConfig(campaignId);
-  console.log("get config", { config });
-  container.resolve(ConfigEngine).configure(config, campaignId, true);
+  try {
+    log.debug("Loading campaign config", { campaignId });
 
-  return { config, id: campaignId };
+    const config = await loadCampaignConfig(campaignId);
+
+    log.debug("Campaign config loaded", {
+      campaignId,
+      districtMap: config.electionConfig?.districtMap,
+      playableSides: Object.keys(config.playableSides ?? {}),
+    });
+
+    container.resolve(ConfigEngine).configure(config, campaignId, true);
+
+    log.debug("ConfigEngine configured", { campaignId });
+
+    return {
+      config,
+      id: campaignId,
+    };
+  } catch (error) {
+    log.error("Side selector loader failed", {
+      campaignId,
+      error,
+    });
+
+    throw error;
+  }
 }

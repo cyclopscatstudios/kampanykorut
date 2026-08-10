@@ -1,4 +1,5 @@
 import { container } from "tsyringe";
+import { createLogger } from "@/shared/logger";
 import {
   CampaignConfig,
   CampaignManifest,
@@ -11,17 +12,31 @@ import { fetchCampaignFile } from "./fetchJSON";
 import { getCampaignHeaderById } from "./getCampaignHeaderById";
 import { cache } from "./loadCampaignConfig.utils";
 
+const log = createLogger("loadCampaignConfig");
+
 export function loadCampaignConfig(
   campaignId: string,
 ): Promise<CampaignConfig> {
   const cached = cache.get(campaignId);
+
   if (cached) {
-    console.log("cached config loaded", { cached });
+    log.debug("Cached config loaded", { campaignId });
     return cached;
   }
 
-  const promise = fetchCampaignConfig(campaignId);
+  const promise = fetchCampaignConfig(campaignId).catch((error) => {
+    cache.delete(campaignId);
+
+    log.error("Failed to load campaign config", {
+      campaignId,
+      error,
+    });
+
+    throw error;
+  });
+
   cache.set(campaignId, promise);
+
   return promise;
 }
 
