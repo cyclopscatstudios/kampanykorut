@@ -33,7 +33,7 @@ storybook-static
 test-results/
 playwright-report/
 blob-report/
-**/playwright/.cache/
-**/playwright/.auth/
-**/ct-template/.cache/
-**/ct-template/.auth/
+playwright/.cache/
+playwright/.auth/
+ct-template/.cache/
+ct-template/.auth/

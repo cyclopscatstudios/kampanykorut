@@ -16,6 +16,13 @@ export default defineConfig([
     "**/test-results",
     "playwright",
     "apps/campaign-maker",
+    "test-results/**",
+    "playwright-report/**",
+    "blob-report/**",
+    "playwright/.cache/**",
+    "playwright/.auth/**",
+    "ct-template/.cache/**",
+    "ct-template/.auth/**",
   ]),
   {
     files: ["**/*.{ts,tsx}"],
