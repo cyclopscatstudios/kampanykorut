@@ -15,9 +15,10 @@ const environment = import.meta.env.VITE_ENVIRONMENT;
 const debugEnabled = environment === "development" || environment === "dev";
 
 function log(level: LogLevel, payload: LogPayload) {
-  if (!debugEnabled) {
+  if (level === "debug" && !debugEnabled) {
     return;
   }
+
   const { message, data, context } = payload;
 
   const prefix = `[${level.toUpperCase()}]`;
@@ -35,7 +36,9 @@ function log(level: LogLevel, payload: LogPayload) {
   if (isProd) {
     if (level === "error") {
       if (data instanceof Error) {
-        Sentry.captureException(data, { extra: { message, ...context } });
+        Sentry.captureException(data, {
+          extra: { message, ...context },
+        });
       } else {
         Sentry.captureMessage(message, {
           level: "error",
