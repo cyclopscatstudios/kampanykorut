@@ -23,7 +23,7 @@ jobs:
         run: |
           COUNT=$(gh pr list \
             --head "${{ github.ref_name }}" \
-            --base main \
+            --base dev \
             --json number \
             --jq 'length')
 
@@ -35,7 +35,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create \
-            --base main \
+            --base dev \
             --head "${{ github.ref_name }}" \
             --title "WIP: ${{ github.ref_name }}" \
             --draft \

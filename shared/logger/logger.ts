@@ -10,10 +10,15 @@ interface LogPayload {
 
 const isProd = import.meta.env.PROD;
 
-function log(level: LogLevel, payload: LogPayload) {
-  const { message, data, context } = payload;
+const environment = import.meta.env.VITE_ENVIRONMENT;
 
-  if (level === "debug" && isProd) return;
+const debugEnabled = environment === "development" || environment === "dev";
+
+function log(level: LogLevel, payload: LogPayload) {
+  if (!debugEnabled) {
+    return;
+  }
+  const { message, data, context } = payload;
 
   const prefix = `[${level.toUpperCase()}]`;
 
