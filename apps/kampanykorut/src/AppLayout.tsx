@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import { container } from "tsyringe";
 import { createLogger } from "@/shared/logger/logger";
+import { Icon, Text } from "@/shared/ui";
 import { GAME_HEADER_SLOT_ID } from "./components/ui/gameplay/gameHeaderSlot";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
 import { useParams } from "./hooks/useParamsHook";
@@ -9,7 +10,6 @@ import { StateEngine, useStateEngine } from "./logic/application";
 import { Navigation } from "./logic/application/navigation/Navigation";
 import { NavigationBinder } from "./logic/application/navigation/NavigationBinder";
 import FullscreenBackground from "./ui/Background";
-import { Icon, Text } from "@/shared/ui";
 
 const log = createLogger("AppLayout");
 

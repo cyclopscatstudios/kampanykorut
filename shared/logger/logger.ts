@@ -33,7 +33,7 @@ function log(level: LogLevel, payload: LogPayload) {
     console.error(prefix, message, data ?? "", context ?? "");
   }
 
-  if (isProd) {
+  if (isProd && environment === "production") {
     if (level === "error") {
       if (data instanceof Error) {
         Sentry.captureException(data, {
