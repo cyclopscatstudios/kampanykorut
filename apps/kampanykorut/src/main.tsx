@@ -16,7 +16,7 @@ if (import.meta.env.DEV || import.meta.env.PLAYWRIGHT === "true") {
   initDevApi();
 }
 
-if (import.meta.env.PROD) {
+if (import.meta.env.PROD && import.meta.env.VITE_ENVIRONMENT === "production") {
   initAnalytics();
 }
 
