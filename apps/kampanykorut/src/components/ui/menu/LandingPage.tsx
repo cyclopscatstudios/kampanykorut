@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useGetCampaigns } from "@/logic/application";
+import logo from "../../../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Text } from "../../../../../../shared/ui/Text";
-import logo from "../../../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { Heading } from "../Heading";
 
 const HERO_BACKGROUND = "/parlament_night.jpg";
@@ -39,8 +39,8 @@ export function LandingPage() {
           A Kampánykörút egy ingyenes politikai stratégiai játék, amelyben egy
           magyar országgyűlési választási kampányt irányíthatsz. Kampányolj
           választókerületenként, hozz politikai döntéseket, kövesd a
-          közvélemény-kutatásokat, majd nézd meg, sikerül-e többséget
-          szerezned az Országgyűlésben.
+          közvélemény-kutatásokat, majd nézd meg, sikerül-e többséget szerezned
+          az Országgyűlésben.
         </Text>
         <Button size="lg" onClick={() => navigate("/menu")}>
           <Button.Icon name="play-circle-fill" />
