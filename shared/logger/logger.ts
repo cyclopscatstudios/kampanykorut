@@ -10,10 +10,16 @@ interface LogPayload {
 
 const isProd = import.meta.env.PROD;
 
-function log(level: LogLevel, payload: LogPayload) {
-  const { message, data, context } = payload;
+const environment = import.meta.env.VITE_ENVIRONMENT;
 
-  if (level === "debug" && isProd) return;
+const debugEnabled = environment === "development" || environment === "dev";
+
+function log(level: LogLevel, payload: LogPayload) {
+  if (level === "debug" && !debugEnabled) {
+    return;
+  }
+
+  const { message, data, context } = payload;
 
   const prefix = `[${level.toUpperCase()}]`;
 
@@ -27,10 +33,12 @@ function log(level: LogLevel, payload: LogPayload) {
     console.error(prefix, message, data ?? "", context ?? "");
   }
 
-  if (isProd) {
+  if (isProd && environment === "production") {
     if (level === "error") {
       if (data instanceof Error) {
-        Sentry.captureException(data, { extra: { message, ...context } });
+        Sentry.captureException(data, {
+          extra: { message, ...context },
+        });
       } else {
         Sentry.captureMessage(message, {
           level: "error",

@@ -1,7 +1,7 @@
 import { container } from "tsyringe";
 import { SettingsEngine } from "@/logic/application";
-import about_file_en from "../../../public/assets/pdf/kampanykorut_about_en.pdf";
-import about_file_hu from "../../../public/assets/pdf/kampanykorut_about_hu.pdf";
+import about_file_en from "../../assets/kampanykorut_about_en.pdf";
+import about_file_hu from "../../assets/kampanykorut_about_hu.pdf";
 
 export function PdfViewer() {
   const settingsEngine = container.resolve(SettingsEngine);

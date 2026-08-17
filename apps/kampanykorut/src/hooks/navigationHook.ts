@@ -16,7 +16,7 @@ export function useNavigation() {
   };
 
   const goToMainMenu = () => {
-    navigate(`/`);
+    navigate(`/menu`);
   };
 
   const goToCampaignSelector = () => {

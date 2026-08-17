@@ -17,7 +17,7 @@
     "tags": ["historical"],
     "campaignBanner": "2026_tavaszi_szel_vizet_araszt-banner.png",
     "thinCampaignBanner": "2026_tavaszi_szel-banner-thin.png",
-    "isPublished": false
+    "isPublished": true
   },
   {
     "id": "0001_test_campaign",
