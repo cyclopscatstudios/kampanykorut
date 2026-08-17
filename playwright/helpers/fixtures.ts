@@ -19,12 +19,13 @@ export const test = base.extend<{
       );
     });
 
+    await page.goto("/menu");
     await use(page);
   },
   seedCampaign: async ({ page }, use) => {
     // window.kampanykorut is only set once the app bundle has run in the page,
     // so we need to load the app before we can reach into it to seed.
-    await page.goto("/");
+    await page.goto("/menu");
     const testBridge = new TestBridge(page);
     await use((campaignId, partyId, candidateId) =>
       testBridge.seedCampaign(campaignId, {

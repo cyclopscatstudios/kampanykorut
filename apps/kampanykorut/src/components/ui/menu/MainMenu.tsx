@@ -49,25 +49,25 @@ export function MainMenu() {
             {
               id: MenuItemId.NewGame,
               text: newGame,
-              path: "new-game",
+              path: "/new-game",
               icon: "play-circle-fill",
             },
             {
               id: MenuItemId.LoadSavedGame,
               text: loadGame,
-              path: "load-game",
+              path: "/load-game",
               icon: "clipboard-data-fill",
             },
             {
               id: MenuItemId.Settings,
               text: settings,
-              path: "settings",
+              path: "/settings",
               icon: "gear-fill",
             },
             {
               id: MenuItemId.Back,
               text: about,
-              path: "about",
+              path: "/about",
               icon: "info-circle-fill",
             },
           ]}

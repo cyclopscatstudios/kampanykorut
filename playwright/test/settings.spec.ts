@@ -1,7 +1,6 @@
 import { expect, test } from "../helpers/fixtures";
 
 test("change language", async ({ page }) => {
-  await page.goto("/");
   await page.getByTestId("menuItem-settings").click();
   await expect(page.getByTestId("saveButton")).toBeDisabled();
   await expect(page.getByTestId("showAdvisorFeedback")).toHaveText(
