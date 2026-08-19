@@ -36,7 +36,7 @@ export function Dialog({
       onClick={closeOnBackdrop ? onClose : undefined}
     >
       <div
-        className="min-w-[400px] max-w-[90vw] bg-[#161e30] rounded-xl border border-[#4462aa] shadow-xl"
+        className="md:min-w-[400px] max-w-[90vw] bg-[#161e30] rounded-xl border border-[#4462aa] shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         {children}

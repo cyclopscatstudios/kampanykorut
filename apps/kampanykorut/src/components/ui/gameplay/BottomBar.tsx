@@ -72,7 +72,7 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
   );
 }
 
-function getSwingFactorTextColor(swingFactor?: SwingFactorId) {
+export function getSwingFactorTextColor(swingFactor?: SwingFactorId) {
   if (!swingFactor) {
     return "white";
   }

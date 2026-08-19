@@ -33,6 +33,7 @@ function gameFlowReducer(
 ): GameFlowState {
   switch (action.type) {
     case "SELECT_DISTRICT":
+      console.log(state, action);
       return { ...state, selectedDistrict: action.district };
     case "SET_ANSWER":
       return { ...state, answer: action.answer };

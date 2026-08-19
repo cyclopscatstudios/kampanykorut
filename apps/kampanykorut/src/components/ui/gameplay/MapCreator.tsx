@@ -7,7 +7,10 @@ import {
   ElectionConfig,
 } from "@/shared/types";
 import { SwingFactorId } from "../../../types/utils";
-import { getWinnerResultByDistrict } from "../map.utils";
+import {
+  getWinnerResultByCandidateList,
+  getWinnerResultByDistrict,
+} from "../map.utils";
 import { BottomBar } from "./BottomBar";
 import { MapWrapper } from "./MapWrapper";
 
@@ -35,7 +38,7 @@ export function MapCreator({
   setSelectedDistrict,
   electionConfig,
 }: MapCreatorProps) {
-  const swingFactor = getSwingFactor(selectedDistrict);
+  const swingFactor = getSwingFactorByDistrict(selectedDistrict);
   return (
     <div className="flex flex-col h-full justify-center items-center">
       <div className="flex gap-4 mb-4">
@@ -70,8 +73,14 @@ export function MapCreator({
   );
 }
 
-function getSwingFactor(district?: District | null) {
-  const results = getWinnerResultByDistrict(district);
+export function getSwingFactorByDistrict(
+  district?: District | null,
+  canidateData?: CandidateListData,
+) {
+  let results = getWinnerResultByDistrict(district);
+  if (canidateData) {
+    results = getWinnerResultByCandidateList(canidateData);
+  }
   if (!results) {
     return {
       label: t("bottomBar.low"),
