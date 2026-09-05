@@ -1,5 +1,7 @@
+import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
 import { AdvisorFeedbackAssets } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
@@ -23,6 +25,8 @@ export function AdvisorModal({
 }: AdvisorModalProps) {
   const [confirmationModal, setConfirmationModal] = useState(false);
   const { updateSettings } = useSettings();
+
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -53,7 +57,7 @@ export function AdvisorModal({
         onClick={onClose}
       >
         <div
-          className="w-[550px] h-[450px] bg-[#161e30] rounded-xl border border-[#4462aa] flex flex-col justify-between shadow-xl"
+          className="h-[450px] w-[550px] md:min-w-[550px] max-w-[90vw] bg-[#161e30] rounded-xl border border-[#4462aa] flex flex-col justify-between shadow-xl"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="border-b border-[#4462aa] p-3">
@@ -92,16 +96,25 @@ export function AdvisorModal({
               </Text>
             </div>
           </div>
-          <div className="bg-[#1d2840] flex justify-between p-3 rounded-b-xl">
+          <div
+            className={classNames(
+              "bg-[#1d2840] flex justify-between p-3 rounded-b-xl",
+              {
+                "flex-col": !isDesktop,
+              },
+            )}
+          >
             <Button
               variant="tertiary"
               onClick={() => setConfirmationModal(true)}
+              block={!isDesktop}
+              className={!isDesktop ? "mb-2" : ""}
             >
               <Button.Icon name="eye-slash-fill" color="white" />
               <Button.Text>{t("advisorFeedback.buttons.turnOff")}</Button.Text>
             </Button>
 
-            <Button className="w-[120px]" onClick={onClose}>
+            <Button className="w-[120px]" onClick={onClose} block={!isDesktop}>
               <Button.Text>{t("advisorFeedback.buttons.ok")}</Button.Text>
             </Button>
           </div>
@@ -138,7 +151,7 @@ export function ConfirmationModal({
       onClick={onCancel}
     >
       <div
-        className="w-[400px] bg-[#131824] p-5 rounded-xl border-2 border-[#244185] flex flex-col justify-between shadow-xl"
+        className="md:min-w-[550px] max-w-[90vw] bg-[#131824] p-5 rounded-xl border-2 border-[#244185] flex flex-col justify-between shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="w-full text-center">

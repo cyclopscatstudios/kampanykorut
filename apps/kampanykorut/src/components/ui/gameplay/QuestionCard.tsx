@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { t } from "i18next";
+import { useMediaQuery } from "usehooks-ts";
 import { CurrentView } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
@@ -39,9 +40,13 @@ export function QuestionCard({
   cityName,
 }: Question) {
   const { portrait, slogan, party_logo } = useAssets();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   return (
-    <div className="flex flex-col p-4 bg-slate-900" data-testid={id}>
-      <div className="w-full flex flex-col justify-center items-center mb-4 max-h-[500px] overflow-y-auto">
+    <div
+      className="flex flex-col p-3 md:p-4 bg-slate-900 h-full"
+      data-testid={id}
+    >
+      <div className="w-full flex-1 min-h-0 flex flex-col justify-start items-center mb-4 md:max-h-[500px] overflow-y-auto">
         <div className="w-full mb-4 p-2 border-l-3 border-blue-500">
           {affects && (
             <Tooltip
@@ -65,44 +70,141 @@ export function QuestionCard({
           />
         ))}
       </div>
-      <div className="mt-2">
-        <div className="flex justify-around mb-4">
-          <Button variant="secondary" onClick={() => setCurrentView("MapView")}>
-            <Button.Text>{t("questionCard.buttons.mapView")}</Button.Text>
-          </Button>
-          <div className="bg-slate-700 w-[350px] border border-slate-600 p-3 mb-3">
-            <Text
-              color="lightBlue"
-              weight="bold"
-              className="text-center"
-              size="sm"
-            >
-              {cityName}
-            </Text>
-          </div>
-          <Button
-            disabled={!answer}
-            variant="primary"
-            onClick={() => {
-              handleOnClick(answer);
-            }}
+      <div className="mt-2 shrink-0">
+        {isDesktop ? (
+          <WideActions
+            cityName={cityName}
+            answer={answer}
+            setCurrentView={setCurrentView}
+            handleOnClick={handleOnClick}
+            portrait={portrait}
+            slogan={slogan}
+            party_logo={party_logo}
+          />
+        ) : (
+          <NarrowActions
+            cityName={cityName}
+            answer={answer}
+            setCurrentView={setCurrentView}
+            handleOnClick={handleOnClick}
+            portrait={portrait}
+            slogan={slogan}
+            party_logo={party_logo}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+interface QuestionCardActionsProps {
+  cityName?: string;
+  answer?: string;
+  setCurrentView: (currentView: CurrentView) => void;
+  handleOnClick: (answer?: string) => void;
+  portrait: string;
+  slogan: string;
+  party_logo: string;
+}
+
+function WideActions({
+  cityName,
+  answer,
+  setCurrentView,
+  handleOnClick,
+  portrait,
+  slogan,
+  party_logo,
+}: QuestionCardActionsProps) {
+  return (
+    <>
+      <div className="flex justify-around mb-4">
+        <Button variant="secondary" onClick={() => setCurrentView("MapView")}>
+          <Button.Text>{t("questionCard.buttons.mapView")}</Button.Text>
+        </Button>
+        <div className="bg-slate-700 w-[350px] border border-slate-600 p-3 mb-3">
+          <Text
+            color="lightBlue"
+            weight="bold"
+            className="text-center"
+            size="sm"
           >
-            <Button.Text>{t("questionCard.buttons.continue")}</Button.Text>
-          </Button>
+            {cityName}
+          </Text>
         </div>
-        <div className="flex items-end justify-center gap-4">
-          <div className="h-[150px] border border-slate-600 rounded overflow-hidden">
-            <img src={portrait} className="w-full h-full object-cover" />
-          </div>
-          <div className="flex flex-col justify-end items-center h-full">
-            <div className="h-[150px] w-[350px] border border-slate-600 rounded overflow-hidden">
-              <img src={slogan} className="w-full h-full object-cover" />
-            </div>
-          </div>
-          <div className="h-[150px] border border-slate-600 rounded overflow-hidden">
-            <img src={party_logo} className="w-full h-full object-cover" />
+        <Button
+          disabled={!answer}
+          variant="primary"
+          onClick={() => {
+            handleOnClick(answer);
+          }}
+        >
+          <Button.Text>{t("questionCard.buttons.continue")}</Button.Text>
+        </Button>
+      </div>
+      <div className="flex items-end justify-center gap-4">
+        <div className="h-[150px] border border-slate-600 rounded overflow-hidden">
+          <img src={portrait} className="w-full h-full object-cover" />
+        </div>
+        <div className="flex flex-col justify-end items-center h-full">
+          <div className="h-[150px] w-[350px] border border-slate-600 rounded overflow-hidden">
+            <img src={slogan} className="w-full h-full object-cover" />
           </div>
         </div>
+        <div className="h-[150px] border border-slate-600 rounded overflow-hidden">
+          <img src={party_logo} className="w-full h-full object-cover" />
+        </div>
+      </div>
+    </>
+  );
+}
+
+function NarrowActions({
+  cityName,
+  answer,
+  setCurrentView,
+  handleOnClick,
+  portrait,
+  party_logo,
+}: QuestionCardActionsProps) {
+  return (
+    <div className="h-39 shrink-0">
+      <div className="flex items-center gap-2 mb-3">
+        <div className="size-[56px] shrink-0 border border-slate-600 rounded overflow-hidden">
+          <img src={portrait} className="w-full h-full object-cover" />
+        </div>
+        <div className="flex-1 bg-slate-700 border border-slate-600 p-2">
+          <Text
+            color="lightBlue"
+            weight="bold"
+            className="text-center"
+            size="sm"
+          >
+            {cityName}
+          </Text>
+        </div>
+        <div className="size-[56px] shrink-0 border border-slate-600 rounded overflow-hidden">
+          <img src={party_logo} className="w-full h-full object-cover" />
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <Button
+          block
+          disabled={!answer}
+          variant="primary"
+          onClick={() => {
+            handleOnClick(answer);
+          }}
+        >
+          <Button.Text>{t("questionCard.buttons.continue")}</Button.Text>
+        </Button>
+        <Button
+          block
+          variant="secondary"
+          onClick={() => setCurrentView("MapView")}
+        >
+          <Button.Text>{t("questionCard.buttons.mapView")}</Button.Text>
+        </Button>
       </div>
     </div>
   );

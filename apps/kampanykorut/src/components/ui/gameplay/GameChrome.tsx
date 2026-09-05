@@ -53,5 +53,5 @@ export function GameChrome({
 }
 
 function GameMain({ children }: { children: ReactNode }) {
-  return <main className="w-full h-full">{children}</main>;
+  return <main className="w-full h-full flex flex-col">{children}</main>;
 }

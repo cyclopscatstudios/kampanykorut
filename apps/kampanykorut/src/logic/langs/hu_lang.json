@@ -187,5 +187,11 @@
       "description": "Leírás",
       "steps": "A hiba reprodukálásának lépései"
     }
+  },
+  "warning": {
+    "lowResolution": {
+      "label": "Ez a képernyőméret még nem támogatott",
+      "description": "Úgy tűnik, kisebb felbontású eszközről – valószínűleg mobilról – használod az oldalt. A mobilos verzió egyelőre nem teljesentámogatott, ezért néhány funkciót szándékosan elrejtettünk. A teljesjátékélményhez kérjük, nyisd meg az oldalt asztali gépen vagy laptopon."
+    }
   }
 }

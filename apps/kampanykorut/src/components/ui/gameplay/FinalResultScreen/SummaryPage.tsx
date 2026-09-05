@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { container } from "tsyringe";
+import { useMediaQuery } from "usehooks-ts";
 import { ConfigEngine, StateEngine } from "@/logic/application";
 import { FinalResults, Mandate, RawParty } from "@/shared/types";
 import { Text } from "../../../../../../../shared/ui/Text";
@@ -11,6 +12,7 @@ import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
 const MIN_SEATS_TO_WIN = 100;
 
 export function SummaryPage({ results }: { results: FinalResults }) {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const campaignStateEngine = container.resolve(StateEngine);
   const configEngine = container.resolve(ConfigEngine);
   const campaignState = campaignStateEngine.getCampaignState();
@@ -55,8 +57,8 @@ export function SummaryPage({ results }: { results: FinalResults }) {
         </Text>
       </div>
       <div className="pb-5">
-        <div className="flex gap-6 px-6 pt-5">
-          <div className="basis-1/2">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6 px-3 md:px-6 pt-5">
+          <div className="basis-full md:basis-1/2">
             <ImageWrapper
               src={
                 noWinner
@@ -69,18 +71,18 @@ export function SummaryPage({ results }: { results: FinalResults }) {
               }`}
             />
           </div>
-          <div className="basis-1/2">
+          <div className="basis-full md:basis-1/2">
             <Text color="gray" className="leading-relaxed">
               {noWinner ? noWinnerAssets?.description : assets?.description}
             </Text>
           </div>
         </div>
         <div className="w-full flex justify-center mt-4">
-          <div className="w-[500px]">
-            <div className="dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200/65 dark:border-slate-700">
+          <div className="w-full max-w-[500px] px-3 md:px-0">
+            <div className="dark:bg-slate-800/50 p-3 md:p-5 rounded-xl border border-slate-200/65 dark:border-slate-700">
               <ParliamentHemicycle
-                width={450}
-                height={150}
+                width={isDesktop ? 450 : 280}
+                height={isDesktop ? 150 : 100}
                 rows={9}
                 order="as-given"
                 showLegend

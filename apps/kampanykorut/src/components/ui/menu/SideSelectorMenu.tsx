@@ -42,12 +42,12 @@ export function SideSelectorMenu() {
   return (
     <div className="size-full md:h-[750px] md:w-[1200px] bg-slate-800 flex flex-col gap-6 p-4">
       <div className="relative">
-        <div className="absolute bottom-0 w-[650px] p-2 z-10">
+        <div className="absolute bottom-0 w-full md:w-[650px] p-2 z-10">
           <Heading color="white" level={3}>
             {currentCampaign?.label}
           </Heading>
         </div>
-        <div className="absolute bottom-0 right-0 w-[500px] p-2 z-10 flex flex-col gap-2 items-end">
+        <div className="hidden md:flex absolute bottom-0 right-0 w-[500px] p-2 z-10 flex-col gap-2 items-end">
           {isDesktop && (
             <BadgeDisplay
               config={campaignConfig}
