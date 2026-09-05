@@ -39,9 +39,9 @@ export function FinalResultScreen() {
 
   return (
     <GameChrome config={config} state={state ?? undefined}>
-      <div className="m-2">
-        <div className="bg-[#0f172a] p-3 md:p-5 rounded-xl border border-slate-200/65">
-          <div className="md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto md:overflow-y-visible">
+      <div className="m-2 flex flex-col flex-1 min-h-0 md:flex-none">
+        <div className="bg-[#0f172a] p-3 md:p-5 rounded-xl border border-slate-200/65 flex flex-col flex-1 min-h-0 md:flex-none">
+          <div className="flex-1 min-h-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto md:overflow-y-visible">
             {!isDesktop && <SummaryPage results={results} />}
             {isDesktop && activeScreen === "statistics" && (
               <Statistics results={results} config={config} />

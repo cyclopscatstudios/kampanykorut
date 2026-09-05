@@ -95,5 +95,3 @@ export function GameView({
 function getCapitalCity(districts: DistrictPoligon[]) {
   return districts.filter((district) => district.maz.startsWith("01"));
 }
-
-

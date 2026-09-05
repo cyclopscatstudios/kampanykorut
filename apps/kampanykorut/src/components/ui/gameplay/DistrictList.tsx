@@ -1,7 +1,14 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import { CampaignConfig, CampaignState, CandidateListData, Colors,CurrentView, District } from "@/shared/types";
+import {
+  CampaignConfig,
+  CampaignState,
+  CandidateListData,
+  Colors,
+  CurrentView,
+  District,
+} from "@/shared/types";
 import { Text } from "@/shared/ui";
 import { Button } from "@/shared/ui/Button";
 import { getPartyColor } from "../color.utils";
