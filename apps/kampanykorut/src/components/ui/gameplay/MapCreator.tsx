@@ -1,4 +1,3 @@
-import { t } from "i18next";
 import {
   CandidateListData,
   CurrentView,
@@ -6,13 +5,9 @@ import {
   DistrictPoligon,
   ElectionConfig,
 } from "@/shared/types";
-import { SwingFactorId } from "../../../types/utils";
-import {
-  getWinnerResultByCandidateList,
-  getWinnerResultByDistrict,
-} from "../map.utils";
 import { BottomBar } from "./BottomBar";
 import { MapWrapper } from "./MapWrapper";
+import { getSwingFactorByDistrict } from "./swingFactor.utils";
 
 interface MapCreatorProps {
   districts: DistrictPoligon[];
@@ -23,11 +18,6 @@ interface MapCreatorProps {
   setSelectedDistrict: (district: District | null) => void;
   electionConfig?: ElectionConfig;
 }
-
-export type SwingFactor = {
-  id: SwingFactorId;
-  label: string;
-};
 
 export function MapCreator({
   candidateListData,
@@ -71,46 +61,4 @@ export function MapCreator({
       </div>
     </div>
   );
-}
-
-export function getSwingFactorByDistrict(
-  district?: District | null,
-  canidateData?: CandidateListData,
-) {
-  let results = getWinnerResultByDistrict(district);
-  if (canidateData) {
-    results = getWinnerResultByCandidateList(canidateData);
-  }
-  if (!results) {
-    return {
-      label: t("bottomBar.low"),
-      id: SwingFactorId.Low,
-    };
-  }
-  const { diffPercentage: percent } = results;
-
-  if (percent < 5) {
-    return {
-      label: t("bottomBar.high"),
-      id: SwingFactorId.High,
-    };
-  }
-
-  if (percent < 15) {
-    return {
-      label: t("bottomBar.medium"),
-      id: SwingFactorId.Medium,
-    };
-  }
-
-  if (percent < 20) {
-    return {
-      label: t("bottomBar.low"),
-      id: SwingFactorId.Low,
-    };
-  }
-  return {
-    label: t("bottomBar.low"),
-    id: SwingFactorId.Low,
-  };
 }

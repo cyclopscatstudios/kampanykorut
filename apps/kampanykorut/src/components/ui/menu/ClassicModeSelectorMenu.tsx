@@ -1,6 +1,8 @@
+import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { container } from "tsyringe";
+import { useMediaQuery } from "usehooks-ts";
 import {
   type CampaignHeader,
   StorageEngine,
@@ -45,13 +47,14 @@ export function CampaignSelectorMenuList({
     useState<CampaignHeader | null>(null);
   const backButton = useTranslateLang("menuList.button.back");
   const { goBack, goToSideSelector } = useNavigation();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
     saveSession("campaignState", null);
   }, [saveSession]);
 
   return (
-    <div className="size-full flex items-center justify-center">
+    <div className="size-full flex items-center justify-center px-2">
       <div className="flex flex-col items-center justify-center gap-6 w-112.5">
         <Heading level={3} color="lightBlue">
           {selectedCampaign
@@ -89,7 +92,11 @@ export function CampaignSelectorMenuList({
             )}
           </div>
         )}
-        <div className="flex w-full gap-2">
+        <div
+          className={classNames("flex w-full gap-2", {
+            "flex-col-reverse px-2": !isDesktop,
+          })}
+        >
           <Button variant="tertiary" size="large" block onClick={goBack}>
             <Icon name="backspace-fill" />
             <Text weight="medium" color="lightBlue">

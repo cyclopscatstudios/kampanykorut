@@ -4,9 +4,9 @@ import type { Colors } from "../../../../../../shared/types/color";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
-import { SwingFactorId } from "../../../types/utils";
 import { CommonWrapper } from "../CommonWrapper";
-import type { SwingFactor } from "./MapCreator";
+import type { SwingFactor } from "./swingFactor.utils";
+import { getSwingFactorTextColor } from "./swingFactor.utils";
 
 interface BottomBarProps {
   data?: District | null;
@@ -70,20 +70,4 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
       </div>
     </CommonWrapper>
   );
-}
-
-export function getSwingFactorTextColor(swingFactor?: SwingFactorId) {
-  if (!swingFactor) {
-    return "white";
-  }
-  if (swingFactor === SwingFactorId.High) {
-    return "red";
-  }
-  if (swingFactor === SwingFactorId.Medium) {
-    return "yellow";
-  }
-  if (swingFactor === SwingFactorId.Low) {
-    return "green";
-  }
-  return "white";
 }
