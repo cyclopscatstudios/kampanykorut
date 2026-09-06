@@ -15,7 +15,8 @@
           "questions": "tisza/magyar_peter/2026_tisza_questions.json",
           "answerEffect": "tisza/magyar_peter/2026_tisza_answer_effects.json",
           "advisorFeedback": "tisza/magyar_peter/2026_tisza_advisor_feedback.json",
-          "advisorFeedbackAssets": "tisza/magyar_peter/advisor_feedback_assets.json"
+          "advisorFeedbackAssets": "tisza/magyar_peter/advisor_feedback_assets.json",
+          "endResults": "tisza/magyar_peter/end_results.json"
         }
       }
     }

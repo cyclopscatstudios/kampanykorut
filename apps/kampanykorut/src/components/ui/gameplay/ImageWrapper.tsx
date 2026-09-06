@@ -43,6 +43,6 @@ function getStyleByAspectRatio(type: ImageType) {
     case "slogan":
       return "w-[300px] aspect-[16/9]";
     case "final":
-      return "w-[400px] aspect-[16/9]";
+      return "w-full max-w-[400px] aspect-[16/9]";
   }
 }

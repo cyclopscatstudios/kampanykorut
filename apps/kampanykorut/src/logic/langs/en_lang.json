@@ -187,5 +187,11 @@
       "description": "Description",
       "steps": "Steps to reproduce"
     }
+  },
+  "warning": {
+    "lowResolution": {
+      "label": "This screen size is not yet supported",
+      "description": "It looks like you're viewing the site on a smaller screen, most likely a mobile device. The mobile version is not fully supported yet, so some features are intentionally hidden. For the full game experience, please open the site on a desktop or laptop."
+    }
   }
 }

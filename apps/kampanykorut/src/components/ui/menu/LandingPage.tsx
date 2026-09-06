@@ -3,6 +3,7 @@ import { useGetCampaigns } from "@/logic/application";
 import logo from "../../../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Text } from "../../../../../../shared/ui/Text";
+import { AnalyticsEvent, track } from "../../../logic/infra/posthog/track";
 import { Heading } from "../Heading";
 
 const HERO_BACKGROUND = "/parlament_night.jpg";
@@ -20,6 +21,11 @@ export function LandingPage() {
   const campaigns = useGetCampaigns().filter(
     (campaign) => campaign.isPublished,
   );
+
+  const goToMenu = () => {
+    track(AnalyticsEvent.LEAVE_LANDING_PAGE, {});
+    navigate("/menu");
+  };
 
   return (
     <div className="min-h-screen w-full bg-[#0f172a] text-slate-100">
@@ -42,12 +48,11 @@ export function LandingPage() {
           közvélemény-kutatásokat, majd nézd meg, sikerül-e többséget szerezned
           az Országgyűlésben.
         </Text>
-        <Button size="lg" onClick={() => navigate("/menu")}>
+        <Button size="lg" onClick={goToMenu}>
           <Button.Icon name="play-circle-fill" />
           <Button.Text>Játék indítása</Button.Text>
         </Button>
       </section>
-
       {campaigns.length > 0 && (
         <section className="mx-auto max-w-5xl px-6 py-16">
           <Heading level={2} color="white" className="mb-8 text-center">
@@ -77,7 +82,6 @@ export function LandingPage() {
           </div>
         </section>
       )}
-
       <footer className="border-t border-white/10 px-6 py-8 text-center">
         <Text color="gray" size="xs">
           Kampánykörút — ingyenes, böngészőben futó választási szimuláció.

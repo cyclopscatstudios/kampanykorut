@@ -13,17 +13,21 @@ export function buildResultsIndex(result: CandidateListData[]) {
   return index;
 }
 
-export function getWinnerResultsByList(
+export function getWinnerResultsByDistrictPoligon(
   d: DistrictPoligon,
   resultIndex: Map<string, CandidateListData>,
 ) {
   const results = resultIndex.get(resultsKey(Number(d.maz), Number(d.evk)));
 
-  if (!results) {
+  return getWinnerResultByCandidateList(results);
+}
+
+export function getWinnerResultByCandidateList(data?: CandidateListData) {
+  if (!data) {
     throw new Error("District result not found");
   }
 
-  const entries = Object.entries(results?.partok ?? {}).filter(
+  const entries = Object.entries(data?.partok ?? {}).filter(
     (entry): entry is [string, number] => typeof entry[1] === "number",
   );
 
@@ -50,7 +54,7 @@ export function getWinnerResultsByList(
     maxVotes,
     voteDiff,
     diffPercentage,
-    ...results,
+    ...data,
   };
 }
 

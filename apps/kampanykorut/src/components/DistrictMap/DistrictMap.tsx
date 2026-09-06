@@ -11,7 +11,10 @@ import {
   getPartyColor,
   getPartyHoverColor,
 } from "../ui/color.utils";
-import { buildResultsIndex, getWinnerResultsByList } from "../ui/map.utils";
+import {
+  buildResultsIndex,
+  getWinnerResultsByDistrictPoligon,
+} from "../ui/map.utils";
 import { getFillColor } from "./color";
 import { parsePolygon, projectPoints } from "./geometry";
 import { buildPathD, simplifyDP } from "./path";
@@ -92,7 +95,7 @@ export function DistrictMap({
         const simplified = simplifyDP(d.pts, simplifyTolerance);
         const pathD = buildPathD(simplified, bounds, scale, MARGIN);
 
-        const winnerResult = getWinnerResultsByList(d, resultIndex);
+        const winnerResult = getWinnerResultsByDistrictPoligon(d, resultIndex);
         const { winner, diffPercentage } = winnerResult;
         const partyColor =
           electionConfig?.parties.find((party) => party.id === winner)?.color ??

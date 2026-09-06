@@ -5,7 +5,10 @@ import { finalResultLoader } from "./components/loaders/finalResult.loader";
 import { mainGameScreenLoader } from "./components/loaders/mainGameScreen.loader";
 import { mainMenuLoader } from "./components/loaders/mainMenu.loader";
 import { newGameSelectorLoader } from "./components/loaders/newGameSelector.loader";
-import { rootLoader } from "./components/loaders/route.loader";
+import {
+  landingPageRouter,
+  rootLoader,
+} from "./components/loaders/route.loader";
 import { sideSelectorLoader } from "./components/loaders/sideSelector.loader";
 import { FinalResultScreen } from "./components/ui/gameplay/FinalResultScreen/EndResultScreen";
 import { AboutMenu } from "./components/ui/menu/AboutMenu";
@@ -21,6 +24,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <LandingPage />,
+    loader: landingPageRouter,
   },
   {
     element: <RootLayout />,

@@ -1,3 +1,4 @@
+import { useMediaQuery } from "usehooks-ts";
 import {
   CampaignConfig,
   CampaignState,
@@ -7,6 +8,7 @@ import {
   FinalResults,
   PollingOpnions,
 } from "@/shared/types";
+import { DistrictList } from "./DistrictList";
 import { MapCreator } from "./MapCreator";
 import { QuestionCard } from "./QuestionCard";
 import { VoteCountingScreen } from "./VoteCountingScreen/VoteCountingScreen";
@@ -39,6 +41,7 @@ export function GameView({
   onSetDistrict,
   onVoteCountingComplete,
 }: GameViewProps) {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   if (currentView === "QuestionView") {
     return (
       <QuestionCard
@@ -55,7 +58,7 @@ export function GameView({
     );
   }
 
-  if (currentView === "VoteCountingView") {
+  if (currentView === "VoteCountingView" && isDesktop) {
     return (
       <VoteCountingScreen
         onComplete={onVoteCountingComplete}
@@ -67,7 +70,7 @@ export function GameView({
 
   const capitalCity = getCapitalCity(config.districts);
 
-  return (
+  return isDesktop ? (
     <MapCreator
       setCurrentView={onSetView}
       candidateListData={
@@ -78,6 +81,13 @@ export function GameView({
       selectedDistrict={selectedDistrict}
       setSelectedDistrict={onSetDistrict}
       electionConfig={config.electionConfig}
+    />
+  ) : (
+    <DistrictList
+      config={config}
+      state={state}
+      onSetDistrict={onSetDistrict}
+      onSetView={onSetView}
     />
   );
 }

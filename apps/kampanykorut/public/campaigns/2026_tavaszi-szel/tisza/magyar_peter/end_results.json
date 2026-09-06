@@ -1,0 +1,22 @@
+{
+  "playerSideDefeat": {
+    "title": "Vereség az urnáknál",
+    "subtitle": "A változás elmarad",
+    "description": "Újabb ciklusra kapott felhatalmazást Orbán Viktor és a Fidesz–KDNP, miután megnyerte a 2026-os országgyűlési választást. A TISZA Párt a kampány során komoly kihívóvá vált, és számos választókerületben szoros versenyt tudott kialakítani, végül azonban nem sikerült megszereznie a kormányváltáshoz szükséges parlamenti többséget. Magyar Péter pártja így ellenzékből folytathatja politikai munkáját.",
+    "imageUri": "/images/2026_tavaszi-szel/tisza_vereseg.png"
+  },
+
+  "playerSideVictory": {
+    "title": "Győzelem az urnáknál",
+    "subtitle": "Fordulat Magyarországon",
+    "description": "Történelmi eredmény született a 2026-os országgyűlési választáson: a TISZA Párt megszerezte a parlamenti többséget, ezzel véget vetve a Fidesz–KDNP tizenhat éve tartó kormányzásának. Magyar Péter pártja számos korábban kormánypárti választókerületet is meg tudott nyerni, miközben országos listán is a legerősebb politikai erővé vált. A választás eredménye új politikai korszak kezdetét jelenti Magyarországon.",
+    "imageUri": "/images/2026_tavaszi-szel/tisza_gyozelem.png"
+  },
+
+  "deadlock": {
+    "title": "Kormányválság",
+    "subtitle": "Nincs parlamenti többség",
+    "description": "A 2026-os országgyűlési választás egyik nagy politikai tömb számára sem hozott önálló parlamenti többséget. A TISZA Párt és a Fidesz–KDNP közötti rendkívül szoros eredmény miatt a kormányalakítás a kisebb pártok mandátumain és az előttük álló tárgyalásokon múlik. Magyarország bizonytalan politikai helyzet elé néz, miközben egyelőre nem világos, ki lesz képes stabil kormányt alakítani.",
+    "imageUri": "/images/2026_tavaszi-szel/deadlock.jpg"
+  }
+}
