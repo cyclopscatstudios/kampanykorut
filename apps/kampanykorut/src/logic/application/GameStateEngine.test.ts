@@ -21,6 +21,10 @@ function makeMemoryLocalStorage() {
       map.delete(key);
     }),
     clear: vi.fn(() => map.clear()),
+    key: vi.fn((index: number) => Array.from(map.keys())[index] ?? null),
+    get length() {
+      return map.size;
+    },
     _map: map,
   };
 }
@@ -56,7 +60,6 @@ describe("StateEngine", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mem = makeMemoryLocalStorage();
-    // @ts-expect-error global override
     global.localStorage = mem;
     window.history.pushState({}, "", "/game/x?sessionId=" + FIXED_SESSION_ID);
     mem._map.set("kampanykorut_currentSessionId", FIXED_SESSION_ID);
@@ -138,6 +141,7 @@ describe("StateEngine", () => {
           sessionId: "s1",
           campaignId: "c1",
           name: "save",
+          type: "manual",
         },
       ];
       mem._map.set("kampanykorut_savedSessions", JSON.stringify(sessions));
@@ -166,6 +170,79 @@ describe("StateEngine", () => {
     });
   });
 
+  describe("getAutoSaveSession", () => {
+    it("returns null when there is no active campaign", () => {
+      const { engine } = makeEngine();
+      expect(engine.getAutoSaveSession()).toBeNull();
+    });
+
+    it("reflects the live session without needing a manual save", () => {
+      const { engine } = makeEngine();
+      mem._map.set(
+        `kampanykorut_campaignState-${FIXED_SESSION_ID}`,
+        JSON.stringify({
+          activeCampaignId: "c-test",
+          turn: 4,
+          isEnded: false,
+        }),
+      );
+
+      const autoSave = engine.getAutoSaveSession();
+
+      expect(autoSave?.sessionId).toBe(FIXED_SESSION_ID);
+      expect(autoSave?.campaignId).toBe("c-test");
+      expect(autoSave?.type).toBe("auto");
+    });
+
+    it("stays in sync as the live session keeps changing", () => {
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 0,
+        isEnded: false,
+      });
+
+      engine.updateCampaignState({ turn: 7 });
+
+      const autoSave = engine.getAutoSaveSession();
+      const state = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${autoSave!.sessionId}`)!,
+      );
+      expect(state.turn).toBe(7);
+    });
+  });
+
+  describe("cleanupUnsavedStates", () => {
+    it("does not delete the live session's storage even without a manual save", () => {
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 0,
+        isEnded: false,
+      });
+
+      engine.cleanupUnsavedStates();
+
+      expect(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`),
+      ).toBeDefined();
+    });
+
+    it("removes campaignState/turnHistory not referenced by any manual save or the live session", () => {
+      const { engine } = makeEngine();
+      mem._map.set(
+        "kampanykorut_campaignState-orphan-id",
+        JSON.stringify({ activeCampaignId: "c1", turn: 0, isEnded: false }),
+      );
+
+      engine.cleanupUnsavedStates();
+
+      expect(
+        mem._map.get("kampanykorut_campaignState-orphan-id"),
+      ).toBeUndefined();
+    });
+  });
+
   describe("saveToSlot", () => {
     function seedCampaignState(campaignId = "c-test") {
       mem._map.set(
@@ -178,7 +255,7 @@ describe("StateEngine", () => {
       );
     }
 
-    it("creates a new session info entry with a fresh id", () => {
+    it("creates a new session info entry with a fresh id, snapshotting state under its own session id", () => {
       const { engine } = makeEngine();
       seedCampaignState();
 
@@ -189,9 +266,40 @@ describe("StateEngine", () => {
       ) as SavedCampaignSessionInfo[];
       expect(sessions).toHaveLength(1);
       expect(sessions[0].name).toBe("my-save");
-      expect(sessions[0].sessionId).toBe(FIXED_SESSION_ID);
       expect(sessions[0].campaignId).toBe("c-test");
       expect(sessions[0].id).toBeDefined();
+      expect(sessions[0].type).toBe("manual");
+      // the snapshot must live under its own session id, not the live one,
+      // so that continued play never mutates the manual save
+      expect(sessions[0].sessionId).not.toBe(FIXED_SESSION_ID);
+      const snapshot = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${sessions[0].sessionId}`) ??
+          "null",
+      );
+      expect(snapshot.activeCampaignId).toBe("c-test");
+    });
+
+    it("does not mutate the manual snapshot when the live session keeps changing", () => {
+      const { engine } = makeEngine();
+      seedCampaignState();
+
+      engine.saveToSlot("my-save");
+      const sessions = JSON.parse(
+        mem._map.get("kampanykorut_savedSessions") ?? "[]",
+      ) as SavedCampaignSessionInfo[];
+      const snapshotSessionId = sessions[0].sessionId;
+
+      // simulate continuing to play after the manual save
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 99,
+        isEnded: false,
+      });
+
+      const snapshot = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${snapshotSessionId}`)!,
+      );
+      expect(snapshot.turn).not.toBe(99);
     });
 
     it("falls back to in-memory campaignState when storage is empty", () => {
@@ -389,7 +497,7 @@ describe("StateEngine", () => {
       expect(goSpy).not.toHaveBeenCalled();
     });
 
-    it("navigates to the game route via Navigation when not currently in /game/", () => {
+    it("navigates to a freshly forked session id for a manual save, leaving the snapshot untouched", () => {
       window.history.pushState({}, "", "/load-game");
       const navigation = new Navigation();
       const goSpy = vi.spyOn(navigation, "go").mockImplementation(() => {});
@@ -400,11 +508,15 @@ describe("StateEngine", () => {
       engine.loadState(validSession);
 
       expect(goSpy).toHaveBeenCalledWith(
-        `/game/${validSession.campaignId}?sessionId=${validSession.sessionId}`,
+        `/game/${validSession.campaignId}?sessionId=${FIXED_GENERATED_ID}`,
       );
+      // the original manual snapshot must still exist, unmodified
+      expect(
+        mem._map.get(`kampanykorut_campaignState-${validSession.sessionId}`),
+      ).toBeDefined();
     });
 
-    it("persists the loaded sessionId as currentSessionId", () => {
+    it("persists the forked sessionId as currentSessionId for a manual save", () => {
       window.history.pushState({}, "", "/load-game");
       const navigation = new Navigation();
       vi.spyOn(navigation, "go").mockImplementation(() => {});
@@ -415,8 +527,54 @@ describe("StateEngine", () => {
       engine.loadState(validSession);
 
       expect(mem._map.get("kampanykorut_currentSessionId")).toBe(
-        validSession.sessionId,
+        FIXED_GENERATED_ID,
       );
+      const forkedState = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_GENERATED_ID}`)!,
+      );
+      expect(forkedState.turn).toBe(3);
+    });
+
+    it("loads an auto-save session directly without forking a new session id", () => {
+      window.history.pushState({}, "", "/load-game");
+      const navigation = new Navigation();
+      const goSpy = vi.spyOn(navigation, "go").mockImplementation(() => {});
+      const { engine } = makeEngine(navigation);
+      seedHistory();
+      seedCampaignStateForSession();
+      const autoSession: SavedCampaignSessionInfo = {
+        ...validSession,
+        type: "auto",
+      };
+
+      engine.loadState(autoSession);
+
+      expect(goSpy).toHaveBeenCalledWith(
+        `/game/${autoSession.campaignId}?sessionId=${autoSession.sessionId}`,
+      );
+      expect(mem._map.get("kampanykorut_currentSessionId")).toBe(
+        autoSession.sessionId,
+      );
+    });
+
+    it("loading the same manual save twice always restores the original saved turn", () => {
+      window.history.pushState({}, "", "/load-game");
+      const navigation = new Navigation();
+      vi.spyOn(navigation, "go").mockImplementation(() => {});
+      const { engine } = makeEngine(navigation);
+      seedHistory();
+      seedCampaignStateForSession();
+
+      engine.loadState(validSession);
+      // simulate playing on after the first load, mutating only the fork
+      engine.updateCampaignState({ turn: 50 });
+
+      engine.loadState(validSession);
+
+      const forkedState = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_GENERATED_ID}`)!,
+      );
+      expect(forkedState.turn).toBe(3);
     });
   });
 

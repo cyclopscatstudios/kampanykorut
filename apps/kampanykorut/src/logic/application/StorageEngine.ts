@@ -14,6 +14,7 @@ export type SessionKey =
   | "campaignState"
   | "currentSessionId"
   | "savedSessions"
+  | "autoSaveTimestamp"
   | "language"
   | "debugMode";
 

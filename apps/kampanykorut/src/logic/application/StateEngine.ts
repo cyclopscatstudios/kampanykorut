@@ -16,9 +16,11 @@ export type SavedCampaignSessionInfo = {
   campaignId: string;
   name: string;
   lastSaved?: string;
+  type?: "manual" | "auto";
 };
 
 const MAX_SAVED_SESSIONS = 5;
+export const AUTO_SAVE_SLOT_ID = "auto-save-slot";
 
 const log = createLogger("CampaignStateEngine");
 
@@ -70,14 +72,15 @@ export class StateEngine extends Emitter<CampaignState> {
     const parsed = JSON.parse(savedSessions) as SavedCampaignSessionInfo[];
     let needsMigration = false;
     const migrated = parsed.map((s) => {
-      if (s.id) {
+      if (s.id && s.type) {
         return s;
       }
       needsMigration = true;
       return {
         ...s,
-        id: uuidv4(),
-      };
+        id: s.id || uuidv4(),
+        type: s.type ?? "manual",
+      } as SavedCampaignSessionInfo;
     });
     if (needsMigration) {
       this.storage.setItem(
@@ -87,6 +90,28 @@ export class StateEngine extends Emitter<CampaignState> {
       );
     }
     return migrated;
+  }
+
+  getAutoSaveSession(): SavedCampaignSessionInfo | null {
+    const sessionId = this.getSessionId();
+    const state =
+      this.getCampaignStateById(sessionId) ??
+      this.stateHandler.get("campaignState");
+    const campaignId = state?.activeCampaignId;
+    if (!campaignId || campaignId === DEFAULT_CAMPAIGN_ID) {
+      return null;
+    }
+    const lastSaved =
+      this.storage.getItem("autoSaveTimestamp", "localStorage", sessionId) ??
+      undefined;
+    return {
+      id: AUTO_SAVE_SLOT_ID,
+      sessionId,
+      campaignId,
+      name: "auto-save",
+      lastSaved,
+      type: "auto",
+    };
   }
 
   getSessionSlots() {
@@ -153,21 +178,37 @@ export class StateEngine extends Emitter<CampaignState> {
       log.error("history was not found");
       return;
     }
-    this.saveSessionId(session.sessionId);
-    const state = this.getCampaignStateById(session.sessionId);
+    const state = this.getCampaignStateById(sessionId);
     if (!state) {
       log.error("campaign state was not found");
       return;
     }
 
+    const isManualSave = session.type !== "auto";
+    const targetSessionId = isManualSave ? this.generateId() : sessionId;
+    if (isManualSave) {
+      this.storage.setItem(
+        `campaignState-${targetSessionId}`,
+        this.safeStringify(state) ?? "null",
+        "localStorage",
+      );
+      this.storage.setItem(
+        `turnHistory-${targetSessionId}`,
+        history,
+        "localStorage",
+      );
+    }
+
+    this.saveSessionId(targetSessionId);
     this.stateHandler.set("campaignState", state);
 
-    const route = `/game/${campaignId}?sessionId=${sessionId}`;
+    const route = `/game/${campaignId}?sessionId=${targetSessionId}`;
     const isGameRoute = this.navigation.isUrlParamMatch("/game/");
     if (!isGameRoute) {
       this.navigation.go(route);
       return;
     }
+    window.history.replaceState({}, "", route);
     window.location.reload();
   }
 
@@ -192,23 +233,59 @@ export class StateEngine extends Emitter<CampaignState> {
       "localStorage",
       sessionId,
     );
-    const campaignId = raw
-      ? JSON.parse(raw).activeCampaignId
-      : this.stateHandler.get("campaignState")?.activeCampaignId;
+    const currentState = raw
+      ? JSON.parse(raw)
+      : this.stateHandler.get("campaignState");
+    const campaignId = currentState?.activeCampaignId;
     if (!campaignId || campaignId === DEFAULT_CAMPAIGN_ID) {
       log.error("no campaign id found, skipping slot save");
       return;
     }
+
+    const existingSlots = this.getSavedGameSessions();
+    const existingSlot = existingId
+      ? existingSlots.find((s) => s.id === existingId)
+      : undefined;
+    if (!existingSlot && existingSlots.length >= MAX_SAVED_SESSIONS) {
+      log.error(
+        `cannot save: max ${MAX_SAVED_SESSIONS} saved sessions reached`,
+      );
+      return;
+    }
+    const snapshotSessionId = existingSlot?.sessionId ?? uuidv4();
+
+    this.storage.setItem(
+      `campaignState-${snapshotSessionId}`,
+      this.safeStringify(currentState) ?? "null",
+      "localStorage",
+    );
+    const historyRaw = this.storage.getItem(
+      "turnHistory",
+      "localStorage",
+      sessionId,
+    );
+    if (historyRaw) {
+      this.storage.setItem(
+        `turnHistory-${snapshotSessionId}`,
+        historyRaw,
+        "localStorage",
+      );
+    }
+
     const sessionDate = this.getNormalizedDateString();
-    const name = sessionName ?? `auto-save-${campaignId}-${sessionDate}`;
+    const name = sessionName ?? `save-${campaignId}-${sessionDate}`;
     this.saveSessionInfo({
       id: existingId ?? uuidv4(),
-      sessionId,
+      sessionId: snapshotSessionId,
       campaignId,
-      name: name ?? "auto-save",
+      name,
       lastSaved: new Date().toISOString(),
+      type: "manual",
     });
-    log.debug("Session info updated for sessionId:", sessionId);
+    log.debug(
+      "Session info updated for snapshot sessionId:",
+      snapshotSessionId,
+    );
   }
 
   cleanupUnsavedStates() {
@@ -217,6 +294,7 @@ export class StateEngine extends Emitter<CampaignState> {
     const savedStates = this.getSavedGameSessions();
 
     const savedSessionIds = new Set(savedStates.map((s) => s.sessionId));
+    savedSessionIds.add(this.getSessionId());
 
     const orphanedStates = states.filter((stateKey) => {
       const state = stateKey.replace("kampanykorut_campaignState-", "");
@@ -300,6 +378,7 @@ export class StateEngine extends Emitter<CampaignState> {
       JSON.stringify(updated),
       "localStorage",
     );
+    this.touchAutoSaveTimestamp(sessionId);
     log.debug("Election state saved for sessionId:", sessionId);
   }
 
@@ -340,12 +419,21 @@ export class StateEngine extends Emitter<CampaignState> {
     newHistory.push(historyItem);
     const value = JSON.stringify(newHistory);
     this.storage.setItem(`turnHistory-${sessionId}`, value, "localStorage");
+    this.touchAutoSaveTimestamp(sessionId);
     log.debug("Question history saved for sessionId:", sessionId);
   }
 
   private saveSessionId(sessionId: string) {
     this.stateHandler.set("sessionId", sessionId);
     this.storage.setItem("currentSessionId", sessionId, "localStorage");
+  }
+
+  private touchAutoSaveTimestamp(sessionId: string) {
+    this.storage.setItem(
+      `autoSaveTimestamp-${sessionId}`,
+      new Date().toISOString(),
+      "localStorage",
+    );
   }
 
   private saveSessionInfo(sessionInfo: SavedCampaignSessionInfo) {
