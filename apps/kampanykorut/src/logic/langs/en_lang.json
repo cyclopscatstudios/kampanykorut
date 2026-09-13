@@ -26,6 +26,7 @@
   },
   "loadSavedGamesMenu": {
     "emptyLabel": "No saved game sessions found.",
+    "autoSaveLabel": "Auto-save",
     "button": {
       "load": "Load game"
     }
