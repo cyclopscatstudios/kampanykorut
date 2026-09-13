@@ -26,6 +26,7 @@
   },
   "loadSavedGamesMenu": {
     "emptyLabel": "Nem található mentett játék.",
+    "autoSaveLabel": "Automatikus mentés",
     "button": {
       "load": "Játék betöltése"
     }
