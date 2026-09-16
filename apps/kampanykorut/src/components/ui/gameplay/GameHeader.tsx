@@ -284,7 +284,7 @@ function NarrowHeader({
           <div className="flex items-center gap-2">
             <Icon
               name="file-earmark-arrow-down-fill"
-              color={activeDialog === "saveGame" ? "darkBlue" : undefined}
+              color={activeDialog === "saveGame" ? "darkBlue" : "blue"}
             />
             {t("gameMenuBar.save")}
           </div>
@@ -293,7 +293,7 @@ function NarrowHeader({
           <div className="flex items-center gap-2">
             <Icon
               name="file-earmark-arrow-up-fill"
-              color={activeDialog === "savedGames" ? "darkBlue" : undefined}
+              color={activeDialog === "savedGames" ? "darkBlue" : "blue"}
             />
             {t("gameMenuBar.laod")}
           </div>
@@ -302,7 +302,7 @@ function NarrowHeader({
           <div className="flex items-center gap-2">
             <Icon
               name="gear-fill"
-              color={activeDialog === "settings" ? "darkBlue" : undefined}
+              color={activeDialog === "settings" ? "darkBlue" : "blue"}
             />
             {t("gameMenuBar.settings")}
           </div>
@@ -311,7 +311,7 @@ function NarrowHeader({
           <div className="flex items-center gap-2">
             <Icon
               name="bug-fill"
-              color={activeDialog === "bugReporter" ? "darkBlue" : undefined}
+              color={activeDialog === "bugReporter" ? "darkBlue" : "blue"}
             />
             {t("bugReporter.title")}
           </div>
@@ -320,7 +320,7 @@ function NarrowHeader({
           <div className="flex items-center gap-2">
             <Icon
               name="x-square-fill"
-              color={activeDialog === "exit" ? "darkBlue" : undefined}
+              color={activeDialog === "exit" ? "darkBlue" : "blue"}
             />
             {t("gameMenuBar.quit")}
           </div>

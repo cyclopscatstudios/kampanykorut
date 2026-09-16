@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import {
   CampaignConfig,
@@ -42,6 +43,18 @@ export function GameView({
   onVoteCountingComplete,
 }: GameViewProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  const skipVoteCounting = currentView === "VoteCountingView" && !isDesktop;
+  useEffect(() => {
+    if (skipVoteCounting) {
+      onVoteCountingComplete();
+    }
+  }, [skipVoteCounting]);
+
+  if (skipVoteCounting) {
+    return null;
+  }
+
   if (currentView === "QuestionView") {
     return (
       <QuestionCard
