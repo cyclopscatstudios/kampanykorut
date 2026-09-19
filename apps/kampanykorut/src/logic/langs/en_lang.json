@@ -8,7 +8,8 @@
   },
   "newGameMenu": {
     "classicMode": "Classic mode",
-    "campaignMode": "Campaign mode"
+    "campaignMode": "Campaign mode",
+    "comingSoon": "Coming soon..."
   },
   "menuList": {
     "button": {
@@ -32,7 +33,8 @@
     }
   },
   "gameSelectorMenhu": {
-    "label": "Select a campaign"
+    "label": "Select a campaign",
+    "placeholder": "Select..."
   },
   "sideSelector": {
     "party": {
@@ -194,5 +196,19 @@
       "label": "This screen size is not yet supported",
       "description": "It looks like you're viewing the site on a smaller screen, most likely a mobile device. The mobile version is not fully supported yet, so some features are intentionally hidden. For the full game experience, please open the site on a desktop or laptop."
     }
+  },
+  "landing": {
+    "hero": {
+      "heading": "Hungarian election campaign simulator",
+      "description": "Kampánykörút is a free political strategy game in which you run a Hungarian parliamentary election campaign. Campaign district by district, make political decisions, follow the polls, and see whether you manage to win a majority in the National Assembly.",
+      "startButton": "Start game"
+    },
+    "campaigns": {
+      "heading": "Available campaigns"
+    },
+    "campaignDialog": {
+      "startButton": "Start campaign"
+    },
+    "footer": "Kampánykörút — a free election simulation that runs in your browser."
   }
 }

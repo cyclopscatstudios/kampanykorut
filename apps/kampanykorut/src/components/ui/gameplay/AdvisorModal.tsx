@@ -8,7 +8,7 @@ import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Heading } from "../Heading";
-import { Tooltip } from "../Tooltip";
+import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 
 interface AdvisorModalProps {
   advice: string;

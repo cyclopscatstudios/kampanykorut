@@ -5,6 +5,7 @@ import { type MenuItem } from "../../types/menu.types";
 import { Button, ButtonVariant } from "../Button";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
+import { Tooltip } from "../Tooltip";
 
 export interface MenuListProps {
   listItems: MenuItem[];
@@ -30,25 +31,12 @@ export function MenuList({
               index !== listItems.length - 1 || hasBackButton ? "pb-4" : ""
             }
           >
-            <Button
+            <ButtonWrapper
+              item={item}
               variant={variant}
-              size="large"
-              block
-              onClick={() => navigate(item.path)}
-              disabled={item.disabled}
-              testId={`menuItem-${item.id}`}
-            >
-              <Icon
-                name={item.icon as BootstrapIcon}
-                source={item.iconSource}
-              />
-              <Text
-                weight="medium"
-                color={item.disabled ? "gray" : "lightBlue"}
-              >
-                {item.text}
-              </Text>
-            </Button>
+              navigate={navigate}
+              tooltip={item.tooltip}
+            />
           </li>
         ))}
         {hasBackButton && (
@@ -68,5 +56,42 @@ export function MenuList({
         )}
       </ul>
     </div>
+  );
+}
+
+interface ButtonWrapperProps {
+  tooltip?: string;
+  item: MenuItem;
+  variant: ButtonVariant;
+  navigate: ReturnType<typeof useNavigate>;
+}
+
+function ButtonWrapper({
+  tooltip,
+  item,
+  variant,
+  navigate,
+}: ButtonWrapperProps) {
+  const button = (
+    <Button
+      variant={variant}
+      size="large"
+      block
+      onClick={() => navigate(item.path)}
+      disabled={item.disabled}
+      testId={`menuItem-${item.id}`}
+    >
+      <Icon name={item.icon as BootstrapIcon} source={item.iconSource} />
+      <Text weight="medium" color={item.disabled ? "gray" : "lightBlue"}>
+        {item.text}
+      </Text>
+    </Button>
+  );
+  return tooltip ? (
+    <Tooltip content={tooltip} block>
+      {button}
+    </Tooltip>
+  ) : (
+    button
   );
 }

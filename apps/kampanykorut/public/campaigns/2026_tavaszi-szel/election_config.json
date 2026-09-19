@@ -46,7 +46,8 @@
           "label": "Magyar Péter",
           "description": "A magyar politika egyik leggyorsabban felemelkedő új szereplője. Volt diplomata és jogász, aki 2024-ben lépett a nyilvánosság elé, majd rövid idő alatt országos mozgalmat épített maga köré. A TISZA Párt elnökeként célja, hogy megtörje a Fidesz hosszú ideje tartó dominanciáját, és új politikai alternatívát kínáljon a kormányváltást akaró választóknak."
         }
-      ]
+      ],
+      "playableCandidates": ["magyar_peter"]
     }
   ],
   "electionAssets": [

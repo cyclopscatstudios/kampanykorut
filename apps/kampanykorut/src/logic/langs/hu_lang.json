@@ -8,7 +8,8 @@
   },
   "newGameMenu": {
     "classicMode": "Klasszikus mód",
-    "campaignMode": "Kampány mód"
+    "campaignMode": "Kampány mód",
+    "comingSoon": "Hamarosan..."
   },
   "menuList": {
     "button": {
@@ -32,7 +33,8 @@
     }
   },
   "gameSelectorMenhu": {
-    "label": "Válassz egy kampányt"
+    "label": "Válassz egy kampányt",
+    "placeholder": "Válassz..."
   },
   "sideSelector": {
     "party": {
@@ -194,5 +196,19 @@
       "label": "Ez a képernyőméret még nem támogatott",
       "description": "Úgy tűnik, kisebb felbontású eszközről – valószínűleg mobilról – használod az oldalt. A mobilos verzió egyelőre nem teljesentámogatott, ezért néhány funkciót szándékosan elrejtettünk. A teljesjátékélményhez kérjük, nyisd meg az oldalt asztali gépen vagy laptopon."
     }
+  },
+  "landing": {
+    "hero": {
+      "heading": "Magyar választási kampányszimulátor",
+      "description": "A Kampánykörút egy ingyenes politikai stratégiai játék, amelyben egy magyar országgyűlési választási kampányt irányíthatsz. Kampányolj választókerületenként, hozz politikai döntéseket, kövesd a közvélemény-kutatásokat, majd nézd meg, sikerül-e többséget szerezned az Országgyűlésben.",
+      "startButton": "Játék indítása"
+    },
+    "campaigns": {
+      "heading": "Elérhető kampányok"
+    },
+    "campaignDialog": {
+      "startButton": "Kampány indítása"
+    },
+    "footer": "Kampánykörút — ingyenes, böngészőben futó választási szimuláció."
   }
 }

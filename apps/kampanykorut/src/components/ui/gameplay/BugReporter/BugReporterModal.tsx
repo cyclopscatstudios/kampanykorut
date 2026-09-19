@@ -8,7 +8,7 @@ import { Text } from "../../../../../../../shared/ui/Text";
 import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../../Dialog";
 import { Heading } from "../../Heading";
 import { TextInput } from "../../TextInput";
-import { Tooltip } from "../../Tooltip";
+import { Tooltip } from "../../../../../../../shared/ui/Tooltip";
 
 interface BugReporterDialogProps {
   isOpen: boolean;

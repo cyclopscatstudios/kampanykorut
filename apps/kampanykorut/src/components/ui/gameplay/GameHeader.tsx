@@ -18,7 +18,7 @@ import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
 import { Navigation } from "../../../logic/application/navigation/Navigation";
 import { Menu, MenuItem, SubMenu } from "../Menu";
-import { Tooltip } from "../Tooltip";
+import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { BugReporterButton } from "./BugReporter/BugReporterButton";
 import { GAME_HEADER_SLOT_ID } from "./gameHeaderSlot";
 import type { DialogId } from "./hooks/useDialogState";

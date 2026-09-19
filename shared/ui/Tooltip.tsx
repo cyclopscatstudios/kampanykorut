@@ -8,6 +8,7 @@ interface TooltipProps {
   content: string;
   delay?: number;
   position?: TooltipPosition;
+  block?: boolean;
 }
 
 export function Tooltip({
@@ -15,6 +16,7 @@ export function Tooltip({
   content,
   delay = 200,
   position = "top",
+  block = false,
 }: TooltipProps) {
   const [visible, setVisible] = useState(false);
   const [coords, setCoords] = useState({ top: 0, left: 0 });
@@ -82,7 +84,7 @@ export function Tooltip({
     <>
       <div
         ref={ref}
-        className="inline-block"
+        className={block ? "block" : "inline-block"}
         onMouseEnter={show}
         onMouseLeave={hide}
       >

@@ -8,7 +8,7 @@ import { Text } from "../../../../../../shared/ui/Text";
 import { useAssets } from "../../../hooks/useAssets";
 import { CommonWrapper } from "../CommonWrapper";
 import { Heading } from "../Heading";
-import { Tooltip } from "../Tooltip";
+import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 
 interface Answer {
   id: string;
