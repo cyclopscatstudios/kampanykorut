@@ -23,4 +23,5 @@ export type MenuItem = {
   iconSource?: IconSource;
   description?: string;
   disabled?: boolean;
+  tooltip?: string;
 };

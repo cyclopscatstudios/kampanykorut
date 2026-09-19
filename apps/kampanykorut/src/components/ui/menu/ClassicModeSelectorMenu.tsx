@@ -61,7 +61,6 @@ export function CampaignSelectorMenuList({
             ? selectedCampaign.label
             : t("gameSelectorMenhu.label")}
         </Heading>
-
         <Dropdown
           options={campaignHeaders.map((campaign) => ({
             label: campaign.label,
@@ -73,6 +72,7 @@ export function CampaignSelectorMenuList({
             if (found)
               saveSession("campaignState", { activeCampaignId: found.id });
           }}
+          placeholder={t("gameSelectorMenhu.placeholder")}
         />
         {selectedCampaign && (
           <div className="flex w-full gap-4 rounded-md border border-blue-500/40 p-3">

@@ -60,7 +60,8 @@
           "label": "Olivia Harris",
           "description": "todo"
         }
-      ]
+      ],
+      "playableCandidates": ["emma_wilson"]
     },
     {
       "id": "red_party",

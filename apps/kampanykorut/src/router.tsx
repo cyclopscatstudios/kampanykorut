@@ -13,7 +13,7 @@ import { sideSelectorLoader } from "./components/loaders/sideSelector.loader";
 import { FinalResultScreen } from "./components/ui/gameplay/FinalResultScreen/EndResultScreen";
 import { AboutMenu } from "./components/ui/menu/AboutMenu";
 import { ClassicModeSelectorMenu } from "./components/ui/menu/ClassicModeSelectorMenu";
-import { LandingPage } from "./components/ui/menu/LandingPage";
+import { LandingPage } from "./components/ui/menu/landing";
 import { LoadSavedSessionsMenu } from "./components/ui/menu/LoadSavedGamesMenu";
 import { MainMenu } from "./components/ui/menu/MainMenu";
 import { NewGameMenu } from "./components/ui/menu/NewGameMenu";

@@ -1,6 +1,6 @@
 import { t } from "i18next";
 import { Button } from "../../../../../../../shared/ui/Button";
-import { Tooltip } from "../../Tooltip";
+import { Tooltip } from "../../../../../../../shared/ui/Tooltip";
 
 interface BugReporterButtonProps {
   onChange: () => void;

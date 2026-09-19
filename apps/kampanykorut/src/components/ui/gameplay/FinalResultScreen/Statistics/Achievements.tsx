@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { ConfigEngine, StateEngine } from "@/logic/application";
 import { CampaignConfig, CampaignState } from "@/shared/types";
 import { Icon } from "../../../../../../../../shared/ui/Icon";
-import { Tooltip } from "../../../Tooltip";
+import { Tooltip } from "../../../../../../../../shared/ui/Tooltip";
 
 interface AchievmentsProps {
   state: CampaignState | null;

@@ -31,6 +31,8 @@ describe("loadCampaignConfig", () => {
       label: "Campaign 1",
       description: "Mock description for Campaign 1.",
       campaignBanner: "/images/mock/campaign-1-banner.png",
+      year: 2024,
+      tags: ["mock", "test"],
     });
   });
 

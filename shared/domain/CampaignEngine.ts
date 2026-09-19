@@ -196,7 +196,12 @@ export class CampaignEngine {
       ),
       results: calculated,
       isEnded: nextTurn >= this.questions.length,
-      pollingOpnions: this.getPollProjection(state, electionConfig, polls),
+      pollingOpnions: this.getPollProjection(
+        state,
+        electionConfig,
+        polls,
+        state.pollingOpnions?.selectedPollsterId,
+      ),
     };
 
     return session;
