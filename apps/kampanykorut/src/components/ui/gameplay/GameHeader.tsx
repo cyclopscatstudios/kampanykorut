@@ -16,9 +16,9 @@ import markdown from "../../../../../../brand-assets/svg/logo-wordmark-dark.svg"
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
+import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { Navigation } from "../../../logic/application/navigation/Navigation";
 import { Menu, MenuItem, SubMenu } from "../Menu";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { BugReporterButton } from "./BugReporter/BugReporterButton";
 import { GAME_HEADER_SLOT_ID } from "./gameHeaderSlot";
 import type { DialogId } from "./hooks/useDialogState";
@@ -44,7 +44,6 @@ export function GameHeader({
   state,
   config,
 }: GameHeaderProps) {
-  const [info, setInfo] = useState("turn");
   const [slot, setSlot] = useState<HTMLElement | null>(null);
   const pollsterEngine = container.resolve(PollsterEngine);
   const pollsters = pollsterEngine.getPollsters();
@@ -78,8 +77,6 @@ export function GameHeader({
     currentParty,
     title,
     year,
-    info,
-    setInfo,
     isTooNarrow,
   };
 
@@ -183,8 +180,6 @@ interface HeaderContentProps {
   currentParty?: RawParty;
   title?: string;
   year?: string;
-  info: string;
-  setInfo: (info: string) => void;
   isTooNarrow: boolean;
 }
 
@@ -197,8 +192,6 @@ function NarrowHeader({
   handlePollsterChange,
   pollsters,
   endResultsScreen,
-  info,
-  setInfo,
   isTooNarrow,
 }: HeaderContentProps) {
   return (
@@ -210,22 +203,15 @@ function NarrowHeader({
         <img src={logo} width="26" height="26" />
       </div>
       {state && config && (
-        <div
-          onClick={() => setInfo(info === "turn" ? "configName" : "turn")}
-          className="text-center"
-        >
-          {info === "turn" ? (
-            <TurnBadge
-              currentTurn={state.turn}
-              turns={
-                config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
-                  state.playerSide?.candidateId ?? ""
-                ]?.questions?.length ?? 0
-              }
-            />
-          ) : (
-            <Text size="sm">{config.electionConfig.title}</Text>
-          )}
+        <div className="text-center">
+          <TurnBadge
+            currentTurn={state.turn}
+            turns={
+              config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
+                state.playerSide?.candidateId ?? ""
+              ]?.questions?.length ?? 0
+            }
+          />
         </div>
       )}
       <Menu
@@ -342,8 +328,6 @@ function WideHeader({
   currentParty,
   title,
   year,
-  info,
-  setInfo,
 }: HeaderContentProps) {
   return (
     <div className="h-[80px] flex justify-between items-center mx-2.5">
@@ -410,22 +394,15 @@ function WideHeader({
         </div>
       </div>
       {state && config && (
-        <div
-          onClick={() => setInfo(info === "turn" ? "configName" : "turn")}
-          className="text-center"
-        >
-          {info === "turn" ? (
-            <TurnBadge
-              currentTurn={state.turn}
-              turns={
-                config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
-                  state.playerSide?.candidateId ?? ""
-                ]?.questions?.length ?? 0
-              }
-            />
-          ) : (
-            <Text size="lg">{config.electionConfig.title}</Text>
-          )}
+        <div className="text-center">
+          <TurnBadge
+            currentTurn={state.turn}
+            turns={
+              config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
+                state.playerSide?.candidateId ?? ""
+              ]?.questions?.length ?? 0
+            }
+          />
         </div>
       )}
       <div className="flex justify-center gap-2">
