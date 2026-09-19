@@ -18,9 +18,8 @@ export function SavedSessionsDialog({
   setIsOpen: (val: boolean) => void;
 }) {
   const gameStateEngine = container.resolve(StateEngine);
-  const autoSaveSession = gameStateEngine.getAutoSaveSession();
   const savedSessions = [
-    ...(autoSaveSession ? [autoSaveSession] : []),
+    ...gameStateEngine.getAutoSaveSessions(),
     ...gameStateEngine.getSavedGameSessions(),
   ];
   const [selectedSession, setSelectedSession] =
@@ -91,7 +90,7 @@ export function SavedSessionsBody({
           <div className="flex flex-col justify-center items-center">
             <Text color="darkBlue" weight="bold">
               {value.type === "auto"
-                ? t("loadSavedGamesMenu.autoSaveLabel")
+                ? `${t("loadSavedGamesMenu.autoSaveLabel")}-${value.campaignId}`
                 : value.name}
             </Text>
             <Text color="darkBlue" weight="normal">

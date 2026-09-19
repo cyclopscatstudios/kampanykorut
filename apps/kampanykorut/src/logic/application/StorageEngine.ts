@@ -15,6 +15,7 @@ export type SessionKey =
   | "currentSessionId"
   | "savedSessions"
   | "autoSaveTimestamp"
+  | "autoSaveRegistry"
   | "language"
   | "debugMode";
 

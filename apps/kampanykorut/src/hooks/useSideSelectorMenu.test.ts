@@ -23,6 +23,11 @@ const mockConfig: CampaignConfig = {
           { id: "dobrev_klara", label: "Dobrev Klára" },
           { id: "karacsony_gergely", label: "Karacsony Gergely" },
         ],
+        playableCandidates: [
+          "marki_zay_peter",
+          "dobrev_klara",
+          "karacsony_gergely",
+        ],
       },
       {
         id: "fidesz_kdnp",

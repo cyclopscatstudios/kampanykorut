@@ -15,9 +15,8 @@ export function LoadSavedSessionsMenu() {
   const [selectedSession, setSelectedSession] =
     useState<SavedCampaignSessionInfo | null>(null);
   const gameStateEngine = container.resolve(StateEngine);
-  const autoSaveSession = gameStateEngine.getAutoSaveSession();
   const savedSessions = [
-    ...(autoSaveSession ? [autoSaveSession] : []),
+    ...gameStateEngine.getAutoSaveSessions(),
     ...gameStateEngine.getSavedGameSessions(),
   ];
   const { goBack } = useNavigation();

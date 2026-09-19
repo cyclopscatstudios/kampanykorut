@@ -170,24 +170,21 @@ describe("StateEngine", () => {
     });
   });
 
-  describe("getAutoSaveSession", () => {
-    it("returns null when there is no active campaign", () => {
+  describe("getAutoSaveSessions", () => {
+    it("returns an empty list when there is no active campaign", () => {
       const { engine } = makeEngine();
-      expect(engine.getAutoSaveSession()).toBeNull();
+      expect(engine.getAutoSaveSessions()).toEqual([]);
     });
 
     it("reflects the live session without needing a manual save", () => {
       const { engine } = makeEngine();
-      mem._map.set(
-        `kampanykorut_campaignState-${FIXED_SESSION_ID}`,
-        JSON.stringify({
-          activeCampaignId: "c-test",
-          turn: 4,
-          isEnded: false,
-        }),
-      );
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 4,
+        isEnded: false,
+      });
 
-      const autoSave = engine.getAutoSaveSession();
+      const [autoSave] = engine.getAutoSaveSessions();
 
       expect(autoSave?.sessionId).toBe(FIXED_SESSION_ID);
       expect(autoSave?.campaignId).toBe("c-test");
@@ -204,11 +201,66 @@ describe("StateEngine", () => {
 
       engine.updateCampaignState({ turn: 7 });
 
-      const autoSave = engine.getAutoSaveSession();
+      const [autoSave] = engine.getAutoSaveSessions();
       const state = JSON.parse(
         mem._map.get(`kampanykorut_campaignState-${autoSave!.sessionId}`)!,
       );
       expect(state.turn).toBe(7);
+    });
+
+    it("keeps exactly one auto-save slot per campaign, overwriting on repeated saves", () => {
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 0,
+        isEnded: false,
+      });
+      engine.updateCampaignState({ turn: 1 });
+      engine.updateCampaignState({ turn: 2 });
+
+      const autoSaves = engine
+        .getAutoSaveSessions()
+        .filter((s) => s.campaignId === "c-test");
+
+      expect(autoSaves).toHaveLength(1);
+    });
+
+    it("keeps a separate auto-save available for another campaign, regardless of which session is currently active", () => {
+      const otherSessionId = "other-session-id";
+      mem._map.set(
+        `kampanykorut_campaignState-${otherSessionId}`,
+        JSON.stringify({
+          activeCampaignId: "c-other",
+          turn: 9,
+          isEnded: false,
+        }),
+      );
+      mem._map.set(
+        "kampanykorut_autoSaveRegistry",
+        JSON.stringify([{ campaignId: "c-other", sessionId: otherSessionId }]),
+      );
+
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 0,
+        isEnded: false,
+      });
+
+      const autoSaves = engine.getAutoSaveSessions();
+
+      expect(autoSaves).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            campaignId: "c-other",
+            sessionId: otherSessionId,
+          }),
+          expect.objectContaining({
+            campaignId: "c-test",
+            sessionId: FIXED_SESSION_ID,
+          }),
+        ]),
+      );
     });
   });
 
@@ -240,6 +292,35 @@ describe("StateEngine", () => {
       expect(
         mem._map.get("kampanykorut_campaignState-orphan-id"),
       ).toBeUndefined();
+    });
+
+    it("keeps another campaign's auto-save alive even while a different session is active", () => {
+      const otherSessionId = "other-session-id";
+      mem._map.set(
+        `kampanykorut_campaignState-${otherSessionId}`,
+        JSON.stringify({
+          activeCampaignId: "c-other",
+          turn: 9,
+          isEnded: false,
+        }),
+      );
+      mem._map.set(
+        "kampanykorut_autoSaveRegistry",
+        JSON.stringify([{ campaignId: "c-other", sessionId: otherSessionId }]),
+      );
+
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 0,
+        isEnded: false,
+      });
+
+      engine.cleanupUnsavedStates();
+
+      expect(
+        mem._map.get(`kampanykorut_campaignState-${otherSessionId}`),
+      ).toBeDefined();
     });
   });
 
