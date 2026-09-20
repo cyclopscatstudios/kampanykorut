@@ -59,10 +59,12 @@ export function useSideSelectorMenu(id: string) {
   };
 
   const candidateOptions =
-    selectedParty?.mainCandidates.map((c) => ({
-      label: c.label,
-      value: c.id,
-    })) ?? [];
+    selectedParty?.mainCandidates
+      .filter((c) => selectedParty.playableCandidates?.includes(c.id))
+      .map((c) => ({
+        label: c.label,
+        value: c.id,
+      })) ?? [];
 
   const playableSides =
     campaignConfig.electionConfig.playableSides.map((side) => ({

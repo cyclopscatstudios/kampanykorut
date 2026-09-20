@@ -7,6 +7,8 @@ export interface CampaignHeader {
   id: string;
   label: string;
   description: string;
+  year: number;
+  tags: string[];
   route: string;
   campaignBanner: string;
   thinCampaignBanner?: string;

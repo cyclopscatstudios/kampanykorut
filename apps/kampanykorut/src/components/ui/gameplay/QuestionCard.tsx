@@ -5,10 +5,10 @@ import { CurrentView } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
+import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useAssets } from "../../../hooks/useAssets";
 import { CommonWrapper } from "../CommonWrapper";
 import { Heading } from "../Heading";
-import { Tooltip } from "../Tooltip";
 
 interface Answer {
   id: string;

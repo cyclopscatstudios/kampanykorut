@@ -25,7 +25,7 @@ export function RootLayout() {
 
   useEffect(() => {
     if (!navigation.isUrlParamMatch("/game")) {
-      stateEngine.cleanupUnsavedStates();
+      // stateEngine.cleanupUnsavedStates();
     }
   }, [navigation, stateEngine]);
 

@@ -6,6 +6,7 @@ type DialogProps = {
   children: ReactNode;
   closeOnBackdrop?: boolean;
   closeOnEsc?: boolean;
+  panelClassName?: string;
 };
 
 export function Dialog({
@@ -14,6 +15,7 @@ export function Dialog({
   children,
   closeOnBackdrop = true,
   closeOnEsc = true,
+  panelClassName = "",
 }: DialogProps) {
   useEffect(() => {
     if (!closeOnEsc) return;
@@ -28,15 +30,25 @@ export function Dialog({
     return () => window.removeEventListener("keydown", handler);
   }, [onClose, closeOnEsc]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
   if (!open) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
       onClick={closeOnBackdrop ? onClose : undefined}
     >
       <div
-        className="md:min-w-[400px] max-w-[90vw] bg-[#161e30] rounded-xl border border-[#4462aa] shadow-xl"
+        className={`md:min-w-[400px] max-w-[90vw] max-h-[85vh] overflow-y-auto bg-[#161e30] rounded-xl border border-[#4462aa] shadow-xl ${panelClassName}`}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

@@ -10,13 +10,13 @@ import {
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
+import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useCampaignBanner } from "../../../hooks/useCampaignBanner";
 import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
 import { useGetCampaigns } from "../../../logic/application/hooks/useGetCampaigns";
 import { CommonWrapper } from "../CommonWrapper";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
-import { Tooltip } from "../Tooltip";
 
 export function SideSelectorMenu() {
   const { id } = useLoaderData();
@@ -241,30 +241,30 @@ function BadgeDisplay({
   const badges = getBadgesForTarget(config, party, candidate);
 
   return (
-    <Tooltip
-      content={t("translation:sideSelector.badgeDisplay.tooltipContent")}
-    >
-      <div className="bg-slate-800/40 rounded-lg p-5 backdrop-blur-sm border border-blue-50/30">
-        <div className="flex items-center mb-2">
+    <div className="bg-slate-800/40 rounded-lg p-5 backdrop-blur-sm border border-blue-50/30">
+      <div className="flex items-center mb-2">
+        <Tooltip
+          content={t("translation:sideSelector.badgeDisplay.tooltipContent")}
+        >
           <Icon name="info-circle" size="xs" className="mr-1" />
-          <Text size="xs">{t("sideSelector.badgeDisplay.label")}</Text>
-        </div>
-        <div className="flex flex-row gap-2 justify-center">
-          {badges?.map((badge) => (
-            <Tooltip content={badge.label} key={badge.id}>
-              <div>
-                <img
-                  key={badge.id}
-                  src={badge.asset?.badge}
-                  alt={badge.label}
-                  className="w-12 h-12"
-                />
-              </div>
-            </Tooltip>
-          ))}
-        </div>
+        </Tooltip>
+        <Text size="xs">{t("sideSelector.badgeDisplay.label")}</Text>
       </div>
-    </Tooltip>
+      <div className="flex flex-row gap-2 justify-center">
+        {badges?.map((badge) => (
+          <Tooltip content={badge.label} key={badge.id}>
+            <div>
+              <img
+                key={badge.id}
+                src={badge.asset?.badge}
+                alt={badge.label}
+                className="w-12 h-12"
+              />
+            </div>
+          </Tooltip>
+        ))}
+      </div>
+    </div>
   );
 }
 

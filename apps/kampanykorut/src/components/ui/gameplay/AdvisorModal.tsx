@@ -6,9 +6,9 @@ import { AdvisorFeedbackAssets } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
+import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Heading } from "../Heading";
-import { Tooltip } from "../Tooltip";
 
 interface AdvisorModalProps {
   advice: string;

@@ -71,7 +71,8 @@
           "label": "Orbán Viktor",
           "description": "A párt elnöke, a kormányzás folytatásának és a nemzeti érdekek védelmének támogatása mellett."
         }
-      ]
+      ],
+      "playableCandidates": ["orban_viktor"]
     }
   ],
   "electionAssets": [

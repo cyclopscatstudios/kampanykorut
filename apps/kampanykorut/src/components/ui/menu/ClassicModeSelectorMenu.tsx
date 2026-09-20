@@ -23,14 +23,15 @@ export function ClassicModeSelectorMenu() {
   const storage = container.resolve(StorageEngine);
   const debugMode = storage.getItem("debugMode", "localStorage") ?? "false";
   const enabled = JSON.parse(debugMode);
-
   const filtered = !enabled
     ? campaigns.filter((camapign) => camapign.isPublished)
     : campaigns;
 
   return (
     <MenuLayout>
-      <CampaignSelectorMenuList campaignHeaders={filtered} />
+      <CampaignSelectorMenuList
+        campaignHeaders={filtered.sort((a, b) => b.year - a.year)}
+      />
     </MenuLayout>
   );
 }
@@ -61,7 +62,6 @@ export function CampaignSelectorMenuList({
             ? selectedCampaign.label
             : t("gameSelectorMenhu.label")}
         </Heading>
-
         <Dropdown
           options={campaignHeaders.map((campaign) => ({
             label: campaign.label,
@@ -73,6 +73,7 @@ export function CampaignSelectorMenuList({
             if (found)
               saveSession("campaignState", { activeCampaignId: found.id });
           }}
+          placeholder={t("gameSelectorMenhu.placeholder")}
         />
         {selectedCampaign && (
           <div className="flex w-full gap-4 rounded-md border border-blue-500/40 p-3">
