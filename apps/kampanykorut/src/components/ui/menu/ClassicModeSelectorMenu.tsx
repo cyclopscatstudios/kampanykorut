@@ -23,14 +23,13 @@ export function ClassicModeSelectorMenu() {
   const storage = container.resolve(StorageEngine);
   const debugMode = storage.getItem("debugMode", "localStorage") ?? "false";
   const enabled = JSON.parse(debugMode);
-
   const filtered = !enabled
     ? campaigns.filter((camapign) => camapign.isPublished)
     : campaigns;
 
   return (
     <MenuLayout>
-      <CampaignSelectorMenuList campaignHeaders={filtered} />
+      <CampaignSelectorMenuList campaignHeaders={filtered.sort((a, b) => b.year - a.year)} />
     </MenuLayout>
   );
 }
