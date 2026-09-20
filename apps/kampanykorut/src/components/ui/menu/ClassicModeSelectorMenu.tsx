@@ -29,7 +29,9 @@ export function ClassicModeSelectorMenu() {
 
   return (
     <MenuLayout>
-      <CampaignSelectorMenuList campaignHeaders={filtered.sort((a, b) => b.year - a.year)} />
+      <CampaignSelectorMenuList
+        campaignHeaders={filtered.sort((a, b) => b.year - a.year)}
+      />
     </MenuLayout>
   );
 }
