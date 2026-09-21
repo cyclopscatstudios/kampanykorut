@@ -38,13 +38,7 @@ The domain enforces strict constraints:
 ### Prerequisites
 
 - 🟢 Node.js 18+
-- 📦 npm or yarn
-
-### Installation
-
-```bash
-npm install
-```
+- 📦 Yarn Classic (`corepack enable` — pinned via `packageManager` in the root `package.json`)
 
 ## Apps
 
@@ -63,13 +57,13 @@ yarn kampanykorut      # http://localhost:3000
 yarn cmaker            # http://localhost:3001
 ```
 
-Starts Vite dev server with HMR at http://localhost:5173
+Starts the Vite dev server with HMR.
 
 ### Build
 
 ```bash
 yarn build:kampanykorut # Build Kampánykörút
-yarn build:cmaker # Build Campain maker
+yarn build:cmaker # Build Campaign Maker
 ```
 
 Compiles TypeScript and optimizes with Vite.
@@ -77,19 +71,19 @@ Compiles TypeScript and optimizes with Vite.
 ### Testing
 
 ```bash
-yarn test           # Run unit tests (Vitest, watch modee)
-yarn playwright      # Playwright e2e tests, UI mode
-yarn playwright_headed # Playwright headed mode
-yarn playwright:ct   # Playwright component tests, UI mode
+yarn test             # Run unit tests (Vitest, watch mode)
+yarn playwright       # Playwright e2e tests, UI mode
+yarn playwright:headed # Playwright e2e tests, UI mode + headed
+yarn playwright:ct    # Playwright component tests, UI mode
 ```
 
 ### Code Quality
 
 ```bash
-npm run lint          # Check for linting issues
-npm run lint:fix      # Auto-fix linting issues
-npm run format        # Format code with Prettier
-npm run format:check  # Check formatting without changes
+yarn lint          # Check for linting issues
+yarn lint:fix      # Auto-fix linting issues
+yarn format        # Format code with Prettier
+yarn format:check  # Check formatting without changes
 ```
 
 ### Component Explorer (Ladle)
