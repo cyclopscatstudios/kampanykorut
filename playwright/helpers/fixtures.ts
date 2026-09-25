@@ -9,6 +9,12 @@ export const test = base.extend<{
     partyId?: string,
     candidateId?: string,
   ) => Promise<{ sessionId: string; state: CampaignState | null } | undefined>;
+  playCampaign: (
+    campaignId: string,
+    partyId?: string,
+    candidateId?: string,
+    answerPlan?: Record<string, string>,
+  ) => Promise<{ sessionId: string; state: CampaignState | null } | undefined>;
   getCampaignState: () => Promise<CampaignState | undefined>;
 }>({
   page: async ({ page }, use) => {
@@ -32,6 +38,19 @@ export const test = base.extend<{
         partyId: partyId ?? "",
         candidateId,
       }),
+    );
+  },
+  playCampaign: async ({ page }, use) => {
+    // window.kampanykorut is only set once the app bundle has run in the page,
+    // so we need to load the app before we can reach into it to seed.
+    await page.goto("/menu");
+    const testBridge = new TestBridge(page);
+    await use((campaignId, partyId, candidateId, answerPlan) =>
+      testBridge.playCampaign(
+        campaignId,
+        { partyId: partyId ?? "", candidateId },
+        answerPlan,
+      ),
     );
   },
   getCampaignState: async ({ page }, use) => {
