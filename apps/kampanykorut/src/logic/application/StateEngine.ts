@@ -2,13 +2,14 @@ import { singleton } from "tsyringe";
 import { v4 as uuidv4 } from "uuid";
 import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
 import { createLogger } from "@/shared/logger/logger";
+import type { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { CampaignState, HistoryItem } from "@/shared/types";
 import type { ConfigEngine } from "./ConfigEngine";
 import { Emitter } from "./Emitter";
 import type { IdGenerator } from "./IdGenerator";
 import type { Navigation } from "./navigation/Navigation";
+import type { SessionKey } from "./SessionKey";
 import { DEFAULT_CAMPAIGN_ID, type StateHandler } from "./StateHandler";
-import type { SessionKey, StorageEngine } from "./StorageEngine";
 
 export type SavedCampaignSessionInfo = {
   id: string;
@@ -37,7 +38,7 @@ export class StateEngine extends Emitter<CampaignState> {
     private gameConfigEngine: ConfigEngine,
     private voterEnvironment: VoterEnvironment,
     private districtGroupEngine: DistrictGroupEngine,
-    private storage: StorageEngine,
+    private storage: StorageEngine<SessionKey>,
     private generateId: IdGenerator,
     private navigation: Navigation,
     private stateHandler: StateHandler,

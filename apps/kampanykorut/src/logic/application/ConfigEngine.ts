@@ -1,5 +1,6 @@
 import { singleton } from "tsyringe";
 import { createLogger } from "@/shared/logger/logger";
+import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import {
   CampaignConfig,
   CampaignState,
@@ -11,8 +12,8 @@ import {
 } from "@/shared/types";
 import { Emitter } from "./Emitter";
 import { fetchJSON } from "./fetchJSON";
+import type { SessionKey } from "./SessionKey";
 import { StateHandler } from "./StateHandler";
-import { StorageEngine } from "./StorageEngine";
 
 const log = createLogger("ConfigEngine");
 
@@ -21,7 +22,7 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
   private configured = false;
 
   constructor(
-    private storage: StorageEngine,
+    private storage: StorageEngine<SessionKey>,
     private stateHandler: StateHandler,
   ) {
     log.debug("ElectionConfigEngine initialized");

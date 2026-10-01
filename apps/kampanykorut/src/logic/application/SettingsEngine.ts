@@ -1,9 +1,10 @@
 import { inject, singleton } from "tsyringe";
 import { createLogger } from "@/shared/logger/logger";
+import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { GameSettings, LanguageId, supportedLanguages } from "@/shared/types";
 import { setLanguage } from "../i18n/i18n";
 import { Emitter } from "./Emitter";
-import { StorageEngine } from "./StorageEngine";
+import type { SessionKey } from "./SessionKey";
 
 const log = createLogger("SettingsEngine");
 
@@ -14,7 +15,9 @@ export class SettingsEngine extends Emitter<GameSettings> {
     language: "en",
   };
 
-  constructor(@inject(StorageEngine) private storage: StorageEngine) {
+  constructor(
+    @inject(StorageEngine) private storage: StorageEngine<SessionKey>,
+  ) {
     log.debug("SettingsEngine initialized");
     super();
     this.init();

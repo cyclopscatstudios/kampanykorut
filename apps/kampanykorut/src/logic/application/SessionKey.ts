@@ -1,0 +1,15 @@
+export type SessionKey =
+  | "electionConfig"
+  | "campaignConfig"
+  | "menuSession"
+  | "devSession"
+  | "turnHistory"
+  | "settings"
+  | "gameConfig"
+  | "campaignState"
+  | "currentSessionId"
+  | "savedSessions"
+  | "autoSaveTimestamp"
+  | "autoSaveRegistry"
+  | "language"
+  | "debugMode";

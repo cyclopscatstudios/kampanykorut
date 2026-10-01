@@ -1,0 +1,74 @@
+{
+  "mainMenu": {
+    "newCampaign": "Új kampány"
+  },
+  "menuList": {
+    "button": {
+      "back": "Vissza"
+    }
+  },
+  "wizard": {
+    "stepEyebrow": "{{current}} / {{total}} · {{label}}",
+    "header": {
+      "modMakerBadge": "Mod-készítő",
+      "untitledCampaign": "Névtelen kampány",
+      "exportButton": "Exportálás JSON"
+    },
+    "footer": {
+      "cancel": "Mégse",
+      "stepCounter": "{{current}}. lépés / {{total}}",
+      "next": "Tovább · {{label}} →",
+      "export": "Exportálás"
+    },
+    "steps": {
+      "basics": "Alapok",
+      "parties": "Pártok",
+      "votes": "Szavazatok",
+      "candidates": "Oldalak és jelöltek",
+      "materials": "Kampány-anyagok",
+      "summary": "Összegzés · Export"
+    },
+    "placeholder": {
+      "comingSoon": "Ez a lépés hamarosan elkészül."
+    },
+    "common": {
+      "enabled": "bekapcsolva",
+      "disabled": "kikapcsolva"
+    },
+    "basics": {
+      "title": "Választási alapadatok",
+      "description": "Ez adja meg a szimuláció keretét: hány mandátum, milyen küszöb, és van-e egyéni-körzeti többlet. Ezek az election_config.json gyökér-mezői.",
+      "fields": {
+        "title": {
+          "label": "Kampány címe",
+          "placeholder": "pl. Béke vs Remény",
+          "hint": "Megjelenik a főmenüben és a kampány-chipben"
+        },
+        "year": {
+          "label": "Év",
+          "placeholder": "pl. 2022"
+        },
+        "listSeats": {
+          "label": "Lista mandátumok (listSeats)"
+        },
+        "allSeats": {
+          "label": "Összes mandátum (allSeats)"
+        },
+        "thresholdPercent": {
+          "label": "Bejutási küszöb (thresholdPercent)"
+        },
+        "districtBoost": {
+          "label": "Egyéni körzeti többlet-mandátum",
+          "status": "districtBoost: {{status}}"
+        }
+      },
+      "modifiers": {
+        "title": "Alap-eredmény módosítók",
+        "optionalBadge": "opcionális",
+        "description": "Ha egy esemény miatt a szimuláció előtt már módosul egy párt mandátumszáma (baseResults).",
+        "addButton": "+ Módosító hozzáadása",
+        "addButtonDisabledHint": "Előbb adj hozzá pártokat a {{step}} lépésben"
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "mainMenu": {
+    "newCampaign": "New Campaign"
+  },
+  "menuList": {
+    "button": {
+      "back": "Back"
+    }
+  },
+  "wizard": {
+    "stepEyebrow": "{{current}} / {{total}} · {{label}}",
+    "header": {
+      "modMakerBadge": "Mod Maker",
+      "untitledCampaign": "Untitled campaign",
+      "exportButton": "Export JSON"
+    },
+    "footer": {
+      "cancel": "Cancel",
+      "stepCounter": "Step {{current}} / {{total}}",
+      "next": "Next · {{label}} →",
+      "export": "Export"
+    },
+    "steps": {
+      "basics": "Basics",
+      "parties": "Parties",
+      "votes": "Votes",
+      "candidates": "Sides & candidates",
+      "materials": "Campaign materials",
+      "summary": "Summary · Export"
+    },
+    "placeholder": {
+      "comingSoon": "This step is coming soon."
+    },
+    "common": {
+      "enabled": "enabled",
+      "disabled": "disabled"
+    },
+    "basics": {
+      "title": "Election basics",
+      "description": "This defines the framework of the simulation: how many seats, what threshold, and whether there's an individual-district bonus. These are the root fields of election_config.json.",
+      "fields": {
+        "title": {
+          "label": "Campaign title",
+          "placeholder": "e.g. Peace vs. Hope",
+          "hint": "Shown in the main menu and the campaign chip"
+        },
+        "year": {
+          "label": "Year",
+          "placeholder": "e.g. 2022"
+        },
+        "listSeats": {
+          "label": "List seats (listSeats)"
+        },
+        "allSeats": {
+          "label": "Total seats (allSeats)"
+        },
+        "thresholdPercent": {
+          "label": "Entry threshold (thresholdPercent)"
+        },
+        "districtBoost": {
+          "label": "Individual-district bonus seat",
+          "status": "districtBoost: {{status}}"
+        }
+      },
+      "modifiers": {
+        "title": "Base result modifiers",
+        "optionalBadge": "optional",
+        "description": "If an event already shifts a party's seat count before the simulation (baseResults).",
+        "addButton": "+ Add modifier",
+        "addButtonDisabledHint": "Add parties first, in the {{step}} step"
+      }
+    }
+  }
+}

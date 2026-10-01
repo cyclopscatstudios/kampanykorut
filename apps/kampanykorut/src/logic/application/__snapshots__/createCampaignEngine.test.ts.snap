@@ -938,9 +938,10 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       },
     },
     "storage": StorageEngine {
+      "clearItem": [Function],
       "getItem": [Function],
-      "getLocalStorageItem": [Function],
       "getPrefixedKey": [Function],
+      "prefix": "kampanykorut",
       "setItem": [Function],
     },
   },

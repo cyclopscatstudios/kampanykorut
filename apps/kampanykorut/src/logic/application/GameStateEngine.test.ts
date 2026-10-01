@@ -1,11 +1,11 @@
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
+import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { ConfigEngine } from "./ConfigEngine";
 import { Navigation } from "./navigation/Navigation";
 import { type SavedCampaignSessionInfo, StateEngine } from "./StateEngine";
 import { StateHandler } from "./StateHandler";
-import { StorageEngine } from "./StorageEngine";
 
 const FIXED_SESSION_ID = "fixed-test-session-id";
 const FIXED_GENERATED_ID = "generated-uuid";
@@ -33,7 +33,7 @@ function makeEngine(
   navigation: Navigation = new Navigation(),
   generateId: () => string = () => FIXED_GENERATED_ID,
 ) {
-  const storage = new StorageEngine();
+  const storage = new StorageEngine("kampanykorut");
   const stateHandler = new StateHandler();
   const configEngine = new ConfigEngine(storage, stateHandler);
   const voterEnv = { configure: vi.fn() } as unknown as VoterEnvironment;
