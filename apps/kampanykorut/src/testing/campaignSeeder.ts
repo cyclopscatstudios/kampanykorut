@@ -85,7 +85,8 @@ export class CampaignApi {
 
     while (!state.isEnded && state.currentQuestion) {
       const question = state.currentQuestion;
-      const answerId = answerPlan[question.id] ?? question.possibleAnswers[0]?.id;
+      const answerId =
+        answerPlan[question.id] ?? question.possibleAnswers[0]?.id;
       if (!answerId) {
         throw new Error(`Question "${question.id}" has no possible answers`);
       }

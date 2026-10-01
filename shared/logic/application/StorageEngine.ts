@@ -15,7 +15,11 @@ export class StorageEngine<TKey extends string = string> {
     this.getPrefixedKey = this.getPrefixedKey.bind(this);
   }
 
-  getItem(key: TKey, storageType: StorageType = "localStorage", suffix?: string) {
+  getItem(
+    key: TKey,
+    storageType: StorageType = "localStorage",
+    suffix?: string,
+  ) {
     const prefixedKey = this.withSuffix(this.getPrefixedKey(key), suffix);
     if (storageType === "localStorage") {
       return localStorage.getItem(prefixedKey);
@@ -37,7 +41,11 @@ export class StorageEngine<TKey extends string = string> {
     sessionStorage.setItem(prefixedKey, value);
   }
 
-  clearItem(key: string, storageType: StorageType = "localStorage", suffix?: string) {
+  clearItem(
+    key: string,
+    storageType: StorageType = "localStorage",
+    suffix?: string,
+  ) {
     const prefixedKey = this.withSuffix(this.getPrefixedKey(key), suffix);
     if (storageType === "localStorage") {
       localStorage.removeItem(prefixedKey);
