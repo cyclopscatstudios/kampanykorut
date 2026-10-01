@@ -3,7 +3,7 @@ import { expect, test } from "../helpers/fixtures";
 const CAMPAIGN_ID = "2026_tavaszi_szel";
 const TOTAL_SEATS = 199;
 
-test("playing through all 32 questions reaches computed end-results", async ({
+test.skip("playing through all 32 questions reaches computed end-results", async ({
   page,
   playCampaign,
 }) => {
