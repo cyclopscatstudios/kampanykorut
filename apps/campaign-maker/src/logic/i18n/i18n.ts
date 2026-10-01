@@ -1,8 +1,5 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import { container } from "tsyringe";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
-import type { SessionKey } from "../application/SessionKey";
 import en from "../langs/en_lang.json";
 import hu from "../langs/hu_lang.json";
 
@@ -10,34 +7,27 @@ export const SUPPORTED_LANGUAGES = ["en", "hu"] as const;
 export type Language = (typeof SUPPORTED_LANGUAGES)[number];
 
 const DEFAULT_LANGUAGE: Language = "en";
-const STORAGE_KEY = "language";
 
-function readStoredLanguage(storage: StorageEngine<SessionKey>): Language {
-  const stored = storage.getItem(STORAGE_KEY, "localStorage");
+// campaign-maker has no language switcher yet, so it reads the kampanykörút
+// app's own language preference (same localStorage key, shared browser).
+const KAMPANYKORUT_LANGUAGE_STORAGE_KEY = "kampanykorut_language";
+
+function readStoredLanguage(): Language {
+  const stored = localStorage.getItem(KAMPANYKORUT_LANGUAGE_STORAGE_KEY);
   if (stored && (SUPPORTED_LANGUAGES as readonly string[]).includes(stored)) {
     return stored as Language;
   }
   return DEFAULT_LANGUAGE;
 }
 
-const storage = container.resolve<StorageEngine<SessionKey>>(StorageEngine);
-
 i18n.use(initReactI18next).init({
   resources: {
     en: { translation: en },
     hu: { translation: hu },
   },
-  lng: readStoredLanguage(storage),
+  lng: readStoredLanguage(),
   fallbackLng: DEFAULT_LANGUAGE,
   interpolation: { escapeValue: false },
 });
-
-i18n.on("languageChanged", (lng) => {
-  storage.setItem(STORAGE_KEY, lng, "localStorage");
-});
-
-export function setLanguage(lang: Language) {
-  i18n.changeLanguage(lang);
-}
 
 export default i18n;

@@ -7,16 +7,18 @@ describe("StorageEngine", () => {
   const localStorageMock = {
     getItem: vi.fn(),
     setItem: vi.fn(),
+    removeItem: vi.fn(),
     clear: vi.fn(),
   };
 
   const sessionStorageMock = {
     getItem: vi.fn(),
     setItem: vi.fn(),
+    removeItem: vi.fn(),
   };
 
   beforeEach(() => {
-    engine = new StorageEngine();
+    engine = new StorageEngine("kampanykorut");
 
     vi.clearAllMocks();
 
@@ -48,6 +50,25 @@ describe("StorageEngine", () => {
       );
       expect(result).toBe("sessionValue");
     });
+
+    it("should default to localStorage when no storage type is given", () => {
+      localStorageMock.getItem.mockReturnValue("value");
+
+      const result = engine.getItem("electionConfig");
+
+      expect(localStorageMock.getItem).toHaveBeenCalledWith(
+        "kampanykorut_electionConfig",
+      );
+      expect(result).toBe("value");
+    });
+
+    it("should append the suffix when provided", () => {
+      engine.getItem("draft", "localStorage", "draft-1");
+
+      expect(localStorageMock.getItem).toHaveBeenCalledWith(
+        "kampanykorut_draft-draft-1",
+      );
+    });
   });
 
   describe("setItem", () => {
@@ -70,11 +91,44 @@ describe("StorageEngine", () => {
     });
   });
 
-  describe("clear", () => {
+  describe("clearItem", () => {
+    it("should remove item from localStorage with prefix", () => {
+      engine.clearItem("electionConfig", "localStorage");
+
+      expect(localStorageMock.removeItem).toHaveBeenCalledWith(
+        "kampanykorut_electionConfig",
+      );
+    });
+
+    it("should remove item from sessionStorage with prefix", () => {
+      engine.clearItem("menuSession", "sessionStorage");
+
+      expect(sessionStorageMock.removeItem).toHaveBeenCalledWith(
+        "kampanykorut_menuSession",
+      );
+    });
+  });
+
+  describe("clearAll", () => {
     it("should clear localStorage", () => {
       engine.clearAll();
 
       expect(localStorageMock.clear).toHaveBeenCalled();
+    });
+  });
+
+  describe("prefix helpers", () => {
+    it("should prefix and strip keys using the configured prefix", () => {
+      const prefixed = engine.getPrefixedKey("electionConfig");
+
+      expect(prefixed).toBe("kampanykorut_electionConfig");
+      expect(engine.getKeyWithoutPrefix(prefixed)).toBe("electionConfig");
+    });
+
+    it("should use a different prefix for a different instance", () => {
+      const other = new StorageEngine("campaign_maker");
+
+      expect(other.getPrefixedKey("draft")).toBe("campaign_maker_draft");
     });
   });
 });
