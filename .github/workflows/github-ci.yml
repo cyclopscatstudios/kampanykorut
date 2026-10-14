@@ -3,7 +3,13 @@ name: Kampánykörút CI
 on:
   push:
     branches: ["*"]
+    paths-ignore:
+      - "apps/campaign-api/**"
+      - ".github/workflows/campaign-api.yml"
   pull_request:
+    paths-ignore:
+      - "apps/campaign-api/**"
+      - ".github/workflows/campaign-api.yml"
 
 jobs:
   build:
