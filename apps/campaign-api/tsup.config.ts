@@ -1,6 +1,5 @@
 import { spawn } from "node:child_process";
 import { once } from "node:events";
-
 import { defineConfig } from "tsup";
 
 export default defineConfig((options) => ({
