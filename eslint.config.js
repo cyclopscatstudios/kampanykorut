@@ -69,4 +69,11 @@ export default defineConfig([
       "import/no-duplicates": "error",
     },
   },
+  {
+    files: ["apps/campaign-api/**/*.ts"],
+    languageOptions: {
+      ecmaVersion: 2023,
+      globals: globals.node,
+    },
+  },
 ]);
