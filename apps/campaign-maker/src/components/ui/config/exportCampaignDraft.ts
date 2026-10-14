@@ -1,4 +1,5 @@
-import { CampaignDraft } from "./CampaignDraftContext";
+import { CampaignDraft, OTHER_PARTY_ID } from "./CampaignDraftContext";
+import { slugify } from "./slugify";
 
 export function downloadCampaignDraft(draft: CampaignDraft) {
   const baseResults = draft.baseResultModifiers.reduce<Record<string, number>>(
@@ -18,7 +19,12 @@ export function downloadCampaignDraft(draft: CampaignDraft) {
     thresholdPercent: draft.thresholdPercent,
     districtBoost: draft.districtBoost,
     baseResults,
-    parties: draft.parties,
+    parties: draft.parties
+      .filter((party) => party.id !== OTHER_PARTY_ID)
+      .map(({ id, name, color }) => ({ id, name, color })),
+    partyListVotes: Object.fromEntries(
+      draft.parties.map((party) => [party.id, party.votes]),
+    ),
   };
 
   const blob = new Blob([JSON.stringify(payload, null, 2)], {
@@ -30,13 +36,4 @@ export function downloadCampaignDraft(draft: CampaignDraft) {
   link.download = `${slugify(draft.title) || "election_config"}.json`;
   link.click();
   URL.revokeObjectURL(url);
-}
-
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, "_")
-    .replace(/^_+|_+$/g, "");
 }
