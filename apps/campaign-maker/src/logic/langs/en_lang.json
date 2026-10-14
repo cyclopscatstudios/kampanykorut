@@ -69,6 +69,28 @@
         "addButton": "+ Add modifier",
         "addButtonDisabledHint": "Add parties first, in the {{step}} step"
       }
+    },
+    "parties": {
+      "title": "Parties",
+      "description": "Define the parties running in the election, their color and their party list votes (partyListVotes).",
+      "addButton": "+ Add party",
+      "fields": {
+        "color": {
+          "label": "Color"
+        },
+        "name": {
+          "label": "Party name",
+          "placeholder": "e.g. Fidesz–KDNP"
+        },
+        "id": {
+          "label": "Identifier (id)",
+          "hint": "Generated from the name, but editable",
+          "lockedHint": "Fixed identifier, cannot be changed"
+        },
+        "votes": {
+          "label": "List votes"
+        }
+      }
     }
   }
 }

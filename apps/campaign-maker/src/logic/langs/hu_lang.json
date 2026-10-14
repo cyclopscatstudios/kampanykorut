@@ -69,6 +69,28 @@
         "addButton": "+ Módosító hozzáadása",
         "addButtonDisabledHint": "Előbb adj hozzá pártokat a {{step}} lépésben"
       }
+    },
+    "parties": {
+      "title": "Pártok",
+      "description": "Add meg a választáson induló pártokat, a színüket és a pártlistás szavazataikat (partyListVotes).",
+      "addButton": "+ Párt hozzáadása",
+      "fields": {
+        "color": {
+          "label": "Szín"
+        },
+        "name": {
+          "label": "Párt neve",
+          "placeholder": "pl. Fidesz–KDNP"
+        },
+        "id": {
+          "label": "Azonosító (id)",
+          "hint": "A névből generálódik, de módosítható",
+          "lockedHint": "Fix azonosító, nem módosítható"
+        },
+        "votes": {
+          "label": "Listás szavazatok"
+        }
+      }
     }
   }
 }

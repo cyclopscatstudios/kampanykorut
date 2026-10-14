@@ -10,6 +10,12 @@ export interface BaseResultModifier {
   delta: number;
 }
 
+export interface DraftParty extends RawParty {
+  votes: number;
+  // true once the user edited the id by hand, so it stops following the name
+  isIdCustom: boolean;
+}
+
 export interface CampaignDraft {
   title: string;
   year: string;
@@ -18,7 +24,24 @@ export interface CampaignDraft {
   thresholdPercent: number;
   districtBoost: boolean;
   baseResultModifiers: BaseResultModifier[];
-  parties: RawParty[];
+  parties: DraftParty[];
+}
+
+export const OTHER_PARTY_ID = "_other";
+
+function createOtherParty(): DraftParty {
+  return {
+    id: OTHER_PARTY_ID,
+    name: "Egyéb",
+    color: "#6C757D",
+    votes: 0,
+    isIdCustom: true,
+  };
+}
+
+function withOtherParty(draft: CampaignDraft): CampaignDraft {
+  if (draft.parties.some((p) => p.id === OTHER_PARTY_ID)) return draft;
+  return { ...draft, parties: [...draft.parties, createOtherParty()] };
 }
 
 export function createEmptyCampaignDraft(): CampaignDraft {
@@ -30,7 +53,7 @@ export function createEmptyCampaignDraft(): CampaignDraft {
     thresholdPercent: 5,
     districtBoost: true,
     baseResultModifiers: [],
-    parties: [],
+    parties: [createOtherParty()],
   };
 }
 
@@ -41,7 +64,7 @@ function loadCampaignDraft(
   const raw = storage.getItem("draft", "localStorage", draftId);
   if (!raw) return null;
   try {
-    return JSON.parse(raw) as CampaignDraft;
+    return withOtherParty(JSON.parse(raw) as CampaignDraft);
   } catch {
     return null;
   }

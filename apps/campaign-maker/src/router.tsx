@@ -3,9 +3,21 @@ import { MainMenu } from "./components/ui/menu/MainMenu";
 import { ElectionConfigMaker } from "./components/ui/config/ElectionConfigMaker";
 import { NewCampaignRedirect } from "./components/ui/config/NewCampaignRedirect";
 import { BasicsStep } from "./components/ui/config/steps/BasicsStep";
+import { PartiesStep } from "./components/ui/config/steps/PartiesStep";
 import { PlaceholderStep } from "./components/ui/config/steps/PlaceholderStep";
 import { WIZARD_STEPS } from "./components/ui/config/wizardSteps";
 import classNames from "classnames";
+
+function getStepElement(stepId: string) {
+  switch (stepId) {
+    case "basics":
+      return <BasicsStep />;
+    case "parties":
+      return <PartiesStep />;
+    default:
+      return <PlaceholderStep />;
+  }
+}
 
 export const router = createBrowserRouter([
   {
@@ -25,8 +37,7 @@ export const router = createBrowserRouter([
           },
           ...WIZARD_STEPS.map((step) => ({
             path: step.path,
-            element:
-              step.id === "basics" ? <BasicsStep /> : <PlaceholderStep />,
+            element: getStepElement(step.id),
           })),
         ],
       },
