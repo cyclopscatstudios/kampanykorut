@@ -1,0 +1,228 @@
+import { z } from "zod";
+import type { GithubClient } from "../../integrations/github/github-client";
+import { GithubError } from "../../integrations/github/github-client";
+
+export const NEWS_SYNC_PAGE_SIZE = 20;
+
+const DISCUSSION_FIELDS = /* GraphQL */ `
+  fragment NewsDiscussion on Discussion {
+    id
+    number
+    title
+    body
+    url
+    createdAt
+    updatedAt
+    closed
+    isPinned
+    upvoteCount
+    category {
+      id
+    }
+    comments {
+      totalCount
+    }
+    labels(first: 20) {
+      nodes {
+        name
+      }
+    }
+  }
+`;
+
+export const NEWS_CATEGORIES_QUERY = /* GraphQL */ `
+  query NewsCategories($owner: String!, $name: String!) {
+    repository(owner: $owner, name: $name) {
+      discussionCategories(first: 25) {
+        nodes {
+          id
+          name
+          slug
+        }
+      }
+    }
+  }
+`;
+
+export const NEWS_DISCUSSIONS_QUERY = /* GraphQL */ `
+  query NewsDiscussions(
+    $owner: String!
+    $name: String!
+    $categoryId: ID!
+    $first: Int!
+  ) {
+    repository(owner: $owner, name: $name) {
+      discussions(
+        categoryId: $categoryId
+        first: $first
+        orderBy: { field: CREATED_AT, direction: DESC }
+      ) {
+        nodes {
+          ...NewsDiscussion
+        }
+      }
+    }
+  }
+  ${DISCUSSION_FIELDS}
+`;
+
+export const NEWS_DISCUSSION_QUERY = /* GraphQL */ `
+  query NewsDiscussion($owner: String!, $name: String!, $number: Int!) {
+    repository(owner: $owner, name: $name) {
+      discussion(number: $number) {
+        ...NewsDiscussion
+      }
+    }
+  }
+  ${DISCUSSION_FIELDS}
+`;
+
+const DiscussionSchema = z
+  .object({
+    id: z.string(),
+    number: z.number().int(),
+    title: z.string(),
+    body: z.string(),
+    url: z.url(),
+    createdAt: z.iso.datetime(),
+    updatedAt: z.iso.datetime(),
+    closed: z.boolean(),
+    isPinned: z.boolean(),
+    upvoteCount: z.number().int(),
+    category: z.object({ id: z.string() }),
+    comments: z.object({ totalCount: z.number().int() }),
+    labels: z
+      .object({ nodes: z.array(z.object({ name: z.string() }).nullable()) })
+      .nullable(),
+  })
+  .transform((d) => ({
+    githubId: d.id,
+    number: d.number,
+    title: d.title,
+    markdown: d.body,
+    url: d.url,
+    createdAt: new Date(d.createdAt),
+    updatedAt: new Date(d.updatedAt),
+    closed: d.closed,
+    isPinned: d.isPinned,
+    upvoteCount: d.upvoteCount,
+    commentCount: d.comments.totalCount,
+    categoryId: d.category.id,
+    labels: (d.labels?.nodes ?? []).flatMap((label) =>
+      label ? [label.name] : [],
+    ),
+  }));
+
+export type NewsDiscussion = z.output<typeof DiscussionSchema>;
+
+const CategoriesResponse = z.object({
+  repository: z
+    .object({
+      discussionCategories: z.object({
+        nodes: z.array(
+          z.object({ id: z.string(), name: z.string(), slug: z.string() }),
+        ),
+      }),
+    })
+    .nullable(),
+});
+
+const DiscussionsResponse = z.object({
+  repository: z
+    .object({
+      discussions: z.object({ nodes: z.array(DiscussionSchema) }),
+    })
+    .nullable(),
+});
+
+const DiscussionResponse = z.object({
+  repository: z.object({ discussion: DiscussionSchema.nullable() }).nullable(),
+});
+
+function parse<T extends z.ZodType>(schema: T, data: unknown): z.output<T> {
+  const result = schema.safeParse(data);
+  if (!result.success) {
+    throw new GithubError(
+      `Unexpected GitHub response shape:\n${z.prettifyError(result.error)}`,
+    );
+  }
+  return result.data;
+}
+
+export class NewsGithubSource {
+  private categoryId: Promise<string> | null = null;
+
+  constructor(
+    private readonly client: GithubClient,
+    private readonly category: string,
+  ) {}
+
+  resolveCategoryId(): Promise<string> {
+    this.categoryId ??= this.fetchCategoryId().catch((err: unknown) => {
+      this.categoryId = null;
+      throw err;
+    });
+    return this.categoryId;
+  }
+
+  async fetchLatest(
+    first: number = NEWS_SYNC_PAGE_SIZE,
+  ): Promise<NewsDiscussion[]> {
+    const data = await this.client.graphql(NEWS_DISCUSSIONS_QUERY, {
+      ...this.client.repo,
+      categoryId: await this.resolveCategoryId(),
+      first,
+    });
+    const { repository } = parse(DiscussionsResponse, data);
+
+    if (!repository) throw this.repoNotFound();
+    return repository.discussions.nodes;
+  }
+
+
+  async fetchByNumber(number: number): Promise<NewsDiscussion | null> {
+    const data = await this.client.graphql(NEWS_DISCUSSION_QUERY, {
+      ...this.client.repo,
+      number,
+    });
+    const { repository } = parse(DiscussionResponse, data);
+
+    if (!repository) throw this.repoNotFound();
+    return repository.discussion;
+  }
+
+  async isNews(discussion: NewsDiscussion): Promise<boolean> {
+    return discussion.categoryId === (await this.resolveCategoryId());
+  }
+
+  private async fetchCategoryId(): Promise<string> {
+    const data = await this.client.graphql(
+      NEWS_CATEGORIES_QUERY,
+      this.client.repo,
+    );
+    const { repository } = parse(CategoriesResponse, data);
+
+    if (!repository) throw this.repoNotFound();
+
+    const wanted = this.category.toLocaleLowerCase("hu");
+    const match = repository.discussionCategories.nodes.find(
+      (c) => c.name.toLocaleLowerCase("hu") === wanted || c.slug === wanted,
+    );
+
+    if (!match) {
+      throw new GithubError(
+        `Discussion category "${this.category}" not found in ` +
+          `${this.client.repo.owner}/${this.client.repo.name}`,
+      );
+    }
+
+    return match.id;
+  }
+
+  private repoNotFound() {
+    const { owner, name } = this.client.repo;
+    return new GithubError(
+      `Repository ${owner}/${name} not found or not accessible to the GitHub App`,
+    );
+  }
+}

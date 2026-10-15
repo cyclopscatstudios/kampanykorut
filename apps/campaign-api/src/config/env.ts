@@ -1,5 +1,11 @@
 import { z } from "zod";
 
+const GITHUB_APP_KEYS = [
+  "GITHUB_APP_ID",
+  "GITHUB_APP_PRIVATE_KEY",
+  "GITHUB_APP_INSTALLATION_ID",
+] as const;
+
 const EnvSchema = z
   .object({
     NODE_ENV: z
@@ -13,6 +19,28 @@ const EnvSchema = z
     API_DOCS_ENABLED: z.stringbool().default(true),
     TRUST_PROXY: z.stringbool().default(false),
     GIT_COMMIT: z.string().default("unknown"),
+    GITHUB_APP_ID: z.string().min(1).optional(),
+    GITHUB_APP_PRIVATE_KEY: z.string().min(1).optional(),
+    GITHUB_APP_INSTALLATION_ID: z.string().min(1).optional(),
+    GITHUB_REPO: z
+      .string()
+      .regex(/^[\w.-]+\/[\w.-]+$/, "Expected owner/name")
+      .default("cyclopscatstudios/kampanykorut"),
+    GITHUB_NEWS_CATEGORY: z.string().min(1).default("Hírek"),
+  })
+  .superRefine((env, ctx) => {
+    const missing = GITHUB_APP_KEYS.filter((key) => env[key] === undefined);
+    if (missing.length === 0 || missing.length === GITHUB_APP_KEYS.length) {
+      return;
+    }
+
+    for (const key of missing) {
+      ctx.addIssue({
+        code: "custom",
+        path: [key],
+        message: "Required when any GITHUB_APP_* variable is set",
+      });
+    }
   })
   .transform((env) => ({
     env: env.NODE_ENV,
@@ -22,9 +50,37 @@ const EnvSchema = z
     docsEnabled: env.API_DOCS_ENABLED,
     trustProxy: env.TRUST_PROXY,
     gitCommit: env.GIT_COMMIT,
+    github: githubConfig(env),
   }));
 
+function githubConfig(env: {
+  GITHUB_APP_ID?: string;
+  GITHUB_APP_PRIVATE_KEY?: string;
+  GITHUB_APP_INSTALLATION_ID?: string;
+  GITHUB_REPO: string;
+  GITHUB_NEWS_CATEGORY: string;
+}) {
+  if (
+    !env.GITHUB_APP_ID ||
+    !env.GITHUB_APP_PRIVATE_KEY ||
+    !env.GITHUB_APP_INSTALLATION_ID
+  ) {
+    return null;
+  }
+
+  const [owner, name] = env.GITHUB_REPO.split("/") as [string, string];
+
+  return {
+    appId: env.GITHUB_APP_ID,
+    privateKey: env.GITHUB_APP_PRIVATE_KEY.replace(/\\n/g, "\n"),
+    installationId: env.GITHUB_APP_INSTALLATION_ID,
+    repo: { owner, name },
+    newsCategory: env.GITHUB_NEWS_CATEGORY,
+  };
+}
+
 export type AppConfig = z.output<typeof EnvSchema>;
+export type GithubConfig = NonNullable<AppConfig["github"]>;
 
 export function loadConfig(
   source: Record<string, string | undefined> = process.env,

@@ -47,3 +47,26 @@ docker run --rm -p 4000:4000 kampanykorut-api
 
 The runtime image contains only the API's production dependencies.
 Secrets are never baked into the image; pass them as environment variables.
+
+## GitHub integration
+
+The news box is fed from GitHub Discussions, read through a GitHub App
+installation (`src/integrations/github`). One-time setup, no code involved:
+
+1. **Repository → Settings → Features:** enable Discussions.
+2. **Discussions → Categories → New category:** name `Hírek`, format
+   **Announcement** (only maintainers can open topics, players can comment).
+3. **GitHub App** (the same app the bug reports use; create it under the
+   organization if it does not exist yet):
+   - Repository permissions: `Discussions: Read-only` (plus `Metadata: Read-only`,
+     which GitHub adds automatically).
+   - Subscribe to events: `Discussion`.
+   - Install it on the `kampanykorut` repository only.
+4. Put the credentials into `.env`:
+   - `GITHUB_APP_ID`: App settings → _App ID_.
+   - `GITHUB_APP_PRIVATE_KEY`: App settings → _Generate a private key_.
+   - `GITHUB_APP_INSTALLATION_ID`: the number at the end of the installation
+     URL (`/settings/installations/<id>`).
+
+The news category is looked up by `GITHUB_NEWS_CATEGORY` (name or slug), so its
+node ID never has to be copied by hand.
