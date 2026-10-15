@@ -10,7 +10,10 @@ import { Toaster } from "react-hot-toast";
 import { RouterProvider } from "react-router-dom";
 import { initDevApi } from "./initApi";
 import { initAnalytics } from "./logic/infra/posthog/posthog";
+import { initStorageErrorNotifier } from "./logic/infra/storageErrorNotifier";
 import { router } from "./router";
+
+initStorageErrorNotifier();
 
 if (import.meta.env.DEV || import.meta.env.PLAYWRIGHT === "true") {
   initDevApi();
