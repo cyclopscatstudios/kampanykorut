@@ -27,6 +27,8 @@ const EnvSchema = z
       .regex(/^[\w.-]+\/[\w.-]+$/, "Expected owner/name")
       .default("cyclopscatstudios/kampanykorut"),
     GITHUB_NEWS_CATEGORY: z.string().min(1).default("Hírek"),
+    GITHUB_WEBHOOK_SECRET: z.string().min(16).optional(),
+    NEWS_SYNC_INTERVAL_MINUTES: z.coerce.number().min(0).default(15),
   })
   .superRefine((env, ctx) => {
     const missing = GITHUB_APP_KEYS.filter((key) => env[key] === undefined);
@@ -59,6 +61,8 @@ function githubConfig(env: {
   GITHUB_APP_INSTALLATION_ID?: string;
   GITHUB_REPO: string;
   GITHUB_NEWS_CATEGORY: string;
+  GITHUB_WEBHOOK_SECRET?: string;
+  NEWS_SYNC_INTERVAL_MINUTES: number;
 }) {
   if (
     !env.GITHUB_APP_ID ||
@@ -76,6 +80,11 @@ function githubConfig(env: {
     installationId: env.GITHUB_APP_INSTALLATION_ID,
     repo: { owner, name },
     newsCategory: env.GITHUB_NEWS_CATEGORY,
+    webhookSecret: env.GITHUB_WEBHOOK_SECRET ?? null,
+    newsSyncIntervalMs:
+      env.NEWS_SYNC_INTERVAL_MINUTES > 0
+        ? env.NEWS_SYNC_INTERVAL_MINUTES * 60_000
+        : null,
   };
 }
 

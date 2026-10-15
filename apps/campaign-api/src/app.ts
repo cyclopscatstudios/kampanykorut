@@ -2,7 +2,16 @@ import { randomUUID } from "node:crypto";
 import type { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 import Fastify, { type FastifyServerOptions, LogController } from "fastify";
 import type { AppConfig } from "./config/env";
+import { GithubClient } from "./integrations/github/github-client";
+import { githubWebhooks } from "./integrations/github/webhooks";
 import { healthRoutes } from "./modules/health/health.routes";
+import { NewsGithubSource } from "./modules/news/news.github";
+import { newsModule } from "./modules/news/news.module";
+import {
+  InMemoryNewsRepository,
+  type NewsRepository,
+} from "./modules/news/news.repository";
+import type { NewsSource } from "./modules/news/news.sync";
 import { problemDetails } from "./plugins/problem-details";
 import { openApi } from "./plugins/swagger";
 
@@ -10,6 +19,11 @@ declare module "fastify" {
   interface FastifyInstance {
     config: AppConfig;
   }
+}
+
+export interface AppDeps {
+  newsSource?: NewsSource;
+  newsRepository?: NewsRepository;
 }
 
 const BODY_LIMIT_BYTES = 2 * 1024 * 1024;
@@ -26,7 +40,7 @@ function loggerOptions(config: AppConfig): FastifyServerOptions["logger"] {
   return { level: config.logLevel };
 }
 
-export async function buildApp(config: AppConfig) {
+export async function buildApp(config: AppConfig, deps: AppDeps = {}) {
   const app = Fastify({
     logger: loggerOptions(config),
     genReqId: () => randomUUID(),
@@ -52,6 +66,26 @@ export async function buildApp(config: AppConfig) {
   }
 
   await app.register(healthRoutes);
+
+  if (config.github) {
+    const github = new GithubClient(config.github);
+
+    if (config.github.webhookSecret) {
+      await app.register(githubWebhooks, {
+        secret: config.github.webhookSecret,
+      });
+    }
+
+    await app.register(newsModule, {
+      source:
+        deps.newsSource ??
+        new NewsGithubSource(github, config.github.newsCategory),
+      repository: deps.newsRepository ?? new InMemoryNewsRepository(),
+      repo: config.github.repo,
+      syncIntervalMs:
+        config.env === "test" ? null : config.github.newsSyncIntervalMs,
+    });
+  }
 
   return app;
 }

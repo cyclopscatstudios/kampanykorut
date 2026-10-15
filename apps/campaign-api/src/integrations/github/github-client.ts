@@ -44,7 +44,6 @@ export function createAppJwt(
   return `${header}.${payload}.${base64url(signature)}`;
 }
 
-
 export class GithubClient {
   private token: { value: string; expiresAt: number } | null = null;
   private pendingToken: Promise<string> | null = null;

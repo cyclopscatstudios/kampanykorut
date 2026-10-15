@@ -50,6 +50,8 @@ describe("loadConfig", () => {
       installationId: "678",
       repo: { owner: "acme", name: "game" },
       newsCategory: "Hírek",
+      webhookSecret: null,
+      newsSyncIntervalMs: 900_000,
     });
     expect(() => loadConfig({ GITHUB_APP_ID: "12345" })).toThrow(
       /GITHUB_APP_PRIVATE_KEY[\s\S]*GITHUB_APP_INSTALLATION_ID/,

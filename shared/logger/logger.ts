@@ -14,6 +14,21 @@ const environment = import.meta.env.VITE_ENVIRONMENT;
 
 const debugEnabled = environment === "development" || environment === "dev";
 
+const sentryEnabled = isProd && environment === "production";
+
+function extractError(data: unknown): Error | undefined {
+  if (data instanceof Error) {
+    return data;
+  }
+  if (data && typeof data === "object" && "error" in data) {
+    const nested = (data as { error: unknown }).error;
+    if (nested instanceof Error) {
+      return nested;
+    }
+  }
+  return undefined;
+}
+
 function log(level: LogLevel, payload: LogPayload) {
   if (level === "debug" && !debugEnabled) {
     return;
@@ -33,11 +48,12 @@ function log(level: LogLevel, payload: LogPayload) {
     console.error(prefix, message, data ?? "", context ?? "");
   }
 
-  if (isProd && environment === "production") {
+  if (sentryEnabled) {
     if (level === "error") {
-      if (data instanceof Error) {
-        Sentry.captureException(data, {
-          extra: { message, ...context },
+      const error = extractError(data);
+      if (error) {
+        Sentry.captureException(error, {
+          extra: { message, data, ...context },
         });
       } else {
         Sentry.captureMessage(message, {
@@ -73,6 +89,15 @@ const logger = {
     log("error", { message, data, context });
   },
 };
+
+export function setLogTags(tags: Record<string, string | undefined>) {
+  if (!sentryEnabled) {
+    return;
+  }
+  Object.entries(tags).forEach(([key, value]) => {
+    Sentry.setTag(key, value);
+  });
+}
 
 export function createLogger(scope: string) {
   return {

@@ -34,3 +34,15 @@ export const discussionNode = (overrides: Record<string, unknown> = {}) => ({
   labels: { nodes: [{ name: "kampany" }, { name: "lang:en" }] },
   ...overrides,
 });
+
+export const discussionsPage = (
+  nodes: unknown[],
+  endCursor: string | null = null,
+) => ({
+  repository: {
+    discussions: {
+      nodes,
+      pageInfo: { hasNextPage: endCursor !== null, endCursor },
+    },
+  },
+});

@@ -3,6 +3,7 @@ import type { GithubClient } from "../../integrations/github/github-client";
 import {
   categoriesResponse,
   discussionNode,
+  discussionsPage,
   NEWS_CATEGORY_ID,
   OTHER_CATEGORY_ID,
 } from "./__fixtures__/discussions";
@@ -54,7 +55,7 @@ describe("NewsGithubSource", () => {
     const { client, graphql } = fakeClient({
       [NEWS_CATEGORIES_QUERY]: categoriesResponse,
       [NEWS_DISCUSSIONS_QUERY]: {
-        repository: { discussions: { nodes: [discussionNode()] } },
+        ...discussionsPage([discussionNode()]),
       },
     });
 
@@ -64,6 +65,7 @@ describe("NewsGithubSource", () => {
       ...repo,
       categoryId: NEWS_CATEGORY_ID,
       first: 20,
+      after: null,
     });
     expect(news).toEqual({
       githubId: "D_kwDO42",
@@ -80,6 +82,25 @@ describe("NewsGithubSource", () => {
       categoryId: NEWS_CATEGORY_ID,
       labels: ["kampany", "lang:en"],
     });
+  });
+
+  it("pages through the whole category", async () => {
+    const pages = [
+      discussionsPage([discussionNode({ id: "D_1", number: 1 })], "c1"),
+      discussionsPage([discussionNode({ id: "D_2", number: 2 })]),
+    ];
+    const graphql = vi.fn(async (query: string) =>
+      query === NEWS_CATEGORIES_QUERY ? categoriesResponse : pages.shift(),
+    );
+    const client = { repo, graphql } as unknown as GithubClient;
+
+    const all = await new NewsGithubSource(client, "Hírek").fetchAll();
+
+    expect(all.map((d) => d.number)).toEqual([1, 2]);
+    expect(graphql).toHaveBeenLastCalledWith(
+      NEWS_DISCUSSIONS_QUERY,
+      expect.objectContaining({ first: 50, after: "c1" }),
+    );
   });
 
   it("fetches a single discussion and tells whether it is news", async () => {
@@ -120,9 +141,7 @@ describe("NewsGithubSource", () => {
     const { client } = fakeClient({
       [NEWS_CATEGORIES_QUERY]: categoriesResponse,
       [NEWS_DISCUSSIONS_QUERY]: {
-        repository: {
-          discussions: { nodes: [discussionNode({ number: "42" })] },
-        },
+        ...discussionsPage([discussionNode({ number: "42" })]),
       },
     });
 

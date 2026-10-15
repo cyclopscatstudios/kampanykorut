@@ -15,6 +15,8 @@ const config: GithubConfig = {
   installationId: "678",
   repo: { owner: "cyclopscatstudios", name: "kampanykorut" },
   newsCategory: "Hírek",
+  webhookSecret: null,
+  newsSyncIntervalMs: null,
 };
 
 const NOW = new Date("2026-10-15T12:00:00Z");

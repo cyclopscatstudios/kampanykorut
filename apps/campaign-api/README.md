@@ -60,6 +60,8 @@ installation (`src/integrations/github`). One-time setup, no code involved:
    organization if it does not exist yet):
    - Repository permissions: `Discussions: Read-only` (plus `Metadata: Read-only`,
      which GitHub adds automatically).
+   - Webhook URL: `https://<api-host>/webhooks/github`, content type
+     `application/json`, with a random secret (`openssl rand -hex 32`).
    - Subscribe to events: `Discussion`.
    - Install it on the `kampanykorut` repository only.
 4. Put the credentials into `.env`:
@@ -67,6 +69,22 @@ installation (`src/integrations/github`). One-time setup, no code involved:
    - `GITHUB_APP_PRIVATE_KEY`: App settings → _Generate a private key_.
    - `GITHUB_APP_INSTALLATION_ID`: the number at the end of the installation
      URL (`/settings/installations/<id>`).
+   - `GITHUB_WEBHOOK_SECRET`: the webhook secret from step 3.
 
 The news category is looked up by `GITHUB_NEWS_CATEGORY` (name or slug), so its
 node ID never has to be copied by hand.
+
+### News sync
+
+- `POST /webhooks/github` verifies `X-Hub-Signature-256` and dispatches events
+  to the registered handlers. For `discussion` events in the news category (or
+  for news that already exist), the discussion is re-fetched over GraphQL and
+  stored or hidden.
+- On startup a full sync pages through the whole category and hides stored
+  news that no longer exist there. Every `NEWS_SYNC_INTERVAL_MINUTES` the
+  latest 20 discussions are re-synced to recover missed webhooks.
+- Parsing rules: type from the `uj-funkcio` / `frissites` / `kampany` /
+  `javitas` label, `lang:en` label for English, first image is the cover,
+  first paragraph is the lead, a last paragraph that is a single link is the
+  CTA, and a trailing `lejár: YYYY-MM-DD` line sets the expiry (end of that day,
+  Budapest time). Closed discussions are hidden.

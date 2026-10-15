@@ -3,6 +3,8 @@ import type { GithubClient } from "../../integrations/github/github-client";
 import { GithubError } from "../../integrations/github/github-client";
 
 export const NEWS_SYNC_PAGE_SIZE = 20;
+const FULL_SYNC_PAGE_SIZE = 50;
+const FULL_SYNC_MAX_PAGES = 40;
 
 const DISCUSSION_FIELDS = /* GraphQL */ `
   fragment NewsDiscussion on Discussion {
@@ -50,15 +52,21 @@ export const NEWS_DISCUSSIONS_QUERY = /* GraphQL */ `
     $name: String!
     $categoryId: ID!
     $first: Int!
+    $after: String
   ) {
     repository(owner: $owner, name: $name) {
       discussions(
         categoryId: $categoryId
         first: $first
+        after: $after
         orderBy: { field: CREATED_AT, direction: DESC }
       ) {
         nodes {
           ...NewsDiscussion
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
         }
       }
     }
@@ -130,7 +138,13 @@ const CategoriesResponse = z.object({
 const DiscussionsResponse = z.object({
   repository: z
     .object({
-      discussions: z.object({ nodes: z.array(DiscussionSchema) }),
+      discussions: z.object({
+        nodes: z.array(DiscussionSchema),
+        pageInfo: z.object({
+          hasNextPage: z.boolean(),
+          endCursor: z.string().nullable(),
+        }),
+      }),
     })
     .nullable(),
 });
@@ -168,17 +182,25 @@ export class NewsGithubSource {
   async fetchLatest(
     first: number = NEWS_SYNC_PAGE_SIZE,
   ): Promise<NewsDiscussion[]> {
-    const data = await this.client.graphql(NEWS_DISCUSSIONS_QUERY, {
-      ...this.client.repo,
-      categoryId: await this.resolveCategoryId(),
-      first,
-    });
-    const { repository } = parse(DiscussionsResponse, data);
-
-    if (!repository) throw this.repoNotFound();
-    return repository.discussions.nodes;
+    const page = await this.fetchPage(first, null);
+    return page.nodes;
   }
 
+  async fetchAll(): Promise<NewsDiscussion[]> {
+    const all: NewsDiscussion[] = [];
+    let after: string | null = null;
+
+    for (let i = 0; i < FULL_SYNC_MAX_PAGES; i++) {
+      const page = await this.fetchPage(FULL_SYNC_PAGE_SIZE, after);
+      all.push(...page.nodes);
+      if (!page.pageInfo.hasNextPage || !page.pageInfo.endCursor) return all;
+      after = page.pageInfo.endCursor;
+    }
+
+    throw new GithubError(
+      `News category has more than ${FULL_SYNC_MAX_PAGES} pages of discussions`,
+    );
+  }
 
   async fetchByNumber(number: number): Promise<NewsDiscussion | null> {
     const data = await this.client.graphql(NEWS_DISCUSSION_QUERY, {
@@ -193,6 +215,19 @@ export class NewsGithubSource {
 
   async isNews(discussion: NewsDiscussion): Promise<boolean> {
     return discussion.categoryId === (await this.resolveCategoryId());
+  }
+
+  private async fetchPage(first: number, after: string | null) {
+    const data = await this.client.graphql(NEWS_DISCUSSIONS_QUERY, {
+      ...this.client.repo,
+      categoryId: await this.resolveCategoryId(),
+      first,
+      after,
+    });
+    const { repository } = parse(DiscussionsResponse, data);
+
+    if (!repository) throw this.repoNotFound();
+    return repository.discussions;
   }
 
   private async fetchCategoryId(): Promise<string> {
