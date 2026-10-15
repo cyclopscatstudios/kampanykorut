@@ -1,7 +1,7 @@
 import { vi } from "vitest";
+import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { GameSettings } from "@/shared/types";
 import { SettingsEngine } from "./SettingsEngine";
-import { StorageEngine } from "./StorageEngine";
 
 const makeStorageMock = (storedValue: string | null = null) => ({
   getItem: vi.fn().mockReturnValue(storedValue),

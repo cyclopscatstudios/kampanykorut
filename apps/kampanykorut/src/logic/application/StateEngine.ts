@@ -2,13 +2,14 @@ import { singleton } from "tsyringe";
 import { v4 as uuidv4 } from "uuid";
 import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
 import { createLogger } from "@/shared/logger/logger";
+import type { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { CampaignState, HistoryItem } from "@/shared/types";
 import type { ConfigEngine } from "./ConfigEngine";
 import { Emitter } from "./Emitter";
 import type { IdGenerator } from "./IdGenerator";
 import type { Navigation } from "./navigation/Navigation";
+import type { SessionKey } from "./SessionKey";
 import { DEFAULT_CAMPAIGN_ID, type StateHandler } from "./StateHandler";
-import type { SessionKey, StorageEngine } from "./StorageEngine";
 
 export type SavedCampaignSessionInfo = {
   id: string;
@@ -37,7 +38,7 @@ export class StateEngine extends Emitter<CampaignState> {
     private gameConfigEngine: ConfigEngine,
     private voterEnvironment: VoterEnvironment,
     private districtGroupEngine: DistrictGroupEngine,
-    private storage: StorageEngine,
+    private storage: StorageEngine<SessionKey>,
     private generateId: IdGenerator,
     private navigation: Navigation,
     private stateHandler: StateHandler,
@@ -195,16 +196,23 @@ export class StateEngine extends Emitter<CampaignState> {
     const isManualSave = session.type !== "auto";
     const targetSessionId = isManualSave ? this.generateId() : sessionId;
     if (isManualSave) {
-      this.storage.setItem(
-        `campaignState-${targetSessionId}`,
-        this.safeStringify(state) ?? "null",
-        "localStorage",
-      );
-      this.storage.setItem(
-        `turnHistory-${targetSessionId}`,
-        history,
-        "localStorage",
-      );
+      const copied =
+        this.storage.setItem(
+          `campaignState-${targetSessionId}`,
+          this.safeStringify(state) ?? "null",
+          "localStorage",
+        ) &&
+        this.storage.setItem(
+          `turnHistory-${targetSessionId}`,
+          history,
+          "localStorage",
+        );
+      if (!copied) {
+        log.error("failed to copy saved session, aborting load");
+        this.storage.clearItem(`campaignState-${targetSessionId}`);
+        this.storage.clearItem(`turnHistory-${targetSessionId}`);
+        return;
+      }
     }
 
     this.saveSessionId(targetSessionId);
@@ -262,22 +270,30 @@ export class StateEngine extends Emitter<CampaignState> {
     }
     const snapshotSessionId = existingSlot?.sessionId ?? uuidv4();
 
-    this.storage.setItem(
-      `campaignState-${snapshotSessionId}`,
-      this.safeStringify(currentState) ?? "null",
-      "localStorage",
-    );
     const historyRaw = this.storage.getItem(
       "turnHistory",
       "localStorage",
       sessionId,
     );
-    if (historyRaw) {
+    const snapshotSaved =
       this.storage.setItem(
-        `turnHistory-${snapshotSessionId}`,
-        historyRaw,
+        `campaignState-${snapshotSessionId}`,
+        this.safeStringify(currentState) ?? "null",
         "localStorage",
-      );
+      ) &&
+      (!historyRaw ||
+        this.storage.setItem(
+          `turnHistory-${snapshotSessionId}`,
+          historyRaw,
+          "localStorage",
+        ));
+    if (!snapshotSaved) {
+      log.error("failed to save session snapshot, slot was not saved");
+      if (!existingSlot) {
+        this.storage.clearItem(`campaignState-${snapshotSessionId}`);
+        this.storage.clearItem(`turnHistory-${snapshotSessionId}`);
+      }
+      return;
     }
 
     const sessionDate = this.getNormalizedDateString();

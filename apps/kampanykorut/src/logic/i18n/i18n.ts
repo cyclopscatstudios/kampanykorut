@@ -1,7 +1,8 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { container } from "tsyringe";
-import { StorageEngine } from "../application/StorageEngine";
+import { StorageEngine } from "@/shared/logic/application/StorageEngine";
+import type { SessionKey } from "../application/SessionKey";
 import en from "../langs/en_lang.json";
 import hu from "../langs/hu_lang.json";
 
@@ -11,7 +12,7 @@ export type Language = (typeof SUPPORTED_LANGUAGES)[number];
 const DEFAULT_LANGUAGE: Language = "en";
 const STORAGE_KEY = "language";
 
-function readStoredLanguage(storage: StorageEngine): Language {
+function readStoredLanguage(storage: StorageEngine<SessionKey>): Language {
   const stored = storage.getItem(STORAGE_KEY, "localStorage");
   if (stored && (SUPPORTED_LANGUAGES as readonly string[]).includes(stored)) {
     return stored as Language;
@@ -19,7 +20,7 @@ function readStoredLanguage(storage: StorageEngine): Language {
   return DEFAULT_LANGUAGE;
 }
 
-const storage = container.resolve(StorageEngine);
+const storage = container.resolve<StorageEngine<SessionKey>>(StorageEngine);
 
 i18n.use(initReactI18next).init({
   resources: {

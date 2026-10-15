@@ -159,7 +159,9 @@
     }
   },
   "toaster": {
-    "settingsUpdated": "Settings updated successfully!"
+    "settingsUpdated": "Settings updated successfully!",
+    "storageQuotaExceeded": "Your browser storage is full, so the game could not be saved. You can keep playing, but progress may be lost if you reload the page.",
+    "storageWriteFailed": "The game could not be saved in this browser. You can keep playing, but progress may be lost if you reload the page."
   },
   "voteCountingScreen": {
     "steps": {

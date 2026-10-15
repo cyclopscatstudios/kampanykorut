@@ -3,7 +3,13 @@ name: Kampánykörút CI
 on:
   push:
     branches: ["*"]
+    paths-ignore:
+      - "apps/campaign-api/**"
+      - ".github/workflows/campaign-api.yml"
   pull_request:
+    paths-ignore:
+      - "apps/campaign-api/**"
+      - ".github/workflows/campaign-api.yml"
 
 jobs:
   build:
@@ -16,7 +22,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: "yarn"
 
       - run: corepack enable
@@ -49,7 +55,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: yarn
 
       - uses: actions/cache@v4
@@ -85,7 +91,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: yarn
 
       - uses: actions/cache@v4

@@ -938,10 +938,18 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       },
     },
     "storage": StorageEngine {
+      "clearItem": [Function],
+      "clearItemsWithPrefix": [Function],
       "getItem": [Function],
-      "getLocalStorageItem": [Function],
       "getPrefixedKey": [Function],
+      "onWriteError": [Function],
+      "prefix": "kampanykorut",
       "setItem": [Function],
+      "unsavedValues": {
+        "localStorage": Map {},
+        "sessionStorage": Map {},
+      },
+      "writeErrorListeners": Set {},
     },
   },
 }

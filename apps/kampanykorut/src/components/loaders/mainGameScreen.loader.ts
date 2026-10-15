@@ -9,11 +9,7 @@ export async function mainGameScreenLoader({ params }: LoaderFunctionArgs) {
   const state = stateEngine.getCampaignState();
   const sessionId = stateEngine.getSessionId();
 
-  if (!state) {
-    return null;
-  }
-
-  if (state.isEnded) {
+  if (state?.isEnded) {
     const path = `/game/${state.activeCampaignId}/end-results?sessionId=${sessionId}`;
     window.location.href = path;
     return null;

@@ -1,13 +1,47 @@
-import { createBrowserRouter, Outlet } from "react-router";
+import { createBrowserRouter, Navigate, Outlet } from "react-router";
 import { MainMenu } from "./components/ui/menu/MainMenu";
+import { ElectionConfigMaker } from "./components/ui/config/ElectionConfigMaker";
+import { NewCampaignRedirect } from "./components/ui/config/NewCampaignRedirect";
+import { BasicsStep } from "./components/ui/config/steps/BasicsStep";
+import { PartiesStep } from "./components/ui/config/steps/PartiesStep";
+import { PlaceholderStep } from "./components/ui/config/steps/PlaceholderStep";
+import { WIZARD_STEPS } from "./components/ui/config/wizardSteps";
 import classNames from "classnames";
+
+function getStepElement(stepId: string) {
+  switch (stepId) {
+    case "basics":
+      return <BasicsStep />;
+    case "parties":
+      return <PartiesStep />;
+    default:
+      return <PlaceholderStep />;
+  }
+}
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     hydrateFallbackElement: <div>loading...</div>,
-    children: [{ index: true, element: <MainMenu /> }],
+    children: [
+      { index: true, element: <MainMenu /> },
+      { path: "new-campaign", element: <NewCampaignRedirect /> },
+      {
+        path: "new-campaign/:draftId",
+        element: <ElectionConfigMaker />,
+        children: [
+          {
+            index: true,
+            element: <Navigate to={WIZARD_STEPS[0].path} replace />,
+          },
+          ...WIZARD_STEPS.map((step) => ({
+            path: step.path,
+            element: getStepElement(step.id),
+          })),
+        ],
+      },
+    ],
   },
 ]);
 

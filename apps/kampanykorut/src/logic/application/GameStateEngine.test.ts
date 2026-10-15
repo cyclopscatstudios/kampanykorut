@@ -1,11 +1,11 @@
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
+import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { ConfigEngine } from "./ConfigEngine";
 import { Navigation } from "./navigation/Navigation";
 import { type SavedCampaignSessionInfo, StateEngine } from "./StateEngine";
 import { StateHandler } from "./StateHandler";
-import { StorageEngine } from "./StorageEngine";
 
 const FIXED_SESSION_ID = "fixed-test-session-id";
 const FIXED_GENERATED_ID = "generated-uuid";
@@ -33,7 +33,7 @@ function makeEngine(
   navigation: Navigation = new Navigation(),
   generateId: () => string = () => FIXED_GENERATED_ID,
 ) {
-  const storage = new StorageEngine();
+  const storage = new StorageEngine("kampanykorut");
   const stateHandler = new StateHandler();
   const configEngine = new ConfigEngine(storage, stateHandler);
   const voterEnv = { configure: vi.fn() } as unknown as VoterEnvironment;
@@ -708,6 +708,135 @@ describe("StateEngine", () => {
       expect(
         mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`),
       ).toBeUndefined();
+      expect(engine.getCampaignState()).toBeNull();
+    });
+  });
+
+  describe("when localStorage is full", () => {
+    const savedSession: SavedCampaignSessionInfo = {
+      id: "slot-1",
+      sessionId: "saved-session",
+      campaignId: "2022_ogyv_default",
+      name: "saved game",
+      type: "manual",
+    };
+    const savedState = JSON.stringify({
+      activeCampaignId: "2022_ogyv_default",
+      turn: 3,
+      isEnded: false,
+    });
+    const savedHistory = JSON.stringify([{ questionId: "q1", answerId: "a1" }]);
+
+    function seedSavedGame() {
+      mem._map.set(
+        "kampanykorut_savedSessions",
+        JSON.stringify([savedSession]),
+      );
+      mem._map.set("kampanykorut_campaignState-saved-session", savedState);
+      mem._map.set("kampanykorut_turnHistory-saved-session", savedHistory);
+    }
+
+    function fillStorage() {
+      mem.setItem.mockImplementation(() => {
+        throw new DOMException("exceeded the quota", "QuotaExceededError");
+      });
+    }
+
+    function expectSavedGameUntouched() {
+      expect(mem._map.get("kampanykorut_savedSessions")).toBe(
+        JSON.stringify([savedSession]),
+      );
+      expect(mem._map.get("kampanykorut_campaignState-saved-session")).toBe(
+        savedState,
+      );
+      expect(mem._map.get("kampanykorut_turnHistory-saved-session")).toBe(
+        savedHistory,
+      );
+    }
+
+    it("does not throw from saveState / updateCampaignState", () => {
+      const { engine } = makeEngine();
+      fillStorage();
+
+      expect(() =>
+        engine.saveState("campaignState", {
+          activeCampaignId: "c-1",
+          turn: 1,
+          isEnded: false,
+        }),
+      ).not.toThrow();
+      expect(() => engine.updateCampaignState({ turn: 2 })).not.toThrow();
+      expect(() =>
+        engine.saveState("turnHistory", { questionId: "q1", answerId: "a1" }),
+      ).not.toThrow();
+    });
+
+    it("keeps the game running on the in-memory state", () => {
+      const { engine, stateHandler } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-1",
+        turn: 1,
+        isEnded: false,
+      });
+      fillStorage();
+
+      engine.updateCampaignState({ turn: 2 });
+      engine.updateCampaignState({ campaignView: { type: "map" } } as never);
+
+      // the partial update is merged onto the unsaved turn 2, not the stale turn 1
+      expect(engine.getCampaignState()?.turn).toBe(2);
+      expect(stateHandler.get("campaignState")?.turn).toBe(2);
+      // the last successfully persisted state is left intact
+      expect(
+        JSON.parse(
+          mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`)!,
+        ).turn,
+      ).toBe(1);
+    });
+
+    it("preserves existing saved games when the current session cannot be saved", () => {
+      seedSavedGame();
+      const { engine } = makeEngine();
+      fillStorage();
+
+      engine.updateCampaignState({
+        activeCampaignId: "2022_ogyv_default",
+        turn: 7,
+        isEnded: false,
+      });
+
+      expectSavedGameUntouched();
+      expect(engine.getSavedGameSessions()).toEqual([savedSession]);
+    });
+
+    it("does not register a save slot whose snapshot could not be stored", () => {
+      seedSavedGame();
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "2022_ogyv_default",
+        turn: 4,
+        isEnded: false,
+      });
+      fillStorage();
+
+      engine.saveToSlot("new save");
+
+      expectSavedGameUntouched();
+      expect(engine.getSavedGameSessions()).toEqual([savedSession]);
+    });
+
+    it("aborts loading a manual save instead of starting a half-copied session", () => {
+      seedSavedGame();
+      window.history.pushState({}, "", "/load-game");
+      const navigation = new Navigation();
+      const goSpy = vi.spyOn(navigation, "go").mockImplementation(() => {});
+      const { engine } = makeEngine(navigation);
+      fillStorage();
+
+      engine.loadState(savedSession);
+
+      expect(goSpy).not.toHaveBeenCalled();
+      expectSavedGameUntouched();
       expect(engine.getCampaignState()).toBeNull();
     });
   });
