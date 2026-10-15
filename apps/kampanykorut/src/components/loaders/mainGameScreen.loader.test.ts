@@ -21,7 +21,9 @@ describe("mainGameScreenLoader", () => {
     loadCampaignConfigMock.mockResolvedValue(mockConfig);
   });
 
-  it("returns null and skips config loading when there is no saved state", async () => {
+  // The config is no longer cached in localStorage, so it must be loaded even
+  // before the first campaign state has been saved.
+  it("loads the config even when there is no saved state", async () => {
     const stateEngine = container.resolve(StateEngine);
     vi.spyOn(stateEngine, "getCampaignState").mockReturnValue(null);
     const configEngine = container.resolve(ConfigEngine);
@@ -32,8 +34,12 @@ describe("mainGameScreenLoader", () => {
     } as never);
 
     expect(result).toBeNull();
-    expect(loadCampaignConfigMock).not.toHaveBeenCalled();
-    expect(configureSpy).not.toHaveBeenCalled();
+    expect(loadCampaignConfigMock).toHaveBeenCalledWith("2022_ogyv_default");
+    expect(configureSpy).toHaveBeenCalledWith(
+      mockConfig,
+      "2022_ogyv_default",
+      true,
+    );
   });
 
   it("loads and force-configures the campaign for the route param", async () => {

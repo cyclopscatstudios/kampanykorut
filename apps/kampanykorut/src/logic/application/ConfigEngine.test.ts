@@ -115,4 +115,77 @@ describe("GameConfigEngine", () => {
       );
     });
   });
+
+  describe("localStorage usage", () => {
+    function makeMemoryLocalStorage(entries: [string, string][]) {
+      const map = new Map(entries);
+      return {
+        getItem: vi.fn((key: string) => map.get(key) ?? null),
+        setItem: vi.fn((key: string, value: string) => {
+          map.set(key, value);
+        }),
+        removeItem: vi.fn((key: string) => {
+          map.delete(key);
+        }),
+        clear: vi.fn(() => map.clear()),
+        key: vi.fn((index: number) => Array.from(map.keys())[index] ?? null),
+        get length() {
+          return map.size;
+        },
+        _map: map,
+      };
+    }
+
+    it("does not persist the campaign config", () => {
+      const mem = makeMemoryLocalStorage([]);
+      global.localStorage = mem;
+      const engine = new ConfigEngine(
+        new StorageEngine("kampanykorut"),
+        new StateHandler(),
+      );
+
+      engine.configure(baseConfig, "2026_tavaszi_szel", true);
+
+      expect(mem.setItem).not.toHaveBeenCalled();
+      expect(engine.getCampaignConfig("2026_tavaszi_szel")).toBe(baseConfig);
+    });
+
+    it("removes legacy cached configs but keeps saved games and settings", () => {
+      const preserved: [string, string][] = [
+        ["kampanykorut_currentSessionId", "s1"],
+        ["kampanykorut_campaignState-s1", '{"turn":3}'],
+        ["kampanykorut_turnHistory-s1", "[]"],
+        ["kampanykorut_savedSessions", "[]"],
+        ["kampanykorut_autoSaveRegistry", "[]"],
+        ["kampanykorut_settings", "{}"],
+      ];
+      const mem = makeMemoryLocalStorage([
+        ["kampanykorut_campaignConfig-2026_tavaszi_szel", "x".repeat(1000)],
+        ["kampanykorut_campaignConfig-2022_beke_vs_remeny", "x".repeat(1000)],
+        ...preserved,
+      ]);
+      global.localStorage = mem;
+
+      new ConfigEngine(new StorageEngine("kampanykorut"), new StateHandler());
+
+      expect(Array.from(mem._map.entries())).toEqual(preserved);
+      expect(mem.clear).not.toHaveBeenCalled();
+    });
+
+    it("does not throw when localStorage is not accessible", () => {
+      global.localStorage = {
+        get length(): number {
+          throw new DOMException("denied", "SecurityError");
+        },
+      } as unknown as Storage;
+
+      expect(
+        () =>
+          new ConfigEngine(
+            new StorageEngine("kampanykorut"),
+            new StateHandler(),
+          ),
+      ).not.toThrow();
+    });
+  });
 });

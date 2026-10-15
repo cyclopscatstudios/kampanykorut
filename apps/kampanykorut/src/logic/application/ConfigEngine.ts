@@ -27,7 +27,7 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
   ) {
     log.debug("ElectionConfigEngine initialized");
     super();
-    this.storage.setItem = this.storage.setItem.bind(this);
+    this.removeLegacyCachedConfigs();
   }
 
   configure(
@@ -43,43 +43,21 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
     this.setCampaignConfig(campaignConfig, id);
   }
 
-  getCurrentElectionConfig() {
+  getCurrentElectionConfig(): ElectionConfig | undefined {
     const electionConfig =
       this.stateHandler.get("campaignConfig")?.electionConfig;
-    if (electionConfig) {
-      return electionConfig;
+    if (!electionConfig) {
+      log.debug("no campaign config is loaded");
     }
-    const sessionId = this.storage.getItem("currentSessionId", "localStorage");
-    const state = this.storage.getItem(
-      "campaignState",
-      "localStorage",
-      sessionId ?? "",
-    );
-    const parsedState: CampaignState | null = state ? JSON.parse(state) : null;
-    if (!parsedState?.activeCampaignId) {
-      log.error("no saved campaign id was found");
-      return;
-    }
-    const storedConfig = this.storage.getItem(
-      "campaignConfig",
-      "localStorage",
-      parsedState.activeCampaignId,
-    );
-    return storedConfig ? (JSON.parse(storedConfig) as ElectionConfig) : null;
+    return electionConfig;
   }
 
   getCampaignConfig(id?: string): CampaignConfig {
-    const inMemory = this.stateHandler.get("campaignConfig");
-    if (inMemory) {
-      return inMemory;
+    const config = this.stateHandler.get("campaignConfig");
+    if (!config) {
+      log.error("no campaign config is loaded", { id });
     }
-    const campaignId = id ?? this.getActiveCampaignId() ?? "";
-    const stored = this.storage.getItem(
-      "campaignConfig",
-      "localStorage",
-      campaignId,
-    );
-    return (stored ? JSON.parse(stored) : null) as CampaignConfig;
+    return config as CampaignConfig;
   }
 
   getDistrictMapByType(
@@ -137,29 +115,29 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
     });
   }
 
-  private getActiveCampaignId() {
-    const sessionId = this.storage.getItem("currentSessionId", "localStorage");
-    const state = this.storage.getItem(
-      "campaignState",
-      "localStorage",
-      sessionId ?? "",
-    );
-    const parsedState: CampaignState = state ? JSON.parse(state) : null;
-    if (!parsedState) {
-      log.error("state was not found");
-      return;
-    }
-    return parsedState.activeCampaignId;
-  }
-
   private setCampaignConfig(config: CampaignConfig | null, id?: string) {
     this.stateHandler.set("campaignConfig", config);
     if (!id) {
       log.debug("Clearing campaign config");
-      return this.storage.clearItem("campaignConfig", "localStorage");
+      return;
     }
-    const value = JSON.stringify(config);
-    this.storage.setItem("campaignConfig", value, "localStorage", id);
     this.configured = true;
+  }
+
+  /**
+   * Older versions cached the full (multi-MB) campaign config in localStorage
+   * under `campaignConfig-<campaignId>`, which filled up the quota and made
+   * saving the campaign state fail. The cache was never read back without a
+   * fresh config being loaded first, so it is safe to drop.
+   */
+  private removeLegacyCachedConfigs() {
+    try {
+      const removed = this.storage.clearItemsWithPrefix("campaignConfig");
+      if (removed.length) {
+        log.debug("Removed legacy cached campaign configs", { removed });
+      }
+    } catch (error) {
+      log.error("failed to remove legacy cached campaign configs", error);
+    }
   }
 }

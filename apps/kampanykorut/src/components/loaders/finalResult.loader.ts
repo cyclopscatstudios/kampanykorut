@@ -1,8 +1,9 @@
 import type { LoaderFunctionArgs } from "react-router";
 import { container } from "tsyringe";
 import { ConfigEngine, StateEngine } from "@/logic/application";
+import { loadCampaignConfig } from "../../logic/application/loadCampaignConfig";
 
-export function finalResultLoader({ params }: LoaderFunctionArgs) {
+export async function finalResultLoader({ params }: LoaderFunctionArgs) {
   const id = params.id;
   const stateEngine = container.resolve(StateEngine);
   const configEngine = container.resolve(ConfigEngine);
@@ -12,7 +13,13 @@ export function finalResultLoader({ params }: LoaderFunctionArgs) {
     return null;
   }
 
-  const config = configEngine.getCampaignConfig(id);
+  const campaignId = id ?? state.activeCampaignId;
+  if (campaignId) {
+    const config = await loadCampaignConfig(campaignId);
+    configEngine.configure(config, campaignId, true);
+  }
+
+  const config = configEngine.getCampaignConfig(campaignId);
 
   return { results: state.results, config };
 }

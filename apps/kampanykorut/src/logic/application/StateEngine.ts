@@ -196,16 +196,23 @@ export class StateEngine extends Emitter<CampaignState> {
     const isManualSave = session.type !== "auto";
     const targetSessionId = isManualSave ? this.generateId() : sessionId;
     if (isManualSave) {
-      this.storage.setItem(
-        `campaignState-${targetSessionId}`,
-        this.safeStringify(state) ?? "null",
-        "localStorage",
-      );
-      this.storage.setItem(
-        `turnHistory-${targetSessionId}`,
-        history,
-        "localStorage",
-      );
+      const copied =
+        this.storage.setItem(
+          `campaignState-${targetSessionId}`,
+          this.safeStringify(state) ?? "null",
+          "localStorage",
+        ) &&
+        this.storage.setItem(
+          `turnHistory-${targetSessionId}`,
+          history,
+          "localStorage",
+        );
+      if (!copied) {
+        log.error("failed to copy saved session, aborting load");
+        this.storage.clearItem(`campaignState-${targetSessionId}`);
+        this.storage.clearItem(`turnHistory-${targetSessionId}`);
+        return;
+      }
     }
 
     this.saveSessionId(targetSessionId);
@@ -263,22 +270,30 @@ export class StateEngine extends Emitter<CampaignState> {
     }
     const snapshotSessionId = existingSlot?.sessionId ?? uuidv4();
 
-    this.storage.setItem(
-      `campaignState-${snapshotSessionId}`,
-      this.safeStringify(currentState) ?? "null",
-      "localStorage",
-    );
     const historyRaw = this.storage.getItem(
       "turnHistory",
       "localStorage",
       sessionId,
     );
-    if (historyRaw) {
+    const snapshotSaved =
       this.storage.setItem(
-        `turnHistory-${snapshotSessionId}`,
-        historyRaw,
+        `campaignState-${snapshotSessionId}`,
+        this.safeStringify(currentState) ?? "null",
         "localStorage",
-      );
+      ) &&
+      (!historyRaw ||
+        this.storage.setItem(
+          `turnHistory-${snapshotSessionId}`,
+          historyRaw,
+          "localStorage",
+        ));
+    if (!snapshotSaved) {
+      log.error("failed to save session snapshot, slot was not saved");
+      if (!existingSlot) {
+        this.storage.clearItem(`campaignState-${snapshotSessionId}`);
+        this.storage.clearItem(`turnHistory-${snapshotSessionId}`);
+      }
+      return;
     }
 
     const sessionDate = this.getNormalizedDateString();
