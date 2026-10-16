@@ -110,6 +110,24 @@ describe("NewsContentProcessor", () => {
     expect(content.complete).toBe(false);
   });
 
+  it("tells whether every image of a news item is still stored", async () => {
+    const storage = new InMemoryObjectStorage();
+    const processor = new NewsContentProcessor(
+      new NewsImageCopier(storage, log, fakeFetch()),
+    );
+    const withImages = news(`Szöveg\n\n![belső](${INLINE})`, COVER);
+
+    await expect(processor.imagesStored(withImages)).resolves.toBe(false);
+    await processor.process(withImages);
+    await expect(processor.imagesStored(withImages)).resolves.toBe(true);
+
+    storage.objects.delete([...storage.objects.keys()][0]!);
+    await expect(processor.imagesStored(withImages)).resolves.toBe(false);
+    await expect(
+      new NewsContentProcessor(null).imagesStored(news("Csak szöveg.", null)),
+    ).resolves.toBe(true);
+  });
+
   it("works without object storage", async () => {
     const content = await new NewsContentProcessor(null).process(
       news("Csak szöveg.", null),

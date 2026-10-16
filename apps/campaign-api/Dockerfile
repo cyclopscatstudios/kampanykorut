@@ -32,6 +32,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY apps/campaign-api/package.json ./
 COPY --from=builder /app/apps/campaign-api/dist ./dist
 
+RUN mkdir -p /app/data/assets && chown -R node:node /app/data
+
 USER node
 EXPOSE 4000
 

@@ -52,6 +52,7 @@ function setup(
       cover: null,
       complete,
     })),
+    imagesStored: vi.fn(async () => true),
   };
   const repository = new InMemoryNewsRepository();
   const sync = new NewsSync(
@@ -119,6 +120,18 @@ describe("NewsSync", () => {
     );
 
     await sync.syncLatest();
+    await sync.syncLatest();
+
+    expect(content.process).toHaveBeenCalledTimes(2);
+  });
+
+  it("copies images again when they are missing from storage", async () => {
+    const { sync, content } = setup({
+      fetchLatest: vi.fn(async () => [discussion()]),
+    });
+
+    await sync.syncLatest();
+    content.imagesStored.mockResolvedValueOnce(false);
     await sync.syncLatest();
 
     expect(content.process).toHaveBeenCalledTimes(2);

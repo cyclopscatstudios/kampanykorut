@@ -180,6 +180,10 @@ jobs:
       github.event_name == 'push' &&
       (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev')
 
+    concurrency:
+      group: deploy-${{ github.ref }}
+      cancel-in-progress: false
+
     steps:
       - name: Setup SSH
         run: |

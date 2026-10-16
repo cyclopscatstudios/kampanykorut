@@ -32,4 +32,17 @@ export class NewsContentProcessor {
         copied.size === sources.length,
     };
   }
+
+  async imagesStored(news: ParsedNews): Promise<boolean> {
+    const sources = collectImageSources(news.markdown);
+    if (!this.images) return !news.coverSourceUrl && sources.length === 0;
+
+    const checks = [
+      ...(news.coverSourceUrl
+        ? [this.images.hasCopies(news.coverSourceUrl, "cover")]
+        : []),
+      ...sources.map((source) => this.images!.hasCopies(source, "inline")),
+    ];
+    return (await Promise.all(checks)).every(Boolean);
+  }
 }

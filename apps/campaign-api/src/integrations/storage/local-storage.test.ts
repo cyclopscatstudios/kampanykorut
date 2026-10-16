@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { type App, buildApp } from "../../app";
 import { loadConfig } from "../../config/env";
 import { renderNewsHtml } from "../../modules/news/news.render";
+import { InMemoryNewsRepository } from "../../modules/news/news.repository";
 import { LocalObjectStorage } from "./local-storage";
 
 describe("LocalObjectStorage", () => {
@@ -63,5 +64,35 @@ describe("LocalObjectStorage", () => {
         storage.publicUrl("news/a/inline.webp"),
       ),
     ).toContain('src="/api/v1/assets/news/a/inline.webp"');
+  });
+});
+
+describe("ASSETS_DIR", () => {
+  it("enables local image storage outside development", async () => {
+    const dir = await mkdtemp(path.join(tmpdir(), "assets-"));
+    const app = await buildApp(
+      loadConfig({
+        NODE_ENV: "production",
+        LOG_LEVEL: "silent",
+        MONGODB_URI: "mongodb://unused:27017/test",
+        ASSETS_DIR: dir,
+      }),
+      { newsRepository: new InMemoryNewsRepository() },
+    );
+
+    try {
+      const ready = await app.inject({ method: "GET", url: "/ready" });
+      const missing = await app.inject({
+        method: "GET",
+        url: "/api/v1/assets/news/x/thumb.webp",
+      });
+
+      expect(ready.json()).toMatchObject({ checks: { storage: "ok" } });
+      expect(missing.statusCode).toBe(404);
+      expect(missing.headers["content-type"]).toContain("problem+json");
+    } finally {
+      await app.close();
+      await rm(dir, { recursive: true, force: true });
+    }
   });
 });

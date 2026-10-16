@@ -131,6 +131,9 @@ function createObjectStorage(config: AppConfig): ObjectStorage | null {
   if (config.storage) {
     return new S3ObjectStorage(config.storage);
   }
+  if (config.assetsDir) {
+    return new LocalObjectStorage(path.resolve(config.assetsDir));
+  }
   if (config.env === "development") {
     return new LocalObjectStorage(path.resolve(LOCAL_ASSETS_DIR));
   }

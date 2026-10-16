@@ -99,10 +99,13 @@ export class NewsSync {
       .update(JSON.stringify([news.markdown, news.coverSourceUrl]))
       .digest("hex");
     const stored = await this.repository.findByGithubId(news.githubId);
-    const content =
-      stored?.sourceHash === sourceHash && stored.contentComplete
-        ? { html: stored.html, cover: stored.cover, complete: true }
-        : await this.content.process(news);
+    const reusable =
+      stored?.sourceHash === sourceHash &&
+      stored.contentComplete &&
+      (await this.content.imagesStored(news));
+    const content = reusable
+      ? { html: stored.html, cover: stored.cover, complete: true }
+      : await this.content.process(news);
 
     await this.repository.upsert({
       ...news,

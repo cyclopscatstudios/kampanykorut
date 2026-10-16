@@ -35,6 +35,11 @@ const INLINE_VARIANT: Variant = {
   render: (image) => image.resize({ width: 1200, withoutEnlargement: true }),
 };
 
+function keysFor(sourceUrl: string, variants: Variant[]): string[] {
+  const prefix = `news/${createHash("sha256").update(sourceUrl).digest("hex").slice(0, 32)}`;
+  return variants.map((v) => `${prefix}/${v.name}.webp`);
+}
+
 export class NewsImageCopier {
   constructor(
     private readonly storage: ObjectStorage,
@@ -52,12 +57,27 @@ export class NewsImageCopier {
     return url ?? null;
   }
 
+  async hasCopies(sourceUrl: string, kind: "cover" | "inline") {
+    const keys = keysFor(
+      sourceUrl,
+      kind === "cover" ? COVER_VARIANTS : [INLINE_VARIANT],
+    );
+    try {
+      const existing = await Promise.all(
+        keys.map((key) => this.storage.exists(key)),
+      );
+      return existing.every(Boolean);
+    } catch (err) {
+      this.log.warn({ err, sourceUrl }, "Could not check news image");
+      return false;
+    }
+  }
+
   private async copy(
     sourceUrl: string,
     variants: Variant[],
   ): Promise<(string | undefined)[]> {
-    const prefix = `news/${createHash("sha256").update(sourceUrl).digest("hex").slice(0, 32)}`;
-    const keys = variants.map((v) => `${prefix}/${v.name}.webp`);
+    const keys = keysFor(sourceUrl, variants);
 
     try {
       const existing = await Promise.all(

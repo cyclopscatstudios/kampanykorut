@@ -38,6 +38,8 @@ cannot produce. `tsup` therefore transpiles through `@swc/core` (enabled by
 
 ## Docker
 
+Deployment with the game, MongoDB and the GitHub Apps (in Hungarian): [docs/telepites.md](../../docs/telepites.md).
+
 Build from the repository root so `shared/` is in the context:
 
 ```sh
@@ -101,8 +103,9 @@ Authoring rules for the news discussions (in Hungarian): [docs/hirek-irasa.md](.
   `news/<hash of source URL>/`. Images that fail to copy are left out and
   retried on the next sync; GitHub attachment URLs are never served.
 - Without `S3_*` in development, images are written to `.data/assets` and
-  served by the API under `/api/v1/assets/`; in other environments news are
-  shown without images.
+  served by the API under `/api/v1/assets/`. `ASSETS_DIR` does the same in any
+  environment (the image prepares a writable `/app/data/assets` for a volume);
+  otherwise news are shown without images.
 - The markdown is rendered with `markdown-it` and cleaned with `sanitize-html`
   (paragraphs, emphasis, lists, links, images, h2/h3, blockquote). External
   links get `target="_blank" rel="noopener noreferrer"`.

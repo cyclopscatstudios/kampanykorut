@@ -32,6 +32,7 @@ const EnvSchema = z
     TRUST_PROXY: z.stringbool().default(false),
     GIT_COMMIT: z.string().default("unknown"),
     SITE_URL: z.url().default("https://kampanykorut.hu"),
+    ASSETS_DIR: z.string().min(1).optional(),
     GITHUB_APP_ID: z.string().min(1).optional(),
     GITHUB_APP_PRIVATE_KEY: z.string().min(1).optional(),
     GITHUB_APP_INSTALLATION_ID: z.string().min(1).optional(),
@@ -54,6 +55,14 @@ const EnvSchema = z
     ASSETS_PUBLIC_URL: z.url().optional(),
   })
   .superRefine((env, ctx) => {
+    if (env.NODE_ENV === "production" && !env.MONGODB_URI) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["MONGODB_URI"],
+        message: "Required in production",
+      });
+    }
+
     for (const { keys, label } of KEY_GROUPS) {
       const missing = keys.filter((key) => env[key] === undefined);
       if (missing.length === 0 || missing.length === keys.length) continue;
@@ -76,6 +85,7 @@ const EnvSchema = z
     trustProxy: env.TRUST_PROXY,
     gitCommit: env.GIT_COMMIT,
     siteUrl: env.SITE_URL.replace(/\/+$/, ""),
+    assetsDir: env.ASSETS_DIR ?? null,
     github: githubConfig(env),
     mongoUri: env.MONGODB_URI ?? null,
     storage: storageConfig(env),

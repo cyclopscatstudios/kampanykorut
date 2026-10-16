@@ -12,6 +12,7 @@ describe("loadConfig", () => {
       trustProxy: false,
       gitCommit: "unknown",
       siteUrl: "https://kampanykorut.hu",
+      assetsDir: null,
       github: null,
       mongoUri: null,
       storage: null,
@@ -21,6 +22,7 @@ describe("loadConfig", () => {
   it("parses string values from the environment", () => {
     const config = loadConfig({
       NODE_ENV: "production",
+      MONGODB_URI: "mongodb://mongo:27017/kampanykorut",
       PORT: "8080",
       API_DOCS_ENABLED: "false",
       TRUST_PROXY: "true",
@@ -32,6 +34,13 @@ describe("loadConfig", () => {
       docsEnabled: false,
       trustProxy: true,
     });
+  });
+
+  it("requires MongoDB in production", () => {
+    expect(() => loadConfig({ NODE_ENV: "production" })).toThrow(
+      /Required in production[\s\S]*MONGODB_URI/,
+    );
+    expect(loadConfig({ NODE_ENV: "development" }).mongoUri).toBeNull();
   });
 
   it("rejects invalid values with a readable message", () => {
