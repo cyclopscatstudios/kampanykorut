@@ -5,6 +5,7 @@ import type { NewsDetail, NewsLang } from "@/shared/types";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
 import { isExternalUrl } from "../../../logic/application/news/news.format";
+import { NEWS_PATH } from "../../../logic/application/news/newsPaths";
 import {
   type NewsDetailState,
   useNewsDetail,
@@ -40,7 +41,7 @@ export function NewsDetailView({ state, lang }: NewsDetailViewProps) {
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-6">
       <Link
-        to="/hirek"
+        to={NEWS_PATH}
         className="self-start text-sm font-bold text-blue-400 hover:text-blue-300"
       >
         ← {t("news.detail.back")}

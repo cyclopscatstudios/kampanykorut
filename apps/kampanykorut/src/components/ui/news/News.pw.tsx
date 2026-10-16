@@ -6,6 +6,7 @@ import {
   LandingSection,
   LandingSectionLoading,
   LandingSectionSingle,
+  MenuBell,
 } from "./News.stories";
 
 test("landing section shows the featured news and the next three", async ({
@@ -25,10 +26,10 @@ test("landing section shows the featured news and the next three", async ({
   await expect(component.getByRole("listitem")).toHaveCount(3);
   await expect(
     component.getByRole("link", { name: /Gyorsabb térkép-betöltés/ }),
-  ).toHaveAttribute("href", "/hirek/9");
+  ).toHaveAttribute("href", "/news/9");
   await expect(
     component.getByRole("link", { name: /Összes hír|All news/ }),
-  ).toHaveAttribute("href", "/hirek");
+  ).toHaveAttribute("href", "/news");
 });
 
 test("landing section without side news falls back to a read-more link", async ({
@@ -85,4 +86,27 @@ test("detail explains a missing news item", async ({ mount }) => {
   await expect(
     component.getByText(/nem található|could not be found/),
   ).toBeVisible();
+});
+
+test("menu bell lists the latest news and tracks unread ones", async ({
+  mount,
+}) => {
+  const component = await mount(<MenuBell />);
+  const bell = component.getByTestId("news-bell");
+
+  await expect(bell).toContainText("2");
+  await expect(component.getByRole("listitem")).toHaveCount(4);
+
+  await component.getByRole("button", { name: /v0.1.0-béta/ }).click();
+  await expect(component.getByTestId("opened")).toHaveText("11");
+  await expect(bell).toContainText("1");
+
+  await bell.click();
+  await component
+    .getByRole("button", { name: /Mind olvasott|Mark all read/ })
+    .click();
+  await expect(bell).not.toContainText("1");
+  await expect(
+    component.getByRole("button", { name: /Mind olvasott|Mark all read/ }),
+  ).toBeDisabled();
 });

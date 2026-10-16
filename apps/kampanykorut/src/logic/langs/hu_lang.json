@@ -238,6 +238,12 @@
       "error": "A hír most nem érhető el. Próbáld újra később."
     },
     "coverAlt": "Borítókép",
-    "home": "Vissza a főoldalra"
+    "home": "Vissza a főoldalra",
+    "bell": {
+      "unread_one": "{{count}} olvasatlan hír",
+      "unread_other": "{{count}} olvasatlan hír",
+      "markAllRead": "Mind olvasott",
+      "close": "Bezárás"
+    }
   }
 }

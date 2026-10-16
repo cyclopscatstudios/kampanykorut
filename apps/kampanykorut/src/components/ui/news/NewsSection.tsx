@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import type { NewsItem, NewsLang } from "@/shared/types";
 import { isExternalUrl } from "../../../logic/application/news/news.format";
 import {
+  NEWS_PATH,
+  newsDetailPath,
+} from "../../../logic/application/news/newsPaths";
+import {
   type NewsListState,
   useNews,
   useNewsLang,
@@ -44,7 +48,7 @@ export function NewsSectionView({ state, lang }: NewsSectionViewProps) {
           {t("news.heading")}
         </Heading>
         <Link
-          to="/hirek"
+          to={NEWS_PATH}
           className="shrink-0 text-sm font-bold text-blue-400 hover:text-blue-300"
         >
           {t("news.allNews")} →
@@ -85,7 +89,7 @@ function NewsGrid({ items, lang }: { items: NewsItem[]; lang: NewsLang }) {
 }
 
 function FeaturedNews({ news, lang }: { news: NewsItem; lang: NewsLang }) {
-  const detailUrl = `/hirek/${news.number}`;
+  const detailUrl = newsDetailPath(news.number);
 
   return (
     <article className="flex flex-col overflow-hidden rounded-lg border border-slate-400/20 bg-[#131f3d]">
@@ -141,7 +145,7 @@ function NewsCtaLink({ cta }: { cta: NonNullable<NewsItem["cta"]> }) {
 function SideNews({ news, lang }: { news: NewsItem; lang: NewsLang }) {
   return (
     <Link
-      to={`/hirek/${news.number}`}
+      to={newsDetailPath(news.number)}
       className="grid grid-cols-[84px_1fr] gap-3 rounded-lg border border-slate-400/20 bg-slate-400/5 p-2.5 transition hover:border-blue-400/50 hover:bg-slate-400/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
     >
       <NewsCoverImage

@@ -103,6 +103,7 @@ export async function buildApp(config: AppConfig, deps: AppDeps = {}) {
   await app.register(newsModule, {
     repository: deps.newsRepository ?? (await createNewsRepository(app)),
     cacheControl: config.env === "development" ? "no-cache" : undefined,
+    siteUrl: config.siteUrl,
     sync: config.github
       ? {
           source:

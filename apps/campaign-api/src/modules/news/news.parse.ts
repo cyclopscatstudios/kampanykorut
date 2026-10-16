@@ -8,7 +8,8 @@ export const NEWS_TYPES = [
   "javitas",
 ] as const;
 export type NewsType = (typeof NEWS_TYPES)[number];
-export type NewsLang = "hu" | "en";
+export const NEWS_LANGS = ["hu", "en"] as const;
+export type NewsLang = (typeof NEWS_LANGS)[number];
 
 export interface NewsCta {
   label: string;

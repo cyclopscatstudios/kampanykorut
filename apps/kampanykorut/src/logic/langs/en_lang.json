@@ -238,6 +238,12 @@
       "error": "This news item is not available right now. Please try again later."
     },
     "coverAlt": "Cover image",
-    "home": "Back to the home page"
+    "home": "Back to the home page",
+    "bell": {
+      "unread_one": "{{count}} unread news item",
+      "unread_other": "{{count}} unread news items",
+      "markAllRead": "Mark all read",
+      "close": "Close"
+    }
   }
 }

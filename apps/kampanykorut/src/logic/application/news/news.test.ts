@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { NEWS_TYPES } from "@/shared/types";
 import { formatNewsDate, isExternalUrl } from "./news.format";
 import {
   fetchLatestNews,
@@ -6,6 +7,12 @@ import {
   fetchNewsDetail,
   NewsNotFoundError,
 } from "./newsApi";
+import {
+  NEWS_PATH,
+  newsDetailPath,
+  newsTypeFromSlug,
+  newsTypeToSlug,
+} from "./newsPaths";
 
 describe("formatNewsDate", () => {
   const now = new Date("2026-10-16T12:00:00Z");
@@ -36,7 +43,7 @@ describe("isExternalUrl", () => {
   it("compares the origin", () => {
     const origin = "https://kampanykorut.hu";
     expect(isExternalUrl("https://kampanykorut.hu/menu", origin)).toBe(false);
-    expect(isExternalUrl("/hirek/1", origin)).toBe(false);
+    expect(isExternalUrl("/news/1", origin)).toBe(false);
     expect(isExternalUrl("https://github.com/x", origin)).toBe(true);
   });
 });
@@ -85,5 +92,21 @@ describe("news API client", () => {
 
     respond({ status: 500 }, 500);
     await expect(fetchNewsDetail(5)).rejects.toThrow(/500/);
+  });
+});
+
+describe("news paths", () => {
+  it("uses English routes and type slugs", () => {
+    expect(NEWS_PATH).toBe("/news");
+    expect(newsDetailPath(12)).toBe("/news/12");
+    expect(NEWS_TYPES.map(newsTypeToSlug)).toEqual([
+      "feature",
+      "update",
+      "campaign",
+      "fix",
+    ]);
+    expect(newsTypeFromSlug("campaign")).toBe("kampany");
+    expect(newsTypeFromSlug("kampany")).toBeUndefined();
+    expect(newsTypeFromSlug(null)).toBeUndefined();
   });
 });

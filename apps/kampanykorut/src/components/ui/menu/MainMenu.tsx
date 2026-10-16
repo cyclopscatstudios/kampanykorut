@@ -8,6 +8,7 @@ import { MenuLayout } from "../../../../../../shared/ui/menu/MenuLayout";
 import { buildInfo } from "../../../buildInfo";
 import { BugReporterButton } from "../gameplay/BugReporter/BugReporterButton";
 import { BugReporterModal } from "../gameplay/BugReporter/BugReporterModal";
+import { NewsBell } from "../news/NewsBell";
 
 export function MainMenu() {
   const [openBugReporter, setOpenBugReporter] = useState(false);
@@ -21,6 +22,7 @@ export function MainMenu() {
   return (
     <div className="relative w-full h-full">
       <div className="absolute top-0 right-0 p-4 flex gap-2 z-20">
+        <NewsBell />
         <BugReporterButton
           onChange={() => setOpenBugReporter(true)}
           variant="main"

@@ -115,3 +115,20 @@ Authoring rules for the news discussions (in Hungarian): [docs/hirek-irasa.md](.
 
 The read endpoints send `Cache-Control: public, max-age=300` and an `ETag`.
 `?lang=en` falls back to Hungarian while there are no visible English news.
+
+### Server-rendered news pages
+
+Search engines and link previews (Facebook, Messenger) do not run the SPA, so
+the API also renders plain HTML pages with Open Graph tags and `NewsArticle`
+structured data. Links point to `SITE_URL`.
+
+| Path                    | Purpose                                                       |
+| ----------------------- | ------------------------------------------------------------- |
+| `GET /news`             | News list; `?type=feature\|update\|campaign\|fix`, `?cursor=` |
+| `GET /news/:number`     | One news item; hidden or missing news answer a `noindex` 404  |
+| `GET /news/sitemap.xml` | Sitemap of all published news (listed in `robots.txt`)        |
+
+The game's nginx (`apps/kampanykorut/nginx.conf`) forwards `/news`, `/api/`
+and `/webhooks/` to `API_UPSTREAM` (default `http://campaign-api:4000`,
+resolved through `NGINX_RESOLVER`, default Docker DNS `127.0.0.11`). When the
+API is unreachable, `/news` falls back to the SPA's own news pages.

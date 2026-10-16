@@ -11,6 +11,7 @@ describe("loadConfig", () => {
       docsEnabled: true,
       trustProxy: false,
       gitCommit: "unknown",
+      siteUrl: "https://kampanykorut.hu",
       github: null,
       mongoUri: null,
       storage: null,

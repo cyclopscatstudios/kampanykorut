@@ -5,6 +5,12 @@ import { NEWS_TYPES, type NewsLang, type NewsType } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Text } from "../../../../../../shared/ui/Text";
 import {
+  NEWS_TYPE_PARAM,
+  newsDetailPath,
+  newsTypeFromSlug,
+  newsTypeToSlug,
+} from "../../../logic/application/news/newsPaths";
+import {
   type NewsArchiveState,
   useNewsArchive,
   useNewsLang,
@@ -13,13 +19,9 @@ import { Heading } from "../Heading";
 import { NewsPageLayout } from "./NewsPageLayout";
 import { NewsCoverImage, NewsDate, NewsTypeBadge, Skeleton } from "./NewsParts";
 
-function parseType(value: string | null): NewsType | undefined {
-  return NEWS_TYPES.find((type) => type === value);
-}
-
 export function NewsArchivePage() {
   const [params, setParams] = useSearchParams();
-  const type = parseType(params.get("tipus"));
+  const type = newsTypeFromSlug(params.get(NEWS_TYPE_PARAM));
   const lang = useNewsLang();
   const archive = useNewsArchive(type);
 
@@ -28,7 +30,9 @@ export function NewsArchivePage() {
   }, [lang]);
 
   const selectType = (next: NewsType | undefined) =>
-    setParams(next ? { tipus: next } : {}, { replace: true });
+    setParams(next ? { [NEWS_TYPE_PARAM]: newsTypeToSlug(next) } : {}, {
+      replace: true,
+    });
 
   return (
     <NewsPageLayout>
@@ -104,7 +108,7 @@ export function NewsArchiveView({
           {archive.items.map((news) => (
             <li key={news.number}>
               <Link
-                to={`/hirek/${news.number}`}
+                to={newsDetailPath(news.number)}
                 className="grid gap-4 rounded-lg border border-slate-400/20 bg-slate-400/5 p-3 transition hover:border-blue-400/50 hover:bg-slate-400/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 sm:grid-cols-[200px_1fr]"
               >
                 <NewsCoverImage

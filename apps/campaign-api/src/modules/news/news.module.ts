@@ -1,6 +1,7 @@
 import fp from "fastify-plugin";
 import { z } from "zod";
 import type { NewsContentProcessor } from "./news.content";
+import { newsPages } from "./news.pages";
 import type { NewsRepository } from "./news.repository";
 import { newsRoutes } from "./news.routes";
 import { type NewsSource, NewsSync } from "./news.sync";
@@ -15,6 +16,7 @@ export interface NewsSyncOptions {
 export interface NewsModuleOptions {
   repository: NewsRepository;
   cacheControl?: string;
+  siteUrl: string;
   sync: NewsSyncOptions | null;
 }
 
@@ -35,8 +37,9 @@ const DiscussionEventSchema = z.object({
 });
 
 export const newsModule = fp<NewsModuleOptions>(
-  async (app, { repository, cacheControl, sync: syncOptions }) => {
+  async (app, { repository, cacheControl, siteUrl, sync: syncOptions }) => {
     await app.register(newsRoutes(repository, { cacheControl }));
+    await app.register(newsPages(repository, { cacheControl, siteUrl }));
 
     if (!syncOptions) {
       app.decorate("newsSync", null);

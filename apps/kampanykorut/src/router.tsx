@@ -21,6 +21,7 @@ import { SettingsMenu } from "./components/ui/menu/SettingsMenu";
 import { SideSelectorMenu } from "./components/ui/menu/SideSelectorMenu";
 import { NewsArchivePage } from "./components/ui/news/NewsArchivePage";
 import { NewsDetailPage } from "./components/ui/news/NewsDetailPage";
+import { NEWS_PATH } from "./logic/application/news/newsPaths";
 
 export const router = createBrowserRouter([
   {
@@ -29,12 +30,12 @@ export const router = createBrowserRouter([
     loader: landingPageRouter,
   },
   {
-    path: "/hirek",
+    path: NEWS_PATH,
     element: <NewsArchivePage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/hirek/:number",
+    path: `${NEWS_PATH}/:number`,
     element: <NewsDetailPage />,
     errorElement: <ErrorPage />,
   },

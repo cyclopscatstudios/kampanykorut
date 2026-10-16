@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import type { NewsType } from "@/shared/types";
 import { sampleNews, sampleNewsDetail } from "./news.fixtures";
 import { NewsArchiveView } from "./NewsArchivePage";
+import { NewsBellView } from "./NewsBell";
 import { NewsDetailView } from "./NewsDetailPage";
 import { NewsSectionView } from "./NewsSection";
 
@@ -76,3 +77,35 @@ export const DetailNotFound: Story = () => (
     </div>
   </Page>
 );
+
+export const MenuBell: Story = () => {
+  const [unread, setUnread] = useState(new Set([12, 11]));
+  const [opened, setOpened] = useState<number | null>(null);
+
+  return (
+    <Page>
+      <div className="flex justify-end px-6">
+        <NewsBellView
+          items={sampleNews}
+          unread={unread}
+          lang="hu"
+          defaultOpen
+          onOpenItem={(number) => {
+            setOpened(number);
+            setUnread((current) => {
+              const next = new Set(current);
+              next.delete(number);
+              return next;
+            });
+          }}
+          onMarkAllRead={() => setUnread(new Set())}
+        />
+      </div>
+      {opened !== null && (
+        <p data-testid="opened" className="px-6">
+          {opened}
+        </p>
+      )}
+    </Page>
+  );
+};

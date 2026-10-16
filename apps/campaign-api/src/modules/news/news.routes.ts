@@ -1,15 +1,14 @@
-import { createHash } from "node:crypto";
 import type { FastifyPluginAsyncTypebox } from "@fastify/type-provider-typebox";
-import type { FastifyReply, FastifyRequest } from "fastify";
 import { type TSchema, Type } from "typebox";
+import {
+  decodeCursor,
+  encodeCursor,
+  NEWS_CACHE_CONTROL,
+  resolveNewsLang,
+  sendCached,
+} from "./news.http";
 import { NEWS_TYPES, type NewsLang } from "./news.parse";
-import type {
-  ArchiveCursor,
-  NewsRecord,
-  NewsRepository,
-} from "./news.repository";
-
-export const NEWS_CACHE_CONTROL = "public, max-age=300";
+import type { NewsRecord, NewsRepository } from "./news.repository";
 
 const Nullable = <T extends TSchema>(schema: T) =>
   Type.Union([schema, Type.Null()]);
@@ -56,38 +55,6 @@ function toItem(news: NewsRecord) {
   };
 }
 
-function encodeCursor(news: NewsRecord): string {
-  return Buffer.from(
-    `${news.publishedAt.toISOString()}_${news.number}`,
-  ).toString("base64url");
-}
-
-function decodeCursor(cursor: string): ArchiveCursor | null {
-  const [date, number] = Buffer.from(cursor, "base64url").toString().split("_");
-  const publishedAt = new Date(date ?? "");
-  const parsedNumber = Number(number);
-
-  if (Number.isNaN(publishedAt.getTime()) || !Number.isInteger(parsedNumber)) {
-    return null;
-  }
-  return { publishedAt, number: parsedNumber };
-}
-
-function sendCached<T>(
-  request: FastifyRequest,
-  reply: FastifyReply,
-  cacheControl: string,
-  body: T,
-) {
-  const etag = `"${createHash("sha1").update(JSON.stringify(body)).digest("base64url")}"`;
-  reply.header("cache-control", cacheControl).header("etag", etag);
-
-  if (request.headers["if-none-match"] === etag) {
-    return reply.status(304).send();
-  }
-  return reply.send(body);
-}
-
 export function newsRoutes(
   repository: NewsRepository,
   {
@@ -95,8 +62,7 @@ export function newsRoutes(
     now = () => new Date(),
   }: { cacheControl?: string; now?: () => Date } = {},
 ): FastifyPluginAsyncTypebox {
-  const resolveLang = async (lang: NewsLang = "hu"): Promise<NewsLang> =>
-    lang === "hu" || (await repository.hasVisible(lang)) ? lang : "hu";
+  const resolveLang = (lang?: NewsLang) => resolveNewsLang(repository, lang);
 
   return async (app) => {
     app.get(

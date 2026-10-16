@@ -23,7 +23,10 @@ FROM nginx:alpine AS runner
 
 COPY --from=builder /app/apps/kampanykorut/dist /usr/share/nginx/html
 
-COPY apps/kampanykorut/nginx.conf /etc/nginx/conf.d/default.conf
+ENV API_UPSTREAM=http://campaign-api:4000 \
+    NGINX_RESOLVER=127.0.0.11
+
+COPY apps/kampanykorut/nginx.conf /etc/nginx/templates/default.conf.template
 
 EXPOSE 80
 

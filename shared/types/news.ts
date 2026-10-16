@@ -6,6 +6,13 @@ export const NEWS_TYPES = [
 ] as const;
 
 export type NewsType = (typeof NEWS_TYPES)[number];
+
+export const NEWS_TYPE_SLUGS: Record<NewsType, string> = {
+  "uj-funkcio": "feature",
+  frissites: "update",
+  kampany: "campaign",
+  javitas: "fix",
+};
 export type NewsLang = "hu" | "en";
 
 export interface NewsCover {

@@ -1,6 +1,6 @@
 # Hírek írása GitHub Discussionsben
 
-A játék „Újdonságok” szekciója, a `/hirek` archívum és a részletező oldal a
+A játék „Újdonságok” szekciója, a `/news` archívum és a részletező oldal a
 repó **Hírek** discussion-kategóriájából töltődik. Ez a leírás azt mutatja meg,
 hogyan lesz egy discussionből jól kinéző hír.
 
