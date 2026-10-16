@@ -1,6 +1,7 @@
 import type { FastifyBaseLogger } from "fastify";
 import { describe, expect, it, vi } from "vitest";
 import { discussionNode, NEWS_CATEGORY_ID } from "./__fixtures__/discussions";
+import type { NewsContentProcessor } from "./news.content";
 import type { NewsDiscussion } from "./news.github";
 import { InMemoryNewsRepository } from "./news.repository";
 import { type NewsSource, NewsSync } from "./news.sync";
@@ -31,7 +32,10 @@ const discussion = (
   ...overrides,
 });
 
-function setup(source: Partial<NewsSource> = {}) {
+function setup(
+  source: Partial<NewsSource> = {},
+  { complete = true }: { complete?: boolean } = {},
+) {
   const fullSource: NewsSource = {
     resolveCategoryId: vi.fn(async () => NEWS_CATEGORY_ID),
     fetchLatest: vi.fn(async () => []),
@@ -42,9 +46,22 @@ function setup(source: Partial<NewsSource> = {}) {
     ),
     ...source,
   };
+  const content = {
+    process: vi.fn(async () => ({
+      html: "<p>Bevezető.</p>",
+      cover: null,
+      complete,
+    })),
+  };
   const repository = new InMemoryNewsRepository();
-  const sync = new NewsSync(fullSource, repository, silentLog, () => NOW);
-  return { sync, repository, source: fullSource };
+  const sync = new NewsSync(
+    fullSource,
+    repository,
+    content as unknown as NewsContentProcessor,
+    silentLog,
+    () => NOW,
+  );
+  return { sync, repository, source: fullSource, content };
 }
 
 const event = (
@@ -70,8 +87,37 @@ describe("NewsSync", () => {
     await expect(repository.findByGithubId("D_1")).resolves.toMatchObject({
       type: "javitas",
       visible: true,
+      html: "<p>Bevezető.</p>",
+      contentComplete: true,
       syncedAt: NOW,
     });
+  });
+
+  it("reuses rendered content while the body is unchanged", async () => {
+    let body = "Bevezető.";
+    const { sync, content } = setup({
+      fetchLatest: vi.fn(async () => [discussion({ markdown: body })]),
+    });
+
+    await sync.syncLatest();
+    await sync.syncLatest();
+    expect(content.process).toHaveBeenCalledTimes(1);
+
+    body = "Javított bevezető.";
+    await sync.syncLatest();
+    expect(content.process).toHaveBeenCalledTimes(2);
+  });
+
+  it("retries content whose images could not be copied", async () => {
+    const { sync, content } = setup(
+      { fetchLatest: vi.fn(async () => [discussion()]) },
+      { complete: false },
+    );
+
+    await sync.syncLatest();
+    await sync.syncLatest();
+
+    expect(content.process).toHaveBeenCalledTimes(2);
   });
 
   it("hides stored news missing from a full sync", async () => {

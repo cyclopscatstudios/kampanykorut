@@ -1,4 +1,6 @@
+import { createHash } from "node:crypto";
 import type { FastifyBaseLogger } from "fastify";
+import type { NewsContentProcessor } from "./news.content";
 import type { NewsDiscussion, NewsGithubSource } from "./news.github";
 import { parseNewsDiscussion } from "./news.parse";
 import type { NewsRepository } from "./news.repository";
@@ -28,6 +30,7 @@ export class NewsSync {
   constructor(
     private readonly source: NewsSource,
     private readonly repository: NewsRepository,
+    private readonly content: NewsContentProcessor,
     private readonly log: FastifyBaseLogger,
     private readonly now: () => Date = () => new Date(),
   ) {}
@@ -92,7 +95,23 @@ export class NewsSync {
     isNews: boolean,
   ): Promise<boolean> {
     const news = parseNewsDiscussion(discussion, { isNews });
-    await this.repository.upsert({ ...news, syncedAt: this.now() });
+    const sourceHash = createHash("sha256")
+      .update(discussion.markdown)
+      .digest("hex");
+    const stored = await this.repository.findByGithubId(news.githubId);
+    const content =
+      stored?.sourceHash === sourceHash && stored.contentComplete
+        ? { html: stored.html, cover: stored.cover, complete: true }
+        : await this.content.process(news);
+
+    await this.repository.upsert({
+      ...news,
+      html: content.html,
+      cover: content.cover,
+      sourceHash,
+      contentComplete: content.complete,
+      syncedAt: this.now(),
+    });
     return news.visible;
   }
 

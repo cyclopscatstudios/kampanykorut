@@ -1,11 +1,15 @@
 import { describe, expect, it, vi } from "vitest";
-import type { GithubClient } from "../../integrations/github/github-client";
+import {
+  type GithubClient,
+  GithubError,
+} from "../../integrations/github/github-client";
 import {
   categoriesResponse,
   discussionNode,
   discussionsPage,
   NEWS_CATEGORY_ID,
   OTHER_CATEGORY_ID,
+  pinned,
 } from "./__fixtures__/discussions";
 import {
   NEWS_CATEGORIES_QUERY,
@@ -55,7 +59,7 @@ describe("NewsGithubSource", () => {
     const { client, graphql } = fakeClient({
       [NEWS_CATEGORIES_QUERY]: categoriesResponse,
       [NEWS_DISCUSSIONS_QUERY]: {
-        ...discussionsPage([discussionNode()]),
+        ...discussionsPage([discussionNode()], null, ["D_kwDO42"]),
       },
     });
 
@@ -108,6 +112,7 @@ describe("NewsGithubSource", () => {
       [NEWS_CATEGORIES_QUERY]: categoriesResponse,
       [NEWS_DISCUSSION_QUERY]: {
         repository: {
+          pinnedDiscussions: pinned(),
           discussion: discussionNode({
             category: { id: OTHER_CATEGORY_ID },
             labels: null,
@@ -129,11 +134,24 @@ describe("NewsGithubSource", () => {
 
   it("returns null for a deleted discussion", async () => {
     const { client } = fakeClient({
-      [NEWS_DISCUSSION_QUERY]: { repository: { discussion: null } },
+      [NEWS_DISCUSSION_QUERY]: {
+        repository: { pinnedDiscussions: pinned(), discussion: null },
+      },
     });
 
     await expect(
       new NewsGithubSource(client, "Hírek").fetchByNumber(404),
+    ).resolves.toBeNull();
+  });
+
+  it("treats a NOT_FOUND GraphQL error as a deleted discussion", async () => {
+    const graphql = vi.fn(async () => {
+      throw new GithubError("Could not resolve", undefined, ["NOT_FOUND"]);
+    });
+    const client = { repo, graphql } as unknown as GithubClient;
+
+    await expect(
+      new NewsGithubSource(client, "Hírek").fetchByNumber(1),
     ).resolves.toBeNull();
   });
 

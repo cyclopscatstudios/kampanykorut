@@ -12,9 +12,14 @@ export class GithubError extends Error {
   constructor(
     message: string,
     readonly status?: number,
+    readonly graphqlTypes: string[] = [],
   ) {
     super(message);
     this.name = "GithubError";
+  }
+
+  get isNotFound(): boolean {
+    return this.status === 404 || this.graphqlTypes.includes("NOT_FOUND");
   }
 }
 
@@ -73,6 +78,8 @@ export class GithubClient {
     if (body.errors?.length) {
       throw new GithubError(
         `GitHub GraphQL error: ${body.errors.map((e) => e.message).join("; ")}`,
+        undefined,
+        body.errors.flatMap((e) => (e.type ? [e.type] : [])),
       );
     }
     if (!body.data) {

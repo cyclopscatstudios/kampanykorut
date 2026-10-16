@@ -27,7 +27,6 @@ export const discussionNode = (overrides: Record<string, unknown> = {}) => ({
   createdAt: "2026-10-10T08:00:00Z",
   updatedAt: "2026-10-11T09:30:00Z",
   closed: false,
-  isPinned: true,
   upvoteCount: 7,
   category: { id: NEWS_CATEGORY_ID },
   comments: { totalCount: 3 },
@@ -35,11 +34,17 @@ export const discussionNode = (overrides: Record<string, unknown> = {}) => ({
   ...overrides,
 });
 
+export const pinned = (...ids: string[]) => ({
+  nodes: ids.map((id) => ({ discussion: { id } })),
+});
+
 export const discussionsPage = (
   nodes: unknown[],
   endCursor: string | null = null,
+  pinnedIds: string[] = [],
 ) => ({
   repository: {
+    pinnedDiscussions: pinned(...pinnedIds),
     discussions: {
       nodes,
       pageInfo: { hasNextPage: endCursor !== null, endCursor },

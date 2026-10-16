@@ -1,18 +1,25 @@
 import fp from "fastify-plugin";
 import { z } from "zod";
+import type { NewsContentProcessor } from "./news.content";
 import type { NewsRepository } from "./news.repository";
+import { newsRoutes } from "./news.routes";
 import { type NewsSource, NewsSync } from "./news.sync";
 
-export interface NewsModuleOptions {
+export interface NewsSyncOptions {
   source: NewsSource;
-  repository: NewsRepository;
+  content: NewsContentProcessor;
   repo: { owner: string; name: string };
-  syncIntervalMs: number | null;
+  intervalMs: number | null;
+}
+
+export interface NewsModuleOptions {
+  repository: NewsRepository;
+  sync: NewsSyncOptions | null;
 }
 
 declare module "fastify" {
   interface FastifyInstance {
-    newsSync: NewsSync;
+    newsSync: NewsSync | null;
   }
 }
 
@@ -27,10 +34,19 @@ const DiscussionEventSchema = z.object({
 });
 
 export const newsModule = fp<NewsModuleOptions>(
-  async (app, { source, repository, repo, syncIntervalMs }) => {
+  async (app, { repository, sync: syncOptions }) => {
+    await app.register(newsRoutes(repository));
+
+    if (!syncOptions) {
+      app.decorate("newsSync", null);
+      return;
+    }
+
+    const { source, content, repo, intervalMs } = syncOptions;
     const sync = new NewsSync(
       source,
       repository,
+      content,
       app.log.child({ module: "news" }),
     );
     app.decorate("newsSync", sync);
@@ -53,7 +69,7 @@ export const newsModule = fp<NewsModuleOptions>(
       });
     }
 
-    if (syncIntervalMs === null) return;
+    if (intervalMs === null) return;
 
     const runSafely = (run: () => Promise<unknown>, label: string) => {
       run().catch((err: unknown) =>
@@ -67,7 +83,7 @@ export const newsModule = fp<NewsModuleOptions>(
       runSafely(() => sync.syncAll(), "Initial news sync");
       timer = setInterval(
         () => runSafely(() => sync.syncLatest(), "Scheduled news sync"),
-        syncIntervalMs,
+        intervalMs,
       );
       timer.unref();
     });

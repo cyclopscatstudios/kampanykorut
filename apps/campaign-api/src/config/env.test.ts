@@ -12,6 +12,8 @@ describe("loadConfig", () => {
       trustProxy: false,
       gitCommit: "unknown",
       github: null,
+      mongoUri: null,
+      storage: null,
     });
   });
 
@@ -58,6 +60,35 @@ describe("loadConfig", () => {
     );
     expect(() => loadConfig({ GITHUB_REPO: "no-slash" })).toThrow(
       /GITHUB_REPO/,
+    );
+  });
+
+  it("configures object storage only when it is complete", () => {
+    const config = loadConfig({
+      MONGODB_URI: "mongodb+srv://user:pw@cluster.example.net/kampanykorut",
+      S3_ENDPOINT: "https://account.r2.cloudflarestorage.com",
+      S3_BUCKET: "assets",
+      S3_ACCESS_KEY_ID: "key",
+      S3_SECRET_ACCESS_KEY: "secret",
+      ASSETS_PUBLIC_URL: "https://cdn.kampanykorut.hu/",
+    });
+
+    expect(config.mongoUri).toBe(
+      "mongodb+srv://user:pw@cluster.example.net/kampanykorut",
+    );
+    expect(config.storage).toEqual({
+      endpoint: "https://account.r2.cloudflarestorage.com",
+      region: "auto",
+      bucket: "assets",
+      accessKeyId: "key",
+      secretAccessKey: "secret",
+      publicUrl: "https://cdn.kampanykorut.hu",
+    });
+    expect(() => loadConfig({ S3_BUCKET: "assets" })).toThrow(
+      /ASSETS_PUBLIC_URL/,
+    );
+    expect(() => loadConfig({ MONGODB_URI: "postgres://x" })).toThrow(
+      /MONGODB_URI/,
     );
   });
 });

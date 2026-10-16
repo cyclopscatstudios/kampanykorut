@@ -88,3 +88,25 @@ node ID never has to be copied by hand.
   first paragraph is the lead, a last paragraph that is a single link is the
   CTA, and a trailing `lejár: YYYY-MM-DD` line sets the expiry (end of that day,
   Budapest time). Closed discussions are hidden.
+
+### News storage, images and API
+
+- With `MONGODB_URI` set, news live in the `news` collection (unique
+  `githubId` and `number`); without it they are kept in memory and refilled by
+  the startup sync. `/ready` then also checks MongoDB.
+- With the `S3_*` variables set, the first image becomes a 1200×675 WebP cover
+  and a 320×320 thumbnail, other images a WebP of at most 1200 px width, under
+  `news/<hash of source URL>/`. Images that fail to copy are left out and
+  retried on the next sync; GitHub attachment URLs are never served.
+- The markdown is rendered with `markdown-it` and cleaned with `sanitize-html`
+  (paragraphs, emphasis, lists, links, images, h2/h3, blockquote). External
+  links get `target="_blank" rel="noopener noreferrer"`.
+
+| Path                       | Purpose                                                             |
+| -------------------------- | ------------------------------------------------------------------- |
+| `GET /api/v1/news`         | Visible, not expired news, pinned first; `?limit=` (≤ 20), `?lang=` |
+| `GET /api/v1/news/archive` | All published news incl. expired; `?limit=`, `?type=`, `?cursor=`   |
+| `GET /api/v1/news/:number` | One news item with its sanitized `html`                             |
+
+The read endpoints send `Cache-Control: public, max-age=300` and an `ETag`.
+`?lang=en` falls back to Hungarian while there are no visible English news.

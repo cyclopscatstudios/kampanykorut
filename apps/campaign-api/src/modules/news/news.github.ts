@@ -6,6 +6,16 @@ export const NEWS_SYNC_PAGE_SIZE = 20;
 const FULL_SYNC_PAGE_SIZE = 50;
 const FULL_SYNC_MAX_PAGES = 40;
 
+const PINNED_FIELDS = /* GraphQL */ `
+      pinnedDiscussions(first: 10) {
+        nodes {
+          discussion {
+            id
+          }
+        }
+      }
+`;
+
 const DISCUSSION_FIELDS = /* GraphQL */ `
   fragment NewsDiscussion on Discussion {
     id
@@ -16,7 +26,6 @@ const DISCUSSION_FIELDS = /* GraphQL */ `
     createdAt
     updatedAt
     closed
-    isPinned
     upvoteCount
     category {
       id
@@ -55,6 +64,7 @@ export const NEWS_DISCUSSIONS_QUERY = /* GraphQL */ `
     $after: String
   ) {
     repository(owner: $owner, name: $name) {
+      ${PINNED_FIELDS}
       discussions(
         categoryId: $categoryId
         first: $first
@@ -77,6 +87,7 @@ export const NEWS_DISCUSSIONS_QUERY = /* GraphQL */ `
 export const NEWS_DISCUSSION_QUERY = /* GraphQL */ `
   query NewsDiscussion($owner: String!, $name: String!, $number: Int!) {
     repository(owner: $owner, name: $name) {
+      ${PINNED_FIELDS}
       discussion(number: $number) {
         ...NewsDiscussion
       }
@@ -95,7 +106,6 @@ const DiscussionSchema = z
     createdAt: z.iso.datetime(),
     updatedAt: z.iso.datetime(),
     closed: z.boolean(),
-    isPinned: z.boolean(),
     upvoteCount: z.number().int(),
     category: z.object({ id: z.string() }),
     comments: z.object({ totalCount: z.number().int() }),
@@ -112,7 +122,6 @@ const DiscussionSchema = z
     createdAt: new Date(d.createdAt),
     updatedAt: new Date(d.updatedAt),
     closed: d.closed,
-    isPinned: d.isPinned,
     upvoteCount: d.upvoteCount,
     commentCount: d.comments.totalCount,
     categoryId: d.category.id,
@@ -121,7 +130,20 @@ const DiscussionSchema = z
     ),
   }));
 
-export type NewsDiscussion = z.output<typeof DiscussionSchema>;
+export type NewsDiscussion = z.output<typeof DiscussionSchema> & {
+  isPinned: boolean;
+};
+
+const PinnedSchema = z
+  .object({
+    nodes: z.array(
+      z.object({ discussion: z.object({ id: z.string() }) }).nullable(),
+    ),
+  })
+  .transform(
+    (pinned) =>
+      new Set(pinned.nodes.flatMap((n) => (n ? [n.discussion.id] : []))),
+  );
 
 const CategoriesResponse = z.object({
   repository: z
@@ -138,6 +160,7 @@ const CategoriesResponse = z.object({
 const DiscussionsResponse = z.object({
   repository: z
     .object({
+      pinnedDiscussions: PinnedSchema,
       discussions: z.object({
         nodes: z.array(DiscussionSchema),
         pageInfo: z.object({
@@ -150,7 +173,12 @@ const DiscussionsResponse = z.object({
 });
 
 const DiscussionResponse = z.object({
-  repository: z.object({ discussion: DiscussionSchema.nullable() }).nullable(),
+  repository: z
+    .object({
+      pinnedDiscussions: PinnedSchema,
+      discussion: DiscussionSchema.nullable(),
+    })
+    .nullable(),
 });
 
 function parse<T extends z.ZodType>(schema: T, data: unknown): z.output<T> {
@@ -203,14 +231,21 @@ export class NewsGithubSource {
   }
 
   async fetchByNumber(number: number): Promise<NewsDiscussion | null> {
-    const data = await this.client.graphql(NEWS_DISCUSSION_QUERY, {
-      ...this.client.repo,
-      number,
-    });
+    const data = await this.client
+      .graphql(NEWS_DISCUSSION_QUERY, { ...this.client.repo, number })
+      .catch((err: unknown) => {
+        if (err instanceof GithubError && err.isNotFound) return null;
+        throw err;
+      });
+    if (data === null) return null;
+
     const { repository } = parse(DiscussionResponse, data);
 
     if (!repository) throw this.repoNotFound();
-    return repository.discussion;
+    const { discussion, pinnedDiscussions } = repository;
+    return discussion
+      ? { ...discussion, isPinned: pinnedDiscussions.has(discussion.githubId) }
+      : null;
   }
 
   async isNews(discussion: NewsDiscussion): Promise<boolean> {
@@ -227,7 +262,14 @@ export class NewsGithubSource {
     const { repository } = parse(DiscussionsResponse, data);
 
     if (!repository) throw this.repoNotFound();
-    return repository.discussions;
+    const { discussions, pinnedDiscussions } = repository;
+    return {
+      pageInfo: discussions.pageInfo,
+      nodes: discussions.nodes.map((d) => ({
+        ...d,
+        isPinned: pinnedDiscussions.has(d.githubId),
+      })),
+    };
   }
 
   private async fetchCategoryId(): Promise<string> {

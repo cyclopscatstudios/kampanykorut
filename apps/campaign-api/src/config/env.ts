@@ -6,6 +6,18 @@ const GITHUB_APP_KEYS = [
   "GITHUB_APP_INSTALLATION_ID",
 ] as const;
 
+const STORAGE_KEYS = [
+  "S3_BUCKET",
+  "S3_ACCESS_KEY_ID",
+  "S3_SECRET_ACCESS_KEY",
+  "ASSETS_PUBLIC_URL",
+] as const;
+
+const KEY_GROUPS = [
+  { keys: GITHUB_APP_KEYS, label: "GITHUB_APP_*" },
+  { keys: STORAGE_KEYS, label: "S3_* / ASSETS_PUBLIC_URL" },
+];
+
 const EnvSchema = z
   .object({
     NODE_ENV: z
@@ -29,19 +41,29 @@ const EnvSchema = z
     GITHUB_NEWS_CATEGORY: z.string().min(1).default("Hírek"),
     GITHUB_WEBHOOK_SECRET: z.string().min(16).optional(),
     NEWS_SYNC_INTERVAL_MINUTES: z.coerce.number().min(0).default(15),
+    MONGODB_URI: z
+      .string()
+      .regex(/^mongodb(\+srv)?:\/\//, "Expected a mongodb:// URI")
+      .optional(),
+    S3_ENDPOINT: z.url().optional(),
+    S3_REGION: z.string().min(1).default("auto"),
+    S3_BUCKET: z.string().min(1).optional(),
+    S3_ACCESS_KEY_ID: z.string().min(1).optional(),
+    S3_SECRET_ACCESS_KEY: z.string().min(1).optional(),
+    ASSETS_PUBLIC_URL: z.url().optional(),
   })
   .superRefine((env, ctx) => {
-    const missing = GITHUB_APP_KEYS.filter((key) => env[key] === undefined);
-    if (missing.length === 0 || missing.length === GITHUB_APP_KEYS.length) {
-      return;
-    }
+    for (const { keys, label } of KEY_GROUPS) {
+      const missing = keys.filter((key) => env[key] === undefined);
+      if (missing.length === 0 || missing.length === keys.length) continue;
 
-    for (const key of missing) {
-      ctx.addIssue({
-        code: "custom",
-        path: [key],
-        message: "Required when any GITHUB_APP_* variable is set",
-      });
+      for (const key of missing) {
+        ctx.addIssue({
+          code: "custom",
+          path: [key],
+          message: `Required when any ${label} variable is set`,
+        });
+      }
     }
   })
   .transform((env) => ({
@@ -53,7 +75,36 @@ const EnvSchema = z
     trustProxy: env.TRUST_PROXY,
     gitCommit: env.GIT_COMMIT,
     github: githubConfig(env),
+    mongoUri: env.MONGODB_URI ?? null,
+    storage: storageConfig(env),
   }));
+
+function storageConfig(env: {
+  S3_ENDPOINT?: string;
+  S3_REGION: string;
+  S3_BUCKET?: string;
+  S3_ACCESS_KEY_ID?: string;
+  S3_SECRET_ACCESS_KEY?: string;
+  ASSETS_PUBLIC_URL?: string;
+}) {
+  if (
+    !env.S3_BUCKET ||
+    !env.S3_ACCESS_KEY_ID ||
+    !env.S3_SECRET_ACCESS_KEY ||
+    !env.ASSETS_PUBLIC_URL
+  ) {
+    return null;
+  }
+
+  return {
+    endpoint: env.S3_ENDPOINT ?? null,
+    region: env.S3_REGION,
+    bucket: env.S3_BUCKET,
+    accessKeyId: env.S3_ACCESS_KEY_ID,
+    secretAccessKey: env.S3_SECRET_ACCESS_KEY,
+    publicUrl: env.ASSETS_PUBLIC_URL.replace(/\/+$/, ""),
+  };
+}
 
 function githubConfig(env: {
   GITHUB_APP_ID?: string;
@@ -90,6 +141,7 @@ function githubConfig(env: {
 
 export type AppConfig = z.output<typeof EnvSchema>;
 export type GithubConfig = NonNullable<AppConfig["github"]>;
+export type StorageConfig = NonNullable<AppConfig["storage"]>;
 
 export function loadConfig(
   source: Record<string, string | undefined> = process.env,
