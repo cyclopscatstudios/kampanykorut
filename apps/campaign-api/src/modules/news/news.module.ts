@@ -14,6 +14,7 @@ export interface NewsSyncOptions {
 
 export interface NewsModuleOptions {
   repository: NewsRepository;
+  cacheControl?: string;
   sync: NewsSyncOptions | null;
 }
 
@@ -34,8 +35,8 @@ const DiscussionEventSchema = z.object({
 });
 
 export const newsModule = fp<NewsModuleOptions>(
-  async (app, { repository, sync: syncOptions }) => {
-    await app.register(newsRoutes(repository));
+  async (app, { repository, cacheControl, sync: syncOptions }) => {
+    await app.register(newsRoutes(repository, { cacheControl }));
 
     if (!syncOptions) {
       app.decorate("newsSync", null);

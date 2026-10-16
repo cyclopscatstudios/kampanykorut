@@ -9,7 +9,7 @@ import type {
   NewsRepository,
 } from "./news.repository";
 
-const CACHE_CONTROL = "public, max-age=300";
+export const NEWS_CACHE_CONTROL = "public, max-age=300";
 
 const Nullable = <T extends TSchema>(schema: T) =>
   Type.Union([schema, Type.Null()]);
@@ -73,9 +73,14 @@ function decodeCursor(cursor: string): ArchiveCursor | null {
   return { publishedAt, number: parsedNumber };
 }
 
-function sendCached<T>(request: FastifyRequest, reply: FastifyReply, body: T) {
+function sendCached<T>(
+  request: FastifyRequest,
+  reply: FastifyReply,
+  cacheControl: string,
+  body: T,
+) {
   const etag = `"${createHash("sha1").update(JSON.stringify(body)).digest("base64url")}"`;
-  reply.header("cache-control", CACHE_CONTROL).header("etag", etag);
+  reply.header("cache-control", cacheControl).header("etag", etag);
 
   if (request.headers["if-none-match"] === etag) {
     return reply.status(304).send();
@@ -85,7 +90,10 @@ function sendCached<T>(request: FastifyRequest, reply: FastifyReply, body: T) {
 
 export function newsRoutes(
   repository: NewsRepository,
-  now: () => Date = () => new Date(),
+  {
+    cacheControl = NEWS_CACHE_CONTROL,
+    now = () => new Date(),
+  }: { cacheControl?: string; now?: () => Date } = {},
 ): FastifyPluginAsyncTypebox {
   const resolveLang = async (lang: NewsLang = "hu"): Promise<NewsLang> =>
     lang === "hu" || (await repository.hasVisible(lang)) ? lang : "hu";
@@ -110,7 +118,9 @@ export function newsRoutes(
           limit: request.query.limit,
           now: now(),
         });
-        return sendCached(request, reply, { items: items.map(toItem) });
+        return sendCached(request, reply, cacheControl, {
+          items: items.map(toItem),
+        });
       },
     );
 
@@ -150,7 +160,7 @@ export function newsRoutes(
         });
         const page = items.slice(0, limit);
 
-        return sendCached(request, reply, {
+        return sendCached(request, reply, cacheControl, {
           items: page.map(toItem),
           nextCursor:
             items.length > limit ? encodeCursor(page[page.length - 1]!) : null,
@@ -177,7 +187,10 @@ export function newsRoutes(
           throw Object.assign(new Error("News not found"), { statusCode: 404 });
         }
 
-        return sendCached(request, reply, { ...toItem(news), html: news.html });
+        return sendCached(request, reply, cacheControl, {
+          ...toItem(news),
+          html: news.html,
+        });
       },
     );
   };

@@ -48,6 +48,7 @@ const IMAGE_SOURCE =
   /\[!\[[^\]]*\]\([^)]*\)\]\([^)]*\)|!\[[^\]]*\]\([^)]*\)|<img\b[^>]*>/i;
 const HTML_IMG_SRC = /<img\b[^>]*\bsrc\s*=\s*["']([^"']+)["']/i;
 const HTTP_URL = /^https?:\/\//i;
+const CTA_PUNCTUATION = /^[\s.,;:!?]*$/;
 const TIME_ZONE = "Europe/Budapest";
 
 export function parseNewsDiscussion(
@@ -58,7 +59,7 @@ export function parseNewsDiscussion(
   const expiry = extractExpiry(body);
   const cover = extractCover(expiry.markdown);
   const cta = extractCta(cover.markdown);
-  const labels = discussion.labels.map((label) => label.toLowerCase());
+  const labels = discussion.labels.map(normalizeLabel);
 
   return {
     githubId: discussion.githubId,
@@ -77,6 +78,15 @@ export function parseNewsDiscussion(
     publishedAt: discussion.createdAt,
     updatedAt: discussion.updatedAt,
   };
+}
+
+function normalizeLabel(label: string): string {
+  return label
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-");
 }
 
 function extractExpiry(markdown: string) {
@@ -124,7 +134,9 @@ function extractCta(markdown: string): {
   const last = topLevelBlocks(markdown).at(-1);
   const children = last && paragraphChildren(last);
   const meaningful = (children ?? []).filter(
-    (t) => t.type !== "softbreak" && !(t.type === "text" && !t.content.trim()),
+    (t) =>
+      t.type !== "softbreak" &&
+      !(t.type === "text" && CTA_PUNCTUATION.test(t.content)),
   );
   const [open, ...rest] = meaningful;
   const close = rest.pop();

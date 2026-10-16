@@ -10,6 +10,7 @@ export * from "./history";
 export * from "./icon";
 export * from "./languages";
 export * from "./mandate";
+export * from "./news";
 export * from "./map";
 export * from "./menu.types";
 export * from "./question";

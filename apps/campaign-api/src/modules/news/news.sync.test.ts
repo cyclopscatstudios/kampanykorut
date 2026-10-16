@@ -103,6 +103,10 @@ describe("NewsSync", () => {
     await sync.syncLatest();
     expect(content.process).toHaveBeenCalledTimes(1);
 
+    body = "Bevezető.\n\nlejár: 2026-12-01";
+    await sync.syncLatest();
+    expect(content.process).toHaveBeenCalledTimes(1);
+
     body = "Javított bevezető.";
     await sync.syncLatest();
     expect(content.process).toHaveBeenCalledTimes(2);

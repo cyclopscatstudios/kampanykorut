@@ -169,3 +169,19 @@ describe("news routes", () => {
     );
   });
 });
+
+describe("news routes in development", () => {
+  it("asks the browser to revalidate on every request", async () => {
+    const app = await buildApp(
+      loadConfig({ NODE_ENV: "development", LOG_LEVEL: "silent" }),
+      { newsRepository: new InMemoryNewsRepository() },
+    );
+
+    try {
+      const res = await app.inject({ method: "GET", url: "/api/v1/news" });
+      expect(res.headers["cache-control"]).toBe("no-cache");
+    } finally {
+      await app.close();
+    }
+  });
+});

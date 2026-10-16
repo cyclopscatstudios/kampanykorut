@@ -130,6 +130,18 @@ describe("parseNewsDiscussion", () => {
     expect(news.markdown).toContain("olvashatók");
   });
 
+  it("accepts a CTA link followed by punctuation", () => {
+    const news = parse(
+      "Bevezető.\n\n[Kipróbálom →](https://en.wikipedia.org/wiki/Call_to_action_(marketing)).\n\nlejár: 2026-11-01",
+    );
+
+    expect(news.cta).toEqual({
+      label: "Kipróbálom →",
+      url: "https://en.wikipedia.org/wiki/Call_to_action_(marketing)",
+    });
+    expect(news.markdown).toBe("Bevezető.");
+  });
+
   it("ignores CTA links that are not http(s)", () => {
     expect(parse("Bevezető.\n\n[Katt](javascript:alert(1))").cta).toBeNull();
   });
@@ -155,6 +167,14 @@ describe("parseNewsDiscussion", () => {
     expect(
       parse("Hír.", { labels: ["bug", "uj-funkcio", "lang:en"] }),
     ).toMatchObject({ type: "uj-funkcio", lang: "en" });
+  });
+
+  it("accepts human-friendly label names", () => {
+    expect(parse("Hír.", { labels: ["Új funkció"] }).type).toBe("uj-funkcio");
+    expect(parse("Hír.", { labels: ["Frissítés"] }).type).toBe("frissites");
+    expect(parse("Hír.", { labels: ["KAMPÁNY"] }).type).toBe("kampany");
+    expect(parse("Hír.", { labels: [" Javítás "] }).type).toBe("javitas");
+    expect(parse("Hír.", { labels: ["Lang:EN"] }).lang).toBe("en");
   });
 
   it("hides closed discussions and those outside the news category", () => {

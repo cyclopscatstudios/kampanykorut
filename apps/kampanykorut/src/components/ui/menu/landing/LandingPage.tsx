@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetCampaigns, useSettings } from "@/logic/application";
 import { AnalyticsEvent, track } from "../../../../logic/infra/posthog/track";
+import { NewsSection } from "../../news/NewsSection";
 import { CampaignDetailsDialog } from "./CampaignDetailsDialog";
 import { CampaignsSection } from "./CampaignsSection";
 import { LandingFooter } from "./LandingFooter";
@@ -20,6 +21,9 @@ export function LandingPage() {
     null,
   );
 
+  const newsBelowCampaigns =
+    import.meta.env.VITE_NEWS_PLACEMENT === "below-campaigns";
+
   const goToMenu = () => {
     track(AnalyticsEvent.LEAVE_LANDING_PAGE, {});
     navigate("/menu");
@@ -33,10 +37,12 @@ export function LandingPage() {
   return (
     <div className="min-h-screen w-full bg-[#0f172a] text-slate-100">
       <LandingHero onStart={goToMenu} />
+      {!newsBelowCampaigns && <NewsSection />}
       <CampaignsSection
         campaigns={campaigns}
         onSelectCampaign={setSelectedCampaign}
       />
+      {newsBelowCampaigns && <NewsSection />}
       <LandingFooter />
       <CampaignDetailsDialog
         campaign={selectedCampaign}

@@ -76,6 +76,8 @@ node ID never has to be copied by hand.
 
 ### News sync
 
+Authoring rules for the news discussions (in Hungarian): [docs/hirek-irasa.md](../../docs/hirek-irasa.md).
+
 - `POST /webhooks/github` verifies `X-Hub-Signature-256` and dispatches events
   to the registered handlers. For `discussion` events in the news category (or
   for news that already exist), the discussion is re-fetched over GraphQL and
@@ -98,6 +100,9 @@ node ID never has to be copied by hand.
   and a 320×320 thumbnail, other images a WebP of at most 1200 px width, under
   `news/<hash of source URL>/`. Images that fail to copy are left out and
   retried on the next sync; GitHub attachment URLs are never served.
+- Without `S3_*` in development, images are written to `.data/assets` and
+  served by the API under `/api/v1/assets/`; in other environments news are
+  shown without images.
 - The markdown is rendered with `markdown-it` and cleaned with `sanitize-html`
   (paragraphs, emphasis, lists, links, images, h2/h3, blockquote). External
   links get `target="_blank" rel="noopener noreferrer"`.

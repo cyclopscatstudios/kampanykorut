@@ -8,6 +8,7 @@ interface HeadingProps {
   level?: HeadingLevel;
   color?: Colors;
   className?: string;
+  id?: string;
 }
 
 const sizeClasses: Record<HeadingLevel, string> = {
@@ -34,10 +35,12 @@ export function Heading({
   level = 1,
   color = "darkBlue",
   className,
+  id,
 }: HeadingProps) {
   const Tag = `h${level}` as const;
   return (
     <Tag
+      id={id}
       className={classNames(
         "font-display font-bold tracking-tight",
         sizeClasses[level],

@@ -9,7 +9,9 @@ let shuttingDown = false;
 
 for (const signal of ["SIGINT", "SIGTERM"] as const) {
   process.once(signal, async () => {
-    if (shuttingDown) return;
+    if (shuttingDown) {
+      return;
+    }
     shuttingDown = true;
 
     app.log.info({ signal }, "Shutting down");

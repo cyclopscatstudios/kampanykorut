@@ -19,12 +19,24 @@ import { MainMenu } from "./components/ui/menu/MainMenu";
 import { NewGameMenu } from "./components/ui/menu/NewGameMenu";
 import { SettingsMenu } from "./components/ui/menu/SettingsMenu";
 import { SideSelectorMenu } from "./components/ui/menu/SideSelectorMenu";
+import { NewsArchivePage } from "./components/ui/news/NewsArchivePage";
+import { NewsDetailPage } from "./components/ui/news/NewsDetailPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <LandingPage />,
     loader: landingPageRouter,
+  },
+  {
+    path: "/hirek",
+    element: <NewsArchivePage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/hirek/:number",
+    element: <NewsDetailPage />,
+    errorElement: <ErrorPage />,
   },
   {
     element: <RootLayout />,

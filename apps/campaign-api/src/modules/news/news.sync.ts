@@ -96,7 +96,7 @@ export class NewsSync {
   ): Promise<boolean> {
     const news = parseNewsDiscussion(discussion, { isNews });
     const sourceHash = createHash("sha256")
-      .update(discussion.markdown)
+      .update(JSON.stringify([news.markdown, news.coverSourceUrl]))
       .digest("hex");
     const stored = await this.repository.findByGithubId(news.githubId);
     const content =
