@@ -212,5 +212,38 @@
       "startButton": "Start campaign"
     },
     "footer": "Kampánykörút — a free election simulation that runs in your browser."
+  },
+  "news": {
+    "heading": "What’s new",
+    "allNews": "All news",
+    "readMore": "Read more",
+    "types": {
+      "uj-funkcio": "New feature",
+      "frissites": "Update",
+      "kampany": "Campaign",
+      "javitas": "Fix"
+    },
+    "archive": {
+      "title": "News",
+      "description": "Features, updates and new campaigns from Kampánykörút.",
+      "all": "All",
+      "loadMore": "More news",
+      "empty": "There is no news in this category yet.",
+      "error": "News are not available right now. Please try again later."
+    },
+    "detail": {
+      "back": "All news",
+      "comment": "Comment on GitHub",
+      "notFound": "This news item could not be found.",
+      "error": "This news item is not available right now. Please try again later."
+    },
+    "coverAlt": "Cover image",
+    "home": "Back to the home page",
+    "bell": {
+      "unread_one": "{{count}} unread news item",
+      "unread_other": "{{count}} unread news items",
+      "markAllRead": "Mark all read",
+      "close": "Close"
+    }
   }
 }

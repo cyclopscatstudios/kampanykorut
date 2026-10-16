@@ -212,5 +212,38 @@
       "startButton": "Kampány indítása"
     },
     "footer": "Kampánykörút — ingyenes, böngészőben futó választási szimuláció."
+  },
+  "news": {
+    "heading": "Újdonságok",
+    "allNews": "Összes hír",
+    "readMore": "Elolvasom",
+    "types": {
+      "uj-funkcio": "Új funkció",
+      "frissites": "Frissítés",
+      "kampany": "Kampány",
+      "javitas": "Javítás"
+    },
+    "archive": {
+      "title": "Hírek",
+      "description": "Újdonságok, frissítések és új kampányok a Kampánykörútból.",
+      "all": "Mind",
+      "loadMore": "További hírek",
+      "empty": "Még nincs hír ebben a kategóriában.",
+      "error": "A hírek most nem érhetők el. Próbáld újra később."
+    },
+    "detail": {
+      "back": "Összes hír",
+      "comment": "Hozzászólás GitHubon",
+      "notFound": "Ez a hír nem található.",
+      "error": "A hír most nem érhető el. Próbáld újra később."
+    },
+    "coverAlt": "Borítókép",
+    "home": "Vissza a főoldalra",
+    "bell": {
+      "unread_one": "{{count}} olvasatlan hír",
+      "unread_other": "{{count}} olvasatlan hír",
+      "markAllRead": "Mind olvasott",
+      "close": "Bezárás"
+    }
   }
 }

@@ -1,8 +1,34 @@
 import { randomUUID } from "node:crypto";
+import path from "node:path";
 import type { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
-import Fastify, { type FastifyServerOptions, LogController } from "fastify";
+import Fastify, {
+  type FastifyInstance,
+  type FastifyServerOptions,
+  LogController,
+} from "fastify";
 import type { AppConfig } from "./config/env";
+import { GithubClient } from "./integrations/github/github-client";
+import { githubWebhooks } from "./integrations/github/webhooks";
+import {
+  localAssets,
+  LocalObjectStorage,
+} from "./integrations/storage/local-storage";
+import {
+  type ObjectStorage,
+  S3ObjectStorage,
+} from "./integrations/storage/object-storage";
 import { healthRoutes } from "./modules/health/health.routes";
+import { NewsContentProcessor } from "./modules/news/news.content";
+import { NewsGithubSource } from "./modules/news/news.github";
+import { NewsImageCopier } from "./modules/news/news.images";
+import { newsModule } from "./modules/news/news.module";
+import {
+  InMemoryNewsRepository,
+  type NewsRepository,
+} from "./modules/news/news.repository";
+import { MongoNewsRepository } from "./modules/news/news.repository.mongo";
+import type { NewsSource } from "./modules/news/news.sync";
+import { mongo } from "./plugins/mongo";
 import { problemDetails } from "./plugins/problem-details";
 import { openApi } from "./plugins/swagger";
 
@@ -12,6 +38,13 @@ declare module "fastify" {
   }
 }
 
+export interface AppDeps {
+  newsSource?: NewsSource;
+  newsRepository?: NewsRepository;
+  objectStorage?: ObjectStorage;
+}
+
+const LOCAL_ASSETS_DIR = ".data/assets";
 const BODY_LIMIT_BYTES = 2 * 1024 * 1024;
 const PROBE_URLS = new Set(["/health", "/ready"]);
 
@@ -26,7 +59,7 @@ function loggerOptions(config: AppConfig): FastifyServerOptions["logger"] {
   return { level: config.logLevel };
 }
 
-export async function buildApp(config: AppConfig) {
+export async function buildApp(config: AppConfig, deps: AppDeps = {}) {
   const app = Fastify({
     logger: loggerOptions(config),
     genReqId: () => randomUUID(),
@@ -53,7 +86,69 @@ export async function buildApp(config: AppConfig) {
 
   await app.register(healthRoutes);
 
+  const storage = deps.objectStorage ?? createObjectStorage(config);
+  if (storage) {
+    app.addReadinessCheck("storage", () => storage.check());
+  }
+  if (storage instanceof LocalObjectStorage) {
+    await app.register(localAssets, { storage });
+  }
+
+  if (config.github?.webhookSecret) {
+    await app.register(githubWebhooks, {
+      secret: config.github.webhookSecret,
+    });
+  }
+
+  await app.register(newsModule, {
+    repository: deps.newsRepository ?? (await createNewsRepository(app)),
+    cacheControl: config.env === "development" ? "no-cache" : undefined,
+    siteUrl: config.siteUrl,
+    sync: config.github
+      ? {
+          source:
+            deps.newsSource ??
+            new NewsGithubSource(
+              new GithubClient(config.github),
+              config.github.newsCategory,
+            ),
+          content: new NewsContentProcessor(
+            storage
+              ? new NewsImageCopier(storage, app.log.child({ module: "news" }))
+              : null,
+          ),
+          repo: config.github.repo,
+          intervalMs:
+            config.env === "test" ? null : config.github.newsSyncIntervalMs,
+        }
+      : null,
+  });
+
   return app;
+}
+
+function createObjectStorage(config: AppConfig): ObjectStorage | null {
+  if (config.storage) {
+    return new S3ObjectStorage(config.storage);
+  }
+  if (config.env === "development") {
+    return new LocalObjectStorage(path.resolve(LOCAL_ASSETS_DIR));
+  }
+  return null;
+}
+
+async function createNewsRepository(
+  app: FastifyInstance,
+): Promise<NewsRepository> {
+  if (!app.config.mongoUri) {
+    app.log.warn("MONGODB_URI is not set, news are kept in memory");
+    return new InMemoryNewsRepository();
+  }
+
+  await app.register(mongo, { uri: app.config.mongoUri });
+  const repository = new MongoNewsRepository(app.mongo);
+  await repository.init();
+  return repository;
 }
 
 export type App = Awaited<ReturnType<typeof buildApp>>;

@@ -1,6 +1,7 @@
 FROM node:24-alpine AS base
 WORKDIR /app
-ENV HUSKY=0
+ENV HUSKY=0 \
+    MONGOMS_DISABLE_POSTINSTALL=1
 
 FROM base AS builder
 

@@ -12,4 +12,5 @@ export type SessionKey =
   | "autoSaveTimestamp"
   | "autoSaveRegistry"
   | "language"
-  | "debugMode";
+  | "debugMode"
+  | "newsReadState";

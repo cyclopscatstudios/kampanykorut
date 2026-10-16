@@ -37,3 +37,9 @@ playwright/.cache/
 playwright/.auth/
 ct-template/.cache/
 ct-template/.auth/
+
+# Tech plans
+tech-plan/*
+
+# Local news images in development (campaign-api)
+apps/campaign-api/.data/
