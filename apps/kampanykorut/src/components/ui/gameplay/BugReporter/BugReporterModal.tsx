@@ -220,6 +220,8 @@ function BugReporterBody({
   const field = (key: keyof BugReport) => (e: { target: { value: string } }) =>
     onChange((prev) => ({ ...prev, [key]: e.target.value }));
 
+  const isEmailSupported = false;
+
   return (
     <div className="flex flex-col gap-3">
       <div className="flex">
@@ -261,17 +263,19 @@ function BugReporterBody({
         maxLength={5000}
         disabled={disabled}
       />
-      <TextInput
-        label={t("bugReporter.label.email")}
-        type="email"
-        autoComplete="email"
-        value={value.email}
-        onChange={field("email")}
-        placeholder={t("bugReporter.placeholder.email")}
-        helperText={t("bugReporter.emailHelper")}
-        maxLength={254}
-        disabled={disabled}
-      />
+      {isEmailSupported && (
+        <TextInput
+          label={t("bugReporter.label.email")}
+          type="email"
+          autoComplete="email"
+          value={value.email}
+          onChange={field("email")}
+          placeholder={t("bugReporter.placeholder.email")}
+          helperText={t("bugReporter.emailHelper")}
+          maxLength={254}
+          disabled={disabled}
+        />
+      )}
       <div
         aria-hidden
         className="absolute -left-[10000px] w-px h-px overflow-hidden"
