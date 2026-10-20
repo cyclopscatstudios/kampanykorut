@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/cyclopscatstudios/kampanykorut/compare/kampanykorut-v0.2.0...kampanykorut-v0.2.1) (2026-10-20)
+
+
+### Bug Fixes
+
+* **kampanykorut:** move posthog-js dependency to app package and bump to 1.438.13 ([980cebc](https://github.com/cyclopscatstudios/kampanykorut/commit/980cebcbed0b4a66719e56cf5f7ccc7adee61357))
+* **kampanykorut:** move posthog-js dependency to app package and bump… ([562c282](https://github.com/cyclopscatstudios/kampanykorut/commit/562c282f6f93898ecda6593867466e4a7aa98ae5))
+
 ## [0.2.0](https://github.com/cyclopscatstudios/kampanykorut/compare/kampanykorut-v0.1.0...kampanykorut-v0.2.0) (2026-10-20)
 
 ### Features
