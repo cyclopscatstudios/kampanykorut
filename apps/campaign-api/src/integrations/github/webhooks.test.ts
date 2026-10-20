@@ -8,6 +8,7 @@ import {
 import type { NewsDiscussion } from "../../modules/news/news.github";
 import { InMemoryNewsRepository } from "../../modules/news/news.repository";
 import type { NewsSource } from "../../modules/news/news.sync";
+import { testPrivateKeyOneLine } from "../../testing/test-key";
 import { GITHUB_WEBHOOK_PATH, signGithubPayload } from "./webhooks";
 
 const SECRET = "test-webhook-secret-123";
@@ -16,7 +17,7 @@ const config = loadConfig({
   NODE_ENV: "test",
   LOG_LEVEL: "silent",
   GITHUB_APP_ID: "1",
-  GITHUB_APP_PRIVATE_KEY: "unused",
+  GITHUB_APP_PRIVATE_KEY: testPrivateKeyOneLine,
   GITHUB_APP_INSTALLATION_ID: "2",
   GITHUB_REPO: "cyclopscatstudios/kampanykorut",
   GITHUB_WEBHOOK_SECRET: SECRET,

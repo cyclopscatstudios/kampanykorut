@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { testPrivateKey, testPrivateKeyOneLine } from "../testing/test-key";
 import { loadConfig } from "./env";
 
 describe("loadConfig", () => {
@@ -49,17 +50,17 @@ describe("loadConfig", () => {
     expect(() => loadConfig({ NODE_ENV: "staging" })).toThrow(/NODE_ENV/);
   });
 
-  it.skip("enables the GitHub App only when all of its credentials are set", () => {
+  it("enables the GitHub App only when all of its credentials are set", () => {
     const config = loadConfig({
       GITHUB_APP_ID: "12345",
-      GITHUB_APP_PRIVATE_KEY: "-----BEGIN KEY-----\\nabc\\n-----END KEY-----",
+      GITHUB_APP_PRIVATE_KEY: testPrivateKeyOneLine,
       GITHUB_APP_INSTALLATION_ID: "678",
       GITHUB_REPO: "acme/game",
     });
 
     expect(config.github).toEqual({
       appId: "12345",
-      privateKey: "-----BEGIN KEY-----\nabc\n-----END KEY-----",
+      privateKey: testPrivateKey,
       installationId: "678",
       repo: { owner: "acme", name: "game" },
       newsCategory: "Hírek",
