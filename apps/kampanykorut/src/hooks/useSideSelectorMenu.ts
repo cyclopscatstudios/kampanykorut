@@ -26,7 +26,7 @@ export function useSideSelectorMenu(id: string) {
       (s) => s.id === partyId,
     );
     if (!party) {
-      log.error("party was not found");
+      log.error("party was not found", { campaignId: id, partyId });
       return;
     }
     setSelectedParty(party);
@@ -39,7 +39,11 @@ export function useSideSelectorMenu(id: string) {
       (ca) => ca.id === candidateId,
     );
     if (!candidate) {
-      log.error("candidate was not found");
+      log.error("candidate was not found", {
+        campaignId: id,
+        partyId: selectedParty?.id,
+        candidateId,
+      });
       return;
     }
     setSelectedCandidate(candidate);
@@ -49,6 +53,20 @@ export function useSideSelectorMenu(id: string) {
   };
 
   const startGame = (id: string) => {
+    if (!selectedParty || !selectedCandidate) {
+      log.warn("Starting game without complete side selection", {
+        campaignId: id,
+        sessionId,
+        partyId: selectedParty?.id,
+        candidateId: selectedCandidate?.id,
+      });
+    }
+    log.info("Starting game", {
+      campaignId: id,
+      sessionId,
+      partyId: selectedParty?.id,
+      candidateId: selectedCandidate?.id,
+    });
     goToCampaign(id, sessionId);
     track(AnalyticsEvent.CAMPAIGN_STARTED, {
       campaignId: id,

@@ -16,12 +16,16 @@ describe("app", () => {
   });
 
   it("answers the liveness probe", async () => {
-    app = await buildApp(testConfig({ gitCommit: "abc123" }));
+    app = await buildApp(testConfig({ version: "1.2.3", gitCommit: "abc123" }));
 
     const res = await app.inject({ method: "GET", url: "/health" });
 
     expect(res.statusCode).toBe(200);
-    expect(res.json()).toMatchObject({ status: "ok", version: "abc123" });
+    expect(res.json()).toMatchObject({
+      status: "ok",
+      version: "1.2.3",
+      commit: "abc123",
+    });
     expect(res.headers["x-request-id"]).toBeTruthy();
   });
 

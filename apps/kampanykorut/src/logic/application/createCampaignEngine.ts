@@ -8,8 +8,11 @@ import {
   ResultModifier,
   VoterEnvironment,
 } from "@/shared/domain";
+import { createLogger } from "@/shared/logger";
 import { CampaignConfig } from "@/shared/types";
 import { ConfigEngine } from "./ConfigEngine";
+
+const log = createLogger("createCampaignEngine");
 
 export function createCampaignEngine(
   config: CampaignConfig,
@@ -43,6 +46,31 @@ export function createCampaignEngine(
   const candidateConfig = resolvedCandidateId
     ? partySide?.[resolvedCandidateId]
     : undefined;
+
+  if (!candidateConfig && partyIds.length > 0) {
+    log.error("Candidate config not found, starting without questions", {
+      campaignId,
+      playerSideId,
+      playerCandidateId,
+      resolvedPartyId,
+      resolvedCandidateId,
+      availableSides: Object.keys(config.playableSides ?? {}),
+      availableCandidates: candidateIds,
+    });
+  } else if (candidateConfig && !candidateConfig.questions?.length) {
+    log.warn("Candidate config has no questions", {
+      campaignId,
+      resolvedPartyId,
+      resolvedCandidateId,
+    });
+  }
+
+  log.info("Creating campaign engine", {
+    campaignId,
+    partyId: resolvedPartyId,
+    candidateId: resolvedCandidateId,
+    questionCount: candidateConfig?.questions?.length ?? 0,
+  });
 
   const campaignEngine = new CampaignEngine(
     config.candidateListData,

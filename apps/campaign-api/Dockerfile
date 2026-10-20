@@ -1,6 +1,7 @@
 FROM node:24-alpine AS base
 WORKDIR /app
-ENV HUSKY=0
+ENV HUSKY=0 \
+    MONGOMS_DISABLE_POSTINSTALL=1
 
 FROM base AS builder
 
@@ -20,16 +21,20 @@ RUN yarn install --production --frozen-lockfile && yarn cache clean
 
 FROM base AS runner
 
+ARG APP_VERSION=dev
 ARG GIT_COMMIT=unknown
 ENV NODE_ENV=production \
     HOST=0.0.0.0 \
     PORT=4000 \
     TRUST_PROXY=true \
+    APP_VERSION=$APP_VERSION \
     GIT_COMMIT=$GIT_COMMIT
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY apps/campaign-api/package.json ./
 COPY --from=builder /app/apps/campaign-api/dist ./dist
+
+RUN mkdir -p /app/data/assets && chown -R node:node /app/data
 
 USER node
 EXPOSE 4000

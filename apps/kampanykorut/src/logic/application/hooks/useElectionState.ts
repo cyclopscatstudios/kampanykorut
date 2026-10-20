@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
+import { createLogger } from "@/shared/logger";
 import {
   Answer,
   CampaignState,
@@ -15,6 +16,8 @@ import { createCampaignEngine } from "../createCampaignEngine";
 import { useSettings } from "./useSettings";
 import { useStateEngine } from "./useStateEngine";
 
+const log = createLogger("useElectionState");
+
 export function useElectionState(campaignId: string) {
   const config = container.resolve(ConfigEngine).getCampaignConfig(campaignId);
   const { saveSession, currentState, currentHistory, sessionId } =
@@ -26,14 +29,36 @@ export function useElectionState(campaignId: string) {
       createCampaignEngine(config, campaignId, playerSideId, playerCandidateId),
     [config, campaignId, playerSideId, playerCandidateId],
   );
-  const [gameState, setGameState] = useState<CampaignState>(() =>
-    campaignEngine.createInitialState(
+  const [gameState, setGameState] = useState<CampaignState>(() => {
+    const isResumed = Boolean(currentState?.turn);
+    log.info(isResumed ? "Resuming campaign" : "Starting new campaign", {
       campaignId,
-      currentState,
-      config.electionConfig,
+      sessionId,
+      turn: currentState?.turn,
+      historyLength: currentHistory?.length ?? 0,
       playerSideId,
-    ),
-  );
+      playerCandidateId,
+    });
+    try {
+      return campaignEngine.createInitialState(
+        campaignId,
+        currentState,
+        config.electionConfig,
+        playerSideId,
+      );
+    } catch (error) {
+      log.error("Failed to create initial campaign state", {
+        error,
+        campaignId,
+        sessionId,
+        isResumed,
+        turn: currentState?.turn,
+        playerSideId,
+        playerCandidateId,
+      });
+      throw error;
+    }
+  });
   const { settings } = useSettings();
   const { goToFinalResults } = useNavigation();
 
@@ -66,19 +91,33 @@ export function useElectionState(campaignId: string) {
       conditionalEffects: answer.conditionalEffects,
       selectedDistrict,
     };
-    const newGameState = campaignEngine.processTurn(
-      gameState,
-      decision,
-      currentHistory ?? [],
-      settings,
-      config.electionConfig,
-      playerSideId && playerCandidateId
-        ? config.playableSides?.[playerSideId]?.[playerCandidateId]
-            ?.campaignStrategies
-        : undefined,
-      config.electionConfig.districtBoost,
-      playerSideId,
-    );
+    let newGameState: CampaignState;
+    try {
+      newGameState = campaignEngine.processTurn(
+        gameState,
+        decision,
+        currentHistory ?? [],
+        settings,
+        config.electionConfig,
+        playerSideId && playerCandidateId
+          ? config.playableSides?.[playerSideId]?.[playerCandidateId]
+              ?.campaignStrategies
+          : undefined,
+        config.electionConfig.districtBoost,
+        playerSideId,
+      );
+    } catch (error) {
+      log.error("Failed to process turn", {
+        error,
+        campaignId,
+        sessionId,
+        turn: gameState.turn,
+        questionId: decision.questionId,
+        answerId: rawAnswer,
+        selectedDistrict: selectedDistrict?.oevk,
+      });
+      throw error;
+    }
 
     return {
       newGameState,

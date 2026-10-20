@@ -55,7 +55,7 @@ export class StateEngine extends Emitter<CampaignState> {
   init(force = false) {
     if (this.shouldGenerateNewSessionId(force)) {
       const id = this.generateId();
-      log.debug("New session ID generated:", id);
+      log.info("New session id generated", { sessionId: id, force });
       this.saveSessionId(id);
     }
   }
@@ -163,6 +163,10 @@ export class StateEngine extends Emitter<CampaignState> {
       return sessionId;
     }
     const id = this.generateId();
+    log.info("No session id found, generated new one", {
+      sessionId: id,
+      path: window.location.pathname,
+    });
     this.stateHandler.set("sessionId", id);
     this.storage.setItem("currentSessionId", id, "localStorage");
     return id;
@@ -174,8 +178,16 @@ export class StateEngine extends Emitter<CampaignState> {
       return;
     }
     const { campaignId, sessionId } = session;
+    const sessionContext = {
+      saveId: session.id,
+      campaignId,
+      sessionId,
+      type: session.type,
+      lastSaved: session.lastSaved,
+    };
+    log.info("Loading saved session", sessionContext);
     if (!campaignId || !sessionId) {
-      log.error("id was not found");
+      log.error("id was not found", sessionContext);
       return;
     }
     const history = this.storage.getItem(
@@ -184,12 +196,21 @@ export class StateEngine extends Emitter<CampaignState> {
       sessionId,
     );
     if (!history) {
-      log.error("history was not found");
+      log.error("history was not found", sessionContext);
       return;
     }
-    const state = this.getCampaignStateById(sessionId);
+    let state: CampaignState | null;
+    try {
+      state = this.getCampaignStateById(sessionId);
+    } catch (error) {
+      log.error("failed to parse saved campaign state", {
+        error,
+        ...sessionContext,
+      });
+      return;
+    }
     if (!state) {
-      log.error("campaign state was not found");
+      log.error("campaign state was not found", sessionContext);
       return;
     }
 
@@ -208,7 +229,10 @@ export class StateEngine extends Emitter<CampaignState> {
           "localStorage",
         );
       if (!copied) {
-        log.error("failed to copy saved session, aborting load");
+        log.error("failed to copy saved session, aborting load", {
+          ...sessionContext,
+          targetSessionId,
+        });
         this.storage.clearItem(`campaignState-${targetSessionId}`);
         this.storage.clearItem(`turnHistory-${targetSessionId}`);
         return;
@@ -220,6 +244,13 @@ export class StateEngine extends Emitter<CampaignState> {
 
     const route = `/game/${campaignId}?sessionId=${targetSessionId}`;
     const isGameRoute = this.navigation.isUrlParamMatch("/game/");
+    log.info("Saved session loaded", {
+      ...sessionContext,
+      targetSessionId,
+      turn: state.turn,
+      isEnded: state.isEnded,
+      reload: isGameRoute,
+    });
     if (!isGameRoute) {
       this.navigation.go(route);
       return;
@@ -254,7 +285,11 @@ export class StateEngine extends Emitter<CampaignState> {
       : this.stateHandler.get("campaignState");
     const campaignId = currentState?.activeCampaignId;
     if (!campaignId || campaignId === DEFAULT_CAMPAIGN_ID) {
-      log.error("no campaign id found, skipping slot save");
+      log.error("no campaign id found, skipping slot save", {
+        sessionId,
+        campaignId,
+        hasStoredState: Boolean(raw),
+      });
       return;
     }
 
@@ -288,7 +323,12 @@ export class StateEngine extends Emitter<CampaignState> {
           "localStorage",
         ));
     if (!snapshotSaved) {
-      log.error("failed to save session snapshot, slot was not saved");
+      log.error("failed to save session snapshot, slot was not saved", {
+        sessionId,
+        snapshotSessionId,
+        campaignId,
+        overwrite: Boolean(existingSlot),
+      });
       if (!existingSlot) {
         this.storage.clearItem(`campaignState-${snapshotSessionId}`);
         this.storage.clearItem(`turnHistory-${snapshotSessionId}`);
@@ -306,10 +346,13 @@ export class StateEngine extends Emitter<CampaignState> {
       lastSaved: new Date().toISOString(),
       type: "manual",
     });
-    log.debug(
-      "Session info updated for snapshot sessionId:",
+    log.info("Game saved to slot", {
+      sessionId,
       snapshotSessionId,
-    );
+      campaignId,
+      turn: currentState?.turn,
+      overwrite: Boolean(existingSlot),
+    });
   }
 
   cleanupUnsavedStates() {
@@ -349,6 +392,12 @@ export class StateEngine extends Emitter<CampaignState> {
 
   clearGameState(type: ClearTypes) {
     const state = this.getCurrentCampaignState();
+    log.info("Clearing game state", {
+      type,
+      campaignId: state?.activeCampaignId,
+      sessionId: this.getSessionId(),
+      turn: state?.turn,
+    });
     this.saveState("campaignState", null);
     if (state?.activeCampaignId) {
       this.unregisterAutoSaveSession(state.activeCampaignId);

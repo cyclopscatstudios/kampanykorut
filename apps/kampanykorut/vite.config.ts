@@ -36,6 +36,9 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    proxy: {
+      "/api": process.env.VITE_API_PROXY_TARGET ?? "http://localhost:4000",
+    },
   },
   optimizeDeps: {
     exclude: ["playwright", "playwright-report"],

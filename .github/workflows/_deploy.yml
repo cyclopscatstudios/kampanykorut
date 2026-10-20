@@ -1,0 +1,64 @@
+name: Deploy service
+
+on:
+  workflow_call:
+    inputs:
+      service:
+        type: string
+        required: true
+      version-var:
+        type: string
+        required: true
+      version:
+        type: string
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: deploy-${{ inputs.service }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Validate inputs
+        env:
+          SERVICE: ${{ inputs.service }}
+          VERSION_VAR: ${{ inputs.version-var }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          [[ "$SERVICE" =~ ^[a-z0-9-]+$ ]] || { echo "Invalid service: $SERVICE"; exit 1; }
+          [[ "$VERSION_VAR" =~ ^[A-Z0-9_]+$ ]] || { echo "Invalid variable: $VERSION_VAR"; exit 1; }
+          [[ "$VERSION" =~ ^[A-Za-z0-9._-]+$ ]] || { echo "Invalid version: $VERSION"; exit 1; }
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy
+        env:
+          SERVICE: ${{ inputs.service }}
+          VERSION_VAR: ${{ inputs.version-var }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          ssh -i ~/.ssh/deploy_key \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
+            "SERVICE=$SERVICE VERSION_VAR=$VERSION_VAR VERSION=$VERSION bash -s" <<'SCRIPT'
+          set -euo pipefail
+          cd /opt/kampanykorut
+          exec 9>.deploy.lock
+          flock 9
+          touch .env
+          if grep -q "^${VERSION_VAR}=" .env; then
+            sed -i "s|^${VERSION_VAR}=.*|${VERSION_VAR}=${VERSION}|" .env
+          else
+            echo "${VERSION_VAR}=${VERSION}" >> .env
+          fi
+          docker compose pull "$SERVICE"
+          docker compose up -d --no-deps "$SERVICE"
+          echo "$SERVICE -> $VERSION"
+          SCRIPT
