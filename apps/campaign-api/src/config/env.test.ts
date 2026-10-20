@@ -10,6 +10,7 @@ describe("loadConfig", () => {
       logLevel: "info",
       docsEnabled: true,
       trustProxy: false,
+      version: "dev",
       gitCommit: "unknown",
       siteUrl: "https://kampanykorut.hu",
       assetsDir: null,

@@ -1,0 +1,82 @@
+name: Release
+
+on:
+  push:
+    branches: [master]
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+
+    outputs:
+      kampanykorut-released: ${{ steps.release.outputs['apps/kampanykorut--release_created'] }}
+      kampanykorut-version: ${{ steps.release.outputs['apps/kampanykorut--version'] }}
+      campaign-api-released: ${{ steps.release.outputs['apps/campaign-api--release_created'] }}
+      campaign-api-version: ${{ steps.release.outputs['apps/campaign-api--version'] }}
+
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          target-branch: master
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  kampanykorut-image:
+    needs: release-please
+    if: needs.release-please.outputs.kampanykorut-released == 'true'
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/_image.yml
+    secrets: inherit
+    with:
+      app: kampanykorut
+      version: ${{ needs.release-please.outputs.kampanykorut-version }}
+      environment: production
+      tags: |
+        ${{ needs.release-please.outputs.kampanykorut-version }}
+        latest
+        ${{ github.sha }}
+
+  kampanykorut-deploy:
+    needs: [release-please, kampanykorut-image]
+    uses: ./.github/workflows/_deploy.yml
+    secrets: inherit
+    with:
+      service: kampanykorut
+      version-var: KAMPANYKORUT_VERSION
+      version: ${{ needs.release-please.outputs.kampanykorut-version }}
+
+  campaign-api-image:
+    needs: release-please
+    if: needs.release-please.outputs.campaign-api-released == 'true'
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/_image.yml
+    secrets: inherit
+    with:
+      app: campaign-api
+      version: ${{ needs.release-please.outputs.campaign-api-version }}
+      tags: |
+        ${{ needs.release-please.outputs.campaign-api-version }}
+        latest
+        ${{ github.sha }}
+
+  campaign-api-deploy:
+    needs: [release-please, campaign-api-image]
+    uses: ./.github/workflows/_deploy.yml
+    secrets: inherit
+    with:
+      service: campaign-api
+      version-var: CAMPAIGN_API_VERSION
+      version: ${{ needs.release-please.outputs.campaign-api-version }}

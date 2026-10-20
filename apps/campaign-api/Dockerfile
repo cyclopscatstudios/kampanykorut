@@ -21,11 +21,13 @@ RUN yarn install --production --frozen-lockfile && yarn cache clean
 
 FROM base AS runner
 
+ARG APP_VERSION=dev
 ARG GIT_COMMIT=unknown
 ENV NODE_ENV=production \
     HOST=0.0.0.0 \
     PORT=4000 \
     TRUST_PROXY=true \
+    APP_VERSION=$APP_VERSION \
     GIT_COMMIT=$GIT_COMMIT
 
 COPY --from=deps /app/node_modules ./node_modules

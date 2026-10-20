@@ -27,6 +27,7 @@ function withTimeout(check: ReadinessCheck): Promise<void> {
 const HealthResponse = Type.Object({
   status: Type.Literal("ok"),
   version: Type.String(),
+  commit: Type.String(),
   uptime: Type.Number({ description: "Process uptime in seconds" }),
 });
 
@@ -55,7 +56,8 @@ const routes: FastifyPluginAsyncTypebox = async (app) => {
     },
     async () => ({
       status: "ok" as const,
-      version: app.config.gitCommit,
+      version: app.config.version,
+      commit: app.config.gitCommit,
       uptime: process.uptime(),
     }),
   );

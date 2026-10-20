@@ -1,4 +1,16 @@
+import { createPrivateKey } from "node:crypto";
 import { z } from "zod";
+
+const normalizePrivateKey = (key: string) => key.replace(/\\n/g, "\n");
+
+function isPrivateKey(key: string): boolean {
+  try {
+    createPrivateKey(normalizePrivateKey(key));
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 const GITHUB_APP_KEYS = [
   "GITHUB_APP_ID",
@@ -30,11 +42,19 @@ const EnvSchema = z
       .default("info"),
     API_DOCS_ENABLED: z.stringbool().default(true),
     TRUST_PROXY: z.stringbool().default(false),
+    APP_VERSION: z.string().min(1).default("dev"),
     GIT_COMMIT: z.string().default("unknown"),
     SITE_URL: z.url().default("https://kampanykorut.hu"),
     ASSETS_DIR: z.string().min(1).optional(),
     GITHUB_APP_ID: z.string().min(1).optional(),
-    GITHUB_APP_PRIVATE_KEY: z.string().min(1).optional(),
+    GITHUB_APP_PRIVATE_KEY: z
+      .string()
+      .min(1)
+      .refine(isPrivateKey, {
+        message:
+          "Not a readable PEM private key; put it on one line with \\n separators or quote the multi-line value",
+      })
+      .optional(),
     GITHUB_APP_INSTALLATION_ID: z.string().min(1).optional(),
     GITHUB_REPO: z
       .string()
@@ -83,6 +103,7 @@ const EnvSchema = z
     logLevel: env.LOG_LEVEL,
     docsEnabled: env.API_DOCS_ENABLED,
     trustProxy: env.TRUST_PROXY,
+    version: env.APP_VERSION,
     gitCommit: env.GIT_COMMIT,
     siteUrl: env.SITE_URL.replace(/\/+$/, ""),
     assetsDir: env.ASSETS_DIR ?? null,
@@ -139,7 +160,7 @@ function githubConfig(env: {
 
   return {
     appId: env.GITHUB_APP_ID,
-    privateKey: env.GITHUB_APP_PRIVATE_KEY.replace(/\\n/g, "\n"),
+    privateKey: normalizePrivateKey(env.GITHUB_APP_PRIVATE_KEY),
     installationId: env.GITHUB_APP_INSTALLATION_ID,
     repo: { owner, name },
     newsCategory: env.GITHUB_NEWS_CATEGORY,

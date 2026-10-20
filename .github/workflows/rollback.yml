@@ -1,0 +1,24 @@
+name: Rollback
+
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: App
+        type: choice
+        options:
+          - kampanykorut
+          - campaign-api
+      version:
+        description: Image version to deploy (e.g. 0.3.1)
+        type: string
+        required: true
+
+jobs:
+  rollback:
+    uses: ./.github/workflows/_deploy.yml
+    secrets: inherit
+    with:
+      service: ${{ inputs.app }}
+      version-var: ${{ inputs.app == 'campaign-api' && 'CAMPAIGN_API_VERSION' || 'KAMPANYKORUT_VERSION' }}
+      version: ${{ inputs.version }}

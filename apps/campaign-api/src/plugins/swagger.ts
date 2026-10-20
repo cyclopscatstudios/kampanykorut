@@ -13,7 +13,7 @@ export const openApi = fp(
           title: "Kampánykörút API",
           description:
             "Campaign storage, review and publishing service for Kampánykörút.",
-          version: app.config.gitCommit,
+          version: app.config.version,
         },
       },
     });

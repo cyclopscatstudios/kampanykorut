@@ -22,7 +22,9 @@ export function NewsBell() {
   const lang = useNewsLang();
   const [selected, setSelected] = useState<number | null>(null);
 
-  if (status !== "ready" || items.length === 0) return null;
+  if (status !== "ready") {
+    return null;
+  }
 
   return (
     <>
