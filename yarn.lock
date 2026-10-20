@@ -7747,7 +7747,7 @@ postcss@^8.5.27:
     picocolors "^1.1.1"
     source-map-js "^1.2.2"
 
-posthog-js@^1.414.0:
+posthog-js@^1.438.13:
   version "1.438.13"
   resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.438.13.tgz#6b8d22e57601c598bed9c9e9330bc5170d835a4c"
   integrity sha512-fcRhMZ/TKvpDjmDGTlf4KCBqqTnpLWLplZ76NfeLNEE1P6N6qCGGZzqZ6gEzJoOfYLNLgjd0sRM5fC8F/Ky9fA==
