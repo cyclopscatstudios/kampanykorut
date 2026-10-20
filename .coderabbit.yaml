@@ -1,23 +1,4 @@
-language: "en-US"
-
 reviews:
-  profile: "assertive"
-  high_level_summary: true
-
   auto_review:
     enabled: true
-    drafts: false
-    auto_incremental_review: true
-
-  path_instructions:
-    - path: "apps/kampanykorut/**"
-      instructions: |
-        Focus on React state management,
-        TypeScript safety, campaign state
-        persistence, and gameplay regressions.
-
-    - path: "apps/campaign-maker/**"
-      instructions: |
-        Focus on form validation, unsaved
-        changes, data integrity and
-        authentication boundaries.
+    drafts: true
