@@ -181,16 +181,32 @@
   "bugReporter": {
     "title": "Report a bug",
     "report": "Report",
-    "warningText": "You'll need a GitHub account to submit a bug report.",
-    "palceholder": {
+    "sending": "Sending…",
+    "close": "Close",
+    "warningText": "The title, description and steps will be public on GitHub, so please do not include personal data.",
+    "tooltip": "Your report becomes a public GitHub issue. No GitHub account is needed.",
+    "emailHelper": "We will let you know at this address when the bug is fixed. We use it for nothing else.",
+    "fallback": "Report on GitHub",
+    "placeholder": {
       "title": "Briefly describe the problem",
       "description": "What happened? What did you expect instead?",
-      "steps": "1. Go to...\n2. Click...\n3. See the error..."
+      "steps": "1. Go to...\n2. Click...\n3. See the error...",
+      "email": "you@example.com"
     },
     "label": {
       "title": "Title",
       "description": "Description",
-      "steps": "Steps to reproduce"
+      "steps": "Steps to reproduce",
+      "email": "Email address (optional)"
+    },
+    "success": {
+      "message": "Thank you, your report has been recorded.",
+      "messageWithIssue": "Thank you, your report has been recorded (#{{issueNumber}}).",
+      "emailSent": "We sent you an email; use its button to get notified when the bug is fixed."
+    },
+    "error": {
+      "failed": "Your report could not be sent right now. Try again, or report it directly on GitHub (needs a GitHub account).",
+      "unavailable": "Bug reporting is not available right now. Please report it directly on GitHub (needs a GitHub account)."
     }
   },
   "warning": {

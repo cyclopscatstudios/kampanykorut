@@ -25,10 +25,18 @@ const STORAGE_KEYS = [
   "ASSETS_PUBLIC_URL",
 ] as const;
 
+const SMTP_KEYS = ["SMTP_USER", "SMTP_APP_PASSWORD"] as const;
+
 const KEY_GROUPS = [
   { keys: GITHUB_APP_KEYS, label: "GITHUB_APP_*" },
   { keys: STORAGE_KEYS, label: "S3_* / ASSETS_PUBLIC_URL" },
+  { keys: SMTP_KEYS, label: "SMTP_USER / SMTP_APP_PASSWORD" },
 ];
+
+const TrustProxySchema = z.union([
+  z.string().regex(/^\d+$/).transform(Number),
+  z.stringbool(),
+]);
 
 const EnvSchema = z
   .object({
@@ -41,7 +49,7 @@ const EnvSchema = z
       .enum(["fatal", "error", "warn", "info", "debug", "trace", "silent"])
       .default("info"),
     API_DOCS_ENABLED: z.stringbool().default(true),
-    TRUST_PROXY: z.stringbool().default(false),
+    TRUST_PROXY: TrustProxySchema.default(false),
     APP_VERSION: z.string().min(1).default("dev"),
     GIT_COMMIT: z.string().default("unknown"),
     SITE_URL: z.url().default("https://kampanykorut.hu"),
@@ -67,6 +75,13 @@ const EnvSchema = z
       .string()
       .regex(/^mongodb(\+srv)?:\/\//, "Expected a mongodb:// URI")
       .optional(),
+    SMTP_HOST: z.string().min(1).default("smtp.gmail.com"),
+    SMTP_PORT: z.coerce.number().int().min(1).max(65535).default(465),
+    SMTP_USER: z.email().optional(),
+    SMTP_APP_PASSWORD: z.string().min(1).optional(),
+    MAIL_FROM_NAME: z.string().min(1).default("Kampánykörút"),
+    TURNSTILE_SECRET_KEY: z.string().min(1).optional(),
+    BUG_REPORT_IP_SALT: z.string().min(16).optional(),
     S3_ENDPOINT: z.url().optional(),
     S3_REGION: z.string().min(1).default("auto"),
     S3_BUCKET: z.string().min(1).optional(),
@@ -110,7 +125,32 @@ const EnvSchema = z
     github: githubConfig(env),
     mongoUri: env.MONGODB_URI ?? null,
     storage: storageConfig(env),
+    mail: mailConfig(env),
+    bugReports: {
+      turnstileSecret: env.TURNSTILE_SECRET_KEY ?? null,
+      ipSalt: env.BUG_REPORT_IP_SALT ?? null,
+    },
   }));
+
+function mailConfig(env: {
+  SMTP_HOST: string;
+  SMTP_PORT: number;
+  SMTP_USER?: string;
+  SMTP_APP_PASSWORD?: string;
+  MAIL_FROM_NAME: string;
+}) {
+  if (!env.SMTP_USER || !env.SMTP_APP_PASSWORD) {
+    return null;
+  }
+
+  return {
+    host: env.SMTP_HOST,
+    port: env.SMTP_PORT,
+    user: env.SMTP_USER,
+    password: env.SMTP_APP_PASSWORD,
+    fromName: env.MAIL_FROM_NAME,
+  };
+}
 
 function storageConfig(env: {
   S3_ENDPOINT?: string;
@@ -175,6 +215,8 @@ function githubConfig(env: {
 export type AppConfig = z.output<typeof EnvSchema>;
 export type GithubConfig = NonNullable<AppConfig["github"]>;
 export type StorageConfig = NonNullable<AppConfig["storage"]>;
+export type MailConfig = NonNullable<AppConfig["mail"]>;
+export type BugReportsConfig = AppConfig["bugReports"];
 
 export function loadConfig(
   source: Record<string, string | undefined> = process.env,

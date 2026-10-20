@@ -18,7 +18,38 @@ describe("loadConfig", () => {
       github: null,
       mongoUri: null,
       storage: null,
+      mail: null,
+      bugReports: { turnstileSecret: null, ipSalt: null },
     });
+  });
+
+  it("accepts a proxy hop count or a boolean for TRUST_PROXY", () => {
+    expect(loadConfig({ TRUST_PROXY: "1" }).trustProxy).toBe(1);
+    expect(loadConfig({ TRUST_PROXY: "2" }).trustProxy).toBe(2);
+    expect(loadConfig({ TRUST_PROXY: "false" }).trustProxy).toBe(false);
+    expect(() => loadConfig({ TRUST_PROXY: "maybe" })).toThrow(/TRUST_PROXY/);
+  });
+
+  it("configures SMTP only when both the user and the app password are set", () => {
+    const config = loadConfig({
+      SMTP_USER: "kampanykorut.hibajelentes@gmail.com",
+      SMTP_APP_PASSWORD: "abcd efgh ijkl mnop",
+      SMTP_PORT: "587",
+    });
+
+    expect(config.mail).toEqual({
+      host: "smtp.gmail.com",
+      port: 587,
+      user: "kampanykorut.hibajelentes@gmail.com",
+      password: "abcd efgh ijkl mnop",
+      fromName: "Kampánykörút",
+    });
+    expect(() =>
+      loadConfig({ SMTP_USER: "kampanykorut.hibajelentes@gmail.com" }),
+    ).toThrow(/SMTP_APP_PASSWORD/);
+    expect(() => loadConfig({ SMTP_USER: "not-an-email" })).toThrow(
+      /SMTP_USER/,
+    );
   });
 
   it("parses string values from the environment", () => {

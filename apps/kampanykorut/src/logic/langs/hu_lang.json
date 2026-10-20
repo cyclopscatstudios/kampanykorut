@@ -181,16 +181,32 @@
   "bugReporter": {
     "title": "Hiba bejelentése",
     "report": "Jelentés",
-    "warningText": "A hibabejelentéshez GitHub-fiókra lesz szükséged.",
-    "palceholder": {
+    "sending": "Küldés…",
+    "close": "Bezárás",
+    "warningText": "A cím, a leírás és a lépések nyilvánosan megjelennek a GitHubon, ezért ne írj bele személyes adatot.",
+    "tooltip": "A bejelentésből egy nyilvános GitHub issue lesz. GitHub-fiók nem kell hozzá.",
+    "emailHelper": "Erre a címre szólunk, ha a hibát kijavítottuk. Másra nem használjuk.",
+    "fallback": "Bejelentés GitHubon",
+    "placeholder": {
       "title": "Írd le röviden a problémát",
       "description": "Mi történt? Mit vártál helyette?",
-      "steps": "1. Menj oda...\n2. Kattints a...\n3. Megjelenik a hibaüzenet..."
+      "steps": "1. Menj oda...\n2. Kattints a...\n3. Megjelenik a hibaüzenet...",
+      "email": "pelda@email.hu"
     },
     "label": {
       "title": "Cím",
       "description": "Leírás",
-      "steps": "A hiba reprodukálásának lépései"
+      "steps": "A hiba reprodukálásának lépései",
+      "email": "Email cím (nem kötelező)"
+    },
+    "success": {
+      "message": "Köszönjük, a bejelentést rögzítettük.",
+      "messageWithIssue": "Köszönjük, a bejelentést rögzítettük (#{{issueNumber}}).",
+      "emailSent": "Küldtünk egy levelet, a benne lévő gombbal kérhetsz értesítést a javításról."
+    },
+    "error": {
+      "failed": "A bejelentést most nem sikerült elküldeni. Próbáld újra, vagy jelentsd be közvetlenül a GitHubon (ehhez GitHub-fiók kell).",
+      "unavailable": "A hibabejelentés most nem érhető el. Jelentsd be közvetlenül a GitHubon (ehhez GitHub-fiók kell)."
     }
   },
   "warning": {
