@@ -105,8 +105,13 @@
       "restart": "Újraindítás"
     }
   },
+  "aboutMenu": {
+    "openPdf": "Leírás megnyitása (PDF)",
+    "mobileDescription": "A játék részletes leírását PDF formátumban nyithatod meg."
+  },
   "emptySlot": {
-    "label": "Szabad hely"
+    "label": "Szabad hely",
+    "placeholder": "Mentés neve..."
   },
   "modal": {
     "buttons": {

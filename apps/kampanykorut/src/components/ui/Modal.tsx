@@ -14,11 +14,11 @@ interface ModalProps {
 export function Modal({ title, description, onCancel, onConfirm }: ModalProps) {
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4"
       onClick={onCancel}
     >
       <div
-        className="w-[400px] bg-[#131824] p-5 rounded-xl border-2 border-[#244185] flex flex-col justify-between shadow-xl"
+        className="w-full max-w-100 bg-[#131824] p-5 rounded-xl border-2 border-[#244185] flex flex-col justify-between shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="w-full text-center">
@@ -45,7 +45,7 @@ export function Modal({ title, description, onCancel, onConfirm }: ModalProps) {
           </div>
         )}
 
-        <div className="flex gap-2 justify-center">
+        <div className="flex flex-col gap-2 *:w-full md:flex-row md:justify-center md:*:w-auto">
           <Button onClick={onConfirm}>
             <Button.Text>{t("modal.buttons.confirm")}</Button.Text>
           </Button>

@@ -7,9 +7,9 @@ import {
   StateEngine,
 } from "@/logic/application";
 import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
+import { Heading } from "../Heading";
 import { TextInput } from "../TextInput";
 
 interface SaveGameSessionProps {
@@ -17,202 +17,153 @@ interface SaveGameSessionProps {
   setIsOpen: (isOpen: boolean) => void;
 }
 
+type SlotSelection =
+  | { type: "empty"; index: number; name: string }
+  | { type: "used"; session: SavedCampaignSessionInfo };
+
 export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
   const gameStateEngine = container.resolve(StateEngine);
   const { usedSlots, availableSlots } = gameStateEngine.getSessionSlots();
   const activeCampaignId =
     gameStateEngine.getCampaignState()?.activeCampaignId ?? "";
-
-  return (
-    <Dialog open={isOpen} onClose={() => setIsOpen(false)} closeOnBackdrop>
-      <DialogHeader> {t("gameMenuBar.save")}</DialogHeader>
-      <DialogBody>
-        <SaveGameSessionBody
-          activeCampaignId={activeCampaignId}
-          availableSlots={availableSlots}
-          usedSlots={usedSlots}
-          onSave={(name, existingId) =>
-            gameStateEngine.saveToSlot(name, existingId)
-          }
-          onClose={() => setIsOpen(false)}
-        />
-      </DialogBody>
-    </Dialog>
-  );
-}
-
-type SlotSelection =
-  | { type: "empty"; index: number; name: string }
-  | { type: "used"; session: SavedCampaignSessionInfo };
-
-interface SaveGameSessionBodyProps {
-  availableSlots: number;
-  usedSlots: SavedCampaignSessionInfo[];
-  onSave: (name: string, existingId?: string) => void;
-  onClose: () => void;
-  activeCampaignId: string | null;
-}
-
-function SaveGameSessionBody({
-  availableSlots,
-  usedSlots,
-  onSave,
-  onClose,
-  activeCampaignId,
-}: SaveGameSessionBodyProps) {
   const [selection, setSelection] = useState<SlotSelection | null>(null);
 
   const canSave =
     selection !== null &&
     (selection.type === "used" || selection.name.trim() !== "");
 
-  const handleSave = () => {
-    if (!selection) return;
-    const name =
-      selection.type === "used" ? selection.session.name : selection.name;
-    const existingId =
-      selection.type === "used" ? selection.session.id : undefined;
-    onSave(name, existingId);
-    onClose();
+  const close = () => {
+    setSelection(null);
+    setIsOpen(false);
   };
 
-  const handleEmptySelect = (index: number) => {
+  const handleSave = () => {
+    if (!selection) return;
+    if (selection.type === "used") {
+      gameStateEngine.saveToSlot(selection.session.name, selection.session.id);
+    } else {
+      gameStateEngine.saveToSlot(selection.name.trim());
+    }
+    close();
+  };
+
+  return (
+    <Dialog
+      open={isOpen}
+      onClose={close}
+      buttons={{
+        secondary: (
+          <Button variant="secondary" onClick={close}>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
+          </Button>
+        ),
+        primary: (
+          <Button disabled={!canSave} onClick={handleSave}>
+            <Button.Text>{t("menuList.button.save")}</Button.Text>
+          </Button>
+        ),
+      }}
+    >
+      <DialogHeader>
+        <Heading level={3} color="lightBlue">
+          {t("gameMenuBar.save")}
+        </Heading>
+      </DialogHeader>
+      <DialogBody>
+        <SaveGameSessionBody
+          activeCampaignId={activeCampaignId}
+          availableSlots={availableSlots}
+          usedSlots={usedSlots}
+          selection={selection}
+          setSelection={setSelection}
+        />
+      </DialogBody>
+    </Dialog>
+  );
+}
+
+interface SaveGameSessionBodyProps {
+  availableSlots: number;
+  usedSlots: SavedCampaignSessionInfo[];
+  activeCampaignId: string;
+  selection: SlotSelection | null;
+  setSelection: (selection: SlotSelection) => void;
+}
+
+function SaveGameSessionBody({
+  availableSlots,
+  usedSlots,
+  activeCampaignId,
+  selection,
+  setSelection,
+}: SaveGameSessionBodyProps) {
+  const selectEmptySlot = (index: number) => {
     setSelection({
       type: "empty",
       index,
-      name: `auto-save-${activeCampaignId}-${new Date().toLocaleString()}`,
+      name: `${activeCampaignId}-${new Date().toLocaleString()}`,
     });
   };
 
-  const handleEmptyNameChange = (name: string) => {
+  const changeEmptySlotName = (name: string) => {
     if (selection?.type === "empty") {
       setSelection({ ...selection, name });
     }
   };
 
   return (
-    <div>
-      <div
-        className="max-h-[250px] flex flex-col gap-3 overflow-y-auto"
-        tabIndex={0}
-      >
-        <div className="mr-2">
-          {Array.from({ length: availableSlots }).map((_, index) => (
-            <EmptySlot
-              key={index}
-              index={index}
-              isSelected={
-                selection?.type === "empty" && selection.index === index
-              }
-              name={
-                selection?.type === "empty" && selection.index === index
-                  ? selection.name
-                  : ""
-              }
-              onSelect={handleEmptySelect}
-              onNameChange={handleEmptyNameChange}
+    <div className="max-h-[50vh] md:max-h-75 flex flex-col gap-2 overflow-y-auto pr-1">
+      {Array.from({ length: availableSlots }).map((_, index) =>
+        selection?.type === "empty" && selection.index === index ? (
+          <div key={index} className={slotClassName(true)}>
+            <TextInput
+              placeholder={t("emptySlot.placeholder")}
+              value={selection.name}
+              autoFocus
+              onChange={(e) => changeEmptySlotName(e.target.value)}
             />
-          ))}
-          {usedSlots.map((sessionInfo) => (
-            <UsedSlot
-              key={sessionInfo.sessionId}
-              sessionInfo={sessionInfo}
-              isSelected={
-                selection?.type === "used" &&
-                selection.session.sessionId === sessionInfo.sessionId
-              }
-              onSelect={(session) => setSelection({ type: "used", session })}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="flex justify-between mt-2">
-        <Button variant="tertiary" size="large" onClick={onClose}>
-          <Icon name="backspace-fill" />
-          <Text weight="medium" color="lightBlue">
-            {t("menuList.button.cancel")}
-          </Text>
-        </Button>
-        <Button size="large" disabled={!canSave} onClick={handleSave}>
-          <Text weight="medium" color="lightBlue">
-            {t("gameMenuBar.save")}
-          </Text>
-        </Button>
-      </div>
-    </div>
-  );
-}
-
-function EmptySlot({
-  index,
-  isSelected,
-  name,
-  onSelect,
-  onNameChange,
-}: {
-  index: number;
-  isSelected: boolean;
-  name: string;
-  onSelect: (index: number) => void;
-  onNameChange: (name: string) => void;
-}) {
-  return (
-    <div
-      className={classNames(
-        "p-3 border rounded cursor-pointer mb-2 min-h-[75px]",
-        {
-          "bg-blue-200 border-blue-500": isSelected,
-          "bg-blue-100/50 border-gray-300": !isSelected,
-        },
-      )}
-      onClick={() => onSelect(index)}
-    >
-      <div className="flex flex-col justify-center items-center h-full">
-        {isSelected ? (
-          <TextInput
-            placeholder="Save name..."
-            value={name}
-            autoFocus
-            onClick={(e) => e.stopPropagation()}
-            onChange={(e) => {
-              e.stopPropagation();
-              onNameChange(e.target.value);
-            }}
-          />
+          </div>
         ) : (
-          <Text color="lightBlue">{t("emptySlot.label")}</Text>
-        )}
-      </div>
+          <button
+            key={index}
+            type="button"
+            className={slotClassName(false)}
+            onClick={() => selectEmptySlot(index)}
+          >
+            <Text color="lightBlue">{t("emptySlot.label")}</Text>
+          </button>
+        ),
+      )}
+      {usedSlots.map((sessionInfo) => (
+        <button
+          key={sessionInfo.sessionId}
+          type="button"
+          className={slotClassName(
+            selection?.type === "used" &&
+              selection.session.sessionId === sessionInfo.sessionId,
+          )}
+          onClick={() => setSelection({ type: "used", session: sessionInfo })}
+        >
+          <Text color="darkBlue" weight="bold" className="break-all">
+            {sessionInfo.name}
+          </Text>
+          <Text color="darkBlue" weight="normal" size="sm">
+            {formatDate(sessionInfo.lastSaved)}
+          </Text>
+        </button>
+      ))}
     </div>
   );
 }
 
-function UsedSlot({
-  sessionInfo,
-  isSelected,
-  onSelect,
-}: {
-  sessionInfo: SavedCampaignSessionInfo;
-  isSelected: boolean;
-  onSelect: (session: SavedCampaignSessionInfo) => void;
-}) {
-  return (
-    <div
-      className={classNames("p-3 border rounded cursor-pointer mb-2", {
-        "bg-blue-200 border-blue-500": isSelected,
-        "bg-blue-100/50 border-gray-300": !isSelected,
-      })}
-      onClick={() => onSelect(sessionInfo)}
-    >
-      <div className="flex flex-col justify-center items-center">
-        <Text color="darkBlue" weight="bold">
-          {sessionInfo.name}
-        </Text>
-        <Text color="darkBlue" weight="normal">
-          {formatDate(sessionInfo.lastSaved)}
-        </Text>
-      </div>
-    </div>
+function slotClassName(isSelected: boolean) {
+  return classNames(
+    "w-full min-h-[64px] p-3 border rounded flex flex-col justify-center items-center text-center cursor-pointer shrink-0",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
+    {
+      "bg-blue-200 border-blue-500": isSelected,
+      "bg-blue-100/50 border-gray-300 hover:bg-blue-100/70": !isSelected,
+    },
   );
 }
 

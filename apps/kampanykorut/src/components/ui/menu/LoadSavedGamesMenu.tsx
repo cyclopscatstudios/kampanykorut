@@ -21,13 +21,13 @@ export function LoadSavedSessionsMenu() {
   ];
   const { goBack } = useNavigation();
   return (
-    <div>
+    <div className="w-full max-w-md px-4 md:px-0">
       <SavedSessionsBody
         savedSessions={savedSessions}
         selectedSession={selectedSession}
         setSelectedSession={setSelectedSession}
       />
-      <div className="min-w-[350px] pt-5 flex justify-between">
+      <div className="pt-5 flex flex-col-reverse gap-2 *:w-full md:flex-row md:justify-between md:*:w-auto">
         <Button variant="tertiary" size="large" onClick={goBack}>
           <Icon name="backspace-fill" />
           <Text weight="medium" color="lightBlue">

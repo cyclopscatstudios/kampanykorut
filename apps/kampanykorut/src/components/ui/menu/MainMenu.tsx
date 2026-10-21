@@ -4,7 +4,6 @@ import { MenuItemId } from "@/shared/types";
 import { MenuList, Text } from "@/shared/ui";
 import logo from "../../../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
-import { MenuLayout } from "../../../../../../shared/ui/menu/MenuLayout";
 import { buildInfo } from "../../../buildInfo";
 import { BugReporterButton } from "../gameplay/BugReporter/BugReporterButton";
 import { BugReporterModal } from "../gameplay/BugReporter/BugReporterModal";
@@ -20,7 +19,7 @@ export function MainMenu() {
   const about = useTranslateLang("mainMenu.about");
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full flex flex-col overflow-y-auto">
       <div className="absolute top-0 right-0 p-4 flex gap-2 z-20">
         <NewsBell />
         <BugReporterButton
@@ -28,11 +27,11 @@ export function MainMenu() {
           variant="main"
         />
       </div>
-      <div className="absolute top-0 left-0 w-full flex justify-center pt-8">
+      <div className="w-full flex justify-center pt-8 px-4">
         <div className="flex flex-col items-center z-10">
           <img src={logo} alt="Company Logo" className="w-48 md:w-72 h-auto" />
           <div
-            className="cursor-pointer w-[300px] md:w-full"
+            className="cursor-pointer w-[300px] max-w-full md:w-full my-3 md:my-5"
             onClick={() => setQuote(() => getRandomQuote(quotes))}
           >
             <Text color="lightBlue" className="text-sm">
@@ -45,7 +44,7 @@ export function MainMenu() {
         isOpen={openBugReporter}
         setIsOpen={() => setOpenBugReporter(false)}
       />
-      <MenuLayout>
+      <div className="flex-1 flex items-center justify-center py-4 md:pt-6 md:pb-36">
         <MenuList
           listItems={[
             {
@@ -74,8 +73,8 @@ export function MainMenu() {
             },
           ]}
         />
-      </MenuLayout>
-      <div className="absolute bottom-3 left-0 right-0 px-4">
+      </div>
+      <div className="px-4 pb-3">
         <div className="border-t border-gray-200/20 pt-2 flex justify-center">
           <Text color="gray" size="xs">
             {buildInfo.isDev

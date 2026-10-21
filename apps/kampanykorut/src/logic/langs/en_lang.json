@@ -105,8 +105,13 @@
       "restart": "Restart"
     }
   },
+  "aboutMenu": {
+    "openPdf": "Open description (PDF)",
+    "mobileDescription": "The detailed description of the game is available as a PDF."
+  },
   "emptySlot": {
-    "label": "Empty slot"
+    "label": "Empty slot",
+    "placeholder": "Save name..."
   },
   "modal": {
     "buttons": {
