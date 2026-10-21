@@ -126,7 +126,7 @@ function TurnBadge({
   turns: number;
 }) {
   return (
-    <div className="bg-blue-400/10 rounded-md border border-blue-50/10 p-1">
+    <div className="h-10 flex items-center bg-blue-400/10 rounded-md border border-blue-50/10 px-3">
       <Text color="lightBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
     </div>
   );
@@ -196,12 +196,9 @@ function NarrowHeader({
 }: HeaderContentProps) {
   return (
     <div className="h-[64px] flex justify-between items-center mx-2.5">
-      <div
-        className="flex justify-center items-center cursor-pointer"
-        onClick={() => onOpen("gameMenu")}
-      >
-        <img src={logo} width="26" height="26" />
-      </div>
+      <Button variant="tertiary" iconOnly onClick={() => onOpen("gameMenu")}>
+        <img src={logo} width="26" height="26" alt="Kampánykörút" />
+      </Button>
       {state && config && (
         <div className="text-center">
           <TurnBadge
@@ -217,7 +214,7 @@ function NarrowHeader({
       <Menu
         align="right"
         trigger={
-          <Button variant="tertiary">
+          <Button variant="tertiary" iconOnly>
             <Button.Icon name="list" color="white" size="medium" />
           </Button>
         }

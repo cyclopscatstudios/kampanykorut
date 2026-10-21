@@ -38,7 +38,7 @@ export function MapWrapper({
   const initialView = view ?? { x: 0, y: 0, w: width, h: height };
   const [viewBox, setViewBox] = useState<ViewBox>(initialView);
 
-  const wheel = useWheelZoom(setViewBox, 1100, 800);
+  const wheel = useWheelZoom(setViewBox, width, height);
 
   const BASE_STROKE_WIDTH = 0.8;
   const zoomRatio = viewBox.w / initialView.w;

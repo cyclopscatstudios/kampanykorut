@@ -49,8 +49,11 @@
     },
     "badgeDisplay": {
       "label": "Available badges",
-      "tooltipContent": "Badges for achievements available in this campaign"
-    }
+      "tooltipContent": "Badges for achievements available in this campaign",
+      "short": "Badges"
+    },
+    "showMore": "Show more",
+    "showLess": "Show less"
   },
   "endResult": {
     "menuBar": {
@@ -137,6 +140,31 @@
     "high": "High",
     "medium": "Medium",
     "low": "Low"
+  },
+  "districtList": {
+    "view": {
+      "list": "List",
+      "map": "Map"
+    },
+    "sort": {
+      "none": "Default",
+      "swing": "Swing"
+    },
+    "swing": "Swing",
+    "selected": "Selected",
+    "districtCount": "{{count}} districts",
+    "voters": "voters",
+    "map": {
+      "countryTitle": "Country map · {{count}} districts",
+      "capitalTitle": "Budapest · {{count}} districts",
+      "showCapital": "Budapest →",
+      "showCountry": "← Country",
+      "leads": "{{party}} leads"
+    },
+    "sheet": {
+      "label": "Constituency",
+      "currentLead": "Current standing"
+    }
   },
   "badge": {
     "strategicDecision": {
