@@ -1,5 +1,5 @@
 import { t } from "i18next";
-import { useRef, useState } from "react";
+import { type RefObject, useRef, useState } from "react";
 import { useResizeObserver } from "usehooks-ts";
 import {
   CandidateListData,
@@ -131,7 +131,9 @@ function MobileMap({
 }) {
   const [showCapital, setShowCapital] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
-  const { width = 0 } = useResizeObserver({ ref: mapRef });
+  const { width = 0 } = useResizeObserver({
+    ref: mapRef as RefObject<HTMLDivElement>,
+  });
   const visibleDistricts = showCapital ? capitalCity : districts;
   const mapWidth = Math.floor(width);
   const mapHeight = showCapital
@@ -194,7 +196,7 @@ function MapLegend({
   parties: RawParty[];
   candidateListData: CandidateListData[];
 }) {
-  const leadingPartyIds = new Set(
+  const leadingPartyIds = new Set<string>(
     candidateListData.map(
       (district) => getWinnerResultByCandidateList(district).winner,
     ),

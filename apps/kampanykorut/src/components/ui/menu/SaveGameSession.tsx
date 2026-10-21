@@ -138,6 +138,10 @@ function SaveGameSessionBody({
         <button
           key={sessionInfo.sessionId}
           type="button"
+          aria-pressed={
+            selection?.type === "used" &&
+            selection.session.sessionId === sessionInfo.sessionId
+          }
           className={slotClassName(
             selection?.type === "used" &&
               selection.session.sessionId === sessionInfo.sessionId,

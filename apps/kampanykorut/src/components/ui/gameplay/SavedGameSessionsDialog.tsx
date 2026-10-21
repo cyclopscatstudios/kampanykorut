@@ -82,6 +82,7 @@ export function SavedSessionsBody({
         <button
           key={value.id}
           type="button"
+          aria-pressed={selectedSession?.id === value.id}
           className={classNames(
             "w-full min-h-16 p-3 border rounded flex flex-col justify-center items-center text-center cursor-pointer shrink-0",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",

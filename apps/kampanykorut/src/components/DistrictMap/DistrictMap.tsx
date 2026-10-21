@@ -133,7 +133,8 @@ export function DistrictMap({
   }, []);
 
   const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => {
+    (e: React.PointerEvent) => {
+      if (!e.isPrimary) return;
       wheel.handleMouseDown(e);
       const id = getDistrictId(e);
       if (id) {
@@ -189,9 +190,9 @@ export function DistrictMap({
       preserveAspectRatio="xMidYMid meet"
       onWheel={wheel.handleWheel}
       onPointerDown={handleMouseDown}
-      onPointerMove={wheel.handleMouseMove}
-      onPointerUp={handleMouseUp}
-      onPointerCancel={handleMouseUp}
+      onPointerMove={(e) => e.isPrimary && wheel.handleMouseMove(e)}
+      onPointerUp={(e) => e.isPrimary && handleMouseUp()}
+      onPointerCancel={(e) => e.isPrimary && handleMouseUp()}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       onClick={handleClick}
