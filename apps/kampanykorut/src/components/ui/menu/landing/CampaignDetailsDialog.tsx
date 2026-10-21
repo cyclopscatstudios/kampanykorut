@@ -1,7 +1,7 @@
 import { t } from "i18next";
 import { Button } from "../../../../../../../shared/ui/Button";
 import { Text } from "../../../../../../../shared/ui/Text";
-import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../../Dialog";
+import { Dialog, DialogBody, DialogHeader } from "../../Dialog";
 import { Heading } from "../../Heading";
 import type { Campaign } from "./types";
 
@@ -21,6 +21,20 @@ export function CampaignDetailsDialog({
       open={campaign !== null}
       onClose={onClose}
       panelClassName="w-full sm:max-w-lg"
+      buttons={
+        campaign
+          ? {
+              primary: (
+                <Button onClick={() => onStartCampaign(campaign)}>
+                  <Button.Icon name="play-circle-fill" />
+                  <Button.Text>
+                    {t("landing.campaignDialog.startButton")}
+                  </Button.Text>
+                </Button>
+              ),
+            }
+          : undefined
+      }
     >
       {campaign && (
         <>
@@ -41,17 +55,6 @@ export function CampaignDetailsDialog({
               {campaign.description}
             </Text>
           </DialogBody>
-          <DialogFooter>
-            <Button
-              className="w-full justify-center"
-              onClick={() => onStartCampaign(campaign)}
-            >
-              <Button.Icon name="play-circle-fill" />
-              <Button.Text>
-                {t("landing.campaignDialog.startButton")}
-              </Button.Text>
-            </Button>
-          </DialogFooter>
         </>
       )}
     </Dialog>

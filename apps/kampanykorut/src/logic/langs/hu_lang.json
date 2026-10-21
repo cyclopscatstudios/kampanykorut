@@ -49,8 +49,11 @@
     },
     "badgeDisplay": {
       "label": "Elérhető jelvények",
-      "tooltipContent": "A kampányhoz tartozó elérhető eredmények jelvényei"
-    }
+      "tooltipContent": "A kampányhoz tartozó elérhető eredmények jelvényei",
+      "short": "Jelvények"
+    },
+    "showMore": "Bővebben",
+    "showLess": "Kevesebb"
   },
   "endResult": {
     "menuBar": {
@@ -105,8 +108,13 @@
       "restart": "Újraindítás"
     }
   },
+  "aboutMenu": {
+    "openPdf": "Leírás megnyitása (PDF)",
+    "mobileDescription": "A játék részletes leírását PDF formátumban nyithatod meg."
+  },
   "emptySlot": {
-    "label": "Szabad hely"
+    "label": "Szabad hely",
+    "placeholder": "Mentés neve..."
   },
   "modal": {
     "buttons": {
@@ -132,6 +140,31 @@
     "high": "Magas",
     "medium": "Közepes",
     "low": "Alacsony"
+  },
+  "districtList": {
+    "view": {
+      "list": "Lista",
+      "map": "Térkép"
+    },
+    "sort": {
+      "none": "Sorrend",
+      "swing": "Ingadozás"
+    },
+    "swing": "Ingadozás",
+    "selected": "Kijelölve",
+    "districtCount": "{{count}} körzet",
+    "voters": "választópolgár",
+    "map": {
+      "countryTitle": "Országos térkép · {{count}} körzet",
+      "capitalTitle": "Budapest · {{count}} körzet",
+      "showCapital": "Budapest →",
+      "showCountry": "← Ország",
+      "leads": "{{party}} vezet"
+    },
+    "sheet": {
+      "label": "Választókerület",
+      "currentLead": "Jelenlegi állás"
+    }
   },
   "badge": {
     "strategicDecision": {

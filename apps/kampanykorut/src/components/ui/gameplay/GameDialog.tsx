@@ -4,7 +4,7 @@ import { container } from "tsyringe";
 import { StateEngine } from "@/logic/application";
 import { Button } from "../../../../../../shared/ui/Button";
 import { useNavigation } from "../../../hooks/navigationHook";
-import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
+import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
 import { Modal } from "../Modal";
 
@@ -16,7 +16,17 @@ export function GameDialog({
   setIsOpen: (val: boolean) => void;
 }) {
   return (
-    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+    <Dialog
+      open={isOpen}
+      onClose={() => setIsOpen(false)}
+      buttons={{
+        secondary: (
+          <Button variant="secondary" onClick={() => setIsOpen(false)}>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
+          </Button>
+        ),
+      }}
+    >
       <DialogHeader>
         <div>
           <Heading level={3} color="lightBlue">
@@ -29,13 +39,6 @@ export function GameDialog({
           <GameBody />
         </div>
       </DialogBody>
-      <DialogFooter>
-        <div>
-          <Button block variant="secondary" onClick={() => setIsOpen(false)}>
-            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
-          </Button>
-        </div>
-      </DialogFooter>
     </Dialog>
   );
 }

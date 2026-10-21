@@ -13,7 +13,7 @@ import {
   submitBugReport,
 } from "../../../../logic/application/bugReport/bugReportApi";
 import { TURNSTILE_SITE_KEY } from "../../../../logic/application/bugReport/turnstile";
-import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../../Dialog";
+import { Dialog, DialogBody, DialogHeader } from "../../Dialog";
 import { Heading } from "../../Heading";
 import { TextInput } from "../../TextInput";
 import { TurnstileWidget } from "./TurnstileWidget";
@@ -107,7 +107,44 @@ export function BugReporterModal({
 
   return (
     <>
-      <Dialog open={isOpen} onClose={close}>
+      <Dialog
+        open={isOpen}
+        onClose={close}
+        buttons={
+          submission.state === "success"
+            ? {
+                primary: (
+                  <Button onClick={close}>
+                    <Button.Text>{t("bugReporter.close")}</Button.Text>
+                  </Button>
+                ),
+              }
+            : {
+                secondary: (
+                  <Button variant="secondary" onClick={close}>
+                    <Button.Text>{t("menuList.button.cancel")}</Button.Text>
+                  </Button>
+                ),
+                primary: (
+                  <Button onClick={handleReport} disabled={!canSubmit}>
+                    {submitting && (
+                      <span
+                        aria-hidden
+                        className="w-4 h-4 rounded-full border-2 border-current border-t-transparent animate-spin"
+                      />
+                    )}
+                    <Button.Text>
+                      {t(
+                        submitting
+                          ? "bugReporter.sending"
+                          : "bugReporter.report",
+                      )}
+                    </Button.Text>
+                  </Button>
+                ),
+              }
+        }
+      >
         <DialogHeader>
           <div>
             <Heading level={3} color="lightBlue">
@@ -158,32 +195,6 @@ export function BugReporterModal({
             </div>
           )}
         </DialogBody>
-        <DialogFooter>
-          {submission.state === "success" ? (
-            <div className="w-full flex justify-end">
-              <Button onClick={close}>
-                <Button.Text>{t("bugReporter.close")}</Button.Text>
-              </Button>
-            </div>
-          ) : (
-            <div className="w-full flex justify-between gap-2">
-              <Button variant="secondary" onClick={close}>
-                <Button.Text>{t("menuList.button.cancel")}</Button.Text>
-              </Button>
-              <Button onClick={handleReport} disabled={!canSubmit}>
-                {submitting && (
-                  <span
-                    aria-hidden
-                    className="w-4 h-4 rounded-full border-2 border-current border-t-transparent animate-spin"
-                  />
-                )}
-                <Button.Text>
-                  {t(submitting ? "bugReporter.sending" : "bugReporter.report")}
-                </Button.Text>
-              </Button>
-            </div>
-          )}
-        </DialogFooter>
       </Dialog>
     </>
   );

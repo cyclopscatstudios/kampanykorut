@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
@@ -7,7 +8,7 @@ import {
 } from "@/logic/application";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Text } from "../../../../../../shared/ui/Text";
-import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
+import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
 
 export function SavedSessionsDialog({
@@ -26,7 +27,25 @@ export function SavedSessionsDialog({
     useState<SavedCampaignSessionInfo | null>(null);
 
   return (
-    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+    <Dialog
+      open={isOpen}
+      onClose={() => setIsOpen(false)}
+      buttons={{
+        secondary: (
+          <Button variant="secondary" onClick={() => setIsOpen(false)}>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
+          </Button>
+        ),
+        primary: (
+          <Button
+            disabled={!selectedSession}
+            onClick={() => gameStateEngine.loadState(selectedSession)}
+          >
+            <Button.Text>{t("loadSavedGamesMenu.button.load")}</Button.Text>
+          </Button>
+        ),
+      }}
+    >
       <DialogHeader>
         <Heading level={3} color="lightBlue">
           {t("loadSavedGamesMenu.button.load")}
@@ -39,19 +58,6 @@ export function SavedSessionsDialog({
           setSelectedSession={setSelectedSession}
         />
       </DialogBody>
-      <DialogFooter>
-        <div className="w-full flex justify-between">
-          <Button variant="secondary" onClick={() => setIsOpen(false)}>
-            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
-          </Button>
-          <Button
-            disabled={!selectedSession}
-            onClick={() => gameStateEngine.loadState(selectedSession)}
-          >
-            <Button.Text>{t("loadSavedGamesMenu.button.load")}</Button.Text>
-          </Button>
-        </div>
-      </DialogFooter>
     </Dialog>
   );
 }
@@ -66,38 +72,37 @@ export function SavedSessionsBody({
   setSelectedSession: (session: SavedCampaignSessionInfo | null) => void;
 }) {
   return (
-    <div
-      className="max-h-[250px] flex flex-col gap-3 overflow-y-auto"
-      tabIndex={0}
-    >
-      {Object.keys(savedSessions).length === 0 && (
-        <div>
-          <Text className="text-center">
-            {t("loadSavedGamesMenu.emptyLabel")}
-          </Text>
-        </div>
+    <div className="max-h-[50vh] md:max-h-75 flex flex-col gap-2 overflow-y-auto pr-1">
+      {savedSessions.length === 0 && (
+        <Text className="text-center">
+          {t("loadSavedGamesMenu.emptyLabel")}
+        </Text>
       )}
       {savedSessions.map((value) => (
-        <div
+        <button
           key={value.id}
-          className={`p-3 border rounded cursor-pointer ${
-            selectedSession?.id === value.id
-              ? "bg-blue-200 border-blue-500"
-              : "bg-blue-100/50 border-gray-300"
-          }`}
+          type="button"
+          aria-pressed={selectedSession?.id === value.id}
+          className={classNames(
+            "w-full min-h-16 p-3 border rounded flex flex-col justify-center items-center text-center cursor-pointer shrink-0",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
+            {
+              "bg-blue-200 border-blue-500": selectedSession?.id === value.id,
+              "bg-blue-100/50 border-gray-300 hover:bg-blue-100/70":
+                selectedSession?.id !== value.id,
+            },
+          )}
           onClick={() => setSelectedSession(value)}
         >
-          <div className="flex flex-col justify-center items-center">
-            <Text color="darkBlue" weight="bold">
-              {value.type === "auto"
-                ? `${t("loadSavedGamesMenu.autoSaveLabel")}-${value.campaignId}`
-                : value.name}
-            </Text>
-            <Text color="darkBlue" weight="normal">
-              {formatDate(value.lastSaved)}
-            </Text>
-          </div>
-        </div>
+          <Text color="darkBlue" weight="bold" className="break-all">
+            {value.type === "auto"
+              ? `${t("loadSavedGamesMenu.autoSaveLabel")}-${value.campaignId}`
+              : value.name}
+          </Text>
+          <Text color="darkBlue" weight="normal" size="sm">
+            {formatDate(value.lastSaved)}
+          </Text>
+        </button>
       ))}
     </div>
   );

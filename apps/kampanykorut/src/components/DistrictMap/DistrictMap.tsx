@@ -133,7 +133,8 @@ export function DistrictMap({
   }, []);
 
   const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => {
+    (e: React.PointerEvent) => {
+      if (!e.isPrimary) return;
       wheel.handleMouseDown(e);
       const id = getDistrictId(e);
       if (id) {
@@ -150,13 +151,16 @@ export function DistrictMap({
 
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
+      if (wheel.wasDragged()) {
+        return;
+      }
       const id = getDistrictId(e);
       const item = id ? byId.get(id) : undefined;
       if (item) {
         onClick?.(item.winnerResult);
       }
     },
-    [byId, onClick],
+    [byId, onClick, wheel],
   );
 
   const handleDoubleClick = useCallback(
@@ -180,13 +184,15 @@ export function DistrictMap({
       height={height}
       style={{
         cursor: wheel.isPanning.current ? "grabbing" : "grab",
+        touchAction: "none",
       }}
       viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`}
       preserveAspectRatio="xMidYMid meet"
       onWheel={wheel.handleWheel}
-      onMouseDown={handleMouseDown}
-      onMouseMove={wheel.handleMouseMove}
-      onMouseUp={handleMouseUp}
+      onPointerDown={handleMouseDown}
+      onPointerMove={(e) => e.isPrimary && wheel.handleMouseMove(e)}
+      onPointerUp={(e) => e.isPrimary && handleMouseUp()}
+      onPointerCancel={(e) => e.isPrimary && handleMouseUp()}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       onClick={handleClick}
