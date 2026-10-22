@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.3.0](https://github.com/cyclopscatstudios/kampanykorut/compare/kampanykorut-v0.2.1...kampanykorut-v0.3.0) (2026-10-22)
+
+
+### Features
+
+* conditionally render email input based on email support ([d6cabb2](https://github.com/cyclopscatstudios/kampanykorut/commit/d6cabb25b6f8c07653100b3aeec849bdf9692e95))
+* enhance dialog components with button support and improve layout responsiveness ([0396a4c](https://github.com/cyclopscatstudios/kampanykorut/commit/0396a4c2af24bcd0f6ad58e2fdc67fc19412b711))
+* enhance gameplay UI and functionality ([04f31ab](https://github.com/cyclopscatstudios/kampanykorut/commit/04f31abe6375050cd312ef0c6947ac8f37b17a93))
+
+
+### Bug Fixes
+
+* address review comments (build type errors, a11y, primary pointer) ([415924d](https://github.com/cyclopscatstudios/kampanykorut/commit/415924db33b1d99a153fb150c71eb8625c861d7d))
+* remove duplicate entries for posthog-js dependency in changelog ([3d0904b](https://github.com/cyclopscatstudios/kampanykorut/commit/3d0904b8b0c0f7ba749b1cca6bd2f7191041fbc6))
+
 ## [0.2.1](https://github.com/cyclopscatstudios/kampanykorut/compare/kampanykorut-v0.2.0...kampanykorut-v0.2.1) (2026-10-20)
 
 ### Bug Fixes

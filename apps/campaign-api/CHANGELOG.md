@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/cyclopscatstudios/kampanykorut/compare/campaign-api-v0.2.0...campaign-api-v0.3.0) (2026-10-22)
+
+
+### Features
+
+* implement bug reporting feature with email notifications ([54120d0](https://github.com/cyclopscatstudios/kampanykorut/commit/54120d0ba55b77c56148ce6ce7c5d31fa00007b6))
+
 ## [0.2.0](https://github.com/cyclopscatstudios/kampanykorut/compare/campaign-api-v0.1.0...campaign-api-v0.2.0) (2026-10-20)
 
 ### Features
