@@ -1,13 +1,16 @@
 import { container } from "tsyringe";
 import { beforeAll, describe, expect, it } from "vitest";
 import {
+  AdvisorFeedback,
   CampaignState,
   CandidateListData,
   Decision,
   EffectType,
   ElectionConfig,
+  HistoryItem,
   RawEffect,
   RawParty,
+  RawQuestion,
 } from "../types";
 import { CampaignEngine } from "./CampaignEngine";
 import { EffectApplier } from "./EffectApplier";
@@ -438,5 +441,84 @@ describe("CampaignEngine.getPollProjection", () => {
       party_b: 0,
     })!;
     expect(result.candidateListData).toEqual(campaignState.candidateListData);
+  });
+});
+
+describe("CampaignEngine advisor feedback", () => {
+  const question: RawQuestion = {
+    id: "q2",
+    question: "Second question",
+    possibleAnswers: [
+      { id: "A", label: "Answer A" },
+      { id: "B", label: "Answer B" },
+    ],
+  };
+
+  const advisorFeedback: AdvisorFeedback[] = [
+    {
+      questionId: "q2",
+      answers: [
+        { answerId: "A", text: "plain A" },
+        { answerId: "B", text: "plain B" },
+      ],
+      conditionalAnswers: [
+        {
+          if: [{ questionId: "q1", answerId: "X" }],
+          answer: { answerId: "B", text: "conditional B" },
+        },
+        {
+          if: [{ questionId: "q1", answerId: "Y" }],
+          answer: { answerId: "A", text: "conditional A first" },
+        },
+        {
+          if: [{ questionId: "q1", answerId: "Y" }],
+          answer: { answerId: "A", text: "conditional A second" },
+        },
+      ],
+    },
+  ];
+
+  const engine = () =>
+    new CampaignEngine(
+      mockCandidateListData,
+      [question],
+      [],
+      container.resolve(ResultModifier),
+      container.resolve(EffectApplier),
+      container.resolve(MandateCalculator),
+      container.resolve(PollsterEngine),
+      mockPartyListData,
+      advisorFeedback,
+    );
+
+  const feedbackFor = (answerId: string, priorAnswerId: string) =>
+    engine().processTurn(
+      { ...campaignState, turn: 0, currentQuestion: question },
+      { questionId: "q2", answerId, effects: [] },
+      [{ questionId: "q1", answerId: priorAnswerId } as HistoryItem],
+      { showAdvisorFeedback: true, language: "en" },
+      mockElectionConfig,
+    ).advisorFeedback;
+
+  it("returns the conditional feedback of the selected answer when history matches", () => {
+    expect(feedbackFor("B", "X")).toEqual({
+      answerId: "B",
+      text: "conditional B",
+    });
+  });
+
+  it("ignores a history-matching conditional that belongs to another answer", () => {
+    expect(feedbackFor("A", "X")).toEqual({ answerId: "A", text: "plain A" });
+  });
+
+  it("falls back to plain feedback when history does not match", () => {
+    expect(feedbackFor("B", "Z")).toEqual({ answerId: "B", text: "plain B" });
+  });
+
+  it("keeps first-match order among applicable conditionals", () => {
+    expect(feedbackFor("A", "Y")).toEqual({
+      answerId: "A",
+      text: "conditional A first",
+    });
   });
 });

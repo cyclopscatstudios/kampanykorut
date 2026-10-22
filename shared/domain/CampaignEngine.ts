@@ -418,6 +418,7 @@ export class CampaignEngine {
     );
 
     const conditionalFeedback = this.resolveConditionalFeedback(
+      answerId,
       advisorFeedback?.conditionalAnswers,
       history,
     );
@@ -430,6 +431,7 @@ export class CampaignEngine {
   }
 
   private resolveConditionalFeedback(
+    answerId: string,
     conditionalAnswers?: ConditionalAnswer[],
     history: Array<{ questionId: string; answerId: string }> = [],
   ) {
@@ -442,6 +444,10 @@ export class CampaignEngine {
     }
 
     for (const cond of conditionalAnswers) {
+      if (cond.answer.answerId !== answerId) {
+        continue;
+      }
+
       const matches = cond.if.every((condition) => {
         const h = history?.find((q) => q.questionId === condition.questionId);
         return h?.answerId === condition.answerId;
