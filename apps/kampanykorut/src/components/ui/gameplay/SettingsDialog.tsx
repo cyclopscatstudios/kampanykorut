@@ -6,7 +6,7 @@ import { Button } from "../../../../../../shared/ui/Button";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { noop } from "../../../logic/application/utils";
 import { Checkbox } from "../Checkbox";
-import { Dialog, DialogBody, DialogFooter, DialogHeader } from "../Dialog";
+import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
 import { toaster } from "./toaster";
@@ -30,7 +30,23 @@ export function SettingsDialog({
   };
 
   return (
-    <Dialog open={isOpen} onClose={noop} closeOnBackdrop>
+    <Dialog
+      open={isOpen}
+      onClose={noop}
+      closeOnBackdrop
+      buttons={{
+        secondary: (
+          <Button variant="secondary" onClick={() => setIsOpen(false)}>
+            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
+          </Button>
+        ),
+        primary: (
+          <Button onClick={saveChanges} disabled={isEqual}>
+            <Button.Text>{t("menuList.button.save")}</Button.Text>
+          </Button>
+        ),
+      }}
+    >
       <DialogHeader>
         <div>
           <Heading level={3} color="lightBlue">
@@ -46,16 +62,6 @@ export function SettingsDialog({
           />
         </div>
       </DialogBody>
-      <DialogFooter>
-        <div className="w-full flex justify-between">
-          <Button variant="secondary" onClick={() => setIsOpen(false)}>
-            <Button.Text>{t("menuList.button.cancel")}</Button.Text>
-          </Button>
-          <Button onClick={saveChanges} disabled={isEqual}>
-            <Button.Text>{t("menuList.button.save")}</Button.Text>
-          </Button>
-        </div>
-      </DialogFooter>
     </Dialog>
   );
 }
@@ -82,6 +88,7 @@ export function SettingsBody({
       />
       <Dropdown
         id="changeLanguage"
+        block
         options={[...supportedLanguages].map((lang) => ({
           label: lang.label,
           value: lang.id,

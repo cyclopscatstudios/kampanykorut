@@ -89,6 +89,17 @@ export class GithubClient {
     return body.data;
   }
 
+  async rest<T>(method: string, path: string, body?: unknown): Promise<T> {
+    const res = await this.request(path, {
+      method,
+      headers: { authorization: `Bearer ${await this.installationToken()}` },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+
+    if (res.status === 204) return undefined as T;
+    return (await res.json()) as T;
+  }
+
   private async installationToken(): Promise<string> {
     if (
       this.token &&

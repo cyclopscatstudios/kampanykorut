@@ -14,6 +14,7 @@ export function useWheelZoom(
 ) {
   const isPanning = useRef(false);
   const last = useRef<{ x: number; y: number } | null>(null);
+  const dragDistance = useRef(0);
 
   function handleWheel(e: React.WheelEvent<SVGSVGElement>) {
     if (e.cancelable) e.preventDefault();
@@ -37,6 +38,7 @@ export function useWheelZoom(
   function handleMouseDown(e: React.MouseEvent) {
     isPanning.current = true;
     last.current = { x: e.clientX, y: e.clientY };
+    dragDistance.current = 0;
   }
 
   function handleMouseMove(e: React.MouseEvent) {
@@ -46,6 +48,7 @@ export function useWheelZoom(
 
     const dx = e.clientX - last.current.x;
     const dy = e.clientY - last.current.y;
+    dragDistance.current += Math.hypot(dx, dy);
 
     setViewBox((vb) => ({
       ...vb,
@@ -65,8 +68,13 @@ export function useWheelZoom(
     setViewBox(initial);
   }
 
+  function wasDragged() {
+    return dragDistance.current > DRAG_THRESHOLD;
+  }
+
   return {
     isPanning,
+    wasDragged,
     handleWheel,
     handleMouseDown,
     handleMouseMove,
@@ -78,6 +86,7 @@ export function useWheelZoom(
 }
 
 const MIN_VIEW_SIZE = 1;
+const DRAG_THRESHOLD = 6;
 
 function zoomAt(vb: ViewBox, factor: number, cx = 0.5, cy = 0.5): ViewBox {
   const newW = Math.max(MIN_VIEW_SIZE, vb.w * factor);

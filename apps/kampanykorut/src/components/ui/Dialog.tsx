@@ -1,5 +1,10 @@
 import { type ReactNode, useEffect } from "react";
 
+type DialogButtons = {
+  primary?: ReactNode;
+  secondary?: ReactNode;
+};
+
 type DialogProps = {
   open: boolean;
   onClose: () => void;
@@ -7,6 +12,7 @@ type DialogProps = {
   closeOnBackdrop?: boolean;
   closeOnEsc?: boolean;
   panelClassName?: string;
+  buttons?: DialogButtons;
 };
 
 export function Dialog({
@@ -16,6 +22,7 @@ export function Dialog({
   closeOnBackdrop = true,
   closeOnEsc = true,
   panelClassName = "",
+  buttons,
 }: DialogProps) {
   useEffect(() => {
     if (!closeOnEsc) return;
@@ -52,6 +59,7 @@ export function Dialog({
         onClick={(e) => e.stopPropagation()}
       >
         {children}
+        {buttons && <DialogButtonsFooter {...buttons} />}
       </div>
     </div>
   );
@@ -67,10 +75,18 @@ export function DialogBody({ children }: { children: ReactNode }) {
   return <div className="p-4">{children}</div>;
 }
 
-export function DialogFooter({ children }: { children: ReactNode }) {
+function DialogButtonsFooter({ primary, secondary }: DialogButtons) {
+  if (!primary && !secondary) return null;
+
+  const desktopLayout =
+    primary && secondary ? "md:flex-row md:justify-between md:*:w-auto" : "";
+
   return (
-    <div className="bg-[#1d2840] flex justify-between p-3 rounded-b-xl">
-      {children}
+    <div
+      className={`bg-[#1d2840] flex flex-col-reverse gap-2 p-3 rounded-b-xl *:w-full ${desktopLayout}`}
+    >
+      {secondary}
+      {primary}
     </div>
   );
 }

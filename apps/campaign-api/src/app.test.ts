@@ -155,4 +155,25 @@ describe("app", () => {
 
     expect(res.statusCode).toBe(404);
   });
+
+  it.each([
+    [1, "203.0.113.9"],
+    [2, "6.6.6.6"],
+    [true, "6.6.6.6"],
+    [false, "127.0.0.1"],
+  ] as const)(
+    "resolves the client IP with TRUST_PROXY=%s",
+    async (trustProxy, expected) => {
+      app = await buildApp(testConfig({ trustProxy }));
+      app.get("/ip", async (request) => ({ ip: request.ip }));
+
+      const res = await app.inject({
+        method: "GET",
+        url: "/ip",
+        headers: { "x-forwarded-for": "6.6.6.6, 203.0.113.9" },
+      });
+
+      expect(res.json()).toEqual({ ip: expected });
+    },
+  );
 });

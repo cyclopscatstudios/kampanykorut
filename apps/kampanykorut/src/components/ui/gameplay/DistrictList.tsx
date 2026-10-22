@@ -1,208 +1,264 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import {
-  CampaignConfig,
-  CampaignState,
-  CandidateListData,
-  Colors,
-  CurrentView,
-  District,
-} from "@/shared/types";
-import { Text } from "@/shared/ui";
+import { CandidateListData, District, RawParty } from "@/shared/types";
 import { Button } from "@/shared/ui/Button";
-import { getPartyColor } from "../color.utils";
-import { getWinnerResultByCandidateList } from "../map.utils";
+import { Icon } from "../../../../../../shared/ui/Icon";
 import {
-  getSwingFactorByDistrict,
-  getSwingFactorTextColor,
-} from "./swingFactor.utils";
+  compareBySwing,
+  DistrictInsight,
+  formatVoters,
+  getDistrictInsight,
+  getSwingColor,
+  isSameDistrict,
+} from "./districtInsight.utils";
+
+export type DistrictSort = "none" | "swing";
+
+const SORT_OPTIONS: DistrictSort[] = ["none", "swing"];
 
 interface DistrictListProps {
-  config: CampaignConfig;
-  state: CampaignState;
-  onSetDistrict: (district: District | null) => void;
-  onSetView: (currentView: CurrentView) => void;
+  candidateListData: CandidateListData[];
+  parties: RawParty[];
+  selectedDistrict: District | null;
+  onSelect: (district: CandidateListData) => void;
 }
 
-// for narrow screens
 export function DistrictList({
-  config,
-  state,
-  onSetDistrict,
-  onSetView,
+  candidateListData,
+  parties,
+  selectedDistrict,
+  onSelect,
 }: DistrictListProps) {
-  const [openCounty, setOpenCounty] = useState<string | null>(null);
-  const [selectedDistrict, setSelectedDistrict] =
-    useState<CandidateListData | null>(null);
-
-  const population = Math.round((selectedDistrict?.valasztopolgar ?? 0) / 1000);
-  const swingFactor = getSwingFactorByDistrict(
-    undefined,
-    selectedDistrict ?? undefined,
+  const [sortBy, setSortBy] = useState<DistrictSort>("none");
+  const [openCounty, setOpenCounty] = useState<string | null>(
+    selectedDistrict?.megye ?? null,
   );
-  const textColor = getSwingFactorTextColor(swingFactor?.id);
 
-  const uniqueDistricts = [
-    ...new Map(
-      state.candidateListData?.map((district) => [district.megye, district]),
-    ).values(),
-  ];
-
-  function getMostSuccessfulParty(districts: CandidateListData[]) {
-    const wins: Record<string, number> = {};
-
-    for (const district of districts) {
-      const [winner] = Object.entries(district.partok).reduce(
-        (best, current) =>
-          (current[1] ?? 0) > (best[1] ?? 0) ? current : best,
-      );
-
-      wins[winner] = (wins[winner] ?? 0) + 1;
-    }
-
-    const maxWins = Math.max(...Object.values(wins));
-
-    const winners = Object.entries(wins)
-      .filter(([, winCount]) => winCount === maxWins)
-      .map(([party]) => party);
-
-    return winners.length === 1 ? winners[0]! : "draw";
-  }
-
-  const isPanelOpen = Boolean(selectedDistrict && openCounty);
+  const insights = candidateListData.map((district) =>
+    getDistrictInsight(district, parties),
+  );
 
   return (
-    <div className="relative h-full">
-      <div
-        className={classNames("h-full overflow-y-auto p-2", {
-          "pb-40": isPanelOpen,
-        })}
-      >
-        {uniqueDistricts.map((district) => {
-          const isOpen = openCounty === district.megye;
-
-          const countyDistricts =
-            state.candidateListData?.filter(
-              (item) => item.megye === district.megye,
-            ) ?? [];
-
-          const mostSuccessfulParty = getMostSuccessfulParty(countyDistricts);
-          const partyColor =
-            config?.electionConfig.parties.find(
-              (party) => party.id === mostSuccessfulParty,
-            )?.color ?? "";
-
-          return (
-            <div key={district.megye} className="mb-4">
-              <button
-                type="button"
-                className="w-full bg-blue-400/10 rounded-md border border-blue-50/10 p-4 text-left cursor-pointer"
-                style={{
-                  borderLeft: `4px solid ${partyColor}`,
-                }}
-                onClick={() => {
-                  setOpenCounty((current) =>
-                    current === district.megye ? null : district.megye,
-                  );
-                  if (isOpen) {
-                    setSelectedDistrict(null);
-                  }
-                }}
-              >
-                <div>
-                  <Text weight="bold">{district.megye}</Text>
-                  <Text weight="light">{countyDistricts.length} kerület</Text>
-                </div>
-              </button>
-              {isOpen && (
-                <div className="ml-4 mt-2 space-y-2">
-                  {countyDistricts.map((item) => {
-                    const winnerResult = getWinnerResultByCandidateList(item);
-                    const { winner, diffPercentage } = winnerResult;
-
-                    const partyColor =
-                      config?.electionConfig.parties.find(
-                        (party) => party.id === winner,
-                      )?.color ?? "";
-                    const color = getPartyColor(
-                      partyColor,
-                      diffPercentage,
-                      false,
-                    );
-
-                    return (
-                      <div
-                        style={{
-                          borderLeft: `4px solid ${color}`,
-                        }}
-                        key={`${item.megyekod}-${item.oevk}`}
-                        className={classNames(
-                          "rounded-md border p-3 border-blue-50/10 bg-blue-400/10 cursor-pointer",
-                          {
-                            "border-blue-500 border-2":
-                              selectedDistrict &&
-                              selectedDistrict.oevk === item.oevk &&
-                              selectedDistrict.megyekod === item.megyekod,
-                          },
-                        )}
-                        onClick={() => {
-                          setSelectedDistrict(item);
-                          onSetDistrict(item as any);
-                        }}
-                      >
-                        <div>
-                          <Text weight="medium">{item.oevk}. OEVK</Text>
-                          <Text weight="light">{item.telepules}</Text>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          );
-        })}
+    <div className="flex flex-col gap-3">
+      <div className="flex gap-1.5 overflow-x-auto px-4">
+        {SORT_OPTIONS.map((option) => (
+          <Button
+            key={option}
+            variant="tab"
+            size="sm"
+            selected={sortBy === option}
+            onClick={() => setSortBy(option)}
+            className="shrink-0 rounded-full!"
+          >
+            <Button.Text>{t(`districtList.sort.${option}`)}</Button.Text>
+          </Button>
+        ))}
       </div>
-      {selectedDistrict && openCounty && (
-        <div className="absolute bottom-0 left-0 z-10 w-full">
-          <div className="flex flex-col border-t border-blue-50/80 rounded-t-lg bg-[rgba(15,23,42,1)]">
-            <div className="flex justify-between p-4">
-              <div className="w-full">
-                <Text weight="bold">{selectedDistrict.megye}</Text>
-                <Text weight="light">{selectedDistrict.telepules}</Text>
-                <div className="flex items-center justify-between">
-                  <Text color="gray" weight="medium">
-                    {t("bottomBar.population")}
-                  </Text>
-                  <Text>
-                    {population}
-                    {t("bottomBar.k")}
-                  </Text>
-                </div>
-                <div className="flex items-center justify-between">
-                  <Text color="gray" weight="medium">
-                    {t("bottomBar.swingFactor")}
-                  </Text>
-                  <Text color={textColor as Colors}>{swingFactor.label}</Text>
-                </div>
-              </div>
-              <Button
-                variant="underline"
-                onClick={() => setSelectedDistrict(null)}
-              >
-                <Button.Icon name="x-circle-fill" />
-              </Button>
-            </div>
-            <div className="w-full px-4 pb-4">
-              <Button onClick={() => onSetView("QuestionView")} block>
-                <Button.Text>{t("bottomBar.visitDistrict")}</Button.Text>
-                <Button.Icon name="arrow-right" color="white" />
-              </Button>
-            </div>
-          </div>
+      <div className="flex flex-col gap-2 px-4 pb-6">
+        {sortBy === "none"
+          ? groupByCounty(insights).map(([county, countyInsights]) => (
+              <CountyGroup
+                key={county}
+                county={county}
+                insights={countyInsights}
+                isOpen={openCounty === county}
+                onToggle={() =>
+                  setOpenCounty((current) =>
+                    current === county ? null : county,
+                  )
+                }
+                selectedDistrict={selectedDistrict}
+                onSelect={onSelect}
+              />
+            ))
+          : [...insights]
+              .sort(compareBySwing)
+              .map((insight) => (
+                <DistrictCard
+                  key={`${insight.district.megyekod}-${insight.district.oevk}`}
+                  insight={insight}
+                  showCounty
+                  isSelected={isSameDistrict(
+                    insight.district,
+                    selectedDistrict,
+                  )}
+                  onSelect={onSelect}
+                />
+              ))}
+      </div>
+    </div>
+  );
+}
+
+function CountyGroup({
+  county,
+  insights,
+  isOpen,
+  onToggle,
+  selectedDistrict,
+  onSelect,
+}: {
+  county: string;
+  insights: DistrictInsight[];
+  isOpen: boolean;
+  onToggle: () => void;
+  selectedDistrict: District | null;
+  onSelect: (district: CandidateListData) => void;
+}) {
+  const voters = insights.reduce(
+    (sum, insight) => sum + insight.district.valasztopolgar,
+    0,
+  );
+  const leadingColor = getMostSuccessfulParty(insights)?.color;
+  const hasSelected = insights.some((insight) =>
+    isSameDistrict(insight.district, selectedDistrict),
+  );
+
+  return (
+    <div className="flex flex-col gap-2">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className={cardClassName(hasSelected && !isOpen)}
+        style={{ borderLeftColor: leadingColor }}
+      >
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-[15px] font-bold tracking-[-0.2px] text-slate-100">
+            {county}
+          </span>
+          <span className="text-slate-400">
+            <Icon
+              name={isOpen ? "chevron-up" : "chevron-down"}
+              size="xs"
+              color="currentColor"
+            />
+          </span>
+        </div>
+        <span className="text-xs text-slate-400">
+          {t("districtList.districtCount", { count: insights.length })} ·{" "}
+          {formatVoters(voters)}
+          {t("bottomBar.k")} {t("districtList.voters")}
+        </span>
+      </button>
+      {isOpen && (
+        <div className="ml-3 flex flex-col gap-2">
+          {insights.map((insight) => (
+            <DistrictCard
+              key={`${insight.district.megyekod}-${insight.district.oevk}`}
+              insight={insight}
+              isSelected={isSameDistrict(insight.district, selectedDistrict)}
+              onSelect={onSelect}
+            />
+          ))}
         </div>
       )}
     </div>
   );
+}
+
+function DistrictCard({
+  insight,
+  isSelected,
+  showCounty,
+  onSelect,
+}: {
+  insight: DistrictInsight;
+  isSelected: boolean;
+  showCounty?: boolean;
+  onSelect: (district: CandidateListData) => void;
+}) {
+  const { district, leadingParty, swingFactor } = insight;
+
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(district)}
+      className={cardClassName(isSelected)}
+      style={{ borderLeftColor: leadingParty?.color }}
+    >
+      <div className="flex items-baseline justify-between gap-2">
+        <span className="text-[15px] font-bold tracking-[-0.2px] text-slate-100">
+          {showCounty && `${district.megye} · `}
+          {district.oevk}. OEVK
+        </span>
+        {isSelected && (
+          <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.6px] text-blue-400">
+            {t("districtList.selected")}
+          </span>
+        )}
+      </div>
+      <span className="text-xs text-slate-400">
+        {district.telepules} · {formatVoters(district.valasztopolgar)}
+        {t("bottomBar.k")} {t("districtList.voters")}
+      </span>
+      <div className="mt-0.5 flex flex-wrap gap-2">
+        <InsightBadge
+          color={getSwingColor(swingFactor)}
+          label={`${t("districtList.swing")}: ${swingFactor.label}`}
+        />
+        {leadingParty && (
+          <InsightBadge color={leadingParty.color} label={leadingParty.name} />
+        )}
+      </div>
+    </button>
+  );
+}
+
+export function InsightBadge({
+  color,
+  label,
+}: {
+  color: string;
+  label: string;
+}) {
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 rounded-full border px-2 py-0.75 text-[11px] font-semibold"
+      style={{
+        color,
+        backgroundColor: `${color}1a`,
+        borderColor: `${color}44`,
+      }}
+    >
+      <span
+        className="size-1.5 shrink-0 rounded-full"
+        style={{ backgroundColor: color }}
+      />
+      {label}
+    </span>
+  );
+}
+
+function cardClassName(isSelected: boolean) {
+  return classNames(
+    "flex w-full flex-col gap-1.5 rounded-xl border border-l-[3px] px-3.5 py-3.25 text-left cursor-pointer",
+    isSelected
+      ? "border-blue-500/40 bg-blue-500/12"
+      : "border-white/8 bg-white/2",
+  );
+}
+
+function groupByCounty(insights: DistrictInsight[]) {
+  const groups = new Map<string, DistrictInsight[]>();
+  for (const insight of insights) {
+    const county = insight.district.megye;
+    groups.set(county, [...(groups.get(county) ?? []), insight]);
+  }
+  return [...groups.entries()];
+}
+
+function getMostSuccessfulParty(insights: DistrictInsight[]) {
+  const wins = new Map<RawParty, number>();
+  for (const { leadingParty } of insights) {
+    if (leadingParty) {
+      wins.set(leadingParty, (wins.get(leadingParty) ?? 0) + 1);
+    }
+  }
+  const sorted = [...wins.entries()].sort((a, b) => b[1] - a[1]);
+  if (sorted.length > 1 && sorted[0]![1] === sorted[1]![1]) {
+    return undefined;
+  }
+  return sorted[0]?.[0];
 }

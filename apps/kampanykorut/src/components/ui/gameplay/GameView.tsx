@@ -9,8 +9,8 @@ import {
   FinalResults,
   PollingOpnions,
 } from "@/shared/types";
-import { DistrictList } from "./DistrictList";
 import { MapCreator } from "./MapCreator";
+import { MobileMapView } from "./MobileMapView";
 import { QuestionCard } from "./QuestionCard";
 import { VoteCountingScreen } from "./VoteCountingScreen/VoteCountingScreen";
 
@@ -82,13 +82,13 @@ export function GameView({
   }
 
   const capitalCity = getCapitalCity(config.districts);
+  const candidateListData =
+    pollsData?.candidateListData ?? state.candidateListData ?? [];
 
   return isDesktop ? (
     <MapCreator
       setCurrentView={onSetView}
-      candidateListData={
-        pollsData?.candidateListData ?? state.candidateListData ?? []
-      }
+      candidateListData={candidateListData}
       capitalCity={capitalCity}
       districts={config.districts}
       selectedDistrict={selectedDistrict}
@@ -96,9 +96,12 @@ export function GameView({
       electionConfig={config.electionConfig}
     />
   ) : (
-    <DistrictList
-      config={config}
-      state={state}
+    <MobileMapView
+      districts={config.districts}
+      capitalCity={capitalCity}
+      candidateListData={candidateListData}
+      electionConfig={config.electionConfig}
+      selectedDistrict={selectedDistrict}
       onSetDistrict={onSetDistrict}
       onSetView={onSetView}
     />

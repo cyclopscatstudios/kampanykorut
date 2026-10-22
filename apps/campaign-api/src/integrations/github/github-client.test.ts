@@ -131,3 +131,43 @@ describe("GithubClient", () => {
     expect((error as GithubError).status).toBe(401);
   });
 });
+
+describe("GithubClient.rest", () => {
+  it("calls the REST API with the installation token", async () => {
+    const fetchFn = vi.fn<typeof fetch>(async (input) =>
+      String(input).endsWith("/access_tokens")
+        ? json({ token: "ghs_test", expires_at: "2026-10-15T13:00:00Z" })
+        : json({ number: 7 }, 201),
+    );
+    const client = new GithubClient(config, fetchFn, () => NOW);
+
+    const created = await client.rest("POST", "/repos/a/b/issues", {
+      title: "Hiba",
+    });
+
+    expect(created).toEqual({ number: 7 });
+    const [url, init] = fetchFn.mock.calls[1]!;
+    expect(String(url)).toBe("https://api.github.com/repos/a/b/issues");
+    expect(init?.method).toBe("POST");
+    expect(new Headers(init?.headers).get("authorization")).toBe(
+      "Bearer ghs_test",
+    );
+    expect(JSON.parse(String(init?.body))).toEqual({ title: "Hiba" });
+  });
+
+  it("sends no body for GET and reports failures with their status", async () => {
+    const fetchFn = vi.fn<typeof fetch>(async (input) =>
+      String(input).endsWith("/access_tokens")
+        ? json({ token: "ghs_test", expires_at: "2026-10-15T13:00:00Z" })
+        : json({ message: "Resource not accessible by integration" }, 403),
+    );
+    const client = new GithubClient(config, fetchFn, () => NOW);
+
+    const error: unknown = await client
+      .rest("GET", "/repos/a/b/issues")
+      .catch((e: unknown) => e);
+
+    expect(fetchFn.mock.calls[1]![1]?.body).toBeUndefined();
+    expect((error as GithubError).status).toBe(403);
+  });
+});

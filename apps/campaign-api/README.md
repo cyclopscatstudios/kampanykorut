@@ -60,11 +60,12 @@ installation (`src/integrations/github`). One-time setup, no code involved:
    **Announcement** (only maintainers can open topics, players can comment).
 3. **GitHub App** (the same app the bug reports use; create it under the
    organization if it does not exist yet):
-   - Repository permissions: `Discussions: Read-only` (plus `Metadata: Read-only`,
-     which GitHub adds automatically).
+   - Repository permissions: `Discussions: Read-only` and
+     `Issues: Read and write` (plus `Metadata: Read-only`, which GitHub adds
+     automatically).
    - Webhook URL: `https://<api-host>/webhooks/github`, content type
      `application/json`, with a random secret (`openssl rand -hex 32`).
-   - Subscribe to events: `Discussion`.
+   - Subscribe to events: `Discussion` and `Issues`.
    - Install it on the `kampanykorut` repository only.
 4. Put the credentials into `.env`:
    - `GITHUB_APP_ID`: App settings → _App ID_.
@@ -135,3 +136,32 @@ The game's nginx (`apps/kampanykorut/nginx.conf`) forwards `/news`, `/api/`
 and `/webhooks/` to `API_UPSTREAM` (default `http://campaign-api:4000`,
 resolved through `NGINX_RESOLVER`, default Docker DNS `127.0.0.11`). When the
 API is unreachable, `/news` falls back to the SPA's own news pages.
+
+### Bug reports
+
+The in-game bug reporter posts to `POST /api/v1/bug-reports`
+(`src/modules/bug-reports`). The backend opens the GitHub issue as the GitHub
+App and, if the player left an email address, mails them when the issue is
+closed as completed. The address is stored only in MongoDB, never in the
+public issue.
+
+- **Submit:** validation, honeypot (`website`), Cloudflare Turnstile
+  (`TURNSTILE_SECRET_KEY`), 5 requests / hour / IP, duplicate texts within a
+  day return the existing report, and emails / phone numbers are redacted from
+  the text. The record is saved as `githubStatus: pending` first; if GitHub
+  fails the answer is still `202` with `issueNumber: null`, and a job retries.
+  Without the GitHub App the endpoint answers `503`.
+- **Emails** go through an outbox in the record's `notifications` array, sent
+  by a job every minute over SMTP (`SMTP_*`), with up to 5 attempts. The
+  confirmation mail links to `GET /api/v1/bug-reports/confirm/:token`, which
+  only shows a button; the button `POST`s, so link scanners cannot confirm.
+  Tokens are random and only their SHA-256 hash is stored.
+- **Closing:** the `issues` webhook (`closed` / `reopened`) updates the status;
+  `completed` queues one "fixed" mail for a confirmed address, atomically, so
+  redeliveries and repeated closes send one mail. `not_planned` and
+  `duplicate` send nothing. A daily job re-reads recently closed `has-contact`
+  issues to catch missed webhooks.
+- **Retention:** unconfirmed addresses are deleted after 7 days, confirmed ones
+  after the "fixed" mail or after 12 months. The "fixed" mail carries
+  `List-Unsubscribe` / one-click headers pointing to
+  `POST /api/v1/bug-reports/unsubscribe/:token`.

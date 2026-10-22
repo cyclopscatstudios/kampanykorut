@@ -4,6 +4,7 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { type App, buildApp } from "../../app";
 import { loadConfig } from "../../config/env";
+import { InMemoryBugReportRepository } from "../../modules/bug-reports/bug-reports.repository";
 import { renderNewsHtml } from "../../modules/news/news.render";
 import { InMemoryNewsRepository } from "../../modules/news/news.repository";
 import { LocalObjectStorage } from "./local-storage";
@@ -77,7 +78,10 @@ describe("ASSETS_DIR", () => {
         MONGODB_URI: "mongodb://unused:27017/test",
         ASSETS_DIR: dir,
       }),
-      { newsRepository: new InMemoryNewsRepository() },
+      {
+        newsRepository: new InMemoryNewsRepository(),
+        bugReportRepository: new InMemoryBugReportRepository(),
+      },
     );
 
     try {
