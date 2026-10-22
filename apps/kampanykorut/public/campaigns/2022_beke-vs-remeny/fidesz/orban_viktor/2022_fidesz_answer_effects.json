@@ -609,7 +609,7 @@
             "type": "district-vote-transfer",
             "params": [
               {
-                "groupId": "nagyvarosok_oevk",
+                "groupId": "nagyvarosok",
                 "targetParty": "ellenzeki_osszefogas",
                 "amount": 375,
                 "from": {
@@ -1157,7 +1157,7 @@
             "type": "district-vote-transfer",
             "params": [
               {
-                "groupId": "nagyvarosok_oevk",
+                "groupId": "nagyvarosok",
                 "targetParty": "fidesz",
                 "amount": 750,
                 "from": {

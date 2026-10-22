@@ -1239,7 +1239,7 @@
             "type": "district-vote-transfer",
             "params": [
               {
-                "groupId": "nagyvarosok_oevk",
+                "groupId": "nagyvarosok",
                 "targetParty": "fidesz",
                 "amount": 1000,
                 "from": { "type": "party", "party": "ellenzeki_osszefogas" }

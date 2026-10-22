@@ -21,6 +21,7 @@ import {
   StrategyReward,
 } from "../types";
 import type { EffectApplier } from "./EffectApplier";
+import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import type { ResultModifier } from "./ResultModifier";
@@ -316,12 +317,21 @@ export class CampaignEngine {
     };
   }
 
-  getFinalResults(state: CampaignState): FinalResults | null {
+  getFinalResults(
+    state: CampaignState,
+    allSeats?: number,
+  ): FinalResults | null {
     const winnerParty = state.results?.mandates.reduce((max, party) => {
       return party.totalSeats > max.totalSeats ? party : max;
     }, state.results.mandates[0]);
-    const hasMajority = winnerParty ? winnerParty.totalSeats > 100 : false;
-    const majorityType = this.getMajorityType(winnerParty);
+    const seatTotal =
+      allSeats ??
+      state.results?.mandates.reduce((sum, m) => sum + m.totalSeats, 0) ??
+      0;
+    const majorityType = winnerParty
+      ? getMajorityType(winnerParty.totalSeats, seatTotal)
+      : null;
+    const hasMajority = majorityType !== null;
 
     const results = this.assertFinalResults(state.results);
 
@@ -505,24 +515,6 @@ export class CampaignEngine {
       partyListData: results?.partyListData ?? partyListData,
       partyListVotes: results?.partyListVotes ?? partyListVotes,
     };
-  }
-
-  private getMajorityType(winnderParty?: {
-    party: string;
-    constituencySeats: number;
-    listSeats: number;
-    totalSeats: number;
-  }) {
-    if (!winnderParty) {
-      return null;
-    }
-    if (winnderParty.totalSeats >= 133) {
-      return "supermajority";
-    }
-    if (winnderParty.totalSeats >= 100) {
-      return "simple";
-    }
-    return null;
   }
 
   private getAnswerEffects(

@@ -36,6 +36,9 @@ jobs:
       - name: Format check
         run: yarn format:check
 
+      - name: Validate campaigns
+        run: yarn validate:campaigns
+
       - name: Build
         run: yarn workspace kampanykorut build
 

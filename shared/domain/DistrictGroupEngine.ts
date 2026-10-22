@@ -18,14 +18,12 @@ export class DistrictGroupEngine {
     candidateListData: CandidateListData[],
     customGroups?: DistrictGroup[],
   ) {
-    const groups = [...DEFAULT_GROUPS];
     if (customGroups) {
       log.debug("Configuring DistrictGroupEngine with custom district groups", {
         customGroups,
       });
-      this.districtGroups = [...groups, ...customGroups];
     }
-    this.districtGroups = groups;
+    this.districtGroups = [...DEFAULT_GROUPS, ...(customGroups ?? [])];
     this.candidateListData = candidateListData;
   }
 
@@ -34,10 +32,12 @@ export class DistrictGroupEngine {
   }
 
   private getDistrictsByGroupId(id: string): DistrictGroup {
+    const group = this.districtGroups.find((group) => group.id === id);
+    if (!group) {
+      log.error("Unknown district group, effect is skipped", { id });
+      return { id, label: id, districts: [] };
+    }
     if (id === "osszes_oevk") {
-      const group =
-        this.districtGroups.find((group) => group.id === id) ??
-        this.districtGroups[0];
       return {
         ...group,
         districts: this.candidateListData.map((data) => ({
@@ -46,9 +46,6 @@ export class DistrictGroupEngine {
         })),
       };
     }
-    return (
-      this.districtGroups.find((group) => group.id === id) ??
-      this.districtGroups[0]
-    );
+    return group;
   }
 }

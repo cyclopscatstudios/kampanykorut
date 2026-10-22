@@ -599,3 +599,65 @@ describe("CampaignEngine campaign strategies", () => {
     expect(bThenA.party_b).toBeGreaterThan(onlyA.party_b);
   });
 });
+
+describe("CampaignEngine.getFinalResults majority", () => {
+  const engine = new CampaignEngine(
+    mockCandidateListData,
+    [],
+    [],
+    container.resolve(ResultModifier),
+    container.resolve(EffectApplier),
+    container.resolve(MandateCalculator),
+    container.resolve(PollsterEngine),
+    mockPartyListData,
+  );
+
+  const finalResults = (winnerSeats: number, allSeats: number) =>
+    engine.getFinalResults(
+      {
+        ...campaignState,
+        results: {
+          mandates: [
+            {
+              party: "party_a",
+              constituencySeats: winnerSeats,
+              listSeats: 0,
+              totalSeats: winnerSeats,
+            },
+            ...["party_b", "party_c"].map((party, i) => {
+              const rest = allSeats - winnerSeats;
+              const seats =
+                i === 0 ? Math.floor(rest / 2) : Math.ceil(rest / 2);
+              return {
+                party,
+                constituencySeats: seats,
+                listSeats: 0,
+                totalSeats: seats,
+              };
+            }),
+          ],
+          compensation: { losingVotes: {}, winnerCompensation: {}, total: {} },
+          constituencySeats: {},
+          listSeats: {},
+          totals: { candidateListResults: {}, partyListResults: {} },
+          percentages: { candidateListResults: {}, partyListResults: {} },
+        },
+      },
+      allSeats,
+    )?.winnerParty;
+
+  it.each([
+    [99, 199, false, null],
+    [100, 199, true, "simple"],
+    [133, 199, true, "supermajority"],
+    [100, 200, false, null],
+  ])(
+    "%i of %i seats -> hasMajority %s, %s",
+    (seats, allSeats, hasMajority, majorityType) => {
+      expect(finalResults(seats, allSeats)).toMatchObject({
+        hasMajority,
+        majorityType,
+      });
+    },
+  );
+});

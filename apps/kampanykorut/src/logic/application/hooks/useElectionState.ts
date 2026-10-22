@@ -151,7 +151,10 @@ export function useElectionState(campaignId: string) {
       candidateId: gameState.playerSide?.candidateId,
       results: gameState.results,
     });
-    return campaignEngine.getFinalResults(gameState);
+    return campaignEngine.getFinalResults(
+      gameState,
+      config.electionConfig.allSeats,
+    );
   };
 
   const getListDataByPollProjection = (
