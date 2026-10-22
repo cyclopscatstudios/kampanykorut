@@ -118,5 +118,44 @@ describe("MandateCalculator", () => {
 
       expect(seats.party_a).toBe(mockElectionConfig.listSeats);
     });
+
+    it("should not give seats to aggregate keys above the threshold", () => {
+      const listVotes = { party_a: 600, party_b: 300, _other: 100 };
+      const compensation = { _other: 50 };
+
+      const seats = (calculator as any).allocateListSeats(
+        listVotes,
+        compensation,
+        mockElectionConfig,
+      );
+
+      expect(seats._other).toBeUndefined();
+      expect(seats.party_a + seats.party_b).toBe(mockElectionConfig.listSeats);
+    });
+
+    it("should count aggregate keys toward the threshold denominator", () => {
+      const listVotes = { party_a: 900, party_b: 40, _other: 60 };
+
+      const seats = (calculator as any).allocateListSeats(
+        listVotes,
+        {},
+        mockElectionConfig,
+      );
+
+      expect(seats.party_b).toBeUndefined();
+      expect(seats.party_a).toBe(mockElectionConfig.listSeats);
+    });
+
+    it("should ignore non-numeric vote entries", () => {
+      const listVotes = { party_a: 600, party_b: 400, undefined: NaN };
+
+      const seats = (calculator as any).allocateListSeats(
+        listVotes,
+        {},
+        mockElectionConfig,
+      );
+
+      expect(seats.party_a + seats.party_b).toBe(mockElectionConfig.listSeats);
+    });
   });
 });

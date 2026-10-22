@@ -239,17 +239,17 @@
                 "targetParty": "fidesz",
                 "amount": 1000,
                 "from": { "type": "party", "party": "ellenzeki_osszefogas" }
-              },
+              }
+            ]
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
               {
-                "type": "district-vote-transfer",
-                "params": [
-                  {
-                    "groupId": "vegyes_oevk",
-                    "targetParty": "fidesz",
-                    "amount": 1000,
-                    "from": { "type": "party", "party": "ellenzeki_osszefogas" }
-                  }
-                ]
+                "groupId": "vegyes_oevk",
+                "targetParty": "fidesz",
+                "amount": 1000,
+                "from": { "type": "party", "party": "ellenzeki_osszefogas" }
               }
             ]
           }
@@ -281,10 +281,15 @@
         "id": "C",
         "effects": [
           {
-            "groupId": "kis_telepulesek",
-            "targetParty": "fidesz",
-            "amount": 500,
-            "from": { "type": "party", "party": "ellenzeki_osszefogas" }
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "kis_telepulesek",
+                "targetParty": "fidesz",
+                "amount": 500,
+                "from": { "type": "party", "party": "ellenzeki_osszefogas" }
+              }
+            ]
           },
           {
             "type": "district-vote-transfer",
@@ -294,17 +299,17 @@
                 "targetParty": "fidesz",
                 "amount": 500,
                 "from": { "type": "party", "party": "ellenzeki_osszefogas" }
-              },
+              }
+            ]
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
               {
-                "type": "district-vote-transfer",
-                "params": [
-                  {
-                    "groupId": "vegyes_oevk",
-                    "targetParty": "ellenzeki_osszefogas",
-                    "amount": 1500,
-                    "from": { "type": "party", "party": "fidesz" }
-                  }
-                ]
+                "groupId": "vegyes_oevk",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 1500,
+                "from": { "type": "party", "party": "fidesz" }
               }
             ]
           }
@@ -332,17 +337,17 @@
                 "targetParty": "fidesz",
                 "amount": 500,
                 "from": { "type": "party", "party": "ellenzeki_osszefogas" }
-              },
+              }
+            ]
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
               {
-                "type": "district-vote-transfer",
-                "params": [
-                  {
-                    "groupId": "vegyes_oevk",
-                    "targetParty": "ellenzeki_osszefogas",
-                    "amount": 500,
-                    "from": { "type": "party", "party": "fidesz" }
-                  }
-                ]
+                "groupId": "vegyes_oevk",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 500,
+                "from": { "type": "party", "party": "fidesz" }
               }
             ]
           }
@@ -1827,10 +1832,15 @@
             "params": { "ellenzeki_osszefogas": 0.4 }
           },
           {
-            "groupId": "ellenzeki_vezetesu_oevk",
-            "targetParty": "ellenzeki_osszefogas",
-            "amount": 100,
-            "from": { "type": "bizonytalan" }
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "ellenzeki_vezetesu_oevk",
+                "targetParty": "ellenzeki_osszefogas",
+                "amount": 100,
+                "from": { "type": "bizonytalan" }
+              }
+            ]
           }
         ]
       },

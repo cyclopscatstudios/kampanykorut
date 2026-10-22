@@ -153,26 +153,27 @@ export class CampaignEngine {
       modified?.candidateListData,
     );
 
+    let partyListData = modified?.partyListData;
     let partyListVotes = modified?.partyListVotes;
 
     if (!this.questions[nextTurn] && campaignStrategies) {
       log.info("apply campaign strategy");
-      const { candidateListData: listData, partyListVotes: listVotes } =
-        this.applyStrategy(
-          campaignStrategies,
-          history,
-          state,
-          modified?.candidateListData ?? [],
-          modified?.partyListData ?? [],
-          modified?.partyListVotes,
-        );
-      candidateListData = listData;
-      partyListVotes = listVotes;
+      const strategyResult = this.applyStrategy(
+        campaignStrategies,
+        history,
+        state,
+        candidateListData ?? state.candidateListData ?? [],
+        partyListData ?? state.partyListData ?? [],
+        partyListVotes ?? state.partyListVotes,
+      );
+      candidateListData = strategyResult.candidateListData;
+      partyListData = strategyResult.partyListData;
+      partyListVotes = strategyResult.partyListVotes;
     }
 
     const calculated = this.mandateCalculator.calculate(
       candidateListData,
-      modified?.partyListData,
+      partyListData,
       electionConfig,
       partyListVotes,
     );
@@ -186,7 +187,7 @@ export class CampaignEngine {
         this.questions[nextTurn],
       ),
       candidateListData: candidateListData ?? state.candidateListData,
-      partyListData: modified?.partyListData ?? state.partyListData,
+      partyListData: partyListData ?? state.partyListData,
       partyListVotes: partyListVotes ?? state.partyListVotes,
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
@@ -296,10 +297,16 @@ export class CampaignEngine {
         state.turn,
       );
 
-      const modified = this.resultModifier.apply(state, appliedEffects);
-      candidateListData = modified?.candidateListData ?? [];
-      partyListData = modified?.partyListData ?? [];
-      partyListVotes = modified?.partyListVotes;
+      const modified = this.resultModifier.apply(
+        { ...state, candidateListData, partyListData, partyListVotes },
+        appliedEffects,
+      );
+      if (!modified) {
+        continue;
+      }
+      candidateListData = modified.candidateListData ?? candidateListData;
+      partyListData = modified.partyListData ?? partyListData;
+      partyListVotes = modified.partyListVotes;
     }
 
     return {

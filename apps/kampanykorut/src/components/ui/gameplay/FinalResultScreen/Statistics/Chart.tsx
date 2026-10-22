@@ -38,39 +38,41 @@ export function SupportChart({
 
   return (
     <CommonWrapper block>
-      <div className="w-full h-[240px] p-2">
+      <div className="w-full h-[240px] p-2 flex flex-col">
         <div className="mb-4 text-white font-semibold">{label}</div>
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            data={data}
-            margin={{
-              top: 5,
-              right: 20,
-              left: 0,
-              bottom: 25,
-            }}
-          >
-            <XAxis dataKey="turn" height={30} />
-            <YAxis domain={[0, 60]} />
-            <Tooltip />
-            {parties.map((party) => {
-              const p = config.electionConfig.parties.find(
-                (p) => p.id === party,
-              );
-              return (
-                <Line
-                  name={p?.name}
-                  key={party}
-                  type="monotone"
-                  dataKey={party}
-                  stroke={p?.color}
-                  strokeWidth={2}
-                  dot={true}
-                />
-              );
-            })}
-          </LineChart>
-        </ResponsiveContainer>
+        <div className="flex-1 min-h-0">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+              data={data}
+              margin={{
+                top: 5,
+                right: 20,
+                left: 0,
+                bottom: 25,
+              }}
+            >
+              <XAxis dataKey="turn" height={30} />
+              <YAxis domain={[0, 60]} />
+              <Tooltip />
+              {parties.map((party) => {
+                const p = config.electionConfig.parties.find(
+                  (p) => p.id === party,
+                );
+                return (
+                  <Line
+                    name={p?.name}
+                    key={party}
+                    type="monotone"
+                    dataKey={party}
+                    stroke={p?.color}
+                    strokeWidth={2}
+                    dot={true}
+                  />
+                );
+              })}
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </CommonWrapper>
   );

@@ -257,9 +257,13 @@ export class MandateCalculator {
     compensation: PartyVotes,
     config: ElectionConfig,
   ) {
-    const totalListVotes = Object.values(listVotes).reduce((a, b) => a + b, 0);
+    const validVotes = Object.entries(listVotes).filter(
+      ([party, v]) => party !== "_total" && Number.isFinite(v),
+    );
+    const totalListVotes = validVotes.reduce((sum, [, v]) => sum + v, 0);
 
-    const eligibleParties = Object.entries(listVotes)
+    const eligibleParties = validVotes
+      .filter(([party]) => !party.startsWith("_"))
       .filter(([, v]) => (v / totalListVotes) * 100 >= config.thresholdPercent)
       .map(([party]) => party);
 
