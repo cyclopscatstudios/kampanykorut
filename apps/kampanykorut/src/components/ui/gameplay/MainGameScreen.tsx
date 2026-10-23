@@ -1,8 +1,15 @@
+import { useEffect, useMemo } from "react";
 import { container } from "tsyringe";
 import { StateEngine, useElectionState } from "@/logic/application";
 import { PollsterEngine } from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
 import { CampaignConfig, CampaignState, CurrentView } from "@/shared/types";
+import {
+  getLoadDurationBucket,
+  getRunProperties,
+} from "../../../logic/infra/posthog/events";
+import { takeCampaignLoadDuration } from "../../../logic/infra/posthog/loadTiming";
+import { trackOnce } from "../../../logic/infra/posthog/track";
 import { AdvisorModal } from "./AdvisorModal";
 import { GameChrome } from "./GameChrome";
 import { GameView } from "./GameView";
@@ -19,13 +26,38 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     processAnswer,
     commitTurn,
     finishCampaign,
-    getFinalResults,
     getMapDataByPolls,
   } = useElectionState(campaignId);
   const { flow, dispatch, handleAnswer, handleAdvisorClose } = useGameFlow(
     processAnswer,
     commitTurn,
   );
+  const sessionId = stateEngine.getSessionId();
+  const partyId = state.playerSide?.partyId;
+  const candidateId = state.playerSide?.candidateId;
+  const runProperties = useMemo(
+    () => getRunProperties(sessionId, campaignId, { partyId, candidateId }),
+    [sessionId, campaignId, partyId, candidateId],
+  );
+  const isResumed = state.turn > 0;
+
+  useEffect(() => {
+    const loadDuration = takeCampaignLoadDuration();
+    trackOnce(runProperties.run_id, "campaign_loaded", {
+      ...runProperties,
+      resumed: isResumed,
+      load_ms_bucket:
+        loadDuration === undefined
+          ? undefined
+          : getLoadDurationBucket(loadDuration),
+    });
+  }, [runProperties, isResumed]);
+
+  useEffect(() => {
+    if (flow.currentView === "QuestionView" && state.turn === 0) {
+      trackOnce(runProperties.run_id, "first_question_viewed", runProperties);
+    }
+  }, [flow.currentView, state.turn, runProperties]);
 
   const handlePollsterChange = (
     id: string,
@@ -85,7 +117,6 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
         config={config}
         answer={flow.answer}
         selectedDistrict={flow.selectedDistrict}
-        getFinalResults={getFinalResults}
         onAnswer={handleAnswer}
         onSetAnswer={(answer) => dispatch({ type: "SET_ANSWER", answer })}
         onSetView={handleView}
