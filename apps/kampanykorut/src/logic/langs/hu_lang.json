@@ -86,7 +86,18 @@
         "nationalTurnout": "Országos részvétel",
         "votesCast": "Leadott szavazatok",
         "turnoutChange": "Változás előző választáshoz képest"
+      },
+      "districtDetails": {
+        "turnout": "Részvétel: {{value}}%"
       }
+    },
+    "electionMap": {
+      "winner": "Győztes"
+    },
+    "achievements": {
+      "completed": "Megszerezve",
+      "notCompleted": "Nem teljesült",
+      "empty": "Ebben a kampányban nincsenek jelvények."
     },
     "turnHistory": {
       "label": "Előzmények",
@@ -95,6 +106,9 @@
       },
       "turns": "forduló"
     }
+  },
+  "gameHeader": {
+    "turnsTooltip": "Lejátszott fordulók"
   },
   "gameMenuBar": {
     "save": "Játék mentése",

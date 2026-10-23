@@ -1,4 +1,5 @@
 import {
+  Legend,
   Line,
   LineChart,
   ResponsiveContainer,
@@ -51,9 +52,31 @@ export function SupportChart({
                 bottom: 25,
               }}
             >
-              <XAxis dataKey="turn" height={30} />
-              <YAxis domain={[0, 60]} />
-              <Tooltip />
+              <XAxis dataKey="turn" height={30} stroke="#64748b" />
+              <YAxis
+                domain={[
+                  0,
+                  (dataMax: number) =>
+                    Math.max(60, Math.ceil(dataMax / 10) * 10),
+                ]}
+                stroke="#64748b"
+              />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#0f172a",
+                  border: "1px solid rgba(148, 163, 184, 0.25)",
+                  borderRadius: 8,
+                }}
+                labelStyle={{ color: "#e2e8f0" }}
+              />
+              <Legend
+                verticalAlign="top"
+                align="right"
+                height={28}
+                iconType="circle"
+                iconSize={8}
+                wrapperStyle={{ fontSize: 12 }}
+              />
               {parties.map((party) => {
                 const p = config.electionConfig.parties.find(
                   (p) => p.id === party,
@@ -64,6 +87,7 @@ export function SupportChart({
                     key={party}
                     type="monotone"
                     dataKey={party}
+                    unit="%"
                     stroke={p?.color}
                     strokeWidth={2}
                     dot={true}

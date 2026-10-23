@@ -36,7 +36,7 @@ export function SettingsDialog({
       closeOnBackdrop
       buttons={{
         secondary: (
-          <Button variant="secondary" onClick={() => setIsOpen(false)}>
+          <Button variant="tertiary" onClick={() => setIsOpen(false)}>
             <Button.Text>{t("menuList.button.cancel")}</Button.Text>
           </Button>
         ),

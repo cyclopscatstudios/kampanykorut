@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { CampaignConfig, District, RawParty } from "@/shared/types";
 import { Text } from "../../../../../../../shared/ui/Text";
 import { Badge } from "../../Badge";
@@ -61,7 +62,11 @@ function CandidateResult({
         </div>
         <div className="ml-[15px]">
           {candidate.isWinner && (
-            <Badge label="Winner" color="green" icon="check-circle-fill" />
+            <Badge
+              label={t("endResult.electionMap.winner")}
+              color="green"
+              icon="check-circle-fill"
+            />
           )}
         </div>
       </div>
