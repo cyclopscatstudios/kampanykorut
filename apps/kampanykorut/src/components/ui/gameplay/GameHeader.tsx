@@ -126,9 +126,11 @@ function TurnBadge({
   turns: number;
 }) {
   return (
-    <div className="h-10 flex items-center bg-blue-400/10 rounded-md border border-blue-50/10 px-3">
-      <Text color="lightBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
-    </div>
+    <Tooltip content={t("gameHeader.turnsTooltip")} position="bottom">
+      <div className="h-10 flex items-center bg-blue-400/10 rounded-md border border-blue-50/10 px-3">
+        <Text color="lightBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
+      </div>
+    </Tooltip>
   );
 }
 

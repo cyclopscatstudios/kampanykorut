@@ -82,7 +82,18 @@
         "nationalTurnout": "National turnout",
         "votesCast": "Votes cast",
         "turnoutChange": "Change from previous election"
+      },
+      "districtDetails": {
+        "turnout": "Turnout: {{value}}%"
       }
+    },
+    "electionMap": {
+      "winner": "Winner"
+    },
+    "achievements": {
+      "completed": "Earned",
+      "notCompleted": "Not earned",
+      "empty": "This campaign has no badges."
     },
     "turnHistory": {
       "label": "Turn history",
@@ -91,6 +102,9 @@
       },
       "turns": "turns"
     }
+  },
+  "gameHeader": {
+    "turnsTooltip": "Turns played"
   },
   "gameMenuBar": {
     "save": "Save game",
