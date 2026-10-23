@@ -28,11 +28,34 @@ describe("DistrictGroupEngine", () => {
           { megyekod: 10, oevk: 1 },
           { megyekod: 10, oevk: 2 },
           { megyekod: 18, oevk: 1 },
-          { megyekod: 18, oevk: 1 },
+          { megyekod: 18, oevk: 2 },
           { megyekod: 12, oevk: 2 },
           { megyekod: 7, oevk: 1 },
         ],
       },
     ]);
+  });
+
+  it("returns custom groups passed to configure", () => {
+    const engine = new DistrictGroupEngine();
+    const custom = {
+      id: "custom_group",
+      label: "Custom",
+      districts: [{ megyekod: 1, oevk: 1 }],
+    };
+    engine.configure([], [custom]);
+
+    expect(engine.getDistrictTargetByGroupIds(["custom_group"])).toEqual([
+      custom,
+    ]);
+  });
+
+  it("returns no districts for an unknown group instead of falling back", () => {
+    const engine = new DistrictGroupEngine();
+    engine.configure([]);
+
+    expect(
+      engine.getDistrictTargetByGroupIds(["missing_group"])[0].districts,
+    ).toEqual([]);
   });
 });

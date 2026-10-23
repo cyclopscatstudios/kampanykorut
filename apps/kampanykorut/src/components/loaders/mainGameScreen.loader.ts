@@ -3,10 +3,13 @@ import { container } from "tsyringe";
 import { ConfigEngine, StateEngine } from "@/logic/application";
 import { createLogger, setLogTags } from "@/shared/logger";
 import { loadCampaignConfig } from "../../logic/application/loadCampaignConfig";
+import { markCampaignLoadStart } from "../../logic/infra/posthog/loadTiming";
+import { track } from "../../logic/infra/posthog/track";
 
 const log = createLogger("mainGameScreenLoader");
 
 export async function mainGameScreenLoader({ params }: LoaderFunctionArgs) {
+  markCampaignLoadStart();
   const stateEngine = container.resolve(StateEngine);
 
   const state = stateEngine.getCampaignState();
@@ -47,7 +50,13 @@ export async function mainGameScreenLoader({ params }: LoaderFunctionArgs) {
     return null;
   }
 
-  const config = await loadCampaignConfig(params.id);
+  let config;
+  try {
+    config = await loadCampaignConfig(params.id);
+  } catch (error) {
+    track("campaign_load_failed", { campaign_id: params.id, stage: "config" });
+    throw error;
+  }
   container.resolve(ConfigEngine).configure(config, params.id, true);
   log.info("Game screen config ready", { campaignId: params.id, sessionId });
 

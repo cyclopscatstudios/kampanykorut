@@ -62,7 +62,7 @@
             "type": "district-vote-transfer",
             "params": [
               {
-                "groupId": "nagyvarosok_oevk",
+                "groupId": "nagyvarosok",
                 "targetParty": "dk",
                 "amount": 350,
                 "from": {

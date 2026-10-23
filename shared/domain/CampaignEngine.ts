@@ -21,6 +21,7 @@ import {
   StrategyReward,
 } from "../types";
 import type { EffectApplier } from "./EffectApplier";
+import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import type { ResultModifier } from "./ResultModifier";
@@ -153,26 +154,27 @@ export class CampaignEngine {
       modified?.candidateListData,
     );
 
+    let partyListData = modified?.partyListData;
     let partyListVotes = modified?.partyListVotes;
 
     if (!this.questions[nextTurn] && campaignStrategies) {
       log.info("apply campaign strategy");
-      const { candidateListData: listData, partyListVotes: listVotes } =
-        this.applyStrategy(
-          campaignStrategies,
-          history,
-          state,
-          modified?.candidateListData ?? [],
-          modified?.partyListData ?? [],
-          modified?.partyListVotes,
-        );
-      candidateListData = listData;
-      partyListVotes = listVotes;
+      const strategyResult = this.applyStrategy(
+        campaignStrategies,
+        history,
+        state,
+        candidateListData ?? state.candidateListData ?? [],
+        partyListData ?? state.partyListData ?? [],
+        partyListVotes ?? state.partyListVotes,
+      );
+      candidateListData = strategyResult.candidateListData;
+      partyListData = strategyResult.partyListData;
+      partyListVotes = strategyResult.partyListVotes;
     }
 
     const calculated = this.mandateCalculator.calculate(
       candidateListData,
-      modified?.partyListData,
+      partyListData,
       electionConfig,
       partyListVotes,
     );
@@ -186,7 +188,7 @@ export class CampaignEngine {
         this.questions[nextTurn],
       ),
       candidateListData: candidateListData ?? state.candidateListData,
-      partyListData: modified?.partyListData ?? state.partyListData,
+      partyListData: partyListData ?? state.partyListData,
       partyListVotes: partyListVotes ?? state.partyListVotes,
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
@@ -296,10 +298,16 @@ export class CampaignEngine {
         state.turn,
       );
 
-      const modified = this.resultModifier.apply(state, appliedEffects);
-      candidateListData = modified?.candidateListData ?? [];
-      partyListData = modified?.partyListData ?? [];
-      partyListVotes = modified?.partyListVotes;
+      const modified = this.resultModifier.apply(
+        { ...state, candidateListData, partyListData, partyListVotes },
+        appliedEffects,
+      );
+      if (!modified) {
+        continue;
+      }
+      candidateListData = modified.candidateListData ?? candidateListData;
+      partyListData = modified.partyListData ?? partyListData;
+      partyListVotes = modified.partyListVotes;
     }
 
     return {
@@ -309,12 +317,21 @@ export class CampaignEngine {
     };
   }
 
-  getFinalResults(state: CampaignState): FinalResults | null {
+  getFinalResults(
+    state: CampaignState,
+    allSeats?: number,
+  ): FinalResults | null {
     const winnerParty = state.results?.mandates.reduce((max, party) => {
       return party.totalSeats > max.totalSeats ? party : max;
     }, state.results.mandates[0]);
-    const hasMajority = winnerParty ? winnerParty.totalSeats > 100 : false;
-    const majorityType = this.getMajorityType(winnerParty);
+    const seatTotal =
+      allSeats ??
+      state.results?.mandates.reduce((sum, m) => sum + m.totalSeats, 0) ??
+      0;
+    const majorityType = winnerParty
+      ? getMajorityType(winnerParty.totalSeats, seatTotal)
+      : null;
+    const hasMajority = majorityType !== null;
 
     const results = this.assertFinalResults(state.results);
 
@@ -498,24 +515,6 @@ export class CampaignEngine {
       partyListData: results?.partyListData ?? partyListData,
       partyListVotes: results?.partyListVotes ?? partyListVotes,
     };
-  }
-
-  private getMajorityType(winnderParty?: {
-    party: string;
-    constituencySeats: number;
-    listSeats: number;
-    totalSeats: number;
-  }) {
-    if (!winnderParty) {
-      return null;
-    }
-    if (winnderParty.totalSeats >= 133) {
-      return "supermajority";
-    }
-    if (winnderParty.totalSeats >= 100) {
-      return "simple";
-    }
-    return null;
   }
 
   private getAnswerEffects(

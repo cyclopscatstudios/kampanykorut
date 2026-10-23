@@ -21,6 +21,7 @@
     "lint:fix": "eslint . --fix",
     "format:check": "prettier --check .",
     "test": "vitest --config apps/kampanykorut/vite.config.ts",
+    "validate:campaigns": "vitest run --config apps/kampanykorut/vite.config.ts shared/validation/shippedCampaigns.test.ts",
     "ladle": "npx ladle serve",
     "test-ct": "playwright test --config=apps/kampanykorut/playwright-ct.config.ts",
     "playwright": "playwright test",

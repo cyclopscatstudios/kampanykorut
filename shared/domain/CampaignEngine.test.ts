@@ -11,6 +11,7 @@ import {
   RawEffect,
   RawParty,
   RawQuestion,
+  Strategy,
 } from "../types";
 import { CampaignEngine } from "./CampaignEngine";
 import { EffectApplier } from "./EffectApplier";
@@ -521,4 +522,142 @@ describe("CampaignEngine advisor feedback", () => {
       text: "conditional A first",
     });
   });
+});
+
+describe("CampaignEngine campaign strategies", () => {
+  const lastQuestion: RawQuestion = {
+    id: "q_last",
+    question: "Last question",
+    possibleAnswers: [{ id: "A", label: "Answer A" }],
+  };
+
+  const engine = new CampaignEngine(
+    mockCandidateListData,
+    [lastQuestion],
+    [],
+    container.resolve(ResultModifier),
+    container.resolve(EffectApplier),
+    container.resolve(MandateCalculator),
+    container.resolve(PollsterEngine),
+    mockPartyListData,
+  );
+
+  const strategy = (party: string, conditionAnswerId = "A"): Strategy => ({
+    id: `strategy_${party}`,
+    label: `strategy ${party}`,
+    target: { party: "party_a", candidate: "candidate_a" },
+    conditions: [{ questionId: "q_prev", answerId: conditionAnswerId }],
+    rewards: [
+      {
+        minMatches: 1,
+        effects: [{ type: EffectType.UniformSwing, params: { [party]: 3 } }],
+      },
+    ],
+  });
+
+  const answerSwing: RawEffect = {
+    type: EffectType.UniformSwing,
+    params: { party_a: 5, party_b: -5 },
+  };
+  const neutralSwing: RawEffect = {
+    type: EffectType.UniformSwing,
+    params: { party_a: 0 },
+  };
+
+  const shares = (effect: RawEffect, strategies?: Strategy[]) =>
+    engine.processTurn(
+      { ...campaignState, turn: 0, currentQuestion: lastQuestion },
+      { questionId: "q_last", answerId: "A", effects: [effect] },
+      [{ questionId: "q_prev", answerId: "A" } as HistoryItem],
+      { showAdvisorFeedback: false, language: "en" },
+      mockElectionConfig,
+      strategies,
+    ).results!.percentages.candidateListResults;
+
+  it("leaves the final turn unchanged when no strategy is fulfilled", () => {
+    expect(shares(answerSwing, [strategy("party_b", "B")])).toEqual(
+      shares(answerSwing),
+    );
+  });
+
+  it("applies the reward on top of the final answer's effects", () => {
+    const answerOnly = shares(answerSwing);
+    const rewardOnly = shares(neutralSwing, [strategy("party_b")]);
+    const answerAndReward = shares(answerSwing, [strategy("party_b")]);
+
+    expect(answerAndReward.party_b).toBeGreaterThan(answerOnly.party_b);
+    expect(answerAndReward.party_b).toBeLessThan(rewardOnly.party_b);
+  });
+
+  it("stacks rewards of multiple fulfilled strategies", () => {
+    const onlyA = shares(answerSwing, [strategy("party_a")]);
+    const bThenA = shares(answerSwing, [
+      strategy("party_b"),
+      strategy("party_a"),
+    ]);
+
+    expect(bThenA.party_b).toBeGreaterThan(onlyA.party_b);
+  });
+});
+
+describe("CampaignEngine.getFinalResults majority", () => {
+  const engine = new CampaignEngine(
+    mockCandidateListData,
+    [],
+    [],
+    container.resolve(ResultModifier),
+    container.resolve(EffectApplier),
+    container.resolve(MandateCalculator),
+    container.resolve(PollsterEngine),
+    mockPartyListData,
+  );
+
+  const finalResults = (winnerSeats: number, allSeats: number) =>
+    engine.getFinalResults(
+      {
+        ...campaignState,
+        results: {
+          mandates: [
+            {
+              party: "party_a",
+              constituencySeats: winnerSeats,
+              listSeats: 0,
+              totalSeats: winnerSeats,
+            },
+            ...["party_b", "party_c"].map((party, i) => {
+              const rest = allSeats - winnerSeats;
+              const seats =
+                i === 0 ? Math.floor(rest / 2) : Math.ceil(rest / 2);
+              return {
+                party,
+                constituencySeats: seats,
+                listSeats: 0,
+                totalSeats: seats,
+              };
+            }),
+          ],
+          compensation: { losingVotes: {}, winnerCompensation: {}, total: {} },
+          constituencySeats: {},
+          listSeats: {},
+          totals: { candidateListResults: {}, partyListResults: {} },
+          percentages: { candidateListResults: {}, partyListResults: {} },
+        },
+      },
+      allSeats,
+    )?.winnerParty;
+
+  it.each([
+    [99, 199, false, null],
+    [100, 199, true, "simple"],
+    [133, 199, true, "supermajority"],
+    [100, 200, false, null],
+  ])(
+    "%i of %i seats -> hasMajority %s, %s",
+    (seats, allSeats, hasMajority, majorityType) => {
+      expect(finalResults(seats, allSeats)).toMatchObject({
+        hasMajority,
+        majorityType,
+      });
+    },
+  );
 });

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
 import { createLogger } from "@/shared/logger";
+import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import {
   Answer,
   CampaignState,
@@ -10,7 +11,11 @@ import {
   PendingTurn,
 } from "@/shared/types";
 import { useNavigation } from "../../../hooks/navigationHook";
-import { AnalyticsEvent, track } from "../../infra/posthog/track";
+import {
+  getCampaignOutcome,
+  getRunProperties,
+} from "../../infra/posthog/events";
+import { track, trackOnce } from "../../infra/posthog/track";
 import { ConfigEngine } from "../ConfigEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
 import { useSettings } from "./useSettings";
@@ -47,6 +52,10 @@ export function useElectionState(campaignId: string) {
         playerSideId,
       );
     } catch (error) {
+      track("campaign_load_failed", {
+        campaign_id: campaignId,
+        stage: "state",
+      });
       log.error("Failed to create initial campaign state", {
         error,
         campaignId,
@@ -59,6 +68,11 @@ export function useElectionState(campaignId: string) {
       throw error;
     }
   });
+  const runProperties = getRunProperties(
+    sessionId,
+    campaignId,
+    gameState.playerSide,
+  );
   const { settings } = useSettings();
   const { goToFinalResults } = useNavigation();
 
@@ -74,15 +88,6 @@ export function useElectionState(campaignId: string) {
     if (!rawAnswer || !gameState.currentQuestion || !answer?.effects) {
       return;
     }
-
-    track(AnalyticsEvent.QUESTION_ANSWERED, {
-      campaignId,
-      sessionId,
-      partyId: gameState.playerSide?.partyId,
-      candidateId: gameState.playerSide?.candidateId,
-      questionId: gameState.currentQuestion?.id,
-      answerId: rawAnswer,
-    });
 
     const decision: Decision = {
       answerId: rawAnswer,
@@ -131,11 +136,35 @@ export function useElectionState(campaignId: string) {
     rawAnswer,
     decision,
   }: PendingTurn): CampaignState => {
-    preserveState(rawAnswer, newGameState, decision);
+    let persisted = true;
+    const stopListening = container.resolve(StorageEngine).onWriteError(() => {
+      persisted = false;
+    });
+    try {
+      preserveState(rawAnswer, newGameState, decision);
+    } finally {
+      stopListening();
+    }
+    track("turn_committed", {
+      ...runProperties,
+      turn: newGameState.turn,
+      persisted,
+    });
     return newGameState;
   };
 
   const finishCampaign = () => {
+    const finalResults = getFinalResults();
+    trackOnce(sessionId, "campaign_finished", {
+      ...runProperties,
+      outcome: getCampaignOutcome(
+        finalResults?.winnerParty?.party,
+        Boolean(finalResults?.winnerParty?.hasMajority),
+        playerSideId,
+      ),
+      majority_type: finalResults?.winnerParty?.majorityType ?? null,
+      turns: gameState.turn,
+    });
     goToFinalResults(campaignId, sessionId);
   };
 
@@ -144,14 +173,10 @@ export function useElectionState(campaignId: string) {
   };
 
   const getFinalResults = () => {
-    track(AnalyticsEvent.CAMPAIGN_FINISHED, {
-      campaignId,
-      sessionId,
-      partyId: gameState.playerSide?.partyId,
-      candidateId: gameState.playerSide?.candidateId,
-      results: gameState.results,
-    });
-    return campaignEngine.getFinalResults(gameState);
+    return campaignEngine.getFinalResults(
+      gameState,
+      config.electionConfig.allSeats,
+    );
   };
 
   const getListDataByPollProjection = (

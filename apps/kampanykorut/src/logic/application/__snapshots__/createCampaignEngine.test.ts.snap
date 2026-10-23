@@ -326,7 +326,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
               },
               {
                 "megyekod": 18,
-                "oevk": 1,
+                "oevk": 2,
               },
               {
                 "megyekod": 12,
