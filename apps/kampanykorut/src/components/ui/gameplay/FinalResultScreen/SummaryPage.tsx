@@ -2,14 +2,12 @@ import { useMemo } from "react";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
 import { ConfigEngine, StateEngine } from "@/logic/application";
+import { getMajorityType } from "@/shared/domain";
 import { FinalResults, Mandate, RawParty } from "@/shared/types";
 import { Text } from "../../../../../../../shared/ui/Text";
 import { Heading } from "../../Heading";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
-
-// TODO: this should come from the campaign config
-const MIN_SEATS_TO_WIN = 100;
 
 export function SummaryPage({ results }: { results: FinalResults }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -22,7 +20,10 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     current.totalSeats > max.totalSeats ? current : max,
   );
 
-  const noWinner = winner.totalSeats < MIN_SEATS_TO_WIN;
+  const allSeats =
+    currentConfig?.electionConfig.allSeats ??
+    results.mandates.reduce((sum, m) => sum + m.totalSeats, 0);
+  const noWinner = getMajorityType(winner.totalSeats, allSeats) === null;
 
   const playerSideId = campaignState?.playerSide?.partyId;
   const playerCandidateId = campaignState?.playerSide?.candidateId;
@@ -32,8 +33,7 @@ export function SummaryPage({ results }: { results: FinalResults }) {
           ?.endResults
       : undefined;
 
-  const didPlayerWin =
-    winner.party === playerSideId && winner.totalSeats >= MIN_SEATS_TO_WIN;
+  const didPlayerWin = winner.party === playerSideId && !noWinner;
   const assets = didPlayerWin
     ? sideEndResults?.playerSideVictory
     : sideEndResults?.playerSideDefeat;
