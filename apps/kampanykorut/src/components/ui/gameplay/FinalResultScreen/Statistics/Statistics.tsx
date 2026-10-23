@@ -1,7 +1,7 @@
 import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
-import { StateEngine } from "@/logic/application";
+import { ConfigEngine, StateEngine } from "@/logic/application";
 import { CampaignConfig, FinalResults } from "@/shared/types";
 import { Button } from "../../../../../../../../shared/ui/Button";
 import {
@@ -28,10 +28,17 @@ export function Statistics({
   results: FinalResults;
 }) {
   const stateEngine = container.resolve(StateEngine);
+  const configEngine = container.resolve(ConfigEngine);
   const state = stateEngine.getCampaignState();
   const turnHistory = stateEngine.getTurnHistory();
+  const history = stateEngine.getHistory();
   const [currentTab, setCurrentTab] = useState<StatisticsTab>("overview");
   const playerSide = state?.playerSide?.partyId ?? "";
+  const strategies =
+    state && history
+      ? (configEngine.getCampaignStrategies(state, config, history) ?? [])
+      : [];
+  const completedStrategies = strategies.filter((s) => s.isCompleted).length;
 
   const largestVictories = getLargestVictories(
     state?.candidateListData ?? [],
@@ -53,6 +60,8 @@ export function Statistics({
       <StatisticsButtonBar
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
+        achievementCount={strategies.length}
+        completedAchievementCount={completedStrategies}
       />
       {currentTab === "overview" && (
         <Overview
@@ -82,14 +91,18 @@ export function Statistics({
 interface StatisticsButtonBarProps {
   currentTab: StatisticsTab;
   setCurrentTab: (tab: StatisticsTab) => void;
+  achievementCount: number;
+  completedAchievementCount: number;
 }
 
 function StatisticsButtonBar({
   currentTab,
   setCurrentTab,
+  achievementCount,
+  completedAchievementCount,
 }: StatisticsButtonBarProps) {
   return (
-    <div className="flex gap-2 mb-4 justify-end">
+    <div className="flex gap-6 mb-4">
       <Button
         selected={currentTab === "overview"}
         variant="subtab"
@@ -121,6 +134,11 @@ function StatisticsButtonBar({
         onClick={() => setCurrentTab("achievements")}
       >
         <Button.Text>{t("endResult.menuBar.achivements")}</Button.Text>
+        {achievementCount > 0 && (
+          <span className="ml-1.5 text-xs font-semibold text-slate-400">
+            {completedAchievementCount}/{achievementCount}
+          </span>
+        )}
       </Button>
     </div>
   );

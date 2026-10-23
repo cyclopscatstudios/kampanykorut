@@ -97,7 +97,7 @@ interface ConfirmCampaignSelectorModalProps {
   onConfirm: () => void;
 }
 
-function ConfirmCampaignSelectorModal({
+export function ConfirmCampaignSelectorModal({
   onCancel,
   onConfirm,
 }: ConfirmCampaignSelectorModalProps) {
@@ -116,7 +116,7 @@ interface ConfirmRestartModalProps {
   onConfirm: () => void;
 }
 
-function ConfirmRestartModal({
+export function ConfirmRestartModal({
   onCancel,
   onConfirm,
 }: ConfirmRestartModalProps) {
