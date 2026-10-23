@@ -123,6 +123,12 @@ export class StateEngine extends Emitter<CampaignState> {
       .filter((session): session is SavedCampaignSessionInfo => !!session);
   }
 
+  hasFinishedCampaign() {
+    return this.getAutoSaveRegistry().some(
+      ({ sessionId }) => this.getCampaignStateById(sessionId)?.isEnded,
+    );
+  }
+
   getSessionSlots() {
     const usedSlots = this.getSavedGameSessions();
     return {

@@ -6,7 +6,6 @@ import {
   CurrentView,
   District,
   DistrictPoligon,
-  FinalResults,
   PollingOpnions,
 } from "@/shared/types";
 import { MapCreator } from "./MapCreator";
@@ -21,7 +20,6 @@ interface GameViewProps {
   config: CampaignConfig;
   answer: string | undefined;
   selectedDistrict: District | null;
-  getFinalResults: () => FinalResults | null;
   onAnswer: (id?: string) => void;
   onSetAnswer: (answer: string | undefined) => void;
   onSetView: (view: CurrentView) => void;
