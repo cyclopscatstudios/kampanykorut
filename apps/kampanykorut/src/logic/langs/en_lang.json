@@ -61,13 +61,17 @@
       "electionMap": "Election map",
       "statistics": "Statistics",
       "history": "History",
-      "achivements": "Achivements"
+      "achivements": "Badges"
+    },
+    "actions": {
+      "replay": "Play again",
+      "otherCampaign": "Other campaign"
     },
     "statistics": {
       "menuBar": {
         "overview": "Overview",
-        "districtDetails": "District details",
-        "turnoutDetails": "Turnout details"
+        "districtDetails": "Districts",
+        "turnoutDetails": "Turnout"
       },
       "overview": {
         "constituencySeats": "Constituency seats",

@@ -61,13 +61,17 @@
       "electionMap": "Választási térkép",
       "statistics": "Statisztikák",
       "history": "Előzmények",
-      "achivements": "Eredmények"
+      "achivements": "Jelvények"
+    },
+    "actions": {
+      "replay": "Újrajátszás",
+      "otherCampaign": "Másik kampány"
     },
     "statistics": {
       "menuBar": {
-        "overview": "Összefoglaló",
-        "districtDetails": "Körzet részletek",
-        "turnoutDetails": "Részvételi adatok"
+        "overview": "Áttekintés",
+        "districtDetails": "Körzetek",
+        "turnoutDetails": "Részvétel"
       },
       "overview": {
         "constituencySeats": "Egyéni mandátumok",
