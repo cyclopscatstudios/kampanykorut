@@ -17,6 +17,12 @@ function getSortedParties(district: CandidateListData) {
   );
 }
 
+// lists are sorted by this value, so the displayed order matches the displayed percentages
+function getMarginPercentage(playerVotes: number, opponentVotes: number) {
+  const total = playerVotes + opponentVotes;
+  return total === 0 ? 0 : ((playerVotes - opponentVotes) / total) * 100;
+}
+
 export function getLargestVictories(
   districts: CandidateListData[],
   playerParty: string,
@@ -33,11 +39,10 @@ export function getLargestVictories(
 
       const difference = playerVotes - opponentVotes;
 
-      const percentageDifference =
-        opponentVotes === 0
-          ? 100
-          : ((playerVotes - opponentVotes) / (playerVotes + opponentVotes)) *
-            100;
+      const percentageDifference = getMarginPercentage(
+        playerVotes,
+        opponentVotes,
+      );
 
       return {
         district,
@@ -50,7 +55,7 @@ export function getLargestVictories(
       };
     })
     .filter((r) => r.difference > 0)
-    .sort((a, b) => b.difference - a.difference);
+    .sort((a, b) => b.percentageDifference - a.percentageDifference);
 }
 
 export function getLargestDefeats(
@@ -70,11 +75,10 @@ export function getLargestDefeats(
 
       const difference = opponentVotes - playerVotes;
 
-      const percentageDifference =
-        playerVotes === 0
-          ? 100
-          : ((playerVotes - opponentVotes) / (playerVotes + opponentVotes)) *
-            100;
+      const percentageDifference = getMarginPercentage(
+        playerVotes,
+        opponentVotes,
+      );
 
       return {
         district,
@@ -87,7 +91,7 @@ export function getLargestDefeats(
       };
     })
     .filter((r) => r.opponentParty !== playerParty)
-    .sort((a, b) => b.difference - a.difference);
+    .sort((a, b) => a.percentageDifference - b.percentageDifference);
 }
 
 export function getClosestDistricts(
@@ -109,10 +113,9 @@ export function getClosestDistricts(
 
       const difference = Math.abs(playerVotes - opponentVotes);
 
-      const percentageDifference =
-        opponentVotes === 0
-          ? 100
-          : Number(((difference / opponentVotes) * 100).toFixed(2));
+      const percentageDifference = Math.abs(
+        getMarginPercentage(playerVotes, opponentVotes),
+      );
 
       return {
         district,
@@ -126,5 +129,5 @@ export function getClosestDistricts(
         percentageDifference,
       };
     })
-    .sort((a, b) => a.difference - b.difference);
+    .sort((a, b) => a.percentageDifference - b.percentageDifference);
 }
