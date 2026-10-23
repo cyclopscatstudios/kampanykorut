@@ -68,7 +68,8 @@ export function FinalResultScreen() {
               return (
                 <Button
                   key={screen.id}
-                  disabled={activeScreen === screen.id}
+                  variant="tab"
+                  selected={activeScreen === screen.id}
                   onClick={() => setActiveScreen(screen.id)}
                 >
                   <Button.Text>{t(screen.label)}</Button.Text>

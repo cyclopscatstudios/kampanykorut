@@ -74,7 +74,7 @@ function VotesCast({
           {t("endResult.statistics.turnoutDetails.votesCast")}
         </Text>
         <span className="flex items-baseline justify-center">
-          <Heading level={3} className="mr-1">
+          <Heading level={3} color="white" className="mr-1">
             {turnoutInMillions}M /
           </Heading>
           <Heading level={3} color="gray">
@@ -105,7 +105,7 @@ function NationalTurnoutPercentage({
           {t("endResult.statistics.turnoutDetails.nationalTurnout")}
         </Text>
         <span className="flex items-baseline justify-center">
-          <Heading level={3} className="mr-1">
+          <Heading level={3} color="white" className="mr-1">
             {nationWideTurnout.toFixed(2)}%
           </Heading>
         </span>
