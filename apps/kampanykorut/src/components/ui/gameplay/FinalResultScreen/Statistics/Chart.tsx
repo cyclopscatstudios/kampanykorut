@@ -55,8 +55,7 @@ export function SupportChart({
             <YAxis
               domain={[
                 0,
-                (dataMax: number) =>
-                  Math.max(60, Math.ceil(dataMax / 10) * 10),
+                (dataMax: number) => Math.max(60, Math.ceil(dataMax / 10) * 10),
               ]}
               stroke="#64748b"
             />
