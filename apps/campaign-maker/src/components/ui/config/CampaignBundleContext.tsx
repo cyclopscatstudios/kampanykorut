@@ -118,6 +118,31 @@ export function makeStoredDraft(
   return { storageVersion: 1, revision, updatedAt: Date.now(), draft };
 }
 
+export type PersistDraftResult =
+  | { status: "saved"; revision: number }
+  | { status: "conflict" }
+  | { status: "failed" };
+
+export function persistDraft(
+  storage: Pick<Storage, "getItem" | "setItem">,
+  key: string,
+  draft: CampaignDraft,
+  expectedRevision: number,
+): PersistDraftResult {
+  try {
+    const raw = storage.getItem(key);
+    const current = raw ? parseStoredDraft(raw) : null;
+    if (current && current.revision > expectedRevision)
+      return { status: "conflict" };
+    const nextRevision = expectedRevision + 1;
+    const serialized = JSON.stringify(makeStoredDraft(draft, nextRevision));
+    storage.setItem(key, serialized);
+    return { status: "saved", revision: nextRevision };
+  } catch {
+    return { status: "failed" };
+  }
+}
+
 export function hydrateCampaignDraft(bundle: CampaignBundle): CampaignDraft {
   const election = obj(bundle.files[ELECTION]);
   const side = obj(arr(election.playableSides)[0]);
@@ -347,18 +372,17 @@ export function CampaignDraftProvider({
     const timer = window.setTimeout(() => {
       try {
         const key = `${DRAFT_PREFIX}${draftId}`;
-        const currentRaw = localStorage.getItem(key);
-        const current = currentRaw ? parseStoredDraft(currentRaw) : null;
-        if (current && current.revision > revision.current) {
+        const result = persistDraft(localStorage, key, draft, revision.current);
+        if (result.status === "conflict") {
           writeBlocked.current = true;
           setSaveStatus("conflict");
           return;
         }
-        revision.current += 1;
-        localStorage.setItem(
-          key,
-          JSON.stringify(makeStoredDraft(draft, revision.current)),
-        );
+        if (result.status === "failed") {
+          setSaveStatus("failed");
+          return;
+        }
+        revision.current = result.revision;
         setSaveStatus("saved");
       } catch {
         setSaveStatus("failed");
