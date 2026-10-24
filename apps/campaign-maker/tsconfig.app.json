@@ -33,5 +33,10 @@
     "../../shared/vite-env.d.ts",
     "public"
   ],
-  "exclude": ["**/*.test.ts", "**/*.test.tsx"]
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "../../shared/**/*.test.ts",
+    "../../shared/**/*.test.tsx"
+  ]
 }

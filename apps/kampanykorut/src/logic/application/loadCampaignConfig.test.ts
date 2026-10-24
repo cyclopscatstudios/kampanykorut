@@ -275,4 +275,40 @@ describe("loadCampaignConfig", () => {
 
     expect(getCampaignHeaderById).toHaveBeenCalledTimes(1);
   });
+
+  it("consumes a valid Maker preview and preserves its return route", async () => {
+    const previewId = "12345678-1234-1234-1234-123456789abc";
+    const campaignId = `preview-${previewId}`;
+    const files = {
+      "manifest.json": {
+        files: {
+          electionConfig: "election.json",
+          voterEnvironmentConfig: "voters.json",
+          candidateListData: "candidates.json",
+        },
+      },
+      "election.json": { districtMap: "2024" },
+      "voters.json": {},
+      "candidates.json": {},
+    };
+    localStorage.setItem(
+      `kampanykorut_maker_preview_v1-${previewId}`,
+      JSON.stringify({
+        expiresAt: Date.now() + 60_000,
+        bundle: { files },
+        returnUrl: `${window.location.origin}/maker/new-campaign/draft/summary`,
+      }),
+    );
+    getDistrictMapByType.mockResolvedValue({});
+
+    await expect(loadCampaignConfig(campaignId)).resolves.toMatchObject({
+      electionConfig: files["election.json"],
+    });
+    expect(
+      localStorage.getItem(`kampanykorut_maker_preview_v1-${previewId}`),
+    ).toBeNull();
+    expect(
+      sessionStorage.getItem(`kampanykorut_maker_return_v1-${campaignId}`),
+    ).toContain("/maker/new-campaign/draft/summary");
+  });
 });

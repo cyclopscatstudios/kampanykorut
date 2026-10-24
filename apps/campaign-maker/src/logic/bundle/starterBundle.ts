@@ -16,19 +16,25 @@ const FILES = [
 ] as const;
 
 function collectAssets(value: unknown, assets: Set<string>) {
-  if (typeof value === "string" && value.startsWith("/images/")) assets.add(value);
-  else if (Array.isArray(value)) value.forEach((item) => collectAssets(item, assets));
-  else if (typeof value === "object" && value !== null) Object.values(value).forEach((item) => collectAssets(item, assets));
+  if (typeof value === "string" && value.startsWith("/images/"))
+    assets.add(value);
+  else if (Array.isArray(value))
+    value.forEach((item) => collectAssets(item, assets));
+  else if (typeof value === "object" && value !== null)
+    Object.values(value).forEach((item) => collectAssets(item, assets));
 }
 
 export async function loadStarterBundle(): Promise<CampaignBundle> {
   const files: Record<string, unknown> = {};
   const base = `${import.meta.env.BASE_URL}campaigns/${STARTER_ROUTE}`;
-  await Promise.all(FILES.map(async (path) => {
-    const response = await fetch(`${base}/${path}`);
-    if (!response.ok) throw new Error(`A kezdősablon nem tölthető be: ${path}`);
-    files[path] = (await response.json()) as unknown;
-  }));
+  await Promise.all(
+    FILES.map(async (path) => {
+      const response = await fetch(`${base}/${path}`);
+      if (!response.ok)
+        throw new Error(`A kezdősablon nem tölthető be: ${path}`);
+      files[path] = (await response.json()) as unknown;
+    }),
+  );
   const assets = new Set<string>();
   Object.values(files).forEach((value) => collectAssets(value, assets));
   return {

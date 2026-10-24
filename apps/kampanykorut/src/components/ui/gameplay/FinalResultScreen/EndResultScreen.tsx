@@ -53,6 +53,11 @@ export function FinalResultScreen() {
   const t = useTranslate();
   const { goToCampaignSelector } = useNavigation();
   const state = stateEngine.getCampaignState();
+  const returnUrl = state?.activeCampaignId?.startsWith("preview-")
+    ? sessionStorage.getItem(
+        `kampanykorut_maker_return_v1-${state.activeCampaignId}`,
+      )
+    : null;
 
   // check the result of `_other`, which aggregates party-list votes cast for minor/other parties
   // `_other` is not an actual party and should not be displayed in the UI
@@ -93,6 +98,19 @@ export function FinalResultScreen() {
               </div>
             )}
             <div className="flex gap-2 ml-auto">
+              {returnUrl && (
+                <Button
+                  variant="tertiary"
+                  onClick={() => {
+                    sessionStorage.removeItem(
+                      `kampanykorut_maker_return_v1-${state?.activeCampaignId}`,
+                    );
+                    window.location.assign(returnUrl);
+                  }}
+                >
+                  <Button.Text>Vissza a Kampánykészítőbe</Button.Text>
+                </Button>
+              )}
               <Button
                 variant="tertiary"
                 onClick={() => setConfirmAction("campaignSelector")}

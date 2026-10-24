@@ -27,31 +27,34 @@ function getStepElement(stepId: string) {
   }
 }
 
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootLayout />,
-    hydrateFallbackElement: <div>loading...</div>,
-    children: [
-      { index: true, element: <MainMenu /> },
-      { path: "new-campaign", element: <NewCampaignRedirect /> },
-      {
-        path: "new-campaign/:draftId",
-        element: <ElectionConfigMaker />,
-        children: [
-          {
-            index: true,
-            element: <Navigate to={WIZARD_STEPS[0].path} replace />,
-          },
-          ...WIZARD_STEPS.map((step) => ({
-            path: step.path,
-            element: getStepElement(step.id),
-          })),
-        ],
-      },
-    ],
-  },
-], { basename: import.meta.env.BASE_URL });
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <RootLayout />,
+      hydrateFallbackElement: <div>loading...</div>,
+      children: [
+        { index: true, element: <MainMenu /> },
+        { path: "new-campaign", element: <NewCampaignRedirect /> },
+        {
+          path: "new-campaign/:draftId",
+          element: <ElectionConfigMaker />,
+          children: [
+            {
+              index: true,
+              element: <Navigate to={WIZARD_STEPS[0].path} replace />,
+            },
+            ...WIZARD_STEPS.map((step) => ({
+              path: step.path,
+              element: getStepElement(step.id),
+            })),
+          ],
+        },
+      ],
+    },
+  ],
+  { basename: import.meta.env.BASE_URL },
+);
 
 function RootLayout() {
   return (
