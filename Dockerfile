@@ -20,10 +20,12 @@ ENV VITE_ENVIRONMENT=$VITE_ENVIRONMENT
 ENV GIT_COMMIT=$GIT_COMMIT
 
 RUN yarn workspace kampanykorut build
+RUN yarn workspace campaign-maker build
 
 FROM nginx:alpine AS runner
 
 COPY --from=builder /app/apps/kampanykorut/dist /usr/share/nginx/html
+COPY --from=builder /app/apps/campaign-maker/dist /usr/share/nginx/html/maker
 
 ENV API_UPSTREAM=http://campaign-api:4000 \
     NGINX_RESOLVER=127.0.0.11

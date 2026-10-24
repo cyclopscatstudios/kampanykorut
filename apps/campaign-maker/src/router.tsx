@@ -4,7 +4,9 @@ import { ElectionConfigMaker } from "./components/ui/config/ElectionConfigMaker"
 import { NewCampaignRedirect } from "./components/ui/config/NewCampaignRedirect";
 import { BasicsStep } from "./components/ui/config/steps/BasicsStep";
 import { PartiesStep } from "./components/ui/config/steps/PartiesStep";
-import { PlaceholderStep } from "./components/ui/config/steps/PlaceholderStep";
+import { CandidateStep } from "./components/ui/config/steps/CandidateStep";
+import { NarrativeStep } from "./components/ui/config/steps/NarrativeStep";
+import { SummaryStep } from "./components/ui/config/steps/SummaryStep";
 import { WIZARD_STEPS } from "./components/ui/config/wizardSteps";
 import classNames from "classnames";
 
@@ -14,8 +16,14 @@ function getStepElement(stepId: string) {
       return <BasicsStep />;
     case "parties":
       return <PartiesStep />;
+    case "candidates":
+      return <CandidateStep />;
+    case "materials":
+      return <NarrativeStep />;
+    case "summary":
+      return <SummaryStep />;
     default:
-      return <PlaceholderStep />;
+      return <Navigate to={WIZARD_STEPS[0].path} replace />;
   }
 }
 
@@ -43,7 +51,7 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]);
+], { basename: import.meta.env.BASE_URL });
 
 function RootLayout() {
   return (

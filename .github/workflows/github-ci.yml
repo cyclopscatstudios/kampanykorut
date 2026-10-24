@@ -42,8 +42,14 @@ jobs:
       - name: Build
         run: yarn workspace kampanykorut build
 
+      - name: Build Campaign Maker
+        run: yarn workspace campaign-maker build
+
       - name: Tests
         run: yarn test -- --coverage
+
+      - name: Campaign Maker tests
+        run: yarn workspace campaign-maker test
 
   e2e:
     runs-on: ubuntu-latest

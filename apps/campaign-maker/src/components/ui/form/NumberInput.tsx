@@ -9,10 +9,12 @@ export function NumberInput({
   value,
   onChange,
   suffix,
+  disabled,
 }: {
   value: number;
   onChange: (value: number) => void;
   suffix?: string;
+  disabled?: boolean;
 }) {
   const input = (
     <input
@@ -20,6 +22,7 @@ export function NumberInput({
       className={classNames(inputClass, suffix && "pr-10")}
       value={value}
       onChange={(e) => onChange(Number(e.target.value))}
+      disabled={disabled}
     />
   );
 

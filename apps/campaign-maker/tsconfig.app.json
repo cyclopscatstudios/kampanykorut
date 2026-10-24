@@ -18,7 +18,9 @@
       "@/shared/logic": ["../../shared/logic"],
       "@/shared/logic/*": ["../../shared/logic/*"],
       "@/shared/ui": ["../../shared/ui"],
-      "@/shared/ui/*": ["../../shared/ui/*"]
+      "@/shared/ui/*": ["../../shared/ui/*"],
+      "@/shared/validation": ["../../shared/validation"],
+      "@/shared/validation/*": ["../../shared/validation/*"]
     }
   },
   "include": [
@@ -27,6 +29,7 @@
     "../../shared/types",
     "../../shared/logic",
     "../../shared/logger",
+    "../../shared/validation",
     "../../shared/vite-env.d.ts",
     "public"
   ],

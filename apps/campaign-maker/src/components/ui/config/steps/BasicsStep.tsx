@@ -7,7 +7,7 @@ import { FormField } from "../../form/FormField";
 import { NumberInput } from "../../form/NumberInput";
 import { TextInput } from "../../form/TextInput";
 import { Toggle } from "../../form/Toggle";
-import { useCampaignDraft } from "../CampaignDraftContext";
+import { useCampaignDraft } from "../CampaignBundleContext";
 import { getStepIndexFromPath } from "../wizardSteps";
 import { WizardStepEyebrow } from "../WizardStepEyebrow";
 
@@ -51,6 +51,7 @@ export function BasicsStep() {
 
         <FormField label={t("wizard.basics.fields.listSeats.label")}>
           <NumberInput
+            disabled
             value={draft.listSeats}
             onChange={(listSeats) => updateDraft({ listSeats })}
           />
@@ -58,6 +59,7 @@ export function BasicsStep() {
 
         <FormField label={t("wizard.basics.fields.allSeats.label")}>
           <NumberInput
+            disabled
             value={draft.allSeats}
             onChange={(allSeats) => updateDraft({ allSeats })}
           />
@@ -65,6 +67,7 @@ export function BasicsStep() {
 
         <FormField label={t("wizard.basics.fields.thresholdPercent.label")}>
           <NumberInput
+            disabled
             value={draft.thresholdPercent}
             onChange={(thresholdPercent) => updateDraft({ thresholdPercent })}
             suffix="%"
@@ -77,6 +80,7 @@ export function BasicsStep() {
           </span>
           <div className="flex items-center gap-3 pt-1">
             <Toggle
+              disabled
               checked={draft.districtBoost}
               onChange={(value) => updateDraft({ districtBoost: value })}
             />
@@ -167,6 +171,7 @@ function BaseResultModifiers() {
                 <div className="flex items-center rounded-lg border border-slate-200">
                   <button
                     type="button"
+                    disabled
                     className="flex h-9 w-9 items-center justify-center text-slate-500 hover:bg-slate-50"
                     onClick={() =>
                       updateModifier(modifier.id, modifier.delta - 1)
@@ -179,6 +184,7 @@ function BaseResultModifiers() {
                   </span>
                   <button
                     type="button"
+                    disabled
                     className="flex h-9 w-9 items-center justify-center text-slate-500 hover:bg-slate-50"
                     onClick={() =>
                       updateModifier(modifier.id, modifier.delta + 1)
@@ -189,6 +195,7 @@ function BaseResultModifiers() {
                 </div>
                 <button
                   type="button"
+                  disabled
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-50 hover:text-slate-600"
                   onClick={() => removeModifier(modifier.id)}
                 >
@@ -202,7 +209,7 @@ function BaseResultModifiers() {
 
       <button
         type="button"
-        disabled={!hasParties || !canAddMore}
+        disabled
         onClick={addModifier}
         className={classNames(
           "mt-4 w-full rounded-xl border-2 border-dashed border-slate-200 py-3 text-sm font-semibold",

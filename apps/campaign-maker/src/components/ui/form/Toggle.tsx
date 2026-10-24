@@ -3,19 +3,23 @@ import classNames from "classnames";
 export function Toggle({
   checked,
   onChange,
+  disabled,
 }: {
   checked: boolean;
   onChange: (value: boolean) => void;
+  disabled?: boolean;
 }) {
   return (
     <button
       type="button"
       role="switch"
       aria-checked={checked}
+      disabled={disabled}
       onClick={() => onChange(!checked)}
       className={classNames(
         "relative inline-flex h-7 w-12 shrink-0 items-center rounded-full transition-colors",
         checked ? "bg-brand-700" : "bg-slate-300",
+        disabled && "cursor-not-allowed opacity-60",
       )}
     >
       <span

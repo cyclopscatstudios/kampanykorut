@@ -24,7 +24,10 @@ export function loadCampaignConfig(
     return cached;
   }
 
-  const promise = fetchCampaignConfig(campaignId).catch((error) => {
+  const promise = (campaignId.startsWith("preview-")
+    ? loadPreviewCampaignConfig(campaignId)
+    : fetchCampaignConfig(campaignId)
+  ).catch((error) => {
     cache.delete(campaignId);
 
     log.error("Failed to load campaign config", {
@@ -38,6 +41,57 @@ export function loadCampaignConfig(
   cache.set(campaignId, promise);
 
   return promise;
+}
+
+interface PreviewRecord {
+  expiresAt: number;
+  bundle: { files: Record<string, unknown> };
+}
+
+async function loadPreviewCampaignConfig(campaignId: string): Promise<CampaignConfig> {
+  const previewId = campaignId.slice("preview-".length);
+  const raw = localStorage.getItem(`kampanykorut_maker_preview_v1-${previewId}`);
+  if (!raw) throw new Error("A helyi előnézet nem található vagy már törölve lett.");
+  const record = JSON.parse(raw) as PreviewRecord;
+  if (record.expiresAt < Date.now()) {
+    localStorage.removeItem(`kampanykorut_maker_preview_v1-${previewId}`);
+    throw new Error("A helyi előnézet lejárt. Indítsd újra a Kampánykészítőből.");
+  }
+  const files = record.bundle.files;
+  const read = <T>(path: string) => {
+    if (!Object.prototype.hasOwnProperty.call(files, path)) throw new Error(`Hiányzó előnézeti fájl: ${path}`);
+    return files[path] as T;
+  };
+  const manifest = read<CampaignManifest>("manifest.json");
+  const manifestFiles = manifest.files;
+  const electionConfig = read<CampaignConfig["electionConfig"]>(manifestFiles.electionConfig);
+  const voterEnvironmentConfig = read<CampaignConfig["voterEnvironmentConfig"]>(manifestFiles.voterEnvironmentConfig);
+  const candidateListData = read<CampaignConfig["candidateListData"]>(manifestFiles.candidateListData);
+  const playableSides: Record<string, PlayableSideConfig> = {};
+  for (const [partyId, candidates] of Object.entries(manifestFiles.playableSides ?? {})) {
+    playableSides[partyId] = {};
+    for (const [candidateId, paths] of Object.entries(candidates)) {
+      playableSides[partyId][candidateId] = {
+        questions: paths.questions ? read(paths.questions) : [],
+        answerEffect: paths.answerEffect ? read(paths.answerEffect) : [],
+        campaignStrategies: paths.campaignStrategies ? read(paths.campaignStrategies) : undefined,
+        advisorFeedback: paths.advisorFeedback ? read(paths.advisorFeedback) : undefined,
+        advisorFeedbackAssets: paths.advisorFeedbackAssets ? read(paths.advisorFeedbackAssets) : undefined,
+        endResults: paths.endResults ? read(paths.endResults) : undefined,
+      };
+    }
+  }
+  const districts = await container.resolve(ConfigEngine).getDistrictMapByType(electionConfig.districtMap);
+  return {
+    electionConfig,
+    voterEnvironmentConfig: { ...voterEnvironmentConfig, listData: candidateListData },
+    candidateListData,
+    districts,
+    customGroups: manifestFiles.customGroups ? read(manifestFiles.customGroups) : undefined,
+    customPollsters: manifestFiles.customPollsters ? read(manifestFiles.customPollsters) : undefined,
+    partyListData: manifestFiles.partyListData ? read(manifestFiles.partyListData) : undefined,
+    playableSides,
+  };
 }
 
 async function loadCandidateConfig(

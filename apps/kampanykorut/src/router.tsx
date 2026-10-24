@@ -4,6 +4,7 @@ import { ErrorPage } from "./components/ErrorPage";
 import { finalResultLoader } from "./components/loaders/finalResult.loader";
 import { mainGameScreenLoader } from "./components/loaders/mainGameScreen.loader";
 import { mainMenuLoader } from "./components/loaders/mainMenu.loader";
+import { makerPreviewLoader } from "./components/loaders/makerPreview.loader";
 import { newGameSelectorLoader } from "./components/loaders/newGameSelector.loader";
 import {
   landingPageRouter,
@@ -24,6 +25,12 @@ import { NewsDetailPage } from "./components/ui/news/NewsDetailPage";
 import { NEWS_PATH } from "./logic/application/news/newsPaths";
 
 export const router = createBrowserRouter([
+  {
+    path: "/maker-preview/:previewId",
+    loader: makerPreviewLoader,
+    element: <div role="status">Helyi kampány betöltése…</div>,
+    errorElement: <ErrorPage />,
+  },
   {
     path: "/",
     element: <LandingPage />,

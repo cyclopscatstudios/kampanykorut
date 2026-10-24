@@ -9,7 +9,6 @@ export interface WizardStep {
 export const WIZARD_STEPS: WizardStep[] = [
   { id: "basics", path: "basics", labelKey: "wizard.steps.basics" },
   { id: "parties", path: "parties", labelKey: "wizard.steps.parties" },
-  { id: "votes", path: "votes", labelKey: "wizard.steps.votes" },
   { id: "candidates", path: "candidates", labelKey: "wizard.steps.candidates" },
   { id: "materials", path: "materials", labelKey: "wizard.steps.materials" },
   { id: "summary", path: "summary", labelKey: "wizard.steps.summary" },

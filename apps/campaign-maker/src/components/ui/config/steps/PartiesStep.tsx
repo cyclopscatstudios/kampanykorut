@@ -8,7 +8,7 @@ import {
   type DraftParty,
   OTHER_PARTY_ID,
   useCampaignDraft,
-} from "../CampaignDraftContext";
+} from "../CampaignBundleContext";
 import { slugify } from "../slugify";
 import { getStepIndexFromPath } from "../wizardSteps";
 import { WizardStepEyebrow } from "../WizardStepEyebrow";
@@ -146,7 +146,7 @@ export function PartiesStep() {
                     >
                       <TextInput
                         value={party.id}
-                        disabled={isOther}
+                        disabled
                         onChange={(id) =>
                           updateParty(index, { id, isIdCustom: true })
                         }
@@ -168,6 +168,7 @@ export function PartiesStep() {
                   ) : (
                     <button
                       type="button"
+                      disabled
                       className="mt-7 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-50 hover:text-slate-600"
                       onClick={() => removeParty(index)}
                     >
@@ -182,6 +183,7 @@ export function PartiesStep() {
 
         <button
           type="button"
+          disabled
           onClick={addParty}
           className="mt-4 w-full rounded-xl border-2 border-dashed border-slate-200 py-3 text-sm font-semibold text-brand-700 hover:border-brand-300 hover:bg-brand-50"
         >
