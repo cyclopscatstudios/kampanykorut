@@ -1,7 +1,7 @@
 export const supportedLanguages = [
   {
     id: "hu",
-    label: "Hungarian",
+    label: "Magyar",
   },
   {
     id: "en",

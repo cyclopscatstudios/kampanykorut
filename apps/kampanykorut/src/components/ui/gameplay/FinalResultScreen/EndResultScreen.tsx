@@ -6,8 +6,13 @@ import { createLogger } from "@/shared/logger/logger";
 import { FinalResults } from "@/shared/types";
 import { useTranslate } from "../../../../../../../shared/logic/hooks/useTranslateLang";
 import { Button } from "../../../../../../../shared/ui/Button";
+import { useNavigation } from "../../../../hooks/navigationHook";
 import { StateEngine } from "../../../../logic/application/StateEngine";
 import { GameChrome } from "../GameChrome";
+import {
+  ConfirmCampaignSelectorModal,
+  ConfirmRestartModal,
+} from "../GameDialog";
 import { ElectionMap } from "./ElectionMap";
 import { Statistics } from "./Statistics/Statistics";
 import { SummaryPage } from "./SummaryPage";
@@ -16,10 +21,22 @@ import { TurnHistory } from "./TurnHistory";
 const log = createLogger("FinalResultScreen");
 
 const screens = [
-  { id: "summaryPage", label: "endResult.menuBar.summary" },
-  { id: "electionMap", label: "endResult.menuBar.electionMap" },
-  { id: "statistics", label: "endResult.menuBar.statistics" },
-  { id: "history", label: "endResult.menuBar.history" },
+  {
+    id: "summaryPage",
+    label: "endResult.menuBar.summary",
+    icon: "trophy-fill",
+  },
+  {
+    id: "electionMap",
+    label: "endResult.menuBar.electionMap",
+    icon: "map-fill",
+  },
+  {
+    id: "statistics",
+    label: "endResult.menuBar.statistics",
+    icon: "bar-chart-fill",
+  },
+  { id: "history", label: "endResult.menuBar.history", icon: "clock-history" },
 ] as const;
 
 type ActiveScreen = (typeof screens)[number]["id"];
@@ -27,10 +44,14 @@ type ActiveScreen = (typeof screens)[number]["id"];
 export function FinalResultScreen() {
   const { results, config } = useLoaderData();
   const [activeScreen, setActiveScreen] = useState<ActiveScreen>("summaryPage");
+  const [confirmAction, setConfirmAction] = useState<
+    "restart" | "campaignSelector" | null
+  >(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const stateEngine = container.resolve(StateEngine);
   const history = stateEngine.getHistory();
   const t = useTranslate();
+  const { goToCampaignSelector } = useNavigation();
   const state = stateEngine.getCampaignState();
 
   // check the result of `_other`, which aggregates party-list votes cast for minor/other parties
@@ -39,8 +60,53 @@ export function FinalResultScreen() {
 
   return (
     <GameChrome config={config} state={state ?? undefined}>
+      {confirmAction === "restart" && (
+        <ConfirmRestartModal
+          onCancel={() => setConfirmAction(null)}
+          onConfirm={() => stateEngine.clearGameState("restart")}
+        />
+      )}
+      {confirmAction === "campaignSelector" && (
+        <ConfirmCampaignSelectorModal
+          onCancel={() => setConfirmAction(null)}
+          onConfirm={goToCampaignSelector}
+        />
+      )}
       <div className="m-2 flex flex-col flex-1 min-h-0 md:flex-none">
         <div className="bg-[#0f172a] p-3 md:p-5 rounded-xl border border-slate-200/65 flex flex-col flex-1 min-h-0 md:flex-none">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+            {isDesktop && (
+              <div className="flex gap-2">
+                {screens.map((screen) => {
+                  return (
+                    <Button
+                      key={screen.id}
+                      variant="tab"
+                      selected={activeScreen === screen.id}
+                      onClick={() => setActiveScreen(screen.id)}
+                    >
+                      <Button.Icon name={screen.icon} />
+                      <Button.Text>{t(screen.label)}</Button.Text>
+                    </Button>
+                  );
+                })}
+              </div>
+            )}
+            <div className="flex gap-2 ml-auto">
+              <Button
+                variant="tertiary"
+                onClick={() => setConfirmAction("campaignSelector")}
+              >
+                <Button.Text>
+                  {t("endResult.actions.otherCampaign")}
+                </Button.Text>
+              </Button>
+              <Button onClick={() => setConfirmAction("restart")}>
+                <Button.Icon name="arrow-counterclockwise" />
+                <Button.Text>{t("endResult.actions.replay")}</Button.Text>
+              </Button>
+            </div>
+          </div>
           <div className="flex-1 min-h-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto md:overflow-y-visible">
             {!isDesktop && <SummaryPage results={results} />}
             {isDesktop && activeScreen === "statistics" && (
@@ -62,21 +128,6 @@ export function FinalResultScreen() {
             )}
           </div>
         </div>
-        {isDesktop && (
-          <div className="flex gap-5 w-full justify-center mt-5">
-            {screens.map((screen) => {
-              return (
-                <Button
-                  key={screen.id}
-                  disabled={activeScreen === screen.id}
-                  onClick={() => setActiveScreen(screen.id)}
-                >
-                  <Button.Text>{t(screen.label)}</Button.Text>
-                </Button>
-              );
-            })}
-          </div>
-        )}
       </div>
     </GameChrome>
   );

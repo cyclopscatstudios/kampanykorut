@@ -1,13 +1,17 @@
 import { container } from "tsyringe";
 import { beforeAll, describe, expect, it } from "vitest";
 import {
+  AdvisorFeedback,
   CampaignState,
   CandidateListData,
   Decision,
   EffectType,
   ElectionConfig,
+  HistoryItem,
   RawEffect,
   RawParty,
+  RawQuestion,
+  Strategy,
 } from "../types";
 import { CampaignEngine } from "./CampaignEngine";
 import { EffectApplier } from "./EffectApplier";
@@ -439,4 +443,221 @@ describe("CampaignEngine.getPollProjection", () => {
     })!;
     expect(result.candidateListData).toEqual(campaignState.candidateListData);
   });
+});
+
+describe("CampaignEngine advisor feedback", () => {
+  const question: RawQuestion = {
+    id: "q2",
+    question: "Second question",
+    possibleAnswers: [
+      { id: "A", label: "Answer A" },
+      { id: "B", label: "Answer B" },
+    ],
+  };
+
+  const advisorFeedback: AdvisorFeedback[] = [
+    {
+      questionId: "q2",
+      answers: [
+        { answerId: "A", text: "plain A" },
+        { answerId: "B", text: "plain B" },
+      ],
+      conditionalAnswers: [
+        {
+          if: [{ questionId: "q1", answerId: "X" }],
+          answer: { answerId: "B", text: "conditional B" },
+        },
+        {
+          if: [{ questionId: "q1", answerId: "Y" }],
+          answer: { answerId: "A", text: "conditional A first" },
+        },
+        {
+          if: [{ questionId: "q1", answerId: "Y" }],
+          answer: { answerId: "A", text: "conditional A second" },
+        },
+      ],
+    },
+  ];
+
+  const engine = () =>
+    new CampaignEngine(
+      mockCandidateListData,
+      [question],
+      [],
+      container.resolve(ResultModifier),
+      container.resolve(EffectApplier),
+      container.resolve(MandateCalculator),
+      container.resolve(PollsterEngine),
+      mockPartyListData,
+      advisorFeedback,
+    );
+
+  const feedbackFor = (answerId: string, priorAnswerId: string) =>
+    engine().processTurn(
+      { ...campaignState, turn: 0, currentQuestion: question },
+      { questionId: "q2", answerId, effects: [] },
+      [{ questionId: "q1", answerId: priorAnswerId } as HistoryItem],
+      { showAdvisorFeedback: true, language: "en" },
+      mockElectionConfig,
+    ).advisorFeedback;
+
+  it("returns the conditional feedback of the selected answer when history matches", () => {
+    expect(feedbackFor("B", "X")).toEqual({
+      answerId: "B",
+      text: "conditional B",
+    });
+  });
+
+  it("ignores a history-matching conditional that belongs to another answer", () => {
+    expect(feedbackFor("A", "X")).toEqual({ answerId: "A", text: "plain A" });
+  });
+
+  it("falls back to plain feedback when history does not match", () => {
+    expect(feedbackFor("B", "Z")).toEqual({ answerId: "B", text: "plain B" });
+  });
+
+  it("keeps first-match order among applicable conditionals", () => {
+    expect(feedbackFor("A", "Y")).toEqual({
+      answerId: "A",
+      text: "conditional A first",
+    });
+  });
+});
+
+describe("CampaignEngine campaign strategies", () => {
+  const lastQuestion: RawQuestion = {
+    id: "q_last",
+    question: "Last question",
+    possibleAnswers: [{ id: "A", label: "Answer A" }],
+  };
+
+  const engine = new CampaignEngine(
+    mockCandidateListData,
+    [lastQuestion],
+    [],
+    container.resolve(ResultModifier),
+    container.resolve(EffectApplier),
+    container.resolve(MandateCalculator),
+    container.resolve(PollsterEngine),
+    mockPartyListData,
+  );
+
+  const strategy = (party: string, conditionAnswerId = "A"): Strategy => ({
+    id: `strategy_${party}`,
+    label: `strategy ${party}`,
+    target: { party: "party_a", candidate: "candidate_a" },
+    conditions: [{ questionId: "q_prev", answerId: conditionAnswerId }],
+    rewards: [
+      {
+        minMatches: 1,
+        effects: [{ type: EffectType.UniformSwing, params: { [party]: 3 } }],
+      },
+    ],
+  });
+
+  const answerSwing: RawEffect = {
+    type: EffectType.UniformSwing,
+    params: { party_a: 5, party_b: -5 },
+  };
+  const neutralSwing: RawEffect = {
+    type: EffectType.UniformSwing,
+    params: { party_a: 0 },
+  };
+
+  const shares = (effect: RawEffect, strategies?: Strategy[]) =>
+    engine.processTurn(
+      { ...campaignState, turn: 0, currentQuestion: lastQuestion },
+      { questionId: "q_last", answerId: "A", effects: [effect] },
+      [{ questionId: "q_prev", answerId: "A" } as HistoryItem],
+      { showAdvisorFeedback: false, language: "en" },
+      mockElectionConfig,
+      strategies,
+    ).results!.percentages.candidateListResults;
+
+  it("leaves the final turn unchanged when no strategy is fulfilled", () => {
+    expect(shares(answerSwing, [strategy("party_b", "B")])).toEqual(
+      shares(answerSwing),
+    );
+  });
+
+  it("applies the reward on top of the final answer's effects", () => {
+    const answerOnly = shares(answerSwing);
+    const rewardOnly = shares(neutralSwing, [strategy("party_b")]);
+    const answerAndReward = shares(answerSwing, [strategy("party_b")]);
+
+    expect(answerAndReward.party_b).toBeGreaterThan(answerOnly.party_b);
+    expect(answerAndReward.party_b).toBeLessThan(rewardOnly.party_b);
+  });
+
+  it("stacks rewards of multiple fulfilled strategies", () => {
+    const onlyA = shares(answerSwing, [strategy("party_a")]);
+    const bThenA = shares(answerSwing, [
+      strategy("party_b"),
+      strategy("party_a"),
+    ]);
+
+    expect(bThenA.party_b).toBeGreaterThan(onlyA.party_b);
+  });
+});
+
+describe("CampaignEngine.getFinalResults majority", () => {
+  const engine = new CampaignEngine(
+    mockCandidateListData,
+    [],
+    [],
+    container.resolve(ResultModifier),
+    container.resolve(EffectApplier),
+    container.resolve(MandateCalculator),
+    container.resolve(PollsterEngine),
+    mockPartyListData,
+  );
+
+  const finalResults = (winnerSeats: number, allSeats: number) =>
+    engine.getFinalResults(
+      {
+        ...campaignState,
+        results: {
+          mandates: [
+            {
+              party: "party_a",
+              constituencySeats: winnerSeats,
+              listSeats: 0,
+              totalSeats: winnerSeats,
+            },
+            ...["party_b", "party_c"].map((party, i) => {
+              const rest = allSeats - winnerSeats;
+              const seats =
+                i === 0 ? Math.floor(rest / 2) : Math.ceil(rest / 2);
+              return {
+                party,
+                constituencySeats: seats,
+                listSeats: 0,
+                totalSeats: seats,
+              };
+            }),
+          ],
+          compensation: { losingVotes: {}, winnerCompensation: {}, total: {} },
+          constituencySeats: {},
+          listSeats: {},
+          totals: { candidateListResults: {}, partyListResults: {} },
+          percentages: { candidateListResults: {}, partyListResults: {} },
+        },
+      },
+      allSeats,
+    )?.winnerParty;
+
+  it.each([
+    [99, 199, false, null],
+    [100, 199, true, "simple"],
+    [133, 199, true, "supermajority"],
+    [100, 200, false, null],
+  ])(
+    "%i of %i seats -> hasMajority %s, %s",
+    (seats, allSeats, hasMajority, majorityType) => {
+      expect(finalResults(seats, allSeats)).toMatchObject({
+        hasMajority,
+        majorityType,
+      });
+    },
+  );
 });

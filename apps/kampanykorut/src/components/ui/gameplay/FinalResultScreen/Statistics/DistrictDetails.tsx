@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { t } from "i18next";
 import { useMemo, useState } from "react";
 import {
   CampaignConfig,
@@ -126,7 +127,11 @@ function DistrictCard({ district, config }: DistrictCardProps) {
           <Text color="blue">{district.telepules}</Text>
         </div>
         <div>
-          <Text>Turnout: {turnout.toFixed(1)}%</Text>
+          <Text>
+            {t("endResult.statistics.districtDetails.turnout", {
+              value: turnout.toFixed(1),
+            })}
+          </Text>
           <Badge label={partyName} customColor={leadingPartyColor} />
         </div>
       </div>

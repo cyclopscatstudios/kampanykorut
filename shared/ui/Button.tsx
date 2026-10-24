@@ -149,7 +149,7 @@ export function Button(props: ButtonProps) {
           "transition-[background,box-shadow,transform] duration-150 ease-out",
           "font-montserrat tracking-[0.1px]",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-blue",
-          !isSubtab && "rounded-md",
+          !isSubtab && "rounded-lg",
           sizeCls,
           block && "w-full",
           variantClasses(variant, selected, disabled),

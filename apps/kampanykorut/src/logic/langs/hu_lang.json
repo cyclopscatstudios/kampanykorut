@@ -61,13 +61,17 @@
       "electionMap": "Választási térkép",
       "statistics": "Statisztikák",
       "history": "Előzmények",
-      "achivements": "Eredmények"
+      "achivements": "Jelvények"
+    },
+    "actions": {
+      "replay": "Újrajátszás",
+      "otherCampaign": "Másik kampány"
     },
     "statistics": {
       "menuBar": {
-        "overview": "Összefoglaló",
-        "districtDetails": "Körzet részletek",
-        "turnoutDetails": "Részvételi adatok"
+        "overview": "Áttekintés",
+        "districtDetails": "Körzetek",
+        "turnoutDetails": "Részvétel"
       },
       "overview": {
         "constituencySeats": "Egyéni mandátumok",
@@ -82,7 +86,18 @@
         "nationalTurnout": "Országos részvétel",
         "votesCast": "Leadott szavazatok",
         "turnoutChange": "Változás előző választáshoz képest"
+      },
+      "districtDetails": {
+        "turnout": "Részvétel: {{value}}%"
       }
+    },
+    "electionMap": {
+      "winner": "Győztes"
+    },
+    "achievements": {
+      "completed": "Megszerezve",
+      "notCompleted": "Nem teljesült",
+      "empty": "Ebben a kampányban nincsenek jelvények."
     },
     "turnHistory": {
       "label": "Előzmények",
@@ -91,6 +106,9 @@
       },
       "turns": "forduló"
     }
+  },
+  "gameHeader": {
+    "turnsTooltip": "Lejátszott fordulók"
   },
   "gameMenuBar": {
     "save": "Játék mentése",

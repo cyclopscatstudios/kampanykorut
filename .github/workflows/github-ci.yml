@@ -36,6 +36,9 @@ jobs:
       - name: Format check
         run: yarn format:check
 
+      - name: Validate campaigns
+        run: yarn validate:campaigns
+
       - name: Build
         run: yarn workspace kampanykorut build
 
@@ -67,11 +70,9 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: npx playwright install --with-deps
-
       - run: npx playwright install chromium --with-deps
 
-      - run: yarn playwright
+      - run: yarn playwright --project=chromium
 
       - name: Upload Playwright Artifacts
         if: always()
