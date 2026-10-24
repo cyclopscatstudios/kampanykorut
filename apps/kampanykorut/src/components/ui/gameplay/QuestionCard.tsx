@@ -7,7 +7,6 @@ import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
 import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useAssets } from "../../../hooks/useAssets";
-import { CommonWrapper } from "../CommonWrapper";
 import { Heading } from "../Heading";
 
 interface Answer {
@@ -236,17 +235,23 @@ export function AnswerRow({
 }: QuestionRowProps) {
   const keys = ["A", "B", "C", "D"];
   return (
-    <div onClick={() => onClick(answer.id)} className="w-full mb-2">
-      <CommonWrapper
-        block
-        className={classNames("cursor-pointer", {
-          "border-blue-500 shadow-lg shadow-blue-500/50": isSelected,
-        })}
-        customBorder={false}
+    <button
+      type="button"
+      aria-pressed={isSelected}
+      onClick={() => onClick(answer.id)}
+      className="w-full mb-2 text-left rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-300"
+    >
+      <span
+        className={classNames(
+          "block w-full bg-blue-400/10 rounded-md border border-blue-50/10 cursor-pointer",
+          {
+            "border-blue-500 shadow-lg shadow-blue-500/50": isSelected,
+          },
+        )}
       >
-        <div className="w-full">
-          <div className="flex items-center m-4">
-            <div
+        <span className="w-full">
+          <span className="flex items-center m-4">
+            <span
               className={classNames(
                 "size-[25px] rounded mr-2 flex shrink-0 items-center justify-center",
                 {
@@ -255,14 +260,20 @@ export function AnswerRow({
                 },
               )}
             >
-              <Text weight="bold" color={isSelected ? "white" : "gray"}>
+              <Text
+                as="span"
+                weight="bold"
+                color={isSelected ? "white" : "gray"}
+              >
                 {keys[index]}
               </Text>
-            </div>
-            <Text color={isSelected ? "white" : "gray"}>{answer.label}</Text>
-          </div>
-        </div>
-      </CommonWrapper>
-    </div>
+            </span>
+            <Text as="span" color={isSelected ? "white" : "gray"}>
+              {answer.label}
+            </Text>
+          </span>
+        </span>
+      </span>
+    </button>
   );
 }
