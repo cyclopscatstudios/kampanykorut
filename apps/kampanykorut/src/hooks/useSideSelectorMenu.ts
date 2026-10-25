@@ -4,8 +4,7 @@ import { createLogger } from "@/shared/logger";
 import { Candidate, PlayableSide } from "@/shared/types";
 import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { useStateEngine } from "../logic/application/hooks";
-import { StateEngine } from "../logic/application/StateEngine";
-import { getSideId } from "../logic/infra/posthog/events";
+import { getRunProperties } from "../logic/infra/posthog/events";
 import { track } from "../logic/infra/posthog/track";
 import { useNavigation } from "./navigationHook";
 
@@ -69,12 +68,13 @@ export function useSideSelectorMenu(id: string) {
       partyId: selectedParty?.id,
       candidateId: selectedCandidate?.id,
     });
-    track("campaign_start_clicked", {
-      run_id: sessionId,
-      campaign_id: id,
-      side_id: getSideId(selectedParty?.id, selectedCandidate?.id),
-      is_replay: container.resolve(StateEngine).hasFinishedCampaign(),
-    });
+    track(
+      "campaign_start_clicked",
+      getRunProperties(sessionId, id, {
+        partyId: selectedParty?.id,
+        candidateId: selectedCandidate?.id,
+      }),
+    );
     goToCampaign(id, sessionId);
   };
 

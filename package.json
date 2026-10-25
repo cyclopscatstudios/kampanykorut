@@ -14,6 +14,7 @@
     "cmaker": "yarn workspace campaign-maker dev",
     "api": "yarn workspace campaign-api dev",
     "build:api": "yarn workspace campaign-api build",
+    "build:privacy-pdf": "node apps/kampanykorut/legal/build-privacy-pdf.mjs",
     "test:api": "yarn workspace campaign-api test",
     "prepare": "husky",
     "format": "prettier --write .",

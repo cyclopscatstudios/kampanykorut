@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const ANALYTICS_SCHEMA_VERSION = 1;
 
 export interface RunProperties {
@@ -12,7 +14,7 @@ export type CampaignOutcome = "win" | "loss" | "deadlock";
 
 export interface AnalyticsEvents {
   landing_exited: { target: "menu" | "campaign" };
-  campaign_start_clicked: RunProperties & { is_replay: boolean };
+  campaign_start_clicked: RunProperties;
   campaign_loaded: RunProperties & {
     resumed: boolean;
     load_ms_bucket?: LoadDurationBucket;
@@ -40,13 +42,24 @@ export function getSideId(partyId?: string, candidateId?: string) {
   return partyId && candidateId ? `${partyId}/${candidateId}` : undefined;
 }
 
+const runIds = new Map<string, string>();
+
+export function getRunId(sessionId: string) {
+  let runId = runIds.get(sessionId);
+  if (!runId) {
+    runId = uuidv4();
+    runIds.set(sessionId, runId);
+  }
+  return runId;
+}
+
 export function getRunProperties(
-  runId: string,
+  sessionId: string,
   campaignId: string,
   playerSide?: { partyId?: string; candidateId?: string },
 ): RunProperties {
   return {
-    run_id: runId,
+    run_id: getRunId(sessionId),
     campaign_id: campaignId,
     side_id: getSideId(playerSide?.partyId, playerSide?.candidateId),
   };

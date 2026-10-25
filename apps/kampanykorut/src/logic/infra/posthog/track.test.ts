@@ -50,13 +50,11 @@ describe("track", () => {
   });
 
   it("sends a once-per-run event only once per key", () => {
-    const run = getRunProperties("run-1", "campaign");
-    trackOnce("run-1", "first_question_viewed", run);
-    trackOnce("run-1", "first_question_viewed", run);
-    trackOnce("run-2", "first_question_viewed", {
-      ...run,
-      run_id: "run-2",
-    });
+    const run = getRunProperties("session-1", "campaign");
+    const other = getRunProperties("session-2", "campaign");
+    trackOnce(run.run_id, "first_question_viewed", run);
+    trackOnce(run.run_id, "first_question_viewed", run);
+    trackOnce(other.run_id, "first_question_viewed", other);
     expect(mockedPosthog.capture).toHaveBeenCalledTimes(2);
   });
 });
@@ -64,18 +62,28 @@ describe("track", () => {
 describe("event property helpers", () => {
   it("builds run properties with a combined side id", () => {
     expect(
-      getRunProperties("run", "2022", {
+      getRunProperties("session", "2022", {
         partyId: "fidesz",
         candidateId: "orban_viktor",
       }),
     ).toEqual({
-      run_id: "run",
+      run_id: expect.any(String),
       campaign_id: "2022",
       side_id: "fidesz/orban_viktor",
     });
     expect(
       getRunProperties("run", "2022", { partyId: "fidesz" }).side_id,
     ).toBeUndefined();
+  });
+
+  it("keeps one random run id per session without exposing the session id", () => {
+    const first = getRunProperties("stored-session-id", "2022").run_id;
+
+    expect(first).not.toBe("stored-session-id");
+    expect(getRunProperties("stored-session-id", "2026").run_id).toBe(first);
+    expect(getRunProperties("another-session-id", "2022").run_id).not.toBe(
+      first,
+    );
   });
 
   it.each([
