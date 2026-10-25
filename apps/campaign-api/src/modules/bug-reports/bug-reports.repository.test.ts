@@ -10,7 +10,10 @@ import {
   type BugReportRepository,
   InMemoryBugReportRepository,
 } from "./bug-reports.repository";
-import { MongoBugReportRepository } from "./bug-reports.repository.mongo";
+import {
+  BUG_REPORT_RETENTION_SECONDS,
+  MongoBugReportRepository,
+} from "./bug-reports.repository.mongo";
 
 let server: MongoMemoryServer;
 let connection: Connection;
@@ -302,5 +305,21 @@ describe.each([
       email: null,
       notifications: [{ status: "cancelled" }],
     });
+  });
+});
+
+describe("mongo BugReportRepository retention", () => {
+  it("expires reports a year after they were created", async () => {
+    await connection.dropDatabase();
+    await new MongoBugReportRepository(connection).init();
+
+    const indexes = await connection.collection("bugReports").indexes();
+
+    expect(indexes).toContainEqual(
+      expect.objectContaining({
+        key: { createdAt: 1 },
+        expireAfterSeconds: BUG_REPORT_RETENTION_SECONDS,
+      }),
+    );
   });
 });

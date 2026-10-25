@@ -23,6 +23,10 @@
   "settingsMenu": {
     "advisorFeedback": {
       "label": "Show advisor feedback"
+    },
+    "analytics": {
+      "label": "Send anonymous usage statistics",
+      "privacyLink": "Privacy notice"
     }
   },
   "loadSavedGamesMenu": {
@@ -278,7 +282,8 @@
     "campaignDialog": {
       "startButton": "Start campaign"
     },
-    "footer": "Kampánykörút — a free election simulation that runs in your browser."
+    "footer": "Kampánykörút — a free election simulation that runs in your browser.",
+    "footerPrivacy": "Privacy notice"
   },
   "news": {
     "heading": "What’s new",
@@ -312,5 +317,10 @@
       "markAllRead": "Mark all read",
       "close": "Close"
     }
+  },
+  "privacyPage": {
+    "title": "Privacy notice",
+    "openPdf": "Open privacy notice (PDF)",
+    "mobileDescription": "You can open the privacy notice as a PDF."
   }
 }

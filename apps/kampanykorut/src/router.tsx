@@ -17,11 +17,13 @@ import { LandingPage } from "./components/ui/menu/landing";
 import { LoadSavedSessionsMenu } from "./components/ui/menu/LoadSavedGamesMenu";
 import { MainMenu } from "./components/ui/menu/MainMenu";
 import { NewGameMenu } from "./components/ui/menu/NewGameMenu";
+import { PrivacyPage } from "./components/ui/menu/PrivacyPage";
 import { SettingsMenu } from "./components/ui/menu/SettingsMenu";
 import { SideSelectorMenu } from "./components/ui/menu/SideSelectorMenu";
 import { NewsArchivePage } from "./components/ui/news/NewsArchivePage";
 import { NewsDetailPage } from "./components/ui/news/NewsDetailPage";
 import { NEWS_PATH } from "./logic/application/news/newsPaths";
+import { PRIVACY_PATH } from "./logic/application/privacyPath";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +51,7 @@ export const router = createBrowserRouter([
       { path: "settings", element: <SettingsMenu /> },
       { path: "load-game", element: <LoadSavedSessionsMenu /> },
       { path: "about", element: <AboutMenu /> },
+      { path: PRIVACY_PATH.slice(1), element: <PrivacyPage /> },
       {
         path: "new-game",
         element: <NewGameLayout />,

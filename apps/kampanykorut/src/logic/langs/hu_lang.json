@@ -23,6 +23,10 @@
   "settingsMenu": {
     "advisorFeedback": {
       "label": "Tanácsadói visszajelzések megjelenítése"
+    },
+    "analytics": {
+      "label": "Névtelen használati statisztikák küldése",
+      "privacyLink": "Adatkezelési tájékoztató"
     }
   },
   "loadSavedGamesMenu": {
@@ -278,7 +282,8 @@
     "campaignDialog": {
       "startButton": "Kampány indítása"
     },
-    "footer": "Kampánykörút — ingyenes, böngészőben futó választási szimuláció."
+    "footer": "Kampánykörút — ingyenes, böngészőben futó választási szimuláció.",
+    "footerPrivacy": "Adatkezelési tájékoztató"
   },
   "news": {
     "heading": "Újdonságok",
@@ -312,5 +317,10 @@
       "markAllRead": "Mind olvasott",
       "close": "Bezárás"
     }
+  },
+  "privacyPage": {
+    "title": "Adatkezelési tájékoztató",
+    "openPdf": "Tájékoztató megnyitása (PDF)",
+    "mobileDescription": "Az adatkezelési tájékoztatót PDF formátumban nyithatod meg."
   }
 }

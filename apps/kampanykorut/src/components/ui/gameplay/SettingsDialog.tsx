@@ -4,6 +4,7 @@ import { GameSettings } from "@/shared/types";
 import { supportedLanguages } from "../../../../../../shared/types/languages";
 import { Button } from "../../../../../../shared/ui/Button";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
+import { PRIVACY_PATH } from "../../../logic/application/privacyPath";
 import { noop } from "../../../logic/application/utils";
 import { Checkbox } from "../Checkbox";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
@@ -86,6 +87,27 @@ export function SettingsBody({
           }))
         }
       />
+      <div className="flex flex-col gap-1">
+        <Checkbox
+          id="analyticsEnabled"
+          label={t("settingsMenu.analytics.label")}
+          defaultChecked={settingsForm.analyticsEnabled !== false}
+          onChange={(e) =>
+            setSettingsForm((prev: GameSettings) => ({
+              ...prev,
+              analyticsEnabled: e.target.checked,
+            }))
+          }
+        />
+        <a
+          href={PRIVACY_PATH}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-slate-400 underline hover:text-slate-200"
+        >
+          {t("settingsMenu.analytics.privacyLink")}
+        </a>
+      </div>
       <Dropdown
         id="changeLanguage"
         block
