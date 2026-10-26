@@ -208,7 +208,74 @@ describe("StateEngine", () => {
       expect(state.turn).toBe(7);
     });
 
-    it("keeps exactly one auto-save slot per campaign, overwriting on repeated saves", () => {
+    it("does not list a game that has no answered turn yet", () => {
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 0,
+        isEnded: false,
+      });
+
+      expect(engine.getAutoSaveSessions()).toEqual([]);
+    });
+
+    it("keeps an earlier game of the same campaign when a new game is played", () => {
+      const earlierSessionId = "earlier-session-id";
+      mem._map.set(
+        `kampanykorut_campaignState-${earlierSessionId}`,
+        JSON.stringify({ activeCampaignId: "c-test", turn: 3, isEnded: false }),
+      );
+      mem._map.set(
+        "kampanykorut_autoSaveRegistry",
+        JSON.stringify([{ campaignId: "c-test", sessionId: earlierSessionId }]),
+      );
+
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 1,
+        isEnded: false,
+      });
+
+      expect(engine.getAutoSaveSessions().map((s) => s.sessionId)).toEqual([
+        FIXED_SESSION_ID,
+        earlierSessionId,
+      ]);
+    });
+
+    it("keeps only the most recent auto-saves and removes the storage of pruned ones", () => {
+      const olderIds = ["s1", "s2", "s3", "s4", "s5"];
+      olderIds.forEach((id) => {
+        mem._map.set(
+          `kampanykorut_campaignState-${id}`,
+          JSON.stringify({ activeCampaignId: "c-test", turn: 2 }),
+        );
+        mem._map.set(`kampanykorut_turnHistory-${id}`, "[]");
+      });
+      mem._map.set(
+        "kampanykorut_autoSaveRegistry",
+        JSON.stringify(
+          olderIds.map((sessionId) => ({ campaignId: "c-test", sessionId })),
+        ),
+      );
+
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 1,
+        isEnded: false,
+      });
+
+      const sessionIds = engine.getAutoSaveSessions().map((s) => s.sessionId);
+      expect(sessionIds).toHaveLength(5);
+      expect(sessionIds).not.toContain("s1");
+      expect(sessionIds[0]).toBe(FIXED_SESSION_ID);
+      expect(mem._map.get("kampanykorut_campaignState-s1")).toBeUndefined();
+      expect(mem._map.get("kampanykorut_turnHistory-s1")).toBeUndefined();
+      expect(mem._map.get("kampanykorut_campaignState-s2")).toBeDefined();
+    });
+
+    it("keeps exactly one auto-save slot per session, overwriting on repeated saves", () => {
       const { engine } = makeEngine();
       engine.updateCampaignState({
         activeCampaignId: "c-test",
@@ -243,7 +310,7 @@ describe("StateEngine", () => {
       const { engine } = makeEngine();
       engine.updateCampaignState({
         activeCampaignId: "c-test",
-        turn: 0,
+        turn: 1,
         isEnded: false,
       });
 
@@ -261,6 +328,29 @@ describe("StateEngine", () => {
           }),
         ]),
       );
+    });
+  });
+
+  describe("startNewSession", () => {
+    it("switches to a fresh session and keeps the previous game resumable", () => {
+      const { engine } = makeEngine(new Navigation(), () => "new-session-id");
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 2,
+        isEnded: false,
+      });
+      window.history.pushState({}, "", "/new-game/classic");
+
+      engine.startNewSession();
+
+      expect(engine.getSessionId()).toBe("new-session-id");
+      expect(engine.getCampaignState()).toBeNull();
+      expect(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`),
+      ).toBeDefined();
+      expect(engine.getAutoSaveSessions()).toEqual([
+        expect.objectContaining({ sessionId: FIXED_SESSION_ID }),
+      ]);
     });
   });
 
