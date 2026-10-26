@@ -1,8 +1,11 @@
 import { expect, test } from "@playwright/test";
 
 const TITLE = "Playwright közösségi kampány";
+const CANDIDATE = "Közösségi jelölt";
 const QUESTION = "Hogyan vonnád be a helyi közösséget?";
 const ANSWER = "Nyílt fórumot szervezek";
+const FEEDBACK = "A választók értékelik a közvetlen párbeszédet.";
+const EFFECT = "2.5";
 
 test("template edit, persistence, round trip, preview, results and return", async ({
   page,
@@ -15,24 +18,27 @@ test("template edit, persistence, round trip, preview, results and return", asyn
 
   await page.locator("#campaign-title").fill(TITLE);
   await page.goto(`/maker/new-campaign/${sourceDraft}/candidates`);
-  await page.locator("#candidate-label").fill("Közösségi jelölt");
+  await page.locator("#candidate-label").fill(CANDIDATE);
   await page.goto(`/maker/new-campaign/${sourceDraft}/materials`);
   await page.locator("#question-0-title").fill("Közösségi részvétel");
   await page.locator("#question-0-question").fill(QUESTION);
   await page.locator("#question-0-answer-0-label").fill(ANSWER);
-  await page
-    .locator("#question-0-answer-0-feedback")
-    .fill("A választók értékelik a közvetlen párbeszédet.");
+  await page.locator("#question-0-answer-0-feedback").fill(FEEDBACK);
   const firstEffect = page
     .locator('[id^="question-0-answer-0-effect-"]')
     .first();
-  await firstEffect.fill("2.5");
+  await firstEffect.fill(EFFECT);
   await expect(page.getByRole("status")).toContainText("Mentve helyben");
 
   await page.reload();
   await expect(page.locator("#question-0-question")).toHaveValue(QUESTION);
   await expect(page.locator("#question-0-answer-0-label")).toHaveValue(ANSWER);
-  await expect(firstEffect).toHaveValue("2.5");
+  await expect(page.locator("#question-0-answer-0-feedback")).toHaveValue(
+    FEEDBACK,
+  );
+  await expect(firstEffect).toHaveValue(EFFECT);
+  await page.goto(`/maker/new-campaign/${sourceDraft}/candidates`);
+  await expect(page.locator("#candidate-label")).toHaveValue(CANDIDATE);
 
   const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "Export", exact: true }).click();
@@ -46,12 +52,17 @@ test("template edit, persistence, round trip, preview, results and return", asyn
   const importedDraft = new URL(page.url()).pathname.split("/")[3];
   expect(importedDraft).not.toBe(sourceDraft);
 
+  await page.goto(`/maker/new-campaign/${importedDraft}/candidates`);
+  await expect(page.locator("#candidate-label")).toHaveValue(CANDIDATE);
   await page.goto(`/maker/new-campaign/${importedDraft}/materials`);
   await expect(page.locator("#question-0-question")).toHaveValue(QUESTION);
   await expect(page.locator("#question-0-answer-0-label")).toHaveValue(ANSWER);
+  await expect(page.locator("#question-0-answer-0-feedback")).toHaveValue(
+    FEEDBACK,
+  );
   await expect(
     page.locator('[id^="question-0-answer-0-effect-"]').first(),
-  ).toHaveValue("2.5");
+  ).toHaveValue(EFFECT);
 
   await page.goto(`/maker/new-campaign/${importedDraft}/summary`);
   await page.getByRole("button", { name: "Kampány ellenőrzése" }).click();
@@ -62,8 +73,12 @@ test("template edit, persistence, round trip, preview, results and return", asyn
   const preview = await previewPromise;
   await preview.waitForLoadState("domcontentloaded");
   await expect(preview.getByText(QUESTION)).toBeVisible();
+  await preview.getByRole("button", { name: ANSWER, exact: true }).click();
+  await preview.getByRole("button", { name: "Következő" }).click();
+  await expect(preview.getByText(FEEDBACK, { exact: true })).toBeVisible();
+  await preview.getByRole("button", { name: "Rendben" }).click();
 
-  for (let turn = 0; turn < 50; turn += 1) {
+  for (let turn = 1; turn < 50; turn += 1) {
     const returnButton = preview.getByRole("button", {
       name: "Vissza a Kampánykészítőbe",
     });
@@ -85,4 +100,12 @@ test("template edit, persistence, round trip, preview, results and return", asyn
   await expect(preview.locator("#question-0-answer-0-label")).toHaveValue(
     ANSWER,
   );
+  await expect(preview.locator("#question-0-answer-0-feedback")).toHaveValue(
+    FEEDBACK,
+  );
+  await expect(
+    preview.locator('[id^="question-0-answer-0-effect-"]').first(),
+  ).toHaveValue(EFFECT);
+  await preview.goto(`/maker/new-campaign/${importedDraft}/candidates`);
+  await expect(preview.locator("#candidate-label")).toHaveValue(CANDIDATE);
 });
