@@ -76,7 +76,7 @@ export function NarrativeStep() {
   );
 }
 
-function QuestionEditor({
+export function QuestionEditor({
   index,
   question,
   questionIds,

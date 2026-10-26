@@ -25,6 +25,7 @@
     "ladle": "npx ladle serve",
     "test-ct": "playwright test --config=apps/kampanykorut/playwright-ct.config.ts",
     "playwright": "playwright test",
+    "playwright:maker": "playwright test --config=playwright.maker.config.ts",
     "playwright:headed": "playwright test --ui --headed",
     "playwright:ct": "playwright test --config=apps/kampanykorut/playwright-ct.config.ts --ui"
   },

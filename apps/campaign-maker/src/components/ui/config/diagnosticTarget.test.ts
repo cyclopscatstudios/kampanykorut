@@ -1,6 +1,10 @@
-import { describe, expect, it } from "vitest";
+import { createElement } from "react";
+import { cleanup, render } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import type { Diagnostic } from "@/shared/validation/campaignValidator";
+import type { DraftQuestion } from "./CampaignBundleContext";
 import { diagnosticTarget } from "./diagnosticTarget";
+import { QuestionEditor } from "./steps/NarrativeStep";
 
 const diagnostic = (file: string, path: string): Diagnostic => ({
   severity: "error",
@@ -11,6 +15,8 @@ const diagnostic = (file: string, path: string): Diagnostic => ({
 });
 
 describe("Campaign Maker diagnostic targets", () => {
+  afterEach(cleanup);
+
   it.each([
     ["election_config.json", "/title", "basics", "campaign-title"],
     ["election_config.json", "/year", "basics", "campaign-year"],
@@ -58,6 +64,20 @@ describe("Campaign Maker diagnostic targets", () => {
       "materials",
       "question-0-answer-1-feedback",
     ],
+    ["answer_effects.json", "/0/id", "materials", "question-0-id"],
+    [
+      "answer_effects.json",
+      "/0/answers/1/id",
+      "materials",
+      "question-0-answer-1-id",
+    ],
+    ["advisor_feedback.json", "/0/questionId", "materials", "question-0-id"],
+    [
+      "advisor_feedback.json",
+      "/0/answers/1/answerId",
+      "materials",
+      "question-0-answer-1-id",
+    ],
   ])("maps %s%s", (file, path, step, id) => {
     expect(diagnosticTarget(diagnostic(file, path))).toEqual({ step, id });
   });
@@ -74,5 +94,63 @@ describe("Campaign Maker diagnostic targets", () => {
     expect(
       diagnosticTarget(diagnostic("election_config.json", "/parties/0/id")),
     ).toBeNull();
+    expect(
+      diagnosticTarget(
+        diagnostic("answer_effects.json", "/0/answers/1/effects"),
+      ),
+    ).toBeNull();
+    expect(
+      diagnosticTarget(
+        diagnostic("answer_effects.json", "/0/answers/1/effects/0"),
+      ),
+    ).toBeNull();
+  });
+
+  it("only returns cross-file targets that exist and can receive focus", () => {
+    const question: DraftQuestion = {
+      id: "question_1",
+      title: "Kérdés",
+      question: "Mit teszel?",
+      answers: [
+        {
+          id: "answer_1",
+          label: "Első válasz",
+          feedback: "Első visszajelzés",
+          effects: { tisza: 1 },
+        },
+        {
+          id: "answer_2",
+          label: "Második válasz",
+          feedback: "Második visszajelzés",
+          effects: { tisza: -1 },
+        },
+      ],
+    };
+    render(
+      createElement(QuestionEditor, {
+        index: 0,
+        question,
+        questionIds: [question.id],
+        parties: ["tisza"],
+        onChange: vi.fn(),
+        onRemove: vi.fn(),
+      }),
+    );
+
+    for (const [file, path] of [
+      ["answer_effects.json", "/0/id"],
+      ["answer_effects.json", "/0/answers/1/id"],
+      ["answer_effects.json", "/0/answers/1/effects/0/params/tisza"],
+      ["advisor_feedback.json", "/0/questionId"],
+      ["advisor_feedback.json", "/0/answers/1/answerId"],
+      ["advisor_feedback.json", "/0/answers/1/text"],
+    ]) {
+      const target = diagnosticTarget(diagnostic(file, path));
+      expect(target).not.toBeNull();
+      const control = document.getElementById(target?.id ?? "");
+      expect(control).not.toBeNull();
+      control?.focus();
+      expect(document.activeElement).toBe(control);
+    }
   });
 });

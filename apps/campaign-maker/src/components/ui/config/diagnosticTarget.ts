@@ -55,25 +55,51 @@ export function diagnosticTarget(item: Diagnostic): DiagnosticTarget | null {
   const numbers = path.match(/\d+/g)?.map(Number) ?? [];
   const question = numbers[0];
   if (question === undefined) return null;
-  const answer = numbers[1];
-  if (answer !== undefined) {
+  if (item.file.includes("answer_effects")) {
+    if (path === `/${question}/id`)
+      return { step: "materials", id: `question-${question}-id` };
+    const answer = path.match(/^\/\d+\/answers\/(\d+)/)?.[1];
+    if (answer === undefined) return null;
+    if (path === `/${question}/answers/${answer}/id`)
+      return {
+        step: "materials",
+        id: `question-${question}-answer-${answer}-id`,
+      };
     const effectParty = path.match(/\/params\/([^/]+)$/)?.[1];
-    const field = item.file.includes("answer_effects")
-      ? `effect-${effectParty ?? "value"}`
-      : item.file.includes("advisor_feedback")
-        ? "feedback"
-        : path.includes("/id")
-          ? "id"
-          : "label";
+    if (!effectParty) return null;
     return {
       step: "materials",
-      id: `question-${question}-answer-${answer}-${field}`,
+      id: `question-${question}-answer-${answer}-effect-${effectParty}`,
     };
   }
-  const field = path.includes("/id")
-    ? "id"
-    : path.includes("title")
-      ? "title"
-      : "question";
-  return { step: "materials", id: `question-${question}-${field}` };
+  if (item.file.includes("advisor_feedback")) {
+    if (path === `/${question}/questionId`)
+      return { step: "materials", id: `question-${question}-id` };
+    const answer = path.match(/^\/\d+\/answers\/(\d+)/)?.[1];
+    if (answer === undefined) return null;
+    if (path === `/${question}/answers/${answer}/answerId`)
+      return {
+        step: "materials",
+        id: `question-${question}-answer-${answer}-id`,
+      };
+    if (path === `/${question}/answers/${answer}/text`)
+      return {
+        step: "materials",
+        id: `question-${question}-answer-${answer}-feedback`,
+      };
+    return null;
+  }
+  const answer = path.match(/^\/\d+\/possibleAnswers\/(\d+)/)?.[1];
+  if (answer !== undefined && (path.endsWith("/id") || path.endsWith("/label")))
+    return {
+      step: "materials",
+      id: `question-${question}-answer-${answer}-${path.endsWith("/id") ? "id" : "label"}`,
+    };
+  if (path === `/${question}/id`)
+    return { step: "materials", id: `question-${question}-id` };
+  if (path === `/${question}/title`)
+    return { step: "materials", id: `question-${question}-title` };
+  if (path === `/${question}/question`)
+    return { step: "materials", id: `question-${question}-question` };
+  return null;
 }
