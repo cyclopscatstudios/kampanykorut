@@ -1,8 +1,12 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import type { DraftQuestion } from "../CampaignBundleContext";
 import { useCampaignDraft } from "../CampaignBundleContext";
+import { parseEffectInput } from "../narrativeEffect";
+import { newAnswer, newQuestion } from "../narrativeModel";
+import { useFocusHash } from "../useFocusHash";
 
 export function NarrativeStep() {
+  useFocusHash();
   const { draft, updateDraft } = useCampaignDraft();
   const updateQuestion = (index: number, next: DraftQuestion) =>
     updateDraft({
@@ -10,41 +14,18 @@ export function NarrativeStep() {
         questionIndex === index ? next : question,
       ),
     });
-  const uniqueId = (prefix: string, used: string[]) => {
-    let index = used.length + 1;
-    while (used.includes(`${prefix}_${index}`)) index += 1;
-    return `${prefix}_${index}`;
-  };
   const addQuestion = () => {
     if (draft.questions.length >= 25) return;
-    const id = uniqueId(
-      "question",
-      draft.questions.map((item) => item.id),
-    );
     updateDraft({
       questions: [
         ...draft.questions,
-        {
-          id,
-          title: "Új kérdés",
-          question: "",
-          answers: [1, 2].map((number) => ({
-            id: `answer_${number}`,
-            label: "",
-            feedback: "",
-            effects: Object.fromEntries(
-              draft.parties.map((party) => [party.id, 0]),
-            ),
-          })),
-        },
+        newQuestion(
+          draft.parties.map(({ id }) => id),
+          draft.questions,
+        ),
       ],
     });
   };
-  useEffect(() => {
-    const id = window.location.hash.slice(1);
-    if (!id) return;
-    window.requestAnimationFrame(() => document.getElementById(id)?.focus());
-  }, []);
   return (
     <div className="flex flex-col gap-6">
       <div>
@@ -121,19 +102,8 @@ function QuestionEditor({
   };
   const addAnswer = () => {
     if (question.answers.length >= 6) return;
-    let suffix = question.answers.length + 1;
-    while (question.answers.some((answer) => answer.id === `answer_${suffix}`))
-      suffix += 1;
     patch({
-      answers: [
-        ...question.answers,
-        {
-          id: `answer_${suffix}`,
-          label: "",
-          feedback: "",
-          effects: Object.fromEntries(parties.map((party) => [party, 0])),
-        },
-      ],
+      answers: [...question.answers, newAnswer(parties, question.answers)],
     });
   };
   return (
@@ -232,6 +202,7 @@ function QuestionEditor({
             <label className="mt-3 block text-sm font-semibold">
               Tanácsadói visszajelzés
               <textarea
+                id={`question-${index}-answer-${answerIndex}-feedback`}
                 className="mt-1 w-full rounded-lg border p-2"
                 rows={3}
                 maxLength={20000}
@@ -254,31 +225,21 @@ function QuestionEditor({
                   className="text-xs font-semibold text-slate-600"
                 >
                   {party}
-                  <input
-                    className="mt-1 w-full rounded border p-2"
-                    type="number"
-                    min={-10}
-                    max={10}
-                    step={0.1}
+                  <EffectInput
+                    id={`question-${index}-answer-${answerIndex}-effect-${party}`}
                     value={answer.effects[party] ?? 0}
-                    onChange={(event) => {
-                      const amount = Number(event.target.value);
-                      if (
-                        Number.isFinite(amount) &&
-                        amount >= -10 &&
-                        amount <= 10
-                      )
-                        patch({
-                          answers: question.answers.map((item, itemIndex) =>
-                            itemIndex === answerIndex
-                              ? {
-                                  ...item,
-                                  effects: { ...item.effects, [party]: amount },
-                                }
-                              : item,
-                          ),
-                        });
-                    }}
+                    onValidChange={(amount) =>
+                      patch({
+                        answers: question.answers.map((item, itemIndex) =>
+                          itemIndex === answerIndex
+                            ? {
+                                ...item,
+                                effects: { ...item.effects, [party]: amount },
+                              }
+                            : item,
+                        ),
+                      })
+                    }
                   />
                 </label>
               ))}
@@ -318,5 +279,45 @@ function QuestionEditor({
         </div>
       </div>
     </details>
+  );
+}
+
+function EffectInput({
+  id,
+  value,
+  onValidChange,
+}: {
+  id: string;
+  value: number;
+  onValidChange: (value: number) => void;
+}) {
+  const [text, setText] = useState(String(value));
+  const valid = parseEffectInput(text) !== null;
+  const errorId = `${id}-error`;
+  return (
+    <>
+      <input
+        id={id}
+        className="mt-1 w-full rounded border p-2"
+        type="number"
+        min={-10}
+        max={10}
+        step={0.1}
+        value={text}
+        aria-invalid={!valid}
+        aria-describedby={!valid ? errorId : undefined}
+        onChange={(event) => {
+          const next = event.target.value;
+          setText(next);
+          const amount = parseEffectInput(next);
+          if (amount !== null) onValidChange(amount);
+        }}
+      />
+      {!valid && (
+        <span id={errorId} role="alert" className="mt-1 block text-red-700">
+          Adj meg egy számot -10 és 10 között. Az előző hatásérték megmaradt.
+        </span>
+      )}
+    </>
   );
 }

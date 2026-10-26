@@ -10,14 +10,17 @@ export function NumberInput({
   onChange,
   suffix,
   disabled,
+  id,
 }: {
   value: number;
   onChange: (value: number) => void;
   suffix?: string;
   disabled?: boolean;
+  id?: string;
 }) {
   const input = (
     <input
+      id={id}
       type="number"
       className={classNames(inputClass, suffix && "pr-10")}
       value={value}

@@ -12,6 +12,7 @@ import {
 import { slugify } from "../slugify";
 import { getStepIndexFromPath } from "../wizardSteps";
 import { WizardStepEyebrow } from "../WizardStepEyebrow";
+import { useFocusHash } from "../useFocusHash";
 
 const DEFAULT_PARTY_COLOR = "#4285F4";
 
@@ -23,6 +24,7 @@ function getUniqueId(base: string, takenIds: Set<string>): string {
 }
 
 export function PartiesStep() {
+  useFocusHash();
   const { draft, updateDraft } = useCampaignDraft();
   const t = useTranslate();
   const location = useLocation();
@@ -115,6 +117,7 @@ export function PartiesStep() {
                             style={{ backgroundColor: party.color }}
                           />
                           <TextInput
+                            id={`party-${index}-color`}
                             value={party.color}
                             onChange={(color) => updateParty(index, { color })}
                             placeholder={DEFAULT_PARTY_COLOR}
@@ -128,6 +131,7 @@ export function PartiesStep() {
                     {!isOther && (
                       <FormField label={t("wizard.parties.fields.name.label")}>
                         <TextInput
+                          id={`party-${index}-name`}
                           value={party.name}
                           onChange={(name) => updateName(index, name)}
                           placeholder={t(
@@ -157,6 +161,7 @@ export function PartiesStep() {
                   <div className="w-48 shrink-0">
                     <FormField label={t("wizard.parties.fields.votes.label")}>
                       <NumberInput
+                        id={`party-votes-${party.id}`}
                         value={party.votes}
                         onChange={(votes) => updateParty(index, { votes })}
                       />

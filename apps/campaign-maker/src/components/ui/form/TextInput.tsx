@@ -9,14 +9,17 @@ export function TextInput({
   onChange,
   placeholder,
   disabled,
+  id,
 }: {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
   disabled?: boolean;
+  id?: string;
 }) {
   return (
     <input
+      id={id}
       className={inputClass}
       value={value}
       onChange={(e) => onChange(e.target.value)}

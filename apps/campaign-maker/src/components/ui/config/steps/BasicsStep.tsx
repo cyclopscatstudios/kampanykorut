@@ -10,8 +10,10 @@ import { Toggle } from "../../form/Toggle";
 import { useCampaignDraft } from "../CampaignBundleContext";
 import { getStepIndexFromPath } from "../wizardSteps";
 import { WizardStepEyebrow } from "../WizardStepEyebrow";
+import { useFocusHash } from "../useFocusHash";
 
 export function BasicsStep() {
+  useFocusHash();
   const { draft, updateDraft } = useCampaignDraft();
   const t = useTranslate();
   const location = useLocation();
@@ -35,6 +37,7 @@ export function BasicsStep() {
           hint={t("wizard.basics.fields.title.hint")}
         >
           <TextInput
+            id="campaign-title"
             value={draft.title}
             onChange={(title) => updateDraft({ title })}
             placeholder={t("wizard.basics.fields.title.placeholder")}
@@ -43,6 +46,7 @@ export function BasicsStep() {
 
         <FormField label={t("wizard.basics.fields.year.label")}>
           <TextInput
+            id="campaign-year"
             value={draft.year}
             onChange={(year) => updateDraft({ year })}
             placeholder={t("wizard.basics.fields.year.placeholder")}

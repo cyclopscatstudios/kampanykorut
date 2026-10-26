@@ -1,7 +1,7 @@
 # Campaign Maker narrative beta contract
 
-Baseline: local `origin/dev` commit `c3db267a00d1d5671725cde3eb329361cb6a3579` (remote freshness unverified).  
-Implementation branch/worktree: `cyc-10-campaign-maker-beta` in the task-managed `_default/repo` worktree.  
+Baseline: local `origin/dev` commit `c3db267a00d1d5671725cde3eb329361cb6a3579` (remote freshness unverified).
+Implementation branch/worktree: `cyc-10-campaign-maker-beta` in the task-managed `_default/repo` worktree.
 Starter: shipped `2026_tavaszi-szel`, because it is the smallest complete schema-v1 campaign with one playable side/candidate and questions, answers, effects, feedback, and candidate-specific endings. Public use remains conditional on owner review of its rights, credits, political-content classification, and wording.
 
 ## Envelope and limits
@@ -45,4 +45,3 @@ Preview data uses separate random IDs and storage keys, expires after 30 minutes
 ## Estimate and uncertainty
 
 Revised implementation estimate for backlog items 1–5 is **25–40 engineering working days** for one developer, plus independent QA and owner/editorial/legal/device review. Confidence is low-to-medium until shared-loader preview integration and browser execution are proven. Main uncertainty is same-runtime preview/routing (5–9 days), resilient persistence/import and recovery (6–10), narrative/reference-safe UI (7–11), and accessibility/hosting/regression completion (5–8); contract/fixtures are 2 days. This is a sizing range, not a calendar commitment.
-

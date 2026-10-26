@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import type { Diagnostic } from "@/shared/validation/campaignValidator";
 import { useCampaignDraft } from "../CampaignBundleContext";
 import { parseCampaignBundle } from "../../../../logic/bundle/campaignBundle";
+import { writeStorageValue } from "../../../../logic/storage/safeStorage";
+import { diagnosticTarget } from "../diagnosticTarget";
+import { useFocusHash } from "../useFocusHash";
 
 const KEYS = ["playerSideVictory", "playerSideDefeat", "deadlock"] as const;
 const LABELS = {
@@ -12,9 +14,11 @@ const LABELS = {
 };
 
 export function SummaryStep() {
+  useFocusHash();
   const { draftId, draft, updateDraft, diagnostics, exportText } =
     useCampaignDraft();
   const [validated, setValidated] = useState(false);
+  const [previewError, setPreviewError] = useState<string | null>(null);
   const validate = () => {
     exportText();
     setValidated(true);
@@ -25,14 +29,22 @@ export function SummaryStep() {
     const result = parseCampaignBundle(text);
     if (!result.bundle) return;
     const id = crypto.randomUUID();
-    localStorage.setItem(
+    const saved = writeStorageValue(
+      localStorage,
       `kampanykorut_maker_preview_v1-${id}`,
-      JSON.stringify({
+      {
         expiresAt: Date.now() + 30 * 60 * 1000,
         bundle: result.bundle,
         returnUrl: `${window.location.origin}${import.meta.env.BASE_URL}new-campaign/${draftId}/summary`,
-      }),
+      },
     );
+    if (!saved) {
+      setPreviewError(
+        "Az előnézetet nem sikerült helyben létrehozni. A vázlat nem változott, és nem nyitottunk új ablakot. Exportálj biztonsági másolatot, szabadíts fel tárhelyet vagy engedélyezd a helyi tárhelyet, majd próbáld újra.",
+      );
+      return;
+    }
+    setPreviewError(null);
     window.open(`/maker-preview/${id}`, "_blank", "noopener,noreferrer");
   };
   return (
@@ -59,18 +71,21 @@ export function SummaryStep() {
             <legend className="px-2 font-bold">{LABELS[key]}</legend>
             <div className="grid gap-3">
               <input
+                id={`ending-${key}-title`}
                 aria-label={`${LABELS[key]} címe`}
                 className="rounded-lg border p-2"
                 value={ending.title}
                 onChange={(event) => update({ title: event.target.value })}
               />
               <input
+                id={`ending-${key}-subtitle`}
                 aria-label={`${LABELS[key]} alcíme`}
                 className="rounded-lg border p-2"
                 value={ending.subtitle}
                 onChange={(event) => update({ subtitle: event.target.value })}
               />
               <textarea
+                id={`ending-${key}-description`}
                 aria-label={`${LABELS[key]} leírása`}
                 className="rounded-lg border p-2"
                 rows={4}
@@ -99,6 +114,11 @@ export function SummaryStep() {
           Játékos előnézet
         </button>
       </div>
+      {previewError && (
+        <p role="alert" className="rounded-xl bg-red-50 p-4 text-red-900">
+          {previewError}
+        </p>
+      )}
       <section
         aria-live="polite"
         aria-atomic="true"
@@ -134,7 +154,7 @@ export function SummaryStep() {
                   {target ? (
                     <Link
                       className="font-bold underline"
-                      to={`../materials#${target}`}
+                      to={`../${target.step}#${target.id}`}
                     >
                       Ugrás a mezőhöz
                     </Link>
@@ -153,20 +173,4 @@ export function SummaryStep() {
       </section>
     </div>
   );
-}
-
-function diagnosticTarget(item: Diagnostic) {
-  if (
-    !item.file.includes("questions") &&
-    !item.file.includes("answer_effects") &&
-    !item.file.includes("advisor_feedback")
-  )
-    return null;
-  const numbers = item.path.match(/\d+/g)?.map(Number) ?? [];
-  const question = numbers[0];
-  if (question === undefined) return null;
-  const answer = numbers[1];
-  if (answer !== undefined)
-    return `question-${question}-answer-${answer}-${item.path.includes("/id") ? "id" : "label"}`;
-  return `question-${question}-${item.path.includes("/id") ? "id" : item.path.includes("title") ? "title" : "question"}`;
 }

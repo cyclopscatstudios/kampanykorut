@@ -10,6 +10,7 @@ import {
   makeStoredDraft,
   parseStoredDraft,
 } from "../config/CampaignBundleContext";
+import { writeStorageValue } from "../../../logic/storage/safeStorage";
 
 interface DraftEntry {
   id: string;
@@ -81,10 +82,17 @@ export function MainMenu() {
     }
     const id = crypto.randomUUID();
     const draft = hydrateCampaignDraft(result.bundle);
-    localStorage.setItem(
+    const saved = writeStorageValue(
+      localStorage,
       `${DRAFT_PREFIX}${id}`,
-      JSON.stringify(makeStoredDraft(draft, 1)),
+      makeStoredDraft(draft, 1),
     );
+    if (!saved) {
+      setMessage(
+        "Az importált vázlatot nem sikerült helyben menteni. A meglévő vázlatok változatlanok maradtak. Szabadíts fel tárhelyet vagy engedélyezd a webhely helyi tárhelyét, majd próbáld újra; az eredeti exportfájlt őrizd meg biztonsági másolatként.",
+      );
+      return;
+    }
     window.location.assign(
       `${import.meta.env.BASE_URL}new-campaign/${id}/basics`,
     );
