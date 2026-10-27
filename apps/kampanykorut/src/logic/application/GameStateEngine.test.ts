@@ -891,12 +891,12 @@ describe("StateEngine", () => {
         expect(engine.loadState(sessionWithSource)).toBe(false);
 
         expect(goSpy).not.toHaveBeenCalled();
-        expect(mem._map.get(`kampanykorut_campaignState-${sourceSessionId}`)).toBe(
-          sourceStateBefore,
-        );
-        expect(mem._map.get(`kampanykorut_turnHistory-${sourceSessionId}`)).toBe(
-          "[]",
-        );
+        expect(
+          mem._map.get(`kampanykorut_campaignState-${sourceSessionId}`),
+        ).toBe(sourceStateBefore);
+        expect(
+          mem._map.get(`kampanykorut_turnHistory-${sourceSessionId}`),
+        ).toBe("[]");
       });
     });
   });
