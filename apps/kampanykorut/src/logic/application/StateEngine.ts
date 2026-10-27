@@ -18,6 +18,8 @@ export type SavedCampaignSessionInfo = {
   name: string;
   lastSaved?: string;
   type?: "manual" | "auto";
+  turn?: number;
+  sourceSessionId?: string;
 };
 
 type AutoSaveRegistryEntry = {
@@ -124,6 +126,7 @@ export class StateEngine extends Emitter<CampaignState> {
           name: "auto-save",
           lastSaved,
           type: "auto",
+          turn: state.turn,
         };
       })
       .filter((session): session is SavedCampaignSessionInfo => !!session)
@@ -179,10 +182,10 @@ export class StateEngine extends Emitter<CampaignState> {
     return id;
   }
 
-  loadState(session: SavedCampaignSessionInfo | null) {
+  loadState(session: SavedCampaignSessionInfo | null): boolean {
     if (!session) {
       log.error("no session was provided");
-      return;
+      return false;
     }
     const { campaignId, sessionId } = session;
     const sessionContext = {
@@ -195,17 +198,10 @@ export class StateEngine extends Emitter<CampaignState> {
     log.info("Loading saved session", sessionContext);
     if (!campaignId || !sessionId) {
       log.error("id was not found", sessionContext);
-      return;
+      return false;
     }
-    const history = this.storage.getItem(
-      "turnHistory",
-      "localStorage",
-      sessionId,
-    );
-    if (!history) {
-      log.error("history was not found", sessionContext);
-      return;
-    }
+    const history =
+      this.storage.getItem("turnHistory", "localStorage", sessionId) ?? "[]";
     let state: CampaignState | null;
     try {
       state = this.getCampaignStateById(sessionId);
@@ -214,16 +210,28 @@ export class StateEngine extends Emitter<CampaignState> {
         error,
         ...sessionContext,
       });
-      return;
+      return false;
     }
     if (!state) {
       log.error("campaign state was not found", sessionContext);
-      return;
+      return false;
     }
 
     const isManualSave = session.type !== "auto";
-    const targetSessionId = isManualSave ? this.generateId() : sessionId;
+    const targetSessionId = isManualSave
+      ? (session.sourceSessionId ?? this.generateId())
+      : sessionId;
     if (isManualSave) {
+      const previousState = this.storage.getItem(
+        "campaignState",
+        "localStorage",
+        targetSessionId,
+      );
+      const previousHistory = this.storage.getItem(
+        "turnHistory",
+        "localStorage",
+        targetSessionId,
+      );
       const copied =
         this.storage.setItem(
           `campaignState-${targetSessionId}`,
@@ -240,9 +248,13 @@ export class StateEngine extends Emitter<CampaignState> {
           ...sessionContext,
           targetSessionId,
         });
-        this.storage.clearItem(`campaignState-${targetSessionId}`);
-        this.storage.clearItem(`turnHistory-${targetSessionId}`);
-        return;
+        this.restoreItem(`campaignState-${targetSessionId}`, previousState);
+        this.restoreItem(`turnHistory-${targetSessionId}`, previousHistory);
+        return false;
+      }
+      this.touchAutoSaveTimestamp(targetSessionId);
+      if ((state.turn ?? 0) > 0) {
+        this.registerAutoSaveSession(campaignId, targetSessionId);
       }
     }
 
@@ -260,10 +272,11 @@ export class StateEngine extends Emitter<CampaignState> {
     });
     if (!isGameRoute) {
       this.navigation.go(route);
-      return;
+      return true;
     }
     window.history.replaceState({}, "", route);
     window.location.reload();
+    return true;
   }
 
   saveState<T>(sessionKey: SessionKey, session: T) {
@@ -348,6 +361,7 @@ export class StateEngine extends Emitter<CampaignState> {
     this.saveSessionInfo({
       id: existingId ?? uuidv4(),
       sessionId: snapshotSessionId,
+      sourceSessionId: sessionId,
       campaignId,
       name,
       lastSaved: new Date().toISOString(),
@@ -566,6 +580,14 @@ export class StateEngine extends Emitter<CampaignState> {
       (entry) => entry.sessionId !== sessionId,
     );
     this.setAutoSaveRegistry(registry);
+  }
+
+  private restoreItem(key: string, value: string | null) {
+    if (value === null) {
+      this.storage.clearItem(key);
+      return;
+    }
+    this.storage.setItem(key, value, "localStorage");
   }
 
   private clearSessionStorage(sessionId: string) {
