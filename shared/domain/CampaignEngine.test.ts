@@ -772,9 +772,7 @@ describe("CampaignEngine poll projection after a turn", () => {
   });
 
   it("falls back to the aggregate when the selected pollster is unknown", () => {
-    vi.spyOn(pollsterEngine, "getPollsByPollsterId").mockReturnValue(
-      undefined,
-    );
+    vi.spyOn(pollsterEngine, "getPollsByPollsterId").mockReturnValue(undefined);
     vi.spyOn(pollsterEngine, "getPolls").mockReturnValue({ party_a: 2 });
 
     const result = playTurn("removed-pollster");
