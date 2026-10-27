@@ -352,6 +352,17 @@ describe("StateEngine", () => {
       expect(engine.getAutoSaveSessions()).toEqual([
         expect.objectContaining({ sessionId: FIXED_SESSION_ID }),
       ]);
+      mem._map.set(`kampanykorut_turnHistory-${FIXED_SESSION_ID}`, "[{}]");
+      expect(engine.loadState(engine.getAutoSaveSessions()[0])).toBe(true);
+    });
+
+    it("ignores a stale sessionId in the URL", () => {
+      const { engine } = makeEngine(new Navigation(), () => "new-session-id");
+      window.history.pushState({}, "", "/new-game/classic?sessionId=old-id");
+
+      engine.startNewSession();
+
+      expect(engine.getSessionId()).toBe("new-session-id");
     });
   });
 

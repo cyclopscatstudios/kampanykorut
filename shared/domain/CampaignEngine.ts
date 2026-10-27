@@ -226,7 +226,7 @@ export class CampaignEngine {
         state,
         electionConfig,
       )?.differences;
-      if (polls) {
+      if (polls && Object.keys(polls).length > 0) {
         return { polls, pollsterId };
       }
     }

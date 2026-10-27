@@ -37,6 +37,7 @@ export function toStoredCampaignState(state: CampaignState): CampaignState {
 
 const MAX_SAVED_SESSIONS = 5;
 const MAX_AUTO_SAVES = 5;
+const ACTIVE_SESSION_WINDOW_MS = 60 * 60 * 1000;
 export const AUTO_SAVE_SLOT_ID = "auto-save-slot";
 
 const log = createLogger("CampaignStateEngine");
@@ -72,6 +73,11 @@ export class StateEngine extends Emitter<CampaignState> {
   }
 
   startNewSession() {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("sessionId")) {
+      url.searchParams.delete("sessionId");
+      window.history.replaceState(window.history.state, "", url);
+    }
     this.init(true);
     this.stateHandler.set("campaignState", null);
   }
@@ -581,8 +587,26 @@ export class StateEngine extends Emitter<CampaignState> {
       0,
       Math.max(0, registry.length - MAX_AUTO_SAVES),
     );
-    pruned.forEach((entry) => this.clearSessionStorage(entry.sessionId));
+    pruned.forEach((entry) => {
+      if (!this.isRecentlyActive(entry.sessionId)) {
+        this.clearSessionStorage(entry.sessionId);
+      }
+    });
     this.setAutoSaveRegistry(registry);
+  }
+
+  // A session saved recently may still be open in another tab, so its data
+  // must survive being dropped from the auto-save registry.
+  private isRecentlyActive(sessionId: string) {
+    const timestamp = this.storage.getItem(
+      "autoSaveTimestamp",
+      "localStorage",
+      sessionId,
+    );
+    const savedAt = timestamp ? new Date(timestamp).getTime() : NaN;
+    return (
+      !Number.isNaN(savedAt) && Date.now() - savedAt < ACTIVE_SESSION_WINDOW_MS
+    );
   }
 
   private unregisterAutoSaveSession(sessionId: string) {
