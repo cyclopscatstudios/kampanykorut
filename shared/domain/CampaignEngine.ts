@@ -55,7 +55,7 @@ export class CampaignEngine {
       savedState.activeCampaignId === campaignId
     ) {
       log.info("initial state created from saved data");
-      return savedState;
+      return this.restorePollingOpinions(savedState, electionConfig);
     }
 
     const { candidateListData: candidateData, partyListData: partyData } =
@@ -147,8 +147,6 @@ export class CampaignEngine {
     );
     const modified = this.resultModifier.apply(state, appliedEffects);
 
-    const polls = this.pollsterEngine.getPolls(state, electionConfig);
-
     const nextTurn = state.turn + 1;
     let candidateListData = this.resultModifier.filterUnwantedValues(
       modified?.candidateListData,
@@ -198,15 +196,38 @@ export class CampaignEngine {
       ),
       results: calculated,
       isEnded: nextTurn >= this.questions.length,
+    };
+
+    return {
+      ...session,
+      pollingOpnions: this.getPollProjection(
+        session,
+        electionConfig,
+        this.pollsterEngine.getPolls(session, electionConfig),
+        state.pollingOpnions?.selectedPollsterId,
+      ),
+    };
+  }
+
+  restorePollingOpinions(
+    state: CampaignState,
+    electionConfig?: ElectionConfig,
+  ): CampaignState {
+    const saved = state.pollingOpnions;
+    if (saved?.candidateListData) {
+      return state;
+    }
+    const polls =
+      saved?.polls ?? this.pollsterEngine.getPolls(state, electionConfig);
+    return {
+      ...state,
       pollingOpnions: this.getPollProjection(
         state,
         electionConfig,
         polls,
-        state.pollingOpnions?.selectedPollsterId,
+        saved?.selectedPollsterId ?? AGGREGATE_POLLSTER_ID,
       ),
     };
-
-    return session;
   }
 
   getPollProjection(
@@ -250,6 +271,7 @@ export class CampaignEngine {
       partyListVotes: modified.partyListVotes,
       percentages: calculated?.percentages,
       selectedPollsterId: id,
+      polls,
     };
   }
 

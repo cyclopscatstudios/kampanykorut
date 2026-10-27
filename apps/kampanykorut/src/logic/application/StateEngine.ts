@@ -27,6 +27,14 @@ type AutoSaveRegistryEntry = {
   sessionId: string;
 };
 
+export function toStoredCampaignState(state: CampaignState): CampaignState {
+  if (!state.pollingOpnions) {
+    return state;
+  }
+  const { selectedPollsterId, polls } = state.pollingOpnions;
+  return { ...state, pollingOpnions: { selectedPollsterId, polls } };
+}
+
 const MAX_SAVED_SESSIONS = 5;
 const MAX_AUTO_SAVES = 5;
 export const AUTO_SAVE_SLOT_ID = "auto-save-slot";
@@ -333,7 +341,9 @@ export class StateEngine extends Emitter<CampaignState> {
     const snapshotSaved =
       this.storage.setItem(
         `campaignState-${snapshotSessionId}`,
-        this.safeStringify(currentState) ?? "null",
+        this.safeStringify(
+          currentState ? toStoredCampaignState(currentState) : currentState,
+        ) ?? "null",
         "localStorage",
       ) &&
       (!historyRaw ||
@@ -473,7 +483,7 @@ export class StateEngine extends Emitter<CampaignState> {
 
     this.storage.setItem(
       `campaignState-${sessionId}`,
-      JSON.stringify(updated),
+      JSON.stringify(toStoredCampaignState(updated)),
       "localStorage",
     );
     this.touchAutoSaveTimestamp(sessionId);

@@ -901,6 +901,61 @@ describe("StateEngine", () => {
     });
   });
 
+  describe("poll projection storage", () => {
+    const pollingOpnions = {
+      candidateListData: [],
+      partyListData: [],
+      percentages: {} as never,
+      selectedPollsterId: "pollster-x",
+      polls: { party_a: 1.5 },
+    };
+
+    it("stores only the poll inputs and keeps the full projection in memory", () => {
+      const { engine, stateHandler } = makeEngine();
+
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 1,
+        isEnded: false,
+        pollingOpnions,
+      });
+
+      const stored = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`)!,
+      );
+      expect(stored.pollingOpnions).toEqual({
+        selectedPollsterId: "pollster-x",
+        polls: { party_a: 1.5 },
+      });
+      expect(stateHandler.get("campaignState")?.pollingOpnions).toEqual(
+        pollingOpnions,
+      );
+    });
+
+    it("stores only the poll inputs in a manual save snapshot", () => {
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 1,
+        isEnded: false,
+        pollingOpnions,
+      });
+
+      engine.saveToSlot("my-save");
+
+      const [session] = JSON.parse(
+        mem._map.get("kampanykorut_savedSessions")!,
+      ) as SavedCampaignSessionInfo[];
+      const snapshot = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${session.sessionId}`)!,
+      );
+      expect(snapshot.pollingOpnions).toEqual({
+        selectedPollsterId: "pollster-x",
+        polls: { party_a: 1.5 },
+      });
+    });
+  });
+
   describe("updateCampaignState", () => {
     it("persists the state to localStorage under the session key", () => {
       const { engine } = makeEngine();
