@@ -198,14 +198,41 @@ export class CampaignEngine {
       isEnded: nextTurn >= this.questions.length,
     };
 
+    const { polls, pollsterId } = this.getPollsForPollster(
+      session,
+      electionConfig,
+      state.pollingOpnions?.selectedPollsterId,
+    );
+
     return {
       ...session,
       pollingOpnions: this.getPollProjection(
         session,
         electionConfig,
-        this.pollsterEngine.getPolls(session, electionConfig),
-        state.pollingOpnions?.selectedPollsterId,
+        polls,
+        pollsterId,
       ),
+    };
+  }
+
+  private getPollsForPollster(
+    state: CampaignState,
+    electionConfig?: ElectionConfig,
+    pollsterId?: string,
+  ) {
+    if (pollsterId && pollsterId !== AGGREGATE_POLLSTER_ID && electionConfig) {
+      const polls = this.pollsterEngine.getPollsByPollsterId(
+        pollsterId,
+        state,
+        electionConfig,
+      )?.differences;
+      if (polls) {
+        return { polls, pollsterId };
+      }
+    }
+    return {
+      polls: this.pollsterEngine.getPolls(state, electionConfig),
+      pollsterId: pollsterId === undefined ? undefined : AGGREGATE_POLLSTER_ID,
     };
   }
 
@@ -217,15 +244,20 @@ export class CampaignEngine {
     if (saved?.candidateListData) {
       return state;
     }
-    const polls =
-      saved?.polls ?? this.pollsterEngine.getPolls(state, electionConfig);
+    const { polls, pollsterId } = saved?.polls
+      ? { polls: saved.polls, pollsterId: saved.selectedPollsterId }
+      : this.getPollsForPollster(
+          state,
+          electionConfig,
+          saved?.selectedPollsterId ?? AGGREGATE_POLLSTER_ID,
+        );
     return {
       ...state,
       pollingOpnions: this.getPollProjection(
         state,
         electionConfig,
         polls,
-        saved?.selectedPollsterId ?? AGGREGATE_POLLSTER_ID,
+        pollsterId ?? AGGREGATE_POLLSTER_ID,
       ),
     };
   }

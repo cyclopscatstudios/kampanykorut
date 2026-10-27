@@ -1,5 +1,5 @@
 import { container } from "tsyringe";
-import { beforeAll, describe, expect, it } from "vitest";
+import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import {
   AdvisorFeedback,
   CampaignState,
@@ -19,7 +19,7 @@ import { MandateCalculator } from "./MandateCalculator";
 import { campaignState } from "./mocks/mockCampaignState";
 import { mockElectionConfig } from "./mocks/mockElectionConfig";
 import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
-import { PollsterEngine } from "./PollsterEngine";
+import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import { ResultModifier } from "./ResultModifier";
 
 let campaignEngine: CampaignEngine;
@@ -713,4 +713,88 @@ describe("CampaignEngine.getFinalResults majority", () => {
       });
     },
   );
+});
+
+describe("CampaignEngine poll projection after a turn", () => {
+  const question: RawQuestion = {
+    id: "q1",
+    question: "Question",
+    possibleAnswers: [{ id: "A", label: "Answer A" }],
+  };
+  const pollsterEngine = new PollsterEngine(
+    container.resolve(MandateCalculator),
+  );
+  const engine = new CampaignEngine(
+    mockCandidateListData,
+    [question, question],
+    [],
+    container.resolve(ResultModifier),
+    container.resolve(EffectApplier),
+    container.resolve(MandateCalculator),
+    pollsterEngine,
+    mockPartyListData,
+  );
+
+  const playTurn = (selectedPollsterId?: string) =>
+    engine.processTurn(
+      {
+        ...campaignState,
+        turn: 0,
+        currentQuestion: question,
+        pollingOpnions: { selectedPollsterId },
+      },
+      getDecision([{ type: EffectType.UniformSwing, params: { party_a: 0 } }]),
+      [],
+      { showAdvisorFeedback: false, language: "en" },
+      mockElectionConfig,
+    );
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("uses the selected pollster's polls", () => {
+    const byPollster = vi
+      .spyOn(pollsterEngine, "getPollsByPollsterId")
+      .mockReturnValue({ id: "pollster-x", differences: { party_a: 1 } });
+    const aggregate = vi.spyOn(pollsterEngine, "getPolls");
+
+    const result = playTurn("pollster-x");
+
+    expect(byPollster).toHaveBeenCalledWith(
+      "pollster-x",
+      expect.objectContaining({ turn: 1 }),
+      mockElectionConfig,
+    );
+    expect(aggregate).not.toHaveBeenCalled();
+    expect(result.pollingOpnions?.selectedPollsterId).toBe("pollster-x");
+    expect(result.pollingOpnions?.polls).toEqual({ party_a: 1 });
+  });
+
+  it("falls back to the aggregate when the selected pollster is unknown", () => {
+    vi.spyOn(pollsterEngine, "getPollsByPollsterId").mockReturnValue(
+      undefined,
+    );
+    vi.spyOn(pollsterEngine, "getPolls").mockReturnValue({ party_a: 2 });
+
+    const result = playTurn("removed-pollster");
+
+    expect(result.pollingOpnions?.selectedPollsterId).toBe(
+      AGGREGATE_POLLSTER_ID,
+    );
+    expect(result.pollingOpnions?.polls).toEqual({ party_a: 2 });
+  });
+
+  it("uses the aggregate polls when the aggregate is selected", () => {
+    const byPollster = vi.spyOn(pollsterEngine, "getPollsByPollsterId");
+    vi.spyOn(pollsterEngine, "getPolls").mockReturnValue({ party_a: 3 });
+
+    const result = playTurn(AGGREGATE_POLLSTER_ID);
+
+    expect(byPollster).not.toHaveBeenCalled();
+    expect(result.pollingOpnions?.selectedPollsterId).toBe(
+      AGGREGATE_POLLSTER_ID,
+    );
+    expect(result.pollingOpnions?.polls).toEqual({ party_a: 3 });
+  });
 });
