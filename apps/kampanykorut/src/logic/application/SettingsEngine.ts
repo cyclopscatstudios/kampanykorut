@@ -13,6 +13,7 @@ export class SettingsEngine extends Emitter<GameSettings> {
   private defaultSettings: GameSettings = {
     showAdvisorFeedback: true,
     language: "en",
+    analyticsEnabled: true,
   };
 
   constructor(
@@ -29,6 +30,7 @@ export class SettingsEngine extends Emitter<GameSettings> {
     const defaultSettings = {
       showAdvisorFeedback: true,
       language: browserLanguage,
+      analyticsEnabled: true,
     };
     this.defaultSettings = defaultSettings;
     const settings = currentSettings

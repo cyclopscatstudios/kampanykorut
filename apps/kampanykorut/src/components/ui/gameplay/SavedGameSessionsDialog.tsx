@@ -10,6 +10,7 @@ import { Button } from "../../../../../../shared/ui/Button";
 import { Text } from "../../../../../../shared/ui/Text";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
+import { loadSession } from "./loadSession";
 
 export function SavedSessionsDialog({
   isOpen,
@@ -39,7 +40,7 @@ export function SavedSessionsDialog({
         primary: (
           <Button
             disabled={!selectedSession}
-            onClick={() => gameStateEngine.loadState(selectedSession)}
+            onClick={() => loadSession(selectedSession)}
           >
             <Button.Text>{t("loadSavedGamesMenu.button.load")}</Button.Text>
           </Button>
@@ -98,6 +99,11 @@ export function SavedSessionsBody({
             {value.type === "auto"
               ? `${t("loadSavedGamesMenu.autoSaveLabel")}-${value.campaignId}`
               : value.name}
+          </Text>
+          <Text color="darkBlue" weight="normal" size="sm">
+            {value.type === "auto" && value.turn !== undefined
+              ? t("loadSavedGamesMenu.turn", { turn: value.turn })
+              : null}
           </Text>
           <Text color="darkBlue" weight="normal" size="sm">
             {formatDate(value.lastSaved)}

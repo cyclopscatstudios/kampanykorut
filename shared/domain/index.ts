@@ -1,6 +1,7 @@
 export * from "./CampaignEngine";
 export * from "./DistrictGroupEngine";
 export * from "./EffectApplier";
+export * from "./Majority";
 export * from "./MandateCalculator";
 export * from "./PollsterEngine";
 export * from "./ResultModifier";

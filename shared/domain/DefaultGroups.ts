@@ -91,7 +91,7 @@ export const defaultGroups = [
       { megyekod: 10, oevk: 1 },
       { megyekod: 10, oevk: 2 },
       { megyekod: 18, oevk: 1 },
-      { megyekod: 18, oevk: 1 },
+      { megyekod: 18, oevk: 2 },
       { megyekod: 12, oevk: 2 },
       { megyekod: 7, oevk: 1 },
     ],

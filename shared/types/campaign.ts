@@ -30,10 +30,11 @@ export interface CampaignView {
 }
 
 export interface PollingOpnions {
-  candidateListData: CandidateListData[];
+  candidateListData?: CandidateListData[];
   partyListData?: PartyListData[];
   percentages?: PartyResults;
   selectedPollsterId?: string;
+  polls?: Record<string, number>;
 }
 
 export type PlayerSide = {

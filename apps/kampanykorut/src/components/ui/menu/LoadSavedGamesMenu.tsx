@@ -9,6 +9,7 @@ import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
 import { useNavigation } from "../../../hooks/navigationHook";
+import { loadSession } from "../gameplay/loadSession";
 import { SavedSessionsBody } from "../gameplay/SavedGameSessionsDialog";
 
 export function LoadSavedSessionsMenu() {
@@ -36,7 +37,7 @@ export function LoadSavedSessionsMenu() {
         </Button>
         <Button
           size="large"
-          onClick={() => gameStateEngine.loadState(selectedSession)}
+          onClick={() => loadSession(selectedSession)}
           disabled={!selectedSession}
         >
           <Text weight="medium" color="lightBlue">

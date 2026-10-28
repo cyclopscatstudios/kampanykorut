@@ -23,11 +23,17 @@
   "settingsMenu": {
     "advisorFeedback": {
       "label": "Show advisor feedback"
+    },
+    "analytics": {
+      "label": "Send anonymous usage statistics",
+      "privacyLink": "Privacy notice"
     }
   },
   "loadSavedGamesMenu": {
     "emptyLabel": "No saved game sessions found.",
     "autoSaveLabel": "Auto-save",
+    "turn": "Round {{turn}}",
+    "loadFailed": "This saved game could not be loaded.",
     "button": {
       "load": "Load game"
     }
@@ -61,13 +67,17 @@
       "electionMap": "Election map",
       "statistics": "Statistics",
       "history": "History",
-      "achivements": "Achivements"
+      "achivements": "Badges"
+    },
+    "actions": {
+      "replay": "Play again",
+      "otherCampaign": "Other campaign"
     },
     "statistics": {
       "menuBar": {
         "overview": "Overview",
-        "districtDetails": "District details",
-        "turnoutDetails": "Turnout details"
+        "districtDetails": "Districts",
+        "turnoutDetails": "Turnout"
       },
       "overview": {
         "constituencySeats": "Constituency seats",
@@ -82,7 +92,18 @@
         "nationalTurnout": "National turnout",
         "votesCast": "Votes cast",
         "turnoutChange": "Change from previous election"
+      },
+      "districtDetails": {
+        "turnout": "Turnout: {{value}}%"
       }
+    },
+    "electionMap": {
+      "winner": "Winner"
+    },
+    "achievements": {
+      "completed": "Earned",
+      "notCompleted": "Not earned",
+      "empty": "This campaign has no badges."
     },
     "turnHistory": {
       "label": "Turn history",
@@ -91,6 +112,9 @@
       },
       "turns": "turns"
     }
+  },
+  "gameHeader": {
+    "turnsTooltip": "Turns played"
   },
   "gameMenuBar": {
     "save": "Save game",
@@ -260,7 +284,8 @@
     "campaignDialog": {
       "startButton": "Start campaign"
     },
-    "footer": "Kampánykörút — a free election simulation that runs in your browser."
+    "footer": "Kampánykörút — a free election simulation that runs in your browser.",
+    "footerPrivacy": "Privacy notice"
   },
   "news": {
     "heading": "What’s new",
@@ -294,5 +319,10 @@
       "markAllRead": "Mark all read",
       "close": "Close"
     }
+  },
+  "privacyPage": {
+    "title": "Privacy notice",
+    "openPdf": "Open privacy notice (PDF)",
+    "mobileDescription": "You can open the privacy notice as a PDF."
   }
 }

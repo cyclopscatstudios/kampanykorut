@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetCampaigns, useSettings } from "@/logic/application";
-import { AnalyticsEvent, track } from "../../../../logic/infra/posthog/track";
+import { track } from "../../../../logic/infra/posthog/track";
 import { NewsSection } from "../../news/NewsSection";
 import { CampaignDetailsDialog } from "./CampaignDetailsDialog";
 import { CampaignsSection } from "./CampaignsSection";
@@ -25,12 +25,12 @@ export function LandingPage() {
     import.meta.env.VITE_NEWS_PLACEMENT === "below-campaigns";
 
   const goToMenu = () => {
-    track(AnalyticsEvent.LEAVE_LANDING_PAGE, {});
+    track("landing_exited", { target: "menu" });
     navigate("/menu");
   };
 
   const goToSideSelector = (campaign: Campaign) => {
-    track(AnalyticsEvent.LEAVE_LANDING_PAGE, {});
+    track("landing_exited", { target: "campaign" });
     navigate(`/new-game/classic/sides/${campaign.id}`);
   };
 

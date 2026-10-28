@@ -28,6 +28,8 @@ const NotificationSchema = new Schema<BugReportNotification>(
   { _id: false },
 );
 
+export const BUG_REPORT_RETENTION_SECONDS = 365 * 24 * 60 * 60;
+
 const BugReportSchema = new Schema<BugReportRecord>(
   {
     id: { type: String, required: true, unique: true },
@@ -90,6 +92,10 @@ BugReportSchema.index({
   "notifications.nextAttemptAt": 1,
 });
 BugReportSchema.index({ contentHash: 1, createdAt: -1 });
+BugReportSchema.index(
+  { createdAt: 1 },
+  { expireAfterSeconds: BUG_REPORT_RETENTION_SECONDS },
+);
 BugReportSchema.index(
   { email: 1, createdAt: -1 },
   { partialFilterExpression: { email: { $type: "string" } } },

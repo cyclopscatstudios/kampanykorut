@@ -66,7 +66,7 @@ export function QuestionCard({
             index={index}
             key={a.id}
             isSelected={a.id === answer}
-            onClick={() => setAnswer(a.id)}
+            onClick={setAnswer}
           />
         ))}
       </div>
@@ -236,7 +236,7 @@ export function AnswerRow({
 }: QuestionRowProps) {
   const keys = ["A", "B", "C", "D"];
   return (
-    <div onClick={() => onClick(answer.label)} className="w-full mb-2">
+    <div onClick={() => onClick(answer.id)} className="w-full mb-2">
       <CommonWrapper
         block
         className={classNames("cursor-pointer", {

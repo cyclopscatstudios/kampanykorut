@@ -21,6 +21,7 @@ import {
   StrategyReward,
 } from "../types";
 import type { EffectApplier } from "./EffectApplier";
+import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import type { ResultModifier } from "./ResultModifier";
@@ -54,7 +55,7 @@ export class CampaignEngine {
       savedState.activeCampaignId === campaignId
     ) {
       log.info("initial state created from saved data");
-      return savedState;
+      return this.restorePollingOpinions(savedState, electionConfig);
     }
 
     const { candidateListData: candidateData, partyListData: partyData } =
@@ -146,33 +147,32 @@ export class CampaignEngine {
     );
     const modified = this.resultModifier.apply(state, appliedEffects);
 
-    const polls = this.pollsterEngine.getPolls(state, electionConfig);
-
     const nextTurn = state.turn + 1;
     let candidateListData = this.resultModifier.filterUnwantedValues(
       modified?.candidateListData,
     );
 
+    let partyListData = modified?.partyListData;
     let partyListVotes = modified?.partyListVotes;
 
     if (!this.questions[nextTurn] && campaignStrategies) {
       log.info("apply campaign strategy");
-      const { candidateListData: listData, partyListVotes: listVotes } =
-        this.applyStrategy(
-          campaignStrategies,
-          history,
-          state,
-          modified?.candidateListData ?? [],
-          modified?.partyListData ?? [],
-          modified?.partyListVotes,
-        );
-      candidateListData = listData;
-      partyListVotes = listVotes;
+      const strategyResult = this.applyStrategy(
+        campaignStrategies,
+        history,
+        state,
+        candidateListData ?? state.candidateListData ?? [],
+        partyListData ?? state.partyListData ?? [],
+        partyListVotes ?? state.partyListVotes,
+      );
+      candidateListData = strategyResult.candidateListData;
+      partyListData = strategyResult.partyListData;
+      partyListVotes = strategyResult.partyListVotes;
     }
 
     const calculated = this.mandateCalculator.calculate(
       candidateListData,
-      modified?.partyListData,
+      partyListData,
       electionConfig,
       partyListVotes,
     );
@@ -186,7 +186,7 @@ export class CampaignEngine {
         this.questions[nextTurn],
       ),
       candidateListData: candidateListData ?? state.candidateListData,
-      partyListData: modified?.partyListData ?? state.partyListData,
+      partyListData: partyListData ?? state.partyListData,
       partyListVotes: partyListVotes ?? state.partyListVotes,
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
@@ -196,15 +196,70 @@ export class CampaignEngine {
       ),
       results: calculated,
       isEnded: nextTurn >= this.questions.length,
+    };
+
+    const { polls, pollsterId } = this.getPollsForPollster(
+      session,
+      electionConfig,
+      state.pollingOpnions?.selectedPollsterId,
+    );
+
+    return {
+      ...session,
+      pollingOpnions: this.getPollProjection(
+        session,
+        electionConfig,
+        polls,
+        pollsterId,
+      ),
+    };
+  }
+
+  private getPollsForPollster(
+    state: CampaignState,
+    electionConfig?: ElectionConfig,
+    pollsterId?: string,
+  ) {
+    if (pollsterId && pollsterId !== AGGREGATE_POLLSTER_ID && electionConfig) {
+      const polls = this.pollsterEngine.getPollsByPollsterId(
+        pollsterId,
+        state,
+        electionConfig,
+      )?.differences;
+      if (polls && Object.keys(polls).length > 0) {
+        return { polls, pollsterId };
+      }
+    }
+    return {
+      polls: this.pollsterEngine.getPolls(state, electionConfig),
+      pollsterId: pollsterId === undefined ? undefined : AGGREGATE_POLLSTER_ID,
+    };
+  }
+
+  restorePollingOpinions(
+    state: CampaignState,
+    electionConfig?: ElectionConfig,
+  ): CampaignState {
+    const saved = state.pollingOpnions;
+    if (saved?.candidateListData) {
+      return state;
+    }
+    const { polls, pollsterId } = saved?.polls
+      ? { polls: saved.polls, pollsterId: saved.selectedPollsterId }
+      : this.getPollsForPollster(
+          state,
+          electionConfig,
+          saved?.selectedPollsterId ?? AGGREGATE_POLLSTER_ID,
+        );
+    return {
+      ...state,
       pollingOpnions: this.getPollProjection(
         state,
         electionConfig,
         polls,
-        state.pollingOpnions?.selectedPollsterId,
+        pollsterId ?? AGGREGATE_POLLSTER_ID,
       ),
     };
-
-    return session;
   }
 
   getPollProjection(
@@ -248,6 +303,7 @@ export class CampaignEngine {
       partyListVotes: modified.partyListVotes,
       percentages: calculated?.percentages,
       selectedPollsterId: id,
+      polls,
     };
   }
 
@@ -296,10 +352,16 @@ export class CampaignEngine {
         state.turn,
       );
 
-      const modified = this.resultModifier.apply(state, appliedEffects);
-      candidateListData = modified?.candidateListData ?? [];
-      partyListData = modified?.partyListData ?? [];
-      partyListVotes = modified?.partyListVotes;
+      const modified = this.resultModifier.apply(
+        { ...state, candidateListData, partyListData, partyListVotes },
+        appliedEffects,
+      );
+      if (!modified) {
+        continue;
+      }
+      candidateListData = modified.candidateListData ?? candidateListData;
+      partyListData = modified.partyListData ?? partyListData;
+      partyListVotes = modified.partyListVotes;
     }
 
     return {
@@ -309,12 +371,21 @@ export class CampaignEngine {
     };
   }
 
-  getFinalResults(state: CampaignState): FinalResults | null {
+  getFinalResults(
+    state: CampaignState,
+    allSeats?: number,
+  ): FinalResults | null {
     const winnerParty = state.results?.mandates.reduce((max, party) => {
       return party.totalSeats > max.totalSeats ? party : max;
     }, state.results.mandates[0]);
-    const hasMajority = winnerParty ? winnerParty.totalSeats > 100 : false;
-    const majorityType = this.getMajorityType(winnerParty);
+    const seatTotal =
+      allSeats ??
+      state.results?.mandates.reduce((sum, m) => sum + m.totalSeats, 0) ??
+      0;
+    const majorityType = winnerParty
+      ? getMajorityType(winnerParty.totalSeats, seatTotal)
+      : null;
+    const hasMajority = majorityType !== null;
 
     const results = this.assertFinalResults(state.results);
 
@@ -418,6 +489,7 @@ export class CampaignEngine {
     );
 
     const conditionalFeedback = this.resolveConditionalFeedback(
+      answerId,
       advisorFeedback?.conditionalAnswers,
       history,
     );
@@ -430,6 +502,7 @@ export class CampaignEngine {
   }
 
   private resolveConditionalFeedback(
+    answerId: string,
     conditionalAnswers?: ConditionalAnswer[],
     history: Array<{ questionId: string; answerId: string }> = [],
   ) {
@@ -442,6 +515,10 @@ export class CampaignEngine {
     }
 
     for (const cond of conditionalAnswers) {
+      if (cond.answer.answerId !== answerId) {
+        continue;
+      }
+
       const matches = cond.if.every((condition) => {
         const h = history?.find((q) => q.questionId === condition.questionId);
         return h?.answerId === condition.answerId;
@@ -492,24 +569,6 @@ export class CampaignEngine {
       partyListData: results?.partyListData ?? partyListData,
       partyListVotes: results?.partyListVotes ?? partyListVotes,
     };
-  }
-
-  private getMajorityType(winnderParty?: {
-    party: string;
-    constituencySeats: number;
-    listSeats: number;
-    totalSeats: number;
-  }) {
-    if (!winnderParty) {
-      return null;
-    }
-    if (winnderParty.totalSeats >= 133) {
-      return "supermajority";
-    }
-    if (winnderParty.totalSeats >= 100) {
-      return "simple";
-    }
-    return null;
   }
 
   private getAnswerEffects(

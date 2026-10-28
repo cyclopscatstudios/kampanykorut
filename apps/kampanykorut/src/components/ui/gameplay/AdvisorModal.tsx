@@ -6,7 +6,6 @@ import { AdvisorFeedbackAssets } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Heading } from "../Heading";
 
@@ -53,11 +52,11 @@ export function AdvisorModal({
   return (
     <>
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
         onClick={onClose}
       >
         <div
-          className="h-[450px] w-[550px] md:min-w-[550px] max-w-[90vw] bg-[#161e30] rounded-xl border border-[#4462aa] flex flex-col justify-between shadow-xl"
+          className="min-h-[450px] w-[550px] md:min-w-[550px] max-w-[90vw] bg-[#161e30] rounded-xl border border-[#4462aa] flex flex-col justify-between shadow-xl"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="border-b border-[#4462aa] p-3">
@@ -72,22 +71,28 @@ export function AdvisorModal({
             {[
               asset?.primaryAdvisorImageUri,
               asset?.secondaryAdvisorImageUri,
-            ].map((img, i) => (
-              <Tooltip
-                content={
-                  i === 0
-                    ? (asset?.primaryAdvisorName ?? "")
-                    : (asset?.secondaryAdvisorName ?? "")
-                }
-              >
-                <div
-                  key={i}
-                  className="w-[100px] h-[100px] border border-[#4462aa] rounded-xl overflow-hidden"
-                >
-                  <img src={img} className="w-full h-full object-cover" />
+            ].map((img, i) => {
+              const name =
+                i === 0
+                  ? asset?.primaryAdvisorName
+                  : asset?.secondaryAdvisorName;
+              return (
+                <div key={i} className="flex flex-col items-center gap-2">
+                  <div className="w-[100px] h-[100px] border border-[#4462aa] rounded-xl overflow-hidden">
+                    <img
+                      src={img}
+                      alt={name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  {name && (
+                    <Text size="xs" weight="medium" className="text-gray-300">
+                      {name}
+                    </Text>
+                  )}
                 </div>
-              </Tooltip>
-            ))}
+              );
+            })}
           </div>
           <div className="mx-3">
             <div className="bg-[#1d2840] p-3 rounded-xl">

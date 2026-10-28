@@ -18,6 +18,8 @@ export type SavedCampaignSessionInfo = {
   name: string;
   lastSaved?: string;
   type?: "manual" | "auto";
+  turn?: number;
+  sourceSessionId?: string;
 };
 
 type AutoSaveRegistryEntry = {
@@ -25,7 +27,17 @@ type AutoSaveRegistryEntry = {
   sessionId: string;
 };
 
+export function toStoredCampaignState(state: CampaignState): CampaignState {
+  if (!state.pollingOpnions) {
+    return state;
+  }
+  const { selectedPollsterId, polls } = state.pollingOpnions;
+  return { ...state, pollingOpnions: { selectedPollsterId, polls } };
+}
+
 const MAX_SAVED_SESSIONS = 5;
+const MAX_AUTO_SAVES = 5;
+const ACTIVE_SESSION_WINDOW_MS = 60 * 60 * 1000;
 export const AUTO_SAVE_SLOT_ID = "auto-save-slot";
 
 const log = createLogger("CampaignStateEngine");
@@ -58,6 +70,16 @@ export class StateEngine extends Emitter<CampaignState> {
       log.info("New session id generated", { sessionId: id, force });
       this.saveSessionId(id);
     }
+  }
+
+  startNewSession() {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("sessionId")) {
+      url.searchParams.delete("sessionId");
+      window.history.replaceState(window.history.state, "", url);
+    }
+    this.init(true);
+    this.stateHandler.set("campaignState", null);
   }
 
   getHistory(): HistoryItem[] | null {
@@ -112,15 +134,17 @@ export class StateEngine extends Emitter<CampaignState> {
             sessionId,
           ) ?? undefined;
         return {
-          id: `${AUTO_SAVE_SLOT_ID}-${campaignId}`,
+          id: `${AUTO_SAVE_SLOT_ID}-${sessionId}`,
           sessionId,
           campaignId,
           name: "auto-save",
           lastSaved,
           type: "auto",
+          turn: state.turn,
         };
       })
-      .filter((session): session is SavedCampaignSessionInfo => !!session);
+      .filter((session): session is SavedCampaignSessionInfo => !!session)
+      .reverse();
   }
 
   getSessionSlots() {
@@ -172,10 +196,10 @@ export class StateEngine extends Emitter<CampaignState> {
     return id;
   }
 
-  loadState(session: SavedCampaignSessionInfo | null) {
+  loadState(session: SavedCampaignSessionInfo | null): boolean {
     if (!session) {
       log.error("no session was provided");
-      return;
+      return false;
     }
     const { campaignId, sessionId } = session;
     const sessionContext = {
@@ -188,17 +212,10 @@ export class StateEngine extends Emitter<CampaignState> {
     log.info("Loading saved session", sessionContext);
     if (!campaignId || !sessionId) {
       log.error("id was not found", sessionContext);
-      return;
+      return false;
     }
-    const history = this.storage.getItem(
-      "turnHistory",
-      "localStorage",
-      sessionId,
-    );
-    if (!history) {
-      log.error("history was not found", sessionContext);
-      return;
-    }
+    const history =
+      this.storage.getItem("turnHistory", "localStorage", sessionId) ?? "[]";
     let state: CampaignState | null;
     try {
       state = this.getCampaignStateById(sessionId);
@@ -207,16 +224,28 @@ export class StateEngine extends Emitter<CampaignState> {
         error,
         ...sessionContext,
       });
-      return;
+      return false;
     }
     if (!state) {
       log.error("campaign state was not found", sessionContext);
-      return;
+      return false;
     }
 
     const isManualSave = session.type !== "auto";
-    const targetSessionId = isManualSave ? this.generateId() : sessionId;
+    const targetSessionId = isManualSave
+      ? (session.sourceSessionId ?? this.generateId())
+      : sessionId;
     if (isManualSave) {
+      const previousState = this.storage.getItem(
+        "campaignState",
+        "localStorage",
+        targetSessionId,
+      );
+      const previousHistory = this.storage.getItem(
+        "turnHistory",
+        "localStorage",
+        targetSessionId,
+      );
       const copied =
         this.storage.setItem(
           `campaignState-${targetSessionId}`,
@@ -233,9 +262,13 @@ export class StateEngine extends Emitter<CampaignState> {
           ...sessionContext,
           targetSessionId,
         });
-        this.storage.clearItem(`campaignState-${targetSessionId}`);
-        this.storage.clearItem(`turnHistory-${targetSessionId}`);
-        return;
+        this.restoreItem(`campaignState-${targetSessionId}`, previousState);
+        this.restoreItem(`turnHistory-${targetSessionId}`, previousHistory);
+        return false;
+      }
+      this.touchAutoSaveTimestamp(targetSessionId);
+      if ((state.turn ?? 0) > 0) {
+        this.registerAutoSaveSession(campaignId, targetSessionId);
       }
     }
 
@@ -253,10 +286,11 @@ export class StateEngine extends Emitter<CampaignState> {
     });
     if (!isGameRoute) {
       this.navigation.go(route);
-      return;
+      return true;
     }
     window.history.replaceState({}, "", route);
     window.location.reload();
+    return true;
   }
 
   saveState<T>(sessionKey: SessionKey, session: T) {
@@ -313,7 +347,9 @@ export class StateEngine extends Emitter<CampaignState> {
     const snapshotSaved =
       this.storage.setItem(
         `campaignState-${snapshotSessionId}`,
-        this.safeStringify(currentState) ?? "null",
+        this.safeStringify(
+          currentState ? toStoredCampaignState(currentState) : currentState,
+        ) ?? "null",
         "localStorage",
       ) &&
       (!historyRaw ||
@@ -341,6 +377,7 @@ export class StateEngine extends Emitter<CampaignState> {
     this.saveSessionInfo({
       id: existingId ?? uuidv4(),
       sessionId: snapshotSessionId,
+      sourceSessionId: sessionId,
       campaignId,
       name,
       lastSaved: new Date().toISOString(),
@@ -392,16 +429,15 @@ export class StateEngine extends Emitter<CampaignState> {
 
   clearGameState(type: ClearTypes) {
     const state = this.getCurrentCampaignState();
+    const sessionId = this.getSessionId();
     log.info("Clearing game state", {
       type,
       campaignId: state?.activeCampaignId,
-      sessionId: this.getSessionId(),
+      sessionId,
       turn: state?.turn,
     });
     this.saveState("campaignState", null);
-    if (state?.activeCampaignId) {
-      this.unregisterAutoSaveSession(state.activeCampaignId);
-    }
+    this.unregisterAutoSaveSession(sessionId);
     this.gameConfigEngine.configure(null);
     this.voterEnvironment.configure(null);
     this.districtGroupEngine.configure([]);
@@ -453,11 +489,11 @@ export class StateEngine extends Emitter<CampaignState> {
 
     this.storage.setItem(
       `campaignState-${sessionId}`,
-      JSON.stringify(updated),
+      JSON.stringify(toStoredCampaignState(updated)),
       "localStorage",
     );
     this.touchAutoSaveTimestamp(sessionId);
-    if (updated.activeCampaignId) {
+    if (updated.activeCampaignId && (updated.turn ?? 0) > 0) {
       this.registerAutoSaveSession(updated.activeCampaignId, sessionId);
     }
     log.debug("Election state saved for sessionId:", sessionId);
@@ -541,23 +577,57 @@ export class StateEngine extends Emitter<CampaignState> {
     if (!campaignId || campaignId === DEFAULT_CAMPAIGN_ID) {
       return;
     }
-    const registry = this.getAutoSaveRegistry();
-    const existingIndex = registry.findIndex(
-      (entry) => entry.campaignId === campaignId,
+    const registry = [
+      ...this.getAutoSaveRegistry().filter(
+        (entry) => entry.sessionId !== sessionId,
+      ),
+      { campaignId, sessionId },
+    ];
+    const pruned = registry.splice(
+      0,
+      Math.max(0, registry.length - MAX_AUTO_SAVES),
     );
-    if (existingIndex >= 0) {
-      registry[existingIndex] = { campaignId, sessionId };
-    } else {
-      registry.push({ campaignId, sessionId });
-    }
+    pruned.forEach((entry) => {
+      if (!this.isRecentlyActive(entry.sessionId)) {
+        this.clearSessionStorage(entry.sessionId);
+      }
+    });
     this.setAutoSaveRegistry(registry);
   }
 
-  private unregisterAutoSaveSession(campaignId: string) {
+  // A session saved recently may still be open in another tab, so its data
+  // must survive being dropped from the auto-save registry.
+  private isRecentlyActive(sessionId: string) {
+    const timestamp = this.storage.getItem(
+      "autoSaveTimestamp",
+      "localStorage",
+      sessionId,
+    );
+    const savedAt = timestamp ? new Date(timestamp).getTime() : NaN;
+    return (
+      !Number.isNaN(savedAt) && Date.now() - savedAt < ACTIVE_SESSION_WINDOW_MS
+    );
+  }
+
+  private unregisterAutoSaveSession(sessionId: string) {
     const registry = this.getAutoSaveRegistry().filter(
-      (entry) => entry.campaignId !== campaignId,
+      (entry) => entry.sessionId !== sessionId,
     );
     this.setAutoSaveRegistry(registry);
+  }
+
+  private restoreItem(key: string, value: string | null) {
+    if (value === null) {
+      this.storage.clearItem(key);
+      return;
+    }
+    this.storage.setItem(key, value, "localStorage");
+  }
+
+  private clearSessionStorage(sessionId: string) {
+    this.storage.clearItem(`campaignState-${sessionId}`, "localStorage");
+    this.storage.clearItem(`turnHistory-${sessionId}`, "localStorage");
+    this.storage.clearItem(`autoSaveTimestamp-${sessionId}`, "localStorage");
   }
 
   private saveSessionInfo(sessionInfo: SavedCampaignSessionInfo) {
