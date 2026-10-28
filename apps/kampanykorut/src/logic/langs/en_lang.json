@@ -32,6 +32,8 @@
   "loadSavedGamesMenu": {
     "emptyLabel": "No saved game sessions found.",
     "autoSaveLabel": "Auto-save",
+    "turn": "Round {{turn}}",
+    "loadFailed": "This saved game could not be loaded.",
     "button": {
       "load": "Load game"
     }

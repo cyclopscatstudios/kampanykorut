@@ -189,6 +189,7 @@ describe("StateEngine", () => {
       expect(autoSave?.sessionId).toBe(FIXED_SESSION_ID);
       expect(autoSave?.campaignId).toBe("c-test");
       expect(autoSave?.type).toBe("auto");
+      expect(autoSave?.turn).toBe(4);
     });
 
     it("stays in sync as the live session keeps changing", () => {
@@ -208,7 +209,74 @@ describe("StateEngine", () => {
       expect(state.turn).toBe(7);
     });
 
-    it("keeps exactly one auto-save slot per campaign, overwriting on repeated saves", () => {
+    it("does not list a game that has no answered turn yet", () => {
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 0,
+        isEnded: false,
+      });
+
+      expect(engine.getAutoSaveSessions()).toEqual([]);
+    });
+
+    it("keeps an earlier game of the same campaign when a new game is played", () => {
+      const earlierSessionId = "earlier-session-id";
+      mem._map.set(
+        `kampanykorut_campaignState-${earlierSessionId}`,
+        JSON.stringify({ activeCampaignId: "c-test", turn: 3, isEnded: false }),
+      );
+      mem._map.set(
+        "kampanykorut_autoSaveRegistry",
+        JSON.stringify([{ campaignId: "c-test", sessionId: earlierSessionId }]),
+      );
+
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 1,
+        isEnded: false,
+      });
+
+      expect(engine.getAutoSaveSessions().map((s) => s.sessionId)).toEqual([
+        FIXED_SESSION_ID,
+        earlierSessionId,
+      ]);
+    });
+
+    it("keeps only the most recent auto-saves and removes the storage of pruned ones", () => {
+      const olderIds = ["s1", "s2", "s3", "s4", "s5"];
+      olderIds.forEach((id) => {
+        mem._map.set(
+          `kampanykorut_campaignState-${id}`,
+          JSON.stringify({ activeCampaignId: "c-test", turn: 2 }),
+        );
+        mem._map.set(`kampanykorut_turnHistory-${id}`, "[]");
+      });
+      mem._map.set(
+        "kampanykorut_autoSaveRegistry",
+        JSON.stringify(
+          olderIds.map((sessionId) => ({ campaignId: "c-test", sessionId })),
+        ),
+      );
+
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 1,
+        isEnded: false,
+      });
+
+      const sessionIds = engine.getAutoSaveSessions().map((s) => s.sessionId);
+      expect(sessionIds).toHaveLength(5);
+      expect(sessionIds).not.toContain("s1");
+      expect(sessionIds[0]).toBe(FIXED_SESSION_ID);
+      expect(mem._map.get("kampanykorut_campaignState-s1")).toBeUndefined();
+      expect(mem._map.get("kampanykorut_turnHistory-s1")).toBeUndefined();
+      expect(mem._map.get("kampanykorut_campaignState-s2")).toBeDefined();
+    });
+
+    it("keeps exactly one auto-save slot per session, overwriting on repeated saves", () => {
       const { engine } = makeEngine();
       engine.updateCampaignState({
         activeCampaignId: "c-test",
@@ -243,7 +311,7 @@ describe("StateEngine", () => {
       const { engine } = makeEngine();
       engine.updateCampaignState({
         activeCampaignId: "c-test",
-        turn: 0,
+        turn: 1,
         isEnded: false,
       });
 
@@ -261,6 +329,40 @@ describe("StateEngine", () => {
           }),
         ]),
       );
+    });
+  });
+
+  describe("startNewSession", () => {
+    it("switches to a fresh session and keeps the previous game resumable", () => {
+      const { engine } = makeEngine(new Navigation(), () => "new-session-id");
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 2,
+        isEnded: false,
+      });
+      window.history.pushState({}, "", "/new-game/classic");
+
+      engine.startNewSession();
+
+      expect(engine.getSessionId()).toBe("new-session-id");
+      expect(engine.getCampaignState()).toBeNull();
+      expect(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`),
+      ).toBeDefined();
+      expect(engine.getAutoSaveSessions()).toEqual([
+        expect.objectContaining({ sessionId: FIXED_SESSION_ID }),
+      ]);
+      mem._map.set(`kampanykorut_turnHistory-${FIXED_SESSION_ID}`, "[{}]");
+      expect(engine.loadState(engine.getAutoSaveSessions()[0])).toBe(true);
+    });
+
+    it("ignores a stale sessionId in the URL", () => {
+      const { engine } = makeEngine(new Navigation(), () => "new-session-id");
+      window.history.pushState({}, "", "/new-game/classic?sessionId=old-id");
+
+      engine.startNewSession();
+
+      expect(engine.getSessionId()).toBe("new-session-id");
     });
   });
 
@@ -358,6 +460,18 @@ describe("StateEngine", () => {
           "null",
       );
       expect(snapshot.activeCampaignId).toBe("c-test");
+    });
+
+    it("records the live session as the source of the manual save", () => {
+      const { engine } = makeEngine();
+      seedCampaignState();
+
+      engine.saveToSlot("my-save");
+
+      const [session] = JSON.parse(
+        mem._map.get("kampanykorut_savedSessions") ?? "[]",
+      ) as SavedCampaignSessionInfo[];
+      expect(session.sourceSessionId).toBe(FIXED_SESSION_ID);
     });
 
     it("does not mutate the manual snapshot when the live session keeps changing", () => {
@@ -568,14 +682,33 @@ describe("StateEngine", () => {
       expect(goSpy).not.toHaveBeenCalled();
     });
 
-    it("returns early when no history exists for the session", () => {
+    it("returns false when the saved campaign state is missing", () => {
       const navigation = new Navigation();
       const goSpy = vi.spyOn(navigation, "go");
       const { engine } = makeEngine(navigation);
+      seedHistory();
 
-      engine.loadState(validSession);
-
+      expect(engine.loadState(validSession)).toBe(false);
       expect(goSpy).not.toHaveBeenCalled();
+    });
+
+    it("loads a manual save made before the first answered turn", () => {
+      window.history.pushState({}, "", "/load-game");
+      const navigation = new Navigation();
+      const goSpy = vi.spyOn(navigation, "go").mockImplementation(() => {});
+      const { engine } = makeEngine(navigation);
+      mem._map.set(
+        `kampanykorut_campaignState-${validSession.sessionId}`,
+        JSON.stringify({ activeCampaignId: validSession.campaignId, turn: 0 }),
+      );
+
+      expect(engine.loadState(validSession)).toBe(true);
+      expect(goSpy).toHaveBeenCalledWith(
+        `/game/${validSession.campaignId}?sessionId=${FIXED_GENERATED_ID}`,
+      );
+      expect(
+        mem._map.get(`kampanykorut_turnHistory-${FIXED_GENERATED_ID}`),
+      ).toBe("[]");
     });
 
     it("navigates to a freshly forked session id for a manual save, leaving the snapshot untouched", () => {
@@ -656,6 +789,181 @@ describe("StateEngine", () => {
         mem._map.get(`kampanykorut_campaignState-${FIXED_GENERATED_ID}`)!,
       );
       expect(forkedState.turn).toBe(3);
+    });
+
+    describe("with a source session", () => {
+      const sourceSessionId = "source-session-id";
+      const sessionWithSource: SavedCampaignSessionInfo = {
+        ...validSession,
+        type: "manual",
+        sourceSessionId,
+      };
+
+      function seedSourceGame() {
+        mem._map.set(
+          `kampanykorut_campaignState-${sourceSessionId}`,
+          JSON.stringify({
+            activeCampaignId: validSession.campaignId,
+            turn: 7,
+            isEnded: false,
+          }),
+        );
+        mem._map.set(`kampanykorut_turnHistory-${sourceSessionId}`, "[]");
+        mem._map.set(
+          "kampanykorut_autoSaveRegistry",
+          JSON.stringify([
+            { campaignId: validSession.campaignId, sessionId: sourceSessionId },
+          ]),
+        );
+      }
+
+      it("loads the save back into its source session instead of forking a new one", () => {
+        window.history.pushState({}, "", "/load-game");
+        const navigation = new Navigation();
+        const goSpy = vi.spyOn(navigation, "go").mockImplementation(() => {});
+        const { engine } = makeEngine(navigation);
+        seedHistory();
+        seedCampaignStateForSession();
+        seedSourceGame();
+
+        expect(engine.loadState(sessionWithSource)).toBe(true);
+
+        expect(goSpy).toHaveBeenCalledWith(
+          `/game/${validSession.campaignId}?sessionId=${sourceSessionId}`,
+        );
+        expect(mem._map.get("kampanykorut_currentSessionId")).toBe(
+          sourceSessionId,
+        );
+        const sourceState = JSON.parse(
+          mem._map.get(`kampanykorut_campaignState-${sourceSessionId}`)!,
+        );
+        expect(sourceState.turn).toBe(3);
+        expect(
+          mem._map.get(`kampanykorut_campaignState-${FIXED_GENERATED_ID}`),
+        ).toBeUndefined();
+      });
+
+      it("overwrites the source game's auto-save instead of adding another one", () => {
+        window.history.pushState({}, "", "/load-game");
+        const navigation = new Navigation();
+        vi.spyOn(navigation, "go").mockImplementation(() => {});
+        const { engine } = makeEngine(navigation);
+        seedHistory();
+        seedCampaignStateForSession();
+        seedSourceGame();
+
+        engine.loadState(sessionWithSource);
+
+        const autoSaves = engine.getAutoSaveSessions();
+        expect(autoSaves).toHaveLength(1);
+        expect(autoSaves[0]).toEqual(
+          expect.objectContaining({ sessionId: sourceSessionId, turn: 3 }),
+        );
+      });
+
+      it("keeps the manual snapshot untouched", () => {
+        window.history.pushState({}, "", "/load-game");
+        const navigation = new Navigation();
+        vi.spyOn(navigation, "go").mockImplementation(() => {});
+        const { engine } = makeEngine(navigation);
+        seedHistory();
+        seedCampaignStateForSession();
+        seedSourceGame();
+        const snapshotBefore = mem._map.get(
+          `kampanykorut_campaignState-${validSession.sessionId}`,
+        );
+
+        engine.loadState(sessionWithSource);
+        engine.updateCampaignState({ turn: 50 });
+
+        expect(
+          mem._map.get(`kampanykorut_campaignState-${validSession.sessionId}`),
+        ).toBe(snapshotBefore);
+      });
+
+      it("restores the source game when copying the save fails", () => {
+        window.history.pushState({}, "", "/load-game");
+        const navigation = new Navigation();
+        const goSpy = vi.spyOn(navigation, "go").mockImplementation(() => {});
+        const { engine } = makeEngine(navigation);
+        seedHistory();
+        seedCampaignStateForSession();
+        seedSourceGame();
+        const sourceStateBefore = mem._map.get(
+          `kampanykorut_campaignState-${sourceSessionId}`,
+        );
+        mem.setItem.mockImplementation((key: string, value: string) => {
+          if (key === `kampanykorut_turnHistory-${sourceSessionId}`) {
+            throw new DOMException("exceeded the quota", "QuotaExceededError");
+          }
+          mem._map.set(key, value);
+        });
+
+        expect(engine.loadState(sessionWithSource)).toBe(false);
+
+        expect(goSpy).not.toHaveBeenCalled();
+        expect(
+          mem._map.get(`kampanykorut_campaignState-${sourceSessionId}`),
+        ).toBe(sourceStateBefore);
+        expect(
+          mem._map.get(`kampanykorut_turnHistory-${sourceSessionId}`),
+        ).toBe("[]");
+      });
+    });
+  });
+
+  describe("poll projection storage", () => {
+    const pollingOpnions = {
+      candidateListData: [],
+      partyListData: [],
+      percentages: {} as never,
+      selectedPollsterId: "pollster-x",
+      polls: { party_a: 1.5 },
+    };
+
+    it("stores only the poll inputs and keeps the full projection in memory", () => {
+      const { engine, stateHandler } = makeEngine();
+
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 1,
+        isEnded: false,
+        pollingOpnions,
+      });
+
+      const stored = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`)!,
+      );
+      expect(stored.pollingOpnions).toEqual({
+        selectedPollsterId: "pollster-x",
+        polls: { party_a: 1.5 },
+      });
+      expect(stateHandler.get("campaignState")?.pollingOpnions).toEqual(
+        pollingOpnions,
+      );
+    });
+
+    it("stores only the poll inputs in a manual save snapshot", () => {
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c-test",
+        turn: 1,
+        isEnded: false,
+        pollingOpnions,
+      });
+
+      engine.saveToSlot("my-save");
+
+      const [session] = JSON.parse(
+        mem._map.get("kampanykorut_savedSessions")!,
+      ) as SavedCampaignSessionInfo[];
+      const snapshot = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${session.sessionId}`)!,
+      );
+      expect(snapshot.pollingOpnions).toEqual({
+        selectedPollsterId: "pollster-x",
+        polls: { party_a: 1.5 },
+      });
     });
   });
 

@@ -5,6 +5,7 @@ import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
 import {
   type CampaignHeader,
+  StateEngine,
   StorageEngine,
   useGetCampaigns,
   useStateEngine,
@@ -51,8 +52,8 @@ export function CampaignSelectorMenuList({
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
-    saveSession("campaignState", null);
-  }, [saveSession]);
+    container.resolve(StateEngine).startNewSession();
+  }, []);
 
   return (
     <div className="size-full flex items-center justify-center px-2">

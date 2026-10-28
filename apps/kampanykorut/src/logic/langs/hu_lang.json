@@ -32,6 +32,8 @@
   "loadSavedGamesMenu": {
     "emptyLabel": "Nem található mentett játék.",
     "autoSaveLabel": "Automatikus mentés",
+    "turn": "{{turn}}. forduló",
+    "loadFailed": "Ezt a mentett játékot nem sikerült betölteni.",
     "button": {
       "load": "Játék betöltése"
     }
