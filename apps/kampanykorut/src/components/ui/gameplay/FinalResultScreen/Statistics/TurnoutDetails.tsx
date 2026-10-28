@@ -11,7 +11,7 @@ interface TurnoutDetailsProps {
 
 export function TurnoutDetails({ state, config }: TurnoutDetailsProps) {
   return (
-    <div className="flex items-center justify-center gap-2">
+    <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-2">
       <NationalTurnoutPercentage
         turnout={state?.results?.totals.partyListResults["_total"] ?? 0}
         eligibleVoters={config.voterEnvironmentConfig.eligibleVoters}
@@ -37,7 +37,7 @@ function PrevousTurnout({ config, state }: TurnoutDetailsProps) {
 
   return (
     <CommonWrapper>
-      <div className="w-[250px] h-[100px] p-2 text-center">
+      <div className="w-full md:w-[250px] min-h-[100px] p-2 text-center">
         <Text size="sm" weight="light" color="lightBlue">
           {t("endResult.statistics.turnoutDetails.turnoutChange")} (
           {previousTurnout?.year})
@@ -69,7 +69,7 @@ function VotesCast({
 
   return (
     <CommonWrapper>
-      <div className="w-[250px] h-[100px] p-2 text-center">
+      <div className="w-full md:w-[250px] min-h-[100px] p-2 text-center">
         <Text size="sm" weight="light" color="lightBlue">
           {t("endResult.statistics.turnoutDetails.votesCast")}
         </Text>
@@ -100,7 +100,7 @@ function NationalTurnoutPercentage({
 
   return (
     <CommonWrapper>
-      <div className="w-[250px] h-[100px] p-2 text-center">
+      <div className="w-full md:w-[250px] min-h-[100px] p-2 text-center">
         <Text size="sm" weight="light" color="lightBlue">
           {t("endResult.statistics.turnoutDetails.nationalTurnout")}
         </Text>

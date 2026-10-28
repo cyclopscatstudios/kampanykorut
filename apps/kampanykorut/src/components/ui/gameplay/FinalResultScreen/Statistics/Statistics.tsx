@@ -102,7 +102,7 @@ function StatisticsButtonBar({
   completedAchievementCount,
 }: StatisticsButtonBarProps) {
   return (
-    <div className="flex gap-6 mb-4">
+    <div className="flex gap-4 md:gap-6 mb-4 overflow-x-auto pb-3 [&>button]:shrink-0">
       <Button
         selected={currentTab === "overview"}
         variant="subtab"

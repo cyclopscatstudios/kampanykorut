@@ -7,6 +7,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useMediaQuery } from "usehooks-ts";
 import { CampaignConfig, HistoryItem } from "@/shared/types";
 import { CommonWrapper } from "../../../CommonWrapper";
 
@@ -31,6 +32,7 @@ export function SupportChart({
   turnHistory?: HistoryItem[];
   config: CampaignConfig;
 }) {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   if (!turnHistory) {
     return null;
   }
@@ -39,7 +41,7 @@ export function SupportChart({
 
   return (
     <CommonWrapper block>
-      <div className="w-full h-[240px] p-2 flex flex-col">
+      <div className="w-full h-[300px] md:h-[240px] p-2 flex flex-col">
         <div className="mb-4 text-white font-semibold">{label}</div>
         <div className="flex-1 min-h-0">
           <ResponsiveContainer width="100%" height="100%">
@@ -72,7 +74,7 @@ export function SupportChart({
               <Legend
                 verticalAlign="top"
                 align="right"
-                height={28}
+                height={isDesktop ? 28 : 70}
                 iconType="circle"
                 iconSize={8}
                 wrapperStyle={{ fontSize: 12 }}
