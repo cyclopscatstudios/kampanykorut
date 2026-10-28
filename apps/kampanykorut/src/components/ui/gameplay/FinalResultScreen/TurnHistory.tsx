@@ -50,7 +50,7 @@ export function TurnHistory({
           onClick={() => setSelectedHistoryItem(undefined)}
         >
           <Button.Icon name="arrow-left" />
-          <Button.Text>{t("endResult.turnHistory.label")}</Button.Text>
+          <Button.Text>{t("endResult.turnHistory.back")}</Button.Text>
         </Button>
       )}
       {selectedHistoryItem && (

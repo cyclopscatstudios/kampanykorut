@@ -113,6 +113,7 @@
     },
     "turnHistory": {
       "label": "Előzmények",
+      "back": "Vissza az előzményekhez",
       "historyItem": {
         "day": "Nap"
       },

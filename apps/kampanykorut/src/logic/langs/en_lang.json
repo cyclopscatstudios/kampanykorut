@@ -87,7 +87,7 @@
         "rankingTabs": {
           "victories": "Victories",
           "defeats": "Defeats",
-          "close": "Close"
+          "close": "Close races"
         },
         "biggestVictories": "Biggest victories",
         "biggestDefeats": "Biggest defeats",
@@ -113,6 +113,7 @@
     },
     "turnHistory": {
       "label": "Turn history",
+      "back": "Back to turn history",
       "historyItem": {
         "day": "Day"
       },

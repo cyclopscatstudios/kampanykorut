@@ -134,7 +134,7 @@ export function FinalResultScreen() {
                 <button
                   key={screen.id}
                   type="button"
-                  aria-current={activeScreen === screen.id ? "page" : undefined}
+                  aria-current={activeScreen === screen.id ? "true" : undefined}
                   onClick={() => setActiveScreen(screen.id)}
                   className={`flex min-h-14 min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-1 text-[10px] font-semibold leading-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-400 ${activeScreen === screen.id ? "bg-blue-500/15 text-blue-300" : "text-slate-400"}`}
                 >

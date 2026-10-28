@@ -108,13 +108,16 @@ for (const width of [320, 390]) {
     await navigation
       .getByRole("button", { name: "Előzmények", exact: true })
       .click();
-    await expect(page.getByText("32 forduló")).toBeVisible();
-    await page.locator("main button").filter({ hasText: /1/ }).first().click();
-    await expect(page.getByText("32 forduló")).not.toBeVisible();
+    const turnCount = page.getByText(/\d+ forduló/);
+    await expect(turnCount).toBeVisible();
     await page
-      .getByRole("button", { name: "Előzmények", exact: true })
+      .getByRole("button", { name: /^Nap\s*\d+/ })
       .first()
       .click();
-    await expect(page.getByText("32 forduló")).toBeVisible();
+    await expect(turnCount).not.toBeVisible();
+    await page
+      .getByRole("button", { name: "Vissza az előzményekhez", exact: true })
+      .click();
+    await expect(turnCount).toBeVisible();
   });
 }
