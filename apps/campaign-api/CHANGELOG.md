@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/cyclopscatstudios/kampanykorut/compare/campaign-api-v0.3.0...campaign-api-v0.4.0) (2026-10-28)
+
+
+### Features
+
+* add analytics settings and privacy page ([1d9313a](https://github.com/cyclopscatstudios/kampanykorut/commit/1d9313aca68a56e2ad1219bc237d4c4dbd2ea4ad))
+
 ## [0.3.0](https://github.com/cyclopscatstudios/kampanykorut/compare/campaign-api-v0.2.0...campaign-api-v0.3.0) (2026-10-22)
 
 
