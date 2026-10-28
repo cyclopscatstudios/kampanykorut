@@ -30,7 +30,56 @@ for (const width of [320, 390]) {
       .getByRole("button", { name: "Választási térkép", exact: true })
       .click();
     await expect(page.locator("svg path[data-id]").first()).toBeVisible();
-    await page.locator("svg path[data-id]").first().click();
+    // A polygon's bounding-box centre can be inside a neighbouring district.
+    // Find a point whose hit target is the district itself, with room around it.
+    const districtPoint = await page
+      .locator("svg path[data-id]")
+      .evaluateAll((elements) => {
+        const paths = elements
+          .map((element) => ({
+            element,
+            bounds: element.getBoundingClientRect(),
+          }))
+          .sort(
+            (a, b) =>
+              b.bounds.width * b.bounds.height -
+              a.bounds.width * a.bounds.height,
+          );
+        for (const { element, bounds } of paths) {
+          for (let row = 1; row < 10; row++) {
+            for (let column = 1; column < 10; column++) {
+              const x = bounds.left + (bounds.width * column) / 10;
+              const y = bounds.top + (bounds.height * row) / 10;
+              if (
+                [
+                  [0, 0],
+                  [-2, 0],
+                  [2, 0],
+                  [0, -2],
+                  [0, 2],
+                ].every(
+                  ([dx, dy]) =>
+                    document.elementFromPoint(x + dx, y + dy) === element,
+                )
+              ) {
+                return {
+                  id: element.getAttribute("data-id"),
+                  x: x - bounds.left,
+                  y: y - bounds.top,
+                };
+              }
+            }
+          }
+        }
+        return null;
+      });
+    expect(
+      districtPoint,
+      "The map should have a district with a clickable interior",
+    ).not.toBeNull();
+    await page.locator(`svg path[data-id="${districtPoint!.id}"]`).click({
+      position: { x: districtPoint!.x, y: districtPoint!.y },
+    });
     await expect(page.getByRole("dialog")).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(page.getByRole("dialog")).not.toBeVisible();

@@ -42,6 +42,7 @@ export function Icon({
 
   return (
     <i
+      aria-hidden="true"
       className={classNames(
         `bi bi-${name}`,
         iconSizeClass,

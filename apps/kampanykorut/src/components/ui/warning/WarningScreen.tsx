@@ -6,11 +6,13 @@ export function WarningScreen({
   label,
   description,
   children,
+  id,
 }: {
   allowWarning: boolean;
   label: string;
   description: string;
   children?: ReactNode;
+  id?: string;
 }) {
   const [showWarningScreen, setShowWarningScreen] = useState(true);
   return (
@@ -26,6 +28,7 @@ export function WarningScreen({
             onClick={() => setShowWarningScreen(false)}
             className="absolute right-2 top-2 cursor-pointer"
             aria-label="Close development warning"
+            data-testid={id}
           >
             <Icon name="x-circle" size="large" />
           </button>
