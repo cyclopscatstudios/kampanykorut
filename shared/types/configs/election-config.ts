@@ -12,7 +12,6 @@ export interface ElectionDefinition {
 export interface ElectionConfig {
   title: string;
   year: string;
-  // Missing means "parliamentary", so campaigns shipped before this field existed keep working.
   election?: ElectionDefinition;
   listSeats: number;
   allSeats: number;

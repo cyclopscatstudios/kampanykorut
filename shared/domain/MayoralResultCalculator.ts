@@ -14,13 +14,6 @@ export interface MayoralCalculationOptions {
 
 const isAggregateKey = (key: string) => key.startsWith("_");
 
-// Plurality vote for a single city-wide office. Districts are only the unit of
-// the simulation: their raw votes are summed, never their percentages, and no
-// district is "won" in a way that counts towards the result.
-//
-// Votes still recorded for an inactive (e.g. withdrawn) candidate are invalid,
-// as with a crossed-out name on the ballot, so they are reported separately and
-// left out of the valid total.
 @injectable()
 export class MayoralResultCalculator {
   calculate(
