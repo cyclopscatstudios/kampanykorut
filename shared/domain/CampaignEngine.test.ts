@@ -16,12 +16,12 @@ import {
 import { CampaignEngine } from "./CampaignEngine";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
+import { MayoralResultCalculator } from "./MayoralResultCalculator";
 import { campaignState } from "./mocks/mockCampaignState";
 import { mockElectionConfig } from "./mocks/mockElectionConfig";
 import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import { ResultModifier } from "./ResultModifier";
-import { MayoralResultCalculator } from "./MayoralResultCalculator";
 
 let campaignEngine: CampaignEngine;
 

@@ -78,9 +78,7 @@ function createEngine(data = districts) {
     container.resolve(EffectApplier),
     container.resolve(MandateCalculator),
     container.resolve(PollsterEngine),
-    undefined,
-    undefined,
-    new MayoralResultCalculator(),
+    container.resolve(MayoralResultCalculator),
   );
 }
 
@@ -179,6 +177,7 @@ describe("CampaignEngine with a mayoral election", () => {
       container.resolve(EffectApplier),
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
+      container.resolve(MayoralResultCalculator),
       mockPartyListData,
     );
 

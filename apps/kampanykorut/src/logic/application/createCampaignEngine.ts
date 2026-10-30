@@ -81,9 +81,9 @@ export function createCampaignEngine(
     container.resolve(EffectApplier),
     container.resolve(MandateCalculator),
     container.resolve(PollsterEngine),
+    container.resolve(MayoralResultCalculator),
     config.partyListData,
     candidateConfig?.advisorFeedback,
-    container.resolve(MayoralResultCalculator),
   );
 
   return { campaignEngine, configEngine };
