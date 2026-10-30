@@ -4,6 +4,7 @@ import {
   DistrictVoteTransformer,
   EffectApplier,
   MandateCalculator,
+  MayoralResultCalculator,
   ResultModifier,
   UnionSwingTransformer,
   VoterEnvironment,
@@ -73,6 +74,9 @@ container.registerInstance(ResultModifier, resultModifier);
 
 const mandateCalculator = new MandateCalculator();
 container.registerInstance(MandateCalculator, mandateCalculator);
+
+const mayoralResultCalculator = new MayoralResultCalculator();
+container.registerInstance(MayoralResultCalculator, mayoralResultCalculator);
 
 const effectApplier = new EffectApplier(mandateCalculator, districtGroupEngine);
 container.registerInstance(EffectApplier, effectApplier);

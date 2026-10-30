@@ -764,7 +764,6 @@ describe("CampaignEngine poll projection after a turn", () => {
     expect(byPollster).toHaveBeenCalledWith(
       "pollster-x",
       expect.objectContaining({ turn: 1 }),
-      mockElectionConfig,
     );
     expect(aggregate).not.toHaveBeenCalled();
     expect(result.pollingOpnions?.selectedPollsterId).toBe("pollster-x");

@@ -405,16 +405,57 @@ describe("validateCampaign", () => {
       expect(result).toEqual([]);
     });
 
+    const toMayoral = (f: Files) => {
+      const config = electionConfig(f);
+      config.election = { type: "mayoral", resultRule: "plurality" };
+      delete config.listSeats;
+      delete config.allSeats;
+      delete config.thresholdPercent;
+      delete config.partyListVotes;
+      config.parties.push({ id: "candidate_a", name: "A", color: "#111" });
+    };
+
     it("accepts a mayoral election without parliamentary seat fields", () => {
+      expect(validate(toMayoral)).toEqual([]);
+    });
+
+    it("does not require a mayoral side id to be a ballot entry", () => {
       const result = validate((f) => {
+        toMayoral(f);
         const config = electionConfig(f);
-        config.election = { type: "mayoral", resultRule: "plurality" };
-        delete config.listSeats;
-        delete config.allSeats;
-        delete config.thresholdPercent;
-        delete config.partyListVotes;
+        config.parties = config.parties.filter(
+          (p: { id: string }) => p.id !== "party_a",
+        );
+        file(f, "side/effects.json")[0].answers = [
+          {
+            id: "A",
+            effects: [{ type: "uniform-swing", params: { candidate_a: 1 } }],
+          },
+          { id: "B", effects: [] },
+        ];
+        file(f, "side/effects.json")[1].answers[0].effects = [];
+        delete file(f, "side/effects.json")[1].answers[0].conditionalEffects;
+        file(f, "side/strategies.json")[0].rewards[0].effects = [];
+        file(f, "candidates.json").forEach(
+          (row: { partok: Record<string, number> }) => {
+            row.partok = { candidate_a: 1, party_b: 1 };
+          },
+        );
       });
       expect(result).toEqual([]);
+    });
+
+    it("requires every mayoral candidate to be on the ballot", () => {
+      const result = validate((f) => {
+        toMayoral(f);
+        electionConfig(f).parties.pop();
+      });
+      expect(result).toEqual([
+        expect.objectContaining({
+          code: "mayoral-candidate-not-on-ballot",
+          path: "/playableSides/0/mainCandidates",
+        }),
+      ]);
     });
 
     it("still requires seat fields when the type is omitted", () => {
@@ -455,7 +496,8 @@ describe("validateCampaign", () => {
 
     it("rejects an unknown result rule", () => {
       const result = validate((f) => {
-        electionConfig(f).election = { type: "mayoral", resultRule: "runoff" };
+        toMayoral(f);
+        electionConfig(f).election.resultRule = "runoff";
       });
       expect(result).toEqual([
         expect.objectContaining({

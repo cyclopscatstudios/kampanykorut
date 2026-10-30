@@ -1107,12 +1107,28 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
         );
         return;
       }
-      checkParty(ctx, file, `/playableSides/${i}/id`, side.id);
+      if (electionType !== "mayoral") {
+        checkParty(ctx, file, `/playableSides/${i}/id`, side.id);
+      }
       const candidates = new Set(
         Array.isArray(side.mainCandidates)
           ? side.mainCandidates.filter(isObject).map((c) => String(c.id))
           : [],
       );
+      if (electionType === "mayoral") {
+        candidates.forEach((id) => {
+          if (!ctx.parties.has(id)) {
+            report(
+              ctx,
+              "error",
+              "mayoral-candidate-not-on-ballot",
+              file,
+              `/playableSides/${i}/mainCandidates`,
+              `mayoral candidate "${id}" must also be listed in parties`,
+            );
+          }
+        });
+      }
       const playable = Array.isArray(side.playableCandidates)
         ? new Set(side.playableCandidates.map(String))
         : undefined;

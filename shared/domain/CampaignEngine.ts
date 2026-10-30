@@ -21,8 +21,10 @@ import {
   StrategyReward,
 } from "../types";
 import type { EffectApplier } from "./EffectApplier";
+import { getParliamentaryConfig, isMayoralElection } from "./ElectionType";
 import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
+import { MayoralResultCalculator } from "./MayoralResultCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import type { ResultModifier } from "./ResultModifier";
 
@@ -39,6 +41,7 @@ export class CampaignEngine {
     private pollsterEngine: PollsterEngine,
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
+    private readonly mayoralResultCalculator = new MayoralResultCalculator(),
   ) {
     log.debug("CampaignEngine initialized");
   }
@@ -97,7 +100,7 @@ export class CampaignEngine {
       partyListData,
       partyListVotes,
       playerSide: savedState?.playerSide,
-      results: this.mandateCalculator.calculate(
+      ...this.calculateResults(
         candidateListData,
         partyListData,
         electionConfig,
@@ -107,7 +110,7 @@ export class CampaignEngine {
       isBaseResultsAlreadyApplied: true,
     };
 
-    const polls = this.pollsterEngine.getPolls(initialState, electionConfig);
+    const polls = this.pollsterEngine.getPolls(initialState);
 
     return {
       ...initialState,
@@ -128,7 +131,7 @@ export class CampaignEngine {
     electionConfig: ElectionConfig,
     campaignStrategies?: Strategy[],
     districtBoost?: boolean,
-    playerSidePartyId?: string,
+    playerVoteKey?: string,
   ): CampaignState {
     if (state.turn >= this.questions.length) {
       log.info("Game has ended.");
@@ -142,7 +145,7 @@ export class CampaignEngine {
       decision.conditionalEffects,
       decision.selectedDistrict,
       districtBoost,
-      playerSidePartyId,
+      playerVoteKey,
       history,
     );
     const modified = this.resultModifier.apply(state, appliedEffects);
@@ -170,7 +173,7 @@ export class CampaignEngine {
       partyListVotes = strategyResult.partyListVotes;
     }
 
-    const calculated = this.mandateCalculator.calculate(
+    const calculated = this.calculateResults(
       candidateListData,
       partyListData,
       electionConfig,
@@ -194,7 +197,7 @@ export class CampaignEngine {
         history,
         gameSettings,
       ),
-      results: calculated,
+      ...calculated,
       isEnded: nextTurn >= this.questions.length,
     };
 
@@ -224,14 +227,13 @@ export class CampaignEngine {
       const polls = this.pollsterEngine.getPollsByPollsterId(
         pollsterId,
         state,
-        electionConfig,
       )?.differences;
       if (polls && Object.keys(polls).length > 0) {
         return { polls, pollsterId };
       }
     }
     return {
-      polls: this.pollsterEngine.getPolls(state, electionConfig),
+      polls: this.pollsterEngine.getPolls(state),
       pollsterId: pollsterId === undefined ? undefined : AGGREGATE_POLLSTER_ID,
     };
   }
@@ -290,9 +292,9 @@ export class CampaignEngine {
       return undefined;
     }
 
-    const calculated = this.mandateCalculator.calculate(
-      modified?.candidateListData,
-      modified?.partyListData,
+    const { results: calculated } = this.calculateResults(
+      modified.candidateListData,
+      modified.partyListData,
       electionConfig,
       modified.partyListVotes,
     );
@@ -375,6 +377,15 @@ export class CampaignEngine {
     state: CampaignState,
     allSeats?: number,
   ): FinalResults | null {
+    if (state.mayoralResult) {
+      const results = this.assertFinalResults(state.results);
+      if (!results) {
+        log.error("final results not found");
+        return null;
+      }
+      return { ...results, mayoralResult: state.mayoralResult };
+    }
+
     const winnerParty = state.results?.mandates.reduce((max, party) => {
       return party.totalSeats > max.totalSeats ? party : max;
     }, state.results.mandates[0]);
@@ -401,6 +412,50 @@ export class CampaignEngine {
         hasMajority,
         majorityType,
       },
+    };
+  }
+
+  private calculateResults(
+    candidateListData: CandidateListData[] | undefined,
+    partyListData: PartyListData[] | undefined,
+    electionConfig: ElectionConfig | undefined,
+    partyListVotes?: PartyListVotes,
+  ): Pick<CampaignState, "results" | "mayoralResult"> {
+    if (!electionConfig || !isMayoralElection(electionConfig)) {
+      return {
+        results: this.mandateCalculator.calculate(
+          candidateListData,
+          partyListData,
+          getParliamentaryConfig(electionConfig),
+          partyListVotes,
+        ),
+      };
+    }
+    if (!candidateListData) {
+      log.error("Missing candidate data for mayoral calculation");
+      return {};
+    }
+    return {
+      results: this.getVoteOnlyResults(candidateListData),
+      mayoralResult: this.mayoralResultCalculator.calculate(candidateListData),
+    };
+  }
+
+  private getVoteOnlyResults(
+    candidateListData: CandidateListData[],
+  ): CalculateResults {
+    const totals = this.mandateCalculator.sumPartyTotals(candidateListData);
+    return {
+      totals: { candidateListResults: totals, partyListResults: {} },
+      percentages: {
+        candidateListResults:
+          this.mandateCalculator.calculatePercentages(totals),
+        partyListResults: {},
+      },
+      mandates: [],
+      constituencySeats: {},
+      listSeats: {},
+      compensation: { losingVotes: {}, winnerCompensation: {}, total: {} },
     };
   }
 
@@ -542,7 +597,7 @@ export class CampaignEngine {
     partyListData: PartyListData[],
     baseResults: Record<string, number>,
     turn: number,
-    partyListVotes: PartyListVotes,
+    partyListVotes?: PartyListVotes,
   ) {
     const tempState: CampaignState = {
       activeCampaignId: campaignId,
