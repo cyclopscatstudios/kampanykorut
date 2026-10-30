@@ -11,6 +11,7 @@ export * from "./history";
 export * from "./icon";
 export * from "./languages";
 export * from "./mandate";
+export * from "./mayoral-result";
 export * from "./map";
 export * from "./menu.types";
 export * from "./news";

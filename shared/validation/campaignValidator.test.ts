@@ -394,4 +394,85 @@ describe("validateCampaign", () => {
     });
     expect(codes(result)).toEqual(["error:election-config-invalid"]);
   });
+
+  describe("election definition", () => {
+    const electionConfig = (f: Files) => file(f, "election_config.json");
+
+    it("accepts an explicit parliamentary election", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = { type: "parliamentary" };
+      });
+      expect(result).toEqual([]);
+    });
+
+    it("accepts a mayoral election without parliamentary seat fields", () => {
+      const result = validate((f) => {
+        const config = electionConfig(f);
+        config.election = { type: "mayoral", resultRule: "plurality" };
+        delete config.listSeats;
+        delete config.allSeats;
+        delete config.thresholdPercent;
+        delete config.partyListVotes;
+      });
+      expect(result).toEqual([]);
+    });
+
+    it("still requires seat fields when the type is omitted", () => {
+      const result = validate((f) => {
+        delete electionConfig(f).listSeats;
+      });
+      expect(result).toEqual([
+        expect.objectContaining({
+          code: "election-config-invalid",
+          path: "/listSeats",
+        }),
+      ]);
+    });
+
+    it("rejects an unknown election type", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = { type: "presidential" };
+      });
+      expect(result).toEqual([
+        expect.objectContaining({
+          code: "election-config-invalid",
+          path: "/election/type",
+        }),
+      ]);
+    });
+
+    it("rejects an election that is not an object", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = "mayoral";
+      });
+      expect(result).toEqual([
+        expect.objectContaining({
+          code: "election-config-invalid",
+          path: "/election",
+        }),
+      ]);
+    });
+
+    it("rejects an unknown result rule", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = { type: "mayoral", resultRule: "runoff" };
+      });
+      expect(result).toEqual([
+        expect.objectContaining({
+          code: "election-config-invalid",
+          path: "/election/resultRule",
+        }),
+      ]);
+    });
+
+    it("warns when a parliamentary election sets a result rule", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = {
+          type: "parliamentary",
+          resultRule: "plurality",
+        };
+      });
+      expect(codes(result)).toEqual(["warning:result-rule-ignored"]);
+    });
+  });
 });

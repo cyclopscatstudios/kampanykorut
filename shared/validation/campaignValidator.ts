@@ -37,6 +37,10 @@ const EFFECT_TYPES = [
 
 const DISTRICT_MAPS = ["2011", "2024"];
 
+const ELECTION_TYPES = ["parliamentary", "mayoral"];
+
+const RESULT_RULES = ["plurality"];
+
 type Json = Record<string, unknown>;
 
 interface QuestionInfo {
@@ -939,6 +943,62 @@ function checkImageFields(
   }
 }
 
+function checkElectionDefinition(
+  ctx: Context,
+  file: string,
+  election: unknown,
+): string | undefined {
+  if (election === undefined) {
+    return "parliamentary";
+  }
+  if (!isObject(election)) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/election",
+      "election must be an object",
+    );
+    return undefined;
+  }
+  if (!ELECTION_TYPES.includes(String(election.type))) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/election/type",
+      `election type must be one of ${ELECTION_TYPES.join(", ")}`,
+    );
+    return undefined;
+  }
+  if (
+    election.resultRule !== undefined &&
+    !RESULT_RULES.includes(String(election.resultRule))
+  ) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/election/resultRule",
+      `resultRule must be one of ${RESULT_RULES.join(", ")}`,
+    );
+  }
+  if (election.type === "parliamentary" && election.resultRule !== undefined) {
+    report(
+      ctx,
+      "warning",
+      "result-rule-ignored",
+      file,
+      "/election/resultRule",
+      "resultRule only applies to mayoral elections",
+    );
+  }
+  return String(election.type);
+}
+
 function checkElectionConfig(ctx: Context, file: string, data: unknown) {
   if (!isObject(data)) {
     report(
@@ -951,7 +1011,12 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
     );
     return undefined;
   }
-  for (const key of ["listSeats", "allSeats", "thresholdPercent"]) {
+  const electionType = checkElectionDefinition(ctx, file, data.election);
+  const seatKeys =
+    electionType === "parliamentary"
+      ? ["listSeats", "allSeats", "thresholdPercent"]
+      : [];
+  for (const key of seatKeys) {
     if (!isFiniteNumber(data[key]) || (data[key] as number) <= 0) {
       report(
         ctx,

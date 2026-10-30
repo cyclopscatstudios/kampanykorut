@@ -1,8 +1,19 @@
 import { PartyListVotes } from "../campaign";
 
+export type ElectionType = "parliamentary" | "mayoral";
+
+export type ElectionResultRule = "plurality";
+
+export interface ElectionDefinition {
+  type: ElectionType;
+  resultRule?: ElectionResultRule;
+}
+
 export interface ElectionConfig {
   title: string;
   year: string;
+  // Missing means "parliamentary", so campaigns shipped before this field existed keep working.
+  election?: ElectionDefinition;
   listSeats: number;
   allSeats: number;
   thresholdPercent: number;
