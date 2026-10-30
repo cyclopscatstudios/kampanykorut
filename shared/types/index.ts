@@ -12,6 +12,7 @@ export * from "./icon";
 export * from "./languages";
 export * from "./mandate";
 export * from "./map";
+export * from "./mayoral-result";
 export * from "./menu.types";
 export * from "./news";
 export * from "./question";
