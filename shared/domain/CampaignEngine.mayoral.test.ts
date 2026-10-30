@@ -158,6 +158,74 @@ describe("CampaignEngine with a mayoral election", () => {
     expect(next.mayoralResult?.votes).not.toHaveProperty("lmp");
   });
 
+  it("leaves inactive candidates out of the result after a turn", () => {
+    const engine = createEngine();
+    const initial = engine.createInitialState("budapest", null, mayoralConfig);
+    const withWithdrawal = {
+      ...initial,
+      candidates: {
+        vitezy: {
+          status: "inactive" as const,
+          inactiveReason: "withdrawal" as const,
+        },
+      },
+    };
+
+    const next = engine.processTurn(
+      withWithdrawal,
+      {
+        questionId: "q1",
+        answerId: "A",
+        effects: [{ type: EffectType.UniformSwing, params: { karacsony: 0 } }],
+      },
+      [],
+      settings,
+      mayoralConfig,
+    );
+
+    expect(next.mayoralResult?.outcome).toEqual({
+      kind: "winner",
+      candidateId: "karacsony",
+    });
+    expect(next.mayoralResult?.withdrawn.map((w) => w.candidateId)).toEqual([
+      "vitezy",
+    ]);
+    expect(next.candidates).toEqual(withWithdrawal.candidates);
+  });
+
+  it("stamps a new game with the campaign config version", () => {
+    const state = createEngine().createInitialState(
+      "budapest",
+      null,
+      mayoralConfig,
+      "lmp",
+      "1.0.0",
+    );
+
+    expect(state.campaignConfigVersion).toBe("1.0.0");
+  });
+
+  it("keeps the saved config version when resuming with a newer config", () => {
+    const engine = createEngine();
+    const saved = engine.createInitialState(
+      "budapest",
+      null,
+      mayoralConfig,
+      "lmp",
+      "1.0.0",
+    );
+
+    const resumed = engine.createInitialState(
+      "budapest",
+      saved,
+      mayoralConfig,
+      "lmp",
+      "1.1.0",
+    );
+
+    expect(resumed.campaignConfigVersion).toBe("1.0.0");
+  });
+
   it("returns the mayoral result as the final result", () => {
     const engine = createEngine();
     const state = engine.createInitialState("budapest", null, mayoralConfig);

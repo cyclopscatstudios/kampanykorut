@@ -22,6 +22,7 @@ export interface CandidateConfig {
 export type PlayableSideConfig = Record<string, CandidateConfig>;
 
 export interface CampaignConfig {
+  version?: string;
   electionConfig: ElectionConfig;
   voterEnvironmentConfig: VoterEnvironmentConfig;
   candidateListData: CandidateListData[];

@@ -20,6 +20,7 @@ import {
   Strategy,
   StrategyReward,
 } from "../types";
+import { getInactiveCandidateIds } from "./CampaignStateAccess";
 import type { EffectApplier } from "./EffectApplier";
 import { getParliamentaryConfig, isMayoralElection } from "./ElectionType";
 import { getMajorityType } from "./Majority";
@@ -51,6 +52,7 @@ export class CampaignEngine {
     savedState: CampaignState | null,
     electionConfig?: ElectionConfig,
     palyerSideId?: string,
+    campaignConfigVersion?: string,
   ): CampaignState {
     if (
       savedState &&
@@ -58,6 +60,7 @@ export class CampaignEngine {
       savedState.activeCampaignId === campaignId
     ) {
       log.info("initial state created from saved data");
+      this.warnOnConfigVersionChange(savedState, campaignConfigVersion);
       return this.restorePollingOpinions(savedState, electionConfig);
     }
 
@@ -108,6 +111,7 @@ export class CampaignEngine {
       ),
       isEnded: false,
       isBaseResultsAlreadyApplied: true,
+      ...(campaignConfigVersion && { campaignConfigVersion }),
     };
 
     const polls = this.pollsterEngine.getPolls(initialState);
@@ -178,6 +182,7 @@ export class CampaignEngine {
       partyListData,
       electionConfig,
       partyListVotes,
+      getInactiveCandidateIds(state),
     );
 
     const session = {
@@ -415,11 +420,26 @@ export class CampaignEngine {
     };
   }
 
+  private warnOnConfigVersionChange(
+    savedState: CampaignState,
+    currentVersion?: string,
+  ) {
+    const savedVersion = savedState.campaignConfigVersion;
+    if (savedVersion && currentVersion && savedVersion !== currentVersion) {
+      log.warn("Campaign config changed since this game was started", {
+        campaignId: savedState.activeCampaignId,
+        savedVersion,
+        currentVersion,
+      });
+    }
+  }
+
   private calculateResults(
     candidateListData: CandidateListData[] | undefined,
     partyListData: PartyListData[] | undefined,
     electionConfig: ElectionConfig | undefined,
     partyListVotes?: PartyListVotes,
+    inactiveCandidateIds: string[] = [],
   ): Pick<CampaignState, "results" | "mayoralResult"> {
     if (!electionConfig || !isMayoralElection(electionConfig)) {
       return {
@@ -437,7 +457,9 @@ export class CampaignEngine {
     }
     return {
       results: this.getVoteOnlyResults(candidateListData),
-      mayoralResult: this.mayoralResultCalculator.calculate(candidateListData),
+      mayoralResult: this.mayoralResultCalculator.calculate(candidateListData, {
+        inactiveCandidateIds,
+      }),
     };
   }
 
