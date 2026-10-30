@@ -39,9 +39,9 @@ export class CampaignEngine {
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
     private pollsterEngine: PollsterEngine,
+    private mayoralResultCalculator: MayoralResultCalculator,
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
-    private readonly mayoralResultCalculator = new MayoralResultCalculator(),
   ) {
     log.debug("CampaignEngine initialized");
   }
