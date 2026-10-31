@@ -1,4 +1,5 @@
 export * from "./CampaignEngine";
+export * from "./CampaignStateAccess";
 export * from "./DistrictGroupEngine";
 export * from "./EffectApplier";
 export * from "./ElectionType";

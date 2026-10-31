@@ -176,6 +176,7 @@ async function fetchCampaignConfig(
 
   return {
     ...commonData,
+    version: manifest.metadata?.version,
     districts,
     voterEnvironmentConfig: {
       ...commonData.voterEnvironmentConfig,

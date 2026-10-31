@@ -30,7 +30,7 @@ export function Statistics({
   const stateEngine = container.resolve(StateEngine);
   const configEngine = container.resolve(ConfigEngine);
   const state = stateEngine.getCampaignState();
-  const turnHistory = stateEngine.getTurnHistory();
+  const turnHistory = stateEngine.getTurnHistory() ?? [];
   const history = stateEngine.getHistory();
   const [currentTab, setCurrentTab] = useState<StatisticsTab>("overview");
   const playerSide = state?.playerSide?.partyId ?? "";

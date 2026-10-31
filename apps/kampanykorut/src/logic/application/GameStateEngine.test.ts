@@ -88,6 +88,85 @@ describe("StateEngine", () => {
 
       expect(engine.getHistory()).toEqual(items);
     });
+
+    it("drops history entries that are ahead of the committed campaign state", () => {
+      const { engine } = makeEngine();
+      const items = [
+        { questionId: "q1", answerId: "a1" },
+        { questionId: "q2", answerId: "a2" },
+        { questionId: "q3", answerId: "a3" },
+      ];
+      mem._map.set(
+        `kampanykorut_turnHistory-${FIXED_SESSION_ID}`,
+        JSON.stringify(items),
+      );
+      mem._map.set(
+        `kampanykorut_campaignState-${FIXED_SESSION_ID}`,
+        JSON.stringify({ activeCampaignId: "c", turn: 2, isEnded: false }),
+      );
+
+      expect(engine.getHistory()).toEqual(items.slice(0, 2));
+      expect(engine.getTurnHistory()).toEqual(items.slice(0, 2));
+    });
+
+    it("keeps history that matches the committed campaign state", () => {
+      const { engine } = makeEngine();
+      const items = [{ questionId: "q1", answerId: "a1" }];
+      mem._map.set(
+        `kampanykorut_turnHistory-${FIXED_SESSION_ID}`,
+        JSON.stringify(items),
+      );
+      mem._map.set(
+        `kampanykorut_campaignState-${FIXED_SESSION_ID}`,
+        JSON.stringify({ activeCampaignId: "c", turn: 1, isEnded: false }),
+      );
+
+      expect(engine.getHistory()).toEqual(items);
+    });
+  });
+
+  describe("campaign state extensions", () => {
+    const extended = {
+      activeCampaignId: "budapest_2024",
+      turn: 27,
+      isEnded: false,
+      campaignConfigVersion: "1.0.0",
+      candidates: {
+        szentkiralyi: {
+          status: "inactive",
+          inactiveReason: "withdrawal",
+          endorsedCandidateId: "vitezy",
+          changedAtTurn: 26,
+        },
+      },
+      campaignEvents: {
+        triggeredEventIds: ["szentkiralyi_withdrawal"],
+        pendingAnnouncementIds: [],
+      },
+    };
+
+    it("survives a manual save and load unchanged", () => {
+      window.history.pushState({}, "", "/load-game");
+      const navigation = new Navigation();
+      vi.spyOn(navigation, "go").mockImplementation(() => {});
+      const { engine } = makeEngine(navigation);
+      window.history.pushState({}, "", "/game/x?sessionId=" + FIXED_SESSION_ID);
+      mem._map.set(
+        `kampanykorut_campaignState-${FIXED_SESSION_ID}`,
+        JSON.stringify(extended),
+      );
+
+      engine.saveToSlot("withdrawal");
+      const [slot] = engine.getSavedGameSessions();
+      window.history.pushState({}, "", "/load-game");
+      expect(engine.loadState(slot)).toBe(true);
+
+      const loaded = JSON.parse(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`) ??
+          "null",
+      );
+      expect(loaded).toEqual(extended);
+    });
   });
 
   describe("getSavedGameSessions", () => {

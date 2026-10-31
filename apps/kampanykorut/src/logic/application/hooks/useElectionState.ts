@@ -52,6 +52,7 @@ export function useElectionState(campaignId: string) {
         currentState,
         config.electionConfig,
         playerSideId,
+        config.version,
       );
     } catch (error) {
       track("campaign_load_failed", {

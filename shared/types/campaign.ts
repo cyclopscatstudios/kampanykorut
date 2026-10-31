@@ -17,11 +17,33 @@ export interface CampaignState {
   partyListVotes?: PartyListVotes;
   results?: CalculateResults;
   mayoralResult?: MayoralResult;
+  candidates?: Record<string, CandidateCampaignState>;
+  campaignEvents?: CampaignEventState;
+  campaignConfigVersion?: string;
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;
   pollingOpnions?: PollingOpnions;
   campaignView?: CampaignView;
   isBaseResultsAlreadyApplied: boolean;
+}
+
+export type CandidateStatus = "active" | "inactive";
+
+export type CandidateInactiveReason =
+  | "withdrawal"
+  | "disqualification"
+  | "other";
+
+export interface CandidateCampaignState {
+  status: CandidateStatus;
+  inactiveReason?: CandidateInactiveReason;
+  endorsedCandidateId?: string;
+  changedAtTurn?: number;
+}
+
+export interface CampaignEventState {
+  triggeredEventIds: string[];
+  pendingAnnouncementIds: string[];
 }
 
 export type CurrentView = "MapView" | "QuestionView" | "VoteCountingView";
