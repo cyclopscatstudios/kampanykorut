@@ -8,6 +8,7 @@ import {
   CampaignState,
   CandidateListData,
   ConditionalAnswer,
+  ConditionContext,
   Decision,
   EffectType,
   ElectionConfig,
@@ -24,11 +25,12 @@ import {
   StrategyReward,
   WithdrawCandidateEffect,
 } from "../types";
-import { CampaignEventEngine } from "./CampaignEventEngine";
+import type { CampaignEventEngine } from "./CampaignEventEngine";
 import {
   getCandidateStatus,
   getInactiveCandidateIds,
 } from "./CampaignStateAccess";
+import { createConditionContext } from "./ConditionContext";
 import type { EffectApplier } from "./EffectApplier";
 import { getParliamentaryConfig, isMayoralElection } from "./ElectionType";
 import {
@@ -39,8 +41,12 @@ import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
+import {
+  countEligibleQuestions,
+  findNextQuestionIndex,
+} from "./QuestionEligibility";
 import type { ResultModifier } from "./ResultModifier";
-import { redistributeWithdrawnVotes } from "./ResultTransformer/CandidateWithdrawalTransformer";
+import type { CandidateWithdrawalTransformer } from "./ResultTransformer/CandidateWithdrawalTransformer";
 
 const log = createLogger("CampaignEngine");
 
@@ -55,6 +61,7 @@ export class CampaignEngine {
     private pollsterEngine: PollsterEngine,
     private mayoralResultCalculator: MayoralResultCalculator,
     private eventEngine: CampaignEventEngine,
+    private withdrawalTransformer: CandidateWithdrawalTransformer,
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
     private readonly campaignEvents?: CampaignEvent[],
@@ -109,11 +116,9 @@ export class CampaignEngine {
       partyListVotes = baseApplied.partyListVotes;
     }
 
-    const initialState = {
+    const startState = {
       activeCampaignId: campaignId,
       turn: 0,
-      currentQuestion: this.questions[0],
-      answerEffects: this.getAnswerEffects(this.answers, this.questions[0]),
       candidateListData,
       partyListData,
       partyListVotes,
@@ -127,6 +132,19 @@ export class CampaignEngine {
       isEnded: false,
       isBaseResultsAlreadyApplied: true,
       ...(campaignConfigVersion && { campaignConfigVersion }),
+    };
+    const position = this.getQuestionPosition(
+      startState,
+      [],
+      electionConfig,
+      0,
+    );
+    const initialState = {
+      ...startState,
+      currentQuestion: position.currentQuestion,
+      answerEffects: position.answerEffects,
+      questionCursor: position.questionCursor,
+      decisionCount: position.decisionCount,
     };
 
     const polls = this.pollsterEngine.getPolls(initialState);
@@ -152,7 +170,7 @@ export class CampaignEngine {
     districtBoost?: boolean,
     playerVoteKey?: string,
   ): CampaignState {
-    if (state.turn >= this.questions.length) {
+    if (state.isEnded || state.turn >= this.questions.length) {
       log.info("Game has ended.");
       return state;
     }
@@ -174,27 +192,11 @@ export class CampaignEngine {
     const modified = this.resultModifier.apply(state, appliedEffects);
 
     const nextTurn = state.turn + 1;
-    let candidateListData = this.resultModifier.filterUnwantedValues(
+    const candidateListData = this.resultModifier.filterUnwantedValues(
       modified?.candidateListData,
     );
-
-    let partyListData = modified?.partyListData;
-    let partyListVotes = modified?.partyListVotes;
-
-    if (!this.questions[nextTurn] && campaignStrategies) {
-      log.info("apply campaign strategy");
-      const strategyResult = this.applyStrategy(
-        campaignStrategies,
-        history,
-        state,
-        candidateListData ?? state.candidateListData ?? [],
-        partyListData ?? state.partyListData ?? [],
-        partyListVotes ?? state.partyListVotes,
-      );
-      candidateListData = strategyResult.candidateListData;
-      partyListData = strategyResult.partyListData;
-      partyListVotes = strategyResult.partyListVotes;
-    }
+    const partyListData = modified?.partyListData;
+    const partyListVotes = modified?.partyListVotes;
 
     const calculated = this.calculateResults(
       candidateListData,
@@ -207,11 +209,6 @@ export class CampaignEngine {
     const answered = {
       ...state,
       turn: nextTurn,
-      currentQuestion: this.questions[nextTurn],
-      answerEffects: this.getAnswerEffects(
-        this.answers,
-        this.questions[nextTurn],
-      ),
       candidateListData: candidateListData ?? state.candidateListData,
       partyListData: partyListData ?? state.partyListData,
       partyListVotes: partyListVotes ?? state.partyListVotes,
@@ -222,20 +219,39 @@ export class CampaignEngine {
         gameSettings,
       ),
       ...calculated,
-      isEnded: nextTurn >= this.questions.length,
     };
+    const answers = [
+      ...history,
+      { questionId: decision.questionId, answerId: decision.answerId },
+    ];
 
-    const session = this.eventEngine.run(
+    const afterEvents = this.eventEngine.run(
       this.campaignEvents ?? [],
       answered,
-      [
-        ...history,
-        { questionId: decision.questionId, answerId: decision.answerId },
-      ],
+      answers,
       electionConfig,
       (current, effects) =>
         this.applyEventEffects(current, effects, electionConfig),
     );
+
+    const position = this.getQuestionPosition(
+      afterEvents,
+      answers,
+      electionConfig,
+      this.getQuestionCursor(state) + 1,
+    );
+    const session = {
+      ...(position.isEnded && campaignStrategies
+        ? this.applyFinalStrategies(
+            afterEvents,
+            state,
+            history,
+            campaignStrategies,
+            electionConfig,
+          )
+        : afterEvents),
+      ...position,
+    };
 
     const { polls, pollsterId } = this.getPollsForPollster(
       session,
@@ -251,6 +267,84 @@ export class CampaignEngine {
         polls,
         pollsterId,
       ),
+    };
+  }
+
+  private applyFinalStrategies(
+    current: CampaignState,
+    previous: CampaignState,
+    history: HistoryItem[],
+    campaignStrategies: Strategy[],
+    electionConfig: ElectionConfig,
+  ): CampaignState {
+    log.info("apply campaign strategy");
+    const strategyResult = this.applyStrategy(
+      campaignStrategies,
+      history,
+      previous,
+      current.candidateListData ?? [],
+      current.partyListData ?? [],
+      current.partyListVotes,
+    );
+    return {
+      ...current,
+      ...strategyResult,
+      ...this.calculateResults(
+        strategyResult.candidateListData,
+        strategyResult.partyListData,
+        electionConfig,
+        strategyResult.partyListVotes,
+        getInactiveCandidateIds(current),
+      ),
+    };
+  }
+
+  private getQuestionCursor(state: CampaignState) {
+    if (state.questionCursor !== undefined) {
+      return state.questionCursor;
+    }
+    const index = this.questions.findIndex(
+      (q) => q.id === state.currentQuestion?.id,
+    );
+    return index >= 0 ? index : state.turn;
+  }
+
+  private getQuestionPosition(
+    state: CampaignState,
+    answers: Pick<HistoryItem, "questionId" | "answerId">[],
+    electionConfig: ElectionConfig | undefined,
+    fromIndex: number,
+  ): Pick<
+    CampaignState,
+    | "currentQuestion"
+    | "answerEffects"
+    | "questionCursor"
+    | "decisionCount"
+    | "isEnded"
+  > {
+    let context: ConditionContext | undefined;
+    const getContext = () => {
+      if (!electionConfig) {
+        throw new Error("conditional questions need an election config");
+      }
+      context ??= createConditionContext(state, answers, electionConfig);
+      return context;
+    };
+
+    const index = findNextQuestionIndex(this.questions, fromIndex, getContext);
+    const currentQuestion =
+      index === undefined ? undefined : this.questions[index];
+
+    return {
+      currentQuestion,
+      answerEffects: this.getAnswerEffects(this.answers, currentQuestion),
+      questionCursor: index ?? this.questions.length,
+      decisionCount:
+        state.turn +
+        (index === undefined
+          ? 0
+          : countEligibleQuestions(this.questions, index, getContext)),
+      isEnded: index === undefined,
     };
   }
 
@@ -565,7 +659,7 @@ export class CampaignEngine {
 
     return {
       ...state,
-      candidateListData: redistributeWithdrawnVotes(
+      candidateListData: this.withdrawalTransformer.redistribute(
         state.candidateListData ?? [],
         candidateId,
         redistribution,

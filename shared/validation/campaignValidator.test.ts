@@ -720,4 +720,140 @@ describe("validateCampaign", () => {
       expect(codes(result)).toEqual(["error:effect-type-unknown"]);
     });
   });
+
+  describe("conditional questions", () => {
+    const questionsFile = (f: Files) => file(f, "side/questions.json");
+    const mayoral = (f: Files) => {
+      const config = file(f, "election_config.json");
+      config.election = { type: "mayoral" };
+      config.parties.push({ id: "candidate_a", name: "A", color: "#111" });
+    };
+    const branch = (id: string, status: "active" | "inactive") => ({
+      id,
+      question: "?",
+      possibleAnswers: [{ id: "A", label: "a" }],
+      visibleIf: {
+        type: "candidate-status",
+        candidateId: "party_b",
+        status,
+      },
+    });
+    const issues = (mutate: (f: Files) => void) =>
+      validate(mutate).map((d) => `${d.severity}:${d.code}@${d.path}`);
+    const addQuestions = (
+      f: Files,
+      ...added: (Record<string, unknown> & { id: string })[]
+    ) => {
+      questionsFile(f).push(...added);
+      effects(f).push(
+        ...added.map(({ id }) => ({
+          id,
+          answers: [
+            {
+              id: "A",
+              effects: [{ type: "uniform-swing", params: { party_a: 1 } }],
+            },
+          ],
+        })),
+      );
+    };
+
+    it("accepts a balanced branch", () => {
+      expect(
+        issues((f) => {
+          mayoral(f);
+          addQuestions(
+            f,
+            branch("q3", "active"),
+            branch("q3_after", "inactive"),
+          );
+        }),
+      ).toEqual([]);
+    });
+
+    it("warns when a branch does not replace every skipped question", () => {
+      const result = validate((f) => {
+        mayoral(f);
+        addQuestions(
+          f,
+          branch("q3", "active"),
+          branch("q4", "active"),
+          branch("q3_after", "inactive"),
+        );
+      });
+
+      expect(result).toEqual([
+        expect.objectContaining({
+          severity: "warning",
+          code: "question-count-differs",
+          file: "side/questions.json",
+        }),
+      ]);
+      expect(result[0].message).toContain(
+        "4 (all active), 3 (party_b inactive)",
+      );
+    });
+
+    it("skips the count check when branches depend on answers", () => {
+      expect(
+        issues((f) => {
+          mayoral(f);
+          addQuestions(f, branch("q3", "active"), {
+            ...branch("q4", "inactive"),
+            visibleIf: {
+              type: "answer-selected",
+              questionId: "q1",
+              answerId: "A",
+            },
+          });
+        }),
+      ).toEqual([]);
+    });
+
+    it("reports invalid references in visibleIf", () => {
+      expect(
+        issues((f) => {
+          questionsFile(f)[1].visibleIf = {
+            or: [
+              { type: "answer-selected", questionId: "q9", answerId: "A" },
+              { type: "event-triggered", eventId: "missing" },
+            ],
+          };
+        }),
+      ).toEqual([
+        "error:unknown-question@/1/visibleIf/or/0/questionId",
+        "error:unknown-event@/1/visibleIf/or/1/eventId",
+      ]);
+    });
+
+    it("accepts events declared in the campaign events file", () => {
+      expect(
+        issues((f) => {
+          file(f, "manifest.json").files.campaignEvents = "events.json";
+          f["events.json"] = [
+            {
+              id: "withdrawal",
+              conditions: [{ if: { type: "turn", min: 1 }, effects: [] }],
+            },
+          ];
+          questionsFile(f)[1].visibleIf = {
+            type: "event-triggered",
+            eventId: "withdrawal",
+          };
+        }),
+      ).toEqual([]);
+    });
+
+    it("validates requires and blocks", () => {
+      expect(
+        issues((f) => {
+          questionsFile(f)[1].requires = [{ questionId: "q1", answerId: "Z" }];
+          questionsFile(f)[0].blocks = [{ questionId: "q2", answerId: "A" }];
+        }),
+      ).toEqual([
+        "warning:condition-not-yet-answered@/0/blocks/0",
+        "error:unknown-answer@/1/requires/0/answerId",
+      ]);
+    });
+  });
 });

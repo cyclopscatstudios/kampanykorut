@@ -1,4 +1,7 @@
+import { evaluateCondition } from "../domain/ConditionEvaluator";
 import { defaultGroups } from "../domain/DefaultGroups";
+import { getQuestionCondition } from "../domain/QuestionEligibility";
+import { CandidateStatus, Condition, RawQuestion } from "../types";
 import { validateCondition } from "./conditionValidator";
 
 export type Severity = "error" | "warning";
@@ -60,6 +63,7 @@ interface Context {
   districts: Set<string>;
   electionType?: string;
   playableCandidates: Set<string>;
+  eventIds: Set<string>;
 }
 
 const isObject = (value: unknown): value is Json =>
@@ -573,7 +577,137 @@ function checkQuestions(ctx: Context, file: string, data: unknown) {
     }
     questions.set(question.id, { index, answers });
   });
+  checkQuestionConditions(ctx, file, data, questions);
   return questions;
+}
+
+function checkQuestionConditions(
+  ctx: Context,
+  file: string,
+  data: unknown[],
+  questions: Map<string, QuestionInfo>,
+) {
+  const refs = {
+    questions: new Map(
+      [...questions].map(([id, info]) => [id, info.answers] as const),
+    ),
+    candidateIds: ctx.parties,
+    eventIds: ctx.eventIds,
+  };
+  let valid = true;
+  data.forEach((question, index) => {
+    if (!isObject(question)) {
+      return;
+    }
+    if (question.visibleIf !== undefined) {
+      const issues = validateCondition(
+        question.visibleIf,
+        refs,
+        `/${index}/visibleIf`,
+      );
+      issues.forEach((issue) =>
+        report(ctx, "error", issue.code, file, issue.path, issue.message),
+      );
+      valid &&= issues.length === 0;
+    }
+    for (const key of ["requires", "blocks"] as const) {
+      if (question[key] !== undefined) {
+        const before = ctx.diagnostics.length;
+        checkAnswerConditions(
+          ctx,
+          questions,
+          file,
+          `/${index}/${key}`,
+          question[key],
+          index,
+        );
+        valid &&= ctx.diagnostics.length === before;
+      }
+    }
+  });
+  if (valid) {
+    checkQuestionCountBalance(ctx, file, data as RawQuestion[]);
+  }
+}
+
+function collectStatusCandidates(
+  condition: Condition,
+  candidates: Set<string>,
+): boolean {
+  if ("and" in condition || "or" in condition) {
+    const children = "and" in condition ? condition.and : condition.or;
+    return children.every((child) =>
+      collectStatusCandidates(child, candidates),
+    );
+  }
+  if ("not" in condition) {
+    return collectStatusCandidates(condition.not, candidates);
+  }
+  if (condition.type === "candidate-status") {
+    candidates.add(condition.candidateId);
+    return true;
+  }
+  return false;
+}
+
+const MAX_BALANCE_CANDIDATES = 8;
+
+function checkQuestionCountBalance(
+  ctx: Context,
+  file: string,
+  questions: RawQuestion[],
+) {
+  const conditions = questions.map(getQuestionCondition);
+  const candidates = new Set<string>();
+  const verifiable = conditions.every(
+    (condition) => !condition || collectStatusCandidates(condition, candidates),
+  );
+  if (
+    !verifiable ||
+    candidates.size === 0 ||
+    candidates.size > MAX_BALANCE_CANDIDATES
+  ) {
+    return;
+  }
+
+  const ids = [...candidates].sort();
+  const counts = new Map<number, string>();
+  for (let mask = 0; mask < 1 << ids.length; mask++) {
+    const inactive = ids.filter((_, i) => mask & (1 << i));
+    const status = (id: string): CandidateStatus =>
+      inactive.includes(id) ? "inactive" : "active";
+    const context = {
+      turn: 0,
+      answers: [],
+      getSupport: () => undefined,
+      getCandidateStatus: status,
+      triggeredEventIds: [],
+    };
+    const visible = conditions.filter(
+      (condition) => !condition || evaluateCondition(condition, context),
+    ).length;
+    if (!counts.has(visible)) {
+      counts.set(
+        visible,
+        inactive.length ? `${inactive.join(", ")} inactive` : "all active",
+      );
+    }
+  }
+
+  if (counts.size > 1) {
+    const summary = [...counts]
+      .sort(([a], [b]) => b - a)
+      .map(([count, label]) => `${count} (${label})`)
+      .join(", ");
+    report(
+      ctx,
+      "warning",
+      "question-count-differs",
+      file,
+      "",
+      `the number of shown questions depends on candidate status: ${summary}; every branch must replace exactly the questions it skips`,
+    );
+  }
 }
 
 function checkAnswerEffects(
@@ -1627,6 +1761,7 @@ export function validateCampaign(
     groups: new Set(defaultGroups.map((g) => g.id)),
     districts: new Set(),
     playableCandidates: new Set(),
+    eventIds: new Set(),
   };
 
   for (const banner of ["campaignBanner", "thinCampaignBanner"] as const) {
@@ -1722,6 +1857,23 @@ export function validateCampaign(
     );
   }
 
+  const eventsData =
+    files.campaignEvents === undefined
+      ? undefined
+      : readFile(
+          ctx,
+          files.campaignEvents,
+          "manifest.json",
+          "/files/campaignEvents",
+        );
+  if (Array.isArray(eventsData)) {
+    eventsData.filter(isObject).forEach((event) => {
+      if (typeof event.id === "string") {
+        ctx.eventIds.add(event.id);
+      }
+    });
+  }
+
   const allQuestions = new Map<string, Set<string>>();
   if (isObject(files.playableSides)) {
     checkPlayableSides(
@@ -1737,12 +1889,7 @@ export function validateCampaign(
     checkCampaignEvents(
       ctx,
       String(files.campaignEvents),
-      readFile(
-        ctx,
-        files.campaignEvents,
-        "manifest.json",
-        "/files/campaignEvents",
-      ),
+      eventsData,
       allQuestions,
     );
   }
