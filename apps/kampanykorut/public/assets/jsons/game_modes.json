@@ -31,5 +31,16 @@
     "campaignBanner": "default-banner.png",
     "thinCampaignBanner": "default-banner-thin.png",
     "isPublished": false
+  },
+  {
+    "id": "0002_test_mayoral",
+    "label": "0002: Budapest 2024 teszt (mock)",
+    "description": "Fővárosi főpolgármester-választási tesztkampány mock adatokkal: 23 kerület, 4 döntés, feltételes visszalépés.",
+    "year": 2024,
+    "route": "_0002_",
+    "tags": ["test"],
+    "campaignBanner": "default-banner.png",
+    "thinCampaignBanner": "default-banner-thin.png",
+    "isPublished": false
   }
 ]
