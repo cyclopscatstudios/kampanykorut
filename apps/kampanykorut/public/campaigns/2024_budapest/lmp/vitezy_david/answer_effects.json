@@ -1,0 +1,58 @@
+[
+  {
+    "id": "bp2024_placeholder_q1",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.3,
+              "karacsony_gergely": -0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bp2024_placeholder_q2",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": -0.3
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

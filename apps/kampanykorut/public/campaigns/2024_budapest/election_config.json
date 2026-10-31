@@ -1,0 +1,48 @@
+{
+  "title": "Budapest 2024 – főpolgármester-választás",
+  "year": "2024",
+  "election": {
+    "type": "mayoral",
+    "resultRule": "plurality"
+  },
+  "districtMap": "budapest-districts",
+  "districtBoost": true,
+  "parties": [
+    {
+      "id": "karacsony_gergely",
+      "name": "Karácsony Gergely",
+      "color": "#2f6fd6"
+    },
+    {
+      "id": "vitezy_david",
+      "name": "Vitézy Dávid",
+      "color": "#3fae5a"
+    },
+    {
+      "id": "szentkiralyi_alexandra",
+      "name": "Szentkirályi Alexandra",
+      "color": "#f28c28"
+    },
+    {
+      "id": "grundtner_andras",
+      "name": "Grundtner András",
+      "color": "#6b6b6b"
+    }
+  ],
+  "playableSides": [
+    {
+      "id": "lmp",
+      "label": "LMP – Podmaniczky Mozgalom",
+      "description": "Független főpolgármester-jelölt az LMP és a Podmaniczky Mozgalom támogatásával.",
+      "mainCandidates": [
+        {
+          "id": "vitezy_david",
+          "label": "Vitézy Dávid",
+          "description": "Közlekedési szakember, a BKK volt vezérigazgatója."
+        }
+      ],
+      "playableCandidates": ["vitezy_david"]
+    }
+  ],
+  "electionAssets": []
+}
