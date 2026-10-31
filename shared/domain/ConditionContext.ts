@@ -20,6 +20,24 @@ export function createConditionContext(
     ? state.mayoralResult?.percentages
     : state.results?.percentages.candidateListResults;
 
+  const standings = shares
+    ? [...ballotIds]
+        .filter((id) => getCandidateStatus(state, id) === "active")
+        .map((candidateId) => ({
+          candidateId,
+          share: shares[candidateId] ?? 0,
+        }))
+        .sort(
+          (a, b) =>
+            b.share - a.share ||
+            (a.candidateId < b.candidateId
+              ? -1
+              : a.candidateId > b.candidateId
+                ? 1
+                : 0),
+        )
+    : undefined;
+
   return {
     turn: state.turn,
     answers,
@@ -27,6 +45,7 @@ export function createConditionContext(
       shares && ballotIds.has(candidateId)
         ? (shares[candidateId] ?? 0)
         : undefined,
+    getStandings: () => standings,
     getCandidateStatus: (candidateId) => getCandidateStatus(state, candidateId),
     triggeredEventIds: getCampaignEventState(state).triggeredEventIds,
   };

@@ -50,8 +50,9 @@ recount. It only shapes the geography; the real result is not the starting state
 ## Szentkirályi's withdrawal
 
 `campaign_events.json` decides after the 26th decision (7 June in the story): she
-withdraws if her city-wide share of the decided vote is below 15%, otherwise she
-stays in the race. She starts at 25%. Decisions 27–31 have a version for each
+withdraws if she is third or lower and at least 3 points behind the candidate one
+place ahead (`candidate-rank`), otherwise she stays in the race. She starts third,
+2.4 points behind Vitézy. Decisions 27–31 have a version for each
 outcome, selected with `visibleIf` on her candidate status.
 
 The transfer (Vitézy 85%, Grundtner 5%, Karácsony 3%, abstain 7%) is a design

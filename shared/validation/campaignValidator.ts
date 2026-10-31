@@ -680,6 +680,7 @@ function checkQuestionCountBalance(
       turn: 0,
       answers: [],
       getSupport: () => undefined,
+      getStandings: () => undefined,
       getCandidateStatus: status,
       triggeredEventIds: [],
     };

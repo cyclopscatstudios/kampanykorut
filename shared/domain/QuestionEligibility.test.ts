@@ -25,6 +25,7 @@ const context = (
     turn: 0,
     answers,
     getSupport: () => undefined,
+    getStandings: () => undefined,
     getCandidateStatus: (id) => (inactive.includes(id) ? "inactive" : "active"),
     triggeredEventIds: [],
   });

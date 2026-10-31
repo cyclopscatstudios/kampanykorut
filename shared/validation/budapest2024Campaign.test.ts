@@ -48,14 +48,25 @@ const answerEffects = read<RawAnsweEffectProps[]>(
 
 const context = (
   turn: number,
-  szentkiralyiShare: number,
+  standings: Record<string, number>,
   status: CandidateStatus = "active",
 ): ConditionContext => ({
   turn,
   answers: [],
-  getSupport: (id) => (id === "szentkiralyi_alexandra" ? szentkiralyiShare : 0),
+  getSupport: (id) => standings[id] ?? 0,
+  getStandings: () =>
+    Object.entries(standings)
+      .map(([candidateId, share]) => ({ candidateId, share }))
+      .sort((a, b) => b.share - a.share),
   getCandidateStatus: () => status,
   triggeredEventIds: [],
+});
+
+const shares = (szentkiralyi: number, vitezy = 0.3) => ({
+  karacsony_gergely: 0.4,
+  vitezy_david: vitezy,
+  szentkiralyi_alexandra: szentkiralyi,
+  grundtner_andras: 0.05,
 });
 
 describe("2024 Budapest campaign data", () => {
@@ -103,14 +114,25 @@ describe("2024 Budapest campaign data", () => {
   describe("Szentkirályi's withdrawal", () => {
     const [branch] = withdrawal.conditions;
 
-    it("only fires after the 26th decision while her share is below 15%", () => {
-      expect(evaluateCondition(branch.if, context(25, 0.1))).toBe(false);
-      expect(evaluateCondition(branch.if, context(26, 0.149))).toBe(true);
-      expect(evaluateCondition(branch.if, context(27, 0.1))).toBe(false);
-      expect(evaluateCondition(branch.if, context(26, 0.15))).toBe(false);
-      expect(evaluateCondition(branch.if, context(26, 0.1, "inactive"))).toBe(
+    it("only fires after the 26th decision if she is third and clearly behind", () => {
+      expect(evaluateCondition(branch.if, context(26, shares(0.25)))).toBe(
+        true,
+      );
+      expect(evaluateCondition(branch.if, context(25, shares(0.25)))).toBe(
         false,
       );
+      expect(evaluateCondition(branch.if, context(27, shares(0.25)))).toBe(
+        false,
+      );
+      expect(evaluateCondition(branch.if, context(26, shares(0.28)))).toBe(
+        false,
+      );
+      expect(evaluateCondition(branch.if, context(26, shares(0.32)))).toBe(
+        false,
+      );
+      expect(
+        evaluateCondition(branch.if, context(26, shares(0.25), "inactive")),
+      ).toBe(false);
     });
 
     it("moves her voters mostly to Vitézy without creating votes", () => {

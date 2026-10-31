@@ -17,6 +17,14 @@ export type CandidateSupportCondition = {
   value: number;
 };
 
+export type CandidateRankCondition = {
+  type: "candidate-rank";
+  candidateId: string;
+  min?: number;
+  max?: number;
+  minGapBehind?: number;
+};
+
 export type AnswerSelectedCondition = {
   type: "answer-selected";
   questionId: string;
@@ -37,6 +45,7 @@ export type EventTriggeredCondition = {
 export type LeafCondition =
   | TurnCondition
   | CandidateSupportCondition
+  | CandidateRankCondition
   | AnswerSelectedCondition
   | CandidateStatusCondition
   | EventTriggeredCondition;
@@ -51,6 +60,7 @@ export interface ConditionContext {
   turn: number;
   answers: { questionId: string; answerId: string }[];
   getSupport(candidateId: string): number | undefined;
+  getStandings(): { candidateId: string; share: number }[] | undefined;
   getCandidateStatus(candidateId: string): CandidateStatus;
   triggeredEventIds: string[];
 }
