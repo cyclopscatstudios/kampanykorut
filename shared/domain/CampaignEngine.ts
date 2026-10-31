@@ -2,7 +2,6 @@ import { createLogger } from "../logger";
 import {
   AdvisorFeedback,
   CalculateResults,
-  CampaignEvent,
   CampaignEventEffect,
   CampaignState,
   CandidateListData,
@@ -35,8 +34,6 @@ import type { ResultModifier } from "./ResultModifier";
 const log = createLogger("CampaignEngine");
 
 export class CampaignEngine {
-  private readonly eventEngine: CampaignEventEngine;
-
   constructor(
     private readonly initialCandidateData: CandidateListData[],
     private readonly questions: RawQuestion[],
@@ -48,9 +45,9 @@ export class CampaignEngine {
     private mayoralResultCalculator: MayoralResultCalculator,
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
-    campaignEvents?: CampaignEvent[],
+    private readonly eventEngine: CampaignEventEngine =
+      new CampaignEventEngine(),
   ) {
-    this.eventEngine = new CampaignEventEngine(campaignEvents);
     log.debug("CampaignEngine initialized");
   }
 

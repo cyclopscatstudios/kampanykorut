@@ -9,6 +9,7 @@ import {
   RawQuestion,
 } from "../types";
 import { CampaignEngine } from "./CampaignEngine";
+import { CampaignEventEngine } from "./CampaignEventEngine";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
@@ -294,7 +295,7 @@ describe("CampaignEngine campaign events", () => {
       container.resolve(MayoralResultCalculator),
       undefined,
       undefined,
-      [rallyEvent],
+      new CampaignEventEngine([rallyEvent]),
     );
 
   const answer = (questionId: string): Decision => ({

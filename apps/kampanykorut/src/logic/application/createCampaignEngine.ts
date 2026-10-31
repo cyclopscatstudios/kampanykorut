@@ -1,6 +1,7 @@
 import { container } from "tsyringe";
 import {
   CampaignEngine,
+  CampaignEventEngine,
   DistrictGroupEngine,
   EffectApplier,
   MandateCalculator,
@@ -84,7 +85,7 @@ export function createCampaignEngine(
     container.resolve(MayoralResultCalculator),
     config.partyListData,
     candidateConfig?.advisorFeedback,
-    config.campaignEvents,
+    new CampaignEventEngine(config.campaignEvents),
   );
 
   return { campaignEngine, configEngine };
