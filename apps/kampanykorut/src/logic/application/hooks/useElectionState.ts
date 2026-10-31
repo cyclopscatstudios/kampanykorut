@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
+import { getParliamentaryConfig, getPlayerVoteKey } from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
 import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import {
@@ -13,6 +14,7 @@ import {
 import { useNavigation } from "../../../hooks/navigationHook";
 import {
   getCampaignOutcome,
+  getMayoralCampaignOutcome,
   getRunProperties,
 } from "../../infra/posthog/events";
 import { track, trackOnce } from "../../infra/posthog/track";
@@ -109,7 +111,7 @@ export function useElectionState(campaignId: string) {
               ?.campaignStrategies
           : undefined,
         config.electionConfig.districtBoost,
-        playerSideId,
+        getPlayerVoteKey(config.electionConfig, gameState.playerSide),
       );
     } catch (error) {
       log.error("Failed to process turn", {
@@ -157,11 +159,16 @@ export function useElectionState(campaignId: string) {
     const finalResults = getFinalResults();
     trackOnce(sessionId, "campaign_finished", {
       ...runProperties,
-      outcome: getCampaignOutcome(
-        finalResults?.winnerParty?.party,
-        Boolean(finalResults?.winnerParty?.hasMajority),
-        playerSideId,
-      ),
+      outcome: finalResults?.mayoralResult
+        ? getMayoralCampaignOutcome(
+            finalResults.mayoralResult.outcome,
+            playerCandidateId,
+          )
+        : getCampaignOutcome(
+            finalResults?.winnerParty?.party,
+            Boolean(finalResults?.winnerParty?.hasMajority),
+            playerSideId,
+          ),
       majority_type: finalResults?.winnerParty?.majorityType ?? null,
       turns: gameState.turn,
     });
@@ -175,7 +182,7 @@ export function useElectionState(campaignId: string) {
   const getFinalResults = () => {
     return campaignEngine.getFinalResults(
       gameState,
-      config.electionConfig.allSeats,
+      getParliamentaryConfig(config.electionConfig)?.allSeats,
     );
   };
 

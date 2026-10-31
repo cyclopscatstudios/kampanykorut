@@ -68,11 +68,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
       return;
     }
 
-    const polls = pollsterEngine.getPollsByPollsterId(
-      id,
-      state,
-      config.electionConfig,
-    );
+    const polls = pollsterEngine.getPollsByPollsterId(id, state);
 
     log.debug("Changing map view to pollster data", { pollsterId: id });
     getMapDataByPolls(state, config.electionConfig, polls?.differences, id);

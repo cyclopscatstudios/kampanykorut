@@ -3,6 +3,7 @@ import { AnswerFeedback } from "./answer-feedback";
 import { District } from "./district";
 import { ConditionalRawEffect, RawEffect } from "./effects";
 import { Mandate, PartyVotes } from "./mandate";
+import { MayoralResult } from "./mayoral-result";
 import { RawQuestion } from "./question";
 
 export interface CampaignState {
@@ -15,6 +16,7 @@ export interface CampaignState {
   partyListData?: PartyListData[];
   partyListVotes?: PartyListVotes;
   results?: CalculateResults;
+  mayoralResult?: MayoralResult;
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;
   pollingOpnions?: PollingOpnions;

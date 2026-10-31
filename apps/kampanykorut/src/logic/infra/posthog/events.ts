@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import type { MayoralOutcome } from "@/shared/types";
 
 export const ANALYTICS_SCHEMA_VERSION = 1;
 
@@ -99,4 +100,14 @@ export function getCampaignOutcome(
     return "deadlock";
   }
   return winnerPartyId === playerPartyId ? "win" : "loss";
+}
+
+export function getMayoralCampaignOutcome(
+  outcome: MayoralOutcome | undefined,
+  playerCandidateId: string | undefined,
+): CampaignOutcome {
+  if (outcome?.kind !== "winner") {
+    return "deadlock";
+  }
+  return outcome.candidateId === playerCandidateId ? "win" : "loss";
 }

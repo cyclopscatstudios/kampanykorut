@@ -4,6 +4,7 @@ import {
   DistrictGroupEngine,
   EffectApplier,
   MandateCalculator,
+  MayoralResultCalculator,
   PollsterEngine,
   ResultModifier,
   VoterEnvironment,
@@ -80,6 +81,7 @@ export function createCampaignEngine(
     container.resolve(EffectApplier),
     container.resolve(MandateCalculator),
     container.resolve(PollsterEngine),
+    container.resolve(MayoralResultCalculator),
     config.partyListData,
     candidateConfig?.advisorFeedback,
   );

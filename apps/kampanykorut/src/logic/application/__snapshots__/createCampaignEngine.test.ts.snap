@@ -660,6 +660,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       },
     ],
     "mandateCalculator": MandateCalculator {},
+    "mayoralResultCalculator": MayoralResultCalculator {},
     "pollsterEngine": PollsterEngine {
       "mandateCalculator": MandateCalculator {},
       "pollsters": [

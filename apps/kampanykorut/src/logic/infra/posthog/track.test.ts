@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   getCampaignOutcome,
   getLoadDurationBucket,
+  getMayoralCampaignOutcome,
   getRunProperties,
   getStorageKeyKind,
 } from "./events";
@@ -116,4 +117,19 @@ describe("event property helpers", () => {
       expect(getCampaignOutcome(winner, hasMajority, player)).toBe(outcome);
     },
   );
+
+  it.each([
+    [{ kind: "winner", candidateId: "vitezy" }, "win"],
+    [{ kind: "winner", candidateId: "karacsony" }, "loss"],
+    [{ kind: "tie", candidateIds: ["vitezy", "karacsony"] }, "deadlock"],
+    [{ kind: "no_winner" }, "deadlock"],
+    [undefined, "deadlock"],
+  ] as const)("mayoral outcome %j for vitezy is a %s", (result, outcome) => {
+    expect(
+      getMayoralCampaignOutcome(
+        result as Parameters<typeof getMayoralCampaignOutcome>[0],
+        "vitezy",
+      ),
+    ).toBe(outcome);
+  });
 });
