@@ -1,0 +1,32 @@
+[
+  {
+    "id": "bp2024_placeholder_q1",
+    "title": "Helyőrző",
+    "question": "Helyőrző kérdés, amíg a végleges kérdéssor el nem készül.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Közlekedés"
+      },
+      {
+        "id": "B",
+        "label": "Lakhatás"
+      }
+    ]
+  },
+  {
+    "id": "bp2024_placeholder_q2",
+    "title": "Helyőrző",
+    "question": "Helyőrző kérdés, amíg a végleges kérdéssor el nem készül.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Belváros"
+      },
+      {
+        "id": "B",
+        "label": "Külső kerületek"
+      }
+    ]
+  }
+]
