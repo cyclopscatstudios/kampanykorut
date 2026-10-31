@@ -13,7 +13,6 @@ import { CampaignEventEngine } from "./CampaignEventEngine";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
-import { mockElectionConfig } from "./mocks/mockElectionConfig";
 import { PollsterEngine } from "./PollsterEngine";
 import { ResultModifier } from "./ResultModifier";
 
@@ -91,9 +90,10 @@ const createEngine = (events: CampaignEvent[] = [withdrawal]) =>
     container.resolve(MandateCalculator),
     container.resolve(PollsterEngine),
     container.resolve(MayoralResultCalculator),
+    container.resolve(CampaignEventEngine),
     undefined,
     undefined,
-    new CampaignEventEngine(events),
+    events,
   );
 
 const decision = (
@@ -245,20 +245,5 @@ describe("candidate withdrawal", () => {
         config,
       ),
     ).toThrow(/cannot move votes of "vitezy" to "szentkiralyi"/);
-  });
-
-  it("is not supported in a parliamentary election", () => {
-    const engine = createEngine();
-    const initial = engine.createInitialState("x", null, mockElectionConfig);
-
-    expect(() =>
-      engine.processTurn(
-        initial,
-        decision("q1"),
-        [],
-        settings,
-        mockElectionConfig,
-      ),
-    ).toThrow(/only supported in mayoral elections/);
   });
 });

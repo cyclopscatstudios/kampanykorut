@@ -1,3 +1,4 @@
+import { injectable } from "tsyringe";
 import { createLogger } from "../logger";
 import {
   CampaignEvent,
@@ -17,21 +18,10 @@ export type ApplyEventEffects = (
   effects: CampaignEventEffect[],
 ) => CampaignState;
 
+@injectable()
 export class CampaignEventEngine {
-  private readonly ordered: CampaignEvent[];
-
-  constructor(events: CampaignEvent[] = []) {
-    this.ordered = events
-      .map((event, index) => ({ event, index }))
-      .sort(
-        (a, b) =>
-          (b.event.priority ?? 0) - (a.event.priority ?? 0) ||
-          a.index - b.index,
-      )
-      .map(({ event }) => event);
-  }
-
   run(
+    events: CampaignEvent[],
     state: CampaignState,
     answers: Pick<HistoryItem, "questionId" | "answerId">[],
     electionConfig: ElectionConfig,
@@ -39,7 +29,7 @@ export class CampaignEventEngine {
   ): CampaignState {
     let current = state;
 
-    for (const event of this.ordered) {
+    for (const event of this.order(events)) {
       const { triggeredEventIds } = getCampaignEventState(current);
       const once = event.once ?? true;
       if (once && triggeredEventIds.includes(event.id)) {
@@ -66,6 +56,17 @@ export class CampaignEventEngine {
     }
 
     return current;
+  }
+
+  private order(events: CampaignEvent[]): CampaignEvent[] {
+    return events
+      .map((event, index) => ({ event, index }))
+      .sort(
+        (a, b) =>
+          (b.event.priority ?? 0) - (a.event.priority ?? 0) ||
+          a.index - b.index,
+      )
+      .map(({ event }) => event);
   }
 
   private record(state: CampaignState, event: CampaignEvent): CampaignState {

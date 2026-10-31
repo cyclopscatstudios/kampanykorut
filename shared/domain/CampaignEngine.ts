@@ -3,6 +3,7 @@ import {
   ABSTAIN_KEY,
   AdvisorFeedback,
   CalculateResults,
+  CampaignEvent,
   CampaignEventEffect,
   CampaignState,
   CandidateListData,
@@ -53,9 +54,10 @@ export class CampaignEngine {
     private mandateCalculator: MandateCalculator,
     private pollsterEngine: PollsterEngine,
     private mayoralResultCalculator: MayoralResultCalculator,
+    private eventEngine: CampaignEventEngine,
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
-    private readonly eventEngine: CampaignEventEngine = new CampaignEventEngine(),
+    private readonly campaignEvents?: CampaignEvent[],
   ) {
     log.debug("CampaignEngine initialized");
   }
@@ -224,6 +226,7 @@ export class CampaignEngine {
     };
 
     const session = this.eventEngine.run(
+      this.campaignEvents ?? [],
       answered,
       [
         ...history,
@@ -482,7 +485,7 @@ export class CampaignEngine {
     for (const effect of effects) {
       if (effect.type === "withdraw-candidate") {
         flush();
-        current = this.withdrawCandidate(current, effect, electionConfig);
+        current = this.withdrawCandidate(current, effect);
       } else {
         batch.push(effect);
       }
@@ -537,14 +540,8 @@ export class CampaignEngine {
   private withdrawCandidate(
     state: CampaignState,
     effect: WithdrawCandidateEffect,
-    electionConfig: ElectionConfig,
   ): CampaignState {
     const { candidateId, redistribution } = effect;
-    if (!isMayoralElection(electionConfig)) {
-      throw new Error(
-        "withdraw-candidate is only supported in mayoral elections",
-      );
-    }
     if (getCandidateStatus(state, candidateId) !== "active") {
       throw new Error(`cannot withdraw inactive candidate "${candidateId}"`);
     }

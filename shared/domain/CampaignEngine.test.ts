@@ -14,6 +14,7 @@ import {
   Strategy,
 } from "../types";
 import { CampaignEngine } from "./CampaignEngine";
+import { CampaignEventEngine } from "./CampaignEventEngine";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
@@ -44,6 +45,7 @@ describe("CampaignEngine", () => {
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
       mockPartyListData,
     );
   });
@@ -162,6 +164,7 @@ describe("CampaignEngine.createInitialState", () => {
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
       mockPartyListData,
     );
   });
@@ -319,6 +322,7 @@ describe("CampaignEngine.createInitialState – mergeUnknownPartiesToOther", () 
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
       mockPartyListData,
     );
   });
@@ -377,6 +381,7 @@ describe("CampaignEngine.mergeUnknownPartiesToOther (direct)", () => {
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
       mockPartyListData,
     );
   });
@@ -464,6 +469,7 @@ describe("CampaignEngine.getPollProjection", () => {
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
       mockPartyListData,
     );
   });
@@ -548,6 +554,7 @@ describe("CampaignEngine advisor feedback", () => {
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
       mockPartyListData,
       advisorFeedback,
     );
@@ -600,6 +607,7 @@ describe("CampaignEngine campaign strategies", () => {
     container.resolve(MandateCalculator),
     container.resolve(PollsterEngine),
     container.resolve(MayoralResultCalculator),
+    container.resolve(CampaignEventEngine),
     mockPartyListData,
   );
 
@@ -671,6 +679,7 @@ describe("CampaignEngine.getFinalResults majority", () => {
     container.resolve(MandateCalculator),
     container.resolve(PollsterEngine),
     container.resolve(MayoralResultCalculator),
+    container.resolve(CampaignEventEngine),
     mockPartyListData,
   );
 
@@ -742,6 +751,7 @@ describe("CampaignEngine poll projection after a turn", () => {
     container.resolve(MandateCalculator),
     pollsterEngine,
     container.resolve(MayoralResultCalculator),
+    container.resolve(CampaignEventEngine),
     mockPartyListData,
   );
 
