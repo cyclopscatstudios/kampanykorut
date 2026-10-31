@@ -82,6 +82,7 @@ function createEngine(data = districts) {
     container.resolve(MandateCalculator),
     container.resolve(PollsterEngine),
     container.resolve(MayoralResultCalculator),
+    container.resolve(CampaignEventEngine),
   );
 }
 
@@ -249,6 +250,7 @@ describe("CampaignEngine with a mayoral election", () => {
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
       mockPartyListData,
     );
 
@@ -293,9 +295,10 @@ describe("CampaignEngine campaign events", () => {
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
       undefined,
       undefined,
-      new CampaignEventEngine([rallyEvent]),
+      [rallyEvent],
     );
 
   const answer = (questionId: string): Decision => ({

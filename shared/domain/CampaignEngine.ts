@@ -2,6 +2,7 @@ import { createLogger } from "../logger";
 import {
   AdvisorFeedback,
   CalculateResults,
+  CampaignEvent,
   CampaignEventEffect,
   CampaignState,
   CandidateListData,
@@ -43,10 +44,10 @@ export class CampaignEngine {
     private mandateCalculator: MandateCalculator,
     private pollsterEngine: PollsterEngine,
     private mayoralResultCalculator: MayoralResultCalculator,
+    private eventEngine: CampaignEventEngine,
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
-    private readonly eventEngine: CampaignEventEngine =
-      new CampaignEventEngine(),
+    private readonly campaignEvents?: CampaignEvent[],
   ) {
     log.debug("CampaignEngine initialized");
   }
@@ -211,6 +212,7 @@ export class CampaignEngine {
     };
 
     const session = this.eventEngine.run(
+      this.campaignEvents ?? [],
       answered,
       [
         ...history,

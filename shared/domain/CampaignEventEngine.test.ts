@@ -60,7 +60,7 @@ const run = (
   input: CampaignState = state,
   apply: ApplyEventEffects = recordingApply().apply,
   answers: { questionId: string; answerId: string }[] = [],
-) => new CampaignEventEngine(events).run(input, answers, electionConfig, apply);
+) => new CampaignEventEngine().run(events, input, answers, electionConfig, apply);
 
 describe("CampaignEventEngine", () => {
   it("applies the effects of a met event and records it", () => {
