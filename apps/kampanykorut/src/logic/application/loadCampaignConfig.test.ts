@@ -241,6 +241,61 @@ describe("loadCampaignConfig", () => {
       },
     });
   });
+  it("exposes the manifest version as the campaign config version", async () => {
+    vi.mocked(fetchCampaignFile).mockImplementation(async (_route, file) => {
+      switch (file) {
+        case "manifest.json":
+          return {
+            schemaVersion: 1,
+            metadata: { version: "1.2.0" },
+            files: {
+              electionConfig: "election.json",
+              voterEnvironmentConfig: "voters.json",
+              candidateListData: "candidate-list.json",
+            },
+          };
+        case "election.json":
+          return { districtMap: "2024" };
+        default:
+          return {};
+      }
+    });
+    getDistrictMapByType.mockResolvedValue({});
+
+    const result = await loadCampaignConfig("campaign-1");
+
+    expect(result.version).toBe("1.2.0");
+  });
+
+  it("loads campaign events listed in the manifest", async () => {
+    const events = [{ id: "withdrawal", conditions: [] }];
+    vi.mocked(fetchCampaignFile).mockImplementation(async (_route, file) => {
+      switch (file) {
+        case "manifest.json":
+          return {
+            schemaVersion: 1,
+            files: {
+              electionConfig: "election.json",
+              voterEnvironmentConfig: "voters.json",
+              candidateListData: "candidate-list.json",
+              campaignEvents: "events.json",
+            },
+          };
+        case "election.json":
+          return { districtMap: "2024" };
+        case "events.json":
+          return events;
+        default:
+          return {};
+      }
+    });
+    getDistrictMapByType.mockResolvedValue({});
+
+    const result = await loadCampaignConfig("campaign-1");
+
+    expect(result.campaignEvents).toEqual(events);
+  });
+
   it("returns the cached promise for the same campaign", async () => {
     const manifest = {
       files: {

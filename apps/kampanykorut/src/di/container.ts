@@ -1,9 +1,12 @@
 import { container } from "tsyringe";
 import {
+  CampaignEventEngine,
+  CandidateWithdrawalTransformer,
   DistrictGroupEngine,
   DistrictVoteTransformer,
   EffectApplier,
   MandateCalculator,
+  MayoralResultCalculator,
   ResultModifier,
   UnionSwingTransformer,
   VoterEnvironment,
@@ -74,8 +77,20 @@ container.registerInstance(ResultModifier, resultModifier);
 const mandateCalculator = new MandateCalculator();
 container.registerInstance(MandateCalculator, mandateCalculator);
 
+const mayoralResultCalculator = new MayoralResultCalculator();
+container.registerInstance(MayoralResultCalculator, mayoralResultCalculator);
+
 const effectApplier = new EffectApplier(mandateCalculator, districtGroupEngine);
 container.registerInstance(EffectApplier, effectApplier);
 
 const pollsterEngine = new PollsterEngine(mandateCalculator);
 container.registerInstance(PollsterEngine, pollsterEngine);
+
+const campaignEventEngine = new CampaignEventEngine();
+container.registerInstance(CampaignEventEngine, campaignEventEngine);
+
+const candidateWithdrawalTransformer = new CandidateWithdrawalTransformer();
+container.registerInstance(
+  CandidateWithdrawalTransformer,
+  candidateWithdrawalTransformer,
+);

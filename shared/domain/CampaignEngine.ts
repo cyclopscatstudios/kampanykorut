@@ -1,10 +1,14 @@
 import { createLogger } from "../logger";
 import {
+  ABSTAIN_KEY,
   AdvisorFeedback,
   CalculateResults,
+  CampaignEvent,
+  CampaignEventEffect,
   CampaignState,
   CandidateListData,
   ConditionalAnswer,
+  ConditionContext,
   Decision,
   EffectType,
   ElectionConfig,
@@ -19,12 +23,30 @@ import {
   RawQuestion,
   Strategy,
   StrategyReward,
+  WithdrawCandidateEffect,
 } from "../types";
+import type { CampaignEventEngine } from "./CampaignEventEngine";
+import {
+  getCandidateStatus,
+  getInactiveCandidateIds,
+} from "./CampaignStateAccess";
+import { createConditionContext } from "./ConditionContext";
 import type { EffectApplier } from "./EffectApplier";
+import { getParliamentaryConfig, isMayoralElection } from "./ElectionType";
+import {
+  excludeInactiveCandidates,
+  excludeInactiveFromConditionalEffects,
+} from "./InactiveCandidateFilter";
 import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
+import { MayoralResultCalculator } from "./MayoralResultCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
+import {
+  countEligibleQuestions,
+  findNextQuestionIndex,
+} from "./QuestionEligibility";
 import type { ResultModifier } from "./ResultModifier";
+import type { CandidateWithdrawalTransformer } from "./ResultTransformer/CandidateWithdrawalTransformer";
 
 const log = createLogger("CampaignEngine");
 
@@ -37,8 +59,12 @@ export class CampaignEngine {
     private effectApplier: EffectApplier,
     private mandateCalculator: MandateCalculator,
     private pollsterEngine: PollsterEngine,
+    private mayoralResultCalculator: MayoralResultCalculator,
+    private eventEngine: CampaignEventEngine,
+    private withdrawalTransformer: CandidateWithdrawalTransformer,
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
+    private readonly campaignEvents?: CampaignEvent[],
   ) {
     log.debug("CampaignEngine initialized");
   }
@@ -48,6 +74,7 @@ export class CampaignEngine {
     savedState: CampaignState | null,
     electionConfig?: ElectionConfig,
     palyerSideId?: string,
+    campaignConfigVersion?: string,
   ): CampaignState {
     if (
       savedState &&
@@ -55,6 +82,7 @@ export class CampaignEngine {
       savedState.activeCampaignId === campaignId
     ) {
       log.info("initial state created from saved data");
+      this.warnOnConfigVersionChange(savedState, campaignConfigVersion);
       return this.restorePollingOpinions(savedState, electionConfig);
     }
 
@@ -88,16 +116,14 @@ export class CampaignEngine {
       partyListVotes = baseApplied.partyListVotes;
     }
 
-    const initialState = {
+    const startState = {
       activeCampaignId: campaignId,
       turn: 0,
-      currentQuestion: this.questions[0],
-      answerEffects: this.getAnswerEffects(this.answers, this.questions[0]),
       candidateListData,
       partyListData,
       partyListVotes,
       playerSide: savedState?.playerSide,
-      results: this.mandateCalculator.calculate(
+      ...this.calculateResults(
         candidateListData,
         partyListData,
         electionConfig,
@@ -105,9 +131,23 @@ export class CampaignEngine {
       ),
       isEnded: false,
       isBaseResultsAlreadyApplied: true,
+      ...(campaignConfigVersion && { campaignConfigVersion }),
+    };
+    const position = this.getQuestionPosition(
+      startState,
+      [],
+      electionConfig,
+      0,
+    );
+    const initialState = {
+      ...startState,
+      currentQuestion: position.currentQuestion,
+      answerEffects: position.answerEffects,
+      questionCursor: position.questionCursor,
+      decisionCount: position.decisionCount,
     };
 
-    const polls = this.pollsterEngine.getPolls(initialState, electionConfig);
+    const polls = this.pollsterEngine.getPolls(initialState);
 
     return {
       ...initialState,
@@ -128,63 +168,47 @@ export class CampaignEngine {
     electionConfig: ElectionConfig,
     campaignStrategies?: Strategy[],
     districtBoost?: boolean,
-    playerSidePartyId?: string,
+    playerVoteKey?: string,
   ): CampaignState {
-    if (state.turn >= this.questions.length) {
+    if (state.isEnded || state.turn >= this.questions.length) {
       log.info("Game has ended.");
       return state;
     }
 
+    const inactiveCandidateIds = getInactiveCandidateIds(state);
     const appliedEffects = this.effectApplier.getAppliedEffects(
-      decision.effects,
+      excludeInactiveCandidates(decision.effects, inactiveCandidateIds),
       state.candidateListData ?? [],
       state.turn,
-      decision.conditionalEffects,
+      excludeInactiveFromConditionalEffects(
+        decision.conditionalEffects,
+        inactiveCandidateIds,
+      ),
       decision.selectedDistrict,
       districtBoost,
-      playerSidePartyId,
+      playerVoteKey,
       history,
     );
     const modified = this.resultModifier.apply(state, appliedEffects);
 
     const nextTurn = state.turn + 1;
-    let candidateListData = this.resultModifier.filterUnwantedValues(
+    const candidateListData = this.resultModifier.filterUnwantedValues(
       modified?.candidateListData,
     );
+    const partyListData = modified?.partyListData;
+    const partyListVotes = modified?.partyListVotes;
 
-    let partyListData = modified?.partyListData;
-    let partyListVotes = modified?.partyListVotes;
-
-    if (!this.questions[nextTurn] && campaignStrategies) {
-      log.info("apply campaign strategy");
-      const strategyResult = this.applyStrategy(
-        campaignStrategies,
-        history,
-        state,
-        candidateListData ?? state.candidateListData ?? [],
-        partyListData ?? state.partyListData ?? [],
-        partyListVotes ?? state.partyListVotes,
-      );
-      candidateListData = strategyResult.candidateListData;
-      partyListData = strategyResult.partyListData;
-      partyListVotes = strategyResult.partyListVotes;
-    }
-
-    const calculated = this.mandateCalculator.calculate(
+    const calculated = this.calculateResults(
       candidateListData,
       partyListData,
       electionConfig,
       partyListVotes,
+      getInactiveCandidateIds(state),
     );
 
-    const session = {
+    const answered = {
       ...state,
       turn: nextTurn,
-      currentQuestion: this.questions[nextTurn],
-      answerEffects: this.getAnswerEffects(
-        this.answers,
-        this.questions[nextTurn],
-      ),
       candidateListData: candidateListData ?? state.candidateListData,
       partyListData: partyListData ?? state.partyListData,
       partyListVotes: partyListVotes ?? state.partyListVotes,
@@ -194,8 +218,39 @@ export class CampaignEngine {
         history,
         gameSettings,
       ),
-      results: calculated,
-      isEnded: nextTurn >= this.questions.length,
+      ...calculated,
+    };
+    const answers = [
+      ...history,
+      { questionId: decision.questionId, answerId: decision.answerId },
+    ];
+
+    const afterEvents = this.eventEngine.run(
+      this.campaignEvents ?? [],
+      answered,
+      answers,
+      electionConfig,
+      (current, effects) =>
+        this.applyEventEffects(current, effects, electionConfig),
+    );
+
+    const position = this.getQuestionPosition(
+      afterEvents,
+      answers,
+      electionConfig,
+      this.getQuestionCursor(state) + 1,
+    );
+    const session = {
+      ...(position.isEnded && campaignStrategies
+        ? this.applyFinalStrategies(
+            afterEvents,
+            state,
+            history,
+            campaignStrategies,
+            electionConfig,
+          )
+        : afterEvents),
+      ...position,
     };
 
     const { polls, pollsterId } = this.getPollsForPollster(
@@ -215,6 +270,84 @@ export class CampaignEngine {
     };
   }
 
+  private applyFinalStrategies(
+    current: CampaignState,
+    previous: CampaignState,
+    history: HistoryItem[],
+    campaignStrategies: Strategy[],
+    electionConfig: ElectionConfig,
+  ): CampaignState {
+    log.info("apply campaign strategy");
+    const strategyResult = this.applyStrategy(
+      campaignStrategies,
+      history,
+      previous,
+      current.candidateListData ?? [],
+      current.partyListData ?? [],
+      current.partyListVotes,
+    );
+    return {
+      ...current,
+      ...strategyResult,
+      ...this.calculateResults(
+        strategyResult.candidateListData,
+        strategyResult.partyListData,
+        electionConfig,
+        strategyResult.partyListVotes,
+        getInactiveCandidateIds(current),
+      ),
+    };
+  }
+
+  private getQuestionCursor(state: CampaignState) {
+    if (state.questionCursor !== undefined) {
+      return state.questionCursor;
+    }
+    const index = this.questions.findIndex(
+      (q) => q.id === state.currentQuestion?.id,
+    );
+    return index >= 0 ? index : state.turn;
+  }
+
+  private getQuestionPosition(
+    state: CampaignState,
+    answers: Pick<HistoryItem, "questionId" | "answerId">[],
+    electionConfig: ElectionConfig | undefined,
+    fromIndex: number,
+  ): Pick<
+    CampaignState,
+    | "currentQuestion"
+    | "answerEffects"
+    | "questionCursor"
+    | "decisionCount"
+    | "isEnded"
+  > {
+    let context: ConditionContext | undefined;
+    const getContext = () => {
+      if (!electionConfig) {
+        throw new Error("conditional questions need an election config");
+      }
+      context ??= createConditionContext(state, answers, electionConfig);
+      return context;
+    };
+
+    const index = findNextQuestionIndex(this.questions, fromIndex, getContext);
+    const currentQuestion =
+      index === undefined ? undefined : this.questions[index];
+
+    return {
+      currentQuestion,
+      answerEffects: this.getAnswerEffects(this.answers, currentQuestion),
+      questionCursor: index ?? this.questions.length,
+      decisionCount:
+        state.turn +
+        (index === undefined
+          ? 0
+          : countEligibleQuestions(this.questions, index, getContext)),
+      isEnded: index === undefined,
+    };
+  }
+
   private getPollsForPollster(
     state: CampaignState,
     electionConfig?: ElectionConfig,
@@ -224,16 +357,31 @@ export class CampaignEngine {
       const polls = this.pollsterEngine.getPollsByPollsterId(
         pollsterId,
         state,
-        electionConfig,
       )?.differences;
       if (polls && Object.keys(polls).length > 0) {
-        return { polls, pollsterId };
+        return { polls: this.withoutInactivePolls(state, polls), pollsterId };
       }
     }
     return {
-      polls: this.pollsterEngine.getPolls(state, electionConfig),
+      polls: this.withoutInactivePolls(
+        state,
+        this.pollsterEngine.getPolls(state),
+      ),
       pollsterId: pollsterId === undefined ? undefined : AGGREGATE_POLLSTER_ID,
     };
+  }
+
+  private withoutInactivePolls(
+    state: CampaignState,
+    polls: Record<string, number> | undefined,
+  ) {
+    const inactive = getInactiveCandidateIds(state);
+    if (!polls || !inactive.length) {
+      return polls;
+    }
+    return Object.fromEntries(
+      Object.entries(polls).filter(([id]) => !inactive.includes(id)),
+    );
   }
 
   restorePollingOpinions(
@@ -290,9 +438,9 @@ export class CampaignEngine {
       return undefined;
     }
 
-    const calculated = this.mandateCalculator.calculate(
-      modified?.candidateListData,
-      modified?.partyListData,
+    const { results: calculated } = this.calculateResults(
+      modified.candidateListData,
+      modified.partyListData,
       electionConfig,
       modified.partyListVotes,
     );
@@ -347,7 +495,10 @@ export class CampaignEngine {
       );
 
       const appliedEffects = this.effectApplier.getAppliedEffects(
-        reward.effects,
+        excludeInactiveCandidates(
+          reward.effects,
+          getInactiveCandidateIds(state),
+        ),
         candidateListData,
         state.turn,
       );
@@ -375,6 +526,15 @@ export class CampaignEngine {
     state: CampaignState,
     allSeats?: number,
   ): FinalResults | null {
+    if (state.mayoralResult) {
+      const results = this.assertFinalResults(state.results);
+      if (!results) {
+        log.error("final results not found");
+        return null;
+      }
+      return { ...results, mayoralResult: state.mayoralResult };
+    }
+
     const winnerParty = state.results?.mandates.reduce((max, party) => {
       return party.totalSeats > max.totalSeats ? party : max;
     }, state.results.mandates[0]);
@@ -401,6 +561,181 @@ export class CampaignEngine {
         hasMajority,
         majorityType,
       },
+    };
+  }
+
+  private applyEventEffects(
+    state: CampaignState,
+    effects: CampaignEventEffect[],
+    electionConfig: ElectionConfig,
+  ): CampaignState {
+    let current = state;
+    let batch: RawEffect[] = [];
+    const flush = () => {
+      current = this.applyRawEffects(current, batch);
+      batch = [];
+    };
+
+    for (const effect of effects) {
+      if (effect.type === "withdraw-candidate") {
+        flush();
+        current = this.withdrawCandidate(current, effect);
+      } else {
+        batch.push(effect);
+      }
+    }
+    flush();
+
+    if (current === state) {
+      return state;
+    }
+    return {
+      ...current,
+      ...this.calculateResults(
+        current.candidateListData,
+        current.partyListData,
+        electionConfig,
+        current.partyListVotes,
+        getInactiveCandidateIds(current),
+      ),
+    };
+  }
+
+  private applyRawEffects(
+    state: CampaignState,
+    effects: RawEffect[],
+  ): CampaignState {
+    const active = excludeInactiveCandidates(
+      effects,
+      getInactiveCandidateIds(state),
+    );
+    if (!active.length) {
+      return state;
+    }
+    const appliedEffects = this.effectApplier.getAppliedEffects(
+      active,
+      state.candidateListData ?? [],
+      state.turn,
+    );
+    const modified = this.resultModifier.apply(state, appliedEffects);
+    if (!modified) {
+      return state;
+    }
+    return {
+      ...state,
+      candidateListData:
+        this.resultModifier.filterUnwantedValues(modified.candidateListData) ??
+        state.candidateListData,
+      partyListData: modified.partyListData ?? state.partyListData,
+      partyListVotes: modified.partyListVotes ?? state.partyListVotes,
+    };
+  }
+
+  private withdrawCandidate(
+    state: CampaignState,
+    effect: WithdrawCandidateEffect,
+  ): CampaignState {
+    const { candidateId, redistribution } = effect;
+    if (getCandidateStatus(state, candidateId) !== "active") {
+      throw new Error(`cannot withdraw inactive candidate "${candidateId}"`);
+    }
+    const invalidTarget = Object.keys(redistribution).find(
+      (target) =>
+        target !== ABSTAIN_KEY &&
+        (target === candidateId ||
+          getCandidateStatus(state, target) !== "active"),
+    );
+    if (invalidTarget) {
+      throw new Error(
+        `cannot move votes of "${candidateId}" to "${invalidTarget}"`,
+      );
+    }
+
+    log.info("Candidate withdraws", {
+      candidateId,
+      endorsedCandidateId: effect.endorsedCandidateId,
+      turn: state.turn,
+    });
+
+    return {
+      ...state,
+      candidateListData: this.withdrawalTransformer.redistribute(
+        state.candidateListData ?? [],
+        candidateId,
+        redistribution,
+      ),
+      candidates: {
+        ...state.candidates,
+        [candidateId]: {
+          status: "inactive",
+          inactiveReason: effect.reason ?? "withdrawal",
+          ...(effect.endorsedCandidateId && {
+            endorsedCandidateId: effect.endorsedCandidateId,
+          }),
+          changedAtTurn: state.turn,
+        },
+      },
+    };
+  }
+
+  private warnOnConfigVersionChange(
+    savedState: CampaignState,
+    currentVersion?: string,
+  ) {
+    const savedVersion = savedState.campaignConfigVersion;
+    if (savedVersion && currentVersion && savedVersion !== currentVersion) {
+      log.warn("Campaign config changed since this game was started", {
+        campaignId: savedState.activeCampaignId,
+        savedVersion,
+        currentVersion,
+      });
+    }
+  }
+
+  private calculateResults(
+    candidateListData: CandidateListData[] | undefined,
+    partyListData: PartyListData[] | undefined,
+    electionConfig: ElectionConfig | undefined,
+    partyListVotes?: PartyListVotes,
+    inactiveCandidateIds: string[] = [],
+  ): Pick<CampaignState, "results" | "mayoralResult"> {
+    if (!electionConfig || !isMayoralElection(electionConfig)) {
+      return {
+        results: this.mandateCalculator.calculate(
+          candidateListData,
+          partyListData,
+          getParliamentaryConfig(electionConfig),
+          partyListVotes,
+        ),
+      };
+    }
+    if (!candidateListData) {
+      log.error("Missing candidate data for mayoral calculation");
+      return {};
+    }
+    return {
+      results: this.getVoteOnlyResults(candidateListData),
+      mayoralResult: this.mayoralResultCalculator.calculate(candidateListData, {
+        inactiveCandidateIds,
+      }),
+    };
+  }
+
+  private getVoteOnlyResults(
+    candidateListData: CandidateListData[],
+  ): CalculateResults {
+    const totals = this.mandateCalculator.sumPartyTotals(candidateListData);
+    return {
+      totals: { candidateListResults: totals, partyListResults: {} },
+      percentages: {
+        candidateListResults:
+          this.mandateCalculator.calculatePercentages(totals),
+        partyListResults: {},
+      },
+      mandates: [],
+      constituencySeats: {},
+      listSeats: {},
+      compensation: { losingVotes: {}, winnerCompensation: {}, total: {} },
     };
   }
 
@@ -542,7 +877,7 @@ export class CampaignEngine {
     partyListData: PartyListData[],
     baseResults: Record<string, number>,
     turn: number,
-    partyListVotes: PartyListVotes,
+    partyListVotes?: PartyListVotes,
   ) {
     const tempState: CampaignState = {
       activeCampaignId: campaignId,

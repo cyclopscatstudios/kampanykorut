@@ -3,7 +3,6 @@ import { CampaignState } from "../types";
 import { Pollster } from "../types/pollsters";
 import { defaultPollsters } from "./DefaultPollsters";
 import { MandateCalculator } from "./MandateCalculator";
-import { mockElectionConfig } from "./mocks/mockElectionConfig";
 import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 
@@ -21,7 +20,8 @@ const MOCK_PERCENTAGES = {
 };
 
 const mockMandateCalculator = {
-  calculate: vi.fn(),
+  sumPartyTotals: vi.fn(),
+  calculatePercentages: vi.fn(),
 } as unknown as MandateCalculator;
 
 const mockState: CampaignState = {
@@ -71,35 +71,35 @@ describe("PollsterEngine.getPolls", () => {
 
   beforeEach(() => {
     vi.restoreAllMocks();
-    (mockMandateCalculator.calculate as Mock).mockReturnValue({
-      percentages: MOCK_PERCENTAGES,
-      mandates: [],
-    });
+    (mockMandateCalculator.calculatePercentages as Mock).mockReturnValue(
+      MOCK_PERCENTAGES.candidateListResults,
+    );
     engine = new PollsterEngine(mockMandateCalculator);
     engine.configure();
   });
 
-  it("returns undefined when mandateCalculator has no result", () => {
-    (mockMandateCalculator.calculate as Mock).mockReturnValueOnce(null);
-    expect(engine.getPolls(mockState, mockElectionConfig)).toBeUndefined();
+  it("returns undefined when there is no candidate list data", () => {
+    expect(
+      engine.getPolls({ ...mockState, candidateListData: undefined }),
+    ).toBeUndefined();
   });
 
-  it("returns undefined when percentages are missing", () => {
-    (mockMandateCalculator.calculate as Mock).mockReturnValueOnce({
-      mandates: [],
-    });
-    expect(engine.getPolls(mockState, mockElectionConfig)).toBeUndefined();
+  it("derives the actual shares from the candidate list votes", () => {
+    engine.getPolls(mockState);
+    expect(mockMandateCalculator.sumPartyTotals).toHaveBeenCalledWith(
+      mockCandidateListData,
+    );
   });
 
   it("returns a record with party keys but without _total", () => {
-    const result = engine.getPolls(mockState, mockElectionConfig)!;
+    const result = engine.getPolls(mockState)!;
     expect(result).toHaveProperty("party_a");
     expect(result).toHaveProperty("party_b");
     expect(result).not.toHaveProperty("_total");
   });
 
   it("all values are finite numbers", () => {
-    const result = engine.getPolls(mockState, mockElectionConfig)!;
+    const result = engine.getPolls(mockState)!;
     for (const value of Object.values(result)) {
       expect(typeof value).toBe("number");
       expect(isFinite(value)).toBe(true);
@@ -112,43 +112,36 @@ describe("PollsterEngine.getPollsByPollsterId", () => {
 
   beforeEach(() => {
     vi.restoreAllMocks();
-    (mockMandateCalculator.calculate as Mock).mockReturnValue({
-      percentages: MOCK_PERCENTAGES,
-      mandates: [],
-    });
+    (mockMandateCalculator.calculatePercentages as Mock).mockReturnValue(
+      MOCK_PERCENTAGES.candidateListResults,
+    );
     engine = new PollsterEngine(mockMandateCalculator);
     engine.configure();
   });
 
   it("returns undefined for an unknown pollster id", () => {
     expect(
-      engine.getPollsByPollsterId("nonexistent", mockState, mockElectionConfig),
+      engine.getPollsByPollsterId("nonexistent", mockState),
     ).toBeUndefined();
   });
 
-  it("returns undefined when percentages are missing for a valid pollster", () => {
-    (mockMandateCalculator.calculate as Mock).mockReturnValueOnce(null);
+  it("returns undefined without candidate list data for a valid pollster", () => {
     expect(
-      engine.getPollsByPollsterId("median", mockState, mockElectionConfig),
+      engine.getPollsByPollsterId("median", {
+        ...mockState,
+        candidateListData: undefined,
+      }),
     ).toBeUndefined();
   });
 
   it("delegates to getPolls when pollsterId is AGGREGATE_POLLSTER_ID", () => {
     const getPolls = vi.spyOn(engine, "getPolls");
-    engine.getPollsByPollsterId(
-      AGGREGATE_POLLSTER_ID,
-      mockState,
-      mockElectionConfig,
-    );
-    expect(getPolls).toHaveBeenCalledWith(mockState, mockElectionConfig);
+    engine.getPollsByPollsterId(AGGREGATE_POLLSTER_ID, mockState);
+    expect(getPolls).toHaveBeenCalledWith(mockState);
   });
 
   it("returns party keys without _total for a valid pollster", () => {
-    const result = engine.getPollsByPollsterId(
-      "median",
-      mockState,
-      mockElectionConfig,
-    )!;
+    const result = engine.getPollsByPollsterId("median", mockState)!;
     expect(result.differences).toHaveProperty("party_a");
     expect(result.differences).toHaveProperty("party_b");
     expect(result.differences).not.toHaveProperty("_total");
@@ -164,11 +157,7 @@ describe("PollsterEngine.getPollsByPollsterId", () => {
     };
     engine.configure([biasedPollster]);
 
-    const result = engine.getPollsByPollsterId(
-      "biased",
-      mockState,
-      mockElectionConfig,
-    )!;
+    const result = engine.getPollsByPollsterId("biased", mockState)!;
 
     // party_a gets +10pp bias → poll overestimates it → positive difference
     expect(result.differences.party_a).toBeGreaterThan(0);
@@ -185,11 +174,7 @@ describe("PollsterEngine.getPollsByPollsterId", () => {
     };
     engine.configure([neutralPollster]);
 
-    const result = engine.getPollsByPollsterId(
-      "neutral",
-      mockState,
-      mockElectionConfig,
-    )!;
+    const result = engine.getPollsByPollsterId("neutral", mockState)!;
 
     expect(result.differences.party_a).toBeCloseTo(0, 5);
     expect(result.differences.party_b).toBeCloseTo(0, 5);

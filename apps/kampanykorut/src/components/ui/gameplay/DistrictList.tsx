@@ -9,6 +9,7 @@ import {
   DistrictInsight,
   formatVoters,
   getDistrictInsight,
+  getDistrictName,
   getSwingColor,
   isSameDistrict,
 } from "./districtInsight.utils";
@@ -18,6 +19,7 @@ export type DistrictSort = "none" | "swing";
 const SORT_OPTIONS: DistrictSort[] = ["none", "swing"];
 
 interface DistrictListProps {
+  isCityMap: boolean;
   candidateListData: CandidateListData[];
   parties: RawParty[];
   selectedDistrict: District | null;
@@ -25,6 +27,7 @@ interface DistrictListProps {
 }
 
 export function DistrictList({
+  isCityMap,
   candidateListData,
   parties,
   selectedDistrict,
@@ -56,36 +59,47 @@ export function DistrictList({
         ))}
       </div>
       <div className="flex flex-col gap-2 px-4 pb-6">
-        {sortBy === "none"
-          ? groupByCounty(insights).map(([county, countyInsights]) => (
-              <CountyGroup
-                key={county}
-                county={county}
-                insights={countyInsights}
-                isOpen={openCounty === county}
-                onToggle={() =>
-                  setOpenCounty((current) =>
-                    current === county ? null : county,
-                  )
-                }
-                selectedDistrict={selectedDistrict}
+        {sortBy === "none" && isCityMap
+          ? insights.map((insight) => (
+              <DistrictCard
+                key={`${insight.district.megyekod}-${insight.district.oevk}`}
+                insight={insight}
+                isCityMap
+                isSelected={isSameDistrict(insight.district, selectedDistrict)}
                 onSelect={onSelect}
               />
             ))
-          : [...insights]
-              .sort(compareBySwing)
-              .map((insight) => (
-                <DistrictCard
-                  key={`${insight.district.megyekod}-${insight.district.oevk}`}
-                  insight={insight}
-                  showCounty
-                  isSelected={isSameDistrict(
-                    insight.district,
-                    selectedDistrict,
-                  )}
+          : sortBy === "none"
+            ? groupByCounty(insights).map(([county, countyInsights]) => (
+                <CountyGroup
+                  key={county}
+                  county={county}
+                  insights={countyInsights}
+                  isOpen={openCounty === county}
+                  onToggle={() =>
+                    setOpenCounty((current) =>
+                      current === county ? null : county,
+                    )
+                  }
+                  selectedDistrict={selectedDistrict}
                   onSelect={onSelect}
                 />
-              ))}
+              ))
+            : [...insights]
+                .sort(compareBySwing)
+                .map((insight) => (
+                  <DistrictCard
+                    key={`${insight.district.megyekod}-${insight.district.oevk}`}
+                    insight={insight}
+                    isCityMap={isCityMap}
+                    showCounty={!isCityMap}
+                    isSelected={isSameDistrict(
+                      insight.district,
+                      selectedDistrict,
+                    )}
+                    onSelect={onSelect}
+                  />
+                ))}
       </div>
     </div>
   );
@@ -148,6 +162,7 @@ function CountyGroup({
             <DistrictCard
               key={`${insight.district.megyekod}-${insight.district.oevk}`}
               insight={insight}
+              isCityMap={false}
               isSelected={isSameDistrict(insight.district, selectedDistrict)}
               onSelect={onSelect}
             />
@@ -160,11 +175,13 @@ function CountyGroup({
 
 function DistrictCard({
   insight,
+  isCityMap,
   isSelected,
   showCounty,
   onSelect,
 }: {
   insight: DistrictInsight;
+  isCityMap: boolean;
   isSelected: boolean;
   showCounty?: boolean;
   onSelect: (district: CandidateListData) => void;
@@ -181,7 +198,7 @@ function DistrictCard({
       <div className="flex items-baseline justify-between gap-2">
         <span className="text-[15px] font-bold tracking-[-0.2px] text-slate-100">
           {showCounty && `${district.megye} · `}
-          {district.oevk}. OEVK
+          {getDistrictName(district, isCityMap)}
         </span>
         {isSelected && (
           <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.6px] text-blue-400">
@@ -190,7 +207,8 @@ function DistrictCard({
         )}
       </div>
       <span className="text-xs text-slate-400">
-        {district.telepules} · {formatVoters(district.valasztopolgar)}
+        {!isCityMap && `${district.telepules} · `}
+        {formatVoters(district.valasztopolgar)}
         {t("bottomBar.k")} {t("districtList.voters")}
       </span>
       <div className="mt-0.5 flex flex-wrap gap-2">

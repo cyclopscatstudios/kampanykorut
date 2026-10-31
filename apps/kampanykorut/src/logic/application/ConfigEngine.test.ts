@@ -189,3 +189,20 @@ describe("GameConfigEngine", () => {
     });
   });
 });
+
+describe("ConfigEngine.getDistrictMapByType", () => {
+  it.each([
+    ["2011", "oevk_2011"],
+    ["2024", "oevk_2024"],
+    ["budapest-districts", "budapest_districts"],
+  ] as const)("loads the %s map from %s.json", async (type, file) => {
+    const fetchSpy = vi
+      .spyOn(globalThis, "fetch")
+      .mockResolvedValue(new Response("[]"));
+
+    await container.resolve(ConfigEngine).getDistrictMapByType(type);
+
+    expect(fetchSpy).toHaveBeenCalledWith(`/assets/jsons/shared/${file}.json`);
+    fetchSpy.mockRestore();
+  });
+});

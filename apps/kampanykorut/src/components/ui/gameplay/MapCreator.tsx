@@ -33,7 +33,7 @@ export function MapCreator({
     <div className="flex flex-col h-full justify-center items-center">
       <div className="flex gap-4 mb-4">
         <MapWrapper
-          width={700}
+          width={capitalCity.length ? 700 : 1118}
           height={450}
           districts={districts}
           results={candidateListData}
@@ -42,15 +42,17 @@ export function MapCreator({
           electionConfig={electionConfig}
           className="w-full"
         />
-        <MapWrapper
-          width={400}
-          height={450}
-          districts={capitalCity}
-          results={candidateListData}
-          handleDistrict={setSelectedDistrict}
-          selectedDistrict={selectedDistrict}
-          electionConfig={electionConfig}
-        />
+        {capitalCity.length > 0 && (
+          <MapWrapper
+            width={400}
+            height={450}
+            districts={capitalCity}
+            results={candidateListData}
+            handleDistrict={setSelectedDistrict}
+            selectedDistrict={selectedDistrict}
+            electionConfig={electionConfig}
+          />
+        )}
       </div>
       <div className="w-[1118px]">
         <BottomBar

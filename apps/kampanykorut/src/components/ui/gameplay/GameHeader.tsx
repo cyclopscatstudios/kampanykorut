@@ -4,7 +4,11 @@ import { useLayoutEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
-import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
+import {
+  AGGREGATE_POLLSTER_ID,
+  getPlayerVoteKey,
+  PollsterEngine,
+} from "@/shared/domain";
 import {
   CampaignConfig,
   CampaignState,
@@ -49,9 +53,12 @@ export function GameHeader({
   const pollsters = pollsterEngine.getPollsters();
   const navigationService = container.resolve(Navigation);
   const endResultsScreen = navigationService.isUrlParamMatch("/end-results");
-  const { title, parties, year } = { ...config?.electionConfig };
-  const currentParty = parties?.find(
-    (party) => party.id === state?.playerSide?.partyId,
+  const electionConfig = config?.electionConfig;
+  const title = electionConfig?.title;
+  const year = electionConfig?.year;
+  const playerVoteKey = getPlayerVoteKey(electionConfig, state?.playerSide);
+  const currentParty = electionConfig?.parties.find(
+    (party) => party.id === playerVoteKey,
   );
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const isTooNarrow = useMediaQuery("(min-width: 440px)");
@@ -206,9 +213,11 @@ function NarrowHeader({
           <TurnBadge
             currentTurn={state.turn}
             turns={
+              state.decisionCount ??
               config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
                 state.playerSide?.candidateId ?? ""
-              ]?.questions?.length ?? 0
+              ]?.questions?.length ??
+              0
             }
           />
         </div>
@@ -397,9 +406,11 @@ function WideHeader({
           <TurnBadge
             currentTurn={state.turn}
             turns={
+              state.decisionCount ??
               config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
                 state.playerSide?.candidateId ?? ""
-              ]?.questions?.length ?? 0
+              ]?.questions?.length ??
+              0
             }
           />
         </div>

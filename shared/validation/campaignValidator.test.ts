@@ -394,4 +394,466 @@ describe("validateCampaign", () => {
     });
     expect(codes(result)).toEqual(["error:election-config-invalid"]);
   });
+
+  describe("election definition", () => {
+    const electionConfig = (f: Files) => file(f, "election_config.json");
+
+    it("accepts an explicit parliamentary election", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = { type: "parliamentary" };
+      });
+      expect(result).toEqual([]);
+    });
+
+    const toMayoral = (f: Files) => {
+      const config = electionConfig(f);
+      config.election = { type: "mayoral", resultRule: "plurality" };
+      delete config.listSeats;
+      delete config.allSeats;
+      delete config.thresholdPercent;
+      delete config.partyListVotes;
+      config.parties.push({ id: "candidate_a", name: "A", color: "#111" });
+    };
+
+    it("accepts a mayoral election without parliamentary seat fields", () => {
+      expect(validate(toMayoral)).toEqual([]);
+    });
+
+    it("does not require a mayoral side id to be a ballot entry", () => {
+      const result = validate((f) => {
+        toMayoral(f);
+        const config = electionConfig(f);
+        config.parties = config.parties.filter(
+          (p: { id: string }) => p.id !== "party_a",
+        );
+        file(f, "side/effects.json")[0].answers = [
+          {
+            id: "A",
+            effects: [{ type: "uniform-swing", params: { candidate_a: 1 } }],
+          },
+          { id: "B", effects: [] },
+        ];
+        file(f, "side/effects.json")[1].answers[0].effects = [];
+        delete file(f, "side/effects.json")[1].answers[0].conditionalEffects;
+        file(f, "side/strategies.json")[0].rewards[0].effects = [];
+        file(f, "candidates.json").forEach(
+          (row: { partok: Record<string, number> }) => {
+            row.partok = { candidate_a: 1, party_b: 1 };
+          },
+        );
+      });
+      expect(result).toEqual([]);
+    });
+
+    it("requires every mayoral candidate to be on the ballot", () => {
+      const result = validate((f) => {
+        toMayoral(f);
+        electionConfig(f).parties.pop();
+      });
+      expect(result).toEqual([
+        expect.objectContaining({
+          code: "mayoral-candidate-not-on-ballot",
+          path: "/playableSides/0/mainCandidates",
+        }),
+      ]);
+    });
+
+    it("still requires seat fields when the type is omitted", () => {
+      const result = validate((f) => {
+        delete electionConfig(f).listSeats;
+      });
+      expect(result).toEqual([
+        expect.objectContaining({
+          code: "election-config-invalid",
+          path: "/listSeats",
+        }),
+      ]);
+    });
+
+    it("rejects an unknown election type", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = { type: "presidential" };
+      });
+      expect(result).toEqual([
+        expect.objectContaining({
+          code: "election-config-invalid",
+          path: "/election/type",
+        }),
+      ]);
+    });
+
+    it("rejects an election that is not an object", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = "mayoral";
+      });
+      expect(result).toEqual([
+        expect.objectContaining({
+          code: "election-config-invalid",
+          path: "/election",
+        }),
+      ]);
+    });
+
+    it("rejects an unknown result rule", () => {
+      const result = validate((f) => {
+        toMayoral(f);
+        electionConfig(f).election.resultRule = "runoff";
+      });
+      expect(result).toEqual([
+        expect.objectContaining({
+          code: "election-config-invalid",
+          path: "/election/resultRule",
+        }),
+      ]);
+    });
+
+    it("warns when a parliamentary election sets a result rule", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = {
+          type: "parliamentary",
+          resultRule: "plurality",
+        };
+      });
+      expect(codes(result)).toEqual(["warning:result-rule-ignored"]);
+    });
+  });
+
+  describe("campaign events", () => {
+    const withdrawal = () => ({
+      id: "withdrawal",
+      label: "Withdrawal",
+      once: true,
+      priority: 100,
+      conditions: [
+        {
+          if: {
+            and: [
+              { type: "turn", min: 1, max: 2 },
+              {
+                type: "candidate-support",
+                candidateId: "party_b",
+                operator: "<",
+                value: 0.3,
+              },
+              { type: "answer-selected", questionId: "q1", answerId: "A" },
+            ],
+          },
+          effects: [{ type: "uniform-swing", params: { party_a: 1 } }],
+        },
+      ],
+      announcement: { title: "Visszalép", body: "A mezőny megváltozott." },
+    });
+
+    const withEvents = (events: unknown) => (f: Files) => {
+      file(f, "manifest.json").files.campaignEvents = "events.json";
+      f["events.json"] = events;
+    };
+
+    it("accepts a valid events file", () => {
+      expect(validate(withEvents([withdrawal()]))).toEqual([]);
+    });
+
+    it("reports a missing events file", () => {
+      const result = validate((f) => {
+        file(f, "manifest.json").files.campaignEvents = "events.json";
+      });
+      expect(codes(result)).toEqual(["error:file-missing"]);
+    });
+
+    it("reports invalid references inside event conditions", () => {
+      const event = withdrawal();
+      event.conditions[0].if = {
+        and: [
+          { type: "answer-selected", questionId: "q9", answerId: "A" },
+          {
+            type: "candidate-support",
+            candidateId: "party_x",
+            operator: "<",
+            value: 0.3,
+          },
+          { not: { type: "event-triggered", eventId: "nope" } },
+        ],
+      } as never;
+
+      const result = validate(withEvents([event]));
+
+      expect(result.map((d) => `${d.code}@${d.path}`)).toEqual([
+        "unknown-question@/0/conditions/0/if/and/0/questionId",
+        "unknown-candidate@/0/conditions/0/if/and/1/candidateId",
+        "unknown-event@/0/conditions/0/if/and/2/not/eventId",
+      ]);
+      expect(result.every((d) => d.file === "events.json")).toBe(true);
+    });
+
+    it("reports structural event errors", () => {
+      const duplicate = withdrawal();
+      const badOnce = { ...withdrawal(), id: "bad_once", once: "yes" };
+      const noBranches = { ...withdrawal(), id: "empty", conditions: [] };
+      const badAnnouncement = {
+        ...withdrawal(),
+        id: "announce",
+        announcement: { title: "Only title" },
+      };
+      const badEffect = withdrawal();
+      badEffect.id = "bad_effect";
+      badEffect.conditions[0].effects = [{ type: "teleport" }] as never;
+
+      const result = validate(
+        withEvents([
+          withdrawal(),
+          duplicate,
+          badOnce,
+          noBranches,
+          badAnnouncement,
+          badEffect,
+        ]),
+      );
+
+      expect(result.map((d) => `${d.code}@${d.path}`)).toEqual([
+        "duplicate-id@/1/id",
+        "event-invalid@/2/once",
+        "event-invalid@/3/conditions",
+        "event-invalid@/4/announcement",
+        "effect-type-unknown@/5/conditions/0/effects/0",
+      ]);
+    });
+
+    it("rejects a file that is not an array", () => {
+      expect(codes(validate(withEvents({})))).toEqual(["error:events-invalid"]);
+    });
+  });
+
+  describe("withdraw-candidate event effect", () => {
+    const withdraw = (patch: object = {}) => ({
+      type: "withdraw-candidate",
+      candidateId: "party_b",
+      endorsedCandidateId: "party_a",
+      redistribution: { party_a: 0.9, _abstain: 0.1 },
+      ...patch,
+    });
+
+    const setup =
+      (effect: object, mayoral = true) =>
+      (f: Files) => {
+        if (mayoral) {
+          const config = file(f, "election_config.json");
+          config.election = { type: "mayoral" };
+          config.parties.push({ id: "candidate_a", name: "A", color: "#111" });
+        }
+        file(f, "manifest.json").files.campaignEvents = "events.json";
+        f["events.json"] = [
+          {
+            id: "withdrawal",
+            conditions: [{ if: { type: "turn", min: 1 }, effects: [effect] }],
+          },
+        ];
+      };
+
+    const issues = (effect: object, mayoral = true) =>
+      validate(setup(effect, mayoral)).map((d) => `${d.code}@${d.path}`);
+
+    it("accepts a withdrawal in a mayoral election", () => {
+      expect(issues(withdraw())).toEqual([]);
+    });
+
+    it("is only supported in mayoral elections", () => {
+      expect(issues(withdraw(), false)).toEqual([
+        "withdraw-not-supported@/0/conditions/0/effects/0",
+      ]);
+    });
+
+    it("refuses to withdraw a playable candidate", () => {
+      expect(issues(withdraw({ candidateId: "candidate_a" }))).toEqual([
+        "withdraw-playable-candidate@/0/conditions/0/effects/0/candidateId",
+      ]);
+    });
+
+    it("validates candidate references", () => {
+      expect(
+        issues(
+          withdraw({
+            candidateId: "nobody",
+            endorsedCandidateId: "nobody_else",
+            redistribution: { party_a: 0.5, ghost: 0.5 },
+          }),
+        ),
+      ).toEqual([
+        "unknown-candidate@/0/conditions/0/effects/0/candidateId",
+        "unknown-candidate@/0/conditions/0/effects/0/endorsedCandidateId",
+        "unknown-candidate@/0/conditions/0/effects/0/redistribution/ghost",
+      ]);
+      expect(
+        issues(withdraw({ redistribution: { party_b: 0.5, party_a: 0.5 } })),
+      ).toEqual([
+        "unknown-candidate@/0/conditions/0/effects/0/redistribution/party_b",
+      ]);
+    });
+
+    it("requires shares between 0 and 1 that add up to 1", () => {
+      expect(
+        issues(withdraw({ redistribution: { party_a: 0.8, _abstain: 0.1 } })),
+      ).toEqual([
+        "redistribution-sum@/0/conditions/0/effects/0/redistribution",
+      ]);
+      expect(
+        issues(withdraw({ redistribution: { party_a: 1.2, _abstain: -0.2 } })),
+      ).toEqual([
+        "effect-invalid@/0/conditions/0/effects/0/redistribution/party_a",
+        "effect-invalid@/0/conditions/0/effects/0/redistribution/_abstain",
+        "redistribution-sum@/0/conditions/0/effects/0/redistribution",
+      ]);
+      expect(issues(withdraw({ redistribution: {} }))).toEqual([
+        "effect-invalid@/0/conditions/0/effects/0/redistribution",
+      ]);
+    });
+
+    it("validates the reason", () => {
+      expect(issues(withdraw({ reason: "illness" }))).toEqual([
+        "effect-invalid@/0/conditions/0/effects/0/reason",
+      ]);
+    });
+
+    it("is not accepted as an answer effect", () => {
+      const result = validate((f) => {
+        effects(f)[0].answers[0].effects = [withdraw()];
+      });
+      expect(codes(result)).toEqual(["error:effect-type-unknown"]);
+    });
+  });
+
+  describe("conditional questions", () => {
+    const questionsFile = (f: Files) => file(f, "side/questions.json");
+    const mayoral = (f: Files) => {
+      const config = file(f, "election_config.json");
+      config.election = { type: "mayoral" };
+      config.parties.push({ id: "candidate_a", name: "A", color: "#111" });
+    };
+    const branch = (id: string, status: "active" | "inactive") => ({
+      id,
+      question: "?",
+      possibleAnswers: [{ id: "A", label: "a" }],
+      visibleIf: {
+        type: "candidate-status",
+        candidateId: "party_b",
+        status,
+      },
+    });
+    const issues = (mutate: (f: Files) => void) =>
+      validate(mutate).map((d) => `${d.severity}:${d.code}@${d.path}`);
+    const addQuestions = (
+      f: Files,
+      ...added: (Record<string, unknown> & { id: string })[]
+    ) => {
+      questionsFile(f).push(...added);
+      effects(f).push(
+        ...added.map(({ id }) => ({
+          id,
+          answers: [
+            {
+              id: "A",
+              effects: [{ type: "uniform-swing", params: { party_a: 1 } }],
+            },
+          ],
+        })),
+      );
+    };
+
+    it("accepts a balanced branch", () => {
+      expect(
+        issues((f) => {
+          mayoral(f);
+          addQuestions(
+            f,
+            branch("q3", "active"),
+            branch("q3_after", "inactive"),
+          );
+        }),
+      ).toEqual([]);
+    });
+
+    it("warns when a branch does not replace every skipped question", () => {
+      const result = validate((f) => {
+        mayoral(f);
+        addQuestions(
+          f,
+          branch("q3", "active"),
+          branch("q4", "active"),
+          branch("q3_after", "inactive"),
+        );
+      });
+
+      expect(result).toEqual([
+        expect.objectContaining({
+          severity: "warning",
+          code: "question-count-differs",
+          file: "side/questions.json",
+        }),
+      ]);
+      expect(result[0].message).toContain(
+        "4 (all active), 3 (party_b inactive)",
+      );
+    });
+
+    it("skips the count check when branches depend on answers", () => {
+      expect(
+        issues((f) => {
+          mayoral(f);
+          addQuestions(f, branch("q3", "active"), {
+            ...branch("q4", "inactive"),
+            visibleIf: {
+              type: "answer-selected",
+              questionId: "q1",
+              answerId: "A",
+            },
+          });
+        }),
+      ).toEqual([]);
+    });
+
+    it("reports invalid references in visibleIf", () => {
+      expect(
+        issues((f) => {
+          questionsFile(f)[1].visibleIf = {
+            or: [
+              { type: "answer-selected", questionId: "q9", answerId: "A" },
+              { type: "event-triggered", eventId: "missing" },
+            ],
+          };
+        }),
+      ).toEqual([
+        "error:unknown-question@/1/visibleIf/or/0/questionId",
+        "error:unknown-event@/1/visibleIf/or/1/eventId",
+      ]);
+    });
+
+    it("accepts events declared in the campaign events file", () => {
+      expect(
+        issues((f) => {
+          file(f, "manifest.json").files.campaignEvents = "events.json";
+          f["events.json"] = [
+            {
+              id: "withdrawal",
+              conditions: [{ if: { type: "turn", min: 1 }, effects: [] }],
+            },
+          ];
+          questionsFile(f)[1].visibleIf = {
+            type: "event-triggered",
+            eventId: "withdrawal",
+          };
+        }),
+      ).toEqual([]);
+    });
+
+    it("validates requires and blocks", () => {
+      expect(
+        issues((f) => {
+          questionsFile(f)[1].requires = [{ questionId: "q1", answerId: "Z" }];
+          questionsFile(f)[0].blocks = [{ questionId: "q2", answerId: "A" }];
+        }),
+      ).toEqual([
+        "warning:condition-not-yet-answered@/0/blocks/0",
+        "error:unknown-answer@/1/requires/0/answerId",
+      ]);
+    });
+  });
 });

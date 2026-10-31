@@ -89,7 +89,9 @@ export class StateEngine extends Emitter<CampaignState> {
       "localStorage",
       sessionId,
     );
-    return history ? JSON.parse(history) : null;
+    return history
+      ? this.trimToCommittedTurns(JSON.parse(history), sessionId)
+      : null;
   }
 
   getSavedGameSessions() {
@@ -166,13 +168,20 @@ export class StateEngine extends Emitter<CampaignState> {
   }
 
   getTurnHistory() {
-    const sessionId = this.getSessionId();
-    const history = this.storage.getItem(
-      "turnHistory",
-      "localStorage",
+    return this.getHistory();
+  }
+
+  private trimToCommittedTurns(history: HistoryItem[], sessionId: string) {
+    const turn = this.getCampaignStateById(sessionId)?.turn;
+    if (turn === undefined || history.length <= turn) {
+      return history;
+    }
+    log.warn("Turn history is ahead of the campaign state, trimming it", {
       sessionId,
-    );
-    return history ? JSON.parse(history) : null;
+      historyLength: history.length,
+      turn,
+    });
+    return history.slice(0, turn);
   }
 
   getSessionId() {

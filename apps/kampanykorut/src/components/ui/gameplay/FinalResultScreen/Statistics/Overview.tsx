@@ -1,4 +1,5 @@
 import { t } from "i18next";
+import { getParliamentaryConfig } from "@/shared/domain";
 import {
   CampaignConfig,
   CampaignState,
@@ -33,20 +34,27 @@ export function Overview({
 }) {
   const party = results.mandates.find((party) => party.party === playerSide);
   const percentage = results.percentages.partyListResults[playerSide];
+  const seatConfig = getParliamentaryConfig(config.electionConfig);
 
   return (
     <div className="flex flex-col justify-center items-stretch md:items-center min-w-0">
-      <div className="grid grid-cols-3 md:flex gap-2 mb-3">
-        <MandateOverview
-          all={config.electionConfig.allSeats - config.electionConfig.listSeats}
-          mandates={party?.constituencySeats ?? 0}
-          label={t("endResult.statistics.overview.constituencySeats")}
-        />
-        <MandateOverview
-          all={config.electionConfig.listSeats}
-          mandates={party?.listSeats ?? 0}
-          label={t("endResult.statistics.overview.listSeats")}
-        />
+      <div
+        className={`${seatConfig ? "grid grid-cols-3" : "flex justify-center"} md:flex gap-2 mb-3`}
+      >
+        {seatConfig && (
+          <>
+            <MandateOverview
+              all={seatConfig.allSeats - seatConfig.listSeats}
+              mandates={party?.constituencySeats ?? 0}
+              label={t("endResult.statistics.overview.constituencySeats")}
+            />
+            <MandateOverview
+              all={seatConfig.listSeats}
+              mandates={party?.listSeats ?? 0}
+              label={t("endResult.statistics.overview.listSeats")}
+            />
+          </>
+        )}
         <PercentagesOverview
           label={t("endResult.statistics.overview.partyListResults")}
           percentage={Number(percentage.toFixed(2)) * 100}

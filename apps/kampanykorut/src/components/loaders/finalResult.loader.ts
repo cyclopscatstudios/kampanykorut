@@ -36,5 +36,10 @@ export async function finalResultLoader({ params }: LoaderFunctionArgs) {
 
   const config = configEngine.getCampaignConfig(campaignId);
 
-  return { results: state.results, config };
+  const results = state.results && {
+    ...state.results,
+    ...(state.mayoralResult && { mayoralResult: state.mayoralResult }),
+  };
+
+  return { results, config };
 }

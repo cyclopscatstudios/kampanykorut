@@ -169,6 +169,7 @@ export function SideSelectorMenu() {
           open={isBadgeSheetOpen}
           title={t("sideSelector.badgeDisplay.label")}
           onClose={() => setIsBadgeSheetOpen(false)}
+          fitContent
         >
           <div className="flex flex-col gap-2.5">
             {badges.map((badge) => (
@@ -327,6 +328,7 @@ function SelectorItem<T extends { label: string; value: string }>({
           open={isSheetOpen}
           title={label}
           onClose={() => setIsSheetOpen(false)}
+          fitContent
         >
           <div className="flex flex-col gap-2">
             {options.map((option) => {

@@ -1,4 +1,8 @@
+import { evaluateCondition } from "../domain/ConditionEvaluator";
 import { defaultGroups } from "../domain/DefaultGroups";
+import { getQuestionCondition } from "../domain/QuestionEligibility";
+import { CandidateStatus, Condition, RawQuestion } from "../types";
+import { validateCondition } from "./conditionValidator";
 
 export type Severity = "error" | "warning";
 
@@ -35,7 +39,13 @@ const EFFECT_TYPES = [
   "district-vote-transfer",
 ];
 
-const DISTRICT_MAPS = ["2011", "2024"];
+const DISTRICT_MAPS = ["2011", "2024", "budapest-districts"];
+
+const ELECTION_TYPES = ["parliamentary", "mayoral"];
+
+const RESULT_RULES = ["plurality"];
+
+const WITHDRAW_REASONS = ["withdrawal", "disqualification", "other"];
 
 type Json = Record<string, unknown>;
 
@@ -51,6 +61,9 @@ interface Context {
   parties: Set<string>;
   groups: Set<string>;
   districts: Set<string>;
+  electionType?: string;
+  playableCandidates: Set<string>;
+  eventIds: Set<string>;
 }
 
 const isObject = (value: unknown): value is Json =>
@@ -564,7 +577,137 @@ function checkQuestions(ctx: Context, file: string, data: unknown) {
     }
     questions.set(question.id, { index, answers });
   });
+  checkQuestionConditions(ctx, file, data, questions);
   return questions;
+}
+
+function checkQuestionConditions(
+  ctx: Context,
+  file: string,
+  data: unknown[],
+  questions: Map<string, QuestionInfo>,
+) {
+  const refs = {
+    questions: new Map(
+      [...questions].map(([id, info]) => [id, info.answers] as const),
+    ),
+    candidateIds: ctx.parties,
+    eventIds: ctx.eventIds,
+  };
+  let valid = true;
+  data.forEach((question, index) => {
+    if (!isObject(question)) {
+      return;
+    }
+    if (question.visibleIf !== undefined) {
+      const issues = validateCondition(
+        question.visibleIf,
+        refs,
+        `/${index}/visibleIf`,
+      );
+      issues.forEach((issue) =>
+        report(ctx, "error", issue.code, file, issue.path, issue.message),
+      );
+      valid &&= issues.length === 0;
+    }
+    for (const key of ["requires", "blocks"] as const) {
+      if (question[key] !== undefined) {
+        const before = ctx.diagnostics.length;
+        checkAnswerConditions(
+          ctx,
+          questions,
+          file,
+          `/${index}/${key}`,
+          question[key],
+          index,
+        );
+        valid &&= ctx.diagnostics.length === before;
+      }
+    }
+  });
+  if (valid) {
+    checkQuestionCountBalance(ctx, file, data as RawQuestion[]);
+  }
+}
+
+function collectStatusCandidates(
+  condition: Condition,
+  candidates: Set<string>,
+): boolean {
+  if ("and" in condition || "or" in condition) {
+    const children = "and" in condition ? condition.and : condition.or;
+    return children.every((child) =>
+      collectStatusCandidates(child, candidates),
+    );
+  }
+  if ("not" in condition) {
+    return collectStatusCandidates(condition.not, candidates);
+  }
+  if (condition.type === "candidate-status") {
+    candidates.add(condition.candidateId);
+    return true;
+  }
+  return false;
+}
+
+const MAX_BALANCE_CANDIDATES = 8;
+
+function checkQuestionCountBalance(
+  ctx: Context,
+  file: string,
+  questions: RawQuestion[],
+) {
+  const conditions = questions.map(getQuestionCondition);
+  const candidates = new Set<string>();
+  const verifiable = conditions.every(
+    (condition) => !condition || collectStatusCandidates(condition, candidates),
+  );
+  if (
+    !verifiable ||
+    candidates.size === 0 ||
+    candidates.size > MAX_BALANCE_CANDIDATES
+  ) {
+    return;
+  }
+
+  const ids = [...candidates].sort();
+  const counts = new Map<number, string>();
+  for (let mask = 0; mask < 1 << ids.length; mask++) {
+    const inactive = ids.filter((_, i) => mask & (1 << i));
+    const status = (id: string): CandidateStatus =>
+      inactive.includes(id) ? "inactive" : "active";
+    const context = {
+      turn: 0,
+      answers: [],
+      getSupport: () => undefined,
+      getCandidateStatus: status,
+      triggeredEventIds: [],
+    };
+    const visible = conditions.filter(
+      (condition) => !condition || evaluateCondition(condition, context),
+    ).length;
+    if (!counts.has(visible)) {
+      counts.set(
+        visible,
+        inactive.length ? `${inactive.join(", ")} inactive` : "all active",
+      );
+    }
+  }
+
+  if (counts.size > 1) {
+    const summary = [...counts]
+      .sort(([a], [b]) => b - a)
+      .map(([count, label]) => `${count} (${label})`)
+      .join(", ");
+    report(
+      ctx,
+      "warning",
+      "question-count-differs",
+      file,
+      "",
+      `the number of shown questions depends on candidate status: ${summary}; every branch must replace exactly the questions it skips`,
+    );
+  }
 }
 
 function checkAnswerEffects(
@@ -939,6 +1082,62 @@ function checkImageFields(
   }
 }
 
+function checkElectionDefinition(
+  ctx: Context,
+  file: string,
+  election: unknown,
+): string | undefined {
+  if (election === undefined) {
+    return "parliamentary";
+  }
+  if (!isObject(election)) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/election",
+      "election must be an object",
+    );
+    return undefined;
+  }
+  if (!ELECTION_TYPES.includes(String(election.type))) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/election/type",
+      `election type must be one of ${ELECTION_TYPES.join(", ")}`,
+    );
+    return undefined;
+  }
+  if (
+    election.resultRule !== undefined &&
+    !RESULT_RULES.includes(String(election.resultRule))
+  ) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/election/resultRule",
+      `resultRule must be one of ${RESULT_RULES.join(", ")}`,
+    );
+  }
+  if (election.type === "parliamentary" && election.resultRule !== undefined) {
+    report(
+      ctx,
+      "warning",
+      "result-rule-ignored",
+      file,
+      "/election/resultRule",
+      "resultRule only applies to mayoral elections",
+    );
+  }
+  return String(election.type);
+}
+
 function checkElectionConfig(ctx: Context, file: string, data: unknown) {
   if (!isObject(data)) {
     report(
@@ -951,7 +1150,13 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
     );
     return undefined;
   }
-  for (const key of ["listSeats", "allSeats", "thresholdPercent"]) {
+  const electionType = checkElectionDefinition(ctx, file, data.election);
+  ctx.electionType = electionType;
+  const seatKeys =
+    electionType === "parliamentary"
+      ? ["listSeats", "allSeats", "thresholdPercent"]
+      : [];
+  for (const key of seatKeys) {
     if (!isFiniteNumber(data[key]) || (data[key] as number) <= 0) {
       report(
         ctx,
@@ -1042,12 +1247,28 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
         );
         return;
       }
-      checkParty(ctx, file, `/playableSides/${i}/id`, side.id);
+      if (electionType !== "mayoral") {
+        checkParty(ctx, file, `/playableSides/${i}/id`, side.id);
+      }
       const candidates = new Set(
         Array.isArray(side.mainCandidates)
           ? side.mainCandidates.filter(isObject).map((c) => String(c.id))
           : [],
       );
+      if (electionType === "mayoral") {
+        candidates.forEach((id) => {
+          if (!ctx.parties.has(id)) {
+            report(
+              ctx,
+              "error",
+              "mayoral-candidate-not-on-ballot",
+              file,
+              `/playableSides/${i}/mainCandidates`,
+              `mayoral candidate "${id}" must also be listed in parties`,
+            );
+          }
+        });
+      }
       const playable = Array.isArray(side.playableCandidates)
         ? new Set(side.playableCandidates.map(String))
         : undefined;
@@ -1064,6 +1285,7 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
         }
       });
       sides.set(side.id, { candidates, playable });
+      candidates.forEach((id) => ctx.playableCandidates.add(id));
     });
   }
   checkImageFields(ctx, file, data.electionAssets, "/electionAssets");
@@ -1188,6 +1410,345 @@ function checkCustomGroups(ctx: Context, file: string, data: unknown) {
   });
 }
 
+function checkPlayableSides(
+  ctx: Context,
+  playableSides: Json,
+  sides: ReturnType<typeof checkElectionConfig>,
+  electionConfigFile: string,
+  allQuestions: Map<string, Set<string>>,
+) {
+  for (const [partyId, candidates] of Object.entries(playableSides)) {
+    const sidePath = `/files/playableSides/${partyId}`;
+    const side = sides?.get(partyId);
+    if (sides && !side) {
+      report(
+        ctx,
+        "error",
+        "unknown-side",
+        "manifest.json",
+        sidePath,
+        `"${partyId}" is not a playable side in ${electionConfigFile}`,
+      );
+    }
+    if (!isObject(candidates)) {
+      continue;
+    }
+    for (const [candidateId, paths] of Object.entries(candidates)) {
+      const candidatePath = `${sidePath}/${candidateId}`;
+      if (side && !side.candidates.has(candidateId)) {
+        report(
+          ctx,
+          "error",
+          "unknown-candidate",
+          "manifest.json",
+          candidatePath,
+          `"${candidateId}" is not a main candidate of "${partyId}"`,
+        );
+      } else if (side?.playable && !side.playable.has(candidateId)) {
+        report(
+          ctx,
+          "warning",
+          "candidate-not-playable",
+          "manifest.json",
+          candidatePath,
+          `"${candidateId}" has content but is not listed in playableCandidates`,
+        );
+      }
+      if (!isObject(paths)) {
+        report(
+          ctx,
+          "error",
+          "manifest-invalid",
+          "manifest.json",
+          candidatePath,
+          "candidate entry must be an object",
+        );
+        continue;
+      }
+      const read = (key: string) =>
+        paths[key] === undefined
+          ? undefined
+          : readFile(
+              ctx,
+              paths[key],
+              "manifest.json",
+              `${candidatePath}/${key}`,
+            );
+
+      const questions = checkQuestions(
+        ctx,
+        String(paths.questions),
+        read("questions"),
+      );
+      questions.forEach(({ answers }, questionId) => {
+        const known = allQuestions.get(questionId) ?? new Set<string>();
+        answers.forEach((answerId) => known.add(answerId));
+        allQuestions.set(questionId, known);
+      });
+      const answerEffects = read("answerEffect");
+      if (answerEffects !== undefined) {
+        checkAnswerEffects(
+          ctx,
+          questions,
+          String(paths.answerEffect),
+          answerEffects,
+        );
+      }
+      const strategies = read("campaignStrategies");
+      if (strategies !== undefined) {
+        checkStrategies(
+          ctx,
+          questions,
+          String(paths.campaignStrategies),
+          strategies,
+        );
+      }
+      const feedback = read("advisorFeedback");
+      if (feedback !== undefined) {
+        checkAdvisorFeedback(
+          ctx,
+          questions,
+          String(paths.advisorFeedback),
+          feedback,
+        );
+      }
+      for (const key of ["advisorFeedbackAssets", "endResults"]) {
+        const data = read(key);
+        if (data !== undefined) {
+          checkImageFields(ctx, String(paths[key]), data);
+        }
+      }
+    }
+  }
+}
+
+function checkEventEffects(
+  ctx: Context,
+  file: string,
+  path: string,
+  effects: unknown,
+) {
+  if (!Array.isArray(effects)) {
+    checkEffects(ctx, file, path, effects);
+    return;
+  }
+  effects.forEach((effect, i) => {
+    const effectPath = `${path}/${i}`;
+    if (isObject(effect) && effect.type === "withdraw-candidate") {
+      checkWithdrawEffect(ctx, file, effectPath, effect);
+    } else {
+      checkEffect(ctx, file, effectPath, effect);
+    }
+  });
+}
+
+function checkWithdrawEffect(
+  ctx: Context,
+  file: string,
+  path: string,
+  effect: Json,
+) {
+  const error = (code: string, at: string, message: string) =>
+    report(ctx, "error", code, file, at, message);
+
+  if (ctx.electionType !== "mayoral") {
+    error(
+      "withdraw-not-supported",
+      path,
+      "withdraw-candidate is only supported in mayoral elections",
+    );
+  }
+  const candidateId = effect.candidateId;
+  if (typeof candidateId !== "string" || !ctx.parties.has(candidateId)) {
+    error(
+      "unknown-candidate",
+      `${path}/candidateId`,
+      `unknown candidate "${String(candidateId)}"`,
+    );
+  } else if (ctx.playableCandidates.has(candidateId)) {
+    error(
+      "withdraw-playable-candidate",
+      `${path}/candidateId`,
+      `"${candidateId}" is playable; withdrawing the player's own candidate is not supported yet`,
+    );
+  }
+  if (
+    effect.endorsedCandidateId !== undefined &&
+    (typeof effect.endorsedCandidateId !== "string" ||
+      !ctx.parties.has(effect.endorsedCandidateId) ||
+      effect.endorsedCandidateId === candidateId)
+  ) {
+    error(
+      "unknown-candidate",
+      `${path}/endorsedCandidateId`,
+      "endorsedCandidateId must be another candidate in parties",
+    );
+  }
+  if (
+    effect.reason !== undefined &&
+    !WITHDRAW_REASONS.includes(String(effect.reason))
+  ) {
+    error(
+      "effect-invalid",
+      `${path}/reason`,
+      `reason must be one of ${WITHDRAW_REASONS.join(", ")}`,
+    );
+  }
+  const redistribution = effect.redistribution;
+  if (!isObject(redistribution) || !Object.keys(redistribution).length) {
+    error(
+      "effect-invalid",
+      `${path}/redistribution`,
+      "redistribution must be a non-empty object",
+    );
+    return;
+  }
+  let total = 0;
+  for (const [target, share] of Object.entries(redistribution)) {
+    const targetPath = `${path}/redistribution/${target}`;
+    if (
+      target !== "_abstain" &&
+      (!ctx.parties.has(target) || target === candidateId)
+    ) {
+      error(
+        "unknown-candidate",
+        targetPath,
+        `"${target}" is not another candidate in parties`,
+      );
+    }
+    if (!isFiniteNumber(share) || share < 0 || share > 1) {
+      error("effect-invalid", targetPath, "share must be between 0 and 1");
+    } else {
+      total += share;
+    }
+  }
+  if (Math.abs(total - 1) > 1e-9) {
+    error(
+      "redistribution-sum",
+      `${path}/redistribution`,
+      `shares must add up to 1 (got ${total})`,
+    );
+  }
+}
+
+function checkCampaignEvents(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  questions: Map<string, Set<string>>,
+) {
+  if (data === undefined) {
+    return;
+  }
+  if (!Array.isArray(data)) {
+    report(ctx, "error", "events-invalid", file, "", "events must be an array");
+    return;
+  }
+  const eventIds = new Set(
+    data
+      .filter(isObject)
+      .map((event) => event.id)
+      .filter((id): id is string => typeof id === "string"),
+  );
+  const seen = new Set<string>();
+  const refs = { questions, candidateIds: ctx.parties, eventIds };
+
+  data.forEach((event, index) => {
+    const path = `/${index}`;
+    if (!isObject(event) || typeof event.id !== "string") {
+      report(
+        ctx,
+        "error",
+        "event-invalid",
+        file,
+        path,
+        "event must be an object with a string id",
+      );
+      return;
+    }
+    if (seen.has(event.id)) {
+      report(
+        ctx,
+        "error",
+        "duplicate-id",
+        file,
+        `${path}/id`,
+        `duplicate event id "${event.id}"`,
+      );
+    }
+    seen.add(event.id);
+    if (event.once !== undefined && typeof event.once !== "boolean") {
+      report(
+        ctx,
+        "error",
+        "event-invalid",
+        file,
+        `${path}/once`,
+        "once must be a boolean",
+      );
+    }
+    if (event.priority !== undefined && !isFiniteNumber(event.priority)) {
+      report(
+        ctx,
+        "error",
+        "event-invalid",
+        file,
+        `${path}/priority`,
+        "priority must be a number",
+      );
+    }
+    if (!Array.isArray(event.conditions) || event.conditions.length === 0) {
+      report(
+        ctx,
+        "error",
+        "event-invalid",
+        file,
+        `${path}/conditions`,
+        "conditions must be a non-empty array of branches",
+      );
+    } else {
+      event.conditions.forEach((branch, i) => {
+        const branchPath = `${path}/conditions/${i}`;
+        if (!isObject(branch)) {
+          report(
+            ctx,
+            "error",
+            "event-invalid",
+            file,
+            branchPath,
+            "branch must be an object",
+          );
+          return;
+        }
+        validateCondition(branch.if, refs, `${branchPath}/if`).forEach(
+          (issue) =>
+            report(ctx, "error", issue.code, file, issue.path, issue.message),
+        );
+        checkEventEffects(ctx, file, `${branchPath}/effects`, branch.effects);
+      });
+    }
+    if (event.announcement !== undefined) {
+      const announcement = event.announcement;
+      if (
+        !isObject(announcement) ||
+        typeof announcement.title !== "string" ||
+        typeof announcement.body !== "string"
+      ) {
+        report(
+          ctx,
+          "error",
+          "event-invalid",
+          file,
+          `${path}/announcement`,
+          "announcement must have a string title and body",
+        );
+      } else {
+        checkImageFields(ctx, file, announcement, `${path}/announcement`);
+      }
+    }
+  });
+}
+
 export function validateCampaign(
   header: CampaignHeaderInput,
   source: CampaignSource,
@@ -1199,6 +1760,8 @@ export function validateCampaign(
     parties: new Set(),
     groups: new Set(defaultGroups.map((g) => g.id)),
     districts: new Set(),
+    playableCandidates: new Set(),
+    eventIds: new Set(),
   };
 
   for (const banner of ["campaignBanner", "thinCampaignBanner"] as const) {
@@ -1294,107 +1857,41 @@ export function validateCampaign(
     );
   }
 
-  if (!isObject(files.playableSides)) {
-    return ctx.diagnostics;
+  const eventsData =
+    files.campaignEvents === undefined
+      ? undefined
+      : readFile(
+          ctx,
+          files.campaignEvents,
+          "manifest.json",
+          "/files/campaignEvents",
+        );
+  if (Array.isArray(eventsData)) {
+    eventsData.filter(isObject).forEach((event) => {
+      if (typeof event.id === "string") {
+        ctx.eventIds.add(event.id);
+      }
+    });
   }
 
-  for (const [partyId, candidates] of Object.entries(files.playableSides)) {
-    const sidePath = `/files/playableSides/${partyId}`;
-    const side = sides?.get(partyId);
-    if (sides && !side) {
-      report(
-        ctx,
-        "error",
-        "unknown-side",
-        "manifest.json",
-        sidePath,
-        `"${partyId}" is not a playable side in ${electionConfigFile}`,
-      );
-    }
-    if (!isObject(candidates)) {
-      continue;
-    }
-    for (const [candidateId, paths] of Object.entries(candidates)) {
-      const candidatePath = `${sidePath}/${candidateId}`;
-      if (side && !side.candidates.has(candidateId)) {
-        report(
-          ctx,
-          "error",
-          "unknown-candidate",
-          "manifest.json",
-          candidatePath,
-          `"${candidateId}" is not a main candidate of "${partyId}"`,
-        );
-      } else if (side?.playable && !side.playable.has(candidateId)) {
-        report(
-          ctx,
-          "warning",
-          "candidate-not-playable",
-          "manifest.json",
-          candidatePath,
-          `"${candidateId}" has content but is not listed in playableCandidates`,
-        );
-      }
-      if (!isObject(paths)) {
-        report(
-          ctx,
-          "error",
-          "manifest-invalid",
-          "manifest.json",
-          candidatePath,
-          "candidate entry must be an object",
-        );
-        continue;
-      }
-      const read = (key: string) =>
-        paths[key] === undefined
-          ? undefined
-          : readFile(
-              ctx,
-              paths[key],
-              "manifest.json",
-              `${candidatePath}/${key}`,
-            );
+  const allQuestions = new Map<string, Set<string>>();
+  if (isObject(files.playableSides)) {
+    checkPlayableSides(
+      ctx,
+      files.playableSides,
+      sides,
+      electionConfigFile,
+      allQuestions,
+    );
+  }
 
-      const questions = checkQuestions(
-        ctx,
-        String(paths.questions),
-        read("questions"),
-      );
-      const answerEffects = read("answerEffect");
-      if (answerEffects !== undefined) {
-        checkAnswerEffects(
-          ctx,
-          questions,
-          String(paths.answerEffect),
-          answerEffects,
-        );
-      }
-      const strategies = read("campaignStrategies");
-      if (strategies !== undefined) {
-        checkStrategies(
-          ctx,
-          questions,
-          String(paths.campaignStrategies),
-          strategies,
-        );
-      }
-      const feedback = read("advisorFeedback");
-      if (feedback !== undefined) {
-        checkAdvisorFeedback(
-          ctx,
-          questions,
-          String(paths.advisorFeedback),
-          feedback,
-        );
-      }
-      for (const key of ["advisorFeedbackAssets", "endResults"]) {
-        const data = read(key);
-        if (data !== undefined) {
-          checkImageFields(ctx, String(paths[key]), data);
-        }
-      }
-    }
+  if (files.campaignEvents !== undefined) {
+    checkCampaignEvents(
+      ctx,
+      String(files.campaignEvents),
+      eventsData,
+      allQuestions,
+    );
   }
 
   return ctx.diagnostics;

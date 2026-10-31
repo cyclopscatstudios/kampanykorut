@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
 import { ConfigEngine, StateEngine } from "@/logic/application";
-import { getMajorityType } from "@/shared/domain";
+import { getMajorityType, getParliamentaryConfig } from "@/shared/domain";
 import { FinalResults, Mandate, RawParty } from "@/shared/types";
 import { Text } from "../../../../../../../shared/ui/Text";
 import { Heading } from "../../Heading";
@@ -21,7 +21,7 @@ export function SummaryPage({ results }: { results: FinalResults }) {
   );
 
   const allSeats =
-    currentConfig?.electionConfig.allSeats ??
+    getParliamentaryConfig(currentConfig?.electionConfig)?.allSeats ??
     results.mandates.reduce((sum, m) => sum + m.totalSeats, 0);
   const noWinner = getMajorityType(winner.totalSeats, allSeats) === null;
 

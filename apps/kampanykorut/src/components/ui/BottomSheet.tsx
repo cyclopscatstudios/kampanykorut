@@ -9,6 +9,7 @@ interface BottomSheetProps {
   onClose: () => void;
   children: ReactNode;
   hideTitle?: boolean;
+  fitContent?: boolean;
 }
 
 export function BottomSheet({
@@ -17,6 +18,7 @@ export function BottomSheet({
   onClose,
   children,
   hideTitle,
+  fitContent,
 }: BottomSheetProps) {
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -54,28 +56,34 @@ export function BottomSheet({
         aria-hidden={!open}
         aria-label={title}
         className={classNames(
-          "fixed inset-x-0 bottom-0 z-41 flex h-[420px] max-h-[70dvh] flex-col overflow-hidden rounded-t-[20px] bg-[#22355a] pt-2.5 shadow-[0_-12px_40px_rgba(0,0,0,0.4)]",
+          "fixed inset-x-0 bottom-0 z-41 flex max-h-[70dvh] flex-col overflow-hidden rounded-t-[20px] bg-[#22355a] pt-2.5 shadow-[0_-12px_40px_rgba(0,0,0,0.4)]",
+          !fitContent && "h-[420px]",
           "transition-[transform,visibility] duration-280 ease-[cubic-bezier(.32,.72,0,1)]",
           open ? "translate-y-0" : "translate-y-full invisible",
         )}
       >
         <div className="mx-auto h-1 w-9 shrink-0 rounded-full bg-white/20" />
-        <div className="flex shrink-0 items-center gap-3 px-4.5 py-2">
-          {!hideTitle && (
+        {!hideTitle && (
+          <div className="flex shrink-0 items-center gap-3 px-4.5 py-2">
             <div className="min-w-0 flex-1 text-base font-extrabold text-slate-50">
               {title}
             </div>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label={t("bottomSheet.close")}
+              className="ml-auto flex size-11 shrink-0 items-center justify-center rounded-full text-slate-300 hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-400"
+            >
+              <Icon name="x-lg" size={18} color="currentColor" />
+            </button>
+          </div>
+        )}
+        <div
+          className={classNames(
+            "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4.5 pb-[calc(16px+env(safe-area-inset-bottom))]",
+            hideTitle && "pt-3",
           )}
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label={t("bottomSheet.close")}
-            className="ml-auto flex size-11 shrink-0 items-center justify-center rounded-full text-slate-300 hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-400"
-          >
-            <Icon name="x-lg" size={18} color="currentColor" />
-          </button>
-        </div>
-        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4.5 pb-[calc(16px+env(safe-area-inset-bottom))]">
+        >
           {children}
         </div>
       </div>
