@@ -1,7 +1,9 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
 import { CampaignConfig, HistoryItem } from "@/shared/types";
+import { Button } from "../../../../../../../shared/ui/Button";
 import { Text } from "../../../../../../../shared/ui/Text";
 import { noop } from "../../../../logic/application/utils";
 import { CommonWrapper } from "../../CommonWrapper";
@@ -21,6 +23,7 @@ export function TurnHistory({
   playerSideId,
   playerCandidateId,
 }: TurnHistoryProps) {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const [selectedHistoryItem, setSelectedHistoryItem] = useState<
     HistoryItem | undefined
   >(undefined);
@@ -30,15 +33,26 @@ export function TurnHistory({
   }
 
   return (
-    <div className="size-full flex gap-4">
-      <HistorySidebar
-        history={history}
-        config={config}
-        playerSideId={playerSideId}
-        playerCandidateId={playerCandidateId}
-        selectedHistoryItem={selectedHistoryItem}
-        setSelectedHistoryItem={setSelectedHistoryItem}
-      />
+    <div className="w-full md:h-full flex flex-col md:flex-row gap-4">
+      {(isDesktop || !selectedHistoryItem) && (
+        <HistorySidebar
+          history={history}
+          config={config}
+          playerSideId={playerSideId}
+          playerCandidateId={playerCandidateId}
+          selectedHistoryItem={selectedHistoryItem}
+          setSelectedHistoryItem={setSelectedHistoryItem}
+        />
+      )}
+      {!isDesktop && selectedHistoryItem && (
+        <Button
+          variant="tertiary"
+          onClick={() => setSelectedHistoryItem(undefined)}
+        >
+          <Button.Icon name="arrow-left" />
+          <Button.Text>{t("endResult.turnHistory.back")}</Button.Text>
+        </Button>
+      )}
       {selectedHistoryItem && (
         <QuestionCardItem
           item={selectedHistoryItem}
@@ -66,8 +80,8 @@ function HistorySidebar({
     return null;
   }
   return (
-    <CommonWrapper>
-      <div className="h-[620px] overflow-y-auto overflow-x-hidden">
+    <CommonWrapper className="w-full md:w-auto min-w-0">
+      <div className="md:h-[620px] md:overflow-y-auto overflow-x-hidden">
         <div className="border-b border-slate-200/50">
           <div className="p-2">
             <div className="flex justify-between">
@@ -118,9 +132,10 @@ function TurnHistoryItem({
     playerCandidateId,
   );
   return (
-    <div
+    <button
+      type="button"
       className={classNames(
-        "w-[300px] border-b border-slate-200/50 p-2 cursor-pointer",
+        "w-full md:w-[300px] text-left border-b border-slate-200/50 p-2 cursor-pointer",
         {
           "bg-blue-500/25": selectedHistoryItem?.questionId === item.questionId,
         },
@@ -142,13 +157,17 @@ function TurnHistoryItem({
             {item.turn}
           </Text>
         </div>
-        <div>
-          <Text className="max-w-[200px] truncate" color="gray" weight="bold">
+        <div className="min-w-0">
+          <Text
+            className="md:max-w-[200px] md:truncate"
+            color="gray"
+            weight="bold"
+          >
             {question?.title ?? question?.question}
           </Text>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -190,13 +209,14 @@ function QuestionCardItem({
   }
 
   return (
-    <CommonWrapper>
+    <CommonWrapper className="w-full md:w-auto min-w-0">
       <div className="p-2">
         <Heading level={4} color="lightBlue" className="mb-4">
           {question?.question}
         </Heading>
         {question?.possibleAnswers.map((a, index) => (
           <AnswerRow
+            key={a.id}
             answer={a}
             index={index}
             isSelected={a.id === item?.answerId}

@@ -1,4 +1,5 @@
 {
+  "bottomSheet": { "close": "Bezárás" },
   "mainMenu": {
     "newGame": "Új játék",
     "loadGame": "Játék betöltése",
@@ -84,6 +85,11 @@
         "constituencySeats": "Egyéni mandátumok",
         "listSeats": "Listás mandátumok",
         "partyListResults": "Pártilistás eredmények",
+        "rankingTabs": {
+          "victories": "Győzelmek",
+          "defeats": "Vereségek",
+          "close": "Szoros"
+        },
         "biggestVictories": "Legnagyobb győzelmek",
         "biggestDefeats": "Legnagyobb vereségek",
         "closestDistricts": "Legszorosabb körzetek",
@@ -108,6 +114,7 @@
     },
     "turnHistory": {
       "label": "Előzmények",
+      "back": "Vissza az előzményekhez",
       "historyItem": {
         "day": "Nap"
       },

@@ -11,6 +11,7 @@ import type { StatisticResult } from "../statistics.utils";
 import { SupportChart } from "./Chart";
 import { ListOverview } from "./ListOverview";
 import { MandateOverview } from "./MandateOverview";
+import { MobileRankings } from "./MobileRankings";
 import { PercentagesOverview } from "./PercentagesOverview";
 
 export function Overview({
@@ -36,8 +37,10 @@ export function Overview({
   const seatConfig = getParliamentaryConfig(config.electionConfig);
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="flex gap-2 mb-2">
+    <div className="flex flex-col justify-center items-stretch md:items-center min-w-0">
+      <div
+        className={`${seatConfig ? "grid grid-cols-3" : "flex justify-center"} md:flex gap-2 mb-3`}
+      >
         {seatConfig && (
           <>
             <MandateOverview
@@ -57,7 +60,13 @@ export function Overview({
           percentage={Number(percentage.toFixed(2)) * 100}
         />
       </div>
-      <div className="flex gap-2">
+      <MobileRankings
+        config={config}
+        largestVictories={largestVictories}
+        largestDefeats={largestDefeats}
+        closestDistricts={closestDistricts}
+      />
+      <div className="hidden md:flex gap-2">
         <ListOverview
           label={t("endResult.statistics.overview.biggestVictories")}
           iconName="check-circle-fill"

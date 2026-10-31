@@ -24,9 +24,12 @@ export function MayoralDistrictTable({
   const rows = getMayoralDistrictRows(mayoralResult.districts);
 
   return (
-    <div className="h-full overflow-y-auto px-2" data-testid="mayoralDistricts">
-      <table className="w-full text-left text-sm text-slate-200">
-        <thead className="sticky top-0 bg-[#0f172a] text-xs uppercase text-slate-400">
+    <div
+      className="h-full overflow-x-auto md:overflow-x-visible md:overflow-y-auto px-2"
+      data-testid="mayoralDistricts"
+    >
+      <table className="w-full text-left text-xs md:text-sm text-slate-200">
+        <thead className="sticky top-0 bg-[#0f172a] text-[10px] md:text-xs uppercase text-slate-400">
           <tr>
             <th className="py-2 pr-2">
               {t("endResult.mayoral.table.district")}
@@ -102,8 +105,8 @@ export function MayoralDistrictPanel({
   const parties = config.electionConfig.parties;
 
   return (
-    <CommonWrapper fullHeight={false}>
-      <div className="w-[400px] h-[444px] shrink-0 p-3 flex flex-col gap-2">
+    <CommonWrapper fullHeight={false} className="w-full md:w-auto min-w-0">
+      <div className="w-full md:w-[400px] md:h-[444px] shrink-0 p-3 flex flex-col gap-2">
         <Text className="text-center" weight="bold">
           {result?.label ?? t("endResult.mayoral.selectDistrict")}
         </Text>

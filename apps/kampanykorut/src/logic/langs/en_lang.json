@@ -1,4 +1,5 @@
 {
+  "bottomSheet": { "close": "Close" },
   "mainMenu": {
     "newGame": "New Game",
     "loadGame": "Load Game",
@@ -84,6 +85,11 @@
         "constituencySeats": "Constituency seats",
         "listSeats": "List seats",
         "partyListResults": "Party list results",
+        "rankingTabs": {
+          "victories": "Victories",
+          "defeats": "Defeats",
+          "close": "Close races"
+        },
         "biggestVictories": "Biggest victories",
         "biggestDefeats": "Biggest defeats",
         "closestDistricts": "Closest districts",
@@ -108,6 +114,7 @@
     },
     "turnHistory": {
       "label": "Turn history",
+      "back": "Back to turn history",
       "historyItem": {
         "day": "Day"
       },

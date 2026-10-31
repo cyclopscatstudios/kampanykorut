@@ -106,6 +106,7 @@ export function MobileMapView({
         title={sheetData?.megye ?? ""}
         onClose={() => setIsSheetOpen(false)}
         hideTitle
+        fitContent
       >
         {sheetData && (
           <DistrictSheetContent
@@ -272,6 +273,7 @@ function DistrictSheetContent({
           iconOnly
           onClick={onClose}
           className="rounded-full!"
+          aria-label={t("bottomSheet.close")}
         >
           <Button.Icon name="x-lg" />
         </Button>

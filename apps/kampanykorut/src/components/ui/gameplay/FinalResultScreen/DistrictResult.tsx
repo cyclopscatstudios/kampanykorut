@@ -17,8 +17,8 @@ export function DistrictResult({
   config,
 }: DistrictResultProps) {
   return (
-    <CommonWrapper fullHeight={false}>
-      <div className="w-[400px] h-[444px] shrink-0 p-2">
+    <CommonWrapper fullHeight={false} className="w-full md:w-auto min-w-0">
+      <div className="w-full md:w-[400px] md:h-[444px] shrink-0 p-2">
         <div className="text-center">
           <Text>
             {district?.megye} {district?.oevk}
@@ -26,10 +26,16 @@ export function DistrictResult({
           <Text size="xs">{district?.telepules}</Text>
         </div>
         <div className="">
-          <div className="max-h-[400px] overflow-y-auto pr-2">
+          <div className="md:max-h-[400px] md:overflow-y-auto md:pr-2">
             {candidates.map((candidate) => {
               const party = getPartyById(candidate.party, config);
-              return <CandidateResult candidate={candidate} party={party} />;
+              return (
+                <CandidateResult
+                  key={candidate.name}
+                  candidate={candidate}
+                  party={party}
+                />
+              );
             })}
           </div>
         </div>
@@ -46,11 +52,11 @@ function CandidateResult({
   party?: RawParty;
 }) {
   return (
-    <div key={candidate.name} className="flex justify-between m-1.5">
+    <div key={candidate.name} className="flex justify-between gap-2 m-1.5">
       <div>
         <div className="flex justify-center items-center">
           <div
-            className="size-[15px] rounded-full mr-1.5"
+            className="size-[15px] shrink-0 rounded-full mr-1.5"
             style={{ backgroundColor: party?.color ?? "#8b8b8b" }}
           />
           <div>

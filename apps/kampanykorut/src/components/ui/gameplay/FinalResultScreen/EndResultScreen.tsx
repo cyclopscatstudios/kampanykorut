@@ -6,6 +6,7 @@ import { createLogger } from "@/shared/logger/logger";
 import { FinalResults } from "@/shared/types";
 import { useTranslate } from "../../../../../../../shared/logic/hooks/useTranslateLang";
 import { Button } from "../../../../../../../shared/ui/Button";
+import { Icon } from "../../../../../../../shared/ui/Icon";
 import { useNavigation } from "../../../../hooks/navigationHook";
 import { StateEngine } from "../../../../logic/application/StateEngine";
 import { GameChrome } from "../GameChrome";
@@ -94,8 +95,8 @@ export function FinalResultScreen() {
           onConfirm={goToCampaignSelector}
         />
       )}
-      <div className="m-2 flex flex-col flex-1 min-h-0 md:flex-none">
-        <div className="bg-[#0f172a] p-3 md:p-5 rounded-xl border border-slate-200/65 flex flex-col flex-1 min-h-0 md:flex-none">
+      <div className="m-2 flex flex-col flex-1 min-h-0 min-w-0 md:flex-none">
+        <div className="bg-[#0f172a] p-3 md:p-5 rounded-xl border border-slate-200/65 flex flex-col flex-1 min-h-0 min-w-0 md:flex-none">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             {isDesktop && (
               <div className="flex gap-2">
@@ -114,7 +115,7 @@ export function FinalResultScreen() {
                 })}
               </div>
             )}
-            <div className="flex gap-2 ml-auto">
+            <div className="flex flex-wrap gap-2 ml-auto">
               <Button
                 variant="tertiary"
                 onClick={() => setConfirmAction("campaignSelector")}
@@ -129,22 +130,24 @@ export function FinalResultScreen() {
               </Button>
             </div>
           </div>
-          <div className="flex-1 min-h-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto md:overflow-y-visible">
-            {!isDesktop && summary}
-            {isDesktop && activeScreen === "statistics" && (
+          <div
+            key={activeScreen}
+            className="flex-1 min-h-0 min-w-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto overflow-x-hidden md:overflow-visible"
+          >
+            {activeScreen === "statistics" && (
               <Statistics results={results} config={config} />
             )}
-            {isDesktop && activeScreen === "districts" && mayoralResult && (
+            {activeScreen === "districts" && mayoralResult && (
               <MayoralDistrictTable
                 mayoralResult={mayoralResult}
                 config={config}
               />
             )}
-            {isDesktop && activeScreen === "summaryPage" && summary}
-            {isDesktop && activeScreen === "electionMap" && (
+            {activeScreen === "summaryPage" && summary}
+            {activeScreen === "electionMap" && (
               <ElectionMap config={config} mayoralResult={mayoralResult} />
             )}
-            {isDesktop && activeScreen === "history" && (
+            {activeScreen === "history" && (
               <TurnHistory
                 history={history}
                 config={config}
@@ -153,6 +156,22 @@ export function FinalResultScreen() {
               />
             )}
           </div>
+          {!isDesktop && (
+            <nav className="grid grid-cols-4 shrink-0 gap-1 border-t border-slate-700 pt-2 pb-[env(safe-area-inset-bottom)]">
+              {visibleScreens.map((screen) => (
+                <button
+                  key={screen.id}
+                  type="button"
+                  aria-current={activeScreen === screen.id ? "true" : undefined}
+                  onClick={() => setActiveScreen(screen.id)}
+                  className={`flex min-h-14 min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-1 text-[10px] font-semibold leading-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-400 ${activeScreen === screen.id ? "bg-blue-500/15 text-blue-300" : "text-slate-400"}`}
+                >
+                  <Icon name={screen.icon} size={20} />
+                  <span>{t(screen.label)}</span>
+                </button>
+              ))}
+            </nav>
+          )}
         </div>
       </div>
     </GameChrome>
