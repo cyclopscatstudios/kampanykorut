@@ -49,8 +49,10 @@ recount. It only shapes the geography; the real result is not the starting state
 
 ## Szentkirályi's withdrawal
 
-`campaign_events.json` withdraws her after any decision from the 25th to the 32nd
-while her city-wide share of the decided vote is below 15%. She starts at 25%.
+`campaign_events.json` decides after the 26th decision (7 June in the story): she
+withdraws if her city-wide share of the decided vote is below 15%, otherwise she
+stays in the race. She starts at 25%. Decisions 27–31 have a version for each
+outcome, selected with `visibleIf` on her candidate status.
 
 The transfer (Vitézy 85%, Grundtner 5%, Karácsony 3%, abstain 7%) is a design
 estimate. A regression of the 2024 district results on the assembly list results

@@ -12,7 +12,8 @@
       "lmp": {
         "vitezy_david": {
           "questions": "lmp/vitezy_david/questions.json",
-          "answerEffect": "lmp/vitezy_david/answer_effects.json"
+          "answerEffect": "lmp/vitezy_david/answer_effects.json",
+          "advisorFeedback": "lmp/vitezy_david/advisor_feedback.json"
         }
       }
     }

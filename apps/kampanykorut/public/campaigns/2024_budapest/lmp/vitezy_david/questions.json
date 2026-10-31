@@ -1,31 +1,933 @@
 [
   {
-    "id": "bp2024_placeholder_q1",
-    "title": "Helyőrző",
-    "question": "Helyőrző kérdés, amíg a végleges kérdéssor el nem készül.",
+    "id": "bp2024_vitezy_01",
+    "title": "Pulykák a hálaadás előtt",
+    "question": "A BKK előzetes tájékoztatás nélkül ritkít 53 járatot. Walter Katalin vezérigazgató azzal hárítja a kritikát, hogy hálaadás előtt a pulykát sem kérdezik meg. Még nem vagy jelölt, de a BKK-t te alapítottad, és a te véleményedre is kíváncsiak. Hogyan szólalsz meg?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Közlekedés"
+        "label": "Walter Katalin lemondását és a ritkítások azonnali, teljes visszavonását követeled."
       },
       {
         "id": "B",
-        "label": "Lakhatás"
+        "label": "Szakmai korrekciós javaslatcsomagot teszel közzé a ritkított járatokra, személyes támadás nélkül."
+      },
+      {
+        "id": "C",
+        "label": "Rendszerhibának nevezed az ügyet: a kormány elvonásait és a Városháza rossz prioritásait egyaránt felelőssé teszed."
+      },
+      {
+        "id": "D",
+        "label": "Felidézed, hogyan működött az általad felépített BKK és a FUTÁR, és szembeállítod a mai helyzettel."
       }
     ]
   },
   {
-    "id": "bp2024_placeholder_q2",
-    "title": "Helyőrző",
-    "question": "Helyőrző kérdés, amíg a végleges kérdéssor el nem készül.",
+    "id": "bp2024_vitezy_02",
+    "title": "Budapest-bérlet: Karácsony és Lázár alkuja",
+    "question": "Karácsony Gergely és Lázár János megállapodott: marad a 8950 forintos Budapest-bérlet, a BKK pedig március 1-től elfogadja a vármegyebérletet. A főpolgármester szerint ez évi 4–5 milliárd forint kiesés, amit a főváros vállal. Te is a közös tarifarendszer híve vagy. Mit mondasz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Belváros"
+        "label": "Üdvözlöd a megállapodást, de nyilvánosan rákérdezel, ki és miből fizeti meg a kiesést, és hogyan számolnak el."
       },
       {
         "id": "B",
-        "label": "Külső kerületek"
+        "label": "Feltétel nélkül üdvözlöd a megállapodást, mint az ingázók régóta várt győzelmét."
+      },
+      {
+        "id": "C",
+        "label": "Lázár és Karácsony közös alkujaként bírálod: a kormány ígéretét a fővárosi kassza fizeti ki."
+      },
+      {
+        "id": "D",
+        "label": "A közös fővárosi–agglomerációs közlekedésért végzett korábbi szakmai munka beérésének állítod be."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_03",
+    "title": "Kormányzati múlt a kegyelmi botrány idején",
+    "question": "A kegyelmi botrány után lemond Novák Katalin és Varga Judit, a Fidesz ritkán látott defenzívába kerül. Közben egyre többen találgatják, elindulsz-e Budapesten, és az első kérdés mindig ugyanaz: mit keresett egy Fidesz-kormányban 2022-ben? Hogyan beszélsz a múltadról?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nyíltan szakítasz a múlttal: elmondod, hogy belülről láttad, hogyan működik a kormány, és éppen ezért jöttél el."
+      },
+      {
+        "id": "B",
+        "label": "Vállalod a múltadat: a projektek jók voltak, a politika állította le őket, nem a szakma bukott el."
+      },
+      {
+        "id": "C",
+        "label": "A Lázár Jánossal vívott konfliktusodat teszed a függetlenséged bizonyítékává, saját történetként."
+      },
+      {
+        "id": "D",
+        "label": "Nem beszélsz sem a múltadról, sem a kegyelmi ügyről, kizárólag a város jövőjével foglalkozol."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_04",
+    "title": "Indulás: LMP-vel vagy egyedül?",
+    "question": "Hónapok óta találgatják, beszállsz-e a főpolgármesteri versenybe. Az LMP és Ungár Péter kész szervezetet, ajánlásgyűjtőket és kampánypénzt kínál, de egy pártlogó mellett nehezebb azt mondani, hogy egyik oldalhoz sem tartozol. Milyen formában indulsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Az LMP és egy saját civil egyesület közös jelöltjeként indulsz, közgyűlési listával és teljes szervezettel."
+      },
+      {
+        "id": "B",
+        "label": "Csak a saját civil egyesületed nevében indulsz, az LMP a háttérből, logó nélkül támogat."
+      },
+      {
+        "id": "C",
+        "label": "Teljesen függetlenként, pártok nélkül gyűjöd az ajánlásokat, saját önkéntesekkel."
+      },
+      {
+        "id": "D",
+        "label": "Április végéig elhalasztod a bejelentést, hogy előbb lásd, mit lép a Fidesz és a többi szereplő."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_05",
+    "title": "Milyen jelölt leszel?",
+    "question": "Az indulásod napján Karácsony egy Orbán Viktorral és Novák Katalinnal közös képpel reagál, a kampánya pedig a Fidesz trójai falovaként kezd beszélni rólad. Te kijelented, hogy nem vagy a Fidesz jelöltje, és nem is leszel. Milyen alapüzenettel mész végig a kampányon?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "„Budapest működjön”: városmérnökként mutatkozol be, aki a pártháború helyett buszokról, utakról és határidőkről beszél."
+      },
+      {
+        "id": "B",
+        "label": "„Vége a cicaharcnak”: kimondod, hogy a Fidesz és a Városháza háborúja nem a budapestieket szolgálja, és egyikben sem veszel részt."
+      },
+      {
+        "id": "C",
+        "label": "„Karácsony-váltás”: a kampányt a főpolgármester öt évének kudarcaira építed, és nyíltan kihívóként lépsz fel."
+      },
+      {
+        "id": "D",
+        "label": "„Amit 2019-ben megígértek, én megépítem”: Karácsony saját zöld és közlekedési ígéreteinek teljesítőjeként lépsz fel."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_06",
+    "title": "Mini-Dubaj Rákosrendezőn",
+    "question": "Újabb részletek derülnek ki a kormány rákosrendezői terveiről: arab befektető építene luxusnegyedet és felhőkarcolókat a barnamezős területre. A Városháza lakógyűléseket tart, Karácsony elutasítja a tervet, és te sem támogatod. Mit mondasz azon felül, hogy nem kell?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Bécsi mintára saját tervet mutatsz be: megfizethető bérlakásnegyedet parkokkal és kötöttpályás kapcsolattal."
+      },
+      {
+        "id": "B",
+        "label": "Kemény, teljes elutasítást hirdetsz, és Budapest kiárusításának nevezed a kormány tervét."
+      },
+      {
+        "id": "C",
+        "label": "Lakossági népszavazást követelsz arról, mi épüljön Rákosrendezőn, és addig minden döntés felfüggesztését kéred."
+      },
+      {
+        "id": "D",
+        "label": "Tárgyalást ajánlasz a befektetőnek és a kormánynak, szigorú városszerkezeti és bérlakás-feltételekkel."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_07",
+    "title": "Ki fizeti a kampányt?",
+    "question": "A kampányod pénzének nagy részét Ungár Péter és családi vállalkozásai adják. Karácsony rendszeresen oligarchikus érdekekkel és összeférhetetlenséggel vádolja a kampányodat, és a vád könnyen megragad. Hogyan kezeled a pénz kérdését?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Rendszeresen nyilvánosságra hozod a kampány minden bevételét és kiadását, Ungár támogatását is beleértve."
+      },
+      {
+        "id": "B",
+        "label": "Kistámogatói gyűjtést indítasz, és a kommunikációban a sok kis adományozót állítod előtérbe Ungár helyett."
+      },
+      {
+        "id": "C",
+        "label": "Visszatámadsz: nyilvánosan rákérdezel, ki finanszírozza Karácsony és a DK kampányát."
+      },
+      {
+        "id": "D",
+        "label": "Nem foglalkozol a váddal, és a pénzt széles plakát- és médiakampányra költöd, hogy mindenki megismerjen."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_08",
+    "title": "Kettős front: Karácsony vagy a Fidesz?",
+    "question": "Szentkirályi Alexandra kampánya a Gyurcsány-show-ra és a városházi korrupcióra épül. Karácsony már arról beszél, hogy a fideszes jelölt végül a te javadra lép vissza, Szentkirályi ezt kereken tagadja. Két ellenfeled van és egy kampányod. Kire irányítod a támadásaidat?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Karácsonyt teszed meg fő ellenfélnek, Szentkirályival pedig nem foglalkozol, mintha csak ketten versenyeznétek."
+      },
+      {
+        "id": "B",
+        "label": "Egyszerre bírálod Karácsony városvezetését és a kormány Budapest-ellenes politikáját."
+      },
+      {
+        "id": "C",
+        "label": "Elsősorban a kormányt és Szentkirályit támadod, Karácsonyt jó szándékú, de gyenge vezetőként kezeled."
+      },
+      {
+        "id": "D",
+        "label": "Nem folytatsz negatív kampányt: csak a saját programodról beszélsz, bárki támad is."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_09",
+    "title": "Lázár és a leállított fejlesztések",
+    "question": "Lázár János leállítja a HÉV-ek felújítását és több vasúti fejlesztést, a Közlekedési Múzeumot pedig Debrecenbe vinné a kőbányai helyszín helyett. Ugyanaz a miniszter, akivel Karácsony januárban bérletalkut kötött, és akivel összekülönbözve távoztál a kormányból. Mennyire teszed személyessé a harcot?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Személyesen Lázárt teszed felelőssé, és minden fórumon az ő döntéseivel szembesíted a budapestieket."
+      },
+      {
+        "id": "B",
+        "label": "Szakmai alkut ajánlasz: uniós forrásátcsoportosítással újítsák fel a HÉV-flottát, és ebben kész vagy együttműködni."
+      },
+      {
+        "id": "C",
+        "label": "A kormány egészét teszed felelőssé Budapest elhanyagolásáért, Lázár nevét nem említed."
+      },
+      {
+        "id": "D",
+        "label": "A Közlekedési Múzeumot választod szimbólumnak: lakossági mozgalmat indítasz Kőbányán, és felajánlod, hogy a főváros átveszi."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_10",
+    "title": "Öt villamos, tízezer lakás",
+    "question": "Elkészült a programod: több mint száz pont, öt új villamosvonal, tízezer új lakás, a rozsdaövezetek megújítása, és még a fürdők turisták nélküli idősávjai is benne vannak. Most kell eldöntened, hogyan mutatod be. Mit lásson belőle először a választó?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Teljes, pontról pontra végigvezetett szakmai bemutatót tartasz a sajtónak, számokkal és ütemtervvel."
+      },
+      {
+        "id": "B",
+        "label": "Két zászlósájóra szűkíted az üzenetet: rend a járatokon és tízezer új lakás, a részletek mehetnek a honlapra."
+      },
+      {
+        "id": "C",
+        "label": "Sajtótájékoztató helyett lakossági fórumsorozatot indítasz a peremkerületekben, és ott mutatod be a programot."
+      },
+      {
+        "id": "D",
+        "label": "Egy rozsdaövezet közepén, látványos díszlettel mutatod be a programot, hogy kép és hír is legyen belőle."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_11",
+    "title": "BKK-rendészet: szigor vagy segítség?",
+    "question": "A járatokon és a csomópontokban visszatérő panasz a kosz, a zaklatás és a biztonság hiánya. Te BKK-rendészetet ígérsz, Karácsony a szociális megközelítést hangsúlyozza, és a szigorítást hajléktalanellenesnek tartja. Milyen rendet ígérsz az utasoknak?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Önálló BKK-rendészetet ígérsz járőrszolgálattal, amely a járatokon és a csomópontokban betartatja az utazási szabályokat."
+      },
+      {
+        "id": "B",
+        "label": "Szociális segítőket és mérsékelt rendészeti jelenlétet párosítasz: előbb ellátást kínálsz, csak utána jön a szabály."
+      },
+      {
+        "id": "C",
+        "label": "Digitális biztonságot ígérsz: vészgombot a BudapestGO-ban, több kamerát és megerősített sofőrfülkéket."
+      },
+      {
+        "id": "D",
+        "label": "A Fővárosi Rendészet általános létszámbővítését ígéred, külön BKK-s fókusz nélkül."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_12",
+    "title": "Kínai vasút Ferihegyre?",
+    "question": "Felmerül, hogy a ferihegyi vasutat kínai terv alapján építenék meg, a Fudan-campus ügye pedig nincs lezárva, csak jegelve. Te a Déli Körvasútra épülő reptéri kapcsolatot tartod jobb megoldásnak. Melyik oldalról fogod meg a kínai projekteket?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Elutasítod a kínai vasutat, és saját tervet teszel le: Kelenföldről a Déli Körvasúton át vinnéd a vonatot a reptérre."
+      },
+      {
+        "id": "B",
+        "label": "Karácsonyt bírálod: a Fudan-ügyben is csak tiltakozott, de nem érte el, hogy a terv végleg lekerüljön az asztalról."
+      },
+      {
+        "id": "C",
+        "label": "A Fudan helyett a Diákvárost állítod a középpontba: kollégiumokat és megfizethető bérlakást ígérsz a fiataloknak."
+      },
+      {
+        "id": "D",
+        "label": "Megvalósíthatósági vizsgálatot kérsz a kínai vasútról, a Fudanról pedig nem nyilatkozol."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_13",
+    "title": "Déli Körvasút: szakma vagy szövetséges?",
+    "question": "A Déli Körvasút bővítése 338 milliárdos vasúti beruházás, Mészáros Lőrinc cége építené. A bíróság már kétszer megsemmisítette a környezetvédelmi engedélyét, az LMP és Karácsony ellenzi, te viszont a fővárosi vasúti rendszer kulcsának tartod. Kiállsz a szövetségeseddel szemben?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nyíltan kiállsz a beruházás mellett, de szigorú zajvédelmet és helyi kompenzációt követelsz Újbudának és Ferencvárosnak."
+      },
+      {
+        "id": "B",
+        "label": "Átveszed az LMP álláspontját, és a projekt leállítását követeled a helyi lakók és a környezet védelmében."
+      },
+      {
+        "id": "C",
+        "label": "Újratervezést követelsz: új engedélyezést és kisebb helyi terhelést, de a vasúti kapacitás bővítéséről nem mondasz le."
+      },
+      {
+        "id": "D",
+        "label": "Nem nyilatkozol a Déli Körvasútról, hogy ne nyiss vitát az LMP-vel a kampány közepén."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_14",
+    "title": "Hol dől el Budapest?",
+    "question": "Leadtad az ajánlásokat, hivatalosan is jelölt vagy, és a hátralévő öt hétben nem lehetsz mindenhol ott. A belváros alakítja a véleményeket, a lakótelepek billegnek, a peremkerületekben él a szavazók nagy része. Hol vered le a sátradat?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A peremkerületekbe mész: lepusztult aluljárókat, Köki-típusú csomópontokat és rossz utakat mutatsz meg, és ott ígérsz rendet."
+      },
+      {
+        "id": "B",
+        "label": "A belvárosban és a belső lakónegyedekben kampányolsz: villamosról, a Rákóczi út megújításáról és fákról beszélsz."
+      },
+      {
+        "id": "C",
+        "label": "A lakótelepekre és az átmeneti övezetekbe koncentrálsz: lakhatás, parkolás és sűrűbb járatok."
+      },
+      {
+        "id": "D",
+        "label": "A független és civil kerületi polgármesterekre és jelöltekre építesz, közös fejlesztési programmal."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_15",
+    "title": "Aszfalt vagy városmarketing?",
+    "question": "A fővárosi utak évente alig 0,6 százalékát újítják fel, miközben a Budapest Brand évi 3 milliárdból gazdálkodik. Karácsony a forráshiányra és a közművek állapotára hivatkozik. Az autós szavazókért Grundtner András, a Mi Hazánk jelöltje is versenyez. Mit ígérsz az utakra?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Lefaragod a Budapest Brand költségvetését, és megígéred, hogy tízszer annyi utat újítasz fel."
+      },
+      {
+        "id": "B",
+        "label": "Külön útalapot hozol létre a külső kerületeknek a fővárosi költségvetésben, saját felújítási listával."
+      },
+      {
+        "id": "C",
+        "label": "Hitelből finanszírozott, nagy útfelújítási programot hirdetsz meg, hogy néhány év alatt behozd a lemaradást."
+      },
+      {
+        "id": "D",
+        "label": "A közműcserékkel összehangolt, ütemezett útfelújítási programot ígérsz, pontos határidőkkel."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_16",
+    "title": "Tízezer lakás: ki építi meg?",
+    "question": "A budapesti lakás- és albérletárak 2015 és 2023 között az EU-ban a harmadik legnagyobb mértékben drágultak. Karácsony a Lakásügynökséget és egy uniós bérlakásprogramot mutat fel, szerinted az ügynökség alig kötött szerződést. A te programod tízezer lakást ígér. Hogyan teszed hihetővé?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Magántőkét vonsz be: a fejlesztők építhetnek a rozsdaövezetekben, ha a lakások egy részét szociális bérlakásként adják ki."
+      },
+      {
+        "id": "B",
+        "label": "Bécsi mintára fővárosi és uniós pénzből épülő, közösségi tulajdonú bérlakásnegyedeket ígérsz a rozsdaövezetekben."
+      },
+      {
+        "id": "C",
+        "label": "A Lakásügynökség kudarcát állítod a középpontba, és a garantált bérbeadás kiterjesztését ígéred."
+      },
+      {
+        "id": "D",
+        "label": "Kötelezővé tennéd az üresen álló lakások bérbeadását, a fővárosi ügynökség közvetítésével."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_17",
+    "title": "Józsefvárosi kereszttűz",
+    "question": "Józsefvárosban a DK, a Momentum, a Párbeszéd és a te szövetségesed, az LMP is Pikó András polgármester mögé állt. Az MSZP, Karácsony listás partnere ma bejelentette, hogy saját jelöltet indít ellene. Karácsony szövetsége egy kerületben kettévált. Mit kezdesz ezzel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nyíltan kiállsz Pikó mellett, és bírálod az MSZP-t, amiért egy működő kerületi polgármester ellen indul."
+      },
+      {
+        "id": "B",
+        "label": "Az LMP józsefvárosi részvételét hozod példának: veled bárki együttműködhet, aki nem pártkatona."
+      },
+      {
+        "id": "C",
+        "label": "Kimaradsz a kerületi vitából, és jelzed, hogy főpolgármester-jelöltként a fővárosi ügyekkel foglalkozol."
+      },
+      {
+        "id": "D",
+        "label": "Közös „nem pártkatona” platformot hirdetsz minden független és civil kerületi jelölttel, Pikótól a külső kerületekig."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "answer-selected",
+        "questionId": "bp2024_vitezy_04",
+        "answerId": "C"
+      }
+    }
+  },
+  {
+    "id": "bp2024_vitezy_17_lmp_nelkul",
+    "title": "Józsefvárosi kereszttűz",
+    "question": "Józsefvárosban a DK, a Momentum, a Párbeszéd és az LMP is Pikó András polgármester mögé állt. Az MSZP, Karácsony listás partnere ma bejelentette, hogy saját jelöltet indít ellene. Karácsony szövetsége egy kerületben kettévált. Mit kezdesz ezzel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nyíltan kiállsz Pikó mellett, és bírálod az MSZP-t, amiért egy működő kerületi polgármester ellen indul."
+      },
+      {
+        "id": "C",
+        "label": "Kimaradsz a kerületi vitából, és jelzed, hogy főpolgármester-jelöltként a fővárosi ügyekkel foglalkozol."
+      },
+      {
+        "id": "D",
+        "label": "Közös „nem pártkatona” platformot hirdetsz minden független és civil kerületi jelölttel, Pikótól a külső kerületekig."
+      }
+    ],
+    "visibleIf": {
+      "type": "answer-selected",
+      "questionId": "bp2024_vitezy_04",
+      "answerId": "C"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_18",
+    "title": "Per vagy alku a kormánnyal?",
+    "question": "A szolidaritási hozzájárulás a Tarlós-korszak óta nagyjából tizenkétszeresére nőtt, idén már 75 milliárd forint fölött jár. A Főváros perel, és egy részét visszatartja, szerinted viszont tárgyalással többet lehetett volna elérni. Milyen viszonyt ígérsz a kormánnyal?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Tárgyalásos megállapodást ígérsz, és újraindítanád a kormány és a főváros közös fejlesztési tanácsát."
+      },
+      {
+        "id": "B",
+        "label": "Kiállsz a per és a befizetések visszatartása mellett: Budapest a kormánnyal szemben is megvédi a pénzét."
+      },
+      {
+        "id": "C",
+        "label": "A kormányt megkerülve közvetlen uniós forrásokat szereznél, brüsszeli képviselettel és saját pályázati csapattal."
+      },
+      {
+        "id": "D",
+        "label": "Tárgyalást és új, kiszámítható elosztási képletet követelsz nyilvános határidővel, amely után jöhet a per."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_19",
+    "title": "Ki ül le vitázni, és hol?",
+    "question": "Karácsony közölte, hogy bármilyen vitát vállal, amelyen Szentkirályi is részt vesz, a fideszes jelölt viszont nem siet igent mondani. A Partizán háromszereplős vitára hívott meg mindhármótokat. Ha senki nem ül le, a kampány vita nélkül ér véget. Milyen terepen keresed az összecsapást?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Elfogadod a Partizán meghívását, és jelzed, hogy akkor is ott leszel, ha a másik két jelölt távol marad."
+      },
+      {
+        "id": "B",
+        "label": "Kétszereplős vitát követelsz Karácsonnyal, nyilvános határidővel: ha nem vállalja, megfutamodott."
+      },
+      {
+        "id": "C",
+        "label": "A közmédia és a kormányközeli csatornák felkéréseit részesíted előnyben, hogy a fideszes szavazókat is elérd."
+      },
+      {
+        "id": "D",
+        "label": "Nyílt levélben saját formátumot ajánlasz: nyilvános szakmai meghallgatást minden jelöltnek, előre közölt témákkal."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_20",
+    "title": "Kire szavaz a Tisza-szavazó?",
+    "question": "Magyar Péter pártja nem állított főpolgármester-jelöltet, de saját fővárosi listával indul, és a szavazói még keresik, kit ikszeljenek főpolgármesternek. Közülük sokan Karácsonyból és a Fideszből is kiábrándultak. Ha nyíltan feléjük fordulsz, a jobboldali átszavazók elbizonytalanodhatnak. Mit üzensz nekik?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nyíltan megszólítod őket, és közös, rendszerváltó többséget ajánlasz a Közgyűlésben a DK és a Fidesz ellenében."
+      },
+      {
+        "id": "B",
+        "label": "Megtartod a független, szakmai egyenlő távolságot, és nem szólítod meg külön a Tisza táborát."
+      },
+      {
+        "id": "C",
+        "label": "Óvatosan bírálod Magyar Pétert, mert a pártjának nincs kidolgozott fővárosi programja, a tiédnek viszont van."
+      },
+      {
+        "id": "D",
+        "label": "Háttéralkut kezdeményezel a Tisza vezetésével egy nyilvános főpolgármesteri támogatásért."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_21",
+    "title": "Bábként a plakátokon",
+    "question": "A baloldali kampányban lejárató videók és plakátok jelennek meg, amelyek a kormány bábjaként ábrázolnak, akinek Orbán és Lázár rángatja a zsinórjait. Ez az eddigi legsúlyosabb támadás a függetlenséged ellen, és a Partizán-vita is közeleg. Hogyan válaszolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A vitára tartogatod a választ: élő adásban, dokumentumokkal szembesíted Karácsonyt a lejárató kampánnyal."
+      },
+      {
+        "id": "B",
+        "label": "Hivatalos kifogást nyújtasz be a választási bizottsághoz, és nyugodt hangú közleményben tisztességes kampányt kérsz."
+      },
+      {
+        "id": "C",
+        "label": "Gúnyos ellenvideót készítesz, amelyben Karácsonyt ábrázolod Gyurcsány Ferenc marionettjeként."
+      },
+      {
+        "id": "D",
+        "label": "Nem reagálsz a plakátokra, és a következő napokban kizárólag szakmai bejelentésekkel jelentkezel."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_22",
+    "title": "Macskamenta és aszfaltszigetek",
+    "question": "Karácsony zöld eredményként mutatja fel a Pünkösdfürdő parkot, a Stockholm-módszerrel ültetett fákat és az Andrássy úti macskamenta-sávokat. Te kevésnek tartod a zöldfelület növekedését, az Astoriánál pedig frissen lerakott aszfaltszigeteket látsz. Ez Karácsony egyik legerősebb terepe. Belemész?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Számon kéred az aszfaltszigeteket, és valódi burkolatbontást, fasorokat és árnyékos tereket ígérsz a belvárosban."
+      },
+      {
+        "id": "B",
+        "label": "Elismered a zöld eredményeket, és csak annyit mondasz, hogy jobb városüzemeltetéssel ennél többre lehetne jutni."
+      },
+      {
+        "id": "C",
+        "label": "A zöld ügyet a peremkerületekbe viszed: erdősítést és új parkokat ígérsz a külső kerületek családjainak."
+      },
+      {
+        "id": "D",
+        "label": "A zöldítést belvárosi luxusnak nevezed, és a külső kerületek kátyús útjait állítod szembe a macskamentával."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_23",
+    "title": "Partizán: milyen hangon?",
+    "question": "A Partizán vitájában ketten álltok a kamerák előtt, Szentkirályi nem jött el. Karácsony a Városháza öt évét védi, és várhatóan a kormányzati elvonásokra mutat majd. A közönség jórészt ellenzéki, és sokan közülük most döntenek. Milyen hangnemben vágsz bele?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Keményen szembesíted Karácsonyt az adatokkal és a 2019-es ígéreteivel, és nem hagyod kibújni a válaszok alól."
+      },
+      {
+        "id": "B",
+        "label": "Nyugodt, konszenzuskereső szakmai vitát folytatsz, és minden kritikád mellé kész megoldást teszel."
+      },
+      {
+        "id": "C",
+        "label": "Kétfelé támadsz: Karácsony mulasztásai mellett a kormány Budapest-ellenes döntéseit is keményen bírálod."
+      },
+      {
+        "id": "D",
+        "label": "Pozitív zöld jövőképet mutatsz be villamossal, bérlakással és fákkal, a következő főpolgármester szerepében."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_24",
+    "title": "A vita kulcspillanata",
+    "question": "A vitából egyetlen pillanat marad meg a nézőkben. Felhozhatod a felújított, mégsem akadálymentes Merlin Színházat, Karácsony listáját, a Lakásügynökség gyér érdeklődését vagy a 2019-es ígéreteit. Karácsony a 3-as metró akadálymentesítésével vághat vissza. Mire teszed fel a pillanatot?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A Merlin Színházat hozod fel, amelyet milliárdokért újítottak fel, és mégsem akadálymentes."
+      },
+      {
+        "id": "B",
+        "label": "Karácsony listájának tisztaságát kérdőjelezed meg, nevek nélkül, a korrupcióellenes választók nyelvén."
+      },
+      {
+        "id": "C",
+        "label": "A Lakásügynökségre csapsz le: nagy bejelentés volt, a jelentkezőket mégis meg lehet számolni két kézen."
+      },
+      {
+        "id": "D",
+        "label": "Végigveszed Karácsony 2019-es zöld és közlekedési ígéreteit, és tételesen megmutatod, mi nem valósult meg belőlük."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_25",
+    "title": "A visszalépés árnyékában",
+    "question": "Karácsony már áprilisban megjósolta, hogy Szentkirályi az utolsó pillanatban visszalép, és a Fidesz rád tolja a szavazóit. A Fidesz tagadja, a kormánylapok álhírnek nevezik, a friss mérésekben viszont Szentkirályival a második helyért versenyzel. Mit mondasz a fideszes szavazóknak?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Kijelented, hogy alkut nem kérsz és nem kötsz, de minden budapesti szavazatot szívesen fogadsz, pártállástól függetlenül."
+      },
+      {
+        "id": "B",
+        "label": "Nyíltan a jobboldali szavazókhoz fordulsz: Karácsonyt csak te tudod legyőzni, a Szentkirályira adott szavazat elveszett."
+      },
+      {
+        "id": "C",
+        "label": "Előre kijelented, hogy a Fidesz támogatását semmilyen formában nem fogadnád el, akkor sem, ha Szentkirályi visszalép."
+      },
+      {
+        "id": "D",
+        "label": "Nem kommentálod a találgatásokat, és a programod bemutatásával folytatod a kampányt."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_26",
+    "title": "Az utolsó hét terepe",
+    "question": "Egy hét van hátra, a stábod ereje pedig már csak egy irányra elég. Hogy melyik terep térül meg, az attól is függ, mit dönt a Fidesz Szentkirályiról, de erre nem várhatsz. Hova küldöd az önkénteseidet?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Standolási maratont tartasz a XVII., XVIII. és XXI. kerület forgalmas csomópontjain és a többi peremkerületben."
+      },
+      {
+        "id": "B",
+        "label": "Belvárosi zárógyűlést tartasz, és kampányvillamossal járod végig a belső kerületeket."
+      },
+      {
+        "id": "C",
+        "label": "Célzott online maratont indítasz a fiatal és Tisza-közeli szavazóknak, napi élő adásokkal és kérdezz-felelekkel."
+      },
+      {
+        "id": "D",
+        "label": "Kapukampányt indítasz a lakótelepeken és az átmeneti övezetben, Óbudától Kőbányáig és Újbudától Zuglóig."
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_27_v",
+    "title": "Fideszes szavazók, fideszes bélyeg",
+    "question": "Szentkirályi reggel visszalépett, és arra kérte a szavazóit, hogy rád szavazzanak. A kormánylapok egyik napról a másikra melléd álltak, Karácsony stábja pedig már az alkuról beszél. Két napod van, és a fideszes szavazók most rád figyelnek. Hogyan fogadod őket?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Kijelented, hogy nem kötöttél alkut, a Városháza se a DK, se a Fidesz zsákmánya nem lesz, de minden szavazót szívesen fogadsz."
+      },
+      {
+        "id": "B",
+        "label": "Nyíltan és örömmel üdvözlöd Szentkirályi döntését, és megköszönöd a jobboldali szavazók bizalmát."
+      },
+      {
+        "id": "C",
+        "label": "Fideszes trükknek nevezed a visszalépést, és kijelented, hogy a Fidesz szavazóira nem tartasz igényt."
+      },
+      {
+        "id": "D",
+        "label": "Azonnal kétszereplős vitára hívod Karácsonyt, hogy a hétvége a programokról szóljon, ne az alkuról."
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "inactive"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_27_n",
+    "title": "Háromszereplős hajrá",
+    "question": "Lejárt a visszalépési határidő, Szentkirályi versenyben maradt, a Fidesz a saját jelöltjét és listáját mozgósítja. Két nap van hátra, és ha a Karácsony-ellenes szavazatok megoszlanak, Karácsony nyugodtan alhat. Mit mondasz a jobboldali szavazóknak?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Független hasznosszavazat-érvvel kampányolsz: aki le akarja váltani Karácsonyt, annak a legesélyesebb kihívóra kell szavaznia."
+      },
+      {
+        "id": "B",
+        "label": "Nyíltan a fideszes szavazókhoz fordulsz: Szentkirályi esélytelen, Karácsonyt csak te tudod legyőzni."
+      },
+      {
+        "id": "C",
+        "label": "Kettős elutasítással kampányolsz: Karácsony és Szentkirályi ugyanannak a Főváros–Kormány háborúnak a két oldala."
+      },
+      {
+        "id": "D",
+        "label": "Kétszereplős vitát követelsz Karácsonnyal, mert szerinted a valódi verseny kettőtök között zajlik."
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "active"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_28_v",
+    "title": "Bekussolt-e Budapest?",
+    "question": "Karácsony szerint ha te nyersz, az azt üzeni a világnak, hogy Budapest bekussolt. Magyar Péter azt mondja, a Fidesz eldobható eszköznek tekinti Szentkirályit, az ellenzéki szavazók pedig mozgolódnak. Két nap alatt kell felelned a gyanúra. Mit lépsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Átláthatósági offenzívát indítasz ellenzéki felületeken, és minden kérdésre válaszolsz, a Fideszhez fűződő viszonyodról is."
+      },
+      {
+        "id": "B",
+        "label": "Ellentámadásba lendülsz: szerinted Karácsony az, aki a DK zsákmányává tette a Városházát."
+      },
+      {
+        "id": "C",
+        "label": "Írásos garanciát adsz: nem lesz közgyűlési koalíció a Fidesszel, és fideszes politikus nem kerül a városvezetésbe."
+      },
+      {
+        "id": "D",
+        "label": "Nem reagálsz a vádakra, és a hétvégét a programod utolsó, nyugodt hangú bemutatásával töltöd."
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "inactive"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_28_n",
+    "title": "Harc a második helyért",
+    "question": "Szentkirályi bent maradt, és most mindketten ugyanazokra a Karácsony-ellenes szavazókra hajtotok. Ha ő erősödik, te csúszol le a harmadik helyre, ha te, akkor ő. Karácsony közben nyugodtan figyeli a cicaharcot. Mire használod az utolsó két napot?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Szentkirályit támadod: a fideszes szavazat elveszett szavazat, mert vele senki nem győzheti le Karácsonyt."
+      },
+      {
+        "id": "B",
+        "label": "Szentkirályit figyelmen kívül hagyod, és az utolsó két napban minden erőddel Karácsonyt támadod."
+      },
+      {
+        "id": "C",
+        "label": "Nyilvánosságra hozod a saját kétszereplős mérésedet, amely szerint egy az egyben te győznéd le Karácsonyt."
+      },
+      {
+        "id": "D",
+        "label": "Támadás nélkül zársz, és a program meg a jövőkép utolsó bemutatásával kampányolsz."
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "active"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_29_v",
+    "title": "A kihúzott név csapdája",
+    "question": "Új szavazólapokat már nincs idő nyomtatni, ezért Szentkirályi nevét több mint egymillió lapon húzzák ki. Sok fideszes szavazó nem követi a híreket, és vasárnap a megszokott nevet keresi majd. Minden rossz helyre tett X elveszett szavazat. Mit teszel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Agresszív videókampányt indítasz „Így szavazz érvényesen” címmel, kifejezetten a jobboldali szavazóknak."
+      },
+      {
+        "id": "B",
+        "label": "Vasárnap önkéntesek segítik a szavazókat a szavazókörök környékén, ott, ahol ezt a választási szabályok megengedik."
+      },
+      {
+        "id": "C",
+        "label": "Arra kéred a kormányközeli médiát, hogy a hétvégén részletesen tájékoztassa a nézőit az érvényes szavazásról."
+      },
+      {
+        "id": "D",
+        "label": "Hagyományos mozgósítással zársz, külön szavazási útmutató nélkül, hogy ne a fideszes szavazókról szóljon a hétvége."
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "inactive"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_29_n",
+    "title": "Listán bárki, főpolgármesternek te",
+    "question": "A szavazók külön lapot kapnak a fővárosi listára és a főpolgármesterre. Egy fideszes szavazó a listán megtarthatja a pártját, a főpolgármesteri lapon mégis Karácsony ellen szavazhat hatékonyan. Ezt valakinek el is kell mondania neki. Hogyan próbálod meg?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Célzott üzenetet küldesz a fideszes listás szavazóknak: a listán maradjanak a pártjuknál, a főpolgármesteri lapon szavazzanak rád."
+      },
+      {
+        "id": "B",
+        "label": "Ajtótól ajtóig és telefonos kampányt indítasz a peremkerületekben, hogy elmagyarázd a szavazatmegosztást."
+      },
+      {
+        "id": "C",
+        "label": "Arra kéred a kormányközeli felületeket, hogy ők is mondják el: a főpolgármesteri lapon szabad taktikusan szavazni."
+      },
+      {
+        "id": "D",
+        "label": "Nem teszel külön lépést, és a hétvégén a saját táborod mozgósítására összpontosítasz."
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "active"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_30_v",
+    "title": "Tisza a listán, és a másik lapon?",
+    "question": "A Tisza szavazói a fővárosi listán Magyar Péter pártjára ikszelnek, a főpolgármesteri lapon viszont nincs jelöltjük. Egy részük üresen hagyhatja, vagy tiltakozásképpen érvénytelenítheti ezt a lapot. Két nappal a választás előtt eldöntheted, kapnak-e tőled külön figyelmet. Megszólítod őket?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Célzott online kampányt indítasz a Tisza-szimpatizánsoknak: a listán Tisza, a főpolgármesteri lapon Vitézy."
+      },
+      {
+        "id": "B",
+        "label": "Konkrét ajánlatot teszel: közgyűlési együttműködést és egy főpolgármester-helyettesi posztot ajánlasz a Tiszának."
+      },
+      {
+        "id": "C",
+        "label": "Nem célzod őket külön, és minden erőforrásodat a jobboldali átszavazókra fordítod."
+      },
+      {
+        "id": "D",
+        "label": "Kapukampányt indítasz azokban a peremkerületekben, ahol a Tisza a legerősebbnek tűnik."
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "inactive"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_30_n",
+    "title": "Tisza a listán, és a másik lapon?",
+    "question": "A Tisza szavazói a fővárosi listán Magyar Péter pártjára ikszelnek, a főpolgármesteri lapon viszont nincs jelöltjük. Egy részük üresen hagyhatja, vagy tiltakozásképpen érvénytelenítheti ezt a lapot. Két nappal a választás előtt eldöntheted, kapnak-e tőled külön figyelmet. Megszólítod őket?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Célzott online kampányt indítasz a Tisza-szimpatizánsoknak: a listán Tisza, a főpolgármesteri lapon Vitézy."
+      },
+      {
+        "id": "B",
+        "label": "Konkrét ajánlatot teszel: közgyűlési együttműködést és egy főpolgármester-helyettesi posztot ajánlasz a Tiszának."
+      },
+      {
+        "id": "C",
+        "label": "Nem célzod őket külön, és minden erőforrásodat a jobboldali átszavazókra fordítod."
+      },
+      {
+        "id": "D",
+        "label": "Kapukampányt indítasz azokban a peremkerületekben, ahol a Tisza a legerősebbnek tűnik."
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "active"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_31_v",
+    "title": "Az utolsó mondat a fülke előtt",
+    "question": "Holnap választás. Szentkirályi visszalépése után kétszereplőssé vált a verseny, és ma este még egyszer megszólalhatsz. Ez az utolsó mondat, amit a szavazók tőled hallanak, mielőtt beállnak a fülkébe. Mivel zársz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "„Budapest működjön”: nyugodt, technokrata zárással a programod legfontosabb vállalásait ismétled meg."
+      },
+      {
+        "id": "B",
+        "label": "„Ellenzékváltás”: azt mondod, vége a régi pártok korszakának, a Városháza a budapestieké lesz."
+      },
+      {
+        "id": "C",
+        "label": "„Karácsony vagy változás”: egyszerű választást kínálsz mindenkinek, akinek elege van a mostani városvezetésből."
+      },
+      {
+        "id": "D",
+        "label": "„Amit 2019-ben megígértek, megépítjük”: villamossal, bérlakással és fákkal szólítod meg Karácsony csalódott szavazóit."
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "inactive"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_31_n",
+    "title": "Az utolsó mondat a fülke előtt",
+    "question": "Holnap választás. Szentkirályi versenyben maradt, és ma este még egyszer megszólalhatsz. Ez az utolsó mondat, amit a szavazók tőled hallanak, mielőtt beállnak a fülkébe. Mivel zársz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "„Budapest működjön”: nyugodt, technokrata zárással a programod legfontosabb vállalásait ismétled meg."
+      },
+      {
+        "id": "B",
+        "label": "„Ellenzékváltás”: azt mondod, vége a régi pártok korszakának, a Városháza a budapestieké lesz."
+      },
+      {
+        "id": "C",
+        "label": "„Az egyetlen esélyes kihívó”: azt mondod, aki le akarja váltani Karácsonyt, annak csak rád érdemes szavaznia."
+      },
+      {
+        "id": "D",
+        "label": "„Amit 2019-ben megígértek, megépítjük”: villamossal, bérlakással és fákkal szólítod meg Karácsony csalódott szavazóit."
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "active"
+    }
+  },
+  {
+    "id": "bp2024_vitezy_32",
+    "title": "Vasárnap: kit viszel el szavazni?",
+    "question": "Elérkezett a választás napja. Az önkénteseid és a telefonosaid még egyszer bevethetők, de csak egy irányba. Egy szoros versenyben néhány ezer elmaradt vagy elrontott szavazat is mindent eldönthet. Hova küldöd az utolsó erőidet?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A peremkerületekben mozgósítasz, ahol a legtöbb autós, ingázó és lehetséges átszavazó él."
+      },
+      {
+        "id": "B",
+        "label": "A belvárosi és az átmeneti övezeti értelmiséget hívod szavazni, Karácsony kiábrándult választóira építve."
+      },
+      {
+        "id": "C",
+        "label": "Minden szavazókörben ott vannak a delegáltjaid, és külön figyelnek arra, hogy egyetlen vitatható szavazat se vesszen el."
+      },
+      {
+        "id": "D",
+        "label": "Általános részvételi felhívást teszel közzé ismert támogatóiddal, kerülettől és párttól függetlenül."
       }
     ]
   }

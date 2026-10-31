@@ -1,57 +1,795 @@
 [
   {
-    "id": "bp2024_placeholder_q1",
+    "id": "bp2024_vitezy_01",
     "answers": [
       {
         "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "vitezy_david": 0.5
-            }
-          }
-        ]
+        "effects": []
       },
       {
         "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "vitezy_david": 0.3,
-              "karacsony_gergely": -0.2
-            }
-          }
-        ]
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
       }
     ]
   },
   {
-    "id": "bp2024_placeholder_q2",
+    "id": "bp2024_vitezy_02",
     "answers": [
       {
         "id": "A",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "vitezy_david": 0.4
-            }
-          }
-        ]
+        "effects": []
       },
       {
         "id": "B",
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "vitezy_david": 0.3,
-              "szentkiralyi_alexandra": -0.3
-            }
-          }
-        ]
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_03",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_04",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_05",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_06",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_07",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_08",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_09",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_10",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_11",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_12",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_13",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_14",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_15",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_16",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_17",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_17_lmp_nelkul",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_18",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_19",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_20",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_21",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_22",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_23",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_24",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_25",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_26",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_27_v",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_27_n",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_28_v",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_28_n",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_29_v",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_29_n",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_30_v",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_30_n",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_31_v",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_31_n",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "bp2024_vitezy_32",
+    "answers": [
+      {
+        "id": "A",
+        "effects": []
+      },
+      {
+        "id": "B",
+        "effects": []
+      },
+      {
+        "id": "C",
+        "effects": []
+      },
+      {
+        "id": "D",
+        "effects": []
       }
     ]
   }

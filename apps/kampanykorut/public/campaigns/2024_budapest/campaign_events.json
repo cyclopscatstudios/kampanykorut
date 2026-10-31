@@ -10,8 +10,8 @@
           "and": [
             {
               "type": "turn",
-              "min": 25,
-              "max": 32
+              "min": 26,
+              "max": 26
             },
             {
               "type": "candidate-status",
@@ -43,7 +43,36 @@
     ],
     "announcement": {
       "title": "Szentkirályi Alexandra visszalép",
-      "body": "A Fidesz–KDNP jelöltje visszalépett a főpolgármester-választástól, és Vitézy Dávid támogatására kérte a szavazóit. A verseny Karácsony Gergely és Vitézy Dávid párharcává szűkült."
+      "body": "Június 7., péntek reggel: Szentkirályi Alexandra visszalép a főpolgármester-választástól, és arra kéri a támogatóit, hogy Vitézy Dávidra szavazzanak. Két nap van hátra, és a verseny kétszereplőssé vált."
+    }
+  },
+  {
+    "id": "szentkiralyi_alexandra_stays",
+    "label": "Szentkirályi Alexandra versenyben marad",
+    "once": true,
+    "priority": 50,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 26,
+              "max": 26
+            },
+            {
+              "type": "candidate-status",
+              "candidateId": "szentkiralyi_alexandra",
+              "status": "active"
+            }
+          ]
+        },
+        "effects": []
+      }
+    ],
+    "announcement": {
+      "title": "Szentkirályi Alexandra versenyben marad",
+      "body": "Június 7., péntek: lejárt a visszalépési határidő, Szentkirályi Alexandra versenyben maradt. A Fidesz a saját jelöltjét és listáját mozgósítja, a verseny két nappal a választás előtt is háromszereplős marad."
     }
   }
 ]
