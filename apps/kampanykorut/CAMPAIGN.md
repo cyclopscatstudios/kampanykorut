@@ -303,16 +303,38 @@ Optional, campaign-wide (shared by every playable side). Events are evaluated at
 ]
 ```
 
-| Field          | Required | Type                                                 | Description                                                                                                                                                                          |
-| -------------- | -------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`           | yes      | `string`                                             | Unique, stable event id. It is stored in saved games, so **never rename an id once the campaign is published** — a renamed event would run again in games that already triggered it. |
-| `label`        | no       | `string`                                             | Name for authors and logs.                                                                                                                                                           |
-| `once`         | no       | `boolean`                                            | Defaults to `true`: the event runs at most once per game. `false` re-evaluates it every turn.                                                                                        |
-| `priority`     | no       | `number`                                             | Defaults to `0`. Higher runs first; ties keep their order in the file.                                                                                                               |
-| `conditions`   | yes      | `{ if: Condition, effects: RawEffect[] }[]`          | Alternative branches in order. The effects of the **first** branch whose `if` is met are applied, then the event counts as triggered. `effects` use the answer effect types above.   |
-| `announcement` | no       | `{ title: string, body: string, imageUri?: string }` | Queued for the player when the event runs. ⚠️ Not shown in the UI yet.                                                                                                               |
+| Field          | Required | Type                                                  | Description                                                                                                                                                                                                              |
+| -------------- | -------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`           | yes      | `string`                                              | Unique, stable event id. It is stored in saved games, so **never rename an id once the campaign is published** — a renamed event would run again in games that already triggered it.                                     |
+| `label`        | no       | `string`                                              | Name for authors and logs.                                                                                                                                                                                               |
+| `once`         | no       | `boolean`                                             | Defaults to `true`: the event runs at most once per game. `false` re-evaluates it every turn.                                                                                                                            |
+| `priority`     | no       | `number`                                              | Defaults to `0`. Higher runs first; ties keep their order in the file.                                                                                                                                                   |
+| `conditions`   | yes      | `{ if: Condition, effects: CampaignEventEffect[] }[]` | Alternative branches in order. The effects of the **first** branch whose `if` is met are applied, then the event counts as triggered. `effects` use the answer effect types above plus `withdraw-candidate` (see below). |
+| `announcement` | no       | `{ title: string, body: string, imageUri?: string }`  | Queued for the player when the event runs. ⚠️ Not shown in the UI yet.                                                                                                                                                   |
 
 Every event is evaluated once per turn, in priority order, against the state left by the events before it — so a later event can react to an earlier one in the same turn, but the list is never re-run within a turn. Evaluation is deterministic: the same campaign data and the same answers always trigger the same events.
+
+##### Candidate withdrawal
+
+Besides the answer effect types, an event branch may contain a `withdraw-candidate` effect (mayoral elections only, never as an answer effect):
+
+```json
+{
+  "type": "withdraw-candidate",
+  "candidateId": "szentkiralyi_alexandra",
+  "endorsedCandidateId": "vitezy_david",
+  "reason": "withdrawal",
+  "redistribution": {
+    "vitezy_david": 0.8,
+    "karacsony_gergely": 0.1,
+    "_abstain": 0.1
+  }
+}
+```
+
+In one step it marks the candidate `inactive` (with `reason`, default `"withdrawal"`, the optional `endorsedCandidateId` and the turn) and moves the candidate's votes **in every district** by the `redistribution` shares. `_abstain` is not a candidate: those votes return to the undecided ("bizonytalan") pool, so the number of eligible voters stays the same while the number of valid votes can drop. Shares must be between 0 and 1 and add up to 1; targets must be other candidates in `parties`. Votes are rounded per district with the largest remainder method (ties go to the target that comes first alphabetically), so no voter is created or lost.
+
+From then on the candidate cannot win, receives no votes from answer effects, strategy rewards or later events (their keys are dropped from those effects), and is left out of the polls. The validator refuses to withdraw a playable candidate until the product rule for that case is decided. The ratios in the example above are a design placeholder, not historical data.
 
 ##### Conditions
 

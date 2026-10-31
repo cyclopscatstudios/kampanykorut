@@ -1,5 +1,6 @@
 import { createLogger } from "../logger";
 import {
+  ABSTAIN_KEY,
   AdvisorFeedback,
   CalculateResults,
   CampaignEventEffect,
@@ -20,16 +21,25 @@ import {
   RawQuestion,
   Strategy,
   StrategyReward,
+  WithdrawCandidateEffect,
 } from "../types";
 import { CampaignEventEngine } from "./CampaignEventEngine";
-import { getInactiveCandidateIds } from "./CampaignStateAccess";
+import {
+  getCandidateStatus,
+  getInactiveCandidateIds,
+} from "./CampaignStateAccess";
 import type { EffectApplier } from "./EffectApplier";
 import { getParliamentaryConfig, isMayoralElection } from "./ElectionType";
+import {
+  excludeInactiveCandidates,
+  excludeInactiveFromConditionalEffects,
+} from "./InactiveCandidateFilter";
 import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import type { ResultModifier } from "./ResultModifier";
+import { redistributeWithdrawnVotes } from "./ResultTransformer/CandidateWithdrawalTransformer";
 
 const log = createLogger("CampaignEngine");
 
@@ -45,8 +55,7 @@ export class CampaignEngine {
     private mayoralResultCalculator: MayoralResultCalculator,
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
-    private readonly eventEngine: CampaignEventEngine =
-      new CampaignEventEngine(),
+    private readonly eventEngine: CampaignEventEngine = new CampaignEventEngine(),
   ) {
     log.debug("CampaignEngine initialized");
   }
@@ -146,11 +155,15 @@ export class CampaignEngine {
       return state;
     }
 
+    const inactiveCandidateIds = getInactiveCandidateIds(state);
     const appliedEffects = this.effectApplier.getAppliedEffects(
-      decision.effects,
+      excludeInactiveCandidates(decision.effects, inactiveCandidateIds),
       state.candidateListData ?? [],
       state.turn,
-      decision.conditionalEffects,
+      excludeInactiveFromConditionalEffects(
+        decision.conditionalEffects,
+        inactiveCandidateIds,
+      ),
       decision.selectedDistrict,
       districtBoost,
       playerVoteKey,
@@ -249,13 +262,29 @@ export class CampaignEngine {
         state,
       )?.differences;
       if (polls && Object.keys(polls).length > 0) {
-        return { polls, pollsterId };
+        return { polls: this.withoutInactivePolls(state, polls), pollsterId };
       }
     }
     return {
-      polls: this.pollsterEngine.getPolls(state),
+      polls: this.withoutInactivePolls(
+        state,
+        this.pollsterEngine.getPolls(state),
+      ),
       pollsterId: pollsterId === undefined ? undefined : AGGREGATE_POLLSTER_ID,
     };
+  }
+
+  private withoutInactivePolls(
+    state: CampaignState,
+    polls: Record<string, number> | undefined,
+  ) {
+    const inactive = getInactiveCandidateIds(state);
+    if (!polls || !inactive.length) {
+      return polls;
+    }
+    return Object.fromEntries(
+      Object.entries(polls).filter(([id]) => !inactive.includes(id)),
+    );
   }
 
   restorePollingOpinions(
@@ -369,7 +398,10 @@ export class CampaignEngine {
       );
 
       const appliedEffects = this.effectApplier.getAppliedEffects(
-        reward.effects,
+        excludeInactiveCandidates(
+          reward.effects,
+          getInactiveCandidateIds(state),
+        ),
         candidateListData,
         state.turn,
       );
@@ -440,8 +472,51 @@ export class CampaignEngine {
     effects: CampaignEventEffect[],
     electionConfig: ElectionConfig,
   ): CampaignState {
-    const appliedEffects = this.effectApplier.getAppliedEffects(
+    let current = state;
+    let batch: RawEffect[] = [];
+    const flush = () => {
+      current = this.applyRawEffects(current, batch);
+      batch = [];
+    };
+
+    for (const effect of effects) {
+      if (effect.type === "withdraw-candidate") {
+        flush();
+        current = this.withdrawCandidate(current, effect, electionConfig);
+      } else {
+        batch.push(effect);
+      }
+    }
+    flush();
+
+    if (current === state) {
+      return state;
+    }
+    return {
+      ...current,
+      ...this.calculateResults(
+        current.candidateListData,
+        current.partyListData,
+        electionConfig,
+        current.partyListVotes,
+        getInactiveCandidateIds(current),
+      ),
+    };
+  }
+
+  private applyRawEffects(
+    state: CampaignState,
+    effects: RawEffect[],
+  ): CampaignState {
+    const active = excludeInactiveCandidates(
       effects,
+      getInactiveCandidateIds(state),
+    );
+    if (!active.length) {
+      return state;
+    }
+    const appliedEffects = this.effectApplier.getAppliedEffects(
+      active,
       state.candidateListData ?? [],
       state.turn,
     );
@@ -449,24 +524,66 @@ export class CampaignEngine {
     if (!modified) {
       return state;
     }
-    const candidateListData =
-      this.resultModifier.filterUnwantedValues(modified.candidateListData) ??
-      state.candidateListData;
-    const partyListData = modified.partyListData ?? state.partyListData;
-    const partyListVotes = modified.partyListVotes ?? state.partyListVotes;
+    return {
+      ...state,
+      candidateListData:
+        this.resultModifier.filterUnwantedValues(modified.candidateListData) ??
+        state.candidateListData,
+      partyListData: modified.partyListData ?? state.partyListData,
+      partyListVotes: modified.partyListVotes ?? state.partyListVotes,
+    };
+  }
+
+  private withdrawCandidate(
+    state: CampaignState,
+    effect: WithdrawCandidateEffect,
+    electionConfig: ElectionConfig,
+  ): CampaignState {
+    const { candidateId, redistribution } = effect;
+    if (!isMayoralElection(electionConfig)) {
+      throw new Error(
+        "withdraw-candidate is only supported in mayoral elections",
+      );
+    }
+    if (getCandidateStatus(state, candidateId) !== "active") {
+      throw new Error(`cannot withdraw inactive candidate "${candidateId}"`);
+    }
+    const invalidTarget = Object.keys(redistribution).find(
+      (target) =>
+        target !== ABSTAIN_KEY &&
+        (target === candidateId ||
+          getCandidateStatus(state, target) !== "active"),
+    );
+    if (invalidTarget) {
+      throw new Error(
+        `cannot move votes of "${candidateId}" to "${invalidTarget}"`,
+      );
+    }
+
+    log.info("Candidate withdraws", {
+      candidateId,
+      endorsedCandidateId: effect.endorsedCandidateId,
+      turn: state.turn,
+    });
 
     return {
       ...state,
-      candidateListData,
-      partyListData,
-      partyListVotes,
-      ...this.calculateResults(
-        candidateListData,
-        partyListData,
-        electionConfig,
-        partyListVotes,
-        getInactiveCandidateIds(state),
+      candidateListData: redistributeWithdrawnVotes(
+        state.candidateListData ?? [],
+        candidateId,
+        redistribution,
       ),
+      candidates: {
+        ...state.candidates,
+        [candidateId]: {
+          status: "inactive",
+          inactiveReason: effect.reason ?? "withdrawal",
+          ...(effect.endorsedCandidateId && {
+            endorsedCandidateId: effect.endorsedCandidateId,
+          }),
+          changedAtTurn: state.turn,
+        },
+      },
     };
   }
 

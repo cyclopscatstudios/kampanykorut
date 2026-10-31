@@ -49,7 +49,11 @@ function event(id: string, patch: Partial<CampaignEvent> = {}): CampaignEvent {
 function recordingApply() {
   const calls: string[] = [];
   const apply: ApplyEventEffects = (current, effects) => {
-    calls.push(...effects.map((e) => Object.keys(e.params).join()));
+    calls.push(
+      ...effects.map((e) =>
+        "params" in e ? Object.keys(e.params).join() : e.candidateId,
+      ),
+    );
     return { ...current };
   };
   return { apply, calls };

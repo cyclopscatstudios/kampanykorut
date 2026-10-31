@@ -1,7 +1,18 @@
+import { CandidateInactiveReason } from "./campaign";
 import { Condition } from "./condition";
 import { RawEffect } from "./effects";
 
-export type CampaignEventEffect = RawEffect;
+export const ABSTAIN_KEY = "_abstain";
+
+export interface WithdrawCandidateEffect {
+  type: "withdraw-candidate";
+  candidateId: string;
+  endorsedCandidateId?: string;
+  reason?: CandidateInactiveReason;
+  redistribution: Record<string, number>;
+}
+
+export type CampaignEventEffect = RawEffect | WithdrawCandidateEffect;
 
 export interface CampaignEventBranch {
   if: Condition;
