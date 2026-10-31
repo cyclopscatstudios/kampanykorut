@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "version": "0.1.0"
+  },
+  "files": {
+    "electionConfig": "election_config.json",
+    "voterEnvironmentConfig": "voter_environment_config.json",
+    "candidateListData": "candidate_list_data.json",
+    "campaignEvents": "campaign_events.json",
+    "playableSides": {
+      "lmp": {
+        "vitezy_david": {
+          "questions": "shared/questions.json",
+          "answerEffect": "shared/answer_effects.json"
+        }
+      },
+      "dk_mszp_parbeszed": {
+        "karacsony_gergely": {
+          "questions": "shared/questions.json",
+          "answerEffect": "shared/answer_effects.json"
+        }
+      }
+    }
+  }
+}

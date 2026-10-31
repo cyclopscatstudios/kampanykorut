@@ -1,0 +1,89 @@
+[
+  {
+    "id": "bp_test_q1",
+    "title": "Kampánynyitó",
+    "question": "Teszt kérdés: mivel nyitod a kampányt?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Közlekedés"
+      },
+      {
+        "id": "B",
+        "label": "Lakhatás"
+      }
+    ]
+  },
+  {
+    "id": "bp_test_q2",
+    "title": "Tárgyalás",
+    "question": "Teszt kérdés: tárgyalsz Szentkirályi Alexandrával a visszalépésről? (B: visszalép)",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nem"
+      },
+      {
+        "id": "B",
+        "label": "Igen, megállapodunk"
+      }
+    ]
+  },
+  {
+    "id": "bp_test_q3",
+    "title": "Négyesélyes verseny",
+    "question": "Teszt kérdés: hogyan reagálsz Szentkirályi támadására? (csak ha versenyben marad)",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Visszatámadok"
+      },
+      {
+        "id": "B",
+        "label": "Nem reagálok"
+      }
+    ],
+    "visibleIf": {
+      "type": "candidate-status",
+      "candidateId": "szentkiralyi_alexandra",
+      "status": "active"
+    }
+  },
+  {
+    "id": "bp_test_q3_after_withdrawal",
+    "title": "Új mezőny",
+    "question": "Teszt kérdés: hogyan szólítod meg Szentkirályi szavazóit? (csak visszalépés után)",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Közös programpontokkal"
+      },
+      {
+        "id": "B",
+        "label": "Külön kampánnyal"
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "candidate-status",
+        "candidateId": "szentkiralyi_alexandra",
+        "status": "active"
+      }
+    }
+  },
+  {
+    "id": "bp_test_q4",
+    "title": "Hajrá",
+    "question": "Teszt kérdés: hol zárod a kampányt?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Belvárosban"
+      },
+      {
+        "id": "B",
+        "label": "Külső kerületekben"
+      }
+    ]
+  }
+]

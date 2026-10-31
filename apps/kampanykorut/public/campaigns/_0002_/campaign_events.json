@@ -1,0 +1,42 @@
+[
+  {
+    "id": "szentkiralyi_alexandra_withdrawal",
+    "label": "Szentkirályi Alexandra visszalép (teszt)",
+    "once": true,
+    "priority": 100,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "answer-selected",
+              "questionId": "bp_test_q2",
+              "answerId": "B"
+            },
+            {
+              "type": "candidate-status",
+              "candidateId": "szentkiralyi_alexandra",
+              "status": "active"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "withdraw-candidate",
+            "candidateId": "szentkiralyi_alexandra",
+            "endorsedCandidateId": "vitezy_david",
+            "redistribution": {
+              "vitezy_david": 0.8,
+              "karacsony_gergely": 0.1,
+              "_abstain": 0.1
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Szentkirályi Alexandra visszalép",
+      "body": "Teszt bejelentés: a főpolgármester-választási mezőny megváltozott."
+    }
+  }
+]
