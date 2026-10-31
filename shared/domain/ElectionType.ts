@@ -33,3 +33,9 @@ export function getPlayerVoteKey(
   }
   return playerSide?.partyId;
 }
+
+export function isCityDistrictMap(
+  config: Pick<ElectionConfig, "districtMap"> | undefined,
+): boolean {
+  return config?.districtMap === "budapest-districts";
+}

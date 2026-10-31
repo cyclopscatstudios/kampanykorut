@@ -45,8 +45,8 @@ export type ElectionConfig =
   | ParliamentaryElectionConfig
   | MayoralElectionConfig;
 
-// the year when the electoral district map was adopted.
-export type DistrictMapType = "2011" | "2024";
+// "2011" / "2024": OEVK map by the year it was adopted; "budapest-districts": the 23 Budapest districts.
+export type DistrictMapType = "2011" | "2024" | "budapest-districts";
 
 export type RawParty = {
   id: string;

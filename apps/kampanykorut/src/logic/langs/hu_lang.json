@@ -183,11 +183,13 @@
       "capitalTitle": "Budapest · {{count}} körzet",
       "showCapital": "Budapest →",
       "showCountry": "← Ország",
-      "leads": "{{party}} vezet"
+      "leads": "{{party}} vezet",
+      "cityTitle": "Budapest · {{count}} kerület"
     },
     "sheet": {
       "label": "Választókerület",
-      "currentLead": "Jelenlegi állás"
+      "currentLead": "Jelenlegi állás",
+      "cityLabel": "Kerület"
     }
   },
   "badge": {
