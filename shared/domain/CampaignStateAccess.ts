@@ -1,4 +1,10 @@
-import { CampaignEventState, CampaignState, CandidateStatus } from "../types";
+import {
+  CampaignEvent,
+  CampaignEventAnnouncement,
+  CampaignEventState,
+  CampaignState,
+  CandidateStatus,
+} from "../types";
 
 export function getCandidateStatus(
   state: Pick<CampaignState, "candidates">,
@@ -23,4 +29,37 @@ export function getCampaignEventState(
     triggeredEventIds: state.campaignEvents?.triggeredEventIds ?? [],
     pendingAnnouncementIds: state.campaignEvents?.pendingAnnouncementIds ?? [],
   };
+}
+
+export function acknowledgeAnnouncement(
+  state: CampaignState,
+  eventId: string,
+): CampaignState {
+  const { triggeredEventIds, pendingAnnouncementIds } =
+    getCampaignEventState(state);
+  if (!pendingAnnouncementIds.includes(eventId)) {
+    return state;
+  }
+  return {
+    ...state,
+    campaignEvents: {
+      triggeredEventIds,
+      pendingAnnouncementIds: pendingAnnouncementIds.filter(
+        (id) => id !== eventId,
+      ),
+    },
+  };
+}
+
+export function getPendingAnnouncement(
+  state: Pick<CampaignState, "campaignEvents">,
+  events: CampaignEvent[] = [],
+): { eventId: string; announcement: CampaignEventAnnouncement } | undefined {
+  for (const eventId of getCampaignEventState(state).pendingAnnouncementIds) {
+    const announcement = events.find((e) => e.id === eventId)?.announcement;
+    if (announcement) {
+      return { eventId, announcement };
+    }
+  }
+  return undefined;
 }

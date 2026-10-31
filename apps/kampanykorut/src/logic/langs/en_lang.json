@@ -67,7 +67,8 @@
       "electionMap": "Election map",
       "statistics": "Statistics",
       "history": "History",
-      "achivements": "Badges"
+      "achivements": "Badges",
+      "districts": "Districts"
     },
     "actions": {
       "replay": "Play again",
@@ -111,6 +112,26 @@
         "day": "Day"
       },
       "turns": "turns"
+    },
+    "mayoral": {
+      "subtitle": "Mayoral election",
+      "winnerTitle": "{{name}} won the election",
+      "tieTitle": "Tie",
+      "noWinnerTitle": "No winner",
+      "votes": "{{votes}} votes",
+      "margin": "Margin between the top two candidates: {{votes}} votes ({{points}} percentage points)",
+      "withdrawn": "{{name}} withdrew",
+      "withdrawnEndorsed": "{{name}} withdrew in favour of {{endorsed}}",
+      "validVotes": "Valid votes: {{votes}}",
+      "selectDistrict": "Select a district on the map",
+      "table": {
+        "district": "District",
+        "leader": "Leading candidate",
+        "share": "Share",
+        "margin": "Margin",
+        "validVotes": "Valid votes",
+        "points": "{{points}} pp"
+      }
     }
   },
   "gameHeader": {
@@ -326,5 +347,9 @@
     "title": "Privacy notice",
     "openPdf": "Open privacy notice (PDF)",
     "mobileDescription": "You can open the privacy notice as a PDF."
+  },
+  "eventAnnouncement": {
+    "label": "Campaign event",
+    "close": "Continue"
   }
 }

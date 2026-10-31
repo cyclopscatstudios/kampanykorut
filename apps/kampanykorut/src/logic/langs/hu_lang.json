@@ -67,7 +67,8 @@
       "electionMap": "Választási térkép",
       "statistics": "Statisztikák",
       "history": "Előzmények",
-      "achivements": "Jelvények"
+      "achivements": "Jelvények",
+      "districts": "Kerületek"
     },
     "actions": {
       "replay": "Újrajátszás",
@@ -111,6 +112,26 @@
         "day": "Nap"
       },
       "turns": "forduló"
+    },
+    "mayoral": {
+      "subtitle": "Főpolgármester-választás",
+      "winnerTitle": "{{name}} nyerte a választást",
+      "tieTitle": "Holtverseny",
+      "noWinnerTitle": "Nincs győztes",
+      "votes": "{{votes}} szavazat",
+      "margin": "Különbség az első két jelölt között: {{votes}} szavazat ({{points}} százalékpont)",
+      "withdrawn": "{{name}} visszalépett",
+      "withdrawnEndorsed": "{{name}} visszalépett {{endorsed}} javára",
+      "validVotes": "Érvényes szavazatok: {{votes}}",
+      "selectDistrict": "Válassz egy kerületet a térképen",
+      "table": {
+        "district": "Kerület",
+        "leader": "Vezető jelölt",
+        "share": "Arány",
+        "margin": "Különbség",
+        "validVotes": "Érvényes szavazat",
+        "points": "{{points}} sz.pont"
+      }
     }
   },
   "gameHeader": {
@@ -326,5 +347,9 @@
     "title": "Adatkezelési tájékoztató",
     "openPdf": "Tájékoztató megnyitása (PDF)",
     "mobileDescription": "Az adatkezelési tájékoztatót PDF formátumban nyithatod meg."
+  },
+  "eventAnnouncement": {
+    "label": "Kampányesemény",
+    "close": "Tovább"
   }
 }

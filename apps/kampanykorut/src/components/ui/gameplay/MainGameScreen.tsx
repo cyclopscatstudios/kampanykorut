@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { container } from "tsyringe";
 import { StateEngine, useElectionState } from "@/logic/application";
-import { PollsterEngine } from "@/shared/domain";
+import { getPendingAnnouncement, PollsterEngine } from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
 import { CampaignConfig, CampaignState, CurrentView } from "@/shared/types";
 import {
@@ -11,6 +11,7 @@ import {
 import { takeCampaignLoadDuration } from "../../../logic/infra/posthog/loadTiming";
 import { trackOnce } from "../../../logic/infra/posthog/track";
 import { AdvisorModal } from "./AdvisorModal";
+import { EventAnnouncementDialog } from "./EventAnnouncementDialog";
 import { GameChrome } from "./GameChrome";
 import { GameView } from "./GameView";
 import { useGameFlow } from "./hooks/useGameFlow";
@@ -26,6 +27,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     processAnswer,
     commitTurn,
     finishCampaign,
+    acknowledgeAnnouncement,
     getMapDataByPolls,
   } = useElectionState(campaignId);
   const { flow, dispatch, handleAnswer, handleAdvisorClose } = useGameFlow(
@@ -40,6 +42,10 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     [sessionId, campaignId, partyId, candidateId],
   );
   const isResumed = state.turn > 0;
+  const pendingAnnouncement =
+    !state.isEnded && !flow.pendingAdvisor
+      ? getPendingAnnouncement(state, config.campaignEvents)
+      : undefined;
 
   useEffect(() => {
     const loadDuration = takeCampaignLoadDuration();
@@ -104,6 +110,13 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
           config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
             state.playerSide?.candidateId ?? ""
           ]?.advisorFeedbackAssets
+        }
+      />
+      <EventAnnouncementDialog
+        announcement={pendingAnnouncement?.announcement}
+        onClose={() =>
+          pendingAnnouncement &&
+          acknowledgeAnnouncement(pendingAnnouncement.eventId)
         }
       />
       <GameView

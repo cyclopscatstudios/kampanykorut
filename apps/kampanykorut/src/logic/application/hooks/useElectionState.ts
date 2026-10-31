@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
-import { getParliamentaryConfig, getPlayerVoteKey } from "@/shared/domain";
+import {
+  acknowledgeAnnouncement as acknowledge,
+  getParliamentaryConfig,
+  getPlayerVoteKey,
+} from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
 import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import {
@@ -176,6 +180,15 @@ export function useElectionState(campaignId: string) {
     goToFinalResults(campaignId, sessionId);
   };
 
+  const acknowledgeAnnouncement = (eventId: string) => {
+    const next = acknowledge(gameState, eventId);
+    if (next === gameState) {
+      return;
+    }
+    setGameState(next);
+    saveSession("campaignState", next);
+  };
+
   const getAnswer = (answers?: Answer[], answerId?: string) => {
     return answers?.find((a) => a.id === answerId);
   };
@@ -245,6 +258,7 @@ export function useElectionState(campaignId: string) {
     commitTurn,
     finishCampaign,
     getFinalResults,
+    acknowledgeAnnouncement,
     getMapDataByPolls: getListDataByPollProjection,
   };
 }

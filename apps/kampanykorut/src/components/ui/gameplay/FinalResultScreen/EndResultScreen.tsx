@@ -14,6 +14,8 @@ import {
   ConfirmRestartModal,
 } from "../GameDialog";
 import { ElectionMap } from "./ElectionMap";
+import { MayoralDistrictTable } from "./MayoralDistricts";
+import { MayoralSummaryPage } from "./MayoralSummaryPage";
 import { Statistics } from "./Statistics/Statistics";
 import { SummaryPage } from "./SummaryPage";
 import { TurnHistory } from "./TurnHistory";
@@ -39,7 +41,20 @@ const screens = [
   { id: "history", label: "endResult.menuBar.history", icon: "clock-history" },
 ] as const;
 
-type ActiveScreen = (typeof screens)[number]["id"];
+const mayoralScreens = [
+  screens[0],
+  screens[1],
+  {
+    id: "districts",
+    label: "endResult.menuBar.districts",
+    icon: "list-ol",
+  },
+  screens[3],
+] as const;
+
+type ActiveScreen =
+  | (typeof screens)[number]["id"]
+  | (typeof mayoralScreens)[number]["id"];
 
 export function FinalResultScreen() {
   const { results, config } = useLoaderData();
@@ -53,6 +68,13 @@ export function FinalResultScreen() {
   const t = useTranslate();
   const { goToCampaignSelector } = useNavigation();
   const state = stateEngine.getCampaignState();
+  const mayoralResult = results.mayoralResult;
+  const visibleScreens = mayoralResult ? mayoralScreens : screens;
+  const summary = mayoralResult ? (
+    <MayoralSummaryPage mayoralResult={mayoralResult} config={config} />
+  ) : (
+    <SummaryPage results={results} />
+  );
 
   // check the result of `_other`, which aggregates party-list votes cast for minor/other parties
   // `_other` is not an actual party and should not be displayed in the UI
@@ -77,7 +99,7 @@ export function FinalResultScreen() {
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             {isDesktop && (
               <div className="flex gap-2">
-                {screens.map((screen) => {
+                {visibleScreens.map((screen) => {
                   return (
                     <Button
                       key={screen.id}
@@ -108,15 +130,19 @@ export function FinalResultScreen() {
             </div>
           </div>
           <div className="flex-1 min-h-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto md:overflow-y-visible">
-            {!isDesktop && <SummaryPage results={results} />}
+            {!isDesktop && summary}
             {isDesktop && activeScreen === "statistics" && (
               <Statistics results={results} config={config} />
             )}
-            {isDesktop && activeScreen === "summaryPage" && (
-              <SummaryPage results={results} />
+            {isDesktop && activeScreen === "districts" && mayoralResult && (
+              <MayoralDistrictTable
+                mayoralResult={mayoralResult}
+                config={config}
+              />
             )}
+            {isDesktop && activeScreen === "summaryPage" && summary}
             {isDesktop && activeScreen === "electionMap" && (
-              <ElectionMap config={config} />
+              <ElectionMap config={config} mayoralResult={mayoralResult} />
             )}
             {isDesktop && activeScreen === "history" && (
               <TurnHistory

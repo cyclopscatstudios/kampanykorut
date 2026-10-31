@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { container } from "tsyringe";
 import { StateEngine } from "@/logic/application";
-import { CampaignConfig, District } from "@/shared/types";
+import { CampaignConfig, District, MayoralResult } from "@/shared/types";
 import { MapWrapper } from "../MapWrapper";
 import { DistrictResult } from "./DistrictResult";
 import { calculateVotePercentages, getCandidates } from "./electionMap.utils";
+import { MayoralDistrictPanel } from "./MayoralDistricts";
 
-export function ElectionMap({ config }: { config: CampaignConfig }) {
+export function ElectionMap({
+  config,
+  mayoralResult,
+}: {
+  config: CampaignConfig;
+  mayoralResult?: MayoralResult;
+}) {
   const stateEngine = container.resolve(StateEngine);
   const state = stateEngine.getCampaignState();
   const [district, setDistrict] = useState<District | null>(null);
@@ -24,11 +31,19 @@ export function ElectionMap({ config }: { config: CampaignConfig }) {
         height={444}
         electionConfig={config.electionConfig}
       />
-      <DistrictResult
-        candidates={candidates}
-        config={config}
-        district={district}
-      />
+      {mayoralResult ? (
+        <MayoralDistrictPanel
+          district={district}
+          mayoralResult={mayoralResult}
+          config={config}
+        />
+      ) : (
+        <DistrictResult
+          candidates={candidates}
+          config={config}
+          district={district}
+        />
+      )}
     </div>
   );
 }
