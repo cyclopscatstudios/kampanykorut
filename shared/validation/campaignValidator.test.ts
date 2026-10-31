@@ -622,4 +622,102 @@ describe("validateCampaign", () => {
       expect(codes(validate(withEvents({})))).toEqual(["error:events-invalid"]);
     });
   });
+
+  describe("withdraw-candidate event effect", () => {
+    const withdraw = (patch: object = {}) => ({
+      type: "withdraw-candidate",
+      candidateId: "party_b",
+      endorsedCandidateId: "party_a",
+      redistribution: { party_a: 0.9, _abstain: 0.1 },
+      ...patch,
+    });
+
+    const setup =
+      (effect: object, mayoral = true) =>
+      (f: Files) => {
+        if (mayoral) {
+          const config = file(f, "election_config.json");
+          config.election = { type: "mayoral" };
+          config.parties.push({ id: "candidate_a", name: "A", color: "#111" });
+        }
+        file(f, "manifest.json").files.campaignEvents = "events.json";
+        f["events.json"] = [
+          {
+            id: "withdrawal",
+            conditions: [{ if: { type: "turn", min: 1 }, effects: [effect] }],
+          },
+        ];
+      };
+
+    const issues = (effect: object, mayoral = true) =>
+      validate(setup(effect, mayoral)).map((d) => `${d.code}@${d.path}`);
+
+    it("accepts a withdrawal in a mayoral election", () => {
+      expect(issues(withdraw())).toEqual([]);
+    });
+
+    it("is only supported in mayoral elections", () => {
+      expect(issues(withdraw(), false)).toEqual([
+        "withdraw-not-supported@/0/conditions/0/effects/0",
+      ]);
+    });
+
+    it("refuses to withdraw a playable candidate", () => {
+      expect(issues(withdraw({ candidateId: "candidate_a" }))).toEqual([
+        "withdraw-playable-candidate@/0/conditions/0/effects/0/candidateId",
+      ]);
+    });
+
+    it("validates candidate references", () => {
+      expect(
+        issues(
+          withdraw({
+            candidateId: "nobody",
+            endorsedCandidateId: "nobody_else",
+            redistribution: { party_a: 0.5, ghost: 0.5 },
+          }),
+        ),
+      ).toEqual([
+        "unknown-candidate@/0/conditions/0/effects/0/candidateId",
+        "unknown-candidate@/0/conditions/0/effects/0/endorsedCandidateId",
+        "unknown-candidate@/0/conditions/0/effects/0/redistribution/ghost",
+      ]);
+      expect(
+        issues(withdraw({ redistribution: { party_b: 0.5, party_a: 0.5 } })),
+      ).toEqual([
+        "unknown-candidate@/0/conditions/0/effects/0/redistribution/party_b",
+      ]);
+    });
+
+    it("requires shares between 0 and 1 that add up to 1", () => {
+      expect(
+        issues(withdraw({ redistribution: { party_a: 0.8, _abstain: 0.1 } })),
+      ).toEqual([
+        "redistribution-sum@/0/conditions/0/effects/0/redistribution",
+      ]);
+      expect(
+        issues(withdraw({ redistribution: { party_a: 1.2, _abstain: -0.2 } })),
+      ).toEqual([
+        "effect-invalid@/0/conditions/0/effects/0/redistribution/party_a",
+        "effect-invalid@/0/conditions/0/effects/0/redistribution/_abstain",
+        "redistribution-sum@/0/conditions/0/effects/0/redistribution",
+      ]);
+      expect(issues(withdraw({ redistribution: {} }))).toEqual([
+        "effect-invalid@/0/conditions/0/effects/0/redistribution",
+      ]);
+    });
+
+    it("validates the reason", () => {
+      expect(issues(withdraw({ reason: "illness" }))).toEqual([
+        "effect-invalid@/0/conditions/0/effects/0/reason",
+      ]);
+    });
+
+    it("is not accepted as an answer effect", () => {
+      const result = validate((f) => {
+        effects(f)[0].answers[0].effects = [withdraw()];
+      });
+      expect(codes(result)).toEqual(["error:effect-type-unknown"]);
+    });
+  });
 });

@@ -42,6 +42,8 @@ const ELECTION_TYPES = ["parliamentary", "mayoral"];
 
 const RESULT_RULES = ["plurality"];
 
+const WITHDRAW_REASONS = ["withdrawal", "disqualification", "other"];
+
 type Json = Record<string, unknown>;
 
 interface QuestionInfo {
@@ -56,6 +58,8 @@ interface Context {
   parties: Set<string>;
   groups: Set<string>;
   districts: Set<string>;
+  electionType?: string;
+  playableCandidates: Set<string>;
 }
 
 const isObject = (value: unknown): value is Json =>
@@ -1013,6 +1017,7 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
     return undefined;
   }
   const electionType = checkElectionDefinition(ctx, file, data.election);
+  ctx.electionType = electionType;
   const seatKeys =
     electionType === "parliamentary"
       ? ["listSeats", "allSeats", "thresholdPercent"]
@@ -1146,6 +1151,7 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
         }
       });
       sides.set(side.id, { candidates, playable });
+      candidates.forEach((id) => ctx.playableCandidates.add(id));
     });
   }
   checkImageFields(ctx, file, data.electionAssets, "/electionAssets");
@@ -1382,6 +1388,115 @@ function checkPlayableSides(
   }
 }
 
+function checkEventEffects(
+  ctx: Context,
+  file: string,
+  path: string,
+  effects: unknown,
+) {
+  if (!Array.isArray(effects)) {
+    checkEffects(ctx, file, path, effects);
+    return;
+  }
+  effects.forEach((effect, i) => {
+    const effectPath = `${path}/${i}`;
+    if (isObject(effect) && effect.type === "withdraw-candidate") {
+      checkWithdrawEffect(ctx, file, effectPath, effect);
+    } else {
+      checkEffect(ctx, file, effectPath, effect);
+    }
+  });
+}
+
+function checkWithdrawEffect(
+  ctx: Context,
+  file: string,
+  path: string,
+  effect: Json,
+) {
+  const error = (code: string, at: string, message: string) =>
+    report(ctx, "error", code, file, at, message);
+
+  if (ctx.electionType !== "mayoral") {
+    error(
+      "withdraw-not-supported",
+      path,
+      "withdraw-candidate is only supported in mayoral elections",
+    );
+  }
+  const candidateId = effect.candidateId;
+  if (typeof candidateId !== "string" || !ctx.parties.has(candidateId)) {
+    error(
+      "unknown-candidate",
+      `${path}/candidateId`,
+      `unknown candidate "${String(candidateId)}"`,
+    );
+  } else if (ctx.playableCandidates.has(candidateId)) {
+    error(
+      "withdraw-playable-candidate",
+      `${path}/candidateId`,
+      `"${candidateId}" is playable; withdrawing the player's own candidate is not supported yet`,
+    );
+  }
+  if (
+    effect.endorsedCandidateId !== undefined &&
+    (typeof effect.endorsedCandidateId !== "string" ||
+      !ctx.parties.has(effect.endorsedCandidateId) ||
+      effect.endorsedCandidateId === candidateId)
+  ) {
+    error(
+      "unknown-candidate",
+      `${path}/endorsedCandidateId`,
+      "endorsedCandidateId must be another candidate in parties",
+    );
+  }
+  if (
+    effect.reason !== undefined &&
+    !WITHDRAW_REASONS.includes(String(effect.reason))
+  ) {
+    error(
+      "effect-invalid",
+      `${path}/reason`,
+      `reason must be one of ${WITHDRAW_REASONS.join(", ")}`,
+    );
+  }
+  const redistribution = effect.redistribution;
+  if (!isObject(redistribution) || !Object.keys(redistribution).length) {
+    error(
+      "effect-invalid",
+      `${path}/redistribution`,
+      "redistribution must be a non-empty object",
+    );
+    return;
+  }
+  let total = 0;
+  for (const [target, share] of Object.entries(redistribution)) {
+    const targetPath = `${path}/redistribution/${target}`;
+    if (
+      target !== "_abstain" &&
+      (!ctx.parties.has(target) || target === candidateId)
+    ) {
+      error(
+        "unknown-candidate",
+        targetPath,
+        `"${target}" is not another candidate in parties`,
+      );
+    }
+    if (!isFiniteNumber(share) || share < 0 || share > 1) {
+      error("effect-invalid", targetPath, "share must be between 0 and 1");
+    } else {
+      total += share;
+    }
+  }
+  if (Math.abs(total - 1) > 1e-9) {
+    error(
+      "redistribution-sum",
+      `${path}/redistribution`,
+      `shares must add up to 1 (got ${total})`,
+    );
+  }
+}
+
 function checkCampaignEvents(
   ctx: Context,
   file: string,
@@ -1475,7 +1590,7 @@ function checkCampaignEvents(
           (issue) =>
             report(ctx, "error", issue.code, file, issue.path, issue.message),
         );
-        checkEffects(ctx, file, `${branchPath}/effects`, branch.effects);
+        checkEventEffects(ctx, file, `${branchPath}/effects`, branch.effects);
       });
     }
     if (event.announcement !== undefined) {
@@ -1511,6 +1626,7 @@ export function validateCampaign(
     parties: new Set(),
     groups: new Set(defaultGroups.map((g) => g.id)),
     districts: new Set(),
+    playableCandidates: new Set(),
   };
 
   for (const banner of ["campaignBanner", "thinCampaignBanner"] as const) {
