@@ -1,5 +1,7 @@
 export * from "./CampaignEngine";
 export * from "./CampaignStateAccess";
+export * from "./ConditionContext";
+export * from "./ConditionEvaluator";
 export * from "./DistrictGroupEngine";
 export * from "./EffectApplier";
 export * from "./ElectionType";
