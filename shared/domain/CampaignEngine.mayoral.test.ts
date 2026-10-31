@@ -17,6 +17,7 @@ import { mockElectionConfig } from "./mocks/mockElectionConfig";
 import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";
 import { PollsterEngine } from "./PollsterEngine";
 import { ResultModifier } from "./ResultModifier";
+import { CandidateWithdrawalTransformer } from "./ResultTransformer/CandidateWithdrawalTransformer";
 
 const districts: CandidateListData[] = [
   {
@@ -83,6 +84,7 @@ function createEngine(data = districts) {
     container.resolve(PollsterEngine),
     container.resolve(MayoralResultCalculator),
     container.resolve(CampaignEventEngine),
+    container.resolve(CandidateWithdrawalTransformer),
   );
 }
 
@@ -251,6 +253,7 @@ describe("CampaignEngine with a mayoral election", () => {
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
       container.resolve(CampaignEventEngine),
+      container.resolve(CandidateWithdrawalTransformer),
       mockPartyListData,
     );
 
@@ -296,6 +299,7 @@ describe("CampaignEngine campaign events", () => {
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
       container.resolve(CampaignEventEngine),
+      container.resolve(CandidateWithdrawalTransformer),
       undefined,
       undefined,
       [rallyEvent],

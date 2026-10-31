@@ -15,6 +15,7 @@ import { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
 import { PollsterEngine } from "./PollsterEngine";
 import { ResultModifier } from "./ResultModifier";
+import { CandidateWithdrawalTransformer } from "./ResultTransformer/CandidateWithdrawalTransformer";
 
 const districts: CandidateListData[] = [
   {
@@ -91,6 +92,7 @@ const createEngine = (events: CampaignEvent[] = [withdrawal]) =>
     container.resolve(PollsterEngine),
     container.resolve(MayoralResultCalculator),
     container.resolve(CampaignEventEngine),
+    container.resolve(CandidateWithdrawalTransformer),
     undefined,
     undefined,
     events,

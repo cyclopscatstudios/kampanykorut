@@ -1,3 +1,4 @@
+import { container } from "tsyringe";
 import { CandidateListData } from "../types";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
 
@@ -17,7 +18,7 @@ function district(
 }
 
 describe("MayoralResultCalculator", () => {
-  const calculator = new MayoralResultCalculator();
+  const calculator = container.resolve(MayoralResultCalculator);
 
   it("sums district votes into one city-wide plurality result", () => {
     const result = calculator.calculate([

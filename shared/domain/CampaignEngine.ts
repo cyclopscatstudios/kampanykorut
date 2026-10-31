@@ -40,7 +40,7 @@ import type { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import type { ResultModifier } from "./ResultModifier";
-import { redistributeWithdrawnVotes } from "./ResultTransformer/CandidateWithdrawalTransformer";
+import type { CandidateWithdrawalTransformer } from "./ResultTransformer/CandidateWithdrawalTransformer";
 
 const log = createLogger("CampaignEngine");
 
@@ -55,6 +55,7 @@ export class CampaignEngine {
     private pollsterEngine: PollsterEngine,
     private mayoralResultCalculator: MayoralResultCalculator,
     private eventEngine: CampaignEventEngine,
+    private withdrawalTransformer: CandidateWithdrawalTransformer,
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
     private readonly campaignEvents?: CampaignEvent[],
@@ -565,7 +566,7 @@ export class CampaignEngine {
 
     return {
       ...state,
-      candidateListData: redistributeWithdrawnVotes(
+      candidateListData: this.withdrawalTransformer.redistribute(
         state.candidateListData ?? [],
         candidateId,
         redistribution,

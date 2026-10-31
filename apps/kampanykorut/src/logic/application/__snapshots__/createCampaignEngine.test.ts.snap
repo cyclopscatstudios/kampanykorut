@@ -793,6 +793,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
         },
       },
     },
+    "withdrawalTransformer": CandidateWithdrawalTransformer {},
   },
   "configEngine": ConfigEngine {
     "configured": false,

@@ -1,5 +1,6 @@
+import { container } from "tsyringe";
 import { CandidateListData } from "../../types";
-import { redistributeWithdrawnVotes } from "./CandidateWithdrawalTransformer";
+import { CandidateWithdrawalTransformer } from "./CandidateWithdrawalTransformer";
 
 const district = (
   oevk: number,
@@ -17,11 +18,13 @@ const district = (
 const sum = (partok: CandidateListData["partok"]) =>
   Object.values(partok).reduce<number>((total, v) => total + (v ?? 0), 0);
 
-describe("redistributeWithdrawnVotes", () => {
+describe("CandidateWithdrawalTransformer", () => {
+  const transformer = container.resolve(CandidateWithdrawalTransformer);
+
   const split = { vitezy: 0.8, karacsony: 0.1, _abstain: 0.1 };
 
   it("moves the votes of every district by the given shares", () => {
-    const [first, second] = redistributeWithdrawnVotes(
+    const [first, second] = transformer.redistribute(
       [
         district(1, { szentkiralyi: 1000, vitezy: 3000, karacsony: 4000 }),
         district(2, { szentkiralyi: 500, vitezy: 100, karacsony: 200 }),
@@ -49,7 +52,7 @@ describe("redistributeWithdrawnVotes", () => {
       karacsony: 4000,
     });
 
-    const [after] = redistributeWithdrawnVotes([before], "szentkiralyi", split);
+    const [after] = transformer.redistribute([before], "szentkiralyi", split);
 
     const moved = sum(after.partok) - (sum(before.partok) - 1234);
     const abstained = 1234 - moved;
@@ -67,7 +70,7 @@ describe("redistributeWithdrawnVotes", () => {
   it("rounds deterministically with the largest remainder", () => {
     const thirds = { a: 1 / 3, b: 1 / 3, c: 1 / 3 };
 
-    const [result] = redistributeWithdrawnVotes(
+    const [result] = transformer.redistribute(
       [district(1, { x: 7 })],
       "x",
       thirds,
@@ -75,7 +78,7 @@ describe("redistributeWithdrawnVotes", () => {
 
     expect(result.partok).toEqual({ x: 0, a: 3, b: 2, c: 2 });
     expect(
-      redistributeWithdrawnVotes([district(1, { x: 7 })], "x", {
+      transformer.redistribute([district(1, { x: 7 })], "x", {
         c: 1 / 3,
         b: 1 / 3,
         a: 1 / 3,
@@ -84,7 +87,7 @@ describe("redistributeWithdrawnVotes", () => {
   });
 
   it("handles districts where the candidate has no votes", () => {
-    const [result] = redistributeWithdrawnVotes(
+    const [result] = transformer.redistribute(
       [district(1, { vitezy: 10 })],
       "szentkiralyi",
       split,
@@ -94,7 +97,7 @@ describe("redistributeWithdrawnVotes", () => {
   });
 
   it("gives every vote to a single endorsed candidate", () => {
-    const [result] = redistributeWithdrawnVotes(
+    const [result] = transformer.redistribute(
       [district(1, { szentkiralyi: 999, vitezy: 1 })],
       "szentkiralyi",
       { vitezy: 1 },
@@ -107,7 +110,7 @@ describe("redistributeWithdrawnVotes", () => {
     const input = [district(1, { szentkiralyi: 100, vitezy: 1 })];
     const snapshot = structuredClone(input);
 
-    redistributeWithdrawnVotes(input, "szentkiralyi", split);
+    transformer.redistribute(input, "szentkiralyi", split);
 
     expect(input).toEqual(snapshot);
   });
