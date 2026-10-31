@@ -213,9 +213,11 @@ function NarrowHeader({
           <TurnBadge
             currentTurn={state.turn}
             turns={
+              state.decisionCount ??
               config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
                 state.playerSide?.candidateId ?? ""
-              ]?.questions?.length ?? 0
+              ]?.questions?.length ??
+              0
             }
           />
         </div>
@@ -404,9 +406,11 @@ function WideHeader({
           <TurnBadge
             currentTurn={state.turn}
             turns={
+              state.decisionCount ??
               config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
                 state.playerSide?.candidateId ?? ""
-              ]?.questions?.length ?? 0
+              ]?.questions?.length ??
+              0
             }
           />
         </div>

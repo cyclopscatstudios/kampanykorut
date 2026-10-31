@@ -20,6 +20,8 @@ export interface CampaignState {
   candidates?: Record<string, CandidateCampaignState>;
   campaignEvents?: CampaignEventState;
   campaignConfigVersion?: string;
+  questionCursor?: number;
+  decisionCount?: number;
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;
   pollingOpnions?: PollingOpnions;
