@@ -95,3 +95,7 @@ yarn ladle  # Start Ladle dev server at http://localhost:6006
 ## 📄 License
 
 All rights reserved — see [LICENSE](./LICENSE).
+
+### Third-party data
+
+The Budapest district boundaries in `apps/kampanykorut/public/assets/jsons/shared/budapest_districts.json` are derived from [OpenStreetMap](https://www.openstreetmap.org/copyright) data, © OpenStreetMap contributors, available under the [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/). The game shows this attribution on every map drawn from that file.

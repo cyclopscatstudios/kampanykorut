@@ -1,8 +1,10 @@
 import { CampaignState } from "../types";
 import {
+  acknowledgeAnnouncement,
   getCampaignEventState,
   getCandidateStatus,
   getInactiveCandidateIds,
+  getPendingAnnouncement,
 } from "./CampaignStateAccess";
 
 const legacyState = {} as Pick<CampaignState, "candidates" | "campaignEvents">;
@@ -50,5 +52,52 @@ describe("CampaignStateAccess", () => {
     };
 
     expect(getCampaignEventState({ campaignEvents })).toEqual(campaignEvents);
+  });
+});
+
+describe("announcements", () => {
+  const events = [
+    { id: "silent", conditions: [] },
+    {
+      id: "withdrawal",
+      conditions: [],
+      announcement: { title: "Visszalép", body: "Változott a mezőny." },
+    },
+  ];
+  const state = {
+    activeCampaignId: "x",
+    turn: 3,
+    isEnded: false,
+    isBaseResultsAlreadyApplied: true,
+    campaignEvents: {
+      triggeredEventIds: ["silent", "withdrawal"],
+      pendingAnnouncementIds: ["missing", "withdrawal"],
+    },
+  } as CampaignState;
+
+  it("returns the first pending announcement that exists in the events", () => {
+    expect(getPendingAnnouncement(state, events)).toEqual({
+      eventId: "withdrawal",
+      announcement: events[1].announcement,
+    });
+    expect(getPendingAnnouncement(state, [])).toBeUndefined();
+    expect(getPendingAnnouncement(legacyState, events)).toBeUndefined();
+  });
+
+  it("removes an acknowledged announcement and keeps the triggered events", () => {
+    const next = acknowledgeAnnouncement(state, "withdrawal");
+
+    expect(next.campaignEvents).toEqual({
+      triggeredEventIds: ["silent", "withdrawal"],
+      pendingAnnouncementIds: ["missing"],
+    });
+    expect(state.campaignEvents?.pendingAnnouncementIds).toEqual([
+      "missing",
+      "withdrawal",
+    ]);
+  });
+
+  it("returns the same state when there is nothing to acknowledge", () => {
+    expect(acknowledgeAnnouncement(state, "unknown")).toBe(state);
   });
 });
