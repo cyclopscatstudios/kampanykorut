@@ -18,7 +18,7 @@ import {
 import { getFillColor } from "./color";
 import { parsePolygon, projectPoints } from "./geometry";
 import { buildPathD, simplifyDP } from "./path";
-import { computeBounds, computeScale } from "./projection";
+import { computeBounds, computeOffset, computeScale } from "./projection";
 
 const MARGIN = 20;
 
@@ -86,6 +86,11 @@ export function DistrictMap({
     [bounds, width, height],
   );
 
+  const offset = useMemo(
+    () => computeOffset(bounds, scale, width, height),
+    [bounds, scale, width, height],
+  );
+
   const resultIndex = useMemo(() => buildResultsIndex(result), [result]);
 
   const renderData = useMemo(
@@ -93,7 +98,7 @@ export function DistrictMap({
       projected.map((d) => {
         const id = `${d.maz}-${d.evk}`;
         const simplified = simplifyDP(d.pts, simplifyTolerance);
-        const pathD = buildPathD(simplified, bounds, scale, MARGIN);
+        const pathD = buildPathD(simplified, bounds, scale, offset);
 
         const winnerResult = getWinnerResultsByDistrictPoligon(d, resultIndex);
         const { winner, diffPercentage } = winnerResult;
@@ -112,7 +117,15 @@ export function DistrictMap({
           active: getPartyActiveColor(partyColor, diffPercentage),
         };
       }),
-    [projected, simplifyTolerance, bounds, scale, resultIndex, isGameEnded],
+    [
+      projected,
+      simplifyTolerance,
+      bounds,
+      scale,
+      offset,
+      resultIndex,
+      isGameEnded,
+    ],
   );
 
   const byId = useMemo(

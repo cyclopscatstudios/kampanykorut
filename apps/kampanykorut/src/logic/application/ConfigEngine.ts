@@ -73,6 +73,8 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
         return "oevk_2011";
       case "2024":
         return "oevk_2024";
+      case "budapest-districts":
+        return "budapest_districts";
       default:
         log.error("Unknown district map type", { districtMapType });
         return "oevk_2011";

@@ -3,6 +3,7 @@ import {
   getElectionType,
   getParliamentaryConfig,
   getPlayerVoteKey,
+  isCityDistrictMap,
   isMayoralElection,
 } from "./ElectionType";
 import { mockElectionConfig } from "./mocks/mockElectionConfig";
@@ -44,5 +45,13 @@ describe("getPlayerVoteKey", () => {
   it("uses the candidate id in a mayoral election", () => {
     expect(getPlayerVoteKey(mayoralConfig, playerSide)).toBe("vitezy");
     expect(getPlayerVoteKey(mayoralConfig, undefined)).toBeUndefined();
+  });
+});
+
+describe("isCityDistrictMap", () => {
+  it("is true only for the Budapest districts map", () => {
+    expect(isCityDistrictMap({ districtMap: "budapest-districts" })).toBe(true);
+    expect(isCityDistrictMap({ districtMap: "2024" })).toBe(false);
+    expect(isCityDistrictMap(undefined)).toBe(false);
   });
 });

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
+import { isCityDistrictMap } from "@/shared/domain";
 import {
   CampaignConfig,
   CampaignState,
@@ -79,7 +80,8 @@ export function GameView({
     );
   }
 
-  const capitalCity = getCapitalCity(config.districts);
+  const isCityMap = isCityDistrictMap(config.electionConfig);
+  const capitalCity = isCityMap ? [] : getCapitalCity(config.districts);
   const candidateListData =
     pollsData?.candidateListData ?? state.candidateListData ?? [];
 
@@ -95,6 +97,7 @@ export function GameView({
     />
   ) : (
     <MobileMapView
+      isCityMap={isCityMap}
       districts={config.districts}
       capitalCity={capitalCity}
       candidateListData={candidateListData}

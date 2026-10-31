@@ -183,11 +183,13 @@
       "capitalTitle": "Budapest · {{count}} districts",
       "showCapital": "Budapest →",
       "showCountry": "← Country",
-      "leads": "{{party}} leads"
+      "leads": "{{party}} leads",
+      "cityTitle": "Budapest · {{count}} districts"
     },
     "sheet": {
       "label": "Constituency",
-      "currentLead": "Current standing"
+      "currentLead": "Current standing",
+      "cityLabel": "District"
     }
   },
   "badge": {
