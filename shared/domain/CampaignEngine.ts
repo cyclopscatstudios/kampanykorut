@@ -2,6 +2,8 @@ import { createLogger } from "../logger";
 import {
   AdvisorFeedback,
   CalculateResults,
+  CampaignEvent,
+  CampaignEventEffect,
   CampaignState,
   CandidateListData,
   ConditionalAnswer,
@@ -20,6 +22,7 @@ import {
   Strategy,
   StrategyReward,
 } from "../types";
+import { CampaignEventEngine } from "./CampaignEventEngine";
 import { getInactiveCandidateIds } from "./CampaignStateAccess";
 import type { EffectApplier } from "./EffectApplier";
 import { getParliamentaryConfig, isMayoralElection } from "./ElectionType";
@@ -32,6 +35,8 @@ import type { ResultModifier } from "./ResultModifier";
 const log = createLogger("CampaignEngine");
 
 export class CampaignEngine {
+  private readonly eventEngine: CampaignEventEngine;
+
   constructor(
     private readonly initialCandidateData: CandidateListData[],
     private readonly questions: RawQuestion[],
@@ -43,7 +48,9 @@ export class CampaignEngine {
     private mayoralResultCalculator: MayoralResultCalculator,
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
+    campaignEvents?: CampaignEvent[],
   ) {
+    this.eventEngine = new CampaignEventEngine(campaignEvents);
     log.debug("CampaignEngine initialized");
   }
 
@@ -185,7 +192,7 @@ export class CampaignEngine {
       getInactiveCandidateIds(state),
     );
 
-    const session = {
+    const answered = {
       ...state,
       turn: nextTurn,
       currentQuestion: this.questions[nextTurn],
@@ -205,6 +212,17 @@ export class CampaignEngine {
       ...calculated,
       isEnded: nextTurn >= this.questions.length,
     };
+
+    const session = this.eventEngine.run(
+      answered,
+      [
+        ...history,
+        { questionId: decision.questionId, answerId: decision.answerId },
+      ],
+      electionConfig,
+      (current, effects) =>
+        this.applyEventEffects(current, effects, electionConfig),
+    );
 
     const { polls, pollsterId } = this.getPollsForPollster(
       session,
@@ -417,6 +435,41 @@ export class CampaignEngine {
         hasMajority,
         majorityType,
       },
+    };
+  }
+
+  private applyEventEffects(
+    state: CampaignState,
+    effects: CampaignEventEffect[],
+    electionConfig: ElectionConfig,
+  ): CampaignState {
+    const appliedEffects = this.effectApplier.getAppliedEffects(
+      effects,
+      state.candidateListData ?? [],
+      state.turn,
+    );
+    const modified = this.resultModifier.apply(state, appliedEffects);
+    if (!modified) {
+      return state;
+    }
+    const candidateListData =
+      this.resultModifier.filterUnwantedValues(modified.candidateListData) ??
+      state.candidateListData;
+    const partyListData = modified.partyListData ?? state.partyListData;
+    const partyListVotes = modified.partyListVotes ?? state.partyListVotes;
+
+    return {
+      ...state,
+      candidateListData,
+      partyListData,
+      partyListVotes,
+      ...this.calculateResults(
+        candidateListData,
+        partyListData,
+        electionConfig,
+        partyListVotes,
+        getInactiveCandidateIds(state),
+      ),
     };
   }
 

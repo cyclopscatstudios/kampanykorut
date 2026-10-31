@@ -1,5 +1,6 @@
 import { AdvisorFeedback, AdvisorFeedbackAssets } from "../answer-feedback";
 import { CandidateListData, PartyListData } from "../campaign";
+import { CampaignEvent } from "../campaign-event";
 import { DistrictGroup } from "../district";
 import { RawAnsweEffectProps } from "../effects";
 import { EndResultProps } from "../end-result";
@@ -30,5 +31,6 @@ export interface CampaignConfig {
   districts: DistrictPoligon[];
   customGroups?: DistrictGroup[];
   customPollsters?: Pollster[];
+  campaignEvents?: CampaignEvent[];
   playableSides?: Record<string, PlayableSideConfig>;
 }

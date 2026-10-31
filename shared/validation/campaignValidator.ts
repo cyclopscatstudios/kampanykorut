@@ -1,4 +1,5 @@
 import { defaultGroups } from "../domain/DefaultGroups";
+import { validateCondition } from "./conditionValidator";
 
 export type Severity = "error" | "warning";
 
@@ -1269,6 +1270,236 @@ function checkCustomGroups(ctx: Context, file: string, data: unknown) {
   });
 }
 
+function checkPlayableSides(
+  ctx: Context,
+  playableSides: Json,
+  sides: ReturnType<typeof checkElectionConfig>,
+  electionConfigFile: string,
+  allQuestions: Map<string, Set<string>>,
+) {
+  for (const [partyId, candidates] of Object.entries(playableSides)) {
+    const sidePath = `/files/playableSides/${partyId}`;
+    const side = sides?.get(partyId);
+    if (sides && !side) {
+      report(
+        ctx,
+        "error",
+        "unknown-side",
+        "manifest.json",
+        sidePath,
+        `"${partyId}" is not a playable side in ${electionConfigFile}`,
+      );
+    }
+    if (!isObject(candidates)) {
+      continue;
+    }
+    for (const [candidateId, paths] of Object.entries(candidates)) {
+      const candidatePath = `${sidePath}/${candidateId}`;
+      if (side && !side.candidates.has(candidateId)) {
+        report(
+          ctx,
+          "error",
+          "unknown-candidate",
+          "manifest.json",
+          candidatePath,
+          `"${candidateId}" is not a main candidate of "${partyId}"`,
+        );
+      } else if (side?.playable && !side.playable.has(candidateId)) {
+        report(
+          ctx,
+          "warning",
+          "candidate-not-playable",
+          "manifest.json",
+          candidatePath,
+          `"${candidateId}" has content but is not listed in playableCandidates`,
+        );
+      }
+      if (!isObject(paths)) {
+        report(
+          ctx,
+          "error",
+          "manifest-invalid",
+          "manifest.json",
+          candidatePath,
+          "candidate entry must be an object",
+        );
+        continue;
+      }
+      const read = (key: string) =>
+        paths[key] === undefined
+          ? undefined
+          : readFile(
+              ctx,
+              paths[key],
+              "manifest.json",
+              `${candidatePath}/${key}`,
+            );
+
+      const questions = checkQuestions(
+        ctx,
+        String(paths.questions),
+        read("questions"),
+      );
+      questions.forEach(({ answers }, questionId) => {
+        const known = allQuestions.get(questionId) ?? new Set<string>();
+        answers.forEach((answerId) => known.add(answerId));
+        allQuestions.set(questionId, known);
+      });
+      const answerEffects = read("answerEffect");
+      if (answerEffects !== undefined) {
+        checkAnswerEffects(
+          ctx,
+          questions,
+          String(paths.answerEffect),
+          answerEffects,
+        );
+      }
+      const strategies = read("campaignStrategies");
+      if (strategies !== undefined) {
+        checkStrategies(
+          ctx,
+          questions,
+          String(paths.campaignStrategies),
+          strategies,
+        );
+      }
+      const feedback = read("advisorFeedback");
+      if (feedback !== undefined) {
+        checkAdvisorFeedback(
+          ctx,
+          questions,
+          String(paths.advisorFeedback),
+          feedback,
+        );
+      }
+      for (const key of ["advisorFeedbackAssets", "endResults"]) {
+        const data = read(key);
+        if (data !== undefined) {
+          checkImageFields(ctx, String(paths[key]), data);
+        }
+      }
+    }
+  }
+}
+
+function checkCampaignEvents(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  questions: Map<string, Set<string>>,
+) {
+  if (data === undefined) {
+    return;
+  }
+  if (!Array.isArray(data)) {
+    report(ctx, "error", "events-invalid", file, "", "events must be an array");
+    return;
+  }
+  const eventIds = new Set(
+    data
+      .filter(isObject)
+      .map((event) => event.id)
+      .filter((id): id is string => typeof id === "string"),
+  );
+  const seen = new Set<string>();
+  const refs = { questions, candidateIds: ctx.parties, eventIds };
+
+  data.forEach((event, index) => {
+    const path = `/${index}`;
+    if (!isObject(event) || typeof event.id !== "string") {
+      report(
+        ctx,
+        "error",
+        "event-invalid",
+        file,
+        path,
+        "event must be an object with a string id",
+      );
+      return;
+    }
+    if (seen.has(event.id)) {
+      report(
+        ctx,
+        "error",
+        "duplicate-id",
+        file,
+        `${path}/id`,
+        `duplicate event id "${event.id}"`,
+      );
+    }
+    seen.add(event.id);
+    if (event.once !== undefined && typeof event.once !== "boolean") {
+      report(
+        ctx,
+        "error",
+        "event-invalid",
+        file,
+        `${path}/once`,
+        "once must be a boolean",
+      );
+    }
+    if (event.priority !== undefined && !isFiniteNumber(event.priority)) {
+      report(
+        ctx,
+        "error",
+        "event-invalid",
+        file,
+        `${path}/priority`,
+        "priority must be a number",
+      );
+    }
+    if (!Array.isArray(event.conditions) || event.conditions.length === 0) {
+      report(
+        ctx,
+        "error",
+        "event-invalid",
+        file,
+        `${path}/conditions`,
+        "conditions must be a non-empty array of branches",
+      );
+    } else {
+      event.conditions.forEach((branch, i) => {
+        const branchPath = `${path}/conditions/${i}`;
+        if (!isObject(branch)) {
+          report(
+            ctx,
+            "error",
+            "event-invalid",
+            file,
+            branchPath,
+            "branch must be an object",
+          );
+          return;
+        }
+        validateCondition(branch.if, refs, `${branchPath}/if`).forEach(
+          (issue) =>
+            report(ctx, "error", issue.code, file, issue.path, issue.message),
+        );
+        checkEffects(ctx, file, `${branchPath}/effects`, branch.effects);
+      });
+    }
+    if (event.announcement !== undefined) {
+      const announcement = event.announcement;
+      if (
+        !isObject(announcement) ||
+        typeof announcement.title !== "string" ||
+        typeof announcement.body !== "string"
+      ) {
+        report(
+          ctx,
+          "error",
+          "event-invalid",
+          file,
+          `${path}/announcement`,
+          "announcement must have a string title and body",
+        );
+      } else {
+        checkImageFields(ctx, file, announcement, `${path}/announcement`);
+      }
+    }
+  });
+}
+
 export function validateCampaign(
   header: CampaignHeaderInput,
   source: CampaignSource,
@@ -1375,107 +1606,29 @@ export function validateCampaign(
     );
   }
 
-  if (!isObject(files.playableSides)) {
-    return ctx.diagnostics;
+  const allQuestions = new Map<string, Set<string>>();
+  if (isObject(files.playableSides)) {
+    checkPlayableSides(
+      ctx,
+      files.playableSides,
+      sides,
+      electionConfigFile,
+      allQuestions,
+    );
   }
 
-  for (const [partyId, candidates] of Object.entries(files.playableSides)) {
-    const sidePath = `/files/playableSides/${partyId}`;
-    const side = sides?.get(partyId);
-    if (sides && !side) {
-      report(
+  if (files.campaignEvents !== undefined) {
+    checkCampaignEvents(
+      ctx,
+      String(files.campaignEvents),
+      readFile(
         ctx,
-        "error",
-        "unknown-side",
+        files.campaignEvents,
         "manifest.json",
-        sidePath,
-        `"${partyId}" is not a playable side in ${electionConfigFile}`,
-      );
-    }
-    if (!isObject(candidates)) {
-      continue;
-    }
-    for (const [candidateId, paths] of Object.entries(candidates)) {
-      const candidatePath = `${sidePath}/${candidateId}`;
-      if (side && !side.candidates.has(candidateId)) {
-        report(
-          ctx,
-          "error",
-          "unknown-candidate",
-          "manifest.json",
-          candidatePath,
-          `"${candidateId}" is not a main candidate of "${partyId}"`,
-        );
-      } else if (side?.playable && !side.playable.has(candidateId)) {
-        report(
-          ctx,
-          "warning",
-          "candidate-not-playable",
-          "manifest.json",
-          candidatePath,
-          `"${candidateId}" has content but is not listed in playableCandidates`,
-        );
-      }
-      if (!isObject(paths)) {
-        report(
-          ctx,
-          "error",
-          "manifest-invalid",
-          "manifest.json",
-          candidatePath,
-          "candidate entry must be an object",
-        );
-        continue;
-      }
-      const read = (key: string) =>
-        paths[key] === undefined
-          ? undefined
-          : readFile(
-              ctx,
-              paths[key],
-              "manifest.json",
-              `${candidatePath}/${key}`,
-            );
-
-      const questions = checkQuestions(
-        ctx,
-        String(paths.questions),
-        read("questions"),
-      );
-      const answerEffects = read("answerEffect");
-      if (answerEffects !== undefined) {
-        checkAnswerEffects(
-          ctx,
-          questions,
-          String(paths.answerEffect),
-          answerEffects,
-        );
-      }
-      const strategies = read("campaignStrategies");
-      if (strategies !== undefined) {
-        checkStrategies(
-          ctx,
-          questions,
-          String(paths.campaignStrategies),
-          strategies,
-        );
-      }
-      const feedback = read("advisorFeedback");
-      if (feedback !== undefined) {
-        checkAdvisorFeedback(
-          ctx,
-          questions,
-          String(paths.advisorFeedback),
-          feedback,
-        );
-      }
-      for (const key of ["advisorFeedbackAssets", "endResults"]) {
-        const data = read(key);
-        if (data !== undefined) {
-          checkImageFields(ctx, String(paths[key]), data);
-        }
-      }
-    }
+        "/files/campaignEvents",
+      ),
+      allQuestions,
+    );
   }
 
   return ctx.diagnostics;

@@ -1,4 +1,5 @@
 export * from "./CampaignEngine";
+export * from "./CampaignEventEngine";
 export * from "./CampaignStateAccess";
 export * from "./ConditionContext";
 export * from "./ConditionEvaluator";

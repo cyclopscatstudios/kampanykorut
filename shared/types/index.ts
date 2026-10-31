@@ -2,6 +2,7 @@ export * from "./answer";
 export * from "./answer-feedback";
 export * from "./bug-report";
 export * from "./campaign";
+export * from "./campaign-event";
 export * from "./color";
 export * from "./condition";
 export * from "./configs";

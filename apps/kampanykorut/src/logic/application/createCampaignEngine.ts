@@ -84,6 +84,7 @@ export function createCampaignEngine(
     container.resolve(MayoralResultCalculator),
     config.partyListData,
     candidateConfig?.advisorFeedback,
+    config.campaignEvents,
   );
 
   return { campaignEngine, configEngine };
