@@ -1,12 +1,15 @@
 import { container } from "tsyringe";
 import {
+  CampaignEvent,
   CandidateListData,
+  Decision,
   District,
   EffectType,
   MayoralElectionConfig,
   RawQuestion,
 } from "../types";
 import { CampaignEngine } from "./CampaignEngine";
+import { CampaignEventEngine } from "./CampaignEventEngine";
 import { EffectApplier } from "./EffectApplier";
 import { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
@@ -79,6 +82,7 @@ function createEngine(data = districts) {
     container.resolve(MandateCalculator),
     container.resolve(PollsterEngine),
     container.resolve(MayoralResultCalculator),
+    container.resolve(CampaignEventEngine),
   );
 }
 
@@ -246,6 +250,7 @@ describe("CampaignEngine with a mayoral election", () => {
       container.resolve(MandateCalculator),
       container.resolve(PollsterEngine),
       container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
       mockPartyListData,
     );
 
@@ -253,5 +258,127 @@ describe("CampaignEngine with a mayoral election", () => {
 
     expect(state).not.toHaveProperty("mayoralResult");
     expect(state.results?.mandates.length).toBeGreaterThan(0);
+  });
+});
+
+describe("CampaignEngine campaign events", () => {
+  const rallyEvent = {
+    id: "vitezy_rally",
+    conditions: [
+      {
+        if: {
+          and: [
+            { type: "turn", min: 1, max: 1 },
+            { type: "answer-selected", questionId: "q1", answerId: "A" },
+          ],
+        },
+        effects: [
+          {
+            type: EffectType.DistrictVoteTransfer,
+            params: [
+              { megyekod: 1, oevk: 1, targetParty: "vitezy", amount: 3000 },
+            ],
+          },
+        ],
+      },
+    ],
+    announcement: { title: "Nagygyűlés", body: "Vitézy nagygyűlést tart." },
+  } as CampaignEvent;
+
+  const engineWithEvents = () =>
+    new CampaignEngine(
+      districts,
+      questions,
+      [],
+      container.resolve(ResultModifier),
+      container.resolve(EffectApplier),
+      container.resolve(MandateCalculator),
+      container.resolve(PollsterEngine),
+      container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
+      undefined,
+      undefined,
+      [rallyEvent],
+    );
+
+  const answer = (questionId: string): Decision => ({
+    questionId,
+    answerId: "A",
+    effects: [{ type: EffectType.UniformSwing, params: { vitezy: 0 } }],
+  });
+
+  it("runs an event triggered by the answer of the same turn and recalculates the result", () => {
+    const engine = engineWithEvents();
+    const initial = engine.createInitialState("budapest", null, mayoralConfig);
+
+    const next = engine.processTurn(
+      initial,
+      answer("q1"),
+      [],
+      settings,
+      mayoralConfig,
+    );
+
+    expect(next.campaignEvents).toEqual({
+      triggeredEventIds: ["vitezy_rally"],
+      pendingAnnouncementIds: ["vitezy_rally"],
+    });
+    expect(next.mayoralResult!.districts[0].votes.vitezy).toBe(
+      initial.mayoralResult!.districts[0].votes.vitezy + 3000,
+    );
+    expect(next.mayoralResult!.votes.vitezy).toBe(
+      initial.mayoralResult!.votes.vitezy + 3000,
+    );
+  });
+
+  it("does not run the event again after the game is saved and resumed", () => {
+    const engine = engineWithEvents();
+    const initial = engine.createInitialState("budapest", null, mayoralConfig);
+    const afterEvent = engine.processTurn(
+      initial,
+      answer("q1"),
+      [],
+      settings,
+      mayoralConfig,
+    );
+
+    const reloaded = engineWithEvents().createInitialState(
+      "budapest",
+      JSON.parse(JSON.stringify(afterEvent)),
+      mayoralConfig,
+    );
+    const next = engineWithEvents().processTurn(
+      { ...reloaded, turn: 0 },
+      answer("q1"),
+      [],
+      settings,
+      mayoralConfig,
+    );
+
+    expect(next.campaignEvents?.triggeredEventIds).toEqual(["vitezy_rally"]);
+    expect(next.mayoralResult!.votes.vitezy).toBe(
+      afterEvent.mayoralResult!.votes.vitezy,
+    );
+  });
+
+  it("gives the same result for the same answers", () => {
+    const play = () => {
+      const engine = engineWithEvents();
+      const initial = engine.createInitialState(
+        "budapest",
+        null,
+        mayoralConfig,
+      );
+      const next = engine.processTurn(
+        initial,
+        answer("q1"),
+        [],
+        settings,
+        mayoralConfig,
+      );
+      return { ...next, pollingOpnions: undefined };
+    };
+
+    expect(play()).toEqual(play());
   });
 });

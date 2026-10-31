@@ -5,6 +5,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
   "campaignEngine": CampaignEngine {
     "advisorFeedback": undefined,
     "answers": [],
+    "campaignEvents": undefined,
     "effectApplier": EffectApplier {
       "DEFAULT_MOTIVATION_DELTA": 99,
       "districtGroupEngine": DistrictGroupEngine {
@@ -603,6 +604,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       },
       "mandateCalculator": MandateCalculator {},
     },
+    "eventEngine": CampaignEventEngine {},
     "initialCandidateData": [
       {
         "jeloltek": {

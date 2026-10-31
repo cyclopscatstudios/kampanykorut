@@ -517,4 +517,109 @@ describe("validateCampaign", () => {
       expect(codes(result)).toEqual(["warning:result-rule-ignored"]);
     });
   });
+
+  describe("campaign events", () => {
+    const withdrawal = () => ({
+      id: "withdrawal",
+      label: "Withdrawal",
+      once: true,
+      priority: 100,
+      conditions: [
+        {
+          if: {
+            and: [
+              { type: "turn", min: 1, max: 2 },
+              {
+                type: "candidate-support",
+                candidateId: "party_b",
+                operator: "<",
+                value: 0.3,
+              },
+              { type: "answer-selected", questionId: "q1", answerId: "A" },
+            ],
+          },
+          effects: [{ type: "uniform-swing", params: { party_a: 1 } }],
+        },
+      ],
+      announcement: { title: "Visszalép", body: "A mezőny megváltozott." },
+    });
+
+    const withEvents = (events: unknown) => (f: Files) => {
+      file(f, "manifest.json").files.campaignEvents = "events.json";
+      f["events.json"] = events;
+    };
+
+    it("accepts a valid events file", () => {
+      expect(validate(withEvents([withdrawal()]))).toEqual([]);
+    });
+
+    it("reports a missing events file", () => {
+      const result = validate((f) => {
+        file(f, "manifest.json").files.campaignEvents = "events.json";
+      });
+      expect(codes(result)).toEqual(["error:file-missing"]);
+    });
+
+    it("reports invalid references inside event conditions", () => {
+      const event = withdrawal();
+      event.conditions[0].if = {
+        and: [
+          { type: "answer-selected", questionId: "q9", answerId: "A" },
+          {
+            type: "candidate-support",
+            candidateId: "party_x",
+            operator: "<",
+            value: 0.3,
+          },
+          { not: { type: "event-triggered", eventId: "nope" } },
+        ],
+      } as never;
+
+      const result = validate(withEvents([event]));
+
+      expect(result.map((d) => `${d.code}@${d.path}`)).toEqual([
+        "unknown-question@/0/conditions/0/if/and/0/questionId",
+        "unknown-candidate@/0/conditions/0/if/and/1/candidateId",
+        "unknown-event@/0/conditions/0/if/and/2/not/eventId",
+      ]);
+      expect(result.every((d) => d.file === "events.json")).toBe(true);
+    });
+
+    it("reports structural event errors", () => {
+      const duplicate = withdrawal();
+      const badOnce = { ...withdrawal(), id: "bad_once", once: "yes" };
+      const noBranches = { ...withdrawal(), id: "empty", conditions: [] };
+      const badAnnouncement = {
+        ...withdrawal(),
+        id: "announce",
+        announcement: { title: "Only title" },
+      };
+      const badEffect = withdrawal();
+      badEffect.id = "bad_effect";
+      badEffect.conditions[0].effects = [{ type: "teleport" }] as never;
+
+      const result = validate(
+        withEvents([
+          withdrawal(),
+          duplicate,
+          badOnce,
+          noBranches,
+          badAnnouncement,
+          badEffect,
+        ]),
+      );
+
+      expect(result.map((d) => `${d.code}@${d.path}`)).toEqual([
+        "duplicate-id@/1/id",
+        "event-invalid@/2/once",
+        "event-invalid@/3/conditions",
+        "event-invalid@/4/announcement",
+        "effect-type-unknown@/5/conditions/0/effects/0",
+      ]);
+    });
+
+    it("rejects a file that is not an array", () => {
+      expect(codes(validate(withEvents({})))).toEqual(["error:events-invalid"]);
+    });
+  });
 });

@@ -1,5 +1,6 @@
 import { container } from "tsyringe";
 import {
+  CampaignEventEngine,
   DistrictGroupEngine,
   DistrictVoteTransformer,
   EffectApplier,
@@ -83,3 +84,6 @@ container.registerInstance(EffectApplier, effectApplier);
 
 const pollsterEngine = new PollsterEngine(mandateCalculator);
 container.registerInstance(PollsterEngine, pollsterEngine);
+
+const campaignEventEngine = new CampaignEventEngine();
+container.registerInstance(CampaignEventEngine, campaignEventEngine);

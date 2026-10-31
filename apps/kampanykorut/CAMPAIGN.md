@@ -258,3 +258,73 @@ Describes the election itself: seat math, the real-world party list, and which p
 | `electionAssets[].candidateAssets`   | yes           | `{ id: string, portrait: string, slogan: string }[]`               | Portrait and campaign-slogan image paths per candidate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 > **Known inconsistency (TODO):** `playableSides[].playableCandidates` is declared on the type and present in shipped campaign data (e.g. `["marki_zay_peter"]`), but no runtime code reads it — `useSideSelectorMenu` populates the candidate picker straight from `mainCandidates`, ignoring this field entirely.
+
+#### Campaign events
+
+`campaign_events.json` (manifest key `files.campaignEvents`)
+
+Optional, campaign-wide (shared by every playable side). Events are evaluated at the end of every answered turn, after the answer's effects (and, on the last turn, the campaign strategies) have been applied and the results recalculated. Corresponds to the `CampaignEvent` type ([shared/types/campaign-event.ts](shared/types/campaign-event.ts)); evaluated by `CampaignEventEngine` ([shared/domain/CampaignEventEngine.ts](shared/domain/CampaignEventEngine.ts)).
+
+```json
+[
+  {
+    "id": "szentkiralyi_alexandra_withdrawal",
+    "label": "Szentkirályi Alexandra Withdrawal",
+    "once": true,
+    "priority": 100,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            { "type": "turn", "min": 18, "max": 32 },
+            {
+              "type": "candidate-support",
+              "candidateId": "szentkiralyi_alexandra",
+              "operator": "<",
+              "value": 0.3
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "question_12",
+              "answerId": "answer_3"
+            }
+          ]
+        },
+        "effects": [
+          { "type": "uniform-swing", "params": { "vitezy_david": 2 } }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Szentkirályi Alexandra visszalép",
+      "body": "A főpolgármester-választási mezőny megváltozott."
+    }
+  }
+]
+```
+
+| Field          | Required | Type                                                 | Description                                                                                                                                                                          |
+| -------------- | -------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`           | yes      | `string`                                             | Unique, stable event id. It is stored in saved games, so **never rename an id once the campaign is published** — a renamed event would run again in games that already triggered it. |
+| `label`        | no       | `string`                                             | Name for authors and logs.                                                                                                                                                           |
+| `once`         | no       | `boolean`                                            | Defaults to `true`: the event runs at most once per game. `false` re-evaluates it every turn.                                                                                        |
+| `priority`     | no       | `number`                                             | Defaults to `0`. Higher runs first; ties keep their order in the file.                                                                                                               |
+| `conditions`   | yes      | `{ if: Condition, effects: RawEffect[] }[]`          | Alternative branches in order. The effects of the **first** branch whose `if` is met are applied, then the event counts as triggered. `effects` use the answer effect types above.   |
+| `announcement` | no       | `{ title: string, body: string, imageUri?: string }` | Queued for the player when the event runs. ⚠️ Not shown in the UI yet.                                                                                                               |
+
+Every event is evaluated once per turn, in priority order, against the state left by the events before it — so a later event can react to an earlier one in the same turn, but the list is never re-run within a turn. Evaluation is deterministic: the same campaign data and the same answers always trigger the same events.
+
+##### Conditions
+
+A `Condition` ([shared/types/condition.ts](shared/types/condition.ts)) is either a logical combination or a single check; combinations can be nested freely.
+
+| Shape                                                                             | Met when                                                                                                                                                                                                                                                 |
+| --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `{ "and": Condition[] }` / `{ "or": Condition[] }` / `{ "not": Condition }`       | every child / at least one child / the child is not met. `and` and `or` must not be empty.                                                                                                                                                               |
+| `{ "type": "turn", "min"?: number, "max"?: number }`                              | the number of answered decisions is within `min`–`max`, both ends included. At least one bound is required.                                                                                                                                              |
+| `{ "type": "candidate-support", "candidateId", "operator", "value" }`             | the candidate's current city-wide (mayoral) or candidate-list (parliamentary) share compares to `value` (a share between 0 and 1) with `<`, `<=`, `>`, `>=`. A candidate without valid votes has 0; an id that is not in `parties` is an error, never 0. |
+| `{ "type": "answer-selected", "questionId", "answerId" }`                         | that answer was given to that question, including on the current turn.                                                                                                                                                                                   |
+| `{ "type": "candidate-status", "candidateId", "status": "active" \| "inactive" }` | the candidate currently has that status.                                                                                                                                                                                                                 |
+| `{ "type": "event-triggered", "eventId" }`                                        | that event has already run.                                                                                                                                                                                                                              |
+
+The campaign validator reports unknown questions, answers, candidates and events inside conditions, as well as malformed conditions.
