@@ -149,6 +149,6 @@ function PanelTab({
           aria-label={t("estimatePanel.newData")}
         />
       )}
-    </button>             
+    </button>
   );
 }
