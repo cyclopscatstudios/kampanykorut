@@ -193,6 +193,33 @@
     "medium": "Medium",
     "low": "Low"
   },
+  "estimatePanel": {
+    "tabs": {
+      "capital": "Budapest",
+      "estimate": "District estimate"
+    },
+    "scope": {
+      "district": "District",
+      "national": "National",
+      "city": "Citywide"
+    },
+    "status": {
+      "safe": "Safe",
+      "likely": "Likely",
+      "tossup": "Toss-up"
+    },
+    "leads": "Leads",
+    "advantage": "{{party}} ahead",
+    "districtSubtitle": "estimated standing",
+    "nationalTitle": "National estimate",
+    "nationalSubtitle": "party list, estimated",
+    "cityTitle": "Citywide estimate",
+    "citySubtitle": "candidates, estimated",
+    "margin": "Margin of error",
+    "selectDistrict": "Select a district on the map to see its estimate.",
+    "noData": "No estimate available yet.",
+    "newData": "New estimate available"
+  },
   "districtList": {
     "view": {
       "list": "List",

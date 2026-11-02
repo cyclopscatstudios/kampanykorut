@@ -1,3 +1,4 @@
+import { isCityDistrictMap } from "@/shared/domain";
 import {
   CandidateListData,
   CurrentView,
@@ -6,8 +7,13 @@ import {
   ElectionConfig,
 } from "@/shared/types";
 import { BottomBar } from "./BottomBar";
+import { MapSidePanel } from "./MapSidePanel";
 import { MapWrapper } from "./MapWrapper";
 import { getSwingFactorByDistrict } from "./swingFactor.utils";
+
+const MAP_HEIGHT = 450;
+const MAIN_MAP_WIDTH = 700;
+const SIDE_PANEL_WIDTH = 402;
 
 interface MapCreatorProps {
   districts: DistrictPoligon[];
@@ -16,7 +22,8 @@ interface MapCreatorProps {
   setCurrentView: (currentView: CurrentView) => void;
   selectedDistrict?: District | null;
   setSelectedDistrict: (district: District | null) => void;
-  electionConfig?: ElectionConfig;
+  nationalPercentages?: Record<string, number>;
+  electionConfig: ElectionConfig;
 }
 
 export function MapCreator({
@@ -26,6 +33,7 @@ export function MapCreator({
   setCurrentView,
   selectedDistrict,
   setSelectedDistrict,
+  nationalPercentages,
   electionConfig,
 }: MapCreatorProps) {
   const swingFactor = getSwingFactorByDistrict(selectedDistrict);
@@ -33,8 +41,8 @@ export function MapCreator({
     <div className="flex flex-col h-full justify-center items-center">
       <div className="flex gap-4 mb-4">
         <MapWrapper
-          width={capitalCity.length ? 700 : 1118}
-          height={450}
+          width={MAIN_MAP_WIDTH}
+          height={MAP_HEIGHT}
           districts={districts}
           results={candidateListData}
           handleDistrict={setSelectedDistrict}
@@ -42,17 +50,18 @@ export function MapCreator({
           electionConfig={electionConfig}
           className="w-full"
         />
-        {capitalCity.length > 0 && (
-          <MapWrapper
-            width={400}
-            height={450}
-            districts={capitalCity}
-            results={candidateListData}
-            handleDistrict={setSelectedDistrict}
-            selectedDistrict={selectedDistrict}
-            electionConfig={electionConfig}
-          />
-        )}
+        <MapSidePanel
+          width={SIDE_PANEL_WIDTH}
+          height={MAP_HEIGHT}
+          capitalCity={capitalCity}
+          candidateListData={candidateListData}
+          selectedDistrict={selectedDistrict}
+          setSelectedDistrict={setSelectedDistrict}
+          swingFactor={swingFactor}
+          nationalPercentages={nationalPercentages}
+          electionConfig={electionConfig}
+          isCityMap={isCityDistrictMap(electionConfig)}
+        />
       </div>
       <div className="w-[1118px]">
         <BottomBar

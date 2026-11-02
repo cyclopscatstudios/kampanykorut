@@ -193,6 +193,33 @@
     "medium": "Közepes",
     "low": "Alacsony"
   },
+  "estimatePanel": {
+    "tabs": {
+      "capital": "Budapest",
+      "estimate": "Körzet becslés"
+    },
+    "scope": {
+      "district": "Körzet",
+      "national": "Országos",
+      "city": "Fővárosi"
+    },
+    "status": {
+      "safe": "Biztos",
+      "likely": "Esélyes",
+      "tossup": "Billegő"
+    },
+    "leads": "Vezet",
+    "advantage": "{{party}} előny",
+    "districtSubtitle": "becsült állás",
+    "nationalTitle": "Országos becslés",
+    "nationalSubtitle": "pártlista, becsült",
+    "cityTitle": "Fővárosi becslés",
+    "citySubtitle": "jelöltek, becsült",
+    "margin": "Hibahatár",
+    "selectDistrict": "Válassz egy körzetet a térképen a becsléshez.",
+    "noData": "Még nincs becsülhető adat.",
+    "newData": "Új becslés érhető el"
+  },
   "districtList": {
     "view": {
       "list": "Lista",
