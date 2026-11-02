@@ -68,7 +68,10 @@
           }
         ]
       }
-    ]
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-budapest-mukodjon.svg"
+    }
   },
   {
     "id": "ellenzekvaltas",
@@ -140,7 +143,10 @@
           }
         ]
       }
-    ]
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-ellenzekvaltas.svg"
+    }
   },
   {
     "id": "karacsony_valtas",
@@ -212,7 +218,10 @@
           }
         ]
       }
-    ]
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-karacsony-valtas.svg"
+    }
   },
   {
     "id": "zold_orokseg",
@@ -284,6 +293,9 @@
           }
         ]
       }
-    ]
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-megepitem.svg"
+    }
   }
 ]

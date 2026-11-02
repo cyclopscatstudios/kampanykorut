@@ -4,6 +4,9 @@ import {
   getMayoralDistrictRows,
   getMayoralHeadline,
   getWithdrawnCandidates,
+  MayoralDistrictRow,
+  MayoralDistrictSortKey,
+  sortMayoralDistrictRows,
 } from "./mayoralResult.utils";
 
 const parties = [
@@ -86,6 +89,46 @@ describe("getMayoralDistrictRows", () => {
       marginPoints: 20,
       validVotes: 1000,
     });
+  });
+});
+
+describe("sortMayoralDistrictRows", () => {
+  const row = (
+    oevk: number,
+    leaderId: string | undefined,
+    leaderShare: number | undefined,
+    validVotes: number,
+  ): MayoralDistrictRow => ({
+    megyekod: 1,
+    oevk,
+    label: `${oevk}. kerület`,
+    leaderId,
+    leaderShare,
+    marginPoints: leaderShare === undefined ? undefined : leaderShare * 10,
+    validVotes,
+  });
+  const rows = [
+    row(2, "vitezy", 0.4, 300),
+    row(3, undefined, undefined, 100),
+    row(1, "grundtner", 0.6, 200),
+  ];
+  const order = (key: MayoralDistrictSortKey, direction: "asc" | "desc") =>
+    sortMayoralDistrictRows(rows, key, direction, parties).map((r) => r.oevk);
+
+  it("sorts by district in both directions", () => {
+    expect(order("district", "asc")).toEqual([1, 2, 3]);
+    expect(order("district", "desc")).toEqual([3, 2, 1]);
+  });
+
+  it("sorts by winner name and keeps undecided districts last", () => {
+    expect(order("winner", "asc")).toEqual([1, 2, 3]);
+    expect(order("winner", "desc")).toEqual([2, 1, 3]);
+  });
+
+  it("sorts numeric columns and keeps missing values last", () => {
+    expect(order("share", "desc")).toEqual([1, 2, 3]);
+    expect(order("margin", "asc")).toEqual([2, 1, 3]);
+    expect(order("validVotes", "desc")).toEqual([2, 1, 3]);
   });
 });
 

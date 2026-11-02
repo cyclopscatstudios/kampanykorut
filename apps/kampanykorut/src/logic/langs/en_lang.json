@@ -133,7 +133,7 @@
       "selectDistrict": "Select a district on the map",
       "table": {
         "district": "District",
-        "leader": "Leading candidate",
+        "winner": "Winning candidate",
         "share": "Share",
         "margin": "Margin",
         "validVotes": "Valid votes",

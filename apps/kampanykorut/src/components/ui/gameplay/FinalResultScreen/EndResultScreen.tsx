@@ -17,6 +17,7 @@ import {
 import { ElectionMap } from "./ElectionMap";
 import { MayoralDistrictTable } from "./MayoralDistricts";
 import { MayoralSummaryPage } from "./MayoralSummaryPage";
+import { Achievements } from "./Statistics/Achievements";
 import { Statistics } from "./Statistics/Statistics";
 import { SummaryPage } from "./SummaryPage";
 import { TurnHistory } from "./TurnHistory";
@@ -49,6 +50,11 @@ const mayoralScreens = [
     id: "districts",
     label: "endResult.menuBar.districts",
     icon: "list-ol",
+  },
+  {
+    id: "achievements",
+    label: "endResult.menuBar.achivements",
+    icon: "award-fill",
   },
   screens[3],
 ] as const;
@@ -143,6 +149,9 @@ export function FinalResultScreen() {
                 config={config}
               />
             )}
+            {activeScreen === "achievements" && (
+              <Achievements state={state} config={config} />
+            )}
             {activeScreen === "summaryPage" && summary}
             {activeScreen === "electionMap" && (
               <ElectionMap config={config} mayoralResult={mayoralResult} />
@@ -157,7 +166,12 @@ export function FinalResultScreen() {
             )}
           </div>
           {!isDesktop && (
-            <nav className="grid grid-cols-4 shrink-0 gap-1 border-t border-slate-700 pt-2 pb-[env(safe-area-inset-bottom)]">
+            <nav
+              style={{
+                gridTemplateColumns: `repeat(${visibleScreens.length}, minmax(0, 1fr))`,
+              }}
+              className="grid shrink-0 gap-1 border-t border-slate-700 pt-2 pb-[env(safe-area-inset-bottom)]"
+            >
               {visibleScreens.map((screen) => (
                 <button
                   key={screen.id}

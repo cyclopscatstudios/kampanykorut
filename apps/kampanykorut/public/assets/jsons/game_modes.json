@@ -30,7 +30,7 @@
     "tags": ["historical"],
     "campaignBanner": "default-banner.png",
     "thinCampaignBanner": "default-banner-thin.png",
-    "isPublished": false
+    "isPublished": true
   },
   {
     "id": "0001_test_campaign",

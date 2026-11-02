@@ -133,7 +133,7 @@
       "selectDistrict": "Válassz egy kerületet a térképen",
       "table": {
         "district": "Kerület",
-        "leader": "Vezető jelölt",
+        "winner": "Győztes jelölt",
         "share": "Arány",
         "margin": "Különbség",
         "validVotes": "Érvényes szavazat",

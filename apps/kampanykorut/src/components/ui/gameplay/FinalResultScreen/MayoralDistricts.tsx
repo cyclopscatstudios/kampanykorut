@@ -1,17 +1,48 @@
+import classNames from "classnames";
 import { t } from "i18next";
+import { useState } from "react";
 import {
   CampaignConfig,
   District,
   MayoralDistrictResult,
   MayoralResult,
 } from "@/shared/types";
+import { Icon } from "../../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../../shared/ui/Text";
 import { CommonWrapper } from "../../CommonWrapper";
 import {
   formatShare,
   formatVotes,
   getMayoralDistrictRows,
+  MayoralDistrictSortKey,
+  SortDirection,
+  sortMayoralDistrictRows,
 } from "./mayoralResult.utils";
+
+interface SortState {
+  key: MayoralDistrictSortKey;
+  direction: SortDirection;
+}
+
+const columns: {
+  key: MayoralDistrictSortKey;
+  label: string;
+  numeric: boolean;
+}[] = [
+  {
+    key: "district",
+    label: "endResult.mayoral.table.district",
+    numeric: false,
+  },
+  { key: "winner", label: "endResult.mayoral.table.winner", numeric: false },
+  { key: "share", label: "endResult.mayoral.table.share", numeric: true },
+  { key: "margin", label: "endResult.mayoral.table.margin", numeric: true },
+  {
+    key: "validVotes",
+    label: "endResult.mayoral.table.validVotes",
+    numeric: true,
+  },
+];
 
 export function MayoralDistrictTable({
   mayoralResult,
@@ -21,7 +52,23 @@ export function MayoralDistrictTable({
   config: CampaignConfig;
 }) {
   const parties = config.electionConfig.parties;
-  const rows = getMayoralDistrictRows(mayoralResult.districts);
+  const [sort, setSort] = useState<SortState>({
+    key: "district",
+    direction: "asc",
+  });
+  const rows = sortMayoralDistrictRows(
+    getMayoralDistrictRows(mayoralResult.districts),
+    sort.key,
+    sort.direction,
+    parties,
+  );
+
+  const toggleSort = (key: MayoralDistrictSortKey, numeric: boolean) =>
+    setSort((current) =>
+      current.key === key
+        ? { key, direction: current.direction === "asc" ? "desc" : "asc" }
+        : { key, direction: numeric ? "desc" : "asc" },
+    );
 
   return (
     <div
@@ -31,19 +78,51 @@ export function MayoralDistrictTable({
       <table className="w-full text-left text-xs md:text-sm text-slate-200">
         <thead className="sticky top-0 bg-[#0f172a] text-[10px] md:text-xs uppercase text-slate-400">
           <tr>
-            <th className="py-2 pr-2">
-              {t("endResult.mayoral.table.district")}
-            </th>
-            <th className="py-2 pr-2">{t("endResult.mayoral.table.leader")}</th>
-            <th className="py-2 pr-2 text-right">
-              {t("endResult.mayoral.table.share")}
-            </th>
-            <th className="py-2 pr-2 text-right">
-              {t("endResult.mayoral.table.margin")}
-            </th>
-            <th className="py-2 text-right">
-              {t("endResult.mayoral.table.validVotes")}
-            </th>
+            {columns.map((column, index) => {
+              const isActive = sort.key === column.key;
+              return (
+                <th
+                  key={column.key}
+                  aria-sort={
+                    isActive
+                      ? sort.direction === "asc"
+                        ? "ascending"
+                        : "descending"
+                      : undefined
+                  }
+                  className={classNames("py-2", {
+                    "pr-2": index < columns.length - 1,
+                    "text-right": column.numeric,
+                  })}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleSort(column.key, column.numeric)}
+                    className={classNames(
+                      "inline-flex items-center gap-1 uppercase cursor-pointer hover:text-slate-200",
+                      {
+                        "flex-row-reverse": column.numeric,
+                        "text-slate-200": isActive,
+                      },
+                    )}
+                  >
+                    {t(column.label)}
+                    <Icon
+                      name={
+                        isActive
+                          ? sort.direction === "asc"
+                            ? "caret-up-fill"
+                            : "caret-down-fill"
+                          : "chevron-expand"
+                      }
+                      size="xs"
+                      color="currentColor"
+                      className={classNames({ "opacity-40": !isActive })}
+                    />
+                  </button>
+                </th>
+              );
+            })}
           </tr>
         </thead>
         <tbody>
