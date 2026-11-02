@@ -4,19 +4,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.28,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": 0.1,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.12
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": 0.22,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -25,19 +61,54 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.1,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.36,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "szentkiralyi_alexandra": 0.12
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": 0.22,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -46,19 +117,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.29
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "szentkiralyi_alexandra": -0.18,
+              "karacsony_gergely": 0.29
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.02,
+              "karacsony_gergely": 0.1
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.29,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -67,19 +174,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.245,
+              "karacsony_gergely": 0.22,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": -0.3,
+              "szentkiralyi_alexandra": 0.255,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       }
     ]
   },
@@ -88,19 +231,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.245,
+              "karacsony_gergely": 0.1,
+              "szentkiralyi_alexandra": 0.12
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": -0.38,
+              "karacsony_gergely": 0.43
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "karacsony_gergely": -0.15,
+              "szentkiralyi_alexandra": 0.29
+            }
+          }
+        ]
       }
     ]
   },
@@ -109,19 +288,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.22,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "szentkiralyi_alexandra": -0.18,
+              "karacsony_gergely": 0.29
+            }
+          }
+        ]
       }
     ]
   },
@@ -130,19 +345,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.1,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "szentkiralyi_alexandra": -0.08,
+              "karacsony_gergely": 0.29
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.22,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -151,19 +402,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": -0.28,
+              "karacsony_gergely": 0.29
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.12
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "szentkiralyi_alexandra": 0.02,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -172,19 +459,69 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.325
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "szentkiralyi_alexandra": 0.02,
+              "karacsony_gergely": 0.29
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.22,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "megyekod": 1,
+                "oevk": 10,
+                "targetParty": "vitezy_david",
+                "amount": 2500,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -193,19 +530,68 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 400,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -214,19 +600,56 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": -0.18,
+              "karacsony_gergely": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "szentkiralyi_alexandra": 0.02,
+              "grundtner_andras": -0.1,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       }
     ]
   },
@@ -235,19 +658,54 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "szentkiralyi_alexandra": -0.08,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       }
     ]
   },
@@ -256,19 +714,92 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "szentkiralyi_alexandra": 0.02,
+              "karacsony_gergely": 0.29
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_04",
+                "answerId": "A"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.2
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_04",
+                "answerId": "A"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": 0.035
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": -0.1,
+              "karacsony_gergely": 0.22,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -277,19 +808,110 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.22,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 600,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              },
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 300,
+                "from": {
+                  "type": "party",
+                  "party": "szentkiralyi_alexandra"
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "belvaros",
+                "targetParty": "vitezy_david",
+                "amount": 700,
+                "from": {
+                  "type": "party",
+                  "party": "karacsony_gergely"
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "atmeneti",
+                "targetParty": "vitezy_david",
+                "amount": 600,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              },
+              {
+                "groupId": "atmeneti",
+                "targetParty": "vitezy_david",
+                "amount": 200,
+                "from": {
+                  "type": "party",
+                  "party": "karacsony_gergely"
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.245,
+              "karacsony_gergely": 0.1,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -298,19 +920,71 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": -0.18,
+              "grundtner_andras": -0.2,
+              "karacsony_gergely": 0.29
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "grundtner_andras": -0.1,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 400,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.36,
+              "grundtner_andras": -0.1,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -319,19 +993,53 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "szentkiralyi_alexandra": 0.02,
+              "karacsony_gergely": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "szentkiralyi_alexandra": 0.325,
+              "karacsony_gergely": 0.05
+            }
+          }
+        ]
       }
     ]
   },
@@ -340,19 +1048,73 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "szentkiralyi_alexandra": 0.29
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_14",
+                "answerId": "D"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": 0.105
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -361,15 +1123,61 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_14",
+                "answerId": "D"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": 0.105
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -378,19 +1186,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "szentkiralyi_alexandra": -0.08,
+              "karacsony_gergely": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.29
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.255
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -399,19 +1243,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "szentkiralyi_alexandra": -0.08,
+              "karacsony_gergely": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "szentkiralyi_alexandra": -0.38,
+              "karacsony_gergely": 0.36
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -420,19 +1300,54 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.35,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.36
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.43,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "szentkiralyi_alexandra": -0.08,
+              "karacsony_gergely": 0.36
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.22,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -441,19 +1356,54 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "szentkiralyi_alexandra": -0.38,
+              "karacsony_gergely": 0.5
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.29,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -462,19 +1412,69 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": -0.1,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.29,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 300,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "szentkiralyi_alexandra": -0.18,
+              "grundtner_andras": -0.1,
+              "karacsony_gergely": 0.43
+            }
+          }
+        ]
       }
     ]
   },
@@ -483,19 +1483,94 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.245,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": -0.08
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_21",
+                "answerId": "A"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": 0.14,
+                  "karacsony_gergely": -0.2
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.29,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_10",
+                "answerId": "A"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": 0.105
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.28,
+              "karacsony_gergely": -0.15,
+              "szentkiralyi_alexandra": 0.36
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -504,19 +1579,54 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": 0.29,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -525,19 +1635,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "szentkiralyi_alexandra": -0.08,
+              "karacsony_gergely": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.245,
+              "szentkiralyi_alexandra": -0.58,
+              "karacsony_gergely": 0.5
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.36
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.36,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -546,19 +1692,138 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 700,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              },
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 300,
+                "from": {
+                  "type": "party",
+                  "party": "szentkiralyi_alexandra"
+                }
+              }
+            ]
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_04",
+                "answerId": "C"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.3
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "belvaros",
+                "targetParty": "vitezy_david",
+                "amount": 400,
+                "from": {
+                  "type": "party",
+                  "party": "karacsony_gergely"
+                }
+              },
+              {
+                "groupId": "belvaros",
+                "targetParty": "vitezy_david",
+                "amount": 300,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.28,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": -0.1,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "atmeneti",
+                "targetParty": "vitezy_david",
+                "amount": 600,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              },
+              {
+                "groupId": "atmeneti",
+                "targetParty": "vitezy_david",
+                "amount": 300,
+                "from": {
+                  "type": "party",
+                  "party": "karacsony_gergely"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -567,19 +1832,149 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": 0.29,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_25",
+                "answerId": "C"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -1.0
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.42,
+              "karacsony_gergely": 0.71,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_25",
+                "answerId": "C"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -1.0
+                }
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_25",
+                "answerId": "C"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.8
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": -2.0,
+              "karacsony_gergely": -0.15,
+              "grundtner_andras": 0.3,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_25",
+                "answerId": "C"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": 0.105
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_25",
+                "answerId": "C"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -1.0
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -588,19 +1983,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": -0.28,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.28,
+              "szentkiralyi_alexandra": -0.78,
+              "karacsony_gergely": 0.5
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "szentkiralyi_alexandra": 0.325,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "szentkiralyi_alexandra": -0.08,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       }
     ]
   },
@@ -609,19 +2040,201 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_08",
+                "answerId": "A"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.2,
+                  "karacsony_gergely": 0.14
+                }
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_18",
+                "answerId": "A"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.2,
+                  "karacsony_gergely": 0.14
+                }
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_25",
+                "answerId": "B"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.2,
+                  "karacsony_gergely": 0.14
+                }
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_27_v",
+                "answerId": "B"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.2,
+                  "karacsony_gergely": 0.14
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.36,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": -0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.5,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_08",
+                "answerId": "A"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.2,
+                  "karacsony_gergely": 0.14
+                }
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_18",
+                "answerId": "A"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.2,
+                  "karacsony_gergely": 0.14
+                }
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_25",
+                "answerId": "B"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.2,
+                  "karacsony_gergely": 0.14
+                }
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_27_v",
+                "answerId": "B"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.2,
+                  "karacsony_gergely": 0.14
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -630,19 +2243,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "szentkiralyi_alexandra": -0.38,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.14,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "szentkiralyi_alexandra": -0.18,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -651,19 +2300,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.42,
+              "karacsony_gergely": 0.43,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.245,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.35,
+              "karacsony_gergely": 0.57,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -672,19 +2357,69 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.28,
+              "szentkiralyi_alexandra": -0.68,
+              "karacsony_gergely": 0.43
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 500,
+                "from": {
+                  "type": "party",
+                  "party": "szentkiralyi_alexandra"
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": -0.2,
+              "karacsony_gergely": 0.36,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -693,19 +2428,68 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.1,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "karacsony_gergely": 0.36,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 300,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -714,19 +2498,68 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.315,
+              "szentkiralyi_alexandra": 0.255,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.1,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "szentkiralyi_alexandra": -0.18,
+              "karacsony_gergely": 0.36
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.035,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 300,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -735,19 +2568,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.245,
+              "karacsony_gergely": 0.57,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": -0.05,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   },
@@ -756,19 +2625,55 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.325,
+              "karacsony_gergely": 0.15
+            }
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": -0.38,
+              "karacsony_gergely": 0.43
+            }
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.175,
+              "karacsony_gergely": -0.1,
+              "szentkiralyi_alexandra": 0.29
+            }
+          }
+        ]
       }
     ]
   },
@@ -777,19 +2682,133 @@
     "answers": [
       {
         "id": "A",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "peremkerulet",
+                "targetParty": "vitezy_david",
+                "amount": 800,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_04",
+                "answerId": "C"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": -0.3
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "B",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          },
+          {
+            "type": "district-vote-transfer",
+            "params": [
+              {
+                "groupId": "belvaros",
+                "targetParty": "vitezy_david",
+                "amount": 400,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              },
+              {
+                "groupId": "atmeneti",
+                "targetParty": "vitezy_david",
+                "amount": 400,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              },
+              {
+                "groupId": "belvaros",
+                "targetParty": "karacsony_gergely",
+                "amount": 300,
+                "from": {
+                  "type": "bizonytalan"
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "C",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.07,
+              "karacsony_gergely": 0.15,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "bp2024_vitezy_29_v",
+                "answerId": "D"
+              }
+            ],
+            "mode": "merge",
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "vitezy_david": 0.21
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "D",
-        "effects": []
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.105,
+              "karacsony_gergely": 0.22,
+              "szentkiralyi_alexandra": 0.22
+            }
+          }
+        ]
       }
     ]
   }

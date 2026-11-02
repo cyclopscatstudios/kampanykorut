@@ -1,0 +1,289 @@
+[
+  {
+    "id": "varosmernok",
+    "label": "Budapest működjön",
+    "target": {
+      "party": "lmp",
+      "candidate": "vitezy_david"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_vitezy_05",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_14",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_vitezy_23",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_vitezy_26",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_vitezy_31_v",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_31_n",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_10",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_16",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_18",
+        "answerId": "A"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.8
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 2.0,
+              "karacsony_gergely": -0.3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ellenzekvaltas",
+    "label": "Ellenzékváltás",
+    "target": {
+      "party": "lmp",
+      "candidate": "vitezy_david"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_vitezy_05",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_vitezy_14",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_vitezy_23",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_vitezy_26",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_vitezy_31_v",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_vitezy_31_n",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_vitezy_20",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_30_v",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_30_n",
+        "answerId": "A"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 1.0,
+              "karacsony_gergely": -0.5
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 2.2,
+              "karacsony_gergely": -1.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "karacsony_valtas",
+    "label": "Karácsony-váltás",
+    "target": {
+      "party": "lmp",
+      "candidate": "vitezy_david"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_vitezy_05",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_vitezy_14",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_23",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_26",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_31_v",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_vitezy_31_n",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_vitezy_08",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_11",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_vitezy_15",
+        "answerId": "A"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 1.3,
+              "szentkiralyi_alexandra": -0.5
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 3.1,
+              "szentkiralyi_alexandra": -1.0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zold_orokseg",
+    "label": "Amit megígértek, megépítem",
+    "target": {
+      "party": "lmp",
+      "candidate": "vitezy_david"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_vitezy_05",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_vitezy_14",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_vitezy_23",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_vitezy_26",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_vitezy_31_v",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_vitezy_31_n",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_vitezy_13",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_vitezy_16",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_vitezy_22",
+        "answerId": "A"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 0.4,
+              "karacsony_gergely": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 1.0,
+              "karacsony_gergely": -0.6
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

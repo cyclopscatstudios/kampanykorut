@@ -32,10 +32,16 @@
             "candidateId": "szentkiralyi_alexandra",
             "endorsedCandidateId": "vitezy_david",
             "redistribution": {
-              "vitezy_david": 0.85,
-              "grundtner_andras": 0.05,
+              "vitezy_david": 0.55,
+              "grundtner_andras": 0.04,
               "karacsony_gergely": 0.03,
-              "_abstain": 0.07
+              "_abstain": 0.38
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 3.0
             }
           }
         ]
