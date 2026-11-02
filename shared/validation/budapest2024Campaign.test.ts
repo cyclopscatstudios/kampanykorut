@@ -18,6 +18,7 @@ import {
   HISTORICAL_ANSWERS,
   readCampaignFile as read,
   seeded,
+  shares as currentShares,
   strategyAnswers,
   summarize,
   szentkiralyiWithdrew,
@@ -201,6 +202,9 @@ describe("2024 Budapest campaign data", () => {
 
         const worstPlay = play(worst);
         expect(vitezyMargin(worstPlay.state)).toBeLessThan(-0.05);
+        expect(
+          currentShares(worstPlay.beforeDecision).vitezy_david,
+        ).toBeLessThan(0.26);
         expect(szentkiralyiWithdrew(worstPlay.state)).toBe(false);
       });
 
@@ -210,7 +214,7 @@ describe("2024 Budapest campaign data", () => {
           (run) => seeded(run + 1),
           100,
         );
-        expect(wins).toBeGreaterThan(0.05);
+        expect(wins).toBeGreaterThan(0.02);
         expect(wins).toBeLessThan(0.35);
         expect(withdrawals).toBeGreaterThan(0.3);
         expect(withdrawals).toBeLessThan(0.95);
@@ -235,8 +239,8 @@ describe("2024 Budapest campaign data", () => {
             (run) => withFixedAnswers(strategyAnswers(strategy), run + 1),
             60,
           );
-          expect(wins).toBeGreaterThan(0.25);
-          expect(wins).toBeLessThan(0.85);
+          expect(wins).toBeGreaterThan(0.2);
+          expect(wins).toBeLessThan(0.75);
         },
       );
     });

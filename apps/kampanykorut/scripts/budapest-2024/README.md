@@ -90,7 +90,7 @@ Vitézy's mayoral share with a coefficient of about 0.94, and Karácsony's with 
 The answer effects are a design model, not measured data. Every number is an
 estimate, tuned by simulation against the bands in `budapest2024Campaign.test.ts`.
 The `ANSWERS` table holds each answer's intended direction and relative size;
-`TUNING` scales them (Vitézy's gains ×0.35, Karácsony's losses ×0.5 and gains ×0.7,
+`TUNING` scales them (Vitézy's gains ×0.4, Karácsony's losses ×0.5 and gains ×0.7,
 Szentkirályi's gains ×0.35), so the table stays readable and the overall pace is
 one place to change.
 
@@ -103,7 +103,11 @@ one place to change.
   - courting Fidesz voters takes from Szentkirályi but mobilizes Karácsony's base;
   - courting the opposition takes from Karácsony but keeps Fidesz voters with
     Szentkirályi;
-  - evasive answers give little;
+  - evasive or self-defeating answers cost Vitézy votes: silence (3D, 13D, 21D),
+    the late announcement (4D), sounding like Karácsony (9C, 11B), keeping away
+    from the Tisza voters (20B), a leaked backroom deal (20D, 29/N-C) or ignoring
+    the accusations (25D, 28/V-D) send some of his voters back to the undecided
+    pool. Losses are not scaled down, so one bad answer outweighs one average gain;
   - the answers the real campaign chose are reasonable but not the strongest, so
     winning takes something the real campaign did not do.
 - **Rivals campaign too.** Every answer also adds 0.15 points to Karácsony and 0.22
@@ -153,13 +157,17 @@ crossed-out name.
 If Szentkirályi stays in the race, Vitézy fights for second place and cannot win;
 the doc's 28/N ("Harc a második helyért") assumes the same.
 
-Simulated results with the district boost used every second turn (300 games per
+Simulated results with the district boost used every second turn (400 games per
 row):
 
 | Play                                      | Szentkirályi withdraws | Vitézy wins        |
 | ----------------------------------------- | ---------------------- | ------------------ |
-| random answers                            | 79%                    | 10%                |
-| documented real answers, random elsewhere | 100%                   | 48% (margin 0.0)   |
-| one strategy, random elsewhere            | 46–100%                | 37–60%             |
-| best answer each turn                     | 100%                   | wins by 8 points   |
-| worst answer each turn                    | 0%                     | loses by 17 points |
+| random answers                            | 63%                    | 8%                 |
+| documented real answers, random elsewhere | 100%                   | 56% (margin +0.2)  |
+| one strategy, random elsewhere            | 36–99%                 | 29–47%             |
+| best answer each turn                     | 100%                   | wins by 9 points   |
+| worst answer each turn                    | 0%                     | loses by 22 points |
+
+With the worst answers Vitézy falls from 27.4% to 24.5% by the 25th decision. A
+strategy followed with random answers elsewhere also picks some of the costly
+answers; a player who follows a strategy and avoids them does better.
