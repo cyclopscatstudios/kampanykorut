@@ -174,6 +174,17 @@ describe("evaluateCondition", () => {
       ).toBe(false);
     });
 
+    it("limits how far behind the candidate one place ahead may be", () => {
+      const rank = (candidateId: string, maxGapBehind: number) =>
+        evaluateCondition(
+          { type: "candidate-rank", candidateId, max: 3, maxGapBehind },
+          context(),
+        );
+      expect(rank("szentkiralyi", 0.081)).toBe(true);
+      expect(rank("szentkiralyi", 0.079)).toBe(false);
+      expect(rank("karacsony", 0)).toBe(true);
+    });
+
     it("does not rank a candidate who left the standings", () => {
       const condition: Condition = {
         type: "candidate-rank",

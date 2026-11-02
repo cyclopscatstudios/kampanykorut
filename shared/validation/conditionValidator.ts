@@ -133,7 +133,7 @@ function check(
       return;
     case "candidate-rank": {
       checkCandidate(condition.candidateId, refs, `${path}/candidateId`, issue);
-      const { min, max, minGapBehind } = condition;
+      const { min, max, minGapBehind, maxGapBehind } = condition;
       if (min === undefined && max === undefined) {
         issue(
           "condition-invalid",
@@ -157,11 +157,27 @@ function check(
       ) {
         issue("condition-invalid", path, "min must not be greater than max");
       }
-      if (minGapBehind !== undefined && !isShare(minGapBehind)) {
+      for (const [key, value] of Object.entries({
+        minGapBehind,
+        maxGapBehind,
+      })) {
+        if (value !== undefined && !isShare(value)) {
+          issue(
+            "condition-invalid",
+            `${path}/${key}`,
+            `${key} must be a share between 0 and 1`,
+          );
+        }
+      }
+      if (
+        isShare(minGapBehind) &&
+        isShare(maxGapBehind) &&
+        (minGapBehind as number) > (maxGapBehind as number)
+      ) {
         issue(
           "condition-invalid",
-          `${path}/minGapBehind`,
-          "minGapBehind must be a share between 0 and 1",
+          path,
+          "minGapBehind must not be greater than maxGapBehind",
         );
       }
       return;

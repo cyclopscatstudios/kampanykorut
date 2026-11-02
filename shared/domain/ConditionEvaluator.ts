@@ -117,13 +117,18 @@ function evaluateRank(
   ) {
     return false;
   }
-  if (condition.minGapBehind === undefined) {
-    return true;
-  }
   const ahead = standings[index - 1];
+  const gap = ahead ? ahead.share - standings[index].share : undefined;
+  if (
+    condition.minGapBehind !== undefined &&
+    (gap === undefined || gap < condition.minGapBehind)
+  ) {
+    return false;
+  }
   return (
-    ahead !== undefined &&
-    ahead.share - standings[index].share >= condition.minGapBehind
+    condition.maxGapBehind === undefined ||
+    gap === undefined ||
+    gap <= condition.maxGapBehind
   );
 }
 

@@ -10,6 +10,7 @@ regenerated.
 ```sh
 NODE_USE_ENV_PROXY=1 node apps/kampanykorut/scripts/budapest-2024/fetch-vtr.mjs
 node apps/kampanykorut/scripts/budapest-2024/build-campaign-data.mjs
+node apps/kampanykorut/scripts/budapest-2024/answer-effects.mjs
 ```
 
 `fetch-vtr.mjs` downloads the 23 district result files and writes
@@ -17,6 +18,26 @@ node apps/kampanykorut/scripts/budapest-2024/build-campaign-data.mjs
 votes or if the ballot order differs between districts. `build-campaign-data.mjs`
 writes `candidate_list_data.json` and `voter_environment_config.json`.
 `NODE_USE_ENV_PROXY=1` is only needed behind an HTTP proxy.
+
+`answer-effects.mjs` writes `answer_effects.json`, `campaign_strategies.json`,
+`custom_groups.json` and `campaign_events.json`. These files are generated: change
+the tables in the script (`ANSWERS`, `CONDITIONAL`, `STRATEGIES`) and the tuning
+constants (`TUNING`, `WITHDRAWAL`), not the JSON. Questions and advisor feedback are
+not generated.
+
+## Simulating
+
+```sh
+node apps/kampanykorut/scripts/budapest-2024/answer-effects.mjs
+BUDAPEST_SIM=1 yarn vitest run --config apps/kampanykorut/vite.config.ts shared/validation/budapest2024Simulation.test.ts
+```
+
+The simulation plays the real campaign through the engine and prints, for each
+playing style, how often Szentkirályi withdraws, how often Vitézy wins, the average
+Vitézy–Karácsony margin and the shares after the 25th decision. `BUDAPEST_SIM_RUNS`
+sets the number of games (default 300) and `BUDAPEST_SIM_OUT` writes the rows as
+JSON. The styles are defined in `shared/validation/budapest2024Playthrough.ts`; the
+balance tests in `budapest2024Campaign.test.ts` use the same code with fixed bands.
 
 ## Sources
 
@@ -49,11 +70,16 @@ recount. It only shapes the geography; the real result is not the starting state
 
 ## Szentkirályi's withdrawal
 
-`campaign_events.json` decides after the 26th decision (7 June in the story): she
-withdraws if she is third or lower and at least 3 points behind the candidate one
-place ahead (`candidate-rank`), otherwise she stays in the race. She starts third,
-2.4 points behind Vitézy. Decisions 27–31 have a version for each
-outcome, selected with `visibleIf` on her candidate status.
+`campaign_events.json` decides after the 26th decision (7 June in the story). She
+withdraws if both hold (`candidate-rank`):
+
+- she is third or lower and at least 3 points behind the candidate one place ahead;
+- Vitézy is second and at most 15 points behind Karácsony. If Karácsony is out of
+  reach, giving up the Fidesz candidate would gain nothing.
+
+Otherwise she stays in the race. She starts third, 2.4 points behind Vitézy.
+Decisions 27–31 have a version for each outcome, selected with `visibleIf` on her
+candidate status.
 
 The direction of the transfer (see below) follows a regression of the 2024
 district results on the assembly list results: the Fidesz–KDNP list share explains
@@ -63,6 +89,10 @@ Vitézy's mayoral share with a coefficient of about 0.94, and Karácsony's with 
 
 The answer effects are a design model, not measured data. Every number is an
 estimate, tuned by simulation against the bands in `budapest2024Campaign.test.ts`.
+The `ANSWERS` table holds each answer's intended direction and relative size;
+`TUNING` scales them (Vitézy's gains ×0.35, Karácsony's losses ×0.5 and gains ×0.7,
+Szentkirályi's gains ×0.35), so the table stays readable and the overall pace is
+one place to change.
 
 - **Units.** Effects are mostly `uniform-swing`: percentage points of each
   district's decided votes. A positive value mobilizes undecided voters, a negative
@@ -73,7 +103,9 @@ estimate, tuned by simulation against the bands in `budapest2024Campaign.test.ts
   - courting Fidesz voters takes from Szentkirályi but mobilizes Karácsony's base;
   - courting the opposition takes from Karácsony but keeps Fidesz voters with
     Szentkirályi;
-  - evasive answers give little.
+  - evasive answers give little;
+  - the answers the real campaign chose are reasonable but not the strongest, so
+    winning takes something the real campaign did not do.
 - **Rivals campaign too.** Every answer also adds 0.15 points to Karácsony and 0.22
   to Szentkirályi from the undecided pool. Without this, even the weakest answers
   would pull Vitézy ahead.
@@ -91,7 +123,8 @@ estimate, tuned by simulation against the bands in `budapest2024Campaign.test.ts
   - 14D strengthens 17D;
   - after 25C, every answer of 27/V except C loses votes, and 27/V-B loses more;
   - 8A, 18A, 25B and 27/V-B each weaken 28/V-A and 28/V-D;
-  - 29/V-D makes 32C worth more.
+  - 29/V-D, which leaves the crossed-out-name trap alone and costs votes, makes 32C
+    worth more.
 
 ## Strategies
 
@@ -120,12 +153,13 @@ crossed-out name.
 If Szentkirályi stays in the race, Vitézy fights for second place and cannot win;
 the doc's 28/N ("Harc a második helyért") assumes the same.
 
-Simulated results with the district boost used every second turn:
+Simulated results with the district boost used every second turn (300 games per
+row):
 
 | Play                                      | Szentkirályi withdraws | Vitézy wins        |
 | ----------------------------------------- | ---------------------- | ------------------ |
-| random answers                            | 85%                    | 16%                |
-| documented real answers, random elsewhere | 100%                   | 94% (+1.6 points)  |
-| one strategy, random elsewhere            | 52–100%                | 45–67%             |
+| random answers                            | 79%                    | 10%                |
+| documented real answers, random elsewhere | 100%                   | 48% (margin 0.0)   |
+| one strategy, random elsewhere            | 46–100%                | 37–60%             |
 | best answer each turn                     | 100%                   | wins by 8 points   |
-| worst answer each turn                    | 100%                   | loses by 11 points |
+| worst answer each turn                    | 0%                     | loses by 17 points |

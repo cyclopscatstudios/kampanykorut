@@ -105,6 +105,12 @@ describe("validateCondition", () => {
     expect(rank({ min: 3, minGapBehind: 3 })).toEqual([
       "condition-invalid@/if/minGapBehind",
     ]);
+    expect(rank({ max: 2, maxGapBehind: -0.1 })).toEqual([
+      "condition-invalid@/if/maxGapBehind",
+    ]);
+    expect(rank({ max: 2, minGapBehind: 0.1, maxGapBehind: 0.05 })).toEqual([
+      "condition-invalid@/if",
+    ]);
     expect(rank({ min: 1, candidateId: "fidesz" })).toEqual([
       "unknown-candidate@/if/candidateId",
     ]);

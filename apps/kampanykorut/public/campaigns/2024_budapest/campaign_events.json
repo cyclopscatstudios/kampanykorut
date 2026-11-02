@@ -23,6 +23,12 @@
               "candidateId": "szentkiralyi_alexandra",
               "min": 3,
               "minGapBehind": 0.03
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "vitezy_david",
+              "max": 2,
+              "maxGapBehind": 0.15
             }
           ]
         },
@@ -41,7 +47,7 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 3.0
+              "karacsony_gergely": 3
             }
           }
         ]

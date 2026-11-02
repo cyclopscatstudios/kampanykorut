@@ -23,6 +23,7 @@ export type CandidateRankCondition = {
   min?: number;
   max?: number;
   minGapBehind?: number;
+  maxGapBehind?: number;
 };
 
 export type AnswerSelectedCondition = {
