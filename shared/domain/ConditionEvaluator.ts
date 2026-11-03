@@ -1,4 +1,9 @@
-import { Condition, ConditionContext, LeafCondition } from "../types";
+import {
+  CandidateRankCondition,
+  Condition,
+  ConditionContext,
+  LeafCondition,
+} from "../types";
 
 export class ConditionEvaluationError extends Error {
   constructor(
@@ -66,6 +71,8 @@ function evaluateLeaf(
       }
       return compare(support, condition.operator, condition.value, condition);
     }
+    case "candidate-rank":
+      return evaluateRank(condition, context);
     case "answer-selected":
       return context.answers.some(
         (a) =>
@@ -84,6 +91,45 @@ function evaluateLeaf(
         condition,
       );
   }
+}
+
+function evaluateRank(
+  condition: CandidateRankCondition,
+  context: ConditionContext,
+) {
+  if (context.getSupport(condition.candidateId) === undefined) {
+    throw new ConditionEvaluationError(
+      `no support value for candidate "${condition.candidateId}"`,
+      condition,
+    );
+  }
+  const standings = context.getStandings() ?? [];
+  const index = standings.findIndex(
+    (s) => s.candidateId === condition.candidateId,
+  );
+  if (index < 0) {
+    return false;
+  }
+  const rank = index + 1;
+  if (
+    (condition.min !== undefined && rank < condition.min) ||
+    (condition.max !== undefined && rank > condition.max)
+  ) {
+    return false;
+  }
+  const ahead = standings[index - 1];
+  const gap = ahead ? ahead.share - standings[index].share : undefined;
+  if (
+    condition.minGapBehind !== undefined &&
+    (gap === undefined || gap < condition.minGapBehind)
+  ) {
+    return false;
+  }
+  return (
+    condition.maxGapBehind === undefined ||
+    gap === undefined ||
+    gap <= condition.maxGapBehind
+  );
 }
 
 function compare(

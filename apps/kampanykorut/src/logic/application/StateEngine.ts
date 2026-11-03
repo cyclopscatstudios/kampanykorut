@@ -452,12 +452,14 @@ export class StateEngine extends Emitter<CampaignState> {
     this.districtGroupEngine.configure([]);
 
     if (type === "restart") {
-      this.init(true);
-      window.location.reload();
+      this.startNewSession();
       this.saveState("campaignState", {
         activeCampaignId: state?.activeCampaignId,
         playerSide: state?.playerSide,
       } as CampaignState);
+      window.location.assign(
+        `/game/${state?.activeCampaignId}?sessionId=${this.getSessionId()}`,
+      );
     }
   }
 

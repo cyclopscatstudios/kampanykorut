@@ -66,6 +66,55 @@ export function getMayoralDistrictRows(
     });
 }
 
+export type MayoralDistrictSortKey =
+  | "district"
+  | "winner"
+  | "share"
+  | "margin"
+  | "validVotes";
+
+export type SortDirection = "asc" | "desc";
+
+export function sortMayoralDistrictRows(
+  rows: MayoralDistrictRow[],
+  key: MayoralDistrictSortKey,
+  direction: SortDirection,
+  parties: RawParty[],
+): MayoralDistrictRow[] {
+  const winnerName = (row: MayoralDistrictRow) =>
+    row.leaderId
+      ? (parties.find((p) => p.id === row.leaderId)?.name ?? row.leaderId)
+      : undefined;
+  const value = (row: MayoralDistrictRow): string | number | undefined => {
+    switch (key) {
+      case "district":
+        return row.megyekod * 1000 + row.oevk;
+      case "winner":
+        return winnerName(row);
+      case "share":
+        return row.leaderShare;
+      case "margin":
+        return row.marginPoints;
+      case "validVotes":
+        return row.validVotes;
+    }
+  };
+  const sign = direction === "asc" ? 1 : -1;
+
+  return [...rows].sort((a, b) => {
+    const left = value(a);
+    const right = value(b);
+    if (left === undefined || right === undefined) {
+      return left === right ? 0 : left === undefined ? 1 : -1;
+    }
+    const diff =
+      typeof left === "string" && typeof right === "string"
+        ? left.localeCompare(right, "hu")
+        : (left as number) - (right as number);
+    return diff * sign || a.megyekod - b.megyekod || a.oevk - b.oevk;
+  });
+}
+
 export function formatVotes(votes: number) {
   return votes.toLocaleString("hu-HU");
 }

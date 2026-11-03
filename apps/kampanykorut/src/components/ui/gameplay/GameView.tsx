@@ -87,9 +87,14 @@ export function GameView({
   const capitalCity = isCityMap ? [] : getCapitalCity(config.districts);
   const candidateListData =
     pollsData?.candidateListData ?? state.candidateListData ?? [];
+  const percentages = pollsData?.percentages ?? state.results?.percentages;
+  const nationalPercentages = isCityMap
+    ? percentages?.candidateListResults
+    : percentages?.partyListResults;
 
   return isDesktop ? (
     <MapCreator
+      nationalPercentages={nationalPercentages}
       setCurrentView={onSetView}
       candidateListData={candidateListData}
       capitalCity={capitalCity}

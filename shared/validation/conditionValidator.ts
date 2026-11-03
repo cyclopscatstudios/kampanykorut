@@ -22,6 +22,15 @@ const isObject = (value: unknown): value is Json =>
 const isNonNegativeInteger = (value: unknown) =>
   typeof value === "number" && Number.isInteger(value) && value >= 0;
 
+const isPositiveInteger = (value: unknown) =>
+  isNonNegativeInteger(value) && (value as number) > 0;
+
+const isShare = (value: unknown) =>
+  typeof value === "number" &&
+  Number.isFinite(value) &&
+  value >= 0 &&
+  value <= 1;
+
 export function validateCondition(
   condition: unknown,
   refs: ConditionReferences = {},
@@ -114,12 +123,7 @@ function check(
           `operator must be one of ${OPERATORS.join(", ")}`,
         );
       }
-      if (
-        typeof condition.value !== "number" ||
-        !Number.isFinite(condition.value) ||
-        condition.value < 0 ||
-        condition.value > 1
-      ) {
+      if (!isShare(condition.value)) {
         issue(
           "condition-invalid",
           `${path}/value`,
@@ -127,6 +131,57 @@ function check(
         );
       }
       return;
+    case "candidate-rank": {
+      checkCandidate(condition.candidateId, refs, `${path}/candidateId`, issue);
+      const { min, max, minGapBehind, maxGapBehind } = condition;
+      if (min === undefined && max === undefined) {
+        issue(
+          "condition-invalid",
+          path,
+          "candidate-rank needs min, max or both",
+        );
+      }
+      for (const [key, value] of Object.entries({ min, max })) {
+        if (value !== undefined && !isPositiveInteger(value)) {
+          issue(
+            "condition-invalid",
+            `${path}/${key}`,
+            `${key} must be a positive integer`,
+          );
+        }
+      }
+      if (
+        isPositiveInteger(min) &&
+        isPositiveInteger(max) &&
+        (min as number) > (max as number)
+      ) {
+        issue("condition-invalid", path, "min must not be greater than max");
+      }
+      for (const [key, value] of Object.entries({
+        minGapBehind,
+        maxGapBehind,
+      })) {
+        if (value !== undefined && !isShare(value)) {
+          issue(
+            "condition-invalid",
+            `${path}/${key}`,
+            `${key} must be a share between 0 and 1`,
+          );
+        }
+      }
+      if (
+        isShare(minGapBehind) &&
+        isShare(maxGapBehind) &&
+        (minGapBehind as number) > (maxGapBehind as number)
+      ) {
+        issue(
+          "condition-invalid",
+          path,
+          "minGapBehind must not be greater than maxGapBehind",
+        );
+      }
+      return;
+    }
     case "candidate-status":
       checkCandidate(condition.candidateId, refs, `${path}/candidateId`, issue);
       if (!STATUSES.includes(String(condition.status))) {

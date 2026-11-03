@@ -14,6 +14,10 @@ function context(overrides: Partial<ConditionContext> = {}): ConditionContext {
     turn: 20,
     answers: [{ questionId: "question_12", answerId: "answer_3" }],
     getSupport: (id) => support[id],
+    getStandings: () =>
+      Object.entries(support)
+        .map(([candidateId, share]) => ({ candidateId, share }))
+        .sort((a, b) => b.share - a.share),
     getCandidateStatus: () => "active",
     triggeredEventIds: [],
     ...overrides,
@@ -129,6 +133,81 @@ describe("evaluateCondition", () => {
       expect(() => evaluateCondition(condition, context())).toThrow(
         /no support value for candidate "unknown"/,
       );
+    });
+
+    it.each([
+      [{ min: 3 }, true],
+      [{ max: 2 }, false],
+      [{ min: 3, max: 3, minGapBehind: 0.08 }, true],
+      [{ min: 3, minGapBehind: 0.081 }, false],
+    ])("checks the candidate's place with %o", (range, expected) => {
+      const condition: Condition = {
+        type: "candidate-rank",
+        candidateId: "szentkiralyi",
+        ...range,
+      };
+      expect(evaluateCondition(condition, context())).toBe(expected);
+    });
+
+    it("measures the gap to the candidate one place ahead", () => {
+      expect(
+        evaluateCondition(
+          {
+            type: "candidate-rank",
+            candidateId: "vitezy",
+            max: 2,
+            minGapBehind: 0.015,
+          },
+          context(),
+        ),
+      ).toBe(true);
+      expect(
+        evaluateCondition(
+          {
+            type: "candidate-rank",
+            candidateId: "karacsony",
+            max: 1,
+            minGapBehind: 0,
+          },
+          context(),
+        ),
+      ).toBe(false);
+    });
+
+    it("limits how far behind the candidate one place ahead may be", () => {
+      const rank = (candidateId: string, maxGapBehind: number) =>
+        evaluateCondition(
+          { type: "candidate-rank", candidateId, max: 3, maxGapBehind },
+          context(),
+        );
+      expect(rank("szentkiralyi", 0.081)).toBe(true);
+      expect(rank("szentkiralyi", 0.079)).toBe(false);
+      expect(rank("karacsony", 0)).toBe(true);
+    });
+
+    it("does not rank a candidate who left the standings", () => {
+      const condition: Condition = {
+        type: "candidate-rank",
+        candidateId: "szentkiralyi",
+        min: 1,
+      };
+      expect(
+        evaluateCondition(
+          condition,
+          context({
+            getStandings: () => [
+              { candidateId: "karacsony", share: 0.5 },
+              { candidateId: "vitezy", share: 0.5 },
+            ],
+          }),
+        ),
+      ).toBe(false);
+      expect(() =>
+        evaluateCondition(
+          { type: "candidate-rank", candidateId: "unknown", min: 1 },
+          context(),
+        ),
+      ).toThrow(/no support value for candidate "unknown"/);
     });
 
     it("checks whether an event has already run", () => {

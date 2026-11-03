@@ -48,6 +48,23 @@ describe("createConditionContext", () => {
     expect(ctx.getSupport("vitezy")).toBe(0.52);
   });
 
+  it("ranks the active ballot candidates by share", () => {
+    const ctx = createConditionContext(mayoralState, [], mayoralConfig);
+
+    expect(ctx.getStandings()).toEqual([
+      { candidateId: "vitezy", share: 0.52 },
+      { candidateId: "karacsony", share: 0.48 },
+      { candidateId: "grundtner", share: 0 },
+    ]);
+    expect(
+      createConditionContext(
+        { ...mayoralState, mayoralResult: undefined },
+        [],
+        mayoralConfig,
+      ).getStandings(),
+    ).toBeUndefined();
+  });
+
   it("reports zero support for ballot candidates without valid votes", () => {
     const ctx = createConditionContext(mayoralState, [], mayoralConfig);
 

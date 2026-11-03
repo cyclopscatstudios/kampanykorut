@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "version": "0.1.0"
+  },
+  "files": {
+    "electionConfig": "election_config.json",
+    "voterEnvironmentConfig": "voter_environment_config.json",
+    "candidateListData": "candidate_list_data.json",
+    "campaignEvents": "campaign_events.json",
+    "playableSides": {
+      "lmp": {
+        "vitezy_david": {
+          "questions": "lmp/vitezy_david/questions.json",
+          "answerEffect": "lmp/vitezy_david/answer_effects.json",
+          "advisorFeedback": "lmp/vitezy_david/advisor_feedback.json",
+          "advisorFeedbackAssets": "lmp/vitezy_david/advisor_feedback_assets.json",
+          "campaignStrategies": "lmp/vitezy_david/campaign_strategies.json"
+        }
+      }
+    },
+    "customGroups": "custom_groups.json"
+  }
+}

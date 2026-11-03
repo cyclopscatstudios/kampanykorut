@@ -80,7 +80,7 @@ function HistorySidebar({
     return null;
   }
   return (
-    <CommonWrapper className="w-full md:w-auto min-w-0">
+    <CommonWrapper className="w-full md:w-[300px] md:shrink-0 min-w-0">
       <div className="md:h-[620px] md:overflow-y-auto overflow-x-hidden">
         <div className="border-b border-slate-200/50">
           <div className="p-2">
@@ -135,7 +135,7 @@ function TurnHistoryItem({
     <button
       type="button"
       className={classNames(
-        "w-full md:w-[300px] text-left border-b border-slate-200/50 p-2 cursor-pointer",
+        "block w-full text-left border-b border-slate-200/50 p-2 cursor-pointer",
         {
           "bg-blue-500/25": selectedHistoryItem?.questionId === item.questionId,
         },
@@ -209,7 +209,7 @@ function QuestionCardItem({
   }
 
   return (
-    <CommonWrapper className="w-full md:w-auto min-w-0">
+    <CommonWrapper className="w-full md:flex-1 min-w-0">
       <div className="p-2">
         <Heading level={4} color="lightBlue" className="mb-4">
           {question?.question}

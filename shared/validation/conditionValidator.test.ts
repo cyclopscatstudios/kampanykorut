@@ -92,6 +92,30 @@ describe("validateCondition", () => {
     ]);
   });
 
+  it("validates candidate ranks", () => {
+    const rank = (patch: object) =>
+      codes({ type: "candidate-rank", candidateId: "vitezy", ...patch });
+
+    expect(rank({ min: 3, minGapBehind: 0.03 })).toEqual([]);
+    expect(rank({ max: 1 })).toEqual([]);
+    expect(rank({})).toEqual(["condition-invalid@/if"]);
+    expect(rank({ min: 0 })).toEqual(["condition-invalid@/if/min"]);
+    expect(rank({ max: 1.5 })).toEqual(["condition-invalid@/if/max"]);
+    expect(rank({ min: 3, max: 2 })).toEqual(["condition-invalid@/if"]);
+    expect(rank({ min: 3, minGapBehind: 3 })).toEqual([
+      "condition-invalid@/if/minGapBehind",
+    ]);
+    expect(rank({ max: 2, maxGapBehind: -0.1 })).toEqual([
+      "condition-invalid@/if/maxGapBehind",
+    ]);
+    expect(rank({ max: 2, minGapBehind: 0.1, maxGapBehind: 0.05 })).toEqual([
+      "condition-invalid@/if",
+    ]);
+    expect(rank({ min: 1, candidateId: "fidesz" })).toEqual([
+      "unknown-candidate@/if/candidateId",
+    ]);
+  });
+
   it("reports unknown references in nested conditions", () => {
     expect(
       codes({
