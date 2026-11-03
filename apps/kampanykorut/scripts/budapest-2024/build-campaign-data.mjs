@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, renameSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -119,8 +119,12 @@ const candidateListData = source.districts.map((d, index) => {
   };
 });
 
-const write = (file, data) =>
-  writeFileSync(join(campaignDir, file), `${JSON.stringify(data, null, 2)}\n`);
+const write = (file, data) => {
+  const target = join(campaignDir, file);
+  const tmp = `${target}.${process.pid}.tmp`;
+  writeFileSync(tmp, `${JSON.stringify(data, null, 2)}\n`);
+  renameSync(tmp, target);
+};
 
 write("candidate_list_data.json", candidateListData);
 write("voter_environment_config.json", {

@@ -38,8 +38,11 @@ export function getDistrictEstimate(
   district: Pick<CandidateListData, "partok" | "jeloltek">,
   parties: RawParty[],
   margin: number,
-): Estimate {
+): Estimate | null {
   const shares = toShares(district.partok);
+  if (!shares.length) {
+    return null;
+  }
   return buildEstimate(shares, parties, margin, district.jeloltek);
 }
 
@@ -94,11 +97,12 @@ function buildEstimate(
         low: Math.max(0, percent - margin),
         high: Math.min(100, percent + margin),
       };
-    });
+    })
+    .filter((row) => row.partyId !== "_other");
 
   const status = getStatus(rows, margin);
   return {
-    rows: rows.filter((row) => row.partyName !== "_other"),
+    rows,
     margin,
     status,
     leader: status === "tossup" ? undefined : rows[0],

@@ -17,12 +17,12 @@ describe("getDistrictEstimate", () => {
       3,
     );
 
-    expect(estimate.rows.map((row) => row.partyId)).toEqual([
+    expect(estimate?.rows.map((row) => row.partyId)).toEqual([
       "fidesz",
       "tisza",
       "mihazank",
     ]);
-    expect(estimate.rows[0]).toMatchObject({ percent: 54, low: 51, high: 57 });
+    expect(estimate?.rows[0]).toMatchObject({ percent: 54, low: 51, high: 57 });
   });
 
   it("marks a wide lead as safe and names the leader", () => {
@@ -32,8 +32,8 @@ describe("getDistrictEstimate", () => {
       3,
     );
 
-    expect(estimate.status).toBe("safe");
-    expect(estimate.leader?.partyId).toBe("fidesz");
+    expect(estimate?.status).toBe("safe");
+    expect(estimate?.leader?.partyId).toBe("fidesz");
   });
 
   it("treats overlapping bands as a toss-up without a leader", () => {
@@ -43,8 +43,8 @@ describe("getDistrictEstimate", () => {
       5,
     );
 
-    expect(estimate.status).toBe("tossup");
-    expect(estimate.leader).toBeUndefined();
+    expect(estimate?.status).toBe("tossup");
+    expect(estimate?.leader).toBeUndefined();
   });
 
   it("uses the first listed candidate's name", () => {
@@ -57,8 +57,8 @@ describe("getDistrictEstimate", () => {
       3,
     );
 
-    expect(estimate.rows[0]?.candidateName).toBe("Kovács István");
-    expect(estimate.rows[1]?.candidateName).toBeUndefined();
+    expect(estimate?.rows[0]?.candidateName).toBe("Kovács István");
+    expect(estimate?.rows[1]?.candidateName).toBeUndefined();
   });
 
   it("skips parties without votes", () => {
@@ -68,7 +68,28 @@ describe("getDistrictEstimate", () => {
       3,
     );
 
-    expect(estimate.rows).toHaveLength(2);
+    expect(estimate?.rows).toHaveLength(2);
+  });
+
+  it("returns null when no party has votes", () => {
+    expect(
+      getDistrictEstimate({ partok: { fidesz: 0, tisza: 0 } }, parties, 3),
+    ).toBeNull();
+  });
+
+  it("ignores the merged _other bucket for status and leader", () => {
+    const estimate = getDistrictEstimate(
+      { partok: { fidesz: 40, _other: 30, tisza: 5 } },
+      parties,
+      3,
+    );
+
+    expect(estimate?.rows.map((row) => row.partyId)).toEqual([
+      "fidesz",
+      "tisza",
+    ]);
+    expect(estimate?.status).toBe("safe");
+    expect(estimate?.leader?.partyId).toBe("fidesz");
   });
 });
 

@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { renameSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -82,8 +82,9 @@ for (let i = 1; i <= 23; i++) {
   });
 }
 
+const tmp = `${out}.${process.pid}.tmp`;
 writeFileSync(
-  out,
+  tmp,
   `${JSON.stringify(
     {
       source: `${BASE}{001..023}.json`,
@@ -96,4 +97,5 @@ writeFileSync(
     2,
   )}\n`,
 );
+renameSync(tmp, out);
 console.log(`wrote ${districts.length} districts to ${out}`);
