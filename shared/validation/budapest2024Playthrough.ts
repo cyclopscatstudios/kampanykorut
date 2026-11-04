@@ -56,7 +56,22 @@ export interface Playthrough {
   beforeDecision: CampaignState;
 }
 
-export function createBudapestCampaign() {
+export interface BudapestSide {
+  dir: string;
+  candidate: string;
+}
+
+export const VITEZY_SIDE: BudapestSide = {
+  dir: "lmp/vitezy_david",
+  candidate: "vitezy_david",
+};
+
+export const KARACSONY_SIDE: BudapestSide = {
+  dir: "dk_mszp_parbeszed/karacsony_gergely",
+  candidate: "karacsony_gergely",
+};
+
+export function createBudapestCampaign(side: BudapestSide = VITEZY_SIDE) {
   const districts = readCampaignFile<CandidateListData[]>(
     "candidate_list_data.json",
   );
@@ -67,13 +82,13 @@ export function createBudapestCampaign() {
     "election_config.json",
   );
   const questions = readCampaignFile<RawQuestion[]>(
-    "lmp/vitezy_david/questions.json",
+    `${side.dir}/questions.json`,
   );
   const answerEffects = readCampaignFile<RawAnsweEffectProps[]>(
-    "lmp/vitezy_david/answer_effects.json",
+    `${side.dir}/answer_effects.json`,
   );
   const strategies = readCampaignFile<Strategy[]>(
-    "lmp/vitezy_david/campaign_strategies.json",
+    `${side.dir}/campaign_strategies.json`,
   );
   const events = readCampaignFile<CampaignEvent[]>("campaign_events.json");
   const groups = readCampaignFile<DistrictGroup[]>("custom_groups.json");
@@ -122,7 +137,7 @@ export function createBudapestCampaign() {
       electionConfig,
       strategies,
       true,
-      VITEZY,
+      side.candidate,
     );
   };
 
@@ -165,17 +180,22 @@ export function createBudapestCampaign() {
 export const shares = (state: CampaignState) =>
   state.mayoralResult!.percentages;
 
-export const vitezyMargin = (state: CampaignState) => {
+export const marginOf = (candidate: string) => (state: CampaignState) => {
   const current = shares(state);
   const rivals = Object.entries(current)
-    .filter(([id]) => id !== VITEZY)
+    .filter(([id]) => id !== candidate)
     .map(([, share]) => share);
-  return (current[VITEZY] ?? 0) - Math.max(...rivals);
+  return (current[candidate] ?? 0) - Math.max(...rivals);
 };
 
-export const vitezyWins = (state: CampaignState) =>
+export const winsOf = (candidate: string) => (state: CampaignState) =>
   state.mayoralResult!.outcome.kind === "winner" &&
-  state.mayoralResult!.outcome.candidateId === VITEZY;
+  state.mayoralResult!.outcome.candidateId === candidate;
+
+export const vitezyMargin = marginOf(VITEZY);
+export const vitezyWins = winsOf(VITEZY);
+export const karacsonyMargin = marginOf(KARACSONY);
+export const karacsonyWins = winsOf(KARACSONY);
 
 export const szentkiralyiWithdrew = (state: CampaignState) =>
   state.candidates?.[SZENTKIRALYI]?.status === "inactive";
@@ -188,6 +208,13 @@ const best =
     );
 
 export const greedy = best(vitezyMargin, 1);
+export const karacsonyGreedy = best(karacsonyMargin, 1);
+export const karacsonyWorst = best(karacsonyMargin, -1);
+// Karácsony keeps the three-way race alive: Szentkirályi ahead of Vitézy.
+export const keepThreeWay = best(
+  (state) => (shares(state)[SZENTKIRALYI] ?? 0) - (shares(state)[VITEZY] ?? 0),
+  1,
+);
 export const worst = best(vitezyMargin, -1);
 export const weakThird = best(
   (state) => (shares(state)[VITEZY] ?? 0) - (shares(state)[SZENTKIRALYI] ?? 0),
@@ -248,6 +275,31 @@ export const HISTORICAL_ANSWERS = Object.fromEntries(
   }).map(([key, answerId]) => [`bp2024_vitezy_${key}`, answerId]),
 );
 
+export const KARACSONY_HISTORICAL_ANSWERS = Object.fromEntries(
+  Object.entries({
+    "01": "A",
+    "02": "A",
+    "03": "A",
+    "04": "A",
+    "05": "B",
+    "06": "B",
+    "07": "A",
+    "08": "A",
+    "09": "A",
+    "10": "A",
+    "11": "A",
+    "13": "A",
+    "15": "B",
+    "19": "A",
+    "21": "A",
+    "23": "A",
+    "25": "A",
+    "27_v": "A",
+    "28_v": "A",
+    "29_v": "A",
+  }).map(([key, answerId]) => [`bp2024_karacsony_${key}`, answerId]),
+);
+
 export interface Summary {
   runs: number;
   withdrawals: number;
@@ -260,7 +312,10 @@ export function summarize(
   play: (pick: Pick) => Playthrough,
   pick: (run: number) => Pick,
   runs: number,
+  candidate: string = VITEZY,
 ): Summary {
+  const rival = candidate === VITEZY ? KARACSONY : VITEZY;
+  const wins = winsOf(candidate);
   const results = Array.from({ length: runs }, (_, run) => play(pick(run)));
   const mean = (f: (p: Playthrough) => number) =>
     results.reduce((sum, p) => sum + f(p), 0) / runs;
@@ -268,9 +323,9 @@ export function summarize(
   return {
     runs,
     withdrawals: mean((p) => (szentkiralyiWithdrew(p.state) ? 1 : 0)),
-    wins: mean((p) => (vitezyWins(p.state) ? 1 : 0)),
+    wins: mean((p) => (wins(p.state) ? 1 : 0)),
     margin: mean(
-      (p) => (shares(p.state)[VITEZY] ?? 0) - (shares(p.state)[KARACSONY] ?? 0),
+      (p) => (shares(p.state)[candidate] ?? 0) - (shares(p.state)[rival] ?? 0),
     ),
     before: {
       vitezy: before(VITEZY),

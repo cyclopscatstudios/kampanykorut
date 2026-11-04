@@ -17,6 +17,15 @@
           "advisorFeedbackAssets": "lmp/vitezy_david/advisor_feedback_assets.json",
           "campaignStrategies": "lmp/vitezy_david/campaign_strategies.json"
         }
+      },
+      "dk_mszp_parbeszed": {
+        "karacsony_gergely": {
+          "questions": "dk_mszp_parbeszed/karacsony_gergely/questions.json",
+          "answerEffect": "dk_mszp_parbeszed/karacsony_gergely/answer_effects.json",
+          "advisorFeedback": "dk_mszp_parbeszed/karacsony_gergely/advisor_feedback.json",
+          "advisorFeedbackAssets": "dk_mszp_parbeszed/karacsony_gergely/advisor_feedback_assets.json",
+          "campaignStrategies": "dk_mszp_parbeszed/karacsony_gergely/campaign_strategies.json"
+        }
       }
     },
     "customGroups": "custom_groups.json"
