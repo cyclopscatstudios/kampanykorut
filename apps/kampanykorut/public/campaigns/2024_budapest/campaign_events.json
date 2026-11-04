@@ -108,28 +108,8 @@
               "status": "active"
             },
             {
-              "or": [
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "A"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "B"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "C"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "D"
-                }
-              ]
+              "type": "player-candidate",
+              "candidateId": "karacsony_gergely"
             },
             {
               "type": "turn",
@@ -178,28 +158,8 @@
               "status": "active"
             },
             {
-              "or": [
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "A"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "B"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "C"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "D"
-                }
-              ]
+              "type": "player-candidate",
+              "candidateId": "karacsony_gergely"
             },
             {
               "type": "turn",
@@ -244,28 +204,8 @@
               "status": "active"
             },
             {
-              "or": [
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "A"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "B"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "C"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "D"
-                }
-              ]
+              "type": "player-candidate",
+              "candidateId": "karacsony_gergely"
             },
             {
               "type": "turn",
@@ -314,28 +254,8 @@
               "status": "active"
             },
             {
-              "or": [
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "A"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "B"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "C"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "bp2024_karacsony_01",
-                  "answerId": "D"
-                }
-              ]
+              "type": "player-candidate",
+              "candidateId": "karacsony_gergely"
             },
             {
               "type": "turn",

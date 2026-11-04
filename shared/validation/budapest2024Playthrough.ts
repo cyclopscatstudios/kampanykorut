@@ -142,11 +142,13 @@ export function createBudapestCampaign(side: BudapestSide = VITEZY_SIDE) {
   };
 
   function play(pick: Pick): Playthrough {
-    let state = engine.createInitialState(
-      "2024_budapest",
-      null,
-      electionConfig,
-    );
+    let state: CampaignState = {
+      ...engine.createInitialState("2024_budapest", null, electionConfig),
+      playerSide: {
+        partyId: side.dir.split("/")[0],
+        candidateId: side.candidate,
+      },
+    };
     const history: HistoryItem[] = [];
     const visited: string[] = [];
     const answers: string[] = [];

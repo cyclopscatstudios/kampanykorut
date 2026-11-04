@@ -54,8 +54,9 @@ The winning line is to split the opposition:
    Szentkirályi (27/N-B, 28/N-B) keeps them level. Lifting either one too far starts
    the consolidation in the other direction.
 
-The consolidation events are gated on any answer to `bp2024_karacsony_01`, so they
-never fire on the Vitézy side.
+The consolidation events are gated on
+`{ "type": "player-candidate", "candidateId": "karacsony_gergely" }`, so they only
+fire when the player plays Karácsony.
 
 If Szentkirályi withdraws, the "Fidesz candidate" frame (7A, 25A) makes 27/V-A and
 27/V-B take more voters from Vitézy. These are `CONDITIONAL` entries, so the

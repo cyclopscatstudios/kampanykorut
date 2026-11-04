@@ -441,16 +441,9 @@ export function buildStrategies() {
 }
 
 // Shared events that only fire on the Karácsony side: answer-effects.mjs adds
-// them to campaign_events.json, gated on any answer to the first Karácsony
-// question.
+// them to campaign_events.json, gated on the player playing Karácsony.
 export function buildConsolidationEvents() {
-  const karacsonySide = {
-    or: ["A", "B", "C", "D"].map((answerId) => ({
-      type: "answer-selected",
-      questionId: questionId("01"),
-      answerId,
-    })),
-  };
+  const karacsonySide = { type: "player-candidate", candidateId: K };
   const inRace = {
     type: "candidate-status",
     candidateId: SZ,
