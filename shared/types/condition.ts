@@ -38,6 +38,11 @@ export type CandidateStatusCondition = {
   status: CandidateStatus;
 };
 
+export type PlayerCandidateCondition = {
+  type: "player-candidate";
+  candidateId: string;
+};
+
 export type EventTriggeredCondition = {
   type: "event-triggered";
   eventId: string;
@@ -49,6 +54,7 @@ export type LeafCondition =
   | CandidateRankCondition
   | AnswerSelectedCondition
   | CandidateStatusCondition
+  | PlayerCandidateCondition
   | EventTriggeredCondition;
 
 export type Condition =
@@ -63,5 +69,6 @@ export interface ConditionContext {
   getSupport(candidateId: string): number | undefined;
   getStandings(): { candidateId: string; share: number }[] | undefined;
   getCandidateStatus(candidateId: string): CandidateStatus;
+  playerCandidateId?: string;
   triggeredEventIds: string[];
 }

@@ -224,6 +224,23 @@ describe("evaluateCondition", () => {
       ).toBe(true);
     });
 
+    it("checks whether the player plays the candidate", () => {
+      const condition: Condition = {
+        type: "player-candidate",
+        candidateId: "szentkiralyi",
+      };
+      expect(evaluateCondition(condition, context())).toBe(false);
+      expect(
+        evaluateCondition(condition, context({ playerCandidateId: "vitezy" })),
+      ).toBe(false);
+      expect(
+        evaluateCondition(
+          condition,
+          context({ playerCandidateId: "szentkiralyi" }),
+        ),
+      ).toBe(true);
+    });
+
     it("rejects unknown types and operators", () => {
       expect(() =>
         evaluateCondition(

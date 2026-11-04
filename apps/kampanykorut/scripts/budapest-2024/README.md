@@ -177,8 +177,9 @@ answers; a player who follows a strategy and avoids them does better.
 `szentkiralyi-effects.mjs` writes
 `fidesz_kdnp/szentkiralyi_alexandra/answer_effects.json` from its own `ANSWERS`,
 `CONDITIONAL` and `TUNING` tables. The questions and advisor feedback are drafts;
-strategies are not written yet, and the side is not in `manifest.json` or
-`election_config.json`.
+strategies are not written yet (`campaign_strategies.json` is an empty array). The
+side is listed in `manifest.json` and `election_config.json`; it has no election
+assets yet.
 
 ```sh
 node apps/kampanykorut/scripts/budapest-2024/szentkiralyi-effects.mjs
@@ -192,12 +193,12 @@ node apps/kampanykorut/scripts/budapest-2024/szentkiralyi-effects.mjs
   does not close the gap to Karácsony.
 - **Branch.** Szentkirályi never withdraws on her own side. Decision 24 has two
   versions, selected by whether 21A (the three-way debate) was chosen.
-- **Before wiring.** `szentkiralyi_alexandra_withdrawal` and
-  `szentkiralyi_alexandra_stays` must not fire on this side, and the validator
-  rejects a withdrawal event aimed at a playable candidate
-  (`withdraw-playable-candidate`). This needs an engine or validator change.
+- **Withdrawal.** `szentkiralyi_alexandra_withdrawal` is gated with
+  `{ "not": { "type": "player-candidate", "candidateId": "szentkiralyi_alexandra" } }`,
+  so it never fires on her own side. `szentkiralyi_alexandra_stays` has no effects
+  and still announces that she stayed in the race.
 
-Simulated with the two shared withdrawal events removed and the district boost
+Simulated with the player side set, the shared events and the district boost
 every second turn (100 games per row, starting shares K 42.9 / V 27.4 / Sz 25.0 of
 decided votes):
 

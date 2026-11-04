@@ -148,6 +148,26 @@ describe("candidate withdrawal", () => {
     );
   });
 
+  it("never withdraws the player's own candidate", () => {
+    const engine = createEngine();
+    const initial = {
+      ...engine.createInitialState("budapest", null, config),
+      playerSide: { partyId: "fidesz", candidateId: "szentkiralyi" },
+    };
+    const next = engine.processTurn(
+      initial,
+      decision("q1"),
+      [],
+      settings,
+      config,
+    );
+
+    expect(next.candidates?.szentkiralyi?.status ?? "active").toBe("active");
+    expect(next.candidateListData?.map((d) => d.partok.szentkiralyi)).toEqual([
+      2000, 3000,
+    ]);
+  });
+
   it("keeps the eligible voters unchanged", () => {
     const { next } = playFirstTurn();
 

@@ -496,6 +496,7 @@ export function buildEvents() {
             and: [
               decisionTurn,
               inRace,
+              { not: { type: "player-candidate", candidateId: SZ } },
               {
                 type: "candidate-rank",
                 candidateId: SZ,

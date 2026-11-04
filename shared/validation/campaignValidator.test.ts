@@ -633,7 +633,11 @@ describe("validateCampaign", () => {
     });
 
     const setup =
-      (effect: object, mayoral = true) =>
+      (
+        effect: object,
+        mayoral = true,
+        condition: object = { type: "turn", min: 1 },
+      ) =>
       (f: Files) => {
         if (mayoral) {
           const config = file(f, "election_config.json");
@@ -644,13 +648,15 @@ describe("validateCampaign", () => {
         f["events.json"] = [
           {
             id: "withdrawal",
-            conditions: [{ if: { type: "turn", min: 1 }, effects: [effect] }],
+            conditions: [{ if: condition, effects: [effect] }],
           },
         ];
       };
 
-    const issues = (effect: object, mayoral = true) =>
-      validate(setup(effect, mayoral)).map((d) => `${d.code}@${d.path}`);
+    const issues = (effect: object, mayoral = true, condition?: object) =>
+      validate(setup(effect, mayoral, condition)).map(
+        (d) => `${d.code}@${d.path}`,
+      );
 
     it("accepts a withdrawal in a mayoral election", () => {
       expect(issues(withdraw())).toEqual([]);
@@ -664,6 +670,40 @@ describe("validateCampaign", () => {
 
     it("refuses to withdraw a playable candidate", () => {
       expect(issues(withdraw({ candidateId: "candidate_a" }))).toEqual([
+        "withdraw-playable-candidate@/0/conditions/0/effects/0/candidateId",
+      ]);
+    });
+
+    it("accepts a playable candidate when the branch excludes the player", () => {
+      expect(
+        issues(withdraw({ candidateId: "candidate_a" }), true, {
+          and: [
+            { type: "turn", min: 1 },
+            { not: { type: "player-candidate", candidateId: "candidate_a" } },
+          ],
+        }),
+      ).toEqual([]);
+    });
+
+    it("still refuses when the branch excludes another player", () => {
+      expect(
+        issues(withdraw({ candidateId: "candidate_a" }), true, {
+          not: { type: "player-candidate", candidateId: "party_b" },
+        }),
+      ).toEqual([
+        "withdraw-playable-candidate@/0/conditions/0/effects/0/candidateId",
+      ]);
+    });
+
+    it("does not count an exclusion inside an or branch", () => {
+      expect(
+        issues(withdraw({ candidateId: "candidate_a" }), true, {
+          or: [
+            { type: "turn", min: 1 },
+            { not: { type: "player-candidate", candidateId: "candidate_a" } },
+          ],
+        }),
+      ).toEqual([
         "withdraw-playable-candidate@/0/conditions/0/effects/0/candidateId",
       ]);
     });

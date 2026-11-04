@@ -100,8 +100,9 @@ Szentkirályi korabeli válaszát nem találtam. Áprilisban azt mondta, hogy cs
 
 **27–31** – A valóságban június 7-én visszalépett; Orbán szerint ez Szentkirályi ötlete volt. Június 5-én a Magyar Nemzetnek azt mondta, „minden budapestinek” szeretne főpolgármestere lenni (31 A). → 444 és HVG (fent)
 
-## Technikai teendők a bekötés előtt
+## Technikai állapot
 
-- `manifest.json` és `election_config.json`: fel kell venni a `fidesz_kdnp` / `szentkiralyi_alexandra` oldalt (portré, logó, tanácsadói assetek).
-- `campaign_strategies.json`: még nincs elkészítve. A tengelyekre épülő stratégiák (pl. „Saját Budapest”, „A kormány jelöltje”, „Tarlós örököse”) a szimuláció után tervezhetők.
-- A közös `szentkiralyi_alexandra_withdrawal` és `szentkiralyi_alexandra_stays` esemény ebben az ágban nem futhat le, és a validátor `withdraw-playable-candidate` hibát ad, ha a visszalépés játszható jelöltet érint. Ez motor- vagy validátormódosítást igényel.
+- Az oldal szerepel a `manifest.json`-ban és az `election_config.json`-ban; `electionAssets` (portré, szlogen, logó) még nincs.
+- A tanácsadók munkanevei (Halmi Zsófia, Bakos Ferenc) kitaláltak, a képeik a Vitézy-oldal helykitöltői.
+- A `campaign_strategies.json` egyelőre üres tömb; a tengelyekre épülő stratégiák (pl. „Saját Budapest”, „A kormány jelöltje”, „Tarlós örököse”) később készülnek.
+- A közös visszalépési esemény `player-candidate` feltétellel ki van zárva a Szentkirályi-oldalon, és a motor sem léptetheti vissza a játékos saját jelöltjét.

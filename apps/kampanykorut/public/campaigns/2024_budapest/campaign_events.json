@@ -19,6 +19,12 @@
               "status": "active"
             },
             {
+              "not": {
+                "type": "player-candidate",
+                "candidateId": "szentkiralyi_alexandra"
+              }
+            },
+            {
               "type": "candidate-rank",
               "candidateId": "szentkiralyi_alexandra",
               "min": 3,
