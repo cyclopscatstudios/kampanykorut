@@ -106,7 +106,7 @@ export function MayoralDistrictTable({
                       },
                     )}
                   >
-                    {column.label}
+                    {t(column.label as any)}
                     <Icon
                       name={
                         isActive

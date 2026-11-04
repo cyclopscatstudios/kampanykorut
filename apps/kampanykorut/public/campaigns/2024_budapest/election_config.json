@@ -55,6 +55,19 @@
         }
       ],
       "playableCandidates": ["szentkiralyi_alexandra"]
+    },
+    {
+      "id": "dk_mszp_parbeszed",
+      "label": "DK–MSZP–Párbeszéd",
+      "description": "A hivatalban lévő főpolgármester, a DK, az MSZP és a Párbeszéd közös jelöltje.",
+      "mainCandidates": [
+        {
+          "id": "karacsony_gergely",
+          "label": "Karácsony Gergely",
+          "description": "Budapest főpolgármestere 2019 óta, a második ciklusáért kampányol."
+        }
+      ],
+      "playableCandidates": ["karacsony_gergely"]
     }
   ],
   "electionAssets": [
@@ -68,6 +81,17 @@
         }
       ],
       "party_logo": "/images/2024_budapest/podmaninczky_mozgalom.jpg"
+    },
+    {
+      "id": "dk_mszp_parbeszed",
+      "candidateAssets": [
+        {
+          "id": "karacsony_gergely",
+          "portrait": "/images/2024_budapest/karacsony_gergely.png",
+          "slogan": "/images/2024_budapest/jovot_adunk_budapestnek.png"
+        }
+      ],
+      "party_logo": "/images/2024_budapest/parbeszed_dk_mszp.png"
     }
   ]
 }
