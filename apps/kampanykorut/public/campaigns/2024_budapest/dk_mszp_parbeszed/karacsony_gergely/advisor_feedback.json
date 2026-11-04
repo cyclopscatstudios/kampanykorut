@@ -1,0 +1,779 @@
+[
+  {
+    "questionId": "bp2024_karacsony_01",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Gyorsan lezárod az ügyet, és nem dobsz oda senkit a farkasoknak. Az ellenfeleid viszont azt mondják majd, hogy egy pulykás mondat nálad nem számít hibának."
+      },
+      {
+        "answerId": "B",
+        "text": "Bocsánatkérést ritkán hallani magyar politikustól, és ezt sokan értékelik. Csak számíts rá, hogy minden későbbi vitában ezt a mondatot idézik vissza."
+      },
+      {
+        "answerId": "C",
+        "text": "A felháborodás így kap egy nevet és egy következményt. A BKK-ban viszont mindenki megjegyzi, hogy a főnök a bajban elengedi az embereit."
+      },
+      {
+        "answerId": "D",
+        "text": "Következetes vagy, és a kormány felelőssége valós. Az utasok azonban a megállóban állnak, nem a költségvetési táblázat előtt."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_02",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Az utasok azt látják, hogy az olcsó bérlet marad, és ez a legfontosabb. A kritikusaid szerint viszont Lázár diktált, te pedig fizettél."
+      },
+      {
+        "answerId": "B",
+        "text": "Erős pozíció, ha bírod idegekkel. Ha március után a HÉV-en megbüntetik a bérleteseket, nem Lázárt fogják hibáztatni."
+      },
+      {
+        "answerId": "C",
+        "text": "A saját tábor imádni fogja, a peremkerületi ingázó kevésbé. Ő nem pert akar, hanem eljutni dolgozni."
+      },
+      {
+        "answerId": "D",
+        "text": "Szakmai, csendes megoldás, és nem kockáztatsz semmit. Csak így a siker sem a tiéd, és a sajtó azt kérdezi, hol volt a főpolgármester."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_03",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Koordinátor leszel, nem pártkatona, és ez jól áll egy főpolgármesternek. Ha a határidő elmúlik, a kudarc is a te neved alatt fut."
+      },
+      {
+        "answerId": "B",
+        "text": "Nem égsz meg a pártok csatáiban. A szavazók viszont nem tesznek különbséget: ha a te oldalad szétesik, az a te oldalad."
+      },
+      {
+        "answerId": "C",
+        "text": "Friss arcok, kevesebb pártlogó, és ez tetszik a csalódott szavazóknak. A DK és az MSZP viszont hadüzenetként olvassa."
+      },
+      {
+        "answerId": "D",
+        "text": "Gyorsan kiderül, ki a felelős. Csak utána ugyanezekkel a pártokkal kell közös listát állítanod."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_04",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A saját táborod ezt akarja hallani, és a kegyelmi botrány után működik. A középen állók viszont azt kérdezik, mit kapnak ezen felül."
+      },
+      {
+        "answerId": "B",
+        "text": "Ez a hivatalban lévő vezető biztos terepe. Csak egy mérleg ritkán lelkesít, és minden tételéhez akad egy ellentétel."
+      },
+      {
+        "answerId": "C",
+        "text": "Ritka, pozitív, személyes ígéret, és mindenki érti. Az ellenfeleid megkérdezik majd, miből, és ezt a kérdést nem úszod meg."
+      },
+      {
+        "answerId": "D",
+        "text": "Frissességet mutatsz, ami jól jön egy második ciklusnál. A szövetséges pártok viszont azt hallják ki belőle, hogy rájuk nincs szükséged."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_05",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ha minden rendben van, ez a legerősebb válasz, és a gyanú elszivárog. Ha egyetlen papír hiányzik, hónapokig erről szól majd a kampány."
+      },
+      {
+        "answerId": "B",
+        "text": "A saját szavazóidnak ennyi elég, ők úgyis politikai támadásnak látják. A bizonytalanok viszont azt hallják, hogy nem válaszoltál."
+      },
+      {
+        "answerId": "C",
+        "text": "A téma egy idő után kifullad, ha nem táplálod. A kormánymédia viszont nem fullad ki, és a hallgatást beismerésnek írja."
+      },
+      {
+        "answerId": "D",
+        "text": "Visszaütsz, és ezt a bázis szereti. Csak a vita így két kampánypénz-ügyről szól, és az egyik a tiéd."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_06",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A Fidesz-ellenes szavazók összezárnak mögötted, a verseny kétpólusú marad. Közben a Fidesz tábora is felébred, és Szentkirályi erősebb lesz, mint gondolnád."
+      },
+      {
+        "answerId": "B",
+        "text": "A szóvivői évek valóban sebezhetővé teszik. Ha viszont nagyon meggyengíted, a Fidesz előbb-utóbb más megoldást keres."
+      },
+      {
+        "answerId": "C",
+        "text": "Nem adsz neki ingyen figyelmet, és ez önmagában büntetés. Ha viszont a kihívód máshonnan jön, nem lesz alkalmad felkészülni rá."
+      },
+      {
+        "answerId": "D",
+        "text": "Ha nemet mond, ő marad a vitát kerülő jelölt. Ha igent, egy kormányszóvivővel állsz egy színpadon, aki évekig erre készült."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_07",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Azonnal keretet adsz, és a saját táborod érti az üzenetet. A semleges szavazók viszont azt látják, hogy egy szakmai kihívót rögtön árulónak neveztél."
+      },
+      {
+        "answerId": "B",
+        "text": "Szakmai terepen ő érzi magát otthon, és szívesen elfogadja. Ha viszont nyersz, megreped a mindentudó BKK-vezér képe."
+      },
+      {
+        "answerId": "C",
+        "text": "Nem emeled a saját szintedre, és ez magabiztosnak tűnik. Csak közben ő tölti ki az interjúkat, és rólad beszél."
+      },
+      {
+        "answerId": "D",
+        "text": "Nagyvonalú, és elveszi a harmadik út élét. Ha visszautasítja, a te ajánlatod marad, ha elfogadja, a saját táborod nem érti."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_08",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ezzel minden vitakérdést a visszalépés felé terelsz, és ébren tartod a gyanút. Csak közben te leszel az, aki nem áll ki."
+      },
+      {
+        "answerId": "B",
+        "text": "Bátor, és a kihívó nem mondhatja, hogy gyáva vagy. Ő viszont ebből annyi ismertséget kap, amennyit egyedül hónapok alatt sem szerezne."
+      },
+      {
+        "answerId": "C",
+        "text": "A Fidesz jelöltje vagy a vitán szerepel, vagy a kifogásai között, és mindkettő neked jó. Vitézy pedig nem kapja meg a kettesben vívott párbaj rangját."
+      },
+      {
+        "answerId": "D",
+        "text": "Nyitva hagyod a lehetőséget. A sajtó viszont hetekig azt kérdezi, mire vársz."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_09",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Van mit mutatni, és ez több, mint az ellenfeleidnek. A kritikusaid viszont azt mondják majd, hogy öt év után ennyire futotta a kampány hajrájában."
+      },
+      {
+        "answerId": "B",
+        "text": "Felelős, és nem ígérsz olyat, amit nem tudsz tartani. A bérlők viszont most fizetnek sokat, nem az uniós ciklus végén."
+      },
+      {
+        "answerId": "C",
+        "text": "Erős szám, jól mutat a plakáton. Ha nem jön össze, ez lesz az első tétel a következő mérlegeden."
+      },
+      {
+        "answerId": "D",
+        "text": "A szakmai kritika jogos lehet, és a te terepeden vagy. Csak aki lakást keres, annak a te ötven lakásod sem sok."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_10",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Megkapod a pártok szervezetét, aktivistáit és pénzét. Viszont minden Gyurcsány-plakát innentől rólad is szól."
+      },
+      {
+        "answerId": "B",
+        "text": "Saját arcot formálsz a pártok fölött. Csak a DK aktivistái nem lelkesednek egy kampányért, amelyben a logójukat sem látják."
+      },
+      {
+        "answerId": "C",
+        "text": "Független arculat, és a Momentum vagy a Tisza szavazóinak is könnyebb rád ikszelni. A közgyűlésben viszont nem lesz saját frakciód."
+      },
+      {
+        "answerId": "D",
+        "text": "Kihasználod, hogy szükségük van rád, és rendet teszel a kerületekben. A tárgyalás viszont hetekig tart, és közben a lista nélküled kampányol."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_11",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A saját tábor ezt elvárja, és a számok melletted vannak. Csak a peremkerületi szavazó egy idő után úgy érzi, a főpolgármester mindig a kormánnyal veszekszik."
+      },
+      {
+        "answerId": "B",
+        "text": "Felelős gazdálkodónak tűnsz, és a város likviditása javulhat. Ha kiszivárog, Vitézy és a Fidesz is azt mondja, hogy behódoltál."
+      },
+      {
+        "answerId": "C",
+        "text": "Előre néz, és nem a sérelemről szól. A kormány azonban az uniós pénzekről is dönthet, és ezt mindenki tudja."
+      },
+      {
+        "answerId": "D",
+        "text": "Ha egy fideszes polgármester is aláír, az nagy hír. Ha senki, akkor egyedül állsz, és erről is beszélnek."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_12",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Kiváló mozgósító téma, és a Fidesz rossz oldalon áll benne. A népszavazás viszont hónapokig tart, a kampány addigra véget ér."
+      },
+      {
+        "answerId": "B",
+        "text": "Józan, és a lakások valódi nyereséget jelentenek. Csak a saját szavazóid a felhőkarcolót látják majd, nem a bérlakást."
+      },
+      {
+        "answerId": "C",
+        "text": "A jövőről szól, és megmutatja, mit akarsz a várossal. A rajzok szépek, a telek viszont az államé."
+      },
+      {
+        "answerId": "D",
+        "text": "Megúszod a vitát, de átengeded a terepet. Vitézy erről úgyis beszélni fog, csak nélküled."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_13",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez a mondat napokig címlapon lesz, és a tábor tapsol. A semleges szavazók viszont azt hallják, hogy a főpolgármester bűnözőnek nevezte a kihívóját."
+      },
+      {
+        "answerId": "B",
+        "text": "Nehéz belekötni, és pont az ő terepén találod el. Csak vigyázz, mert a számokra ő is számokkal válaszol."
+      },
+      {
+        "answerId": "C",
+        "text": "Nagyvonalú, és elveszi a támadásai élét. Ugyanakkor ingyen tanúsítod, hogy jó szakember."
+      },
+      {
+        "answerId": "D",
+        "text": "Felülemelkedsz, és ez főpolgármesteri. Ő viszont közben tovább sorolja a te mulasztásaidat."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_14",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Itt laknak azok, akik 2019-ben megválasztottak, és itt szeretnek. Csakhogy itt nem nyersz semmit, amit eddig ne nyertél volna meg."
+      },
+      {
+        "answerId": "B",
+        "text": "Itt billeg a verseny, és itt a legtöbb a kézzelfogható gond. A panelházakban viszont arra is emlékeznek, mi nem készült el."
+      },
+      {
+        "answerId": "C",
+        "text": "Szövetségeseket mutatsz, és a városvezetés közös üggyé válik. Csak a polgármesterek a saját választásukra figyelnek, nem a tiédre."
+      },
+      {
+        "answerId": "D",
+        "text": "Itt a Tisza és Vitézy is vadászik, és ha megelőzöd őket, sokat nyersz. Ha nem, csak a lájkokat számolod."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_15",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Elvszerű, és a saját táborod ezt várja. Az esti villamoson hazainduló utas viszont nem elveket keres, hanem biztonságot."
+      },
+      {
+        "answerId": "B",
+        "text": "Megoldod a gondot, és közben nem adod meg neki a győzelmet. Csak ő biztosan észreveszi, és elmondja, honnan jött az ötlet."
+      },
+      {
+        "answerId": "C",
+        "text": "Kiveszed a kezéből a témát, és rugalmasnak tűnsz. A saját szavazóid egy része viszont nem érti, miért fogadtad el a riogatást."
+      },
+      {
+        "answerId": "D",
+        "text": "Kiegyensúlyozott és szakmailag erős. Mire a kísérlet eredményt hoz, a választás rég lezajlott."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_16",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Egyenes, és a zöld szavazók meghálálják. A XVII. kerületben viszont úgy hallják, hogy nincs rájuk szükség."
+      },
+      {
+        "answerId": "B",
+        "text": "Jó hír a peremnek, és senki nem ellenzi a jó utat. Csak a kasszát te is ismered, és az ellenfeleid is ismerik."
+      },
+      {
+        "answerId": "C",
+        "text": "Ritka beismerés, és sok autóst lefegyverez. A kerékpáros szavazók viszont árulásnak érzik."
+      },
+      {
+        "answerId": "D",
+        "text": "Ésszerű középút, de nem hangzik izgalmasan. Egy P+R-parkolóból nehéz plakátot csinálni."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_17",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Pikó népszerű, és erősödik a szövetségépítő szereped. Az MSZP viszont emlékezni fog, ki tette ki a szégyenfalra."
+      },
+      {
+        "answerId": "B",
+        "text": "Hűséges vagy a partneredhez. Józsefvárosban viszont úgy látják, hogy a Fidesz malmára hajtod a vizet."
+      },
+      {
+        "answerId": "C",
+        "text": "Ha sikerül, csendes győzelem. Ha nem, a kudarcod is csendes, és ez legalább nem árt."
+      },
+      {
+        "answerId": "D",
+        "text": "Nem égsz meg, de hiányzol. Józsefvárosban a Fidesz nem hallgat."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_18",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Erős történet, és beleillik a „Fidesz jelöltje” keretbe. Csak az első interjúban megkérdezik, ki adta a te félmilliárdodat."
+      },
+      {
+        "answerId": "B",
+        "text": "Tiszta, és nehéz rá nemet mondani. Viszont előbb neked kell kitenned a számaidat, és azok sem tökéletesek."
+      },
+      {
+        "answerId": "C",
+        "text": "Megúszod a visszavágást. A kérdést viszont más teszi fel, és akkor sem te alakítod a választ."
+      },
+      {
+        "answerId": "D",
+        "text": "Bevett megoldás, és a te kezed tiszta marad. A sajtó azonban hamar összeköti a pontokat."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_19",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Emberi, személyes, és mindenki megérti. Az ellenfeleid pedig kiszámolják, hány ciklus kell hozzá."
+      },
+      {
+        "answerId": "B",
+        "text": "Kézzelfogható tételek, pénzzel együtt. Csak az uniós pénzről a kormány is dönt, és ezt az ellenfeleid hangosan mondják."
+      },
+      {
+        "answerId": "C",
+        "text": "Újszerű, és a kerületek is hallják, hogy partnerként kezeled őket. A legtöbb szavazó viszont nem tudja, mi az a második kamara."
+      },
+      {
+        "answerId": "D",
+        "text": "Biztos terep, büszke lehetsz rá. A Lánchíd viszont kész, és a szavazó azt kérdezi, mi jön ezután."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_20",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Nagy tábor, és sokan még nem döntöttek. A DK viszont nem fogja szeretni, hogy a legnagyobb riválisának udvarolsz."
+      },
+      {
+        "answerId": "B",
+        "text": "A régi ellenzéki törzsszavazók egyetértenek. A Tisza-szavazók viszont egyenesen Vitézyhez sétálnak."
+      },
+      {
+        "answerId": "C",
+        "text": "Nem rontasz a saját szövetségeden. Csak a város legdinamikusabb szavazótáborát hagyod a kihívódra."
+      },
+      {
+        "answerId": "D",
+        "text": "Egyszerű ajánlat, és senkit nem kényszerít választásra. Csak Vitézy ugyanezt mondja, és ő a régi pártok nélkül teszi."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_21",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A szövetségeseid ezt várják tőled. A Tisza-szavazók viszont meghallják, és a főpolgármesteri lapon is elbizonytalanodnak."
+      },
+      {
+        "answerId": "B",
+        "text": "Előre gondolkodsz, és a Tisza-szavazók észreveszik. A DK-nál viszont már most a koalíciós alkut számolják."
+      },
+      {
+        "answerId": "C",
+        "text": "Nem keversz bele senkit a saját választásodba. Csak a választók kérdezik, hogyan fogsz így kormányozni."
+      },
+      {
+        "answerId": "D",
+        "text": "Felébreszt néhány régi szavazót. A Tisza-tábor viszont azt hallja ki belőle, hogy egy kalap alá veszed őket a Fidesszel."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_22",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A verseny visszakapja a régi formáját: te a Fidesz ellen. Ezzel a Fidesz táborát is mozgósítod, és Szentkirályi tovább marad versenyben."
+      },
+      {
+        "answerId": "B",
+        "text": "Így nem engeded fel a második helyre. Csak minden támadás arra emlékeztet, hogy ő a fő kihívód."
+      },
+      {
+        "answerId": "C",
+        "text": "Nyugodt és főpolgármesteri. Azt viszont nem te döntöd el, ki lesz a második."
+      },
+      {
+        "answerId": "D",
+        "text": "Egyszerű és erős keret, a saját táborod imádja. A semleges szavazóknak viszont a „mindenki a Fidesz” túl sok."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_23",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Erős, és igaz is. Csak egy vitában a nézők azt akarják hallani, mit tettél te, nem azt, mit nem tett a kormány."
+      },
+      {
+        "answerId": "B",
+        "text": "Pozitív, és kiemel a csatározásból. Vitézy viszont minden jövőképedet összeveti a múlttal."
+      },
+      {
+        "answerId": "C",
+        "text": "Váratlan, és kínos helyzetbe hozod Vitézyt. Ha viszont nemet mond, te maradsz a meghívóval a kezedben."
+      },
+      {
+        "answerId": "D",
+        "text": "Ritka, emberi pillanat lehet, és kiveszed Vitézy kezéből a fegyvert. Ha rosszul adagolod, a vita a hibáidról fog szólni."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_24",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Kifogod a szelet a vitorlájából, és hiteles leszel. Csak a vágóképen az marad meg, hogy hibáztál."
+      },
+      {
+        "answerId": "B",
+        "text": "Egálra hozod a pontot. Egy „te is” típusú vitából viszont ritkán jön ki valaki győztesként."
+      },
+      {
+        "answerId": "C",
+        "text": "Ha megszorul, ez lesz a vita képe. Ha higgadtan válaszol, te leszel az, aki nem a témáról beszél."
+      },
+      {
+        "answerId": "D",
+        "text": "Egy jó mondat a kamerába órákig él a közösségi médiában. Ha nem elég jó, a nézők azt látják, hogy kitértél."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_25",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ha bekövetkezik, prófétának tűnsz, és a szavazóid már készen állnak a magyarázatra. Ha nem, a mondatod a Fidesz kampányának is jól jön."
+      },
+      {
+        "answerId": "B",
+        "text": "A Fidesz jelöltje nehezen mondhat nemet. Ha igent mond, megmarad a háromszereplős verseny, és ez neked kedvez."
+      },
+      {
+        "answerId": "C",
+        "text": "Nyugodt, és nem adsz súlyt a kormánymédiának. Ha viszont péntek reggel bekövetkezik, felkészületlenül ér."
+      },
+      {
+        "answerId": "D",
+        "text": "Megnyugtatja a tábort. A túl magabiztos jelölt mögül viszont könnyen otthon maradnak a szavazók."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_26",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Megmutatod, hogy a város veled van, és a helyi szervezetek is megmozdulnak. Csak a polgármesterek a saját kerületükben is kampányolnak, nem csak érted."
+      },
+      {
+        "answerId": "B",
+        "text": "Itt vannak a szavazóid, és egyetlen otthon maradó is hiányozni fog. Ha a verseny szoros lesz, ez a hét dönthet."
+      },
+      {
+        "answerId": "C",
+        "text": "Gyors és rugalmas, bármi történjék is. A hatvan fölötti szavazóid viszont nem nézik a kérdezz-feleleket."
+      },
+      {
+        "answerId": "D",
+        "text": "Itt dől el a legtöbb billegő körzet. Csak itt a kihívóid erősek, és nem mindenhol nyitnak ajtót."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_27_v",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez az a pillanat, amire hónapok óta készítetted a tábort. Csak egy erős vád két nap alatt a Fidesz-szavazókat is összezárhatja Vitézy mögött."
+      },
+      {
+        "answerId": "B",
+        "text": "Célzott, és pont azokat éri el, akik most bizonytalanodnak el. Vitézy viszont már reggel közölte, hogy nem kötött alkut."
+      },
+      {
+        "answerId": "C",
+        "text": "Nyugodtnak és magabiztosnak tűnsz egy kapkodó péntek közepén. A tábor viszont azt kérdezi, miért nem vágsz vissza."
+      },
+      {
+        "answerId": "D",
+        "text": "Kézzelfogható tétet mutatsz, amit mindenki ért. Csak egy jóslat ellen nehéz érvelni, és mellette nehéz bizonyítani."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_27_n",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Biztos recept. Csak a két kihívód közti erőviszonyokon nem változtat, és most ez dönthet."
+      },
+      {
+        "answerId": "B",
+        "text": "Ügyes, ha Vitézy áll jobban: így a két kihívód tovább osztozik. Ha viszont Szentkirályi már előrébb jár, ezzel csak őt erősíted."
+      },
+      {
+        "answerId": "C",
+        "text": "Furcsa hang egy hónapnyi csata után, de Szentkirályi ingadozó szavazói közül többen újra Vitézyt nézik. Ha túl jól sikerül, épp őt emeled a kihívóid élére."
+      },
+      {
+        "answerId": "D",
+        "text": "Magabiztos, és a médiának tetszik. A szavazóid egy része viszont úgy érzi, nincs már tétje, és otthon marad."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_28_v",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Erős, megjegyezhető, és a tábor felhorkan rá. A tétovázók egy része viszont ezt lekezelőnek érzi."
+      },
+      {
+        "answerId": "B",
+        "text": "Higgadt és érthető. Csak két nappal a választás előtt a higgadt mondatok ritkán jutnak el a címlapig."
+      },
+      {
+        "answerId": "C",
+        "text": "A fideszes szavazókat nem sérti, csak a hatalmat. Kérdés, elég éles-e ahhoz, hogy a tétovázókat elmozdítsa."
+      },
+      {
+        "answerId": "D",
+        "text": "Sarokba szorítod: bármit mond, valakit elveszít. Ha viszont ügyesen kitér, a kérdésed csak a függetlenségét erősíti."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_28_n",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A megosztott ellenfél a legjobb ellenfél, ha a két kihívód tényleg fej fej mellett halad. Ha nem, a csended a gyorsabbat segíti."
+      },
+      {
+        "answerId": "B",
+        "text": "Vitézy szavazói közül többen Szentkirályi felé mozdulnak, vagy otthon maradnak. Ha Szentkirályi már elöl jár, épp az ő elhúzását segíted."
+      },
+      {
+        "answerId": "C",
+        "text": "A Fidesz bizonytalan szavazóinak egy része Vitézy felé fordul. Ha ő már elöl jár, éppen őt segíted az élre."
+      },
+      {
+        "answerId": "D",
+        "text": "Erős gesztus, és Szentkirályi tábora meghallja, hol van a valódi verseny. Csak a kiegyenlítésből könnyen túlzás lesz, és akkor Vitézy húz el."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_29_v",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A tábor imádni fogja, és a videó bejárja az internetet. Vitézy pedig ugyanazt a videót osztja meg, más szöveggel."
+      },
+      {
+        "answerId": "B",
+        "text": "Unalmas, de ezen múlnak a szoros választások. Kevés kép marad belőle, sok szavazat viszont igen."
+      },
+      {
+        "answerId": "C",
+        "text": "Egy szoros versenyben minden vitatható szavazólap számít. Csak új szavazót ez sem hoz."
+      },
+      {
+        "answerId": "D",
+        "text": "Méltóságteljes, és a semlegesek értékelik. A tábor viszont tettre kész volt, és most hazamegy."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_29_n",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A pártok elvárják, és erős frakció nélkül nehéz lesz kormányozni. A Tisza-közeli szavazók viszont nyomásnak érzik."
+      },
+      {
+        "answerId": "B",
+        "text": "Szövetségesként viselkedsz, és a Momentum hálás lesz. A DK viszont hiányolja a saját szavazatait."
+      },
+      {
+        "answerId": "C",
+        "text": "Senkit nem kényszerítesz, és a Tisza-szavazók is rád ikszelhetnek. A pártjaid viszont egyedül maradnak a listán."
+      },
+      {
+        "answerId": "D",
+        "text": "Egyszerű üzenet. Csak a közgyűlési többségről majd utólag kell gondolkodnod."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_30_v",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Pontos és logikus érv. A Tisza-szavazók viszont nem szeretik, ha valaki megmondja nekik, mit kezdjenek Magyar Péter döntésével."
+      },
+      {
+        "answerId": "B",
+        "text": "Nem kerülsz konfliktusba a Tiszával. A tétovázók viszont nem kapnak okot arra, hogy mégis rád szavazzanak."
+      },
+      {
+        "answerId": "C",
+        "text": "Gesztus, amely a Tisza-szavazóknak szól, és ők meghallják. A DK viszont már azt számolja, mit adsz ezért."
+      },
+      {
+        "answerId": "D",
+        "text": "A régi ellenzéki törzs bólint. A Tisza-szavazók viszont ezek után az érvénytelen szavazatot is kevésnek érzik."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_30_n",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Világos érv, és a háromszereplős versenyben igaz is. A Tisza-szavazók viszont nem szeretik, ha egy régi szereplő mondja meg, mi a biztos."
+      },
+      {
+        "answerId": "B",
+        "text": "Nem kerülsz konfliktusba a Tiszával. A tétovázók viszont nem kapnak okot arra, hogy mégis rád szavazzanak."
+      },
+      {
+        "answerId": "C",
+        "text": "Gesztus, amely a Tisza-szavazóknak szól, és ők meghallják. A DK viszont már azt számolja, mit adsz ezért."
+      },
+      {
+        "answerId": "D",
+        "text": "A régi ellenzéki törzs bólint. A Tisza-szavazók viszont egyenesen Vitézyhez sétálnak."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_31_v",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A tábor ezt várja, és a köztársasági keret visszaér a kampány elejéig. A középen állóknak viszont ez is a régi dal."
+      },
+      {
+        "answerId": "B",
+        "text": "Pozitív búcsú, és nem a kihívóidról szól. Kérdés, elég erős-e ahhoz, hogy az utolsó tétovázót is elvigye."
+      },
+      {
+        "answerId": "C",
+        "text": "Nyitott ajtó a Tisza-szavazóknak és a csalódottaknak. A szövetségeseid viszont azon gondolkodnak, kinek nyitottad ki."
+      },
+      {
+        "answerId": "D",
+        "text": "A tapasztalat a legnagyobb előnyöd egy kihívóval szemben. Csak a változást akarók épp ezt a tapasztalatot unták meg."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_31_n",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A tábor ezt várja, és a Fidesz ellen ez a keret most is működik. A középen állóknak viszont ez is a régi dal."
+      },
+      {
+        "answerId": "B",
+        "text": "Pozitív búcsú, és nem a kihívóidról szól. Kérdés, elég erős-e ahhoz, hogy az utolsó tétovázót is elvigye."
+      },
+      {
+        "answerId": "C",
+        "text": "Nyitott ajtó a Tisza-szavazóknak és a csalódottaknak. A szövetségeseid viszont azon gondolkodnak, kinek nyitottad ki."
+      },
+      {
+        "answerId": "D",
+        "text": "A tapasztalat a legnagyobb előnyöd egy megosztott ellenféllel szemben. Csak a változást akarók épp ezt a tapasztalatot unták meg."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_karacsony_32",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Itt vannak azok, akik már melletted állnak, csak el kell őket vinni. Ha a verseny tényleg szoros, ez lehet a döntő lépés."
+      },
+      {
+        "answerId": "B",
+        "text": "Itt a legtöbb a billegő szavazó. Csak itt az ellenfeleid is mozgósítanak, és nem mindenhol nyitnak ajtót."
+      },
+      {
+        "answerId": "C",
+        "text": "Új szavazót nem hoz, de megvédi azokat, amelyek már megvannak. Hogy mennyit ér, az csak este derül ki."
+      },
+      {
+        "answerId": "D",
+        "text": "Széles, barátságos, és senkit nem zár ki. Csak a mindenkinek szóló felhívás ritkán szólít meg konkrétan valakit."
+      }
+    ]
+  }
+]

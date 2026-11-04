@@ -83,6 +83,8 @@ function evaluateLeaf(
       return (
         context.getCandidateStatus(condition.candidateId) === condition.status
       );
+    case "player-candidate":
+      return context.playerCandidateId === condition.candidateId;
     case "event-triggered":
       return context.triggeredEventIds.includes(condition.eventId);
     default:

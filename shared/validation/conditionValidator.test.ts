@@ -138,6 +138,18 @@ describe("validateCondition", () => {
     ]);
   });
 
+  it("checks the candidate of a player-candidate condition", () => {
+    expect(
+      codes({ not: { type: "player-candidate", candidateId: "vitezy" } }),
+    ).toEqual([]);
+    expect(codes({ type: "player-candidate", candidateId: "nobody" })).toEqual([
+      "unknown-candidate@/if/candidateId",
+    ]);
+    expect(codes({ type: "player-candidate" })).toEqual([
+      "condition-invalid@/if/candidateId",
+    ]);
+  });
+
   it("skips reference checks that have no reference set", () => {
     expect(
       codes(

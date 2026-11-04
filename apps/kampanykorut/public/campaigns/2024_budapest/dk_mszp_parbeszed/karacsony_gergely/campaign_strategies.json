@@ -1,0 +1,299 @@
+[
+  {
+    "id": "budapest_vedelme",
+    "label": "Budapest megvédése",
+    "target": {
+      "party": "dk_mszp_parbeszed",
+      "candidate": "karacsony_gergely"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_karacsony_04",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_14",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_karacsony_23",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_26",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_31_v",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_31_n",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_11",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_12",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_22",
+        "answerId": "A"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 1.2
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 2.8,
+              "vitezy_david": -0.5
+            }
+          }
+        ]
+      }
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-budapest-vedelme.svg"
+    }
+  },
+  {
+    "id": "zold_folytatas",
+    "label": "A zöld Budapest folytatása",
+    "target": {
+      "party": "dk_mszp_parbeszed",
+      "candidate": "karacsony_gergely"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_karacsony_04",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_karacsony_14",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_23",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_karacsony_26",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_karacsony_31_v",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_karacsony_31_n",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_karacsony_16",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_19",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_09",
+        "answerId": "C"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 1
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 2.4,
+              "vitezy_david": -0.4
+            }
+          }
+        ]
+      }
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-zold-folytatas.svg"
+    }
+  },
+  {
+    "id": "uj_korszak",
+    "label": "Az új politikai korszak",
+    "target": {
+      "party": "dk_mszp_parbeszed",
+      "candidate": "karacsony_gergely"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_karacsony_04",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_karacsony_14",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_karacsony_23",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_karacsony_26",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_karacsony_31_v",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_karacsony_31_n",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_karacsony_20",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_21",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_karacsony_17",
+        "answerId": "A"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.5,
+              "vitezy_david": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 1.2,
+              "vitezy_david": -0.5
+            }
+          }
+        ]
+      }
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-uj-korszak.svg"
+    }
+  },
+  {
+    "id": "hivatalban",
+    "label": "A hivatalban lévő főpolgármester",
+    "target": {
+      "party": "dk_mszp_parbeszed",
+      "candidate": "karacsony_gergely"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_karacsony_04",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_karacsony_14",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_karacsony_23",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_karacsony_26",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_karacsony_31_v",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_karacsony_31_n",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_karacsony_01",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_karacsony_05",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_karacsony_24",
+        "answerId": "A"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 1.2,
+              "vitezy_david": -0.2
+            }
+          }
+        ]
+      }
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-hivatalban.svg"
+    }
+  }
+]

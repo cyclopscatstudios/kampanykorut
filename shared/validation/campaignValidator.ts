@@ -1528,6 +1528,7 @@ function checkEventEffects(
   file: string,
   path: string,
   effects: unknown,
+  guard?: unknown,
 ) {
   if (!Array.isArray(effects)) {
     checkEffects(ctx, file, path, effects);
@@ -1536,11 +1537,26 @@ function checkEventEffects(
   effects.forEach((effect, i) => {
     const effectPath = `${path}/${i}`;
     if (isObject(effect) && effect.type === "withdraw-candidate") {
-      checkWithdrawEffect(ctx, file, effectPath, effect);
+      checkWithdrawEffect(ctx, file, effectPath, effect, guard);
     } else {
       checkEffect(ctx, file, effectPath, effect);
     }
   });
+}
+
+function excludesPlayer(condition: unknown, candidateId: string): boolean {
+  if (!isObject(condition)) {
+    return false;
+  }
+  if (Array.isArray(condition.and)) {
+    return condition.and.some((child) => excludesPlayer(child, candidateId));
+  }
+  const negated = condition.not;
+  return (
+    isObject(negated) &&
+    negated.type === "player-candidate" &&
+    negated.candidateId === candidateId
+  );
 }
 
 function checkWithdrawEffect(
@@ -1548,6 +1564,7 @@ function checkWithdrawEffect(
   file: string,
   path: string,
   effect: Json,
+  guard?: unknown,
 ) {
   const error = (code: string, at: string, message: string) =>
     report(ctx, "error", code, file, at, message);
@@ -1566,11 +1583,14 @@ function checkWithdrawEffect(
       `${path}/candidateId`,
       `unknown candidate "${String(candidateId)}"`,
     );
-  } else if (ctx.playableCandidates.has(candidateId)) {
+  } else if (
+    ctx.playableCandidates.has(candidateId) &&
+    !excludesPlayer(guard, candidateId)
+  ) {
     error(
       "withdraw-playable-candidate",
       `${path}/candidateId`,
-      `"${candidateId}" is playable; withdrawing the player's own candidate is not supported yet`,
+      `"${candidateId}" is playable; the branch must exclude the player's own candidate with { "not": { "type": "player-candidate", "candidateId": "${candidateId}" } }`,
     );
   }
   if (
@@ -1725,7 +1745,13 @@ function checkCampaignEvents(
           (issue) =>
             report(ctx, "error", issue.code, file, issue.path, issue.message),
         );
-        checkEventEffects(ctx, file, `${branchPath}/effects`, branch.effects);
+        checkEventEffects(
+          ctx,
+          file,
+          `${branchPath}/effects`,
+          branch.effects,
+          branch.if,
+        );
       });
     }
     if (event.announcement !== undefined) {

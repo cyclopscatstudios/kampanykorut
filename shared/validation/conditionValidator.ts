@@ -192,6 +192,9 @@ function check(
         );
       }
       return;
+    case "player-candidate":
+      checkCandidate(condition.candidateId, refs, `${path}/candidateId`, issue);
+      return;
     case "answer-selected": {
       const questionId = String(condition.questionId);
       const answers = refs.questions?.get(questionId);

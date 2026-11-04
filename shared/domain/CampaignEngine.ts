@@ -578,6 +578,12 @@ export class CampaignEngine {
 
     for (const effect of effects) {
       if (effect.type === "withdraw-candidate") {
+        if (effect.candidateId === current.playerSide?.candidateId) {
+          log.warn("Skipped withdrawal of the player's own candidate", {
+            candidateId: effect.candidateId,
+          });
+          continue;
+        }
         flush();
         current = this.withdrawCandidate(current, effect);
       } else {
