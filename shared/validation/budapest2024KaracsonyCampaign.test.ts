@@ -12,6 +12,7 @@ import {
   keepThreeWay,
   readCampaignFile as read,
   seeded,
+  splitPlan,
   strategyAnswers,
   summarize,
   szentkiralyiWithdrew,
@@ -39,14 +40,25 @@ describe("2024 Budapest campaign, Karácsony side", () => {
     const branch = (suffix: string) =>
       [27, 28, 29, 30, 31].map((n) => `bp2024_karacsony_${n}_${suffix}`);
 
-    it("keeps Szentkirályi in the race when Karácsony splits his rivals", () => {
-      const { state, visited, announcements } = play(keepThreeWay);
+    it("keeps Szentkirályi in the race and wins by keeping his rivals level", () => {
+      const { state, visited, announcements } = play(karacsonyGreedy);
 
       expect(visited).toHaveLength(32);
       expect(visited.slice(26, 31)).toEqual(branch("n"));
       expect(announcements[25]).toEqual(["szentkiralyi_alexandra_stays"]);
       expect(szentkiralyiWithdrew(state)).toBe(false);
       expect(karacsonyWins(state)).toBe(true);
+    });
+
+    it("loses the three-way race if Szentkirályi is allowed to pull away", () => {
+      const { state, visited, announcements } = play(keepThreeWay);
+
+      expect(visited.slice(26, 31)).toEqual(branch("n"));
+      expect(szentkiralyiWithdrew(state)).toBe(false);
+      expect(announcements.flat()).toContain(
+        "karacsony_consolidation_szentkiralyi_announcement",
+      );
+      expect(karacsonyWins(state)).toBe(false);
     });
 
     it("lets her withdraw when Vitézy becomes the strong second", () => {
@@ -71,9 +83,9 @@ describe("2024 Budapest campaign, Karácsony side", () => {
 
       it("is not an easy win with random answers", () => {
         const { wins, withdrawals } = sum((run) => seeded(run + 1), 100);
-        expect(wins).toBeGreaterThan(0.1);
-        expect(wins).toBeLessThan(0.5);
-        expect(withdrawals).toBeGreaterThan(0.5);
+        expect(wins).toBeGreaterThan(0.05);
+        expect(wins).toBeLessThan(0.35);
+        expect(withdrawals).toBeGreaterThan(0.6);
         expect(withdrawals).toBeLessThan(0.95);
       });
 
@@ -83,9 +95,15 @@ describe("2024 Budapest campaign, Karácsony side", () => {
           100,
         );
         expect(withdrawals).toBeGreaterThan(0.9);
-        expect(wins).toBeGreaterThan(0.35);
-        expect(wins).toBeLessThan(0.75);
+        expect(wins).toBeGreaterThan(0.25);
+        expect(wins).toBeLessThan(0.65);
         expect(Math.abs(margin)).toBeLessThan(0.015);
+      });
+
+      it("rewards splitting the opposition", () => {
+        const { wins, withdrawals } = sum((run) => splitPlan(run + 1), 60);
+        expect(withdrawals).toBeLessThan(0.1);
+        expect(wins).toBeGreaterThan(0.85);
       });
 
       it.each(strategies.map((s) => [s.label, s] as const))(
@@ -95,8 +113,8 @@ describe("2024 Budapest campaign, Karácsony side", () => {
             (run) => withFixedAnswers(strategyAnswers(strategy), run + 1),
             60,
           );
-          expect(wins).toBeGreaterThan(0.55);
-          expect(wins).toBeLessThan(0.95);
+          expect(wins).toBeGreaterThan(0.3);
+          expect(wins).toBeLessThan(0.8);
         },
       );
     });

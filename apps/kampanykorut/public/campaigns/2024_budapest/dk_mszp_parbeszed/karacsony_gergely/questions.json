@@ -628,7 +628,7 @@
   {
     "id": "bp2024_karacsony_27_n",
     "title": "Háromszereplős hajrá",
-    "question": "Lejárt a visszalépési határidő, Szentkirályi versenyben maradt. Két nap van hátra, és az ellened szavazók két jelölt között oszlanak meg. Ha nem hibázol, nyerő helyzetben vagy. Mire építed a hajrát?",
+    "question": "Lejárt a visszalépési határidő, Szentkirályi versenyben maradt. Két nap van hátra. Az ellened szavazók azt figyelik, melyik kihívód az erősebb, és ha az egyik egyértelműen elhúz, mögé állhatnak. Mire építed a hajrát?",
     "visibleIf": {
       "type": "candidate-status",
       "candidateId": "szentkiralyi_alexandra",
@@ -645,7 +645,7 @@
       },
       {
         "id": "C",
-        "label": "Vitézy baloldali szavazóit szólítod meg: a rá adott szavazat elveszett szavazat."
+        "label": "Elismerően beszélsz Vitézy szakértelméről: szerinted jók az ötletei, csak rossz a szövetségese."
       },
       {
         "id": "D",
@@ -684,7 +684,7 @@
   {
     "id": "bp2024_karacsony_28_n",
     "title": "Kit hagysz a második helyen?",
-    "question": "Szentkirályi és Vitézy szoros versenyt fut a második helyért. Ha az egyik összeomlik, a szavazói egy része a másikhoz vándorolhat, és a verseny kétszereplőssé válhat. Kire irányítod az utolsó támadást?",
+    "question": "Szentkirályi és Vitézy a második helyért fut. Ha az egyik egyértelműen elhúz, mögé állhatnak az ellened szavazók, és a verseny kétszereplőssé válik. Az utolsó vitaműsorban még egyszer szólhatsz. Kiről beszélsz?",
     "visibleIf": {
       "type": "candidate-status",
       "candidateId": "szentkiralyi_alexandra",
@@ -693,19 +693,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Senkire: hagyod, hogy egymással harcoljanak."
+        "label": "Senkiről: hagyod, hogy egymással harcoljanak."
       },
       {
         "id": "B",
-        "label": "Vitézyre, hogy a Fidesz-ellenes szavazói hozzád jöjjenek."
+        "label": "Vitézyt támadod: a Fidesz tartalékjelöltjének nevezed."
       },
       {
         "id": "C",
-        "label": "Szentkirályira, hogy a Fidesz-tábor a saját jelöltje mellett maradjon."
+        "label": "Szentkirályi vitakerülését teszed nevetségessé: aki nem vitázik, ne vezessen várost."
       },
       {
         "id": "D",
-        "label": "A Fideszre és Vitézyre egyszerre: szerinted egy csapat."
+        "label": "Vitézyt nevezed az egyetlen komoly kihívódnak, akivel érdemes vitázni."
       }
     ]
   },

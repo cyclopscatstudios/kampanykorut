@@ -300,6 +300,32 @@ export const KARACSONY_HISTORICAL_ANSWERS = Object.fromEntries(
   }).map(([key, answerId]) => [`bp2024_karacsony_${key}`, answerId]),
 );
 
+// The split-the-opposition plan: hit Vitézy hard enough that Szentkirályi
+// stays in the race, then lift Vitézy back so neither challenger pulls away.
+export const KARACSONY_SPLIT_PLAN = Object.fromEntries(
+  Object.entries({
+    "06": "A",
+    "07": "A",
+    "08": "C",
+    "13": "B",
+    "18": "A",
+    "22": "B",
+    "24": "C",
+    "25": "B",
+  }).map(([key, answerId]) => [`bp2024_karacsony_${key}`, answerId]),
+);
+
+// Follows KARACSONY_SPLIT_PLAN until the deadline, answers randomly elsewhere,
+// and in the three-way race picks the answer that leaves him furthest ahead
+// after the consolidation events of that turn.
+export const splitPlan = (seed: number): Pick => {
+  const fixed = withFixedAnswers(KARACSONY_SPLIT_PLAN, seed);
+  return (questionId, options, preview) =>
+    questionId.endsWith("_n")
+      ? karacsonyGreedy(questionId, options, preview)
+      : fixed(questionId, options, preview);
+};
+
 export interface Summary {
   runs: number;
   withdrawals: number;

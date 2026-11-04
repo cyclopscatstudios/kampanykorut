@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildConsolidationEvents } from "./karacsony-effects.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const campaignDir = join(here, "../../public/campaigns/2024_budapest");
@@ -540,6 +541,7 @@ export function buildEvents() {
         body: "Június 7., péntek: lejárt a visszalépési határidő, Szentkirályi Alexandra versenyben maradt. A Fidesz a saját jelöltjét és listáját mozgósítja, a verseny két nappal a választás előtt is háromszereplős marad.",
       },
     },
+    ...buildConsolidationEvents(),
   ];
 }
 

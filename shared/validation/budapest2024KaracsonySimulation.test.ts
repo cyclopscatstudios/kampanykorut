@@ -9,6 +9,7 @@ import {
   karacsonyWorst,
   keepThreeWay,
   seeded,
+  splitPlan,
   strategyAnswers,
   summarize,
   withFixedAnswers,
@@ -28,6 +29,7 @@ describe.skipIf(!process.env.BUDAPEST_SIM)(
         historical: sum((run) =>
           withFixedAnswers(KARACSONY_HISTORICAL_ANSWERS, run + 1),
         ),
+        splitPlan: sum((run) => splitPlan(run + 1)),
         ...Object.fromEntries(
           strategies.map((strategy) => [
             strategy.id,

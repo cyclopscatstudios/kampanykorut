@@ -571,15 +571,15 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Biztos recept, és a bizonytalanok sem kapnak okot elfordulni tőled. Csak ennyi kevés, ha az ellenfeleid még egyszer megmozdulnak."
+        "text": "Biztos recept. Csak a két kihívód közti erőviszonyokon nem változtat, és most ez dönthet."
       },
       {
         "answerId": "B",
-        "text": "Ügyes: így a két kihívód tovább osztozik. A Fidesz-tábor mozgósítása viszont a listán is meglátszik."
+        "text": "Ügyes, ha Vitézy áll jobban: így a két kihívód tovább osztozik. Ha viszont Szentkirályi már előrébb jár, ezzel csak őt erősíted."
       },
       {
         "answerId": "C",
-        "text": "Ha működik, a verseny eldőlt. Vitézy szavazói viszont pont azt utálják, ha valaki megmondja nekik, mi az elveszett szavazat."
+        "text": "Furcsa hang egy hónapnyi csata után, de Szentkirályi ingadozó szavazói közül többen újra Vitézyt nézik. Ha túl jól sikerül, épp őt emeled a kihívóid élére."
       },
       {
         "answerId": "D",
@@ -613,19 +613,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A megosztott ellenfél a legjobb ellenfél. Csak közben te is csendben vagy, és a csend nem mozgósít."
+        "text": "A megosztott ellenfél a legjobb ellenfél, ha a két kihívód tényleg fej fej mellett halad. Ha nem, a csended a gyorsabbat segíti."
       },
       {
         "answerId": "B",
-        "text": "Ha bejön, Vitézy szavazói közül sokan hozzád térnek. Ha nem, a megmaradtak legfeljebb otthon maradnak."
+        "text": "Vitézy szavazói közül többen Szentkirályi felé mozdulnak, vagy otthon maradnak. Ha Szentkirályi már elöl jár, épp az ő elhúzását segíted."
       },
       {
         "answerId": "C",
-        "text": "A Fidesz-szavazók összezárnak a jelöltjük mögött, és ez Vitézytől vesz el. Csak ne feledd, hogy a listán is nekik mozgósítasz."
+        "text": "A Fidesz bizonytalan szavazóinak egy része Vitézy felé fordul. Ha ő már elöl jár, éppen őt segíted az élre."
       },
       {
         "answerId": "D",
-        "text": "A tábor szereti, de a két ellenfeled szavazóit egymáshoz közelíted. Pont ezt akarod elkerülni."
+        "text": "Erős gesztus, és Szentkirályi tábora meghallja, hol van a valódi verseny. Csak a kiegyenlítésből könnyen túlzás lesz, és akkor Vitézy húz el."
       }
     ]
   },

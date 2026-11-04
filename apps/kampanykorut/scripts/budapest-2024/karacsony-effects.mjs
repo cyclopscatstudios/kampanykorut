@@ -17,19 +17,28 @@ const G = "grundtner_andras";
 const KEYS = { K, V, Sz: SZ, G };
 
 export const TUNING = {
-  karacsonyGain: 0.4,
+  karacsonyGain: 0.36,
   karacsonyLoss: 0.6,
   vitezyGain: 0.9,
   vitezyLoss: 0.9,
   szentkiralyiGain: 1.0,
   szentkiralyiLoss: 0.8,
-  vitezyDrift: 0.28,
-  szentkiralyiDrift: 0.18,
+  vitezyDrift: 0.3,
+  szentkiralyiDrift: 0.17,
   karacsonyDrift: 0,
-  // While Szentkirályi stays in the race, part of her voters move to Vitézy
-  // tactically every turn (percentage points, not scaled).
-  tacticalVitezy: 1.6,
-  tacticalSzentkiralyi: -1.0,
+};
+
+// While Szentkirályi stays in the race, the anti-Karácsony vote consolidates
+// behind whichever challenger is clearly ahead: after every decision from the
+// 27th on, if the second place leads the third by at least `gap`, `amount`
+// points move from the third to the second. Karácsony keeps the two apart only
+// by balancing them (27/N-C, 28/N-C and 28/N-D lift Vitézy, 27/N-B and 28/N-B
+// lift Szentkirályi).
+export const CONSOLIDATION = {
+  firstTurn: 27,
+  lastTurn: 32,
+  gap: 0.03,
+  amount: 3.0,
 };
 
 const zone = (group, amount, from = "bizonytalan") => [group, amount, from];
@@ -75,7 +84,7 @@ const ANSWERS = {
     D: { K: 0.2, Sz: 0.3 },
   },
   "07": {
-    A: { K: 0.3, V: -0.2 },
+    A: { K: 0.3, V: -0.4, Sz: 0.2 },
     B: { K: 0.1, V: 0.1 },
     C: { V: 0.4 },
     D: { K: -0.1, V: -0.3 },
@@ -111,8 +120,8 @@ const ANSWERS = {
     D: { K: -0.2, V: 0.3 },
   },
   13: {
-    A: { K: 0.2, V: -0.2 },
-    B: { K: 0.2, V: -0.4 },
+    A: { K: 0.2, V: -0.4, Sz: 0.2 },
+    B: { K: 0.2, V: -0.5, Sz: 0.2 },
     C: { K: 0.2, V: 0.2 },
     D: { K: 0.1, V: 0.2 },
   },
@@ -141,7 +150,7 @@ const ANSWERS = {
     D: { K: -0.1, Sz: 0.1 },
   },
   18: {
-    A: { K: 0.2, V: -0.3 },
+    A: { K: 0.2, V: -0.4, Sz: 0.2 },
     B: { K: 0.3, V: -0.2 },
     C: { V: 0.1 },
     D: { K: 0.1, V: -0.2 },
@@ -166,7 +175,7 @@ const ANSWERS = {
   },
   22: {
     A: { K: 0.3, Sz: 0.5, V: -0.2 },
-    B: { K: 0.2, V: -0.4, Sz: 0.1 },
+    B: { K: 0.2, V: -0.5, Sz: 0.3 },
     C: { K: 0.2, V: 0.2 },
     D: { K: 0.3, V: -0.2, Sz: -0.1 },
   },
@@ -178,8 +187,8 @@ const ANSWERS = {
   },
   24: {
     A: { K: 0.3, V: -0.2 },
-    B: { K: 0.1, V: -0.1 },
-    C: { K: 0.2, V: -0.3 },
+    B: { K: 0.1, V: -0.3, Sz: 0.2 },
+    C: { K: 0.2, V: -0.4, Sz: 0.2 },
     D: { K: 0.1, V: 0.2 },
   },
   25: {
@@ -202,9 +211,9 @@ const ANSWERS = {
   },
   "27_n": {
     A: { K: 0.5 },
-    B: { K: 0.3, Sz: 0.4, V: -0.2 },
-    C: { K: 0.3, V: -0.3 },
-    D: { K: -0.3, V: 1.0, Sz: -1.0 },
+    B: { K: 0.3, V: -1.0, Sz: 1.0 },
+    C: { K: 0.1, V: 1.3, Sz: -1.3 },
+    D: { K: -0.4 },
   },
   "28_v": {
     A: { K: 0.4, V: -0.1 },
@@ -214,9 +223,9 @@ const ANSWERS = {
   },
   "28_n": {
     A: { K: 0.2 },
-    B: { K: 0.3, V: -0.4 },
-    C: { K: 0.2, Sz: 0.4, V: -0.3 },
-    D: { K: 0.2, V: 0.6, Sz: -0.8 },
+    B: { K: 0.2, V: -1.0, Sz: 1.0 },
+    C: { K: 0.1, V: 1.0, Sz: -1.0 },
+    D: { K: 0.1, V: 2.2, Sz: -2.2 },
   },
   "29_v": {
     A: { K: 0.1, V: 0.3 },
@@ -240,7 +249,7 @@ const ANSWERS = {
     A: { K: 0.3, V: -0.1 },
     B: { K: 0.1 },
     C: { K: 0.4, V: -0.1 },
-    D: { K: -0.3, V: 0.3 },
+    D: { K: -0.3, V: 0.6, Sz: -0.3 },
   },
   "31_v": {
     A: { K: 0.4 },
@@ -266,8 +275,8 @@ const ANSWERS = {
 const CONDITIONAL = [
   // The "Fidesz candidate" frame, built early, pays off after the withdrawal:
   // fewer of Vitézy's opposition voters follow him into the two-way race.
-  ["27_v", "A", [["07", "A"]], { V: -0.4 }],
-  ["27_v", "A", [["25", "A"]], { V: -0.3 }],
+  ["27_v", "A", [["07", "A"]], { V: -0.6 }],
+  ["27_v", "A", [["25", "A"]], { V: -0.5 }],
   ["27_v", "B", [["07", "A"]], { V: -0.3 }],
   ["25", "A", [["07", "A"]], { K: 0.2 }],
   // Overdoing the attacks backfires on the undecided.
@@ -331,10 +340,7 @@ const questionId = (key) => `bp2024_karacsony_${key}`;
 
 const round = (value) => Math.round(value * 1000) / 1000;
 
-function scaled(
-  swing,
-  { drift = false, reward = false, tactical = false } = {},
-) {
+function scaled(swing, { drift = false, reward = false } = {}) {
   const raw = { ...swing };
   if (!reward) {
     const scale = (key, gain, loss) => {
@@ -349,10 +355,6 @@ function scaled(
     raw.K = (raw.K ?? 0) + TUNING.karacsonyDrift;
     raw.V = (raw.V ?? 0) + TUNING.vitezyDrift;
     raw.Sz = (raw.Sz ?? 0) + TUNING.szentkiralyiDrift;
-  }
-  if (tactical) {
-    raw.V = (raw.V ?? 0) + TUNING.tacticalVitezy;
-    raw.Sz = (raw.Sz ?? 0) + TUNING.tacticalSzentkiralyi;
   }
   return Object.fromEntries(
     Object.entries(raw)
@@ -409,10 +411,7 @@ export function buildAnswerEffects(questions) {
         }));
         return {
           id,
-          effects: effectsOf(spec[id], {
-            drift: true,
-            tactical: key.endsWith("_n"),
-          }),
+          effects: effectsOf(spec[id], { drift: true }),
           ...(conditionalEffects.length ? { conditionalEffects } : {}),
         };
       }),
@@ -439,6 +438,96 @@ export function buildStrategies() {
     })),
     asset: { badge: `/images/2024_budapest/${badge}` },
   }));
+}
+
+// Shared events that only fire on the Karácsony side: answer-effects.mjs adds
+// them to campaign_events.json, gated on any answer to the first Karácsony
+// question.
+export function buildConsolidationEvents() {
+  const karacsonySide = {
+    or: ["A", "B", "C", "D"].map((answerId) => ({
+      type: "answer-selected",
+      questionId: questionId("01"),
+      answerId,
+    })),
+  };
+  const inRace = {
+    type: "candidate-status",
+    candidateId: SZ,
+    status: "active",
+  };
+  const turns = {
+    type: "turn",
+    min: CONSOLIDATION.firstTurn,
+    max: CONSOLIDATION.lastTurn,
+  };
+  const ahead = (leader, trailer) => ({
+    and: [
+      inRace,
+      karacsonySide,
+      turns,
+      { type: "candidate-rank", candidateId: leader, min: 2, max: 2 },
+      {
+        type: "candidate-rank",
+        candidateId: trailer,
+        min: 3,
+        max: 3,
+        minGapBehind: CONSOLIDATION.gap,
+      },
+    ],
+  });
+  const event = (id, leader, trailer, label, announcement) => [
+    {
+      id,
+      label,
+      once: false,
+      priority: 20,
+      conditions: [
+        {
+          if: ahead(leader, trailer),
+          effects: [
+            {
+              type: "uniform-swing",
+              params: {
+                [leader]: CONSOLIDATION.amount,
+                [trailer]: -CONSOLIDATION.amount,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: `${id}_announcement`,
+      label,
+      once: true,
+      priority: 10,
+      conditions: [{ if: ahead(leader, trailer), effects: [] }],
+      announcement,
+    },
+  ];
+  return [
+    ...event(
+      "karacsony_consolidation_szentkiralyi",
+      SZ,
+      V,
+      "Szentkirályi mögé rendeződnek a Karácsony-ellenesek",
+      {
+        title: "Szentkirályi mögé rendeződnek a Karácsony-ellenesek",
+        body: "Szentkirályi egyértelműen Vitézy előtt jár, és Vitézy szavazóinak egy része átpártol hozzá, hogy legyőzzék Karácsonyt. Amíg a különbség megmarad, a folyamat minden nappal erősödik.",
+      },
+    ),
+    ...event(
+      "karacsony_consolidation_vitezy",
+      V,
+      SZ,
+      "Vitézy mögé rendeződnek a Karácsony-ellenesek",
+      {
+        title: "Vitézy mögé rendeződnek a Karácsony-ellenesek",
+        body: "Vitézy egyértelműen Szentkirályi előtt jár, és Szentkirályi szavazóinak egy része átpártol hozzá, hogy legyőzzék Karácsonyt. Amíg a különbség megmarad, a folyamat minden nappal erősödik.",
+      },
+    ),
+  ];
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

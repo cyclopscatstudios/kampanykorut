@@ -86,5 +86,277 @@
       "title": "Szentkirályi Alexandra versenyben marad",
       "body": "Június 7., péntek: lejárt a visszalépési határidő, Szentkirályi Alexandra versenyben maradt. A Fidesz a saját jelöltjét és listáját mozgósítja, a verseny két nappal a választás előtt is háromszereplős marad."
     }
+  },
+  {
+    "id": "karacsony_consolidation_szentkiralyi",
+    "label": "Szentkirályi mögé rendeződnek a Karácsony-ellenesek",
+    "once": false,
+    "priority": 20,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "candidate-status",
+              "candidateId": "szentkiralyi_alexandra",
+              "status": "active"
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "B"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "C"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "D"
+                }
+              ]
+            },
+            {
+              "type": "turn",
+              "min": 27,
+              "max": 32
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "szentkiralyi_alexandra",
+              "min": 2,
+              "max": 2
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "vitezy_david",
+              "min": 3,
+              "max": 3,
+              "minGapBehind": 0.03
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szentkiralyi_alexandra": 3,
+              "vitezy_david": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "karacsony_consolidation_szentkiralyi_announcement",
+    "label": "Szentkirályi mögé rendeződnek a Karácsony-ellenesek",
+    "once": true,
+    "priority": 10,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "candidate-status",
+              "candidateId": "szentkiralyi_alexandra",
+              "status": "active"
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "B"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "C"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "D"
+                }
+              ]
+            },
+            {
+              "type": "turn",
+              "min": 27,
+              "max": 32
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "szentkiralyi_alexandra",
+              "min": 2,
+              "max": 2
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "vitezy_david",
+              "min": 3,
+              "max": 3,
+              "minGapBehind": 0.03
+            }
+          ]
+        },
+        "effects": []
+      }
+    ],
+    "announcement": {
+      "title": "Szentkirályi mögé rendeződnek a Karácsony-ellenesek",
+      "body": "Szentkirályi egyértelműen Vitézy előtt jár, és Vitézy szavazóinak egy része átpártol hozzá, hogy legyőzzék Karácsonyt. Amíg a különbség megmarad, a folyamat minden nappal erősödik."
+    }
+  },
+  {
+    "id": "karacsony_consolidation_vitezy",
+    "label": "Vitézy mögé rendeződnek a Karácsony-ellenesek",
+    "once": false,
+    "priority": 20,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "candidate-status",
+              "candidateId": "szentkiralyi_alexandra",
+              "status": "active"
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "B"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "C"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "D"
+                }
+              ]
+            },
+            {
+              "type": "turn",
+              "min": 27,
+              "max": 32
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "vitezy_david",
+              "min": 2,
+              "max": 2
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "szentkiralyi_alexandra",
+              "min": 3,
+              "max": 3,
+              "minGapBehind": 0.03
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 3,
+              "szentkiralyi_alexandra": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "karacsony_consolidation_vitezy_announcement",
+    "label": "Vitézy mögé rendeződnek a Karácsony-ellenesek",
+    "once": true,
+    "priority": 10,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "candidate-status",
+              "candidateId": "szentkiralyi_alexandra",
+              "status": "active"
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "B"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "C"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "bp2024_karacsony_01",
+                  "answerId": "D"
+                }
+              ]
+            },
+            {
+              "type": "turn",
+              "min": 27,
+              "max": 32
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "vitezy_david",
+              "min": 2,
+              "max": 2
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "szentkiralyi_alexandra",
+              "min": 3,
+              "max": 3,
+              "minGapBehind": 0.03
+            }
+          ]
+        },
+        "effects": []
+      }
+    ],
+    "announcement": {
+      "title": "Vitézy mögé rendeződnek a Karácsony-ellenesek",
+      "body": "Vitézy egyértelműen Szentkirályi előtt jár, és Szentkirályi szavazóinak egy része átpártol hozzá, hogy legyőzzék Karácsonyt. Amíg a különbség megmarad, a folyamat minden nappal erősödik."
+    }
   }
 ]

@@ -30,39 +30,52 @@ not generated.
 `dk_mszp_parbeszed/karacsony_gergely` is the second playable side. Its questions and
 advisor feedback are hand-written. `karacsony-effects.mjs` writes its
 `answer_effects.json` and `campaign_strategies.json` from the same kind of tables
-(`ANSWERS`, `CONDITIONAL`, `STRATEGIES`, `TUNING`); it does not touch the shared
-`campaign_events.json` or `custom_groups.json`.
+(`ANSWERS`, `CONDITIONAL`, `STRATEGIES`, `TUNING`). It also exports the
+consolidation events, which `answer-effects.mjs` adds to the shared
+`campaign_events.json`, so run both after changing them.
 
 ```sh
 node apps/kampanykorut/scripts/budapest-2024/karacsony-effects.mjs
+node apps/kampanykorut/scripts/budapest-2024/answer-effects.mjs
 BUDAPEST_SIM=1 yarn vitest run --config apps/kampanykorut/vite.config.ts shared/validation/budapest2024KaracsonySimulation.test.ts
 ```
 
-Both sides use the same withdrawal event. Karácsony has three ways to keep
-Szentkirályi in the race, all through ordinary answer effects: weaken Vitézy, keep a
-lead of more than 15 points, or keep the Fidesz voters with their own candidate
-(6A, 8C, 22A, 25B, 28/N-C). A fourth lever works after the withdrawal: the
-"Fidesz candidate" frame (7A, 25A) makes 27/V-A and 27/V-B take more voters from
-Vitézy. These are `CONDITIONAL` entries, so the event's `redistribution` stays fixed.
+The winning line is to split the opposition:
 
-- **Rivals campaign too.** Every answer adds 0.28 points to Vitézy and 0.18 to Szentkirályi from the undecided pool.
-- **Tactical voting.** While Szentkirályi stays in the race, every N-branch answer
-  moves 1.6 points to Vitézy and takes 1.0 from Szentkirályi, so the three-way race
-  is likely but not certain to be won.
+1. **Before the deadline, fight Vitézy.** Attacks on him (7A, 13A–B, 18A, 22B,
+   24B–C) take his voters and send part of them to Szentkirályi. If she stays within
+   3 points of Vitézy at the 26th decision, she does not withdraw. Without such
+   attacks she usually withdraws: Vitézy's voters drift faster (0.30 points per
+   answer) than hers (0.17).
+2. **After the deadline, keep the two challengers level.** From the 27th decision on,
+   the anti-Karácsony vote consolidates behind whichever challenger leads the other by
+   3 points or more: 3 points move from the third to the second after every
+   decision (`CONSOLIDATION`). Lifting Vitézy (27/N-C, 28/N-C, 28/N-D, 30/N-D) or
+   Szentkirályi (27/N-B, 28/N-B) keeps them level. Lifting either one too far starts
+   the consolidation in the other direction.
+
+The consolidation events are gated on any answer to `bp2024_karacsony_01`, so they
+never fire on the Vitézy side.
+
+If Szentkirályi withdraws, the "Fidesz candidate" frame (7A, 25A) makes 27/V-A and
+27/V-B take more voters from Vitézy. These are `CONDITIONAL` entries, so the
+event's `redistribution` stays fixed.
 
 Simulated results (300 games per row, district boost every second turn):
 
-| Play                                      | Szentkirályi withdraws | Karácsony wins |
-| ----------------------------------------- | ---------------------- | -------------- |
-| random answers                            | 83%                    | 29%            |
-| documented real answers, random elsewhere | 99%                    | 55% (+0.2)     |
-| one strategy, random elsewhere            | 37–91%                 | 78–87%         |
-| best answer each turn                     | 0%                     | wins by 9      |
-| keep Szentkirályi ahead of Vitézy         | 0%                     | wins by 7      |
-| worst answer each turn                    | 100%                   | loses by 10    |
+| Play                                                    | Szentkirályi withdraws | Karácsony wins |
+| ------------------------------------------------------- | ---------------------- | -------------- |
+| random answers                                          | 83%                    | 18%            |
+| documented real answers, random elsewhere               | 98%                    | 46% (−0.1 pts) |
+| one strategy, random elsewhere                          | 36–89%                 | 45–61%         |
+| split plan: attacks before, best answer in the N branch | 0%                     | 100%           |
+| best answer each turn                                   | 0%                     | 100%           |
+| keep Szentkirályi ahead of Vitézy every turn            | 0%                     | 0%             |
+| worst answer each turn                                  | 100%                   | 0%             |
 
-With random answers Karácsony wins 7% of the games where Szentkirályi withdraws and
-nearly all of the others.
+With random answers Karácsony wins almost none of the games where Szentkirályi
+withdraws and about half of the others. Only the documented "Fidesz candidate"
+frame makes the two-way race close.
 
 ## Simulating
 

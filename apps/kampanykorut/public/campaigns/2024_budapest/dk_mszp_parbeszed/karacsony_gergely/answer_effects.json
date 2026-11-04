@@ -8,9 +8,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -21,9 +21,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.2,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.18,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -34,9 +34,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -48,8 +48,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.3,
-              "vitezy_david": 0.82,
-              "szentkiralyi_alexandra": 0.38
+              "vitezy_david": 0.84,
+              "szentkiralyi_alexandra": 0.37
             }
           }
         ]
@@ -65,9 +65,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -78,9 +78,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -91,9 +91,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.55,
-              "szentkiralyi_alexandra": 0.38
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.57,
+              "szentkiralyi_alexandra": 0.37
             }
           }
         ]
@@ -105,8 +105,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.06,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -122,9 +122,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -136,8 +136,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.06,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -148,9 +148,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -161,9 +161,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -179,9 +179,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.24,
-              "szentkiralyi_alexandra": 0.38,
-              "vitezy_david": 0.28
+              "karacsony_gergely": 0.216,
+              "szentkiralyi_alexandra": 0.37,
+              "vitezy_david": 0.3
             }
           }
         ]
@@ -192,9 +192,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -205,9 +205,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.2,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.18,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -218,9 +218,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -236,9 +236,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -249,9 +249,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -263,8 +263,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.18,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.38
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.37
             }
           }
         ]
@@ -275,9 +275,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "szentkiralyi_alexandra": 0.28,
-              "vitezy_david": 0.28
+              "karacsony_gergely": 0.072,
+              "szentkiralyi_alexandra": 0.27,
+              "vitezy_david": 0.3
             }
           }
         ]
@@ -293,9 +293,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "szentkiralyi_alexandra": 0.68,
-              "vitezy_david": 0.1
+              "karacsony_gergely": 0.108,
+              "szentkiralyi_alexandra": 0.67,
+              "vitezy_david": 0.12
             }
           }
         ]
@@ -306,9 +306,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "szentkiralyi_alexandra": -0.14,
-              "vitezy_david": 0.28
+              "karacsony_gergely": 0.108,
+              "szentkiralyi_alexandra": -0.15,
+              "vitezy_david": 0.3
             }
           }
         ]
@@ -319,9 +319,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -332,9 +332,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "szentkiralyi_alexandra": 0.48,
-              "vitezy_david": 0.28
+              "karacsony_gergely": 0.072,
+              "szentkiralyi_alexandra": 0.47,
+              "vitezy_david": 0.3
             }
           }
         ]
@@ -350,9 +350,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": -0.06,
+              "szentkiralyi_alexandra": 0.37
             }
           }
         ]
@@ -363,9 +363,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -376,8 +376,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.64,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.66,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -389,8 +389,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.06,
-              "vitezy_david": 0.01,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.03,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -406,9 +406,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -419,9 +419,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.64,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.66,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -432,9 +432,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "szentkiralyi_alexandra": 0.58,
-              "vitezy_david": 0.19
+              "karacsony_gergely": 0.072,
+              "szentkiralyi_alexandra": 0.57,
+              "vitezy_david": 0.21
             }
           }
         ]
@@ -446,8 +446,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.12,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -463,9 +463,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -477,8 +477,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.06,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -489,9 +489,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -502,9 +502,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -520,9 +520,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 0.55,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.57,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -533,9 +533,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -546,9 +546,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.01,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.03,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -559,9 +559,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -577,9 +577,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "szentkiralyi_alexandra": 0.38,
-              "vitezy_david": 0.28
+              "karacsony_gergely": 0.144,
+              "szentkiralyi_alexandra": 0.37,
+              "vitezy_david": 0.3
             }
           }
         ]
@@ -590,9 +590,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -603,9 +603,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -616,9 +616,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -634,9 +634,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "szentkiralyi_alexandra": 0.38,
-              "vitezy_david": 0.28
+              "karacsony_gergely": 0.144,
+              "szentkiralyi_alexandra": 0.37,
+              "vitezy_david": 0.3
             }
           }
         ]
@@ -647,8 +647,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -659,9 +659,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -673,8 +673,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.12,
-              "vitezy_david": 0.55,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.57,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -690,9 +690,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": -0.06,
+              "szentkiralyi_alexandra": 0.37
             }
           }
         ]
@@ -703,9 +703,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": -0.08,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": -0.15,
+              "szentkiralyi_alexandra": 0.37
             }
           }
         ]
@@ -716,9 +716,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -729,9 +729,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -747,8 +747,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           },
           {
@@ -772,8 +772,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           },
           {
@@ -797,9 +797,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -810,9 +810,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -828,9 +828,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.55,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.57,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -841,9 +841,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -855,8 +855,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.06,
-              "vitezy_david": -0.08,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": -0.06,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ],
@@ -887,9 +887,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -905,9 +905,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.55,
-              "szentkiralyi_alexandra": 0.28
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.57,
+              "szentkiralyi_alexandra": 0.27
             }
           }
         ]
@@ -918,9 +918,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           },
           {
@@ -944,9 +944,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.01,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.03,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -957,9 +957,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -975,9 +975,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -989,8 +989,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.12,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1001,9 +1001,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1015,8 +1015,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.06,
-              "szentkiralyi_alexandra": 0.28,
-              "vitezy_david": 0.28
+              "szentkiralyi_alexandra": 0.27,
+              "vitezy_david": 0.3
             }
           }
         ]
@@ -1032,9 +1032,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.01,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": -0.06,
+              "szentkiralyi_alexandra": 0.37
             }
           }
         ]
@@ -1045,9 +1045,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1058,8 +1058,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1070,9 +1070,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1088,9 +1088,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.2,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.18,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1101,9 +1101,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1114,9 +1114,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1127,9 +1127,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1145,9 +1145,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ],
@@ -1178,8 +1178,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.12,
-              "vitezy_david": 0.82,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.84,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1190,8 +1190,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.55,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.57,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1202,9 +1202,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1220,9 +1220,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ],
@@ -1239,7 +1239,7 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "karacsony_gergely": 0.08
+                  "karacsony_gergely": 0.072
                 }
               }
             ]
@@ -1252,9 +1252,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1265,8 +1265,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1277,9 +1277,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.55,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.57,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1295,9 +1295,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "szentkiralyi_alexandra": 0.68,
-              "vitezy_david": 0.1
+              "karacsony_gergely": 0.108,
+              "szentkiralyi_alexandra": 0.67,
+              "vitezy_david": 0.12
             }
           }
         ]
@@ -1308,9 +1308,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": -0.08,
-              "szentkiralyi_alexandra": 0.28
+              "karacsony_gergely": 0.072,
+              "vitezy_david": -0.15,
+              "szentkiralyi_alexandra": 0.47
             }
           }
         ]
@@ -1321,9 +1321,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1334,9 +1334,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.1
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.09
             }
           }
         ]
@@ -1352,9 +1352,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.55,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.57,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1365,9 +1365,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1378,9 +1378,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1391,9 +1391,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ],
@@ -1410,7 +1410,7 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "karacsony_gergely": 0.12
+                  "karacsony_gergely": 0.108
                 }
               }
             ]
@@ -1428,9 +1428,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ],
@@ -1447,7 +1447,7 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "karacsony_gergely": 0.08
+                  "karacsony_gergely": 0.072
                 }
               }
             ]
@@ -1460,9 +1460,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.03,
+              "szentkiralyi_alexandra": 0.37
             }
           }
         ]
@@ -1473,9 +1473,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.01,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": -0.06,
+              "szentkiralyi_alexandra": 0.37
             }
           }
         ]
@@ -1486,9 +1486,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1504,9 +1504,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ],
@@ -1523,7 +1523,7 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "karacsony_gergely": 0.08
+                  "karacsony_gergely": 0.072
                 }
               }
             ]
@@ -1536,9 +1536,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "szentkiralyi_alexandra": 0.78,
-              "vitezy_david": 0.28
+              "karacsony_gergely": 0.072,
+              "szentkiralyi_alexandra": 0.77,
+              "vitezy_david": 0.3
             }
           }
         ]
@@ -1549,8 +1549,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1561,9 +1561,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1579,9 +1579,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           },
           {
@@ -1605,8 +1605,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           },
           {
@@ -1630,9 +1630,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.01,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.03,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1643,8 +1643,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           },
           {
@@ -1673,9 +1673,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ],
@@ -1692,7 +1692,7 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "vitezy_david": -0.36
+                  "vitezy_david": -0.54
                 }
               }
             ]
@@ -1709,7 +1709,7 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "vitezy_david": -0.27
+                  "vitezy_david": -0.45
                 }
               }
             ]
@@ -1722,9 +1722,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": -0.26,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": -0.24,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ],
@@ -1754,9 +1754,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1767,9 +1767,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.01,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.03,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1785,9 +1785,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.2,
-              "vitezy_david": 1.88,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.18,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1798,9 +1798,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "szentkiralyi_alexandra": -0.42,
-              "vitezy_david": 1.7
+              "karacsony_gergely": 0.108,
+              "vitezy_david": -0.6,
+              "szentkiralyi_alexandra": 1.17
             }
           }
         ]
@@ -1811,9 +1811,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 1.61,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 1.47,
+              "szentkiralyi_alexandra": -0.87
             }
           }
         ]
@@ -1824,9 +1824,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": -0.18,
-              "vitezy_david": 2.78,
-              "szentkiralyi_alexandra": -1.62
+              "karacsony_gergely": -0.24,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1842,9 +1842,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ],
@@ -1893,9 +1893,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1906,9 +1906,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1919,9 +1919,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.01,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.03,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1937,9 +1937,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 1.88,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -1950,9 +1950,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 1.52,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.072,
+              "vitezy_david": -0.6,
+              "szentkiralyi_alexandra": 1.17
             }
           }
         ]
@@ -1963,9 +1963,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "szentkiralyi_alexandra": -0.42,
-              "vitezy_david": 1.61
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 1.2,
+              "szentkiralyi_alexandra": -0.63
             }
           }
         ]
@@ -1976,9 +1976,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 2.42,
-              "szentkiralyi_alexandra": -1.46
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 2.28,
+              "szentkiralyi_alexandra": -1.59
             }
           }
         ]
@@ -1994,9 +1994,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.55,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.57,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2007,9 +2007,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.24,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.216,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2020,9 +2020,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2033,9 +2033,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2051,9 +2051,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 1.88,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2064,9 +2064,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 1.88,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2077,9 +2077,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 1.7,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2090,9 +2090,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 1.88,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2108,9 +2108,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2121,9 +2121,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2134,9 +2134,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.2,
-              "vitezy_david": 0.19,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.18,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2148,8 +2148,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.18,
-              "vitezy_david": 0.46,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.48,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2165,9 +2165,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 1.79,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2178,9 +2178,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.04,
-              "vitezy_david": 1.88,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.036,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2191,9 +2191,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 1.79,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2205,8 +2205,8 @@
             "type": "uniform-swing",
             "params": {
               "karacsony_gergely": -0.18,
-              "vitezy_david": 2.15,
-              "szentkiralyi_alexandra": -0.82
+              "vitezy_david": 0.84,
+              "szentkiralyi_alexandra": -0.07
             }
           }
         ]
@@ -2222,9 +2222,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2235,9 +2235,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2248,9 +2248,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "vitezy_david": 0.1,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.144,
+              "vitezy_david": 0.12,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2261,9 +2261,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2279,9 +2279,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.16,
-              "szentkiralyi_alexandra": -0.62,
-              "vitezy_david": 1.88
+              "karacsony_gergely": 0.144,
+              "szentkiralyi_alexandra": 0.37,
+              "vitezy_david": 0.3
             }
           }
         ]
@@ -2292,9 +2292,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 1.88,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2305,9 +2305,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 1.79,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.21,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2318,9 +2318,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.12,
-              "vitezy_david": 1.88,
-              "szentkiralyi_alexandra": -0.82
+              "karacsony_gergely": 0.108,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2336,8 +2336,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           },
           {
@@ -2369,8 +2369,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           },
           {
@@ -2394,9 +2394,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.28,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.3,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
@@ -2407,9 +2407,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "karacsony_gergely": 0.08,
-              "vitezy_david": 0.37,
-              "szentkiralyi_alexandra": 0.18
+              "karacsony_gergely": 0.072,
+              "vitezy_david": 0.39,
+              "szentkiralyi_alexandra": 0.17
             }
           }
         ]
