@@ -2,55 +2,694 @@
   {
     "questionId": "bp2024_szentkiralyi_01",
     "answers": [
-      { "answerId": "A", "text": "[SZEMPONT] Jogilag védhető, a párt elégedett. Ára: hidegnek hat, és ez a mondat a kampány végéig kísér." },
-      { "answerId": "B", "text": "[SZEMPONT] Emberileg erős, a budapesti bizonytalanoknál hitelesít. Ára: a kormány a botrány közepén nem akar bocsánatkérést, a pártközpont rossz néven veszi." },
-      { "answerId": "C", "text": "[SZEMPONT] Szóvivői fegyelem. Ára: kitérésnek látszik, a sajtó újra és újra visszakérdez." },
-      { "answerId": "D", "text": "[SZEMPONT] Kormányzati szempontból biztonságos. Ára: átlátszó témaváltás, a kérdés megválaszolatlan marad." }
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Jogilag védhető, a párt elégedett. Ára: hidegnek hat, és ez a mondat a kampány végéig kísér."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Emberileg erős, a budapesti bizonytalanoknál hitelesít. Ára: a kormány a botrány közepén nem akar bocsánatkérést, a pártközpont rossz néven veszi."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Szóvivői fegyelem. Ára: kitérésnek látszik, a sajtó újra és újra visszakérdez."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Kormányzati szempontból biztonságos. Ára: átlátszó témaváltás, a kérdés megválaszolatlan marad."
+      }
     ]
   },
   {
     "questionId": "bp2024_szentkiralyi_02",
     "answers": [
-      { "answerId": "A", "text": "[SZEMPONT] Fegyelmezett, a párt megbízhatónak lát. Ára: ha mégis te leszel, a tagadásaidat visszajátsszák." },
-      { "answerId": "B", "text": "[SZEMPONT] Budapesti kötődést épít. Ára: a pártközpont nem szereti, ha a jelölt a döntés előtt beszél." },
-      { "answerId": "C", "text": "[SZEMPONT] Az önálló arculat alapja. Ára: belső súrlódás; a pártközpont emlékezni fog rá a kampányfinisben." },
-      { "answerId": "D", "text": "[SZEMPONT] Kockázatmentes. Ára: a riválisok töltik ki a csendet." }
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Fegyelmezett, a párt megbízhatónak lát. Ára: ha mégis te leszel, a tagadásaidat visszajátsszák."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Budapesti kötődést épít. Ára: a pártközpont nem szereti, ha a jelölt a döntés előtt beszél."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Az önálló arculat alapja. Ára: belső súrlódás; a pártközpont emlékezni fog rá a kampányfinisben."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Kockázatmentes. Ára: a riválisok töltik ki a csendet."
+      }
     ]
   },
   {
     "questionId": "bp2024_szentkiralyi_03",
     "answers": [
-      { "answerId": "A", "text": "[SZEMPONT] A törzsszavazók és a kormány elégedett. Ára: a városi szavazóknak a kormány jelöltje leszel, mielőtt jelölt lennél." },
-      { "answerId": "B", "text": "[SZEMPONT] Az első önálló budapesti gesztus. Ára: nyilvános feltétel egy kormányzati zászlóshajó-projekttel szemben." },
-      { "answerId": "C", "text": "[SZEMPONT] Semmit sem kockáztatsz. Ára: másnaptól jelöltként is számon kérik rajtad." },
-      { "answerId": "D", "text": "[SZEMPONT] A Tarlós által is hangoztatott lobbierő érve. Ára: a riválisok a „kormány szócsöve” vádat igazolva látják." }
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A törzsszavazók és a kormány elégedett. Ára: a városi szavazóknak a kormány jelöltje leszel, mielőtt jelölt lennél."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Az első önálló budapesti gesztus. Ára: nyilvános feltétel egy kormányzati zászlóshajó-projekttel szemben."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Semmit sem kockáztatsz. Ára: másnaptól jelöltként is számon kérik rajtad."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] A Tarlós által is hangoztatott lobbierő érve. Ára: a riválisok a „kormány szócsöve” vádat igazolva látják."
+      }
     ]
   },
   {
     "questionId": "bp2024_szentkiralyi_04",
     "answers": [
-      { "answerId": "A", "text": "[SZEMPONT] Őszinte és a párt vonalán van. Ára: Karácsony keretét erősíted meg." },
-      { "answerId": "B", "text": "[SZEMPONT] Elveszi Karácsony és az LMP fő támadását. Ára: kérdés, mennyire hihető egy előző heti kormányszóvivőtől." },
-      { "answerId": "C", "text": "[SZEMPONT] Mozgósítja a törzsszavazókat. Ára: a bizonytalanok nem Gyurcsányra kíváncsiak, és a vitát nem a te terepeden vívod." },
-      { "answerId": "D", "text": "[SZEMPONT] Tapasztalatot mutat. Ára: a Tarlós-korszak vitáit is magadra veszed, és Vitézy ugyanerre az örökségre hivatkozik." }
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Őszinte és a párt vonalán van. Ára: Karácsony keretét erősíted meg."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Elveszi Karácsony és az LMP fő támadását. Ára: kérdés, mennyire hihető egy előző heti kormányszóvivőtől."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Mozgósítja a törzsszavazókat. Ára: a bizonytalanok nem Gyurcsányra kíváncsiak, és a vitát nem a te terepeden vívod."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Tapasztalatot mutat. Ára: a Tarlós-korszak vitáit is magadra veszed, és Vitézy ugyanerre az örökségre hivatkozik."
+      }
     ]
   },
   {
     "questionId": "bp2024_szentkiralyi_05",
     "answers": [
-      { "answerId": "A", "text": "[SZEMPONT] Az idősebb jobboldali szavazók mozgósítása. Ára: Tarlós árnyékában maradsz, holott ő maga sem akar főszereplő lenni." },
-      { "answerId": "B", "text": "[SZEMPONT] Önálló arculat. Ára: Tarlós és hívei sértésnek vehetik." },
-      { "answerId": "C", "text": "[SZEMPONT] Hitelesség, a narrátori tényekkel összhangban. Ára: a riválisok a beismert kudarcokat idézik." },
-      { "answerId": "D", "text": "[SZEMPONT] Közvetlen támadás Vitézy fő erőssége ellen. Ára: Vitézy szakmai vitába húz, ahol ő otthonosabb." }
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Az idősebb jobboldali szavazók mozgósítása. Ára: Tarlós árnyékában maradsz, holott ő maga sem akar főszereplő lenni."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Önálló arculat. Ára: Tarlós és hívei sértésnek vehetik."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Hitelesség, a narrátori tényekkel összhangban. Ára: a riválisok a beismert kudarcokat idézik."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Közvetlen támadás Vitézy fő erőssége ellen. Ára: Vitézy szakmai vitába húz, ahol ő otthonosabb."
+      }
     ]
   },
   {
     "questionId": "bp2024_szentkiralyi_06",
     "answers": [
-      { "answerId": "A", "text": "[SZEMPONT] Nyitottnak és magabiztosnak mutat. Ára: Vitézy napirendjét fogadod el, és a pártközpont nem kér a vitából." },
-      { "answerId": "B", "text": "[SZEMPONT] A párt vonala, mozgósít. Ára: elutasítóként és vitakerülőként lehet beállítani." },
-      { "answerId": "C", "text": "[SZEMPONT] Karácsonyt hozza kellemetlen helyzetbe. Ára: a visszalépés témáját magad tartod napirenden." },
-      { "answerId": "D", "text": "[SZEMPONT] A jobboldali szavazókért vívott harc nyílt vállalása. Ára: Karácsony narratíváját erősíti, hogy ketten ugyanazt a tábort osztjátok." }
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Nyitottnak és magabiztosnak mutat. Ára: Vitézy napirendjét fogadod el, és a pártközpont nem kér a vitából."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A párt vonala, mozgósít. Ára: elutasítóként és vitakerülőként lehet beállítani."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Karácsonyt hozza kellemetlen helyzetbe. Ára: a visszalépés témáját magad tartod napirenden."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] A jobboldali szavazókért vívott harc nyílt vállalása. Ára: Karácsony narratíváját erősíti, hogy ketten ugyanazt a tábort osztjátok."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_07",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Erős, idézhető mondat, a háromszereplős verseny képét erősíti. Ára: Vitézyvel egy szintre emeled magad, ő pedig ezt akarja."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A törzsszavazók értik. Ára: a bizonytalanok Vitézyt nem baloldalinak látják, a vád nem ragad meg."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Komolynak és felülállónak mutat. Ára: a mondat Vitézyé marad, és senki nem cáfolja."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Valódi gyenge pont. Ára: a te kormányzati múltad frissebb, a válasz visszapattanhat."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_08",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A tábor mozgósítására bevált recept. Ára: a bizonytalanok unják, és a program hiánya lesz a téma."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Elveszi a „nincs programja” vádat. Ára: minden számot visszakérdeznek és ellenőriznek."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Jól nézhető és közvetlen. Ára: a műfaj marad, a tartalom továbbra is hiányzik."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Tapasztalatot mutat. Ára: a múltba nézel, és Vitézy ugyanerre az időszakra hivatkozik."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_09",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Kézzelfogható, mindenki tapasztalja. Ára: a takarítás nem nagy politikai ígéret, Karácsony a forráshiányra mutat."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A tábor elvárja. Ára: a zárt ajtós nyitó után a korrupcióellenes üzenet könnyen ironikussá válik."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] A peremkerületi autósok értik. Ára: a közlekedés Vitézy terepe, ott ő a hitelesebb."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Családoknak és időseknek szól, kevéssé támadható. Ára: szétaprózódik, nincs egy erős képe."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_10",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A biztonságérzetre vágyó szavazók értik. Ára: a hajléktalanságot bűncselekményként kezeled, a belváros elfordul."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A legszélesebb közönségnek szól. Ára: drága, és a saját táborod egy része puhának tartja."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Ismerős és megfogható. Ára: a lezárás csak áthelyezi a problémát, és a riválisok ezt felhozzák."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Elveszi Vitézy egyik fő témáját. Ára: a kormányzati pénz ígérete a „kormány jelöltje” képet erősíti."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_11",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A párt elégedett. Ára: a kézfogás megtagadása a nap képe lesz, és az elégedetlen szavazók Magyar mellé állnak."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Gesztus a bizonytalanok felé. Ára: a pártközpontban nem fogják elfelejteni."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Leveszi a feszültséget. Ára: a felvétel így is terjed, csak nélküled."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Egy keretbe rendezi a riválisokat. Ára: Magyar Pétert a főpolgármesteri verseny szereplőjévé teszed, holott nem is indul."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_12",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A törzsszavazók lelkesek. Ára: Budapesten Orbán megosztó, és a „kormány szóvivője” vád beigazolódik."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Az önálló arculatot építi. Ára: a pártközpont szerint nem élsz a legerősebb kártyáddal."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Kézzelfogható ígéret. Ára: ha a vállalás elmarad, a te hiteled sérül."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Pozitív múltat idéz fel. Ára: a Tarlós-korszak vitái is visszajönnek vele."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_13",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A peremkerületi szavazók egyetértenek. Ára: a belvárosban a nap vicce leszel."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Önkritikus és meglepő. Ára: a saját táborod gyengeségnek láthatja."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Visszafordítja a támadást. Ára: a vita a méhlegelőről szól tovább, nem a kátyúkról."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Gyorsan lecseng. Ára: a mém él tovább, és csak ők mondják a magukét."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_14",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Biztos szavazatok. Ára: azokat éred el, akik amúgy is rád szavaznának."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Itt dől el a második hely. Ára: Vitézy is itt kampányol, drága a terep."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Bátor és látványos. Ára: kevés szavazat kis hozamért."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Olcsó, széles elérés. Ára: a lájkok nem mennek el szavazni."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_15",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Hihető, a tábor szereti. Ára: a főváros függését vállalod nyíltan."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A legerősebb önálló gesztus. Ára: nyílt ütközés a kormánnyal, kampányidőben."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] A párt vonala. Ára: aki látja a 75 milliárdot, nem hiszi el."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Működő modellt idéz. Ára: azóta a hozzájárulás sokszorosára nőtt, ezt a riválisok felhozzák."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_16",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A tábor és Tarlós elégedett. Ára: Vitézy szakmai vitába húz, ahol ő otthonosabb."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Közvetlenül Vitézy fő erőssége ellen megy. Ára: kicsinyesnek tűnhet, és Vitézy szavazói összezárnak."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] A leghitelesebb válasz. Ára: a beismert kudarcokat idézik majd."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Kilépsz Tarlós árnyékából. Ára: a riválisok szerint menekülsz a múlt elől."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_17",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A családos szavazók értik. Ára: a bérlő fiatalokat nem éri el, és őket keresi mindenki."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Budapesti, kézzelfogható ígéret. Ára: a Lakásügynökséghez hasonlít, Karácsony szerint ellopod az ötletét."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Mindkét riválist gyengíti. Ára: saját ajánlat nélkül csak bírálónak látszol."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Nagy léptékű és hihető. Ára: évekig tart, és a kormánytól függ."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_18",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Elhozza az autós szavazókat, Grundtnertől is. Ára: a belvárosban és a fiatalok körében elveszít."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Széles réteget ér el. Ára: kevésbé éles, Grundtner hangosabb."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Emlékezetes. Ára: személyeskedésnek látszik, és Karácsony TikTokon visszavág."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Szakmailag erős. Ára: Vitézy terepe, ő hitelesebben mondja."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_19",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A párt vonala, a peremkerületekben működik. Ára: az érintett kerületek lakói ellened fordulnak."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Az önálló jelölt képe. Ára: nyílt feltétel a kormány zászlóshajó-projektjeivel szemben."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Megosztja Vitézy táborát. Ára: Vitézy szakmai érvekkel jól védekezik."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Elkerülöd a kényes témát. Ára: a riválisok szerint kitérsz."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_20",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Kockázatmentes. Ára: a volt kormányszóvivő, aki nem áll a sajtó elé, saját magát cáfolja."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Hiteles és bátor. Ára: egy rossz interjú napokig visz."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Védhető. Ára: ígéretnek hangzik, nem tettnek."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Személyes kapcsolat. Ára: lassú, és a sajtókérdés megmarad."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_21",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Egyenrangú szereplővé tesz. Ára: ellenséges közönség előtt két tapasztalt vitázóval kell szembenézned."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A párt vonala, nem kockáztatsz. Ára: vitakerülőnek látszol, és nélküled is lesz vita."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Kompromisszumnak tűnik. Ára: a riválisok nem mennek el, a vita elmarad, a vád marad."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Leveszi Karácsonyról a figyelmet. Ára: elismered, hogy a második helyért futsz."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_22",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Tiszta üzenet, a tábor érti. Ára: Vitézy zavartalanul erősödik."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A második helyért ez a legközvetlenebb út. Ára: Karácsony nevet a markába."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Kevéssé támadható. Ára: a hajrában a pozitív üzenet halkan szól."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Egy keret, két ellenfél. Ára: Vitézyt nem sokan tartják baloldalinak."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_23",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A tábor egységes marad. Ára: a Tisza-szavazók főpolgármesterként sem rád fognak szavazni."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Új szavazókat nyithat meg. Ára: a pártközpont ezt árulásnak látja."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Karácsonyt gyengíti. Ára: a Tisza ereje a te listádnak is fáj."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Fegyelmezett. Ára: a hét legnagyobb politikai híréről nincs mondanivalód."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_24_vita",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A legjobb esély meggyőzni a bizonytalanokat. Ára: kevésbé látványos, a klipekben a riválisok maradnak meg."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A tábor szereti. Ára: a teremben kinevetnek, és a klip ellened megy."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Karácsonyt szorítja sarokba. Ára: Vitézy is profitál belőle."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] A második helyért ez a legélesebb. Ára: Vitézy visszakérdez a te kormányzati múltadra."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_24_nelkul",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A tábor elfogadja. Ára: a bizonytalanok szemében kifogás."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Megmutatod, hogy van mondanivalód. Ára: a videó nem vita, a hiány megmarad."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Mindkét riválist gyengíti. Ára: a vitát nézők szerint az egyikük nyert, és nem te."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Gyorsan lecseng. Ára: a vita két nap alatt a te távolmaradásodról szól."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_25",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A tábor teljes mozgósítása. Ára: a budapesti bizonytalanok nem a háborúról akarnak dönteni."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Az önálló jelölt képe. Ára: a pártközpont szerint egyéni utakon jársz a hajrában."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Mindkét fél elégedett lehet. Ára: egyik üzenet sem szól igazán erősen."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] A tábor ismeri. Ára: Karácsony és Vitézy is a Gyurcsány-témát várja tőled, és felkészültek."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_26",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Megerősíti a tábort. Ára: ha a párt mégis másképp döntene, a te szavad sérül."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Nem zársz ki semmit. Ára: a bizonytalanság a szavazóidat is elbizonytalanítja."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Visszafordítja a nyomást. Ára: Vitézy nevet rajta, a mérésekkel érvel."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Gyors és szokásos. Ára: a pletyka él tovább."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_27",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Önálló jelöltként zárod a kampányt. Ára: ha veszítesz, egyedül viseled."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A tábor teljes mozgósítása. Ára: a „kormány jelöltje” kép marad."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] A Karácsony-ellenes szavazókért vívott harc nyílt vállalása. Ára: ha Vitézy áll jobban, a szavazóid felé fordulnak."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Ismerős keret. Ára: a bizonytalanokat nem ez győzi meg."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_28",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A legnagyobb tartalék. Ára: Vitézy szavazói közül sokan sosem szavaznának fideszes jelöltre."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Biztos szavazatok. Ára: a második helyért folyó versenyt átengeded."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Gyengíti Vitézyt. Ára: az ő szavazói ettől sem jönnek hozzád, inkább otthon maradnak."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Kevéssé támadható. Ára: a hajrában kevés a hatása."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_29",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Egyszerű, a tábor érti. Ára: a nem fideszes szavazókat nem éri el."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Új szavazókat nyit meg. Ára: a pártközpont nem örül a kettős szavazásnak."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Felelősnek hangzik. Ára: a főpolgármesteri versenyről vonja el a figyelmet."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Pontosan céloz. Ára: Vitézy kampánya ugyanezt mondja fordítva."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_30",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] Széles kör. Ára: kevesen jönnek, és a törzstábor gyanakszik."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A tábor egységes marad. Ára: a Tisza-szavazók Vitézy felé mozdulnak."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Karácsonyt gyengíti. Ára: Vitézy jobban profitál belőle, mint te."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Személyes és emlékezetes. Ára: Magyar Péter valószínűleg reagál, és nem a te javadra."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_31",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A bizonytalanoknak szól. Ára: a tábor harciasabb zárást várt."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] A tábor mozgósítása. Ára: a bizonytalanokat nem ez győzi meg."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Nosztalgia és tapasztalat. Ára: Vitézy is erre a korszakra hivatkozik."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] A taktikus szavazókat célozza. Ára: ha Vitézy áll jobban, nekik ugyanez az érv őt jelenti."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_32",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "[SZEMPONT] A legbiztosabb hozam. Ára: azokat éred el, akik amúgy is jönnének."
+      },
+      {
+        "answerId": "B",
+        "text": "[SZEMPONT] Itt van a legtöbb mozgatható szavazó. Ára: Vitézy is itt van."
+      },
+      {
+        "answerId": "C",
+        "text": "[SZEMPONT] Ha működik, kettőt ér. Ára: a legkisebb hozam."
+      },
+      {
+        "answerId": "D",
+        "text": "[SZEMPONT] Széles és olcsó. Ára: a telefonos megkeresés vasárnap már keveset mozdít."
+      }
     ]
   }
 ]
