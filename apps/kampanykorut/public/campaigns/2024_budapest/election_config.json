@@ -42,6 +42,19 @@
         }
       ],
       "playableCandidates": ["vitezy_david"]
+    },
+    {
+      "id": "fidesz_kdnp",
+      "label": "Fidesz–KDNP",
+      "description": "A kormánypártok jelöltje, a Fidesz–KDNP fővárosi listavezetője.",
+      "mainCandidates": [
+        {
+          "id": "szentkiralyi_alexandra",
+          "label": "Szentkirályi Alexandra",
+          "description": "Volt kormányszóvivő, Tarlós István főpolgármester-helyettese 2014 és 2019 között."
+        }
+      ],
+      "playableCandidates": ["szentkiralyi_alexandra"]
     }
   ],
   "electionAssets": [
