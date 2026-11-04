@@ -1,0 +1,68 @@
+[
+  {
+    "id": "bp2024_szentkiralyi_01",
+    "title": "[MUNKACÍM] Bárczy-díj a Kormányinfón",
+    "question": "[HELYZET – 2024. február 16., Kormányinfó] A kegyelmi botrány közepén kormányszóvivőként ülsz a pulpitusnál. Egy újságíró felhozza: 2015-ben főpolgármester-helyettesként te adtad át a Bárczy István-díjat a bicskei gyermekotthon igazgatójának, akit később gyermekek elleni szexuális bűncselekményekért elítéltek. Válaszolnod kell, mielőtt bárki budapesti jelöltként tekintene rád.",
+    "possibleAnswers": [
+      { "id": "A", "label": "[IRÁNY – pártközpont] Hivatalos vonal: a díjról a Közgyűlés döntött, a jelölést mások nyújtották be, a korábbi rendőrségi eljárás akkor lezárult." },
+      { "id": "B", "label": "[IRÁNY – önálló] Személyes felelősségvállalás: sajnálatot fejezel ki az áldozatoknak, és elismered, hogy a díjat utólag nem kellett volna odaadni." },
+      { "id": "C", "label": "[IRÁNY – pártközpont] Kitérés: szóvivőként a kormány döntéseit képviseled, egy kilenc évvel korábbi fővárosi ügyet nem kommentálsz a pulpitusról." },
+      { "id": "D", "label": "[IRÁNY – pártközpont] Átfordítás: a kormány bejelentett gyermekvédelmi szigorításairól beszélsz, a díj kérdését röviden lezárod." }
+    ]
+  },
+  {
+    "id": "bp2024_szentkiralyi_02",
+    "title": "[MUNKACÍM] Jövő héten mi leszek?",
+    "question": "[HELYZET – 2024. február–március eleje] Hetek óta a te neved kering a Fidesz lehetséges főpolgármester-jelöltjeként, mellette Ferencz Orsolyáé és Pokorni Zoltáné. A Kormányinfón ironikusan hárítasz: a múlt héten főpolgármesternek kiáltottak ki, várod, mi leszel a jövő héten. A döntés még nincs meg, de a kérdés minden megszólalásodnál előkerül.",
+    "possibleAnswers": [
+      { "id": "A", "label": "[IRÁNY – pártközpont] Tagadás és fegyelem: nem kaptál felkérést, a döntés a párté, addig szóvivő vagy." },
+      { "id": "B", "label": "[IRÁNY – önálló] Nyitott ajtó: elmondod, hogy Budapest a városod, és ha felkérnek, komolyan veszed." },
+      { "id": "C", "label": "[IRÁNY – önálló] Feltételek a háttérben: a párttól budapesti önállóságot és saját stábot kérsz, mielőtt igent mondasz." },
+      { "id": "D", "label": "[IRÁNY – semleges] Csend: nem nyilatkozol, de a közösségi médiában budapesti témákra váltasz." }
+    ]
+  },
+  {
+    "id": "bp2024_szentkiralyi_03",
+    "title": "[MUNKACÍM] Mini-Dubaj egy nappal előtte",
+    "question": "[HELYZET – 2024. március 13.] A kormány bejelenti: egy emírségekbeli fejlesztő nagyjából ötmilliárd euróból új városrészt épít a rákosrendezői pályaudvar helyén. A főváros és a környező kerületek nem lelkesek, cserébe nagy infrastrukturális beruházásokat várnak. Te még kormányszóvivő vagy, de másnap ül össze a budapesti választmány.",
+    "possibleAnswers": [
+      { "id": "A", "label": "[IRÁNY – pártközpont] Kiállsz mellette: történelmi befektetés, munkahelyek, és Budapest végre a kormánnyal együtt fejlődik." },
+      { "id": "B", "label": "[IRÁNY – önálló] Feltételhez kötöd: budapestiként közlekedési kapcsolatot, zöldterületet és a kerületek bevonását kéred." },
+      { "id": "C", "label": "[IRÁNY – pártközpont] Kormányügyként kezeled: a kormány nevében ismerteted, saját budapesti véleményt nem fűzöl hozzá." },
+      { "id": "D", "label": "[IRÁNY – pártközpont] Lobbierőként kínálod: ilyen projektből csak az tud a városnak hasznot kiharcolni, aki szót ért a kormánnyal." }
+    ]
+  },
+  {
+    "id": "bp2024_szentkiralyi_04",
+    "title": "[MUNKACÍM] Nem a kormány szóvivője",
+    "question": "[HELYZET – 2024. március 14–15.] A budapesti választmány egyhangúlag téged javasol, a kormányszóvivői és a kormánybiztosi posztodat is elhagyod. Karácsony azonnal visszaüt: a főpolgármester nem a kormány szóvivője, hanem a budapestieké. Az LMP szerint Budapest élén nem állhat a kormány szócsöve. Mi az első üzeneted jelöltként?",
+    "possibleAnswers": [
+      { "id": "A", "label": "[IRÁNY – pártközpont] Együttműködés mint ígéret: a főpolgármesternek dolgoznia kell a kormánnyal, és te vagy az, aki ezt képes megtenni." },
+      { "id": "B", "label": "[IRÁNY – önálló] Saját budapesti hang: kijelented, hogy a város érdekében a kormánnyal is vitába szállsz, ha kell." },
+      { "id": "C", "label": "[IRÁNY – pártközpont] Gyurcsány-keret: a vitát Karácsonyról Gyurcsányra fordítod, aki szerinted valójában irányítja a Városházát." },
+      { "id": "D", "label": "[IRÁNY – Tarlós-örökség] Folytonosság: a 2010–2019-es városvezetésre hivatkozol, ahol helyettesként már bizonyítottál." }
+    ]
+  },
+  {
+    "id": "bp2024_szentkiralyi_05",
+    "title": "[MUNKACÍM] Apa és lánya",
+    "question": "[HELYZET – 2024. március 19–25.] Tarlós István a nyilvánosság előtt melletted áll: szerinte rád szavazna, jól kommunikálsz, és nálad a legnagyobb a fejlesztési lobbierő. Apa–lánya kapcsolatnak nevezi a viszonyotokat. Közben azt mondja, nem akar a kampány főszereplője lenni, Vitézyt pedig nyíltan bírálja: szerinte a 4-es metróban nullához közeli szerepe volt, és nem ő alapította a BKK-t.",
+    "possibleAnswers": [
+      { "id": "A", "label": "[IRÁNY – Tarlós-örökség] Tarlóst a kampány arcává teszed: közös fellépések, a 2010–2019-es eredmények a középpontban." },
+      { "id": "B", "label": "[IRÁNY – önálló] Megköszönöd a támogatását, de jelzed: saját programmal és saját csapattal indulsz." },
+      { "id": "C", "label": "[IRÁNY – Tarlós-örökség] Vállalod a korszak mérlegét: az eredmények mellett a kudarcokat és a csúszásokat is." },
+      { "id": "D", "label": "[IRÁNY – háromszereplős] Felerősíted Tarlós Vitézy-kritikáját: a BKK- és metróérdemek nem az övéi, hanem a városvezetésé." }
+    ]
+  },
+  {
+    "id": "bp2024_szentkiralyi_06",
+    "title": "[MUNKACÍM] Hét pont, egy feltétel",
+    "question": "[HELYZET – 2024. március 19–20.] Vitézy levelet ír a jelölteknek: írjanak alá egy hétpontos vállalási listát, amelyben nyilvános vita is szerepel. Karácsony előbb szívesen vitázna, másnap feltételt szab: csak akkor, ha te és Vitézy közül valamelyik visszalép, mert szerinte csak az egyikőtök valódi jelölt. Te vagy az, akinek a visszalépését a két rivális egyaránt felveti.",
+    "possibleAnswers": [
+      { "id": "A", "label": "[IRÁNY – önálló] Aláírod Vitézy vállalásait, és nyilvános vitára hívod mindkét riválist." },
+      { "id": "B", "label": "[IRÁNY – pártközpont] Elutasítod a levelet: Vitézy szerinted nem önálló, Karácsony pedig Gyurcsány embere, velük nincs miről vitázni." },
+      { "id": "C", "label": "[IRÁNY – háromszereplős] Karácsony feltételét fordítod ellene: aki vitafeltételt szab, az fél a megmérettetéstől, és te nem lépsz vissza senki kedvéért." },
+      { "id": "D", "label": "[IRÁNY – háromszereplős] Vitézyt célzod: ő a Fidesz-kormány volt államtitkára, és a kettőtök közti választás valójában arról szól, ki a hiteles jobboldali jelölt." }
+    ]
+  }
+]

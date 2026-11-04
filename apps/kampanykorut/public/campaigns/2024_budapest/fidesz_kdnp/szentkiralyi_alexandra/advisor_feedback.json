@@ -1,0 +1,56 @@
+[
+  {
+    "questionId": "bp2024_szentkiralyi_01",
+    "answers": [
+      { "answerId": "A", "text": "[SZEMPONT] Jogilag védhető, a párt elégedett. Ára: hidegnek hat, és ez a mondat a kampány végéig kísér." },
+      { "answerId": "B", "text": "[SZEMPONT] Emberileg erős, a budapesti bizonytalanoknál hitelesít. Ára: a kormány a botrány közepén nem akar bocsánatkérést, a pártközpont rossz néven veszi." },
+      { "answerId": "C", "text": "[SZEMPONT] Szóvivői fegyelem. Ára: kitérésnek látszik, a sajtó újra és újra visszakérdez." },
+      { "answerId": "D", "text": "[SZEMPONT] Kormányzati szempontból biztonságos. Ára: átlátszó témaváltás, a kérdés megválaszolatlan marad." }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_02",
+    "answers": [
+      { "answerId": "A", "text": "[SZEMPONT] Fegyelmezett, a párt megbízhatónak lát. Ára: ha mégis te leszel, a tagadásaidat visszajátsszák." },
+      { "answerId": "B", "text": "[SZEMPONT] Budapesti kötődést épít. Ára: a pártközpont nem szereti, ha a jelölt a döntés előtt beszél." },
+      { "answerId": "C", "text": "[SZEMPONT] Az önálló arculat alapja. Ára: belső súrlódás; a pártközpont emlékezni fog rá a kampányfinisben." },
+      { "answerId": "D", "text": "[SZEMPONT] Kockázatmentes. Ára: a riválisok töltik ki a csendet." }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_03",
+    "answers": [
+      { "answerId": "A", "text": "[SZEMPONT] A törzsszavazók és a kormány elégedett. Ára: a városi szavazóknak a kormány jelöltje leszel, mielőtt jelölt lennél." },
+      { "answerId": "B", "text": "[SZEMPONT] Az első önálló budapesti gesztus. Ára: nyilvános feltétel egy kormányzati zászlóshajó-projekttel szemben." },
+      { "answerId": "C", "text": "[SZEMPONT] Semmit sem kockáztatsz. Ára: másnaptól jelöltként is számon kérik rajtad." },
+      { "answerId": "D", "text": "[SZEMPONT] A Tarlós által is hangoztatott lobbierő érve. Ára: a riválisok a „kormány szócsöve” vádat igazolva látják." }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_04",
+    "answers": [
+      { "answerId": "A", "text": "[SZEMPONT] Őszinte és a párt vonalán van. Ára: Karácsony keretét erősíted meg." },
+      { "answerId": "B", "text": "[SZEMPONT] Elveszi Karácsony és az LMP fő támadását. Ára: kérdés, mennyire hihető egy előző heti kormányszóvivőtől." },
+      { "answerId": "C", "text": "[SZEMPONT] Mozgósítja a törzsszavazókat. Ára: a bizonytalanok nem Gyurcsányra kíváncsiak, és a vitát nem a te terepeden vívod." },
+      { "answerId": "D", "text": "[SZEMPONT] Tapasztalatot mutat. Ára: a Tarlós-korszak vitáit is magadra veszed, és Vitézy ugyanerre az örökségre hivatkozik." }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_05",
+    "answers": [
+      { "answerId": "A", "text": "[SZEMPONT] Az idősebb jobboldali szavazók mozgósítása. Ára: Tarlós árnyékában maradsz, holott ő maga sem akar főszereplő lenni." },
+      { "answerId": "B", "text": "[SZEMPONT] Önálló arculat. Ára: Tarlós és hívei sértésnek vehetik." },
+      { "answerId": "C", "text": "[SZEMPONT] Hitelesség, a narrátori tényekkel összhangban. Ára: a riválisok a beismert kudarcokat idézik." },
+      { "answerId": "D", "text": "[SZEMPONT] Közvetlen támadás Vitézy fő erőssége ellen. Ára: Vitézy szakmai vitába húz, ahol ő otthonosabb." }
+    ]
+  },
+  {
+    "questionId": "bp2024_szentkiralyi_06",
+    "answers": [
+      { "answerId": "A", "text": "[SZEMPONT] Nyitottnak és magabiztosnak mutat. Ára: Vitézy napirendjét fogadod el, és a pártközpont nem kér a vitából." },
+      { "answerId": "B", "text": "[SZEMPONT] A párt vonala, mozgósít. Ára: elutasítóként és vitakerülőként lehet beállítani." },
+      { "answerId": "C", "text": "[SZEMPONT] Karácsonyt hozza kellemetlen helyzetbe. Ára: a visszalépés témáját magad tartod napirenden." },
+      { "answerId": "D", "text": "[SZEMPONT] A jobboldali szavazókért vívott harc nyílt vállalása. Ára: Karácsony narratíváját erősíti, hogy ketten ugyanazt a tábort osztjátok." }
+    ]
+  }
+]
