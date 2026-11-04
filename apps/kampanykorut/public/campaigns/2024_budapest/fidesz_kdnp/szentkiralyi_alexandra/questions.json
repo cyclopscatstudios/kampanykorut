@@ -1,553 +1,553 @@
 [
   {
     "id": "bp2024_szentkiralyi_01",
-    "title": "[MUNKACÍM] Bárczy-díj a Kormányinfón",
-    "question": "[HELYZET – 2024. február 16., Kormányinfó] A kegyelmi botrány közepén kormányszóvivőként ülsz a pulpitusnál. Egy újságíró felhozza: 2015-ben főpolgármester-helyettesként te adtad át a Bárczy István-díjat a bicskei gyermekotthon igazgatójának, akit később gyermekek elleni szexuális bűncselekményekért elítéltek. Válaszolnod kell, mielőtt bárki budapesti jelöltként tekintene rád.",
+    "title": "Bárczy-díj a Kormányinfón",
+    "question": "A kegyelmi botrány közepén kormányszóvivőként ülsz a Kormányinfón. Egy újságíró rákérdez: 2015-ben főpolgármester-helyettesként te adtad át a Bárczy István-díjat a bicskei gyermekotthon igazgatójának, akit később elítéltek. Mit válaszolsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Hivatalos vonal: a díjról a Közgyűlés döntött, a jelölést mások nyújtották be, a korábbi rendőrségi eljárás akkor lezárult."
+        "label": "Ragaszkodsz a tényekhez: a díjról a Közgyűlés döntött, a jelölést mások nyújtották be, a rendőrségi eljárás akkor lezárult."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Személyes felelősségvállalás: sajnálatot fejezel ki az áldozatoknak, és elismered, hogy a díjat utólag nem kellett volna odaadni."
+        "label": "Sajnálatot fejezel ki az áldozatoknak, és kimondod: utólag nézve azt a díjat nem lett volna szabad odaadni."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – pártközpont] Kitérés: szóvivőként a kormány döntéseit képviseled, egy kilenc évvel korábbi fővárosi ügyet nem kommentálsz a pulpitusról."
+        "label": "Szóvivőként a kormány döntéseiről beszélsz, egy kilenc évvel korábbi fővárosi ügyet nem kommentálsz."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – pártközpont] Átfordítás: a kormány bejelentett gyermekvédelmi szigorításairól beszélsz, a díj kérdését röviden lezárod."
+        "label": "A kormány bejelentett gyermekvédelmi szigorításairól beszélsz, a díj kérdését egy mondattal lezárod."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_02",
-    "title": "[MUNKACÍM] Jövő héten mi leszek?",
-    "question": "[HELYZET – 2024. február–március eleje] Hetek óta a te neved kering a Fidesz lehetséges főpolgármester-jelöltjeként, mellette Ferencz Orsolyáé és Pokorni Zoltáné. A Kormányinfón ironikusan hárítasz: a múlt héten főpolgármesternek kiáltottak ki, várod, mi leszel a jövő héten. A döntés még nincs meg, de a kérdés minden megszólalásodnál előkerül.",
+    "title": "Jövő héten mi leszek?",
+    "question": "Hetek óta a te neved kering a Fidesz lehetséges főpolgármester-jelöltjeként, mellette Ferencz Orsolyáé és Pokorni Zoltáné. A Kormányinfón azzal hárítasz, hogy múlt héten már főpolgármesternek kiáltottak ki, és várod, mi leszel a jövő héten. A kérdés mégis minden megszólalásodnál előkerül. Hogyan kezeled?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Tagadás és fegyelem: nem kaptál felkérést, a döntés a párté, addig szóvivő vagy."
+        "label": "Fegyelmezetten tagadsz: nem kaptál felkérést, a döntés a párté, addig szóvivő vagy."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Nyitott ajtó: elmondod, hogy Budapest a városod, és ha felkérnek, komolyan veszed."
+        "label": "Nyitva hagyod az ajtót: Budapest a városod, és ha felkérnek, komolyan veszed."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – önálló] Feltételek a háttérben: a párttól budapesti önállóságot és saját stábot kérsz, mielőtt igent mondasz."
+        "label": "A háttérben feltételeket szabsz: budapesti önállóságot és saját stábot kérsz, mielőtt igent mondasz."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – semleges] Csend: nem nyilatkozol, de a közösségi médiában budapesti témákra váltasz."
+        "label": "Nem nyilatkozol, de a közösségi médiában csendben budapesti témákra váltasz."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_03",
-    "title": "[MUNKACÍM] Mini-Dubaj egy nappal előtte",
-    "question": "[HELYZET – 2024. március 13.] A kormány bejelenti: egy emírségekbeli fejlesztő nagyjából ötmilliárd euróból új városrészt épít a rákosrendezői pályaudvar helyén. A főváros és a környező kerületek nem lelkesek, cserébe nagy infrastrukturális beruházásokat várnak. Te még kormányszóvivő vagy, de másnap ül össze a budapesti választmány.",
+    "title": "Mini-Dubaj egy nappal előtte",
+    "question": "A kormány bejelenti, hogy egy emírségekbeli fejlesztő mintegy ötmilliárd euróból új városrészt épít a rákosrendezői pályaudvar helyén. A főváros és a kerületek nem lelkesek, cserébe nagy infrastrukturális beruházásokat várnak. Még kormányszóvivő vagy, de másnap ülésezik a budapesti választmány. Mit mondasz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Kiállsz mellette: történelmi befektetés, munkahelyek, és Budapest végre a kormánnyal együtt fejlődik."
+        "label": "Kiállsz mellette: történelmi befektetés, munkahelyek, és Budapest végre a kormánnyal együtt fejlődik."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Feltételhez kötöd: budapestiként közlekedési kapcsolatot, zöldterületet és a kerületek bevonását kéred."
+        "label": "Budapestiként feltételeket szabsz: közlekedési kapcsolatot, zöldterületet és a kerületek bevonását kéred."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – pártközpont] Kormányügyként kezeled: a kormány nevében ismerteted, saját budapesti véleményt nem fűzöl hozzá."
+        "label": "A kormány nevében ismerteted a megállapodást, saját budapesti véleményt nem fűzöl hozzá."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – pártközpont] Lobbierőként kínálod: ilyen projektből csak az tud a városnak hasznot kiharcolni, aki szót ért a kormánnyal."
+        "label": "Azzal érvelsz, hogy ilyen projektből csak az tud hasznot kiharcolni a városnak, aki szót ért a kormánnyal."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_04",
-    "title": "[MUNKACÍM] Nem a kormány szóvivője",
-    "question": "[HELYZET – 2024. március 14–15.] A budapesti választmány egyhangúlag téged javasol, a kormányszóvivői és a kormánybiztosi posztodat is elhagyod. Karácsony azonnal visszaüt: a főpolgármester nem a kormány szóvivője, hanem a budapestieké. Az LMP szerint Budapest élén nem állhat a kormány szócsöve. Mi az első üzeneted jelöltként?",
+    "title": "Nem a kormány szóvivője",
+    "question": "A budapesti választmány egyhangúlag téged javasol, a kormányszóvivői és a kormánybiztosi posztodat is elhagyod. Karácsony azonnal visszaüt: a főpolgármester nem a kormány szóvivője, hanem a budapestieké. Az LMP szerint Budapest élén nem állhat a kormány szócsöve. Mi az első üzeneted jelöltként?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Együttműködés mint ígéret: a főpolgármesternek dolgoznia kell a kormánnyal, és te vagy az, aki ezt képes megtenni."
+        "label": "A főpolgármesternek együtt kell dolgoznia a kormánnyal, és erre te vagy a legalkalmasabb."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Saját budapesti hang: kijelented, hogy a város érdekében a kormánnyal is vitába szállsz, ha kell."
+        "label": "A város érdekében a kormánnyal is vitába szállsz, ha kell, és ezt most kimondod."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – pártközpont] Gyurcsány-keret: a vitát Karácsonyról Gyurcsányra fordítod, aki szerinted valójában irányítja a Városházát."
+        "label": "Karácsonyról Gyurcsányra fordítod a szót: szerinted valójában ő irányítja a Városházát."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – Tarlós-örökség] Folytonosság: a 2010–2019-es városvezetésre hivatkozol, ahol helyettesként már bizonyítottál."
+        "label": "A 2010 és 2019 közötti városvezetésre hivatkozol, ahol helyettesként már bizonyítottál."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_05",
-    "title": "[MUNKACÍM] Apa és lánya",
-    "question": "[HELYZET – 2024. március 19–25.] Tarlós István a nyilvánosság előtt melletted áll: szerinte rád szavazna, jól kommunikálsz, és nálad a legnagyobb a fejlesztési lobbierő. Apa–lánya kapcsolatnak nevezi a viszonyotokat. Közben azt mondja, nem akar a kampány főszereplője lenni, Vitézyt pedig nyíltan bírálja: szerinte a 4-es metróban nullához közeli szerepe volt, és nem ő alapította a BKK-t.",
+    "title": "Apa és lánya",
+    "question": "Tarlós István nyilvánosan melletted áll: szerinte rád szavazna, jól kommunikálsz, és nálad a legnagyobb a fejlesztési lobbierő. A viszonyotokat apa–lánya kapcsolatnak nevezi. Közben azt mondja, nem akar a kampány főszereplője lenni, Vitézyt pedig nyíltan bírálja. Hogyan építed be a kampányba?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – Tarlós-örökség] Tarlóst a kampány arcává teszed: közös fellépések, a 2010–2019-es eredmények a középpontban."
+        "label": "Tarlóst a kampány arcává teszed: közös fellépések, a 2010–2019-es eredmények a középpontban."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Megköszönöd a támogatását, de jelzed: saját programmal és saját csapattal indulsz."
+        "label": "Megköszönöd a támogatását, de jelzed: saját programmal és saját csapattal indulsz."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – Tarlós-örökség] Vállalod a korszak mérlegét: az eredmények mellett a kudarcokat és a csúszásokat is."
+        "label": "Vállalod a korszak mérlegét, az eredmények mellett a kudarcokat és a csúszásokat is."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – háromszereplős] Felerősíted Tarlós Vitézy-kritikáját: a BKK- és metróérdemek nem az övéi, hanem a városvezetésé."
+        "label": "Felerősíted Tarlós Vitézy-kritikáját: a BKK és a 4-es metró érdeme a városvezetésé, nem az övé."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_06",
-    "title": "[MUNKACÍM] Hét pont, egy feltétel",
-    "question": "[HELYZET – 2024. március 19–20.] Vitézy levelet ír a jelölteknek: írjanak alá egy hétpontos vállalási listát, amelyben nyilvános vita is szerepel. Karácsony előbb szívesen vitázna, másnap feltételt szab: csak akkor, ha te és Vitézy közül valamelyik visszalép, mert szerinte csak az egyikőtök valódi jelölt. Te vagy az, akinek a visszalépését a két rivális egyaránt felveti.",
+    "title": "Hét pont, egy feltétel",
+    "question": "Vitézy levelet ír a jelölteknek, és arra kér, írjatok alá egy hétpontos vállalási listát, benne nyilvános vitával. Karácsony előbb szívesen vitázna, másnap feltételt szab: csak akkor, ha te és Vitézy közül valamelyik visszalép. A visszalépésedet mindkét rivális felveti. Mit válaszolsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – önálló] Aláírod Vitézy vállalásait, és nyilvános vitára hívod mindkét riválist."
+        "label": "Aláírod Vitézy vállalásait, és nyilvános vitára hívod mindkét riválisodat."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – pártközpont] Elutasítod a levelet: Vitézy szerinted nem önálló, Karácsony pedig Gyurcsány embere, velük nincs miről vitázni."
+        "label": "Elutasítod a levelet: Vitézy szerinted nem önálló, Karácsony pedig Gyurcsány embere."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] Karácsony feltételét fordítod ellene: aki vitafeltételt szab, az fél a megmérettetéstől, és te nem lépsz vissza senki kedvéért."
+        "label": "Karácsony feltételét fordítod ellene: aki vitafeltételt szab, az fél, és te senki kedvéért nem lépsz vissza."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – háromszereplős] Vitézyt célzod: ő a Fidesz-kormány volt államtitkára, és a kettőtök közti választás valójában arról szól, ki a hiteles jobboldali jelölt."
+        "label": "Vitézyt célzod: a Fidesz-kormány volt államtitkára, és köztetek dől el, ki a hiteles jobboldali jelölt."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_07",
-    "title": "[MUNKACÍM] Műmacsó tempó",
-    "question": "[HELYZET – 2024. április 3.] Vitézy azt mondja, a választás közte és Karácsony között dől el: te ott leszel a szavazólapon, de szerinte nem leszel komoly tényező, és a mérések őt hozzák ki fő kihívónak. Az ATV Híradója a reakciódat kéri.",
+    "title": "Műmacsó tempó",
+    "question": "Vitézy azt mondja, a választás közte és Karácsony között dől el: te ott leszel a szavazólapon, de szerinte nem leszel komoly tényező, és a mérések őt hozzák ki fő kihívónak. Az ATV Híradója a reakciódat kéri. Mit mondasz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – háromszereplős] Visszavágsz: két férfi nem dönthet egymás között a budapestiek helyett, ezt a „műmacsó tempót” hagyják abba."
+        "label": "Visszavágsz: két férfi ne döntsön egymás között a budapestiek helyett, ezt a műmacsó tempót hagyják abba."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – pártközpont] Vitézyt a baloldal második jelöltjének nevezed: ő és Karácsony ugyanannak a térfélnek két arca."
+        "label": "Vitézyt a baloldal második jelöltjének nevezed: ő és Karácsony ugyanannak a térfélnek két arca."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – önálló] Nem reagálsz Vitézyre, a saját budapesti ügyeidről beszélsz: kátyúk, megakadt villamosfejlesztés."
+        "label": "Nem reagálsz Vitézyre, a saját budapesti ügyeidről beszélsz: kátyúkról, megakadt villamosfejlesztésről."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – háromszereplős] Vitézy kormányzati múltjára célzol: nemrég még a kormány államtitkára volt, most függetlennek mondja magát."
+        "label": "Vitézy kormányzati múltjára célzol: nemrég még a kormány államtitkára volt, most függetlennek mondja magát."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_08",
-    "title": "[MUNKACÍM] Villanykörte és Kamuméter",
-    "question": "[HELYZET – 2024. március vége–április] A kampányod rövid videókra épül: villanykörtét csavarsz be, kátyú mellett térdelsz, a Lehel téren a megakadt villamosfejlesztést mutatod, a Kamuméter Karácsony teljesítetlen ígéreteit sorolja. Minden videó azzal zárul: „Budapesten változás kell”. A sajtó szerint nem derül ki, hogyan, és többet beszélsz Gyurcsányról, mint a programodról.",
+    "title": "Villanykörte és Kamuméter",
+    "question": "A kampányod rövid videókra épül: villanykörtét csavarsz be, kátyú mellett térdelsz, a Lehel téren a megakadt villamosfejlesztést mutatod, a Kamuméter pedig Karácsony be nem tartott ígéreteit sorolja. A sajtó szerint nem derül ki, hogyan oldanád meg a gondokat, és többet beszélsz Gyurcsányról, mint a programodról. Merre viszed a kampányt?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Marad a Gyurcsány-keret: a fő ellenfél a háttérből irányító Gyurcsány, Karácsony csak a bábja."
+        "label": "Marad a Gyurcsány-keret: a fő ellenfél a háttérből irányító Gyurcsány, Karácsony csak a bábja."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] A videók mellé minden héten egy konkrét, beárazott vállalást teszel."
+        "label": "A videók mellé minden héten egy konkrét, beárazott vállalást teszel."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – semleges] Folytatod a rövid videókat, de a Gyurcsány-utalásokat elhagyod."
+        "label": "Folytatod a rövid videókat, de a Gyurcsány-utalásokat elhagyod."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – Tarlós-örökség] A videók a Tarlós-korszak eredményeit mutatják: így működött a város, amikor működött."
+        "label": "A videók a Tarlós-korszak eredményeit mutatják be: így működött a város, amikor működött."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_09",
-    "title": "[MUNKACÍM] Tegyük újra naggyá",
-    "question": "[HELYZET – 2024. április 17., Bálna] A kampánynyitód zártkörű, a sajtót nem engedik be. Kocsis Máté, Baán László és Tarlós István beszél. Hétpontos programot mutatsz be: Gyurcsány befolyásának vége, pénzügyi kontrolltestület, kevesebb bürokrácia, a „közlekedési káosz” vége, kétszer annyi pénz köztisztaságra, élhető város, végül „tegyük újra naggyá Budapestet”. Mi legyen a kampány szalagcíme?",
+    "title": "Tegyük újra naggyá",
+    "question": "A kampánynyitód a Bálnában zártkörű, a sajtót nem engedik be. Kocsis Máté, Baán László és Tarlós István beszél. Hétpontos programot mutatsz be a Gyurcsány-befolyás végétől a dupla köztisztasági forráson át az élhető városig. Melyik pont legyen a kampány szalagcíme?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – önálló] Köztisztaság: dupla forrás, több takarító és gép, ezt mindenki látja az utcán."
+        "label": "A köztisztaság: dupla forrás, több takarító és gép, amit mindenki lát az utcán."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – pártközpont] Gyurcsány-mentes Városháza és korrupcióellenes kontrolltestület."
+        "label": "A Gyurcsány-mentes Városháza és a korrupcióellenes kontrolltestület."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – semleges] A közlekedési káosz vége: dugók, buszsávok, útfelújítás."
+        "label": "A közlekedési káosz vége: dugók, buszsávok, útfelújítás."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – önálló] Élhető város: óvodai és idősotthoni helyek, ingyenes wifi, fővárosi gondnokszolgálat."
+        "label": "Az élhető város: óvodai és idősotthoni helyek, ingyenes wifi, fővárosi gondnokszolgálat."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_10",
-    "title": "[MUNKACÍM] Rend az aluljárókban",
-    "question": "[HELYZET – 2024. április] Visszatérő lakossági panasz a koszos aluljáró, a zaklatás a csomópontokban és a hajléktalanok a járatokon. Az életvitelszerű közterületi tartózkodást 2018 óta az Alaptörvény tiltja. Vitézy BKK-rendészetet ígér, Karácsony a szociális megközelítést védi. A sajtó a te megoldásodat kérdezi.",
+    "title": "Rend az aluljárókban",
+    "question": "Visszatérő lakossági panasz a koszos aluljáró, a zaklatás a csomópontokban és a hajléktalanok a járatokon. Az életvitelszerű közterületi tartózkodást 2018 óta az Alaptörvény tiltja. Vitézy BKK-rendészetet ígér, Karácsony a szociális megközelítést védi. Mi a te megoldásod?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Szigor: rendőrség és közterület-felügyelet minden nagy csomópontba, a törvény betartatása."
+        "label": "Szigort ígérsz: rendőrséget és közterület-felügyeletet minden nagy csomópontba, a törvény betartatását."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Rend és ellátás együtt: rendészet mellett több szállóférőhely, utcai szociális munka és addiktológiai segítség."
+        "label": "Rendet és ellátást együtt: több szállóférőhelyet, utcai szociális munkát és addiktológiai segítséget a rendészet mellé."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – Tarlós-örökség] A Tarlós-kori gyakorlathoz térsz vissza: éjszakai lezárás, rendszeres takarítás, kamerák."
+        "label": "A Tarlós-kori gyakorlathoz térsz vissza: éjszakai lezárás, rendszeres takarítás, kamerák."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – háromszereplős] Túllicitálod Vitézy BKK-rendészetét: fővárosi rendészet kormányzati forrásból, mert csak te tudod kiharcolni."
+        "label": "Túllicitálod Vitézyt: fővárosi rendészetet ígérsz kormányzati forrásból, mert azt csak te tudod kiharcolni."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_11",
-    "title": "[MUNKACÍM] Kézfogás a Széll Kálmán téren",
-    "question": "[HELYZET – 2024. április 20.] Utcai kampányodon összefutsz Magyar Péterrel. Ő azt kéri, a Gyurcsány-kritika mellett adj konkrét programot Budapestnek, te azt tanácsolod neki, hagyja abba az orbánozást. A kampányfőnököd, Hidvéghi Balázs nem fog vele kezet, mert tisztességtelen embernek tartja. A jelenetet kamerák veszik.",
+    "title": "Kézfogás a Széll Kálmán téren",
+    "question": "Utcai kampányodon összefutsz Magyar Péterrel. Ő azt kéri, a Gyurcsány-kritika mellett adj konkrét programot Budapestnek, te azt tanácsolod neki, hogy hagyja abba az orbánozást. A kampányfőnököd, Hidvéghi Balázs nem fog vele kezet. A jelenetet kamerák veszik. Hogyan zárod le?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Kiállsz a kampányfőnököd mellett: Magyar Péterrel nincs miről tárgyalni."
+        "label": "Kiállsz a kampányfőnököd mellett: Magyar Péterrel nincs miről tárgyalni."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Kezet fogsz Magyarral, és jelzed: a Tisza-szavazókat is meg akarod szólítani."
+        "label": "Kezet fogsz Magyarral, és jelzed, hogy a Tisza szavazóit is meg akarod szólítani."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – semleges] Viccel ütöd el a jelenetet, és rögtön budapesti ügyekre terelsz."
+        "label": "Viccel ütöd el a jelenetet, és rögtön budapesti ügyekre terelsz."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – háromszereplős] Magyart Karácsony és Vitézy mellé sorolod: mind a változás ígéretével kampányol, de egyik sem kínál működő várost."
+        "label": "Magyart Karácsony és Vitézy mellé sorolod: mind a változást ígérik, de egyikük sem kínál működő várost."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_12",
-    "title": "[MUNKACÍM] Orbán a hátsó ülésen",
-    "question": "[HELYZET – 2024. április 24–27.] Orbán Viktor bejelentés nélkül kampánykörútra jön veled, és azt mondja: „Alexandra jól halad, néztem a számokat.” Pár nappal később az Ibolya presszóba visz nosztalgiázni. Nagy beszédeiben ugyanakkor Budapestről alig szól, a figyelmet az EP-kampány viszi. Mennyire legyen látható Orbán a kampányodban?",
+    "title": "Orbán a hátsó ülésen",
+    "question": "Orbán Viktor bejelentés nélkül veled tart a kampánykörúton, és azt mondja: jól haladsz, nézte a számokat. Pár nappal később az Ibolya presszóba visz nosztalgiázni. Nagy beszédeiben ugyanakkor Budapestről alig szól, a figyelmet az EP-kampány viszi. Mennyire legyen látható Orbán a kampányodban?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Orbán a kampány arca: közös képek, közös rendezvények, közös plakátok."
+        "label": "Orbán lesz a kampány arca: közös képek, közös rendezvények, közös plakátok."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] A közös képek maradnak a háttérben, a kampány a te budapesti arcodat építi."
+        "label": "A közös képek a háttérben maradnak, a kampány a te budapesti arcodat építi."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – pártközpont] Nyilvános kormányzati vállalást kérsz tőle Budapestnek, és azt viszed tovább."
+        "label": "Nyilvános kormányzati vállalást kérsz tőle Budapestnek, és azt viszed tovább."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – Tarlós-örökség] A 2010–2019-es együttműködésre hivatkozol: amikor a kormány és a Városháza együtt dolgozott, épült a város."
+        "label": "A 2010–2019-es együttműködésre hivatkozol: amikor a kormány és a Városháza együtt dolgozott, épült a város."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_13",
-    "title": "[MUNKACÍM] Fűkasza és méhlegelő",
-    "question": "[HELYZET – 2024. április 29–30.] Fűkaszával vágod a füvet egy közterületen: olyan ember vagy, aki megy és megoldja a problémákat. Karácsony közli, hogy egy méhlegelőt kaszáltál le, amelynek szándékosan kellett gazosnak lennie. A videó terjed, a zöldek nevetnek, a szavazóid egy része viszont veled ért egyet.",
+    "title": "Fűkasza és méhlegelő",
+    "question": "Fűkaszával vágod a füvet egy közterületen: olyan ember vagy, aki megy és megoldja a problémákat. Karácsony közli, hogy egy méhlegelőt kaszáltál le, amelynek szándékosan kellett gazosnak lennie. A videó terjed, a zöldek nevetnek, a szavazóid egy része viszont veled ért egyet. Hogyan reagálsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – semleges] Vállalod: a budapestiek rendezett parkot akarnak, nem gazt."
+        "label": "Vállalod: a budapestiek rendezett parkot akarnak, nem gazt."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Elismered a hibát, és saját zöldprogrammal válaszolsz: fák, árnyék, parkfelújítás."
+        "label": "Elismered a hibát, és saját zöldprogrammal válaszolsz: fák, árnyék, parkfelújítás."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – pártközpont] Ellentámadás: Karácsony a méhekkel foglalkozik, a kátyúkkal nem."
+        "label": "Ellentámadásba lendülsz: Karácsony a méhekkel foglalkozik, a kátyúkkal nem."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – semleges] Nem reagálsz, és másnap új témát nyitsz."
+        "label": "Nem reagálsz, és másnap új témát nyitsz."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_14",
-    "title": "[MUNKACÍM] Hol dől el Budapest?",
-    "question": "[HELYZET – 2024. május eleje] Leadtad az ajánlásokat, hivatalosan is jelölt vagy, de a hátralévő hetekben nem lehetsz mindenhol. A peremkerületek a Fidesz erős terepei, az átmeneti övezet lakótelepei billegnek, a belváros Karácsonyé. Hova viszed a kampány súlypontját?",
+    "title": "Hol dől el Budapest?",
+    "question": "Leadtad az ajánlásokat, hivatalosan is jelölt vagy, de a hátralévő hetekben nem lehetsz mindenhol. A peremkerületek a Fidesz erős terepei, az átmeneti övezet lakótelepei billegnek, a belváros Karácsonyé. Hová teszed a kampány súlypontját?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Peremkerületek: a saját tábor teljes mozgósítása."
+        "label": "A peremkerületekbe: a saját tábor teljes mozgósítása."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Átmeneti övezet: lakótelepek és bizonytalan szavazók."
+        "label": "Az átmeneti övezetbe: lakótelepek és bizonytalan szavazók."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] Belváros: Karácsony bázisán veszed fel vele a harcot."
+        "label": "A belvárosba: Karácsony bázisán veszed fel vele a harcot."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – semleges] Online: a kampány súlypontja a közösségi média és a fiatalabb szavazók."
+        "label": "Az online térbe: közösségi média és fiatalabb szavazók."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_15",
-    "title": "[MUNKACÍM] Lázár a padon",
-    "question": "[HELYZET – 2024. május 1.] Lázár János, a fővárosi fejlesztések kormányzati forrásaiért felelős miniszter egy padon, kamerák előtt mondja neked: „pénzem kevés van”, de úgy látja, te képes leszel elszedni. Határozott vezetés kell, a riválisaid erre szerinte nem alkalmasak. Közben a szolidaritási hozzájárulás a Tarlós-korszak óta a többszörösére nőtt, a Főváros perel. Mit ígérsz a kassza ügyében?",
+    "title": "Lázár a padon",
+    "question": "Lázár János, aki a fővárosi fejlesztések kormányzati pénzéért felel, egy padon, kamerák előtt mondja neked, hogy kevés a pénze, de szerinte te képes leszel elszedni. Közben a szolidaritási hozzájárulás a Tarlós-korszak óta a többszörösére nőtt, a Főváros perel. Mit ígérsz a város kasszájáról?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Alku a per helyett: a pénz a kormánnyal ápolt jó viszonyból jön."
+        "label": "Per helyett alkut ígérsz: a pénz a kormánnyal ápolt jó viszonyból jön."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Nyilvánosan vállalod, hogy a kormánytól is a szolidaritási hozzájárulás csökkentését kéred."
+        "label": "Nyilvánosan vállalod, hogy a kormánytól is a szolidaritási hozzájárulás csökkentését kéred."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – pártközpont] A hiány oka a városházi pazarlás, nem az elvonás."
+        "label": "Azt mondod, a hiány oka a városházi pazarlás, nem az elvonás."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – Tarlós-örökség] A Tarlós-kori modellt ígéred: kormányzati fejlesztési forrás a nagyberuházásokra, a működés pedig a Fővárosé."
+        "label": "A Tarlós-kori modellt ígéred: kormányzati pénz a nagyberuházásokra, a működés pedig a Fővárosé."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_16",
-    "title": "[MUNKACÍM] Kinek a Budapestje?",
-    "question": "[HELYZET – 2024. május] Egy interjúban a Tarlós-korszakot kérik számon rajtad: 4-es metró, budai fonódó villamos, FUTÁR, a BKK létrehozása, de a korszakhoz tartozik az elmaradt elektronikus jegyrendszer és a metrókocsik körüli vita is. Vitézy ugyanezeket az eredményeket a saját szakmai örökségének tartja, Tarlós szerint viszont neki alig volt köze hozzájuk.",
+    "title": "Kinek a Budapestje?",
+    "question": "Egy interjúban a Tarlós-korszakot kérik számon rajtad: 4-es metró, budai fonódó villamos, FUTÁR, a BKK létrehozása, de az elmaradt elektronikus jegyrendszer és a metrókocsik körüli vita is. Vitézy ugyanezeket az eredményeket a saját szakmai örökségének tartja, Tarlós szerint neki alig volt köze hozzájuk. Kinek a története ez?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – Tarlós-örökség] A városvezetés közös eredményeinek nevezed őket: a 4-es metró és a fonódó villamos Tarlós és csapata érdeme."
+        "label": "A városvezetésé: a 4-es metró és a fonódó villamos Tarlós és csapata érdeme."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – háromszereplős] Vitézyre célzol: a BKK-t a Városháza hozta létre, egy vezérigazgató nem sajátíthatja ki az egész csapat munkáját."
+        "label": "Vitézyre célzol: a BKK-t a Városháza hozta létre, egy vezérigazgató nem sajátíthatja ki a csapat munkáját."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – Tarlós-örökség] Mérleget vonsz: az eredmények mellett a kudarcokat, az e-jegyet és a metrókocsikat is vállalod."
+        "label": "Mérleget vonsz: az eredmények mellett az e-jegy és a metrókocsik kudarcát is vállalod."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – önálló] Előre nézel: nem a múltról beszélsz, hanem a következő öt év fejlesztéseiről."
+        "label": "Nem a múltról beszélsz, hanem a következő öt év fejlesztéseiről."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_17",
-    "title": "[MUNKACÍM] Albérletárak",
-    "question": "[HELYZET – 2024. május] A budapesti albérletárak évek óta gyorsabban nőnek a béreknél. Vitézy tízezer új lakást ígér, Karácsony a Lakásügynökséget és egy uniós bérlakásprogramot mutat fel. A kormány lakáspolitikája az otthonteremtési támogatásokra épül. Mit ígérsz a fiataloknak?",
+    "title": "Albérletárak",
+    "question": "A budapesti albérletárak évek óta gyorsabban nőnek a béreknél. Vitézy tízezer új lakást ígér, Karácsony a Lakásügynökséget és egy uniós bérlakásprogramot mutat fel. A kormány lakáspolitikája az otthonteremtési támogatásokra épül. Mit ígérsz a fiataloknak?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] A kormányzati otthonteremtési támogatások fővárosi kiegészítését: saját lakás a családoknak."
+        "label": "Fővárosi kiegészítést a kormányzati otthonteremtési támogatásokhoz: saját lakást a családoknak."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Fővárosi bérlakásprogramot: üres önkormányzati lakások felújítását és megfizethető kiadását."
+        "label": "Fővárosi bérlakásprogramot: az üres önkormányzati lakások felújítását és megfizethető kiadását."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] Mindkét rivális ígéretét irreálisnak nevezed: a Lakásügynökség alig kötött szerződést, a tízezer lakásnak nincs fedezete."
+        "label": "Mindkét rivális ígéretét irreálisnak nevezed: a Lakásügynökség alig kötött szerződést, a tízezer lakásnak nincs fedezete."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – semleges] Rozsdaövezeti lakásépítést a kormánnyal közösen, barnamezős területeken."
+        "label": "Barnamezős lakásépítést a rozsdaövezetekben, a kormánnyal közösen."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_18",
-    "title": "[MUNKACÍM] Autót sem tud vezetni",
-    "question": "[HELYZET – 2024. április–május] A kampányod visszatérő mondata, hogy Karácsony „nemcsak autót, várost sem tud vezetni”. A peremkerületekben sokan autóellenesnek tartják a buszsávok és a kerékpársávok miatt, a fővárosi utaknak évente csak töredékét újítják fel. Az autósokért Grundtner András, a Mi Hazánk jelöltje is harcol. Mit ígérsz nekik?",
+    "title": "Autót sem tud vezetni",
+    "question": "A kampányod visszatérő mondata, hogy Karácsony nemcsak autót, várost sem tud vezetni. A peremkerületekben sokan autóellenesnek tartják a buszsávok és a kerékpársávok miatt, az utaknak évente csak töredékét újítják fel. Az autósokért Grundtner András, a Mi Hazánk jelöltje is harcol. Mit ígérsz nekik?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Autós fordulatot: a vitatott kerékpársávok felülvizsgálatát és dugómentesítést."
+        "label": "Autós fordulatot: a vitatott kerékpársávok felülvizsgálatát és dugómentesítést."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Útfelújítási programot: kátyúk és utak, a kerékpársávokhoz nem nyúlsz."
+        "label": "Útfelújítási programot a kátyúkra és az utakra, a kerékpársávokhoz nem nyúlsz."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – semleges] Folytatod a személyes támadást: jogosítvány nélkül irányítja a közlekedést."
+        "label": "Folytatod a személyes támadást: jogosítvány nélkül irányítja a város közlekedését."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – Tarlós-örökség] Közösségi közlekedést is: a peremkerületi buszjáratok sűrítését és a P+R-parkolók bővítését."
+        "label": "A közösségi közlekedést is: sűrűbb peremkerületi buszjáratokat és több P+R-parkolót."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_19",
-    "title": "[MUNKACÍM] Kormányberuházás vagy városi prioritás",
-    "question": "[HELYZET – 2024. március vége–május] Semjén Zsolt benyújtotta a rákosrendezői Mini-Dubajról szóló törvényjavaslatot, a Déli Körvasút bővítését pedig Mészáros Lőrinc cége építené; a bíróság már kétszer megsemmisítette a környezetvédelmi engedélyét. A riválisaid a kormány budapesti nagyberuházásait bírálják, a kerületek ellentételezést várnak. Te a kormánypártok jelöltje vagy.",
+    "title": "Kormányberuházás vagy városi prioritás",
+    "question": "Semjén Zsolt benyújtotta a rákosrendezői Mini-Dubajról szóló törvényjavaslatot, a Déli Körvasút bővítését pedig Mészáros Lőrinc cége építené, miután a bíróság kétszer megsemmisítette a környezetvédelmi engedélyét. A riválisaid a kormány budapesti nagyberuházásait bírálják, a kerületek ellentételezést várnak. Hol állsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Kiállsz a kormányberuházások mellett: munkahely, fejlesztés, végre épül valami."
+        "label": "Kiállsz a kormányberuházások mellett: munkahely, fejlesztés, végre épül valami."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Fővárosi feltételeket szabsz: zajvédelem, ellentételezés a kerületeknek, nyilvános tervek."
+        "label": "Fővárosi feltételeket szabsz: zajvédelmet, ellentételezést a kerületeknek és nyilvános terveket."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] Vitézyt hozod zavarba: a Déli Körvasút bővítését ő is támogatja, mégis a kormányt bírálja."
+        "label": "Vitézyt hozod zavarba: a Déli Körvasút bővítését ő is támogatja, mégis a kormányt bírálja."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – semleges] A Városházára tereled a szót: öt év alatt a Főváros maga semmit sem épített."
+        "label": "A Városházára tereled a szót: öt év alatt a Főváros maga semmit sem épített."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_20",
-    "title": "[MUNKACÍM] Budapestinfó és a zárt ajtók",
-    "question": "[HELYZET – 2024. április–május] Megígérted, hogy újraindítod a Karácsony által megszüntetett Budapestinfót, hogy a sajtó kérdezhesse a főpolgármestert. Közben a kampánynyitód zártkörű volt, a független lapok interjúkéréseire nem válaszolsz, és főleg a kormányközeli médiában szerepelsz. A sajtó a következetlenségre kérdez rá.",
+    "title": "Budapestinfó és a zárt ajtók",
+    "question": "Megígérted, hogy újraindítod a Karácsony által megszüntetett Budapestinfót, hogy a sajtó rendszeresen kérdezhesse a főpolgármestert. Közben a kampánynyitód zártkörű volt, a független lapok interjúkéréseire nem válaszolsz, és főleg a kormányközeli médiában szerepelsz. A sajtó a következetlenségre kérdez rá. Mit felelsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Marad a mostani gyakorlat: szerinted a független sajtó nem tárgyilagos veled."
+        "label": "Marad a mostani gyakorlat: szerinted a független sajtó nem tárgyilagos veled."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Interjút adsz egy független lapnak is, és hetente sajtótájékoztatót tartasz."
+        "label": "Interjút adsz egy független lapnak is, és hetente sajtótájékoztatót tartasz."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – semleges] A Budapestinfót főpolgármesterként indítod, kampányban közvetlenül a választókhoz beszélsz."
+        "label": "A Budapestinfót főpolgármesterként indítod el, kampányban közvetlenül a választókhoz beszélsz."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – önálló] Lakossági fórumokat tartasz kerületről kerületre, ahol a budapestiek teszik fel a kérdéseket."
+        "label": "Kerületről kerületre lakossági fórumokat tartasz, ahol a budapestiek teszik fel a kérdéseket."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_21",
-    "title": "[MUNKACÍM] Közös színpad?",
-    "question": "[HELYZET – 2024. május közepe] Karácsony bejelentette, hogy bármilyen vitát vállal, amelyen te is részt veszel. Te áprilisban azt mondtad, csak Gyurcsánnyal vitáznál. A Partizán háromszereplős vitára hív, és ha nem mész, Karácsony és Vitézy kettesben vitáznak. (Ha elfogadod, a játékban létrejön a valóságban elmaradt háromszereplős vita.)",
+    "title": "Közös színpad?",
+    "question": "Karácsony bejelentette, hogy bármilyen vitát vállal, amelyen te is részt veszel. Te korábban azt mondtad, csak Gyurcsánnyal vitáznál. A Partizán háromszereplős vitára hív, és ha nem mész el, Karácsony és Vitézy kettesben vitáznak. Elfogadod a meghívást?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – önálló] Elfogadod a háromszereplős vitát a Partizánban."
+        "label": "Elfogadod: ott leszel a háromszereplős vitán a Partizánban."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – pártközpont] Kitartasz: csak Gyurcsánnyal vitázol, Karácsony szerinted nem igazi vezető."
+        "label": "Kitartasz: csak Gyurcsánnyal vitázol, Karácsony szerinted nem valódi vezető."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – semleges] Csak a közmédiában vállalsz vitát, a Partizán meghívását elutasítod."
+        "label": "Csak a közmédiában vállalsz vitát, a Partizán meghívását elutasítod."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – háromszereplős] Vitézyt hívod ki kettesben: a második helyről döntsetek egymás között."
+        "label": "Vitézyt hívod ki kettesben: a második helyről döntsetek egymás között."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_22",
-    "title": "[MUNKACÍM] A második helyért",
-    "question": "[HELYZET – 2024. május] A májusi mérésekben Vitézyvel fej fej mellett vagytok a második helyért, Karácsony vezet. Te nem vitázol és ritkán adsz interjút, de a kampányod mozgósít. Három hét van hátra. Kire lősz?",
+    "title": "A második helyért",
+    "question": "A májusi mérésekben Vitézyvel fej fej mellett haladtok a második helyért, Karácsony vezet. Ritkán adsz interjút, de a kampányod mozgósít. Három hét van hátra. Kire lősz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Karácsonyra: csak ő a valódi ellenfél, Vitézyről nem beszélsz."
+        "label": "Karácsonyra: ő az egyetlen valódi ellenfél, Vitézyről nem beszélsz."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – háromszereplős] Vitézyre: amíg ő a második, a Karácsony-ellenes szavazók szétszóródnak."
+        "label": "Vitézyre: amíg ő a második, a Karácsony-ellenes szavazók szétszóródnak."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – önálló] Senkire: pozitív kampány, a saját programod a hajrában."
+        "label": "Senkire: pozitív kampányt viszel, a saját programodat."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – háromszereplős] Mindkettőre egyszerre: a baloldal két jelöltje, akik egymást marják."
+        "label": "Mindkettőre: a baloldal két jelöltje, akik egymást marják."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_23",
-    "title": "[MUNKACÍM] A Tisza-lista előz",
-    "question": "[HELYZET – 2024. május 29.] A Medián szerint a Tisza Párt fővárosi listája napok alatt 8 ponttal erősödött, és megelőzte a DK–MSZP–Párbeszéd listát. Te a Fidesz fővárosi listavezetője is vagy. A Tisza nem indít főpolgármester-jelöltet, de a szavazói a te lapodon is döntenek. Hogyan reagálsz?",
+    "title": "A Tisza-lista előz",
+    "question": "A Medián szerint a Tisza Párt fővárosi listája napok alatt nyolc pontot erősödött, és megelőzte a DK–MSZP–Párbeszéd listáját. Te a Fidesz fővárosi listavezetője is vagy. A Tisza nem indít főpolgármester-jelöltet, de a szavazói a te lapodon is döntenek. Hogyan reagálsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Magyar Pétert a baloldal új arcának nevezed: a Tisza is csak Karácsony közgyűlési többségét segíti."
+        "label": "Magyar Pétert a baloldal új arcának nevezed: a Tisza is Karácsony közgyűlési többségét segíti."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Jogosnak nevezed a Tisza-szavazók elégedetlenségét, és budapesti ajánlatot teszel nekik."
+        "label": "Jogosnak nevezed a Tisza-szavazók elégedetlenségét, és budapesti ajánlatot teszel nekik."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] A Tisza erősödését Karácsony gyengeségének jeleként használod: a baloldal szétesik."
+        "label": "A Tisza erősödését Karácsony gyengeségének jeleként használod: a baloldal szétesik."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – semleges] Nem foglalkozol vele, a saját listádat és jelöltségedet mozgósítod."
+        "label": "Nem foglalkozol vele, a saját listádat és jelöltségedet mozgósítod."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_24_vita",
-    "title": "[MUNKACÍM] Hármasban a Partizánban",
-    "question": "[HELYZET – 2024. május 31., alternatív esemény] Elfogadtad a meghívást: hármasban álltok a kamerák előtt. A közönség jórészt ellenzéki, Karácsony az öt évét védi, Vitézy támad. Sokan most döntenek. Milyen hangot ütsz meg?",
+    "title": "Hármasban a Partizánban",
+    "question": "Elfogadtad a meghívást, és hármasban álltok a kamerák előtt. A közönség jórészt ellenzéki, Karácsony az öt évét védi, Vitézy támad. Sokan most döntik el, kire szavaznak. Milyen hangot ütsz meg?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – önálló] Nyugodt, szakpolitikai hang: konkrét számok, a programod pontjai."
+        "label": "Nyugodt, szakpolitikai hangot: konkrét számokat és a programod pontjait."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – pártközpont] Gyurcsány-keret: a vita valódi szereplője az, aki nincs ott."
+        "label": "A Gyurcsány-keretet: a vita valódi szereplője az, aki nincs a stúdióban."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] Karácsonyt támadod, Vitézyt békén hagyod: ketten a változásért."
+        "label": "Karácsonyt támadod, Vitézyt békén hagyod: ketten vagytok a változás oldalán."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – háromszereplős] Vitézyt támadod: ő a kormány volt embere, aki most függetlennek adja ki magát."
+        "label": "Vitézyt támadod: a kormány volt embere, aki most függetlennek adja ki magát."
       }
     ],
     "visibleIf": {
@@ -558,24 +558,24 @@
   },
   {
     "id": "bp2024_szentkiralyi_24_nelkul",
-    "title": "[MUNKACÍM] Vita nélküled",
-    "question": "[HELYZET – 2024. május 31.] A Partizánban Karácsony és Vitézy kettesben vitázott, te nem mentél el. Másnap mindenki rólad kérdez: hol voltál, és mit mondtál volna. Hogyan reagálsz?",
+    "title": "Vita nélküled",
+    "question": "A Partizánban Karácsony és Vitézy kettesben vitázott, te nem mentél el. Másnap mindenki rólad kérdez: hol voltál, és mit mondtál volna. Hogyan reagálsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Kitartasz: a vitát Gyurcsánnyal kellett volna tartani, nem velük."
+        "label": "Kitartasz: a vitát Gyurcsánnyal kellett volna tartani, nem velük."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Saját válaszvideót teszel közzé a vita minden kérdésére."
+        "label": "Saját válaszvideót teszel közzé a vita minden kérdésére."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] A vita tartalmát használod: a baloldal két jelöltje egymást marta, Budapest kimaradt belőle."
+        "label": "A vita tartalmát fordítod a javadra: a baloldal két jelöltje egymást marta, Budapest kimaradt belőle."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – semleges] Nem foglalkozol vele, a terepkampányra koncentrálsz."
+        "label": "Nem foglalkozol vele, a terepkampányra koncentrálsz."
       }
     ],
     "visibleIf": {
@@ -588,185 +588,185 @@
   },
   {
     "id": "bp2024_szentkiralyi_25",
-    "title": "[MUNKACÍM] Béke vagy város",
-    "question": "[HELYZET – 2024. május–június 1.] A Fidesz kampánya országosan a háború és béke kérdésére épül, június 1-jén Budapesten Békemenet vonul. A pártközpont azt kéri, a fővárosi kampányod is ezt az üzenetet vigye, a helyi stábod a budapesti ügyeknél maradna. Mi a kampány központi üzenete az utolsó napokban?",
+    "title": "Béke vagy város",
+    "question": "A Fidesz kampánya országosan a háború és béke kérdésére épül, június 1-jén Budapesten Békemenet vonul. A pártközpont azt kéri, a fővárosi kampányod is ezt az üzenetet vigye, a helyi stábod a budapesti ügyeknél maradna. Mi legyen a központi üzeneted az utolsó napokban?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Béke: a Békemenet élén vonulsz, a fővárosi kampány az országos üzenetet viszi."
+        "label": "A béke: a Békemenet élén vonulsz, a fővárosi kampány az országos üzenetet viszi."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Budapest: a Békemeneten részt veszel, de a saját kampányod a városi ügyeknél marad."
+        "label": "Budapest: a Békemeneten ott vagy, de a saját kampányod a városi ügyeknél marad."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – semleges] Összekötöd a kettőt: béke és biztonság az országnak, rend és biztonság Budapestnek."
+        "label": "A kettő együtt: béke és biztonság az országnak, rend és biztonság Budapestnek."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – pártközpont] Gyurcsány mindkét lapon: a DK az EP-n és a Városházán is ugyanaz a veszély."
+        "label": "Gyurcsány mindkét lapon: a DK az EP-ben és a Városházán is ugyanaz a veszély."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_26",
-    "title": "[MUNKACÍM] Visszalépési pletykák",
-    "question": "[HELYZET – 2024. június eleje] A Századvég kétszereplős mérése szerint Vitézy legyőzné Karácsonyt, ha te visszalépnél. Karácsony már áprilisban azt jósolta, hogy az utolsó pillanatban visszalépsz. A kormánylapok egyre többet írnak Vitézy sikereiről. Hogyan reagálsz?",
+    "title": "Visszalépési pletykák",
+    "question": "A Századvég kétszereplős mérése szerint Vitézy legyőzné Karácsonyt, ha te visszalépnél. Karácsony már tavasszal azt jósolta, hogy az utolsó pillanatban visszalépsz, a kormánylapok pedig egyre többet írnak Vitézy sikereiről. Hogyan reagálsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – önálló] Nyilvánosan és véglegesen kizárod a visszalépést: a budapestiek döntenek, nem a mérések."
+        "label": "Nyilvánosan és véglegesen kizárod a visszalépést: a budapestiek döntenek, nem a mérések."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – pártközpont] Nem nyilatkozol, a döntést a pártra bízod."
+        "label": "Nem nyilatkozol, a döntést a pártra bízod."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] Vitézyt hívod fel visszalépésre: ha valóban Karácsony leváltása a cél, ő álljon félre."
+        "label": "Vitézyt szólítod fel a visszalépésre: ha valóban Karácsony leváltása a cél, ő álljon félre."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – semleges] Kacsának nevezed a pletykát, és témát váltasz."
+        "label": "Kacsának nevezed a pletykát, és témát váltasz."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_27",
-    "title": "[MUNKACÍM] A visszalépés híre helyett",
-    "question": "[HELYZET – 2024. június 7., péntek] Lejárt a visszalépési határidő, versenyben maradtál. (A valóságban Szentkirályi ezen a napon visszalépett; ebben az ágban ez elmarad.) Két nap van hátra. Mivel magyarázod, hogy maradtál?",
+    "title": "A visszalépés híre helyett",
+    "question": "Péntek van, lejárt a visszalépési határidő, és versenyben maradtál. Két nap van hátra, a sajtó azt találgatja, miért nem léptél vissza. Mivel magyarázod, hogy maradtál?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – önálló] Saját döntés: a budapestiek választhassanak a jobboldalról is, és te végigviszed."
+        "label": "A saját döntéseddel: a budapestiek választhassanak a jobboldalról is, és te végigviszed."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – pártközpont] A párt és a miniszterelnök bizalma: a Fidesz a saját jelöltjét és listáját mozgósítja."
+        "label": "A párt és a miniszterelnök bizalmával: a Fidesz a saját jelöltjét és listáját mozgósítja."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] Vitézynek üzensz: a második helyen te állsz, a változást akarók rád szavazzanak."
+        "label": "Vitézynek üzensz: a második helyen te állsz, a változást akarók rád szavazzanak."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – pártközpont] Gyurcsány megállítása: erre csak a jobboldal jelöltje képes."
+        "label": "Gyurcsány megállításával: erre csak a jobboldal jelöltje képes."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_28",
-    "title": "[MUNKACÍM] Harc a Karácsony-ellenes szavazókért",
-    "question": "[HELYZET – 2024. június 7–8.] A Karácsony-ellenes szavazók azt figyelik, melyik kihívó az erősebb. Ha a szavazatok megoszlanak, Karácsony nyugodtan alhat. Az utolsó műsorokban még egyszer szólhatsz. Mire használod?",
+    "title": "Harc a Karácsony-ellenes szavazókért",
+    "question": "A Karácsony-ellenes szavazók azt figyelik, melyik kihívó az erősebb. Ha a szavazatok megoszlanak, Karácsony nyugodtan alhat. Az utolsó műsorokban még egyszer megszólalhatsz. Mire használod?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – háromszereplős] Vitézy szavazóit hívod át: aki váltást akar, ne szórja el a szavazatát."
+        "label": "Vitézy szavazóit hívod át: aki váltást akar, ne szórja el a szavazatát."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – pártközpont] A saját tábor teljes mozgósítása, Vitézyről egy szót sem."
+        "label": "A saját tábort mozgósítod, Vitézyről egy szót sem ejtesz."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] Negatív kampány Vitézy ellen: kampánypénzek, kormányzati múlt, LMP."
+        "label": "Negatív kampányt indítasz Vitézy ellen: kampánypénzek, kormányzati múlt, LMP."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – önálló] Pozitív üzenet: mit teszel az első száz napban főpolgármesterként."
+        "label": "Pozitív üzenettel zársz: mit teszel az első száz napban főpolgármesterként."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_29",
-    "title": "[MUNKACÍM] Két lap a fülkében",
-    "question": "[HELYZET – 2024. június 8.] A szavazók két lapot kapnak, egyet a főpolgármesterre, egyet a fővárosi listákra. Te a Fidesz listavezetője is vagy: a közgyűlési többség a lista erején múlik. Mit kérsz a szavazóktól?",
+    "title": "Két lap a fülkében",
+    "question": "A szavazók két lapot kapnak, egyet a főpolgármesterre, egyet a fővárosi listákra. Te a Fidesz listavezetője is vagy, a közgyűlési többség a lista erején múlik. Mit kérsz a szavazóktól?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Mindkét lapon a Fidesz: egy X a listára, egy rád."
+        "label": "Mindkét lapon a Fideszt: egy X a listára, egy rád."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] A főpolgármesteri lapon a nem fideszes Karácsony-ellenesektől is szavazatot kérsz, akkor is, ha a listán mást választanak."
+        "label": "A főpolgármesteri lapon a nem fideszes Karácsony-ellenesektől is szavazatot kérsz, akkor is, ha a listán mást választanak."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – semleges] A közgyűlési többségről beszélsz: erős lista nélkül főpolgármesterként sem tudsz kormányozni."
+        "label": "A közgyűlési többségről beszélsz: erős lista nélkül főpolgármesterként sem tudsz kormányozni."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – háromszereplős] Vitézy szavazóinak üzensz: a listán maradhat az LMP, főpolgármesternek viszont te."
+        "label": "Vitézy szavazóinak üzensz: a listán maradhat az LMP, főpolgármesternek viszont te."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_30",
-    "title": "[MUNKACÍM] Tisza a listán, és a másik lapon?",
-    "question": "[HELYZET – 2024. június 8.] A Tisza szavazói a fővárosi listán Magyar Péter pártjára ikszelnek, a főpolgármesteri lapon viszont nincs jelöltjük. A háromszereplős versenyben sokan Vitézyre szavaznának, mások üresen hagynák a lapot. Mit üzensz nekik?",
+    "title": "Tisza a listán, és a másik lapon?",
+    "question": "A Tisza szavazói a fővárosi listán Magyar Péter pártjára ikszelnek, a főpolgármesteri lapon viszont nincs jelöltjük. A háromszereplős versenyben sokan Vitézyre szavaznának, mások üresen hagynák a lapot. Mit üzensz nekik?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – önálló] Nyíltan kéred a voksukat: a változás közös cél, és csak egy jelölt tudja leváltani Karácsonyt."
+        "label": "Nyíltan kéred a szavazatukat: a változás közös cél, és csak egy jelölt tudja leváltani Karácsonyt."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – pártközpont] Nem udvarolsz nekik: a Tisza a baloldal része."
+        "label": "Nem udvarolsz nekik: a Tisza szerinted a baloldal része."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – semleges] Arra kéred őket, hogy ne érvénytelenítsenek: bárkire, csak ne Karácsonyra."
+        "label": "Arra kéred őket, ne érvénytelenítsenek: bárkire szavazzanak, csak Karácsonyra ne."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – önálló] A Széll Kálmán téri találkozóra utalsz: Magyar konkrét programot kért, és most itt van."
+        "label": "A Széll Kálmán téri találkozóra utalsz: Magyar konkrét programot kért, és most itt van."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_31",
-    "title": "[MUNKACÍM] Az utolsó mondat a fülke előtt",
-    "question": "[HELYZET – 2024. június 8., szombat este] Holnap választás, versenyben maradtál, és ma este még egyszer megszólalhatsz. Ez az utolsó mondat, amit a szavazók tőled hallanak. Mivel zársz?",
+    "title": "Az utolsó mondat a fülke előtt",
+    "question": "Holnap választás, versenyben maradtál, és ma este még egyszer megszólalhatsz. Ez az utolsó mondat, amit a szavazók tőled hallanak. Mivel zársz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – önálló] Budapest mindenkié: minden budapestinek a főpolgármestere akarsz lenni."
+        "label": "Budapest mindenkié: minden budapestinek a főpolgármestere akarsz lenni."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – pártközpont] Gyurcsány vagy Budapest: holnap ez a tét."
+        "label": "Gyurcsány vagy Budapest: holnap ez a tét."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – Tarlós-örökség] Volt már egy jól működő Budapest, és vissza lehet hozni."
+        "label": "Volt már egy jól működő Budapest, és vissza lehet hozni."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – háromszereplős] Ha váltást akarsz, ne szórd el a szavazatodat."
+        "label": "Ha váltást akarsz, ne szórd el a szavazatodat."
       }
     ]
   },
   {
     "id": "bp2024_szentkiralyi_32",
-    "title": "[MUNKACÍM] Vasárnap: kit viszel el szavazni?",
-    "question": "[HELYZET – 2024. június 9.] Elérkezett a választás napja. Az önkénteseid és a telefonosaid még egyszer bevethetők, de csak egy irányba. Egy szoros versenyben néhány ezer elmaradt szavazat is mindent eldönthet. Hova küldöd az utolsó erőidet?",
+    "title": "Vasárnap: kit viszel el szavazni?",
+    "question": "Elérkezett a választás napja. Az önkénteseidet és a telefonosaidat még egyszer bevetheted, de csak egy irányba. Egy szoros versenyben néhány ezer elmaradt szavazat is mindent eldönthet. Hová küldöd az utolsó erőidet?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "[IRÁNY – pártközpont] Peremkerületek: a saját tábor utolsó mozgósítása."
+        "label": "A peremkerületekbe: a saját tábor utolsó mozgósítása."
       },
       {
         "id": "B",
-        "label": "[IRÁNY – önálló] Átmeneti övezet: a lakótelepek bizonytalanjai."
+        "label": "Az átmeneti övezetbe: a lakótelepek bizonytalanjaihoz."
       },
       {
         "id": "C",
-        "label": "[IRÁNY – háromszereplős] Belváros: Karácsony bázisán a csalódott szavazók."
+        "label": "A belvárosba: Karácsony bázisán a csalódott szavazókhoz."
       },
       {
         "id": "D",
-        "label": "[IRÁNY – semleges] Telefonos kampány az idősebb szavazóknak az egész városban."
+        "label": "Telefonos kampányt indítasz az idősebb szavazóknak az egész városban."
       }
     ]
   }

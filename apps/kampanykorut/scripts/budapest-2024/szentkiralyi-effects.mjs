@@ -235,12 +235,60 @@ const CONDITIONAL = [
   ["31", "B", [["12", "A"]], { Sz: 0.2 }],
 ];
 
+const STRATEGIES = [
+  {
+    id: "sajat_budapest",
+    label: "Saját Budapest",
+    conditions: ["02C", "04B", "09A", "15B", "20B", "25B", "27A", "29B"],
+    rewards: [
+      [4, { Sz: 1.5 }],
+      [6, { Sz: 3.5, V: -0.6 }],
+    ],
+    badge: "badge-sajat-budapest.svg",
+  },
+  {
+    id: "kormany_jeloltje",
+    label: "A kormány jelöltje",
+    conditions: ["03A", "04A", "12A", "15A", "19A", "25A", "27B", "29A"],
+    rewards: [
+      [4, { Sz: 3.5, K: 0.2 }],
+      [6, { Sz: 8.0, K: 0.4 }],
+    ],
+    badge: "badge-kormany-jeloltje.svg",
+  },
+  {
+    id: "tarlos_orokose",
+    label: "Tarlós örököse",
+    conditions: ["04D", "05A", "08D", "10C", "12D", "15D", "16A", "31C"],
+    rewards: [
+      [4, { Sz: 2.5 }],
+      [6, { Sz: 6.5, V: -1.2 }],
+    ],
+    badge: "badge-tarlos-orokose.svg",
+  },
+  {
+    id: "valtas_jeloltje",
+    label: "A váltás jelöltje",
+    conditions: ["06C", "07A", "16B", "22B", "26C", "27C", "28A", "31D"],
+    rewards: [
+      [4, { Sz: 2.0, V: -1.0 }],
+      [6, { Sz: 5.5, V: -2.5 }],
+    ],
+    badge: "badge-valtas-jeloltje.svg",
+  },
+];
+
 const questionId = (key) => `bp2024_szentkiralyi_${key}`;
 
 const round = (value) => Math.round(value * 1000) / 1000;
 
-function scaled(swing, { drift = false } = {}) {
+function scaled(swing, { drift = false, reward = false } = {}) {
   const raw = { ...swing };
+  if (reward) {
+    return Object.fromEntries(
+      Object.entries(raw).map(([key, value]) => [KEYS[key], round(value)]),
+    );
+  }
   const scale = (key, gain, loss) => {
     if (raw[key] > 0) raw[key] *= gain;
     if (raw[key] < 0) raw[key] *= loss;
@@ -316,6 +364,23 @@ export function buildAnswerEffects(questions) {
   });
 }
 
+export function buildStrategies() {
+  return STRATEGIES.map(({ id, label, conditions, rewards, badge }) => ({
+    id,
+    label,
+    target: { party: "fidesz_kdnp", candidate: SZ },
+    conditions: conditions.map((condition) => ({
+      questionId: questionId(condition.slice(0, 2)),
+      answerId: condition.slice(2),
+    })),
+    rewards: rewards.map(([minMatches, effect]) => ({
+      minMatches,
+      effects: effectsOf(effect, { reward: true }),
+    })),
+    asset: { badge: `/images/2024_budapest/${badge}` },
+  }));
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const questions = JSON.parse(
     readFileSync(join(sideDir, "questions.json"), "utf8"),
@@ -323,5 +388,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   writeFileSync(
     join(sideDir, "answer_effects.json"),
     `${JSON.stringify(buildAnswerEffects(questions), null, 2)}\n`,
+  );
+  writeFileSync(
+    join(sideDir, "campaign_strategies.json"),
+    `${JSON.stringify(buildStrategies(), null, 2)}\n`,
   );
 }

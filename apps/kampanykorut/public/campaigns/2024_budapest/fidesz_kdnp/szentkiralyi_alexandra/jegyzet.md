@@ -1,6 +1,6 @@
 # Szentkirályi-ág – munkajegyzet (01–32)
 
-A `[MUNKACÍM]`, `[HELYZET]`, `[IRÁNY]` és `[SZEMPONT]` jelölésű szövegek vázak: a végleges kérdés-, válasz- és tanácsadói szövegeket Daniel írja. Az `[IRÁNY – …]` címke a brief identitástengelyét jelöli (pártközpont / önálló / Tarlós-örökség / háromszereplős / semleges); a hatásgenerátor nem a címkéből számol, de a szimuláció ezzel csoportosít. A címkéket a végleges szövegből ki kell venni.
+A kérdés-, válasz- és tanácsadói szövegek véglegesek. Az identitástengely (pártközpont / önálló / Tarlós-örökség / háromszereplős) a négy kampánystratégiában él tovább: „A kormány jelöltje”, „Saját Budapest”, „Tarlós örököse”, „A váltás jelöltje”.
 
 Az `answer_effects.json` generált fájl: a `scripts/budapest-2024/szentkiralyi-effects.mjs` írja, a számokat ott kell átírni. A hangolás és a szimuláció eredménye a `scripts/budapest-2024/README.md`-ben található.
 
@@ -102,7 +102,7 @@ Szentkirályi korabeli válaszát nem találtam. Áprilisban azt mondta, hogy cs
 
 ## Technikai állapot
 
-- Az oldal szerepel a `manifest.json`-ban és az `election_config.json`-ban; `electionAssets` (portré, szlogen, logó) még nincs.
+- Az oldal szerepel a `manifest.json`-ban és az `election_config.json`-ban. A szlogenkép (`fidesz_kdnp.png`) még hiányzik a repóból.
 - A tanácsadók munkanevei (Halmi Zsófia, Bakos Ferenc) kitaláltak, a képeik a Vitézy-oldal helykitöltői.
-- A `campaign_strategies.json` egyelőre üres tömb; a tengelyekre épülő stratégiák (pl. „Saját Budapest”, „A kormány jelöltje”, „Tarlós örököse”) később készülnek.
+- A `campaign_strategies.json` négy stratégiát tartalmaz, a jelvényeik a `badge-sajat-budapest.svg`, `badge-kormany-jeloltje.svg`, `badge-tarlos-orokose.svg` és `badge-valtas-jeloltje.svg`.
 - A közös visszalépési esemény `player-candidate` feltétellel ki van zárva a Szentkirályi-oldalon, és a motor sem léptetheti vissza a játékos saját jelöltjét.

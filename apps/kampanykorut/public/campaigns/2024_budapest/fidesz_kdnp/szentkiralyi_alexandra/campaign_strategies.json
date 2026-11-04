@@ -1,1 +1,284 @@
-[]
+[
+  {
+    "id": "sajat_budapest",
+    "label": "Saját Budapest",
+    "target": {
+      "party": "fidesz_kdnp",
+      "candidate": "szentkiralyi_alexandra"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_szentkiralyi_02",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_04",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_09",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_15",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_20",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_25",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_27",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_29",
+        "answerId": "B"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szentkiralyi_alexandra": 1.5
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szentkiralyi_alexandra": 3.5,
+              "vitezy_david": -0.6
+            }
+          }
+        ]
+      }
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-sajat-budapest.svg"
+    }
+  },
+  {
+    "id": "kormany_jeloltje",
+    "label": "A kormány jelöltje",
+    "target": {
+      "party": "fidesz_kdnp",
+      "candidate": "szentkiralyi_alexandra"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_szentkiralyi_03",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_04",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_12",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_15",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_19",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_25",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_27",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_29",
+        "answerId": "A"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szentkiralyi_alexandra": 3.5,
+              "karacsony_gergely": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szentkiralyi_alexandra": 8,
+              "karacsony_gergely": 0.4
+            }
+          }
+        ]
+      }
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-kormany-jeloltje.svg"
+    }
+  },
+  {
+    "id": "tarlos_orokose",
+    "label": "Tarlós örököse",
+    "target": {
+      "party": "fidesz_kdnp",
+      "candidate": "szentkiralyi_alexandra"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_szentkiralyi_04",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_05",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_08",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_10",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_12",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_15",
+        "answerId": "D"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_16",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_31",
+        "answerId": "C"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szentkiralyi_alexandra": 2.5
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szentkiralyi_alexandra": 6.5,
+              "vitezy_david": -1.2
+            }
+          }
+        ]
+      }
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-tarlos-orokose.svg"
+    }
+  },
+  {
+    "id": "valtas_jeloltje",
+    "label": "A váltás jelöltje",
+    "target": {
+      "party": "fidesz_kdnp",
+      "candidate": "szentkiralyi_alexandra"
+    },
+    "conditions": [
+      {
+        "questionId": "bp2024_szentkiralyi_06",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_07",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_16",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_22",
+        "answerId": "B"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_26",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_27",
+        "answerId": "C"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_28",
+        "answerId": "A"
+      },
+      {
+        "questionId": "bp2024_szentkiralyi_31",
+        "answerId": "D"
+      }
+    ],
+    "rewards": [
+      {
+        "minMatches": 4,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szentkiralyi_alexandra": 2,
+              "vitezy_david": -1
+            }
+          }
+        ]
+      },
+      {
+        "minMatches": 6,
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szentkiralyi_alexandra": 5.5,
+              "vitezy_david": -2.5
+            }
+          }
+        ]
+      }
+    ],
+    "asset": {
+      "badge": "/images/2024_budapest/badge-valtas-jeloltje.svg"
+    }
+  }
+]

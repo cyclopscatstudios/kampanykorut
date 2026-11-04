@@ -4,19 +4,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Jogilag védhető, a párt elégedett. Ára: hidegnek hat, és ez a mondat a kampány végéig kísér."
+        "text": "Jogilag minden szava védhető, és a párt is elégedett. Csak hidegen hangzik, és ez a mondat végigkísér a kampányon."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Emberileg erős, a budapesti bizonytalanoknál hitelesít. Ára: a kormány a botrány közepén nem akar bocsánatkérést, a pártközpont rossz néven veszi."
+        "text": "Emberi és ritka gesztus, a budapesti bizonytalanok ezt megjegyzik. A kormány viszont a botrány közepén nem bocsánatkérést vár a szóvivőjétől."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Szóvivői fegyelem. Ára: kitérésnek látszik, a sajtó újra és újra visszakérdez."
+        "text": "Szóvivői fegyelem, ebből nem lesz címlap. Csak a kitérés is válasz, és a sajtó minden alkalommal visszakérdez."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Kormányzati szempontból biztonságos. Ára: átlátszó témaváltás, a kérdés megválaszolatlan marad."
+        "text": "Kormányzati szempontból biztonságos. A témaváltás viszont átlátszó, és a kérdés megválaszolatlan marad."
       }
     ]
   },
@@ -25,19 +25,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Fegyelmezett, a párt megbízhatónak lát. Ára: ha mégis te leszel, a tagadásaidat visszajátsszák."
+        "text": "A párt megbízhatónak lát, és ez most a legfontosabb. Ha mégis te leszel a jelölt, a tagadásaidat visszajátsszák."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Budapesti kötődést épít. Ára: a pártközpont nem szereti, ha a jelölt a döntés előtt beszél."
+        "text": "Budapesti kötődést építesz, mielőtt bárki más tenné. A pártközpont viszont nem szereti, ha a jelölt a döntés előtt beszél."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Az önálló arculat alapja. Ára: belső súrlódás; a pártközpont emlékezni fog rá a kampányfinisben."
+        "text": "Ez lesz az önálló kampány alapja. Az alku nyoma megmarad, és a pártközpont a hajrában emlékezni fog rá."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Kockázatmentes. Ára: a riválisok töltik ki a csendet."
+        "text": "Semmit nem kockáztatsz. Közben a riválisaid töltik ki a csendet, és rólad is ők beszélnek."
       }
     ]
   },
@@ -46,19 +46,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A törzsszavazók és a kormány elégedett. Ára: a városi szavazóknak a kormány jelöltje leszel, mielőtt jelölt lennél."
+        "text": "A kormány és a törzsszavazók elégedettek. A városi szavazóknak viszont a kormány jelöltje leszel, még mielőtt jelölt lennél."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Az első önálló budapesti gesztus. Ára: nyilvános feltétel egy kormányzati zászlóshajó-projekttel szemben."
+        "text": "Ez az első önálló budapesti gesztusod, és sokan észreveszik. Csak egy kormányzati zászlóshajó-projekttel szemben nyilvánosan feltételt szabni kockázatos."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Semmit sem kockáztatsz. Ára: másnaptól jelöltként is számon kérik rajtad."
+        "text": "Szóvivőként ennél biztonságosabb nincs. Másnaptól viszont jelöltként kérik számon rajtad, mit gondolsz."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] A Tarlós által is hangoztatott lobbierő érve. Ára: a riválisok a „kormány szócsöve” vádat igazolva látják."
+        "text": "Ez Tarlós kedvenc érve, és sokan hisznek benne. A riválisaid a „kormány szócsöve” vádat látják benne igazolva."
       }
     ]
   },
@@ -67,19 +67,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Őszinte és a párt vonalán van. Ára: Karácsony keretét erősíted meg."
+        "text": "Őszinte, és pontosan a párt vonala. Csak éppen Karácsony keretét erősíted meg vele."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Elveszi Karácsony és az LMP fő támadását. Ára: kérdés, mennyire hihető egy előző heti kormányszóvivőtől."
+        "text": "Kiveszed Karácsony és az LMP kezéből a fő fegyvert. Kérdés, mennyien hiszik el egy múlt heti kormányszóvivőtől."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Mozgósítja a törzsszavazókat. Ára: a bizonytalanok nem Gyurcsányra kíváncsiak, és a vitát nem a te terepeden vívod."
+        "text": "A saját táborod azonnal mozgósul. A bizonytalanok viszont nem Gyurcsányra kíváncsiak, és a vitát nem a saját terepeden vívod."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Tapasztalatot mutat. Ára: a Tarlós-korszak vitáit is magadra veszed, és Vitézy ugyanerre az örökségre hivatkozik."
+        "text": "Tapasztalatot mutatsz, nem csak ígéretet. A Tarlós-korszak vitái is a tiéd lesznek, és Vitézy ugyanerre az örökségre hivatkozik."
       }
     ]
   },
@@ -88,19 +88,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Az idősebb jobboldali szavazók mozgósítása. Ára: Tarlós árnyékában maradsz, holott ő maga sem akar főszereplő lenni."
+        "text": "Az idősebb jobboldali szavazók lelkesek lesznek. Csak Tarlós árnyékában maradsz, pedig ő maga sem akar főszereplő lenni."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Önálló arculat. Ára: Tarlós és hívei sértésnek vehetik."
+        "text": "Önálló jelöltnek látszol, ez jó kezdés. Tarlós hívei közül viszont néhányan sértésnek veszik."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Hitelesség, a narrátori tényekkel összhangban. Ára: a riválisok a beismert kudarcokat idézik."
+        "text": "Ez a leghitelesebb hang, és a narrátori tényekkel sem ütközik. A riválisaid persze a beismert kudarcokat fogják idézni."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Közvetlen támadás Vitézy fő erőssége ellen. Ára: Vitézy szakmai vitába húz, ahol ő otthonosabb."
+        "text": "Egyenesen Vitézy legerősebb pontját támadod. Ő viszont szakmai vitába húz, és abban otthonosabban mozog."
       }
     ]
   },
@@ -109,19 +109,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Nyitottnak és magabiztosnak mutat. Ára: Vitézy napirendjét fogadod el, és a pártközpont nem kér a vitából."
+        "text": "Nyitottnak és magabiztosnak látszol. Csak Vitézy napirendjét fogadod el, a pártközpont pedig nem kér a vitából."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A párt vonala, mozgósít. Ára: elutasítóként és vitakerülőként lehet beállítani."
+        "text": "A párt vonala, a tábor érti. Könnyű lesz vitakerülőnek és elutasítónak beállítani."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Karácsonyt hozza kellemetlen helyzetbe. Ára: a visszalépés témáját magad tartod napirenden."
+        "text": "Karácsonyt hozod kellemetlen helyzetbe, és ez jól áll neked. A visszalépés témáját viszont te magad tartod napirenden."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] A jobboldali szavazókért vívott harc nyílt vállalása. Ára: Karácsony narratíváját erősíti, hogy ketten ugyanazt a tábort osztjátok."
+        "text": "Nyíltan vállalod a harcot a jobboldali szavazókért. Ezzel Karácsony narratíváját erősíted, hogy ketten osztoztok egy táboron."
       }
     ]
   },
@@ -130,19 +130,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Erős, idézhető mondat, a háromszereplős verseny képét erősíti. Ára: Vitézyvel egy szintre emeled magad, ő pedig ezt akarja."
+        "text": "Erős, idézhető mondat, és háromszereplőssé teszi a versenyt. Csak Vitézyvel egy szintre emeled magad, és ő pontosan ezt akarja."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A törzsszavazók értik. Ára: a bizonytalanok Vitézyt nem baloldalinak látják, a vád nem ragad meg."
+        "text": "A törzsszavazók értik. A bizonytalanok viszont Vitézyt nem látják baloldalinak, a címke nem ragad meg."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Komolynak és felülállónak mutat. Ára: a mondat Vitézyé marad, és senki nem cáfolja."
+        "text": "Komolynak és felülállónak látszol. A mondat viszont az övé marad, mert senki nem cáfolja."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Valódi gyenge pont. Ára: a te kormányzati múltad frissebb, a válasz visszapattanhat."
+        "text": "Valódi gyenge pontot találsz. Csak a te kormányzati múltad frissebb, és a vád könnyen visszapattan."
       }
     ]
   },
@@ -151,19 +151,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A tábor mozgósítására bevált recept. Ára: a bizonytalanok unják, és a program hiánya lesz a téma."
+        "text": "A tábor mozgósítására bevált recept. A bizonytalanok viszont unják, és a program hiánya lesz a téma."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Elveszi a „nincs programja” vádat. Ára: minden számot visszakérdeznek és ellenőriznek."
+        "text": "Elveszed a „nincs programja” vádat. Cserébe minden számodat visszakérdezik és tételesen ellenőrzik."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Jól nézhető és közvetlen. Ára: a műfaj marad, a tartalom továbbra is hiányzik."
+        "text": "Jól nézhető és közvetlen. A műfaj marad, a tartalom továbbra is hiányzik."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Tapasztalatot mutat. Ára: a múltba nézel, és Vitézy ugyanerre az időszakra hivatkozik."
+        "text": "Tapasztalatot mutat, nem csak kritikát. A múltba nézel, és Vitézy ugyanerre az időszakra hivatkozik."
       }
     ]
   },
@@ -172,19 +172,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Kézzelfogható, mindenki tapasztalja. Ára: a takarítás nem nagy politikai ígéret, Karácsony a forráshiányra mutat."
+        "text": "Kézzelfogható, mindenki a saját utcáján látja. Csak a takarítás nem nagy politikai ígéret, és Karácsony a forráshiányra mutat."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A tábor elvárja. Ára: a zárt ajtós nyitó után a korrupcióellenes üzenet könnyen ironikussá válik."
+        "text": "A tábor ezt várja tőled. Egy zárt ajtós kampánynyitó után viszont a korrupcióellenes üzenet könnyen ironikus."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] A peremkerületi autósok értik. Ára: a közlekedés Vitézy terepe, ott ő a hitelesebb."
+        "text": "A peremkerületi autósok értik. A közlekedés azonban Vitézy terepe, ott ő a hitelesebb."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Családoknak és időseknek szól, kevéssé támadható. Ára: szétaprózódik, nincs egy erős képe."
+        "text": "Családoknak és időseknek szól, nehéz belekötni. Csak szétaprózódik, és nincs egyetlen erős képe."
       }
     ]
   },
@@ -193,19 +193,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A biztonságérzetre vágyó szavazók értik. Ára: a hajléktalanságot bűncselekményként kezeled, a belváros elfordul."
+        "text": "Akinek elege van, pontosan ezt akarja hallani. A belvárosban viszont úgy hangzik, mintha a hajléktalanság bűncselekmény volna."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A legszélesebb közönségnek szól. Ára: drága, és a saját táborod egy része puhának tartja."
+        "text": "A legszélesebb közönségnek szól. Drága, és a saját táborod egy része puhának tartja."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Ismerős és megfogható. Ára: a lezárás csak áthelyezi a problémát, és a riválisok ezt felhozzák."
+        "text": "Ismerős és megfogható. Csak a lezárás áthelyezi a gondot, és ezt a riválisaid azonnal felhozzák."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Elveszi Vitézy egyik fő témáját. Ára: a kormányzati pénz ígérete a „kormány jelöltje” képet erősíti."
+        "text": "Elveszed Vitézy egyik fő témáját. A kormányzati pénz ígérete viszont a „kormány jelöltje” képet erősíti."
       }
     ]
   },
@@ -214,19 +214,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A párt elégedett. Ára: a kézfogás megtagadása a nap képe lesz, és az elégedetlen szavazók Magyar mellé állnak."
+        "text": "A párt elégedett veled. Csak a megtagadott kézfogás lesz a nap képe, és az elégedetlen szavazók Magyar mellé állnak."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Gesztus a bizonytalanok felé. Ára: a pártközpontban nem fogják elfelejteni."
+        "text": "Gesztus a bizonytalanok felé, és ezt észreveszik. A pártközpontban viszont nem fogják elfelejteni."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Leveszi a feszültséget. Ára: a felvétel így is terjed, csak nélküled."
+        "text": "Leveszed a feszültséget. A felvétel így is terjed, csak éppen nélküled."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Egy keretbe rendezi a riválisokat. Ára: Magyar Pétert a főpolgármesteri verseny szereplőjévé teszed, holott nem is indul."
+        "text": "Egy keretbe rendezed a kihívóidat. Csak Magyar Pétert a főpolgármesteri verseny szereplőjévé teszed, pedig nem is indul."
       }
     ]
   },
@@ -235,19 +235,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A törzsszavazók lelkesek. Ára: Budapesten Orbán megosztó, és a „kormány szóvivője” vád beigazolódik."
+        "text": "A törzsszavazók lelkesek lesznek. Budapesten viszont Orbán megosztó, és a „kormány szóvivője” vád beigazolódik."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Az önálló arculatot építi. Ára: a pártközpont szerint nem élsz a legerősebb kártyáddal."
+        "text": "Az önálló arculatod erősödik. A pártközpont szerint viszont nem élsz a legerősebb kártyáddal."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Kézzelfogható ígéret. Ára: ha a vállalás elmarad, a te hiteled sérül."
+        "text": "Kézzelfogható ígéretet kapsz. Ha a vállalás elmarad, a te hiteled sérül, nem az övé."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Pozitív múltat idéz fel. Ára: a Tarlós-korszak vitái is visszajönnek vele."
+        "text": "Pozitív múltat idézel fel. Csak a Tarlós-korszak vitái is visszajönnek vele."
       }
     ]
   },
@@ -256,19 +256,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A peremkerületi szavazók egyetértenek. Ára: a belvárosban a nap vicce leszel."
+        "text": "A peremkerületi szavazók egyetértenek. A belvárosban viszont te leszel a nap vicce."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Önkritikus és meglepő. Ára: a saját táborod gyengeségnek láthatja."
+        "text": "Önkritikus és meglepő, ezt kevesen várják tőled. A saját táborod egy része gyengeségnek láthatja."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Visszafordítja a támadást. Ára: a vita a méhlegelőről szól tovább, nem a kátyúkról."
+        "text": "Visszafordítod a támadást. Csak a vita a méhlegelőről szól tovább, nem a kátyúkról."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Gyorsan lecseng. Ára: a mém él tovább, és csak ők mondják a magukét."
+        "text": "Gyorsan lecseng a dolog. A mém viszont tovább él, és csak ők mondják a magukét."
       }
     ]
   },
@@ -277,19 +277,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Biztos szavazatok. Ára: azokat éred el, akik amúgy is rád szavaznának."
+        "text": "Biztos szavazatok. Csak azokat éred el, akik amúgy is rád szavaznának."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Itt dől el a második hely. Ára: Vitézy is itt kampányol, drága a terep."
+        "text": "Itt dől el a második hely. Vitézy is itt kampányol, drága terep."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Bátor és látványos. Ára: kevés szavazat kis hozamért."
+        "text": "Bátor és látványos. Kevés szavazatot hoz, és sok erőt visz el."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Olcsó, széles elérés. Ára: a lájkok nem mennek el szavazni."
+        "text": "Olcsó, és sokakat elér. A lájkok viszont nem mennek el szavazni."
       }
     ]
   },
@@ -298,19 +298,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Hihető, a tábor szereti. Ára: a főváros függését vállalod nyíltan."
+        "text": "Hihető, és a tábor szereti. Csak nyíltan vállalod, hogy a város a kormány jóindulatától függ."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A legerősebb önálló gesztus. Ára: nyílt ütközés a kormánnyal, kampányidőben."
+        "text": "Ez a legerősebb önálló gesztusod. Kampányidőben nyíltan ütközöl a saját kormányoddal."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] A párt vonala. Ára: aki látja a 75 milliárdot, nem hiszi el."
+        "text": "A párt vonala, könnyű mondani. Aki látja a számokat, nem hiszi el."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Működő modellt idéz. Ára: azóta a hozzájárulás sokszorosára nőtt, ezt a riválisok felhozzák."
+        "text": "Működő modellt idézel fel. A hozzájárulás azóta a többszörösére nőtt, és ezt a riválisaid felhozzák."
       }
     ]
   },
@@ -319,19 +319,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A tábor és Tarlós elégedett. Ára: Vitézy szakmai vitába húz, ahol ő otthonosabb."
+        "text": "A tábor és Tarlós is elégedett. Vitézy viszont szakmai vitába húz, ahol ő otthonosabb."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Közvetlenül Vitézy fő erőssége ellen megy. Ára: kicsinyesnek tűnhet, és Vitézy szavazói összezárnak."
+        "text": "Egyenesen Vitézy fő erőssége ellen mész. Kicsinyesnek tűnhet, és az ő szavazói összezárnak."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] A leghitelesebb válasz. Ára: a beismert kudarcokat idézik majd."
+        "text": "Ez a leghitelesebb válasz. A beismert kudarcokat viszont idézni fogják."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Kilépsz Tarlós árnyékából. Ára: a riválisok szerint menekülsz a múlt elől."
+        "text": "Kilépsz Tarlós árnyékából. A riválisaid szerint menekülsz a múlt elől."
       }
     ]
   },
@@ -340,19 +340,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A családos szavazók értik. Ára: a bérlő fiatalokat nem éri el, és őket keresi mindenki."
+        "text": "A családos szavazók értik és szeretik. A bérlő fiatalokat viszont nem éri el, pedig most mindenki őket keresi."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Budapesti, kézzelfogható ígéret. Ára: a Lakásügynökséghez hasonlít, Karácsony szerint ellopod az ötletét."
+        "text": "Budapesti és kézzelfogható. Csak hasonlít a Lakásügynökségre, és Karácsony azt mondja majd, elloptad az ötletét."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Mindkét riválist gyengíti. Ára: saját ajánlat nélkül csak bírálónak látszol."
+        "text": "Mindkét riválisodat gyengíted. Saját ajánlat nélkül viszont csak bírálónak látszol."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Nagy léptékű és hihető. Ára: évekig tart, és a kormánytól függ."
+        "text": "Nagy léptékű és hihető. Évekig tart, és a kormányon múlik."
       }
     ]
   },
@@ -361,19 +361,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Elhozza az autós szavazókat, Grundtnertől is. Ára: a belvárosban és a fiatalok körében elveszít."
+        "text": "Elhozza az autós szavazókat, Grundtnertől is. A belvárosban és a fiatalok között viszont veszítesz vele."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Széles réteget ér el. Ára: kevésbé éles, Grundtner hangosabb."
+        "text": "Széles réteget ér el, kevés ellenséget szerez. Kevésbé éles, Grundtner hangosabb."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Emlékezetes. Ára: személyeskedésnek látszik, és Karácsony TikTokon visszavág."
+        "text": "Emlékezetes mondat. Csak személyeskedésnek látszik, és Karácsony a közösségi médiában visszavág."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Szakmailag erős. Ára: Vitézy terepe, ő hitelesebben mondja."
+        "text": "Szakmailag erős. Ez viszont Vitézy terepe, és ő hitelesebben mondja."
       }
     ]
   },
@@ -382,19 +382,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A párt vonala, a peremkerületekben működik. Ára: az érintett kerületek lakói ellened fordulnak."
+        "text": "A párt vonala, és a peremkerületekben működik. Az érintett kerületek lakói viszont ellened fordulnak."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Az önálló jelölt képe. Ára: nyílt feltétel a kormány zászlóshajó-projektjeivel szemben."
+        "text": "Önálló jelöltként szólalsz meg, és ezt észreveszik. Csak nyílt feltételt szabsz a kormány zászlóshajó-projektjeinek."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Megosztja Vitézy táborát. Ára: Vitézy szakmai érvekkel jól védekezik."
+        "text": "Megosztod Vitézy táborát. Ő viszont szakmai érvekkel jól védekezik."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Elkerülöd a kényes témát. Ára: a riválisok szerint kitérsz."
+        "text": "Elkerülöd a kényes témát. A riválisaid szerint kitérsz, és igazuk van."
       }
     ]
   },
@@ -403,19 +403,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Kockázatmentes. Ára: a volt kormányszóvivő, aki nem áll a sajtó elé, saját magát cáfolja."
+        "text": "Semmit nem kockáztatsz. Csak egy volt kormányszóvivő, aki nem áll a sajtó elé, saját magát cáfolja."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Hiteles és bátor. Ára: egy rossz interjú napokig visz."
+        "text": "Hiteles és bátor lépés. Egy rossz interjú viszont napokig visz."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Védhető. Ára: ígéretnek hangzik, nem tettnek."
+        "text": "Védhető álláspont. Ígéretnek hangzik, nem tettnek."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Személyes kapcsolat. Ára: lassú, és a sajtókérdés megmarad."
+        "text": "Személyes kapcsolatot építesz a választókkal. Lassú, és a sajtó kérdése megmarad."
       }
     ]
   },
@@ -424,19 +424,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Egyenrangú szereplővé tesz. Ára: ellenséges közönség előtt két tapasztalt vitázóval kell szembenézned."
+        "text": "Egyenrangú szereplővé válsz. Ellenséges közönség előtt két tapasztalt vitázóval kell szembenézned."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A párt vonala, nem kockáztatsz. Ára: vitakerülőnek látszol, és nélküled is lesz vita."
+        "text": "A párt vonala, nem kockáztatsz. Vitakerülőnek látszol, és nélküled is lesz vita."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Kompromisszumnak tűnik. Ára: a riválisok nem mennek el, a vita elmarad, a vád marad."
+        "text": "Kompromisszumnak tűnik. A riválisaid nem mennek el, a vita elmarad, a vád pedig marad."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Leveszi Karácsonyról a figyelmet. Ára: elismered, hogy a második helyért futsz."
+        "text": "Leveszed Karácsonyról a figyelmet. Csak közben elismered, hogy a második helyért futsz."
       }
     ]
   },
@@ -445,19 +445,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Tiszta üzenet, a tábor érti. Ára: Vitézy zavartalanul erősödik."
+        "text": "Tiszta üzenet, a tábor érti. Közben Vitézy zavartalanul erősödik."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A második helyért ez a legközvetlenebb út. Ára: Karácsony nevet a markába."
+        "text": "A második helyért ez a legrövidebb út. Karácsony közben a markába nevet."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Kevéssé támadható. Ára: a hajrában a pozitív üzenet halkan szól."
+        "text": "Nehéz belekötni. A hajrában viszont a pozitív üzenet halkan szól."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Egy keret, két ellenfél. Ára: Vitézyt nem sokan tartják baloldalinak."
+        "text": "Egy keret, két ellenfél. Vitézyt azonban nem sokan tartják baloldalinak."
       }
     ]
   },
@@ -466,19 +466,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A tábor egységes marad. Ára: a Tisza-szavazók főpolgármesterként sem rád fognak szavazni."
+        "text": "A tábor egységes marad. Csak a Tisza szavazói főpolgármesternek sem rád fognak ikszelni."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Új szavazókat nyithat meg. Ára: a pártközpont ezt árulásnak látja."
+        "text": "Új szavazók felé nyitsz. A pártközpont ezt árulásnak látja."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Karácsonyt gyengíti. Ára: a Tisza ereje a te listádnak is fáj."
+        "text": "Karácsonyt gyengíted vele. A Tisza ereje viszont a te listádnak is fáj."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Fegyelmezett. Ára: a hét legnagyobb politikai híréről nincs mondanivalód."
+        "text": "Fegyelmezett döntés. A hét legnagyobb politikai híréről viszont nincs mondanivalód."
       }
     ]
   },
@@ -487,19 +487,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A legjobb esély meggyőzni a bizonytalanokat. Ára: kevésbé látványos, a klipekben a riválisok maradnak meg."
+        "text": "Ez a legjobb esélyed a bizonytalanokra. Kevésbé látványos, a klipekből a riválisaid maradnak meg."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A tábor szereti. Ára: a teremben kinevetnek, és a klip ellened megy."
+        "text": "A tábor szereti. A stúdióban viszont kinevetnek, és a klip ellened megy."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Karácsonyt szorítja sarokba. Ára: Vitézy is profitál belőle."
+        "text": "Karácsonyt sarokba szorítod. Csak Vitézy is profitál belőle, talán jobban, mint te."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] A második helyért ez a legélesebb. Ára: Vitézy visszakérdez a te kormányzati múltadra."
+        "text": "A második helyért ez a legélesebb támadás. Vitézy visszakérdez a te kormányzati múltadra."
       }
     ]
   },
@@ -508,19 +508,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A tábor elfogadja. Ára: a bizonytalanok szemében kifogás."
+        "text": "A tábor elfogadja a magyarázatot. A bizonytalanok szemében viszont kifogás."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Megmutatod, hogy van mondanivalód. Ára: a videó nem vita, a hiány megmarad."
+        "text": "Megmutatod, hogy van mondanivalód. Csak egy videó nem vita, a hiány megmarad."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Mindkét riválist gyengíti. Ára: a vitát nézők szerint az egyikük nyert, és nem te."
+        "text": "Mindkét riválisodat gyengíted. A vitát nézők szerint viszont valamelyikük nyert, és nem te."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Gyorsan lecseng. Ára: a vita két nap alatt a te távolmaradásodról szól."
+        "text": "Gyorsan lecseng. Két napig mégis a távolmaradásodról szól minden."
       }
     ]
   },
@@ -529,19 +529,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A tábor teljes mozgósítása. Ára: a budapesti bizonytalanok nem a háborúról akarnak dönteni."
+        "text": "A tábor teljes mozgósítása. A budapesti bizonytalanok viszont nem a háborúról akarnak most dönteni."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Az önálló jelölt képe. Ára: a pártközpont szerint egyéni utakon jársz a hajrában."
+        "text": "Önálló jelöltként zárod a kampányt. A pártközpont szerint a hajrában egyéni utakon jársz."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Mindkét fél elégedett lehet. Ára: egyik üzenet sem szól igazán erősen."
+        "text": "Mindkét oldal elégedett lehet. Csak egyik üzenet sem szól igazán erősen."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] A tábor ismeri. Ára: Karácsony és Vitézy is a Gyurcsány-témát várja tőled, és felkészültek."
+        "text": "A tábor jól ismeri ezt a dallamot. Karácsony és Vitézy is pontosan erre számít, és felkészültek."
       }
     ]
   },
@@ -550,19 +550,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Megerősíti a tábort. Ára: ha a párt mégis másképp döntene, a te szavad sérül."
+        "text": "A tábor megnyugszik és mozgósul. Ha a párt mégis másképp döntene, a te szavad sérül."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Nem zársz ki semmit. Ára: a bizonytalanság a szavazóidat is elbizonytalanítja."
+        "text": "Semmit nem zársz ki. A bizonytalanság viszont a saját szavazóidat is elbizonytalanítja."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Visszafordítja a nyomást. Ára: Vitézy nevet rajta, a mérésekkel érvel."
+        "text": "Visszafordítod a nyomást. Vitézy nevet rajta, és a mérésekkel érvel."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Gyors és szokásos. Ára: a pletyka él tovább."
+        "text": "Gyors és megszokott válasz. A pletyka viszont tovább él."
       }
     ]
   },
@@ -571,19 +571,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Önálló jelöltként zárod a kampányt. Ára: ha veszítesz, egyedül viseled."
+        "text": "Önálló jelöltként zárod a kampányt. Ha veszítesz, egyedül viseled."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A tábor teljes mozgósítása. Ára: a „kormány jelöltje” kép marad."
+        "text": "A tábor teljes mozgósítása. A „kormány jelöltje” kép viszont végleg rajtad marad."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] A Karácsony-ellenes szavazókért vívott harc nyílt vállalása. Ára: ha Vitézy áll jobban, a szavazóid felé fordulnak."
+        "text": "Nyíltan vállalod a harcot a Karácsony-ellenes szavazókért. Ha Vitézy áll jobban, a te szavazóid fordulnak felé."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Ismerős keret. Ára: a bizonytalanokat nem ez győzi meg."
+        "text": "Ismerős keret, a tábor érti. A bizonytalanokat nem ez győzi meg."
       }
     ]
   },
@@ -592,19 +592,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A legnagyobb tartalék. Ára: Vitézy szavazói közül sokan sosem szavaznának fideszes jelöltre."
+        "text": "Ez a legnagyobb tartalékod. Vitézy szavazói közül viszont sokan sosem szavaznának fideszes jelöltre."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Biztos szavazatok. Ára: a második helyért folyó versenyt átengeded."
+        "text": "Biztos szavazatok. A második helyért folyó versenyt viszont átengeded."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Gyengíti Vitézyt. Ára: az ő szavazói ettől sem jönnek hozzád, inkább otthon maradnak."
+        "text": "Gyengíted Vitézyt. Az ő szavazói ettől sem hozzád jönnek, inkább otthon maradnak."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Kevéssé támadható. Ára: a hajrában kevés a hatása."
+        "text": "Nehéz belekötni. A hajrában viszont kevés a hatása."
       }
     ]
   },
@@ -613,19 +613,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Egyszerű, a tábor érti. Ára: a nem fideszes szavazókat nem éri el."
+        "text": "Egyszerű, és a tábor érti. A nem fideszes szavazókat viszont nem éri el."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Új szavazókat nyit meg. Ára: a pártközpont nem örül a kettős szavazásnak."
+        "text": "Új szavazók felé nyitsz. A pártközpont nem örül a kettős szavazás ötletének."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Felelősnek hangzik. Ára: a főpolgármesteri versenyről vonja el a figyelmet."
+        "text": "Felelősen hangzik. Csak a főpolgármesteri versenyről viszi el a figyelmet."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Pontosan céloz. Ára: Vitézy kampánya ugyanezt mondja fordítva."
+        "text": "Pontosan célzott üzenet. Vitézy kampánya ugyanezt mondja, csak fordítva."
       }
     ]
   },
@@ -634,19 +634,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] Széles kör. Ára: kevesen jönnek, és a törzstábor gyanakszik."
+        "text": "Széles kört szólítasz meg. Kevesen jönnek, és a törzstábor gyanakszik."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A tábor egységes marad. Ára: a Tisza-szavazók Vitézy felé mozdulnak."
+        "text": "A tábor egységes marad. A Tisza szavazói közben Vitézy felé mozdulnak."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Karácsonyt gyengíti. Ára: Vitézy jobban profitál belőle, mint te."
+        "text": "Karácsonyt gyengíted. Csak Vitézy jobban profitál belőle, mint te."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Személyes és emlékezetes. Ára: Magyar Péter valószínűleg reagál, és nem a te javadra."
+        "text": "Személyes és emlékezetes üzenet. Magyar Péter valószínűleg reagál, és nem a te javadra."
       }
     ]
   },
@@ -655,19 +655,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A bizonytalanoknak szól. Ára: a tábor harciasabb zárást várt."
+        "text": "A bizonytalanoknak szól. A tábor harciasabb zárást várt."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] A tábor mozgósítása. Ára: a bizonytalanokat nem ez győzi meg."
+        "text": "A tábor utolsó mozgósítása. A bizonytalanokat nem ez győzi meg."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Nosztalgia és tapasztalat. Ára: Vitézy is erre a korszakra hivatkozik."
+        "text": "Nosztalgia és tapasztalat egyszerre. Vitézy is erre a korszakra hivatkozik."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] A taktikus szavazókat célozza. Ára: ha Vitézy áll jobban, nekik ugyanez az érv őt jelenti."
+        "text": "A taktikusan szavazókat célozza. Ha Vitézy áll jobban, nekik ugyanez az érv őt jelenti."
       }
     ]
   },
@@ -676,19 +676,19 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "[SZEMPONT] A legbiztosabb hozam. Ára: azokat éred el, akik amúgy is jönnének."
+        "text": "A legbiztosabb hozam. Csak azokat éred el, akik amúgy is jönnének."
       },
       {
         "answerId": "B",
-        "text": "[SZEMPONT] Itt van a legtöbb mozgatható szavazó. Ára: Vitézy is itt van."
+        "text": "Itt van a legtöbb mozgatható szavazó. Vitézy is itt van."
       },
       {
         "answerId": "C",
-        "text": "[SZEMPONT] Ha működik, kettőt ér. Ára: a legkisebb hozam."
+        "text": "Ha működik, kétszer annyit ér. Ez hozza a legkevesebbet."
       },
       {
         "answerId": "D",
-        "text": "[SZEMPONT] Széles és olcsó. Ára: a telefonos megkeresés vasárnap már keveset mozdít."
+        "text": "Széles és olcsó. Vasárnap egy telefonhívás már keveset mozdít."
       }
     ]
   }
