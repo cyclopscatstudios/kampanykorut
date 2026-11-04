@@ -92,6 +92,17 @@
         }
       ],
       "party_logo": "/images/2024_budapest/parbeszed_dk_mszp.png"
+    },
+    {
+      "id": "fidesz_kdnp",
+      "candidateAssets": [
+        {
+          "id": "szentkiralyi_alexandra",
+          "portrait": "/images/2024_budapest/szentkiralyi_alexandra.png",
+          "slogan": "/images/2024_budapest/fidesz_kdnp.png"
+        }
+      ],
+      "party_logo": "/images/2024_budapest/fidesz.png"
     }
   ]
 }
