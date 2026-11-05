@@ -184,7 +184,7 @@ export function MayoralDistrictPanel({
   const parties = config.electionConfig.parties;
 
   return (
-    <CommonWrapper fullHeight={false} className="w-full md:w-auto min-w-0">
+    <CommonWrapper fullHeight={false} className="w-full md:w-[450px] min-w-0">
       <div className="w-full md:w-[400px] md:h-[444px] shrink-0 p-3 flex flex-col gap-2">
         <Text className="text-center" weight="bold">
           {result?.label ?? t("endResult.mayoral.selectDistrict")}

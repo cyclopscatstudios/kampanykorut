@@ -6,7 +6,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Ragaszkodsz a tényekhez: a díjról a Közgyűlés döntött, a jelölést mások nyújtották be, a rendőrségi eljárás akkor lezárult."
+        "label": "Ragaszkodsz a tényekhez: a díjról a Közgyűlés döntött, a jelölést mások nyújtották be, a rendőrségi eljárás akkor már lezárult."
       },
       {
         "id": "B",
@@ -87,7 +87,7 @@
       },
       {
         "id": "D",
-        "label": "A 2010 és 2019 közötti városvezetésre hivatkozol, ahol helyettesként már bizonyítottál."
+        "label": "A 2010 és 2019 közötti városvezetésre hivatkozol, amelyben helyettesként már bizonyítottál."
       }
     ]
   },
@@ -117,7 +117,7 @@
   {
     "id": "bp2024_szentkiralyi_06",
     "title": "Hét pont, egy feltétel",
-    "question": "Vitézy levelet ír a jelölteknek, és arra kér, írjatok alá egy hétpontos vállalási listát, benne nyilvános vitával. Karácsony előbb szívesen vitázna, másnap feltételt szab: csak akkor, ha te és Vitézy közül valamelyik visszalép. A visszalépésedet mindkét rivális felveti. Mit válaszolsz?",
+    "question": "Vitézy levélben arra kéri a jelölteket, hogy írjanak alá egy hétpontos vállaláslistát, benne nyilvános vitával. Karácsony előbb szívesen vitázna, másnap feltételt szab: csak akkor, ha te és Vitézy közül valamelyik visszalép. A visszalépésedet mindkét rivális felveti. Mit válaszolsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -186,7 +186,7 @@
   {
     "id": "bp2024_szentkiralyi_09",
     "title": "Tegyük újra naggyá",
-    "question": "A kampánynyitód a Bálnában zártkörű, a sajtót nem engedik be. Kocsis Máté, Baán László és Tarlós István beszél. Hétpontos programot mutatsz be a Gyurcsány-befolyás végétől a dupla köztisztasági forráson át az élhető városig. Melyik pont legyen a kampány szalagcíme?",
+    "question": "A Bálnában tartott kampánynyitód zártkörű, a sajtót nem engedik be. Kocsis Máté, Baán László és Tarlós István beszél. Hétpontos programot mutatsz be a Gyurcsány-befolyás végétől a dupla köztisztasági forráson át az élhető városig. Melyik pont legyen a kampány szalagcíme?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -209,7 +209,7 @@
   {
     "id": "bp2024_szentkiralyi_10",
     "title": "Rend az aluljárókban",
-    "question": "Visszatérő lakossági panasz a koszos aluljáró, a zaklatás a csomópontokban és a hajléktalanok a járatokon. Az életvitelszerű közterületi tartózkodást 2018 óta az Alaptörvény tiltja. Vitézy BKK-rendészetet ígér, Karácsony a szociális megközelítést védi. Mi a te megoldásod?",
+    "question": "Visszatérő lakossági panasz a koszos aluljárók, a zaklatás a csomópontokban és a hajléktalanok a járatokon. Az életvitelszerű közterületi tartózkodást 2018 óta az Alaptörvény tiltja. Vitézy BKK-rendészetet ígér, Karácsony a szociális megközelítést védi. Mi a te megoldásod?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -232,7 +232,7 @@
   {
     "id": "bp2024_szentkiralyi_11",
     "title": "Kézfogás a Széll Kálmán téren",
-    "question": "Utcai kampányodon összefutsz Magyar Péterrel. Ő azt kéri, a Gyurcsány-kritika mellett adj konkrét programot Budapestnek, te azt tanácsolod neki, hogy hagyja abba az orbánozást. A kampányfőnököd, Hidvéghi Balázs nem fog vele kezet. A jelenetet kamerák veszik. Hogyan zárod le?",
+    "question": "Utcai kampányolás közben összefutsz Magyar Péterrel. Ő azt kéri, a Gyurcsány-kritika mellett adj konkrét programot Budapestnek, te azt tanácsolod neki, hogy hagyja abba az orbánozást. A kampányfőnököd, Hidvéghi Balázs nem fog vele kezet. A jelenetet kamerák veszik. Hogyan zárod le?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -244,11 +244,11 @@
       },
       {
         "id": "C",
-        "label": "Viccel ütöd el a jelenetet, és rögtön budapesti ügyekre terelsz."
+        "label": "Tréfával ütöd el a jelenetet, és rögtön a budapesti ügyekre tereled a szót."
       },
       {
         "id": "D",
-        "label": "Magyart Karácsony és Vitézy mellé sorolod: mind a változást ígérik, de egyikük sem kínál működő várost."
+        "label": "Magyart Karácsony és Vitézy mellé sorolod: mindhárman változást ígérnek, de egyikük sem kínál működő várost."
       }
     ]
   },
@@ -267,7 +267,7 @@
       },
       {
         "id": "C",
-        "label": "Nyilvános kormányzati vállalást kérsz tőle Budapestnek, és azt viszed tovább."
+        "label": "Nyilvános kormányzati vállalást kérsz tőle Budapestért, és ezt hangoztatod a kampányban."
       },
       {
         "id": "D",
@@ -278,7 +278,7 @@
   {
     "id": "bp2024_szentkiralyi_13",
     "title": "Fűkasza és méhlegelő",
-    "question": "Fűkaszával vágod a füvet egy közterületen: olyan ember vagy, aki megy és megoldja a problémákat. Karácsony közli, hogy egy méhlegelőt kaszáltál le, amelynek szándékosan kellett gazosnak lennie. A videó terjed, a zöldek nevetnek, a szavazóid egy része viszont veled ért egyet. Hogyan reagálsz?",
+    "question": "Videón fűkaszával vágod a füvet egy közterületen, és azt mondod: olyan ember vagy, aki megy és megoldja a problémákat. Karácsony közli, hogy egy méhlegelőt kaszáltál le, amelyet szándékosan hagytak vadon. A videó terjed, a zöldek nevetnek, a szavazóid egy része viszont veled ért egyet. Hogyan reagálsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -301,11 +301,11 @@
   {
     "id": "bp2024_szentkiralyi_14",
     "title": "Hol dől el Budapest?",
-    "question": "Leadtad az ajánlásokat, hivatalosan is jelölt vagy, de a hátralévő hetekben nem lehetsz mindenhol. A peremkerületek a Fidesz erős terepei, az átmeneti övezet lakótelepei billegnek, a belváros Karácsonyé. Hová teszed a kampány súlypontját?",
+    "question": "Leadtad az ajánlásokat, hivatalosan is jelölt vagy, de a hátralévő hetekben nem lehetsz mindenhol ott. A peremkerületek a Fidesz erős terepei, az átmeneti övezet lakótelepei billegnek, a belváros Karácsonyé. Hová teszed a kampány súlypontját?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A peremkerületekbe: a saját tábor teljes mozgósítása."
+        "label": "A peremkerületekbe: a saját táborod teljes mozgósítása."
       },
       {
         "id": "B",
@@ -324,7 +324,7 @@
   {
     "id": "bp2024_szentkiralyi_15",
     "title": "Lázár a padon",
-    "question": "Lázár János, aki a fővárosi fejlesztések kormányzati pénzéért felel, egy padon, kamerák előtt mondja neked, hogy kevés a pénze, de szerinte te képes leszel elszedni. Közben a szolidaritási hozzájárulás a Tarlós-korszak óta a többszörösére nőtt, a Főváros perel. Mit ígérsz a város kasszájáról?",
+    "question": "Lázár János, aki a fővárosi fejlesztések kormányzati pénzéért felel, egy padon, kamerák előtt mondja neked, hogy kevés a pénze, de szerinte te majd el tudod szedni tőle. Közben a szolidaritási hozzájárulás a Tarlós-korszak óta a többszörösére nőtt, a Főváros perel. Mit ígérsz a város kasszájáról?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -393,7 +393,7 @@
   {
     "id": "bp2024_szentkiralyi_18",
     "title": "Autót sem tud vezetni",
-    "question": "A kampányod visszatérő mondata, hogy Karácsony nemcsak autót, várost sem tud vezetni. A peremkerületekben sokan autóellenesnek tartják a buszsávok és a kerékpársávok miatt, az utaknak évente csak töredékét újítják fel. Az autósokért Grundtner András, a Mi Hazánk jelöltje is harcol. Mit ígérsz nekik?",
+    "question": "A kampányod visszatérő mondata, hogy Karácsony nemcsak autót nem tud vezetni, hanem várost sem. A peremkerületekben sokan autóellenesnek tartják a buszsávok és a kerékpársávok miatt, az utaknak évente csak töredékét újítják fel. Az autósokért Grundtner András, a Mi Hazánk jelöltje is harcol. Mit ígérsz nekik?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -409,7 +409,7 @@
       },
       {
         "id": "D",
-        "label": "A közösségi közlekedést is: sűrűbb peremkerületi buszjáratokat és több P+R-parkolót."
+        "label": "A közösségi közlekedést is fejleszted: sűrűbb peremkerületi buszjáratokat és több P+R-parkolót."
       }
     ]
   },
@@ -451,7 +451,7 @@
       },
       {
         "id": "C",
-        "label": "A Budapestinfót főpolgármesterként indítod el, kampányban közvetlenül a választókhoz beszélsz."
+        "label": "A Budapestinfót főpolgármesterként indítod el, a kampány idején közvetlenül a választókhoz beszélsz."
       },
       {
         "id": "D",
@@ -497,7 +497,7 @@
       },
       {
         "id": "C",
-        "label": "Senkire: pozitív kampányt viszel, a saját programodat."
+        "label": "Senkire: pozitív kampányt viszel, a saját programodról beszélsz."
       },
       {
         "id": "D",
@@ -508,7 +508,7 @@
   {
     "id": "bp2024_szentkiralyi_23",
     "title": "A Tisza-lista előz",
-    "question": "A Medián szerint a Tisza Párt fővárosi listája napok alatt nyolc pontot erősödött, és megelőzte a DK–MSZP–Párbeszéd listáját. Te a Fidesz fővárosi listavezetője is vagy. A Tisza nem indít főpolgármester-jelöltet, de a szavazói a te lapodon is döntenek. Hogyan reagálsz?",
+    "question": "A Medián szerint a Tisza Párt fővárosi listája napok alatt nyolc pontot erősödött, és megelőzte a DK–MSZP–Párbeszéd listáját. Te a Fidesz fővárosi listavezetője is vagy. A Tisza nem indít főpolgármester-jelöltet, de a szavazói a főpolgármesteri lapon is döntenek. Hogyan reagálsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -524,7 +524,7 @@
       },
       {
         "id": "D",
-        "label": "Nem foglalkozol vele, a saját listádat és jelöltségedet mozgósítod."
+        "label": "Nem foglalkozol vele, a saját listád és a jelöltséged mellett mozgósítasz."
       }
     ]
   },
@@ -639,7 +639,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A saját döntéseddel: a budapestiek választhassanak a jobboldalról is, és te végigviszed."
+        "label": "A saját döntéseddel: a budapestiek jobboldali jelöltre is szavazhassanak, és te végigviszed."
       },
       {
         "id": "B",
@@ -666,7 +666,7 @@
       },
       {
         "id": "B",
-        "label": "A saját tábort mozgósítod, Vitézyről egy szót sem ejtesz."
+        "label": "A saját táborodat mozgósítod, Vitézyről egy szót sem ejtesz."
       },
       {
         "id": "C",
@@ -754,7 +754,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A peremkerületekbe: a saját tábor utolsó mozgósítása."
+        "label": "A peremkerületekbe: a saját táborod utolsó mozgósítása."
       },
       {
         "id": "B",

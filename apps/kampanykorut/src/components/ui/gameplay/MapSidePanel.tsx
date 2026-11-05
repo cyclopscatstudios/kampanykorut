@@ -138,7 +138,7 @@ function PanelTab({
       className={classNames(
         "flex h-8 cursor-pointer items-center justify-center gap-1.75 rounded-[5px] text-xs font-semibold tracking-[0.2px]",
         selected
-          ? "bg-blue-600 text-white"
+          ? "bg-btn-primary text-white"
           : "text-slate-400 hover:text-slate-200",
       )}
     >

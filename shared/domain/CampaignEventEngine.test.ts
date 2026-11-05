@@ -157,6 +157,26 @@ describe("CampaignEventEngine", () => {
     expect(second.campaignEvents?.triggeredEventIds).toEqual(["rally"]);
   });
 
+  it("announces a repeatable event only on its first run", () => {
+    const repeatable = event("rally", {
+      once: false,
+      announcement: { title: "Nagygyűlés", body: "Újabb nagygyűlés." },
+    });
+
+    const first = run([repeatable]);
+    const acknowledged = {
+      ...first,
+      campaignEvents: {
+        triggeredEventIds: first.campaignEvents!.triggeredEventIds,
+        pendingAnnouncementIds: [],
+      },
+    };
+    const second = run([repeatable], acknowledged);
+
+    expect(first.campaignEvents?.pendingAnnouncementIds).toEqual(["rally"]);
+    expect(second.campaignEvents?.pendingAnnouncementIds).toEqual([]);
+  });
+
   it("evaluates events by priority, then by declaration order", () => {
     const { apply, calls } = recordingApply();
 

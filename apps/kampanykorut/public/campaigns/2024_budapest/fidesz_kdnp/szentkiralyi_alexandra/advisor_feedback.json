@@ -33,7 +33,7 @@
       },
       {
         "answerId": "C",
-        "text": "Ez lesz az önálló kampány alapja. Az alku nyoma megmarad, és a pártközpont a hajrában emlékezni fog rá."
+        "text": "Ez lesz az önálló kampányod alapja. Az alku nyoma megmarad, és a pártközpont a hajrában emlékezni fog rá."
       },
       {
         "answerId": "D",
@@ -54,11 +54,11 @@
       },
       {
         "answerId": "C",
-        "text": "Szóvivőként ennél biztonságosabb nincs. Másnaptól viszont jelöltként kérik számon rajtad, mit gondolsz."
+        "text": "Szóvivőként ennél biztonságosabb nincs. Ha viszont másnap jelölt leszel, számon kérik rajtad, mit gondolsz."
       },
       {
         "answerId": "D",
-        "text": "Ez Tarlós kedvenc érve, és sokan hisznek benne. A riválisaid a „kormány szócsöve” vádat látják benne igazolva."
+        "text": "Bevett jobboldali érv, és sokan hisznek benne. A riválisaid a „kormány szócsöve” vádat látják benne igazolva."
       }
     ]
   },
@@ -79,7 +79,7 @@
       },
       {
         "answerId": "D",
-        "text": "Tapasztalatot mutatsz, nem csak ígéretet. A Tarlós-korszak vitái is a tiéd lesznek, és Vitézy ugyanerre az örökségre hivatkozik."
+        "text": "Tapasztalatot mutatsz, nem csak ígéretet. A Tarlós-korszak vitái is a tieid lesznek, és Vitézy ugyanerre az örökségre hivatkozik."
       }
     ]
   },
@@ -96,7 +96,7 @@
       },
       {
         "answerId": "C",
-        "text": "Ez a leghitelesebb hang, és a narrátori tényekkel sem ütközik. A riválisaid persze a beismert kudarcokat fogják idézni."
+        "text": "Ez a leghitelesebb hang, és a tényekkel sem ütközik. A riválisaid persze a beismert kudarcokat fogják idézni."
       },
       {
         "answerId": "D",
@@ -130,7 +130,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Erős, idézhető mondat, és háromszereplőssé teszi a versenyt. Csak Vitézyvel egy szintre emeled magad, és ő pontosan ezt akarja."
+        "text": "Erős, idézhető mondat, és háromszereplőssé teszi a versenyt. Csak Vitézyt teszed meg fő ellenfélnek, és ő pontosan ezt akarja."
       },
       {
         "answerId": "B",
@@ -201,7 +201,7 @@
       },
       {
         "answerId": "C",
-        "text": "Ismerős és megfogható. Csak a lezárás áthelyezi a gondot, és ezt a riválisaid azonnal felhozzák."
+        "text": "Ismerős és megfogható. Csak a lezárás nem megoldja, hanem áthelyezi a gondot, és ezt a riválisaid azonnal felhozzák."
       },
       {
         "answerId": "D",
@@ -235,7 +235,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A törzsszavazók lelkesek lesznek. Budapesten viszont Orbán megosztó, és a „kormány szóvivője” vád beigazolódik."
+        "text": "A törzsszavazók lelkesek lesznek. Budapesten viszont Orbán megosztó, és a „kormány szóvivője” vád rád ragad."
       },
       {
         "answerId": "B",
@@ -243,7 +243,7 @@
       },
       {
         "answerId": "C",
-        "text": "Kézzelfogható ígéretet kapsz. Ha a vállalás elmarad, a te hiteled sérül, nem az övé."
+        "text": "Ha megkapod, kézzelfogható ígéreted lesz. Ha a vállalás elmarad, a te hiteled sérül, nem az övé."
       },
       {
         "answerId": "D",
@@ -281,7 +281,7 @@
       },
       {
         "answerId": "B",
-        "text": "Itt dől el a második hely. Vitézy is itt kampányol, drága terep."
+        "text": "Itt dől el a második hely. Vitézy is itt kampányol, ezért drága terep."
       },
       {
         "answerId": "C",
@@ -302,7 +302,7 @@
       },
       {
         "answerId": "B",
-        "text": "Ez a legerősebb önálló gesztusod. Kampányidőben nyíltan ütközöl a saját kormányoddal."
+        "text": "Ez a legerősebb önálló gesztusod. Kampányidőben nyíltan szembemész a saját pártod kormányával."
       },
       {
         "answerId": "C",
@@ -365,7 +365,7 @@
       },
       {
         "answerId": "B",
-        "text": "Széles réteget ér el, kevés ellenséget szerez. Kevésbé éles, Grundtner hangosabb."
+        "text": "Széles réteget ér el, kevés ellenséget szerez. Csak kevésbé éles, és Grundtner hangosabb."
       },
       {
         "answerId": "C",
@@ -407,7 +407,7 @@
       },
       {
         "answerId": "B",
-        "text": "Hiteles és bátor lépés. Egy rossz interjú viszont napokig visz."
+        "text": "Hiteles és bátor lépés. Egy rossz interjú viszont napokig téma marad."
       },
       {
         "answerId": "C",
@@ -491,7 +491,7 @@
       },
       {
         "answerId": "B",
-        "text": "A tábor szereti. A stúdióban viszont kinevetnek, és a klip ellened megy."
+        "text": "A tábor szereti. A stúdióban viszont kinevetnek, és a klip ellened fordul."
       },
       {
         "answerId": "C",
@@ -541,7 +541,7 @@
       },
       {
         "answerId": "D",
-        "text": "A tábor jól ismeri ezt a dallamot. Karácsony és Vitézy is pontosan erre számít, és felkészültek."
+        "text": "A tábor jól ismeri ezt a dallamot. Karácsony és Vitézy is pontosan erre számítanak, és felkészültek."
       }
     ]
   },
@@ -554,7 +554,7 @@
       },
       {
         "answerId": "B",
-        "text": "Semmit nem zársz ki. A bizonytalanság viszont a saját szavazóidat is elbizonytalanítja."
+        "text": "Semmit nem zársz ki. A hallgatás viszont a saját szavazóidat is elbizonytalanítja."
       },
       {
         "answerId": "C",
@@ -617,7 +617,7 @@
       },
       {
         "answerId": "B",
-        "text": "Új szavazók felé nyitsz. A pártközpont nem örül a kettős szavazás ötletének."
+        "text": "Új szavazók felé nyitsz. A pártközpont nem örül a megosztott szavazás ötletének."
       },
       {
         "answerId": "C",
@@ -684,7 +684,7 @@
       },
       {
         "answerId": "C",
-        "text": "Ha működik, kétszer annyit ér. Ez hozza a legkevesebbet."
+        "text": "Itt minden szavazat duplán számít. Csak itt van belőle a legkevesebb."
       },
       {
         "answerId": "D",

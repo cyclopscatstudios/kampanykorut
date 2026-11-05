@@ -8,6 +8,7 @@ declare global {
       toggle: () => boolean;
       enable: () => boolean;
     };
+    mesi: () => void;
   }
 }
 
@@ -31,5 +32,14 @@ export function initCampaignDebug() {
       console.log(`Debug mode: "ON" `);
       return this.enabled;
     },
+  };
+  window.mesi = () => {
+    console.log(`
+      ▄█▀█▀███▄ ██▀███▄ ▄█▀███▄ ██
+      ██ █ ████ ██▄     ▀█▄▄▄▄▄ ██
+      ██ █ ████ ██ ▄▄▄▄ ▄▄ ████ ██
+      ██ █ ████ ██ ████ ██ ████ ██
+      ██   ████ ██▄███▀ ▀█▄███▀ ██
+      `);
   };
 }
