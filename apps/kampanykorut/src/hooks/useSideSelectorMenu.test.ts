@@ -34,6 +34,15 @@ const mockConfig: CampaignConfig = {
         label: "Fidesz-KDNP",
         mainCandidates: [],
       },
+      {
+        id: "lmp",
+        label: "LMP",
+        mainCandidates: [
+          { id: "vitezy_david", label: "Vitézy Dávid" },
+          { id: "other_candidate", label: "Other Candidate" },
+        ],
+        playableCandidates: ["vitezy_david"],
+      },
     ],
     electionAssets: [],
     partyListVotes: {},
@@ -84,7 +93,7 @@ describe("useSideSelectorMenu", () => {
   it("returns sides from election config", () => {
     const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
 
-    expect(result.current.playableSides).toHaveLength(2);
+    expect(result.current.playableSides).toHaveLength(3);
     expect(result.current.playableSides[0].value).toBe("ellenzeki_osszefogas");
     expect(result.current.playableSides[1].value).toBe("fidesz_kdnp");
   });
@@ -134,6 +143,26 @@ describe("useSideSelectorMenu", () => {
 
     act(() => {
       result.current.handlePartyChange("fidesz_kdnp");
+    });
+
+    expect(result.current.selectedCandidate).toBeUndefined();
+  });
+
+  it("handlePartyChange auto-selects the only playable candidate", () => {
+    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+
+    act(() => {
+      result.current.handlePartyChange("lmp");
+    });
+
+    expect(result.current.selectedCandidate?.id).toBe("vitezy_david");
+  });
+
+  it("handlePartyChange does not auto-select when multiple candidates are playable", () => {
+    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+
+    act(() => {
+      result.current.handlePartyChange("ellenzeki_osszefogas");
     });
 
     expect(result.current.selectedCandidate).toBeUndefined();

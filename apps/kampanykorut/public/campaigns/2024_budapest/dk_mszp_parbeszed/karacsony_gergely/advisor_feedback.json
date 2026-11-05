@@ -33,7 +33,7 @@
       },
       {
         "answerId": "C",
-        "text": "A saját tábor imádni fogja, a peremkerületi ingázó kevésbé. Ő nem pert akar, hanem eljutni dolgozni."
+        "text": "A saját táborod imádni fogja, a peremkerületi ingázó kevésbé. Ő nem pert akar, hanem eljutni dolgozni."
       },
       {
         "answerId": "D",
@@ -79,7 +79,7 @@
       },
       {
         "answerId": "D",
-        "text": "Frissességet mutatsz, ami jól jön egy második ciklusnál. A szövetséges pártok viszont azt hallják ki belőle, hogy rájuk nincs szükséged."
+        "text": "Frissességet mutatsz, ami jól jön egy második ciklus előtt. A szövetséges pártok viszont azt hallják ki belőle, hogy rájuk nincs szükséged."
       }
     ]
   },
@@ -88,7 +88,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Ha minden rendben van, ez a legerősebb válasz, és a gyanú elszivárog. Ha egyetlen papír hiányzik, hónapokig erről szól majd a kampány."
+        "text": "Ha minden rendben van, ez a legerősebb válasz, és a gyanú elpárolog. Ha egyetlen papír hiányzik, hónapokig erről szól majd a kampány."
       },
       {
         "answerId": "B",
@@ -142,7 +142,7 @@
       },
       {
         "answerId": "D",
-        "text": "Nagyvonalú, és elveszi a harmadik út élét. Ha visszautasítja, a te ajánlatod marad, ha elfogadja, a saját táborod nem érti."
+        "text": "Nagyvonalú, és elveszi a harmadik út élét. Ha visszautasítja, te maradsz a nagyvonalú fél; ha elfogadja, a saját táborod nem érti."
       }
     ]
   },
@@ -159,7 +159,7 @@
       },
       {
         "answerId": "C",
-        "text": "A Fidesz jelöltje vagy a vitán szerepel, vagy a kifogásai között, és mindkettő neked jó. Vitézy pedig nem kapja meg a kettesben vívott párbaj rangját."
+        "text": "A Fidesz jelöltje vagy eljön a vitára, vagy magyarázkodhat, miért nem, és mindkettő neked jó. Vitézy pedig nem kapja meg a kettesben vívott párbaj rangját."
       },
       {
         "answerId": "D",
@@ -172,7 +172,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Van mit mutatni, és ez több, mint az ellenfeleidnek. A kritikusaid viszont azt mondják majd, hogy öt év után ennyire futotta a kampány hajrájában."
+        "text": "Van mit felmutatnod, és ez több, mint amit az ellenfeleid tudnak. A kritikusaid viszont azt mondják majd, hogy öt év után ennyire futotta a kampány hajrájában."
       },
       {
         "answerId": "B",
@@ -184,7 +184,7 @@
       },
       {
         "answerId": "D",
-        "text": "A szakmai kritika jogos lehet, és a te terepeden vagy. Csak aki lakást keres, annak a te ötven lakásod sem sok."
+        "text": "A szakmai kritika jogos lehet, és a te terepeden vagy. Csak aki most lakást keres, annak a kritika nem ad kulcsot."
       }
     ]
   },
@@ -214,11 +214,11 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A saját tábor ezt elvárja, és a számok melletted vannak. Csak a peremkerületi szavazó egy idő után úgy érzi, a főpolgármester mindig a kormánnyal veszekszik."
+        "text": "A saját táborod ezt elvárja, és a számok melletted vannak. Csak a peremkerületi szavazó egy idő után úgy érzi, a főpolgármester mindig a kormánnyal veszekszik."
       },
       {
         "answerId": "B",
-        "text": "Felelős gazdálkodónak tűnsz, és a város likviditása javulhat. Ha kiszivárog, Vitézy és a Fidesz is azt mondja, hogy behódoltál."
+        "text": "Felelős gazdálkodónak tűnsz, és a városi kassza fellélegezhet. Ha kiszivárog, Vitézy és a Fidesz is azt mondja, hogy behódoltál."
       },
       {
         "answerId": "C",
@@ -277,7 +277,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Itt laknak azok, akik 2019-ben megválasztottak, és itt szeretnek. Csakhogy itt nem nyersz semmit, amit eddig ne nyertél volna meg."
+        "text": "Itt laknak azok, akik 2019-ben megválasztottak, és itt szeretnek. Csakhogy itt nincs mit nyerned: ezek a szavazók eddig is a tieid voltak."
       },
       {
         "answerId": "B",
@@ -323,7 +323,7 @@
       },
       {
         "answerId": "B",
-        "text": "Jó hír a peremnek, és senki nem ellenzi a jó utat. Csak a kasszát te is ismered, és az ellenfeleid is ismerik."
+        "text": "Jó hír a peremkerületeknek, és senki nem ellenzi a jó utat. Csak a kasszát te is ismered, és az ellenfeleid is ismerik."
       },
       {
         "answerId": "C",
@@ -373,7 +373,7 @@
       },
       {
         "answerId": "D",
-        "text": "Bevett megoldás, és a te kezed tiszta marad. A sajtó azonban hamar összeköti a pontokat."
+        "text": "Bevett megoldás, és a te kezed tiszta marad. A sajtó azonban hamar rájön, ki áll a háttérben."
       }
     ]
   },
@@ -491,7 +491,7 @@
       },
       {
         "answerId": "B",
-        "text": "Egálra hozod a pontot. Egy „te is” típusú vitából viszont ritkán jön ki valaki győztesként."
+        "text": "Egálra hozod az állást. Egy „te is” típusú vitából viszont ritkán jön ki valaki győztesként."
       },
       {
         "answerId": "C",
@@ -592,7 +592,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Erős, megjegyezhető, és a tábor felhorkan rá. A tétovázók egy része viszont ezt lekezelőnek érzi."
+        "text": "Erős, megjegyezhető, és a tábor lelkesen visszhangozza. A tétovázók egy része viszont ezt lekezelőnek érzi."
       },
       {
         "answerId": "B",
@@ -625,7 +625,7 @@
       },
       {
         "answerId": "D",
-        "text": "Erős gesztus, és Szentkirályi tábora meghallja, hol van a valódi verseny. Csak a kiegyenlítésből könnyen túlzás lesz, és akkor Vitézy húz el."
+        "text": "Erős gesztus, és Szentkirályi tábora meghallja, hol van a valódi verseny. Csak könnyen túllősz a célon, és akkor Vitézy húz el."
       }
     ]
   },
@@ -688,7 +688,7 @@
       },
       {
         "answerId": "D",
-        "text": "A régi ellenzéki törzs bólint. A Tisza-szavazók viszont ezek után az érvénytelen szavazatot is kevésnek érzik."
+        "text": "A régi ellenzéki törzs bólint. A Tisza-szavazók viszont ezek után még kevésbé ikszelnének rád."
       }
     ]
   },
@@ -718,7 +718,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A tábor ezt várja, és a köztársasági keret visszaér a kampány elejéig. A középen állóknak viszont ez is a régi dal."
+        "text": "A tábor ezt várja, és a kampány a köztársasági kerettel ott zárul, ahol kezdődött. A középen állóknak viszont ez is a régi dal."
       },
       {
         "answerId": "B",

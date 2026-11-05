@@ -36,13 +36,17 @@ export function EventAnnouncementDialog({
       </DialogHeader>
       <DialogBody>
         {announcement?.imageUri && (
-          <ImageWrapper
-            src={announcement.imageUri}
-            type="final"
-            className="mb-3 rounded-xl object-cover"
-          />
+          <div className="mb-3 flex justify-center">
+            <ImageWrapper
+              src={announcement.imageUri}
+              type="final"
+              className="rounded-xl object-cover"
+            />
+          </div>
         )}
-        <Text className="leading-relaxed">{announcement?.body}</Text>
+        <Text className="text-center leading-relaxed">
+          {announcement?.body}
+        </Text>
       </DialogBody>
     </Dialog>
   );

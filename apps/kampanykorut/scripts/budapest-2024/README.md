@@ -224,3 +224,48 @@ row):
 With the worst answers Vitézy falls from 27.4% to 24.5% by the 25th decision. A
 strategy followed with random answers elsewhere also picks some of the costly
 answers; a player who follows a strategy and avoids them does better.
+
+## Szentkirályi side
+
+`szentkiralyi-effects.mjs` writes `answer_effects.json` and
+`campaign_strategies.json` for `fidesz_kdnp/szentkiralyi_alexandra` from its own
+`ANSWERS`, `CONDITIONAL`, `STRATEGIES` and `TUNING` tables.
+
+```sh
+node apps/kampanykorut/scripts/budapest-2024/szentkiralyi-effects.mjs
+```
+
+- **Player.** `Sz` is the player. Gains are scaled ×1.1, losses ×1.0. Every answer
+  also adds 0.1 points to Karácsony and 0.2 to Vitézy (rivals campaign too).
+- **Identity axis.** Answers that follow the party centre mobilize Szentkirályi's
+  base but also Karácsony's; answers that build her own Budapest profile bring more,
+  mostly from the undecided pool and from Vitézy's soft right. Attacking Vitézy
+  costs him votes but does not close the gap to Karácsony.
+- **Strategies.** „Saját Budapest” (her own profile), „A kormány jelöltje” (the
+  party line), „Tarlós örököse” (the 2010–2019 legacy) and „A váltás jelöltje”
+  (taking the anti-Karácsony vote from Vitézy). Each has eight answers and rewards
+  at four and six matches; the party line pays most because its answers also
+  mobilize Karácsony.
+- **Branch.** Szentkirályi never withdraws on her own side. Decision 24 has two
+  versions, selected by whether 21A (the three-way debate) was chosen.
+- **Withdrawal.** `szentkiralyi_alexandra_withdrawal` is gated with
+  `{ "not": { "type": "player-candidate", "candidateId": "szentkiralyi_alexandra" } }`,
+  so it never fires on her own side. `szentkiralyi_alexandra_stays` has no effects
+  and still announces that she stayed in the race.
+
+The side is meant to be harder than the other two. Balance from
+`budapest2024SzentkiralyiSimulation.test.ts` (100 games per row; margin is against
+the leading rival, in points):
+
+| Play                                 | Szentkirályi wins | Margin |
+| ------------------------------------ | ----------------- | ------ |
+| random answers                       | 0%                | −6.2   |
+| Saját Budapest, random elsewhere     | 28%               | −0.6   |
+| A kormány jelöltje, random elsewhere | 29%               | −0.6   |
+| Tarlós örököse, random elsewhere     | 25%               | −0.6   |
+| A váltás jelöltje, random elsewhere  | 20%               | −1.4   |
+| best answer each turn                | wins              | +6.2   |
+| worst answer each turn               | loses             | −16.7  |
+
+`budapest2024SzentkiralyiCampaign.test.ts` keeps these bands: random play wins
+under 5%, every strategy wins between 10% and 50%.

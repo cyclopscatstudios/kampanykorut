@@ -71,6 +71,11 @@ export const KARACSONY_SIDE: BudapestSide = {
   candidate: "karacsony_gergely",
 };
 
+export const SZENTKIRALYI_SIDE: BudapestSide = {
+  dir: "fidesz_kdnp/szentkiralyi_alexandra",
+  candidate: SZENTKIRALYI,
+};
+
 export function createBudapestCampaign(side: BudapestSide = VITEZY_SIDE) {
   const districts = readCampaignFile<CandidateListData[]>(
     "candidate_list_data.json",
@@ -198,6 +203,8 @@ export const vitezyMargin = marginOf(VITEZY);
 export const vitezyWins = winsOf(VITEZY);
 export const karacsonyMargin = marginOf(KARACSONY);
 export const karacsonyWins = winsOf(KARACSONY);
+export const szentkiralyiMargin = marginOf(SZENTKIRALYI);
+export const szentkiralyiWins = winsOf(SZENTKIRALYI);
 
 export const szentkiralyiWithdrew = (state: CampaignState) =>
   state.candidates?.[SZENTKIRALYI]?.status === "inactive";
@@ -212,6 +219,8 @@ const best =
 export const greedy = best(vitezyMargin, 1);
 export const karacsonyGreedy = best(karacsonyMargin, 1);
 export const karacsonyWorst = best(karacsonyMargin, -1);
+export const szentkiralyiGreedy = best(szentkiralyiMargin, 1);
+export const szentkiralyiWorst = best(szentkiralyiMargin, -1);
 // Karácsony keeps the three-way race alive: Szentkirályi ahead of Vitézy.
 export const keepThreeWay = best(
   (state) => (shares(state)[SZENTKIRALYI] ?? 0) - (shares(state)[VITEZY] ?? 0),

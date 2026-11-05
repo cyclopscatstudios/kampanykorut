@@ -18,6 +18,15 @@
           "campaignStrategies": "lmp/vitezy_david/campaign_strategies.json"
         }
       },
+      "fidesz_kdnp": {
+        "szentkiralyi_alexandra": {
+          "questions": "fidesz_kdnp/szentkiralyi_alexandra/questions.json",
+          "answerEffect": "fidesz_kdnp/szentkiralyi_alexandra/answer_effects.json",
+          "advisorFeedback": "fidesz_kdnp/szentkiralyi_alexandra/advisor_feedback.json",
+          "advisorFeedbackAssets": "fidesz_kdnp/szentkiralyi_alexandra/advisor_feedback_assets.json",
+          "campaignStrategies": "fidesz_kdnp/szentkiralyi_alexandra/campaign_strategies.json"
+        }
+      },
       "dk_mszp_parbeszed": {
         "karacsony_gergely": {
           "questions": "dk_mszp_parbeszed/karacsony_gergely/questions.json",

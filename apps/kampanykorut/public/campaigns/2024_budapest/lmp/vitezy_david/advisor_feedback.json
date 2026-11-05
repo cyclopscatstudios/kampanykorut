@@ -16,7 +16,7 @@
       },
       {
         "answerId": "D",
-        "text": "A szakmai múlt a legerősebb fegyvered, de vigyázz a nosztalgiával. Aki túl sokat mesél a régi BKK-ról, annak könnyen eszébe juttatják, kinek a városházáján épült."
+        "text": "A szakmai múlt a legerősebb fegyvered, de vigyázz a nosztalgiával. Aki túl sokat mesél a régi BKK-ról, annak könnyen eszébe juttatják, kinek a városvezetése alatt épült."
       }
     ]
   },
@@ -50,7 +50,7 @@
       },
       {
         "answerId": "B",
-        "text": "Következetes, és senkivel sem ellenséges. Pont ezért kiváló alapanyag annak, aki betolakodóként akar bemutatni: ő a mondatod első felét fogja idézni."
+        "text": "Következetes, és senkivel sem ellenséges. Pont ezért kiváló alapanyag annak, aki a Fidesz embereként akar bemutatni: ő a mondatod első felét fogja idézni."
       },
       {
         "answerId": "C",
@@ -256,7 +256,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Szakmailag következetes, és a vasúti ingázók értékelik. Az LMP-ben viszont lesz, aki ezt rossz hírnek tartja, és a Mészáros-névre Karácsony is lecsap."
+        "text": "Szakmailag következetes, és a vasúti ingázók értékelik. Az LMP-ben viszont lesz, aki ezt nehezen nyeli le, és a Mészáros-névre Karácsony is lecsap."
       },
       {
         "answerId": "B",
@@ -281,7 +281,7 @@
       },
       {
         "answerId": "B",
-        "text": "Itt éltek Karácsony 2019-es szavazói, és közülük minden átpártoló duplán számít. Csak tudd, hogy ez az ő hazai pályája, és itt nem lesz könnyű közönséged."
+        "text": "Itt élnek Karácsony 2019-es szavazói, és közülük minden átpártoló duplán számít. Csak tudd, hogy ez az ő hazai pályája, és itt nem lesz könnyű közönséged."
       },
       {
         "answerId": "C",
@@ -340,11 +340,11 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A pártokon felül álló imázsodnak jót tesz, és Karácsony koalíciójának belső vitáját is reflektorfénybe teszi. A kerületi csatákból azonban ritkán jön ki bárki tisztán, az MSZP pedig sokáig emlékszik."
+        "text": "A pártokon felül álló imázsodnak jót tesz, és Karácsony koalíciójának belső vitáját is reflektorfénybe állítja. A kerületi csatákból azonban ritkán jön ki bárki tisztán, az MSZP pedig sokáig emlékszik."
       },
       {
         "answerId": "B",
-        "text": "Jó válasz arra, hogy a Fidesz embere vagy, hiszen a szövetségesed a DK-val egy oldalon áll. Karácsony stábja persze ebből gyorsan azt olvassa ki, hogy az LMP-d is a baloldali tömb része."
+        "text": "Jó válasz arra a vádra, hogy a Fidesz embere vagy, hiszen a szövetségesed a DK-val egy oldalon áll. Karácsony stábja persze ebből gyorsan azt olvassa ki, hogy az LMP-d is a baloldali tömb része."
       },
       {
         "answerId": "C",
@@ -361,7 +361,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A pártokon felül álló imázsodnak jót tesz, és Karácsony koalíciójának belső vitáját is reflektorfénybe teszi. A kerületi csatákból azonban ritkán jön ki bárki tisztán, az MSZP pedig sokáig emlékszik."
+        "text": "A pártokon felül álló imázsodnak jót tesz, és Karácsony koalíciójának belső vitáját is reflektorfénybe állítja. A kerületi csatákból azonban ritkán jön ki bárki tisztán, az MSZP pedig sokáig emlékszik."
       },
       {
         "answerId": "C",
@@ -424,7 +424,7 @@
       },
       {
         "answerId": "B",
-        "text": "Semmit nem kockáztatsz, és senkit nem sértesz meg. Közben Karácsony stábja már ott ül a Tisza-szavazók második preferenciájánál, és nem fog rád várni."
+        "text": "Semmit nem kockáztatsz, és senkit nem sértesz meg. Közben Karácsony stábja már a Tisza-szavazókért dolgozik, és nem fog rád várni."
       },
       {
         "answerId": "C",
@@ -512,7 +512,7 @@
       },
       {
         "answerId": "C",
-        "text": "A fiatal bérlők ezt értik a legjobban, és a szám magáért beszél. Drámának viszont kevés, mert egy albérletpiaci adattól ritkán áll meg a levegő a stúdióban."
+        "text": "A fiatal bérlők ezt értik a legjobban, és a szám magáért beszél. Drámának viszont kevés, mert egy jelentkezőszámtól ritkán áll meg a levegő a stúdióban."
       },
       {
         "answerId": "D",
@@ -659,7 +659,7 @@
       },
       {
         "answerId": "C",
-        "text": "Ott éred el a célcsoportot, ahol a legjobban figyel. Csak ezzel látványosan együtt dolgozol azokkal a lapokkal, amelyekkel az alku vádját próbáltad lerázni."
+        "text": "Ott éred el a célcsoportot, ahol a legjobban figyel. Csak így látványosan együtt dolgozol a kormánylapokkal, pedig épp az alku vádját próbálod lerázni."
       },
       {
         "answerId": "D",
@@ -735,7 +735,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Hű maradsz ahhoz, akinek indultál, és ez a bizonytalanokat megnyugtatja. Lelkesíteni viszont ritkán lelkesít egy jól működő menetrend."
+        "text": "Hű maradsz ahhoz, aminek indultál, és ez a bizonytalanokat megnyugtatja. Lelkesíteni viszont ritkán lelkesít egy jól működő menetrend."
       },
       {
         "answerId": "B",
@@ -756,7 +756,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Hű maradsz ahhoz, akinek indultál, és ez a bizonytalanokat megnyugtatja. Lelkesíteni viszont ritkán lelkesít egy jól működő menetrend."
+        "text": "Hű maradsz ahhoz, aminek indultál, és ez a bizonytalanokat megnyugtatja. Lelkesíteni viszont ritkán lelkesít egy jól működő menetrend."
       },
       {
         "answerId": "B",

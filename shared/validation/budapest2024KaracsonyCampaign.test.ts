@@ -56,7 +56,7 @@ describe("2024 Budapest campaign, Karácsony side", () => {
       expect(visited.slice(26, 31)).toEqual(branch("n"));
       expect(szentkiralyiWithdrew(state)).toBe(false);
       expect(announcements.flat()).toContain(
-        "karacsony_consolidation_szentkiralyi_announcement",
+        "karacsony_consolidation_szentkiralyi",
       );
       expect(karacsonyWins(state)).toBe(false);
     });

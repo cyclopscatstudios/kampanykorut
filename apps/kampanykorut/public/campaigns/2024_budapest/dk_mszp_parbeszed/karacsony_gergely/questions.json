@@ -25,7 +25,7 @@
   {
     "id": "bp2024_karacsony_02",
     "title": "Budapest-bérlet: alku Lázárral",
-    "question": "Lázár János minisztériuma nem hosszabbítja meg a vasúti megállapodást: március 1-től a Budapest-bérlet nem lenne érvényes a HÉV-en és a vonatokon. A kormány új bevételmegosztást ajánl, és azt, hogy a BKK fogadja el a vármegyebérletet. Hogyan tárgyalsz?",
+    "question": "Lázár János minisztériuma nem hosszabbítja meg a vasúti megállapodást: március 1-jétől a Budapest-bérlet nem lenne érvényes a HÉV-en és a vonatokon. A kormány új bevételmegosztást ajánl, és azt, hogy a BKK fogadja el a vármegyebérletet. Hogyan tárgyalsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -110,7 +110,7 @@
       },
       {
         "id": "D",
-        "label": "Ellentámadásba mész: a Fidesz kampányfinanszírozásának átláthatóságát követeled."
+        "label": "Ellentámadásba lendülsz: a Fidesz kampányfinanszírozásának átláthatóságát követeled."
       }
     ]
   },
@@ -140,15 +140,15 @@
   {
     "id": "bp2024_karacsony_07",
     "title": "Vitézy beszáll",
-    "question": "Vitézy Dávid, a BKK volt vezérigazgatója az LMP támogatásával bejelenti, hogy indul. Pártpolitikai tömbökön kívüli szakmai alternatívát ígér, és a te 2019-es vállalásaidat kéri számon. Az ellenzéki szavazók egy része kíváncsian figyel. Hogyan reagálsz?",
+    "question": "Vitézy Dávid, a BKK volt vezérigazgatója az LMP támogatásával bejelenti, hogy indul. A pártpolitikai táborokon kívül álló szakmai alternatívát ígér, és a te 2019-es vállalásaidat kéri számon. Az ellenzéki szavazók egy része kíváncsian figyel. Hogyan reagálsz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Közös fotót teszel ki róla Orbán Viktorral és Novák Katalinnal: szerinted ő a Fidesz valódi jelöltje."
+        "label": "Kiteszel egy fotót, amelyen Orbán Viktorral és Novák Katalinnal áll: szerinted ő a Fidesz valódi jelöltje."
       },
       {
         "id": "B",
-        "label": "Szakmai vitára hívod: mi valósult meg és mi nem a BKK-s évei alatt."
+        "label": "Szakmai vitára hívod: mi valósult meg a BKK-s évei alatt, és mi nem."
       },
       {
         "id": "C",
@@ -167,7 +167,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Csak akkor vitázol, ha Vitézy és Szentkirályi közül az egyik visszalép: addig nem tudni, ki a valódi jelölt."
+        "label": "Csak akkor vitázol, ha Vitézy és Szentkirályi közül az egyik visszalép: addig nem tudni, ki a valódi kihívód."
       },
       {
         "id": "B",
@@ -221,7 +221,7 @@
       },
       {
         "id": "C",
-        "label": "Nem vállalsz listavezetést: csak főpolgármester-jelölt vagy, minden demokratikus lista szavazójának."
+        "label": "Nem vállalsz listavezetést: minden demokratikus lista szavazóinak a főpolgármester-jelöltje vagy."
       },
       {
         "id": "D",
@@ -248,7 +248,7 @@
       },
       {
         "id": "D",
-        "label": "Fideszes és ellenzéki polgármestereket hívsz közös fellépésre minden nagyváros nevében."
+        "label": "Fideszes és ellenzéki polgármestereket hívsz közös fellépésre a nagyvárosok nevében."
       }
     ]
   },
@@ -301,7 +301,7 @@
   {
     "id": "bp2024_karacsony_14",
     "title": "Hol kampányolsz?",
-    "question": "Leadtad az ajánlásokat, hivatalosan is jelölt vagy, de a hátralévő hetekben nem lehetsz mindenhol. A belső kerületek a bázisod, a lakótelepek billegnek, a peremkerületekben a kihívóid erősek. Hová viszed a kampányt?",
+    "question": "Leadtad az ajánlásokat, hivatalosan is jelölt vagy, de a hátralévő hetekben nem lehetsz mindenhol ott. A belső kerületek a bázisod, a lakótelepek billegnek, a peremkerületekben a kihívóid erősek. Hová viszed a kampányt?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -317,7 +317,7 @@
       },
       {
         "id": "D",
-        "label": "Online és egyetemi kampányt indítasz a fiatalok és az első szavazók felé."
+        "label": "Online és egyetemi kampányt indítasz a fiataloknak és az elsőválasztóknak."
       }
     ]
   },
@@ -332,7 +332,7 @@
       },
       {
         "id": "B",
-        "label": "A BKK biztonsági szolgálatát láthatóbbá teszed a 4-es és 6-os villamoson, a riogatást pedig bírálod."
+        "label": "A BKK biztonsági szolgálatát láthatóbbá teszed a 4-es és a 6-os villamoson, a riogatást pedig bírálod."
       },
       {
         "id": "C",
@@ -370,7 +370,7 @@
   {
     "id": "bp2024_karacsony_17",
     "title": "Józsefváros: MSZP kontra Pikó",
-    "question": "Józsefvárosban a DK, a Momentum, a Párbeszéd és az LMP is Pikó András polgármester mögé állt. Az MSZP, a listás partnered, mégis saját jelölteket indít ellene. A Fidesz a megosztott ellenzékben bízik. Mit teszel?",
+    "question": "Józsefvárosban a DK, a Momentum, a Párbeszéd és az LMP is Pikó András polgármester mögé állt. Az MSZP, a listás partnered, mégis saját jelöltet indít ellene. A Fidesz a megosztott ellenzékben bízik. Mit teszel?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -409,7 +409,7 @@
       },
       {
         "id": "D",
-        "label": "A szövetséges politikusaid és a baráti sajtó beszél róla, te nem."
+        "label": "A szövetségeseidre és a baráti sajtóra bízod, te magad nem beszélsz róla."
       }
     ]
   },
@@ -489,7 +489,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Szentkirályira: a kormány Budapest-ellenes politikáját teszed a kampány közepébe."
+        "label": "Szentkirályira: a kormány Budapest-ellenes politikáját állítod a kampány középpontjába."
       },
       {
         "id": "B",
@@ -547,7 +547,7 @@
       },
       {
         "id": "D",
-        "label": "Kilépsz a vitából, és a kamerába nézve a budapestiekhez beszélsz."
+        "label": "Kiszólsz a vitából: a kamerába nézve közvetlenül a budapestiekhez beszélsz."
       }
     ]
   },
@@ -566,7 +566,7 @@
       },
       {
         "id": "C",
-        "label": "Nem foglalkozol a pletykával, a saját programodat viszed."
+        "label": "Nem foglalkozol a pletykával, a saját programodról beszélsz."
       },
       {
         "id": "D",
@@ -589,7 +589,7 @@
       },
       {
         "id": "C",
-        "label": "Online célzod a fiatalokat és a Tisza-közeli szavazókat, élő kérdezz-felelekkel."
+        "label": "Online kampánnyal célzod meg a fiatalokat és a Tisza-közeli szavazókat, élő kérdezz-felelekkel."
       },
       {
         "id": "D",
@@ -753,7 +753,7 @@
       },
       {
         "id": "B",
-        "label": "Bármelyik szövetséges listát, a Momentumot is, hogy átjusson a küszöbön."
+        "label": "Szavazzanak bármelyik szövetséges listára, akár a Momentumra is, hogy átjusson a küszöbön."
       },
       {
         "id": "C",
@@ -761,7 +761,7 @@
       },
       {
         "id": "D",
-        "label": "Nem beszélsz a listáról, csak a saját szavazatodról."
+        "label": "Nem beszélsz a listáról, csak azt kéred, hogy főpolgármesternek rád szavazzanak."
       }
     ]
   },
@@ -837,7 +837,7 @@
       },
       {
         "id": "B",
-        "label": "Öt évvel hosszabb, zöldebb, egészségesebb életet kérek nektek, és ehhez a szavazatotokat."
+        "label": "Öt évvel hosszabb, zöldebb, egészségesebb életet akarok nektek, ehhez kérem a szavazatotokat."
       },
       {
         "id": "C",
@@ -865,7 +865,7 @@
       },
       {
         "id": "B",
-        "label": "Öt évvel hosszabb, zöldebb, egészségesebb életet kérek nektek, és ehhez a szavazatotokat."
+        "label": "Öt évvel hosszabb, zöldebb, egészségesebb életet akarok nektek, ehhez kérem a szavazatotokat."
       },
       {
         "id": "C",

@@ -10,11 +10,11 @@
       },
       {
         "id": "B",
-        "label": "Szakmai korrekciós javaslatcsomagot teszel közzé a ritkított járatokra, személyes támadás nélkül."
+        "label": "Szakmai javaslatcsomagot teszel közzé a ritkítások kijavítására, személyeskedés nélkül."
       },
       {
         "id": "C",
-        "label": "Rendszerhibának nevezed az ügyet: a kormány elvonásait és a Városháza rossz prioritásait egyaránt felelőssé teszed."
+        "label": "Rendszerhibának nevezed az ügyet: a kormány elvonásait és a Városháza rossz prioritásait egyaránt okolod."
       },
       {
         "id": "D",
@@ -25,11 +25,11 @@
   {
     "id": "bp2024_vitezy_02",
     "title": "Budapest-bérlet: Karácsony és Lázár alkuja",
-    "question": "Karácsony Gergely és Lázár János megállapodott: marad a 8950 forintos Budapest-bérlet, a BKK pedig március 1-től elfogadja a vármegyebérletet. A főpolgármester szerint ez évi 4–5 milliárd forint kiesés, amit a főváros vállal. Te is a közös tarifarendszer híve vagy. Mit mondasz?",
+    "question": "Karácsony Gergely és Lázár János megállapodott: marad a 8950 forintos Budapest-bérlet, a BKK pedig március 1-jétől elfogadja a vármegyebérletet. A főpolgármester szerint ez évi 4–5 milliárd forint kiesés, amit a főváros vállal. Te is a közös tarifarendszer híve vagy. Mit mondasz?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Üdvözlöd a megállapodást, de nyilvánosan rákérdezel, ki és miből fizeti meg a kiesést, és hogyan számolnak el."
+        "label": "Üdvözlöd a megállapodást, de nyilvánosan rákérdezel, ki és miből fizeti meg a kiesést, és hogyan számolnak el vele."
       },
       {
         "id": "B",
@@ -37,18 +37,18 @@
       },
       {
         "id": "C",
-        "label": "Lázár és Karácsony közös alkujaként bírálod: a kormány ígéretét a fővárosi kassza fizeti ki."
+        "label": "Bírálod Lázár és Karácsony alkuját: a kormány ígéretét a fővárosi kassza fizeti meg."
       },
       {
         "id": "D",
-        "label": "A közös fővárosi–agglomerációs közlekedésért végzett korábbi szakmai munka beérésének állítod be."
+        "label": "Úgy mutatod be, hogy beérett a közös fővárosi–agglomerációs közlekedésért végzett korábbi szakmai munka."
       }
     ]
   },
   {
     "id": "bp2024_vitezy_03",
     "title": "Kormányzati múlt a kegyelmi botrány idején",
-    "question": "A kegyelmi botrány után lemond Novák Katalin és Varga Judit, a Fidesz ritkán látott defenzívába kerül. Közben egyre többen találgatják, elindulsz-e Budapesten, és az első kérdés mindig ugyanaz: mit keresett egy Fidesz-kormányban 2022-ben? Hogyan beszélsz a múltadról?",
+    "question": "A kegyelmi botrány után lemond Novák Katalin és Varga Judit, a Fidesz ritkán látott defenzívába kerül. Közben egyre többen találgatják, elindulsz-e Budapesten, és az első kérdés mindig ugyanaz: mit kerestél 2022-ben egy Fidesz-kormányban? Hogyan beszélsz a múltadról?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -60,11 +60,11 @@
       },
       {
         "id": "C",
-        "label": "A Lázár Jánossal vívott konfliktusodat teszed a függetlenséged bizonyítékává, saját történetként."
+        "label": "Elmeséled a Lázár Jánossal vívott konfliktusodat, a függetlenséged bizonyítékaként."
       },
       {
         "id": "D",
-        "label": "Nem beszélsz sem a múltadról, sem a kegyelmi ügyről, kizárólag a város jövőjével foglalkozol."
+        "label": "Nem beszélsz sem a múltadról, sem a kegyelmi ügyről, csak a város jövőjéről beszélsz."
       }
     ]
   },
@@ -94,7 +94,7 @@
   {
     "id": "bp2024_vitezy_05",
     "title": "Milyen jelölt leszel?",
-    "question": "Az indulásod napján Karácsony egy Orbán Viktorral és Novák Katalinnal közös képpel reagál, a kampánya pedig a Fidesz trójai falovaként kezd beszélni rólad. Te kijelented, hogy nem vagy a Fidesz jelöltje, és nem is leszel. Milyen alapüzenettel mész végig a kampányon?",
+    "question": "Az indulásod napján Karácsony egy rólad, Orbán Viktorral és Novák Katalinnal készült képpel reagál, a kampánya pedig a Fidesz trójai falovaként kezd beszélni rólad. Te kijelented, hogy nem vagy a Fidesz jelöltje, és nem is leszel. Milyen alapüzenettel mész végig a kampányon?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -110,7 +110,7 @@
       },
       {
         "id": "D",
-        "label": "„Amit 2019-ben megígértek, én megépítem”: Karácsony saját zöld és közlekedési ígéreteinek teljesítőjeként lépsz fel."
+        "label": "„Amit 2019-ben megígértek, én megépítem”: azt mondod, te valósítod meg Karácsony zöld és közlekedési ígéreteit."
       }
     ]
   },
@@ -125,11 +125,11 @@
       },
       {
         "id": "B",
-        "label": "Kemény, teljes elutasítást hirdetsz, és Budapest kiárusításának nevezed a kormány tervét."
+        "label": "Határozottan elutasítod a kormány tervét, és Budapest kiárusításának nevezed."
       },
       {
         "id": "C",
-        "label": "Lakossági népszavazást követelsz arról, mi épüljön Rákosrendezőn, és addig minden döntés felfüggesztését kéred."
+        "label": "Helyi népszavazást követelsz arról, mi épüljön Rákosrendezőn, és addig minden döntés felfüggesztését kéred."
       },
       {
         "id": "D",
@@ -156,7 +156,7 @@
       },
       {
         "id": "D",
-        "label": "Nem foglalkozol a váddal, és a pénzt széles plakát- és médiakampányra költöd, hogy mindenki megismerjen."
+        "label": "Nem foglalkozol a váddal, és a pénzt nagyszabású plakát- és médiakampányra költöd, hogy mindenki megismerjen."
       }
     ]
   },
@@ -167,7 +167,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Karácsonyt teszed meg fő ellenfélnek, Szentkirályival pedig nem foglalkozol, mintha csak ketten versenyeznétek."
+        "label": "Karácsonyt választod fő ellenfélnek, Szentkirályival pedig nem foglalkozol, mintha csak ketten versenyeznétek."
       },
       {
         "id": "B",
@@ -186,7 +186,7 @@
   {
     "id": "bp2024_vitezy_09",
     "title": "Lázár és a leállított fejlesztések",
-    "question": "Lázár János leállítja a HÉV-ek felújítását és több vasúti fejlesztést, a Közlekedési Múzeumot pedig Debrecenbe vinné a kőbányai helyszín helyett. Ugyanaz a miniszter, akivel Karácsony januárban bérletalkut kötött, és akivel összekülönbözve távoztál a kormányból. Mennyire teszed személyessé a harcot?",
+    "question": "Lázár János leállítja a HÉV-ek felújítását és több vasúti fejlesztést, a Közlekedési Múzeumot pedig Debrecenbe vinné a kőbányai helyszín helyett. Ugyanaz a miniszter, akivel Karácsony januárban bérletalkut kötött, és akivel összevesztél, mielőtt otthagytad a kormányt. Mennyire teszed személyessé a harcot?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -194,7 +194,7 @@
       },
       {
         "id": "B",
-        "label": "Szakmai alkut ajánlasz: uniós forrásátcsoportosítással újítsák fel a HÉV-flottát, és ebben kész vagy együttműködni."
+        "label": "Szakmai alkut ajánlasz: uniós pénzek átcsoportosításával újítsák fel a HÉV-flottát, és ebben kész vagy együttműködni."
       },
       {
         "id": "C",
@@ -213,7 +213,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Teljes, pontról pontra végigvezetett szakmai bemutatót tartasz a sajtónak, számokkal és ütemtervvel."
+        "label": "Szakmai sajtóbemutatón pontról pontra végigveszed a programot, számokkal és ütemtervvel."
       },
       {
         "id": "B",
@@ -232,7 +232,7 @@
   {
     "id": "bp2024_vitezy_11",
     "title": "BKK-rendészet: szigor vagy segítség?",
-    "question": "A járatokon és a csomópontokban visszatérő panasz a kosz, a zaklatás és a biztonság hiánya. Te BKK-rendészetet ígérsz, Karácsony a szociális megközelítést hangsúlyozza, és a szigorítást hajléktalanellenesnek tartja. Milyen rendet ígérsz az utasoknak?",
+    "question": "A járatokon és a csomópontokban visszatérő panasz a kosz, a zaklatás és a biztonság hiánya. Felmerült egy önálló BKK-rendészet ötlete, Karácsony viszont a szociális megközelítést hangsúlyozza, és a szigorítást hajléktalanellenesnek tartja. Milyen rendet ígérsz az utasoknak?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -278,7 +278,7 @@
   {
     "id": "bp2024_vitezy_13",
     "title": "Déli Körvasút: szakma vagy szövetséges?",
-    "question": "A Déli Körvasút bővítése 338 milliárdos vasúti beruházás, Mészáros Lőrinc cége építené. A bíróság már kétszer megsemmisítette a környezetvédelmi engedélyét, az LMP és Karácsony ellenzi, te viszont a fővárosi vasúti rendszer kulcsának tartod. Kiállsz a szövetségeseddel szemben?",
+    "question": "A Déli Körvasút bővítése 338 milliárd forintos vasúti beruházás, Mészáros Lőrinc cége építené. A bíróság már kétszer megsemmisítette a környezetvédelmi engedélyét, az LMP és Karácsony ellenzi, te viszont a fővárosi vasúti rendszer kulcsának tartod. Kiállsz a szövetségeseddel szemben?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -313,7 +313,7 @@
       },
       {
         "id": "C",
-        "label": "A lakótelepekre és az átmeneti övezetekbe koncentrálsz: lakhatás, parkolás és sűrűbb járatok."
+        "label": "A lakótelepekre és az átmeneti övezetre koncentrálsz: lakhatásról, parkolásról és sűrűbb járatokról beszélsz."
       },
       {
         "id": "D",
@@ -332,7 +332,7 @@
       },
       {
         "id": "B",
-        "label": "Külön útalapot hozol létre a külső kerületeknek a fővárosi költségvetésben, saját felújítási listával."
+        "label": "A fővárosi költségvetésben külön útalapot hozol létre a külső kerületeknek, saját felújítási listával."
       },
       {
         "id": "C",
@@ -347,7 +347,7 @@
   {
     "id": "bp2024_vitezy_16",
     "title": "Tízezer lakás: ki építi meg?",
-    "question": "A budapesti lakás- és albérletárak 2015 és 2023 között az EU-ban a harmadik legnagyobb mértékben drágultak. Karácsony a Lakásügynökséget és egy uniós bérlakásprogramot mutat fel, szerinted az ügynökség alig kötött szerződést. A te programod tízezer lakást ígér. Hogyan teszed hihetővé?",
+    "question": "A budapesti lakás- és albérletárak 2015 és 2023 között az EU-ban a harmadik leggyorsabban drágultak. Karácsony a Lakásügynökséget és egy uniós bérlakásprogramot mutat fel, szerinted az ügynökség alig kötött szerződést. A te programod tízezer lakást ígér. Hogyan teszed hihetővé?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -440,7 +440,7 @@
       },
       {
         "id": "D",
-        "label": "Tárgyalást és új, kiszámítható elosztási képletet követelsz nyilvános határidővel, amely után jöhet a per."
+        "label": "Tárgyalást és új, kiszámítható elosztási képletet követelsz nyilvános határidővel; ha lejár, jöhet a per."
       }
     ]
   },
@@ -478,7 +478,7 @@
       },
       {
         "id": "B",
-        "label": "Megtartod a független, szakmai egyenlő távolságot, és nem szólítod meg külön a Tisza táborát."
+        "label": "Tartod a független, szakmai egyenlő távolságot, és nem szólítod meg külön a Tisza táborát."
       },
       {
         "id": "C",
@@ -493,7 +493,7 @@
   {
     "id": "bp2024_vitezy_21",
     "title": "Bábként a plakátokon",
-    "question": "A baloldali kampányban lejárató videók és plakátok jelennek meg, amelyek a kormány bábjaként ábrázolnak, akinek Orbán és Lázár rángatja a zsinórjait. Ez az eddigi legsúlyosabb támadás a függetlenséged ellen, és a Partizán-vita is közeleg. Hogyan válaszolsz?",
+    "question": "A baloldali kampányban lejárató videók és plakátok jelennek meg, amelyek a kormány bábjaként ábrázolnak: a zsinórjaidat Orbán és Lázár rángatja. Ez az eddigi legsúlyosabb támadás a függetlenséged ellen, és a Partizán-vita is közeleg. Hogyan válaszolsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -555,14 +555,14 @@
       },
       {
         "id": "D",
-        "label": "Pozitív zöld jövőképet mutatsz be villamossal, bérlakással és fákkal, a következő főpolgármester szerepében."
+        "label": "Már a következő főpolgármesterként beszélsz: pozitív zöld jövőképet mutatsz be villamossal, bérlakással és fákkal."
       }
     ]
   },
   {
     "id": "bp2024_vitezy_24",
     "title": "A vita kulcspillanata",
-    "question": "A vitából egyetlen pillanat marad meg a nézőkben. Felhozhatod a felújított, mégsem akadálymentes Merlin Színházat, Karácsony listáját, a Lakásügynökség gyér érdeklődését vagy a 2019-es ígéreteit. Karácsony a 3-as metró akadálymentesítésével vághat vissza. Mire teszed fel a pillanatot?",
+    "question": "A vitából egyetlen pillanat marad meg a nézőkben. Felhozhatod a felújított, mégsem akadálymentes Merlin Színházat, Karácsony listáját, a Lakásügynökség gyér érdeklődését vagy a 2019-es ígéreteit. Karácsony a 3-as metró akadálymentesítésével vághat vissza. Mire teszed fel ezt a pillanatot?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -574,7 +574,7 @@
       },
       {
         "id": "C",
-        "label": "A Lakásügynökségre csapsz le: nagy bejelentés volt, a jelentkezőket mégis meg lehet számolni két kézen."
+        "label": "A Lakásügynökségre csapsz le: nagy bejelentés volt, mégis két kézen meg lehet számolni a jelentkezőket."
       },
       {
         "id": "D",
@@ -663,7 +663,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Független hasznosszavazat-érvvel kampányolsz: aki le akarja váltani Karácsonyt, annak a legesélyesebb kihívóra kell szavaznia."
+        "label": "Függetlenként a hasznos szavazatra hivatkozol: aki le akarja váltani Karácsonyt, annak a legesélyesebb kihívóra kell szavaznia."
       },
       {
         "id": "B",
@@ -671,7 +671,7 @@
       },
       {
         "id": "C",
-        "label": "Kettős elutasítással kampányolsz: Karácsony és Szentkirályi ugyanannak a Főváros–Kormány háborúnak a két oldala."
+        "label": "Mindkettőjüket elutasítod: Karácsony és Szentkirályi ugyanannak a főváros–kormány háborúnak a két oldala."
       },
       {
         "id": "D",
@@ -727,11 +727,11 @@
       },
       {
         "id": "C",
-        "label": "Nyilvánosságra hozod a saját kétszereplős mérésedet, amely szerint egy az egyben te győznéd le Karácsonyt."
+        "label": "Nyilvánosságra hozod a saját kétszereplős mérésedet, amely szerint egy párharcban legyőznéd Karácsonyt."
       },
       {
         "id": "D",
-        "label": "Támadás nélkül zársz, és a program meg a jövőkép utolsó bemutatásával kampányolsz."
+        "label": "Támadás nélkül zársz: még egyszer bemutatod a programodat és a jövőképedet."
       }
     ],
     "visibleIf": {
@@ -751,7 +751,7 @@
       },
       {
         "id": "B",
-        "label": "Vasárnap önkéntesek segítik a szavazókat a szavazókörök környékén, ott, ahol ezt a választási szabályok megengedik."
+        "label": "Vasárnap önkéntesek segítik a szavazókat a szavazókörök közelében, ahol ezt a választási szabályok megengedik."
       },
       {
         "id": "C",
@@ -779,7 +779,7 @@
       },
       {
         "id": "B",
-        "label": "Ajtótól ajtóig és telefonos kampányt indítasz a peremkerületekben, hogy elmagyarázd a szavazatmegosztást."
+        "label": "Házról házra járó és telefonos kampányt indítasz a peremkerületekben, hogy elmagyarázd a szavazatmegosztást."
       },
       {
         "id": "C",
@@ -811,7 +811,7 @@
       },
       {
         "id": "C",
-        "label": "Nem célzod őket külön, és minden erőforrásodat a jobboldali átszavazókra fordítod."
+        "label": "Nem foglalkozol velük külön, és minden erőforrásodat a jobboldali átszavazókra fordítod."
       },
       {
         "id": "D",
@@ -839,7 +839,7 @@
       },
       {
         "id": "C",
-        "label": "Nem célzod őket külön, és minden erőforrásodat a jobboldali átszavazókra fordítod."
+        "label": "Nem foglalkozol velük külön, és minden erőforrásodat a jobboldali átszavazókra fordítod."
       },
       {
         "id": "D",
@@ -919,7 +919,7 @@
       },
       {
         "id": "B",
-        "label": "A belvárosi és az átmeneti övezeti értelmiséget hívod szavazni, Karácsony kiábrándult választóira építve."
+        "label": "A belvárosban és az átmeneti övezetben élő értelmiséget hívod szavazni, Karácsony kiábrándult választóira építve."
       },
       {
         "id": "C",

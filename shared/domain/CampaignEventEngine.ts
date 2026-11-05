@@ -72,14 +72,15 @@ export class CampaignEventEngine {
   private record(state: CampaignState, event: CampaignEvent): CampaignState {
     const { triggeredEventIds, pendingAnnouncementIds } =
       getCampaignEventState(state);
+    const isFirstTrigger = !triggeredEventIds.includes(event.id);
     return {
       ...state,
       campaignEvents: {
-        triggeredEventIds: triggeredEventIds.includes(event.id)
-          ? triggeredEventIds
-          : [...triggeredEventIds, event.id],
+        triggeredEventIds: isFirstTrigger
+          ? [...triggeredEventIds, event.id]
+          : triggeredEventIds,
         pendingAnnouncementIds:
-          event.announcement && !pendingAnnouncementIds.includes(event.id)
+          event.announcement && isFirstTrigger
             ? [...pendingAnnouncementIds, event.id]
             : pendingAnnouncementIds,
       },
