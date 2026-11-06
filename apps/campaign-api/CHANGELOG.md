@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/cyclopscatstudios/kampanykorut/compare/campaign-api-v0.4.0...campaign-api-v0.5.0) (2026-11-06)
+
+
+### Features
+
+* **domain:** mayoral election type and plurality result calculator ([475b3c5](https://github.com/cyclopscatstudios/kampanykorut/commit/475b3c5b367f64a7450073abe359cfee580a472e))
+
 ## [0.4.0](https://github.com/cyclopscatstudios/kampanykorut/compare/campaign-api-v0.3.0...campaign-api-v0.4.0) (2026-10-28)
 
 
