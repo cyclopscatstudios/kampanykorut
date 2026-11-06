@@ -35,12 +35,10 @@ const FALLBACK_COLOR = "#94a3b8";
 
 const MIN_BAR_SCALE = 65;
 
-/** Upper end of the bars, so a small field of candidates still reads on a fixed scale. */
 export function getBarScale(estimate: Estimate) {
   return Math.max(MIN_BAR_SCALE, estimate.rows[0]?.high ?? 0);
 }
 
-/** The estimate the panel shows for a scope: one district, or the national / citywide one. */
 export function getScopedEstimate({
   scope,
   district,

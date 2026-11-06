@@ -11,9 +11,7 @@ import { CampaignBadgeInfo, getCampaignBadgeInfo } from "./campaignBadge.utils";
 export interface CampaignBadgeProps {
   state?: CampaignState;
   config?: CampaignConfig;
-  /** Desktop: dropdown panel under the chip. Mobile: bottom sheet. */
   variant?: "dropdown" | "sheet";
-  /** "pill": bordered chip (desktop header). "inline": borderless, for the mobile context bar. */
   appearance?: "pill" | "inline";
 }
 

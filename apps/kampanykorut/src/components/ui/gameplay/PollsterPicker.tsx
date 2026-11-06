@@ -11,7 +11,6 @@ export interface PollsterOption {
 
 export interface PollsterPickerProps {
   options: PollsterOption[];
-  /** Missing means the polling average. */
   selectedId?: string;
   onSelect: (id: string) => void;
 }
@@ -51,7 +50,6 @@ export function PollsterAvatar({
   );
 }
 
-/** Mobile header: the selected pollster's logo, opening a dark list. */
 export function PollsterPicker({
   options,
   selectedId = AGGREGATE_POLLSTER_ID,

@@ -14,7 +14,6 @@ export interface CampaignBadgeInfo {
   candidatePortrait?: string;
 }
 
-/** "2024: Budapest" → "Budapest" */
 export function stripYearPrefix(label: string) {
   return label.replace(/^\s*\d{4}\s*:\s*/, "");
 }
