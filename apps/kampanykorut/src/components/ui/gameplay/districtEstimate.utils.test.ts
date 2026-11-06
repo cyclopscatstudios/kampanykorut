@@ -1,7 +1,11 @@
+import { SwingFactorId } from "../../../types/utils";
 import {
+  getBarScale,
   getDistrictEstimate,
   getNationalEstimate,
+  getScopedEstimate,
 } from "./districtEstimate.utils";
+import type { SwingFactor } from "./swingFactor.utils";
 
 const parties = [
   { id: "fidesz", name: "Fidesz–KDNP", color: "#f28c28" },
@@ -107,5 +111,52 @@ describe("getNationalEstimate", () => {
   it("returns null without data", () => {
     expect(getNationalEstimate(undefined, parties)).toBeNull();
     expect(getNationalEstimate({ _total: 0 }, parties)).toBeNull();
+  });
+});
+
+describe("getScopedEstimate", () => {
+  const district = { partok: { fidesz: 50, tisza: 40, mihazank: 10 } };
+  const swingFactor = { id: SwingFactorId.Medium } as SwingFactor;
+
+  it("uses the district with the swing factor's margin", () => {
+    const estimate = getScopedEstimate({
+      scope: "district",
+      district,
+      swingFactor,
+      parties,
+    });
+
+    expect(estimate?.margin).toBe(5);
+    expect(estimate?.rows[0]).toMatchObject({ partyId: "fidesz", percent: 50 });
+  });
+
+  it("has no district estimate without a district", () => {
+    expect(
+      getScopedEstimate({ scope: "district", swingFactor, parties }),
+    ).toBeNull();
+  });
+
+  it("uses the national percentages for the national scope", () => {
+    const estimate = getScopedEstimate({
+      scope: "national",
+      district,
+      swingFactor,
+      parties,
+      nationalPercentages: { tisza: 0.46, fidesz: 0.44 },
+    });
+
+    expect(estimate?.rows[0]).toMatchObject({ partyId: "tisza", percent: 46 });
+  });
+});
+
+describe("getBarScale", () => {
+  it("never shrinks below 65 so small fields keep their proportions", () => {
+    const estimate = getDistrictEstimate(
+      { partok: { fidesz: 40, tisza: 35, mihazank: 25 } },
+      parties,
+      3,
+    );
+
+    expect(estimate && getBarScale(estimate)).toBe(65);
   });
 });

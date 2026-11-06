@@ -142,7 +142,13 @@
     }
   },
   "gameHeader": {
-    "turnsTooltip": "Lejátszott fordulók"
+    "turnsTooltip": "Lejátszott fordulók",
+    "campaignBadge": {
+      "title": "A kampány",
+      "toggle": "Kampány részletei megnyitása",
+      "candidate": "Jelölt",
+      "party": "Párt"
+    }
   },
   "gameMenuBar": {
     "save": "Játék mentése",
@@ -218,7 +224,13 @@
     "margin": "Hibahatár",
     "selectDistrict": "Válassz egy körzetet a térképen a becsléshez.",
     "noData": "Még nincs becsülhető adat.",
-    "newData": "Új becslés érhető el"
+    "newData": "Új becslés érhető el",
+    "mobile": {
+      "title": "Becsült állás",
+      "open": "Becslés",
+      "tapDistrict": "Egy körzet becsléséhez koppints rá a térképen.",
+      "tapCityDistrict": "Egy kerület becsléséhez koppints rá a térképen."
+    }
   },
   "districtList": {
     "view": {

@@ -6,18 +6,15 @@ import { Icon } from "../../../../../../shared/ui/Icon";
 import {
   Estimate,
   EstimateRow,
+  EstimateScope,
   EstimateStatus,
-  getDistrictEstimate,
-  getMarginBySwing,
-  getNationalEstimate,
+  getBarScale,
+  getScopedEstimate,
 } from "./districtEstimate.utils";
 import { getDistrictName } from "./districtInsight.utils";
 import type { SwingFactor } from "./swingFactor.utils";
 
-type EstimateScope = "district" | "national";
-
 const TOSSUP_COLOR = "#e5b93a";
-const MIN_BAR_SCALE = 65;
 
 interface DistrictEstimateProps {
   district?: CandidateListData;
@@ -37,11 +34,13 @@ export function DistrictEstimate({
   const [scope, setScope] = useState<EstimateScope>("district");
 
   const isNational = scope === "national";
-  const estimate = isNational
-    ? getNationalEstimate(nationalPercentages, parties)
-    : district
-      ? getDistrictEstimate(district, parties, getMarginBySwing(swingFactor.id))
-      : null;
+  const estimate = getScopedEstimate({
+    scope,
+    district,
+    swingFactor,
+    parties,
+    nationalPercentages,
+  });
 
   const title = isNational
     ? t(isCityMap ? "estimatePanel.cityTitle" : "estimatePanel.nationalTitle")
@@ -75,7 +74,7 @@ export function DistrictEstimate({
                 row={row}
                 isLeader={estimate.leader?.partyId === row.partyId}
                 showParty={!isNational && !!row.candidateName}
-                scale={Math.max(MIN_BAR_SCALE, estimate.rows[0]?.high ?? 0)}
+                scale={getBarScale(estimate)}
               />
             ))}
           </div>
@@ -124,7 +123,7 @@ export function DistrictEstimate({
   );
 }
 
-function StatusTag({
+export function StatusTag({
   estimate,
   isNational,
 }: {
@@ -150,7 +149,7 @@ function StatusTag({
   );
 }
 
-function CandidateRow({
+export function CandidateRow({
   row,
   isLeader,
   showParty,

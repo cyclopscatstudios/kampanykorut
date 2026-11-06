@@ -20,8 +20,11 @@ import {
 } from "./districtInsight.utils";
 import { DistrictList, InsightBadge } from "./DistrictList";
 import { MapWrapper } from "./MapWrapper";
+import { CollapsibleEstimate, EstimateSheetContent } from "./MobileEstimate";
+import { getSwingFactorByDistrict } from "./swingFactor.utils";
 
 type MobileView = "list" | "map";
+type SheetMode = "district" | "estimate";
 
 const COUNTRY_MAP_RATIO = 0.7;
 const CITY_MAP_RATIO = 0.9;
@@ -32,6 +35,7 @@ interface MobileMapViewProps {
   capitalCity: DistrictPoligon[];
   candidateListData: CandidateListData[];
   electionConfig: ElectionConfig;
+  nationalPercentages?: Record<string, number>;
   selectedDistrict: District | null;
   onSetDistrict: (district: District | null) => void;
   onSetView: (view: CurrentView) => void;
@@ -43,15 +47,23 @@ export function MobileMapView({
   capitalCity,
   candidateListData,
   electionConfig,
+  nationalPercentages,
   selectedDistrict,
   onSetDistrict,
   onSetView,
 }: MobileMapViewProps) {
   const [view, setView] = useState<MobileView>("list");
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [sheetMode, setSheetMode] = useState<SheetMode>("district");
 
   const openDistrict = (district: District) => {
     onSetDistrict(district);
+    setSheetMode("district");
+    setIsSheetOpen(true);
+  };
+
+  const openEstimate = () => {
+    setSheetMode("estimate");
     setIsSheetOpen(true);
   };
 
@@ -98,24 +110,47 @@ export function MobileMapView({
           electionConfig={electionConfig}
           selectedDistrict={selectedDistrict}
           onSelect={openDistrict}
+          onOpenEstimate={openEstimate}
         />
       )}
 
       <BottomSheet
         open={isSheetOpen}
-        title={sheetData?.megye ?? ""}
+        title={
+          sheetMode === "estimate"
+            ? t(
+                isCityMap
+                  ? "estimatePanel.cityTitle"
+                  : "estimatePanel.nationalTitle",
+              )
+            : (sheetData?.megye ?? "")
+        }
         onClose={() => setIsSheetOpen(false)}
         hideTitle
         fitContent
       >
-        {sheetData && (
-          <DistrictSheetContent
-            isCityMap={isCityMap}
+        {sheetMode === "estimate" ? (
+          <EstimateSheetContent
+            key={`${sheetData?.megyekod}-${sheetData?.oevk}`}
             district={sheetData}
+            swingFactor={getSwingFactorByDistrict(undefined, sheetData)}
             parties={electionConfig.parties}
+            nationalPercentages={nationalPercentages}
+            isCityMap={isCityMap}
             onClose={() => setIsSheetOpen(false)}
-            onVisit={() => onSetView("QuestionView")}
           />
+        ) : (
+          sheetData && (
+            <DistrictSheetContent
+              key={`${sheetData.megyekod}-${sheetData.oevk}`}
+              isCityMap={isCityMap}
+              district={sheetData}
+              parties={electionConfig.parties}
+              nationalPercentages={nationalPercentages}
+              onClose={() => setIsSheetOpen(false)}
+              onVisit={() => onSetView("QuestionView")}
+            />
+          )
         )}
       </BottomSheet>
     </div>
@@ -130,6 +165,7 @@ function MobileMap({
   electionConfig,
   selectedDistrict,
   onSelect,
+  onOpenEstimate,
 }: {
   isCityMap: boolean;
   districts: DistrictPoligon[];
@@ -138,6 +174,7 @@ function MobileMap({
   electionConfig: ElectionConfig;
   selectedDistrict: District | null;
   onSelect: (district: District) => void;
+  onOpenEstimate: () => void;
 }) {
   const [showCapital, setShowCapital] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -176,6 +213,15 @@ function MobileMap({
               )}
             </Button>
           )}
+          <Button
+            onClick={onOpenEstimate}
+            variant="hero"
+            size="sm"
+            className="shrink-0"
+          >
+            <Button.Icon name="bar-chart-fill" size="xs" color="lightBlue" />
+            {t("estimatePanel.mobile.open")}
+          </Button>
         </div>
         <div ref={mapRef} className="w-full" style={{ height: mapHeight }}>
           {mapWidth > 0 && (
@@ -235,12 +281,14 @@ function DistrictSheetContent({
   isCityMap,
   district,
   parties,
+  nationalPercentages,
   onClose,
   onVisit,
 }: {
   isCityMap: boolean;
   district: CandidateListData;
   parties: RawParty[];
+  nationalPercentages?: Record<string, number>;
   onClose: () => void;
   onVisit: () => void;
 }) {
@@ -302,7 +350,17 @@ function DistrictSheetContent({
         )}
       </div>
 
-      <Button size="large" block onClick={onVisit} className="mt-5">
+      <div className="mt-4.5">
+        <CollapsibleEstimate
+          district={district}
+          swingFactor={swingFactor}
+          parties={parties}
+          nationalPercentages={nationalPercentages}
+          isCityMap={isCityMap}
+        />
+      </div>
+
+      <Button size="large" block onClick={onVisit} className="mt-4">
         <Button.Text>{t("bottomBar.visitDistrict")}</Button.Text>
         <Button.Icon name="arrow-right" color="white" />
       </Button>

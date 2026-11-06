@@ -1,5 +1,6 @@
 import { CandidateListData, RawParty } from "@/shared/types";
 import { SwingFactorId } from "../../../types/utils";
+import type { SwingFactor } from "./swingFactor.utils";
 
 export type EstimateStatus = "safe" | "likely" | "tossup";
 
@@ -12,6 +13,8 @@ export type EstimateRow = {
   low: number;
   high: number;
 };
+
+export type EstimateScope = "district" | "national";
 
 export type Estimate = {
   rows: EstimateRow[];
@@ -29,6 +32,33 @@ const MARGIN_BY_SWING: Record<SwingFactorId, number> = {
 export const NATIONAL_MARGIN = 2;
 const SAFE_LEAD = 15;
 const FALLBACK_COLOR = "#94a3b8";
+
+const MIN_BAR_SCALE = 65;
+
+export function getBarScale(estimate: Estimate) {
+  return Math.max(MIN_BAR_SCALE, estimate.rows[0]?.high ?? 0);
+}
+
+export function getScopedEstimate({
+  scope,
+  district,
+  swingFactor,
+  parties,
+  nationalPercentages,
+}: {
+  scope: EstimateScope;
+  district?: Pick<CandidateListData, "partok" | "jeloltek">;
+  swingFactor: SwingFactor;
+  parties: RawParty[];
+  nationalPercentages?: Record<string, number>;
+}): Estimate | null {
+  if (scope === "national") {
+    return getNationalEstimate(nationalPercentages, parties);
+  }
+  return district
+    ? getDistrictEstimate(district, parties, getMarginBySwing(swingFactor.id))
+    : null;
+}
 
 export function getMarginBySwing(swingFactorId: SwingFactorId) {
   return MARGIN_BY_SWING[swingFactorId];
