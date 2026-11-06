@@ -30,5 +30,19 @@ export interface CampaignManifestMetadata {
 export interface CampaignManifest {
   schemaVersion: number;
   metadata?: CampaignManifestMetadata;
+  listing?: CampaignListing;
   files: CampaignManifestFiles;
+}
+
+export type CampaignStatus = "draft" | "candidate" | "published";
+
+export interface CampaignListing {
+  id: string;
+  label: string;
+  description: string;
+  year: number;
+  tags: string[];
+  campaignBanner: string;
+  thinCampaignBanner?: string;
+  status: CampaignStatus;
 }

@@ -75,7 +75,7 @@ apps/kampanykorut/src/debug/       → Runtime debug-mode toggle (window.debugMo
 apps/kampanykorut/src/testing/     → Dev-only debug API (window.kampanykorut), see "Dev/Debug Tooling" below.
 ```
 
-There is no dedicated dev-only route. Unpublished campaigns (`isPublished: false` in `game_modes.json`) are hidden from the campaign selector unless `window.debugMode.enabled` is toggled on from the browser console.
+There is no dedicated dev-only route. Only `published` campaigns (`listing.status` in the campaign's `manifest.json`) are listed in production; `candidate` ones are also listed in dev builds, and `draft` ones only when `window.debugMode.enabled` is toggled on from the browser console.
 
 **Forbidden crossings:**
 
@@ -95,13 +95,13 @@ Two globals are wired up in `main.tsx` via `initDevApi()` (`apps/kampanykorut/sr
 window.debugMode.enable(); // or .toggle()
 ```
 
-Persists to `localStorage` (`kampanykorut_debugMode`). Reveals unpublished campaigns (`isPublished: false` in `game_modes.json`) in the campaign selector.
+Persists to `localStorage` (`kampanykorut_debugMode`). Reveals non-published (`draft`/`candidate`) campaigns in the campaign selector.
 
 ### `window.kampanykorut` (`CampaignApi`, `apps/kampanykorut/src/testing/campaignSeeder.ts`)
 
 ```js
 const { sessionId, state } = await window.kampanykorut.seedCampaign(
-  "2026_tavaszi_szel", // id from game_modes.json — NOT the folder/`route` name
+  "2026_tavaszi_szel", // id from campaigns.json — NOT the folder/`route` name
   { partyId: "tisza", candidateId: "magyar_peter" }, // PlayerSide, matches election_config.json playableSides
 );
 ```
@@ -146,7 +146,7 @@ localStorage.setItem(
 );
 ```
 
-`campaignId` values live in `apps/kampanykorut/public/assets/jsons/game_modes.json` (the `id` field — the folder name under `public/campaigns/` is the separate `route` field). `playerSide` party/candidate ids come from that campaign's `election_config.json` → `playableSides`.
+`campaignId` values live in each campaign's `manifest.json` → `listing.id` (aggregated into the generated `/assets/jsons/campaigns.json` — the folder name under `public/campaigns/` is the separate `route` field). `playerSide` party/candidate ids come from that campaign's `election_config.json` → `playableSides`.
 
 ### Driving this from Playwright for visual/layout bugs
 
@@ -186,11 +186,11 @@ To find _which_ element causes an overflow, walk the ancestor chain of the suspe
 ### Campaign Registry
 
 ```
-apps/kampanykorut/public/assets/jsons/game_modes.json   # List of available campaigns (id, label, route, tags, banner, isPublished)
+/assets/jsons/campaigns.json   # Generated at build/dev time by apps/kampanykorut/plugins/campaignCatalog.ts from every manifest.json `listing` block (not a file in the repo)
 apps/kampanykorut/public/assets/jsons/quotes.json       # Loading screen quotes
 ```
 
-The `route` field in `game_modes.json` maps to the folder name under `public/campaigns/`; the `id` field is what code (routes, `seedCampaign`, `loadCampaignConfig`) actually addresses the campaign by. They are often similar but not identical (e.g. id `2026_tavaszi_szel` vs. route `2026_tavaszi-szel`) — don't assume one from the other.
+The `route` field in `campaigns.json` is the folder name under `public/campaigns/` (derived by the generator); the `id` field is what code (routes, `seedCampaign`, `loadCampaignConfig`) actually addresses the campaign by. They are often similar but not identical (e.g. id `2026_tavaszi_szel` vs. route `2026_tavaszi-szel`) — don't assume one from the other.
 
 ### Campaign Folders
 
@@ -216,7 +216,7 @@ apps/kampanykorut/public/campaigns/{route}/
     end_results.json                   # playerSideVictory / playerSideDefeat / deadlock: title, subtitle, description, imageUri
 ```
 
-`manifest.json`'s keys are the `CampaignManifest` fields (`shared/types/configs/campaign-manifest.ts`); values are paths relative to the campaign folder — filenames and nesting under `{side}/{candidate}/` are just convention, `loadCampaignConfig` only cares about the manifest. `electionConfig`, `voterEnvironmentConfig`, `candidateListData`, `districts`, `endResults` are required; everything else (`questions`, `answerEffect`, `partyListData`, `advisorFeedback`, `advisorFeedbackAssets`, `customGroups`, `customPollsters`, `campaignStrategies`) is optional and defaults to an empty array/undefined when omitted — this is what lets an unpublished campaign (`isPublished: false` in `game_modes.json`) be built up incrementally with no code changes: just JSON data + `manifest.json` in the folder, plus an entry in `game_modes.json`.
+`manifest.json`'s keys are the `CampaignManifest` fields (`shared/types/configs/campaign-manifest.ts`); values are paths relative to the campaign folder — filenames and nesting under `{side}/{candidate}/` are just convention, `loadCampaignConfig` only cares about the manifest. `electionConfig`, `voterEnvironmentConfig`, `candidateListData`, `districts`, `endResults` are required; everything else (`questions`, `answerEffect`, `partyListData`, `advisorFeedback`, `advisorFeedbackAssets`, `customGroups`, `customPollsters`, `campaignStrategies`) is optional and defaults to an empty array/undefined when omitted — this is what lets a `draft` campaign be built up incrementally with no code changes: just JSON data + `manifest.json` (with a `listing` block) in the folder.
 
 ---
 
@@ -257,19 +257,19 @@ apps/kampanykorut/public/campaigns/{route}/
 | `PathResolver.ts`                | JSON file path resolution from campaign route + key                                            |
 | `fetchJSON.ts`                   | JSON fetching from the `public/` folder                                                        |
 | `loadCampaignConfig.ts`          | Fetches a campaign's `manifest.json` + referenced files, caches the assembled `CampaignConfig` |
-| `getCampaignHeaderById.ts`       | Resolves a campaign id to its `game_modes.json` header (route, label, ...)                     |
+| `getCampaignHeaderById.ts`       | Resolves a campaign id to its `campaigns.json` header (route, label, ...)                      |
 | `createCampaignEngine.ts`        | Factory: wires domain objects together via DI                                                  |
 
 ### Hooks (`hooks/`)
 
-| Hook               | Responsibility                                                                                              |
-| ------------------ | ----------------------------------------------------------------------------------------------------------- |
-| `useElectionState` | Primary hook: game state ↔ UI (processAnswer, commitTurn)                                                   |
-| `useStateEngine`   | Session management (sessionId, saveSession, currentState)                                                   |
-| `useSettings`      | Reading and updating game settings                                                                          |
-| `useStateHandler`  | Binds StateHandler singleton events to React state                                                          |
-| `useEngine`        | Generic DI resolver: `container.resolve(cls)`                                                               |
-| `useGetCampaigns`  | Loads `game_modes.json` headers; filters out `isPublished: false` entries unless `window.debugMode.enabled` |
+| Hook               | Responsibility                                                                                                               |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| `useElectionState` | Primary hook: game state ↔ UI (processAnswer, commitTurn)                                                                    |
+| `useStateEngine`   | Session management (sessionId, saveSession, currentState)                                                                    |
+| `useSettings`      | Reading and updating game settings                                                                                           |
+| `useStateHandler`  | Binds StateHandler singleton events to React state                                                                           |
+| `useEngine`        | Generic DI resolver: `container.resolve(cls)`                                                                                |
+| `useGetCampaigns`  | Loads `campaigns.json` headers; filtered by `isCampaignListed` (`listing.status` + environment + `window.debugMode.enabled`) |
 
 ### Navigation (`navigation/`)
 

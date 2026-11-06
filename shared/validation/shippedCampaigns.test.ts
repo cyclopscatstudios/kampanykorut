@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
+import { buildCampaignCatalog } from "../../apps/kampanykorut/plugins/campaignCatalog";
 import {
   CampaignHeaderInput,
   CampaignSource,
@@ -35,8 +36,8 @@ const source: CampaignSource = {
   },
 };
 
-const headers: CampaignHeaderInput[] = JSON.parse(
-  readFileSync(join(publicDir, "assets/jsons/game_modes.json"), "utf8"),
+const headers: CampaignHeaderInput[] = buildCampaignCatalog(
+  join(publicDir, "campaigns"),
 );
 
 const acceptedWarnings = [

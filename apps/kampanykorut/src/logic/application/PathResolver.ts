@@ -1,5 +1,5 @@
 export const DATA_PATHS = {
-  campaigns: "/assets/jsons/game_modes.json",
+  campaigns: "/assets/jsons/campaigns.json",
   quotes: "/assets/jsons/quotes.json",
   electionConfig: (route: string) => `/campaigns/${route}/election_config.json`,
   districtMap: (map: string) => `/assets/jsons/shared/${map}.json`,
