@@ -2,7 +2,7 @@ import { DATA_PATHS, getDataPath } from "./PathResolver";
 
 describe("DATA_PATHS", () => {
   it("campaigns is a static string", () => {
-    expect(DATA_PATHS.campaigns).toBe("/assets/jsons/game_modes.json");
+    expect(DATA_PATHS.campaigns).toBe("/assets/jsons/campaigns.json");
   });
 
   it("quotes is a static string", () => {
@@ -26,7 +26,7 @@ describe("DATA_PATHS", () => {
 
 describe("getDataPath", () => {
   it("returns the campaigns path", () => {
-    expect(getDataPath("campaigns")).toBe("/assets/jsons/game_modes.json");
+    expect(getDataPath("campaigns")).toBe("/assets/jsons/campaigns.json");
   });
 
   it("returns the quotes path", () => {
