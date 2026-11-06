@@ -200,30 +200,20 @@ function MobileMap({
           <span className="text-[10.5px] uppercase tracking-[1.4px] text-slate-500">
             {t(titleKey, { count: visibleDistricts.length })}
           </span>
-          <div className="flex shrink-0 items-center gap-2">
-            {capitalCity.length > 0 && (
-              <button
-                type="button"
-                onClick={() => setShowCapital((value) => !value)}
-                className="shrink-0 rounded-lg border border-white/16 bg-[rgba(10,20,40,0.8)] px-2.5 py-1.5 text-[10.5px] font-semibold text-slate-400 cursor-pointer"
-              >
-                {t(
-                  showCapital
-                    ? "districtList.map.showCountry"
-                    : "districtList.map.showCapital",
-                )}
-              </button>
-            )}
-            <button
-              type="button"
-              onClick={onOpenEstimate}
-              data-testid="mapEstimateButton"
-              className="flex h-9 shrink-0 cursor-pointer items-center gap-1.75 rounded-lg bg-slate-400/8 px-3 text-[12.5px] font-bold text-blue-50 ring-1 ring-inset ring-slate-400/22 hover:bg-slate-400/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          {capitalCity.length > 0 && (
+            <Button
+              variant="hero"
+              size="sm"
+              onClick={() => setShowCapital((value) => !value)}
+              className="shrink-0"
             >
-              <Icon name="bar-chart-fill" size="xs" color="lightBlue" />
-              {t("estimatePanel.mobile.open")}
-            </button>
-          </div>
+              {t(
+                showCapital
+                  ? "districtList.map.showCountry"
+                  : "districtList.map.showCapital",
+              )}
+            </Button>
+          )}
         </div>
         <div ref={mapRef} className="w-full" style={{ height: mapHeight }}>
           {mapWidth > 0 && (

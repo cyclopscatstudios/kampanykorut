@@ -9,11 +9,17 @@ export type ButtonVariant =
   | "tab"
   | "subtab"
   | "hero"
-  | "underline";
+  | "underline"
+  | "link";
 
 export type ButtonSize = "sm" | "md" | "lg" | "normal" | "small" | "large";
 
-export interface ButtonProps {
+type NativeButtonProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "onClick" | "disabled" | "className" | "children"
+>;
+
+export interface ButtonProps extends NativeButtonProps {
   children?: React.ReactNode;
   onClick?: () => void;
   variant?: ButtonVariant;
@@ -53,12 +59,24 @@ const subtabSizeClasses: Record<ButtonSize, string> = {
   large: "text-base py-2.5",
 };
 
+const linkSizeClasses: Record<ButtonSize, string> = {
+  sm: "text-xs gap-1",
+  md: "text-sm gap-1.5",
+  lg: "text-[15px] gap-2",
+  normal: "text-sm gap-1.5",
+  small: "text-xs gap-1",
+  large: "text-[15px] gap-2",
+};
+
 function variantClasses(
   variant: ButtonVariant,
   selected: boolean,
   disabled: boolean,
 ): string {
   if (disabled) {
+    if (variant === "link") {
+      return "bg-transparent text-slate-500 cursor-not-allowed";
+    }
     return "bg-[rgba(148,163,184,0.08)] text-slate-500 shadow-btn-disabled cursor-not-allowed";
   }
 
@@ -111,6 +129,9 @@ function variantClasses(
 
     case "underline":
       return "bg-transparent text-slate-300 px-0.5";
+
+    case "link":
+      return "bg-transparent text-blue-400 hover:text-blue-300 p-0";
   }
 }
 
@@ -128,19 +149,26 @@ export function Button(props: ButtonProps) {
     disabled = false,
     className,
     testId,
+    type = "button",
+    ...nativeProps
   } = props;
 
   const isSubtab = variant === "subtab";
+  const isLink = variant === "link";
 
   const sizeCls = iconOnly
     ? iconOnlySizeClasses[size]
     : isSubtab
       ? subtabSizeClasses[size]
-      : sizeClasses[size];
+      : isLink
+        ? linkSizeClasses[size]
+        : sizeClasses[size];
 
   return (
     <ButtonContext.Provider value={props}>
       <button
+        {...nativeProps}
+        type={type}
         data-testid={testId}
         onClick={disabled ? undefined : onClick}
         disabled={disabled}
@@ -149,7 +177,8 @@ export function Button(props: ButtonProps) {
           "transition-[background,box-shadow,transform] duration-150 ease-out",
           "font-montserrat tracking-[0.1px]",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-blue",
-          !isSubtab && "rounded-lg",
+          !isSubtab && !isLink && "rounded-lg",
+          isLink && "rounded-sm",
           sizeCls,
           block && "w-full",
           variantClasses(variant, selected, disabled),
