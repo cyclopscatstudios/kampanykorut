@@ -110,6 +110,7 @@ export function GameView({
       capitalCity={capitalCity}
       candidateListData={candidateListData}
       electionConfig={config.electionConfig}
+      nationalPercentages={nationalPercentages}
       selectedDistrict={selectedDistrict}
       onSetDistrict={onSetDistrict}
       onSetView={onSetView}

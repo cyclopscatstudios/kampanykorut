@@ -218,7 +218,13 @@
     "margin": "Margin of error",
     "selectDistrict": "Select a district on the map to see its estimate.",
     "noData": "No estimate available yet.",
-    "newData": "New estimate available"
+    "newData": "New estimate available",
+    "mobile": {
+      "title": "Estimated standing",
+      "open": "Estimate",
+      "tapDistrict": "Tap a district on the map to see its estimate.",
+      "tapCityDistrict": "Tap a district on the map to see its estimate."
+    }
   },
   "districtList": {
     "view": {
