@@ -153,17 +153,18 @@ function MobileMap({
             )}
           </span>
           {capitalCity.length > 0 && (
-            <button
-              type="button"
+            <Button
+              variant="hero"
+              size="sm"
               onClick={() => setShowCapital((value) => !value)}
-              className="shrink-0 rounded-lg border border-white/16 bg-[rgba(10,20,40,0.8)] px-2.5 py-1.5 text-[10.5px] font-semibold text-slate-400 cursor-pointer"
+              className="shrink-0"
             >
               {t(
                 showCapital
                   ? "districtList.map.showCountry"
                   : "districtList.map.showCapital",
               )}
-            </button>
+            </Button>
           )}
         </div>
         <div ref={mapRef} className="w-full" style={{ height: mapHeight }}>

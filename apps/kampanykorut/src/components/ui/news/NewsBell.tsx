@@ -130,14 +130,14 @@ export function NewsBellView({
             <span className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-blue-400">
               {t("news.heading")}
             </span>
-            <button
-              type="button"
+            <Button
+              variant="link"
+              size="sm"
               disabled={unreadCount === 0}
               onClick={onMarkAllRead}
-              className="text-[11px] font-bold text-blue-400 hover:text-blue-300 disabled:cursor-default disabled:text-slate-500"
             >
               {t("news.bell.markAllRead")}
-            </button>
+            </Button>
           </div>
           <ul>
             {items.map((news) => {
@@ -210,14 +210,16 @@ export function NewsDetailDialog({
       onClose={onClose}
       panelClassName="relative w-full sm:max-w-2xl"
     >
-      <button
-        type="button"
+      <Button
+        variant="hero"
+        size="sm"
+        iconOnly
         onClick={onClose}
         aria-label={t("news.bell.close")}
-        className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-slate-300 hover:text-white"
+        className="absolute right-3 top-3 z-10"
       >
-        <Icon name="x-lg" size={14} color="currentColor" />
-      </button>
+        <Button.Icon name="x-lg" />
+      </Button>
       <div className="p-5">
         {state.status === "loading" && (
           <div role="status" aria-busy="true" className="flex flex-col gap-4">
