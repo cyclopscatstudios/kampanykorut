@@ -142,7 +142,13 @@
     }
   },
   "gameHeader": {
-    "turnsTooltip": "Lejátszott fordulók"
+    "turnsTooltip": "Lejátszott fordulók",
+    "campaignBadge": {
+      "title": "A kampány",
+      "toggle": "Kampány részletei megnyitása",
+      "candidate": "Jelölt",
+      "party": "Párt"
+    }
   },
   "gameMenuBar": {
     "save": "Játék mentése",

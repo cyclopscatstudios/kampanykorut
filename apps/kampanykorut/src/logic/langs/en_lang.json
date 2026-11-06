@@ -142,7 +142,13 @@
     }
   },
   "gameHeader": {
-    "turnsTooltip": "Turns played"
+    "turnsTooltip": "Turns played",
+    "campaignBadge": {
+      "title": "The campaign",
+      "toggle": "Show campaign details",
+      "candidate": "Candidate",
+      "party": "Party"
+    }
   },
   "gameMenuBar": {
     "save": "Save game",

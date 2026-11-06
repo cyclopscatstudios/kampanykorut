@@ -1,20 +1,10 @@
-import classNames from "classnames";
 import { t } from "i18next";
 import { useLayoutEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
-import {
-  AGGREGATE_POLLSTER_ID,
-  getPlayerVoteKey,
-  PollsterEngine,
-} from "@/shared/domain";
-import {
-  CampaignConfig,
-  CampaignState,
-  PollingOpnions,
-  RawParty,
-} from "@/shared/types";
+import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
+import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
 import logo from "../../../../../../brand-assets/svg/logo-mark.svg";
 import markdown from "../../../../../../brand-assets/svg/logo-wordmark-dark.svg";
 import { Button } from "../../../../../../shared/ui/Button";
@@ -24,6 +14,7 @@ import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { Navigation } from "../../../logic/application/navigation/Navigation";
 import { Menu, MenuItem, SubMenu } from "../Menu";
 import { BugReporterButton } from "./BugReporter/BugReporterButton";
+import { CampaignBadge } from "./CampaignBadge";
 import { GAME_HEADER_SLOT_ID } from "./gameHeaderSlot";
 import type { DialogId } from "./hooks/useDialogState";
 
@@ -53,13 +44,6 @@ export function GameHeader({
   const pollsters = pollsterEngine.getPollsters();
   const navigationService = container.resolve(Navigation);
   const endResultsScreen = navigationService.isUrlParamMatch("/end-results");
-  const electionConfig = config?.electionConfig;
-  const title = electionConfig?.title;
-  const year = electionConfig?.year;
-  const playerVoteKey = getPlayerVoteKey(electionConfig, state?.playerSide);
-  const currentParty = electionConfig?.parties.find(
-    (party) => party.id === playerVoteKey,
-  );
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const isTooNarrow = useMediaQuery("(min-width: 440px)");
 
@@ -81,9 +65,6 @@ export function GameHeader({
     handlePollsterChange,
     pollsters,
     endResultsScreen,
-    currentParty,
-    title,
-    year,
     isTooNarrow,
   };
 
@@ -141,38 +122,6 @@ function TurnBadge({
   );
 }
 
-function CampaignBadge({
-  party,
-  title,
-  year,
-}: {
-  party?: RawParty;
-  title?: string;
-  year?: string;
-}) {
-  const tooltipContent = `${year}: ${title} - ${party?.name}`;
-  return (
-    <Tooltip content={tooltipContent} position="bottom">
-      <div className="h-[40px] flex items-center justify-center bg-blue-900/50 p-2 rounded-full border border-blue-50/25">
-        <div className="h-[40px] flex items-center justify-center">
-          <div
-            className={classNames("size-[25px] rounded-full mr-1.5")}
-            style={{ backgroundColor: party?.color }}
-          />
-          <div className="mx-1">
-            <Text size="xs" weight="bold">
-              {year}
-            </Text>
-            <Text size="xs" weight="light">
-              {title}
-            </Text>
-          </div>
-        </div>
-      </div>
-    </Tooltip>
-  );
-}
-
 interface HeaderContentProps {
   activeDialog: DialogId;
   onOpen: (id: Exclude<DialogId, null>) => void;
@@ -186,9 +135,6 @@ interface HeaderContentProps {
   ) => void;
   pollsters: ReturnType<PollsterEngine["getPollsters"]>;
   endResultsScreen: boolean;
-  currentParty?: RawParty;
-  title?: string;
-  year?: string;
   isTooNarrow: boolean;
 }
 
@@ -209,7 +155,8 @@ function NarrowHeader({
         <img src={logo} width="26" height="26" alt="Kampánykörút" />
       </Button>
       {state && config && (
-        <div className="text-center">
+        <div className="flex items-center gap-2">
+          <CampaignBadge state={state} config={config} variant="sheet" />
           <TurnBadge
             currentTurn={state.turn}
             turns={
@@ -333,9 +280,6 @@ function WideHeader({
   handlePollsterChange,
   pollsters,
   endResultsScreen,
-  currentParty,
-  title,
-  year,
 }: HeaderContentProps) {
   return (
     <div className="h-[80px] flex justify-between items-center mx-2.5">
@@ -398,7 +342,7 @@ function WideHeader({
           </Menu>
         )}
         <div className="ml-5">
-          <CampaignBadge party={currentParty} title={title} year={year} />
+          <CampaignBadge state={state} config={config} />
         </div>
       </div>
       {state && config && (
