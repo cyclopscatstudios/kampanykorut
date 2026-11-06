@@ -46,12 +46,6 @@ export function RootLayout() {
           by accident, use the stable version instead:"
         id="development-warning"
       />
-      <WarningScreen
-        allowWarning={!isDesktop}
-        label={t("warning.lowResolution.label")}
-        description={t("warning.lowResolution.description")}
-        id="low-resolution-warning"
-      />
       <div id={GAME_HEADER_SLOT_ID} />
       <div className="flex-1 min-h-0">
         <FullscreenBackground path={path}>

@@ -214,6 +214,15 @@ function MobileMap({
               )}
             </Button>
           )}
+          <Button
+            onClick={onOpenEstimate}
+            variant="hero"
+            size="sm"
+            className="shrink-0"
+          >
+            <Button.Icon name="bar-chart-fill" size="xs" color="lightBlue" />
+            {t("estimatePanel.mobile.open")}
+          </Button>
         </div>
         <div ref={mapRef} className="w-full" style={{ height: mapHeight }}>
           {mapWidth > 0 && (
