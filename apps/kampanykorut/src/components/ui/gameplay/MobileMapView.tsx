@@ -10,7 +10,6 @@ import {
   RawParty,
 } from "@/shared/types";
 import { Button } from "@/shared/ui/Button";
-import { Icon } from "@/shared/ui/Icon";
 import { BottomSheet } from "../BottomSheet";
 import { getWinnerResultByCandidateList } from "../map.utils";
 import {
