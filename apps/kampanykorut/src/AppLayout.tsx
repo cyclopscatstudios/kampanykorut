@@ -1,8 +1,6 @@
-import { t } from "i18next";
 import { useEffect } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import { container } from "tsyringe";
-import { useMediaQuery } from "usehooks-ts";
 import { createLogger } from "@/shared/logger/logger";
 import { GAME_HEADER_SLOT_ID } from "./components/ui/gameplay/gameHeaderSlot";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
@@ -21,7 +19,6 @@ export function RootLayout() {
   const path = useLoaderData();
   const stateEngine = container.resolve(StateEngine);
   const navigation = container.resolve(Navigation);
-  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
     if (!navigation.isUrlParamMatch("/game")) {
