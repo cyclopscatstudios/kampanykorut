@@ -13,12 +13,15 @@ export interface CampaignBadgeProps {
   config?: CampaignConfig;
   /** Desktop: dropdown panel under the chip. Mobile: bottom sheet. */
   variant?: "dropdown" | "sheet";
+  /** "pill": bordered chip (desktop header). "inline": borderless, for the mobile context bar. */
+  appearance?: "pill" | "inline";
 }
 
 export function CampaignBadge({
   state,
   config,
   variant = "dropdown",
+  appearance = "pill",
 }: CampaignBadgeProps) {
   const campaigns = useGetCampaigns();
   const campaign = campaigns.find((c) => c.id === state?.activeCampaignId);
@@ -58,6 +61,7 @@ export function CampaignBadge({
       <CampaignChip
         info={info}
         open={open}
+        appearance={appearance}
         controls={panelId}
         onToggle={() => setOpen((o) => !o)}
       />
@@ -91,11 +95,13 @@ export function CampaignBadge({
 function CampaignChip({
   info,
   open,
+  appearance,
   controls,
   onToggle,
 }: {
   info: CampaignBadgeInfo;
   open: boolean;
+  appearance: "pill" | "inline";
   controls: string;
   onToggle: () => void;
 }) {
@@ -112,15 +118,23 @@ function CampaignChip({
       aria-label={`${label} — ${t("gameHeader.campaignBadge.toggle")}`}
       data-testid="campaignBadge"
       className={classNames(
-        "flex h-10 cursor-pointer items-center gap-2 rounded-full border pl-2 pr-2.5 transition-colors duration-150",
+        "flex cursor-pointer items-center gap-2 transition-colors duration-150",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-blue",
-        open
-          ? "border-blue-400 bg-blue-900/70"
-          : "border-blue-50/25 bg-blue-900/50 hover:border-blue-50/40 hover:bg-blue-900/70",
+        appearance === "inline"
+          ? "h-11 rounded-md px-2"
+          : [
+              "h-10 rounded-full border pl-2 pr-2.5",
+              open
+                ? "border-blue-400 bg-blue-900/70"
+                : "border-blue-50/25 bg-blue-900/50 hover:border-blue-50/40 hover:bg-blue-900/70",
+            ],
       )}
     >
       <span
-        className="size-6 shrink-0 rounded-full ring-2 ring-white/15"
+        className={classNames(
+          "shrink-0 rounded-full ring-2 ring-white/15",
+          appearance === "inline" ? "size-3.5" : "size-6",
+        )}
         style={{ backgroundColor: info.color }}
       />
       <Text as="span" size="sm" weight="bold">

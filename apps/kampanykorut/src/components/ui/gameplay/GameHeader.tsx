@@ -17,6 +17,7 @@ import { BugReporterButton } from "./BugReporter/BugReporterButton";
 import { CampaignBadge } from "./CampaignBadge";
 import { GAME_HEADER_SLOT_ID } from "./gameHeaderSlot";
 import type { DialogId } from "./hooks/useDialogState";
+import { PollsterOption, PollsterPicker } from "./PollsterPicker";
 
 export interface GameHeaderProps {
   activeDialog: DialogId;
@@ -45,7 +46,6 @@ export function GameHeader({
   const navigationService = container.resolve(Navigation);
   const endResultsScreen = navigationService.isUrlParamMatch("/end-results");
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const isTooNarrow = useMediaQuery("(min-width: 440px)");
 
   useLayoutEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -65,7 +65,6 @@ export function GameHeader({
     handlePollsterChange,
     pollsters,
     endResultsScreen,
-    isTooNarrow,
   };
 
   return createPortal(
@@ -135,7 +134,29 @@ interface HeaderContentProps {
   ) => void;
   pollsters: ReturnType<PollsterEngine["getPollsters"]>;
   endResultsScreen: boolean;
-  isTooNarrow: boolean;
+}
+
+function getPollsterOptions(
+  pollsters: ReturnType<PollsterEngine["getPollsters"]>,
+): PollsterOption[] {
+  return [
+    ...pollsters,
+    {
+      id: AGGREGATE_POLLSTER_ID,
+      label: t("gameMenuBar.mapMenu.polls.average"),
+    },
+  ].sort((a, b) => {
+    if (a.id === AGGREGATE_POLLSTER_ID) {
+      return -1;
+    }
+    if (b.id === AGGREGATE_POLLSTER_ID) {
+      return 1;
+    }
+    if (!a.label || !b.label) {
+      return 0;
+    }
+    return a.label.localeCompare(b.label);
+  });
 }
 
 function NarrowHeader({
@@ -147,127 +168,117 @@ function NarrowHeader({
   handlePollsterChange,
   pollsters,
   endResultsScreen,
-  isTooNarrow,
 }: HeaderContentProps) {
   return (
-    <div className="h-[64px] flex justify-between items-center mx-2.5">
-      <Button variant="tertiary" iconOnly onClick={() => onOpen("gameMenu")}>
-        <img src={logo} width="26" height="26" alt="Kampánykörút" />
-      </Button>
+    <>
+      <div className="mx-2.5 grid h-[60px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2">
+        <div className="flex items-center">
+          <Button
+            variant="tertiary"
+            iconOnly
+            onClick={() => onOpen("gameMenu")}
+          >
+            <img src={logo} width="26" height="26" alt="Kampánykörút" />
+          </Button>
+        </div>
+        <div>
+          {state && config && (
+            <TurnBadge
+              currentTurn={state.turn}
+              turns={
+                state.decisionCount ??
+                config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
+                  state.playerSide?.candidateId ?? ""
+                ]?.questions?.length ??
+                0
+              }
+            />
+          )}
+        </div>
+        <div className="flex items-center justify-end">
+          <NarrowMenu activeDialog={activeDialog} onOpen={onOpen} />
+        </div>
+      </div>
       {state && config && (
-        <div className="flex items-center gap-2">
-          <CampaignBadge state={state} config={config} variant="sheet" />
-          <TurnBadge
-            currentTurn={state.turn}
-            turns={
-              state.decisionCount ??
-              config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
-                state.playerSide?.candidateId ?? ""
-              ]?.questions?.length ??
-              0
-            }
+        <div className="flex h-11 items-center justify-between gap-2 border-t border-slate-400/12 px-1.5">
+          <CampaignBadge
+            state={state}
+            config={config}
+            variant="sheet"
+            appearance="inline"
           />
+          {!endResultsScreen && (
+            <PollsterPicker
+              options={getPollsterOptions(pollsters)}
+              selectedId={pollsterData?.selectedPollsterId}
+              onSelect={(id) => handlePollsterChange?.(id, state, config)}
+            />
+          )}
         </div>
       )}
-      <Menu
-        align="right"
-        trigger={
-          <Button variant="tertiary" iconOnly>
-            <Button.Icon name="list" color="white" size="medium" />
-          </Button>
-        }
-      >
-        {!endResultsScreen && !!isTooNarrow && (
-          <SubMenu
-            label={t("gameMenuBar.mapMenu.polls.menuLabel")}
-            align="left"
-          >
-            {[
-              ...pollsters,
-              {
-                id: AGGREGATE_POLLSTER_ID,
-                label: t("gameMenuBar.mapMenu.polls.average"),
-              },
-            ]
-              .sort((a, b) => {
-                if (a.id === AGGREGATE_POLLSTER_ID) {
-                  return -1;
-                }
-                if (b.id === AGGREGATE_POLLSTER_ID) {
-                  return 1;
-                }
-                if (!a.label || !b.label) {
-                  return 0;
-                }
-                return a.label.localeCompare(b.label);
-              })
-              .map((pollster) => (
-                <MenuItem
-                  key={pollster.id}
-                  onClick={() =>
-                    handlePollsterChange?.(pollster.id, state, config)
-                  }
-                >
-                  <div className="flex justify-between items-center px-2 gap-2">
-                    <div className="flex items-center gap-2">
-                      <PollsterIcon id={pollster.id} />
-                      {pollster.label}
-                    </div>
-                    {pollsterData?.selectedPollsterId === pollster.id && (
-                      <Icon name="check-lg" color="darkBlue" />
-                    )}
-                  </div>
-                </MenuItem>
-              ))}
-          </SubMenu>
-        )}
-        <MenuItem onClick={() => onOpen("saveGame")}>
-          <div className="flex items-center gap-2">
-            <Icon
-              name="file-earmark-arrow-down-fill"
-              color={activeDialog === "saveGame" ? "darkBlue" : "blue"}
-            />
-            {t("gameMenuBar.save")}
-          </div>
-        </MenuItem>
-        <MenuItem onClick={() => onOpen("savedGames")}>
-          <div className="flex items-center gap-2">
-            <Icon
-              name="file-earmark-arrow-up-fill"
-              color={activeDialog === "savedGames" ? "darkBlue" : "blue"}
-            />
-            {t("gameMenuBar.laod")}
-          </div>
-        </MenuItem>
-        <MenuItem onClick={() => onOpen("settings")}>
-          <div className="flex items-center gap-2">
-            <Icon
-              name="gear-fill"
-              color={activeDialog === "settings" ? "darkBlue" : "blue"}
-            />
-            {t("gameMenuBar.settings")}
-          </div>
-        </MenuItem>
-        <MenuItem onClick={() => onOpen("bugReporter")}>
-          <div className="flex items-center gap-2">
-            <Icon
-              name="bug-fill"
-              color={activeDialog === "bugReporter" ? "darkBlue" : "blue"}
-            />
-            {t("bugReporter.title")}
-          </div>
-        </MenuItem>
-        <MenuItem onClick={() => onOpen("exit")}>
-          <div className="flex items-center gap-2">
-            <Icon
-              name="x-square-fill"
-              color={activeDialog === "exit" ? "darkBlue" : "blue"}
-            />
-            {t("gameMenuBar.quit")}
-          </div>
-        </MenuItem>
-      </Menu>
-    </div>
+    </>
+  );
+}
+
+function NarrowMenu({
+  activeDialog,
+  onOpen,
+}: Pick<HeaderContentProps, "activeDialog" | "onOpen">) {
+  return (
+    <Menu
+      align="right"
+      trigger={
+        <Button variant="tertiary" iconOnly>
+          <Button.Icon name="list" color="white" size="medium" />
+        </Button>
+      }
+    >
+      <MenuItem onClick={() => onOpen("saveGame")}>
+        <div className="flex items-center gap-2">
+          <Icon
+            name="file-earmark-arrow-down-fill"
+            color={activeDialog === "saveGame" ? "darkBlue" : "blue"}
+          />
+          {t("gameMenuBar.save")}
+        </div>
+      </MenuItem>
+      <MenuItem onClick={() => onOpen("savedGames")}>
+        <div className="flex items-center gap-2">
+          <Icon
+            name="file-earmark-arrow-up-fill"
+            color={activeDialog === "savedGames" ? "darkBlue" : "blue"}
+          />
+          {t("gameMenuBar.laod")}
+        </div>
+      </MenuItem>
+      <MenuItem onClick={() => onOpen("settings")}>
+        <div className="flex items-center gap-2">
+          <Icon
+            name="gear-fill"
+            color={activeDialog === "settings" ? "darkBlue" : "blue"}
+          />
+          {t("gameMenuBar.settings")}
+        </div>
+      </MenuItem>
+      <MenuItem onClick={() => onOpen("bugReporter")}>
+        <div className="flex items-center gap-2">
+          <Icon
+            name="bug-fill"
+            color={activeDialog === "bugReporter" ? "darkBlue" : "blue"}
+          />
+          {t("bugReporter.title")}
+        </div>
+      </MenuItem>
+      <MenuItem onClick={() => onOpen("exit")}>
+        <div className="flex items-center gap-2">
+          <Icon
+            name="x-square-fill"
+            color={activeDialog === "exit" ? "darkBlue" : "blue"}
+          />
+          {t("gameMenuBar.quit")}
+        </div>
+      </MenuItem>
+    </Menu>
   );
 }
 
@@ -301,43 +312,24 @@ function WideHeader({
             }
           >
             <SubMenu label={t("gameMenuBar.mapMenu.polls.menuLabel")}>
-              {[
-                ...pollsters,
-                {
-                  id: AGGREGATE_POLLSTER_ID,
-                  label: t("gameMenuBar.mapMenu.polls.average"),
-                },
-              ]
-                .sort((a, b) => {
-                  if (a.id === AGGREGATE_POLLSTER_ID) {
-                    return -1;
+              {getPollsterOptions(pollsters).map((pollster) => (
+                <MenuItem
+                  key={pollster.id}
+                  onClick={() =>
+                    handlePollsterChange?.(pollster.id, state, config)
                   }
-                  if (b.id === AGGREGATE_POLLSTER_ID) {
-                    return 1;
-                  }
-                  if (!a.label || !b.label) {
-                    return 0;
-                  }
-                  return a.label.localeCompare(b.label);
-                })
-                .map((pollster) => (
-                  <MenuItem
-                    key={pollster.id}
-                    onClick={() =>
-                      handlePollsterChange?.(pollster.id, state, config)
-                    }
-                  >
-                    <div className="flex justify-between items-center px-2 gap-2">
-                      <div className="flex items-center gap-2">
-                        <PollsterIcon id={pollster.id} />
-                        {pollster.label}
-                      </div>
-                      {pollsterData?.selectedPollsterId === pollster.id && (
-                        <Icon name="check-lg" color="darkBlue" />
-                      )}
+                >
+                  <div className="flex justify-between items-center px-2 gap-2">
+                    <div className="flex items-center gap-2">
+                      <PollsterIcon id={pollster.id} />
+                      {pollster.label}
                     </div>
-                  </MenuItem>
-                ))}
+                    {pollsterData?.selectedPollsterId === pollster.id && (
+                      <Icon name="check-lg" color="darkBlue" />
+                    )}
+                  </div>
+                </MenuItem>
+              ))}
             </SubMenu>
           </Menu>
         )}
