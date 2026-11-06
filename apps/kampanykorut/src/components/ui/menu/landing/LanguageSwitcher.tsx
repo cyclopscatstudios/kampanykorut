@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { useSettings } from "@/logic/application";
 import { type LanguageId, supportedLanguages } from "@/shared/types";
+import { Button } from "@/shared/ui/Button";
 
 interface LanguageSwitcherProps {
   className?: string;
@@ -16,28 +17,25 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   return (
     <div
       className={classNames(
-        "z-10 flex gap-1 rounded-full border border-white/20 bg-black/30 p-1",
+        "z-10 flex gap-1 rounded-xl border border-white/20 bg-black/30 p-1",
         className,
       )}
     >
       {supportedLanguages.map((language) => {
         const isActive = settings.language === language.id;
         return (
-          <button
+          <Button
             key={language.id}
-            type="button"
+            variant="tab"
+            size="sm"
+            selected={isActive}
             aria-pressed={isActive}
             aria-label={language.label}
             onClick={() => selectLanguage(language.id)}
-            className={classNames(
-              "rounded-full px-3 py-1 text-xs font-semibold uppercase transition",
-              isActive
-                ? "bg-blue-500 text-white"
-                : "text-slate-300 hover:text-white",
-            )}
+            className="uppercase"
           >
             {language.id}
-          </button>
+          </Button>
         );
       })}
     </div>

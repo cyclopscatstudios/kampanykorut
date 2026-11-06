@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
-import { Icon, Text } from "@/shared/ui";
+import { Text } from "@/shared/ui";
+import { Button } from "@/shared/ui/Button";
 
 export function WarningScreen({
   allowWarning,
@@ -23,15 +24,17 @@ export function WarningScreen({
           <Text weight="bold">{label}</Text>
           <Text>{description}</Text>
           {children}
-          <button
-            type="button"
+          <Button
+            variant="tertiary"
+            size="sm"
+            iconOnly
             onClick={() => setShowWarningScreen(false)}
-            className="absolute right-2 top-2 cursor-pointer"
+            className="absolute right-2 top-2"
             aria-label="Close development warning"
             data-testid={id}
           >
-            <Icon name="x-circle" size="large" />
-          </button>
+            <Button.Icon name="x-lg" />
+          </Button>
         </div>
       </div>
     )
