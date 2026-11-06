@@ -5,6 +5,7 @@ import {
   loadCampaignConfig,
   StateEngine,
 } from "@/logic/application";
+import { getPlayerVoteKey } from "@/shared/domain";
 import {
   CampaignState,
   Decision,
@@ -113,7 +114,7 @@ export class CampaignApi {
         config.electionConfig,
         campaignStrategies,
         config.electionConfig.districtBoost,
-        playerSide?.partyId,
+        getPlayerVoteKey(config.electionConfig, playerSide),
       );
 
       history.push({

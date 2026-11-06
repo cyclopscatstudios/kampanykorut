@@ -6,6 +6,7 @@ import { createLogger } from "@/shared/logger/logger";
 import { FinalResults } from "@/shared/types";
 import { useTranslate } from "../../../../../../../shared/logic/hooks/useTranslateLang";
 import { Button } from "../../../../../../../shared/ui/Button";
+import { Icon } from "../../../../../../../shared/ui/Icon";
 import { useNavigation } from "../../../../hooks/navigationHook";
 import { StateEngine } from "../../../../logic/application/StateEngine";
 import { GameChrome } from "../GameChrome";
@@ -14,6 +15,9 @@ import {
   ConfirmRestartModal,
 } from "../GameDialog";
 import { ElectionMap } from "./ElectionMap";
+import { MayoralDistrictTable } from "./MayoralDistricts";
+import { MayoralSummaryPage } from "./MayoralSummaryPage";
+import { Achievements } from "./Statistics/Achievements";
 import { Statistics } from "./Statistics/Statistics";
 import { SummaryPage } from "./SummaryPage";
 import { TurnHistory } from "./TurnHistory";
@@ -39,7 +43,25 @@ const screens = [
   { id: "history", label: "endResult.menuBar.history", icon: "clock-history" },
 ] as const;
 
-type ActiveScreen = (typeof screens)[number]["id"];
+const mayoralScreens = [
+  screens[0],
+  screens[1],
+  {
+    id: "districts",
+    label: "endResult.menuBar.districts",
+    icon: "list-ol",
+  },
+  {
+    id: "achievements",
+    label: "endResult.menuBar.achivements",
+    icon: "award-fill",
+  },
+  screens[3],
+] as const;
+
+type ActiveScreen =
+  | (typeof screens)[number]["id"]
+  | (typeof mayoralScreens)[number]["id"];
 
 export function FinalResultScreen() {
   const { results, config } = useLoaderData();
@@ -53,6 +75,13 @@ export function FinalResultScreen() {
   const t = useTranslate();
   const { goToCampaignSelector } = useNavigation();
   const state = stateEngine.getCampaignState();
+  const mayoralResult = results.mayoralResult;
+  const visibleScreens = mayoralResult ? mayoralScreens : screens;
+  const summary = mayoralResult ? (
+    <MayoralSummaryPage mayoralResult={mayoralResult} config={config} />
+  ) : (
+    <SummaryPage results={results} />
+  );
 
   // check the result of `_other`, which aggregates party-list votes cast for minor/other parties
   // `_other` is not an actual party and should not be displayed in the UI
@@ -72,12 +101,12 @@ export function FinalResultScreen() {
           onConfirm={goToCampaignSelector}
         />
       )}
-      <div className="m-2 flex flex-col flex-1 min-h-0 md:flex-none">
-        <div className="bg-[#0f172a] p-3 md:p-5 rounded-xl border border-slate-200/65 flex flex-col flex-1 min-h-0 md:flex-none">
+      <div className="m-2 flex flex-col flex-1 min-h-0 min-w-0 md:flex-none">
+        <div className="bg-[#0f172a] p-3 md:p-5 rounded-xl border border-slate-200/65 flex flex-col flex-1 min-h-0 min-w-0 md:flex-none">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             {isDesktop && (
               <div className="flex gap-2">
-                {screens.map((screen) => {
+                {visibleScreens.map((screen) => {
                   return (
                     <Button
                       key={screen.id}
@@ -92,7 +121,7 @@ export function FinalResultScreen() {
                 })}
               </div>
             )}
-            <div className="flex gap-2 ml-auto">
+            <div className="flex flex-wrap gap-2 ml-auto">
               <Button
                 variant="tertiary"
                 onClick={() => setConfirmAction("campaignSelector")}
@@ -107,18 +136,27 @@ export function FinalResultScreen() {
               </Button>
             </div>
           </div>
-          <div className="flex-1 min-h-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto md:overflow-y-visible">
-            {!isDesktop && <SummaryPage results={results} />}
-            {isDesktop && activeScreen === "statistics" && (
+          <div
+            key={activeScreen}
+            className="flex-1 min-h-0 min-w-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto overflow-x-hidden md:overflow-visible"
+          >
+            {activeScreen === "statistics" && (
               <Statistics results={results} config={config} />
             )}
-            {isDesktop && activeScreen === "summaryPage" && (
-              <SummaryPage results={results} />
+            {activeScreen === "districts" && mayoralResult && (
+              <MayoralDistrictTable
+                mayoralResult={mayoralResult}
+                config={config}
+              />
             )}
-            {isDesktop && activeScreen === "electionMap" && (
-              <ElectionMap config={config} />
+            {activeScreen === "achievements" && (
+              <Achievements state={state} config={config} />
             )}
-            {isDesktop && activeScreen === "history" && (
+            {activeScreen === "summaryPage" && summary}
+            {activeScreen === "electionMap" && (
+              <ElectionMap config={config} mayoralResult={mayoralResult} />
+            )}
+            {activeScreen === "history" && (
               <TurnHistory
                 history={history}
                 config={config}
@@ -127,6 +165,27 @@ export function FinalResultScreen() {
               />
             )}
           </div>
+          {!isDesktop && (
+            <nav
+              style={{
+                gridTemplateColumns: `repeat(${visibleScreens.length}, minmax(0, 1fr))`,
+              }}
+              className="grid shrink-0 gap-1 border-t border-slate-700 pt-2 pb-[env(safe-area-inset-bottom)]"
+            >
+              {visibleScreens.map((screen) => (
+                <button
+                  key={screen.id}
+                  type="button"
+                  aria-current={activeScreen === screen.id ? "true" : undefined}
+                  onClick={() => setActiveScreen(screen.id)}
+                  className={`flex min-h-14 min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-1 text-[10px] font-semibold leading-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-400 ${activeScreen === screen.id ? "bg-blue-500/15 text-blue-300" : "text-slate-400"}`}
+                >
+                  <Icon name={screen.icon} size={20} />
+                  <span>{t(screen.label)}</span>
+                </button>
+              ))}
+            </nav>
+          )}
         </div>
       </div>
     </GameChrome>

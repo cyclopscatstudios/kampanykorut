@@ -4,13 +4,13 @@ export function buildPathD(
   points: Point[],
   bounds: { minX: number; maxY: number },
   scale: number,
-  margin: number,
+  offset: { x: number; y: number },
 ) {
   return (
     points
       .map((p, i) => {
-        const x = margin + (p.x - bounds.minX) * scale;
-        const y = margin + (bounds.maxY - p.y) * scale;
+        const x = offset.x + (p.x - bounds.minX) * scale;
+        const y = offset.y + (bounds.maxY - p.y) * scale;
         return `${i === 0 ? "M" : "L"}${x},${y}`;
       })
       .join(" ") + " Z"

@@ -31,8 +31,15 @@ export function useSideSelectorMenu(id: string) {
       return;
     }
     setSelectedParty(party);
-    saveSession("campaignState", { playerSide: { partyId: party?.id } });
-    setSelectedCandidate(undefined);
+    const playableCandidates = party.mainCandidates.filter((c) =>
+      party.playableCandidates?.includes(c.id),
+    );
+    const autoCandidate =
+      playableCandidates.length === 1 ? playableCandidates[0] : undefined;
+    setSelectedCandidate(autoCandidate);
+    saveSession("campaignState", {
+      playerSide: { partyId: party.id, candidateId: autoCandidate?.id },
+    });
   };
 
   const handleCandidateChange = (candidateId: string) => {

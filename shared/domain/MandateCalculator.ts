@@ -6,7 +6,7 @@ import {
   CandidateMap,
   CandidateMapRaw,
   CombinedOevk,
-  ElectionConfig,
+  ParliamentaryElectionConfig,
   PartyId,
   PartyListData,
   PartyVotes,
@@ -25,7 +25,7 @@ export class MandateCalculator {
   calculate(
     districtCandidateData?: CandidateListData[],
     districtPartyData?: PartyListData[],
-    electionConfig?: ElectionConfig,
+    electionConfig?: ParliamentaryElectionConfig,
     partyListVotes?: PartyVotes,
   ): CalculateResults | undefined {
     if (!districtCandidateData || !electionConfig) {
@@ -255,7 +255,7 @@ export class MandateCalculator {
   private allocateListSeats(
     listVotes: PartyVotes,
     compensation: PartyVotes,
-    config: ElectionConfig,
+    config: ParliamentaryElectionConfig,
   ) {
     const validVotes = Object.entries(listVotes).filter(
       ([party, v]) => party !== "_total" && Number.isFinite(v),

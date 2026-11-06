@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
 import { ConfigEngine, StateEngine } from "@/logic/application";
-import { getMajorityType } from "@/shared/domain";
+import { getMajorityType, getParliamentaryConfig } from "@/shared/domain";
 import { FinalResults, Mandate, RawParty } from "@/shared/types";
 import { Text } from "../../../../../../../shared/ui/Text";
 import { Heading } from "../../Heading";
@@ -21,7 +21,7 @@ export function SummaryPage({ results }: { results: FinalResults }) {
   );
 
   const allSeats =
-    currentConfig?.electionConfig.allSeats ??
+    getParliamentaryConfig(currentConfig?.electionConfig)?.allSeats ??
     results.mandates.reduce((sum, m) => sum + m.totalSeats, 0);
   const noWinner = getMajorityType(winner.totalSeats, allSeats) === null;
 
@@ -79,9 +79,9 @@ export function SummaryPage({ results }: { results: FinalResults }) {
         </div>
         <div className="w-full flex justify-center mt-4">
           <div className="w-full max-w-[500px] px-3 md:px-0">
-            <div className="dark:bg-slate-800/50 p-3 md:p-5 rounded-xl border border-slate-200/65 dark:border-slate-700">
+            <div className="dark:bg-slate-800/50 p-2 md:p-5 rounded-xl border border-slate-200/65 dark:border-slate-700">
               <ParliamentHemicycle
-                width={isDesktop ? 450 : 280}
+                width={isDesktop ? 450 : 240}
                 height={isDesktop ? 150 : 100}
                 rows={9}
                 order="as-given"

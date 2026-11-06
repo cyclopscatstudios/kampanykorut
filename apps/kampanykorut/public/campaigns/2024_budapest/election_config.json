@@ -1,0 +1,110 @@
+{
+  "title": "Budapest – főpolgármester-választás",
+  "year": "2024",
+  "election": {
+    "type": "mayoral",
+    "resultRule": "plurality"
+  },
+  "districtMap": "budapest-districts",
+  "districtBoost": true,
+  "parties": [
+    {
+      "id": "karacsony_gergely",
+      "name": "Karácsony Gergely",
+      "color": "#2f6fd6"
+    },
+    {
+      "id": "vitezy_david",
+      "name": "Vitézy Dávid",
+      "color": "#3fae5a"
+    },
+    {
+      "id": "szentkiralyi_alexandra",
+      "name": "Szentkirályi Alexandra",
+      "color": "#f28c28"
+    },
+    {
+      "id": "grundtner_andras",
+      "name": "Grundtner András",
+      "color": "#6b6b6b"
+    }
+  ],
+  "playableSides": [
+    {
+      "id": "lmp",
+      "label": "Vitézy Dáviddal Budapestért-LMP – Zöldek szövetség",
+      "description": "Az LMP és a Podmaniczky Mozgalom által támogatott politikai együttműködés, amely Vitézy Dávid független jelöltségével kíván alternatívát kínálni Budapest vezetésére. Kampányuk középpontjában a közlekedés fejlesztése, a város működőképessége és a pártpolitikai csatározások helyett a szakmai városvezetés áll.",
+      "mainCandidates": [
+        {
+          "id": "vitezy_david",
+          "label": "Vitézy Dávid",
+          "description": "Közlekedési szakember, a BKK alapító vezérigazgatója és korábbi közlekedési államtitkár. Budapest közlekedésének egyik legismertebb szakpolitikai szereplője, aki főpolgármester-jelöltként a szakértelmet, a városfejlesztést és a pártpolitikai megosztottság meghaladását helyezi kampánya középpontjába."
+        }
+      ],
+      "playableCandidates": ["vitezy_david"]
+    },
+
+    {
+      "id": "fidesz_kdnp",
+      "label": "Fidesz–KDNP",
+      "description": "A kormánypártok Budapest visszahódítására készülnek. A Fidesz–KDNP a Tarlós-korszak városvezetésének örökségére építve, Karácsony Gergely leváltását és a főváros működésének rendbetételét ígéri. Kampányuk középpontjában a közlekedési káosz, a köztisztaság és a fővárosi vezetés bírálata áll.",
+      "mainCandidates": [
+        {
+          "id": "szentkiralyi_alexandra",
+          "label": "Szentkirályi Alexandra",
+          "description": "A korábbi kormányszóvivő és Tarlós István egykori főpolgármester-helyettese most Budapest vezetésére készül. A kormányzati háttérre és városvezetői tapasztalatára támaszkodva ígér rendet a fővárosban, miközben élesen támadja Karácsony Gergely várospolitikáját. Kihívása, hogy a Fidesz hagyományos szavazótáborán túl is képes legyen megszólítani a budapestieket."
+        }
+      ],
+      "playableCandidates": ["szentkiralyi_alexandra"]
+    },
+
+    {
+      "id": "dk_mszp_parbeszed",
+      "label": "DK–MSZP–Párbeszéd",
+      "description": "A DK, az MSZP és a Párbeszéd szövetsége a 2019-ben megszerzett fővárosi vezetés megőrzésére készül. A koalíció a zöldebb, élhetőbb és szolidárisabb Budapest programját képviseli, miközben a kormányzati elvonásokkal és a főváros pénzügyi nehézségeivel is szembe kell néznie. Céljuk Karácsony Gergely újraválasztása és a megkezdett várospolitikai program folytatása.",
+      "mainCandidates": [
+        {
+          "id": "karacsony_gergely",
+          "label": "Karácsony Gergely",
+          "description": "Budapest 2019 óta hivatalban lévő főpolgármestere második ciklusáért indul. Városvezetését a közösségi közlekedés fejlesztése, a zöldpolitikai kezdeményezések és a kormánnyal folytatott konfliktusok határozták meg. Kampányában egyszerre kell megvédenie az elmúlt öt év mérlegét, választ adnia a főváros működését érő kritikákra, és szembenéznie a Fidesz, valamint Vitézy Dávid kihívásával."
+        }
+      ],
+      "playableCandidates": ["karacsony_gergely"]
+    }
+  ],
+  "electionAssets": [
+    {
+      "id": "lmp",
+      "candidateAssets": [
+        {
+          "id": "vitezy_david",
+          "portrait": "/images/2024_budapest/vitezy_david.jpg",
+          "slogan": "/images/2024_budapest/vitezy_szlogen.png"
+        }
+      ],
+      "party_logo": "/images/2024_budapest/podmaninczky_mozgalom.png"
+    },
+    {
+      "id": "dk_mszp_parbeszed",
+      "candidateAssets": [
+        {
+          "id": "karacsony_gergely",
+          "portrait": "/images/2024_budapest/karacsony_gergely.png",
+          "slogan": "/images/2024_budapest/jovot_adunk_budapestnek.png"
+        }
+      ],
+      "party_logo": "/images/2024_budapest/parbeszed_dk_mszp.png"
+    },
+    {
+      "id": "fidesz_kdnp",
+      "candidateAssets": [
+        {
+          "id": "szentkiralyi_alexandra",
+          "portrait": "/images/2024_budapest/szentkiralyi_alexandra.png",
+          "slogan": "/images/2024_budapest/szentkiralyi_szlogen.png"
+        }
+      ],
+      "party_logo": "/images/2024_budapest/fidesz.png"
+    }
+  ]
+}

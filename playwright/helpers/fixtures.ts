@@ -26,6 +26,20 @@ export const test = base.extend<{
     });
 
     await page.goto("/menu");
+    for (const id of ["low-resolution-warning", "development-warning"]) {
+      const closeWarning = page.getByTestId(id);
+      if (await closeWarning.isVisible()) {
+        await closeWarning.click();
+      }
+    }
+    // Keep dismissing warnings after navigation and mobile viewport changes.
+    for (const id of ["low-resolution-warning", "development-warning"]) {
+      const closeWarning = page.getByTestId(id);
+      await page.addLocatorHandler(closeWarning, async () => {
+        await closeWarning.click();
+      });
+    }
+
     await use(page);
   },
   seedCampaign: async ({ page }, use) => {

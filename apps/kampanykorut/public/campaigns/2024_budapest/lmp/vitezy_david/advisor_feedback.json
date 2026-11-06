@@ -1,0 +1,796 @@
+[
+  {
+    "questionId": "bp2024_vitezy_01",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Az utasok ezt értik meg elsőként, és a kamerák is szeretik. Csak ne lepődj meg, ha a BKK-n belül innentől nem alapítóként, hanem ellenfélként néznek rád."
+      },
+      {
+        "answerId": "B",
+        "text": "A szakma és a BKK dolgozói értékelni fogják, hogy nem rájuk lősz. Kérdés, elbír-e egy menetrendi javaslatcsomag egy pulykával a címlapokon."
+      },
+      {
+        "answerId": "C",
+        "text": "Mindkét oldalt megszólítod, és ezzel előkészíted a harmadik utat. Az ára, hogy a felháborodott utas nem két felelőst akar, hanem egyet, lehetőleg névvel."
+      },
+      {
+        "answerId": "D",
+        "text": "A szakmai múlt a legerősebb fegyvered, de vigyázz a nosztalgiával. Aki túl sokat mesél a régi BKK-ról, annak könnyen eszébe juttatják, kinek a városvezetése alatt épült."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_02",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Szakmailag nehéz belekötni, politikailag nehéz eladni. Az utasok az olcsóbb bérletet hallják, nem a lábjegyzetet, a Városháza viszont pont a lábjegyzetet jegyzi meg."
+      },
+      {
+        "answerId": "B",
+        "text": "Konstruktívnak tűnsz, és az ellenzéki szavazók ezt értékelik. Csak éppen Karácsony sikerfotójára adsz egy újabb keretet, ráadásul ingyen."
+      },
+      {
+        "answerId": "C",
+        "text": "Egy mondattal két ellenfelet találsz el, ami ritka élmény. A bérletes utas viszont annyit hall, hogy te vagy az, aki még az olcsóbb bérletbe is belekötött."
+      },
+      {
+        "answerId": "D",
+        "text": "Így a szakmai múltad is dolgozik, de vékony a határ az emlékeztetés és az érdemek kisajátítása között. Karácsony stábja biztosan szívesen pontosít."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_03",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Az ellenzéki bizonytalanok számára ez hihető történet. A jobboldali szavazóknak viszont épp most magyaráztad el, miért ne bízzanak benned: aki egyszer elhagyta őket, megteheti újra."
+      },
+      {
+        "answerId": "B",
+        "text": "Következetes, és senkivel sem ellenséges. Pont ezért kiváló alapanyag annak, aki a Fidesz embereként akar bemutatni: ő a mondatod első felét fogja idézni."
+      },
+      {
+        "answerId": "C",
+        "text": "Konkrét, ellenőrizhető, és van benne dráma. A kockázat, hogy a kampány elején személyes bosszúnak látszik, Lázár János pedig nem az a típus, aki az ilyen meghívást visszautasítja."
+      },
+      {
+        "answerId": "D",
+        "text": "A fegyelem tiszteletre méltó, de a hallgatás a politikában ritkán marad üres. Ha te nem mondod el, mit kerestél ott, elmondják helyetted, kevésbé hízelgően."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_04",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Lesz gépezet, pénz és közgyűlési lista, ez nem kevés. Cserébe minden második interjúban elmagyarázod, miért nem vagy pártkatona, miközben ott a logó a hátad mögött."
+      },
+      {
+        "answerId": "B",
+        "text": "A függetlenség így jobban mutat a plakáton. Az LMP viszont nem fog lelkesen dolgozni egy kampányért, amely szégyelli a nevét, és a listán sem lesz ismerős márka."
+      },
+      {
+        "answerId": "C",
+        "text": "Ennél tisztább üzenet nincs, és ennél nehezebb hónap sem lesz. Budapesten az ajánlásgyűjtés szervezésen múlik, nem lelkesedésen, és a pénz sem a tisztaságból jön."
+      },
+      {
+        "answerId": "D",
+        "text": "Okos lehet kivárni, ha valaki más lépése mindent átrendez. Csak közben minden héttel rövidebb a kampány, és a választók ritkán emlékeznek a legóvatosabb jelöltre."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_05",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Kevesen fognak ellened tüntetni, és kevesen állnak majd érted sorba. A szakértelem jó alap, de egy kampányban az alapra házat is kell építeni."
+      },
+      {
+        "answerId": "B",
+        "text": "Ez a kiábrándultak nyelve, és ők sokan vannak. Készülj fel rá, hogy mindkét tábor egyszerre nevez majd a másik beépített emberének."
+      },
+      {
+        "answerId": "C",
+        "text": "Világos célpont, és a jobboldali szavazók azonnal értik. A baj csak az, hogy Karácsony pontosan ezt a képet akarja rólad mutatni, csak más feliratot tesz alá."
+      },
+      {
+        "answerId": "D",
+        "text": "Merész, mert az ellenfél szavazóinak udvarolsz az ő terepén. Ha beválik, minden átpártoló kétszer számít; ha nem, a jobboldaliak csak egy zöld plakátot látnak, amelyen nem ők szerepelnek."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_06",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Végre nem csak valami ellen vagy, hanem valami mellett is. Számolj vele, hogy innentől a terved minden számát ugyanúgy szétszedik, mint a felhőkarcolókat."
+      },
+      {
+        "answerId": "B",
+        "text": "Ellenzéki füleknek jól szól, de Karácsony ugyanezt mondja, csak régebb óta. Ha ketten ugyanazzal a felirattal álltok a színpadon, az nem verseny, hanem kórus."
+      },
+      {
+        "answerId": "C",
+        "text": "Demokratikusan hangzik, és a döntést a budapestiekre bízod. Csak nem egyértelmű, ki és miről írhat ki itt népszavazást, így a javaslat könnyen kitérésnek tűnik."
+      },
+      {
+        "answerId": "D",
+        "text": "Kormányzóképesnek mutat, és egy főpolgármesternek tárgyalnia is kell majd. Ma viszont egy kormányközeli projekt asztalához ülsz, és erre fognak emlékezni, nem a feltételeidre."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_07",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Az átláthatóság elveszi a vád élét, a korrupcióra érzékeny szavazók pedig értékelik. Arra azonban készülj, hogy a következő hét témája nem a pénz eredete, hanem a mennyisége lesz."
+      },
+      {
+        "answerId": "B",
+        "text": "Civilebb kép, és tényleg bevonhat embereket. Ha viszont kiderül, mekkora részt hoz a sok kis adomány a nagyhoz képest, a kép gyorsan visszafordul."
+      },
+      {
+        "answerId": "C",
+        "text": "Témaváltásnak működhet, és a jobboldali szavazók élvezni fogják. A gond az, hogy innentől a vita nem a pénzetekről szól, hanem arról, miért veszekedtek ti ketten."
+      },
+      {
+        "answerId": "D",
+        "text": "Az ismertség valódi hiány, és a pénz pont erre jó. Ha viszont soha nem válaszolsz a vádra, előbb-utóbb a plakátjaidra is felkerül a kérdés."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_08",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Kétszereplős versenyt rajzolsz, és megmutatod a Karácsony-ellenes szavazóknak, hol a hasznos szavazat. Ha viszont Karácsony jóslata valóra válna, minden mostani hallgatásodat előre lejátszott meccsként idéznék."
+      },
+      {
+        "answerId": "B",
+        "text": "Ez a legtisztább független pozíció. Csak a kampányidő és a figyelem véges, és aki mindenkit támad, arról könnyen annyi marad meg, hogy mindenkivel veszekszik."
+      },
+      {
+        "answerId": "C",
+        "text": "Az ellenzéki szavazók nem fordulnak el tőled, ez valódi előny. De ha Karácsony csak gyenge, és nem rossz, sokan nem fogják érteni, miért kellene leváltani."
+      },
+      {
+        "answerId": "D",
+        "text": "Tiszta, és illik a pártháborúból kiszálló jelölthöz. Csakhogy aki senkivel sem mérkőzik meg, arról könnyen elfelejtik, hogy egyáltalán versenyben van."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_09",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Senki nem kérdezi meg többé, kinek a jelöltje vagy, ha Lázár naponta rád üzen. A jobboldali átszavazók egy része viszont azt látja majd, hogy a saját táborukkal hadakozol."
+      },
+      {
+        "answerId": "B",
+        "text": "A HÉV-en ingázók ezt értik meg a leggyorsabban, mert megoldásról szól, nem sértettségről. Az ellenzéki oldal viszont gyanakodni fog, hogy már most tárgyalsz a kormánnyal."
+      },
+      {
+        "answerId": "C",
+        "text": "Kevésbé személyes, és nem égetsz fel hidakat. Csakhogy ezt a mondatot Karácsony öt éve mondja, és ő a hitelesebb előadója."
+      },
+      {
+        "answerId": "D",
+        "text": "Egy ügy, egy helyszín, egy jól fotózható csarnok: ebből lehet kampányt csinálni. Kérdés, hogy a kőbányai múzeumért Rákoshegyen is hajlandók-e szavazni."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_10",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ennél alaposabb program nem lesz a kampányban, és a vitákban jól jön majd. A híradók viszont harminc másodpercben számolnak, nem száz pontban."
+      },
+      {
+        "answerId": "B",
+        "text": "Ezt a villamosmegállóban is meg lehet jegyezni. Az ára, hogy a szakértői jelölt hirtelen ugyanúgy beszél, mint mindenki más, csak több adattal a fiókban."
+      },
+      {
+        "answerId": "C",
+        "text": "Ott kezded, ahol a szavazók többsége él, és ahol ritkán jár politikus. Lassú műfaj: mire a hetedik fórum is lemegy, a sajtó már rég másról ír."
+      },
+      {
+        "answerId": "D",
+        "text": "Jó kép lesz, és a tévék szeretik az ilyen helyszínt. Kérdés, hogy a nézők a lakásokra emlékeznek-e majd, vagy csak a darura a háttérben."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_11",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Az idős utasok és a késő este hazatérők ezt várták. A jogvédők viszont már fogalmazzák a közleményt, és abban nem fogsz jól kijönni."
+      },
+      {
+        "answerId": "B",
+        "text": "Ezzel senkit nem bántasz meg, és tényleg működhet. Csak éppen alig különbözik attól, amit Karácsony mond, így nehéz lesz miatta rád szavazni."
+      },
+      {
+        "answerId": "C",
+        "text": "Modern, kevéssé megosztó, és a fiatal utasok, különösen a nők szemében erős ígéret. Hátránya, hogy egy alkalmazásfrissítésből ritkán lesz kampánytéma."
+      },
+      {
+        "answerId": "D",
+        "text": "Közbiztonsági üzenetnek egyszerű, a peremkerületekben sokan értik. A közlekedési szakértőből viszont így egy általános rendpárti jelölt lesz."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_12",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Szakmailag erős, mert nem csak nemet mondasz. A terved viszont a Déli Körvasútra épül, és ott a saját szövetségesed sem áll melletted."
+      },
+      {
+        "answerId": "B",
+        "text": "Kontraszt egy olyan ügyben, amelyben az ellenzéki fiatalok fontosnak érzik a kiállást. Csak kicsinyesnek hathat, hiszen Karácsony is ugyanazt akarta, mint te."
+      },
+      {
+        "answerId": "C",
+        "text": "Pozitív üzenet, és összeköti a lakhatási programoddal. A szuverenitás-vita éle viszont eltűnik, a kínai vasútról pedig nem mondasz semmit."
+      },
+      {
+        "answerId": "D",
+        "text": "Pragmatikus, és nem ijeszti el a jobboldali szavazókat. Az ellenzéki fiatalok viszont úgy hallják, hogy egy fontos kérdésben épp nincs véleményed."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_13",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Szakmailag következetes, és a vasúti ingázók értékelik. Az LMP-ben viszont lesz, aki ezt nehezen nyeli le, és a Mészáros-névre Karácsony is lecsap."
+      },
+      {
+        "answerId": "B",
+        "text": "A szövetségi béke megvan, és a zöldek tapsolnak. A baj az, hogy a projekt a saját vasúti stratégiád része volt, és ezt a vitapartnereid nem fogják elfelejteni."
+      },
+      {
+        "answerId": "C",
+        "text": "Zöldnek és szakmainak is vállalható, és válasz a bírósági kudarcokra. Csak az a kérdés, hogy a választók elvhűségnek vagy kibúvónak hallják-e."
+      },
+      {
+        "answerId": "D",
+        "text": "Rövid távon csend és béke. Karácsony stábja viszont pont az ilyen hallgatásokat gyűjti, és akkor már nem te választod meg, mikor beszélsz róla."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_14",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Itt laknak a legtöbben, és itt látszik a legjobban, hol hagyta magukra őket a Városháza. A belvárosi véleményformálók viszont ezt könnyen fideszes terepmunkának látják."
+      },
+      {
+        "answerId": "B",
+        "text": "Itt élnek Karácsony 2019-es szavazói, és közülük minden átpártoló duplán számít. Csak tudd, hogy ez az ő hazai pályája, és itt nem lesz könnyű közönséged."
+      },
+      {
+        "answerId": "C",
+        "text": "Itt billeg a legtöbb körzet, és itt a legfogékonyabbak a gyakorlati ígéretekre. Látványos képeket viszont nem viszel haza, és a média sem itt keres."
+      },
+      {
+        "answerId": "D",
+        "text": "Helyi hálózatot kapsz, és a „nem pártkatona” jelöltek csapatának arca lehetsz. Csakhogy minden partnernek saját választása van, és nem biztos, hogy a te fotódat akarja a szórólapján."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_15",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Egyszerű, érthető, és a peremkerületi autósok szívéhez szól. A kulturális és rendezvényszféra viszont hangosan tiltakozik majd, a számaidat pedig Karácsony stábja tételesen ellenőrzi."
+      },
+      {
+        "answerId": "B",
+        "text": "Célzott, és senkitől nem kell látványosan elvenni. Csak a fedezetre fognak elsőként rákérdezni, és arra még nincs kész válaszod."
+      },
+      {
+        "answerId": "C",
+        "text": "Nagy számok, gyors eredmény. A „csődbe viszi a várost” vádat viszont te magad adod Karácsony kezébe, és a hitelhez a kormány engedélye is kell."
+      },
+      {
+        "answerId": "D",
+        "text": "Szakmailag ez a legtisztességesebb, mert az út alatt is van mit cserélni. Csak nagyjából ugyanazt mondod, amit Karácsony, igaz, határidőkkel."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_16",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez az egyetlen út, amelyen a tízezres szám tényleg kijöhet. A baloldalon viszont már hallani, ahogy valaki kimondja az „ingatlanbiznisz” szót."
+      },
+      {
+        "answerId": "B",
+        "text": "Bécsben működik, és a fiatal bérlők szívesen hallják. Az első kérdés mégis az lesz, honnan lesz rá pénz egy kivéreztetett fővárosban."
+      },
+      {
+        "answerId": "C",
+        "text": "Gyors kontraszt, a számot mindenki megérti. Csak a negatív kampányból nem épül lakás, és a baloldali lakhatási szakértők ezt nem felejtik el."
+      },
+      {
+        "answerId": "D",
+        "text": "Radikális, és a lakhatási aktivisták rajonganak érte. A tulajdonosok és a jogászok kevésbé, egy technokrata jelölttől pedig ez meglepően forradalmi hang."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_17",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A pártokon felül álló imázsodnak jót tesz, és Karácsony koalíciójának belső vitáját is reflektorfénybe állítja. A kerületi csatákból azonban ritkán jön ki bárki tisztán, az MSZP pedig sokáig emlékszik."
+      },
+      {
+        "answerId": "B",
+        "text": "Jó válasz arra a vádra, hogy a Fidesz embere vagy, hiszen a szövetségesed a DK-val egy oldalon áll. Karácsony stábja persze ebből gyorsan azt olvassa ki, hogy az LMP-d is a baloldali tömb része."
+      },
+      {
+        "answerId": "C",
+        "text": "Fegyelmezett, és nem ad támadási felületet. A kerületi civilek viszont úgy látják, hogy amikor számított volna a szavad, inkább kivártál."
+      },
+      {
+        "answerId": "D",
+        "text": "Ha összeáll, ez lesz a kampány legnagyobb helyi hálózata. Ha viszont a jelöltek fele nem jön el a bejelentésre, a nap képe egy félig üres pódium lesz."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_17_lmp_nelkul",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A pártokon felül álló imázsodnak jót tesz, és Karácsony koalíciójának belső vitáját is reflektorfénybe állítja. A kerületi csatákból azonban ritkán jön ki bárki tisztán, az MSZP pedig sokáig emlékszik."
+      },
+      {
+        "answerId": "C",
+        "text": "Fegyelmezett, és nem ad támadási felületet. A kerületi civilek viszont úgy látják, hogy amikor számított volna a szavad, inkább kivártál."
+      },
+      {
+        "answerId": "D",
+        "text": "Ha összeáll, ez lesz a kampány legnagyobb helyi hálózata. Ha viszont a jelöltek fele nem jön el a bejelentésre, a nap képe egy félig üres pódium lesz."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_18",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez a kormányzóképes városvezető hangja, és a mérsékelt szavazók ezt akarják hallani. Az ellenzéki oldal viszont csak annyit hall belőle, hogy egyezkedni akarsz a Fidesszel."
+      },
+      {
+        "answerId": "B",
+        "text": "Kemény hang, és a Fidesz-gyanút is tompítja. Arra azért készülj, hogy megkérdezik: mitől lenne a te pereskedésed eredményesebb az eddiginél?"
+      },
+      {
+        "answerId": "C",
+        "text": "Európai, ambiciózus, és jól mutat egy szakértő szájából. Az a baj, hogy az uniós pénzek nagy része a kormányon keresztül érkezik, a „Brüsszel embere” címke pedig semmivel sem kellemesebb a fideszesnél."
+      },
+      {
+        "answerId": "D",
+        "text": "Pragmatikus, mégis kemény, ezt nehéz megtámadni. Csak egy kampányban már a kétmondatos üzenet is hosszú, ez pedig legalább négy."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_19",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Független felület, ellenzéki közönség, és pont azok nézik, akiket meg kell győznöd. Kíméletre ne számíts: a kormányzati múltadról már az első percben kérdezni fognak."
+      },
+      {
+        "answerId": "B",
+        "text": "Ezzel kettőtök párharcává teszed a versenyt, és Karácsonyt is kényszerhelyzetbe hozod. Egy dolog azért feltűnik majd: Szentkirályit mintha kímélnéd."
+      },
+      {
+        "answerId": "C",
+        "text": "Ott ülnek a jobboldali átszavazók, akiket máshol el sem érsz. Csakhogy minden ilyen interjú egy újabb fénykép a „Fidesz jelöltje” albumba."
+      },
+      {
+        "answerId": "D",
+        "text": "Te diktálod a napirendet, és ez illik a szakértői profilodhoz. Ha viszont senki nem jön el, egy üres széksorral fogsz vitatkozni a kamerák előtt."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_20",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez a kampány legnagyobb szabad tartaléka, és most senki más nem udvarol neki ilyen nyíltan. A jobboldali átszavazók egy része viszont halkan visszasétál Szentkirályihoz."
+      },
+      {
+        "answerId": "B",
+        "text": "Semmit nem kockáztatsz, és senkit nem sértesz meg. Közben Karácsony stábja már a Tisza-szavazókért dolgozik, és nem fog rád várni."
+      },
+      {
+        "answerId": "C",
+        "text": "Technokrata kontraszt, a mérsékelt jobboldaliak bólogatnak rá. A Tisza-szavazók viszont most szerelmesek, a szerelmeseket pedig ritkán győzik meg a szakpolitikai táblázatok."
+      },
+      {
+        "answerId": "D",
+        "text": "Ha összejön, ez lehet a kampány legnagyobb nyeresége. Ha viszont kiszivárog és elutasítják, te leszel az, aki Magyar Péter kegyeiért kilincselt."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_21",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Élő adásban ez erkölcsi fölényt adhat, ha jól adagolod. Ha viszont elszalad veled a ló, a nézők csak két sértett politikust látnak, akik egymásra mutogatnak."
+      },
+      {
+        "answerId": "B",
+        "text": "Higgadt, intézményes, és nem süllyedsz le az ő szintjükre. A bizottság azonban lassan dönt, a kifogás híre pedig azoknak is megmutatja a plakátot, akik eddig nem látták."
+      },
+      {
+        "answerId": "C",
+        "text": "Ez lesz a hét legtöbbet megosztott videója, és a hét legfideszesebb mondata is: a „Gyurcsány bábja” évek óta az ő szótárukból való."
+      },
+      {
+        "answerId": "D",
+        "text": "Következetes, és illik ahhoz, hogy nem pártpolitikusként indultál. Csakhogy amit senki nem cáfol, azt egy idő után sokan elhiszik."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_22",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Karácsonyt a saját terepén előzöd meg, és az urbanisták ezt értékelni fogják. Vigyázz azért, hogy a vita ne fajuljon a virágládák centire pontos méregetésévé."
+      },
+      {
+        "answerId": "B",
+        "text": "Jóhiszeműnek tűnsz, és a belvárosi zöldek ezt nem felejtik el. Közben azt erősíted vele, hogy Karácsony ebben jó, és erről a választók maguktól is meg vannak győződve."
+      },
+      {
+        "answerId": "C",
+        "text": "A zöld ügy végre kilép a belvárosból, és a kertvárosi családok is megértik. A kontraszt viszont elmosódik, mert ebből Karácsony ellen nem lesz éles mondat."
+      },
+      {
+        "answerId": "D",
+        "text": "Ez a peremkerületi autósok fülének zene. A zöld szavazók viszont elfordulnak, a „Fidesz embere” vád pedig egy újabb érvvel gazdagodik."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_23",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ezt várják tőled azok, akik öt év alatt csalódtak Karácsonyban. Ha viszont túl élesre veszed, a végén ő lesz az áldozat, te pedig a támadó, akit a Fidesz küldött."
+      },
+      {
+        "answerId": "B",
+        "text": "Ez a városmérnök, akit a bizonytalanok el tudnak képzelni a Városházán. Egy vitában viszont a higgadtság könnyen azt üzeni, hogy Karácsony végül is elég jó."
+      },
+      {
+        "answerId": "C",
+        "text": "Az ellenzéki nézők most hallják tőled először, hogy a kormánnyal is szembe mersz menni. A jobboldali átszavazók viszont épp ennél a résznél kapcsolnak át."
+      },
+      {
+        "answerId": "D",
+        "text": "Karácsony ígéreteit veszed át, ellenségeskedés nélkül, és ezt a 2019-es szavazói meghallják. A vita hevében viszont a szép jövőkép könnyen elsikkad két vágás között."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_24",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Konkrét, képszerű, és a családok meg az idősek azonnal értik. Számíts rá, hogy Karácsony a 3-as metróval vág vissza, és annak is van képe."
+      },
+      {
+        "answerId": "B",
+        "text": "A Tisza-szimpatizánsok füle erre a hangra a legérzékenyebb. A DK-s szavazók viszont ezt sosem bocsátják meg, és jó eséllyel a te listádra is rákérdeznek."
+      },
+      {
+        "answerId": "C",
+        "text": "A fiatal bérlők ezt értik a legjobban, és a szám magáért beszél. Drámának viszont kevés, mert egy jelentkezőszámtól ritkán áll meg a levegő a stúdióban."
+      },
+      {
+        "answerId": "D",
+        "text": "A saját mércéjén méred, ez a legnehezebben hárítható támadás. Készülj fel, hogy minden tételre a kormányzati elvonásokkal felel, és a nézők egy része neki hisz."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_25",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Nyitva hagyod az ajtót, és közben előre bebiztosítod a függetlenségedet. Karácsony stábja persze kétkulacsosnak nevezi majd, de ezt a mondatot bármikor vállalni tudod."
+      },
+      {
+        "answerId": "B",
+        "text": "Ez a legegyenesebb út a fideszes szavazókhoz, és a mérések sem cáfolnak rá. Karácsonynak pedig nem is kell több: ezt a mondatot ő fogja kitűzni a kampánya zászlajára."
+      },
+      {
+        "answerId": "C",
+        "text": "Kristálytiszta, a Tisza-szavazók és a kiábrándult ellenzékiek pontosan értik. Ha Szentkirályi mégis visszalépne, ennek a mondatnak lesz a legnagyobb ára."
+      },
+      {
+        "answerId": "D",
+        "text": "Rugalmas, és semmit nem zársz le vele. Csakhogy a csendet Karácsony tölti ki, és ő pontosan tudja, melyik szóval: alku."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_26",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Itt laknak azok, akiket személyesen is elérsz, és itt a legtöbb a lehetséges átszavazó. Ha a Fidesz mégis versenyben marad, a kézfogások egy része Szentkirályinál köt ki."
+      },
+      {
+        "answerId": "B",
+        "text": "Lendület, jó képek, és Karácsony 2019-es szavazói is látják, hogy van más választás. Csak éppen az ő hazai pályáján rendezed a búcsúbulit."
+      },
+      {
+        "answerId": "C",
+        "text": "Gyorsan átirányítható, bármi történjen is a héten. Kérdés, hány hatvan fölötti szavazó nézi majd élőben a kérdezz-felelekeidet."
+      },
+      {
+        "answerId": "D",
+        "text": "A billegő körzetek ajtajai mögött dől el a legtöbb szoros eredmény. Közben viszont a bázisod és az átszavazók is úgy érzik majd, hogy az utolsó héten senki sem kopogott náluk."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_27_v",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez a mondat két tábort is elbír: a fideszesek a meghívást hallják, az ellenzékiek a függetlenséget. Kétkulacsosnak így is neveznek majd, és a gyanú két nap alatt nem tűnik el."
+      },
+      {
+        "answerId": "B",
+        "text": "A fideszes szavazóknak ez a legvilágosabb jel, és sokan közülük el is jönnek. Karácsony pedig épp erre a fotóra várt: a trójai faló most kinyitotta az ajtaját."
+      },
+      {
+        "answerId": "C",
+        "text": "Ezzel senki nem mondhatja rád, hogy a Fidesz embere vagy. A baj az, hogy a fideszes szavazók sem szavaznak rád: egy részük otthon marad, más részük érvénytelenül voksol."
+      },
+      {
+        "answerId": "D",
+        "text": "Ügyes témaváltás, és végre tényleg kettőtök párharca a verseny. Karácsonynak viszont két nappal a választás előtt semmi oka kockáztatni, és a nemet meg sem kell indokolnia."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_27_n",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Nem pártos, nem bántó, és a bizonytalanok értik. Kérdés, hány fideszes hagyja ott egy általános érvért a jelöltet, akit a saját pártja állított."
+      },
+      {
+        "answerId": "B",
+        "text": "Itt van a legtöbb mozdítható szavazat. Ne várd, hogy a kormánymédia szó nélkül hagyja, hogy a jelöltjük szavazóit csábítod, és a Fidesz-bélyeg sem kopik le rólad."
+      },
+      {
+        "answerId": "C",
+        "text": "Tiszta, következetes, és a Tisza-szavazók meg a protestszavazók ezt értik. A jobboldali taktikai szavazatról viszont ezzel le is mondasz."
+      },
+      {
+        "answerId": "D",
+        "text": "Egy mondattal mellékszereplővé teszed Szentkirályit, és ez tetszeni fog a bizonytalanoknak. Csakhogy két nap alatt vita már nem fér bele, és Karácsony ezt pontosan tudja."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_28_v",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Szemtől szembe kezeled a gyanút, és ez bátorságnak látszik. Csakhogy minden interjú a témán tartja a figyelmet, és a hétvégén az ellenzéki nézők másról sem hallanak."
+      },
+      {
+        "answerId": "B",
+        "text": "Témaváltás, és a kiábrándult baloldaliak egy része bólogat. A polarizáció viszont Karácsonynak kedvez, mert két tábor közül a sajátját könnyebb mozgósítania."
+      },
+      {
+        "answerId": "C",
+        "text": "Ellenőrizhető ígéret, és az ellenzéki gyanakvókat meg is győzheti. A frissen érkezett fideszes szavazók pedig most hallják először, hogy a Városházán nincs rájuk szükség."
+      },
+      {
+        "answerId": "D",
+        "text": "Nem adsz plusz levegőt a vádnak. Csak a vád nélküled is mozgósít, és szombat estére már a hallgatásod lesz a bizonyíték."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_28_n",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A fideszes szavazókhoz ez szól a legközvetlenebbül. A kormányközeli média ugyanakkor két nap alatt is képes egy egész kampányt ellened fordítani."
+      },
+      {
+        "answerId": "B",
+        "text": "Megtartod a kétszereplős verseny képét, és nem bántod a fideszes szavazókat. Csak éppen nem adsz nekik okot arra, hogy otthagyják a saját jelöltjüket."
+      },
+      {
+        "answerId": "C",
+        "text": "Számokkal érvelni a hasznos szavazat mellett jól hangzik. Ha viszont a mérés gyenge, vagy kiderül, ki fizette, a hitelességeddel fizetsz érte."
+      },
+      {
+        "answerId": "D",
+        "text": "Elegáns, és az apolitikusok értékelik, hogy kimaradsz a sárdobálásból. A sorrenden ez mit sem változtat, márpedig most épp az a tét."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_29_v",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez mentheti meg a legtöbb szavazatot, és egy szoros versenyben ez sokat érhet. Csak a fideszes szavazók ilyen hangsúlyos megszólítása Karácsonynak is újabb muníció."
+      },
+      {
+        "answerId": "B",
+        "text": "Az idősekhez is eljut, akik nem nézik a videóidat. Sok önkéntes kell hozzá, és egyetlen túlbuzgó aktivista is elég egy választás napi botrányhoz."
+      },
+      {
+        "answerId": "C",
+        "text": "Ott éred el a célcsoportot, ahol a legjobban figyel. Csak így látványosan együtt dolgozol a kormánylapokkal, pedig épp az alku vádját próbálod lerázni."
+      },
+      {
+        "answerId": "D",
+        "text": "Nem adsz új témát Karácsonynak, és a hétvége a programodról szólhat. A kihúzott név csapdája attól még ott lesz vasárnap minden fülkében."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_29_n",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Okos üzenet, mert senkitől nem kéred, hogy megtagadja a saját pártját. A Fidesz-bélyeget viszont most te magad ragasztod fel, ezúttal felirattal együtt."
+      },
+      {
+        "answerId": "B",
+        "text": "Személyes, és egy szomszédnak könnyebb elhinni, mint egy plakátnak. Két nap alatt azonban csak annyi ajtóhoz jutsz el, ahány önkéntesed van."
+      },
+      {
+        "answerId": "C",
+        "text": "Ennél nagyobb elérés nincs, ha igent mondanak, de miért mondanának igent a saját jelöltjük ellen? Ha pedig kiszivárog a kérés, az alku bizonyítékát te magad szállítod."
+      },
+      {
+        "answerId": "D",
+        "text": "Nem nyitsz új frontot, és nem adsz támadási felületet. A taktikai tartalék így érintetlen marad, és Karácsonynak pont ez a jó hír."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_30_v",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez lehet a hajrá legnagyobb szabad tartaléka. Csak a fideszes támogatás után a Tisza-szavazók kétszer is megnézik, ki hívja őket, és miért éppen most."
+      },
+      {
+        "answerId": "B",
+        "text": "Kézzelfogható, és a kiábrándult ellenzékiek értik, mit kapnak érte. Az utolsó két napban viszont minden ajánlat alkudozásnak látszik, és nem biztos, hogy a Tisza él vele."
+      },
+      {
+        "answerId": "C",
+        "text": "Fókuszált, és nem keversz két üzenetet. Közben a legnagyobb nyitott tartalékot a polcon hagyod, abban a reményben, hogy más sem veszi le onnan."
+      },
+      {
+        "answerId": "D",
+        "text": "Területileg célzott, és a terepen a Tisza-szavazók is szóba állnak veled. Hogy hol erős pontosan a Tisza, arról inkább benyomásaid vannak, mint adataid."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_30_n",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez lehet a hajrá legnagyobb szabad tartaléka, és egy szoros versenyben minden ezer szavazat számít. Csak a Tisza vezetése nem kérte, hogy a nevükben üzenj, és ezt szóvá is teheti."
+      },
+      {
+        "answerId": "B",
+        "text": "Kézzelfogható, és a kiábrándult ellenzékiek értik, mit kapnak érte. Az utolsó két napban viszont minden ajánlat alkudozásnak látszik, és nem biztos, hogy a Tisza él vele."
+      },
+      {
+        "answerId": "C",
+        "text": "Fókuszált, és nem keversz két üzenetet. Közben a legnagyobb nyitott tartalékot a polcon hagyod, abban a reményben, hogy más sem veszi le onnan."
+      },
+      {
+        "answerId": "D",
+        "text": "Területileg célzott, és a terepen a Tisza-szavazók is szóba állnak veled. Hogy hol erős pontosan a Tisza, arról inkább benyomásaid vannak, mint adataid."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_31_v",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Hű maradsz ahhoz, aminek indultál, és ez a bizonytalanokat megnyugtatja. Lelkesíteni viszont ritkán lelkesít egy jól működő menetrend."
+      },
+      {
+        "answerId": "B",
+        "text": "A Tisza-szavazók és a protestszavazók ebben magukra ismernek. A fideszes átszavazók viszont úgy hallják, hogy őket is a régi pártok közé soroltad."
+      },
+      {
+        "answerId": "C",
+        "text": "Egyszerű, és minden Karácsony-ellenes szavazót egy zászló alá hív. Csakhogy ugyanez a keret Karácsony törzsszavazóit is felrázza, és ők sokan vannak."
+      },
+      {
+        "answerId": "D",
+        "text": "Utolsó kinyújtott kéz Karácsony 2019-es szavazói felé, és kevesen mernék ezt a kampány utolsó estéjén. A fideszes átszavazók ebből csak annyit hallanak, hogy nem nekik szól."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_31_n",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Hű maradsz ahhoz, aminek indultál, és ez a bizonytalanokat megnyugtatja. Lelkesíteni viszont ritkán lelkesít egy jól működő menetrend."
+      },
+      {
+        "answerId": "B",
+        "text": "A Tisza-szavazók és a protestszavazók ebben magukra ismernek. A fideszes átszavazók viszont úgy hallják, hogy őket is a régi pártok közé soroltad."
+      },
+      {
+        "answerId": "C",
+        "text": "Egyszerű, és minden Karácsony-ellenes szavazót egy zászló alá hív. Csakhogy ugyanez a keret Karácsony törzsszavazóit is felrázza, és ők sokan vannak."
+      },
+      {
+        "answerId": "D",
+        "text": "Utolsó kinyújtott kéz Karácsony 2019-es szavazói felé, és kevesen mernék ezt a kampány utolsó estéjén. A fideszes átszavazók ebből csak annyit hallanak, hogy nem nekik szól."
+      }
+    ]
+  },
+  {
+    "questionId": "bp2024_vitezy_32",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Itt van a legtöbb szavazó, akiért érdemes ma még egyszer becsöngetni. Ha viszont a jobboldali szavazók nem álltak melléd, itt kevesen nyitnak ajtót."
+      },
+      {
+        "answerId": "B",
+        "text": "Itt élnek a csalódott Karácsony-szavazók, és közülük sokan még ma döntenek. Csak Karácsony is itt mozgósít a legerősebben, és ő régebb óta ismeri ezt a terepet."
+      },
+      {
+        "answerId": "C",
+        "text": "Új szavazót nem hoz, de megvédi azokat, amelyek már megvannak. Hogy ez mennyit ér, az csak este derül ki, amikor már késő bánni."
+      },
+      {
+        "answerId": "D",
+        "text": "Széles, barátságos, és senkit nem zár ki. Csakhogy a mindenkinek szóló felhívást a legtöbben úgy hallják, ahogy szól: senkinek konkrétan."
+      }
+    ]
+  }
+]

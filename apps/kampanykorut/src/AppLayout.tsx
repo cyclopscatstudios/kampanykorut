@@ -1,8 +1,6 @@
-import { t } from "i18next";
 import { useEffect } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import { container } from "tsyringe";
-import { useMediaQuery } from "usehooks-ts";
 import { createLogger } from "@/shared/logger/logger";
 import { GAME_HEADER_SLOT_ID } from "./components/ui/gameplay/gameHeaderSlot";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
@@ -21,7 +19,6 @@ export function RootLayout() {
   const path = useLoaderData();
   const stateEngine = container.resolve(StateEngine);
   const navigation = container.resolve(Navigation);
-  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
     if (!navigation.isUrlParamMatch("/game")) {
@@ -44,11 +41,7 @@ export function RootLayout() {
         }
         description="This version is for testing and may be unstable. If you arrived here
           by accident, use the stable version instead:"
-      />
-      <WarningScreen
-        allowWarning={!isDesktop}
-        label={t("warning.lowResolution.label")}
-        description={t("warning.lowResolution.description")}
+        id="development-warning"
       />
       <div id={GAME_HEADER_SLOT_ID} />
       <div className="flex-1 min-h-0">

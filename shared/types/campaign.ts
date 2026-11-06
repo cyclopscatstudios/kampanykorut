@@ -3,6 +3,7 @@ import { AnswerFeedback } from "./answer-feedback";
 import { District } from "./district";
 import { ConditionalRawEffect, RawEffect } from "./effects";
 import { Mandate, PartyVotes } from "./mandate";
+import { MayoralResult } from "./mayoral-result";
 import { RawQuestion } from "./question";
 
 export interface CampaignState {
@@ -15,11 +16,36 @@ export interface CampaignState {
   partyListData?: PartyListData[];
   partyListVotes?: PartyListVotes;
   results?: CalculateResults;
+  mayoralResult?: MayoralResult;
+  candidates?: Record<string, CandidateCampaignState>;
+  campaignEvents?: CampaignEventState;
+  campaignConfigVersion?: string;
+  questionCursor?: number;
+  decisionCount?: number;
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;
   pollingOpnions?: PollingOpnions;
   campaignView?: CampaignView;
   isBaseResultsAlreadyApplied: boolean;
+}
+
+export type CandidateStatus = "active" | "inactive";
+
+export type CandidateInactiveReason =
+  | "withdrawal"
+  | "disqualification"
+  | "other";
+
+export interface CandidateCampaignState {
+  status: CandidateStatus;
+  inactiveReason?: CandidateInactiveReason;
+  endorsedCandidateId?: string;
+  changedAtTurn?: number;
+}
+
+export interface CampaignEventState {
+  triggeredEventIds: string[];
+  pendingAnnouncementIds: string[];
 }
 
 export type CurrentView = "MapView" | "QuestionView" | "VoteCountingView";

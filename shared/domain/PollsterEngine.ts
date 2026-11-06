@@ -1,6 +1,6 @@
 import { injectable } from "tsyringe";
 import { createLogger } from "../logger";
-import { CampaignState, ElectionConfig } from "../types";
+import { CampaignState } from "../types";
 import { Pollster } from "../types/pollsters";
 import { defaultPollsters as DEFAULT_POLLSTERS } from "./DefaultPollsters";
 import { MandateCalculator } from "./MandateCalculator";
@@ -41,14 +41,8 @@ export class PollsterEngine {
     return this.pollsters;
   }
 
-  getPolls(state: CampaignState, electionConfig?: ElectionConfig) {
-    const actualResults = this.mandateCalculator.calculate(
-      state.candidateListData,
-      state.partyListData,
-      electionConfig,
-    );
-
-    const percentages = actualResults?.percentages;
+  getPolls(state: CampaignState) {
+    const percentages = this.getActualPercentages(state);
 
     if (!percentages) {
       log.error("cannot get polls, missing actual results percentages");
@@ -80,27 +74,18 @@ export class PollsterEngine {
     return differences;
   }
 
-  getPollsByPollsterId(
-    pollsterId: string,
-    state: CampaignState,
-    electionConfig: ElectionConfig,
-  ) {
+  getPollsByPollsterId(pollsterId: string, state: CampaignState) {
     if (pollsterId === AGGREGATE_POLLSTER_ID) {
-      const differences = this.getPolls(state, electionConfig);
+      const differences = this.getPolls(state);
       if (!differences) return undefined;
       return { id: pollsterId, differences };
     }
-    const actualResults = this.mandateCalculator.calculate(
-      state.candidateListData,
-      state.partyListData,
-      electionConfig,
-    );
+    const percentages = this.getActualPercentages(state);
     const pollster = this.pollsters.find((p) => p.id === pollsterId);
     if (!pollster) {
       log.error("pollster not found for id", { pollsterId });
       return;
     }
-    const percentages = actualResults?.percentages;
     if (!percentages) {
       log.error("cannot get polls, missing actual results percentages");
       return;
@@ -121,6 +106,18 @@ export class PollsterEngine {
     return {
       id: pollsterId,
       differences,
+    };
+  }
+
+  private getActualPercentages(state: CampaignState) {
+    if (!state.candidateListData) {
+      return undefined;
+    }
+    const totals = this.mandateCalculator.sumPartyTotals(
+      state.candidateListData,
+    );
+    return {
+      candidateListResults: this.mandateCalculator.calculatePercentages(totals),
     };
   }
 

@@ -131,6 +131,7 @@ async function fetchCampaignConfig(
     "partyListData",
     "customGroups",
     "customPollsters",
+    "campaignEvents",
   ] as const;
 
   const commonEntries = await Promise.all(
@@ -176,6 +177,7 @@ async function fetchCampaignConfig(
 
   return {
     ...commonData,
+    version: manifest.metadata?.version,
     districts,
     voterEnvironmentConfig: {
       ...commonData.voterEnvironmentConfig,

@@ -1,0 +1,61 @@
+{
+  "title": "Budapest – teszt",
+  "year": "2024",
+  "election": {
+    "type": "mayoral",
+    "resultRule": "plurality"
+  },
+  "districtMap": "budapest-districts",
+  "districtBoost": true,
+  "parties": [
+    {
+      "id": "karacsony_gergely",
+      "name": "Karácsony Gergely",
+      "color": "#2f6fd6"
+    },
+    {
+      "id": "vitezy_david",
+      "name": "Vitézy Dávid",
+      "color": "#3fae5a"
+    },
+    {
+      "id": "szentkiralyi_alexandra",
+      "name": "Szentkirályi Alexandra",
+      "color": "#f28c28"
+    },
+    {
+      "id": "grundtner_andras",
+      "name": "Grundtner András",
+      "color": "#6b6b6b"
+    }
+  ],
+  "playableSides": [
+    {
+      "id": "lmp",
+      "label": "LMP – Podmaniczky Mozgalom",
+      "description": "Teszt oldal.",
+      "mainCandidates": [
+        {
+          "id": "vitezy_david",
+          "label": "Vitézy Dávid",
+          "description": "Teszt jelölt."
+        }
+      ],
+      "playableCandidates": ["vitezy_david"]
+    },
+    {
+      "id": "dk_mszp_parbeszed",
+      "label": "DK – MSZP – Párbeszéd",
+      "description": "Teszt oldal.",
+      "mainCandidates": [
+        {
+          "id": "karacsony_gergely",
+          "label": "Karácsony Gergely",
+          "description": "Teszt jelölt."
+        }
+      ],
+      "playableCandidates": ["karacsony_gergely"]
+    }
+  ],
+  "electionAssets": []
+}

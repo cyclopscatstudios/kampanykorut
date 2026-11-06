@@ -14,7 +14,7 @@ export function ProgressBar({
   // width is applied inline: Tailwind cannot generate classes from interpolated strings
   return (
     <div
-      className="h-3 bg-white/10 rounded-full overflow-hidden"
+      className="max-w-full h-3 bg-white/10 rounded-full overflow-hidden"
       style={{ width }}
     >
       <div
@@ -39,7 +39,7 @@ export function AdvancedProgressBar({
   );
 
   return (
-    <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden flex">
+    <div className="w-full max-w-full h-3 bg-white/10 rounded-full overflow-hidden flex">
       {sortedParties.map(([party, data]) => (
         <div
           key={party}

@@ -30,7 +30,7 @@ export function Statistics({
   const stateEngine = container.resolve(StateEngine);
   const configEngine = container.resolve(ConfigEngine);
   const state = stateEngine.getCampaignState();
-  const turnHistory = stateEngine.getTurnHistory();
+  const turnHistory = stateEngine.getTurnHistory() ?? [];
   const history = stateEngine.getHistory();
   const [currentTab, setCurrentTab] = useState<StatisticsTab>("overview");
   const playerSide = state?.playerSide?.partyId ?? "";
@@ -102,7 +102,7 @@ function StatisticsButtonBar({
   completedAchievementCount,
 }: StatisticsButtonBarProps) {
   return (
-    <div className="flex gap-6 mb-4">
+    <div className="flex gap-4 md:gap-6 mb-4 overflow-x-auto pb-3 [&>button]:shrink-0">
       <Button
         selected={currentTab === "overview"}
         variant="subtab"

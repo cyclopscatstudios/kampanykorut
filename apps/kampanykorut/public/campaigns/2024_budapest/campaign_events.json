@@ -1,0 +1,208 @@
+[
+  {
+    "id": "szentkiralyi_alexandra_withdrawal",
+    "label": "Szentkirályi Alexandra visszalép",
+    "once": true,
+    "priority": 100,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 26,
+              "max": 26
+            },
+            {
+              "type": "candidate-status",
+              "candidateId": "szentkiralyi_alexandra",
+              "status": "active"
+            },
+            {
+              "not": {
+                "type": "player-candidate",
+                "candidateId": "szentkiralyi_alexandra"
+              }
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "szentkiralyi_alexandra",
+              "min": 3,
+              "minGapBehind": 0.03
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "vitezy_david",
+              "max": 2,
+              "maxGapBehind": 0.15
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "withdraw-candidate",
+            "candidateId": "szentkiralyi_alexandra",
+            "endorsedCandidateId": "vitezy_david",
+            "redistribution": {
+              "vitezy_david": 0.55,
+              "grundtner_andras": 0.04,
+              "karacsony_gergely": 0.03,
+              "_abstain": 0.38
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "karacsony_gergely": 3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Szentkirályi Alexandra visszalép",
+      "body": "Június 7., péntek reggel: Szentkirályi Alexandra visszalép a főpolgármester-választástól, és arra kéri a támogatóit, hogy Vitézy Dávidra szavazzanak. Két nap van hátra, és a verseny kétszereplőssé vált.",
+      "imageUri": "/images/2024_budapest/szentkiralyi_visszalep.png"
+    }
+  },
+  {
+    "id": "szentkiralyi_alexandra_stays",
+    "label": "Szentkirályi Alexandra versenyben marad",
+    "once": true,
+    "priority": 50,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 26,
+              "max": 26
+            },
+            {
+              "type": "candidate-status",
+              "candidateId": "szentkiralyi_alexandra",
+              "status": "active"
+            }
+          ]
+        },
+        "effects": []
+      }
+    ],
+    "announcement": {
+      "title": "Szentkirályi Alexandra versenyben marad",
+      "body": "Június 7., péntek: lejárt a visszalépési határidő, Szentkirályi Alexandra versenyben maradt. A Fidesz a saját jelöltjét és listáját mozgósítja, a verseny két nappal a választás előtt is háromszereplős marad.",
+      "imageUri": "/images/2024_budapest/szentkiralyi_nem_lep_vissza.png"
+    }
+  },
+  {
+    "id": "karacsony_consolidation_szentkiralyi",
+    "label": "Szentkirályi mögé rendeződnek a Karácsony-ellenesek",
+    "once": false,
+    "priority": 20,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "candidate-status",
+              "candidateId": "szentkiralyi_alexandra",
+              "status": "active"
+            },
+            {
+              "type": "player-candidate",
+              "candidateId": "karacsony_gergely"
+            },
+            {
+              "type": "turn",
+              "min": 27,
+              "max": 32
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "szentkiralyi_alexandra",
+              "min": 2,
+              "max": 2
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "vitezy_david",
+              "min": 3,
+              "max": 3,
+              "minGapBehind": 0.03
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szentkiralyi_alexandra": 3,
+              "vitezy_david": -3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Szentkirályi mögé rendeződnek a Karácsony-ellenesek",
+      "body": "Szentkirályi egyértelműen Vitézy előtt jár, és Vitézy szavazóinak egy része átpártol hozzá, hogy legyőzzék Karácsonyt. Amíg a különbség megmarad, a folyamat minden nappal erősödik.",
+      "imageUri": "/images/2024_budapest/karacsony_consolidation_szentkiralyi.png"
+    }
+  },
+  {
+    "id": "karacsony_consolidation_vitezy",
+    "label": "Vitézy mögé rendeződnek a Karácsony-ellenesek",
+    "once": false,
+    "priority": 20,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "candidate-status",
+              "candidateId": "szentkiralyi_alexandra",
+              "status": "active"
+            },
+            {
+              "type": "player-candidate",
+              "candidateId": "karacsony_gergely"
+            },
+            {
+              "type": "turn",
+              "min": 27,
+              "max": 32
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "vitezy_david",
+              "min": 2,
+              "max": 2
+            },
+            {
+              "type": "candidate-rank",
+              "candidateId": "szentkiralyi_alexandra",
+              "min": 3,
+              "max": 3,
+              "minGapBehind": 0.03
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "vitezy_david": 3,
+              "szentkiralyi_alexandra": -3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Vitézy mögé rendeződnek a Karácsony-ellenesek",
+      "body": "Vitézy egyértelműen Szentkirályi előtt jár, és Szentkirályi szavazóinak egy része átpártol hozzá, hogy legyőzzék Karácsonyt. Amíg a különbség megmarad, a folyamat minden nappal erősödik.",
+      "imageUri": "/images/2024_budapest/karacsony_consolidation_vitezy.png"
+    }
+  }
+]

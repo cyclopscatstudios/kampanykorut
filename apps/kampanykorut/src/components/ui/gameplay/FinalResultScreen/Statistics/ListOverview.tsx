@@ -24,7 +24,7 @@ export function ListOverview({
 }) {
   const iconColor = getIconColor(iconName);
   return (
-    <CommonWrapper>
+    <CommonWrapper className="min-w-0">
       <div className="m-1.5">
         <div className="flex">
           <Icon name={iconName} className="mr-1.5" color={iconColor} />
@@ -32,7 +32,7 @@ export function ListOverview({
             {label}
           </Text>
         </div>
-        <div className="w-[350px]">
+        <div className="w-full md:w-[350px]">
           {list.slice(0, 5).map((element, index) => {
             const partyId = getParty(element);
 
@@ -91,10 +91,10 @@ function ListElement({
   value,
 }: ListElementProps) {
   return (
-    <div className="flex items-center gap-5 mb-2">
+    <div className="flex items-center gap-3 md:gap-5 mb-2">
       <Text>#{index + 1}</Text>
 
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <Text size="sm">
           {element.district.megye} {element.district.oevk}
         </Text>

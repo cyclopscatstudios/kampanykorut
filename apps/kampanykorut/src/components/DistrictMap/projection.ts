@@ -29,3 +29,15 @@ export function computeScale(
 
   return Math.min((width - margin * 2) / projW, (height - margin * 2) / projH);
 }
+
+export function computeOffset(
+  bounds: ReturnType<typeof computeBounds>,
+  scale: number,
+  width: number,
+  height: number,
+) {
+  return {
+    x: (width - (bounds.maxX - bounds.minX) * scale) / 2,
+    y: (height - (bounds.maxY - bounds.minY) * scale) / 2,
+  };
+}

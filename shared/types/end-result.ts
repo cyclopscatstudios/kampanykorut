@@ -1,4 +1,5 @@
 import { CalculateResults } from "./campaign";
+import { MayoralResult } from "./mayoral-result";
 
 export interface EndResultProps {
   playerSideDefeat: Asset;
@@ -14,6 +15,7 @@ export interface Asset {
 }
 
 export interface FinalResults extends CalculateResults {
+  mayoralResult?: MayoralResult;
   winnerParty?: {
     party?: string;
     constituencySeats?: number;

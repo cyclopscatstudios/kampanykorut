@@ -1,6 +1,6 @@
-import { ElectionConfig } from "../../types";
+import { ParliamentaryElectionConfig } from "../../types";
 
-export const mockElectionConfig: ElectionConfig = {
+export const mockElectionConfig: ParliamentaryElectionConfig = {
   title: "Mock Election",
   year: "2010",
   listSeats: 100,

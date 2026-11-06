@@ -1,4 +1,5 @@
 {
+  "bottomSheet": { "close": "Close" },
   "mainMenu": {
     "newGame": "New Game",
     "loadGame": "Load Game",
@@ -67,7 +68,8 @@
       "electionMap": "Election map",
       "statistics": "Statistics",
       "history": "History",
-      "achivements": "Badges"
+      "achivements": "Badges",
+      "districts": "Districts"
     },
     "actions": {
       "replay": "Play again",
@@ -83,6 +85,11 @@
         "constituencySeats": "Constituency seats",
         "listSeats": "List seats",
         "partyListResults": "Party list results",
+        "rankingTabs": {
+          "victories": "Victories",
+          "defeats": "Defeats",
+          "close": "Close races"
+        },
         "biggestVictories": "Biggest victories",
         "biggestDefeats": "Biggest defeats",
         "closestDistricts": "Closest districts",
@@ -107,14 +114,41 @@
     },
     "turnHistory": {
       "label": "Turn history",
+      "back": "Back to turn history",
       "historyItem": {
         "day": "Day"
       },
       "turns": "turns"
+    },
+    "mayoral": {
+      "subtitle": "Mayoral election",
+      "winnerTitle": "{{name}} won the election",
+      "tieTitle": "Tie",
+      "noWinnerTitle": "No winner",
+      "votes": "{{votes}} votes",
+      "margin": "Margin between the top two candidates: {{votes}} votes ({{points}} percentage points)",
+      "withdrawn": "{{name}} withdrew",
+      "withdrawnEndorsed": "{{name}} withdrew in favour of {{endorsed}}",
+      "validVotes": "Valid votes: {{votes}}",
+      "selectDistrict": "Select a district on the map",
+      "table": {
+        "district": "District",
+        "winner": "Winning candidate",
+        "share": "Share",
+        "margin": "Margin",
+        "validVotes": "Valid votes",
+        "points": "{{points}} pp"
+      }
     }
   },
   "gameHeader": {
-    "turnsTooltip": "Turns played"
+    "turnsTooltip": "Turns played",
+    "campaignBadge": {
+      "title": "The campaign",
+      "toggle": "Show campaign details",
+      "candidate": "Candidate",
+      "party": "Party"
+    }
   },
   "gameMenuBar": {
     "save": "Save game",
@@ -165,6 +199,39 @@
     "medium": "Medium",
     "low": "Low"
   },
+  "estimatePanel": {
+    "tabs": {
+      "capital": "Budapest",
+      "estimate": "District estimate"
+    },
+    "scope": {
+      "district": "District",
+      "national": "National",
+      "city": "Citywide"
+    },
+    "status": {
+      "safe": "Safe",
+      "likely": "Likely",
+      "tossup": "Toss-up"
+    },
+    "leads": "Leads",
+    "advantage": "{{party}} ahead",
+    "districtSubtitle": "estimated standing",
+    "nationalTitle": "National estimate",
+    "nationalSubtitle": "party list, estimated",
+    "cityTitle": "Citywide estimate",
+    "citySubtitle": "candidates, estimated",
+    "margin": "Margin of error",
+    "selectDistrict": "Select a district on the map to see its estimate.",
+    "noData": "No estimate available yet.",
+    "newData": "New estimate available",
+    "mobile": {
+      "title": "Estimated standing",
+      "open": "Estimate",
+      "tapDistrict": "Tap a district on the map to see its estimate.",
+      "tapCityDistrict": "Tap a district on the map to see its estimate."
+    }
+  },
   "districtList": {
     "view": {
       "list": "List",
@@ -183,11 +250,13 @@
       "capitalTitle": "Budapest · {{count}} districts",
       "showCapital": "Budapest →",
       "showCountry": "← Country",
-      "leads": "{{party}} leads"
+      "leads": "{{party}} leads",
+      "cityTitle": "Budapest · {{count}} districts"
     },
     "sheet": {
       "label": "Constituency",
-      "currentLead": "Current standing"
+      "currentLead": "Current standing",
+      "cityLabel": "District"
     }
   },
   "badge": {
@@ -324,5 +393,9 @@
     "title": "Privacy notice",
     "openPdf": "Open privacy notice (PDF)",
     "mobileDescription": "You can open the privacy notice as a PDF."
+  },
+  "eventAnnouncement": {
+    "label": "Campaign event",
+    "close": "Continue"
   }
 }

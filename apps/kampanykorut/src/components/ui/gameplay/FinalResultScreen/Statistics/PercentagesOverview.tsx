@@ -10,13 +10,18 @@ export function PercentagesOverview({
   percentage: number;
 }) {
   return (
-    <CommonWrapper>
-      <div className="w-[250px] p-2 text-center">
-        <Text size="sm" weight="light" color="lightBlue">
+    <CommonWrapper className="min-w-0">
+      <div className="w-full md:w-[250px] p-2 text-left md:text-center">
+        <Text
+          size="sm"
+          weight="light"
+          color="lightBlue"
+          className="max-md:!text-[10px] max-md:leading-tight max-md:min-h-7"
+        >
           {label}
         </Text>
-        <span className="flex items-baseline justify-center">
-          <Heading level={3} color="white" className="mr-1">
+        <span className="flex flex-wrap items-baseline md:justify-center">
+          <Heading level={3} color="white" className="mr-1 max-md:!text-xl">
             {Math.round(percentage * 100) / 100} %
           </Heading>
         </span>

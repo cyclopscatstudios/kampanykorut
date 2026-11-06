@@ -31,8 +31,12 @@ export function Achievements({ config, state }: AchievmentsProps) {
     <div className="flex flex-wrap gap-3">
       {strategies.map((badge) => {
         return (
-          <CommonWrapper key={badge.id} fullHeight={false}>
-            <div className="w-[250px] flex items-center gap-3 p-3">
+          <CommonWrapper
+            key={badge.id}
+            fullHeight={false}
+            className="w-full md:w-auto"
+          >
+            <div className="w-full md:w-[250px] flex items-center gap-3 p-3">
               <div className="relative shrink-0">
                 <img
                   src={badge.asset?.badge}

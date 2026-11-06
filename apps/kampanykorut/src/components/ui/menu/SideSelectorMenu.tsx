@@ -125,14 +125,17 @@ export function SideSelectorMenu() {
               {currentCampaign?.label}
             </div>
             {badges.length > 0 && (
-              <button
-                type="button"
+              <Button
+                variant="hero"
+                size="sm"
                 onClick={() => setIsBadgeSheetOpen(true)}
-                className="absolute top-2 right-2 h-[30px] px-2.5 rounded-lg border border-white/20 bg-[rgba(10,18,36,0.7)] text-white text-[11px] font-bold flex items-center gap-1.5 cursor-pointer"
+                className="absolute top-2 right-2"
               >
-                <Icon name="info-circle" size="xs" />
-                {t("sideSelector.badgeDisplay.short")} · {badges.length}
-              </button>
+                <Button.Icon name="info-circle" />
+                <Button.Text>
+                  {t("sideSelector.badgeDisplay.short")} · {badges.length}
+                </Button.Text>
+              </Button>
             )}
           </div>
 
@@ -169,6 +172,7 @@ export function SideSelectorMenu() {
           open={isBadgeSheetOpen}
           title={t("sideSelector.badgeDisplay.label")}
           onClose={() => setIsBadgeSheetOpen(false)}
+          fitContent
         >
           <div className="flex flex-col gap-2.5">
             {badges.map((badge) => (
@@ -327,6 +331,7 @@ function SelectorItem<T extends { label: string; value: string }>({
           open={isSheetOpen}
           title={label}
           onClose={() => setIsSheetOpen(false)}
+          fitContent
         >
           <div className="flex flex-col gap-2">
             {options.map((option) => {
@@ -454,13 +459,14 @@ function SelectionDetail({
           {description}
         </p>
         {(isClamped || isExpanded) && (
-          <button
-            type="button"
+          <Button
+            variant="link"
+            size="sm"
             onClick={() => setIsExpanded((v) => !v)}
-            className="mt-1 text-[11.5px] font-bold text-[#8fb0ee] cursor-pointer"
+            className="mt-1"
           >
             {t(isExpanded ? "sideSelector.showLess" : "sideSelector.showMore")}
-          </button>
+          </Button>
         )}
       </div>
     </div>

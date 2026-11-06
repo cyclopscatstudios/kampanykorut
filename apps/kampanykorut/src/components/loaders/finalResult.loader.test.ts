@@ -54,4 +54,23 @@ describe("finalResultLoader", () => {
     );
     expect(result).toEqual({ results: { foo: "bar" }, config: mockConfig });
   });
+
+  it("passes the mayoral result along with the results", async () => {
+    const stateEngine = container.resolve(StateEngine);
+    vi.spyOn(stateEngine, "getCampaignState").mockReturnValue({
+      activeCampaignId: "0002_test_mayoral",
+      isEnded: true,
+      results: { mandates: [] },
+      mayoralResult: { validVotes: 10 },
+    } as never);
+
+    const result = await finalResultLoader({
+      params: { id: "0002_test_mayoral" },
+    } as never);
+
+    expect(result?.results).toEqual({
+      mandates: [],
+      mayoralResult: { validVotes: 10 },
+    });
+  });
 });

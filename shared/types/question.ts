@@ -1,3 +1,5 @@
+import { Condition } from "./condition";
+
 export interface RawQuestion {
   id: string;
   title?: string;
@@ -9,4 +11,5 @@ export interface RawQuestion {
   affects?: { id: string }[];
   requires?: { questionId: string; answerId: string }[];
   blocks?: { questionId: string; answerId: string }[];
+  visibleIf?: Condition;
 }

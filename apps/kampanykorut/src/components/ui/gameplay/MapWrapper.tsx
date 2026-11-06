@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useState } from "react";
+import { isCityDistrictMap } from "@/shared/domain";
 import {
   CandidateListData,
   District,
@@ -67,6 +68,16 @@ export function MapWrapper({
         isGameEnded={isGameEnded}
         electionConfig={electionConfig}
       />
+      {isCityDistrictMap(electionConfig) && (
+        <a
+          href="https://www.openstreetmap.org/copyright"
+          target="_blank"
+          rel="noreferrer"
+          className="absolute bottom-1 left-2 text-[10px] text-slate-400 hover:text-slate-200"
+        >
+          © OpenStreetMap
+        </a>
+      )}
       <div className="absolute bottom-2 right-2 flex gap-1">
         <Button
           variant="tertiary"

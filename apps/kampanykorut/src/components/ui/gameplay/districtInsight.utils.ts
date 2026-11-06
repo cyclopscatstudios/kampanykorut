@@ -52,3 +52,10 @@ export function isSameDistrict(
 ) {
   return !!a && !!b && a.megyekod === b.megyekod && a.oevk === b.oevk;
 }
+
+export function getDistrictName(
+  district: Pick<CandidateListData, "oevk" | "telepules">,
+  isCityMap: boolean,
+): string {
+  return isCityMap ? district.telepules : `${district.oevk}. OEVK`;
+}

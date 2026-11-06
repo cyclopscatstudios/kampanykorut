@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
+import { isCityDistrictMap } from "@/shared/domain";
 import {
   CampaignConfig,
   CampaignState,
@@ -74,17 +75,26 @@ export function GameView({
       <VoteCountingScreen
         onComplete={onVoteCountingComplete}
         totalVotes={config.voterEnvironmentConfig.eligibleVoters}
-        processedVotes={state.results?.totals.partyListResults["_total"]}
+        processedVotes={
+          state.mayoralResult?.validVotes ??
+          state.results?.totals.partyListResults["_total"]
+        }
       />
     );
   }
 
-  const capitalCity = getCapitalCity(config.districts);
+  const isCityMap = isCityDistrictMap(config.electionConfig);
+  const capitalCity = isCityMap ? [] : getCapitalCity(config.districts);
   const candidateListData =
     pollsData?.candidateListData ?? state.candidateListData ?? [];
+  const percentages = pollsData?.percentages ?? state.results?.percentages;
+  const nationalPercentages = isCityMap
+    ? percentages?.candidateListResults
+    : percentages?.partyListResults;
 
   return isDesktop ? (
     <MapCreator
+      nationalPercentages={nationalPercentages}
       setCurrentView={onSetView}
       candidateListData={candidateListData}
       capitalCity={capitalCity}
@@ -95,10 +105,12 @@ export function GameView({
     />
   ) : (
     <MobileMapView
+      isCityMap={isCityMap}
       districts={config.districts}
       capitalCity={capitalCity}
       candidateListData={candidateListData}
       electionConfig={config.electionConfig}
+      nationalPercentages={nationalPercentages}
       selectedDistrict={selectedDistrict}
       onSetDistrict={onSetDistrict}
       onSetView={onSetView}

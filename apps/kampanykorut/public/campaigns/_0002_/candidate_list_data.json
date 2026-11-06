@@ -1,0 +1,301 @@
+[
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 1,
+    "telepules": "I. kerület",
+    "valasztopolgar": 37919,
+    "partok": {
+      "karacsony_gergely": 10238,
+      "vitezy_david": 10238,
+      "szentkiralyi_alexandra": 4171,
+      "grundtner_andras": 1137
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 2,
+    "telepules": "II. kerület",
+    "valasztopolgar": 45838,
+    "partok": {
+      "karacsony_gergely": 10542,
+      "vitezy_david": 10542,
+      "szentkiralyi_alexandra": 3667,
+      "grundtner_andras": 1833
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 3,
+    "telepules": "III. kerület",
+    "valasztopolgar": 53757,
+    "partok": {
+      "karacsony_gergely": 15051,
+      "vitezy_david": 16127,
+      "szentkiralyi_alexandra": 5913,
+      "grundtner_andras": 1075
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 4,
+    "telepules": "IV. kerület",
+    "valasztopolgar": 61676,
+    "partok": {
+      "karacsony_gergely": 14802,
+      "vitezy_david": 16035,
+      "szentkiralyi_alexandra": 4934,
+      "grundtner_andras": 1850
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 5,
+    "telepules": "V. kerület",
+    "valasztopolgar": 69595,
+    "partok": {
+      "karacsony_gergely": 20182,
+      "vitezy_david": 15310,
+      "szentkiralyi_alexandra": 7655,
+      "grundtner_andras": 2783
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 6,
+    "telepules": "VI. kerület",
+    "valasztopolgar": 77514,
+    "partok": {
+      "karacsony_gergely": 19378,
+      "vitezy_david": 22479,
+      "szentkiralyi_alexandra": 6201,
+      "grundtner_andras": 1550
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 7,
+    "telepules": "VII. kerület",
+    "valasztopolgar": 85433,
+    "partok": {
+      "karacsony_gergely": 25629,
+      "vitezy_david": 21358,
+      "szentkiralyi_alexandra": 9397,
+      "grundtner_andras": 2562
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 8,
+    "telepules": "VIII. kerület",
+    "valasztopolgar": 93352,
+    "partok": {
+      "karacsony_gergely": 24271,
+      "vitezy_david": 19603,
+      "szentkiralyi_alexandra": 7468,
+      "grundtner_andras": 3734
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 9,
+    "telepules": "IX. kerület",
+    "valasztopolgar": 31271,
+    "partok": {
+      "karacsony_gergely": 6879,
+      "vitezy_david": 8755,
+      "szentkiralyi_alexandra": 3439,
+      "grundtner_andras": 625
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 10,
+    "telepules": "X. kerület",
+    "valasztopolgar": 39190,
+    "partok": {
+      "karacsony_gergely": 10581,
+      "vitezy_david": 9405,
+      "szentkiralyi_alexandra": 3135,
+      "grundtner_andras": 1175
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 11,
+    "telepules": "XI. kerület",
+    "valasztopolgar": 47109,
+    "partok": {
+      "karacsony_gergely": 10835,
+      "vitezy_david": 9421,
+      "szentkiralyi_alexandra": 5181,
+      "grundtner_andras": 1884
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 12,
+    "telepules": "XII. kerület",
+    "valasztopolgar": 55028,
+    "partok": {
+      "karacsony_gergely": 15407,
+      "vitezy_david": 14857,
+      "szentkiralyi_alexandra": 4402,
+      "grundtner_andras": 1100
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 13,
+    "telepules": "XIII. kerület",
+    "valasztopolgar": 62947,
+    "partok": {
+      "karacsony_gergely": 15107,
+      "vitezy_david": 14477,
+      "szentkiralyi_alexandra": 6924,
+      "grundtner_andras": 1888
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 14,
+    "telepules": "XIV. kerület",
+    "valasztopolgar": 70866,
+    "partok": {
+      "karacsony_gergely": 20551,
+      "vitezy_david": 21259,
+      "szentkiralyi_alexandra": 5669,
+      "grundtner_andras": 2834
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 15,
+    "telepules": "XV. kerület",
+    "valasztopolgar": 78785,
+    "partok": {
+      "karacsony_gergely": 19696,
+      "vitezy_david": 20484,
+      "szentkiralyi_alexandra": 8666,
+      "grundtner_andras": 1575
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 16,
+    "telepules": "XVI. kerület",
+    "valasztopolgar": 86704,
+    "partok": {
+      "karacsony_gergely": 26011,
+      "vitezy_david": 19074,
+      "szentkiralyi_alexandra": 6936,
+      "grundtner_andras": 2601
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 17,
+    "telepules": "XVII. kerület",
+    "valasztopolgar": 94623,
+    "partok": {
+      "karacsony_gergely": 24601,
+      "vitezy_david": 27440,
+      "szentkiralyi_alexandra": 10408,
+      "grundtner_andras": 3784
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 18,
+    "telepules": "XVIII. kerület",
+    "valasztopolgar": 32542,
+    "partok": {
+      "karacsony_gergely": 7159,
+      "vitezy_david": 8135,
+      "szentkiralyi_alexandra": 2603,
+      "grundtner_andras": 650
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 19,
+    "telepules": "XIX. kerület",
+    "valasztopolgar": 40461,
+    "partok": {
+      "karacsony_gergely": 10924,
+      "vitezy_david": 8496,
+      "szentkiralyi_alexandra": 4450,
+      "grundtner_andras": 1213
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 20,
+    "telepules": "XX. kerület",
+    "valasztopolgar": 48380,
+    "partok": {
+      "karacsony_gergely": 11127,
+      "vitezy_david": 13546,
+      "szentkiralyi_alexandra": 3870,
+      "grundtner_andras": 1935
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 21,
+    "telepules": "XXI. kerület",
+    "valasztopolgar": 56299,
+    "partok": {
+      "karacsony_gergely": 15763,
+      "vitezy_david": 13511,
+      "szentkiralyi_alexandra": 6192,
+      "grundtner_andras": 1125
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 22,
+    "telepules": "XXII. kerület",
+    "valasztopolgar": 64218,
+    "partok": {
+      "karacsony_gergely": 15412,
+      "vitezy_david": 12843,
+      "szentkiralyi_alexandra": 5137,
+      "grundtner_andras": 1926
+    }
+  },
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 23,
+    "telepules": "XXIII. kerület",
+    "valasztopolgar": 72137,
+    "partok": {
+      "karacsony_gergely": 20919,
+      "vitezy_david": 19476,
+      "szentkiralyi_alexandra": 7935,
+      "grundtner_andras": 2885
+    }
+  }
+]
