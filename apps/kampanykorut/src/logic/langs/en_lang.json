@@ -1,5 +1,7 @@
 {
-  "bottomSheet": { "close": "Close" },
+  "bottomSheet": {
+    "close": "Close"
+  },
   "mainMenu": {
     "newGame": "New Game",
     "loadGame": "Load Game",
@@ -148,6 +150,22 @@
       "toggle": "Show campaign details",
       "candidate": "Candidate",
       "party": "Party"
+    }
+  },
+  "politicalDashboard": {
+    "title": "Political situation",
+    "back": "Back to the campaign",
+    "turn": "Turn {{turn}}",
+    "overview": "Overview",
+    "progress": "Campaign progress",
+    "latestEvent": "Latest event",
+    "empty": {
+      "title": "All quiet so far",
+      "body": "Key developments of the campaign will show up here."
+    },
+    "entry": {
+      "label": "Political situation",
+      "withNews": "Political situation: new event"
     }
   },
   "gameMenuBar": {
