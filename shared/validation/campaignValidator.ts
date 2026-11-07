@@ -70,6 +70,7 @@ interface Context {
   electionType?: string;
   playableCandidates: Set<string>;
   eventIds: Set<string>;
+  focusIds: Set<string>;
 }
 
 const isObject = (value: unknown): value is Json =>
@@ -599,6 +600,7 @@ function checkQuestionConditions(
     ),
     candidateIds: ctx.parties,
     eventIds: ctx.eventIds,
+    focusIds: ctx.focusIds,
   };
   let valid = true;
   data.forEach((question, index) => {
@@ -1678,7 +1680,12 @@ function checkCampaignEvents(
       .filter((id): id is string => typeof id === "string"),
   );
   const seen = new Set<string>();
-  const refs = { questions, candidateIds: ctx.parties, eventIds };
+  const refs = {
+    questions,
+    candidateIds: ctx.parties,
+    eventIds,
+    focusIds: ctx.focusIds,
+  };
 
   data.forEach((event, index) => {
     const path = `/${index}`;
@@ -1782,7 +1789,12 @@ function checkCampaignEvents(
   });
 }
 
-function checkPoliticalConfig(ctx: Context, file: string, data: unknown) {
+function checkPoliticalConfig(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  questions: Map<string, Set<string>>,
+) {
   if (data === undefined) {
     return;
   }
@@ -1807,6 +1819,96 @@ function checkPoliticalConfig(ctx: Context, file: string, data: unknown) {
       `gameMode must be one of ${GAME_MODES.join(", ")}`,
     );
   }
+  if (
+    data.focusLockEventId !== undefined &&
+    !ctx.eventIds.has(String(data.focusLockEventId))
+  ) {
+    report(
+      ctx,
+      "error",
+      "unknown-event",
+      file,
+      "/focusLockEventId",
+      `unknown event "${String(data.focusLockEventId)}"`,
+    );
+  }
+  if (data.focuses === undefined) {
+    return;
+  }
+  if (!Array.isArray(data.focuses)) {
+    report(
+      ctx,
+      "error",
+      "focus-invalid",
+      file,
+      "/focuses",
+      "focuses must be an array",
+    );
+    return;
+  }
+  const refs = {
+    questions,
+    candidateIds: ctx.parties,
+    eventIds: ctx.eventIds,
+    focusIds: ctx.focusIds,
+  };
+  const seen = new Set<string>();
+  data.focuses.forEach((focus, index) => {
+    const path = `/focuses/${index}`;
+    if (!isObject(focus)) {
+      report(
+        ctx,
+        "error",
+        "focus-invalid",
+        file,
+        path,
+        "focus must be an object",
+      );
+      return;
+    }
+    for (const key of ["id", "title", "summary", "description"] as const) {
+      if (typeof focus[key] !== "string" || !focus[key]) {
+        report(
+          ctx,
+          "error",
+          "focus-invalid",
+          file,
+          `${path}/${key}`,
+          `${key} must be a non-empty string`,
+        );
+      }
+    }
+    if (typeof focus.id === "string") {
+      if (seen.has(focus.id)) {
+        report(
+          ctx,
+          "error",
+          "focus-duplicate",
+          file,
+          `${path}/id`,
+          `duplicate focus id "${focus.id}"`,
+        );
+      }
+      seen.add(focus.id);
+    }
+    for (const key of ["completeWhen", "failWhen"] as const) {
+      if (focus[key] !== undefined) {
+        validateCondition(focus[key], refs, `${path}/${key}`).forEach((issue) =>
+          report(ctx, "error", issue.code, file, issue.path, issue.message),
+        );
+      }
+    }
+  });
+}
+
+function collectFocusIds(ctx: Context, data: unknown) {
+  if (isObject(data) && Array.isArray(data.focuses)) {
+    data.focuses.filter(isObject).forEach((focus) => {
+      if (typeof focus.id === "string") {
+        ctx.focusIds.add(focus.id);
+      }
+    });
+  }
 }
 
 export function validateCampaign(
@@ -1822,6 +1924,7 @@ export function validateCampaign(
     districts: new Set(),
     playableCandidates: new Set(),
     eventIds: new Set(),
+    focusIds: new Set(),
   };
 
   for (const banner of ["campaignBanner", "thinCampaignBanner"] as const) {
@@ -1917,18 +2020,16 @@ export function validateCampaign(
     );
   }
 
-  if (files.politicalConfig !== undefined) {
-    checkPoliticalConfig(
-      ctx,
-      String(files.politicalConfig),
-      readFile(
-        ctx,
-        files.politicalConfig,
-        "manifest.json",
-        "/files/politicalConfig",
-      ),
-    );
-  }
+  const politicalData =
+    files.politicalConfig === undefined
+      ? undefined
+      : readFile(
+          ctx,
+          files.politicalConfig,
+          "manifest.json",
+          "/files/politicalConfig",
+        );
+  collectFocusIds(ctx, politicalData);
 
   const eventsData =
     files.campaignEvents === undefined
@@ -1966,6 +2067,13 @@ export function validateCampaign(
       allQuestions,
     );
   }
+
+  checkPoliticalConfig(
+    ctx,
+    String(files.politicalConfig),
+    politicalData,
+    allQuestions,
+  );
 
   return ctx.diagnostics;
 }

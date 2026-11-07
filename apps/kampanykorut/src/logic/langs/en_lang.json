@@ -166,6 +166,25 @@
     "entry": {
       "label": "Political situation",
       "withNews": "Political situation: new event"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "focuses": "Focuses"
+    },
+    "focus": {
+      "followed": "Followed focus",
+      "prompt": "Where will you take the party?",
+      "choose": "Choose a direction",
+      "select": "Follow this",
+      "switchNote": "Choosing only records your intent; it does not change your support. You can still switch until a turning point.",
+      "lockedNote": "The direction is final; the focus can no longer be changed.",
+      "status": {
+        "available": "Available",
+        "selected": "Following",
+        "completed": "Completed",
+        "failed": "Failed",
+        "excluded": "Excluded"
+      }
     }
   },
   "gameMenuBar": {

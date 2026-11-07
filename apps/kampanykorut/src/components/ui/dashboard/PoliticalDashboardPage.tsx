@@ -4,38 +4,54 @@ import { container } from "tsyringe";
 import { ConfigEngine, StateEngine } from "@/logic/application";
 import {
   buildDashboardOverview,
+  buildFocusOverview,
+  getFocuses,
   markPublicEventsSeen,
-  PublicEvent,
+  selectFocus,
 } from "@/shared/domain";
+import { CampaignState } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { useParams } from "../../../hooks/useParamsHook";
 import { getCampaignBadgeInfo } from "../gameplay/campaignBadge.utils";
 import { GameChrome } from "../gameplay/GameChrome";
+import { FocusTab } from "./FocusTab";
+import { OverviewTab } from "./OverviewTab";
+
+type DashboardTab = "overview" | "focuses";
 
 export function PoliticalDashboardPage() {
   const { campaignId = "" } = useParams();
   const stateEngine = container.resolve(StateEngine);
   const config = container.resolve(ConfigEngine).getCampaignConfig(campaignId);
   const { goToCampaign } = useNavigation();
-  const [state] = useState(() => stateEngine.getCampaignState());
+  const [stored] = useState(() => stateEngine.getCampaignState());
+  // Opening the dashboard is what counts as seeing the public events.
+  const [state, setState] = useState<CampaignState | null>(() =>
+    stored ? markPublicEventsSeen(stored, config.campaignEvents) : null,
+  );
+  const [tab, setTab] = useState<DashboardTab>("overview");
+  const hasFocuses = getFocuses(config).length > 0;
+
   const overview = useMemo(
     () => (state ? buildDashboardOverview(state, config) : undefined),
     [state, config],
   );
+  const focusOverview = useMemo(
+    () =>
+      state && hasFocuses
+        ? buildFocusOverview(state, config, stateEngine.getHistory() ?? [])
+        : undefined,
+    [state, config, hasFocuses, stateEngine],
+  );
 
   useEffect(() => {
-    if (!state) {
-      return;
-    }
-    const seen = markPublicEventsSeen(state, config.campaignEvents);
-    if (seen !== state) {
+    if (state && state.politicalDashboard !== stored?.politicalDashboard) {
       stateEngine.updateCampaignState({
-        politicalDashboard: seen.politicalDashboard,
+        politicalDashboard: state.politicalDashboard,
       });
     }
-  }, [state, config, stateEngine]);
+  }, [state, stored, stateEngine]);
 
   if (!state || !overview) {
     return null;
@@ -75,128 +91,42 @@ export function PoliticalDashboardPage() {
             </Button>
           </div>
 
-          <section
-            aria-label={t("politicalDashboard.overview")}
-            className="grid grid-cols-1 gap-5 md:grid-cols-2"
-          >
-            <TurnTile turn={overview.turn} totalTurns={overview.totalTurns} />
-            {overview.latestEvent ? (
-              <EventTile event={overview.latestEvent} />
-            ) : (
-              <EmptyTile />
-            )}
-          </section>
+          {hasFocuses && (
+            <div role="tablist" className="flex gap-2">
+              {(["overview", "focuses"] as const).map((id) => (
+                <Button
+                  key={id}
+                  variant="tab"
+                  role="tab"
+                  aria-selected={tab === id}
+                  selected={tab === id}
+                  onClick={() => setTab(id)}
+                  testId={`dashboardTab-${id}`}
+                >
+                  <Button.Text>
+                    {t(`politicalDashboard.tabs.${id}`)}
+                  </Button.Text>
+                </Button>
+              ))}
+            </div>
+          )}
+
+          {tab === "focuses" && focusOverview ? (
+            <FocusTab
+              overview={focusOverview}
+              onSelect={(focusId) =>
+                setState(selectFocus(state, config, focusId))
+              }
+            />
+          ) : (
+            <OverviewTab
+              overview={overview}
+              focus={focusOverview}
+              onOpenFocuses={() => setTab("focuses")}
+            />
+          )}
         </div>
       </div>
     </GameChrome>
-  );
-}
-
-function Tile({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <article
-      aria-label={label}
-      className="relative flex min-h-[200px] flex-col items-center justify-center gap-3 rounded-xl bg-blue-400/8 p-6 text-center shadow-[inset_0_0_0_1px_rgba(239,246,255,0.12)]"
-    >
-      <span className="text-xs font-bold uppercase tracking-[0.06em] text-blue-200">
-        {label}
-      </span>
-      {children}
-    </article>
-  );
-}
-
-function TurnTile({ turn, totalTurns }: { turn: number; totalTurns: number }) {
-  return (
-    <Tile label={t("politicalDashboard.progress")}>
-      <span className="text-4xl font-extrabold text-slate-50">
-        {turn}
-        <span className="text-base font-semibold text-slate-400">
-          {` / ${totalTurns}`}
-        </span>
-      </span>
-      {totalTurns > 0 && (
-        <span
-          aria-hidden="true"
-          className="flex flex-wrap justify-center gap-1"
-        >
-          {Array.from({ length: totalTurns }, (_, i) => (
-            <span
-              key={i}
-              className={
-                i < turn
-                  ? "h-1.5 w-4 rounded-full bg-blue-400"
-                  : "h-1.5 w-4 rounded-full bg-slate-400/25"
-              }
-            />
-          ))}
-        </span>
-      )}
-    </Tile>
-  );
-}
-
-function EventTile({ event }: { event: PublicEvent }) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div
-      tabIndex={0}
-      aria-describedby={`event-${event.id}-detail`}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      onFocus={() => setOpen(true)}
-      onBlur={() => setOpen(false)}
-      onClick={() => setOpen((value) => !value)}
-      className="relative rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-    >
-      <Tile label={t("politicalDashboard.latestEvent")}>
-        <span
-          aria-hidden="true"
-          className="inline-flex size-[72px] items-center justify-center rounded-full bg-amber-400/12 text-amber-400 shadow-[inset_0_0_0_2px_currentColor]"
-        >
-          <Icon name="megaphone-fill" size={30} color="currentColor" />
-        </span>
-        <span className="text-xl font-bold text-slate-50">{event.title}</span>
-      </Tile>
-      <div
-        id={`event-${event.id}-detail`}
-        role="tooltip"
-        className={
-          open
-            ? "pointer-events-none absolute inset-0 flex items-center rounded-xl bg-[#161e30] p-6 text-left shadow-[inset_0_0_0_1px_#4462aa]"
-            : "sr-only"
-        }
-      >
-        <p className="m-0 text-sm leading-[21px] text-slate-100">
-          {event.body}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function EmptyTile() {
-  return (
-    <Tile label={t("politicalDashboard.latestEvent")}>
-      <span
-        aria-hidden="true"
-        className="inline-flex size-[72px] items-center justify-center rounded-full bg-slate-400/8 text-slate-400 shadow-[inset_0_0_0_2px_rgba(148,163,184,0.4)]"
-      >
-        <Icon name="moon-stars" size={30} color="currentColor" />
-      </span>
-      <span className="text-xl font-bold text-slate-50">
-        {t("politicalDashboard.empty.title")}
-      </span>
-      <span className="text-sm text-slate-400">
-        {t("politicalDashboard.empty.body")}
-      </span>
-    </Tile>
   );
 }

@@ -534,6 +534,52 @@ describe("validateCampaign", () => {
       ]);
     });
 
+    const focus = (id: string, extra: object = {}) => ({
+      id,
+      title: id,
+      summary: "Rövid",
+      description: "Hosszú",
+      ...extra,
+    });
+
+    it("accepts focuses whose conditions point to known references", () => {
+      expect(
+        validate(
+          withPolitical({
+            gameMode: "strategic",
+            focuses: [
+              focus("with"),
+              focus("without", {
+                completeWhen: { type: "focus-selected", focusId: "with" },
+              }),
+            ],
+          }),
+        ),
+      ).toEqual([]);
+    });
+
+    it("reports invalid focuses and an unknown lock event", () => {
+      const result = validate(
+        withPolitical({
+          gameMode: "strategic",
+          focusLockEventId: "congress",
+          focuses: [
+            focus("with"),
+            focus("with", { summary: "" }),
+            focus("other", {
+              failWhen: { type: "event-triggered", eventId: "nope" },
+            }),
+          ],
+        }),
+      );
+      expect(codes(result)).toEqual([
+        "error:unknown-event",
+        "error:focus-invalid",
+        "error:focus-duplicate",
+        "error:unknown-event",
+      ]);
+    });
+
     it("reports a config that is not an object", () => {
       expect(codes(validate(withPolitical([])))).toEqual([
         "error:political-config-invalid",

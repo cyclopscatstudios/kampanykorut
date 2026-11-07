@@ -2,6 +2,7 @@ export interface ConditionReferences {
   questions?: Map<string, Set<string>>;
   candidateIds?: Set<string>;
   eventIds?: Set<string>;
+  focusIds?: Set<string>;
 }
 
 export interface ConditionIssue {
@@ -238,6 +239,21 @@ function check(
           "unknown-event",
           `${path}/eventId`,
           `unknown event "${condition.eventId}"`,
+        );
+      }
+      return;
+    case "focus-selected":
+      if (typeof condition.focusId !== "string") {
+        issue(
+          "condition-invalid",
+          `${path}/focusId`,
+          "focusId must be a string",
+        );
+      } else if (refs.focusIds && !refs.focusIds.has(condition.focusId)) {
+        issue(
+          "unknown-focus",
+          `${path}/focusId`,
+          `unknown focus "${condition.focusId}"`,
         );
       }
       return;

@@ -48,6 +48,11 @@ export type EventTriggeredCondition = {
   eventId: string;
 };
 
+export type FocusSelectedCondition = {
+  type: "focus-selected";
+  focusId: string;
+};
+
 export type LeafCondition =
   | TurnCondition
   | CandidateSupportCondition
@@ -55,7 +60,8 @@ export type LeafCondition =
   | AnswerSelectedCondition
   | CandidateStatusCondition
   | PlayerCandidateCondition
-  | EventTriggeredCondition;
+  | EventTriggeredCondition
+  | FocusSelectedCondition;
 
 export type Condition =
   | AndCondition
@@ -71,4 +77,5 @@ export interface ConditionContext {
   getCandidateStatus(candidateId: string): CandidateStatus;
   playerCandidateId?: string;
   triggeredEventIds: string[];
+  selectedFocusId?: string;
 }

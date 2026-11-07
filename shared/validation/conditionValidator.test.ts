@@ -5,6 +5,7 @@ const refs: ConditionReferences = {
   questions: new Map([["question_12", new Set(["answer_1", "answer_3"])]]),
   candidateIds: new Set(["szentkiralyi", "vitezy", "karacsony"]),
   eventIds: new Set(["szentkiralyi_withdrawal"]),
+  focusIds: new Set(["without_kadar"]),
 };
 
 const codes = (condition: unknown, references = refs) =>
@@ -150,6 +151,18 @@ describe("validateCondition", () => {
     ]);
   });
 
+  it("checks the focus of a focus-selected condition", () => {
+    expect(codes({ type: "focus-selected", focusId: "without_kadar" })).toEqual(
+      [],
+    );
+    expect(codes({ type: "focus-selected", focusId: "nope" })).toEqual([
+      "unknown-focus@/if/focusId",
+    ]);
+    expect(codes({ type: "focus-selected" })).toEqual([
+      "condition-invalid@/if/focusId",
+    ]);
+  });
+
   it("skips reference checks that have no reference set", () => {
     expect(
       codes(
@@ -158,6 +171,7 @@ describe("validateCondition", () => {
             { type: "answer-selected", questionId: "any", answerId: "any" },
             { type: "candidate-status", candidateId: "any", status: "active" },
             { type: "event-triggered", eventId: "any" },
+            { type: "focus-selected", focusId: "any" },
           ],
         },
         {},
