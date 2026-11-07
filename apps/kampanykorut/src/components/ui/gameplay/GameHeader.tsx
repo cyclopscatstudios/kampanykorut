@@ -6,7 +6,7 @@ import { useMediaQuery } from "usehooks-ts";
 import {
   AGGREGATE_POLLSTER_ID,
   getTotalTurns,
-  getUnseenPublicEventIds,
+  hasDashboardNews,
   isStrategicMode,
   PollsterEngine,
 } from "@/shared/domain";
@@ -80,8 +80,7 @@ export function GameHeader({
     politicalStatus:
       state && isStrategicMode(config) && !endResultsScreen && !dashboardScreen
         ? {
-            hasUnseenEvents:
-              getUnseenPublicEventIds(state, config?.campaignEvents).length > 0,
+            hasUnseenEvents: hasDashboardNews(state, config?.campaignEvents),
             onOpen: () =>
               goToPoliticalDashboard(state.activeCampaignId, sessionId),
           }

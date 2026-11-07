@@ -48,6 +48,7 @@ export interface CandidateCampaignState {
 export interface CampaignEventState {
   triggeredEventIds: string[];
   pendingAnnouncementIds: string[];
+  triggeredAtTurn?: Record<string, number>;
 }
 
 export type CurrentView = "MapView" | "QuestionView" | "VoteCountingView";

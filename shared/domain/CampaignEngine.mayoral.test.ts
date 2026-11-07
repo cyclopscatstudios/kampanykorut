@@ -288,7 +288,7 @@ describe("CampaignEngine campaign events", () => {
     announcement: { title: "Nagygyűlés", body: "Vitézy nagygyűlést tart." },
   } as CampaignEvent;
 
-  const engineWithEvents = () =>
+  const engineWithEvents = (events: CampaignEvent[] = [rallyEvent]) =>
     new CampaignEngine(
       districts,
       questions,
@@ -302,13 +302,56 @@ describe("CampaignEngine campaign events", () => {
       container.resolve(CandidateWithdrawalTransformer),
       undefined,
       undefined,
-      [rallyEvent],
+      events,
     );
 
   const answer = (questionId: string): Decision => ({
     questionId,
     answerId: "A",
     effects: [{ type: EffectType.UniformSwing, params: { vitezy: 0 } }],
+  });
+
+  it("records a relation change from an event without touching the votes", () => {
+    const engine = engineWithEvents([
+      {
+        id: "students_rally",
+        conditions: [
+          {
+            if: { type: "answer-selected", questionId: "q1", answerId: "A" },
+            effects: [
+              {
+                type: "set-relation",
+                relationId: "students",
+                tone: "good",
+                label: "Lelkes",
+                description: "A diákság kiáll melletted.",
+              },
+            ],
+          },
+        ],
+      },
+    ]);
+    const initial = engine.createInitialState("budapest", null, mayoralConfig);
+
+    const next = engine.processTurn(
+      initial,
+      answer("q1"),
+      [],
+      settings,
+      mayoralConfig,
+    );
+
+    expect(next.politicalDashboard?.relations).toEqual({
+      students: {
+        tone: "good",
+        label: "Lelkes",
+        description: "A diákság kiáll melletted.",
+        changedAtTurn: 1,
+      },
+    });
+    expect(next.mayoralResult?.districts[0].votes).toEqual(
+      initial.mayoralResult?.districts[0].votes,
+    );
   });
 
   it("runs an event triggered by the answer of the same turn and recalculates the result", () => {
@@ -326,6 +369,7 @@ describe("CampaignEngine campaign events", () => {
     expect(next.campaignEvents).toEqual({
       triggeredEventIds: ["vitezy_rally"],
       pendingAnnouncementIds: ["vitezy_rally"],
+      triggeredAtTurn: { vitezy_rally: 1 },
     });
     expect(next.mayoralResult!.districts[0].votes.vitezy).toBe(
       initial.mayoralResult!.districts[0].votes.vitezy + 3000,

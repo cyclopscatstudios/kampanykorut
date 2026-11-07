@@ -7,6 +7,8 @@ import {
   GAME_MODES,
   GameMode,
   RawQuestion,
+  RELATION_TONES,
+  RelationTone,
 } from "../types";
 import { validateCondition } from "./conditionValidator";
 
@@ -71,6 +73,7 @@ interface Context {
   playableCandidates: Set<string>;
   eventIds: Set<string>;
   focusIds: Set<string>;
+  relationIds: Set<string>;
 }
 
 const isObject = (value: unknown): value is Json =>
@@ -1546,6 +1549,21 @@ function checkEventEffects(
     const effectPath = `${path}/${i}`;
     if (isObject(effect) && effect.type === "withdraw-candidate") {
       checkWithdrawEffect(ctx, file, effectPath, effect, guard);
+    } else if (isObject(effect) && effect.type === "set-relation") {
+      if (
+        typeof effect.relationId !== "string" ||
+        !ctx.relationIds.has(effect.relationId)
+      ) {
+        report(
+          ctx,
+          "error",
+          "unknown-relation",
+          file,
+          `${effectPath}/relationId`,
+          `unknown relation "${String(effect.relationId)}"`,
+        );
+      }
+      checkRelationStanding(ctx, file, effectPath, effect);
     } else {
       checkEffect(ctx, file, effectPath, effect);
     }
@@ -1819,6 +1837,7 @@ function checkPoliticalConfig(
       `gameMode must be one of ${GAME_MODES.join(", ")}`,
     );
   }
+  checkRelations(ctx, file, data);
   if (
     data.focusLockEventId !== undefined &&
     !ctx.eventIds.has(String(data.focusLockEventId))
@@ -1901,14 +1920,152 @@ function checkPoliticalConfig(
   });
 }
 
-function collectFocusIds(ctx: Context, data: unknown) {
-  if (isObject(data) && Array.isArray(data.focuses)) {
-    data.focuses.filter(isObject).forEach((focus) => {
-      if (typeof focus.id === "string") {
-        ctx.focusIds.add(focus.id);
-      }
-    });
+function collectPoliticalIds(ctx: Context, data: unknown) {
+  if (!isObject(data)) {
+    return;
   }
+  const collect = (items: unknown, ids: Set<string>) => {
+    if (Array.isArray(items)) {
+      items.filter(isObject).forEach((item) => {
+        if (typeof item.id === "string") {
+          ids.add(item.id);
+        }
+      });
+    }
+  };
+  collect(data.focuses, ctx.focusIds);
+  collect(data.relations, ctx.relationIds);
+}
+
+function checkRelationStanding(
+  ctx: Context,
+  file: string,
+  path: string,
+  standing: Json,
+) {
+  if (!RELATION_TONES.includes(standing.tone as RelationTone)) {
+    report(
+      ctx,
+      "error",
+      "relation-invalid",
+      file,
+      `${path}/tone`,
+      `tone must be one of ${RELATION_TONES.join(", ")}`,
+    );
+  }
+  for (const key of ["label", "description"] as const) {
+    if (typeof standing[key] !== "string" || !standing[key]) {
+      report(
+        ctx,
+        "error",
+        "relation-invalid",
+        file,
+        `${path}/${key}`,
+        `${key} must be a non-empty string`,
+      );
+    }
+  }
+}
+
+function checkRelations(ctx: Context, file: string, data: Json) {
+  const groupIds = new Set<string>();
+  if (data.relationGroups !== undefined) {
+    if (!Array.isArray(data.relationGroups)) {
+      report(
+        ctx,
+        "error",
+        "relation-invalid",
+        file,
+        "/relationGroups",
+        "relationGroups must be an array",
+      );
+    } else {
+      data.relationGroups.forEach((group, index) => {
+        if (
+          !isObject(group) ||
+          typeof group.id !== "string" ||
+          typeof group.title !== "string" ||
+          !group.title
+        ) {
+          report(
+            ctx,
+            "error",
+            "relation-invalid",
+            file,
+            `/relationGroups/${index}`,
+            "relation group needs a string id and title",
+          );
+          return;
+        }
+        groupIds.add(group.id);
+      });
+    }
+  }
+  if (data.relations === undefined) {
+    return;
+  }
+  if (!Array.isArray(data.relations)) {
+    report(
+      ctx,
+      "error",
+      "relation-invalid",
+      file,
+      "/relations",
+      "relations must be an array",
+    );
+    return;
+  }
+  const seen = new Set<string>();
+  data.relations.forEach((relation, index) => {
+    const path = `/relations/${index}`;
+    if (!isObject(relation)) {
+      report(
+        ctx,
+        "error",
+        "relation-invalid",
+        file,
+        path,
+        "relation must be an object",
+      );
+      return;
+    }
+    if (typeof relation.id !== "string" || typeof relation.name !== "string") {
+      report(
+        ctx,
+        "error",
+        "relation-invalid",
+        file,
+        path,
+        "relation needs a string id and name",
+      );
+    } else if (seen.has(relation.id)) {
+      report(
+        ctx,
+        "error",
+        "relation-duplicate",
+        file,
+        `${path}/id`,
+        `duplicate relation id "${relation.id}"`,
+      );
+    }
+    if (typeof relation.id === "string") {
+      seen.add(relation.id);
+    }
+    if (
+      typeof relation.groupId !== "string" ||
+      !groupIds.has(relation.groupId)
+    ) {
+      report(
+        ctx,
+        "error",
+        "unknown-relation-group",
+        file,
+        `${path}/groupId`,
+        `unknown relation group "${String(relation.groupId)}"`,
+      );
+    }
+    checkRelationStanding(ctx, file, path, relation);
+  });
 }
 
 export function validateCampaign(
@@ -1925,6 +2082,7 @@ export function validateCampaign(
     playableCandidates: new Set(),
     eventIds: new Set(),
     focusIds: new Set(),
+    relationIds: new Set(),
   };
 
   for (const banner of ["campaignBanner", "thinCampaignBanner"] as const) {
@@ -2029,7 +2187,7 @@ export function validateCampaign(
           "manifest.json",
           "/files/politicalConfig",
         );
-  collectFocusIds(ctx, politicalData);
+  collectPoliticalIds(ctx, politicalData);
 
   const eventsData =
     files.campaignEvents === undefined

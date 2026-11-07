@@ -1,6 +1,8 @@
 import { CandidateInactiveReason } from "./campaign";
 import { Condition } from "./condition";
 import { RawEffect } from "./effects";
+import { BootstrapIcon } from "./icon";
+import { RelationStanding } from "./political";
 
 export const ABSTAIN_KEY = "_abstain";
 
@@ -12,7 +14,15 @@ export interface WithdrawCandidateEffect {
   redistribution: Record<string, number>;
 }
 
-export type CampaignEventEffect = RawEffect | WithdrawCandidateEffect;
+export interface SetRelationEffect extends RelationStanding {
+  type: "set-relation";
+  relationId: string;
+}
+
+export type CampaignEventEffect =
+  | RawEffect
+  | WithdrawCandidateEffect
+  | SetRelationEffect;
 
 export interface CampaignEventBranch {
   if: Condition;
@@ -23,6 +33,9 @@ export interface CampaignEventAnnouncement {
   title: string;
   body: string;
   imageUri?: string;
+  icon?: BootstrapIcon;
+  // Major events get a larger node in the chronicle.
+  major?: boolean;
 }
 
 export interface CampaignEvent {

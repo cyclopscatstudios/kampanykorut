@@ -6,9 +6,12 @@ import {
   GameMode,
 } from "../types";
 import { getCampaignEventState } from "./CampaignStateAccess";
+import { getUnseenRelationIds } from "./PoliticalRelations";
 
 export interface PublicEvent extends CampaignEventAnnouncement {
   id: string;
+  // Missing for events recorded before trigger turns were stored.
+  turn?: number;
 }
 
 export interface DashboardOverview {
@@ -49,14 +52,14 @@ export function getPublicEvents(
   state: Pick<CampaignState, "campaignEvents">,
   events: CampaignEvent[] = [],
 ): PublicEvent[] {
-  const { triggeredEventIds, pendingAnnouncementIds } =
+  const { triggeredEventIds, pendingAnnouncementIds, triggeredAtTurn } =
     getCampaignEventState(state);
   return triggeredEventIds.flatMap((id) => {
     const announcement = events.find((e) => e.id === id)?.announcement;
     if (!announcement || pendingAnnouncementIds.includes(id)) {
       return [];
     }
-    return [{ id, ...announcement }];
+    return [{ id, ...announcement, turn: triggeredAtTurn?.[id] }];
   });
 }
 
@@ -103,4 +106,14 @@ export function buildDashboardOverview(
     hasUnseenEvents:
       getUnseenPublicEventIds(state, config.campaignEvents).length > 0,
   };
+}
+
+export function hasDashboardNews(
+  state: Pick<CampaignState, "campaignEvents" | "politicalDashboard">,
+  events: CampaignEvent[] = [],
+): boolean {
+  return (
+    getUnseenPublicEventIds(state, events).length > 0 ||
+    getUnseenRelationIds(state).length > 0
+  );
 }

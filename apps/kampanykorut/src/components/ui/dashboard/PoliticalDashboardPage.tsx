@@ -5,8 +5,11 @@ import { ConfigEngine, StateEngine } from "@/logic/application";
 import {
   buildDashboardOverview,
   buildFocusOverview,
+  buildRelationGroups,
   getFocuses,
+  getPublicEvents,
   markPublicEventsSeen,
+  markRelationsSeen,
   selectFocus,
 } from "@/shared/domain";
 import { CampaignState } from "@/shared/types";
@@ -15,10 +18,12 @@ import { useNavigation } from "../../../hooks/navigationHook";
 import { useParams } from "../../../hooks/useParamsHook";
 import { getCampaignBadgeInfo } from "../gameplay/campaignBadge.utils";
 import { GameChrome } from "../gameplay/GameChrome";
+import { ChronicleTab } from "./ChronicleTab";
 import { FocusTab } from "./FocusTab";
 import { OverviewTab } from "./OverviewTab";
+import { RelationsTab } from "./RelationsTab";
 
-type DashboardTab = "overview" | "focuses";
+type DashboardTab = "overview" | "focuses" | "relations" | "chronicle";
 
 export function PoliticalDashboardPage() {
   const { campaignId = "" } = useParams();
@@ -26,12 +31,26 @@ export function PoliticalDashboardPage() {
   const config = container.resolve(ConfigEngine).getCampaignConfig(campaignId);
   const { goToCampaign } = useNavigation();
   const [stored] = useState(() => stateEngine.getCampaignState());
-  // Opening the dashboard is what counts as seeing the public events.
+  // Opening the dashboard is what counts as seeing the news, so the stored
+  // state is marked seen right away while the "new" markers still come from
+  // the stored state.
   const [state, setState] = useState<CampaignState | null>(() =>
-    stored ? markPublicEventsSeen(stored, config.campaignEvents) : null,
+    stored
+      ? markRelationsSeen(markPublicEventsSeen(stored, config.campaignEvents))
+      : null,
   );
   const [tab, setTab] = useState<DashboardTab>("overview");
   const hasFocuses = getFocuses(config).length > 0;
+  const relationGroups = useMemo(
+    () => (stored ? buildRelationGroups(stored, config) : []),
+    [stored, config],
+  );
+  const tabs: DashboardTab[] = [
+    "overview",
+    ...(hasFocuses ? (["focuses"] as const) : []),
+    ...(relationGroups.length > 0 ? (["relations"] as const) : []),
+    "chronicle",
+  ];
 
   const overview = useMemo(
     () => (state ? buildDashboardOverview(state, config) : undefined),
@@ -91,34 +110,37 @@ export function PoliticalDashboardPage() {
             </Button>
           </div>
 
-          {hasFocuses && (
-            <div role="tablist" className="flex gap-2">
-              {(["overview", "focuses"] as const).map((id) => (
-                <Button
-                  key={id}
-                  variant="tab"
-                  role="tab"
-                  aria-selected={tab === id}
-                  selected={tab === id}
-                  onClick={() => setTab(id)}
-                  testId={`dashboardTab-${id}`}
-                >
-                  <Button.Text>
-                    {t(`politicalDashboard.tabs.${id}`)}
-                  </Button.Text>
-                </Button>
-              ))}
-            </div>
-          )}
+          <div role="tablist" className="flex flex-wrap gap-2">
+            {tabs.map((id) => (
+              <Button
+                key={id}
+                variant="tab"
+                role="tab"
+                aria-selected={tab === id}
+                selected={tab === id}
+                onClick={() => setTab(id)}
+                testId={`dashboardTab-${id}`}
+              >
+                <Button.Text>{t(`politicalDashboard.tabs.${id}`)}</Button.Text>
+              </Button>
+            ))}
+          </div>
 
-          {tab === "focuses" && focusOverview ? (
+          {tab === "focuses" && focusOverview && (
             <FocusTab
               overview={focusOverview}
               onSelect={(focusId) =>
                 setState(selectFocus(state, config, focusId))
               }
             />
-          ) : (
+          )}
+          {tab === "relations" && <RelationsTab groups={relationGroups} />}
+          {tab === "chronicle" && (
+            <ChronicleTab
+              events={getPublicEvents(state, config.campaignEvents)}
+            />
+          )}
+          {tab === "overview" && (
             <OverviewTab
               overview={overview}
               focus={focusOverview}
