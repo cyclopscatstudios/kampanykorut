@@ -5,11 +5,13 @@ import { finalResultLoader } from "./components/loaders/finalResult.loader";
 import { mainGameScreenLoader } from "./components/loaders/mainGameScreen.loader";
 import { mainMenuLoader } from "./components/loaders/mainMenu.loader";
 import { newGameSelectorLoader } from "./components/loaders/newGameSelector.loader";
+import { politicalDashboardLoader } from "./components/loaders/politicalDashboard.loader";
 import {
   landingPageRouter,
   rootLoader,
 } from "./components/loaders/route.loader";
 import { sideSelectorLoader } from "./components/loaders/sideSelector.loader";
+import { PoliticalDashboardPage } from "./components/ui/dashboard/PoliticalDashboardPage";
 import { FinalResultScreen } from "./components/ui/gameplay/FinalResultScreen/EndResultScreen";
 import { AboutMenu } from "./components/ui/menu/AboutMenu";
 import { ClassicModeSelectorMenu } from "./components/ui/menu/ClassicModeSelectorMenu";
@@ -78,6 +80,11 @@ export const router = createBrowserRouter([
         path: "game/:id",
         element: <MainGameScreenWrapper />,
         loader: mainGameScreenLoader,
+      },
+      {
+        path: "game/:id/dashboard",
+        element: <PoliticalDashboardPage />,
+        loader: politicalDashboardLoader,
       },
       {
         path: "game/:id/end-results",

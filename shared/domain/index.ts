@@ -9,6 +9,7 @@ export * from "./ElectionType";
 export * from "./Majority";
 export * from "./MandateCalculator";
 export * from "./MayoralResultCalculator";
+export * from "./PoliticalDashboard";
 export * from "./PollsterEngine";
 export * from "./QuestionEligibility";
 export * from "./ResultModifier";

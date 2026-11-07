@@ -17,6 +17,7 @@ export interface CampaignManifestFiles {
   customGroups?: string;
   customPollsters?: string;
   campaignEvents?: string;
+  politicalConfig?: string;
   playableSides?: Record<string, PlayableSideManifest>;
 }
 
