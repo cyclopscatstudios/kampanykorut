@@ -52,6 +52,52 @@ export interface PoliticalConfig {
   relations?: Relation[];
   // Once this event has triggered, the chosen focus can no longer be changed.
   focusLockEventId?: string;
+  coalition?: CoalitionConfig;
+  epilogues?: Epilogue[];
+}
+
+export interface CoalitionPartner {
+  partyId: string;
+  // Without a condition the party always accepts the offer.
+  acceptWhen?: Condition;
+  acceptReason: string;
+  rejectReason: string;
+}
+
+export interface CoalitionConfig {
+  partners: CoalitionPartner[];
+}
+
+export type GovernmentOutcome =
+  | "single-majority"
+  | "coalition"
+  | "failed"
+  | "opposition";
+
+export const GOVERNMENT_OUTCOMES: readonly GovernmentOutcome[] = [
+  "single-majority",
+  "coalition",
+  "failed",
+  "opposition",
+];
+
+export interface Epilogue {
+  id: string;
+  title: string;
+  body: string;
+  icon?: BootstrapIcon;
+  // The first epilogue whose outcomes and condition both match is shown.
+  outcomes?: GovernmentOutcome[];
+  when?: Condition;
+}
+
+export interface CoalitionResponse {
+  partyId: string;
+  accepted: boolean;
+}
+
+export interface CoalitionState {
+  responses: CoalitionResponse[];
 }
 
 export interface PoliticalDashboardState {

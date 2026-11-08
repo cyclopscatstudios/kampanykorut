@@ -27,7 +27,11 @@
     }
   ],
   "relationGroups": [
-    { "id": "parties", "title": "Pártok", "icon": "arrow-left-right" }
+    {
+      "id": "parties",
+      "title": "Pártok",
+      "icon": "arrow-left-right"
+    }
   ],
   "relations": [
     {
@@ -47,6 +51,51 @@
       "tone": "tense",
       "label": "Rivális",
       "description": "Teszt: a fő ellenfél."
+    }
+  ],
+  "coalition": {
+    "partners": [
+      {
+        "partyId": "yellow_party",
+        "acceptWhen": {
+          "type": "answer-selected",
+          "questionId": "prop_q2",
+          "answerId": "A"
+        },
+        "acceptReason": "Teszt: a sárgák emlékeznek a kampány alatti nyitásra, és igent mondanak.",
+        "rejectReason": "Teszt: a kampányban elutasítottad a tárgyalást, a sárgák most nemet mondanak."
+      },
+      {
+        "partyId": "red_party",
+        "acceptWhen": {
+          "type": "focus-selected",
+          "focusId": "coalition_ready"
+        },
+        "acceptReason": "Teszt: a vörösök a koalíciós fókuszod miatt nyitottak.",
+        "rejectReason": "Teszt: a fő riválissal nem jön létre megállapodás."
+      }
+    ]
+  },
+  "epilogues": [
+    {
+      "id": "broad_coalition",
+      "title": "Széles koalíció",
+      "body": "Teszt epilógus: a kampány alatti nyitás meghozta a kormánytöbbséget.",
+      "icon": "people-fill",
+      "outcomes": ["coalition"]
+    },
+    {
+      "id": "alone",
+      "title": "Egyedül a csúcson",
+      "body": "Teszt epilógus: a zöldek önálló többséggel kormányoznak.",
+      "icon": "trophy-fill",
+      "outcomes": ["single-majority"]
+    },
+    {
+      "id": "deadlock",
+      "title": "Patthelyzet",
+      "body": "Teszt epilógus: nem jött létre kormánytöbbség, új választás jöhet.",
+      "icon": "hourglass-split"
     }
   ]
 }

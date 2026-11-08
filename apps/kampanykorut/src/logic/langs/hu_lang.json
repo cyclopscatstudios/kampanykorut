@@ -147,7 +147,20 @@
       "label": "Többség: {{majority}} mandátum",
       "reached": "Megvan",
       "missing": "Nincs meg · {{missing}} hiányzik"
-    }
+    },
+    "government": {
+      "label": "Kormányalakítás",
+      "single-majority": "Önálló többség",
+      "coalition": "Koalíciós többség",
+      "failed": "Sikertelen kormányalakítás",
+      "opposition": "Ellenzékben",
+      "seats": "{{seats}} / {{majority}} mandátum"
+    },
+    "focus": {
+      "label": "Politikai fókusz",
+      "none": "Nem választottál fókuszt"
+    },
+    "epilogue": "Epilógus"
   },
   "gameHeader": {
     "turnsTooltip": "Lejátszott fordulók",
@@ -364,6 +377,20 @@
     "nationalAdded": "+ {{seats}} országos listás mandátum kiosztva",
     "hint": "Minden pötty egy mandátum. Arányos rendszer: a körzet nem a győztesé, hanem megoszlik.",
     "skip": "Ugrás a végére",
+    "continue": "Tovább az eredményhez"
+  },
+  "coalition": {
+    "kicker": "Kormányalakítás",
+    "title": "Koalíciós ajánlat",
+    "resultTitle": "A pártok válaszoltak",
+    "subtitle": "{{seats}} mandátumod van, a többséghez {{majority}} kell. Egyszer tehetsz ajánlatot.",
+    "potential": "Lehetséges többség",
+    "potentialHint": "Csak akkor jön létre, ha minden megkeresett párt elfogadja az ajánlatot.",
+    "governmentSeats": "Kormánytöbbség",
+    "seats": "{{seats}} mandátum",
+    "submit": "Ajánlat elküldése ({{parties}})",
+    "accepted": "Elfogadta",
+    "rejected": "Elutasította",
     "continue": "Tovább az eredményhez"
   },
   "bugReporter": {

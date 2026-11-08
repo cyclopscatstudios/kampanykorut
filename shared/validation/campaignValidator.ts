@@ -6,11 +6,13 @@ import {
   Condition,
   GAME_MODES,
   GameMode,
+  GOVERNMENT_OUTCOMES,
+  GovernmentOutcome,
   RawQuestion,
   RELATION_TONES,
   RelationTone,
 } from "../types";
-import { validateCondition } from "./conditionValidator";
+import { ConditionReferences, validateCondition } from "./conditionValidator";
 
 export type Severity = "error" | "warning";
 
@@ -1946,6 +1948,14 @@ function checkPoliticalConfig(
       `unknown event "${String(data.focusLockEventId)}"`,
     );
   }
+  const refs = {
+    questions,
+    candidateIds: ctx.parties,
+    eventIds: ctx.eventIds,
+    focusIds: ctx.focusIds,
+  };
+  checkCoalition(ctx, file, data, refs);
+  checkEpilogues(ctx, file, data, refs);
   if (data.focuses === undefined) {
     return;
   }
@@ -1960,12 +1970,6 @@ function checkPoliticalConfig(
     );
     return;
   }
-  const refs = {
-    questions,
-    candidateIds: ctx.parties,
-    eventIds: ctx.eventIds,
-    focusIds: ctx.focusIds,
-  };
   const seen = new Set<string>();
   data.focuses.forEach((focus, index) => {
     const path = `/focuses/${index}`;
@@ -2012,6 +2016,164 @@ function checkPoliticalConfig(
         );
       }
     }
+  });
+}
+
+type ConditionRefs = ConditionReferences;
+
+function checkConditionField(
+  ctx: Context,
+  file: string,
+  condition: unknown,
+  refs: ConditionRefs,
+  path: string,
+) {
+  if (condition !== undefined) {
+    validateCondition(condition, refs, path).forEach((issue) =>
+      report(ctx, "error", issue.code, file, issue.path, issue.message),
+    );
+  }
+}
+
+function checkCoalition(
+  ctx: Context,
+  file: string,
+  data: Record<string, unknown>,
+  refs: ConditionRefs,
+) {
+  if (data.coalition === undefined) {
+    return;
+  }
+  const partners = isObject(data.coalition)
+    ? data.coalition.partners
+    : undefined;
+  if (!Array.isArray(partners)) {
+    report(
+      ctx,
+      "error",
+      "coalition-invalid",
+      file,
+      "/coalition",
+      "coalition needs a partners array",
+    );
+    return;
+  }
+  const seen = new Set<string>();
+  partners.forEach((partner, index) => {
+    const path = `/coalition/partners/${index}`;
+    if (
+      !isObject(partner) ||
+      typeof partner.acceptReason !== "string" ||
+      typeof partner.rejectReason !== "string"
+    ) {
+      report(
+        ctx,
+        "error",
+        "coalition-invalid",
+        file,
+        path,
+        "coalition partner needs a partyId, acceptReason and rejectReason",
+      );
+      return;
+    }
+    const partyId = String(partner.partyId);
+    if (!ctx.parties.has(partyId)) {
+      report(
+        ctx,
+        "error",
+        "unknown-party",
+        file,
+        `${path}/partyId`,
+        `unknown party "${partyId}"`,
+      );
+    } else if (seen.has(partyId)) {
+      report(
+        ctx,
+        "error",
+        "coalition-duplicate",
+        file,
+        `${path}/partyId`,
+        `duplicate coalition partner "${partyId}"`,
+      );
+    }
+    seen.add(partyId);
+    checkConditionField(
+      ctx,
+      file,
+      partner.acceptWhen,
+      refs,
+      `${path}/acceptWhen`,
+    );
+  });
+}
+
+function checkEpilogues(
+  ctx: Context,
+  file: string,
+  data: Record<string, unknown>,
+  refs: ConditionRefs,
+) {
+  if (data.epilogues === undefined) {
+    return;
+  }
+  if (!Array.isArray(data.epilogues)) {
+    report(
+      ctx,
+      "error",
+      "epilogue-invalid",
+      file,
+      "/epilogues",
+      "epilogues must be an array",
+    );
+    return;
+  }
+  const seen = new Set<string>();
+  data.epilogues.forEach((epilogue, index) => {
+    const path = `/epilogues/${index}`;
+    if (
+      !isObject(epilogue) ||
+      typeof epilogue.id !== "string" ||
+      typeof epilogue.title !== "string" ||
+      typeof epilogue.body !== "string"
+    ) {
+      report(
+        ctx,
+        "error",
+        "epilogue-invalid",
+        file,
+        path,
+        "epilogue needs a string id, title and body",
+      );
+      return;
+    }
+    if (seen.has(epilogue.id)) {
+      report(
+        ctx,
+        "error",
+        "epilogue-duplicate",
+        file,
+        `${path}/id`,
+        `duplicate epilogue id "${epilogue.id}"`,
+      );
+    }
+    seen.add(epilogue.id);
+    if (
+      epilogue.outcomes !== undefined &&
+      (!Array.isArray(epilogue.outcomes) ||
+        epilogue.outcomes.some(
+          (o) => !GOVERNMENT_OUTCOMES.includes(o as GovernmentOutcome),
+        ))
+    ) {
+      report(
+        ctx,
+        "error",
+        "epilogue-invalid",
+        file,
+        `${path}/outcomes`,
+        `outcomes must be a list of ${GOVERNMENT_OUTCOMES.join(", ")}`,
+      );
+    }
+    checkConditionField(ctx, file, epilogue.when, refs, `${path}/when`);
   });
 }
 

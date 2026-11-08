@@ -3,15 +3,10 @@ import {
   CampaignState,
   Condition,
   FocusStatus,
-  HistoryItem,
   PoliticalFocus,
 } from "../types";
 import { getCampaignEventState } from "./CampaignStateAccess";
-import { createConditionContext } from "./ConditionContext";
-import {
-  ConditionEvaluationError,
-  evaluateCondition,
-} from "./ConditionEvaluator";
+import { type Answers, createConditionCheck } from "./ConditionCheck";
 
 export interface FocusView {
   id: string;
@@ -30,7 +25,6 @@ export interface FocusOverview {
 }
 
 type FocusConfig = Pick<CampaignConfig, "politicalConfig" | "electionConfig">;
-type Answers = Pick<HistoryItem, "questionId" | "answerId">[];
 
 export function getFocuses(config: FocusConfig): PoliticalFocus[] {
   return config.politicalConfig?.focuses ?? [];
@@ -92,23 +86,7 @@ export function buildFocusOverview(
 ): FocusOverview {
   const selectedId = getSelectedFocusId(state);
   const locked = isFocusLocked(state, config);
-  let context: ReturnType<typeof createConditionContext> | undefined;
-  const holds = (condition?: Condition) => {
-    if (!condition) {
-      return false;
-    }
-    context ??= createConditionContext(state, answers, config.electionConfig);
-    try {
-      return evaluateCondition(condition, context);
-    } catch (error) {
-      // A condition that cannot be decided yet (e.g. no results before the
-      // first poll) simply does not hold.
-      if (error instanceof ConditionEvaluationError) {
-        return false;
-      }
-      throw error;
-    }
-  };
+  const holds = createConditionCheck(state, answers, config.electionConfig);
 
   const focuses = getFocuses(config).map((focus): FocusView => {
     const status = getStatus(focus, selectedId, locked, holds);

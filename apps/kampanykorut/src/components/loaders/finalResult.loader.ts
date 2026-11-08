@@ -1,6 +1,7 @@
-import type { LoaderFunctionArgs } from "react-router";
+import { type LoaderFunctionArgs, redirect } from "react-router";
 import { container } from "tsyringe";
 import { ConfigEngine, StateEngine } from "@/logic/application";
+import { needsCoalitionOffer } from "@/shared/domain";
 import { createLogger, setLogTags } from "@/shared/logger";
 import { loadCampaignConfig } from "../../logic/application/loadCampaignConfig";
 
@@ -35,6 +36,13 @@ export async function finalResultLoader({ params }: LoaderFunctionArgs) {
   }
 
   const config = configEngine.getCampaignConfig(campaignId);
+  // A hung parliament first goes through the one-off coalition offer.
+  if (needsCoalitionOffer(state, config)) {
+    // Thrown so the loader keeps returning only the results data.
+    throw redirect(
+      `/game/${campaignId}/coalition?sessionId=${stateEngine.getSessionId()}`,
+    );
+  }
 
   const results = state.results && {
     ...state.results,

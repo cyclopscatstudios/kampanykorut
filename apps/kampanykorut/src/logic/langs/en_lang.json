@@ -147,7 +147,20 @@
       "label": "Majority: {{majority}} seats",
       "reached": "Reached",
       "missing": "Not reached · {{missing}} short"
-    }
+    },
+    "government": {
+      "label": "Government",
+      "single-majority": "Majority of its own",
+      "coalition": "Coalition majority",
+      "failed": "Failed to form a government",
+      "opposition": "In opposition",
+      "seats": "{{seats}} / {{majority}} seats"
+    },
+    "focus": {
+      "label": "Political focus",
+      "none": "You did not choose a focus"
+    },
+    "epilogue": "Epilogue"
   },
   "gameHeader": {
     "turnsTooltip": "Turns played",
@@ -365,6 +378,20 @@
     "hint": "Each dot is one seat. Proportional system: a region is shared, not won.",
     "skip": "Skip to the end",
     "continue": "Continue to the result"
+  },
+  "coalition": {
+    "kicker": "Forming a government",
+    "title": "Coalition offer",
+    "resultTitle": "The parties have answered",
+    "subtitle": "You hold {{seats}} seats; a majority needs {{majority}}. You can make one offer.",
+    "potential": "Possible majority",
+    "potentialHint": "It only forms if every party you approach accepts the offer.",
+    "governmentSeats": "Government majority",
+    "seats": "{{seats}} seats",
+    "submit": "Send offer ({{parties}})",
+    "accepted": "Accepted",
+    "rejected": "Rejected",
+    "continue": "On to the results"
   },
   "bugReporter": {
     "title": "Report a bug",
