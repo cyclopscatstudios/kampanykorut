@@ -1398,7 +1398,71 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
     });
   }
   checkImageFields(ctx, file, data.electionAssets, "/electionAssets");
+  checkBaseResults(ctx, file, data.baseResults, sides);
   return sides;
+}
+
+// baseResults is keyed by the player's side, then by party; a flat party map
+// is silently ignored by the engine, so it is rejected here.
+function checkBaseResults(
+  ctx: Context,
+  file: string,
+  baseResults: unknown,
+  sides: Map<string, unknown>,
+) {
+  if (baseResults === undefined) {
+    return;
+  }
+  if (!isObject(baseResults)) {
+    report(
+      ctx,
+      "error",
+      "base-results-invalid",
+      file,
+      "/baseResults",
+      "baseResults must be an object of side -> party -> number",
+    );
+    return;
+  }
+  for (const [side, swings] of Object.entries(baseResults)) {
+    const path = `/baseResults/${side}`;
+    if (!sides.has(side)) {
+      report(
+        ctx,
+        "error",
+        "base-results-invalid",
+        file,
+        path,
+        `"${side}" is not a playable side`,
+      );
+    }
+    if (!isObject(swings)) {
+      report(
+        ctx,
+        "error",
+        "base-results-invalid",
+        file,
+        path,
+        "must be an object of party -> number",
+      );
+      continue;
+    }
+    for (const [party, value] of Object.entries(swings)) {
+      if (!party.startsWith("_")) {
+        checkParty(ctx, file, `${path}/${party}`, party);
+      }
+      if (!isFiniteNumber(value)) {
+        report(
+          ctx,
+          "error",
+          "base-results-invalid",
+          file,
+          `${path}/${party}`,
+          "value must be a finite number",
+        );
+      }
+    }
+  }
 }
 
 function checkCandidateListData(ctx: Context, file: string, data: unknown) {

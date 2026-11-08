@@ -395,6 +395,28 @@ describe("validateCampaign", () => {
     expect(codes(result)).toEqual(["error:election-config-invalid"]);
   });
 
+  it("accepts side-keyed base results", () => {
+    const result = validate((f) => {
+      file(f, "election_config.json").baseResults = {
+        party_a: { party_a: -2, party_b: 2, _other: 1 },
+      };
+    });
+    expect(codes(result)).toEqual([]);
+  });
+
+  it("reports base results that are not keyed by side", () => {
+    const result = validate((f) => {
+      file(f, "election_config.json").baseResults = {
+        party_a: -2,
+        party_c: { party_b: 2 },
+      };
+    });
+    expect(codes(result)).toEqual([
+      "error:base-results-invalid",
+      "error:base-results-invalid",
+    ]);
+  });
+
   describe("election definition", () => {
     const electionConfig = (f: Files) => file(f, "election_config.json");
 

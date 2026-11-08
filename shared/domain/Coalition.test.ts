@@ -3,6 +3,7 @@ import {
   buildCoalitionResult,
   buildCoalitionView,
   buildFinalOutcome,
+  getEndResultStory,
   getGovernmentOutcome,
   needsCoalitionOffer,
   submitCoalitionOffer,
@@ -177,23 +178,43 @@ describe("Coalition", () => {
     ).toBe("coalition");
   });
 
-  it("picks the first matching epilogue and keeps the focus separate", () => {
+  it("picks the first matching epilogue", () => {
     const coalition = submitCoalitionOffer(hung, config, answeredA, ["red"]);
 
     expect(buildFinalOutcome(coalition, config, answeredA)).toMatchObject({
       outcome: "coalition",
       playerSeats: 180,
       governmentSeats: 330,
-      focus: { id: "unity", status: "completed" },
       epilogue: { id: "united" },
     });
     const withoutA = submitCoalitionOffer(hung, config, [], ["red"]);
     expect(buildFinalOutcome(withoutA, config, [])).toMatchObject({
-      focus: { id: "unity", status: "selected" },
       epilogue: { id: "any_coalition" },
     });
     expect(buildFinalOutcome(hung, config, answeredA)?.epilogue?.id).toBe(
       "fallback",
     );
+  });
+});
+
+describe("getEndResultStory", () => {
+  it("keeps the classic story without a government outcome", () => {
+    expect(getEndResultStory(undefined, true, false)).toBe("playerSideVictory");
+    expect(getEndResultStory(undefined, false, false)).toBe("playerSideDefeat");
+    expect(getEndResultStory(undefined, false, true)).toBe("deadlock");
+  });
+
+  it("follows the government formed in strategic mode", () => {
+    expect(getEndResultStory("coalition", false, true)).toBe(
+      "playerSideVictory",
+    );
+    expect(getEndResultStory("single-majority", true, false)).toBe(
+      "playerSideVictory",
+    );
+    expect(getEndResultStory("failed", false, true)).toBe("deadlock");
+    expect(getEndResultStory("opposition", false, false)).toBe(
+      "playerSideDefeat",
+    );
+    expect(getEndResultStory("opposition", false, true)).toBe("deadlock");
   });
 });

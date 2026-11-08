@@ -94,6 +94,9 @@ test("proportional test campaign: a focus must be chosen before the first visit"
 
   await statusButton.click();
   await expect(page).toHaveURL(/dashboard/);
+  // Both header entries stay on the dashboard; its own one is inactive.
+  await expect(page.getByTestId("pollsterMenu")).toBeVisible();
+  await expect(statusButton).toHaveAttribute("aria-current", "page");
   await page.getByRole("tab", { name: "Fókuszok" }).click();
   await page.getByTestId("selectFocus-coalition_ready").click();
   // The opposite direction drops out for good.
@@ -102,7 +105,11 @@ test("proportional test campaign: a focus must be chosen before the first visit"
     page.getByRole("article", { name: "Önálló többség" }).getByText("Kizárva"),
   ).toBeVisible();
 
-  await page.getByTestId("politicalDashboardBack").click();
+  // Picking a pollster on the dashboard returns to the map that shows it.
+  await page.getByTestId("pollsterMenu").click();
+  await page.getByRole("button", { name: "Közvélemény-kutatók" }).hover();
+  await page.getByText("Felmérések átlaga").click();
+  await expect(page).not.toHaveURL(/dashboard/);
   await expect(statusButton).toHaveAccessibleName("Politikai helyzet");
   await expect(page.getByTestId("focusRequiredNote")).toHaveCount(0);
   await page.locator("svg path[data-id]").nth(40).click({ force: true });
@@ -137,8 +144,22 @@ test("proportional test campaign: an accepted coalition offer forms a government
   await expect(page).toHaveURL(/end-results/);
   const summary = page.getByTestId("governmentSummary");
   await expect(summary.getByText("Koalíciós többség")).toBeVisible();
-  await expect(summary.getByText("Széles koalíció")).toBeVisible();
+  // The classic story block follows the government that was formed.
+  await expect(
+    page.getByRole("heading", { name: "Kormányt alakíthatsz" }),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("article", { name: "Epilógus" })
+      .getByText("Széles koalíció"),
+  ).toBeVisible();
   await expect(page.getByText("Többség: 201 mandátum")).toHaveCount(0);
+
+  // The focus result sits with the badges, not on the summary.
+  await expect(page.getByTestId("focusResult")).toHaveCount(0);
+  await page.getByRole("button", { name: "Statisztikák" }).click();
+  await page.getByRole("button", { name: "Jelvények" }).click();
+  await expect(page.getByTestId("focusResult")).toBeVisible();
 
   await page.reload();
   await expect(page).toHaveURL(/end-results/);
@@ -169,5 +190,7 @@ test("proportional test campaign: a rejected offer leaves no government", async 
   await page.getByTestId("coalitionContinue").click();
   const summary = page.getByTestId("governmentSummary");
   await expect(summary.getByText("Sikertelen kormányalakítás")).toBeVisible();
-  await expect(summary.getByText("Patthelyzet")).toBeVisible();
+  await expect(
+    page.getByRole("article", { name: "Epilógus" }).getByText("Patthelyzet"),
+  ).toBeVisible();
 });

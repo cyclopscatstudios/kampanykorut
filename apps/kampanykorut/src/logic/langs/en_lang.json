@@ -184,7 +184,8 @@
     },
     "entry": {
       "label": "Political situation",
-      "withNews": "Political situation: new event"
+      "withNews": "Political situation: new event",
+      "current": "Political situation: currently open"
     },
     "tabs": {
       "overview": "Overview",

@@ -12,7 +12,8 @@
       "green_party": {
         "emma_wilson": {
           "questions": "shared/questions.json",
-          "answerEffect": "shared/answer_effects.json"
+          "answerEffect": "shared/answer_effects.json",
+          "endResults": "end_results.json"
         }
       }
     }

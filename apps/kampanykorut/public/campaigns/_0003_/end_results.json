@@ -1,0 +1,20 @@
+{
+  "playerSideVictory": {
+    "title": "Kormányt alakíthatsz",
+    "subtitle": "A Green Party vezeti az országot",
+    "description": "Teszt szöveg: a választás után a Green Party vezetésével új kormány alakulhat. A végleges kampányban itt jelenik meg a győzelem rövid leírása.",
+    "imageUri": "/images/2022_beke-vs-remeny/ellenzek_gyozelem.jpg"
+  },
+  "playerSideDefeat": {
+    "title": "Ellenzékben folytatod",
+    "subtitle": "A választók másként döntöttek",
+    "description": "Teszt szöveg: a Green Party nem került kormányra. A végleges kampányban itt jelenik meg a vereség rövid leírása.",
+    "imageUri": "/images/2022_beke-vs-remeny/ellenzeki_vereseg_sima.png"
+  },
+  "deadlock": {
+    "title": "Patthelyzet",
+    "subtitle": "Nincs kormányképes többség",
+    "description": "Teszt szöveg: egyik párt sem szerzett többséget, és a koalíciós tárgyalások sem hoztak eredményt. A végleges kampányban itt jelenik meg a patthelyzet rövid leírása.",
+    "imageUri": "/images/2022_beke-vs-remeny/deadlock.jpg"
+  }
+}

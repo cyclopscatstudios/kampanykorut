@@ -9,7 +9,6 @@ import { type Answers, createConditionCheck } from "./ConditionCheck";
 import { getParliamentaryConfig } from "./ElectionType";
 import { getMajorityThresholds } from "./Majority";
 import { isStrategicMode } from "./PoliticalDashboard";
-import { buildFocusOverview, type FocusView } from "./PoliticalFocus";
 import { isProportionalElection } from "./ProportionalSeatCalculator";
 
 type CoalitionConfig = Pick<
@@ -48,7 +47,6 @@ export interface FinalOutcome {
   playerSeats: number;
   governmentSeats: number;
   majority: number;
-  focus?: FocusView;
   epilogue?: Epilogue;
 }
 
@@ -223,7 +221,34 @@ export function buildFinalOutcome(
         ? coalition.seats
         : setup.player.seats,
     majority: setup.majority,
-    focus: buildFocusOverview(state, config, answers).selected,
     epilogue,
   };
+}
+
+export type EndResultStory =
+  | "playerSideVictory"
+  | "playerSideDefeat"
+  | "deadlock";
+
+// In strategic mode the story follows the government formed, so a coalition
+// after a hung parliament reads as a victory rather than a deadlock.
+export function getEndResultStory(
+  outcome: GovernmentOutcome | undefined,
+  playerWon: boolean,
+  noWinner: boolean,
+): EndResultStory {
+  switch (outcome) {
+    case "single-majority":
+    case "coalition":
+      return "playerSideVictory";
+    case "failed":
+      return "deadlock";
+    case "opposition":
+      return noWinner ? "deadlock" : "playerSideDefeat";
+    default:
+      if (noWinner) {
+        return "deadlock";
+      }
+      return playerWon ? "playerSideVictory" : "playerSideDefeat";
+  }
 }

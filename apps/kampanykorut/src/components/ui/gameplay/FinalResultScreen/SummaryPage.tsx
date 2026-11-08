@@ -4,6 +4,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { ConfigEngine, StateEngine } from "@/logic/application";
 import {
   buildFinalOutcome,
+  getEndResultStory,
   getMajorityStatus,
   getMajorityType,
   getParliamentaryConfig,
@@ -14,7 +15,7 @@ import { Text } from "../../../../../../../shared/ui/Text";
 import { Heading } from "../../Heading";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
-import { GovernmentSummary } from "./GovernmentSummary";
+import { EpilogueCard, GovernmentOutcomeBadge } from "./GovernmentSummary";
 
 export function SummaryPage({ results }: { results: FinalResults }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -40,13 +41,6 @@ export function SummaryPage({ results }: { results: FinalResults }) {
           ?.endResults
       : undefined;
 
-  const didPlayerWin = winner.party === playerSideId && !noWinner;
-  const assets = didPlayerWin
-    ? sideEndResults?.playerSideVictory
-    : sideEndResults?.playerSideDefeat;
-
-  const noWinnerAssets = sideEndResults?.deadlock;
-
   const finalOutcome = useMemo(
     () =>
       campaignState && currentConfig
@@ -59,11 +53,12 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     [campaignState, currentConfig, campaignStateEngine],
   );
 
-  const heroAssets = noWinner ? noWinnerAssets : assets;
-  // A strategic campaign leads with the government outcome, so the side's
-  // story block is only shown when the campaign provides one.
-  const showHero =
-    !finalOutcome || Boolean(heroAssets?.imageUri || heroAssets?.description);
+  const story = getEndResultStory(
+    finalOutcome?.outcome,
+    winner.party === playerSideId,
+    noWinner,
+  );
+  const heroAssets = sideEndResults?.[story];
 
   const parties = useMemo(
     () =>
@@ -73,40 +68,35 @@ export function SummaryPage({ results }: { results: FinalResults }) {
 
   return (
     <>
-      {(!finalOutcome || heroAssets?.title) && (
-        <div className="border-b border-slate-200/65 p-3">
-          <Heading color="lightBlue" className="text-center mb-1">
-            {noWinner ? noWinnerAssets?.title : assets?.title}
-          </Heading>
-          <Text color="gray" className="text-center text-sm">
-            {noWinner ? noWinnerAssets?.subtitle : assets?.subtitle}
-          </Text>
-        </div>
-      )}
+      <div className="border-b border-slate-200/65 p-3">
+        <Heading color="lightBlue" className="text-center mb-1">
+          {heroAssets?.title}
+        </Heading>
+        <Text color="gray" className="text-center text-sm">
+          {heroAssets?.subtitle}
+        </Text>
+      </div>
       <div className="pb-5">
-        {finalOutcome && <GovernmentSummary outcome={finalOutcome} />}
-        {showHero && (
-          <div className="flex flex-col md:flex-row gap-4 md:gap-6 px-3 md:px-6 pt-5">
-            <div className="basis-full md:basis-1/2">
-              <ImageWrapper
-                src={
-                  noWinner
-                    ? (noWinnerAssets?.imageUri ?? "")
-                    : (assets?.imageUri ?? "")
-                }
-                type="final"
-                className={`object-cover rounded-xl ${
-                  didPlayerWin ? "" : "grayscale"
-                }`}
-              />
-            </div>
-            <div className="basis-full md:basis-1/2">
-              <Text color="gray" className="leading-relaxed">
-                {noWinner ? noWinnerAssets?.description : assets?.description}
-              </Text>
-            </div>
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6 px-3 md:px-6 pt-5">
+          <div className="basis-full md:basis-1/2">
+            <ImageWrapper
+              src={heroAssets?.imageUri ?? ""}
+              type="final"
+              className={`object-cover rounded-xl ${
+                story === "playerSideVictory" ? "" : "grayscale"
+              }`}
+            />
           </div>
-        )}
+          <div className="flex basis-full flex-col gap-4 md:basis-1/2">
+            {finalOutcome && <GovernmentOutcomeBadge outcome={finalOutcome} />}
+            <Text color="gray" className="leading-relaxed">
+              {heroAssets?.description}
+            </Text>
+            {finalOutcome?.epilogue && (
+              <EpilogueCard epilogue={finalOutcome.epilogue} />
+            )}
+          </div>
+        </div>
         {/* The government card already tells whether a majority formed. */}
         {results.regions && !finalOutcome && (
           <MajorityLabels
