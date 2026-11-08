@@ -64,8 +64,6 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
   );
   const hasUnreadPaper = hasUnreadEdition(state);
   const autoOpenPaper = settings.newspaperAutoOpen !== false;
-  // A new edition opens by itself only on the map, once nothing else is
-  // waiting to be shown.
   const isArrivalOpen =
     autoOpenPaper &&
     hasUnreadPaper &&

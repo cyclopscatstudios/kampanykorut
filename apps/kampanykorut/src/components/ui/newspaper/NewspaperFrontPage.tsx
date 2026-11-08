@@ -10,8 +10,6 @@ const BODY = "font-['Old_Standard_TT',Georgia,serif]";
 const INK = "text-[#1c1a17]";
 const SOFT_INK = "text-[#3a352c]";
 
-// The paper itself: masthead, date line, headline, photo and lead. Chrome
-// around it (buttons, paging) comes in through `footer`.
 export function NewspaperFrontPage({
   edition,
   year,

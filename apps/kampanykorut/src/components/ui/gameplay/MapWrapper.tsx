@@ -36,7 +36,6 @@ export function MapWrapper({
   stroke?: string;
   view?: ViewBox;
   electionConfig?: ElectionConfig;
-  // Rendered in the top-left corner over the map.
   overlay?: ReactNode;
 }) {
   const initialView = view ?? { x: 0, y: 0, w: width, h: height };

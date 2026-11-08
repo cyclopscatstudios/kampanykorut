@@ -21,6 +21,12 @@ export function SettingsDialog({
 }) {
   const { settings, updateSettings } = useSettings();
   const [settingsForm, setSettingsForm] = useState<GameSettings>(settings);
+  const [syncedSettings, setSyncedSettings] = useState(settings);
+
+  if (syncedSettings !== settings) {
+    setSyncedSettings(settings);
+    setSettingsForm(settings);
+  }
 
   const isEqual = JSON.stringify(settings) === JSON.stringify(settingsForm);
 

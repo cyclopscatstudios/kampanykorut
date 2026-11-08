@@ -30,7 +30,6 @@ export function NewspaperDialog({
   const [index, setIndex] = useState(last);
   const [openedAt, setOpenedAt] = useState(open ? last : -1);
 
-  // Every opening starts on the newest edition.
   if (open && openedAt !== last) {
     setOpenedAt(last);
     setIndex(last);

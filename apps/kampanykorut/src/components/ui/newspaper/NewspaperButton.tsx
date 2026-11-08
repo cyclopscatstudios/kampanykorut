@@ -54,8 +54,6 @@ export function NewspaperButton({
         </div>
       </Tooltip>
       {showRibbon && (
-        // Out of flow, so the strip floats over whatever sits beside the
-        // button instead of pushing it aside.
         <div className="absolute inset-y-0 left-full z-20 flex items-center">
           <button
             type="button"

@@ -162,7 +162,6 @@ describe("PoliticalFocus", () => {
     ]);
     expect(selectFocus(withKadar, opposites, "without_kadar")).toBe(withKadar);
 
-    // The exclusion holds from either side of the pair.
     const without = selectFocus(stateWith(), opposites, "without_kadar");
     expect(canSelectFocus(without, opposites, "with_kadar")).toBe(false);
   });
