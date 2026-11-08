@@ -24,5 +24,60 @@
         "eventId": "szentkiralyi_alexandra_withdrawal"
       }
     }
+  ],
+  "relationGroups": [
+    {
+      "id": "campaign",
+      "title": "Kampánycsapat",
+      "icon": "diagram-3-fill"
+    },
+    {
+      "id": "rivals",
+      "title": "Riválisok",
+      "icon": "arrow-left-right"
+    },
+    {
+      "id": "society",
+      "title": "Társadalmi szereplők",
+      "icon": "globe2"
+    }
+  ],
+  "relations": [
+    {
+      "id": "volunteers",
+      "name": "Önkéntesek",
+      "groupId": "campaign",
+      "icon": "people-fill",
+      "tone": "good",
+      "label": "Lelkes",
+      "description": "Teszt: az önkéntesek bíznak a kampányban."
+    },
+    {
+      "id": "szentkiralyi",
+      "name": "Szentkirályi-stáb",
+      "groupId": "rivals",
+      "icon": "flag-fill",
+      "tone": "calm",
+      "label": "Kivár",
+      "description": "Teszt: még nem döntötték el, hogyan folytatják."
+    },
+    {
+      "id": "karacsony",
+      "name": "Karácsony-stáb",
+      "groupId": "rivals",
+      "icon": "flag-fill",
+      "tone": "tense",
+      "label": "Feszült",
+      "description": "Teszt: a két kampány nyíltan bírálja egymást."
+    },
+    {
+      "id": "press",
+      "name": "Sajtó",
+      "groupId": "society",
+      "icon": "newspaper",
+      "tone": "calm",
+      "label": "Figyel",
+      "description": "Teszt: a sajtó kivár, de minden lépést követ."
+    }
   ]
 }

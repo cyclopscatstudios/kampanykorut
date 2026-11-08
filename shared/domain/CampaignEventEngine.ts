@@ -70,12 +70,15 @@ export class CampaignEventEngine {
   }
 
   private record(state: CampaignState, event: CampaignEvent): CampaignState {
-    const { triggeredEventIds, pendingAnnouncementIds } =
+    const { triggeredEventIds, pendingAnnouncementIds, triggeredAtTurn } =
       getCampaignEventState(state);
     const isFirstTrigger = !triggeredEventIds.includes(event.id);
     return {
       ...state,
       campaignEvents: {
+        triggeredAtTurn: isFirstTrigger
+          ? { ...triggeredAtTurn, [event.id]: state.turn }
+          : triggeredAtTurn,
         triggeredEventIds: isFirstTrigger
           ? [...triggeredEventIds, event.id]
           : triggeredEventIds,

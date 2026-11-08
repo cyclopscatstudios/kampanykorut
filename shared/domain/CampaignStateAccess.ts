@@ -28,6 +28,7 @@ export function getCampaignEventState(
   return {
     triggeredEventIds: state.campaignEvents?.triggeredEventIds ?? [],
     pendingAnnouncementIds: state.campaignEvents?.pendingAnnouncementIds ?? [],
+    triggeredAtTurn: state.campaignEvents?.triggeredAtTurn ?? {},
   };
 }
 
@@ -35,15 +36,15 @@ export function acknowledgeAnnouncement(
   state: CampaignState,
   eventId: string,
 ): CampaignState {
-  const { triggeredEventIds, pendingAnnouncementIds } =
-    getCampaignEventState(state);
+  const eventState = getCampaignEventState(state);
+  const { pendingAnnouncementIds } = eventState;
   if (!pendingAnnouncementIds.includes(eventId)) {
     return state;
   }
   return {
     ...state,
     campaignEvents: {
-      triggeredEventIds,
+      ...eventState,
       pendingAnnouncementIds: pendingAnnouncementIds.filter(
         (id) => id !== eventId,
       ),

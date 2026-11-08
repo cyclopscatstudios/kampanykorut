@@ -580,6 +580,88 @@ describe("validateCampaign", () => {
       ]);
     });
 
+    const relationConfig = (relation: object) => ({
+      gameMode: "strategic",
+      relationGroups: [{ id: "party", title: "Párton belül" }],
+      relations: [
+        {
+          id: "kadar_wing",
+          name: "Kádár-szárny",
+          groupId: "party",
+          tone: "calm",
+          label: "Kivár",
+          description: "Még nem döntöttek.",
+          ...relation,
+        },
+      ],
+    });
+
+    it("accepts relations and an event that changes one", () => {
+      expect(
+        validate((f) => {
+          withPolitical(relationConfig({}))(f);
+          file(f, "manifest.json").files.campaignEvents = "events.json";
+          f["events.json"] = [
+            {
+              id: "ultimatum",
+              conditions: [
+                {
+                  if: { type: "turn", min: 6 },
+                  effects: [
+                    {
+                      type: "set-relation",
+                      relationId: "kadar_wing",
+                      tone: "tense",
+                      label: "Feszült",
+                      description: "Szembehelyezkednek.",
+                    },
+                  ],
+                },
+              ],
+              announcement: {
+                title: "Kádár ultimátuma",
+                body: "Kongresszust követel.",
+                icon: "megaphone-fill",
+                major: true,
+              },
+            },
+          ];
+        }),
+      ).toEqual([]);
+    });
+
+    it("reports invalid relations and changes to unknown relations", () => {
+      const result = validate((f) => {
+        withPolitical(relationConfig({ groupId: "nope", tone: "angry" }))(f);
+        file(f, "manifest.json").files.campaignEvents = "events.json";
+        f["events.json"] = [
+          {
+            id: "e",
+            conditions: [
+              {
+                if: { type: "turn", min: 1 },
+                effects: [
+                  {
+                    type: "set-relation",
+                    relationId: "ghost",
+                    tone: "good",
+                    label: "",
+                    description: "x",
+                  },
+                ],
+              },
+            ],
+          },
+        ];
+      });
+      expect(codes(result)).toEqual([
+        "error:unknown-relation",
+        "error:relation-invalid",
+        "error:unknown-relation-group",
+        "error:relation-invalid",
+      ]);
+    });
+
     it("reports a config that is not an object", () => {
       expect(codes(validate(withPolitical([])))).toEqual([
         "error:political-config-invalid",

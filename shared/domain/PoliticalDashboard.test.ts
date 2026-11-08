@@ -47,7 +47,27 @@ describe("PoliticalDashboard", () => {
     });
 
     expect(getPublicEvents(state, events)).toEqual([
-      { id: "congress", title: "congress cím", body: "congress szöveg" },
+      {
+        id: "congress",
+        title: "congress cím",
+        body: "congress szöveg",
+        turn: undefined,
+      },
+    ]);
+  });
+
+  it("dates each public event by the turn it triggered", () => {
+    const state = stateWith({
+      campaignEvents: {
+        triggeredEventIds: ["ultimatum", "congress"],
+        pendingAnnouncementIds: [],
+        triggeredAtTurn: { ultimatum: 6, congress: 7 },
+      },
+    });
+
+    expect(getPublicEvents(state, events).map((e) => [e.id, e.turn])).toEqual([
+      ["ultimatum", 6],
+      ["congress", 7],
     ]);
   });
 
