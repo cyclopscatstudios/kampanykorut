@@ -166,6 +166,25 @@
     "entry": {
       "label": "Politikai helyzet",
       "withNews": "Politikai helyzet: új esemény"
+    },
+    "tabs": {
+      "overview": "Áttekintés",
+      "focuses": "Fókuszok"
+    },
+    "focus": {
+      "followed": "Követett fókusz",
+      "prompt": "Merre viszed a pártot?",
+      "choose": "Irány választása",
+      "select": "Ezt követem",
+      "switchNote": "A kijelölés csak a szándékodat rögzíti, a támogatottságodon nem változtat. Egy fordulópontig még válthatsz.",
+      "lockedNote": "Az irány véglegessé vált, a fókusz már nem váltható.",
+      "status": {
+        "available": "Választható",
+        "selected": "Követed",
+        "completed": "Teljesült",
+        "failed": "Meghiúsult",
+        "excluded": "Kizárva"
+      }
     }
   },
   "gameMenuBar": {

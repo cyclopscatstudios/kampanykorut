@@ -224,6 +224,20 @@ describe("evaluateCondition", () => {
       ).toBe(true);
     });
 
+    it("checks whether the player follows the focus", () => {
+      const condition: Condition = {
+        type: "focus-selected",
+        focusId: "without_kadar",
+      };
+      expect(evaluateCondition(condition, context())).toBe(false);
+      expect(
+        evaluateCondition(
+          condition,
+          context({ selectedFocusId: "without_kadar" }),
+        ),
+      ).toBe(true);
+    });
+
     it("checks whether the player plays the candidate", () => {
       const condition: Condition = {
         type: "player-candidate",

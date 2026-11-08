@@ -1,3 +1,28 @@
 {
-  "gameMode": "strategic"
+  "gameMode": "strategic",
+  "focusLockEventId": "szentkiralyi_alexandra_withdrawal",
+  "focuses": [
+    {
+      "id": "cooperation",
+      "title": "Összefogás",
+      "summary": "Közös jelölt az ellenzékkel",
+      "description": "Teszt fókusz: a kampányt az ellenzéki együttműködésre építed. Akkor teljesül, ha Szentkirályi Alexandra visszalép.",
+      "icon": "people-fill",
+      "completeWhen": {
+        "type": "event-triggered",
+        "eventId": "szentkiralyi_alexandra_withdrawal"
+      }
+    },
+    {
+      "id": "own_path",
+      "title": "Önálló út",
+      "summary": "Saját lista, saját program",
+      "description": "Teszt fókusz: egyedül indulsz, kompromisszumok nélkül. Meghiúsul, ha Szentkirályi Alexandra visszalép.",
+      "icon": "signpost-fill",
+      "failWhen": {
+        "type": "event-triggered",
+        "eventId": "szentkiralyi_alexandra_withdrawal"
+      }
+    }
+  ]
 }

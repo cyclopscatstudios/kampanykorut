@@ -87,6 +87,8 @@ function evaluateLeaf(
       return context.playerCandidateId === condition.candidateId;
     case "event-triggered":
       return context.triggeredEventIds.includes(condition.eventId);
+    case "focus-selected":
+      return context.selectedFocusId === condition.focusId;
     default:
       throw new ConditionEvaluationError(
         `unknown condition type "${(condition as { type?: unknown }).type}"`,
