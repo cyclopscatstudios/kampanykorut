@@ -4,7 +4,7 @@ import { District } from "./district";
 import { ConditionalRawEffect, RawEffect } from "./effects";
 import { Mandate, PartyVotes } from "./mandate";
 import { MayoralResult } from "./mayoral-result";
-import { PoliticalDashboardState } from "./political";
+import { CoalitionState, PoliticalDashboardState } from "./political";
 import { RawQuestion } from "./question";
 
 export interface CampaignState {
@@ -21,6 +21,7 @@ export interface CampaignState {
   candidates?: Record<string, CandidateCampaignState>;
   campaignEvents?: CampaignEventState;
   politicalDashboard?: PoliticalDashboardState;
+  coalition?: CoalitionState;
   campaignConfigVersion?: string;
   questionCursor?: number;
   decisionCount?: number;

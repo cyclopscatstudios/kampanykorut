@@ -619,6 +619,73 @@ describe("validateCampaign", () => {
       ]);
     });
 
+    it("accepts coalition partners and epilogues", () => {
+      expect(
+        validate(
+          withPolitical({
+            gameMode: "strategic",
+            coalition: {
+              partners: [
+                {
+                  partyId: "party_b",
+                  acceptWhen: {
+                    type: "answer-selected",
+                    questionId: "q1",
+                    answerId: "A",
+                  },
+                  acceptReason: "Igen",
+                  rejectReason: "Nem",
+                },
+              ],
+            },
+            epilogues: [
+              {
+                id: "won",
+                title: "Kormány",
+                body: "",
+                outcomes: ["coalition"],
+              },
+            ],
+          }),
+        ),
+      ).toEqual([]);
+    });
+
+    it("reports invalid coalition partners and epilogues", () => {
+      const partner = { acceptReason: "Igen", rejectReason: "Nem" };
+      const result = validate(
+        withPolitical({
+          gameMode: "strategic",
+          coalition: {
+            partners: [
+              { ...partner, partyId: "nobody" },
+              { ...partner, partyId: "party_b" },
+              { ...partner, partyId: "party_b" },
+              { partyId: "party_a" },
+            ],
+          },
+          epilogues: [
+            { id: "a", title: "A", body: "", outcomes: ["victory"] },
+            { id: "a", title: "B", body: "" },
+            {
+              id: "c",
+              title: "C",
+              body: "",
+              when: { type: "event-triggered", eventId: "nope" },
+            },
+          ],
+        }),
+      );
+      expect(codes(result)).toEqual([
+        "error:unknown-party",
+        "error:coalition-duplicate",
+        "error:coalition-invalid",
+        "error:epilogue-invalid",
+        "error:epilogue-duplicate",
+        "error:unknown-event",
+      ]);
+    });
+
     const relationConfig = (relation: object) => ({
       gameMode: "strategic",
       relationGroups: [{ id: "party", title: "Párton belül" }],

@@ -3,6 +3,7 @@ import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
 import { ConfigEngine, StateEngine } from "@/logic/application";
 import {
+  buildFinalOutcome,
   getMajorityStatus,
   getMajorityType,
   getParliamentaryConfig,
@@ -13,6 +14,7 @@ import { Text } from "../../../../../../../shared/ui/Text";
 import { Heading } from "../../Heading";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
+import { GovernmentSummary } from "./GovernmentSummary";
 
 export function SummaryPage({ results }: { results: FinalResults }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -45,6 +47,24 @@ export function SummaryPage({ results }: { results: FinalResults }) {
 
   const noWinnerAssets = sideEndResults?.deadlock;
 
+  const finalOutcome = useMemo(
+    () =>
+      campaignState && currentConfig
+        ? buildFinalOutcome(
+            campaignState,
+            currentConfig,
+            campaignStateEngine.getHistory() ?? [],
+          )
+        : undefined,
+    [campaignState, currentConfig, campaignStateEngine],
+  );
+
+  const heroAssets = noWinner ? noWinnerAssets : assets;
+  // A strategic campaign leads with the government outcome, so the side's
+  // story block is only shown when the campaign provides one.
+  const showHero =
+    !finalOutcome || Boolean(heroAssets?.imageUri || heroAssets?.description);
+
   const parties = useMemo(
     () =>
       buildPartiesFromResults(results, currentConfig?.electionConfig.parties),
@@ -53,36 +73,42 @@ export function SummaryPage({ results }: { results: FinalResults }) {
 
   return (
     <>
-      <div className="border-b border-slate-200/65 p-3">
-        <Heading color="lightBlue" className="text-center mb-1">
-          {noWinner ? noWinnerAssets?.title : assets?.title}
-        </Heading>
-        <Text color="gray" className="text-center text-sm">
-          {noWinner ? noWinnerAssets?.subtitle : assets?.subtitle}
-        </Text>
-      </div>
-      <div className="pb-5">
-        <div className="flex flex-col md:flex-row gap-4 md:gap-6 px-3 md:px-6 pt-5">
-          <div className="basis-full md:basis-1/2">
-            <ImageWrapper
-              src={
-                noWinner
-                  ? (noWinnerAssets?.imageUri ?? "")
-                  : (assets?.imageUri ?? "")
-              }
-              type="final"
-              className={`object-cover rounded-xl ${
-                didPlayerWin ? "" : "grayscale"
-              }`}
-            />
-          </div>
-          <div className="basis-full md:basis-1/2">
-            <Text color="gray" className="leading-relaxed">
-              {noWinner ? noWinnerAssets?.description : assets?.description}
-            </Text>
-          </div>
+      {(!finalOutcome || heroAssets?.title) && (
+        <div className="border-b border-slate-200/65 p-3">
+          <Heading color="lightBlue" className="text-center mb-1">
+            {noWinner ? noWinnerAssets?.title : assets?.title}
+          </Heading>
+          <Text color="gray" className="text-center text-sm">
+            {noWinner ? noWinnerAssets?.subtitle : assets?.subtitle}
+          </Text>
         </div>
-        {results.regions && (
+      )}
+      <div className="pb-5">
+        {finalOutcome && <GovernmentSummary outcome={finalOutcome} />}
+        {showHero && (
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 px-3 md:px-6 pt-5">
+            <div className="basis-full md:basis-1/2">
+              <ImageWrapper
+                src={
+                  noWinner
+                    ? (noWinnerAssets?.imageUri ?? "")
+                    : (assets?.imageUri ?? "")
+                }
+                type="final"
+                className={`object-cover rounded-xl ${
+                  didPlayerWin ? "" : "grayscale"
+                }`}
+              />
+            </div>
+            <div className="basis-full md:basis-1/2">
+              <Text color="gray" className="leading-relaxed">
+                {noWinner ? noWinnerAssets?.description : assets?.description}
+              </Text>
+            </div>
+          </div>
+        )}
+        {/* The government card already tells whether a majority formed. */}
+        {results.regions && !finalOutcome && (
           <MajorityLabels
             results={results}
             allSeats={allSeats}

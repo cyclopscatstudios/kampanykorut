@@ -108,10 +108,11 @@
   "districtMap": "2024",
   "districtBoost": true,
   "baseResults": {
-    "green_party": -5,
-    "red_party": 5,
-    "yellow_party": 8,
-    "_other": 1
+    "green_party": {
+      "green_party": -6,
+      "red_party": 2,
+      "yellow_party": 4
+    }
   },
   "parties": [
     {

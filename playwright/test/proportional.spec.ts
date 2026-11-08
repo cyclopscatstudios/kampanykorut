@@ -65,7 +65,8 @@ test("proportional test campaign: the seat count reveals every region", async ({
   await expect(page.getByText("16 / 16 körzet")).toBeVisible();
   await expect(page.getByText("201 · többségi határ")).toBeVisible();
   await page.getByTestId("seatCountContinue").click();
-  await expect(page).toHaveURL(/end-results/);
+  // Nobody has a majority of their own, so the coalition offer comes first.
+  await expect(page).toHaveURL(/coalition/);
 });
 
 test("proportional test campaign: the strategic dashboard opens from the header", async ({
@@ -85,7 +86,7 @@ test("proportional test campaign: the strategic dashboard opens from the header"
   await expect(page.getByText("Koalíciós nyitás")).toBeVisible();
 });
 
-test("proportional test campaign: the end results show the majority labels", async ({
+test("proportional test campaign: an accepted coalition offer forms a government", async ({
   page,
   playCampaign,
 }) => {
@@ -94,11 +95,56 @@ test("proportional test campaign: the end results show the majority labels", asy
     "green_party",
     "emma_wilson",
   );
+  const endResults = `/game/${CAMPAIGN_ID}/end-results?sessionId=${seedData?.sessionId}`;
 
-  await page.goto(
-    `/game/${CAMPAIGN_ID}/end-results?sessionId=${seedData?.sessionId}`,
+  await page.goto(endResults);
+  await expect(page).toHaveURL(/coalition/);
+  await expect(page.getByTestId("coalitionSubmit")).toBeDisabled();
+  await page.getByTestId("coalitionPartner-yellow_party").click();
+  await page.getByTestId("coalitionSubmit").click();
+
+  await expect(
+    page
+      .getByTestId("coalitionResponse-yellow_party")
+      .getByText("Elfogadta", { exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole("status")).toHaveText("Koalíciós többség");
+  await page.getByTestId("coalitionContinue").click();
+
+  await expect(page).toHaveURL(/end-results/);
+  const summary = page.getByTestId("governmentSummary");
+  await expect(summary.getByText("Koalíciós többség")).toBeVisible();
+  await expect(summary.getByText("Széles koalíció")).toBeVisible();
+  await expect(page.getByText("Többség: 201 mandátum")).toHaveCount(0);
+
+  await page.reload();
+  await expect(page).toHaveURL(/end-results/);
+});
+
+test("proportional test campaign: a rejected offer leaves no government", async ({
+  page,
+  playCampaign,
+}) => {
+  const seedData = await playCampaign(
+    CAMPAIGN_ID,
+    "green_party",
+    "emma_wilson",
+    { prop_q2: "B" },
   );
 
-  await expect(page.getByText("Legtöbb mandátum")).toBeVisible();
-  await expect(page.getByText("Többség: 201 mandátum")).toBeVisible();
+  await page.goto(
+    `/game/${CAMPAIGN_ID}/coalition?sessionId=${seedData?.sessionId}`,
+  );
+  await page.getByTestId("coalitionPartner-yellow_party").click();
+  await page.getByTestId("coalitionSubmit").click();
+
+  await expect(
+    page
+      .getByTestId("coalitionResponse-yellow_party")
+      .getByText("Elutasította", { exact: true }),
+  ).toBeVisible();
+  await page.getByTestId("coalitionContinue").click();
+  const summary = page.getByTestId("governmentSummary");
+  await expect(summary.getByText("Sikertelen kormányalakítás")).toBeVisible();
+  await expect(summary.getByText("Patthelyzet")).toBeVisible();
 });

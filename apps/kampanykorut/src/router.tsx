@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import { MainGameScreenWrapper, NewGameLayout, RootLayout } from "./AppLayout";
 import { ErrorPage } from "./components/ErrorPage";
+import { coalitionLoader } from "./components/loaders/coalition.loader";
 import { finalResultLoader } from "./components/loaders/finalResult.loader";
 import { mainGameScreenLoader } from "./components/loaders/mainGameScreen.loader";
 import { mainMenuLoader } from "./components/loaders/mainMenu.loader";
@@ -11,6 +12,7 @@ import {
   rootLoader,
 } from "./components/loaders/route.loader";
 import { sideSelectorLoader } from "./components/loaders/sideSelector.loader";
+import { CoalitionPage } from "./components/ui/coalition/CoalitionPage";
 import { PoliticalDashboardPage } from "./components/ui/dashboard/PoliticalDashboardPage";
 import { FinalResultScreen } from "./components/ui/gameplay/FinalResultScreen/EndResultScreen";
 import { AboutMenu } from "./components/ui/menu/AboutMenu";
@@ -85,6 +87,11 @@ export const router = createBrowserRouter([
         path: "game/:id/dashboard",
         element: <PoliticalDashboardPage />,
         loader: politicalDashboardLoader,
+      },
+      {
+        path: "game/:id/coalition",
+        element: <CoalitionPage />,
+        loader: coalitionLoader,
       },
       {
         path: "game/:id/end-results",
