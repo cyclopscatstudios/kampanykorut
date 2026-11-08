@@ -26,6 +26,7 @@ export function FocusRequiredNote({ className }: { className?: string }) {
       className={classNames("flex items-center gap-3", className)}
     >
       <PoliticalEmblem size={28} />
+      <div className="flex flex-col gap-1">
       <Tooltip content={t("politicalDashboard.focus.requiredHint")}>
         <span className="text-sm font-semibold text-amber-200">
           {t("politicalDashboard.focus.required")}
@@ -33,12 +34,13 @@ export function FocusRequiredNote({ className }: { className?: string }) {
       </Tooltip>
       <Button
         variant="link"
-        size="sm"
+        size="md"
         onClick={openDashboard}
         testId="focusRequiredOpen"
       >
         <Button.Text>{t("politicalDashboard.focus.open")}</Button.Text>
       </Button>
+      </div>
     </div>
   );
 }
