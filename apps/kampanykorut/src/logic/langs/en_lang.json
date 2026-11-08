@@ -1,5 +1,7 @@
 {
-  "bottomSheet": { "close": "Close" },
+  "bottomSheet": {
+    "close": "Close"
+  },
   "mainMenu": {
     "newGame": "New Game",
     "loadGame": "Load Game",
@@ -139,6 +141,12 @@
         "validVotes": "Valid votes",
         "points": "{{points}} pp"
       }
+    },
+    "majority": {
+      "leader": "Most seats",
+      "label": "Majority: {{majority}} seats",
+      "reached": "Reached",
+      "missing": "Not reached · {{missing}} short"
     }
   },
   "gameHeader": {
@@ -303,6 +311,20 @@
       "processedVotes": "Processed Votes",
       "pleaseWait": "Please wait"
     }
+  },
+  "seatCount": {
+    "live": "Live",
+    "final": "Final result",
+    "title": "Election night · {{year}}",
+    "progress": "{{done}} / {{total}} regions",
+    "counting": "Counting…",
+    "tally": "Seats allocated so far",
+    "majority": "{{majority}} · majority line",
+    "nationalPending": "+ {{seats}} national list seats at the end of the count",
+    "nationalAdded": "the {{seats}} national list seats are allocated too",
+    "hint": "Each dot is one seat. Proportional system: a region is shared, not won.",
+    "skip": "Skip to the end",
+    "continue": "Continue to the result"
   },
   "bugReporter": {
     "title": "Report a bug",

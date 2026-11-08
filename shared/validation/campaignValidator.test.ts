@@ -415,6 +415,45 @@ describe("validateCampaign", () => {
       config.parties.push({ id: "candidate_a", name: "A", color: "#111" });
     };
 
+    const toProportional = (regions: unknown) => (f: Files) => {
+      electionConfig(f).election = { type: "proportional", regions };
+    };
+
+    it("accepts a proportional election whose regions add up", () => {
+      expect(
+        validate(
+          toProportional([
+            { id: "north", name: "Észak", seats: 100, megyekods: [1] },
+            { id: "south", name: "Dél", seats: 6, megyekods: [2] },
+          ]),
+        ),
+      ).toEqual([]);
+    });
+
+    it("reports regions that do not add up or overlap", () => {
+      const result = validate(
+        toProportional([
+          { id: "north", name: "Észak", seats: 100, megyekods: [1, 2] },
+          { id: "north", name: "Dél", seats: 0, megyekods: [2] },
+        ]),
+      );
+      expect(codes(result)).toEqual([
+        "error:duplicate-id",
+        "error:election-config-invalid",
+        "error:election-config-invalid",
+        "error:election-config-invalid",
+      ]);
+    });
+
+    it("reports counties of the candidate data that no region covers", () => {
+      const result = validate(
+        toProportional([
+          { id: "south", name: "Dél", seats: 106, megyekods: [2] },
+        ]),
+      );
+      expect(codes(result)).toEqual(["error:region-missing"]);
+    });
+
     it("accepts a mayoral election without parliamentary seat fields", () => {
       expect(validate(toMayoral)).toEqual([]);
     });

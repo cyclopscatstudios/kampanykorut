@@ -98,6 +98,15 @@ export interface CalculateResults {
     total: PartyVotes;
   };
   percentages: PartyResults;
+  regions?: RegionSeatResult[];
+}
+
+export interface RegionSeatResult {
+  id: string;
+  name: string;
+  seats: number;
+  votes: PartyVotes;
+  allocation: Record<string, number>;
 }
 
 export interface PartyResults {

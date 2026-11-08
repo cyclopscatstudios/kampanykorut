@@ -42,6 +42,10 @@ import type { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import {
+  calculateProportionalResults,
+  isProportionalElection,
+} from "./ProportionalSeatCalculator";
+import {
   countEligibleQuestions,
   findNextQuestionIndex,
 } from "./QuestionEligibility";
@@ -705,6 +709,16 @@ export class CampaignEngine {
     partyListVotes?: PartyListVotes,
     inactiveCandidateIds: string[] = [],
   ): Pick<CampaignState, "results" | "mayoralResult"> {
+    const parliamentary = getParliamentaryConfig(electionConfig);
+    if (isProportionalElection(parliamentary)) {
+      if (!candidateListData) {
+        log.error("Missing candidate data for proportional calculation");
+        return {};
+      }
+      return {
+        results: calculateProportionalResults(candidateListData, parliamentary),
+      };
+    }
     if (!electionConfig || !isMayoralElection(electionConfig)) {
       return {
         results: this.mandateCalculator.calculate(

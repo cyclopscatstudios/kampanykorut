@@ -1,11 +1,27 @@
 import { PartyListVotes } from "../campaign";
 
-export type ElectionType = "parliamentary" | "mayoral";
+export type ElectionType = "parliamentary" | "mayoral" | "proportional";
 
 export type ElectionResultRule = "plurality";
 
 export interface ParliamentaryElectionDefinition {
   type: "parliamentary";
+}
+
+// One multi-member region of a proportional election. Its votes are the sum of
+// the candidate list rows of the listed counties (megyekod).
+export interface ProportionalRegion {
+  id: string;
+  name: string;
+  seats: number;
+  megyekods: number[];
+}
+
+// Regional seats go by D'Hondt per region; the national `listSeats` go by
+// D'Hondt over the votes each party did not turn into a regional seat.
+export interface ProportionalElectionDefinition {
+  type: "proportional";
+  regions: ProportionalRegion[];
 }
 
 export interface MayoralElectionDefinition {
@@ -15,6 +31,7 @@ export interface MayoralElectionDefinition {
 
 export type ElectionDefinition =
   | ParliamentaryElectionDefinition
+  | ProportionalElectionDefinition
   | MayoralElectionDefinition;
 
 interface ElectionConfigBase {
@@ -29,7 +46,7 @@ interface ElectionConfigBase {
 }
 
 export interface ParliamentaryElectionConfig extends ElectionConfigBase {
-  election?: ParliamentaryElectionDefinition;
+  election?: ParliamentaryElectionDefinition | ProportionalElectionDefinition;
   listSeats: number;
   allSeats: number;
   thresholdPercent: number;

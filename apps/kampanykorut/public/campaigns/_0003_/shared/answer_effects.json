@@ -1,0 +1,117 @@
+[
+  {
+    "id": "prop_q1",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "green_party": 0.6,
+              "red_party": -0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "green_party": 0.3,
+              "yellow_party": -0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prop_q2",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "yellow_party": 0.4,
+              "red_party": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "green_party": 0.2,
+              "yellow_party": -0.3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prop_q3",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "green_party": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "green_party": 0.2,
+              "red_party": -0.4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prop_q4",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "green_party": 0.4,
+              "red_party": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "green_party": 0.6,
+              "yellow_party": -0.4
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

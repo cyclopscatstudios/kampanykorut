@@ -1,6 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { isCityDistrictMap } from "@/shared/domain";
+import {
+  buildSeatCountView,
+  getParliamentaryConfig,
+  isCityDistrictMap,
+  isProportionalElection,
+} from "@/shared/domain";
 import {
   CampaignConfig,
   CampaignState,
@@ -12,6 +17,7 @@ import {
 import { MapCreator } from "./MapCreator";
 import { MobileMapView } from "./MobileMapView";
 import { QuestionCard } from "./QuestionCard";
+import { SeatCountScreen } from "./VoteCountingScreen/SeatCountScreen";
 import { VoteCountingScreen } from "./VoteCountingScreen/VoteCountingScreen";
 
 interface GameViewProps {
@@ -42,8 +48,23 @@ export function GameView({
   onVoteCountingComplete,
 }: GameViewProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const proportional = getParliamentaryConfig(config.electionConfig);
+  const seatCountView = useMemo(
+    () =>
+      isProportionalElection(proportional) && state.results
+        ? buildSeatCountView(
+            state.results,
+            proportional.allSeats,
+            proportional.listSeats,
+          )
+        : undefined,
+    [proportional, state.results],
+  );
 
-  const skipVoteCounting = currentView === "VoteCountingView" && !isDesktop;
+  // The seat count is the reveal of a proportional election, so unlike the
+  // generic counting animation it is shown on mobile too.
+  const skipVoteCounting =
+    currentView === "VoteCountingView" && !isDesktop && !seatCountView;
   useEffect(() => {
     if (skipVoteCounting) {
       onVoteCountingComplete();
@@ -52,6 +73,17 @@ export function GameView({
 
   if (skipVoteCounting) {
     return null;
+  }
+
+  if (currentView === "VoteCountingView" && seatCountView) {
+    return (
+      <SeatCountScreen
+        view={seatCountView}
+        parties={config.electionConfig.parties}
+        year={config.electionConfig.year}
+        onComplete={onVoteCountingComplete}
+      />
+    );
   }
 
   if (currentView === "QuestionView") {
