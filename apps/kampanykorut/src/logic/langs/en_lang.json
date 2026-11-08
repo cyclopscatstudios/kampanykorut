@@ -510,5 +510,9 @@
     "position": "{{current}} / {{total}}",
     "turn": "Round {{turn}}",
     "issue": "No. {{issue}}"
+  },
+  "campaignIntro": {
+    "label": "Historical background",
+    "confirm": "Got it"
   }
 }
