@@ -1,15 +1,23 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
 import { StateEngine, useElectionState } from "@/logic/application";
-import { getPendingAnnouncement, PollsterEngine } from "@/shared/domain";
+import {
+  buildNewspaperEditions,
+  getPendingAnnouncement,
+  hasUnreadEdition,
+  PollsterEngine,
+} from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
 import { CampaignConfig, CampaignState, CurrentView } from "@/shared/types";
+import { useSettings } from "../../../logic/application/hooks/useSettings";
 import {
   getLoadDurationBucket,
   getRunProperties,
 } from "../../../logic/infra/posthog/events";
 import { takeCampaignLoadDuration } from "../../../logic/infra/posthog/loadTiming";
 import { trackOnce } from "../../../logic/infra/posthog/track";
+import { NewspaperButton } from "../newspaper/NewspaperButton";
+import { NewspaperDialog } from "../newspaper/NewspaperDialog";
 import { AdvisorModal } from "./AdvisorModal";
 import { EventAnnouncementDialog } from "./EventAnnouncementDialog";
 import { GameChrome } from "./GameChrome";
@@ -28,8 +36,11 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     commitTurn,
     finishCampaign,
     acknowledgeAnnouncement,
+    markNewspaperRead,
     getMapDataByPolls,
   } = useElectionState(campaignId);
+  const { settings, updateSettings } = useSettings();
+  const [isArchiveOpen, setIsArchiveOpen] = useState(false);
   const { flow, dispatch, handleAnswer, handleAdvisorClose } = useGameFlow(
     processAnswer,
     commitTurn,
@@ -46,6 +57,33 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     !state.isEnded && !flow.pendingAdvisor
       ? getPendingAnnouncement(state, config.campaignEvents)
       : undefined;
+
+  const editions = useMemo(
+    () => buildNewspaperEditions(state, config),
+    [state, config],
+  );
+  const hasUnreadPaper = hasUnreadEdition(state);
+  const autoOpenPaper = settings.newspaperAutoOpen !== false;
+  // A new edition opens by itself only on the map, once nothing else is
+  // waiting to be shown.
+  const isArrivalOpen =
+    autoOpenPaper &&
+    hasUnreadPaper &&
+    !isArchiveOpen &&
+    !state.isEnded &&
+    !flow.pendingAdvisor &&
+    !pendingAnnouncement &&
+    flow.currentView === "MapView";
+
+  const openArchive = () => {
+    setIsArchiveOpen(true);
+    markNewspaperRead();
+  };
+
+  const optOutOfPaper = () => {
+    updateSettings({ newspaperAutoOpen: false });
+    markNewspaperRead();
+  };
 
   useEffect(() => {
     const loadDuration = takeCampaignLoadDuration();
@@ -119,7 +157,29 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
           acknowledgeAnnouncement(pendingAnnouncement.eventId)
         }
       />
+      <NewspaperDialog
+        open={isArrivalOpen || isArchiveOpen}
+        mode={isArchiveOpen ? "archive" : "arrival"}
+        editions={editions}
+        year={config.electionConfig.year}
+        onRead={markNewspaperRead}
+        onOptOut={optOutOfPaper}
+        onClose={() => setIsArchiveOpen(false)}
+      />
       <GameView
+        mapOverlay={
+          editions.length > 0 ? (
+            <NewspaperButton
+              hasUnread={hasUnreadPaper}
+              ribbon={
+                !autoOpenPaper && hasUnreadPaper
+                  ? editions[editions.length - 1].item.headline
+                  : undefined
+              }
+              onOpen={openArchive}
+            />
+          ) : undefined
+        }
         currentView={flow.currentView}
         state={state}
         pollsData={state.pollingOpnions ?? null}

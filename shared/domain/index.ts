@@ -11,6 +11,7 @@ export * from "./ElectionType";
 export * from "./Majority";
 export * from "./MandateCalculator";
 export * from "./MayoralResultCalculator";
+export * from "./Newspaper";
 export * from "./PoliticalDashboard";
 export * from "./PoliticalFocus";
 export * from "./PoliticalRelations";

@@ -30,6 +30,9 @@
     "analytics": {
       "label": "Névtelen használati statisztikák küldése",
       "privacyLink": "Adatkezelési tájékoztató"
+    },
+    "newspaperAutoOpen": {
+      "label": "Hírlap lapszámainak automatikus megjelenítése"
     }
   },
   "loadSavedGamesMenu": {
@@ -491,5 +494,21 @@
   "eventAnnouncement": {
     "label": "Kampányesemény",
     "close": "Tovább"
+  },
+  "newspaper": {
+    "entry": {
+      "label": "Hírlap",
+      "withNews": "Hírlap · új lapszám"
+    },
+    "ribbon": "Rendkívüli kiadás!",
+    "read": "Elolvastam",
+    "optOut": "Nem kérek több értesítést",
+    "close": "Bezárás",
+    "paging": "Lapszámok",
+    "previous": "Előző lapszám",
+    "next": "Következő lapszám",
+    "position": "{{current}} / {{total}}",
+    "turn": "{{turn}}. forduló",
+    "issue": "{{issue}}. szám"
   }
 }

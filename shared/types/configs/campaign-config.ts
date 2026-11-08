@@ -5,6 +5,7 @@ import { DistrictGroup } from "../district";
 import { RawAnsweEffectProps } from "../effects";
 import { EndResultProps } from "../end-result";
 import { DistrictPoligon } from "../map";
+import { NewspaperConfig } from "../newspaper";
 import { PoliticalConfig } from "../political";
 import { Pollster } from "../pollsters";
 import { RawQuestion } from "../question";
@@ -34,5 +35,6 @@ export interface CampaignConfig {
   customPollsters?: Pollster[];
   campaignEvents?: CampaignEvent[];
   politicalConfig?: PoliticalConfig;
+  newspaper?: NewspaperConfig;
   playableSides?: Record<string, PlayableSideConfig>;
 }

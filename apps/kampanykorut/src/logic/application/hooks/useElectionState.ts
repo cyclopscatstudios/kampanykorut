@@ -2,8 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
 import {
   acknowledgeAnnouncement as acknowledge,
+  createConditionCheck,
   getParliamentaryConfig,
   getPlayerVoteKey,
+  markNewspaperRead,
+  publishNewspaperEdition,
 } from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
 import { StorageEngine } from "@/shared/logic/application/StorageEngine";
@@ -105,7 +108,7 @@ export function useElectionState(campaignId: string) {
     };
     let newGameState: CampaignState;
     try {
-      newGameState = campaignEngine.processTurn(
+      const played = campaignEngine.processTurn(
         gameState,
         decision,
         currentHistory ?? [],
@@ -117,6 +120,18 @@ export function useElectionState(campaignId: string) {
           : undefined,
         config.electionConfig.districtBoost,
         getPlayerVoteKey(config.electionConfig, gameState.playerSide),
+      );
+      newGameState = publishNewspaperEdition(
+        played,
+        config,
+        createConditionCheck(
+          played,
+          [
+            ...(currentHistory ?? []),
+            { questionId: decision.questionId, answerId: decision.answerId },
+          ],
+          config.electionConfig,
+        ),
       );
     } catch (error) {
       log.error("Failed to process turn", {
@@ -182,6 +197,15 @@ export function useElectionState(campaignId: string) {
 
   const acknowledgeAnnouncement = (eventId: string) => {
     const next = acknowledge(gameState, eventId);
+    if (next === gameState) {
+      return;
+    }
+    setGameState(next);
+    saveSession("campaignState", next);
+  };
+
+  const markNewspaperAsRead = () => {
+    const next = markNewspaperRead(gameState);
     if (next === gameState) {
       return;
     }
@@ -259,6 +283,7 @@ export function useElectionState(campaignId: string) {
     finishCampaign,
     getFinalResults,
     acknowledgeAnnouncement,
+    markNewspaperRead: markNewspaperAsRead,
     getMapDataByPolls: getListDataByPollProjection,
   };
 }

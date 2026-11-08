@@ -87,6 +87,17 @@ export function SettingsBody({
           }))
         }
       />
+      <Checkbox
+        id="newspaperAutoOpen"
+        label={t("settingsMenu.newspaperAutoOpen.label")}
+        defaultChecked={settingsForm.newspaperAutoOpen !== false}
+        onChange={(e) =>
+          setSettingsForm((prev: GameSettings) => ({
+            ...prev,
+            newspaperAutoOpen: e.target.checked,
+          }))
+        }
+      />
       <div className="flex flex-col gap-1">
         <Checkbox
           id="analyticsEnabled"

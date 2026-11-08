@@ -8,6 +8,7 @@
     "voterEnvironmentConfig": "voter_environment_config.json",
     "candidateListData": "oevk_constituency_results.json",
     "politicalConfig": "political_config.json",
+    "newspaper": "newspaper.json",
     "playableSides": {
       "green_party": {
         "emma_wilson": {

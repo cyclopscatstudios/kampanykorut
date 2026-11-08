@@ -2114,6 +2114,120 @@ function checkPoliticalConfig(
 
 type ConditionRefs = ConditionReferences;
 
+function checkNewspaper(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  politicalData: unknown,
+  questions: Map<string, Set<string>>,
+) {
+  if (data === undefined) {
+    return;
+  }
+  const invalid = (path: string, message: string) =>
+    report(ctx, "error", "newspaper-invalid", file, path, message);
+  if (!isObject(data)) {
+    invalid("", "newspaper must be an object");
+    return;
+  }
+  if (!isObject(politicalData) || politicalData.gameMode !== "strategic") {
+    report(
+      ctx,
+      "warning",
+      "newspaper-unused",
+      file,
+      "",
+      "the newspaper only shows in strategic mode",
+    );
+  }
+  if (data.cadence !== undefined) {
+    const cadence = data.cadence;
+    if (
+      !isObject(cadence) ||
+      !Number.isInteger(cadence.minTurns) ||
+      !Number.isInteger(cadence.maxTurns) ||
+      (cadence.minTurns as number) < 1 ||
+      (cadence.maxTurns as number) < (cadence.minTurns as number)
+    ) {
+      invalid(
+        "/cadence",
+        "cadence needs whole minTurns >= 1 and maxTurns >= minTurns",
+      );
+    }
+  }
+  const paperIds = new Set<string>();
+  if (!Array.isArray(data.papers) || data.papers.length === 0) {
+    invalid("/papers", "papers must be a non-empty array");
+  } else {
+    data.papers.forEach((paper, index) => {
+      const path = `/papers/${index}`;
+      if (!isObject(paper)) {
+        invalid(path, "paper must be an object");
+        return;
+      }
+      for (const key of ["id", "name"] as const) {
+        if (typeof paper[key] !== "string" || !paper[key]) {
+          invalid(`${path}/${key}`, `${key} must be a non-empty string`);
+        }
+      }
+      if (typeof paper.id === "string") {
+        if (paperIds.has(paper.id)) {
+          invalid(`${path}/id`, `duplicate paper id "${paper.id}"`);
+        }
+        paperIds.add(paper.id);
+      }
+      if (paper.logo !== undefined) {
+        checkPublicAsset(ctx, file, `${path}/logo`, paper.logo);
+      }
+    });
+  }
+  if (!Array.isArray(data.items)) {
+    invalid("/items", "items must be an array");
+    return;
+  }
+  const refs = {
+    questions,
+    candidateIds: ctx.parties,
+    eventIds: ctx.eventIds,
+    focusIds: ctx.focusIds,
+  };
+  const itemIds = new Set<string>();
+  data.items.forEach((item, index) => {
+    const path = `/items/${index}`;
+    if (!isObject(item)) {
+      invalid(path, "item must be an object");
+      return;
+    }
+    for (const key of ["id", "headline", "lead"] as const) {
+      if (typeof item[key] !== "string" || !item[key]) {
+        invalid(`${path}/${key}`, `${key} must be a non-empty string`);
+      }
+    }
+    if (typeof item.id === "string") {
+      if (itemIds.has(item.id)) {
+        invalid(`${path}/id`, `duplicate item id "${item.id}"`);
+      }
+      itemIds.add(item.id);
+    }
+    if (item.paper !== undefined && !paperIds.has(String(item.paper))) {
+      invalid(`${path}/paper`, `unknown paper "${String(item.paper)}"`);
+    }
+    if (item.image !== undefined) {
+      checkPublicAsset(ctx, file, `${path}/image`, item.image);
+    }
+    if (
+      item.weight !== undefined &&
+      (typeof item.weight !== "number" || item.weight < 0)
+    ) {
+      invalid(`${path}/weight`, "weight must be a number >= 0");
+    }
+    if (item.priority !== undefined && item.priority !== "pinned") {
+      invalid(`${path}/priority`, 'priority must be "pinned"');
+    }
+    checkConditionField(ctx, file, item.when, refs, `${path}/when`);
+  });
+}
+
 function checkConditionField(
   ctx: Context,
   file: string,
@@ -2584,6 +2698,16 @@ export function validateCampaign(
     politicalData,
     allQuestions,
   );
+
+  if (files.newspaper !== undefined) {
+    checkNewspaper(
+      ctx,
+      String(files.newspaper),
+      readFile(ctx, files.newspaper, "manifest.json", "/files/newspaper"),
+      politicalData,
+      allQuestions,
+    );
+  }
 
   return ctx.diagnostics;
 }

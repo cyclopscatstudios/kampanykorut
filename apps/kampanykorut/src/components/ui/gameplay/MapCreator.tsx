@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { isCityDistrictMap } from "@/shared/domain";
 import {
   CandidateListData,
@@ -25,6 +26,7 @@ interface MapCreatorProps {
   nationalPercentages?: Record<string, number>;
   electionConfig: ElectionConfig;
   visitBlocked?: boolean;
+  mapOverlay?: ReactNode;
 }
 
 export function MapCreator({
@@ -37,6 +39,7 @@ export function MapCreator({
   nationalPercentages,
   electionConfig,
   visitBlocked,
+  mapOverlay,
 }: MapCreatorProps) {
   const swingFactor = getSwingFactorByDistrict(selectedDistrict);
   return (
@@ -51,6 +54,7 @@ export function MapCreator({
           selectedDistrict={selectedDistrict}
           electionConfig={electionConfig}
           className="w-full"
+          overlay={mapOverlay}
         />
         <MapSidePanel
           width={SIDE_PANEL_WIDTH}

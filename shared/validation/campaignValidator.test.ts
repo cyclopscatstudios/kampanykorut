@@ -579,6 +579,77 @@ describe("validateCampaign", () => {
     });
   });
 
+  describe("newspaper", () => {
+    const withNewspaper =
+      (newspaper: unknown, gameMode = "strategic") =>
+      (f: Files) => {
+        const files = file(f, "manifest.json").files;
+        files.politicalConfig = "political.json";
+        files.newspaper = "newspaper.json";
+        f["political.json"] = { gameMode };
+        f["newspaper.json"] = newspaper;
+      };
+    const paper = { id: "nephang", name: "NÉPHANG", logo: "/images/logo.png" };
+    const item = (id: string, extra: object = {}) => ({
+      id,
+      headline: "Cím",
+      lead: "Bevezető",
+      ...extra,
+    });
+
+    it("accepts a valid newspaper", () => {
+      expect(
+        validate(
+          withNewspaper({
+            cadence: { minTurns: 2, maxTurns: 3 },
+            papers: [paper],
+            items: [
+              item("a", { paper: "nephang", image: "/images/win.png" }),
+              item("b", {
+                priority: "pinned",
+                when: { type: "turn", min: 4 },
+              }),
+            ],
+          }),
+        ),
+      ).toEqual([]);
+    });
+
+    it("reports invalid papers and items", () => {
+      const result = validate(
+        withNewspaper({
+          cadence: { minTurns: 3, maxTurns: 2 },
+          papers: [paper, { id: "nephang", name: "", logo: "/nope.png" }],
+          items: [
+            item("a", { paper: "esti", weight: -1 }),
+            item("a", { image: "/nope.jpg", priority: "first" }),
+            item("c", { when: { type: "event-triggered", eventId: "nope" } }),
+          ],
+        }),
+      );
+      expect(codes(result)).toEqual([
+        "error:newspaper-invalid",
+        "error:newspaper-invalid",
+        "error:newspaper-invalid",
+        "error:asset-missing",
+        "error:newspaper-invalid",
+        "error:newspaper-invalid",
+        "error:newspaper-invalid",
+        "error:asset-missing",
+        "error:newspaper-invalid",
+        "error:unknown-event",
+      ]);
+    });
+
+    it("warns when the campaign is not in strategic mode", () => {
+      expect(
+        codes(
+          validate(withNewspaper({ papers: [paper], items: [] }, "classic")),
+        ),
+      ).toEqual(["warning:newspaper-unused"]);
+    });
+  });
+
   describe("political config", () => {
     const withPolitical = (config: unknown) => (f: Files) => {
       file(f, "manifest.json").files.politicalConfig = "political.json";

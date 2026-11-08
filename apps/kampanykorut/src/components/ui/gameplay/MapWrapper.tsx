@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
 import { isCityDistrictMap } from "@/shared/domain";
 import {
   CandidateListData,
@@ -23,6 +23,7 @@ export function MapWrapper({
   stroke = "#000000FF",
   view,
   electionConfig,
+  overlay,
 }: {
   districts: DistrictPoligon[];
   handleDistrict?: (r: District) => void;
@@ -35,6 +36,8 @@ export function MapWrapper({
   stroke?: string;
   view?: ViewBox;
   electionConfig?: ElectionConfig;
+  // Rendered in the top-left corner over the map.
+  overlay?: ReactNode;
 }) {
   const initialView = view ?? { x: 0, y: 0, w: width, h: height };
   const [viewBox, setViewBox] = useState<ViewBox>(initialView);
@@ -68,6 +71,7 @@ export function MapWrapper({
         isGameEnded={isGameEnded}
         electionConfig={electionConfig}
       />
+      {overlay && <div className="absolute left-2 top-2 z-10">{overlay}</div>}
       {isCityDistrictMap(electionConfig) && (
         <a
           href="https://www.openstreetmap.org/copyright"

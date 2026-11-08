@@ -17,6 +17,7 @@ export * from "./map";
 export * from "./mayoral-result";
 export * from "./menu.types";
 export * from "./news";
+export * from "./newspaper";
 export * from "./political";
 export * from "./question";
 export * from "./settings";
