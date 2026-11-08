@@ -6,6 +6,8 @@ import {
   GameMode,
 } from "../types";
 import { getCampaignEventState } from "./CampaignStateAccess";
+import type { Answers } from "./ConditionCheck";
+import { hasFocusNews } from "./PoliticalFocus";
 import { getUnseenRelationIds } from "./PoliticalRelations";
 
 export interface PublicEvent extends CampaignEventAnnouncement {
@@ -109,11 +111,16 @@ export function buildDashboardOverview(
 }
 
 export function hasDashboardNews(
-  state: Pick<CampaignState, "campaignEvents" | "politicalDashboard">,
-  events: CampaignEvent[] = [],
+  state: CampaignState,
+  config: Pick<
+    CampaignConfig,
+    "campaignEvents" | "politicalConfig" | "electionConfig"
+  >,
+  answers: Answers,
 ): boolean {
   return (
-    getUnseenPublicEventIds(state, events).length > 0 ||
-    getUnseenRelationIds(state).length > 0
+    getUnseenPublicEventIds(state, config.campaignEvents).length > 0 ||
+    getUnseenRelationIds(state).length > 0 ||
+    hasFocusNews(state, config, answers)
   );
 }

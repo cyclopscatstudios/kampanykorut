@@ -1,5 +1,6 @@
 {
   "gameMode": "strategic",
+  "requireFocus": true,
   "focuses": [
     {
       "id": "coalition_ready",
@@ -11,7 +12,8 @@
         "type": "answer-selected",
         "questionId": "prop_q2",
         "answerId": "A"
-      }
+      },
+      "excludes": ["own_majority"]
     },
     {
       "id": "own_majority",

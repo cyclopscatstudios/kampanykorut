@@ -40,6 +40,10 @@ test("proportional test campaign: the seat count reveals every region", async ({
     "emma_wilson",
   );
   await page.goto(`/game/${CAMPAIGN_ID}?sessionId=${seedData?.sessionId}`);
+  await page.getByTestId("focusRequiredOpen").click();
+  await page.getByRole("tab", { name: "Fókuszok" }).click();
+  await page.getByTestId("selectFocus-coalition_ready").click();
+  await page.getByTestId("politicalDashboardBack").click();
 
   const seatCountTitle = page.getByText("Választási éjszaka · 2026");
   const visitDistrict = page.getByRole("button", {
@@ -69,7 +73,7 @@ test("proportional test campaign: the seat count reveals every region", async ({
   await expect(page).toHaveURL(/coalition/);
 });
 
-test("proportional test campaign: the strategic dashboard opens from the header", async ({
+test("proportional test campaign: a focus must be chosen before the first visit", async ({
   page,
   seedCampaign,
 }) => {
@@ -80,10 +84,29 @@ test("proportional test campaign: the strategic dashboard opens from the header"
   );
   await page.goto(`/game/${CAMPAIGN_ID}?sessionId=${seedData?.sessionId}`);
 
-  await page.getByTestId("politicalStatusButton").click();
+  const statusButton = page.getByTestId("politicalStatusButton");
+  await expect(statusButton).toHaveAccessibleName(
+    "Politikai helyzet: új esemény",
+  );
+  await expect(page.getByTestId("focusRequiredNote")).toBeVisible();
+  await page.locator("svg path[data-id]").nth(40).click({ force: true });
+  await expect(page.getByTestId("visitDistrict")).toBeDisabled();
+
+  await statusButton.click();
   await expect(page).toHaveURL(/dashboard/);
   await page.getByRole("tab", { name: "Fókuszok" }).click();
-  await expect(page.getByText("Koalíciós nyitás")).toBeVisible();
+  await page.getByTestId("selectFocus-coalition_ready").click();
+  // The opposite direction drops out for good.
+  await expect(page.getByTestId("selectFocus-own_majority")).toHaveCount(0);
+  await expect(
+    page.getByRole("article", { name: "Önálló többség" }).getByText("Kizárva"),
+  ).toBeVisible();
+
+  await page.getByTestId("politicalDashboardBack").click();
+  await expect(statusButton).toHaveAccessibleName("Politikai helyzet");
+  await expect(page.getByTestId("focusRequiredNote")).toHaveCount(0);
+  await page.locator("svg path[data-id]").nth(40).click({ force: true });
+  await expect(page.getByTestId("visitDistrict")).toBeEnabled();
 });
 
 test("proportional test campaign: an accepted coalition offer forms a government", async ({

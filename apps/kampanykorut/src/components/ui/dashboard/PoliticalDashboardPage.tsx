@@ -8,6 +8,7 @@ import {
   buildRelationGroups,
   getFocuses,
   getPublicEvents,
+  markFocusSeen,
   markPublicEventsSeen,
   markRelationsSeen,
   selectFocus,
@@ -31,12 +32,19 @@ export function PoliticalDashboardPage() {
   const config = container.resolve(ConfigEngine).getCampaignConfig(campaignId);
   const { goToCampaign } = useNavigation();
   const [stored] = useState(() => stateEngine.getCampaignState());
+  const answers = useMemo(() => stateEngine.getHistory() ?? [], [stateEngine]);
   // Opening the dashboard is what counts as seeing the news, so the stored
   // state is marked seen right away while the "new" markers still come from
   // the stored state.
   const [state, setState] = useState<CampaignState | null>(() =>
     stored
-      ? markRelationsSeen(markPublicEventsSeen(stored, config.campaignEvents))
+      ? markFocusSeen(
+          markRelationsSeen(
+            markPublicEventsSeen(stored, config.campaignEvents),
+          ),
+          config,
+          answers,
+        )
       : null,
   );
   const [tab, setTab] = useState<DashboardTab>("overview");
@@ -59,9 +67,9 @@ export function PoliticalDashboardPage() {
   const focusOverview = useMemo(
     () =>
       state && hasFocuses
-        ? buildFocusOverview(state, config, stateEngine.getHistory() ?? [])
+        ? buildFocusOverview(state, config, answers)
         : undefined,
-    [state, config, hasFocuses, stateEngine],
+    [state, config, hasFocuses, answers],
   );
 
   useEffect(() => {
@@ -130,7 +138,13 @@ export function PoliticalDashboardPage() {
             <FocusTab
               overview={focusOverview}
               onSelect={(focusId) =>
-                setState(selectFocus(state, config, focusId))
+                setState(
+                  markFocusSeen(
+                    selectFocus(state, config, focusId),
+                    config,
+                    answers,
+                  ),
+                )
               }
             />
           )}

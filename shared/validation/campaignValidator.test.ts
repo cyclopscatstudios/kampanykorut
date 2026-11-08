@@ -619,6 +619,32 @@ describe("validateCampaign", () => {
       ]);
     });
 
+    it("checks opposite focuses and the focus requirement", () => {
+      expect(
+        validate(
+          withPolitical({
+            gameMode: "strategic",
+            requireFocus: true,
+            focuses: [
+              focus("with", { excludes: ["without"] }),
+              focus("without"),
+            ],
+          }),
+        ),
+      ).toEqual([]);
+      expect(
+        codes(
+          validate(
+            withPolitical({
+              gameMode: "strategic",
+              requireFocus: "yes",
+              focuses: [focus("with", { excludes: ["nope"] })],
+            }),
+          ),
+        ),
+      ).toEqual(["error:political-config-invalid", "error:focus-invalid"]);
+    });
+
     it("accepts coalition partners and epilogues", () => {
       expect(
         validate(

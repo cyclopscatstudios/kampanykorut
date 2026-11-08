@@ -26,7 +26,9 @@ export function FocusTab({
       <p className="m-0 text-center text-sm text-slate-400">
         {overview.locked
           ? t("politicalDashboard.focus.lockedNote")
-          : t("politicalDashboard.focus.switchNote")}
+          : overview.hasOpposites
+            ? t("politicalDashboard.focus.oppositeNote")
+            : t("politicalDashboard.focus.switchNote")}
       </p>
     </section>
   );

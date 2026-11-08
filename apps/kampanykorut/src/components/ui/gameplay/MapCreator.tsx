@@ -24,6 +24,7 @@ interface MapCreatorProps {
   setSelectedDistrict: (district: District | null) => void;
   nationalPercentages?: Record<string, number>;
   electionConfig: ElectionConfig;
+  visitBlocked?: boolean;
 }
 
 export function MapCreator({
@@ -35,6 +36,7 @@ export function MapCreator({
   setSelectedDistrict,
   nationalPercentages,
   electionConfig,
+  visitBlocked,
 }: MapCreatorProps) {
   const swingFactor = getSwingFactorByDistrict(selectedDistrict);
   return (
@@ -68,6 +70,7 @@ export function MapCreator({
           data={selectedDistrict}
           onClick={() => setCurrentView("QuestionView")}
           swingFactor={swingFactor}
+          visitBlocked={visitBlocked}
         />
       </div>
     </div>

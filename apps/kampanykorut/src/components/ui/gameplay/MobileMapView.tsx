@@ -19,6 +19,7 @@ import {
   getSwingColor,
 } from "./districtInsight.utils";
 import { DistrictList, InsightBadge } from "./DistrictList";
+import { FocusRequiredNote } from "./FocusRequiredNote";
 import { MapWrapper } from "./MapWrapper";
 import { CollapsibleEstimate, EstimateSheetContent } from "./MobileEstimate";
 import { getSwingFactorByDistrict } from "./swingFactor.utils";
@@ -39,6 +40,7 @@ interface MobileMapViewProps {
   selectedDistrict: District | null;
   onSetDistrict: (district: District | null) => void;
   onSetView: (view: CurrentView) => void;
+  visitBlocked?: boolean;
 }
 
 export function MobileMapView({
@@ -51,6 +53,7 @@ export function MobileMapView({
   selectedDistrict,
   onSetDistrict,
   onSetView,
+  visitBlocked,
 }: MobileMapViewProps) {
   const [view, setView] = useState<MobileView>("list");
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -75,6 +78,9 @@ export function MobileMapView({
 
   return (
     <div className="h-full overflow-y-auto bg-[radial-gradient(90%_60%_at_50%_0%,rgba(40,80,160,0.12),transparent_60%)] pt-3">
+      {visitBlocked && (
+        <FocusRequiredNote className="mx-4 mb-3 flex-wrap rounded-[10px] bg-amber-400/8 px-3 py-2" />
+      )}
       <div className="mx-4 mb-3 flex gap-1 rounded-[10px] border border-white/8 bg-white/4 p-0.75">
         {(["list", "map"] as const).map((option) => (
           <Button
@@ -149,6 +155,7 @@ export function MobileMapView({
               nationalPercentages={nationalPercentages}
               onClose={() => setIsSheetOpen(false)}
               onVisit={() => onSetView("QuestionView")}
+              visitBlocked={visitBlocked}
             />
           )
         )}
@@ -284,6 +291,7 @@ function DistrictSheetContent({
   nationalPercentages,
   onClose,
   onVisit,
+  visitBlocked,
 }: {
   isCityMap: boolean;
   district: CandidateListData;
@@ -291,6 +299,7 @@ function DistrictSheetContent({
   nationalPercentages?: Record<string, number>;
   onClose: () => void;
   onVisit: () => void;
+  visitBlocked?: boolean;
 }) {
   const { leadingParty, swingFactor } = getDistrictInsight(district, parties);
 
@@ -360,7 +369,17 @@ function DistrictSheetContent({
         />
       </div>
 
-      <Button size="large" block onClick={onVisit} className="mt-4">
+      {visitBlocked && (
+        <FocusRequiredNote className="mt-4 flex-wrap justify-center" />
+      )}
+      <Button
+        size="large"
+        block
+        onClick={onVisit}
+        disabled={visitBlocked}
+        className="mt-4"
+        testId="visitDistrict"
+      >
         <Button.Text>{t("bottomBar.visitDistrict")}</Button.Text>
         <Button.Icon name="arrow-right" color="white" />
       </Button>

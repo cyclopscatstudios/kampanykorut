@@ -205,7 +205,11 @@
         "completed": "Completed",
         "failed": "Failed",
         "excluded": "Excluded"
-      }
+      },
+      "oppositeNote": "Choosing only records your intent; it does not change your support. Once you choose, the opposite direction is no longer available.",
+      "required": "Choose a political focus first",
+      "requiredHint": "Decide on the Political situation page where you take the party, then the campaign can start.",
+      "open": "Choose a focus"
     },
     "relations": {
       "new": "New"

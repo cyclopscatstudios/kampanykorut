@@ -90,7 +90,7 @@ describe("PoliticalRelations", () => {
       },
     });
     expect(getUnseenRelationIds(changed)).toEqual(["kadar_wing"]);
-    expect(hasDashboardNews(changed)).toBe(true);
+    expect(hasDashboardNews(changed, config as never, [])).toBe(true);
     expect(buildRelationGroups(changed, config)[0].relations[0]).toMatchObject({
       tone: "tense",
       label: "Feszült",
@@ -99,7 +99,7 @@ describe("PoliticalRelations", () => {
 
     const seen = markRelationsSeen(changed);
     expect(getUnseenRelationIds(seen)).toEqual([]);
-    expect(hasDashboardNews(seen)).toBe(false);
+    expect(hasDashboardNews(seen, config as never, [])).toBe(false);
     expect(markRelationsSeen(seen)).toBe(seen);
   });
 
