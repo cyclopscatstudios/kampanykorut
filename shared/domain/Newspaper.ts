@@ -65,7 +65,9 @@ export function publishNewspaperEdition(
   const printed = new Set(current.editions.map((e) => e.itemId));
   const eligible = newspaper.items.filter(
     (item) =>
-      !printed.has(item.id) && (item.when === undefined || holds(item.when)),
+      !printed.has(item.id) &&
+      (item.priority === "pinned" || (item.weight ?? 1) > 0) &&
+      (item.when === undefined || holds(item.when)),
   );
   if (eligible.length === 0) {
     return state;
@@ -137,11 +139,8 @@ function pickItem(eligible: NewspaperItem[], seed: string): NewspaperItem {
   if (pinned) {
     return pinned;
   }
-  const weights = eligible.map((item) => Math.max(0, item.weight ?? 1));
+  const weights = eligible.map((item) => item.weight ?? 1);
   const total = weights.reduce((sum, w) => sum + w, 0);
-  if (total <= 0) {
-    return eligible[0];
-  }
   // A seeded pick keeps a reloaded session printing the same story.
   let roll = (hash(seed) / 0x100000000) * total;
   for (let i = 0; i < eligible.length; i++) {

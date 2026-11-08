@@ -131,6 +131,18 @@ describe("publishNewspaperEdition", () => {
     expect(next.newspaper?.editions[0].itemId).toBe("b");
   });
 
+  it("prints nothing when every story left has weight zero", () => {
+    const silent = {
+      ...config,
+      newspaper: {
+        ...config.newspaper!,
+        items: [{ id: "a", headline: "A", lead: "a", weight: 0 }],
+      },
+    };
+    const state = stateWith();
+    expect(publishNewspaperEdition(state, silent, never)).toBe(state);
+  });
+
   it("stops once the campaign has ended", () => {
     const state = stateWith({ isEnded: true });
     expect(publishNewspaperEdition(state, config, never)).toBe(state);

@@ -66,7 +66,6 @@ export function NewspaperDialog({
     >
       <div
         role="dialog"
-        aria-modal="true"
         aria-label={edition.paper.name}
         className="pointer-events-auto relative max-h-full w-full max-w-[540px] overflow-y-auto md:-rotate-[0.6deg]"
       >
