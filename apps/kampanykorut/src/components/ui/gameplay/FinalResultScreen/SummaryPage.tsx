@@ -2,8 +2,13 @@ import { useMemo } from "react";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
 import { ConfigEngine, StateEngine } from "@/logic/application";
-import { getMajorityType, getParliamentaryConfig } from "@/shared/domain";
+import {
+  getMajorityStatus,
+  getMajorityType,
+  getParliamentaryConfig,
+} from "@/shared/domain";
 import { FinalResults, Mandate, RawParty } from "@/shared/types";
+import { useTranslate } from "../../../../../../../shared/logic/hooks/useTranslateLang";
 import { Text } from "../../../../../../../shared/ui/Text";
 import { Heading } from "../../Heading";
 import { ImageWrapper } from "../ImageWrapper";
@@ -77,6 +82,13 @@ export function SummaryPage({ results }: { results: FinalResults }) {
             </Text>
           </div>
         </div>
+        {results.regions && (
+          <MajorityLabels
+            results={results}
+            allSeats={allSeats}
+            parties={currentConfig?.electionConfig.parties}
+          />
+        )}
         <div className="w-full flex justify-center mt-4">
           <div className="w-full max-w-[500px] px-3 md:px-0">
             <div className="dark:bg-slate-800/50 p-2 md:p-5 rounded-xl border border-slate-200/65 dark:border-slate-700">
@@ -117,4 +129,51 @@ function buildPartiesFromResults(
 
 function filterUnwantedParties(mandate: Mandate): boolean {
   return !mandate.party.startsWith("_");
+}
+
+function MajorityLabels({
+  results,
+  allSeats,
+  parties,
+}: {
+  results: FinalResults;
+  allSeats: number;
+  parties?: RawParty[];
+}) {
+  const t = useTranslate();
+  const { leader, majority, missing } = getMajorityStatus(
+    results.mandates,
+    allSeats,
+  );
+  const leaderName =
+    parties?.find((p) => p.id === leader?.party)?.name ?? leader?.party;
+
+  return (
+    <div className="mt-4 flex flex-wrap justify-center gap-3 px-3">
+      <div className="flex min-w-[220px] flex-col gap-1 rounded-xl bg-blue-400/8 px-4 py-3 text-center shadow-[inset_0_0_0_1px_rgba(239,246,255,0.12)]">
+        <span className="text-xs font-bold uppercase tracking-[0.06em] text-blue-200">
+          {t("endResult.majority.leader")}
+        </span>
+        <span className="text-lg font-bold text-slate-50">
+          {leader ? `${leaderName} · ${leader.totalSeats}` : "–"}
+        </span>
+      </div>
+      <div
+        className={`flex min-w-[220px] flex-col gap-1 rounded-xl px-4 py-3 text-center ${
+          missing === 0
+            ? "bg-green-400/8 shadow-[inset_0_0_0_2px_#4ade80]"
+            : "bg-amber-400/8 shadow-[inset_0_0_0_2px_#e0a23b]"
+        }`}
+      >
+        <span className="text-xs font-bold uppercase tracking-[0.06em] text-blue-200">
+          {t("endResult.majority.label", { majority })}
+        </span>
+        <span className="text-lg font-bold text-slate-50">
+          {missing === 0
+            ? t("endResult.majority.reached")
+            : t("endResult.majority.missing", { missing })}
+        </span>
+      </div>
+    </div>
+  );
 }

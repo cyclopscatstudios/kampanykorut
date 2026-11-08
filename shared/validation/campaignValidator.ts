@@ -49,7 +49,7 @@ const EFFECT_TYPES = [
 
 const DISTRICT_MAPS = ["2011", "2024", "budapest-districts"];
 
-const ELECTION_TYPES = ["parliamentary", "mayoral"];
+const ELECTION_TYPES = ["parliamentary", "mayoral", "proportional"];
 
 const RESULT_RULES = ["plurality"];
 
@@ -70,6 +70,7 @@ interface Context {
   groups: Set<string>;
   districts: Set<string>;
   electionType?: string;
+  regionMegyekods?: Set<number>;
   playableCandidates: Set<string>;
   eventIds: Set<string>;
   focusIds: Set<string>;
@@ -1137,7 +1138,7 @@ function checkElectionDefinition(
       `resultRule must be one of ${RESULT_RULES.join(", ")}`,
     );
   }
-  if (election.type === "parliamentary" && election.resultRule !== undefined) {
+  if (election.type !== "mayoral" && election.resultRule !== undefined) {
     report(
       ctx,
       "warning",
@@ -1148,6 +1149,97 @@ function checkElectionDefinition(
     );
   }
   return String(election.type);
+}
+
+function checkProportionalRegions(ctx: Context, file: string, data: Json) {
+  const election = data.election as Json;
+  const error = (path: string, message: string) =>
+    report(ctx, "error", "election-config-invalid", file, path, message);
+  if (!Array.isArray(election.regions) || election.regions.length === 0) {
+    error("/election/regions", "regions must be a non-empty array");
+    return;
+  }
+  const ids = new Set<string>();
+  const counties = new Set<number>();
+  let regionSeats = 0;
+  election.regions.forEach((region, i) => {
+    const path = `/election/regions/${i}`;
+    if (!isObject(region)) {
+      error(path, "region must be an object");
+      return;
+    }
+    if (typeof region.id !== "string" || typeof region.name !== "string") {
+      error(path, "region needs a string id and name");
+    } else if (ids.has(region.id)) {
+      report(
+        ctx,
+        "error",
+        "duplicate-id",
+        file,
+        `${path}/id`,
+        `duplicate region id "${region.id}"`,
+      );
+    } else {
+      ids.add(region.id);
+    }
+    if (!Number.isInteger(region.seats) || (region.seats as number) <= 0) {
+      error(`${path}/seats`, "seats must be a positive integer");
+    } else {
+      regionSeats += region.seats as number;
+    }
+    if (!Array.isArray(region.megyekods) || region.megyekods.length === 0) {
+      error(`${path}/megyekods`, "megyekods must be a non-empty array");
+      return;
+    }
+    region.megyekods.forEach((code, j) => {
+      if (!Number.isInteger(code)) {
+        error(`${path}/megyekods/${j}`, "megyekod must be an integer");
+      } else if (counties.has(code as number)) {
+        error(
+          `${path}/megyekods/${j}`,
+          `megyekod ${String(code)} belongs to more than one region`,
+        );
+      } else {
+        counties.add(code as number);
+      }
+    });
+  });
+  ctx.regionMegyekods = counties;
+  if (
+    isFiniteNumber(data.listSeats) &&
+    isFiniteNumber(data.allSeats) &&
+    regionSeats + data.listSeats !== data.allSeats
+  ) {
+    error(
+      "/allSeats",
+      `allSeats (${data.allSeats}) must equal the region seats (${regionSeats}) plus listSeats (${data.listSeats})`,
+    );
+  }
+}
+
+function checkRegionCoverage(ctx: Context, file: string, data: unknown) {
+  if (!ctx.regionMegyekods || !Array.isArray(data)) {
+    return;
+  }
+  const missing = new Set<number>();
+  data.filter(isObject).forEach((row) => {
+    if (
+      Number.isInteger(row.megyekod) &&
+      !ctx.regionMegyekods?.has(row.megyekod as number)
+    ) {
+      missing.add(row.megyekod as number);
+    }
+  });
+  if (missing.size > 0) {
+    report(
+      ctx,
+      "error",
+      "region-missing",
+      file,
+      "",
+      `megyekod ${[...missing].sort((a, b) => a - b).join(", ")} is not in any region, so its votes would be lost`,
+    );
+  }
 }
 
 function checkElectionConfig(ctx: Context, file: string, data: unknown) {
@@ -1165,7 +1257,7 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
   const electionType = checkElectionDefinition(ctx, file, data.election);
   ctx.electionType = electionType;
   const seatKeys =
-    electionType === "parliamentary"
+    electionType === "parliamentary" || electionType === "proportional"
       ? ["listSeats", "allSeats", "thresholdPercent"]
       : [];
   for (const key of seatKeys) {
@@ -1179,6 +1271,9 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
         `${key} must be a positive number`,
       );
     }
+  }
+  if (electionType === "proportional") {
+    checkProportionalRegions(ctx, file, data);
   }
   if (!DISTRICT_MAPS.includes(String(data.districtMap))) {
     report(
@@ -2155,16 +2250,18 @@ export function validateCampaign(
     "manifest.json",
     "/files/voterEnvironmentConfig",
   );
+  const candidateListData = readFile(
+    ctx,
+    files.candidateListData,
+    "manifest.json",
+    "/files/candidateListData",
+  );
   checkCandidateListData(
     ctx,
     String(files.candidateListData),
-    readFile(
-      ctx,
-      files.candidateListData,
-      "manifest.json",
-      "/files/candidateListData",
-    ),
+    candidateListData,
   );
+  checkRegionCoverage(ctx, String(files.candidateListData), candidateListData);
   for (const optional of ["partyListData", "customPollsters"] as const) {
     if (files[optional] !== undefined) {
       readFile(ctx, files[optional], "manifest.json", `/files/${optional}`);

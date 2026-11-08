@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "version": "0.1.0"
+  },
+  "files": {
+    "electionConfig": "election_config.json",
+    "voterEnvironmentConfig": "voter_environment_config.json",
+    "candidateListData": "oevk_constituency_results.json",
+    "politicalConfig": "political_config.json",
+    "playableSides": {
+      "green_party": {
+        "emma_wilson": {
+          "questions": "shared/questions.json",
+          "answerEffect": "shared/answer_effects.json"
+        }
+      }
+    }
+  }
+}

@@ -53,5 +53,16 @@
     "campaignBanner": "default-banner.png",
     "thinCampaignBanner": "default-banner-thin.png",
     "isPublished": false
+  },
+  {
+    "id": "0003_test_proportional",
+    "label": "0003: Arányos választás teszt (mock)",
+    "description": "Arányos választási tesztkampány mock adatokkal: 16 körzet, 350 + 50 mandátum, D'Hondt, 201 a többség.",
+    "year": 0,
+    "route": "_0003_",
+    "tags": ["test"],
+    "campaignBanner": "default-banner.png",
+    "thinCampaignBanner": "default-banner-thin.png",
+    "isPublished": false
   }
 ]

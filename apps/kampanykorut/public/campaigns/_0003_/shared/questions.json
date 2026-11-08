@@ -1,0 +1,62 @@
+[
+  {
+    "id": "prop_q1",
+    "title": "Kampánynyitó",
+    "question": "Teszt kérdés: mivel nyitod a kampányt?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Gazdaság"
+      },
+      {
+        "id": "B",
+        "label": "Szociális ügyek"
+      }
+    ]
+  },
+  {
+    "id": "prop_q2",
+    "title": "Koalíciós jelzés",
+    "question": "Teszt kérdés: kivel tárgyalnál a választás után?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A sárgákkal"
+      },
+      {
+        "id": "B",
+        "label": "Senkivel"
+      }
+    ]
+  },
+  {
+    "id": "prop_q3",
+    "title": "Vidéki körút",
+    "question": "Teszt kérdés: hova mész a kampány hajrájában?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Kisvárosokba"
+      },
+      {
+        "id": "B",
+        "label": "A fővárosba"
+      }
+    ]
+  },
+  {
+    "id": "prop_q4",
+    "title": "Záróbeszéd",
+    "question": "Teszt kérdés: mivel zárod a kampányt?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Egységgel"
+      },
+      {
+        "id": "B",
+        "label": "Változással"
+      }
+    ]
+  }
+]

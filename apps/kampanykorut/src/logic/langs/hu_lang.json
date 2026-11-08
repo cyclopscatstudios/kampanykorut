@@ -141,6 +141,12 @@
         "validVotes": "Érvényes szavazat",
         "points": "{{points}} sz.pont"
       }
+    },
+    "majority": {
+      "leader": "Legtöbb mandátum",
+      "label": "Többség: {{majority}} mandátum",
+      "reached": "Megvan",
+      "missing": "Nincs meg · {{missing}} hiányzik"
     }
   },
   "gameHeader": {
@@ -345,6 +351,20 @@
       "processedVotes": "Feldolgozott szavazatok",
       "pleaseWait": "Kérjük, várjon..."
     }
+  },
+  "seatCount": {
+    "live": "Élő",
+    "final": "Végeredmény",
+    "title": "Választási éjszaka · {{year}}",
+    "progress": "{{done}} / {{total}} körzet",
+    "counting": "Számolás…",
+    "tally": "Eddig kiosztott mandátum",
+    "majority": "{{majority}} · többségi határ",
+    "nationalPending": "+ {{seats}} országos listás mandátum a számlálás végén",
+    "nationalAdded": "+ {{seats}} országos listás mandátum kiosztva",
+    "hint": "Minden pötty egy mandátum. Arányos rendszer: a körzet nem a győztesé, hanem megoszlik.",
+    "skip": "Ugrás a végére",
+    "continue": "Tovább az eredményhez"
   },
   "bugReporter": {
     "title": "Hiba bejelentése",
