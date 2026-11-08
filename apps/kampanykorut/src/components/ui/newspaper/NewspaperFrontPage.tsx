@@ -26,7 +26,7 @@ export function NewspaperFrontPage({
   return (
     <article
       className={classNames(
-        "flex w-full flex-col gap-2.5 rounded-[3px] px-4 pb-3 pt-4 shadow-[0_30px_60px_rgba(0,0,0,0.55)] md:gap-3 md:px-8 md:pb-4 md:pt-6",
+        "flex w-full flex-col gap-2 rounded-[3px] px-4 pb-3 pt-3 shadow-[0_18px_40px_rgba(0,0,0,0.6)] md:gap-2.5 md:px-6 md:pb-4 md:pt-4",
         "bg-[radial-gradient(ellipse_at_30%_20%,#f4ecd6_0%,#ebe0c2_60%,#ddd0ad_100%)]",
         BODY,
         INK,
@@ -36,25 +36,25 @@ export function NewspaperFrontPage({
       {paper.price && (
         <div
           className={classNames(
-            "flex justify-end text-[9px] font-bold uppercase tracking-[0.12em] md:text-[11px]",
+            "flex justify-end font-[Montserrat,sans-serif] text-[9px] font-bold uppercase tracking-[0.12em] md:text-[10px]",
             SOFT_INK,
           )}
         >
-          <span className="font-[Montserrat,sans-serif]">{paper.price}</span>
+          {paper.price}
         </div>
       )}
 
-      <div className="flex items-center justify-center gap-3 md:gap-5">
+      <div className="flex items-center justify-center gap-3">
         {paper.logo && (
           <img
             src={paper.logo}
             alt=""
-            className="size-11 shrink-0 object-contain md:size-[72px]"
+            className="size-10 shrink-0 object-contain md:size-12"
           />
         )}
         <h2
           className={classNames(
-            "m-0 text-center text-[34px] leading-[0.95] tracking-[-0.02em] md:text-[84px]",
+            "m-0 text-center text-[34px] leading-[0.95] tracking-[-0.02em] md:text-[50px]",
             MASTHEAD,
           )}
         >
@@ -62,7 +62,7 @@ export function NewspaperFrontPage({
         </h2>
       </div>
 
-      <div className="flex items-center justify-between gap-3 border-y-2 border-[#1c1a17] px-0.5 py-1 text-[11px] font-bold md:border-y-[3px] md:text-xs">
+      <div className="flex items-center justify-between gap-3 border-y-2 border-[#1c1a17] px-0.5 py-1 text-[11px] font-bold">
         <span>
           {year ? `${year} · ` : ""}
           {t("newspaper.turn", { turn })}
@@ -75,50 +75,37 @@ export function NewspaperFrontPage({
         <span>{t("newspaper.issue", { issue })}</span>
       </div>
 
-      <div
+      {item.image && (
+        <figure className="m-0 flex flex-col gap-1 pt-1">
+          <img
+            src={item.image}
+            alt=""
+            className="max-h-[200px] w-full border-2 border-[#1c1a17] object-cover contrast-110 grayscale md:max-h-[240px]"
+          />
+          {item.imageCredit && (
+            <figcaption className={classNames("text-[11px] italic", SOFT_INK)}>
+              {item.imageCredit}
+            </figcaption>
+          )}
+        </figure>
+      )}
+
+      <h3
         className={classNames(
-          "grid gap-3 pt-1 md:gap-6",
-          item.image && "md:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]",
+          "m-0 pt-1 text-center text-2xl leading-[1.08] md:text-[28px]",
+          HEADLINE,
         )}
       >
-        <div className="flex flex-col gap-3">
-          <h3
-            className={classNames(
-              "m-0 text-[28px] leading-[1.05] md:text-[42px]",
-              HEADLINE,
-            )}
-          >
-            {item.headline}
-          </h3>
-          <p className="m-0 text-base font-bold leading-snug md:text-lg">
-            {item.lead}
-          </p>
-          <div
-            aria-hidden="true"
-            className="hidden min-h-16 flex-1 grid-cols-2 gap-3.5 opacity-30 md:grid"
-          >
-            <div className="bg-[repeating-linear-gradient(180deg,#1c1a17_0_2px,transparent_2px_9px)]" />
-            <div className="bg-[repeating-linear-gradient(180deg,#1c1a17_0_2px,transparent_2px_9px)]" />
-          </div>
-        </div>
-        {item.image && (
-          <figure className="m-0 flex flex-col gap-1">
-            <img
-              src={item.image}
-              alt=""
-              className="max-h-[220px] w-full border-2 border-[#1c1a17] object-cover contrast-110 grayscale md:max-h-[320px]"
-            />
-            {item.imageCredit && (
-              <figcaption className={classNames("text-xs italic", SOFT_INK)}>
-                {item.imageCredit}
-              </figcaption>
-            )}
-          </figure>
-        )}
-      </div>
+        {item.headline}
+      </h3>
+      <p className="m-0 text-[15px] font-bold leading-snug md:text-base">
+        {item.lead}
+      </p>
 
       {footer && (
-        <div className="mt-1 border-t border-[#1c1a17]/35 pt-2.5">{footer}</div>
+        <div className="mt-1 border-t border-[#1c1a17]/35 pt-2.5 font-[Montserrat,sans-serif]">
+          {footer}
+        </div>
       )}
     </article>
   );
