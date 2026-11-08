@@ -132,6 +132,7 @@ async function fetchCampaignConfig(
     "customGroups",
     "customPollsters",
     "campaignEvents",
+    "politicalConfig",
   ] as const;
 
   const commonEntries = await Promise.all(

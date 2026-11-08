@@ -518,6 +518,29 @@ describe("validateCampaign", () => {
     });
   });
 
+  describe("political config", () => {
+    const withPolitical = (config: unknown) => (f: Files) => {
+      file(f, "manifest.json").files.politicalConfig = "political.json";
+      f["political.json"] = config;
+    };
+
+    it("accepts a known game mode", () => {
+      expect(validate(withPolitical({ gameMode: "strategic" }))).toEqual([]);
+    });
+
+    it("reports an unknown game mode", () => {
+      expect(codes(validate(withPolitical({ gameMode: "grand" })))).toEqual([
+        "error:game-mode-invalid",
+      ]);
+    });
+
+    it("reports a config that is not an object", () => {
+      expect(codes(validate(withPolitical([])))).toEqual([
+        "error:political-config-invalid",
+      ]);
+    });
+  });
+
   describe("campaign events", () => {
     const withdrawal = () => ({
       id: "withdrawal",

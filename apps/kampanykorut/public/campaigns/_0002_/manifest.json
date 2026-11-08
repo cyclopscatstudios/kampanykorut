@@ -8,6 +8,7 @@
     "voterEnvironmentConfig": "voter_environment_config.json",
     "candidateListData": "candidate_list_data.json",
     "campaignEvents": "campaign_events.json",
+    "politicalConfig": "political_config.json",
     "playableSides": {
       "lmp": {
         "vitezy_david": {

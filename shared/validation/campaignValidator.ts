@@ -1,7 +1,13 @@
 import { evaluateCondition } from "../domain/ConditionEvaluator";
 import { defaultGroups } from "../domain/DefaultGroups";
 import { getQuestionCondition } from "../domain/QuestionEligibility";
-import { CandidateStatus, Condition, RawQuestion } from "../types";
+import {
+  CandidateStatus,
+  Condition,
+  GAME_MODES,
+  GameMode,
+  RawQuestion,
+} from "../types";
 import { validateCondition } from "./conditionValidator";
 
 export type Severity = "error" | "warning";
@@ -1776,6 +1782,33 @@ function checkCampaignEvents(
   });
 }
 
+function checkPoliticalConfig(ctx: Context, file: string, data: unknown) {
+  if (data === undefined) {
+    return;
+  }
+  if (!isObject(data)) {
+    report(
+      ctx,
+      "error",
+      "political-config-invalid",
+      file,
+      "",
+      "political config must be an object",
+    );
+    return;
+  }
+  if (!GAME_MODES.includes(data.gameMode as GameMode)) {
+    report(
+      ctx,
+      "error",
+      "game-mode-invalid",
+      file,
+      "/gameMode",
+      `gameMode must be one of ${GAME_MODES.join(", ")}`,
+    );
+  }
+}
+
 export function validateCampaign(
   header: CampaignHeaderInput,
   source: CampaignSource,
@@ -1881,6 +1914,19 @@ export function validateCampaign(
       ctx,
       String(files.customGroups),
       readFile(ctx, files.customGroups, "manifest.json", "/files/customGroups"),
+    );
+  }
+
+  if (files.politicalConfig !== undefined) {
+    checkPoliticalConfig(
+      ctx,
+      String(files.politicalConfig),
+      readFile(
+        ctx,
+        files.politicalConfig,
+        "manifest.json",
+        "/files/politicalConfig",
+      ),
     );
   }
 

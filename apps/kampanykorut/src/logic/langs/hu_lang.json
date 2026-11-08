@@ -1,5 +1,7 @@
 {
-  "bottomSheet": { "close": "Bezárás" },
+  "bottomSheet": {
+    "close": "Bezárás"
+  },
   "mainMenu": {
     "newGame": "Új játék",
     "loadGame": "Játék betöltése",
@@ -148,6 +150,22 @@
       "toggle": "Kampány részletei megnyitása",
       "candidate": "Jelölt",
       "party": "Párt"
+    }
+  },
+  "politicalDashboard": {
+    "title": "Politikai helyzet",
+    "back": "Vissza a kampányhoz",
+    "turn": "{{turn}}. forduló",
+    "overview": "Áttekintés",
+    "progress": "Kampány állása",
+    "latestEvent": "Legutóbbi esemény",
+    "empty": {
+      "title": "Még csend van",
+      "body": "A kampány során itt jelennek meg a fontos fejlemények."
+    },
+    "entry": {
+      "label": "Politikai helyzet",
+      "withNews": "Politikai helyzet: új esemény"
     }
   },
   "gameMenuBar": {
