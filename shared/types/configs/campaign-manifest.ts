@@ -18,6 +18,7 @@ export interface CampaignManifestFiles {
   customPollsters?: string;
   campaignEvents?: string;
   politicalConfig?: string;
+  newspaper?: string;
   playableSides?: Record<string, PlayableSideManifest>;
 }
 

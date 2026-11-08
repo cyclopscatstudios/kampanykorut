@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { type ReactNode, useEffect, useMemo } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import {
   buildSeatCountView,
@@ -33,6 +33,7 @@ interface GameViewProps {
   onSetView: (view: CurrentView) => void;
   onSetDistrict: (district: District | null) => void;
   onVoteCountingComplete: () => void;
+  mapOverlay?: ReactNode;
 }
 
 export function GameView({
@@ -47,6 +48,7 @@ export function GameView({
   onSetView,
   onSetDistrict,
   onVoteCountingComplete,
+  mapOverlay,
 }: GameViewProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const proportional = getParliamentaryConfig(config.electionConfig);
@@ -137,6 +139,7 @@ export function GameView({
       setSelectedDistrict={onSetDistrict}
       electionConfig={config.electionConfig}
       visitBlocked={visitBlocked}
+      mapOverlay={mapOverlay}
     />
   ) : (
     <MobileMapView
@@ -150,6 +153,7 @@ export function GameView({
       onSetDistrict={onSetDistrict}
       onSetView={onSetView}
       visitBlocked={visitBlocked}
+      mapOverlay={mapOverlay}
     />
   );
 }

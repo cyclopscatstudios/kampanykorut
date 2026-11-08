@@ -36,9 +36,7 @@ export async function finalResultLoader({ params }: LoaderFunctionArgs) {
   }
 
   const config = configEngine.getCampaignConfig(campaignId);
-  // A hung parliament first goes through the one-off coalition offer.
   if (needsCoalitionOffer(state, config)) {
-    // Thrown so the loader keeps returning only the results data.
     throw redirect(
       `/game/${campaignId}/coalition?sessionId=${stateEngine.getSessionId()}`,
     );

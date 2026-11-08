@@ -27,8 +27,6 @@ export function Tile({
   );
 }
 
-// Shows the longer explanation over the tile on hover, keyboard focus or tap,
-// so the tile itself can stay graphic with a short caption.
 export function HoverDetail({
   id,
   detail,

@@ -1,5 +1,5 @@
 import { t } from "i18next";
-import { type RefObject, useRef, useState } from "react";
+import { type ReactNode, type RefObject, useRef, useState } from "react";
 import { useResizeObserver } from "usehooks-ts";
 import {
   CandidateListData,
@@ -41,6 +41,7 @@ interface MobileMapViewProps {
   onSetDistrict: (district: District | null) => void;
   onSetView: (view: CurrentView) => void;
   visitBlocked?: boolean;
+  mapOverlay?: ReactNode;
 }
 
 export function MobileMapView({
@@ -54,6 +55,7 @@ export function MobileMapView({
   onSetDistrict,
   onSetView,
   visitBlocked,
+  mapOverlay,
 }: MobileMapViewProps) {
   const [view, setView] = useState<MobileView>("list");
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -81,20 +83,23 @@ export function MobileMapView({
       {visitBlocked && (
         <FocusRequiredNote className="mx-4 mb-3 flex-wrap rounded-[10px] bg-amber-400/8 px-3 py-2" />
       )}
-      <div className="mx-4 mb-3 flex gap-1 rounded-[10px] border border-white/8 bg-white/4 p-0.75">
-        {(["list", "map"] as const).map((option) => (
-          <Button
-            key={option}
-            variant="tab"
-            size="md"
-            block
-            selected={view === option}
-            onClick={() => setView(option)}
-            className="flex-1"
-          >
-            <Button.Text>{t(`districtList.view.${option}`)}</Button.Text>
-          </Button>
-        ))}
+      <div className="mx-4 mb-3 flex items-center gap-2">
+        {mapOverlay && <div className="shrink-0">{mapOverlay}</div>}
+        <div className="flex flex-1 gap-1 rounded-[10px] border border-white/8 bg-white/4 p-0.75">
+          {(["list", "map"] as const).map((option) => (
+            <Button
+              key={option}
+              variant="tab"
+              size="md"
+              block
+              selected={view === option}
+              onClick={() => setView(option)}
+              className="flex-1"
+            >
+              <Button.Text>{t(`districtList.view.${option}`)}</Button.Text>
+            </Button>
+          ))}
+        </div>
       </div>
 
       {view === "list" ? (

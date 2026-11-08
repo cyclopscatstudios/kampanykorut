@@ -7,8 +7,6 @@ import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { PoliticalEmblem } from "../dashboard/PoliticalEmblem";
 
-// Shown next to the disabled district visit button while the campaign waits
-// for the player to choose a political focus.
 export function FocusRequiredNote({ className }: { className?: string }) {
   const stateEngine = container.resolve(StateEngine);
   const { goToPoliticalDashboard } = useNavigation();

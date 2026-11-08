@@ -84,8 +84,6 @@ export function canSelectFocus(
   );
 }
 
-// The campaign can make the player commit to a direction before the first
-// district visit.
 export function isFocusRequired(
   state: CampaignState,
   config: Pick<CampaignConfig, "politicalConfig">,

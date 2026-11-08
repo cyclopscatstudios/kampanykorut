@@ -30,6 +30,9 @@
     "analytics": {
       "label": "Send anonymous usage statistics",
       "privacyLink": "Privacy notice"
+    },
+    "newspaperAutoOpen": {
+      "label": "Open new newspaper editions automatically"
     }
   },
   "loadSavedGamesMenu": {
@@ -491,5 +494,21 @@
   "eventAnnouncement": {
     "label": "Campaign event",
     "close": "Continue"
+  },
+  "newspaper": {
+    "entry": {
+      "label": "Newspaper",
+      "withNews": "Newspaper · new edition"
+    },
+    "ribbon": "Extra edition!",
+    "read": "I've read it",
+    "optOut": "Don't show me new editions",
+    "close": "Close",
+    "paging": "Editions",
+    "previous": "Previous edition",
+    "next": "Next edition",
+    "position": "{{current}} / {{total}}",
+    "turn": "Round {{turn}}",
+    "issue": "No. {{issue}}"
   }
 }

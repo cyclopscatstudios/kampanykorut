@@ -356,3 +356,41 @@ A `Condition` ([shared/types/condition.ts](shared/types/condition.ts)) is either
 | `{ "type": "event-triggered", "eventId" }`                                                                                      | that event has already run.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 The campaign validator reports unknown questions, answers, candidates and events inside conditions, as well as malformed conditions.
+
+#### Newspaper
+
+A strategic-mode campaign (`politicalConfig.gameMode: "strategic"`) can run a newspaper of pre-written flavour stories: fun facts and easter eggs that never affect votes. Point the manifest's optional `files.newspaper` at the file (e.g. `newspaper.json`):
+
+```json
+{
+  "cadence": { "minTurns": 2, "maxTurns": 3 },
+  "papers": [
+    {
+      "id": "nephang",
+      "name": "NÉPHANG",
+      "subtitle": "Független politikai napilap",
+      "logo": "/images/<route>/newspaper/nephang-logo.svg",
+      "price": "Ára: 4,80 Ft"
+    }
+  ],
+  "items": [
+    {
+      "id": "szivartartok",
+      "paper": "nephang",
+      "headline": "Szivartartók a Parlament folyosóján",
+      "lead": "A felsőházi ülésterem előtt számozott réztartók sorakoznak…",
+      "image": "/images/<route>/newspaper/szivartarto.jpg",
+      "imageCredit": "Fotó: …",
+      "when": { "type": "turn", "min": 3 },
+      "weight": 1
+    }
+  ]
+}
+```
+
+- **Papers**: each has an `id` and a `name` (the masthead), and optionally a `subtitle`, a `price` line and a `logo` shown beside the name. Each paper numbers its own issues.
+- **Items**: `id`, `headline` and `lead` are required; keep the lead to two or three sentences. `paper` picks the paper (the first one when left out). `image` is a public path, shown in greyscale, with an optional `imageCredit`.
+- **Timing**: after every answered decision, once `cadence.minTurns`–`maxTurns` turns have passed since the last edition (2–3 by default; the first edition comes after `minTurns`), one story is printed. Only stories not printed yet and whose `when` condition holds are eligible (see [Conditions](#conditions)). An eligible `"priority": "pinned"` story always comes first; otherwise the pick is weighted by `weight` (default 1; 0 leaves the story out unless it is pinned) and seeded, so a reloaded session prints the same story. With nothing eligible, the next turn tries again.
+- **In the game**: a new edition opens by itself on the map, after any event announcement, with "Elolvastam" and "Nem kérek több értesítést". The latter turns the pop-up off for every campaign (it can be turned back on in Settings); from then on the newspaper button in the map's top-left corner gets a dot and a short "Rendkívüli kiadás!" strip instead. The button also pages back through every edition so far.
+
+The campaign validator checks the shape, unknown papers, duplicate ids, missing images and logos, and the conditions; it warns when the campaign is not in strategic mode.
