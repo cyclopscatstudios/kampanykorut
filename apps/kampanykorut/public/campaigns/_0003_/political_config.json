@@ -1,0 +1,52 @@
+{
+  "gameMode": "strategic",
+  "focuses": [
+    {
+      "id": "coalition_ready",
+      "title": "Koalíciós nyitás",
+      "summary": "Tárgyalás a sárgákkal",
+      "description": "Teszt fókusz: a választás után koalícióra készülsz. Akkor teljesül, ha a sárgákkal tárgyalnál.",
+      "icon": "people-fill",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "prop_q2",
+        "answerId": "A"
+      }
+    },
+    {
+      "id": "own_majority",
+      "title": "Önálló többség",
+      "summary": "201 mandátum egyedül",
+      "description": "Teszt fókusz: egyedül akarsz többséget. Meghiúsul, ha koalíciós tárgyalást ígérsz.",
+      "icon": "signpost-fill",
+      "failWhen": {
+        "type": "answer-selected",
+        "questionId": "prop_q2",
+        "answerId": "A"
+      }
+    }
+  ],
+  "relationGroups": [
+    { "id": "parties", "title": "Pártok", "icon": "arrow-left-right" }
+  ],
+  "relations": [
+    {
+      "id": "yellow_party",
+      "name": "Yellow Party",
+      "groupId": "parties",
+      "icon": "flag-fill",
+      "tone": "calm",
+      "label": "Nyitott",
+      "description": "Teszt: a sárgák kivárnak, de tárgyalnának."
+    },
+    {
+      "id": "red_party",
+      "name": "Red Party",
+      "groupId": "parties",
+      "icon": "flag-fill",
+      "tone": "tense",
+      "label": "Rivális",
+      "description": "Teszt: a fő ellenfél."
+    }
+  ]
+}
