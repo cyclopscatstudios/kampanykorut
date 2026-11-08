@@ -158,6 +158,46 @@
       "party": "Párt"
     }
   },
+  "politicalDashboard": {
+    "title": "Politikai helyzet",
+    "back": "Vissza a kampányhoz",
+    "turn": "{{turn}}. forduló",
+    "overview": "Áttekintés",
+    "progress": "Kampány állása",
+    "latestEvent": "Legutóbbi esemény",
+    "empty": {
+      "title": "Még csend van",
+      "body": "A kampány során itt jelennek meg a fontos fejlemények."
+    },
+    "entry": {
+      "label": "Politikai helyzet",
+      "withNews": "Politikai helyzet: új esemény"
+    },
+    "tabs": {
+      "overview": "Áttekintés",
+      "focuses": "Fókuszok",
+      "relations": "Viszonyok",
+      "chronicle": "Krónika"
+    },
+    "focus": {
+      "followed": "Követett fókusz",
+      "prompt": "Merre viszed a pártot?",
+      "choose": "Irány választása",
+      "select": "Ezt követem",
+      "switchNote": "A kijelölés csak a szándékodat rögzíti, a támogatottságodon nem változtat. Egy fordulópontig még válthatsz.",
+      "lockedNote": "Az irány véglegessé vált, a fókusz már nem váltható.",
+      "status": {
+        "available": "Választható",
+        "selected": "Követed",
+        "completed": "Teljesült",
+        "failed": "Meghiúsult",
+        "excluded": "Kizárva"
+      }
+    },
+    "relations": {
+      "new": "Új"
+    }
+  },
   "gameMenuBar": {
     "save": "Játék mentése",
     "laod": "Játék visszatöltése",

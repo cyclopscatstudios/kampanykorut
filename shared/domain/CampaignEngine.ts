@@ -21,6 +21,7 @@ import {
   RawEffect,
   RawParty,
   RawQuestion,
+  SetRelationEffect,
   Strategy,
   StrategyReward,
   WithdrawCandidateEffect,
@@ -40,6 +41,7 @@ import {
 import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
+import { setRelations } from "./PoliticalRelations";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import {
   calculateProportionalResults,
@@ -575,6 +577,7 @@ export class CampaignEngine {
   ): CampaignState {
     let current = state;
     let batch: RawEffect[] = [];
+    const relations: SetRelationEffect[] = [];
     const flush = () => {
       current = this.applyRawEffects(current, batch);
       batch = [];
@@ -590,6 +593,8 @@ export class CampaignEngine {
         }
         flush();
         current = this.withdrawCandidate(current, effect);
+      } else if (effect.type === "set-relation") {
+        relations.push(effect);
       } else {
         batch.push(effect);
       }
@@ -597,10 +602,10 @@ export class CampaignEngine {
     flush();
 
     if (current === state) {
-      return state;
+      return setRelations(state, relations);
     }
     return {
-      ...current,
+      ...setRelations(current, relations),
       ...this.calculateResults(
         current.candidateListData,
         current.partyListData,

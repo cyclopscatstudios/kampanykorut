@@ -43,6 +43,7 @@ test("mayoral test campaign: the candidate withdraws", async ({
   expect(state?.campaignEvents).toEqual({
     triggeredEventIds: ["szentkiralyi_alexandra_withdrawal"],
     pendingAnnouncementIds: ["szentkiralyi_alexandra_withdrawal"],
+    triggeredAtTurn: { szentkiralyi_alexandra_withdrawal: 2 },
   });
   expect(state?.mayoralResult?.votes).not.toHaveProperty(SZENTKIRALYI);
   const outcome = state?.mayoralResult?.outcome;
@@ -127,6 +128,7 @@ test("mayoral test campaign: a pending announcement is shown once", async ({
   expect((await getCampaignState())?.campaignEvents).toEqual({
     triggeredEventIds: ["szentkiralyi_alexandra_withdrawal"],
     pendingAnnouncementIds: [],
+    triggeredAtTurn: {},
   });
 
   await page.reload();

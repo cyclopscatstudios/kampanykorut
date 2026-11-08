@@ -49,5 +49,6 @@ export function createConditionContext(
     getCandidateStatus: (candidateId) => getCandidateStatus(state, candidateId),
     playerCandidateId: state.playerSide?.candidateId,
     triggeredEventIds: getCampaignEventState(state).triggeredEventIds,
+    selectedFocusId: state.politicalDashboard?.selectedFocusId,
   };
 }

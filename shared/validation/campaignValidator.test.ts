@@ -557,6 +557,157 @@ describe("validateCampaign", () => {
     });
   });
 
+  describe("political config", () => {
+    const withPolitical = (config: unknown) => (f: Files) => {
+      file(f, "manifest.json").files.politicalConfig = "political.json";
+      f["political.json"] = config;
+    };
+
+    it("accepts a known game mode", () => {
+      expect(validate(withPolitical({ gameMode: "strategic" }))).toEqual([]);
+    });
+
+    it("reports an unknown game mode", () => {
+      expect(codes(validate(withPolitical({ gameMode: "grand" })))).toEqual([
+        "error:game-mode-invalid",
+      ]);
+    });
+
+    const focus = (id: string, extra: object = {}) => ({
+      id,
+      title: id,
+      summary: "Rövid",
+      description: "Hosszú",
+      ...extra,
+    });
+
+    it("accepts focuses whose conditions point to known references", () => {
+      expect(
+        validate(
+          withPolitical({
+            gameMode: "strategic",
+            focuses: [
+              focus("with"),
+              focus("without", {
+                completeWhen: { type: "focus-selected", focusId: "with" },
+              }),
+            ],
+          }),
+        ),
+      ).toEqual([]);
+    });
+
+    it("reports invalid focuses and an unknown lock event", () => {
+      const result = validate(
+        withPolitical({
+          gameMode: "strategic",
+          focusLockEventId: "congress",
+          focuses: [
+            focus("with"),
+            focus("with", { summary: "" }),
+            focus("other", {
+              failWhen: { type: "event-triggered", eventId: "nope" },
+            }),
+          ],
+        }),
+      );
+      expect(codes(result)).toEqual([
+        "error:unknown-event",
+        "error:focus-invalid",
+        "error:focus-duplicate",
+        "error:unknown-event",
+      ]);
+    });
+
+    const relationConfig = (relation: object) => ({
+      gameMode: "strategic",
+      relationGroups: [{ id: "party", title: "Párton belül" }],
+      relations: [
+        {
+          id: "kadar_wing",
+          name: "Kádár-szárny",
+          groupId: "party",
+          tone: "calm",
+          label: "Kivár",
+          description: "Még nem döntöttek.",
+          ...relation,
+        },
+      ],
+    });
+
+    it("accepts relations and an event that changes one", () => {
+      expect(
+        validate((f) => {
+          withPolitical(relationConfig({}))(f);
+          file(f, "manifest.json").files.campaignEvents = "events.json";
+          f["events.json"] = [
+            {
+              id: "ultimatum",
+              conditions: [
+                {
+                  if: { type: "turn", min: 6 },
+                  effects: [
+                    {
+                      type: "set-relation",
+                      relationId: "kadar_wing",
+                      tone: "tense",
+                      label: "Feszült",
+                      description: "Szembehelyezkednek.",
+                    },
+                  ],
+                },
+              ],
+              announcement: {
+                title: "Kádár ultimátuma",
+                body: "Kongresszust követel.",
+                icon: "megaphone-fill",
+                major: true,
+              },
+            },
+          ];
+        }),
+      ).toEqual([]);
+    });
+
+    it("reports invalid relations and changes to unknown relations", () => {
+      const result = validate((f) => {
+        withPolitical(relationConfig({ groupId: "nope", tone: "angry" }))(f);
+        file(f, "manifest.json").files.campaignEvents = "events.json";
+        f["events.json"] = [
+          {
+            id: "e",
+            conditions: [
+              {
+                if: { type: "turn", min: 1 },
+                effects: [
+                  {
+                    type: "set-relation",
+                    relationId: "ghost",
+                    tone: "good",
+                    label: "",
+                    description: "x",
+                  },
+                ],
+              },
+            ],
+          },
+        ];
+      });
+      expect(codes(result)).toEqual([
+        "error:unknown-relation",
+        "error:relation-invalid",
+        "error:unknown-relation-group",
+        "error:relation-invalid",
+      ]);
+    });
+
+    it("reports a config that is not an object", () => {
+      expect(codes(validate(withPolitical([])))).toEqual([
+        "error:political-config-invalid",
+      ]);
+    });
+  });
+
   describe("campaign events", () => {
     const withdrawal = () => ({
       id: "withdrawal",

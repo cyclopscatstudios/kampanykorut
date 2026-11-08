@@ -4,6 +4,7 @@ import { District } from "./district";
 import { ConditionalRawEffect, RawEffect } from "./effects";
 import { Mandate, PartyVotes } from "./mandate";
 import { MayoralResult } from "./mayoral-result";
+import { PoliticalDashboardState } from "./political";
 import { RawQuestion } from "./question";
 
 export interface CampaignState {
@@ -19,6 +20,7 @@ export interface CampaignState {
   mayoralResult?: MayoralResult;
   candidates?: Record<string, CandidateCampaignState>;
   campaignEvents?: CampaignEventState;
+  politicalDashboard?: PoliticalDashboardState;
   campaignConfigVersion?: string;
   questionCursor?: number;
   decisionCount?: number;
@@ -46,6 +48,7 @@ export interface CandidateCampaignState {
 export interface CampaignEventState {
   triggeredEventIds: string[];
   pendingAnnouncementIds: string[];
+  triggeredAtTurn?: Record<string, number>;
 }
 
 export type CurrentView = "MapView" | "QuestionView" | "VoteCountingView";
