@@ -1,7 +1,11 @@
 import { t } from "i18next";
 import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
-import { ConfigEngine, StateEngine } from "@/logic/application";
+import {
+  ConfigEngine,
+  createCampaignEngine,
+  StateEngine,
+} from "@/logic/application";
 import {
   buildDashboardOverview,
   buildFocusOverview,
@@ -11,6 +15,7 @@ import {
   markFocusSeen,
   markPublicEventsSeen,
   markRelationsSeen,
+  PollsterEngine,
   selectFocus,
 } from "@/shared/domain";
 import { CampaignState } from "@/shared/types";
@@ -84,6 +89,32 @@ export function PoliticalDashboardPage() {
     return null;
   }
 
+  // The pollster picker filters the map, so a choice made here is saved and
+  // the player is taken back to the map to see it.
+  const handlePollsterChange = (pollsterId: string) => {
+    const { campaignEngine } = createCampaignEngine(
+      config,
+      campaignId,
+      state.playerSide?.partyId,
+      state.playerSide?.candidateId,
+    );
+    const polls = container
+      .resolve(PollsterEngine)
+      .getPollsByPollsterId(pollsterId, state);
+    const projection = campaignEngine.getPollProjection(
+      state,
+      config.electionConfig,
+      polls?.differences,
+      pollsterId,
+    );
+    if (projection) {
+      stateEngine.updateCampaignState({
+        pollingOpnions: { ...projection, selectedPollsterId: pollsterId },
+      });
+    }
+    goToCampaign(campaignId, stateEngine.getSessionId());
+  };
+
   const { year, partyName } = getCampaignBadgeInfo(state, config, undefined);
   const context = [
     year,
@@ -94,7 +125,12 @@ export function PoliticalDashboardPage() {
     .join(" · ");
 
   return (
-    <GameChrome state={state} config={config}>
+    <GameChrome
+      state={state}
+      config={config}
+      pollsterData={state.pollingOpnions ?? null}
+      handlePollsterChange={handlePollsterChange}
+    >
       <div className="flex-1 overflow-y-auto">
         <div className="mx-auto flex w-full max-w-[1100px] flex-col gap-6 px-4 py-6 md:px-10 md:py-10">
           <div className="flex flex-wrap items-end justify-between gap-4">

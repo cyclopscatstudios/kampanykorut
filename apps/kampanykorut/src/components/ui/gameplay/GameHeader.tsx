@@ -77,14 +77,11 @@ export function GameHeader({
     pollsterData,
     handlePollsterChange,
     pollsters,
-    hidePollsters: endResultsScreen || dashboardScreen,
+    hidePollsters: endResultsScreen,
     politicalStatus:
-      state &&
-      config &&
-      isStrategicMode(config) &&
-      !endResultsScreen &&
-      !dashboardScreen
+      state && config && isStrategicMode(config) && !endResultsScreen
         ? {
+            current: dashboardScreen,
             hasUnseenEvents: hasDashboardNews(
               state,
               config,
@@ -166,6 +163,7 @@ interface HeaderContentProps {
   politicalStatus?: {
     hasUnseenEvents: boolean;
     onOpen: () => void;
+    current: boolean;
   };
 }
 
@@ -342,7 +340,7 @@ function WideHeader({
           <Menu
             align="left"
             trigger={
-              <Button variant="tertiary">
+              <Button variant="tertiary" testId="pollsterMenu">
                 <Button.Icon name="map-fill" color="white" size="medium" />
               </Button>
             }

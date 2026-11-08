@@ -184,7 +184,8 @@
     },
     "entry": {
       "label": "Politikai helyzet",
-      "withNews": "Politikai helyzet: új esemény"
+      "withNews": "Politikai helyzet: új esemény",
+      "current": "Politikai helyzet: most ezt látod"
     },
     "tabs": {
       "overview": "Áttekintés",

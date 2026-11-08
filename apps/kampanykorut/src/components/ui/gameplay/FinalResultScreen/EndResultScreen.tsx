@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useState } from "react";
 import { useLoaderData } from "react-router";
 import { container } from "tsyringe";
@@ -138,7 +139,11 @@ export function FinalResultScreen() {
           </div>
           <div
             key={activeScreen}
-            className="flex-1 min-h-0 min-w-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto overflow-x-hidden md:overflow-visible"
+            className={classNames(
+              "flex-1 min-h-0 min-w-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto overflow-x-hidden",
+              // The summary story can run longer than the fixed panel.
+              activeScreen !== "summaryPage" && "md:overflow-visible",
+            )}
           >
             {activeScreen === "statistics" && (
               <Statistics results={results} config={config} />
