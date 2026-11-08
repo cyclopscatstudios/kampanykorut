@@ -45,6 +45,16 @@ test("proportional test campaign: the seat count reveals every region", async ({
   await page.getByTestId("selectFocus-coalition_ready").click();
   await page.getByTestId("politicalDashboardBack").click();
 
+  // New newspaper editions open by themselves between turns.
+  let editionsRead = 0;
+  await page.addLocatorHandler(
+    page.getByTestId("newspaperRead"),
+    async (read) => {
+      editionsRead += 1;
+      await read.click();
+    },
+  );
+
   const seatCountTitle = page.getByText("Választási éjszaka · 2026");
   const visitDistrict = page.getByRole("button", {
     name: "Látogass el a körzetbe",
@@ -65,6 +75,7 @@ test("proportional test campaign: the seat count reveals every region", async ({
   }
 
   await expect(seatCountTitle).toBeVisible();
+  expect(editionsRead).toBeGreaterThan(0);
   await page.getByTestId("seatCountContinue").click();
   await expect(page.getByText("16 / 16 körzet")).toBeVisible();
   await expect(page.getByText("201 · többségi határ")).toBeVisible();
