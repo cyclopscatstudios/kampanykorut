@@ -1936,6 +1936,19 @@ function checkPoliticalConfig(
   }
   checkRelations(ctx, file, data);
   if (
+    data.requireFocus !== undefined &&
+    typeof data.requireFocus !== "boolean"
+  ) {
+    report(
+      ctx,
+      "error",
+      "political-config-invalid",
+      file,
+      "/requireFocus",
+      "requireFocus must be a boolean",
+    );
+  }
+  if (
     data.focusLockEventId !== undefined &&
     !ctx.eventIds.has(String(data.focusLockEventId))
   ) {
@@ -2008,6 +2021,22 @@ function checkPoliticalConfig(
         );
       }
       seen.add(focus.id);
+    }
+    if (
+      focus.excludes !== undefined &&
+      (!Array.isArray(focus.excludes) ||
+        focus.excludes.some(
+          (id) => typeof id !== "string" || !ctx.focusIds.has(id),
+        ))
+    ) {
+      report(
+        ctx,
+        "error",
+        "focus-invalid",
+        file,
+        `${path}/excludes`,
+        "excludes must list known focus ids",
+      );
     }
     for (const key of ["completeWhen", "failWhen"] as const) {
       if (focus[key] !== undefined) {

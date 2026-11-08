@@ -56,7 +56,8 @@ export function GameHeader({
   const endResultsScreen = navigationService.isUrlParamMatch("/end-results");
   const dashboardScreen = navigationService.isUrlParamMatch("/dashboard");
   const { goToPoliticalDashboard } = useNavigation();
-  const sessionId = container.resolve(StateEngine).getSessionId();
+  const stateEngine = container.resolve(StateEngine);
+  const sessionId = stateEngine.getSessionId();
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useLayoutEffect(() => {
@@ -78,9 +79,17 @@ export function GameHeader({
     pollsters,
     hidePollsters: endResultsScreen || dashboardScreen,
     politicalStatus:
-      state && isStrategicMode(config) && !endResultsScreen && !dashboardScreen
+      state &&
+      config &&
+      isStrategicMode(config) &&
+      !endResultsScreen &&
+      !dashboardScreen
         ? {
-            hasUnseenEvents: hasDashboardNews(state, config?.campaignEvents),
+            hasUnseenEvents: hasDashboardNews(
+              state,
+              config,
+              stateEngine.getHistory() ?? [],
+            ),
             onOpen: () =>
               goToPoliticalDashboard(state.activeCampaignId, sessionId),
           }

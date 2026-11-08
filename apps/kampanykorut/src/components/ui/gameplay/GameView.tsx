@@ -4,6 +4,7 @@ import {
   buildSeatCountView,
   getParliamentaryConfig,
   isCityDistrictMap,
+  isFocusRequired,
   isProportionalElection,
 } from "@/shared/domain";
 import {
@@ -115,6 +116,7 @@ export function GameView({
     );
   }
 
+  const visitBlocked = isFocusRequired(state, config);
   const isCityMap = isCityDistrictMap(config.electionConfig);
   const capitalCity = isCityMap ? [] : getCapitalCity(config.districts);
   const candidateListData =
@@ -134,6 +136,7 @@ export function GameView({
       selectedDistrict={selectedDistrict}
       setSelectedDistrict={onSetDistrict}
       electionConfig={config.electionConfig}
+      visitBlocked={visitBlocked}
     />
   ) : (
     <MobileMapView
@@ -146,6 +149,7 @@ export function GameView({
       selectedDistrict={selectedDistrict}
       onSetDistrict={onSetDistrict}
       onSetView={onSetView}
+      visitBlocked={visitBlocked}
     />
   );
 }

@@ -13,6 +13,8 @@ export interface PoliticalFocus {
   icon?: BootstrapIcon;
   completeWhen?: Condition;
   failWhen?: Condition;
+  // Focus ids that can no longer be chosen once this one is selected.
+  excludes?: string[];
 }
 
 export type RelationTone = "good" | "calm" | "tense" | "bad";
@@ -52,6 +54,8 @@ export interface PoliticalConfig {
   relations?: Relation[];
   // Once this event has triggered, the chosen focus can no longer be changed.
   focusLockEventId?: string;
+  // No district can be visited until the player has chosen a focus.
+  requireFocus?: boolean;
   coalition?: CoalitionConfig;
   epilogues?: Epilogue[];
 }
@@ -105,6 +109,8 @@ export interface PoliticalDashboardState {
   selectedFocusId?: string;
   relations?: Record<string, RelationStanding & { changedAtTurn: number }>;
   seenRelationIds?: string[];
+  // "focusId:status" of the chosen focus when the dashboard was last opened.
+  seenFocusStatus?: string;
 }
 
 export type FocusStatus =

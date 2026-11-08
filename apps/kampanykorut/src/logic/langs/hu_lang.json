@@ -205,7 +205,11 @@
         "completed": "Teljesült",
         "failed": "Meghiúsult",
         "excluded": "Kizárva"
-      }
+      },
+      "oppositeNote": "A kijelölés csak a szándékodat rögzíti, a támogatottságodon nem változtat. Választás után az ellentétes irány már nem választható.",
+      "required": "Előbb válassz politikai fókuszt",
+      "requiredHint": "A Politikai helyzet oldalon döntsd el, merre viszed a pártot, utána indulhat a kampány.",
+      "open": "Fókusz választása"
     },
     "relations": {
       "new": "Új"

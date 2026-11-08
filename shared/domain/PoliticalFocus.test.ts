@@ -2,7 +2,10 @@ import { CampaignConfig, CampaignState } from "../types";
 import {
   buildFocusOverview,
   canSelectFocus,
+  hasFocusNews,
   isFocusLocked,
+  isFocusRequired,
+  markFocusSeen,
   selectFocus,
 } from "./PoliticalFocus";
 
@@ -129,5 +132,82 @@ describe("PoliticalFocus", () => {
     expect(buildFocusOverview(state, config, []).selected?.status).toBe(
       "selected",
     );
+  });
+
+  const opposites = {
+    ...config,
+    politicalConfig: {
+      ...config.politicalConfig!,
+      requireFocus: true,
+      focuses: [
+        { ...config.politicalConfig!.focuses![0], excludes: ["without_kadar"] },
+        config.politicalConfig!.focuses![1],
+        { id: "reform", title: "Reform", summary: "", description: "" },
+      ],
+    },
+  } as typeof config;
+
+  it("never offers the opposite of the chosen focus again", () => {
+    const withKadar = selectFocus(stateWith(), opposites, "with_kadar");
+    expect(
+      buildFocusOverview(withKadar, opposites, []).focuses.map((f) => [
+        f.id,
+        f.status,
+        f.selectable,
+      ]),
+    ).toEqual([
+      ["with_kadar", "selected", false],
+      ["without_kadar", "excluded", false],
+      ["reform", "available", true],
+    ]);
+    expect(selectFocus(withKadar, opposites, "without_kadar")).toBe(withKadar);
+
+    // The exclusion holds from either side of the pair.
+    const without = selectFocus(stateWith(), opposites, "without_kadar");
+    expect(canSelectFocus(without, opposites, "with_kadar")).toBe(false);
+  });
+
+  it("keeps the rest of the dashboard state when selecting", () => {
+    const state = stateWith({
+      politicalDashboard: { seenEventIds: [], seenRelationIds: ["r"] },
+    });
+    expect(
+      selectFocus(state, config, "with_kadar").politicalDashboard
+        ?.seenRelationIds,
+    ).toEqual(["r"]);
+  });
+
+  it("requires a focus before playing only when the campaign asks", () => {
+    expect(isFocusRequired(stateWith(), opposites)).toBe(true);
+    expect(isFocusRequired(stateWith(), config)).toBe(false);
+    expect(
+      isFocusRequired(selectFocus(stateWith(), opposites, "reform"), opposites),
+    ).toBe(false);
+    expect(isFocusRequired(stateWith({ isEnded: true }), opposites)).toBe(
+      false,
+    );
+  });
+
+  it("flags news until a focus is chosen and whenever its status changes", () => {
+    expect(hasFocusNews(stateWith(), config, [])).toBe(true);
+
+    const selected = selectFocus(stateWith(), config, "with_kadar");
+    expect(hasFocusNews(selected, config, [])).toBe(true);
+    const seen = markFocusSeen(selected, config, []);
+    expect(hasFocusNews(seen, config, [])).toBe(false);
+    expect(markFocusSeen(seen, config, [])).toBe(seen);
+
+    const completed = { ...seen, ...triggered("pact") };
+    expect(hasFocusNews(completed, config, [])).toBe(true);
+    expect(hasFocusNews(markFocusSeen(completed, config, []), config, [])).toBe(
+      false,
+    );
+  });
+
+  it("has no focus news once the choice is locked or the campaign ended", () => {
+    expect(
+      hasFocusNews({ ...stateWith(), ...triggered("congress") }, config, []),
+    ).toBe(false);
+    expect(hasFocusNews(stateWith({ isEnded: true }), config, [])).toBe(false);
   });
 });

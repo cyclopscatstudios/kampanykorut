@@ -22,11 +22,14 @@ export interface FocusOverview {
   focuses: FocusView[];
   selected?: FocusView;
   locked: boolean;
+  hasOpposites: boolean;
 }
 
 type FocusConfig = Pick<CampaignConfig, "politicalConfig" | "electionConfig">;
 
-export function getFocuses(config: FocusConfig): PoliticalFocus[] {
+export function getFocuses(
+  config: Pick<CampaignConfig, "politicalConfig">,
+): PoliticalFocus[] {
   return config.politicalConfig?.focuses ?? [];
 }
 
@@ -47,17 +50,99 @@ export function isFocusLocked(
   );
 }
 
+// Opposite focuses rule each other out: once one is chosen the other can no
+// longer be picked. Either side of the pair may declare the exclusion.
+export function isExcludedBySelection(
+  config: Pick<CampaignConfig, "politicalConfig">,
+  selectedId: string | undefined,
+  focusId: string,
+): boolean {
+  if (!selectedId || selectedId === focusId) {
+    return false;
+  }
+  const focuses = getFocuses(config);
+  const selected = focuses.find((f) => f.id === selectedId);
+  const focus = focuses.find((f) => f.id === focusId);
+  return Boolean(
+    selected?.excludes?.includes(focusId) ||
+    focus?.excludes?.includes(selectedId),
+  );
+}
+
 export function canSelectFocus(
   state: CampaignState,
   config: FocusConfig,
   focusId: string,
 ): boolean {
+  const selectedId = getSelectedFocusId(state);
   return (
     !state.isEnded &&
     !isFocusLocked(state, config) &&
-    getSelectedFocusId(state) !== focusId &&
+    selectedId !== focusId &&
+    !isExcludedBySelection(config, selectedId, focusId) &&
     getFocuses(config).some((f) => f.id === focusId)
   );
+}
+
+// The campaign can make the player commit to a direction before the first
+// district visit.
+export function isFocusRequired(
+  state: CampaignState,
+  config: Pick<CampaignConfig, "politicalConfig">,
+): boolean {
+  return (
+    Boolean(config.politicalConfig?.requireFocus) &&
+    getFocuses(config).length > 0 &&
+    !getSelectedFocusId(state) &&
+    !state.isEnded
+  );
+}
+
+function getFocusStatusKey(overview: FocusOverview): string | undefined {
+  return overview.selected
+    ? `${overview.selected.id}:${overview.selected.status}`
+    : undefined;
+}
+
+// News for the header dot: no direction chosen yet, or the chosen focus has
+// changed status since the dashboard was last opened.
+export function hasFocusNews(
+  state: CampaignState,
+  config: FocusConfig,
+  answers: Answers,
+): boolean {
+  if (state.isEnded || getFocuses(config).length === 0) {
+    return false;
+  }
+  const overview = buildFocusOverview(state, config, answers);
+  if (!overview.selected) {
+    return !overview.locked;
+  }
+  return (
+    getFocusStatusKey(overview) !== state.politicalDashboard?.seenFocusStatus
+  );
+}
+
+export function markFocusSeen(
+  state: CampaignState,
+  config: FocusConfig,
+  answers: Answers,
+): CampaignState {
+  if (getFocuses(config).length === 0) {
+    return state;
+  }
+  const key = getFocusStatusKey(buildFocusOverview(state, config, answers));
+  if (key === undefined || key === state.politicalDashboard?.seenFocusStatus) {
+    return state;
+  }
+  return {
+    ...state,
+    politicalDashboard: {
+      ...state.politicalDashboard,
+      seenEventIds: state.politicalDashboard?.seenEventIds ?? [],
+      seenFocusStatus: key,
+    },
+  };
 }
 
 // Selecting a focus only records the player's intent; it never changes
@@ -73,6 +158,7 @@ export function selectFocus(
   return {
     ...state,
     politicalDashboard: {
+      ...state.politicalDashboard,
       seenEventIds: state.politicalDashboard?.seenEventIds ?? [],
       selectedFocusId: focusId,
     },
@@ -89,7 +175,12 @@ export function buildFocusOverview(
   const holds = createConditionCheck(state, answers, config.electionConfig);
 
   const focuses = getFocuses(config).map((focus): FocusView => {
-    const status = getStatus(focus, selectedId, locked, holds);
+    const status = getStatus(
+      focus,
+      selectedId,
+      locked || isExcludedBySelection(config, selectedId, focus.id),
+      holds,
+    );
     return {
       id: focus.id,
       title: focus.title,
@@ -105,6 +196,7 @@ export function buildFocusOverview(
     focuses,
     selected: focuses.find((f) => f.id === selectedId),
     locked,
+    hasOpposites: getFocuses(config).some((f) => f.excludes?.length),
   };
 }
 
