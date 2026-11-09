@@ -4,6 +4,15 @@ const CAMPAIGN_ID = "0003_test_proportional";
 
 test.use({ locale: "hu-HU", viewport: { width: 1440, height: 900 } });
 
+test.beforeEach(async ({ page }) => {
+  await page.addLocatorHandler(
+    page.getByTestId("campaignIntroConfirm"),
+    async (confirm) => {
+      await confirm.click();
+    },
+  );
+});
+
 test("proportional test campaign: seats are shared by region and nationally", async ({
   playCampaign,
 }) => {
