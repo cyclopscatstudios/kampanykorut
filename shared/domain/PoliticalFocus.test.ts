@@ -68,6 +68,13 @@ const stateWith = (overrides: Partial<CampaignState> = {}): CampaignState =>
 const pick = (state: CampaignState, ...ids: string[]) =>
   ids.reduce((s, id) => selectFocus(s, config, id), state);
 
+// Picks one focus per turn, as the player would.
+const play = (state: CampaignState, ...ids: string[]) =>
+  ids.reduce(
+    (s, id) => ({ ...selectFocus(s, config, id), turn: s.turn + 1 }),
+    state,
+  );
+
 const branches = (state: CampaignState, answers = []) =>
   buildFocusOverview(state, config, answers).branches.map((b) => [
     b.id,
@@ -83,12 +90,33 @@ describe("PoliticalFocus", () => {
     expect(canSelectFocus(stateWith(), config, "workers")).toBe(false);
   });
 
-  it("keeps every choice and makes it final", () => {
+  it("lets the player change the choice until the next turn", () => {
     const state = pick(stateWith({ turn: 2 }), "with_kadar");
     expect(state.politicalDashboard?.selectedFocusIds).toEqual(["with_kadar"]);
+    expect(branches(state)).toEqual([
+      ["kadar", "decided", ["with_kadar:selected", "without_kadar:available"]],
+      ["base", "upcoming", ["workers:upcoming", "peasants:upcoming"]],
+    ]);
+    expect(
+      buildFocusOverview(state, config, []).branches[1].availableFromTurn,
+    ).toBe(4);
+    expect(canSelectFocus(state, config, "workers")).toBe(false);
+
+    const changed = selectFocus(state, config, "without_kadar");
+    expect(changed.politicalDashboard?.selectedFocusIds).toEqual([
+      "without_kadar",
+    ]);
+
+    const next = { ...changed, turn: 3 };
+    expect(selectFocus(next, config, "with_kadar")).toBe(next);
+    expect(canSelectFocus(next, config, "workers")).toBe(true);
+  });
+
+  it("keeps every choice and makes it final", () => {
+    const state = { ...pick(stateWith({ turn: 2 }), "with_kadar"), turn: 3 };
     expect(selectFocus(state, config, "without_kadar")).toBe(state);
 
-    const both = pick(state, "peasants");
+    const both = { ...pick(state, "peasants"), turn: 4 };
     expect(both.politicalDashboard?.selectedFocusIds).toEqual([
       "with_kadar",
       "peasants",
@@ -117,10 +145,10 @@ describe("PoliticalFocus", () => {
   });
 
   it("follows the tree: a branch shows only on its own path", () => {
-    const loyal = pick(stateWith({ turn: 2 }), "with_kadar", "workers");
+    const loyal = play(stateWith({ turn: 2 }), "with_kadar", "workers");
     expect(buildFocusOverview(loyal, config, []).current).toBeUndefined();
 
-    const rebel = pick(stateWith({ turn: 2 }), "without_kadar", "workers");
+    const rebel = play(stateWith({ turn: 2 }), "without_kadar", "workers");
     expect(branches(rebel).map(([id, state]) => [id, state])).toEqual([
       ["kadar", "decided"],
       ["base", "decided"],
@@ -177,6 +205,7 @@ describe("PoliticalFocus", () => {
     expect(pick(old, "workers").politicalDashboard).toEqual({
       seenEventIds: [],
       selectedFocusIds: ["with_kadar", "workers"],
+      focusChosenAtTurn: 2,
     });
   });
 
@@ -191,7 +220,8 @@ describe("PoliticalFocus", () => {
     } as typeof config;
     const state = selectFocus(stateWith(), flat, "a");
     expect(buildFocusOverview(state, flat, []).branches).toHaveLength(1);
-    expect(canSelectFocus(state, flat, "b")).toBe(false);
+    expect(canSelectFocus(state, flat, "b")).toBe(true);
+    expect(canSelectFocus({ ...state, turn: 1 }, flat, "b")).toBe(false);
     expect(isFocusRequired(stateWith(), flat)).toBe(false);
   });
 });

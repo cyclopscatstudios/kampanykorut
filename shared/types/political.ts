@@ -118,6 +118,8 @@ export interface CoalitionState {
 export interface PoliticalDashboardState {
   seenEventIds: string[];
   selectedFocusIds?: string[];
+  // Turn of the latest choice; it can be changed until the turn is played.
+  focusChosenAtTurn?: number;
   // Saves from before the focus tree had a single chosen focus.
   selectedFocusId?: string;
   relations?: Record<string, RelationStanding & { changedAtTurn: number }>;

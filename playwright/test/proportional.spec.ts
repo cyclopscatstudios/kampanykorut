@@ -118,10 +118,9 @@ test("proportional test campaign: a focus must be chosen before the first visit"
   await expect(statusButton).toHaveAttribute("aria-current", "page");
   await page.getByRole("tab", { name: "Fókuszok" }).click();
   await page.getByTestId("selectFocus-coalition_ready").click();
-  await expect(page.getByTestId("selectFocus-own_majority")).toHaveCount(0);
-  await expect(
-    page.getByRole("article", { name: "Önálló többség" }).getByText("Kizárva"),
-  ).toBeVisible();
+  // Until the next turn the choice can still be changed.
+  await expect(page.getByTestId("selectFocus-coalition_ready")).toHaveCount(0);
+  await expect(page.getByTestId("selectFocus-own_majority")).toBeVisible();
 
   await page.getByTestId("pollsterMenu").click();
   await page.getByRole("button", { name: "Közvélemény-kutatók" }).hover();

@@ -25,6 +25,8 @@ export interface FocusBranchView {
   id: string;
   title?: string;
   state: FocusBranchState;
+  // The choice was made this turn and can still be changed.
+  revisable: boolean;
   focuses: FocusView[];
   availableFromTurn?: number;
   requiredBeforeTurn?: number;
@@ -82,11 +84,36 @@ export function getCurrentBranch(
   );
 }
 
-function isBranchOpen(
-  state: Pick<CampaignState, "turn">,
-  branch: FocusBranch,
-): boolean {
-  return getCurrentTurn(state) >= (branch.availableFromTurn ?? 1);
+// The latest choice can still be changed during the turn it was made in.
+function getRevisableBranch(
+  state: CampaignState,
+  config: BranchConfig,
+): FocusBranch | undefined {
+  const latest = getSelectedFocusIds(state).at(-1);
+  if (
+    state.isEnded ||
+    latest === undefined ||
+    state.politicalDashboard?.focusChosenAtTurn !== state.turn
+  ) {
+    return undefined;
+  }
+  return getFocusBranches(config).find((b) => b.focuses.includes(latest));
+}
+
+// The turn from which a branch can be decided: its own opening turn, but
+// never the turn of the previous choice, so only one fork is open at a time.
+function getOpeningTurn(state: CampaignState, branch: FocusBranch): number {
+  const from = branch.availableFromTurn ?? 1;
+  const chosenAt = state.politicalDashboard?.focusChosenAtTurn;
+  return chosenAt === undefined ? from : Math.max(from, chosenAt + 2);
+}
+
+function isBranchOpen(state: CampaignState, branch: FocusBranch): boolean {
+  return getCurrentTurn(state) >= getOpeningTurn(state, branch);
+}
+
+function isKnownFocus(config: BranchConfig, focusId: string) {
+  return getFocuses(config).some((f) => f.id === focusId);
 }
 
 export function canSelectFocus(
@@ -94,13 +121,21 @@ export function canSelectFocus(
   config: BranchConfig,
   focusId: string,
 ): boolean {
+  if (state.isEnded || !isKnownFocus(config, focusId)) {
+    return false;
+  }
+  const revisable = getRevisableBranch(state, config);
+  if (revisable) {
+    return (
+      revisable.focuses.includes(focusId) &&
+      getSelectedFocusIds(state).at(-1) !== focusId
+    );
+  }
   const branch = getCurrentBranch(state, config);
   return (
-    !state.isEnded &&
     branch !== undefined &&
     isBranchOpen(state, branch) &&
-    branch.focuses.includes(focusId) &&
-    getFocuses(config).some((f) => f.id === focusId)
+    branch.focuses.includes(focusId)
   );
 }
 
@@ -112,6 +147,7 @@ export function isFocusRequired(
   return (
     !state.isEnded &&
     branch?.requiredBeforeTurn !== undefined &&
+    isBranchOpen(state, branch) &&
     getCurrentTurn(state) >= branch.requiredBeforeTurn
   );
 }
@@ -172,6 +208,10 @@ export function selectFocus(
   if (!canSelectFocus(state, config, focusId)) {
     return state;
   }
+  const selectedIds = getSelectedFocusIds(state);
+  const kept = getRevisableBranch(state, config)
+    ? selectedIds.slice(0, -1)
+    : selectedIds;
   const dashboard = { ...state.politicalDashboard };
   delete dashboard.selectedFocusId;
   return {
@@ -179,7 +219,8 @@ export function selectFocus(
     politicalDashboard: {
       ...dashboard,
       seenEventIds: dashboard.seenEventIds ?? [],
-      selectedFocusIds: [...getSelectedFocusIds(state), focusId],
+      selectedFocusIds: [...kept, focusId],
+      focusChosenAtTurn: state.turn,
     },
   };
 }
@@ -193,6 +234,7 @@ export function buildFocusOverview(
   const holds = createConditionCheck(state, answers, config.electionConfig);
   const focuses = new Map(getFocuses(config).map((f) => [f.id, f]));
   const current = getCurrentBranch(state, config);
+  const revisable = getRevisableBranch(state, config);
 
   const toView = (focus: PoliticalFocus, status: FocusStatus): FocusView => ({
     id: focus.id,
@@ -219,7 +261,11 @@ export function buildFocusOverview(
       id: branch.id,
       title: branch.title,
       state: branchState,
-      availableFromTurn: branch.availableFromTurn,
+      revisable: branch === revisable,
+      availableFromTurn:
+        branchState === "upcoming"
+          ? getOpeningTurn(state, branch)
+          : branch.availableFromTurn,
       requiredBeforeTurn: branch.requiredBeforeTurn,
       focuses: branch.focuses.flatMap((id) => {
         const focus = focuses.get(id);
@@ -230,7 +276,9 @@ export function buildFocusOverview(
           id === choice
             ? getChosenStatus(focus, holds)
             : choice
-              ? "excluded"
+              ? branch === revisable
+                ? "available"
+                : "excluded"
               : branch === current && branchState === "open"
                 ? "available"
                 : "upcoming";

@@ -5,6 +5,7 @@ import {
   hasUnreadEdition,
   markNewspaperRead,
   publishNewspaperEdition,
+  shouldOpenEdition,
 } from "./Newspaper";
 
 type Campaign = Pick<CampaignConfig, "politicalConfig" | "newspaper">;
@@ -184,5 +185,24 @@ describe("read state", () => {
     const read = markNewspaperRead(state);
     expect(hasUnreadEdition(read)).toBe(false);
     expect(markNewspaperRead(read)).toBe(read);
+  });
+
+  it("keeps an edition quiet when an event announcement came with it", () => {
+    const plain = publishNewspaperEdition(stateWith(), config, never);
+    expect(shouldOpenEdition(plain)).toBe(true);
+
+    const withEvent = publishNewspaperEdition(
+      stateWith({
+        campaignEvents: {
+          triggeredEventIds: ["congress"],
+          pendingAnnouncementIds: ["congress"],
+        },
+      }),
+      config,
+      never,
+    );
+    expect(withEvent.newspaper?.editions[0].quiet).toBe(true);
+    expect(hasUnreadEdition(withEvent)).toBe(true);
+    expect(shouldOpenEdition(withEvent)).toBe(false);
   });
 });

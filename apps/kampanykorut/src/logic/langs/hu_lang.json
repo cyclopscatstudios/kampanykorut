@@ -200,7 +200,7 @@
       "followed": "Követett fókusz",
       "prompt": "Merre viszed a pártot?",
       "choose": "Irány választása",
-      "finalNote": "Egy elágazásban egy irányt választhatsz, és a választás végleges. A következő elágazás a választás után nyílik meg.",
+      "finalNote": "Egy elágazásban egy irányt választhatsz. A döntést a következő fordulóig még megváltoztathatod, utána végleges, és megnyílhat a következő elágazás.",
       "branch": "{{index}}. elágazás",
       "select": "Ezt követem",
       "status": {

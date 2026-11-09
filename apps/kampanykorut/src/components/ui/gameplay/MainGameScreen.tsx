@@ -5,6 +5,7 @@ import {
   buildNewspaperEditions,
   getPendingAnnouncement,
   hasUnreadEdition,
+  shouldOpenEdition,
   isIntroPending,
   PollsterEngine,
 } from "@/shared/domain";
@@ -57,8 +58,13 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
   );
   const isResumed = state.turn > 0;
   const isIntroOpen = isIntroPending(state, config.electionConfig);
+  // Announcements and the newspaper only come up on the map, so they never
+  // collide with the advisor feedback that may follow an answer.
   const pendingAnnouncement =
-    !state.isEnded && !flow.pendingAdvisor && !isIntroOpen
+    !state.isEnded &&
+    !flow.pendingAdvisor &&
+    !isIntroOpen &&
+    flow.currentView === "MapView"
       ? getPendingAnnouncement(state, config.campaignEvents)
       : undefined;
 
@@ -70,7 +76,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
   const autoOpenPaper = settings.newspaperAutoOpen !== false;
   const isArrivalOpen =
     autoOpenPaper &&
-    hasUnreadPaper &&
+    shouldOpenEdition(state) &&
     !isArchiveOpen &&
     !state.isEnded &&
     !flow.pendingAdvisor &&
@@ -181,7 +187,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
             <NewspaperButton
               hasUnread={hasUnreadPaper}
               ribbon={
-                !autoOpenPaper && hasUnreadPaper
+                (!autoOpenPaper || !shouldOpenEdition(state)) && hasUnreadPaper
                   ? editions[editions.length - 1].item.headline
                   : undefined
               }

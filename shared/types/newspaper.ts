@@ -46,6 +46,9 @@ export interface NewspaperConfig {
 export interface NewspaperEdition {
   itemId: string;
   turn: number;
+  // Printed in a turn that also brought an event announcement: it does not
+  // pop up, only the newspaper button shows it.
+  quiet?: boolean;
 }
 
 export interface NewspaperState {

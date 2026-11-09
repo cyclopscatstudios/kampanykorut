@@ -200,7 +200,7 @@
       "followed": "Followed focus",
       "prompt": "Where will you take the party?",
       "choose": "Choose a direction",
-      "finalNote": "Each fork offers one direction to take, and the choice is final. The next fork opens once you have chosen.",
+      "finalNote": "Each fork offers one direction to take. You can still change your choice until the next turn; then it is final and the next fork can open.",
       "branch": "Fork {{index}}",
       "select": "Follow this",
       "status": {
