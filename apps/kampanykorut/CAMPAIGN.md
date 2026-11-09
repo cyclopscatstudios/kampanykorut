@@ -371,6 +371,8 @@ The campaign validator reports unknown questions, answers, candidates and events
 
 `political_config.json` holds the strategic mode: `gameMode`, `focuses`, `focusBranches`, `relationGroups`/`relations`, `coalition` and `epilogues`. It can be campaign-wide (`files.politicalConfig`) or belong to one playable candidate (`files.playableSides.<partyId>.<candidateId>.politicalConfig`). A candidate's own file replaces the campaign-wide one while that side is played, so another side never sees its focuses.
 
+The coalition phase opens only when the player's party has the most seats but no majority. Every accepted partner shares power: with one partner the outcome is `"coalition"`, with two or more it is `"weak-coalition"`, which the end screen shows as a weak government. Epilogues can target either outcome.
+
 `focusBranches` makes the focuses a tree. Each branch is a fork: the player picks one of its focuses. The choice can still be changed until the next turn is played, then it is final. Every chosen focus stays, so the player's path is the list of choices. Branches open one at a time in the listed order; the next one opens at the earliest in the turn after the previous choice. Turns count from 1 (the first question is turn 1).
 
 ```json

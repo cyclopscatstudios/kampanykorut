@@ -155,6 +155,9 @@
       "label": "Kormányalakítás",
       "single-majority": "Önálló többség",
       "coalition": "Koalíciós többség",
+      "weak-coalition": "Gyenge koalíciós kormány",
+      "partners": "{{count}} koalíciós partnerrel",
+      "weakHint": "Túl sok párttal kell megosztanod a hatalmat, ezért a kormányod gyenge lesz.",
       "failed": "Sikertelen kormányalakítás",
       "opposition": "Ellenzékben",
       "seats": "{{seats}} / {{majority}} mandátum"
@@ -396,6 +399,8 @@
     "subtitle": "{{seats}} mandátumod van, a többséghez {{majority}} kell. Egyszer tehetsz ajánlatot.",
     "potential": "Lehetséges többség",
     "potentialHint": "Csak akkor jön létre, ha minden megkeresett párt elfogadja az ajánlatot.",
+    "partnerHint": "Egy partner a legjobb: minden további partner gyengíti a kormányodat.",
+    "tooManyPartners": "{{count}} pártnak ajánlasz. Ha mind elfogadja, gyenge kormányt alakítasz.",
     "governmentSeats": "Kormánytöbbség",
     "seats": "{{seats}} mandátum",
     "submit": "Ajánlat elküldése ({{parties}})",

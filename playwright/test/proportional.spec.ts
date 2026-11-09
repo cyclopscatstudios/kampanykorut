@@ -208,3 +208,45 @@ test("proportional test campaign: a rejected offer leaves no government", async 
     page.getByRole("article", { name: "Epilógus" }).getByText("Patthelyzet"),
   ).toBeVisible();
 });
+
+test("proportional test campaign: a second partner makes the government weak", async ({
+  page,
+  playCampaign,
+}) => {
+  const seedData = await playCampaign(
+    CAMPAIGN_ID,
+    "green_party",
+    "emma_wilson",
+  );
+  // The red party only joins a player who followed the coalition focus.
+  await page.evaluate(() =>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).kampanykorut.updateCampaignState({
+      politicalDashboard: {
+        seenEventIds: [],
+        selectedFocusIds: ["coalition_ready"],
+      },
+    }),
+  );
+
+  await page.goto(
+    `/game/${CAMPAIGN_ID}/coalition?sessionId=${seedData?.sessionId}`,
+  );
+  const hint = page.getByTestId("coalitionPartnerHint");
+  await expect(hint).toHaveText(
+    "Egy partner a legjobb: minden további partner gyengíti a kormányodat.",
+  );
+  await page.getByTestId("coalitionPartner-yellow_party").click();
+  await page.getByTestId("coalitionPartner-red_party").click();
+  await expect(hint).toHaveText(
+    "2 pártnak ajánlasz. Ha mind elfogadja, gyenge kormányt alakítasz.",
+  );
+  await page.getByTestId("coalitionSubmit").click();
+  await page.getByTestId("coalitionContinue").click();
+
+  const summary = page.getByTestId("governmentSummary");
+  await expect(summary.getByText("Gyenge koalíciós kormány")).toBeVisible();
+  await expect(page.getByTestId("governmentPartners")).toHaveText(
+    "2 koalíciós partnerrel",
+  );
+});

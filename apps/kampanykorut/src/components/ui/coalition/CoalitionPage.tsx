@@ -8,6 +8,7 @@ import {
   buildCoalitionView,
   type CoalitionResponseView,
   forPlayerSide,
+  MAX_STRONG_COALITION_PARTNERS,
   type SeatParty,
   submitCoalitionOffer,
 } from "@/shared/domain";
@@ -109,6 +110,22 @@ export function CoalitionPage() {
             )}
             hint={result ? undefined : t("coalition.potentialHint")}
           />
+
+          {!result && (
+            <p
+              data-testid="coalitionPartnerHint"
+              className={classNames(
+                "m-0 text-sm font-semibold",
+                offered.length > MAX_STRONG_COALITION_PARTNERS
+                  ? "text-amber-200"
+                  : "text-slate-400",
+              )}
+            >
+              {offered.length > MAX_STRONG_COALITION_PARTNERS
+                ? t("coalition.tooManyPartners", { count: offered.length })
+                : t("coalition.partnerHint")}
+            </p>
+          )}
 
           {result && <Outcome outcome={result.outcome} />}
 
@@ -252,6 +269,7 @@ function ResponseCard({ response }: { response: CoalitionResponseView }) {
 
 function Outcome({ outcome }: { outcome: GovernmentOutcome }) {
   const success = outcome === "coalition";
+  const weak = outcome === "weak-coalition";
   return (
     <div
       role="status"
@@ -262,9 +280,19 @@ function Outcome({ outcome }: { outcome: GovernmentOutcome }) {
           : "bg-amber-400/8 text-amber-200",
       )}
     >
-      <Icon name={success ? "bank2" : "exclamation-triangle-fill"} size={22} />
-      <span className="text-lg font-bold">
-        {t(`endResult.government.${outcome}`)}
+      <Icon
+        name={
+          success ? "bank2" : weak ? "people-fill" : "exclamation-triangle-fill"
+        }
+        size={22}
+      />
+      <span className="flex flex-col">
+        <span className="text-lg font-bold">
+          {t(`endResult.government.${outcome}`)}
+        </span>
+        {weak && (
+          <span className="text-sm">{t("endResult.government.weakHint")}</span>
+        )}
       </span>
     </div>
   );

@@ -155,6 +155,9 @@
       "label": "Government",
       "single-majority": "Majority of its own",
       "coalition": "Coalition majority",
+      "weak-coalition": "Weak coalition government",
+      "partners": "With {{count}} coalition partners",
+      "weakHint": "You have to share power with too many parties, so your government will be weak.",
       "failed": "Failed to form a government",
       "opposition": "In opposition",
       "seats": "{{seats}} / {{majority}} seats"
@@ -396,6 +399,8 @@
     "subtitle": "You hold {{seats}} seats; a majority needs {{majority}}. You can make one offer.",
     "potential": "Possible majority",
     "potentialHint": "It only forms if every party you approach accepts the offer.",
+    "partnerHint": "One partner is best: every further partner weakens your government.",
+    "tooManyPartners": "You are making an offer to {{count}} parties. If they all accept, your government will be weak.",
     "governmentSeats": "Government majority",
     "seats": "{{seats}} seats",
     "submit": "Send offer ({{parties}})",

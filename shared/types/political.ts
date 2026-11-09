@@ -83,15 +83,19 @@ export interface CoalitionConfig {
   partners: CoalitionPartner[];
 }
 
+// "coalition" governs with a single partner; with more partners power is
+// shared so widely that the government is weak.
 export type GovernmentOutcome =
   | "single-majority"
   | "coalition"
+  | "weak-coalition"
   | "failed"
   | "opposition";
 
 export const GOVERNMENT_OUTCOMES: readonly GovernmentOutcome[] = [
   "single-majority",
   "coalition",
+  "weak-coalition",
   "failed",
   "opposition",
 ];

@@ -89,7 +89,7 @@
       "title": "Széles koalíció",
       "body": "Teszt epilógus: a kampány alatti nyitás meghozta a kormánytöbbséget.",
       "icon": "people-fill",
-      "outcomes": ["coalition"]
+      "outcomes": ["coalition", "weak-coalition"]
     },
     {
       "id": "alone",

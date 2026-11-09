@@ -213,6 +213,13 @@
       }
     },
     {
+      "id": "tarka_koalicio",
+      "title": "Tarka koalíció",
+      "body": "Nagy Imre több párttal osztozik a hatalmon. A miniszteri székeket szétosztották, de minden döntés alkuba kerül, és a kormány az első válságnál megingik.",
+      "icon": "people-fill",
+      "outcomes": ["weak-coalition"]
+    },
+    {
       "id": "koalicios_kormany",
       "title": "Koalíciós kormány",
       "body": "Nagy Imre csak más pártok támogatásával kormányozhat. Minden törvényért meg kell küzdeni, de a demokrácia működik.",
