@@ -5,9 +5,9 @@ import {
   buildNewspaperEditions,
   getPendingAnnouncement,
   hasUnreadEdition,
-  shouldOpenEdition,
   isIntroPending,
   PollsterEngine,
+  shouldOpenEdition,
 } from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
 import { CampaignConfig, CampaignState, CurrentView } from "@/shared/types";
