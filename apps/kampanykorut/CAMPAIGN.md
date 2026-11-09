@@ -263,6 +263,16 @@ Describes the election itself: seat math, the real-world party list, and which p
 | `electionAssets`                     | yes           | `ElectionAsset[]`                                                  | Image assets (logo, portraits, campaign slogans), keyed by the matching `playableSides[].id` and `mainCandidates[].id`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `electionAssets[].candidateAssets`   | yes           | `{ id: string, portrait: string, slogan: string }[]`               | Portrait and campaign-slogan image paths per candidate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
+#### Proportional regions
+
+An election with `"election": { "type": "proportional" }` keeps its multi-member regions in a separate file, pointed at by the manifest's `files.regions` (e.g. `regions.json`), and loaded into `election.regions`:
+
+```json
+[{ "id": "vk01", "name": "Budapest", "seats": 63, "megyekods": [1] }]
+```
+
+Every `megyekod` of the candidate data must belong to exactly one region, and the region seats plus `listSeats` must equal `allSeats`.
+
 #### Campaign events
 
 `campaign_events.json` (manifest key `files.campaignEvents`)
@@ -356,6 +366,19 @@ A `Condition` ([shared/types/condition.ts](shared/types/condition.ts)) is either
 | `{ "type": "event-triggered", "eventId" }`                                                                                      | that event has already run.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 The campaign validator reports unknown questions, answers, candidates and events inside conditions, as well as malformed conditions.
+
+#### Political config
+
+`political_config.json` holds the strategic mode: `gameMode`, `focuses`, `relationGroups`/`relations`, `focusLockEventId`, `focusSelection`, `coalition` and `epilogues`. It can be campaign-wide (`files.politicalConfig`) or belong to one playable candidate (`files.playableSides.<partyId>.<candidateId>.politicalConfig`). A candidate's own file replaces the campaign-wide one while that side is played, so another side never sees its focuses.
+
+`focusSelection` times the choice of direction. Turns count from 1 (the first question is turn 1). Only one focus is followed at a time.
+
+```json
+"focusSelection": { "availableFromTurn": 1, "requiredBeforeTurn": 2 }
+```
+
+- `availableFromTurn`: a focus can be chosen from this turn on (default 1).
+- `requiredBeforeTurn`: without a focus, no district can be visited from this turn on. Left out, a focus is never required.
 
 #### Newspaper
 
