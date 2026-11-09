@@ -3,10 +3,10 @@
   "requireFocus": true,
   "focuses": [
     {
-      "id": "part_egysege",
-      "title": "A párt egysége",
-      "summary": "Kádár maradjon",
-      "description": "Nagy Imre és Kádár János együtt viszi a pártot a választásra. Teljesül, ha megegyezel Kádárral, és meghiúsul, ha a párt kettészakad.",
+      "id": "lassu_reformok",
+      "title": "Lassú reformok",
+      "summary": "Változtass lépésről lépésre",
+      "description": "A forradalom után az MSZMP-ben is változást várnak. Adj időt a vitáknak, és olyan reformokat vigyél a párt elé, amelyek mögé a különböző irányzatok is felsorakozhatnak.",
       "icon": "people-fill",
       "completeWhen": {
         "type": "answer-selected",
@@ -21,22 +21,34 @@
     },
     {
       "id": "forradalom_partja",
-      "title": "A forradalom pártja",
-      "summary": "Szakítás a régi apparátussal",
-      "description": "A régi pártállam embereinek nincs helyük a vezetésben. Teljesül, ha kizárod Kádárt, akkor is, ha ezzel szakadást okozol.",
+      "title": "A Forradalom pártja",
+      "summary": "Vidd tovább október ügyét",
+      "description": "A forradalom napjaiban az ország kimondta, milyen változásokat akar. Tedd a többpártrendszert, a magyar semlegességet és a munkástanácsok jogait az MSZMP programjának alapjává.",
       "icon": "fire",
       "completeWhen": {
         "type": "answer-selected",
         "questionId": "q3_kadar",
         "answerId": "C"
       },
-      "excludes": ["part_egysege"]
+      "excludes": ["lassu_reformok"]
     },
     {
       "id": "baloldali_szovetseg",
       "title": "Baloldali szövetség",
-      "summary": "Megállapodás Kéthlyvel",
-      "description": "A választás után az SZDP-vel kormányzol. Teljesül, ha aláírod Kéthly Anna garanciáit.",
+      "summary": "Keress közös ügyet a szociáldemokratákkal",
+      "description": "Az MSZMP-t és a szociáldemokratákat sok minden elválasztja, de a bérekről és a munkások jogairól mindkét pártnak van mondanivalója. Ülj tárgyalóasztalhoz Kéthly Annával, és keresd meg, miért érdemes együtt kiállnotok.",
+      "icon": "handshake",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "q4_kethly",
+        "answerId": "A"
+      }
+    },
+    {
+      "id": "munkasokol_vasokol",
+      "title": "Munkásököl-vasököl",
+      "summary": "Sorakoztasd fel a munkásságot az MSZMP mögött",
+      "description": "A gyárakban és a szakszervezetekben már arról vitáznak, ki képviselje őket az új országgyűlésben. Vidd el az MSZMP programját az üzemekbe, és mutasd meg, hogy a munkásság egy zászló alatt is hallathatja a hangját.",
       "icon": "handshake",
       "completeWhen": {
         "type": "answer-selected",
