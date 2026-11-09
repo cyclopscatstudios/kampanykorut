@@ -2,10 +2,11 @@ import {
   CampaignConfig,
   CampaignState,
   Condition,
+  FocusBranch,
   FocusStatus,
   PoliticalFocus,
 } from "../types";
-import { getCampaignEventState } from "./CampaignStateAccess";
+import { getSelectedFocusIds } from "./CampaignStateAccess";
 import { type Answers, createConditionCheck } from "./ConditionCheck";
 
 export interface FocusView {
@@ -18,111 +19,111 @@ export interface FocusView {
   selectable: boolean;
 }
 
-export interface FocusOverview {
+export type FocusBranchState = "decided" | "open" | "upcoming";
+
+export interface FocusBranchView {
+  id: string;
+  title?: string;
+  state: FocusBranchState;
   focuses: FocusView[];
-  selected?: FocusView;
-  locked: boolean;
-  hasOpposites: boolean;
-  // Set while focus selection has not opened yet.
   availableFromTurn?: number;
   requiredBeforeTurn?: number;
 }
 
-type FocusConfig = Pick<CampaignConfig, "politicalConfig" | "electionConfig">;
+export interface FocusOverview {
+  // Branches on the player's path so far, in order; skipped forks are left out.
+  branches: FocusBranchView[];
+  current?: FocusBranchView;
+  // Chosen focuses in the order they were picked.
+  selected: FocusView[];
+  latest?: FocusView;
+}
 
-export function getFocuses(
-  config: Pick<CampaignConfig, "politicalConfig">,
-): PoliticalFocus[] {
+type FocusConfig = Pick<CampaignConfig, "politicalConfig" | "electionConfig">;
+type BranchConfig = Pick<CampaignConfig, "politicalConfig">;
+
+export function getFocuses(config: BranchConfig): PoliticalFocus[] {
   return config.politicalConfig?.focuses ?? [];
 }
 
-export function getSelectedFocusId(
-  state: Pick<CampaignState, "politicalDashboard">,
-): string | undefined {
-  return state.politicalDashboard?.selectedFocusId;
-}
-
-export function isFocusLocked(
-  state: Pick<CampaignState, "campaignEvents">,
-  config: Pick<CampaignConfig, "politicalConfig">,
-): boolean {
-  const lockEventId = config.politicalConfig?.focusLockEventId;
-  return (
-    lockEventId !== undefined &&
-    getCampaignEventState(state).triggeredEventIds.includes(lockEventId)
-  );
-}
-
-// Opposite focuses rule each other out: once one is chosen the other can no
-// longer be picked. Either side of the pair may declare the exclusion.
-export function isExcludedBySelection(
-  config: Pick<CampaignConfig, "politicalConfig">,
-  selectedId: string | undefined,
-  focusId: string,
-): boolean {
-  if (!selectedId || selectedId === focusId) {
-    return false;
+export function getFocusBranches(config: BranchConfig): FocusBranch[] {
+  const branches = config.politicalConfig?.focusBranches;
+  if (branches) {
+    return branches;
   }
   const focuses = getFocuses(config);
-  const selected = focuses.find((f) => f.id === selectedId);
-  const focus = focuses.find((f) => f.id === focusId);
-  return Boolean(
-    selected?.excludes?.includes(focusId) ||
-    focus?.excludes?.includes(selectedId),
-  );
+  return focuses.length > 0
+    ? [{ id: "focus", focuses: focuses.map((f) => f.id) }]
+    : [];
 }
 
 function getCurrentTurn(state: Pick<CampaignState, "turn">): number {
   return state.turn + 1;
 }
 
-export function isFocusSelectionOpen(
+function getChoice(branch: FocusBranch, selectedIds: string[]) {
+  return branch.focuses.find((id) => selectedIds.includes(id));
+}
+
+function isOnPath(branch: FocusBranch, selectedIds: string[]) {
+  return branch.requires === undefined || selectedIds.includes(branch.requires);
+}
+
+// The first undecided branch on the player's path. Only this one can be
+// chosen from, so the forks come one at a time.
+export function getCurrentBranch(
+  state: Pick<CampaignState, "politicalDashboard">,
+  config: BranchConfig,
+): FocusBranch | undefined {
+  const selectedIds = getSelectedFocusIds(state);
+  return getFocusBranches(config).find(
+    (branch) =>
+      isOnPath(branch, selectedIds) && !getChoice(branch, selectedIds),
+  );
+}
+
+function isBranchOpen(
   state: Pick<CampaignState, "turn">,
-  config: Pick<CampaignConfig, "politicalConfig">,
+  branch: FocusBranch,
 ): boolean {
-  const from = config.politicalConfig?.focusSelection?.availableFromTurn ?? 1;
-  return getCurrentTurn(state) >= from;
+  return getCurrentTurn(state) >= (branch.availableFromTurn ?? 1);
 }
 
 export function canSelectFocus(
   state: CampaignState,
-  config: FocusConfig,
+  config: BranchConfig,
   focusId: string,
 ): boolean {
-  const selectedId = getSelectedFocusId(state);
+  const branch = getCurrentBranch(state, config);
   return (
     !state.isEnded &&
-    isFocusSelectionOpen(state, config) &&
-    !isFocusLocked(state, config) &&
-    selectedId !== focusId &&
-    !isExcludedBySelection(config, selectedId, focusId) &&
+    branch !== undefined &&
+    isBranchOpen(state, branch) &&
+    branch.focuses.includes(focusId) &&
     getFocuses(config).some((f) => f.id === focusId)
   );
 }
 
 export function isFocusRequired(
   state: CampaignState,
-  config: Pick<CampaignConfig, "politicalConfig">,
+  config: BranchConfig,
 ): boolean {
-  const requiredBefore =
-    config.politicalConfig?.focusSelection?.requiredBeforeTurn;
+  const branch = getCurrentBranch(state, config);
   return (
-    requiredBefore !== undefined &&
-    getCurrentTurn(state) >= requiredBefore &&
-    getFocuses(config).length > 0 &&
-    !getSelectedFocusId(state) &&
-    !state.isEnded
+    !state.isEnded &&
+    branch?.requiredBeforeTurn !== undefined &&
+    getCurrentTurn(state) >= branch.requiredBeforeTurn
   );
 }
 
 function getFocusStatusKey(overview: FocusOverview): string | undefined {
-  return overview.selected
-    ? `${overview.selected.id}:${overview.selected.status}`
+  return overview.selected.length > 0
+    ? overview.selected.map((f) => `${f.id}:${f.status}`).join(",")
     : undefined;
 }
 
-// News for the header dot: no direction chosen yet, or the chosen focus has
-// changed status since the dashboard was last opened.
+// News for the header dot: a fork is waiting for a choice, or a chosen focus
+// has changed status since the dashboard was last opened.
 export function hasFocusNews(
   state: CampaignState,
   config: FocusConfig,
@@ -132,12 +133,11 @@ export function hasFocusNews(
     return false;
   }
   const overview = buildFocusOverview(state, config, answers);
-  if (!overview.selected) {
-    return !overview.locked && overview.availableFromTurn === undefined;
+  if (overview.current?.state === "open") {
+    return true;
   }
-  return (
-    getFocusStatusKey(overview) !== state.politicalDashboard?.seenFocusStatus
-  );
+  const key = getFocusStatusKey(overview);
+  return key !== undefined && key !== state.politicalDashboard?.seenFocusStatus;
 }
 
 export function markFocusSeen(
@@ -162,22 +162,24 @@ export function markFocusSeen(
   };
 }
 
-// Selecting a focus only records the player's intent; it never changes
+// Selecting a focus only records the player's choice; it never changes
 // support or triggers effects on its own.
 export function selectFocus(
   state: CampaignState,
-  config: FocusConfig,
+  config: BranchConfig,
   focusId: string,
 ): CampaignState {
   if (!canSelectFocus(state, config, focusId)) {
     return state;
   }
+  const dashboard = { ...state.politicalDashboard };
+  delete dashboard.selectedFocusId;
   return {
     ...state,
     politicalDashboard: {
-      ...state.politicalDashboard,
-      seenEventIds: state.politicalDashboard?.seenEventIds ?? [],
-      selectedFocusId: focusId,
+      ...dashboard,
+      seenEventIds: dashboard.seenEventIds ?? [],
+      selectedFocusIds: [...getSelectedFocusIds(state), focusId],
     },
   };
 }
@@ -187,50 +189,75 @@ export function buildFocusOverview(
   config: FocusConfig,
   answers: Answers,
 ): FocusOverview {
-  const selectedId = getSelectedFocusId(state);
-  const locked = isFocusLocked(state, config);
+  const selectedIds = getSelectedFocusIds(state);
   const holds = createConditionCheck(state, answers, config.electionConfig);
+  const focuses = new Map(getFocuses(config).map((f) => [f.id, f]));
+  const current = getCurrentBranch(state, config);
 
-  const focuses = getFocuses(config).map((focus): FocusView => {
-    const status = getStatus(
-      focus,
-      selectedId,
-      locked || isExcludedBySelection(config, selectedId, focus.id),
-      holds,
-    );
-    return {
-      id: focus.id,
-      title: focus.title,
-      summary: focus.summary,
-      description: focus.description,
-      icon: focus.icon,
-      status,
-      selectable: canSelectFocus(state, config, focus.id),
-    };
+  const toView = (focus: PoliticalFocus, status: FocusStatus): FocusView => ({
+    id: focus.id,
+    title: focus.title,
+    summary: focus.summary,
+    description: focus.description,
+    icon: focus.icon,
+    status,
+    selectable: canSelectFocus(state, config, focus.id),
   });
 
-  const selection = config.politicalConfig?.focusSelection;
+  const branches: FocusBranchView[] = [];
+  for (const branch of getFocusBranches(config)) {
+    if (!isOnPath(branch, selectedIds)) {
+      continue;
+    }
+    const choice = getChoice(branch, selectedIds);
+    const branchState: FocusBranchState = choice
+      ? "decided"
+      : isBranchOpen(state, branch)
+        ? "open"
+        : "upcoming";
+    branches.push({
+      id: branch.id,
+      title: branch.title,
+      state: branchState,
+      availableFromTurn: branch.availableFromTurn,
+      requiredBeforeTurn: branch.requiredBeforeTurn,
+      focuses: branch.focuses.flatMap((id) => {
+        const focus = focuses.get(id);
+        if (!focus) {
+          return [];
+        }
+        const status =
+          id === choice
+            ? getChosenStatus(focus, holds)
+            : choice
+              ? "excluded"
+              : branch === current && branchState === "open"
+                ? "available"
+                : "upcoming";
+        return [toView(focus, status)];
+      }),
+    });
+    if (branch === current) {
+      break;
+    }
+  }
+
+  const views = new Map(
+    branches.flatMap((b) => b.focuses).map((f) => [f.id, f]),
+  );
+  const selected = selectedIds.flatMap((id) => views.get(id) ?? []);
   return {
-    focuses,
-    selected: focuses.find((f) => f.id === selectedId),
-    locked,
-    hasOpposites: getFocuses(config).some((f) => f.excludes?.length),
-    availableFromTurn: isFocusSelectionOpen(state, config)
-      ? undefined
-      : selection?.availableFromTurn,
-    requiredBeforeTurn: selectedId ? undefined : selection?.requiredBeforeTurn,
+    branches,
+    current: branches.find((b) => b.id === current?.id),
+    selected,
+    latest: selected.at(-1),
   };
 }
 
-function getStatus(
+function getChosenStatus(
   focus: PoliticalFocus,
-  selectedId: string | undefined,
-  locked: boolean,
   holds: (condition?: Condition) => boolean,
 ): FocusStatus {
-  if (focus.id !== selectedId) {
-    return locked ? "excluded" : "available";
-  }
   if (holds(focus.completeWhen)) {
     return "completed";
   }

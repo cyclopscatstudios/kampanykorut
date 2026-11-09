@@ -34,6 +34,16 @@ export const focusStatusStyle: Record<FocusStatus, FocusStatusStyle> = {
     word: "text-red-200",
     badge: { icon: "x-lg", className: "bg-red-400 text-red-950" },
   },
+  upcoming: {
+    card: "bg-slate-400/5 opacity-75 shadow-[inset_0_0_0_1px_rgba(148,163,184,0.25)]",
+    emblem:
+      "bg-slate-400/8 text-slate-400 shadow-[inset_0_0_0_2px_currentColor]",
+    word: "text-slate-400",
+    badge: {
+      icon: "hourglass-split",
+      className: "bg-slate-400 text-slate-900",
+    },
+  },
   excluded: {
     card: "bg-transparent opacity-60 outline-2 outline-dashed -outline-offset-2 outline-slate-500",
     emblem:

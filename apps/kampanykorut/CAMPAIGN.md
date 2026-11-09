@@ -369,16 +369,26 @@ The campaign validator reports unknown questions, answers, candidates and events
 
 #### Political config
 
-`political_config.json` holds the strategic mode: `gameMode`, `focuses`, `relationGroups`/`relations`, `focusLockEventId`, `focusSelection`, `coalition` and `epilogues`. It can be campaign-wide (`files.politicalConfig`) or belong to one playable candidate (`files.playableSides.<partyId>.<candidateId>.politicalConfig`). A candidate's own file replaces the campaign-wide one while that side is played, so another side never sees its focuses.
+`political_config.json` holds the strategic mode: `gameMode`, `focuses`, `focusBranches`, `relationGroups`/`relations`, `coalition` and `epilogues`. It can be campaign-wide (`files.politicalConfig`) or belong to one playable candidate (`files.playableSides.<partyId>.<candidateId>.politicalConfig`). A candidate's own file replaces the campaign-wide one while that side is played, so another side never sees its focuses.
 
-`focusSelection` times the choice of direction. Turns count from 1 (the first question is turn 1). Only one focus is followed at a time.
+`focusBranches` makes the focuses a tree. Each branch is a fork: the player picks one of its focuses, and the choice is final. Every chosen focus stays, so the player's path is the list of choices. Branches open one at a time in the listed order. Turns count from 1 (the first question is turn 1).
 
 ```json
-"focusSelection": { "availableFromTurn": 1, "requiredBeforeTurn": 2 }
+"focusBranches": [
+  { "id": "irany", "title": "Merre viszed a pártot?",
+    "focuses": ["lassu_reformok", "forradalom_partja"],
+    "availableFromTurn": 1, "requiredBeforeTurn": 2 },
+  { "id": "igazsagtetel", "requires": "forradalom_partja",
+    "focuses": ["megtorlas", "amnesztia"], "availableFromTurn": 3 }
+]
 ```
 
-- `availableFromTurn`: a focus can be chosen from this turn on (default 1).
-- `requiredBeforeTurn`: without a focus, no district can be visited from this turn on. Left out, a focus is never required.
+- `focuses`: at least two focus ids; a focus belongs to one branch only.
+- `requires`: a focus of an earlier branch. The branch is on the path only if that focus was chosen, otherwise it is skipped.
+- `availableFromTurn`: the branch can be decided from this turn on (default 1).
+- `requiredBeforeTurn`: while the branch is undecided, no district can be visited from this turn on. Left out, the choice is never forced.
+
+Without `focusBranches`, all focuses form one branch open from turn 1. A `focus-selected` condition holds for any chosen focus.
 
 #### Newspaper
 

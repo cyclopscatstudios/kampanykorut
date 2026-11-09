@@ -2126,42 +2126,108 @@ function checkCampaignEvents(
   });
 }
 
-function checkFocusSelection(ctx: Context, file: string, data: unknown) {
-  if (data === undefined) {
-    return;
-  }
+function checkFocusBranches(ctx: Context, file: string, data: Json) {
   const invalid = (path: string, message: string) =>
-    report(
-      ctx,
-      "error",
-      "political-config-invalid",
-      file,
-      `/focusSelection${path}`,
-      message,
-    );
-  if (!isObject(data)) {
-    invalid("", "focusSelection must be an object");
-    return;
-  }
-  for (const key of ["availableFromTurn", "requiredBeforeTurn"] as const) {
-    const value = data[key];
-    if (
-      value !== undefined &&
-      (!Number.isInteger(value) || (value as number) < 1)
-    ) {
-      invalid(`/${key}`, `${key} must be a turn number from 1`);
+    report(ctx, "error", "focus-branch-invalid", file, path, message);
+  for (const key of ["focusSelection", "focusLockEventId"] as const) {
+    if (data[key] !== undefined) {
+      invalid(`/${key}`, `${key} is replaced by focusBranches`);
     }
   }
-  if (
-    Number.isInteger(data.availableFromTurn) &&
-    Number.isInteger(data.requiredBeforeTurn) &&
-    (data.requiredBeforeTurn as number) < (data.availableFromTurn as number)
-  ) {
-    invalid(
-      "/requiredBeforeTurn",
-      "a focus cannot be required before it can be chosen",
-    );
+  if (data.focusBranches === undefined) {
+    return;
   }
+  if (!Array.isArray(data.focusBranches)) {
+    invalid("/focusBranches", "focusBranches must be an array");
+    return;
+  }
+  const focusIds = new Set(
+    (Array.isArray(data.focuses) ? data.focuses : [])
+      .filter(isObject)
+      .map((focus) => focus.id)
+      .filter((id): id is string => typeof id === "string"),
+  );
+  const branchIds = new Set<string>();
+  const placed = new Set<string>();
+  data.focusBranches.forEach((branch, i) => {
+    const path = `/focusBranches/${i}`;
+    if (!isObject(branch)) {
+      invalid(path, "branch must be an object");
+      return;
+    }
+    if (typeof branch.id !== "string" || !branch.id) {
+      invalid(`${path}/id`, "id must be a non-empty string");
+    } else if (branchIds.has(branch.id)) {
+      invalid(`${path}/id`, `duplicate branch id "${branch.id}"`);
+    } else {
+      branchIds.add(branch.id);
+    }
+    if (branch.title !== undefined && typeof branch.title !== "string") {
+      invalid(`${path}/title`, "title must be a string");
+    }
+    if (!Array.isArray(branch.focuses) || branch.focuses.length < 2) {
+      invalid(`${path}/focuses`, "a branch needs at least two focuses");
+    } else {
+      branch.focuses.forEach((id, j) => {
+        if (typeof id !== "string" || !focusIds.has(id)) {
+          invalid(`${path}/focuses/${j}`, `unknown focus "${String(id)}"`);
+        } else if (placed.has(id)) {
+          invalid(
+            `${path}/focuses/${j}`,
+            `focus "${id}" is already in an earlier branch`,
+          );
+        }
+      });
+    }
+    if (
+      branch.requires !== undefined &&
+      (typeof branch.requires !== "string" || !placed.has(branch.requires))
+    ) {
+      invalid(
+        `${path}/requires`,
+        "requires must name a focus of an earlier branch",
+      );
+    }
+    for (const key of ["availableFromTurn", "requiredBeforeTurn"] as const) {
+      const value = branch[key];
+      if (
+        value !== undefined &&
+        (!Number.isInteger(value) || (value as number) < 1)
+      ) {
+        invalid(`${path}/${key}`, `${key} must be a turn number from 1`);
+      }
+    }
+    if (
+      Number.isInteger(branch.availableFromTurn) &&
+      Number.isInteger(branch.requiredBeforeTurn) &&
+      (branch.requiredBeforeTurn as number) <
+        (branch.availableFromTurn as number)
+    ) {
+      invalid(
+        `${path}/requiredBeforeTurn`,
+        "a branch cannot be required before it opens",
+      );
+    }
+    if (Array.isArray(branch.focuses)) {
+      branch.focuses.forEach((id) => {
+        if (typeof id === "string") {
+          placed.add(id);
+        }
+      });
+    }
+  });
+  focusIds.forEach((id) => {
+    if (!placed.has(id)) {
+      report(
+        ctx,
+        "warning",
+        "focus-unused",
+        file,
+        "/focusBranches",
+        `focus "${id}" is in no branch`,
+      );
+    }
+  });
 }
 
 function checkPoliticalConfig(
@@ -2195,20 +2261,7 @@ function checkPoliticalConfig(
     );
   }
   checkRelations(ctx, file, data);
-  checkFocusSelection(ctx, file, data.focusSelection);
-  if (
-    data.focusLockEventId !== undefined &&
-    !ctx.eventIds.has(String(data.focusLockEventId))
-  ) {
-    report(
-      ctx,
-      "error",
-      "unknown-event",
-      file,
-      "/focusLockEventId",
-      `unknown event "${String(data.focusLockEventId)}"`,
-    );
-  }
+  checkFocusBranches(ctx, file, data);
   const refs = {
     questions,
     candidateIds: ctx.parties,
@@ -2270,20 +2323,14 @@ function checkPoliticalConfig(
       }
       seen.add(focus.id);
     }
-    if (
-      focus.excludes !== undefined &&
-      (!Array.isArray(focus.excludes) ||
-        focus.excludes.some(
-          (id) => typeof id !== "string" || !ctx.focusIds.has(id),
-        ))
-    ) {
+    if (focus.excludes !== undefined) {
       report(
         ctx,
         "error",
         "focus-invalid",
         file,
         `${path}/excludes`,
-        "excludes must list known focus ids",
+        "excludes is replaced by focusBranches",
       );
     }
     for (const key of ["completeWhen", "failWhen"] as const) {

@@ -741,11 +741,10 @@ describe("validateCampaign", () => {
       ).toEqual([]);
     });
 
-    it("reports invalid focuses and an unknown lock event", () => {
+    it("reports invalid focuses", () => {
       const result = validate(
         withPolitical({
           gameMode: "strategic",
-          focusLockEventId: "congress",
           focuses: [
             focus("with"),
             focus("with", { summary: "" }),
@@ -756,47 +755,61 @@ describe("validateCampaign", () => {
         }),
       );
       expect(codes(result)).toEqual([
-        "error:unknown-event",
         "error:focus-invalid",
         "error:focus-duplicate",
         "error:unknown-event",
       ]);
     });
 
-    it("checks opposite focuses and the focus requirement", () => {
+    it("checks the focus tree", () => {
+      const focuses = ["a", "b", "c", "d"].map((id) => focus(id));
       expect(
         validate(
           withPolitical({
             gameMode: "strategic",
-            focusSelection: { availableFromTurn: 2, requiredBeforeTurn: 3 },
-            focuses: [
-              focus("with", { excludes: ["without"] }),
-              focus("without"),
+            focuses,
+            focusBranches: [
+              { id: "first", focuses: ["a", "b"], requiredBeforeTurn: 2 },
+              {
+                id: "second",
+                requires: "a",
+                focuses: ["c", "d"],
+                availableFromTurn: 3,
+                requiredBeforeTurn: 4,
+              },
             ],
           }),
         ),
       ).toEqual([]);
-      expect(
-        codes(
-          validate(
-            withPolitical({
-              gameMode: "strategic",
-              focusSelection: { availableFromTurn: 4, requiredBeforeTurn: 2 },
-              focuses: [focus("with", { excludes: ["nope"] })],
-            }),
-          ),
-        ),
-      ).toEqual(["error:political-config-invalid", "error:focus-invalid"]);
-      expect(
-        codes(
-          validate(
-            withPolitical({
-              gameMode: "strategic",
-              focusSelection: { availableFromTurn: 0 },
-            }),
-          ),
-        ),
-      ).toEqual(["error:political-config-invalid"]);
+      const result = validate(
+        withPolitical({
+          gameMode: "strategic",
+          focuses: [...focuses, focus("e", { excludes: ["a"] })],
+          focusSelection: { requiredBeforeTurn: 1 },
+          focusBranches: [
+            { id: "first", focuses: ["a", "nope"], requires: "c" },
+            {
+              id: "first",
+              focuses: ["a"],
+              availableFromTurn: 4,
+              requiredBeforeTurn: 2,
+            },
+          ],
+        }),
+      );
+      expect(result.map((d) => `${d.severity}:${d.path}`)).toEqual([
+        "error:/focusSelection",
+        "error:/focusBranches/0/focuses/1",
+        "error:/focusBranches/0/requires",
+        "error:/focusBranches/1/id",
+        "error:/focusBranches/1/focuses",
+        "error:/focusBranches/1/requiredBeforeTurn",
+        "warning:/focusBranches",
+        "warning:/focusBranches",
+        "warning:/focusBranches",
+        "warning:/focusBranches",
+        "error:/focuses/4/excludes",
+      ]);
     });
 
     it("accepts coalition partners and epilogues", () => {

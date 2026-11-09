@@ -1,9 +1,5 @@
 {
   "gameMode": "strategic",
-  "focusSelection": {
-    "availableFromTurn": 1,
-    "requiredBeforeTurn": 2
-  },
   "focuses": [
     {
       "id": "lassu_reformok",
@@ -19,8 +15,7 @@
       "failWhen": {
         "type": "event-triggered",
         "eventId": "kadar_szakadas"
-      },
-      "excludes": ["forradalom_partja"]
+      }
     },
     {
       "id": "forradalom_partja",
@@ -32,8 +27,7 @@
         "type": "answer-selected",
         "questionId": "q3_kadar",
         "answerId": "C"
-      },
-      "excludes": ["lassu_reformok"]
+      }
     },
     {
       "id": "baloldali_szovetseg",
@@ -58,6 +52,22 @@
         "questionId": "q4_kethly",
         "answerId": "A"
       }
+    }
+  ],
+  "focusBranches": [
+    {
+      "id": "irany",
+      "title": "Merre viszed a pártot?",
+      "focuses": ["lassu_reformok", "forradalom_partja"],
+      "availableFromTurn": 1,
+      "requiredBeforeTurn": 2
+    },
+    {
+      "id": "szovetseg",
+      "title": "Kire támaszkodsz?",
+      "focuses": ["baloldali_szovetseg", "munkasokol_vasokol"],
+      "availableFromTurn": 3,
+      "requiredBeforeTurn": 4
     }
   ],
   "relationGroups": [

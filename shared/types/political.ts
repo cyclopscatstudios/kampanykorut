@@ -13,16 +13,20 @@ export interface PoliticalFocus {
   icon?: BootstrapIcon;
   completeWhen?: Condition;
   failWhen?: Condition;
-  // Focus ids that can no longer be chosen once this one is selected.
-  excludes?: string[];
 }
 
+// One fork of the focus tree: the player picks one of its focuses, and the
+// choice is final. Branches open one after another in the listed order.
 // Turns are counted from 1, the first question being turn 1.
-export interface FocusSelectionConfig {
-  // A focus can be chosen from this turn on. Defaults to the first turn.
+export interface FocusBranch {
+  id: string;
+  title?: string;
+  focuses: string[];
+  // Only on this path: the branch is skipped unless this focus was chosen.
+  requires?: string;
   availableFromTurn?: number;
-  // Without a chosen focus this turn cannot be played: no district can be
-  // visited until the player picks a direction.
+  // Without a choice here this turn cannot be played: no district can be
+  // visited until the player picks one of the branch's focuses.
   requiredBeforeTurn?: number;
 }
 
@@ -59,11 +63,10 @@ export interface Relation extends RelationStanding {
 export interface PoliticalConfig {
   gameMode: GameMode;
   focuses?: PoliticalFocus[];
+  // Without branches every focus forms a single branch open from turn 1.
+  focusBranches?: FocusBranch[];
   relationGroups?: RelationGroup[];
   relations?: Relation[];
-  // Once this event has triggered, the chosen focus can no longer be changed.
-  focusLockEventId?: string;
-  focusSelection?: FocusSelectionConfig;
   coalition?: CoalitionConfig;
   epilogues?: Epilogue[];
 }
@@ -114,10 +117,12 @@ export interface CoalitionState {
 
 export interface PoliticalDashboardState {
   seenEventIds: string[];
+  selectedFocusIds?: string[];
+  // Saves from before the focus tree had a single chosen focus.
   selectedFocusId?: string;
   relations?: Record<string, RelationStanding & { changedAtTurn: number }>;
   seenRelationIds?: string[];
-  // "focusId:status" of the chosen focus when the dashboard was last opened.
+  // Statuses of the chosen focuses when the dashboard was last opened.
   seenFocusStatus?: string;
 }
 
@@ -126,4 +131,5 @@ export type FocusStatus =
   | "selected"
   | "completed"
   | "failed"
-  | "excluded";
+  | "excluded"
+  | "upcoming";

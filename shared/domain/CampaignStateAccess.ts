@@ -85,3 +85,13 @@ export function getPendingAnnouncement(
   }
   return undefined;
 }
+
+export function getSelectedFocusIds(
+  state: Pick<CampaignState, "politicalDashboard">,
+): string[] {
+  const dashboard = state.politicalDashboard;
+  return (
+    dashboard?.selectedFocusIds ??
+    (dashboard?.selectedFocusId ? [dashboard.selectedFocusId] : [])
+  );
+}

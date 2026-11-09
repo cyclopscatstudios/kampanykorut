@@ -24,7 +24,7 @@ export function OverviewTab({
       aria-label={t("politicalDashboard.tabs.overview")}
       className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
     >
-      {focus && focus.focuses.length > 0 && (
+      {focus && focus.branches.length > 0 && (
         <FocusTile focus={focus} onOpenFocuses={onOpenFocuses} />
       )}
       <TurnTile turn={overview.turn} totalTurns={overview.totalTurns} />
@@ -44,8 +44,8 @@ function FocusTile({
   focus: FocusOverview;
   onOpenFocuses: () => void;
 }) {
-  const selected = focus.selected;
-  if (!selected) {
+  const selected = focus.latest;
+  if (!selected || focus.current?.state === "open") {
     return (
       <Tile label={t("politicalDashboard.focus.followed")}>
         <Emblem className="bg-slate-400/8 text-slate-300 outline-2 outline-dashed outline-slate-500">
