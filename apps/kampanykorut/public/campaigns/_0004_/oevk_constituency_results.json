@@ -1,0 +1,210 @@
+[
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 1,
+    "telepules": "Budapest",
+    "valasztopolgar": 614227,
+    "partok": {
+      "green_party": 231453,
+      "red_party": 177852,
+      "_other": 27582,
+      "yellow_party": 15825
+    }
+  },
+  {
+    "megyekod": 2,
+    "megye": "Pest-Pilis-Solt-Kiskun",
+    "oevk": 1,
+    "telepules": "Pest-Pilis-Solt-Kiskun",
+    "valasztopolgar": 1948375,
+    "partok": {
+      "green_party": 546126,
+      "red_party": 695112,
+      "_other": 79037,
+      "yellow_party": 77657
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "Baranya és Tolna",
+    "oevk": 1,
+    "telepules": "Baranya és Tolna",
+    "valasztopolgar": 474609,
+    "partok": {
+      "green_party": 107647,
+      "red_party": 174136,
+      "yellow_party": 19630,
+      "_other": 16158
+    }
+  },
+  {
+    "megyekod": 4,
+    "megye": "Somogy",
+    "oevk": 1,
+    "telepules": "Somogy",
+    "valasztopolgar": 247256,
+    "partok": {
+      "red_party": 92638,
+      "green_party": 59311,
+      "yellow_party": 6423,
+      "_other": 7529
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "Zala",
+    "oevk": 1,
+    "telepules": "Zala",
+    "valasztopolgar": 287991,
+    "partok": {
+      "red_party": 111723,
+      "green_party": 71717,
+      "_other": 9543,
+      "yellow_party": 9305
+    }
+  },
+  {
+    "megyekod": 6,
+    "megye": "Vas",
+    "oevk": 1,
+    "telepules": "Vas",
+    "valasztopolgar": 202790,
+    "partok": {
+      "red_party": 89956,
+      "green_party": 46671,
+      "yellow_party": 8030,
+      "_other": 5138
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "Győr-Moson-Pozsony és Sopron",
+    "oevk": 1,
+    "telepules": "Győr-Moson-Pozsony és Sopron",
+    "valasztopolgar": 358942,
+    "partok": {
+      "red_party": 155905,
+      "green_party": 80997,
+      "yellow_party": 15559,
+      "_other": 8881
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "Veszprém",
+    "oevk": 1,
+    "telepules": "Veszprém",
+    "valasztopolgar": 212273,
+    "partok": {
+      "red_party": 82687,
+      "green_party": 53299,
+      "yellow_party": 9515,
+      "_other": 6260
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "Fejér és Komárom-Esztergom",
+    "oevk": 1,
+    "telepules": "Fejér és Komárom-Esztergom",
+    "valasztopolgar": 669713,
+    "partok": {
+      "red_party": 245234,
+      "green_party": 172940,
+      "yellow_party": 27747,
+      "_other": 25736
+    }
+  },
+  {
+    "megyekod": 10,
+    "megye": "Nógrád-Hont és Heves",
+    "oevk": 1,
+    "telepules": "Nógrád-Hont és Heves",
+    "valasztopolgar": 466851,
+    "partok": {
+      "red_party": 178135,
+      "green_party": 104318,
+      "yellow_party": 24349,
+      "_other": 11848
+    }
+  },
+  {
+    "megyekod": 11,
+    "megye": "Borsod, Abaúj és Zemplén",
+    "oevk": 1,
+    "telepules": "Borsod, Abaúj és Zemplén",
+    "valasztopolgar": 513539,
+    "partok": {
+      "red_party": 178881,
+      "green_party": 112571,
+      "yellow_party": 19243,
+      "_other": 16201
+    }
+  },
+  {
+    "megyekod": 12,
+    "megye": "Szabolcs-Szatmár-Bereg",
+    "oevk": 1,
+    "telepules": "Szabolcs-Szatmár-Bereg",
+    "valasztopolgar": 440030,
+    "partok": {
+      "red_party": 172522,
+      "green_party": 84027,
+      "yellow_party": 17006,
+      "_other": 9450
+    }
+  },
+  {
+    "megyekod": 13,
+    "megye": "Hajdú és Bihar",
+    "oevk": 1,
+    "telepules": "Hajdú és Bihar",
+    "valasztopolgar": 424034,
+    "partok": {
+      "red_party": 160213,
+      "green_party": 89122,
+      "yellow_party": 14920,
+      "_other": 12015
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Jász-Nagykun-Szolnok",
+    "oevk": 1,
+    "telepules": "Jász-Nagykun-Szolnok",
+    "valasztopolgar": 297113,
+    "partok": {
+      "red_party": 106777,
+      "green_party": 67440,
+      "yellow_party": 12219,
+      "_other": 6571
+    }
+  },
+  {
+    "megyekod": 15,
+    "megye": "Békés",
+    "oevk": 1,
+    "telepules": "Békés",
+    "valasztopolgar": 205383,
+    "partok": {
+      "red_party": 73259,
+      "green_party": 47087,
+      "yellow_party": 9824,
+      "_other": 6032
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "Csongrád és Csanád",
+    "oevk": 1,
+    "telepules": "Csongrád és Csanád",
+    "valasztopolgar": 396211,
+    "partok": {
+      "red_party": 128389,
+      "green_party": 108982,
+      "yellow_party": 19812,
+      "_other": 13516
+    }
+  }
+]

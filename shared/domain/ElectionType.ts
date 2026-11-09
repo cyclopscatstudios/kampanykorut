@@ -39,3 +39,10 @@ export function isCityDistrictMap(
 ): boolean {
   return config?.districtMap === "budapest-districts";
 }
+
+// The capital inset only helps on maps that split Budapest into several districts.
+export function hasCapitalInset(
+  config: Pick<ElectionConfig, "districtMap"> | undefined,
+): boolean {
+  return config?.districtMap === "2011" || config?.districtMap === "2024";
+}

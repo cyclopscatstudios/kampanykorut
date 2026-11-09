@@ -17,9 +17,30 @@ export function getInactiveCandidateIds(
   state: Pick<CampaignState, "candidates">,
 ): string[] {
   return Object.entries(state.candidates ?? {})
-    .filter(([, candidate]) => candidate.status === "inactive")
+    .filter(([, candidate]) => candidate.status !== "active")
     .map(([id]) => id)
     .sort();
+}
+
+export function getDormantPartyStates(
+  parties: { id: string; dormant?: boolean }[] = [],
+): CampaignState["candidates"] {
+  const dormant = parties.filter((party) => party.dormant);
+  if (!dormant.length) {
+    return undefined;
+  }
+  return Object.fromEntries(
+    dormant.map((party) => [party.id, { status: "dormant" as const }]),
+  );
+}
+
+export function getVisibleParties<T extends { id: string }>(
+  parties: T[],
+  state: Pick<CampaignState, "candidates"> | undefined,
+): T[] {
+  return parties.filter(
+    (party) => state?.candidates?.[party.id]?.status !== "dormant",
+  );
 }
 
 export function getCampaignEventState(

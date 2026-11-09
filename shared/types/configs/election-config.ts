@@ -69,13 +69,16 @@ export type ElectionConfig =
   | ParliamentaryElectionConfig
   | MayoralElectionConfig;
 
-// "2011" / "2024": OEVK map by the year it was adopted; "budapest-districts": the 23 Budapest districts.
-export type DistrictMapType = "2011" | "2024" | "budapest-districts";
+// "2011" / "2024": OEVK map by the year it was adopted; "budapest-districts": the 23 Budapest districts;
+// "1945": 16 multi-member districts modelled on the 1945 election, keyed as megyekod 1-16, oevk 1.
+export type DistrictMapType = "2011" | "2024" | "budapest-districts" | "1945";
 
 export type RawParty = {
   id: string;
   name: string;
   color: string;
+  // Hidden and voteless until a split-party event brings it into the race.
+  dormant?: boolean;
 };
 
 export interface PlayableSide {

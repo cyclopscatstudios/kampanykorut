@@ -22,6 +22,7 @@ import {
   RawParty,
   RawQuestion,
   SetRelationEffect,
+  SplitPartyEffect,
   Strategy,
   StrategyReward,
   WithdrawCandidateEffect,
@@ -29,6 +30,7 @@ import {
 import type { CampaignEventEngine } from "./CampaignEventEngine";
 import {
   getCandidateStatus,
+  getDormantPartyStates,
   getInactiveCandidateIds,
 } from "./CampaignStateAccess";
 import { createConditionContext } from "./ConditionContext";
@@ -53,6 +55,11 @@ import {
 } from "./QuestionEligibility";
 import type { ResultModifier } from "./ResultModifier";
 import type { CandidateWithdrawalTransformer } from "./ResultTransformer/CandidateWithdrawalTransformer";
+import {
+  splitCandidateListData,
+  splitPartyListData,
+  splitPartyListVotes,
+} from "./ResultTransformer/PartySplit";
 
 const log = createLogger("CampaignEngine");
 
@@ -122,6 +129,7 @@ export class CampaignEngine {
       partyListVotes = baseApplied.partyListVotes;
     }
 
+    const dormantParties = getDormantPartyStates(electionConfig?.parties);
     const startState = {
       activeCampaignId: campaignId,
       turn: 0,
@@ -129,11 +137,13 @@ export class CampaignEngine {
       partyListData,
       partyListVotes,
       playerSide: savedState?.playerSide,
+      ...(dormantParties && { candidates: dormantParties }),
       ...this.calculateResults(
         candidateListData,
         partyListData,
         electionConfig,
         partyListVotes,
+        dormantParties && Object.keys(dormantParties),
       ),
       isEnded: false,
       isBaseResultsAlreadyApplied: true,
@@ -593,6 +603,9 @@ export class CampaignEngine {
         }
         flush();
         current = this.withdrawCandidate(current, effect);
+      } else if (effect.type === "split-party") {
+        flush();
+        current = this.splitParty(current, effect);
       } else if (effect.type === "set-relation") {
         relations.push(effect);
       } else {
@@ -687,6 +700,53 @@ export class CampaignEngine {
           ...(effect.endorsedCandidateId && {
             endorsedCandidateId: effect.endorsedCandidateId,
           }),
+          changedAtTurn: state.turn,
+        },
+      },
+    };
+  }
+
+  private splitParty(
+    state: CampaignState,
+    effect: SplitPartyEffect,
+  ): CampaignState {
+    const { partyId } = effect;
+    if (getCandidateStatus(state, partyId) !== "dormant") {
+      throw new Error(`cannot split into non-dormant party "${partyId}"`);
+    }
+    const sources = Object.keys({
+      ...effect.from,
+      ...Object.assign({}, ...Object.values(effect.fromByMegye ?? {})),
+    }).sort();
+    const invalidSource = sources.find(
+      (source) =>
+        source === partyId || getCandidateStatus(state, source) !== "active",
+    );
+    if (invalidSource) {
+      throw new Error(
+        `cannot split votes of "${invalidSource}" into "${partyId}"`,
+      );
+    }
+
+    log.info("Party splits", { partyId, sources, turn: state.turn });
+
+    return {
+      ...state,
+      candidateListData: splitCandidateListData(
+        state.candidateListData ?? [],
+        effect,
+      ),
+      ...(state.partyListData && {
+        partyListData: splitPartyListData(state.partyListData, effect),
+      }),
+      ...(state.partyListVotes && {
+        partyListVotes: splitPartyListVotes(state.partyListVotes, effect),
+      }),
+      candidates: {
+        ...state.candidates,
+        [partyId]: {
+          status: "active",
+          splitFromIds: Object.keys(effect.from).sort(),
           changedAtTurn: state.turn,
         },
       },

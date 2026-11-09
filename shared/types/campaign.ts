@@ -35,7 +35,8 @@ export interface CampaignState {
   isBaseResultsAlreadyApplied: boolean;
 }
 
-export type CandidateStatus = "active" | "inactive";
+// "dormant": a party that only enters the race through a split-party event.
+export type CandidateStatus = "active" | "inactive" | "dormant";
 
 export type CandidateInactiveReason =
   | "withdrawal"
@@ -46,6 +47,7 @@ export interface CandidateCampaignState {
   status: CandidateStatus;
   inactiveReason?: CandidateInactiveReason;
   endorsedCandidateId?: string;
+  splitFromIds?: string[];
   changedAtTurn?: number;
 }
 

@@ -1016,6 +1016,68 @@ describe("validateCampaign", () => {
     });
   });
 
+  describe("split-party event effect", () => {
+    const issues = (effect: object, dormant: unknown = true) =>
+      validate((f: Files) => {
+        file(f, "election_config.json").parties.push({
+          id: "splinter",
+          name: "Splinter",
+          color: "#222",
+          dormant,
+        });
+        file(f, "manifest.json").files.campaignEvents = "events.json";
+        f["events.json"] = [
+          {
+            id: "split",
+            conditions: [{ if: { type: "turn", min: 1 }, effects: [effect] }],
+          },
+        ];
+      }).map((d) => `${d.code}@${d.path}`);
+
+    const split = (patch: object = {}) => ({
+      type: "split-party",
+      partyId: "splinter",
+      from: { party_a: 0.3 },
+      fromByMegye: { "1": { party_a: 0.5, party_b: 0.1 } },
+      ...patch,
+    });
+
+    it("accepts a split into a dormant party", () => {
+      expect(issues(split())).toEqual([]);
+    });
+
+    it("requires the new party to be dormant", () => {
+      expect(issues(split(), false)).toEqual([
+        "split-party-invalid@/0/conditions/0/effects/0/partyId",
+      ]);
+    });
+
+    it("checks the sources and shares", () => {
+      expect(
+        issues(
+          split({
+            from: { splinter: 0.2, party_a: 2 },
+            fromByMegye: { x: {} },
+          }),
+        ),
+      ).toEqual([
+        "unknown-candidate@/0/conditions/0/effects/0/from/splinter",
+        "effect-invalid@/0/conditions/0/effects/0/from/party_a",
+        "effect-invalid@/0/conditions/0/effects/0/fromByMegye/x",
+        "effect-invalid@/0/conditions/0/effects/0/fromByMegye/x",
+      ]);
+    });
+
+    it("rejects a non-boolean dormant flag", () => {
+      expect(issues(split(), "yes")).toEqual([
+        expect.stringMatching(
+          /^election-config-invalid@\/parties\/\d+\/dormant$/,
+        ),
+        "split-party-invalid@/0/conditions/0/effects/0/partyId",
+      ]);
+    });
+  });
+
   describe("withdraw-candidate event effect", () => {
     const withdraw = (patch: object = {}) => ({
       type: "withdraw-candidate",

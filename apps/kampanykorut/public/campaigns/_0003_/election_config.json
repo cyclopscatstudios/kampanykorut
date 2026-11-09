@@ -133,6 +133,12 @@
       "id": "yellow_party",
       "name": "Yellow Party",
       "color": "#FFFF00"
+    },
+    {
+      "id": "green_splinter",
+      "name": "Green Splinter",
+      "color": "#0b4d1e",
+      "dormant": true
     }
   ],
   "partyListVotes": {
