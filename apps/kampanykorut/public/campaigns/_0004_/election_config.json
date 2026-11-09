@@ -7,97 +7,97 @@
       {
         "id": "vk01",
         "name": "Budapest",
-        "seats": 31,
+        "seats": 28,
         "megyekods": [1]
       },
       {
         "id": "vk02",
-        "name": "Budapest környéke",
-        "seats": 39,
+        "name": "Pest-Pilis-Solt-Kiskun",
+        "seats": 88,
         "megyekods": [2]
       },
       {
         "id": "vk03",
-        "name": "Pest-Pilis-Solt-Kiskun",
-        "seats": 50,
+        "name": "Baranya és Tolna",
+        "seats": 22,
         "megyekods": [3]
       },
       {
         "id": "vk04",
-        "name": "Bács-Bodrog és Csongrád",
-        "seats": 14,
+        "name": "Somogy",
+        "seats": 11,
         "megyekods": [4]
       },
       {
         "id": "vk05",
-        "name": "Baranya és Tolna",
-        "seats": 21,
+        "name": "Zala",
+        "seats": 13,
         "megyekods": [5]
       },
       {
         "id": "vk06",
-        "name": "Somogy",
-        "seats": 11,
+        "name": "Vas",
+        "seats": 9,
         "megyekods": [6]
       },
       {
         "id": "vk07",
-        "name": "Zala",
-        "seats": 10,
+        "name": "Győr-Moson-Pozsony és Sopron",
+        "seats": 16,
         "megyekods": [7]
       },
       {
         "id": "vk08",
-        "name": "Vas és Sopron",
-        "seats": 13,
+        "name": "Veszprém",
+        "seats": 10,
         "megyekods": [8]
       },
       {
         "id": "vk09",
-        "name": "Győr-Moson és Komárom-Esztergom",
-        "seats": 24,
+        "name": "Fejér és Komárom-Esztergom",
+        "seats": 30,
         "megyekods": [9]
       },
       {
         "id": "vk10",
-        "name": "Fejér és Veszprém",
-        "seats": 28,
+        "name": "Nógrád-Hont és Heves",
+        "seats": 21,
         "megyekods": [10]
       },
       {
         "id": "vk11",
-        "name": "Nógrád-Hont és Heves",
-        "seats": 18,
+        "name": "Borsod, Abaúj és Zemplén",
+        "seats": 23,
         "megyekods": [11]
       },
       {
         "id": "vk12",
-        "name": "Borsod-Gömör és Abaúj-Torna",
+        "name": "Szabolcs-Szatmár-Bereg",
         "seats": 20,
         "megyekods": [12]
       },
       {
         "id": "vk13",
-        "name": "Szabolcs-Szatmár és Zemplén",
-        "seats": 23,
+        "name": "Hajdú és Bihar",
+        "seats": 19,
         "megyekods": [13]
       },
       {
         "id": "vk14",
-        "name": "Hajdú és Bihar",
-        "seats": 19,
+        "name": "Jász-Nagykun-Szolnok",
+        "seats": 13,
         "megyekods": [14]
       },
       {
         "id": "vk15",
-        "name": "Jász-Nagykun-Szolnok",
-        "seats": 13,
+        "name": "Békés",
+        "seats": 9,
         "megyekods": [15]
       },
       {
         "id": "vk16",
-        "name": "Békés és Csanád",
-        "seats": 16,
+        "name": "Csongrád és Csanád",
+        "seats": 18,
         "megyekods": [16]
       }
     ]

@@ -1,12 +1,14 @@
-# 1945-ös mintájú választókerület-térkép
+# 1945-ös választókerület-térkép
 
-A `districts.json` sorolja fel a 16 választókerületet, és mindegyikhez megadja, mely 2011-es OEVK-k tartoznak hozzá (megyekód → OEVK-számok vagy `"all"`). A `build_map.py` ezeket a soksokszögeket vonja össze, és az eredményt a `public/assets/jsons/shared/valasztokerulet_1945.json` fájlba írja (`maz` = kerület 01–16, `evk` = 01).
+A `valasztokerulet_1945.json` az 1945-ös nemzetgyűlési választás 16 választókerületét rajzolja ki (`maz` 01–16, `evk` 01). A határok forrása a Wikimedia Commons „1945 Hungarian parliamentary election - Results by constituency.svg” térképe. A felhasználás és a forrásmegjelölés feltételei a fájl Commons-oldalán vannak.
+
+A `build_map.py` az SVG-ből veszi át a kerületek körvonalát, és földrajzi koordinátákra vetíti őket a 2011-es OEVK-térkép országhatára alapján. Budapest a Pest-Pilis-Solt-Kiskun kerületen belül fekszik. Mivel a térképformátum nem kezel lyukat, a Pest-kerületben egy hajszálvékony rés köti össze a lyukat a külső határral.
+
+A `districts.json` is a szkript kimenete: minden 2011-es OEVK abba a kerületbe kerül, amellyel a legnagyobb a közös területe. Ez a táblázat használható, ha a mai körzeti adatokat 1945-ös kerületekre akarjuk összesíteni.
 
 ```sh
-pip install shapely
-python3 apps/kampanykorut/scripts/valasztokerulet-1945/build_map.py
+pip install shapely svgelements
+python3 apps/kampanykorut/scripts/valasztokerulet-1945/build_map.py <letöltött svg>
 ```
 
-A határok a mai OEVK-vonalakat követik, ezért csak megközelítik az 1950 előtti vármegyéket. A kerületek listáját emlékezetből állítottuk össze; ha pontosabb forrás kerül elő, elég a `districts.json`-t átírni, és újra lefuttatni a szkriptet.
-
-A configban: `"districtMap": "1945"`, a körzeti adatsorok `megyekod` 1–16, `oevk` 1, a régiók `megyekods: [n]`.
+A configban: `"districtMap": "1945"`, a körzeti adatsorok `megyekod` 1–16, `oevk` 1, a régiók pedig `megyekods: [n]`.
