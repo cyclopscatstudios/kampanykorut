@@ -69,6 +69,8 @@ export type RawParty = {
   id: string;
   name: string;
   color: string;
+  // Hidden and voteless until a split-party event brings it into the race.
+  dormant?: boolean;
 };
 
 export interface PlayableSide {

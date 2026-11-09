@@ -56,7 +56,9 @@ function recordingApply() {
           ? Object.keys(e.params).join()
           : "candidateId" in e
             ? e.candidateId
-            : e.relationId,
+            : "partyId" in e
+              ? e.partyId
+              : e.relationId,
       ),
     );
     return { ...current };

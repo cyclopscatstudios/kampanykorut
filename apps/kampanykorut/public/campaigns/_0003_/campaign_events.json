@@ -1,0 +1,37 @@
+[
+  {
+    "id": "green_split",
+    "label": "A Green Party kettészakad (teszt)",
+    "once": true,
+    "priority": 100,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "prop_q1",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "split-party",
+            "partyId": "green_splinter",
+            "from": {
+              "green_party": 0.25
+            },
+            "fromByMegye": {
+              "1": {
+                "green_party": 0.4
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kettészakadt a Green Party",
+      "body": "Teszt bejelentés: a párt egy része kivált, és önálló listát állít. Budapesten erősebb a szakadár szárny.",
+      "icon": "scissors",
+      "major": true
+    }
+  }
+]

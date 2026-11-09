@@ -5,6 +5,7 @@ import {
   createConditionCheck,
   getParliamentaryConfig,
   getPlayerVoteKey,
+  getVisibleParties,
   markNewspaperRead,
   publishNewspaperEdition,
 } from "@/shared/domain";
@@ -275,9 +276,19 @@ export function useElectionState(campaignId: string) {
     setGameState(newGameState);
   };
 
+  const candidates = gameState?.candidates;
+  const visibleConfig = useMemo(() => {
+    const parties = getVisibleParties(config.electionConfig.parties, {
+      candidates,
+    });
+    return parties.length === config.electionConfig.parties.length
+      ? config
+      : { ...config, electionConfig: { ...config.electionConfig, parties } };
+  }, [config, candidates]);
+
   return {
     state: gameState,
-    config,
+    config: visibleConfig,
     processAnswer,
     commitTurn,
     finishCampaign,

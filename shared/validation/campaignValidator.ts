@@ -77,6 +77,7 @@ interface Context {
   eventIds: Set<string>;
   focusIds: Set<string>;
   relationIds: Set<string>;
+  dormantParties: Set<string>;
 }
 
 const isObject = (value: unknown): value is Json =>
@@ -1320,6 +1321,18 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
         );
       }
       ctx.parties.add(party.id);
+      if (party.dormant !== undefined && typeof party.dormant !== "boolean") {
+        report(
+          ctx,
+          "error",
+          "election-config-invalid",
+          file,
+          `/parties/${i}/dormant`,
+          "dormant must be a boolean",
+        );
+      } else if (party.dormant) {
+        ctx.dormantParties.add(party.id);
+      }
     });
   }
   if (isObject(data.partyListVotes)) {
@@ -1710,6 +1723,8 @@ function checkEventEffects(
     const effectPath = `${path}/${i}`;
     if (isObject(effect) && effect.type === "withdraw-candidate") {
       checkWithdrawEffect(ctx, file, effectPath, effect, guard);
+    } else if (isObject(effect) && effect.type === "split-party") {
+      checkSplitEffect(ctx, file, effectPath, effect);
     } else if (isObject(effect) && effect.type === "set-relation") {
       if (
         typeof effect.relationId !== "string" ||
@@ -1729,6 +1744,72 @@ function checkEventEffects(
       checkEffect(ctx, file, effectPath, effect);
     }
   });
+}
+
+function checkSplitEffect(
+  ctx: Context,
+  file: string,
+  path: string,
+  effect: Json,
+) {
+  const error = (code: string, at: string, message: string) =>
+    report(ctx, "error", code, file, at, message);
+
+  const partyId = effect.partyId;
+  if (typeof partyId !== "string" || !ctx.dormantParties.has(partyId)) {
+    error(
+      "split-party-invalid",
+      `${path}/partyId`,
+      `partyId must be a dormant party in parties (got "${String(partyId)}")`,
+    );
+  }
+  const checkShares = (shares: unknown, at: string) => {
+    if (!isObject(shares) || !Object.keys(shares).length) {
+      error("effect-invalid", at, "shares must be a non-empty object");
+      return;
+    }
+    for (const [source, share] of Object.entries(shares)) {
+      if (
+        !ctx.parties.has(source) ||
+        source === partyId ||
+        ctx.dormantParties.has(source)
+      ) {
+        error(
+          "unknown-candidate",
+          `${at}/${source}`,
+          `"${source}" is not another active party in parties`,
+        );
+      }
+      if (!isFiniteNumber(share) || share < 0 || share > 1) {
+        error(
+          "effect-invalid",
+          `${at}/${source}`,
+          "share must be between 0 and 1",
+        );
+      }
+    }
+  };
+  checkShares(effect.from, `${path}/from`);
+  if (effect.fromByMegye !== undefined) {
+    if (!isObject(effect.fromByMegye)) {
+      error(
+        "effect-invalid",
+        `${path}/fromByMegye`,
+        "fromByMegye must be an object",
+      );
+      return;
+    }
+    for (const [megyekod, shares] of Object.entries(effect.fromByMegye)) {
+      if (!/^\d+$/.test(megyekod)) {
+        error(
+          "effect-invalid",
+          `${path}/fromByMegye/${megyekod}`,
+          "fromByMegye keys must be megyekod numbers",
+        );
+      }
+      checkShares(shares, `${path}/fromByMegye/${megyekod}`);
+    }
+  }
 }
 
 function excludesPlayer(condition: unknown, candidateId: string): boolean {
@@ -2547,6 +2628,7 @@ export function validateCampaign(
     eventIds: new Set(),
     focusIds: new Set(),
     relationIds: new Set(),
+    dormantParties: new Set(),
   };
 
   for (const banner of ["campaignBanner", "thinCampaignBanner"] as const) {

@@ -12,7 +12,7 @@ export interface ConditionIssue {
 }
 
 const OPERATORS = ["<", "<=", ">", ">="];
-const STATUSES = ["active", "inactive"];
+const STATUSES = ["active", "inactive", "dormant"];
 const COMBINATORS = ["and", "or", "not"] as const;
 
 type Json = Record<string, unknown>;

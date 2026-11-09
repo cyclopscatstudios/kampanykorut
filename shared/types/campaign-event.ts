@@ -14,6 +14,15 @@ export interface WithdrawCandidateEffect {
   redistribution: Record<string, number>;
 }
 
+// `from` is the share of each source party's votes the new party takes in every
+// district; `fromByMegye` overrides it county by county (keyed by megyekod).
+export interface SplitPartyEffect {
+  type: "split-party";
+  partyId: string;
+  from: Record<string, number>;
+  fromByMegye?: Record<string, Record<string, number>>;
+}
+
 export interface SetRelationEffect extends RelationStanding {
   type: "set-relation";
   relationId: string;
@@ -22,6 +31,7 @@ export interface SetRelationEffect extends RelationStanding {
 export type CampaignEventEffect =
   | RawEffect
   | WithdrawCandidateEffect
+  | SplitPartyEffect
   | SetRelationEffect;
 
 export interface CampaignEventBranch {
