@@ -455,7 +455,9 @@ describe("validateCampaign", () => {
     };
 
     const toProportional = (regions: unknown) => (f: Files) => {
-      electionConfig(f).election = { type: "proportional", regions };
+      electionConfig(f).election = { type: "proportional" };
+      file(f, "manifest.json").files.regions = "regions.json";
+      f["regions.json"] = regions;
     };
 
     it("accepts a proportional election whose regions add up", () => {
@@ -491,6 +493,23 @@ describe("validateCampaign", () => {
         ]),
       );
       expect(codes(result)).toEqual(["error:region-missing"]);
+    });
+
+    it("wants proportional regions in their own file", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = {
+          type: "proportional",
+          regions: [{ id: "all", name: "Mind", seats: 106, megyekods: [1, 2] }],
+        };
+      });
+      expect(result.map((d) => [d.code, d.file, d.path])).toEqual([
+        [
+          "election-config-invalid",
+          "election_config.json",
+          "/election/regions",
+        ],
+        ["election-config-invalid", "manifest.json", "/files/regions"],
+      ]);
     });
 
     it("accepts a mayoral election without parliamentary seat fields", () => {
@@ -677,6 +696,21 @@ describe("validateCampaign", () => {
       expect(validate(withPolitical({ gameMode: "strategic" }))).toEqual([]);
     });
 
+    it("checks a political config that belongs to one candidate", () => {
+      const withSide = (config: unknown) => (f: Files) => {
+        file(
+          f,
+          "manifest.json",
+        ).files.playableSides.party_a.candidate_a.politicalConfig =
+          "side/political.json";
+        f["side/political.json"] = config;
+      };
+      expect(validate(withSide({ gameMode: "strategic" }))).toEqual([]);
+      expect(
+        validate(withSide({ gameMode: "arcade" })).map((d) => [d.code, d.file]),
+      ).toEqual([["game-mode-invalid", "side/political.json"]]);
+    });
+
     it("reports an unknown game mode", () => {
       expect(codes(validate(withPolitical({ gameMode: "grand" })))).toEqual([
         "error:game-mode-invalid",
@@ -734,7 +768,7 @@ describe("validateCampaign", () => {
         validate(
           withPolitical({
             gameMode: "strategic",
-            requireFocus: true,
+            focusSelection: { availableFromTurn: 2, requiredBeforeTurn: 3 },
             focuses: [
               focus("with", { excludes: ["without"] }),
               focus("without"),
@@ -747,12 +781,22 @@ describe("validateCampaign", () => {
           validate(
             withPolitical({
               gameMode: "strategic",
-              requireFocus: "yes",
+              focusSelection: { availableFromTurn: 4, requiredBeforeTurn: 2 },
               focuses: [focus("with", { excludes: ["nope"] })],
             }),
           ),
         ),
       ).toEqual(["error:political-config-invalid", "error:focus-invalid"]);
+      expect(
+        codes(
+          validate(
+            withPolitical({
+              gameMode: "strategic",
+              focusSelection: { availableFromTurn: 0 },
+            }),
+          ),
+        ),
+      ).toEqual(["error:political-config-invalid"]);
     });
 
     it("accepts coalition partners and epilogues", () => {

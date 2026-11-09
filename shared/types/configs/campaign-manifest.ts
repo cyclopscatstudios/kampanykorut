@@ -5,12 +5,15 @@ export interface CandidateManifest {
   advisorFeedback?: string;
   advisorFeedbackAssets?: string;
   endResults?: string;
+  politicalConfig?: string;
 }
 
 export type PlayableSideManifest = Record<string, CandidateManifest>;
 
 export interface CampaignManifestFiles {
   electionConfig: string;
+  // Regions of a proportional election, merged into election.regions on load.
+  regions?: string;
   voterEnvironmentConfig: string;
   candidateListData: string;
   partyListData?: string;

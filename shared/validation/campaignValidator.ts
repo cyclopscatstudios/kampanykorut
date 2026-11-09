@@ -1154,19 +1154,58 @@ function checkElectionDefinition(
   return String(election.type);
 }
 
-function checkProportionalRegions(ctx: Context, file: string, data: Json) {
+interface RegionsFile {
+  file: string;
+  data: unknown;
+}
+
+function checkProportionalRegions(
+  ctx: Context,
+  file: string,
+  data: Json,
+  regionsFile: RegionsFile | undefined,
+) {
   const election = data.election as Json;
+  if (election.regions !== undefined) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/election/regions",
+      "regions belong in their own file (manifest files.regions)",
+    );
+  }
+  if (!regionsFile) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      "manifest.json",
+      "/files/regions",
+      "a proportional election needs a regions file",
+    );
+    return;
+  }
+  const regions = regionsFile.data;
   const error = (path: string, message: string) =>
-    report(ctx, "error", "election-config-invalid", file, path, message);
-  if (!Array.isArray(election.regions) || election.regions.length === 0) {
-    error("/election/regions", "regions must be a non-empty array");
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      regionsFile.file,
+      path,
+      message,
+    );
+  if (!Array.isArray(regions) || regions.length === 0) {
+    error("", "regions must be a non-empty array");
     return;
   }
   const ids = new Set<string>();
   const counties = new Set<number>();
   let regionSeats = 0;
-  election.regions.forEach((region, i) => {
-    const path = `/election/regions/${i}`;
+  regions.forEach((region, i) => {
+    const path = `/${i}`;
     if (!isObject(region)) {
       error(path, "region must be an object");
       return;
@@ -1178,7 +1217,7 @@ function checkProportionalRegions(ctx: Context, file: string, data: Json) {
         ctx,
         "error",
         "duplicate-id",
-        file,
+        regionsFile.file,
         `${path}/id`,
         `duplicate region id "${region.id}"`,
       );
@@ -1213,7 +1252,11 @@ function checkProportionalRegions(ctx: Context, file: string, data: Json) {
     isFiniteNumber(data.allSeats) &&
     regionSeats + data.listSeats !== data.allSeats
   ) {
-    error(
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
       "/allSeats",
       `allSeats (${data.allSeats}) must equal the region seats (${regionSeats}) plus listSeats (${data.listSeats})`,
     );
@@ -1245,7 +1288,12 @@ function checkRegionCoverage(ctx: Context, file: string, data: unknown) {
   }
 }
 
-function checkElectionConfig(ctx: Context, file: string, data: unknown) {
+function checkElectionConfig(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  regionsFile?: RegionsFile,
+) {
   if (!isObject(data)) {
     report(
       ctx,
@@ -1281,7 +1329,7 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
     }
   }
   if (electionType === "proportional") {
-    checkProportionalRegions(ctx, file, data);
+    checkProportionalRegions(ctx, file, data, regionsFile);
   }
   if (!DISTRICT_MAPS.includes(String(data.districtMap))) {
     report(
@@ -2078,6 +2126,44 @@ function checkCampaignEvents(
   });
 }
 
+function checkFocusSelection(ctx: Context, file: string, data: unknown) {
+  if (data === undefined) {
+    return;
+  }
+  const invalid = (path: string, message: string) =>
+    report(
+      ctx,
+      "error",
+      "political-config-invalid",
+      file,
+      `/focusSelection${path}`,
+      message,
+    );
+  if (!isObject(data)) {
+    invalid("", "focusSelection must be an object");
+    return;
+  }
+  for (const key of ["availableFromTurn", "requiredBeforeTurn"] as const) {
+    const value = data[key];
+    if (
+      value !== undefined &&
+      (!Number.isInteger(value) || (value as number) < 1)
+    ) {
+      invalid(`/${key}`, `${key} must be a turn number from 1`);
+    }
+  }
+  if (
+    Number.isInteger(data.availableFromTurn) &&
+    Number.isInteger(data.requiredBeforeTurn) &&
+    (data.requiredBeforeTurn as number) < (data.availableFromTurn as number)
+  ) {
+    invalid(
+      "/requiredBeforeTurn",
+      "a focus cannot be required before it can be chosen",
+    );
+  }
+}
+
 function checkPoliticalConfig(
   ctx: Context,
   file: string,
@@ -2109,19 +2195,7 @@ function checkPoliticalConfig(
     );
   }
   checkRelations(ctx, file, data);
-  if (
-    data.requireFocus !== undefined &&
-    typeof data.requireFocus !== "boolean"
-  ) {
-    report(
-      ctx,
-      "error",
-      "political-config-invalid",
-      file,
-      "/requireFocus",
-      "requireFocus must be a boolean",
-    );
-  }
+  checkFocusSelection(ctx, file, data.focusSelection);
   if (
     data.focusLockEventId !== undefined &&
     !ctx.eventIds.has(String(data.focusLockEventId))
@@ -2228,7 +2302,7 @@ function checkNewspaper(
   ctx: Context,
   file: string,
   data: unknown,
-  politicalData: unknown,
+  strategic: boolean,
   questions: Map<string, Set<string>>,
 ) {
   if (data === undefined) {
@@ -2240,7 +2314,7 @@ function checkNewspaper(
     invalid("", "newspaper must be an object");
     return;
   }
-  if (!isObject(politicalData) || politicalData.gameMode !== "strategic") {
+  if (!strategic) {
     report(
       ctx,
       "warning",
@@ -2642,6 +2716,31 @@ function checkRelations(ctx: Context, file: string, data: Json) {
   });
 }
 
+function readSidePoliticalConfigs(ctx: Context, playableSides: unknown) {
+  if (!isObject(playableSides)) {
+    return [];
+  }
+  return Object.entries(playableSides).flatMap(([partyId, candidates]) =>
+    isObject(candidates)
+      ? Object.entries(candidates).flatMap(([candidateId, paths]) =>
+          isObject(paths) && paths.politicalConfig !== undefined
+            ? [
+                {
+                  file: String(paths.politicalConfig),
+                  data: readFile(
+                    ctx,
+                    paths.politicalConfig,
+                    "manifest.json",
+                    `/files/playableSides/${partyId}/${candidateId}/politicalConfig`,
+                  ),
+                },
+              ]
+            : [],
+        )
+      : [],
+  );
+}
+
 export function validateCampaign(
   header: CampaignHeaderInput,
   source: CampaignSource,
@@ -2714,6 +2813,13 @@ export function validateCampaign(
   }
 
   const electionConfigFile = String(files.electionConfig);
+  const regionsFile =
+    files.regions === undefined
+      ? undefined
+      : {
+          file: String(files.regions),
+          data: readFile(ctx, files.regions, "manifest.json", "/files/regions"),
+        };
   const sides = checkElectionConfig(
     ctx,
     electionConfigFile,
@@ -2723,6 +2829,7 @@ export function validateCampaign(
       "manifest.json",
       "/files/electionConfig",
     ),
+    regionsFile,
   );
   readFile(
     ctx,
@@ -2764,7 +2871,11 @@ export function validateCampaign(
           "manifest.json",
           "/files/politicalConfig",
         );
-  collectPoliticalIds(ctx, politicalData);
+  const politicalFiles: { file: string; data: unknown }[] = [
+    { file: String(files.politicalConfig), data: politicalData },
+    ...readSidePoliticalConfigs(ctx, files.playableSides),
+  ];
+  politicalFiles.forEach(({ data }) => collectPoliticalIds(ctx, data));
 
   const eventsData =
     files.campaignEvents === undefined
@@ -2803,11 +2914,8 @@ export function validateCampaign(
     );
   }
 
-  checkPoliticalConfig(
-    ctx,
-    String(files.politicalConfig),
-    politicalData,
-    allQuestions,
+  politicalFiles.forEach(({ file, data }) =>
+    checkPoliticalConfig(ctx, file, data, allQuestions),
   );
 
   if (files.newspaper !== undefined) {
@@ -2815,7 +2923,9 @@ export function validateCampaign(
       ctx,
       String(files.newspaper),
       readFile(ctx, files.newspaper, "manifest.json", "/files/newspaper"),
-      politicalData,
+      politicalFiles.some(
+        ({ data }) => isObject(data) && data.gameMode === "strategic",
+      ),
       allQuestions,
     );
   }

@@ -23,6 +23,9 @@ export interface FocusOverview {
   selected?: FocusView;
   locked: boolean;
   hasOpposites: boolean;
+  // Set while focus selection has not opened yet.
+  availableFromTurn?: number;
+  requiredBeforeTurn?: number;
 }
 
 type FocusConfig = Pick<CampaignConfig, "politicalConfig" | "electionConfig">;
@@ -69,6 +72,18 @@ export function isExcludedBySelection(
   );
 }
 
+function getCurrentTurn(state: Pick<CampaignState, "turn">): number {
+  return state.turn + 1;
+}
+
+export function isFocusSelectionOpen(
+  state: Pick<CampaignState, "turn">,
+  config: Pick<CampaignConfig, "politicalConfig">,
+): boolean {
+  const from = config.politicalConfig?.focusSelection?.availableFromTurn ?? 1;
+  return getCurrentTurn(state) >= from;
+}
+
 export function canSelectFocus(
   state: CampaignState,
   config: FocusConfig,
@@ -77,6 +92,7 @@ export function canSelectFocus(
   const selectedId = getSelectedFocusId(state);
   return (
     !state.isEnded &&
+    isFocusSelectionOpen(state, config) &&
     !isFocusLocked(state, config) &&
     selectedId !== focusId &&
     !isExcludedBySelection(config, selectedId, focusId) &&
@@ -88,8 +104,11 @@ export function isFocusRequired(
   state: CampaignState,
   config: Pick<CampaignConfig, "politicalConfig">,
 ): boolean {
+  const requiredBefore =
+    config.politicalConfig?.focusSelection?.requiredBeforeTurn;
   return (
-    Boolean(config.politicalConfig?.requireFocus) &&
+    requiredBefore !== undefined &&
+    getCurrentTurn(state) >= requiredBefore &&
     getFocuses(config).length > 0 &&
     !getSelectedFocusId(state) &&
     !state.isEnded
@@ -114,7 +133,7 @@ export function hasFocusNews(
   }
   const overview = buildFocusOverview(state, config, answers);
   if (!overview.selected) {
-    return !overview.locked;
+    return !overview.locked && overview.availableFromTurn === undefined;
   }
   return (
     getFocusStatusKey(overview) !== state.politicalDashboard?.seenFocusStatus
@@ -190,11 +209,16 @@ export function buildFocusOverview(
     };
   });
 
+  const selection = config.politicalConfig?.focusSelection;
   return {
     focuses,
     selected: focuses.find((f) => f.id === selectedId),
     locked,
     hasOpposites: getFocuses(config).some((f) => f.excludes?.length),
+    availableFromTurn: isFocusSelectionOpen(state, config)
+      ? undefined
+      : selection?.availableFromTurn,
+    requiredBeforeTurn: selectedId ? undefined : selection?.requiredBeforeTurn,
   };
 }
 

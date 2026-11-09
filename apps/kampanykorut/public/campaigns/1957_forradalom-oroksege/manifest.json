@@ -6,16 +6,17 @@
   },
   "files": {
     "electionConfig": "election_config.json",
+    "regions": "regions.json",
     "voterEnvironmentConfig": "voter_environment_config.json",
     "candidateListData": "valasztokeruletek.json",
     "campaignEvents": "campaign_events.json",
-    "politicalConfig": "political_config.json",
     "newspaper": "newspaper.json",
     "playableSides": {
       "mszmp": {
         "nagy_imre": {
           "questions": "mszmp/nagy_imre/questions.json",
-          "answerEffect": "mszmp/nagy_imre/answer_effects.json"
+          "answerEffect": "mszmp/nagy_imre/answer_effects.json",
+          "politicalConfig": "mszmp/nagy_imre/political_config.json"
         }
       }
     }

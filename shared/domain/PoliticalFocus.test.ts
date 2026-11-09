@@ -138,7 +138,7 @@ describe("PoliticalFocus", () => {
     ...config,
     politicalConfig: {
       ...config.politicalConfig!,
-      requireFocus: true,
+      focusSelection: { requiredBeforeTurn: 1 },
       focuses: [
         { ...config.politicalConfig!.focuses![0], excludes: ["without_kadar"] },
         config.politicalConfig!.focuses![1],
@@ -185,6 +185,35 @@ describe("PoliticalFocus", () => {
     expect(isFocusRequired(stateWith({ isEnded: true }), opposites)).toBe(
       false,
     );
+  });
+
+  const timed = {
+    ...config,
+    politicalConfig: {
+      ...config.politicalConfig!,
+      focusSelection: { availableFromTurn: 3, requiredBeforeTurn: 5 },
+    },
+  } as typeof config;
+
+  it("opens focus selection and blocks progress at the configured turns", () => {
+    const early = stateWith({ turn: 1 });
+    expect(canSelectFocus(early, timed, "with_kadar")).toBe(false);
+    expect(selectFocus(early, timed, "with_kadar")).toBe(early);
+    expect(buildFocusOverview(early, timed, []).availableFromTurn).toBe(3);
+    expect(hasFocusNews(early, timed, [])).toBe(false);
+
+    const open = stateWith({ turn: 2 });
+    expect(canSelectFocus(open, timed, "with_kadar")).toBe(true);
+    expect(isFocusRequired(open, timed)).toBe(false);
+    expect(buildFocusOverview(open, timed, []).availableFromTurn).toBe(
+      undefined,
+    );
+
+    const deadline = stateWith({ turn: 4 });
+    expect(isFocusRequired(deadline, timed)).toBe(true);
+    expect(
+      isFocusRequired(selectFocus(deadline, timed, "with_kadar"), timed),
+    ).toBe(false);
   });
 
   it("flags news until a focus is chosen and whenever its status changes", () => {

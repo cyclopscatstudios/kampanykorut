@@ -17,6 +17,15 @@ export interface PoliticalFocus {
   excludes?: string[];
 }
 
+// Turns are counted from 1, the first question being turn 1.
+export interface FocusSelectionConfig {
+  // A focus can be chosen from this turn on. Defaults to the first turn.
+  availableFromTurn?: number;
+  // Without a chosen focus this turn cannot be played: no district can be
+  // visited until the player picks a direction.
+  requiredBeforeTurn?: number;
+}
+
 export type RelationTone = "good" | "calm" | "tense" | "bad";
 
 export const RELATION_TONES: readonly RelationTone[] = [
@@ -54,8 +63,7 @@ export interface PoliticalConfig {
   relations?: Relation[];
   // Once this event has triggered, the chosen focus can no longer be changed.
   focusLockEventId?: string;
-  // No district can be visited until the player has chosen a focus.
-  requireFocus?: boolean;
+  focusSelection?: FocusSelectionConfig;
   coalition?: CoalitionConfig;
   epilogues?: Epilogue[];
 }

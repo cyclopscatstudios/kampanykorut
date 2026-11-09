@@ -20,6 +20,8 @@ export interface CandidateConfig {
   advisorFeedback?: AdvisorFeedback[];
   advisorFeedbackAssets?: AdvisorFeedbackAssets;
   endResults?: EndResultProps;
+  // Overrides the campaign-wide political config while this candidate plays.
+  politicalConfig?: PoliticalConfig;
 }
 
 export type PlayableSideConfig = Record<string, CandidateConfig>;

@@ -212,7 +212,9 @@
       },
       "oppositeNote": "A kijelölés csak a szándékodat rögzíti, a támogatottságodon nem változtat. Választás után az ellentétes irány már nem választható.",
       "required": "Előbb válassz politikai fókuszt",
-      "requiredHint": "A Politikai helyzet oldalon döntsd el, merre viszed a pártot, utána indulhat a kampány.",
+      "requiredHint": "A Politikai helyzet oldalon döntsd el, merre viszed a pártot, utána haladhatsz tovább.",
+      "availableFrom": "Irányt a {{turn}}. körtől választhatsz.",
+      "requiredBefore": "A {{turn}}. kör előtt válassz irányt, különben nem haladhatsz tovább.",
       "open": "Fókusz választása"
     },
     "relations": {

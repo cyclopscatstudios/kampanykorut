@@ -23,6 +23,20 @@ export function FocusTab({
           <FocusCard key={focus.id} focus={focus} onSelect={onSelect} />
         ))}
       </div>
+      {(overview.availableFromTurn ?? overview.requiredBeforeTurn) && (
+        <p
+          className="m-0 text-center text-sm font-semibold text-amber-200"
+          data-testid="focusSchedule"
+        >
+          {overview.availableFromTurn
+            ? t("politicalDashboard.focus.availableFrom", {
+                turn: overview.availableFromTurn,
+              })
+            : t("politicalDashboard.focus.requiredBefore", {
+                turn: overview.requiredBeforeTurn,
+              })}
+        </p>
+      )}
       <p className="m-0 text-center text-sm text-slate-400">
         {overview.locked
           ? t("politicalDashboard.focus.lockedNote")

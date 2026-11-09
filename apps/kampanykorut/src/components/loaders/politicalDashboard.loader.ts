@@ -1,7 +1,7 @@
 import { type LoaderFunctionArgs, redirect } from "react-router";
 import { container } from "tsyringe";
 import { ConfigEngine, StateEngine } from "@/logic/application";
-import { isStrategicMode } from "@/shared/domain";
+import { forPlayerSide, isStrategicMode } from "@/shared/domain";
 import { createLogger, setLogTags } from "@/shared/logger";
 import { loadCampaignConfig } from "../../logic/application/loadCampaignConfig";
 
@@ -33,7 +33,7 @@ export async function politicalDashboardLoader({ params }: LoaderFunctionArgs) {
   const config = await loadCampaignConfig(campaignId);
   container.resolve(ConfigEngine).configure(config, campaignId, true);
 
-  if (!isStrategicMode(config)) {
+  if (!isStrategicMode(forPlayerSide(config, state.playerSide))) {
     log.info("Classic campaign has no dashboard, back to the game", {
       campaignId,
     });

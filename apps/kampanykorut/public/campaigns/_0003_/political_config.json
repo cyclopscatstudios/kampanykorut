@@ -1,6 +1,8 @@
 {
   "gameMode": "strategic",
-  "requireFocus": true,
+  "focusSelection": {
+    "requiredBeforeTurn": 1
+  },
   "focuses": [
     {
       "id": "coalition_ready",

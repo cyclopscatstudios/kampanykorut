@@ -7,6 +7,7 @@ import {
   buildCoalitionResult,
   buildCoalitionView,
   type CoalitionResponseView,
+  forPlayerSide,
   type SeatParty,
   submitCoalitionOffer,
 } from "@/shared/domain";
@@ -21,10 +22,18 @@ import { SeatBar } from "./SeatBar";
 export function CoalitionPage() {
   const { campaignId = "" } = useParams();
   const stateEngine = container.resolve(StateEngine);
-  const config = container.resolve(ConfigEngine).getCampaignConfig(campaignId);
   const { goToFinalResults } = useNavigation();
   const [state, setState] = useState<CampaignState | null>(() =>
     stateEngine.getCampaignState(),
+  );
+  const playerSide = state?.playerSide;
+  const config = useMemo(
+    () =>
+      forPlayerSide(
+        container.resolve(ConfigEngine).getCampaignConfig(campaignId),
+        playerSide,
+      ),
+    [campaignId, playerSide],
   );
   const [offered, setOffered] = useState<string[]>([]);
 

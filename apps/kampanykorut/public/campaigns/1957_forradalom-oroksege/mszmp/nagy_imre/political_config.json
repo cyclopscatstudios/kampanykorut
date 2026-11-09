@@ -1,6 +1,9 @@
 {
   "gameMode": "strategic",
-  "requireFocus": true,
+  "focusSelection": {
+    "availableFromTurn": 1,
+    "requiredBeforeTurn": 2
+  },
   "focuses": [
     {
       "id": "lassu_reformok",
