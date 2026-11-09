@@ -1,0 +1,116 @@
+[
+  {
+    "id": "q1_igazsagtetel",
+    "title": "A győzelem terhe",
+    "question": "A Corvin köz felkelői, Pongrátz Gergellyel az élen, gyors elszámoltatást követelnek az ÁVH és a diktatúra felelősei ellen. A pártod régi tagjai közül is többen érintettek. Hogyan válaszolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Független bíróságok elé viszed az ügyeket, nyilvános tárgyalásokkal."
+      },
+      {
+        "id": "B",
+        "label": "Általános megbékélést hirdetsz, a múlttal egy történész bizottság foglalkozik."
+      },
+      {
+        "id": "C",
+        "label": "Rendkívüli népbíróságokat állítasz fel, hogy még a választás előtt ítélet szülessen."
+      }
+    ]
+  },
+  {
+    "id": "q2_nemzetorseg",
+    "title": "A fegyverek sorsa",
+    "question": "A Nemzetőrség még mindig fegyverben áll. A honvédség és a rendőrség vezetői szerint két fegyveres erő nem fér meg egy államban. Mit teszel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A Nemzetőrséget beolvasztod a honvédségbe, a parancsnokok rangot kapnak."
+      },
+      {
+        "id": "B",
+        "label": "Önkéntes leszerelést hirdetsz, aki leadja a fegyvert, földet vagy munkát kap."
+      },
+      {
+        "id": "C",
+        "label": "A Nemzetőrség önálló testület marad, a forradalom őreként."
+      }
+    ]
+  },
+  {
+    "id": "q3_kadar",
+    "title": "Kádár ultimátuma",
+    "question": "Kádár János a pártvezetésben kimondja: a régi apparátus nélkül nincs kormányzóképes párt, a reformokat lassítani kell. Ha nem kap garanciát, a párt egy része vele tart.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Kompromisszumot kötsz: Kádár marad, a pártszervezet az övé, a kormány a tiéd."
+      },
+      {
+        "id": "B",
+        "label": "Rendkívüli pártértekezletet hívsz össze, döntsenek a tagok."
+      },
+      {
+        "id": "C",
+        "label": "Kizárod Kádárt a vezetésből. A forradalom pártja nem hátrál."
+      }
+    ]
+  },
+  {
+    "id": "q4_kethly",
+    "title": "Kéthly feltételei",
+    "question": "Kéthly Anna kész tárgyalni, de feltételt szab: írásos garanciát a többpártrendszerre, a szabad szakszervezetekre és arra, hogy az SZDP soha többé nem olvad be.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Aláírod a garanciákat, és közös kormányprogramot ajánlasz."
+      },
+      {
+        "id": "B",
+        "label": "Csak a választás után tárgyalsz, addig mindenki a saját listáján indul."
+      },
+      {
+        "id": "C",
+        "label": "Közös listát ajánlasz egyesült munkáspárt néven."
+      }
+    ]
+  },
+  {
+    "id": "q5_fold_es_gyar",
+    "title": "Föld és gyár",
+    "question": "A munkástanácsok gyárigazgatási jogot követelnek, a kisgazdák a beszolgáltatás végleges eltörlését és a földtulajdon garanciáját. Mire építed a gazdasági programot?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A munkástanácsok valódi jogkört kapnak a gyárak vezetésében."
+      },
+      {
+        "id": "B",
+        "label": "Eltörlöd a beszolgáltatást, a szövetkezetekből szabadon ki lehet lépni."
+      },
+      {
+        "id": "C",
+        "label": "Tervgazdaság marad, de fokozatos reformmal és magasabb bérekkel."
+      }
+    ]
+  },
+  {
+    "id": "q6_semlegesseg",
+    "title": "Semlegesség és Moszkva",
+    "question": "A szovjet csapatok kivonultak, de a szerződések még nincsenek aláírva. Moszkva kereskedelmi megállapodást kínál, Washington segélyt. Mit mondasz a záró nagygyűlésen?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "ENSZ-garanciát kérsz a semlegességre, és megnyitod az országot Nyugat felé."
+      },
+      {
+        "id": "B",
+        "label": "Semlegesség és kereskedelmi szerződés Moszkvával: a függetlenség nem ellenségeskedés."
+      },
+      {
+        "id": "C",
+        "label": "Október 23-ra hivatkozol: a forradalom nem alkuszik, a függetlenség nem eladó."
+      }
+    ]
+  }
+]

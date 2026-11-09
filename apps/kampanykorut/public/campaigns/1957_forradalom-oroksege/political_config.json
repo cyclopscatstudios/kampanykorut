@@ -1,0 +1,204 @@
+{
+  "gameMode": "strategic",
+  "requireFocus": true,
+  "focuses": [
+    {
+      "id": "part_egysege",
+      "title": "A párt egysége",
+      "summary": "Kádár maradjon",
+      "description": "Nagy Imre és Kádár János együtt viszi a pártot a választásra. Teljesül, ha megegyezel Kádárral, és meghiúsul, ha a párt kettészakad.",
+      "icon": "people-fill",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "q3_kadar",
+        "answerId": "A"
+      },
+      "failWhen": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      },
+      "excludes": ["forradalom_partja"]
+    },
+    {
+      "id": "forradalom_partja",
+      "title": "A forradalom pártja",
+      "summary": "Szakítás a régi apparátussal",
+      "description": "A régi pártállam embereinek nincs helyük a vezetésben. Teljesül, ha kizárod Kádárt, akkor is, ha ezzel szakadást okozol.",
+      "icon": "fire",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "q3_kadar",
+        "answerId": "C"
+      },
+      "excludes": ["part_egysege"]
+    },
+    {
+      "id": "baloldali_szovetseg",
+      "title": "Baloldali szövetség",
+      "summary": "Megállapodás Kéthlyvel",
+      "description": "A választás után az SZDP-vel kormányzol. Teljesül, ha aláírod Kéthly Anna garanciáit.",
+      "icon": "handshake",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "q4_kethly",
+        "answerId": "A"
+      }
+    }
+  ],
+  "relationGroups": [
+    {
+      "id": "partok",
+      "title": "Pártok",
+      "icon": "flag-fill"
+    },
+    {
+      "id": "tarsadalom",
+      "title": "Társadalom",
+      "icon": "people-fill"
+    },
+    {
+      "id": "kulfold",
+      "title": "Külföld",
+      "icon": "globe-europe-africa"
+    }
+  ],
+  "relations": [
+    {
+      "id": "kadar",
+      "name": "Kádár János",
+      "groupId": "partok",
+      "icon": "person-fill",
+      "tone": "tense",
+      "label": "Elégedetlen",
+      "description": "A pártszervezet embere. Lassabb reformokat akar."
+    },
+    {
+      "id": "kethly",
+      "name": "Kéthly Anna",
+      "groupId": "partok",
+      "icon": "person-fill",
+      "tone": "calm",
+      "label": "Tárgyalna",
+      "description": "Versenytárs és lehetséges partner. Garanciákat vár."
+    },
+    {
+      "id": "corvin",
+      "name": "Corvin köz",
+      "groupId": "tarsadalom",
+      "icon": "shield-fill",
+      "tone": "tense",
+      "label": "Türelmetlen",
+      "description": "A felkelők elszámoltatást követelnek."
+    },
+    {
+      "id": "munkastanacsok",
+      "name": "Munkástanácsok",
+      "groupId": "tarsadalom",
+      "icon": "building-fill",
+      "tone": "calm",
+      "label": "Várakozó",
+      "description": "A gyárak vezetésébe akarnak beleszólni."
+    },
+    {
+      "id": "moszkva",
+      "name": "Moszkva",
+      "groupId": "kulfold",
+      "icon": "star-fill",
+      "tone": "tense",
+      "label": "Gyanakvó",
+      "description": "Elfogadta a semlegességet, de figyel."
+    }
+  ],
+  "coalition": {
+    "partners": [
+      {
+        "partyId": "szdp",
+        "acceptWhen": {
+          "not": {
+            "type": "answer-selected",
+            "questionId": "q4_kethly",
+            "answerId": "C"
+          }
+        },
+        "acceptReason": "Kéthly Anna emlékszik, hogy nem akartad beolvasztani a pártját. Igent mond.",
+        "rejectReason": "Kéthly szerint a közös lista ajánlata 1948-at idézte. Nemet mond."
+      },
+      {
+        "partyId": "petofi",
+        "acceptWhen": {
+          "not": {
+            "type": "answer-selected",
+            "questionId": "q1_igazsagtetel",
+            "answerId": "C"
+          }
+        },
+        "acceptReason": "Bibó István szerint a kormányod a jogállam útján jár. A Petőfi Párt beszáll.",
+        "rejectReason": "A rendkívüli népbíróságok után Bibó István nem vállal közösséget veled."
+      },
+      {
+        "partyId": "fkgp",
+        "acceptWhen": {
+          "type": "answer-selected",
+          "questionId": "q5_fold_es_gyar",
+          "answerId": "B"
+        },
+        "acceptReason": "A beszolgáltatás eltörlése meggyőzte Kovács Bélát. A kisgazdák nagykoalícióra készek.",
+        "rejectReason": "A kisgazdák szerint a programod nem ad biztonságot a gazdáknak."
+      },
+      {
+        "partyId": "kadar_part",
+        "acceptWhen": {
+          "type": "answer-selected",
+          "questionId": "q3_kadar",
+          "answerId": "A"
+        },
+        "acceptReason": "Kádár kész a kiegyezésre.",
+        "rejectReason": "Kádár nem felejti, hogy kizártad. Nemet mond."
+      }
+    ]
+  },
+  "epilogues": [
+    {
+      "id": "ket_munkaspart",
+      "title": "Két munkáspárt",
+      "body": "Az MSZMP kettészakadt, a parlamentben két munkáspárt ül. Nagy Imre megőrizte a forradalom hitelét, de a baloldal megosztott maradt.",
+      "icon": "scissors",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      }
+    },
+    {
+      "id": "forradalom_mandatuma",
+      "title": "A forradalom mandátuma",
+      "body": "Az MSZMP egyedül szerzett többséget. Nagy Imre kormánya erős felhatalmazással kezdheti el az új köztársaság építését.",
+      "icon": "trophy-fill",
+      "outcomes": ["single-majority"]
+    },
+    {
+      "id": "szocialdemokrata_megallapodas",
+      "title": "Baloldali kormány",
+      "body": "Az MSZMP és az SZDP közösen alakít kormányt. Kéthly Anna garanciái a kormányprogram részei lettek.",
+      "icon": "people-fill",
+      "outcomes": ["coalition"],
+      "when": {
+        "type": "answer-selected",
+        "questionId": "q4_kethly",
+        "answerId": "A"
+      }
+    },
+    {
+      "id": "koalicios_kormany",
+      "title": "Koalíciós kormány",
+      "body": "Nagy Imre csak más pártok támogatásával kormányozhat. Minden törvényért meg kell küzdeni, de a demokrácia működik.",
+      "icon": "diagram-3-fill",
+      "outcomes": ["coalition"]
+    },
+    {
+      "id": "ellenzekben",
+      "title": "Ellenzékben",
+      "body": "Az MSZMP nem kerül kormányra. Nagy Imre az új demokrácia ellenzéki vezetője lesz, és a forradalom öröksége más pártok kezébe kerül.",
+      "icon": "door-open-fill"
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "title": "A forradalom öröksége",
+  "year": "1957",
+  "intro": {
+    "title": "A forradalom öröksége",
+    "subtitle": "Magyarország · 1957 ősze",
+    "text": "1956 novemberében a szovjet csapatok nem tértek vissza. Magyarország semleges ország lett, és a forradalmi kormány megmaradt.\n\nEgy év telt el. A pártok újjászerveződtek, a munkástanácsok jogokat követelnek, a felkelők pedig elszámoltatást. Most jön az első szabad választás.\n\nNagy Imre a forradalom jelképe, pártja a legerősebb, de egyedül nem lesz többsége. A tét nem csak a győzelem, hanem az, hogy milyen ország marad utána."
+  },
+  "election": {
+    "type": "proportional",
+    "regions": [
+      {
+        "id": "vk01",
+        "name": "Budapest",
+        "seats": 63,
+        "megyekods": [1]
+      },
+      {
+        "id": "vk02",
+        "name": "Pest-Pilis-Solt-Kiskun",
+        "seats": 47,
+        "megyekods": [2]
+      },
+      {
+        "id": "vk03",
+        "name": "Baranya és Tolna",
+        "seats": 21,
+        "megyekods": [3]
+      },
+      {
+        "id": "vk04",
+        "name": "Somogy",
+        "seats": 15,
+        "megyekods": [4]
+      },
+      {
+        "id": "vk05",
+        "name": "Zala",
+        "seats": 14,
+        "megyekods": [5]
+      },
+      {
+        "id": "vk06",
+        "name": "Vas",
+        "seats": 10,
+        "megyekods": [6]
+      },
+      {
+        "id": "vk07",
+        "name": "Győr-Moson-Pozsony és Sopron",
+        "seats": 15,
+        "megyekods": [7]
+      },
+      {
+        "id": "vk08",
+        "name": "Veszprém",
+        "seats": 9,
+        "megyekods": [8]
+      },
+      {
+        "id": "vk09",
+        "name": "Fejér és Komárom-Esztergom",
+        "seats": 18,
+        "megyekods": [9]
+      },
+      {
+        "id": "vk10",
+        "name": "Nógrád-Hont és Heves",
+        "seats": 22,
+        "megyekods": [10]
+      },
+      {
+        "id": "vk11",
+        "name": "Borsod, Abaúj és Zemplén",
+        "seats": 24,
+        "megyekods": [11]
+      },
+      {
+        "id": "vk12",
+        "name": "Szabolcs-Szatmár-Bereg",
+        "seats": 21,
+        "megyekods": [12]
+      },
+      {
+        "id": "vk13",
+        "name": "Hajdú és Bihar",
+        "seats": 20,
+        "megyekods": [13]
+      },
+      {
+        "id": "vk14",
+        "name": "Jász-Nagykun-Szolnok",
+        "seats": 16,
+        "megyekods": [14]
+      },
+      {
+        "id": "vk15",
+        "name": "Békés",
+        "seats": 14,
+        "megyekods": [15]
+      },
+      {
+        "id": "vk16",
+        "name": "Csongrád és Csanád",
+        "seats": 21,
+        "megyekods": [16]
+      }
+    ]
+  },
+  "listSeats": 50,
+  "allSeats": 400,
+  "thresholdPercent": 0,
+  "districtMap": "1945",
+  "districtBoost": true,
+  "parties": [
+    {
+      "id": "mszmp",
+      "name": "Magyar Szocialista Munkáspárt",
+      "color": "#c62828"
+    },
+    {
+      "id": "fkgp",
+      "name": "Független Kisgazdapárt",
+      "color": "#2e7d32"
+    },
+    {
+      "id": "szdp",
+      "name": "Szociáldemokrata Párt",
+      "color": "#ef6c00"
+    },
+    {
+      "id": "petofi",
+      "name": "Petőfi Párt",
+      "color": "#f9a825"
+    },
+    {
+      "id": "dnp",
+      "name": "Demokrata Néppárt",
+      "color": "#1e88e5"
+    },
+    {
+      "id": "kadar_part",
+      "name": "Szocialista Munkáspárt (Kádár)",
+      "color": "#6d1b1b",
+      "dormant": true
+    }
+  ],
+  "partyListVotes": {
+    "mszmp": 1810159,
+    "szdp": 958319,
+    "fkgp": 1437481,
+    "petofi": 532398,
+    "dnp": 425919,
+    "_other": 159722
+  },
+  "playableSides": [
+    {
+      "id": "mszmp",
+      "label": "MSZMP",
+      "description": "A forradalom napjaiban újjáalakult reformszocialista párt. A legnagyobb tábor az övé, de a régi pártállam öröksége bizalmatlanságot kelt.",
+      "mainCandidates": [
+        {
+          "id": "nagy_imre",
+          "label": "Nagy Imre",
+          "description": "A forradalmi kormány miniszterelnöke, a semlegesség kimondója. Az ország legismertebb politikusa."
+        },
+        {
+          "id": "kadar_janos",
+          "label": "Kádár János",
+          "description": "Az MSZMP egyik alapítója, a pártszervezet és a fokozatosság embere."
+        },
+        {
+          "id": "losonczy_geza",
+          "label": "Losonczy Géza",
+          "description": "Államminiszter, Nagy Imre reformköréhez tartozik."
+        }
+      ],
+      "playableCandidates": ["nagy_imre"]
+    },
+    {
+      "id": "fkgp",
+      "label": "Kisgazdapárt",
+      "description": "Az 1945-ös választás győztese. A vidék, a földtulajdon és a polgári szabadságjogok pártja.",
+      "mainCandidates": [
+        {
+          "id": "kovacs_bela",
+          "label": "Kovács Béla",
+          "description": "A párt főtitkára, a szovjet fogságból hazatért kisgazda vezető."
+        },
+        {
+          "id": "tildy_zoltan",
+          "label": "Tildy Zoltán",
+          "description": "Volt köztársasági elnök, a forradalmi kormány államminisztere."
+        }
+      ]
+    },
+    {
+      "id": "szdp",
+      "label": "Szociáldemokrata Párt",
+      "description": "Önálló munkáspárt, amely nem felejtette el az 1948-as kényszeregyesítést.",
+      "mainCandidates": [
+        {
+          "id": "kethly_anna",
+          "label": "Kéthly Anna",
+          "description": "A párt elnöke, a demokratikus baloldal legismertebb alakja."
+        }
+      ]
+    },
+    {
+      "id": "petofi",
+      "label": "Petőfi Párt",
+      "description": "A népi írók és a parasztság pártja, harmadikutas programmal.",
+      "mainCandidates": [
+        {
+          "id": "farkas_ferenc",
+          "label": "Farkas Ferenc",
+          "description": "A párt főtitkára."
+        },
+        {
+          "id": "bibo_istvan",
+          "label": "Bibó István",
+          "description": "Államminiszter, jogtudós, a demokratikus átmenet gondolkodója."
+        }
+      ]
+    },
+    {
+      "id": "dnp",
+      "label": "Demokrata Néppárt",
+      "description": "Kereszténydemokrata párt, a vallásszabadság és a szociális igazságosság képviselője.",
+      "mainCandidates": [
+        {
+          "id": "farkas_denes",
+          "label": "Farkas Dénes",
+          "description": "Az újjáalakult párt vezetője."
+        }
+      ]
+    }
+  ],
+  "electionAssets": []
+}

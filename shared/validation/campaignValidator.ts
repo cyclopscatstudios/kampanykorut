@@ -1264,14 +1264,19 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
       ? ["listSeats", "allSeats", "thresholdPercent"]
       : [];
   for (const key of seatKeys) {
-    if (!isFiniteNumber(data[key]) || (data[key] as number) <= 0) {
+    const zeroAllowed =
+      key === "thresholdPercent" && electionType === "proportional";
+    const value = data[key];
+    if (!isFiniteNumber(value) || value < 0 || (value === 0 && !zeroAllowed)) {
       report(
         ctx,
         "error",
         "election-config-invalid",
         file,
         `/${key}`,
-        `${key} must be a positive number`,
+        zeroAllowed
+          ? `${key} must be zero or a positive number`
+          : `${key} must be a positive number`,
       );
     }
   }

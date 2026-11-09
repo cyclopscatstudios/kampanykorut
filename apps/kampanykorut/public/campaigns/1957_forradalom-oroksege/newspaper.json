@@ -1,0 +1,87 @@
+{
+  "cadence": {
+    "minTurns": 1,
+    "maxTurns": 2
+  },
+  "papers": [
+    {
+      "id": "nepszava",
+      "name": "NÉPSZAVA",
+      "subtitle": "A Szociáldemokrata Párt lapja",
+      "price": "Ára: 50 fillér"
+    },
+    {
+      "id": "kis_ujsag",
+      "name": "KIS ÚJSÁG",
+      "subtitle": "A Független Kisgazdapárt lapja",
+      "price": "Ára: 50 fillér"
+    }
+  ],
+  "items": [
+    {
+      "id": "utolso_szerelvenyek",
+      "paper": "kis_ujsag",
+      "headline": "Elhagyta az országot az utolsó szovjet szerelvény",
+      "lead": "Záhonynál hajnalban lépte át a határt az utolsó katonai vonat. A határőrök nemzeti színű szalaggal zárták le a sorompót."
+    },
+    {
+      "id": "beszolgaltatas_vege",
+      "paper": "kis_ujsag",
+      "headline": "Nincs több beszolgáltatás",
+      "lead": "A gazdák idén először vihették a termést a szabad piacra. A falvakban hálaadó misét tartottak."
+    },
+    {
+      "id": "munkastanacsok_kongresszusa",
+      "paper": "nepszava",
+      "headline": "Összeült a munkástanácsok országos kongresszusa",
+      "lead": "A Csepel Művek küldöttei szerint a gyár azé, aki dolgozik benne. A szakszervezetek önállóságot kérnek."
+    },
+    {
+      "id": "kethly_hazatert",
+      "paper": "nepszava",
+      "headline": "Kéthly Anna: a munkásság nem mond le a szabadságáról",
+      "lead": "Az SZDP elnöke a Népszava székházában tartott beszédében kijelentette, pártja önállóan indul a választáson."
+    },
+    {
+      "id": "corvin_koz_tuntetes",
+      "paper": "nepszava",
+      "headline": "Tüntetés a Corvin közben",
+      "lead": "Több ezren követelték az ÁVH-sok perének gyorsítását. Pongrátz Gergely szerint a forradalom még nem ért véget.",
+      "when": {
+        "type": "turn",
+        "min": 1
+      }
+    },
+    {
+      "id": "ensz_kuldottseg",
+      "paper": "kis_ujsag",
+      "headline": "ENSZ-küldöttség érkezett Budapestre",
+      "lead": "A semlegességi garanciákról tárgyalnak. Washington és Moszkva is figyeli a magyar választást.",
+      "when": {
+        "type": "turn",
+        "min": 2
+      }
+    },
+    {
+      "id": "kadar_lista",
+      "paper": "nepszava",
+      "headline": "Kádár saját listát állít",
+      "lead": "A Szocialista Munkáspárt alakuló ülésén Kádár János rendet és fokozatosságot ígért.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      },
+      "weight": 3
+    },
+    {
+      "id": "valasztasi_nagygyules",
+      "paper": "kis_ujsag",
+      "headline": "Százezrek a Hősök terén",
+      "lead": "Kovács Béla a kisgazdák záró nagygyűlésén azt mondta: a föld és a szabadság egy és ugyanaz.",
+      "when": {
+        "type": "turn",
+        "min": 4
+      }
+    }
+  ]
+}

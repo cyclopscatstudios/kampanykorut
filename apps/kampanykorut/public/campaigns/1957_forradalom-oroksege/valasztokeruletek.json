@@ -1,0 +1,242 @@
+[
+  {
+    "megyekod": 1,
+    "megye": "Budapest",
+    "oevk": 1,
+    "telepules": "Budapest",
+    "valasztopolgar": 1089000,
+    "partok": {
+      "mszmp": 380771,
+      "szdp": 261079,
+      "fkgp": 117394,
+      "petofi": 67704,
+      "dnp": 95092,
+      "_other": 36281
+    }
+  },
+  {
+    "megyekod": 2,
+    "megye": "Pest-Pilis-Solt-Kiskun",
+    "oevk": 1,
+    "telepules": "Pest-Pilis-Solt-Kiskun",
+    "valasztopolgar": 812429,
+    "partok": {
+      "mszmp": 247645,
+      "szdp": 129371,
+      "fkgp": 196330,
+      "petofi": 71891,
+      "dnp": 49476,
+      "_other": 20225
+    }
+  },
+  {
+    "megyekod": 3,
+    "megye": "Baranya és Tolna",
+    "oevk": 1,
+    "telepules": "Baranya és Tolna",
+    "valasztopolgar": 363000,
+    "partok": {
+      "mszmp": 94711,
+      "szdp": 48103,
+      "fkgp": 113556,
+      "petofi": 25662,
+      "dnp": 28383,
+      "_other": 9024
+    }
+  },
+  {
+    "megyekod": 4,
+    "megye": "Somogy",
+    "oevk": 1,
+    "telepules": "Somogy",
+    "valasztopolgar": 259286,
+    "partok": {
+      "mszmp": 67616,
+      "szdp": 27473,
+      "fkgp": 88018,
+      "petofi": 20610,
+      "dnp": 18012,
+      "_other": 6443
+    }
+  },
+  {
+    "megyekod": 5,
+    "megye": "Zala",
+    "oevk": 1,
+    "telepules": "Zala",
+    "valasztopolgar": 242000,
+    "partok": {
+      "mszmp": 58955,
+      "szdp": 25666,
+      "fkgp": 77899,
+      "petofi": 14975,
+      "dnp": 29446,
+      "_other": 6019
+    }
+  },
+  {
+    "megyekod": 6,
+    "megye": "Vas",
+    "oevk": 1,
+    "telepules": "Vas",
+    "valasztopolgar": 172857,
+    "partok": {
+      "mszmp": 40642,
+      "szdp": 19877,
+      "fkgp": 51049,
+      "petofi": 9176,
+      "dnp": 27066,
+      "_other": 4303
+    }
+  },
+  {
+    "megyekod": 7,
+    "megye": "Győr-Moson-Pozsony és Sopron",
+    "oevk": 1,
+    "telepules": "Győr-Moson-Pozsony és Sopron",
+    "valasztopolgar": 259286,
+    "partok": {
+      "mszmp": 65464,
+      "szdp": 38981,
+      "fkgp": 74236,
+      "petofi": 11468,
+      "dnp": 31570,
+      "_other": 6453
+    }
+  },
+  {
+    "megyekod": 8,
+    "megye": "Veszprém",
+    "oevk": 1,
+    "telepules": "Veszprém",
+    "valasztopolgar": 155571,
+    "partok": {
+      "mszmp": 40620,
+      "szdp": 20631,
+      "fkgp": 45920,
+      "petofi": 9630,
+      "dnp": 16231,
+      "_other": 3870
+    }
+  },
+  {
+    "megyekod": 9,
+    "megye": "Fejér és Komárom-Esztergom",
+    "oevk": 1,
+    "telepules": "Fejér és Komárom-Esztergom",
+    "valasztopolgar": 311143,
+    "partok": {
+      "mszmp": 94843,
+      "szdp": 55052,
+      "fkgp": 75190,
+      "petofi": 22026,
+      "dnp": 18948,
+      "_other": 7746
+    }
+  },
+  {
+    "megyekod": 10,
+    "megye": "Nógrád-Hont és Heves",
+    "oevk": 1,
+    "telepules": "Nógrád-Hont és Heves",
+    "valasztopolgar": 380286,
+    "partok": {
+      "mszmp": 122569,
+      "szdp": 67300,
+      "fkgp": 85110,
+      "petofi": 33658,
+      "dnp": 16546,
+      "_other": 9469
+    }
+  },
+  {
+    "megyekod": 11,
+    "megye": "Borsod, Abaúj és Zemplén",
+    "oevk": 1,
+    "telepules": "Borsod, Abaúj és Zemplén",
+    "valasztopolgar": 414857,
+    "partok": {
+      "mszmp": 144755,
+      "szdp": 80872,
+      "fkgp": 74382,
+      "petofi": 29415,
+      "dnp": 25305,
+      "_other": 10344
+    }
+  },
+  {
+    "megyekod": 12,
+    "megye": "Szabolcs-Szatmár-Bereg",
+    "oevk": 1,
+    "telepules": "Szabolcs-Szatmár-Bereg",
+    "valasztopolgar": 363000,
+    "partok": {
+      "mszmp": 94662,
+      "szdp": 32052,
+      "fkgp": 113497,
+      "petofi": 51296,
+      "dnp": 18912,
+      "_other": 9020
+    }
+  },
+  {
+    "megyekod": 13,
+    "megye": "Hajdú és Bihar",
+    "oevk": 1,
+    "telepules": "Hajdú és Bihar",
+    "valasztopolgar": 345714,
+    "partok": {
+      "mszmp": 99258,
+      "szdp": 36664,
+      "fkgp": 92733,
+      "petofi": 51953,
+      "dnp": 15023,
+      "_other": 8598
+    }
+  },
+  {
+    "megyekod": 14,
+    "megye": "Jász-Nagykun-Szolnok",
+    "oevk": 1,
+    "telepules": "Jász-Nagykun-Szolnok",
+    "valasztopolgar": 276571,
+    "partok": {
+      "mszmp": 81812,
+      "szdp": 31775,
+      "fkgp": 74186,
+      "petofi": 39117,
+      "dnp": 9615,
+      "_other": 6878
+    }
+  },
+  {
+    "megyekod": 15,
+    "megye": "Békés",
+    "oevk": 1,
+    "telepules": "Békés",
+    "valasztopolgar": 242000,
+    "partok": {
+      "mszmp": 71614,
+      "szdp": 32093,
+      "fkgp": 60610,
+      "petofi": 32101,
+      "dnp": 10520,
+      "_other": 6021
+    }
+  },
+  {
+    "megyekod": 16,
+    "megye": "Csongrád és Csanád",
+    "oevk": 1,
+    "telepules": "Csongrád és Csanád",
+    "valasztopolgar": 363000,
+    "partok": {
+      "mszmp": 104222,
+      "szdp": 51330,
+      "fkgp": 97371,
+      "petofi": 41716,
+      "dnp": 15774,
+      "_other": 9028
+    }
+  }
+]

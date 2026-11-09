@@ -1,0 +1,260 @@
+[
+  {
+    "id": "q1_igazsagtetel",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.6,
+              "petofi": 0.3,
+              "fkgp": -0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.5,
+              "szdp": 0.3,
+              "fkgp": 0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.8,
+              "petofi": -0.4,
+              "szdp": -0.3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q2_nemzetorseg",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.5,
+              "dnp": 0.2,
+              "fkgp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "petofi": 0.3,
+              "szdp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.4,
+              "fkgp": 0.3,
+              "petofi": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q3_kadar",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.6,
+              "szdp": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.9,
+              "szdp": -0.3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q4_kethly",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.2,
+              "szdp": 0.4,
+              "fkgp": -0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.6,
+              "szdp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.5,
+              "szdp": -0.3,
+              "fkgp": 0.4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q5_fold_es_gyar",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.5,
+              "szdp": 0.4,
+              "fkgp": -0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4,
+              "fkgp": -0.6,
+              "petofi": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.3,
+              "fkgp": 0.4,
+              "szdp": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q6_semlegesseg",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.6,
+              "dnp": -0.3,
+              "fkgp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "szdp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.7,
+              "petofi": 0.2,
+              "szdp": -0.2
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
