@@ -34,9 +34,16 @@ export type ElectionDefinition =
   | ProportionalElectionDefinition
   | MayoralElectionDefinition;
 
+export interface CampaignIntro {
+  title?: string;
+  subtitle?: string;
+  text: string;
+}
+
 interface ElectionConfigBase {
   title: string;
   year: string;
+  intro?: CampaignIntro;
   districtBoost?: boolean;
   baseResults?: Record<string, Record<string, number>>;
   parties: RawParty[];

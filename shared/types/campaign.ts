@@ -24,6 +24,7 @@ export interface CampaignState {
   politicalDashboard?: PoliticalDashboardState;
   coalition?: CoalitionState;
   newspaper?: NewspaperState;
+  introSeen?: boolean;
   campaignConfigVersion?: string;
   questionCursor?: number;
   decisionCount?: number;

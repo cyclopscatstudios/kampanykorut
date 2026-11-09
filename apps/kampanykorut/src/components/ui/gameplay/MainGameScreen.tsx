@@ -5,6 +5,7 @@ import {
   buildNewspaperEditions,
   getPendingAnnouncement,
   hasUnreadEdition,
+  isIntroPending,
   PollsterEngine,
 } from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
@@ -16,6 +17,7 @@ import {
 } from "../../../logic/infra/posthog/events";
 import { takeCampaignLoadDuration } from "../../../logic/infra/posthog/loadTiming";
 import { trackOnce } from "../../../logic/infra/posthog/track";
+import { CampaignIntroDialog } from "../campaignIntro/CampaignIntroDialog";
 import { NewspaperButton } from "../newspaper/NewspaperButton";
 import { NewspaperDialog } from "../newspaper/NewspaperDialog";
 import { AdvisorModal } from "./AdvisorModal";
@@ -37,6 +39,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     finishCampaign,
     acknowledgeAnnouncement,
     markNewspaperRead,
+    markIntroSeen,
     getMapDataByPolls,
   } = useElectionState(campaignId);
   const { settings, updateSettings } = useSettings();
@@ -53,8 +56,9 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     [sessionId, campaignId, partyId, candidateId],
   );
   const isResumed = state.turn > 0;
+  const isIntroOpen = isIntroPending(state, config.electionConfig);
   const pendingAnnouncement =
-    !state.isEnded && !flow.pendingAdvisor
+    !state.isEnded && !flow.pendingAdvisor && !isIntroOpen
       ? getPendingAnnouncement(state, config.campaignEvents)
       : undefined;
 
@@ -71,6 +75,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     !state.isEnded &&
     !flow.pendingAdvisor &&
     !pendingAnnouncement &&
+    !isIntroOpen &&
     flow.currentView === "MapView";
 
   const openArchive = () => {
@@ -138,6 +143,12 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
           />
         ))}
       </div>
+      <CampaignIntroDialog
+        open={isIntroOpen}
+        intro={config.electionConfig.intro}
+        fallbackTitle={config.electionConfig.title}
+        onConfirm={markIntroSeen}
+      />
       <AdvisorModal
         advice={flow.pendingAdvisor?.feedback.text ?? ""}
         open={Boolean(flow.pendingAdvisor)}

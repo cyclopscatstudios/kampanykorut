@@ -1,6 +1,10 @@
 {
   "title": "Arányos tesztválasztás",
   "year": "2026",
+  "intro": {
+    "subtitle": "Magyarország · 2026 tavasza",
+    "text": "2010 óta a Fidesz–KDNP kormányoz, és négy egymást követő választáson kétharmados többséget szerzett. 2022-ben az ellenzéki pártok közös listája sem tudta megtörni ezt a sorozatot.\n\n2024-ben új kihívó jelent meg: Magyar Péter TISZA Pártja néhány hónap alatt második lett az európai parlamenti és a budapesti választáson.\n\nTizenhat év után először áll a kormánypárttal szemben olyan kihívó, akit a felmérések esélyesnek mutatnak. A tét: folytatódik a Fidesz-korszak, vagy új fejezet kezdődik?"
+  },
   "election": {
     "type": "proportional",
     "regions": [

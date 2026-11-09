@@ -1412,7 +1412,31 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
   }
   checkImageFields(ctx, file, data.electionAssets, "/electionAssets");
   checkBaseResults(ctx, file, data.baseResults, sides);
+  checkIntro(ctx, file, data.intro);
   return sides;
+}
+
+function checkIntro(ctx: Context, file: string, intro: unknown) {
+  if (intro === undefined) {
+    return;
+  }
+  const valid =
+    isObject(intro) &&
+    typeof intro.text === "string" &&
+    intro.text.trim() !== "" &&
+    ["title", "subtitle"].every(
+      (key) => intro[key] === undefined || typeof intro[key] === "string",
+    );
+  if (!valid) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/intro",
+      "intro needs a non-empty string text; title and subtitle must be strings",
+    );
+  }
 }
 
 // baseResults is keyed by the player's side, then by party; a flat party map

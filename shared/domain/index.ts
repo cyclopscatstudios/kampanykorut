@@ -1,5 +1,6 @@
 export * from "./CampaignEngine";
 export * from "./CampaignEventEngine";
+export * from "./CampaignIntro";
 export * from "./CampaignStateAccess";
 export * from "./Coalition";
 export * from "./ConditionCheck";

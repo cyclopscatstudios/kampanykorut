@@ -6,6 +6,7 @@ import {
   getParliamentaryConfig,
   getPlayerVoteKey,
   getVisibleParties,
+  markIntroSeen,
   markNewspaperRead,
   publishNewspaperEdition,
 } from "@/shared/domain";
@@ -214,6 +215,15 @@ export function useElectionState(campaignId: string) {
     saveSession("campaignState", next);
   };
 
+  const markIntroAsSeen = () => {
+    const next = markIntroSeen(gameState);
+    if (next === gameState) {
+      return;
+    }
+    setGameState(next);
+    saveSession("campaignState", next);
+  };
+
   const getAnswer = (answers?: Answer[], answerId?: string) => {
     return answers?.find((a) => a.id === answerId);
   };
@@ -295,6 +305,7 @@ export function useElectionState(campaignId: string) {
     getFinalResults,
     acknowledgeAnnouncement,
     markNewspaperRead: markNewspaperAsRead,
+    markIntroSeen: markIntroAsSeen,
     getMapDataByPolls: getListDataByPollProjection,
   };
 }

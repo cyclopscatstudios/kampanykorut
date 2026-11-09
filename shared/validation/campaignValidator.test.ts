@@ -395,6 +395,23 @@ describe("validateCampaign", () => {
     expect(codes(result)).toEqual(["error:election-config-invalid"]);
   });
 
+  it("accepts an intro with text", () => {
+    const result = validate((f) => {
+      file(f, "election_config.json").intro = {
+        subtitle: "Magyarország · 2026 tavasza",
+        text: "Első bekezdés.\n\nMásodik bekezdés.",
+      };
+    });
+    expect(result).toEqual([]);
+  });
+
+  it("reports an intro without text", () => {
+    const result = validate((f) => {
+      file(f, "election_config.json").intro = { title: "Cím", text: " " };
+    });
+    expect(codes(result)).toEqual(["error:election-config-invalid"]);
+  });
+
   it("accepts side-keyed base results", () => {
     const result = validate((f) => {
       file(f, "election_config.json").baseResults = {

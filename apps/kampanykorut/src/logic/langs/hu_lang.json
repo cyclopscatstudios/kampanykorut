@@ -510,5 +510,9 @@
     "position": "{{current}} / {{total}}",
     "turn": "{{turn}}. forduló",
     "issue": "{{issue}}. szám"
+  },
+  "campaignIntro": {
+    "label": "Történelmi háttér",
+    "confirm": "Megértettem"
   }
 }
