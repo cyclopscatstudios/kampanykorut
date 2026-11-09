@@ -3,6 +3,7 @@ import { useMediaQuery } from "usehooks-ts";
 import {
   buildSeatCountView,
   getParliamentaryConfig,
+  hasCapitalInset,
   isCityDistrictMap,
   isFocusRequired,
   isProportionalElection,
@@ -120,7 +121,9 @@ export function GameView({
 
   const visitBlocked = isFocusRequired(state, config);
   const isCityMap = isCityDistrictMap(config.electionConfig);
-  const capitalCity = isCityMap ? [] : getCapitalCity(config.districts);
+  const capitalCity = hasCapitalInset(config.electionConfig)
+    ? getCapitalCity(config.districts)
+    : [];
   const candidateListData =
     pollsData?.candidateListData ?? state.candidateListData ?? [];
   const percentages = pollsData?.percentages ?? state.results?.percentages;

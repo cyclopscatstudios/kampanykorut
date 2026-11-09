@@ -49,7 +49,7 @@ const EFFECT_TYPES = [
   "district-vote-transfer",
 ];
 
-const DISTRICT_MAPS = ["2011", "2024", "budapest-districts"];
+const DISTRICT_MAPS = ["2011", "2024", "budapest-districts", "1945"];
 
 const ELECTION_TYPES = ["parliamentary", "mayoral", "proportional"];
 

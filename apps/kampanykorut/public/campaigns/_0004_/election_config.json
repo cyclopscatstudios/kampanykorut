@@ -1,0 +1,224 @@
+{
+  "title": "1945-ös térkép teszt",
+  "year": "2026",
+  "election": {
+    "type": "proportional",
+    "regions": [
+      {
+        "id": "vk01",
+        "name": "Budapest",
+        "seats": 31,
+        "megyekods": [1]
+      },
+      {
+        "id": "vk02",
+        "name": "Budapest környéke",
+        "seats": 39,
+        "megyekods": [2]
+      },
+      {
+        "id": "vk03",
+        "name": "Pest-Pilis-Solt-Kiskun",
+        "seats": 50,
+        "megyekods": [3]
+      },
+      {
+        "id": "vk04",
+        "name": "Bács-Bodrog és Csongrád",
+        "seats": 14,
+        "megyekods": [4]
+      },
+      {
+        "id": "vk05",
+        "name": "Baranya és Tolna",
+        "seats": 21,
+        "megyekods": [5]
+      },
+      {
+        "id": "vk06",
+        "name": "Somogy",
+        "seats": 11,
+        "megyekods": [6]
+      },
+      {
+        "id": "vk07",
+        "name": "Zala",
+        "seats": 10,
+        "megyekods": [7]
+      },
+      {
+        "id": "vk08",
+        "name": "Vas és Sopron",
+        "seats": 13,
+        "megyekods": [8]
+      },
+      {
+        "id": "vk09",
+        "name": "Győr-Moson és Komárom-Esztergom",
+        "seats": 24,
+        "megyekods": [9]
+      },
+      {
+        "id": "vk10",
+        "name": "Fejér és Veszprém",
+        "seats": 28,
+        "megyekods": [10]
+      },
+      {
+        "id": "vk11",
+        "name": "Nógrád-Hont és Heves",
+        "seats": 18,
+        "megyekods": [11]
+      },
+      {
+        "id": "vk12",
+        "name": "Borsod-Gömör és Abaúj-Torna",
+        "seats": 20,
+        "megyekods": [12]
+      },
+      {
+        "id": "vk13",
+        "name": "Szabolcs-Szatmár és Zemplén",
+        "seats": 23,
+        "megyekods": [13]
+      },
+      {
+        "id": "vk14",
+        "name": "Hajdú és Bihar",
+        "seats": 19,
+        "megyekods": [14]
+      },
+      {
+        "id": "vk15",
+        "name": "Jász-Nagykun-Szolnok",
+        "seats": 13,
+        "megyekods": [15]
+      },
+      {
+        "id": "vk16",
+        "name": "Békés és Csanád",
+        "seats": 16,
+        "megyekods": [16]
+      }
+    ]
+  },
+  "listSeats": 50,
+  "allSeats": 400,
+  "thresholdPercent": 5,
+  "districtMap": "1945",
+  "districtBoost": true,
+  "baseResults": {
+    "green_party": {
+      "green_party": -6,
+      "red_party": 2,
+      "yellow_party": 4
+    }
+  },
+  "parties": [
+    {
+      "id": "green_party",
+      "name": "Green Party",
+      "color": "#008000"
+    },
+    {
+      "id": "red_party",
+      "name": "Red Party",
+      "color": "#FF0000"
+    },
+    {
+      "id": "yellow_party",
+      "name": "Yellow Party",
+      "color": "#FFFF00"
+    }
+  ],
+  "partyListVotes": {
+    "green_party": 10000,
+    "red_party": 15000,
+    "yellow_party": 5000
+  },
+  "playableSides": [
+    {
+      "id": "green_party",
+      "label": "Green Party",
+      "description": "Something something Green party",
+      "mainCandidates": [
+        {
+          "id": "john_doe",
+          "label": "John Doe",
+          "description": "todo"
+        },
+        {
+          "id": "emma_wilson",
+          "label": "Emma Wilson",
+          "description": "todo"
+        },
+        {
+          "id": "liam_carter",
+          "label": "Liam Carter",
+          "description": "todo"
+        },
+        {
+          "id": "olivia_harris",
+          "label": "Olivia Harris",
+          "description": "todo"
+        }
+      ],
+      "playableCandidates": ["emma_wilson"]
+    },
+    {
+      "id": "red_party",
+      "label": "Red Party",
+      "description": "Something something Red party",
+      "mainCandidates": [
+        {
+          "id": "john_doe",
+          "label": "John Doe",
+          "description": "todo"
+        },
+        {
+          "id": "sophia_martin",
+          "label": "Sophia Martin",
+          "description": "todo"
+        },
+        {
+          "id": "noah_clark",
+          "label": "Noah Clark",
+          "description": "todo"
+        },
+        {
+          "id": "ethan_walker",
+          "label": "Ethan Walker",
+          "description": "todo"
+        }
+      ]
+    },
+    {
+      "id": "yellow_party",
+      "label": "Yellow Party",
+      "description": "Something something Yellow party",
+      "mainCandidates": [
+        {
+          "id": "lucas_adams",
+          "label": "Lucas Adams",
+          "description": "todo"
+        },
+        {
+          "id": "ava_bennett",
+          "label": "Ava Bennett",
+          "description": "todo"
+        },
+        {
+          "id": "mia_cooper",
+          "label": "Mia Cooper",
+          "description": "todo"
+        },
+        {
+          "id": "jackson_foster",
+          "label": "Jackson Foster",
+          "description": "todo"
+        }
+      ]
+    }
+  ],
+  "electionAssets": []
+}

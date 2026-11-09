@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Budapest",
+    "oevk2011": { "1": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }
+  },
+  {
+    "id": 2,
+    "name": "Budapest környéke",
+    "oevk2011": { "1": [11, 12, 13, 14, 15, 16, 17, 18], "14": [5, 7, 8] }
+  },
+  {
+    "id": 3,
+    "name": "Pest-Pilis-Solt-Kiskun",
+    "oevk2011": { "14": [1, 2, 3, 4, 6, 9, 10, 11, 12], "3": [1, 2, 3, 4, 5] }
+  },
+  {
+    "id": 4,
+    "name": "Bács-Bodrog és Csongrád",
+    "oevk2011": { "3": [6], "6": [1, 2, 3] }
+  },
+  {
+    "id": 5,
+    "name": "Baranya és Tolna",
+    "oevk2011": { "2": "all", "17": "all" }
+  },
+  { "id": 6, "name": "Somogy", "oevk2011": { "15": "all" } },
+  { "id": 7, "name": "Zala", "oevk2011": { "20": "all" } },
+  { "id": 8, "name": "Vas és Sopron", "oevk2011": { "18": "all", "8": [4] } },
+  {
+    "id": 9,
+    "name": "Győr-Moson és Komárom-Esztergom",
+    "oevk2011": { "8": [1, 2, 3, 5], "12": "all" }
+  },
+  {
+    "id": 10,
+    "name": "Fejér és Veszprém",
+    "oevk2011": { "7": "all", "19": "all" }
+  },
+  {
+    "id": 11,
+    "name": "Nógrád-Hont és Heves",
+    "oevk2011": { "13": "all", "10": "all" }
+  },
+  {
+    "id": 12,
+    "name": "Borsod-Gömör és Abaúj-Torna",
+    "oevk2011": { "5": [1, 2, 3, 4, 6, 7] }
+  },
+  {
+    "id": 13,
+    "name": "Szabolcs-Szatmár és Zemplén",
+    "oevk2011": { "16": "all", "5": [5] }
+  },
+  { "id": 14, "name": "Hajdú és Bihar", "oevk2011": { "9": "all" } },
+  { "id": 15, "name": "Jász-Nagykun-Szolnok", "oevk2011": { "11": "all" } },
+  { "id": 16, "name": "Békés és Csanád", "oevk2011": { "4": "all", "6": [4] } }
+]
