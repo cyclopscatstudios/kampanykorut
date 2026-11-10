@@ -25,7 +25,6 @@ export interface FocusBranchView {
   id: string;
   title?: string;
   state: FocusBranchState;
-  // The choice was made this turn and can still be changed.
   revisable: boolean;
   focuses: FocusView[];
   availableFromTurn?: number;
@@ -33,10 +32,8 @@ export interface FocusBranchView {
 }
 
 export interface FocusOverview {
-  // Branches on the player's path so far, in order; skipped forks are left out.
   branches: FocusBranchView[];
   current?: FocusBranchView;
-  // Chosen focuses in the order they were picked.
   selected: FocusView[];
   latest?: FocusView;
 }
@@ -71,8 +68,6 @@ function isOnPath(branch: FocusBranch, selectedIds: string[]) {
   return branch.requires === undefined || selectedIds.includes(branch.requires);
 }
 
-// The first undecided branch on the player's path. Only this one can be
-// chosen from, so the forks come one at a time.
 export function getCurrentBranch(
   state: Pick<CampaignState, "politicalDashboard">,
   config: BranchConfig,
@@ -84,7 +79,6 @@ export function getCurrentBranch(
   );
 }
 
-// The latest choice can still be changed during the turn it was made in.
 function getRevisableBranch(
   state: CampaignState,
   config: BranchConfig,
@@ -100,8 +94,6 @@ function getRevisableBranch(
   return getFocusBranches(config).find((b) => b.focuses.includes(latest));
 }
 
-// The turn from which a branch can be decided: its own opening turn, but
-// never the turn of the previous choice, so only one fork is open at a time.
 function getOpeningTurn(state: CampaignState, branch: FocusBranch): number {
   const from = branch.availableFromTurn ?? 1;
   const chosenAt = state.politicalDashboard?.focusChosenAtTurn;
@@ -158,8 +150,6 @@ function getFocusStatusKey(overview: FocusOverview): string | undefined {
     : undefined;
 }
 
-// News for the header dot: a fork is waiting for a choice, or a chosen focus
-// has changed status since the dashboard was last opened.
 export function hasFocusNews(
   state: CampaignState,
   config: FocusConfig,
@@ -198,8 +188,6 @@ export function markFocusSeen(
   };
 }
 
-// Selecting a focus only records the player's choice; it never changes
-// support or triggers effects on its own.
 export function selectFocus(
   state: CampaignState,
   config: BranchConfig,

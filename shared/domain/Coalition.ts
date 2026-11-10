@@ -48,7 +48,6 @@ export interface FinalOutcome {
   playerSeats: number;
   governmentSeats: number;
   majority: number;
-  // Partners the player shares power with.
   partnerCount: number;
   epilogue?: Epilogue;
 }
@@ -88,7 +87,6 @@ function getSeatSetup(state: CampaignState, config: CoalitionConfig) {
     toSeatParty,
     allSeats: parliamentary.allSeats,
     majority: getMajorityThresholds(parliamentary.allSeats).simple,
-    // Only the party with the most seats is asked to form a government.
     isLargest: player.seats > 0 && player.seats >= largestRival,
   };
 }
@@ -118,8 +116,6 @@ export function buildCoalitionView(
   };
 }
 
-// The coalition phase only opens once, after a proportional election in which
-// the player's party came first but without a majority of its own.
 export function needsCoalitionOffer(
   state: CampaignState,
   config: CoalitionConfig,
@@ -136,7 +132,6 @@ export function needsCoalitionOffer(
   );
 }
 
-// All offers are answered at once; a partner without a condition accepts.
 export function submitCoalitionOffer(
   state: CampaignState,
   config: CoalitionConfig,
@@ -253,8 +248,6 @@ export type EndResultStory =
   | "playerSideDefeat"
   | "deadlock";
 
-// In strategic mode the story follows the government formed, so a coalition
-// after a hung parliament reads as a victory rather than a deadlock.
 export function getEndResultStory(
   outcome: GovernmentOutcome | undefined,
   playerWon: boolean,

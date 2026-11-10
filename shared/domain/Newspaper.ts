@@ -18,8 +18,6 @@ export const DEFAULT_NEWSPAPER_CADENCE: NewspaperCadence = {
 
 type NewspaperCampaign = Pick<CampaignConfig, "politicalConfig" | "newspaper">;
 
-// The newspaper is a strategic-mode feature for now; a campaign without
-// stories shows nothing of it.
 export function getNewspaper(
   config: NewspaperCampaign,
 ): NewspaperConfig | undefined {
@@ -44,8 +42,6 @@ export function getNewspaperState(
   };
 }
 
-// Prints the next edition once its turn has come and a story is eligible;
-// otherwise the state is returned unchanged and the next turn tries again.
 export function publishNewspaperEdition(
   state: CampaignState,
   config: NewspaperCampaign,

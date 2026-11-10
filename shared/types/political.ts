@@ -15,18 +15,12 @@ export interface PoliticalFocus {
   failWhen?: Condition;
 }
 
-// One fork of the focus tree: the player picks one of its focuses, and the
-// choice is final. Branches open one after another in the listed order.
-// Turns are counted from 1, the first question being turn 1.
 export interface FocusBranch {
   id: string;
   title?: string;
   focuses: string[];
-  // Only on this path: the branch is skipped unless this focus was chosen.
   requires?: string;
   availableFromTurn?: number;
-  // Without a choice here this turn cannot be played: no district can be
-  // visited until the player picks one of the branch's focuses.
   requiredBeforeTurn?: number;
 }
 
@@ -39,8 +33,6 @@ export const RELATION_TONES: readonly RelationTone[] = [
   "bad",
 ];
 
-// The qualitative standing of a relation: a tone plus a one-word label and a
-// longer explanation shown on hover. No numbers are ever exposed.
 export interface RelationStanding {
   tone: RelationTone;
   label: string;
@@ -63,7 +55,6 @@ export interface Relation extends RelationStanding {
 export interface PoliticalConfig {
   gameMode: GameMode;
   focuses?: PoliticalFocus[];
-  // Without branches every focus forms a single branch open from turn 1.
   focusBranches?: FocusBranch[];
   relationGroups?: RelationGroup[];
   relations?: Relation[];
@@ -73,7 +64,6 @@ export interface PoliticalConfig {
 
 export interface CoalitionPartner {
   partyId: string;
-  // Without a condition the party always accepts the offer.
   acceptWhen?: Condition;
   acceptReason: string;
   rejectReason: string;
@@ -83,8 +73,6 @@ export interface CoalitionConfig {
   partners: CoalitionPartner[];
 }
 
-// "coalition" governs with a single partner; with more partners power is
-// shared so widely that the government is weak.
 export type GovernmentOutcome =
   | "single-majority"
   | "coalition"
@@ -105,7 +93,6 @@ export interface Epilogue {
   title: string;
   body: string;
   icon?: BootstrapIcon;
-  // The first epilogue whose outcomes and condition both match is shown.
   outcomes?: GovernmentOutcome[];
   when?: Condition;
 }
@@ -122,13 +109,10 @@ export interface CoalitionState {
 export interface PoliticalDashboardState {
   seenEventIds: string[];
   selectedFocusIds?: string[];
-  // Turn of the latest choice; it can be changed until the turn is played.
   focusChosenAtTurn?: number;
-  // Saves from before the focus tree had a single chosen focus.
   selectedFocusId?: string;
   relations?: Record<string, RelationStanding & { changedAtTurn: number }>;
   seenRelationIds?: string[];
-  // Statuses of the chosen focuses when the dashboard was last opened.
   seenFocusStatus?: string;
 }
 
