@@ -18,31 +18,37 @@
     {
       "id": "mszmp",
       "name": "Magyar Szocialista Munkáspárt",
+      "leader": "Nagy Imre",
       "color": "#c62828"
     },
     {
       "id": "fkgp",
       "name": "Független Kisgazdapárt",
+      "leader": "Kovács Béla",
       "color": "#2e7d32"
     },
     {
       "id": "szdp",
       "name": "Szociáldemokrata Párt",
+      "leader": "Kéthly Anna",
       "color": "#ef6c00"
     },
     {
       "id": "petofi",
       "name": "Petőfi Párt",
+      "leader": "Bibó István",
       "color": "#f9a825"
     },
     {
       "id": "dnp",
       "name": "Demokrata Néppárt",
+      "leader": "Barankovics István",
       "color": "#1e88e5"
     },
     {
       "id": "kadar_part",
       "name": "Szocialista Munkáspárt (Kádár)",
+      "leader": "Kádár János",
       "color": "#6d1b1b",
       "dormant": true
     }

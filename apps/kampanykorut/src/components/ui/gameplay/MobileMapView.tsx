@@ -322,9 +322,11 @@ function DistrictSheetContent({
           <div className="mt-0.5 text-xl font-bold tracking-[-0.3px] text-slate-100">
             {isCityMap
               ? getDistrictName(district, isCityMap)
-              : `${district.megye} · ${getDistrictName(district, isCityMap)}`}
+              : district.telepules === district.megye
+                ? district.megye
+                : `${district.megye} · ${getDistrictName(district, isCityMap)}`}
           </div>
-          {!isCityMap && (
+          {!isCityMap && district.telepules !== district.megye && (
             <div className="mt-px text-xs text-blue-400">
               {district.telepules}
             </div>

@@ -53,3 +53,28 @@ test("1957: the first turn can be played before choosing a focus", async ({
   );
   await expect(page.getByTestId("selectFocus-lassu_reformok")).toBeVisible();
 });
+
+test("1957: the map panel names the party leaders and the region's seats", async ({
+  page,
+  playCampaign,
+}) => {
+  const seedData = await playCampaign(CAMPAIGN_ID, "mszmp", "nagy_imre", {
+    q3_kadar: "A",
+  });
+  await page.goto(
+    `/game/${CAMPAIGN_ID}/end-results?sessionId=${seedData?.sessionId}`,
+  );
+  await expect(page).toHaveURL(/coalition/);
+  await page.getByTestId("coalitionPartner-fkgp").click();
+  await page.getByTestId("coalitionSubmit").click();
+  await page.getByTestId("coalitionContinue").click();
+  await expect(page).toHaveURL(/end-results/);
+  await page.getByRole("button", { name: "Választási térkép" }).click();
+  await page.locator("svg path[data-id]").nth(2).click({ force: true });
+
+  const panel = page.getByTestId("districtResult");
+  await expect(panel.getByText("Nagy Imre")).toBeVisible();
+  await expect(panel.getByText("Magyar Szocialista Munkáspárt")).toBeVisible();
+  await expect(panel.getByText(/A régió \d+ mandátuma/)).toBeVisible();
+  await expect(panel.getByText(/^\d+ mandátum$/).first()).toBeVisible();
+});

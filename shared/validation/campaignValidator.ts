@@ -1386,6 +1386,16 @@ function checkElectionConfig(
       } else if (party.dormant) {
         ctx.dormantParties.add(party.id);
       }
+      if (party.leader !== undefined && typeof party.leader !== "string") {
+        report(
+          ctx,
+          "error",
+          "election-config-invalid",
+          file,
+          `/parties/${i}/leader`,
+          "leader must be a string",
+        );
+      }
     });
   }
   if (isObject(data.partyListVotes)) {

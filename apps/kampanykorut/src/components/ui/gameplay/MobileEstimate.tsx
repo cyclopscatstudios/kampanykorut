@@ -10,7 +10,7 @@ import {
   getBarScale,
   getScopedEstimate,
 } from "./districtEstimate.utils";
-import { getDistrictName } from "./districtInsight.utils";
+import { getDistrictTitle } from "./districtInsight.utils";
 import type { SwingFactor } from "./swingFactor.utils";
 
 const TOSSUP_COLOR = "#e5b93a";
@@ -122,7 +122,7 @@ export function EstimateSheetContent({
 
   const title = isNational
     ? t(isCityMap ? "estimatePanel.cityTitle" : "estimatePanel.nationalTitle")
-    : district && `${district.megye} ${getDistrictName(district, isCityMap)}`;
+    : district && getDistrictTitle(district, isCityMap);
   const subtitle = isNational
     ? t(
         isCityMap

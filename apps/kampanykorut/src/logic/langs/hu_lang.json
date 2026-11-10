@@ -110,7 +110,9 @@
       }
     },
     "electionMap": {
-      "winner": "Győztes"
+      "winner": "Győztes",
+      "seats": "{{count}} mandátum",
+      "regionSeats": "A régió {{count}} mandátuma"
     },
     "achievements": {
       "completed": "Megszerezve",

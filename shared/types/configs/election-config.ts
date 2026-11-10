@@ -77,6 +77,8 @@ export type RawParty = {
   id: string;
   name: string;
   color: string;
+  // The face of the party list, shown where no district candidate is named.
+  leader?: string;
   // Hidden and voteless until a split-party event brings it into the race.
   dormant?: boolean;
 };

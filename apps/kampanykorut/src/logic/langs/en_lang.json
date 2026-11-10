@@ -110,7 +110,9 @@
       }
     },
     "electionMap": {
-      "winner": "Winner"
+      "winner": "Winner",
+      "seats": "{{count}} seats",
+      "regionSeats": "{{count}} seats in the region"
     },
     "achievements": {
       "completed": "Earned",
