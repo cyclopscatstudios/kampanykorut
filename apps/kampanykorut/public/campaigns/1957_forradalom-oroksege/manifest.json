@@ -7,6 +7,7 @@
   "files": {
     "electionConfig": "election_config.json",
     "regions": "regions.json",
+    "issues": "issues.json",
     "voterEnvironmentConfig": "voter_environment_config.json",
     "candidateListData": "valasztokeruletek.json",
     "campaignEvents": "campaign_events.json",

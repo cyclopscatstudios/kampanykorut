@@ -15,6 +15,7 @@ import {
   FinalResults,
   GameSettings,
   HistoryItem,
+  IssueStanceParams,
   PartyListData,
   PartyListVotes,
   RawAnsweEffectProps,
@@ -40,6 +41,7 @@ import {
   excludeInactiveCandidates,
   excludeInactiveFromConditionalEffects,
 } from "./InactiveCandidateFilter";
+import { resolveIssueStance } from "./Issues";
 import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
@@ -192,20 +194,32 @@ export class CampaignEngine {
     }
 
     const inactiveCandidateIds = getInactiveCandidateIds(state);
-    const appliedEffects = this.effectApplier.getAppliedEffects(
+    const effects = this.effectApplier.resolveConditionalEffects(
       excludeInactiveCandidates(decision.effects, inactiveCandidateIds),
-      state.candidateListData ?? [],
-      state.turn,
       excludeInactiveFromConditionalEffects(
         decision.conditionalEffects,
         inactiveCandidateIds,
       ),
+      history,
+    );
+    const stanced = this.applyIssueStances(
+      state,
+      effects.flatMap((e) =>
+        e.type === EffectType.IssueStance ? [e.params] : [],
+      ),
+      electionConfig,
+    );
+    const appliedEffects = this.effectApplier.getAppliedEffects(
+      effects.filter((e) => e.type !== EffectType.IssueStance),
+      stanced.candidateListData ?? [],
+      state.turn,
+      undefined,
       decision.selectedDistrict,
       districtBoost,
       playerVoteKey,
       history,
     );
-    const modified = this.resultModifier.apply(state, appliedEffects);
+    const modified = this.resultModifier.apply(stanced, appliedEffects);
 
     const nextTurn = state.turn + 1;
     const candidateListData = this.resultModifier.filterUnwantedValues(
@@ -223,11 +237,11 @@ export class CampaignEngine {
     );
 
     const answered = {
-      ...state,
+      ...stanced,
       turn: nextTurn,
-      candidateListData: candidateListData ?? state.candidateListData,
-      partyListData: partyListData ?? state.partyListData,
-      partyListVotes: partyListVotes ?? state.partyListVotes,
+      candidateListData: candidateListData ?? stanced.candidateListData,
+      partyListData: partyListData ?? stanced.partyListData,
+      partyListVotes: partyListVotes ?? stanced.partyListVotes,
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
         state.currentQuestion,
@@ -608,6 +622,13 @@ export class CampaignEngine {
         current = this.splitParty(current, effect);
       } else if (effect.type === "set-relation") {
         relations.push(effect);
+      } else if (effect.type === EffectType.IssueStance) {
+        flush();
+        current = this.applyIssueStances(
+          current,
+          [effect.params],
+          electionConfig,
+        );
       } else {
         batch.push(effect);
       }
@@ -657,6 +678,36 @@ export class CampaignEngine {
       partyListData: modified.partyListData ?? state.partyListData,
       partyListVotes: modified.partyListVotes ?? state.partyListVotes,
     };
+  }
+
+  private applyIssueStances(
+    state: CampaignState,
+    stances: IssueStanceParams[],
+    electionConfig: ElectionConfig,
+  ): CampaignState {
+    let current = state;
+    for (const params of stances) {
+      const { issuePositions, targets } = resolveIssueStance(
+        current,
+        electionConfig,
+        params,
+        getInactiveCandidateIds(current),
+      );
+      const modified = targets.length
+        ? this.resultModifier.apply(current, [
+            { type: EffectType.DistrictVoteTransfer, target: targets },
+          ])
+        : null;
+      current = {
+        ...current,
+        issuePositions,
+        candidateListData:
+          modified?.candidateListData ?? current.candidateListData,
+        partyListData: modified?.partyListData ?? current.partyListData,
+        partyListVotes: modified?.partyListVotes ?? current.partyListVotes,
+      };
+    }
+    return current;
   }
 
   private withdrawCandidate(

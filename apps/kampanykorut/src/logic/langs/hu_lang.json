@@ -524,5 +524,15 @@
   "campaignIntro": {
     "label": "Történelmi háttér",
     "confirm": "Megértettem"
+  },
+  "issues": {
+    "title": "Ügyek a térségben",
+    "opinion": {
+      "-2": "Erős ellenzés",
+      "-1": "Inkább ellenzik",
+      "0": "Megosztott",
+      "1": "Inkább támogatják",
+      "2": "Erős támogatás"
+    }
   }
 }

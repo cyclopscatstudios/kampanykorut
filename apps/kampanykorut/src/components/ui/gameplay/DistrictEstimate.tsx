@@ -1,8 +1,10 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
+import { AreaIssueView } from "@/shared/domain/Issues";
 import { CandidateListData, RawParty } from "@/shared/types";
 import { Icon } from "../../../../../../shared/ui/Icon";
+import { AreaIssues } from "./AreaIssues";
 import {
   Estimate,
   EstimateRow,
@@ -22,6 +24,7 @@ interface DistrictEstimateProps {
   parties: RawParty[];
   nationalPercentages?: Record<string, number>;
   isCityMap: boolean;
+  issues?: AreaIssueView[];
 }
 
 export function DistrictEstimate({
@@ -30,6 +33,7 @@ export function DistrictEstimate({
   parties,
   nationalPercentages,
   isCityMap,
+  issues = [],
 }: DistrictEstimateProps) {
   const [scope, setScope] = useState<EstimateScope>("district");
 
@@ -80,6 +84,7 @@ export function DistrictEstimate({
               />
             ))}
           </div>
+          {!isNational && <AreaIssues issues={issues} />}
         </>
       ) : (
         <div className="flex flex-1 items-center justify-center text-center text-sm font-light text-slate-400">

@@ -19,11 +19,10 @@
         "id": "B",
         "effects": [
           {
-            "type": "uniform-swing",
+            "type": "issue-stance",
             "params": {
-              "mszmp": -0.5,
-              "szdp": 0.3,
-              "fkgp": 0.4
+              "issueId": "forradalom",
+              "shift": -1
             }
           }
         ]
@@ -32,11 +31,10 @@
         "id": "C",
         "effects": [
           {
-            "type": "uniform-swing",
+            "type": "issue-stance",
             "params": {
-              "mszmp": 0.8,
-              "petofi": -0.4,
-              "szdp": -0.3
+              "issueId": "forradalom",
+              "shift": 1
             }
           }
         ]
@@ -76,11 +74,10 @@
         "id": "C",
         "effects": [
           {
-            "type": "uniform-swing",
+            "type": "issue-stance",
             "params": {
-              "mszmp": -0.4,
-              "fkgp": 0.3,
-              "petofi": 0.2
+              "issueId": "forradalom",
+              "shift": 1
             }
           }
         ]
@@ -177,11 +174,10 @@
         "id": "A",
         "effects": [
           {
-            "type": "uniform-swing",
+            "type": "issue-stance",
             "params": {
-              "mszmp": 0.5,
-              "szdp": 0.4,
-              "fkgp": -0.4
+              "issueId": "munkastanacsok",
+              "shift": 1
             }
           }
         ]
@@ -190,11 +186,10 @@
         "id": "B",
         "effects": [
           {
-            "type": "uniform-swing",
+            "type": "issue-stance",
             "params": {
-              "mszmp": 0.4,
-              "fkgp": -0.6,
-              "petofi": -0.2
+              "issueId": "fold",
+              "position": 2
             }
           }
         ]
@@ -203,11 +198,17 @@
         "id": "C",
         "effects": [
           {
-            "type": "uniform-swing",
+            "type": "issue-stance",
             "params": {
-              "mszmp": -0.3,
-              "fkgp": 0.4,
-              "szdp": 0.2
+              "issueId": "fold",
+              "shift": -1
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "munkastanacsok",
+              "shift": -1
             }
           }
         ]

@@ -1,4 +1,5 @@
 import { PartyListVotes } from "../campaign";
+import { Issue } from "../issue";
 
 export type ElectionType = "parliamentary" | "mayoral" | "proportional";
 
@@ -50,6 +51,8 @@ interface ElectionConfigBase {
   playableSides: PlayableSide[];
   electionAssets: ElectionAsset[];
   districtMap: DistrictMapType;
+  // Strategic mode: issues that answers and events move votes by.
+  issues?: Issue[];
 }
 
 export interface ParliamentaryElectionConfig extends ElectionConfigBase {

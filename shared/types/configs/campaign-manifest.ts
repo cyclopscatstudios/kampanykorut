@@ -14,6 +14,8 @@ export interface CampaignManifestFiles {
   electionConfig: string;
   // Regions of a proportional election, merged into election.regions on load.
   regions?: string;
+  // Issues of the electorate, merged into electionConfig.issues on load.
+  issues?: string;
   voterEnvironmentConfig: string;
   candidateListData: string;
   partyListData?: string;

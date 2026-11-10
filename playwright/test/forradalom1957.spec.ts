@@ -78,3 +78,30 @@ test("1957: the map panel names the party leaders and the region's seats", async
   await expect(panel.getByText(/A régió \d+ mandátuma/)).toBeVisible();
   await expect(panel.getByText(/^\d+ mandátum$/).first()).toBeVisible();
 });
+
+test("1957: answers and events move the party on the issues", async ({
+  playCampaign,
+}) => {
+  const seedData = await playCampaign(CAMPAIGN_ID, "mszmp", "nagy_imre", {
+    q1_igazsagtetel: "B",
+    q5_fold_es_gyar: "B",
+  });
+  expect(seedData?.state?.issuePositions).toMatchObject({
+    forradalom: { mszmp: -1 },
+    fold: { mszmp: 2 },
+  });
+});
+
+test("1957: a region shows how strong its issues are", async ({
+  page,
+  seedCampaign,
+}) => {
+  const seedData = await seedCampaign(CAMPAIGN_ID, "mszmp", "nagy_imre");
+  await page.goto(`/game/${CAMPAIGN_ID}?sessionId=${seedData?.sessionId}`);
+  await page.getByTestId("campaignIntroConfirm").click();
+  await page.locator("svg path[data-id]").first().click({ force: true });
+
+  const issues = page.getByTestId("areaIssues");
+  await expect(issues).toBeVisible();
+  await expect(issues.getByTestId("areaIssue-forradalom")).toBeVisible();
+});
