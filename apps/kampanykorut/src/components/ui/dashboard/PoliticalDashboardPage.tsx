@@ -25,6 +25,7 @@ import { useNavigation } from "../../../hooks/navigationHook";
 import { useParams } from "../../../hooks/useParamsHook";
 import { getCampaignBadgeInfo } from "../gameplay/campaignBadge.utils";
 import { GameChrome } from "../gameplay/GameChrome";
+import { toaster } from "../gameplay/toaster";
 import { ChronicleTab } from "./ChronicleTab";
 import { FocusTab } from "./FocusTab";
 import { OverviewTab } from "./OverviewTab";
@@ -179,15 +180,19 @@ export function PoliticalDashboardPage() {
           {tab === "focuses" && focusOverview && (
             <FocusTab
               overview={focusOverview}
-              onSelect={(focusId) =>
-                setState(
-                  markFocusSeen(
-                    selectFocus(state, config, focusId),
-                    config,
-                    answers,
-                  ),
-                )
-              }
+              onSelect={(focusId) => {
+                const next = selectFocus(state, config, focusId);
+                if (next === state) {
+                  return;
+                }
+                setState(markFocusSeen(next, config, answers));
+                const title = getFocuses(config).find(
+                  (f) => f.id === focusId,
+                )?.title;
+                if (title) {
+                  toaster(t("toaster.focusSelected", { title }), "Success");
+                }
+              }}
             />
           )}
           {tab === "relations" && <RelationsTab groups={relationGroups} />}

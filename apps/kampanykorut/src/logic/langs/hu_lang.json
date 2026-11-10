@@ -359,6 +359,7 @@
     }
   },
   "toaster": {
+    "focusSelected": "Kiválasztott fókusz: {{title}}",
     "settingsUpdated": "Beállítások sikeresen frissültek!",
     "storageQuotaExceeded": "A böngésző tárhelye megtelt, ezért a játékállást nem sikerült menteni. A játék folytatható, de az oldal újratöltésekor a haladás elveszhet.",
     "storageWriteFailed": "A játékállást nem sikerült menteni ebben a böngészőben. A játék folytatható, de az oldal újratöltésekor a haladás elveszhet."
