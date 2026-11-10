@@ -1154,19 +1154,58 @@ function checkElectionDefinition(
   return String(election.type);
 }
 
-function checkProportionalRegions(ctx: Context, file: string, data: Json) {
+interface RegionsFile {
+  file: string;
+  data: unknown;
+}
+
+function checkProportionalRegions(
+  ctx: Context,
+  file: string,
+  data: Json,
+  regionsFile: RegionsFile | undefined,
+) {
   const election = data.election as Json;
+  if (election.regions !== undefined) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/election/regions",
+      "regions belong in their own file (manifest files.regions)",
+    );
+  }
+  if (!regionsFile) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      "manifest.json",
+      "/files/regions",
+      "a proportional election needs a regions file",
+    );
+    return;
+  }
+  const regions = regionsFile.data;
   const error = (path: string, message: string) =>
-    report(ctx, "error", "election-config-invalid", file, path, message);
-  if (!Array.isArray(election.regions) || election.regions.length === 0) {
-    error("/election/regions", "regions must be a non-empty array");
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      regionsFile.file,
+      path,
+      message,
+    );
+  if (!Array.isArray(regions) || regions.length === 0) {
+    error("", "regions must be a non-empty array");
     return;
   }
   const ids = new Set<string>();
   const counties = new Set<number>();
   let regionSeats = 0;
-  election.regions.forEach((region, i) => {
-    const path = `/election/regions/${i}`;
+  regions.forEach((region, i) => {
+    const path = `/${i}`;
     if (!isObject(region)) {
       error(path, "region must be an object");
       return;
@@ -1178,7 +1217,7 @@ function checkProportionalRegions(ctx: Context, file: string, data: Json) {
         ctx,
         "error",
         "duplicate-id",
-        file,
+        regionsFile.file,
         `${path}/id`,
         `duplicate region id "${region.id}"`,
       );
@@ -1213,7 +1252,11 @@ function checkProportionalRegions(ctx: Context, file: string, data: Json) {
     isFiniteNumber(data.allSeats) &&
     regionSeats + data.listSeats !== data.allSeats
   ) {
-    error(
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
       "/allSeats",
       `allSeats (${data.allSeats}) must equal the region seats (${regionSeats}) plus listSeats (${data.listSeats})`,
     );
@@ -1245,7 +1288,12 @@ function checkRegionCoverage(ctx: Context, file: string, data: unknown) {
   }
 }
 
-function checkElectionConfig(ctx: Context, file: string, data: unknown) {
+function checkElectionConfig(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  regionsFile?: RegionsFile,
+) {
   if (!isObject(data)) {
     report(
       ctx,
@@ -1264,19 +1312,24 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
       ? ["listSeats", "allSeats", "thresholdPercent"]
       : [];
   for (const key of seatKeys) {
-    if (!isFiniteNumber(data[key]) || (data[key] as number) <= 0) {
+    const zeroAllowed =
+      key === "thresholdPercent" && electionType === "proportional";
+    const value = data[key];
+    if (!isFiniteNumber(value) || value < 0 || (value === 0 && !zeroAllowed)) {
       report(
         ctx,
         "error",
         "election-config-invalid",
         file,
         `/${key}`,
-        `${key} must be a positive number`,
+        zeroAllowed
+          ? `${key} must be zero or a positive number`
+          : `${key} must be a positive number`,
       );
     }
   }
   if (electionType === "proportional") {
-    checkProportionalRegions(ctx, file, data);
+    checkProportionalRegions(ctx, file, data, regionsFile);
   }
   if (!DISTRICT_MAPS.includes(String(data.districtMap))) {
     report(
@@ -1332,6 +1385,16 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
         );
       } else if (party.dormant) {
         ctx.dormantParties.add(party.id);
+      }
+      if (party.leader !== undefined && typeof party.leader !== "string") {
+        report(
+          ctx,
+          "error",
+          "election-config-invalid",
+          file,
+          `/parties/${i}/leader`,
+          "leader must be a string",
+        );
       }
     });
   }
@@ -2073,6 +2136,110 @@ function checkCampaignEvents(
   });
 }
 
+function checkFocusBranches(ctx: Context, file: string, data: Json) {
+  const invalid = (path: string, message: string) =>
+    report(ctx, "error", "focus-branch-invalid", file, path, message);
+  for (const key of ["focusSelection", "focusLockEventId"] as const) {
+    if (data[key] !== undefined) {
+      invalid(`/${key}`, `${key} is replaced by focusBranches`);
+    }
+  }
+  if (data.focusBranches === undefined) {
+    return;
+  }
+  if (!Array.isArray(data.focusBranches)) {
+    invalid("/focusBranches", "focusBranches must be an array");
+    return;
+  }
+  const focusIds = new Set(
+    (Array.isArray(data.focuses) ? data.focuses : [])
+      .filter(isObject)
+      .map((focus) => focus.id)
+      .filter((id): id is string => typeof id === "string"),
+  );
+  const branchIds = new Set<string>();
+  const placed = new Set<string>();
+  data.focusBranches.forEach((branch, i) => {
+    const path = `/focusBranches/${i}`;
+    if (!isObject(branch)) {
+      invalid(path, "branch must be an object");
+      return;
+    }
+    if (typeof branch.id !== "string" || !branch.id) {
+      invalid(`${path}/id`, "id must be a non-empty string");
+    } else if (branchIds.has(branch.id)) {
+      invalid(`${path}/id`, `duplicate branch id "${branch.id}"`);
+    } else {
+      branchIds.add(branch.id);
+    }
+    if (branch.title !== undefined && typeof branch.title !== "string") {
+      invalid(`${path}/title`, "title must be a string");
+    }
+    if (!Array.isArray(branch.focuses) || branch.focuses.length < 2) {
+      invalid(`${path}/focuses`, "a branch needs at least two focuses");
+    } else {
+      branch.focuses.forEach((id, j) => {
+        if (typeof id !== "string" || !focusIds.has(id)) {
+          invalid(`${path}/focuses/${j}`, `unknown focus "${String(id)}"`);
+        } else if (placed.has(id)) {
+          invalid(
+            `${path}/focuses/${j}`,
+            `focus "${id}" is already in an earlier branch`,
+          );
+        }
+      });
+    }
+    if (
+      branch.requires !== undefined &&
+      (typeof branch.requires !== "string" || !placed.has(branch.requires))
+    ) {
+      invalid(
+        `${path}/requires`,
+        "requires must name a focus of an earlier branch",
+      );
+    }
+    for (const key of ["availableFromTurn", "requiredBeforeTurn"] as const) {
+      const value = branch[key];
+      if (
+        value !== undefined &&
+        (!Number.isInteger(value) || (value as number) < 1)
+      ) {
+        invalid(`${path}/${key}`, `${key} must be a turn number from 1`);
+      }
+    }
+    if (
+      Number.isInteger(branch.availableFromTurn) &&
+      Number.isInteger(branch.requiredBeforeTurn) &&
+      (branch.requiredBeforeTurn as number) <
+        (branch.availableFromTurn as number)
+    ) {
+      invalid(
+        `${path}/requiredBeforeTurn`,
+        "a branch cannot be required before it opens",
+      );
+    }
+    if (Array.isArray(branch.focuses)) {
+      branch.focuses.forEach((id) => {
+        if (typeof id === "string") {
+          placed.add(id);
+        }
+      });
+    }
+  });
+  focusIds.forEach((id) => {
+    if (!placed.has(id)) {
+      report(
+        ctx,
+        "warning",
+        "focus-unused",
+        file,
+        "/focusBranches",
+        `focus "${id}" is in no branch`,
+      );
+    }
+  });
+}
+
 function checkPoliticalConfig(
   ctx: Context,
   file: string,
@@ -2104,32 +2271,7 @@ function checkPoliticalConfig(
     );
   }
   checkRelations(ctx, file, data);
-  if (
-    data.requireFocus !== undefined &&
-    typeof data.requireFocus !== "boolean"
-  ) {
-    report(
-      ctx,
-      "error",
-      "political-config-invalid",
-      file,
-      "/requireFocus",
-      "requireFocus must be a boolean",
-    );
-  }
-  if (
-    data.focusLockEventId !== undefined &&
-    !ctx.eventIds.has(String(data.focusLockEventId))
-  ) {
-    report(
-      ctx,
-      "error",
-      "unknown-event",
-      file,
-      "/focusLockEventId",
-      `unknown event "${String(data.focusLockEventId)}"`,
-    );
-  }
+  checkFocusBranches(ctx, file, data);
   const refs = {
     questions,
     candidateIds: ctx.parties,
@@ -2191,20 +2333,14 @@ function checkPoliticalConfig(
       }
       seen.add(focus.id);
     }
-    if (
-      focus.excludes !== undefined &&
-      (!Array.isArray(focus.excludes) ||
-        focus.excludes.some(
-          (id) => typeof id !== "string" || !ctx.focusIds.has(id),
-        ))
-    ) {
+    if (focus.excludes !== undefined) {
       report(
         ctx,
         "error",
         "focus-invalid",
         file,
         `${path}/excludes`,
-        "excludes must list known focus ids",
+        "excludes is replaced by focusBranches",
       );
     }
     for (const key of ["completeWhen", "failWhen"] as const) {
@@ -2223,7 +2359,7 @@ function checkNewspaper(
   ctx: Context,
   file: string,
   data: unknown,
-  politicalData: unknown,
+  strategic: boolean,
   questions: Map<string, Set<string>>,
 ) {
   if (data === undefined) {
@@ -2235,7 +2371,7 @@ function checkNewspaper(
     invalid("", "newspaper must be an object");
     return;
   }
-  if (!isObject(politicalData) || politicalData.gameMode !== "strategic") {
+  if (!strategic) {
     report(
       ctx,
       "warning",
@@ -2637,6 +2773,31 @@ function checkRelations(ctx: Context, file: string, data: Json) {
   });
 }
 
+function readSidePoliticalConfigs(ctx: Context, playableSides: unknown) {
+  if (!isObject(playableSides)) {
+    return [];
+  }
+  return Object.entries(playableSides).flatMap(([partyId, candidates]) =>
+    isObject(candidates)
+      ? Object.entries(candidates).flatMap(([candidateId, paths]) =>
+          isObject(paths) && paths.politicalConfig !== undefined
+            ? [
+                {
+                  file: String(paths.politicalConfig),
+                  data: readFile(
+                    ctx,
+                    paths.politicalConfig,
+                    "manifest.json",
+                    `/files/playableSides/${partyId}/${candidateId}/politicalConfig`,
+                  ),
+                },
+              ]
+            : [],
+        )
+      : [],
+  );
+}
+
 export function validateCampaign(
   header: CampaignHeaderInput,
   source: CampaignSource,
@@ -2709,6 +2870,13 @@ export function validateCampaign(
   }
 
   const electionConfigFile = String(files.electionConfig);
+  const regionsFile =
+    files.regions === undefined
+      ? undefined
+      : {
+          file: String(files.regions),
+          data: readFile(ctx, files.regions, "manifest.json", "/files/regions"),
+        };
   const sides = checkElectionConfig(
     ctx,
     electionConfigFile,
@@ -2718,6 +2886,7 @@ export function validateCampaign(
       "manifest.json",
       "/files/electionConfig",
     ),
+    regionsFile,
   );
   readFile(
     ctx,
@@ -2759,7 +2928,11 @@ export function validateCampaign(
           "manifest.json",
           "/files/politicalConfig",
         );
-  collectPoliticalIds(ctx, politicalData);
+  const politicalFiles: { file: string; data: unknown }[] = [
+    { file: String(files.politicalConfig), data: politicalData },
+    ...readSidePoliticalConfigs(ctx, files.playableSides),
+  ];
+  politicalFiles.forEach(({ data }) => collectPoliticalIds(ctx, data));
 
   const eventsData =
     files.campaignEvents === undefined
@@ -2798,11 +2971,8 @@ export function validateCampaign(
     );
   }
 
-  checkPoliticalConfig(
-    ctx,
-    String(files.politicalConfig),
-    politicalData,
-    allQuestions,
+  politicalFiles.forEach(({ file, data }) =>
+    checkPoliticalConfig(ctx, file, data, allQuestions),
   );
 
   if (files.newspaper !== undefined) {
@@ -2810,7 +2980,9 @@ export function validateCampaign(
       ctx,
       String(files.newspaper),
       readFile(ctx, files.newspaper, "manifest.json", "/files/newspaper"),
-      politicalData,
+      politicalFiles.some(
+        ({ data }) => isObject(data) && data.gameMode === "strategic",
+      ),
       allQuestions,
     );
   }

@@ -4,6 +4,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { ConfigEngine, StateEngine } from "@/logic/application";
 import {
   buildFinalOutcome,
+  forPlayerSide,
   getEndResultStory,
   getMajorityStatus,
   getMajorityType,
@@ -22,7 +23,10 @@ export function SummaryPage({ results }: { results: FinalResults }) {
   const campaignStateEngine = container.resolve(StateEngine);
   const configEngine = container.resolve(ConfigEngine);
   const campaignState = campaignStateEngine.getCampaignState();
-  const currentConfig = configEngine.getCampaignConfig();
+  const currentConfig = forPlayerSide(
+    configEngine.getCampaignConfig(),
+    campaignState?.playerSide,
+  );
 
   const winner = results.mandates.reduce((max, current) =>
     current.totalSeats > max.totalSeats ? current : max,

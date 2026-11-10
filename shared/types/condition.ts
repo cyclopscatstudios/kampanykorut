@@ -77,5 +77,5 @@ export interface ConditionContext {
   getCandidateStatus(candidateId: string): CandidateStatus;
   playerCandidateId?: string;
   triggeredEventIds: string[];
-  selectedFocusId?: string;
+  selectedFocusIds?: string[];
 }

@@ -1,6 +1,10 @@
 import classNames from "classnames";
 import { t } from "i18next";
-import type { FocusOverview, FocusView } from "@/shared/domain";
+import type {
+  FocusBranchView,
+  FocusOverview,
+  FocusView,
+} from "@/shared/domain";
 import { Button } from "../../../../../../shared/ui/Button";
 import { HoverDetail } from "./DashboardTile";
 import { FocusEmblem } from "./FocusEmblem";
@@ -13,23 +17,77 @@ export function FocusTab({
   overview: FocusOverview;
   onSelect: (focusId: string) => void;
 }) {
+  const single = overview.branches.length === 1 && !overview.branches[0].title;
   return (
     <section
       aria-label={t("politicalDashboard.tabs.focuses")}
-      className="flex flex-col gap-5"
+      className="flex flex-col gap-8"
     >
+      {overview.branches.map((branch, index) => (
+        <BranchSection
+          key={branch.id}
+          branch={branch}
+          heading={
+            single
+              ? undefined
+              : (branch.title ??
+                t("politicalDashboard.focus.branch", { index: index + 1 }))
+          }
+          onSelect={onSelect}
+        />
+      ))}
+      <p className="m-0 text-center text-sm text-slate-400">
+        {t("politicalDashboard.focus.finalNote")}
+      </p>
+    </section>
+  );
+}
+
+function BranchSection({
+  branch,
+  heading,
+  onSelect,
+}: {
+  branch: FocusBranchView;
+  heading?: string;
+  onSelect: (focusId: string) => void;
+}) {
+  const schedule =
+    branch.state === "upcoming"
+      ? t("politicalDashboard.focus.availableFrom", {
+          turn: branch.availableFromTurn,
+        })
+      : branch.state === "open" && branch.requiredBeforeTurn
+        ? t("politicalDashboard.focus.requiredBefore", {
+            turn: branch.requiredBeforeTurn,
+          })
+        : undefined;
+
+  return (
+    <section
+      aria-label={heading}
+      data-testid={`focusBranch-${branch.id}`}
+      data-state={branch.state}
+      className="flex flex-col gap-3"
+    >
+      {heading && (
+        <h3 className="m-0 text-center text-base font-bold text-slate-200">
+          {heading}
+        </h3>
+      )}
+      {schedule && (
+        <p
+          className="m-0 text-center text-sm font-semibold text-amber-200"
+          data-testid="focusSchedule"
+        >
+          {schedule}
+        </p>
+      )}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        {overview.focuses.map((focus) => (
+        {branch.focuses.map((focus) => (
           <FocusCard key={focus.id} focus={focus} onSelect={onSelect} />
         ))}
       </div>
-      <p className="m-0 text-center text-sm text-slate-400">
-        {overview.locked
-          ? t("politicalDashboard.focus.lockedNote")
-          : overview.hasOpposites
-            ? t("politicalDashboard.focus.oppositeNote")
-            : t("politicalDashboard.focus.switchNote")}
-      </p>
     </section>
   );
 }

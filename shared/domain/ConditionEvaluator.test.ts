@@ -233,7 +233,7 @@ describe("evaluateCondition", () => {
       expect(
         evaluateCondition(
           condition,
-          context({ selectedFocusId: "without_kadar" }),
+          context({ selectedFocusIds: ["without_kadar"] }),
         ),
       ).toBe(true);
     });

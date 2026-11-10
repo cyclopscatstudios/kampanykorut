@@ -1,0 +1,281 @@
+[
+  {
+    "id": "kadar_szakadas",
+    "label": "Kádár kilép az MSZMP-ből",
+    "once": true,
+    "priority": 100,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q3_kadar",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "split-party",
+            "partyId": "kadar_part",
+            "from": {
+              "mszmp": 0.22
+            },
+            "fromByMegye": {
+              "1": {
+                "mszmp": 0.28
+              },
+              "11": {
+                "mszmp": 0.3
+              }
+            }
+          },
+          {
+            "type": "set-relation",
+            "relationId": "kadar",
+            "tone": "bad",
+            "label": "Szakítás",
+            "description": "Kádár János és hívei kiléptek, és saját listát állítottak."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kettészakadt az MSZMP",
+      "body": "Kádár János és a pártapparátus egy része kivált, és Szocialista Munkáspárt néven önálló listát állít. Budapesten és Borsodban sok tag követi őket.",
+      "icon": "scissors",
+      "major": true
+    }
+  },
+  {
+    "id": "kadar_kompromisszum",
+    "label": "Kádár marad",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q3_kadar",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "kadar",
+            "tone": "calm",
+            "label": "Fegyverszünet",
+            "description": "Kádár megkapta a pártszervezetet, és egyelőre hallgat."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kadar_ertekezlet",
+    "label": "Pártértekezlet",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q3_kadar",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "kadar",
+            "tone": "tense",
+            "label": "Kivár",
+            "description": "Az értekezlet Nagy Imre mellett döntött, de Kádár köre nem nyugodott bele."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "corvin_birosag",
+    "label": "Bírósági út",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q1_igazsagtetel",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "corvin",
+            "tone": "calm",
+            "label": "Türelmes",
+            "description": "A felkelők kivárják a pereket, de figyelnek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q1_igazsagtetel",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "corvin",
+            "tone": "bad",
+            "label": "Felháborodott",
+            "description": "A Corvin köz árulásnak tartja a megbékélést."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q1_igazsagtetel",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "corvin",
+            "tone": "good",
+            "label": "Elégedett",
+            "description": "Pongrátz Gergely kiáll melletted."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kethly_valasz",
+    "label": "Kéthly válasza",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q4_kethly",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "kethly",
+            "tone": "good",
+            "label": "Szövetséges",
+            "description": "Kéthly Anna elfogadta a garanciákat."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q4_kethly",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "kethly",
+            "tone": "tense",
+            "label": "Gyanakvó",
+            "description": "Kéthly szerint a halogatás rossz jel."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q4_kethly",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "kethly",
+            "tone": "bad",
+            "label": "Elutasító",
+            "description": "Kéthly az 1948-as kényszeregyesítést látja benne."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "munkastanacsok_valasz",
+    "label": "Munkástanácsok",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q5_fold_es_gyar",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "munkastanacsok",
+            "tone": "good",
+            "label": "Mellettük állsz",
+            "description": "A gyári tanácsok valódi jogot kaptak."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q5_fold_es_gyar",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "munkastanacsok",
+            "tone": "bad",
+            "label": "Csalódott",
+            "description": "A tanácsok szerint visszatért a tervhivatal."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "moszkva_valasz",
+    "label": "Moszkva",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q6_semlegesseg",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "moszkva",
+            "tone": "tense",
+            "label": "Aggódik",
+            "description": "Moszkva nyugati sodródástól tart."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "q6_semlegesseg",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "moszkva",
+            "tone": "good",
+            "label": "Elfogadja",
+            "description": "A kereskedelmi szerződés megnyugtatta a Kremlt."
+          }
+        ]
+      }
+    ]
+  }
+]

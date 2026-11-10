@@ -11,7 +11,7 @@ import {
   getBarScale,
   getScopedEstimate,
 } from "./districtEstimate.utils";
-import { getDistrictName } from "./districtInsight.utils";
+import { getDistrictTitle } from "./districtInsight.utils";
 import type { SwingFactor } from "./swingFactor.utils";
 
 const TOSSUP_COLOR = "#e5b93a";
@@ -44,7 +44,7 @@ export function DistrictEstimate({
 
   const title = isNational
     ? t(isCityMap ? "estimatePanel.cityTitle" : "estimatePanel.nationalTitle")
-    : district && `${district.megye} ${getDistrictName(district, isCityMap)}`;
+    : district && getDistrictTitle(district, isCityMap);
   const subtitle = isNational
     ? t(
         isCityMap
@@ -52,7 +52,9 @@ export function DistrictEstimate({
           : "estimatePanel.nationalSubtitle",
       )
     : district &&
-      `${district.telepules} · ${t("estimatePanel.districtSubtitle")}`;
+      (district.telepules === district.megye
+        ? t("estimatePanel.districtSubtitle")
+        : `${district.telepules} · ${t("estimatePanel.districtSubtitle")}`);
 
   return (
     <div className="flex h-full flex-col gap-3.5 px-5 pt-4.5 pb-4">

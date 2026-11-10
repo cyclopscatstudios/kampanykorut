@@ -1,6 +1,5 @@
 {
   "gameMode": "strategic",
-  "requireFocus": true,
   "focuses": [
     {
       "id": "coalition_ready",
@@ -12,8 +11,7 @@
         "type": "answer-selected",
         "questionId": "prop_q2",
         "answerId": "A"
-      },
-      "excludes": ["own_majority"]
+      }
     },
     {
       "id": "own_majority",
@@ -26,6 +24,13 @@
         "questionId": "prop_q2",
         "answerId": "A"
       }
+    }
+  ],
+  "focusBranches": [
+    {
+      "id": "direction",
+      "focuses": ["coalition_ready", "own_majority"],
+      "requiredBeforeTurn": 1
     }
   ],
   "relationGroups": [
@@ -84,7 +89,7 @@
       "title": "Széles koalíció",
       "body": "Teszt epilógus: a kampány alatti nyitás meghozta a kormánytöbbséget.",
       "icon": "people-fill",
-      "outcomes": ["coalition"]
+      "outcomes": ["coalition", "weak-coalition"]
     },
     {
       "id": "alone",

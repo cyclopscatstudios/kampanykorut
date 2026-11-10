@@ -13,8 +13,15 @@ export interface PoliticalFocus {
   icon?: BootstrapIcon;
   completeWhen?: Condition;
   failWhen?: Condition;
-  // Focus ids that can no longer be chosen once this one is selected.
-  excludes?: string[];
+}
+
+export interface FocusBranch {
+  id: string;
+  title?: string;
+  focuses: string[];
+  requires?: string;
+  availableFromTurn?: number;
+  requiredBeforeTurn?: number;
 }
 
 export type RelationTone = "good" | "calm" | "tense" | "bad";
@@ -26,8 +33,6 @@ export const RELATION_TONES: readonly RelationTone[] = [
   "bad",
 ];
 
-// The qualitative standing of a relation: a tone plus a one-word label and a
-// longer explanation shown on hover. No numbers are ever exposed.
 export interface RelationStanding {
   tone: RelationTone;
   label: string;
@@ -50,19 +55,15 @@ export interface Relation extends RelationStanding {
 export interface PoliticalConfig {
   gameMode: GameMode;
   focuses?: PoliticalFocus[];
+  focusBranches?: FocusBranch[];
   relationGroups?: RelationGroup[];
   relations?: Relation[];
-  // Once this event has triggered, the chosen focus can no longer be changed.
-  focusLockEventId?: string;
-  // No district can be visited until the player has chosen a focus.
-  requireFocus?: boolean;
   coalition?: CoalitionConfig;
   epilogues?: Epilogue[];
 }
 
 export interface CoalitionPartner {
   partyId: string;
-  // Without a condition the party always accepts the offer.
   acceptWhen?: Condition;
   acceptReason: string;
   rejectReason: string;
@@ -75,12 +76,14 @@ export interface CoalitionConfig {
 export type GovernmentOutcome =
   | "single-majority"
   | "coalition"
+  | "weak-coalition"
   | "failed"
   | "opposition";
 
 export const GOVERNMENT_OUTCOMES: readonly GovernmentOutcome[] = [
   "single-majority",
   "coalition",
+  "weak-coalition",
   "failed",
   "opposition",
 ];
@@ -90,7 +93,6 @@ export interface Epilogue {
   title: string;
   body: string;
   icon?: BootstrapIcon;
-  // The first epilogue whose outcomes and condition both match is shown.
   outcomes?: GovernmentOutcome[];
   when?: Condition;
 }
@@ -106,10 +108,11 @@ export interface CoalitionState {
 
 export interface PoliticalDashboardState {
   seenEventIds: string[];
+  selectedFocusIds?: string[];
+  focusChosenAtTurn?: number;
   selectedFocusId?: string;
   relations?: Record<string, RelationStanding & { changedAtTurn: number }>;
   seenRelationIds?: string[];
-  // "focusId:status" of the chosen focus when the dashboard was last opened.
   seenFocusStatus?: string;
 }
 
@@ -118,4 +121,5 @@ export type FocusStatus =
   | "selected"
   | "completed"
   | "failed"
-  | "excluded";
+  | "excluded"
+  | "upcoming";

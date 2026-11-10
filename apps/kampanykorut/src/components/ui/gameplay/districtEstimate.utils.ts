@@ -122,7 +122,7 @@ function buildEstimate(
         partyId,
         partyName: party?.name ?? partyId,
         color: party?.color ?? FALLBACK_COLOR,
-        candidateName: candidates?.[partyId]?.[0],
+        candidateName: candidates?.[partyId]?.[0] ?? party?.leader,
         percent,
         low: Math.max(0, percent - margin),
         high: Math.min(100, percent + margin),

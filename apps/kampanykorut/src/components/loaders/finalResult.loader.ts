@@ -1,7 +1,7 @@
 import { type LoaderFunctionArgs, redirect } from "react-router";
 import { container } from "tsyringe";
 import { ConfigEngine, StateEngine } from "@/logic/application";
-import { needsCoalitionOffer } from "@/shared/domain";
+import { forPlayerSide, needsCoalitionOffer } from "@/shared/domain";
 import { createLogger, setLogTags } from "@/shared/logger";
 import { loadCampaignConfig } from "../../logic/application/loadCampaignConfig";
 
@@ -35,7 +35,10 @@ export async function finalResultLoader({ params }: LoaderFunctionArgs) {
     configEngine.configure(config, campaignId, true);
   }
 
-  const config = configEngine.getCampaignConfig(campaignId);
+  const config = forPlayerSide(
+    configEngine.getCampaignConfig(campaignId),
+    state.playerSide,
+  );
   if (needsCoalitionOffer(state, config)) {
     throw redirect(
       `/game/${campaignId}/coalition?sessionId=${stateEngine.getSessionId()}`,

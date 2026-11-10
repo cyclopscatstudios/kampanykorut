@@ -3,6 +3,7 @@ import { container } from "tsyringe";
 import {
   acknowledgeAnnouncement as acknowledge,
   createConditionCheck,
+  forPlayerSide,
   getParliamentaryConfig,
   getPlayerVoteKey,
   getVisibleParties,
@@ -125,7 +126,7 @@ export function useElectionState(campaignId: string) {
       );
       newGameState = publishNewspaperEdition(
         played,
-        config,
+        forPlayerSide(config, played.playerSide),
         createConditionCheck(
           played,
           [
@@ -287,14 +288,19 @@ export function useElectionState(campaignId: string) {
   };
 
   const candidates = gameState?.candidates;
+  const playerSide = gameState?.playerSide;
   const visibleConfig = useMemo(() => {
+    const sideConfig = forPlayerSide(config, playerSide);
     const parties = getVisibleParties(config.electionConfig.parties, {
       candidates,
     });
     return parties.length === config.electionConfig.parties.length
-      ? config
-      : { ...config, electionConfig: { ...config.electionConfig, parties } };
-  }, [config, candidates]);
+      ? sideConfig
+      : {
+          ...sideConfig,
+          electionConfig: { ...config.electionConfig, parties },
+        };
+  }, [config, candidates, playerSide]);
 
   return {
     state: gameState,

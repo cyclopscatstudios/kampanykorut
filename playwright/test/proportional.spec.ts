@@ -118,10 +118,9 @@ test("proportional test campaign: a focus must be chosen before the first visit"
   await expect(statusButton).toHaveAttribute("aria-current", "page");
   await page.getByRole("tab", { name: "Fókuszok" }).click();
   await page.getByTestId("selectFocus-coalition_ready").click();
-  await expect(page.getByTestId("selectFocus-own_majority")).toHaveCount(0);
-  await expect(
-    page.getByRole("article", { name: "Önálló többség" }).getByText("Kizárva"),
-  ).toBeVisible();
+  // Until the next turn the choice can still be changed.
+  await expect(page.getByTestId("selectFocus-coalition_ready")).toHaveCount(0);
+  await expect(page.getByTestId("selectFocus-own_majority")).toBeVisible();
 
   await page.getByTestId("pollsterMenu").click();
   await page.getByRole("button", { name: "Közvélemény-kutatók" }).hover();
@@ -208,4 +207,46 @@ test("proportional test campaign: a rejected offer leaves no government", async 
   await expect(
     page.getByRole("article", { name: "Epilógus" }).getByText("Patthelyzet"),
   ).toBeVisible();
+});
+
+test("proportional test campaign: a second partner makes the government weak", async ({
+  page,
+  playCampaign,
+}) => {
+  const seedData = await playCampaign(
+    CAMPAIGN_ID,
+    "green_party",
+    "emma_wilson",
+  );
+  // The red party only joins a player who followed the coalition focus.
+  await page.evaluate(() =>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).kampanykorut.updateCampaignState({
+      politicalDashboard: {
+        seenEventIds: [],
+        selectedFocusIds: ["coalition_ready"],
+      },
+    }),
+  );
+
+  await page.goto(
+    `/game/${CAMPAIGN_ID}/coalition?sessionId=${seedData?.sessionId}`,
+  );
+  const hint = page.getByTestId("coalitionPartnerHint");
+  await expect(hint).toHaveText(
+    "Egy partner a legjobb: minden további partner gyengíti a kormányodat.",
+  );
+  await page.getByTestId("coalitionPartner-yellow_party").click();
+  await page.getByTestId("coalitionPartner-red_party").click();
+  await expect(hint).toHaveText(
+    "2 pártnak ajánlasz. Ha mind elfogadja, gyenge kormányt alakítasz.",
+  );
+  await page.getByTestId("coalitionSubmit").click();
+  await page.getByTestId("coalitionContinue").click();
+
+  const summary = page.getByTestId("governmentSummary");
+  await expect(summary.getByText("Gyenge koalíciós kormány")).toBeVisible();
+  await expect(page.getByTestId("governmentPartners")).toHaveText(
+    "2 koalíciós partnerrel",
+  );
 });

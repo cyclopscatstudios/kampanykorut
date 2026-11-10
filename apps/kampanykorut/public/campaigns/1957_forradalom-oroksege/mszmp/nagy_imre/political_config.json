@@ -1,0 +1,236 @@
+{
+  "gameMode": "strategic",
+  "focuses": [
+    {
+      "id": "lassu_reformok",
+      "title": "Lassú reformok",
+      "summary": "Változtass lépésről lépésre",
+      "description": "A forradalom után az MSZMP-ben is változást várnak. Adj időt a vitáknak, és olyan reformokat vigyél a párt elé, amelyek mögé a különböző irányzatok is felsorakozhatnak.",
+      "icon": "people-fill",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "q3_kadar",
+        "answerId": "A"
+      },
+      "failWhen": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      }
+    },
+    {
+      "id": "forradalom_partja",
+      "title": "A Forradalom pártja",
+      "summary": "Vidd tovább október ügyét",
+      "description": "A forradalom napjaiban az ország kimondta, milyen változásokat akar. Tedd a többpártrendszert, a magyar semlegességet és a munkástanácsok jogait az MSZMP programjának alapjává.",
+      "icon": "fire",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "q3_kadar",
+        "answerId": "C"
+      }
+    },
+    {
+      "id": "baloldali_szovetseg",
+      "title": "Baloldali szövetség",
+      "summary": "Keress közös ügyet a szociáldemokratákkal",
+      "description": "Az MSZMP-t és a szociáldemokratákat sok minden elválasztja, de a bérekről és a munkások jogairól mindkét pártnak van mondanivalója. Ülj tárgyalóasztalhoz Kéthly Annával, és keresd meg, miért érdemes együtt kiállnotok.",
+      "icon": "handshake",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "q4_kethly",
+        "answerId": "A"
+      }
+    },
+    {
+      "id": "munkasokol_vasokol",
+      "title": "Munkásököl-vasököl",
+      "summary": "Sorakoztasd fel a munkásságot az MSZMP mögött",
+      "description": "A gyárakban és a szakszervezetekben már arról vitáznak, ki képviselje őket az új országgyűlésben. Vidd el az MSZMP programját az üzemekbe, és mutasd meg, hogy a munkásság egy zászló alatt is hallathatja a hangját.",
+      "icon": "handshake",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "q4_kethly",
+        "answerId": "A"
+      }
+    }
+  ],
+  "focusBranches": [
+    {
+      "id": "irany",
+      "title": "Merre viszed a pártot?",
+      "focuses": ["lassu_reformok", "forradalom_partja"],
+      "availableFromTurn": 1,
+      "requiredBeforeTurn": 2
+    },
+    {
+      "id": "szovetseg",
+      "title": "Kire támaszkodsz?",
+      "focuses": ["baloldali_szovetseg", "munkasokol_vasokol"],
+      "availableFromTurn": 3,
+      "requiredBeforeTurn": 4
+    }
+  ],
+  "relationGroups": [
+    {
+      "id": "partok",
+      "title": "Pártok",
+      "icon": "flag-fill"
+    },
+    {
+      "id": "tarsadalom",
+      "title": "Társadalom",
+      "icon": "people-fill"
+    },
+    {
+      "id": "kulfold",
+      "title": "Külföld",
+      "icon": "globe-europe-africa"
+    }
+  ],
+  "relations": [
+    {
+      "id": "kadar",
+      "name": "Kádár János",
+      "groupId": "partok",
+      "icon": "person-fill",
+      "tone": "tense",
+      "label": "Elégedetlen",
+      "description": "A pártszervezet embere. Lassabb reformokat akar."
+    },
+    {
+      "id": "kethly",
+      "name": "Kéthly Anna",
+      "groupId": "partok",
+      "icon": "person-fill",
+      "tone": "calm",
+      "label": "Tárgyalna",
+      "description": "Versenytárs és lehetséges partner. Garanciákat vár."
+    },
+    {
+      "id": "corvin",
+      "name": "Corvin köz",
+      "groupId": "tarsadalom",
+      "icon": "shield-fill",
+      "tone": "tense",
+      "label": "Türelmetlen",
+      "description": "A felkelők elszámoltatást követelnek."
+    },
+    {
+      "id": "munkastanacsok",
+      "name": "Munkástanácsok",
+      "groupId": "tarsadalom",
+      "icon": "building-fill",
+      "tone": "calm",
+      "label": "Várakozó",
+      "description": "A gyárak vezetésébe akarnak beleszólni."
+    },
+    {
+      "id": "moszkva",
+      "name": "Moszkva",
+      "groupId": "kulfold",
+      "icon": "star-fill",
+      "tone": "tense",
+      "label": "Gyanakvó",
+      "description": "Elfogadta a semlegességet, de figyel."
+    }
+  ],
+  "coalition": {
+    "partners": [
+      {
+        "partyId": "szdp",
+        "acceptWhen": {
+          "not": {
+            "type": "answer-selected",
+            "questionId": "q4_kethly",
+            "answerId": "C"
+          }
+        },
+        "acceptReason": "Kéthly Anna emlékszik, hogy nem akartad beolvasztani a pártját. Igent mond.",
+        "rejectReason": "Kéthly szerint a közös lista ajánlata 1948-at idézte. Nemet mond."
+      },
+      {
+        "partyId": "petofi",
+        "acceptWhen": {
+          "not": {
+            "type": "answer-selected",
+            "questionId": "q1_igazsagtetel",
+            "answerId": "C"
+          }
+        },
+        "acceptReason": "Bibó István szerint a kormányod a jogállam útján jár. A Petőfi Párt beszáll.",
+        "rejectReason": "A rendkívüli népbíróságok után Bibó István nem vállal közösséget veled."
+      },
+      {
+        "partyId": "fkgp",
+        "acceptWhen": {
+          "type": "answer-selected",
+          "questionId": "q5_fold_es_gyar",
+          "answerId": "B"
+        },
+        "acceptReason": "A beszolgáltatás eltörlése meggyőzte Kovács Bélát. A kisgazdák nagykoalícióra készek.",
+        "rejectReason": "A kisgazdák szerint a programod nem ad biztonságot a gazdáknak."
+      },
+      {
+        "partyId": "kadar_part",
+        "acceptWhen": {
+          "type": "answer-selected",
+          "questionId": "q3_kadar",
+          "answerId": "A"
+        },
+        "acceptReason": "Kádár kész a kiegyezésre.",
+        "rejectReason": "Kádár nem felejti, hogy kizártad. Nemet mond."
+      }
+    ]
+  },
+  "epilogues": [
+    {
+      "id": "ket_munkaspart",
+      "title": "Két munkáspárt",
+      "body": "Az MSZMP kettészakadt, a parlamentben két munkáspárt ül. Nagy Imre megőrizte a forradalom hitelét, de a baloldal megosztott maradt.",
+      "icon": "scissors",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      }
+    },
+    {
+      "id": "forradalom_mandatuma",
+      "title": "A forradalom mandátuma",
+      "body": "Az MSZMP egyedül szerzett többséget. Nagy Imre kormánya erős felhatalmazással kezdheti el az új köztársaság építését.",
+      "icon": "trophy-fill",
+      "outcomes": ["single-majority"]
+    },
+    {
+      "id": "szocialdemokrata_megallapodas",
+      "title": "Baloldali kormány",
+      "body": "Az MSZMP és az SZDP közösen alakít kormányt. Kéthly Anna garanciái a kormányprogram részei lettek.",
+      "icon": "people-fill",
+      "outcomes": ["coalition"],
+      "when": {
+        "type": "answer-selected",
+        "questionId": "q4_kethly",
+        "answerId": "A"
+      }
+    },
+    {
+      "id": "tarka_koalicio",
+      "title": "Tarka koalíció",
+      "body": "Nagy Imre több párttal osztozik a hatalmon. A miniszteri székeket szétosztották, de minden döntés alkuba kerül, és a kormány az első válságnál megingik.",
+      "icon": "people-fill",
+      "outcomes": ["weak-coalition"]
+    },
+    {
+      "id": "koalicios_kormany",
+      "title": "Koalíciós kormány",
+      "body": "Nagy Imre csak más pártok támogatásával kormányozhat. Minden törvényért meg kell küzdeni, de a demokrácia működik.",
+      "icon": "diagram-3-fill",
+      "outcomes": ["coalition"]
+    },
+    {
+      "id": "ellenzekben",
+      "title": "Ellenzékben",
+      "body": "Az MSZMP nem kerül kormányra. Nagy Imre az új demokrácia ellenzéki vezetője lesz, és a forradalom öröksége más pártok kezébe kerül.",
+      "icon": "door-open-fill"
+    }
+  ]
+}

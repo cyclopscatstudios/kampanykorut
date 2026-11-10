@@ -110,7 +110,9 @@
       }
     },
     "electionMap": {
-      "winner": "Winner"
+      "winner": "Winner",
+      "seats": "{{count}} seats",
+      "regionSeats": "{{count}} seats in the region"
     },
     "achievements": {
       "completed": "Earned",
@@ -155,6 +157,9 @@
       "label": "Government",
       "single-majority": "Majority of its own",
       "coalition": "Coalition majority",
+      "weak-coalition": "Weak coalition government",
+      "partners": "With {{count}} coalition partners",
+      "weakHint": "You have to share power with too many parties, so your government will be weak.",
       "failed": "Failed to form a government",
       "opposition": "In opposition",
       "seats": "{{seats}} / {{majority}} seats"
@@ -200,19 +205,21 @@
       "followed": "Followed focus",
       "prompt": "Where will you take the party?",
       "choose": "Choose a direction",
+      "finalNote": "Each fork offers one direction to take. You can still change your choice until the next turn; then it is final and the next fork can open.",
+      "branch": "Fork {{index}}",
       "select": "Follow this",
-      "switchNote": "Choosing only records your intent; it does not change your support. You can still switch until a turning point.",
-      "lockedNote": "The direction is final; the focus can no longer be changed.",
       "status": {
         "available": "Available",
         "selected": "Following",
         "completed": "Completed",
         "failed": "Failed",
+        "upcoming": "Later",
         "excluded": "Excluded"
       },
-      "oppositeNote": "Choosing only records your intent; it does not change your support. Once you choose, the opposite direction is no longer available.",
       "required": "Choose a political focus first",
-      "requiredHint": "Decide on the Political situation page where you take the party, then the campaign can start.",
+      "requiredHint": "Decide on the Political situation page where you take the party, then you can move on.",
+      "availableFrom": "You can choose a direction from turn {{turn}}.",
+      "requiredBefore": "Choose a direction before turn {{turn}}, or you cannot move on.",
       "open": "Choose a focus"
     },
     "relations": {
@@ -354,6 +361,7 @@
     }
   },
   "toaster": {
+    "focusSelected": "Focus selected: {{title}}",
     "settingsUpdated": "Settings updated successfully!",
     "storageQuotaExceeded": "Your browser storage is full, so the game could not be saved. You can keep playing, but progress may be lost if you reload the page.",
     "storageWriteFailed": "The game could not be saved in this browser. You can keep playing, but progress may be lost if you reload the page."
@@ -394,6 +402,8 @@
     "subtitle": "You hold {{seats}} seats; a majority needs {{majority}}. You can make one offer.",
     "potential": "Possible majority",
     "potentialHint": "It only forms if every party you approach accepts the offer.",
+    "partnerHint": "One partner is best: every further partner weakens your government.",
+    "tooManyPartners": "You are making an offer to {{count}} parties. If they all accept, your government will be weak.",
     "governmentSeats": "Government majority",
     "seats": "{{seats}} seats",
     "submit": "Send offer ({{parties}})",

@@ -8,6 +8,7 @@ import {
   NewspaperItem,
   NewspaperState,
 } from "../types";
+import { getCampaignEventState } from "./CampaignStateAccess";
 import { isStrategicMode } from "./PoliticalDashboard";
 
 export const DEFAULT_NEWSPAPER_CADENCE: NewspaperCadence = {
@@ -17,8 +18,6 @@ export const DEFAULT_NEWSPAPER_CADENCE: NewspaperCadence = {
 
 type NewspaperCampaign = Pick<CampaignConfig, "politicalConfig" | "newspaper">;
 
-// The newspaper is a strategic-mode feature for now; a campaign without
-// stories shows nothing of it.
 export function getNewspaper(
   config: NewspaperCampaign,
 ): NewspaperConfig | undefined {
@@ -43,8 +42,6 @@ export function getNewspaperState(
   };
 }
 
-// Prints the next edition once its turn has come and a story is eligible;
-// otherwise the state is returned unchanged and the next turn tries again.
 export function publishNewspaperEdition(
   state: CampaignState,
   config: NewspaperCampaign,
@@ -77,12 +74,16 @@ export function publishNewspaperEdition(
   const item = pickItem(eligible, seed);
   const span = cadence.maxTurns - cadence.minTurns + 1;
   const gap = cadence.minTurns + (hash(`${seed}:gap`) % span);
+  const quiet = getCampaignEventState(state).pendingAnnouncementIds.length > 0;
 
   return {
     ...state,
     newspaper: {
       ...current,
-      editions: [...current.editions, { itemId: item.id, turn: state.turn }],
+      editions: [
+        ...current.editions,
+        { itemId: item.id, turn: state.turn, ...(quiet && { quiet }) },
+      ],
       nextTurn: state.turn + gap,
     },
   };
@@ -115,6 +116,13 @@ export function hasUnreadEdition(
 ): boolean {
   const { editions, readCount } = getNewspaperState(state);
   return editions.length > readCount;
+}
+
+export function shouldOpenEdition(
+  state: Pick<CampaignState, "newspaper">,
+): boolean {
+  const { editions } = getNewspaperState(state);
+  return hasUnreadEdition(state) && !editions[editions.length - 1].quiet;
 }
 
 export function markNewspaperRead(state: CampaignState): CampaignState {

@@ -110,7 +110,9 @@
       }
     },
     "electionMap": {
-      "winner": "Győztes"
+      "winner": "Győztes",
+      "seats": "{{count}} mandátum",
+      "regionSeats": "A régió {{count}} mandátuma"
     },
     "achievements": {
       "completed": "Megszerezve",
@@ -155,6 +157,9 @@
       "label": "Kormányalakítás",
       "single-majority": "Önálló többség",
       "coalition": "Koalíciós többség",
+      "weak-coalition": "Gyenge koalíciós kormány",
+      "partners": "{{count}} koalíciós partnerrel",
+      "weakHint": "Túl sok párttal kell megosztanod a hatalmat, ezért a kormányod gyenge lesz.",
       "failed": "Sikertelen kormányalakítás",
       "opposition": "Ellenzékben",
       "seats": "{{seats}} / {{majority}} mandátum"
@@ -200,19 +205,21 @@
       "followed": "Követett fókusz",
       "prompt": "Merre viszed a pártot?",
       "choose": "Irány választása",
+      "finalNote": "Egy elágazásban egy irányt választhatsz. A döntést a következő fordulóig még megváltoztathatod, utána végleges, és megnyílhat a következő elágazás.",
+      "branch": "{{index}}. elágazás",
       "select": "Ezt követem",
-      "switchNote": "A kijelölés csak a szándékodat rögzíti, a támogatottságodon nem változtat. Egy fordulópontig még válthatsz.",
-      "lockedNote": "Az irány véglegessé vált, a fókusz már nem váltható.",
       "status": {
         "available": "Választható",
         "selected": "Követed",
         "completed": "Teljesült",
         "failed": "Meghiúsult",
+        "upcoming": "Később",
         "excluded": "Kizárva"
       },
-      "oppositeNote": "A kijelölés csak a szándékodat rögzíti, a támogatottságodon nem változtat. Választás után az ellentétes irány már nem választható.",
       "required": "Előbb válassz politikai fókuszt",
-      "requiredHint": "A Politikai helyzet oldalon döntsd el, merre viszed a pártot, utána indulhat a kampány.",
+      "requiredHint": "A Politikai helyzet oldalon döntsd el, merre viszed a pártot, utána haladhatsz tovább.",
+      "availableFrom": "Irányt a {{turn}}. körtől választhatsz.",
+      "requiredBefore": "A {{turn}}. kör előtt válassz irányt, különben nem haladhatsz tovább.",
       "open": "Fókusz választása"
     },
     "relations": {
@@ -354,6 +361,7 @@
     }
   },
   "toaster": {
+    "focusSelected": "Kiválasztott fókusz: {{title}}",
     "settingsUpdated": "Beállítások sikeresen frissültek!",
     "storageQuotaExceeded": "A böngésző tárhelye megtelt, ezért a játékállást nem sikerült menteni. A játék folytatható, de az oldal újratöltésekor a haladás elveszhet.",
     "storageWriteFailed": "A játékállást nem sikerült menteni ebben a böngészőben. A játék folytatható, de az oldal újratöltésekor a haladás elveszhet."
@@ -394,6 +402,8 @@
     "subtitle": "{{seats}} mandátumod van, a többséghez {{majority}} kell. Egyszer tehetsz ajánlatot.",
     "potential": "Lehetséges többség",
     "potentialHint": "Csak akkor jön létre, ha minden megkeresett párt elfogadja az ajánlatot.",
+    "partnerHint": "Egy partner a legjobb: minden további partner gyengíti a kormányodat.",
+    "tooManyPartners": "{{count}} pártnak ajánlasz. Ha mind elfogadja, gyenge kormányt alakítasz.",
     "governmentSeats": "Kormánytöbbség",
     "seats": "{{seats}} mandátum",
     "submit": "Ajánlat elküldése ({{parties}})",

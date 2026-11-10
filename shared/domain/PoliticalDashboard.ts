@@ -4,6 +4,7 @@ import {
   CampaignEventAnnouncement,
   CampaignState,
   GameMode,
+  PlayerSide,
 } from "../types";
 import { getCampaignEventState } from "./CampaignStateAccess";
 import type { Answers } from "./ConditionCheck";
@@ -22,6 +23,18 @@ export interface DashboardOverview {
   latestEvent?: PublicEvent;
   publicEventCount: number;
   hasUnseenEvents: boolean;
+}
+
+// A playable candidate may bring its own political config (focuses, relations,
+// coalition, epilogues), which then replaces the campaign-wide one.
+export function forPlayerSide<
+  T extends Pick<CampaignConfig, "politicalConfig" | "playableSides">,
+>(config: T, playerSide: PlayerSide | undefined): T {
+  const own = playerSide?.candidateId
+    ? config.playableSides?.[playerSide.partyId]?.[playerSide.candidateId]
+        ?.politicalConfig
+    : undefined;
+  return own ? { ...config, politicalConfig: own } : config;
 }
 
 export function getGameMode(

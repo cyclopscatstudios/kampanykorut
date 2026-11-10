@@ -121,6 +121,9 @@ describe("Coalition", () => {
     expect(needsCoalitionOffer({ ...hung, isEnded: false }, config)).toBe(
       false,
     );
+    const second = stateWith({ green: 150, red: 180, yellow: 70 });
+    expect(needsCoalitionOffer(second, config)).toBe(false);
+    expect(getGovernmentOutcome(second, config)).toBe("opposition");
     const classic = {
       ...config,
       politicalConfig: { ...config.politicalConfig!, gameMode: "classic" },
@@ -148,7 +151,8 @@ describe("Coalition", () => {
     ]);
     expect(buildCoalitionResult(accepted, config)).toMatchObject({
       seats: 360,
-      outcome: "coalition",
+      outcome: "weak-coalition",
+      partnerCount: 2,
     });
   });
 
@@ -185,7 +189,18 @@ describe("Coalition", () => {
       outcome: "coalition",
       playerSeats: 180,
       governmentSeats: 330,
+      partnerCount: 1,
       epilogue: { id: "united" },
+    });
+    const broad = submitCoalitionOffer(hung, config, answeredA, [
+      "red",
+      "yellow",
+    ]);
+    expect(buildFinalOutcome(broad, config, answeredA)).toMatchObject({
+      outcome: "weak-coalition",
+      governmentSeats: 360,
+      partnerCount: 2,
+      epilogue: { id: "fallback" },
     });
     const withoutA = submitCoalitionOffer(hung, config, [], ["red"]);
     expect(buildFinalOutcome(withoutA, config, [])).toMatchObject({
@@ -209,6 +224,9 @@ describe("getEndResultStory", () => {
       "playerSideVictory",
     );
     expect(getEndResultStory("single-majority", true, false)).toBe(
+      "playerSideVictory",
+    );
+    expect(getEndResultStory("weak-coalition", false, true)).toBe(
       "playerSideVictory",
     );
     expect(getEndResultStory("failed", false, true)).toBe("deadlock");

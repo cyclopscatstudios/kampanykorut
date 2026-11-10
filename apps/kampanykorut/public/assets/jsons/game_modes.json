@@ -75,5 +75,16 @@
     "campaignBanner": "default-banner.png",
     "thinCampaignBanner": "default-banner-thin.png",
     "isPublished": false
+  },
+  {
+    "id": "1957_forradalom_oroksege",
+    "label": "1957: A forradalom öröksége",
+    "description": "Alternatív történelem: 1956-ban elmarad a szovjet invázió, és 1957 őszén szabad választás jön. Nagy Imre MSZMP-jével kell megnyerned az első szabad választást, és meg kell őrizned a forradalom örökségét.",
+    "year": 1957,
+    "route": "1957_forradalom-oroksege",
+    "tags": ["alternate-history"],
+    "campaignBanner": "default-banner.png",
+    "thinCampaignBanner": "default-banner-thin.png",
+    "isPublished": false
   }
 ]

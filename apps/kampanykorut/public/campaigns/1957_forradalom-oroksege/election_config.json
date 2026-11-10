@@ -1,0 +1,148 @@
+{
+  "title": "A forradalom öröksége",
+  "year": "1957",
+  "intro": {
+    "title": "A forradalom öröksége",
+    "subtitle": "Magyarország · 1957 eleje",
+    "text": "1956. október 23-án tüntetők vonultak Budapest utcáira. Estére eldördültek az első lövések, a tüntetésből pedig forradalom lett. Napokig tartottak a véres összecsapások. A szovjet csapatok végül kivonultak, Magyarország pedig kimondta semlegességét.\n\nA harcok után Nagy Imre vezetésével széles koalíciós kormány alakult. Egy asztalhoz ültek a szocialisták, a kisgazdák, a szociáldemokraták és a parasztpártiak. A forradalom napjaiban összefogtak. Most együtt kell kormányozniuk egy országot, amelynek a jövőjéről már nagyon különbözően gondolkodnak.\n\n1957 elején járunk. Októberben szabad országgyűlési választást tartanak. A pártok újjászerveződnek, a munkástanácsok beleszólást követelnek a gyárak irányításába, a felkelők pedig számonkérést sürgetnek a sortüzekért. Közben a kormánynak Moszkvával is tárgyalnia kell, hogy a kivívott semlegességet megőrizze.\n\nNagy Imre a forradalom arca, és egyelőre az ő pártja a legerősebb. A többséghez azonban várhatóan szövetségesekre lesz szüksége. Októberben az ország arról dönt, kire bízza a kormányzást, és a forradalom ígéretei közül melyekből lesz törvény."
+  },
+  "election": {
+    "type": "proportional"
+  },
+  "listSeats": 50,
+  "allSeats": 400,
+  "thresholdPercent": 0,
+  "districtMap": "1945",
+  "districtBoost": true,
+  "parties": [
+    {
+      "id": "mszmp",
+      "name": "Magyar Szocialista Munkáspárt",
+      "leader": "Nagy Imre",
+      "color": "#c62828"
+    },
+    {
+      "id": "fkgp",
+      "name": "Független Kisgazdapárt",
+      "leader": "Kovács Béla",
+      "color": "#2e7d32"
+    },
+    {
+      "id": "szdp",
+      "name": "Szociáldemokrata Párt",
+      "leader": "Kéthly Anna",
+      "color": "#ef6c00"
+    },
+    {
+      "id": "petofi",
+      "name": "Petőfi Párt",
+      "leader": "Bibó István",
+      "color": "#f9a825"
+    },
+    {
+      "id": "dnp",
+      "name": "Demokrata Néppárt",
+      "leader": "Barankovics István",
+      "color": "#1e88e5"
+    },
+    {
+      "id": "kadar_part",
+      "name": "Szocialista Munkáspárt (Kádár)",
+      "leader": "Kádár János",
+      "color": "#6d1b1b",
+      "dormant": true
+    }
+  ],
+  "partyListVotes": {
+    "mszmp": 1810159,
+    "szdp": 958319,
+    "fkgp": 1437481,
+    "petofi": 532398,
+    "dnp": 425919,
+    "_other": 159722
+  },
+  "playableSides": [
+    {
+      "id": "mszmp",
+      "label": "MSZMP",
+      "description": "A forradalom napjaiban újjáalakult reformszocialista párt. A legnagyobb tábor az övé, de a régi pártállam öröksége bizalmatlanságot kelt.",
+      "mainCandidates": [
+        {
+          "id": "nagy_imre",
+          "label": "Nagy Imre",
+          "description": "A forradalmi kormány miniszterelnöke, a semlegesség kimondója. Az ország legismertebb politikusa."
+        },
+        {
+          "id": "kadar_janos",
+          "label": "Kádár János",
+          "description": "Az MSZMP egyik alapítója, a pártszervezet és a fokozatosság embere."
+        },
+        {
+          "id": "losonczy_geza",
+          "label": "Losonczy Géza",
+          "description": "Államminiszter, Nagy Imre reformköréhez tartozik."
+        }
+      ],
+      "playableCandidates": ["nagy_imre"]
+    },
+    {
+      "id": "fkgp",
+      "label": "Kisgazdapárt",
+      "description": "Az 1945-ös választás győztese. A vidék, a földtulajdon és a polgári szabadságjogok pártja.",
+      "mainCandidates": [
+        {
+          "id": "kovacs_bela",
+          "label": "Kovács Béla",
+          "description": "A párt főtitkára, a szovjet fogságból hazatért kisgazda vezető."
+        },
+        {
+          "id": "tildy_zoltan",
+          "label": "Tildy Zoltán",
+          "description": "Volt köztársasági elnök, a forradalmi kormány államminisztere."
+        }
+      ]
+    },
+    {
+      "id": "szdp",
+      "label": "Szociáldemokrata Párt",
+      "description": "Önálló munkáspárt, amely nem felejtette el az 1948-as kényszeregyesítést.",
+      "mainCandidates": [
+        {
+          "id": "kethly_anna",
+          "label": "Kéthly Anna",
+          "description": "A párt elnöke, a demokratikus baloldal legismertebb alakja."
+        }
+      ]
+    },
+    {
+      "id": "petofi",
+      "label": "Petőfi Párt",
+      "description": "A népi írók és a parasztság pártja, harmadikutas programmal.",
+      "mainCandidates": [
+        {
+          "id": "farkas_ferenc",
+          "label": "Farkas Ferenc",
+          "description": "A párt főtitkára."
+        },
+        {
+          "id": "bibo_istvan",
+          "label": "Bibó István",
+          "description": "Államminiszter, jogtudós, a demokratikus átmenet gondolkodója."
+        }
+      ]
+    },
+    {
+      "id": "dnp",
+      "label": "Demokrata Néppárt",
+      "description": "Kereszténydemokrata párt, a vallásszabadság és a szociális igazságosság képviselője.",
+      "mainCandidates": [
+        {
+          "id": "farkas_denes",
+          "label": "Farkas Dénes",
+          "description": "Az újjáalakult párt vezetője."
+        }
+      ]
+    }
+  ],
+  "electionAssets": []
+}

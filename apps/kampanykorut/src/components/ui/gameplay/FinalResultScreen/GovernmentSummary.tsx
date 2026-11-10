@@ -3,6 +3,7 @@ import type { FinalOutcome } from "@/shared/domain";
 import type { BootstrapIcon, GovernmentOutcome } from "@/shared/types";
 import { useTranslate } from "../../../../../../../shared/logic/hooks/useTranslateLang";
 import { Icon } from "../../../../../../../shared/ui/Icon";
+import { Tooltip } from "../../../../../../../shared/ui/Tooltip";
 
 const outcomeStyle: Record<
   GovernmentOutcome,
@@ -15,6 +16,10 @@ const outcomeStyle: Record<
   coalition: {
     icon: "bank2",
     className: "bg-green-400/8 text-green-200 shadow-[inset_0_0_0_2px_#4ade80]",
+  },
+  "weak-coalition": {
+    icon: "people-fill",
+    className: "bg-amber-400/8 text-amber-200 shadow-[inset_0_0_0_2px_#e0a23b]",
   },
   failed: {
     icon: "exclamation-triangle-fill",
@@ -29,8 +34,9 @@ const outcomeStyle: Record<
 export function GovernmentOutcomeBadge({ outcome }: { outcome: FinalOutcome }) {
   const t = useTranslate();
   const style = outcomeStyle[outcome.outcome];
+  const weak = outcome.outcome === "weak-coalition";
 
-  return (
+  const badge = (
     <div
       data-testid="governmentSummary"
       className={classNames(
@@ -46,6 +52,16 @@ export function GovernmentOutcomeBadge({ outcome }: { outcome: FinalOutcome }) {
         <span className="text-lg font-extrabold text-slate-50">
           {t(`endResult.government.${outcome.outcome}`)}
         </span>
+        {outcome.partnerCount > 0 && (
+          <span
+            className="text-sm font-semibold"
+            data-testid="governmentPartners"
+          >
+            {t("endResult.government.partners", {
+              count: outcome.partnerCount,
+            })}
+          </span>
+        )}
       </span>
       <span className="ml-auto text-sm font-semibold">
         {t("endResult.government.seats", {
@@ -54,6 +70,12 @@ export function GovernmentOutcomeBadge({ outcome }: { outcome: FinalOutcome }) {
         })}
       </span>
     </div>
+  );
+
+  return weak ? (
+    <Tooltip content={t("endResult.government.weakHint")}>{badge}</Tooltip>
+  ) : (
+    badge
   );
 }
 

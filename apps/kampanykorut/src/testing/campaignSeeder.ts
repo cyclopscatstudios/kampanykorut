@@ -40,6 +40,11 @@ export class CampaignApi {
     return this.stateEngine.getCampaignState();
   }
 
+  updateCampaignState(patch: Partial<CampaignState>) {
+    this.stateEngine.updateCampaignState(patch);
+    return this.stateEngine.getCampaignState();
+  }
+
   /**
    * Plays a full campaign headlessly through the real CampaignEngine (same domain
    * logic/effects/mandate calculation as a UI playthrough), driven by `answerPlan`

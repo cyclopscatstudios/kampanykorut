@@ -40,6 +40,7 @@ export interface CoalitionResult {
   seats: number;
   majority: number;
   outcome: GovernmentOutcome;
+  partnerCount: number;
 }
 
 export interface FinalOutcome {
@@ -47,8 +48,13 @@ export interface FinalOutcome {
   playerSeats: number;
   governmentSeats: number;
   majority: number;
+  partnerCount: number;
   epilogue?: Epilogue;
 }
+
+// One partner still leaves a working government; every further one waters
+// it down, so a broad coalition is never worth it.
+export const MAX_STRONG_COALITION_PARTNERS = 1;
 
 function getSeatSetup(state: CampaignState, config: CoalitionConfig) {
   const parliamentary = getParliamentaryConfig(config.electionConfig);
@@ -69,11 +75,19 @@ function getSeatSetup(state: CampaignState, config: CoalitionConfig) {
       seats: mandates.find((m) => m.party === partyId)?.totalSeats ?? 0,
     };
   };
+  const player = toSeatParty(state.playerSide?.partyId ?? "");
+  const largestRival = Math.max(
+    0,
+    ...mandates
+      .filter((m) => m.party !== player.partyId)
+      .map((m) => m.totalSeats),
+  );
   return {
-    player: toSeatParty(state.playerSide?.partyId ?? ""),
+    player,
     toSeatParty,
     allSeats: parliamentary.allSeats,
     majority: getMajorityThresholds(parliamentary.allSeats).simple,
+    isLargest: player.seats > 0 && player.seats >= largestRival,
   };
 }
 
@@ -102,8 +116,6 @@ export function buildCoalitionView(
   };
 }
 
-// The coalition phase only opens once, after a proportional election in which
-// the player's party won seats but no majority of its own.
 export function needsCoalitionOffer(
   state: CampaignState,
   config: CoalitionConfig,
@@ -114,13 +126,12 @@ export function needsCoalitionOffer(
   const view = buildCoalitionView(state, config);
   return (
     view !== undefined &&
+    getSeatSetup(state, config)?.isLargest === true &&
     view.partners.length > 0 &&
-    view.player.seats > 0 &&
     view.player.seats < view.majority
   );
 }
 
-// All offers are answered at once; a partner without a condition accepts.
 export function submitCoalitionOffer(
   state: CampaignState,
   config: CoalitionConfig,
@@ -168,14 +179,20 @@ export function buildCoalitionResult(
       };
     },
   );
+  const accepted = responses.filter((r) => r.accepted);
   const seats =
-    setup.player.seats +
-    responses.filter((r) => r.accepted).reduce((sum, r) => sum + r.seats, 0);
+    setup.player.seats + accepted.reduce((sum, r) => sum + r.seats, 0);
   return {
     responses,
     seats,
     majority: setup.majority,
-    outcome: seats >= setup.majority ? "coalition" : "failed",
+    outcome:
+      seats < setup.majority
+        ? "failed"
+        : accepted.length > MAX_STRONG_COALITION_PARTNERS
+          ? "weak-coalition"
+          : "coalition",
+    partnerCount: accepted.length,
   };
 }
 
@@ -190,7 +207,7 @@ export function getGovernmentOutcome(
   if (setup.player.seats >= setup.majority) {
     return "single-majority";
   }
-  if (setup.player.seats === 0) {
+  if (!setup.isLargest) {
     return "opposition";
   }
   return buildCoalitionResult(state, config)?.outcome ?? "failed";
@@ -213,14 +230,15 @@ export function buildFinalOutcome(
       (!e.when || holds(e.when)),
   );
   const coalition = buildCoalitionResult(state, config);
+  const inCoalition =
+    (outcome === "coalition" || outcome === "weak-coalition") &&
+    coalition !== undefined;
   return {
     outcome,
     playerSeats: setup.player.seats,
-    governmentSeats:
-      outcome === "coalition" && coalition
-        ? coalition.seats
-        : setup.player.seats,
+    governmentSeats: inCoalition ? coalition.seats : setup.player.seats,
     majority: setup.majority,
+    partnerCount: inCoalition ? coalition.partnerCount : 0,
     epilogue,
   };
 }
@@ -230,8 +248,6 @@ export type EndResultStory =
   | "playerSideDefeat"
   | "deadlock";
 
-// In strategic mode the story follows the government formed, so a coalition
-// after a hung parliament reads as a victory rather than a deadlock.
 export function getEndResultStory(
   outcome: GovernmentOutcome | undefined,
   playerWon: boolean,
@@ -240,6 +256,7 @@ export function getEndResultStory(
   switch (outcome) {
     case "single-majority":
     case "coalition":
+    case "weak-coalition":
       return "playerSideVictory";
     case "failed":
       return "deadlock";

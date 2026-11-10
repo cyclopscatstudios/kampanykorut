@@ -10,6 +10,7 @@ import {
   buildDashboardOverview,
   buildFocusOverview,
   buildRelationGroups,
+  forPlayerSide,
   getFocuses,
   getPublicEvents,
   markFocusSeen,
@@ -24,6 +25,7 @@ import { useNavigation } from "../../../hooks/navigationHook";
 import { useParams } from "../../../hooks/useParamsHook";
 import { getCampaignBadgeInfo } from "../gameplay/campaignBadge.utils";
 import { GameChrome } from "../gameplay/GameChrome";
+import { toaster } from "../gameplay/toaster";
 import { ChronicleTab } from "./ChronicleTab";
 import { FocusTab } from "./FocusTab";
 import { OverviewTab } from "./OverviewTab";
@@ -34,9 +36,14 @@ type DashboardTab = "overview" | "focuses" | "relations" | "chronicle";
 export function PoliticalDashboardPage() {
   const { campaignId = "" } = useParams();
   const stateEngine = container.resolve(StateEngine);
-  const config = container.resolve(ConfigEngine).getCampaignConfig(campaignId);
   const { goToCampaign } = useNavigation();
   const [stored] = useState(() => stateEngine.getCampaignState());
+  const [config] = useState(() =>
+    forPlayerSide(
+      container.resolve(ConfigEngine).getCampaignConfig(campaignId),
+      stored?.playerSide,
+    ),
+  );
   const answers = useMemo(() => stateEngine.getHistory() ?? [], [stateEngine]);
   // Opening the dashboard is what counts as seeing the news, so the stored
   // state is marked seen right away while the "new" markers still come from
@@ -173,15 +180,19 @@ export function PoliticalDashboardPage() {
           {tab === "focuses" && focusOverview && (
             <FocusTab
               overview={focusOverview}
-              onSelect={(focusId) =>
-                setState(
-                  markFocusSeen(
-                    selectFocus(state, config, focusId),
-                    config,
-                    answers,
-                  ),
-                )
-              }
+              onSelect={(focusId) => {
+                const next = selectFocus(state, config, focusId);
+                if (next === state) {
+                  return;
+                }
+                setState(markFocusSeen(next, config, answers));
+                const title = getFocuses(config).find(
+                  (f) => f.id === focusId,
+                )?.title;
+                if (title) {
+                  toaster(t("toaster.focusSelected", { title }), "Success");
+                }
+              }}
             />
           )}
           {tab === "relations" && <RelationsTab groups={relationGroups} />}
