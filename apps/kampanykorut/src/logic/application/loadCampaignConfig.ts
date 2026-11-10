@@ -5,8 +5,8 @@ import {
   CampaignManifest,
   CandidateConfig,
   CandidateManifest,
-  PlayableSideConfig,
   Issue,
+  PlayableSideConfig,
   ProportionalRegion,
 } from "@/shared/types";
 import { ConfigEngine } from "./ConfigEngine";
