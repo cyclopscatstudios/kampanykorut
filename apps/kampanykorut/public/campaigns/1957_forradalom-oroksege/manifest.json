@@ -17,7 +17,9 @@
         "nagy_imre": {
           "questions": "mszmp/nagy_imre/questions.json",
           "answerEffect": "mszmp/nagy_imre/answer_effects.json",
-          "politicalConfig": "mszmp/nagy_imre/political_config.json"
+          "politicalConfig": "mszmp/nagy_imre/political_config.json",
+          "advisorFeedback": "mszmp/nagy_imre/advisor_feedback.json",
+          "advisorFeedbackAssets": "mszmp/nagy_imre/advisor_feedback_assets.json"
         }
       }
     }

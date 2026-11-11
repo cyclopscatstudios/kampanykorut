@@ -238,6 +238,24 @@ describe("evaluateCondition", () => {
       ).toBe(true);
     });
 
+    it("checks the tone of a relation", () => {
+      const condition: Condition = {
+        type: "relation",
+        relationId: "moszkva",
+        tone: ["tense", "bad"],
+      };
+      expect(evaluateCondition(condition, context())).toBe(false);
+      expect(
+        evaluateCondition(condition, context({ getRelationTone: () => "bad" })),
+      ).toBe(true);
+      expect(
+        evaluateCondition(
+          condition,
+          context({ getRelationTone: () => "calm" }),
+        ),
+      ).toBe(false);
+    });
+
     it("checks whether the player plays the candidate", () => {
       const condition: Condition = {
         type: "player-candidate",

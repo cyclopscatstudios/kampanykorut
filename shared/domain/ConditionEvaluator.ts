@@ -89,6 +89,10 @@ function evaluateLeaf(
       return context.triggeredEventIds.includes(condition.eventId);
     case "focus-selected":
       return context.selectedFocusIds?.includes(condition.focusId) ?? false;
+    case "relation": {
+      const tone = context.getRelationTone?.(condition.relationId);
+      return tone !== undefined && condition.tone.includes(tone);
+    }
     default:
       throw new ConditionEvaluationError(
         `unknown condition type "${(condition as { type?: unknown }).type}"`,

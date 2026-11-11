@@ -107,4 +107,29 @@ describe("createConditionContext", () => {
     expect(ctx.triggeredEventIds).toEqual([]);
     expect(ctx.getCandidateStatus("party_a")).toBe("active");
   });
+
+  it("reads a relation's tone from the state, else from its starting tone", () => {
+    const state = {
+      ...mayoralState,
+      politicalDashboard: {
+        seenEventIds: [],
+        relations: {
+          moszkva: {
+            tone: "bad",
+            label: "Rossz",
+            description: "",
+            changedAtTurn: 3,
+          },
+        },
+      },
+    } as CampaignState;
+    const ctx = createConditionContext(state, [], mayoralConfig, [
+      { id: "moszkva", tone: "tense" },
+      { id: "nyugat", tone: "calm" },
+    ]);
+
+    expect(ctx.getRelationTone?.("moszkva")).toBe("bad");
+    expect(ctx.getRelationTone?.("nyugat")).toBe("calm");
+    expect(ctx.getRelationTone?.("corvin")).toBeUndefined();
+  });
 });

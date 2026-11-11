@@ -219,7 +219,12 @@ export function buildFocusOverview(
   answers: Answers,
 ): FocusOverview {
   const selectedIds = getSelectedFocusIds(state);
-  const holds = createConditionCheck(state, answers, config.electionConfig);
+  const holds = createConditionCheck(
+    state,
+    answers,
+    config.electionConfig,
+    config.politicalConfig?.relations,
+  );
   const focuses = new Map(getFocuses(config).map((f) => [f.id, f]));
   const current = getCurrentBranch(state, config);
   const revisable = getRevisableBranch(state, config);

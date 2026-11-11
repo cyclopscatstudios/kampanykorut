@@ -3,6 +3,7 @@ export interface ConditionReferences {
   candidateIds?: Set<string>;
   eventIds?: Set<string>;
   focusIds?: Set<string>;
+  relationIds?: Set<string>;
 }
 
 export interface ConditionIssue {
@@ -13,6 +14,7 @@ export interface ConditionIssue {
 
 const OPERATORS = ["<", "<=", ">", ">="];
 const STATUSES = ["active", "inactive", "dormant"];
+const TONES = ["good", "calm", "tense", "bad"];
 const COMBINATORS = ["and", "or", "not"] as const;
 
 type Json = Record<string, unknown>;
@@ -254,6 +256,35 @@ function check(
           "unknown-focus",
           `${path}/focusId`,
           `unknown focus "${condition.focusId}"`,
+        );
+      }
+      return;
+    case "relation":
+      if (typeof condition.relationId !== "string") {
+        issue(
+          "condition-invalid",
+          `${path}/relationId`,
+          "relationId must be a string",
+        );
+      } else if (
+        refs.relationIds &&
+        !refs.relationIds.has(condition.relationId)
+      ) {
+        issue(
+          "unknown-relation",
+          `${path}/relationId`,
+          `unknown relation "${condition.relationId}"`,
+        );
+      }
+      if (
+        !Array.isArray(condition.tone) ||
+        condition.tone.length === 0 ||
+        condition.tone.some((tone) => !TONES.includes(String(tone)))
+      ) {
+        issue(
+          "condition-invalid",
+          `${path}/tone`,
+          `tone must be a non-empty array of ${TONES.join(", ")}`,
         );
       }
       return;

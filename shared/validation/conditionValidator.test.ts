@@ -6,6 +6,7 @@ const refs: ConditionReferences = {
   candidateIds: new Set(["szentkiralyi", "vitezy", "karacsony"]),
   eventIds: new Set(["szentkiralyi_withdrawal"]),
   focusIds: new Set(["without_kadar"]),
+  relationIds: new Set(["moszkva"]),
 };
 
 const codes = (condition: unknown, references = refs) =>
@@ -163,6 +164,21 @@ describe("validateCondition", () => {
     ]);
   });
 
+  it("checks the relation and tones of a relation condition", () => {
+    expect(
+      codes({ type: "relation", relationId: "moszkva", tone: ["bad"] }),
+    ).toEqual([]);
+    expect(
+      codes({ type: "relation", relationId: "nope", tone: ["sad"] }),
+    ).toEqual([
+      "unknown-relation@/if/relationId",
+      "condition-invalid@/if/tone",
+    ]);
+    expect(
+      codes({ type: "relation", relationId: "moszkva", tone: [] }),
+    ).toEqual(["condition-invalid@/if/tone"]);
+  });
+
   it("skips reference checks that have no reference set", () => {
     expect(
       codes(
@@ -172,6 +188,7 @@ describe("validateCondition", () => {
             { type: "candidate-status", candidateId: "any", status: "active" },
             { type: "event-triggered", eventId: "any" },
             { type: "focus-selected", focusId: "any" },
+            { type: "relation", relationId: "any", tone: ["good"] },
           ],
         },
         {},

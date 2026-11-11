@@ -1,6 +1,6 @@
 [
   {
-    "id": "q1_igazsagtetel",
+    "id": "igazsagtetel",
     "answers": [
       {
         "id": "A",
@@ -42,7 +42,7 @@
     ]
   },
   {
-    "id": "q2_nemzetorseg",
+    "id": "nemzetorseg",
     "answers": [
       {
         "id": "A",
@@ -85,7 +85,242 @@
     ]
   },
   {
-    "id": "q3_kadar",
+    "id": "corvin_hangok",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": 1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 0.2,
+              "fkgp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": -1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 0.2,
+              "dnp": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "szerelvenyek",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": -1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4,
+              "petofi": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "biboros_szava",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "egyhaz",
+              "shift": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "egyhaz",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "dnp": 0.3,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hideg_tel",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "munkastanacsok",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "munkastanacsok",
+              "shift": -1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "regi_apparatus",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": -1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4,
+              "petofi": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kadar_ultimatum",
     "answers": [
       {
         "id": "A",
@@ -125,7 +360,7 @@
     ]
   },
   {
-    "id": "q4_kethly",
+    "id": "kethly_feltetelei",
     "answers": [
       {
         "id": "A",
@@ -168,7 +403,235 @@
     ]
   },
   {
-    "id": "q5_fold_es_gyar",
+    "id": "szakszervezetek",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "szdp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "munkastanacsok",
+              "shift": -1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "munkastanacsok",
+              "shift": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mult_felelosei",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": -1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ket_munkaspart",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.2,
+              "szdp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "munkastanacsok",
+              "shift": 1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4,
+              "kadar_part": -0.4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "egyetemistak",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "petofi": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": 1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fold_es_beszolgaltatas",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "fold",
+              "position": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "fold",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "fold",
+              "shift": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kie_a_gyar",
     "answers": [
       {
         "id": "A",
@@ -186,10 +649,10 @@
         "id": "B",
         "effects": [
           {
-            "type": "issue-stance",
+            "type": "uniform-swing",
             "params": {
-              "issueId": "fold",
-              "position": 2
+              "mszmp": 0.2,
+              "fkgp": 0.1
             }
           }
         ]
@@ -197,13 +660,6 @@
       {
         "id": "C",
         "effects": [
-          {
-            "type": "issue-stance",
-            "params": {
-              "issueId": "fold",
-              "shift": -1
-            }
-          },
           {
             "type": "issue-stance",
             "params": {
@@ -216,7 +672,395 @@
     ]
   },
   {
-    "id": "q6_semlegesseg",
+    "id": "bibo_alkotmanya",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "petofi": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4,
+              "petofi": -0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kik_szavazhatnak",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "fkgp": 0.2,
+              "dnp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "szen_vagy_dollar",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "munkastanacsok",
+              "shift": -1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "fkgp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "radio_szabadsaga",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.2,
+              "fkgp": 0.2,
+              "dnp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "listakapcsolas",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "szdp": 0.3,
+              "fkgp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.2,
+              "petofi": 0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "falujaras",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "fold",
+              "shift": 1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.2,
+              "fkgp": 0.3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "szoszek_es_urna",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "egyhaz",
+              "shift": 1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "dnp": -0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "dnp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "egyhaz",
+              "shift": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "koztarsasag_ter",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": -1
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4,
+              "petofi": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "osztrak_ut",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4,
+              "petofi": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.2,
+              "szdp": -0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zaro_nagygyules",
     "answers": [
       {
         "id": "A",

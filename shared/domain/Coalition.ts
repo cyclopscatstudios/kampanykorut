@@ -143,7 +143,12 @@ export function submitCoalitionOffer(
   if (!needsCoalitionOffer(state, config) || !offered?.length) {
     return state;
   }
-  const holds = createConditionCheck(state, answers, config.electionConfig);
+  const holds = createConditionCheck(
+    state,
+    answers,
+    config.electionConfig,
+    config.politicalConfig?.relations,
+  );
   const partners = getPartners(config);
   return {
     ...state,
@@ -223,7 +228,12 @@ export function buildFinalOutcome(
   if (!setup || !outcome) {
     return undefined;
   }
-  const holds = createConditionCheck(state, answers, config.electionConfig);
+  const holds = createConditionCheck(
+    state,
+    answers,
+    config.electionConfig,
+    config.politicalConfig?.relations,
+  );
   const epilogue = config.politicalConfig?.epilogues?.find(
     (e) =>
       (!e.outcomes || e.outcomes.includes(outcome)) &&

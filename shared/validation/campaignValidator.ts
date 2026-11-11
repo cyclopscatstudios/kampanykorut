@@ -740,6 +740,7 @@ function checkQuestionConditions(
     candidateIds: ctx.parties,
     eventIds: ctx.eventIds,
     focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
   };
   let valid = true;
   data.forEach((question, index) => {
@@ -2165,6 +2166,7 @@ function checkCampaignEvents(
     candidateIds: ctx.parties,
     eventIds,
     focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
   };
 
   data.forEach((event, index) => {
@@ -2410,6 +2412,7 @@ function checkPoliticalConfig(
     candidateIds: ctx.parties,
     eventIds: ctx.eventIds,
     focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
   };
   checkCoalition(ctx, file, data, refs);
   checkEpilogues(ctx, file, data, refs);
@@ -2564,6 +2567,7 @@ function checkNewspaper(
     candidateIds: ctx.parties,
     eventIds: ctx.eventIds,
     focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
   };
   const itemIds = new Set<string>();
   data.items.forEach((item, index) => {

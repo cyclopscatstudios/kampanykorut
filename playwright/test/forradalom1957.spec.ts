@@ -12,7 +12,7 @@ test("1957: Kádár stays, no split, 400 seats in 16 districts", async ({
   playCampaign,
 }) => {
   const seedData = await playCampaign(CAMPAIGN_ID, "mszmp", "nagy_imre", {
-    q3_kadar: "A",
+    kadar_ultimatum: "A",
   });
   const state = seedData?.state;
 
@@ -24,7 +24,7 @@ test("1957: Kádár stays, no split, 400 seats in 16 districts", async ({
 
 test("1957: excluding Kádár splits the MSZMP", async ({ playCampaign }) => {
   const seedData = await playCampaign(CAMPAIGN_ID, "mszmp", "nagy_imre", {
-    q3_kadar: "C",
+    kadar_ultimatum: "C",
   });
   const state = seedData?.state;
 
@@ -59,7 +59,7 @@ test("1957: the map panel names the party leaders and the region's seats", async
   playCampaign,
 }) => {
   const seedData = await playCampaign(CAMPAIGN_ID, "mszmp", "nagy_imre", {
-    q3_kadar: "A",
+    kadar_ultimatum: "A",
   });
   await page.goto(
     `/game/${CAMPAIGN_ID}/end-results?sessionId=${seedData?.sessionId}`,
@@ -83,13 +83,25 @@ test("1957: answers and events move the party on the issues", async ({
   playCampaign,
 }) => {
   const seedData = await playCampaign(CAMPAIGN_ID, "mszmp", "nagy_imre", {
-    q1_igazsagtetel: "B",
-    q5_fold_es_gyar: "B",
+    igazsagtetel: "B",
+    fold_es_beszolgaltatas: "A",
   });
   expect(seedData?.state?.issuePositions).toMatchObject({
-    forradalom: { mszmp: -1 },
+    forradalom: { mszmp: -2 },
     fold: { mszmp: 2 },
   });
+});
+
+test("1957: relations bring their consequences", async ({ playCampaign }) => {
+  const seedData = await playCampaign(CAMPAIGN_ID, "mszmp", "nagy_imre", {
+    kethly_feltetelei: "C",
+    szakszervezetek: "B",
+    szerelvenyek: "C",
+  });
+  const triggered = seedData?.state?.campaignEvents?.triggeredEventIds;
+  expect(triggered).toContain("szdp_kampany");
+  expect(triggered).toContain("nyugati_hitel");
+  expect(triggered).not.toContain("kethly_nagygyules");
 });
 
 test("1957: a region shows how strong its issues are", async ({

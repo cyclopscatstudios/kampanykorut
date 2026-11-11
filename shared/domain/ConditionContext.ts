@@ -3,6 +3,7 @@ import {
   ConditionContext,
   ElectionConfig,
   HistoryItem,
+  Relation,
 } from "../types";
 import {
   getCampaignEventState,
@@ -15,6 +16,7 @@ export function createConditionContext(
   state: CampaignState,
   answers: Pick<HistoryItem, "questionId" | "answerId">[],
   electionConfig: ElectionConfig,
+  relations: Pick<Relation, "id" | "tone">[] = [],
 ): ConditionContext {
   const ballotIds = new Set(electionConfig.parties.map((p) => p.id));
   const shares = isMayoralElection(electionConfig)
@@ -51,5 +53,8 @@ export function createConditionContext(
     playerCandidateId: state.playerSide?.candidateId,
     triggeredEventIds: getCampaignEventState(state).triggeredEventIds,
     selectedFocusIds: getSelectedFocusIds(state),
+    getRelationTone: (relationId) =>
+      state.politicalDashboard?.relations?.[relationId]?.tone ??
+      relations.find((r) => r.id === relationId)?.tone,
   };
 }
