@@ -45,6 +45,7 @@ interface ElectionConfigBase {
   title: string;
   year: string;
   intro?: CampaignIntro;
+  background?: string;
   districtBoost?: boolean;
   baseResults?: Record<string, Record<string, number>>;
   parties: RawParty[];
@@ -79,6 +80,7 @@ export type DistrictMapType = "2011" | "2024" | "budapest-districts" | "1945";
 export type RawParty = {
   id: string;
   name: string;
+  shortName?: string;
   color: string;
   // The face of the party list, shown where no district candidate is named.
   leader?: string;

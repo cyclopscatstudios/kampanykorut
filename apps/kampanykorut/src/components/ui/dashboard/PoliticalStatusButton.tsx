@@ -20,7 +20,7 @@ export function PoliticalStatusButton({
 
   return (
     <Tooltip content={label} position="bottom">
-      <div className="relative">
+      <div className="relative flex">
         <Button
           variant="tertiary"
           iconOnly
@@ -32,12 +32,12 @@ export function PoliticalStatusButton({
           className={current ? "cursor-default!" : undefined}
           testId="politicalStatusButton"
         >
-          <PoliticalEmblem size={36} />
+          <PoliticalEmblem size={40} />
         </Button>
         {hasUnseenEvents && !current && (
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute right-0.5 top-0.5 size-2.5 rounded-full bg-amber-500 shadow-[0_0_0_2px_#0f172a]"
+            className="pointer-events-none absolute -right-0.5 -top-0.5 size-2.5 rounded-full bg-amber-500 shadow-[0_0_0_2px_#0f172a]"
           />
         )}
       </div>

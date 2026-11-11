@@ -143,7 +143,7 @@ export function StatusTag({
       : (estimate.leader?.color ?? TOSSUP_COLOR);
   const label =
     isNational && estimate.leader
-      ? t("estimatePanel.advantage", { party: estimate.leader.partyName })
+      ? t("estimatePanel.advantage", { party: estimate.leader.shortName })
       : t(`estimatePanel.status.${estimate.status satisfies EstimateStatus}`);
 
   return (

@@ -124,7 +124,7 @@ function CampaignChip({
               "h-10 rounded-full border pl-2 pr-2.5",
               open
                 ? "border-blue-400 bg-blue-900/70"
-                : "border-blue-50/25 bg-blue-900/50 hover:border-blue-50/40 hover:bg-blue-900/70",
+                : "border-blue-50/25  hover:border-blue-50/40 hover:bg-blue-900/70",
             ],
       )}
     >
