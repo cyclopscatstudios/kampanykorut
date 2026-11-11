@@ -1,6 +1,7 @@
 import { t } from "i18next";
 import { type ReactNode, type RefObject, useRef, useState } from "react";
 import { useResizeObserver } from "usehooks-ts";
+import { AreaIssueView, getAreaIssues } from "@/shared/domain/Issues";
 import {
   CandidateListData,
   CurrentView,
@@ -12,6 +13,7 @@ import {
 import { Button } from "@/shared/ui/Button";
 import { BottomSheet } from "../BottomSheet";
 import { getWinnerResultByCandidateList } from "../map.utils";
+import { AreaIssues } from "./AreaIssues";
 import {
   formatVoters,
   getDistrictInsight,
@@ -161,6 +163,7 @@ export function MobileMapView({
               onClose={() => setIsSheetOpen(false)}
               onVisit={() => onSetView("QuestionView")}
               visitBlocked={visitBlocked}
+              issues={getAreaIssues(electionConfig, sheetData.megyekod)}
             />
           )
         )}
@@ -297,9 +300,11 @@ function DistrictSheetContent({
   onClose,
   onVisit,
   visitBlocked,
+  issues,
 }: {
   isCityMap: boolean;
   district: CandidateListData;
+  issues: AreaIssueView[];
   parties: RawParty[];
   nationalPercentages?: Record<string, number>;
   onClose: () => void;
@@ -362,6 +367,11 @@ function DistrictSheetContent({
                 label={leadingParty.name}
               />
             </SheetMetric>
+          </div>
+        )}
+        {issues.length > 0 && (
+          <div className="col-span-2">
+            <AreaIssues issues={issues} />
           </div>
         )}
       </div>

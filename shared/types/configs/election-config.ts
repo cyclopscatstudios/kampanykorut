@@ -1,4 +1,5 @@
 import { PartyListVotes } from "../campaign";
+import { Issue } from "../issue";
 
 export type ElectionType = "parliamentary" | "mayoral" | "proportional";
 
@@ -44,12 +45,15 @@ interface ElectionConfigBase {
   title: string;
   year: string;
   intro?: CampaignIntro;
+  background?: string;
   districtBoost?: boolean;
   baseResults?: Record<string, Record<string, number>>;
   parties: RawParty[];
   playableSides: PlayableSide[];
   electionAssets: ElectionAsset[];
   districtMap: DistrictMapType;
+  // Strategic mode: issues that answers and events move votes by.
+  issues?: Issue[];
 }
 
 export interface ParliamentaryElectionConfig extends ElectionConfigBase {
@@ -76,6 +80,7 @@ export type DistrictMapType = "2011" | "2024" | "budapest-districts" | "1945";
 export type RawParty = {
   id: string;
   name: string;
+  shortName?: string;
   color: string;
   // The face of the party list, shown where no district candidate is named.
   leader?: string;

@@ -524,5 +524,15 @@
   "campaignIntro": {
     "label": "Historical background",
     "confirm": "Got it"
+  },
+  "issues": {
+    "title": "Issues in the area",
+    "opinion": {
+      "-2": "Strongly opposed",
+      "-1": "Leaning against",
+      "0": "Divided",
+      "1": "Leaning for",
+      "2": "Strongly for"
+    }
   }
 }

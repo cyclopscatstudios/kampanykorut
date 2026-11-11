@@ -66,6 +66,10 @@ export class EffectApplier {
           appliedEffects.push(this.getMotivationChange(effect.params));
           break;
 
+        // Resolved by the campaign engine, which knows the issues.
+        case EffectType.IssueStance:
+          break;
+
         default:
           return this.handleEffectError(effect);
       }
@@ -104,7 +108,7 @@ export class EffectApplier {
     return { type: EffectType.DistrictVoteTransfer, target: [boosterTarget] };
   }
 
-  private resolveConditionalEffects(
+  resolveConditionalEffects(
     baseEffects: RawEffect[],
     conditionalEffects?: ConditionalRawEffect[],
     history?: HistoryItem[],

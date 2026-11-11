@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
+import { getAreaIssues } from "@/shared/domain/Issues";
 import {
   CandidateListData,
   District,
@@ -111,6 +112,9 @@ export function MapSidePanel({
             parties={electionConfig.parties}
             nationalPercentages={nationalPercentages}
             isCityMap={isCityMap}
+            issues={
+              district ? getAreaIssues(electionConfig, district.megyekod) : []
+            }
           />
         )}
       </div>

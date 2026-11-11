@@ -2,6 +2,7 @@ import { Answer } from "./answer";
 import { AnswerFeedback } from "./answer-feedback";
 import { District } from "./district";
 import { ConditionalRawEffect, RawEffect } from "./effects";
+import { IssuePositions } from "./issue";
 import { Mandate, PartyVotes } from "./mandate";
 import { MayoralResult } from "./mayoral-result";
 import { NewspaperState } from "./newspaper";
@@ -20,6 +21,8 @@ export interface CampaignState {
   results?: CalculateResults;
   mayoralResult?: MayoralResult;
   candidates?: Record<string, CandidateCampaignState>;
+  // Party positions on issues that moved away from the configured ones.
+  issuePositions?: IssuePositions;
   campaignEvents?: CampaignEventState;
   politicalDashboard?: PoliticalDashboardState;
   coalition?: CoalitionState;

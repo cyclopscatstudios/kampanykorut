@@ -218,8 +218,8 @@
       },
       "required": "Előbb válassz politikai fókuszt",
       "requiredHint": "A Politikai helyzet oldalon döntsd el, merre viszed a pártot, utána haladhatsz tovább.",
-      "availableFrom": "Irányt a {{turn}}. körtől választhatsz.",
-      "requiredBefore": "A {{turn}}. kör előtt válassz irányt, különben nem haladhatsz tovább.",
+      "availableFrom": "Irányt {{article}} {{turn}}. körtől választhatsz.",
+      "requiredBefore": "{{article}} {{turn}}. kör előtt válassz irányt, különben nem haladhatsz tovább.",
       "open": "Fókusz választása"
     },
     "relations": {
@@ -524,5 +524,15 @@
   "campaignIntro": {
     "label": "Történelmi háttér",
     "confirm": "Megértettem"
+  },
+  "issues": {
+    "title": "Ügyek a térségben",
+    "opinion": {
+      "-2": "Erős ellenzés",
+      "-1": "Inkább ellenzik",
+      "0": "Megosztott",
+      "1": "Inkább támogatják",
+      "2": "Erős támogatás"
+    }
   }
 }

@@ -7,6 +7,7 @@ export type EstimateStatus = "safe" | "likely" | "tossup";
 export type EstimateRow = {
   partyId: string;
   partyName: string;
+  shortName: string;
   color: string;
   candidateName?: string;
   percent: number;
@@ -121,6 +122,7 @@ function buildEstimate(
       return {
         partyId,
         partyName: party?.name ?? partyId,
+        shortName: party?.shortName ?? partyId,
         color: party?.color ?? FALLBACK_COLOR,
         candidateName: candidates?.[partyId]?.[0] ?? party?.leader,
         percent,

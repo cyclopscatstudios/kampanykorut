@@ -1408,4 +1408,69 @@ describe("validateCampaign", () => {
       ]);
     });
   });
+
+  describe("issues", () => {
+    const withIssues = (issues: unknown, effect?: unknown) => (f: Files) => {
+      file(f, "manifest.json").files.issues = "issues.json";
+      f["issues.json"] = issues;
+      if (effect) {
+        effects(f)[0].answers[0].effects = [effect];
+      }
+    };
+    const issue = {
+      id: "rev",
+      name: "Forradalom",
+      areas: { "1": { strength: 2, opinion: 1 } },
+      positions: { party_a: 1, party_b: -1 },
+    };
+    const stance = (params: object) => ({ type: "issue-stance", params });
+
+    it("accepts issues and an answer that moves one", () => {
+      expect(
+        validate(withIssues([issue], stance({ issueId: "rev", shift: -1 }))),
+      ).toEqual([]);
+    });
+
+    it("reports an unknown issue in an effect", () => {
+      expect(
+        codes(
+          validate(withIssues([issue], stance({ issueId: "x", shift: 1 }))),
+        ),
+      ).toEqual(["error:unknown-issue"]);
+    });
+
+    it("reports a stance with both shift and position", () => {
+      expect(
+        codes(
+          validate(
+            withIssues(
+              [issue],
+              stance({ issueId: "rev", shift: 1, position: 2 }),
+            ),
+          ),
+        ),
+      ).toEqual(["error:effect-params-invalid"]);
+    });
+
+    it("reports unknown areas, out-of-range values and parties", () => {
+      const result = validate(
+        withIssues([
+          {
+            ...issue,
+            areas: {
+              "9": { strength: 1, opinion: 0 },
+              "1": { strength: 5, opinion: 0 },
+            },
+            positions: { party_a: 3, nobody: 0 },
+          },
+        ]),
+      );
+      expect(result.map((d) => d.path)).toEqual([
+        "/0/areas/1",
+        "/0/areas/9",
+        "/0/positions/party_a",
+        "/0/positions/nobody",
+      ]);
+    });
+  });
 });

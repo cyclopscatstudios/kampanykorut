@@ -1,0 +1,222 @@
+[
+  {
+    "id": "forradalom",
+    "name": "A forradalom megítélése",
+    "icon": "fire",
+    "description": "Mennyire áll ki valaki 1956 októbere mellett. Pozitív: a forradalom vívmányainak védelme.",
+    "default": {
+      "strength": 1,
+      "opinion": 1
+    },
+    "areas": {
+      "vk01": {
+        "strength": 3,
+        "opinion": 2
+      },
+      "vk02": {
+        "strength": 2,
+        "opinion": 1
+      },
+      "vk07": {
+        "strength": 2,
+        "opinion": 2
+      },
+      "vk11": {
+        "strength": 2,
+        "opinion": 1
+      },
+      "vk08": {
+        "strength": 1,
+        "opinion": 1
+      },
+      "vk09": {
+        "strength": 2,
+        "opinion": 1
+      },
+      "vk16": {
+        "strength": 2,
+        "opinion": 1
+      },
+      "vk12": {
+        "strength": 2,
+        "opinion": -1
+      },
+      "vk13": {
+        "strength": 1,
+        "opinion": 0
+      },
+      "vk10": {
+        "strength": 1,
+        "opinion": 0
+      },
+      "vk14": {
+        "strength": 1,
+        "opinion": 0
+      }
+    },
+    "positions": {
+      "mszmp": 1,
+      "fkgp": 2,
+      "szdp": 1,
+      "petofi": 2,
+      "dnp": 1,
+      "kadar_part": -2
+    }
+  },
+  {
+    "id": "fold",
+    "name": "Beszolgáltatás és tsz",
+    "icon": "basket-fill",
+    "description": "A paraszti föld sorsa. Pozitív: a beszolgáltatás eltörlése és a szabad kilépés a termelőszövetkezetből.",
+    "default": {
+      "strength": 2,
+      "opinion": 2
+    },
+    "areas": {
+      "vk01": {
+        "strength": 0,
+        "opinion": 0
+      },
+      "vk02": {
+        "strength": 1,
+        "opinion": 1
+      },
+      "vk07": {
+        "strength": 1,
+        "opinion": 1
+      },
+      "vk09": {
+        "strength": 1,
+        "opinion": 1
+      },
+      "vk11": {
+        "strength": 1,
+        "opinion": 1
+      },
+      "vk10": {
+        "strength": 1,
+        "opinion": 1
+      },
+      "vk12": {
+        "strength": 3,
+        "opinion": 2
+      },
+      "vk13": {
+        "strength": 3,
+        "opinion": 2
+      },
+      "vk14": {
+        "strength": 3,
+        "opinion": 2
+      },
+      "vk15": {
+        "strength": 3,
+        "opinion": 1
+      }
+    },
+    "positions": {
+      "mszmp": -1,
+      "fkgp": 2,
+      "szdp": 0,
+      "petofi": 1,
+      "dnp": 1,
+      "kadar_part": -2
+    }
+  },
+  {
+    "id": "egyhaz",
+    "name": "Az egyházak szerepe",
+    "icon": "bank2",
+    "description": "Az egyházak szabadsága és a hitoktatás. Pozitív: szabad egyházi élet és iskolák.",
+    "default": {
+      "strength": 1,
+      "opinion": 1
+    },
+    "areas": {
+      "vk05": {
+        "strength": 2,
+        "opinion": 2
+      },
+      "vk06": {
+        "strength": 2,
+        "opinion": 2
+      },
+      "vk07": {
+        "strength": 2,
+        "opinion": 2
+      },
+      "vk08": {
+        "strength": 2,
+        "opinion": 1
+      },
+      "vk01": {
+        "strength": 1,
+        "opinion": 0
+      },
+      "vk11": {
+        "strength": 1,
+        "opinion": 0
+      }
+    },
+    "positions": {
+      "mszmp": -1,
+      "fkgp": 1,
+      "szdp": 0,
+      "petofi": 0,
+      "dnp": 2,
+      "kadar_part": -2
+    }
+  },
+  {
+    "id": "munkastanacsok",
+    "name": "Munkástanácsok",
+    "icon": "building-fill",
+    "description": "A gyárak önigazgatása. Pozitív: a munkástanácsok valódi jogkört kapnak.",
+    "default": {
+      "strength": 1,
+      "opinion": 0
+    },
+    "areas": {
+      "vk01": {
+        "strength": 3,
+        "opinion": 2
+      },
+      "vk11": {
+        "strength": 3,
+        "opinion": 2
+      },
+      "vk07": {
+        "strength": 2,
+        "opinion": 2
+      },
+      "vk09": {
+        "strength": 2,
+        "opinion": 2
+      },
+      "vk10": {
+        "strength": 2,
+        "opinion": 2
+      },
+      "vk02": {
+        "strength": 2,
+        "opinion": 1
+      },
+      "vk03": {
+        "strength": 2,
+        "opinion": 1
+      },
+      "vk16": {
+        "strength": 1,
+        "opinion": 1
+      }
+    },
+    "positions": {
+      "mszmp": 1,
+      "fkgp": -1,
+      "szdp": 2,
+      "petofi": 1,
+      "dnp": 0,
+      "kadar_part": -2
+    }
+  }
+]

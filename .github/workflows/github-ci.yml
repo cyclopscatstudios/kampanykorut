@@ -48,6 +48,9 @@ jobs:
   e2e:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    container:
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
+      options: --user 1001
 
     env:
       CI: "true"
@@ -61,16 +64,9 @@ jobs:
           node-version: 22
           cache: yarn
 
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-
       - run: corepack enable
 
       - run: yarn install --frozen-lockfile
-
-      - run: npx playwright install chromium --with-deps
 
       - run: yarn playwright --project=chromium
 
@@ -86,6 +82,9 @@ jobs:
   component-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    container:
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
+      options: --user 1001
 
     steps:
       - uses: actions/checkout@v4
@@ -95,16 +94,9 @@ jobs:
           node-version: 22
           cache: yarn
 
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-
       - run: corepack enable
 
       - run: yarn install --frozen-lockfile
-
-      - run: npx playwright install --with-deps
 
       - run: yarn test-ct
 

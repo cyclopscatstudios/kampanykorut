@@ -60,7 +60,7 @@
       "title": "Merre viszed a pártot?",
       "focuses": ["lassu_reformok", "forradalom_partja"],
       "availableFromTurn": 1,
-      "requiredBeforeTurn": 2
+      "requiredBeforeTurn": 1
     },
     {
       "id": "szovetseg",

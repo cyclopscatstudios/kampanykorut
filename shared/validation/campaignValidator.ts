@@ -47,6 +47,7 @@ const EFFECT_TYPES = [
   "vote-allocation",
   "turnout-change",
   "district-vote-transfer",
+  "issue-stance",
 ];
 
 const DISTRICT_MAPS = ["2011", "2024", "budapest-districts", "1945"];
@@ -73,6 +74,8 @@ interface Context {
   districts: Set<string>;
   electionType?: string;
   regionMegyekods?: Set<number>;
+  regionIds?: Set<string>;
+  issueIds: Set<string>;
   playableCandidates: Set<string>;
   eventIds: Set<string>;
   focusIds: Set<string>;
@@ -415,7 +418,136 @@ function checkEffect(
     case "district-vote-transfer":
       checkDistrictTransfer(ctx, file, paramsPath, effect.params);
       break;
+    case "issue-stance":
+      checkIssueStance(ctx, file, paramsPath, effect.params);
+      break;
   }
+}
+
+const isIssuePosition = (value: unknown) =>
+  isFiniteNumber(value) && value >= -2 && value <= 2;
+
+function checkIssueStance(
+  ctx: Context,
+  file: string,
+  path: string,
+  params: unknown,
+) {
+  const error = (at: string, message: string) =>
+    report(ctx, "error", "effect-params-invalid", file, at, message);
+  if (!isObject(params)) {
+    error(path, "params must be an object");
+    return;
+  }
+  if (typeof params.issueId !== "string" || !ctx.issueIds.has(params.issueId)) {
+    report(
+      ctx,
+      "error",
+      "unknown-issue",
+      file,
+      `${path}/issueId`,
+      `unknown issue "${String(params.issueId)}" (is the issues file listed in the manifest?)`,
+    );
+  }
+  if (params.party !== undefined) {
+    checkParty(ctx, file, `${path}/party`, params.party);
+  }
+  const hasShift = params.shift !== undefined;
+  const hasPosition = params.position !== undefined;
+  if (hasShift === hasPosition) {
+    error(path, "give exactly one of shift or position");
+  } else if (hasShift && !isFiniteNumber(params.shift)) {
+    error(`${path}/shift`, "shift must be a finite number");
+  } else if (hasPosition && !isIssuePosition(params.position)) {
+    error(`${path}/position`, "position must be a number from -2 to 2");
+  }
+}
+
+function checkIssueArea(
+  ctx: Context,
+  file: string,
+  path: string,
+  area: unknown,
+) {
+  if (
+    !isObject(area) ||
+    !isFiniteNumber(area.strength) ||
+    area.strength < 0 ||
+    area.strength > 3 ||
+    !isIssuePosition(area.opinion)
+  ) {
+    report(
+      ctx,
+      "error",
+      "issues-invalid",
+      file,
+      path,
+      "an area needs strength (0 to 3) and opinion (-2 to 2)",
+    );
+  }
+}
+
+function checkIssues(ctx: Context, file: string, data: unknown) {
+  const error = (path: string, message: string) =>
+    report(ctx, "error", "issues-invalid", file, path, message);
+  if (!Array.isArray(data)) {
+    error("", "issues must be an array");
+    return;
+  }
+  data.forEach((issue, i) => {
+    const path = `/${i}`;
+    if (!isObject(issue)) {
+      error(path, "issue must be an object");
+      return;
+    }
+    if (typeof issue.id !== "string" || typeof issue.name !== "string") {
+      error(path, "issue needs a string id and name");
+    } else if (ctx.issueIds.has(issue.id)) {
+      report(
+        ctx,
+        "error",
+        "duplicate-id",
+        file,
+        `${path}/id`,
+        `duplicate issue id "${issue.id}"`,
+      );
+    } else {
+      ctx.issueIds.add(issue.id);
+    }
+    if (issue.default !== undefined) {
+      checkIssueArea(ctx, file, `${path}/default`, issue.default);
+    }
+    if (issue.areas !== undefined && !isObject(issue.areas)) {
+      error(`${path}/areas`, "areas must be an object");
+    }
+    Object.entries(isObject(issue.areas) ? issue.areas : {}).forEach(
+      ([key, area]) => {
+        const known =
+          ctx.regionIds?.has(key) ||
+          [...ctx.districts].some((d) => d.startsWith(`${key}-`));
+        if (!known) {
+          error(
+            `${path}/areas/${key}`,
+            `"${key}" is neither a region id nor a megyekod`,
+          );
+        }
+        checkIssueArea(ctx, file, `${path}/areas/${key}`, area);
+      },
+    );
+    if (!isObject(issue.positions)) {
+      error(`${path}/positions`, "positions must map parties to -2..2");
+      return;
+    }
+    Object.entries(issue.positions).forEach(([party, position]) => {
+      checkParty(ctx, file, `${path}/positions/${party}`, party);
+      if (!isIssuePosition(position)) {
+        error(
+          `${path}/positions/${party}`,
+          "position must be a number from -2 to 2",
+        );
+      }
+    });
+  });
 }
 
 function checkEffects(
@@ -1247,6 +1379,7 @@ function checkProportionalRegions(
     });
   });
   ctx.regionMegyekods = counties;
+  ctx.regionIds = ids;
   if (
     isFiniteNumber(data.listSeats) &&
     isFiniteNumber(data.allSeats) &&
@@ -2813,6 +2946,7 @@ export function validateCampaign(
     eventIds: new Set(),
     focusIds: new Set(),
     relationIds: new Set(),
+    issueIds: new Set(),
     dormantParties: new Set(),
   };
 
@@ -2906,6 +3040,13 @@ export function validateCampaign(
     candidateListData,
   );
   checkRegionCoverage(ctx, String(files.candidateListData), candidateListData);
+  if (files.issues !== undefined) {
+    checkIssues(
+      ctx,
+      String(files.issues),
+      readFile(ctx, files.issues, "manifest.json", "/files/issues"),
+    );
+  }
   for (const optional of ["partyListData", "customPollsters"] as const) {
     if (files[optional] !== undefined) {
       readFile(ctx, files[optional], "manifest.json", `/files/${optional}`);

@@ -1,6 +1,7 @@
 {
   "title": "A forradalom öröksége",
   "year": "1957",
+  "background": "/foti_1956_cover.jpg",
   "intro": {
     "title": "A forradalom öröksége",
     "subtitle": "Magyarország · 1957 eleje",
@@ -18,6 +19,7 @@
     {
       "id": "mszmp",
       "name": "Magyar Szocialista Munkáspárt",
+      "shortName": "MSZMP",
       "leader": "Nagy Imre",
       "color": "#c62828"
     },
@@ -144,5 +146,17 @@
       ]
     }
   ],
-  "electionAssets": []
+  "electionAssets": [
+    {
+      "id": "mszmp",
+      "candidateAssets": [
+        {
+          "id": "nagy_imre",
+          "portrait": "/images/1957_forradalom-oroksege/nagy_imre.png",
+          "slogan": "/images/1957_forradalom-oroksege/mszmp_szlogen.png"
+        }
+      ],
+      "party_logo": "/images/1957_forradalom-oroksege/mszmp.png"
+    }
+  ]
 }

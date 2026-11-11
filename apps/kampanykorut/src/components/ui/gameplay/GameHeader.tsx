@@ -12,7 +12,6 @@ import {
 } from "@/shared/domain";
 import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
 import logo from "../../../../../../brand-assets/svg/logo-mark.svg";
-import markdown from "../../../../../../brand-assets/svg/logo-wordmark-dark.svg";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
@@ -330,12 +329,14 @@ function WideHeader({
     <div className="h-[80px] flex justify-between items-center mx-2.5">
       <div className="flex justify-between items-center gap-2">
         <div
-          className="flex justify-center items-center cursor-pointer"
+          className="flex justify-center items-center cursor-pointer mr-1.5"
           onClick={() => onOpen("gameMenu")}
         >
-          <img src={logo} className="mr-1" width="30" height="30" />
-          <img src={markdown} className="mr-3" width="200" height="30" />
+          <img src={logo} className="mr-1" width="40" height="40" />
+          {/* <img src={markdown} className="mr-3" width="200" height="30" /> */}
         </div>
+        <CampaignBadge state={state} config={config} />
+
         {!hidePollsters && (
           <Menu
             align="left"
@@ -367,9 +368,7 @@ function WideHeader({
             </SubMenu>
           </Menu>
         )}
-        <div className="ml-5">
-          <CampaignBadge state={state} config={config} />
-        </div>
+        {politicalStatus && <PoliticalStatusButton {...politicalStatus} />}
       </div>
       {state && config && (
         <div className="text-center">
@@ -380,7 +379,6 @@ function WideHeader({
         </div>
       )}
       <div className="flex items-center justify-center gap-2">
-        {politicalStatus && <PoliticalStatusButton {...politicalStatus} />}
         <Tooltip content={t("gameMenuBar.save")} position="bottom">
           <Button variant="tertiary" onClick={() => onOpen("saveGame")}>
             <Button.Icon

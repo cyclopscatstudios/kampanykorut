@@ -5,6 +5,7 @@ import {
   CampaignManifest,
   CandidateConfig,
   CandidateManifest,
+  Issue,
   PlayableSideConfig,
   ProportionalRegion,
 } from "@/shared/types";
@@ -175,6 +176,13 @@ async function fetchCampaignConfig(
     commonData.electionConfig.election.regions = await fetchCampaignFile<
       ProportionalRegion[]
     >(header.route, files.regions);
+  }
+
+  if (files.issues) {
+    commonData.electionConfig.issues = await fetchCampaignFile<Issue[]>(
+      header.route,
+      files.issues,
+    );
   }
 
   const districts = await container

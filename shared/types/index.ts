@@ -11,6 +11,7 @@ export * from "./effects";
 export * from "./end-result";
 export * from "./history";
 export * from "./icon";
+export * from "./issue";
 export * from "./languages";
 export * from "./mandate";
 export * from "./map";

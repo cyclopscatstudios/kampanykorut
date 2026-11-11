@@ -33,6 +33,14 @@
             "tone": "bad",
             "label": "Szakítás",
             "description": "Kádár János és hívei kiléptek, és saját listát állítottak."
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "party": "mszmp",
+              "shift": 1
+            }
           }
         ]
       }
@@ -124,6 +132,14 @@
             "tone": "bad",
             "label": "Felháborodott",
             "description": "A Corvin köz árulásnak tartja a megbékélést."
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "party": "mszmp",
+              "shift": -1
+            }
           }
         ]
       },
