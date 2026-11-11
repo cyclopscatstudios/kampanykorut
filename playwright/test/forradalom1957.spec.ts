@@ -34,7 +34,7 @@ test("1957: excluding Kádár splits the MSZMP", async ({ playCampaign }) => {
   expect(seatTotal(state?.results)).toBe(400);
 });
 
-test("1957: the first turn can be played before choosing a focus", async ({
+test("1957: a focus must be chosen before the first turn", async ({
   page,
   seedCampaign,
 }) => {
@@ -42,14 +42,14 @@ test("1957: the first turn can be played before choosing a focus", async ({
   await page.goto(`/game/${CAMPAIGN_ID}?sessionId=${seedData?.sessionId}`);
   await page.getByTestId("campaignIntroConfirm").click();
 
-  await expect(page.getByTestId("focusRequiredNote")).toHaveCount(0);
+  await expect(page.getByTestId("focusRequiredNote")).toBeVisible();
   await page.locator("svg path[data-id]").first().click({ force: true });
-  await expect(page.getByTestId("visitDistrict")).toBeEnabled();
+  await expect(page.getByTestId("visitDistrict")).toBeDisabled();
 
   await page.getByTestId("politicalStatusButton").click();
   await page.getByRole("tab", { name: "Fókuszok" }).click();
   await expect(page.getByTestId("focusSchedule")).toHaveText(
-    "A 2. kör előtt válassz irányt, különben nem haladhatsz tovább.",
+    "A 1. kör előtt válassz irányt, különben nem haladhatsz tovább.",
   );
   await expect(page.getByTestId("selectFocus-lassu_reformok")).toBeVisible();
 });
