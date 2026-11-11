@@ -12,7 +12,6 @@ import {
 } from "@/shared/domain";
 import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
 import logo from "../../../../../../brand-assets/svg/logo-mark.svg";
-import markdown from "../../../../../../brand-assets/svg/logo-wordmark-dark.svg";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
