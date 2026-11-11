@@ -34,7 +34,7 @@ test("1957: excluding Kádár splits the MSZMP", async ({ playCampaign }) => {
   expect(seatTotal(state?.results)).toBe(400);
 });
 
-test("1957: the direction has to be chosen before the first turn", async ({
+test("1957: a focus must be chosen before the first turn", async ({
   page,
   seedCampaign,
 }) => {
