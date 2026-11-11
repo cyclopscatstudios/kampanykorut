@@ -56,10 +56,12 @@ function BranchSection({
     branch.state === "upcoming"
       ? t("politicalDashboard.focus.availableFrom", {
           turn: branch.availableFromTurn,
+          article: getHungarianArticle(branch.availableFromTurn),
         })
       : branch.state === "open" && branch.requiredBeforeTurn
         ? t("politicalDashboard.focus.requiredBefore", {
             turn: branch.requiredBeforeTurn,
+            article: capitalize(getHungarianArticle(branch.requiredBeforeTurn)),
           })
         : undefined;
 
@@ -132,4 +134,15 @@ function FocusCard({
       )}
     </div>
   );
+}
+
+// "a 2. kör" but "az 1. kör": the article follows the spoken number.
+function getHungarianArticle(turn?: number) {
+  const startsWithVowel =
+    turn === 1 || turn === 5 || (turn !== undefined && turn >= 50 && turn < 60);
+  return startsWithVowel ? "az" : "a";
+}
+
+function capitalize(text: string) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
