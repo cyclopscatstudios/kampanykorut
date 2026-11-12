@@ -351,6 +351,62 @@
       "weight": 2
     },
     {
+      "id": "kis_ujsag_kilepes",
+      "paper": "kis_ujsag",
+      "headline": "Önállóan megyünk a választásra",
+      "lead": "Tildy Zoltán szerint a kisgazdák nem a kormány ellen, hanem a parasztok mellett léptek ki a koalícióból.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "fkgp_kilepes"
+      },
+      "weight": 3
+    },
+    {
+      "id": "kis_ujsag_vita",
+      "paper": "kis_ujsag",
+      "headline": "Tisztességes vita a földről",
+      "lead": "Kovács Béla szerint Nagy Imrével lehet vitatkozni: ellenfelek vagyunk, nem ellenségek.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "ellenfel_nem_ellenseg",
+        "answerId": "C"
+      },
+      "weight": 2
+    },
+    {
+      "id": "kis_ujsag_1947",
+      "paper": "kis_ujsag",
+      "headline": "Már megint 1947?",
+      "lead": "A kisgazdák szerint az MSZMP kampánya azokat a napokat idézi, amikor Kovács Bélát elhurcolták.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "visszauto_tamadas"
+      },
+      "weight": 3
+    },
+    {
+      "id": "igazsag_pongratz_kilep",
+      "paper": "igazsag",
+      "headline": "Pongrátz: nem ezért harcoltunk",
+      "lead": "A Corvin köz parancsnoka kilépett az MSZMP listájáról. Szerinte a kormány a tankokat bankokra cserélte.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "pongratz_kilep"
+      },
+      "weight": 3
+    },
+    {
+      "id": "igazsag_bankok",
+      "paper": "igazsag",
+      "headline": "Tankok helyett bankok?",
+      "lead": "A felkelők szerint a kormány nyugati hitelekért adja el a forradalom függetlenségét.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "tankok_helyett_bankok"
+      },
+      "weight": 3
+    },
+    {
       "id": "uj_ember_korlevel",
       "paper": "uj_ember",
       "headline": "Püspöki körlevél a választásról",

@@ -4,6 +4,7 @@ export interface ConditionReferences {
   eventIds?: Set<string>;
   focusIds?: Set<string>;
   relationIds?: Set<string>;
+  issueIds?: Set<string>;
 }
 
 export interface ConditionIssue {
@@ -259,6 +260,45 @@ function check(
         );
       }
       return;
+    case "issue-position": {
+      if (typeof condition.issueId !== "string") {
+        issue(
+          "condition-invalid",
+          `${path}/issueId`,
+          "issueId must be a string",
+        );
+      } else if (refs.issueIds && !refs.issueIds.has(condition.issueId)) {
+        issue(
+          "unknown-issue",
+          `${path}/issueId`,
+          `unknown issue "${condition.issueId}"`,
+        );
+      }
+      if (condition.party !== undefined) {
+        checkCandidate(condition.party, refs, `${path}/party`, issue);
+      }
+      const { min, max } = condition;
+      if (min === undefined && max === undefined) {
+        issue(
+          "condition-invalid",
+          path,
+          "issue-position needs min, max or both",
+        );
+      }
+      for (const [key, value] of Object.entries({ min, max })) {
+        if (
+          value !== undefined &&
+          (typeof value !== "number" || value < -2 || value > 2)
+        ) {
+          issue(
+            "condition-invalid",
+            `${path}/${key}`,
+            `${key} must be a number between -2 and 2`,
+          );
+        }
+      }
+      return;
+    }
     case "relation":
       if (typeof condition.relationId !== "string") {
         issue(

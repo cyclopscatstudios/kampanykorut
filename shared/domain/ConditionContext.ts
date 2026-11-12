@@ -11,6 +11,7 @@ import {
   getSelectedFocusIds,
 } from "./CampaignStateAccess";
 import { isMayoralElection } from "./ElectionType";
+import { getIssuePosition, getIssues } from "./Issues";
 
 export function createConditionContext(
   state: CampaignState,
@@ -56,5 +57,11 @@ export function createConditionContext(
     getRelationTone: (relationId) =>
       state.politicalDashboard?.relations?.[relationId]?.tone ??
       relations.find((r) => r.id === relationId)?.tone,
+    getIssuePosition: (issueId, party = state.playerSide?.partyId) => {
+      const issue = getIssues(electionConfig).find((i) => i.id === issueId);
+      return issue && party
+        ? getIssuePosition(issue, state.issuePositions, party)
+        : undefined;
+    },
   };
 }

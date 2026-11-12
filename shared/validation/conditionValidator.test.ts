@@ -7,6 +7,7 @@ const refs: ConditionReferences = {
   eventIds: new Set(["szentkiralyi_withdrawal"]),
   focusIds: new Set(["without_kadar"]),
   relationIds: new Set(["moszkva"]),
+  issueIds: new Set(["kelet_nyugat"]),
 };
 
 const codes = (condition: unknown, references = refs) =>
@@ -177,6 +178,22 @@ describe("validateCondition", () => {
     expect(
       codes({ type: "relation", relationId: "moszkva", tone: [] }),
     ).toEqual(["condition-invalid@/if/tone"]);
+  });
+
+  it("checks the issue and bounds of an issue-position condition", () => {
+    expect(
+      codes({ type: "issue-position", issueId: "kelet_nyugat", min: 2 }),
+    ).toEqual([]);
+    expect(
+      codes({ type: "issue-position", issueId: "nope", party: "x", max: 3 }),
+    ).toEqual([
+      "unknown-issue@/if/issueId",
+      "unknown-candidate@/if/party",
+      "condition-invalid@/if/max",
+    ]);
+    expect(codes({ type: "issue-position", issueId: "kelet_nyugat" })).toEqual([
+      "condition-invalid@/if",
+    ]);
   });
 
   it("skips reference checks that have no reference set", () => {

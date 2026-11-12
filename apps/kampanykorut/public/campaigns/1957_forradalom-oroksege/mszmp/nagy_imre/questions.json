@@ -15,6 +15,15 @@
       {
         "id": "C",
         "label": "Rendkívüli népbíróságokat állítasz fel, hogy még a választás előtt ítélet szülessen."
+      },
+      {
+        "id": "D",
+        "label": "Igazságtételi bizottságot állítasz fel a felkelők és a jogászok közös vezetésével."
+      }
+    ],
+    "affects": [
+      {
+        "id": "C"
       }
     ]
   },
@@ -34,6 +43,15 @@
       {
         "id": "C",
         "label": "A Nemzetőrség önálló testület marad, a forradalom őreként."
+      },
+      {
+        "id": "D",
+        "label": "A Nemzetőrség rendőri feladatot kap a választásig, utána az új parlament dönt."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
       }
     ]
   },
@@ -53,6 +71,15 @@
       {
         "id": "C",
         "label": "Egyikük sem kap szerepet. A párt nem a fegyveresek pártja."
+      },
+      {
+        "id": "D",
+        "label": "Mindkettőjüket meghívod egy felkelő tanácsba, amely a kormányt tanácsolja."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
       }
     ]
   },
@@ -72,6 +99,10 @@
       {
         "id": "C",
         "label": "ENSZ-megfigyelőket hívsz a kivonulás ellenőrzésére."
+      },
+      {
+        "id": "D",
+        "label": "Titokban tárgyalsz Moszkvával, nyilvánosan hallgatsz a menetrendről."
       }
     ]
   },
@@ -91,6 +122,18 @@
       {
         "id": "C",
         "label": "Hallgatsz. A bíboros szava nem kormányprogram."
+      },
+      {
+        "id": "D",
+        "label": "Személyesen felkeresed a bíborost, és közös nyilatkozatot ajánlasz."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "C"
       }
     ]
   },
@@ -110,6 +153,15 @@
       {
         "id": "C",
         "label": "Osztrák közvetítéssel nyugati szénsegélyt kérsz."
+      },
+      {
+        "id": "D",
+        "label": "Szénjegyet vezetsz be, a gyárak és a kórházak előnyt kapnak."
+      }
+    ],
+    "affects": [
+      {
+        "id": "B"
       }
     ]
   },
@@ -129,6 +181,15 @@
       {
         "id": "C",
         "label": "Elbocsátod a régi vezetőket, új emberek jönnek."
+      },
+      {
+        "id": "D",
+        "label": "Áthelyezed őket a minisztériumokba, a pártszervezetből kikerülnek."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
       }
     ]
   },
@@ -148,6 +209,10 @@
       {
         "id": "C",
         "label": "Kizárod Kádárt a vezetésből. A forradalom pártja nem hátrál."
+      },
+      {
+        "id": "D",
+        "label": "Kádárnak felajánlod a belügyminiszteri széket, ha a pártban nem szervezkedik."
       }
     ]
   },
@@ -167,6 +232,15 @@
       {
         "id": "C",
         "label": "Közös listát ajánlasz egyesült munkáspárt néven."
+      },
+      {
+        "id": "D",
+        "label": "Államminiszteri posztot ajánlasz Kéthlynek a választásig."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
       }
     ]
   },
@@ -186,6 +260,10 @@
       {
         "id": "C",
         "label": "Az érdekképviseletet a munkástanácsok veszik át."
+      },
+      {
+        "id": "D",
+        "label": "A szakszervezetek és a munkástanácsok közös tanácsot alakítanak."
       }
     ]
   },
@@ -205,6 +283,10 @@
       {
         "id": "C",
         "label": "Hallgatsz. Moszkvában maradnak, és ez így jó."
+      },
+      {
+        "id": "D",
+        "label": "Kéred a kiadatásukat Moszkvától, de a pert a választás utánra halasztod."
       }
     ],
     "visibleIf": {
@@ -230,6 +312,10 @@
       {
         "id": "C",
         "label": "Üzemenként a tagság szavaz, melyik párthoz tartozik."
+      },
+      {
+        "id": "D",
+        "label": "Paktumot ajánlasz Kádárnak: a kampányban nem támadjátok egymást."
       }
     ],
     "visibleIf": {
@@ -253,6 +339,10 @@
       {
         "id": "C",
         "label": "Engedélyezed a fegyveres diákőrséget."
+      },
+      {
+        "id": "D",
+        "label": "Leülsz a MEFESZ vezetőivel, és együtt írjátok meg a felsőoktatási törvényt."
       }
     ]
   },
@@ -272,6 +362,18 @@
       {
         "id": "C",
         "label": "A szövetkezetek maradnak, a beszolgáltatást csökkented."
+      },
+      {
+        "id": "D",
+        "label": "A földkérdésről népszavazást írsz ki a választás utánra."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "C"
       }
     ]
   },
@@ -291,6 +393,33 @@
       {
         "id": "C",
         "label": "A tervhivatal irányít tovább, a tanácsok szerepe szűkül."
+      },
+      {
+        "id": "D",
+        "label": "A Csepel Művekben próbálod ki az önigazgatást, mintaként."
+      }
+    ]
+  },
+  {
+    "id": "ellenfel_nem_ellenseg",
+    "title": "Ellenfél, nem ellenség",
+    "question": "A kisgazdák kiléptek a kormányból, és a kampányban már ellenfélként állnak veled szemben. A pártban sokan kemény hangot követelnek ellenük, mások Tildy Zoltán barátságára emlékeztetnek. Hogyan beszélsz róluk?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Barátként: Tildyvel együtt csináltuk a forradalmat, a különbség csak árnyalat."
+      },
+      {
+        "id": "B",
+        "label": "Keményen: a nagybirtok és a reakció pártja, amely visszahozná a régi világot."
+      },
+      {
+        "id": "C",
+        "label": "Ellenfélként: programvita a földről és a gyárakról, személyeskedés nélkül."
+      },
+      {
+        "id": "D",
+        "label": "Maradásra bírod a kisgazda minisztereket a kormányban."
       }
     ]
   },
@@ -310,6 +439,10 @@
       {
         "id": "C",
         "label": "Ideiglenes alaptörvényt, a végleges alkotmányról az új parlament dönt."
+      },
+      {
+        "id": "D",
+        "label": "Bibót kéred fel köztársasági elnöknek az ideiglenes alaptörvény alatt."
       }
     ]
   },
@@ -329,6 +462,10 @@
       {
         "id": "C",
         "label": "Marad az 1945-ös választójog, 20 éves korhatárral."
+      },
+      {
+        "id": "D",
+        "label": "A korhatár 18 év lesz, a vitás kérdésekről az alkotmánybíróság dönt."
       }
     ]
   },
@@ -348,6 +485,15 @@
       {
         "id": "C",
         "label": "Mindkettőt, kisebb tételekben."
+      },
+      {
+        "id": "D",
+        "label": "Önellátásra építesz: hazai szén, takarékosság, kemény tél."
+      }
+    ],
+    "affects": [
+      {
+        "id": "B"
       }
     ]
   },
@@ -367,6 +513,10 @@
       {
         "id": "C",
         "label": "A pártok arányosan kapnak papírt és műsoridőt."
+      },
+      {
+        "id": "D",
+        "label": "A rádiót pártok feletti kuratórium felügyeli."
       }
     ]
   },
@@ -386,6 +536,10 @@
       {
         "id": "C",
         "label": "Egyedül: az MSZMP saját többségre megy."
+      },
+      {
+        "id": "D",
+        "label": "Hárompárti blokkot ajánlasz az SZDP-nek és a Petőfi Pártnak."
       }
     ]
   },
@@ -405,6 +559,10 @@
       {
         "id": "C",
         "label": "Nem ígérsz semmit, a falu döntsön maga."
+      },
+      {
+        "id": "D",
+        "label": "Gépállomást és olcsó hitelt ígérsz a magángazdáknak is."
       }
     ]
   },
@@ -424,6 +582,10 @@
       {
         "id": "C",
         "label": "Az egyház maradjon a templomban, a politika a parlamentben."
+      },
+      {
+        "id": "D",
+        "label": "A református és az evangélikus egyházzal kötsz megállapodást."
       }
     ]
   },
@@ -443,6 +605,10 @@
       {
         "id": "C",
         "label": "Rádióbeszédben nyugalomra intesz mindenkit."
+      },
+      {
+        "id": "D",
+        "label": "A Nemzetőrséget kéred fel a pártházak védelmére."
       }
     ]
   },
@@ -462,6 +628,15 @@
       {
         "id": "C",
         "label": "Kétoldalú megállapodást Moszkvával."
+      },
+      {
+        "id": "D",
+        "label": "Jugoszláv mintájú el nem kötelezettséget hirdetsz."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
       }
     ]
   },
@@ -481,6 +656,10 @@
       {
         "id": "C",
         "label": "Október 23-ról: a forradalom nem alkuszik, a függetlenség nem eladó."
+      },
+      {
+        "id": "D",
+        "label": "Kéthly Annával és Bibó Istvánnal közösen lépsz a pódiumra."
       }
     ]
   }

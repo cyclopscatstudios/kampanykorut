@@ -13,6 +13,10 @@
       {
         "answerId": "C",
         "text": "Az utca ünnepel, a jogászok sápadoznak. A népbíróság szó 1945 óta rossz csengésű, és Bibó István biztosan emlékeztetni fog rá."
+      },
+      {
+        "answerId": "D",
+        "text": "Ügyes: a felkelők az asztalnál ülnek, nem az utcán. Ha a bizottság csak beszél, az asztalt is fel fogják borítani."
       }
     ]
   },
@@ -30,6 +34,10 @@
       {
         "answerId": "C",
         "text": "A felkelők szeretni fognak, a szovjet nagykövet kevésbé. Egy fegyveres testület, amely senkinek sem felel, a választás napján is fegyveres lesz."
+      },
+      {
+        "answerId": "D",
+        "text": "Időt nyersz, és a fegyverek legalább rendet tartanak. A kérdés csak az, hogy a választás után ki veszi el tőlük a gumibotot."
       }
     ]
   },
@@ -47,6 +55,10 @@
       {
         "answerId": "C",
         "text": "A polgári szavazó megnyugszik, a pesti srácok viszont azt hallják, hogy a forradalom elvégezte a dolgát, és mehet. Ezt nem fogják elfelejteni."
+      },
+      {
+        "answerId": "D",
+        "text": "Mindkettőt megtartod, és egyiknek sem adsz valódi szerepet. Pongrátz előbb fog rájönni, mint Iván Kovács."
       }
     ]
   },
@@ -64,6 +76,10 @@
       {
         "answerId": "C",
         "text": "Washington és Bécs tapsol, Moszkva fanyalog. Nemzetközi ügyet csinálsz egy kétoldalú kérdésből, ami okos, ha a Nyugat tényleg kitart melletted."
+      },
+      {
+        "answerId": "D",
+        "text": "A csendes diplomácia működhet, amíg ki nem szivárog. Pesten viszont minden kiszivárog, általában a Kis Újság címlapjára."
       }
     ]
   },
@@ -81,6 +97,10 @@
       {
         "answerId": "C",
         "text": "A hallgatás is válasz, és a szószékről úgy fogják értelmezni, ahogy nekik tetszik. Barankovics hálás lesz a kampánytémáért."
+      },
+      {
+        "answerId": "D",
+        "text": "Egy kommunista miniszterelnök a prímási palotában: a fotó bejárja a világot. A bíboros viszont nem szokott közös nyilatkozatot aláírni, csak sajátot."
       }
     ]
   },
@@ -98,6 +118,10 @@
       {
         "answerId": "C",
         "text": "Gyors és látványos, Bécs szívesen segít. Moszkva viszont azt olvassa ki belőle, hogy az első bajban nyugatra telefonáltál."
+      },
+      {
+        "answerId": "D",
+        "text": "Igazságos és unalmas, mint minden jegyrendszer. 1951 óta viszont a jegy szóról mindenkinek a sorban állás jut eszébe."
       }
     ]
   },
@@ -115,6 +139,10 @@
       {
         "answerId": "C",
         "text": "Friss arcok, tiszta lap. Csak tudd, hogy az elbocsátottak nem tűnnek el, hanem Kádár körül gyűlnek, és ők ismerik a pártszervezet minden csavarját."
+      },
+      {
+        "answerId": "D",
+        "text": "A pártból kikerülnek, az államba bekerülnek. A Corvin közben nem fogják érteni, miért jobb, ha a régi káderek most minisztériumi irodákban ülnek."
       }
     ]
   },
@@ -132,6 +160,10 @@
       {
         "answerId": "C",
         "text": "Tiszta helyzet, és a forradalom hívei ünnepelnek. A szakadás viszont nem marad el: Budapesten és Borsodban sok szervezet Kádárral tart."
+      },
+      {
+        "answerId": "D",
+        "text": "A belügy a legveszélyesebb tárca, amit adhatsz neki. Kádár ott ül majd, ahol a rendőrség aktái vannak, és ezt ő is pontosan tudja."
       }
     ]
   },
@@ -149,6 +181,10 @@
       {
         "answerId": "C",
         "text": "Ennél rosszabb szót nem találhattál volna. Az egyesült munkáspárt Kéthlynek a kényszeregyesítést és a börtönt jelenti."
+      },
+      {
+        "answerId": "D",
+        "text": "Egy szék a kormányban, de aláírás nélkül. Kéthly elfogadja, és közben feljegyzi, mit nem kapott meg."
       }
     ]
   },
@@ -166,6 +202,10 @@
       {
         "answerId": "C",
         "text": "A gyári küldöttek ünnepelnek, a szociáldemokraták viszont versenytársat látnak bennük. Kéthly szerint a tanácsok nem pótolják a szakszervezetet."
+      },
+      {
+        "answerId": "D",
+        "text": "Két szervezet egy tanácsban, két elnökkel. A gyűléseken majd eldől, ki beszél először."
       }
     ]
   },
@@ -183,6 +223,10 @@
       {
         "answerId": "C",
         "text": "Megúszod a kínos pert, és Moszkva is értékeli. A választók viszont észreveszik, ha valaki a legfontosabb kérdésben hallgat."
+      },
+      {
+        "answerId": "D",
+        "text": "Moszkva nem szeret kiadni senkit, főleg nem a saját embereit. A halasztás miatt a felkelők is gyanakodnak, de legalább kérted."
       }
     ]
   },
@@ -200,6 +244,10 @@
       {
         "answerId": "C",
         "text": "Merész, de a gyárak tagsága nagyrészt melletted áll. Kádár szerint ez puccs, és ezt minden gyűlésén elmondja majd."
+      },
+      {
+        "answerId": "D",
+        "text": "Nyugalom a baloldalon, amíg tart. A híveid viszont kérdezik majd, minek volt akkor a szakítás."
       }
     ]
   },
@@ -217,6 +265,10 @@
       {
         "answerId": "C",
         "text": "A Corvin köz és az egyetemek ünnepelnek. A szülők és Moszkva viszont egyformán aggódnak, ha fegyvert látnak a diákok kezében."
+      },
+      {
+        "answerId": "D",
+        "text": "Ez a gesztus sokat ér, az egyetemisták a forradalom arcai. Csak a törvényt is meg kell írni, és a diákok nem szeretik a kompromisszumot."
       }
     ]
   },
@@ -234,6 +286,10 @@
       {
         "answerId": "C",
         "text": "A városi munkás olcsó kenyeret kap, a paraszt pedig okot, hogy a kisgazdákra szavazzon. Vidéken ez sokba fog kerülni."
+      },
+      {
+        "answerId": "D",
+        "text": "A népszavazás szép demokratikus gesztus, de a paraszt most akarja tudni, kié lesz a föld. Kovács Béla erre már tud válaszolni."
       }
     ]
   },
@@ -251,6 +307,31 @@
       {
         "answerId": "C",
         "text": "A gazdaság kiszámítható marad, Kádár pedig bólogat. A munkástanácsok szerint viszont visszatért a régi rend."
+      },
+      {
+        "answerId": "D",
+        "text": "Kísérlet, amelyre mindenki figyel. Ha Csepelen beválik, a többi gyár is követelni fogja, ha nem, a tervhivatal fog nevetni."
+      }
+    ]
+  },
+  {
+    "questionId": "ellenfel_nem_ellenseg",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Tildy meghatódik, a választó viszont azt kérdezi, akkor miért ne a kisgazdákra szavazzon. Egy szocialista párttól a túl sok kedvesség gyengeségnek hat."
+      },
+      {
+        "answerId": "B",
+        "text": "Ezt a hangot 1947-ből ismerik, amikor Kovács Bélát elhurcolták. A támadás visszaüt: a vidék sajnálni fogja a kisgazdákat, és rájuk szavaz."
+      },
+      {
+        "answerId": "C",
+        "text": "A legnehezebb hang, de ez a legjobb. A választó egy kormányzó pártot lát, amely vitázik, nem fenyeget."
+      },
+      {
+        "answerId": "D",
+        "text": "Néhány miniszter marad, a kormány stabilabb. Kovács Béla viszont pártszakadást lát benne, és ezt a kampány végéig felhánytorgatja."
       }
     ]
   },
@@ -268,6 +349,10 @@
       {
         "answerId": "C",
         "text": "Időt nyersz, és senkit sem bántasz meg. Bibó szerint viszont az ideiglenes megoldások Magyarországon általában évtizedekig tartanak."
+      },
+      {
+        "answerId": "D",
+        "text": "Bibó elnöknek jobb, mint ellenfélnek. Csak ne felejtsd el, hogy egy alkotmányjogász elnök minden törvényedet el fogja olvasni."
       }
     ]
   },
@@ -285,6 +370,10 @@
       {
         "answerId": "C",
         "text": "Bevált megoldás, senki sem tiltakozik ellene igazán. A diákok viszont, akik a forradalmat elkezdték, nem szavazhatnak."
+      },
+      {
+        "answerId": "D",
+        "text": "A diákok szavazhatnak, a kényes kérdéseket pedig a bíróságra tolod. A bíróság viszont még meg sem alakult."
       }
     ]
   },
@@ -302,6 +391,10 @@
       {
         "answerId": "C",
         "text": "Ügyes egyensúlyozás, ha mindkét fél beleegyezik. Ha egyszer választanod kell, mindkettőt elveszítheted."
+      },
+      {
+        "answerId": "D",
+        "text": "Büszke függetlenség, amit a fűtetlen lakásokban kevésbé értékelnek. A semlegesség jó elv, de nem melegít."
       }
     ]
   },
@@ -319,6 +412,10 @@
       {
         "answerId": "C",
         "text": "Tisztességes elosztás, amelyben a legnagyobb pártként te kapod a legtöbbet. A kis pártok szerint ez a többség diktatúrája."
+      },
+      {
+        "answerId": "D",
+        "text": "A BBC mintája, Bibónak tetszeni fog. A kuratóriumban viszont minden párt a saját emberét akarja látni."
       }
     ]
   },
@@ -336,6 +433,10 @@
       {
         "answerId": "C",
         "text": "Bátor döntés, és ha bejön, senkivel sem kell osztoznod. Ha nem jön be, a választás után a partnerek drágábbak lesznek."
+      },
+      {
+        "answerId": "D",
+        "text": "Széles blokk, ha mindenki beszáll. Három párt listáján viszont három vezér akar az első helyen állni."
       }
     ]
   },
@@ -353,6 +454,10 @@
       {
         "answerId": "C",
         "text": "Őszinte hozzáállás, amit a parasztok értékelnek, de a kisgazdákra szavaznak. Vidéken a hallgatás a versenytársadnak kampányol."
+      },
+      {
+        "answerId": "D",
+        "text": "Konkrét és hihető ígéret. A paraszt szereti a traktort, csak attól tart, hogy a traktor után jön a tsz."
       }
     ]
   },
@@ -370,6 +475,10 @@
       {
         "answerId": "C",
         "text": "A városi munkásoknak ez tetszik, a falvaknak kevésbé. A körlevelet így ellened fogják felolvasni."
+      },
+      {
+        "answerId": "D",
+        "text": "Ügyes kerülőút: a protestáns vidék hallja, hogy tiszteled az egyházat. A katolikus szószékről viszont továbbra is ellened prédikálnak."
       }
     ]
   },
@@ -387,6 +496,10 @@
       {
         "answerId": "C",
         "text": "A hangod megnyugtat, de a beszéd nem fog el senkit. Ha újra lőnek, ezt a beszédet fogják idézni."
+      },
+      {
+        "answerId": "D",
+        "text": "A felkelők büszkén őrzik a pártházat, ami szép gesztus. A rendőrség viszont sértett lesz, és a Kreml is aggódik, ha fegyvereseket lát a pártház előtt."
       }
     ]
   },
@@ -404,6 +517,10 @@
       {
         "answerId": "C",
         "text": "Gyors és biztos, a Kreml elégedett. A Nyugat viszont azt látja, hogy a semlegességet Moszkvában írták alá."
+      },
+      {
+        "answerId": "D",
+        "text": "Tito példája csábító, de ő a hadseregével vívta ki a függetlenségét. A magyar semlegességet papíron kell megvédeni."
       }
     ]
   },
@@ -421,6 +538,10 @@
       {
         "answerId": "C",
         "text": "Ez a beszéd a történelemkönyvekbe kerül. Hogy a kormányprogramba is bekerül-e, az a választás után derül ki."
+      },
+      {
+        "answerId": "D",
+        "text": "Szép kép a forradalom pártjairól. A szavazó viszont azt is látja, hogy nem egyedül állsz, és hogy a tapsot hárman osztjátok."
       }
     ]
   }

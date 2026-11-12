@@ -18,6 +18,11 @@
             "type": "answer-selected",
             "questionId": "kadar_ultimatum",
             "answerId": "B"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kadar_ultimatum",
+            "answerId": "D"
           }
         ]
       },
@@ -49,9 +54,18 @@
         ]
       },
       "failWhen": {
-        "type": "answer-selected",
-        "questionId": "kadar_ultimatum",
-        "answerId": "A"
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "kadar_ultimatum",
+            "answerId": "A"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kadar_ultimatum",
+            "answerId": "D"
+          }
+        ]
       }
     },
     {
@@ -190,6 +204,11 @@
                 "type": "answer-selected",
                 "questionId": "listakapcsolas",
                 "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas",
+                "answerId": "D"
               }
             ]
           },
@@ -237,6 +256,11 @@
             "type": "answer-selected",
             "questionId": "listakapcsolas",
             "answerId": "B"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "D"
           }
         ]
       }
@@ -307,6 +331,15 @@
       "tone": "calm",
       "label": "Tárgyalna",
       "description": "Versenytárs és lehetséges partner. Garanciákat vár."
+    },
+    {
+      "id": "kisgazdak",
+      "name": "Kisgazdák",
+      "groupId": "partok",
+      "icon": "basket-fill",
+      "tone": "good",
+      "label": "Koalíciós partner",
+      "description": "Tildy Zoltán és Kovács Béla az ideiglenes kormányban ülnek."
     },
     {
       "id": "corvin",
@@ -396,32 +429,43 @@
       {
         "partyId": "fkgp",
         "acceptWhen": {
-          "or": [
+          "and": [
             {
-              "type": "answer-selected",
-              "questionId": "fold_es_beszolgaltatas",
-              "answerId": "A"
+              "not": {
+                "type": "relation",
+                "relationId": "kisgazdak",
+                "tone": ["bad"]
+              }
             },
             {
-              "and": [
+              "or": [
                 {
                   "type": "answer-selected",
                   "questionId": "fold_es_beszolgaltatas",
-                  "answerId": "B"
+                  "answerId": "A"
                 },
                 {
-                  "not": {
-                    "type": "answer-selected",
-                    "questionId": "szoszek_es_urna",
-                    "answerId": "C"
-                  }
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "fold_es_beszolgaltatas",
+                      "answerId": "B"
+                    },
+                    {
+                      "not": {
+                        "type": "answer-selected",
+                        "questionId": "szoszek_es_urna",
+                        "answerId": "C"
+                      }
+                    }
+                  ]
                 }
               ]
             }
           ]
         },
         "acceptReason": "A beszolgáltatás eltörlése meggyőzte Kovács Bélát. A kisgazdák nagykoalícióra készek.",
-        "rejectReason": "A kisgazdák szerint a programod nem ad biztonságot a gazdáknak."
+        "rejectReason": "A kisgazdák szerint a programod nem ad biztonságot a gazdáknak, és a kampány sértéseit sem felejtették el."
       },
       {
         "partyId": "kadar_part",

@@ -218,5 +218,53 @@
       "dnp": 0,
       "kadar_part": -2
     }
+  },
+  {
+    "id": "kelet_nyugat",
+    "name": "Kelet vagy Nyugat",
+    "icon": "compass-fill",
+    "description": "Merre forduljon a semleges ország. Pozitív: nyitás Nyugat felé, negatív: szoros kapcsolat Moszkvával.",
+    "default": {
+      "strength": 1,
+      "opinion": 0
+    },
+    "areas": {
+      "vk01": {
+        "strength": 2,
+        "opinion": 0
+      },
+      "vk11": {
+        "strength": 2,
+        "opinion": 0
+      },
+      "vk10": {
+        "strength": 1,
+        "opinion": 0
+      },
+      "vk05": {
+        "strength": 2,
+        "opinion": 1
+      },
+      "vk06": {
+        "strength": 2,
+        "opinion": 1
+      },
+      "vk07": {
+        "strength": 2,
+        "opinion": 1
+      },
+      "vk08": {
+        "strength": 1,
+        "opinion": 1
+      }
+    },
+    "positions": {
+      "mszmp": 0,
+      "fkgp": 1,
+      "szdp": 1,
+      "petofi": 0,
+      "dnp": 2,
+      "kadar_part": -2
+    }
   }
 ]

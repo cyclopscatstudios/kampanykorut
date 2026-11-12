@@ -60,6 +60,14 @@ export type RelationCondition = {
   tone: RelationTone[];
 };
 
+export type IssuePositionCondition = {
+  type: "issue-position";
+  issueId: string;
+  party?: string;
+  min?: number;
+  max?: number;
+};
+
 export type LeafCondition =
   | TurnCondition
   | CandidateSupportCondition
@@ -69,7 +77,8 @@ export type LeafCondition =
   | PlayerCandidateCondition
   | EventTriggeredCondition
   | FocusSelectedCondition
-  | RelationCondition;
+  | RelationCondition
+  | IssuePositionCondition;
 
 export type Condition =
   | AndCondition
@@ -87,4 +96,5 @@ export interface ConditionContext {
   triggeredEventIds: string[];
   selectedFocusIds?: string[];
   getRelationTone?(relationId: string): RelationTone | undefined;
+  getIssuePosition?(issueId: string, party?: string): number | undefined;
 }

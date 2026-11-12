@@ -117,3 +117,18 @@ test("1957: a region shows how strong its issues are", async ({
   await expect(issues).toBeVisible();
   await expect(issues.getByTestId("areaIssue-forradalom")).toBeVisible();
 });
+
+test("1957: the smallholders always leave, and turning West costs Pongrátz", async ({
+  playCampaign,
+}) => {
+  const seedData = await playCampaign(CAMPAIGN_ID, "mszmp", "nagy_imre", {
+    corvin_hangok: "A",
+    szerelvenyek: "C",
+    hideg_tel: "C",
+  });
+  const triggered = seedData?.state?.campaignEvents?.triggeredEventIds;
+  expect(triggered).toContain("fkgp_kilepes");
+  expect(triggered).toContain("pongratz_kilep");
+  expect(triggered).not.toContain("tankok_helyett_bankok");
+  expect(seedData?.state?.issuePositions?.kelet_nyugat?.mszmp).toBe(2);
+});
