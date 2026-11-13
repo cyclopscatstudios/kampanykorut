@@ -88,7 +88,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A falusi plébániákon jó szót kapsz, a csepeli munkások viszont nem érik, miért egyezkedsz a bíborossal. A Demokrata Néppártnak nem fog tetszeni, hogy elvetted a fő témáját."
+        "text": "A falusi plébániákon jó szót kapsz, a csepeli munkások viszont nem értik, miért egyezkedsz a bíborossal. A Demokrata Néppártnak nem fog tetszeni, hogy elvetted a fő témáját."
       },
       {
         "answerId": "B",
@@ -277,7 +277,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "Kovács Béla a saját programját hallja tőled, és ez lehetővé teszi a nagykoalíciót. A párt agrárszakértői közül viszont többen a fejüket fogják."
+        "text": "Kovács Béla a saját programját hallja tőled, és ezzel nyitva áll az út a nagykoalíció felé. A párt agrárszakértői közül viszont többen a fejüket fogják."
       },
       {
         "answerId": "B",
@@ -344,7 +344,7 @@
       },
       {
         "answerId": "B",
-        "text": "Hatékony lesz a kormányzás, de Bibó szerint ez a kevés hatalommegosztás a jövő diktatúrájának a magja. Ő nem felejt."
+        "text": "Hatékony lesz a kormányzás, de Bibó szerint a gyenge hatalommegosztásból nő ki a jövő diktatúrája. Ő nem felejt."
       },
       {
         "answerId": "C",
@@ -361,7 +361,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A legszélesebb választójog, amire a Nyugat is felfigyel. Az emigránsok szavazatai viszont nem nálad fognak landolni."
+        "text": "A legszélesebb választójog, amire a Nyugat is felfigyel. Az emigránsok viszont aligha rád szavaznak."
       },
       {
         "answerId": "B",
@@ -453,7 +453,7 @@
       },
       {
         "answerId": "C",
-        "text": "Őszinte hozzáállás, amit a parasztok értékelnek, de a kisgazdákra szavaznak. Vidéken a hallgatás a versenytársadnak kampányol."
+        "text": "Őszinte, és a parasztok értékelik is, de a kisgazdákra szavaznak. Vidéken a hallgatás a versenytársadnak kampányol."
       },
       {
         "answerId": "D",
@@ -487,7 +487,7 @@
     "answers": [
       {
         "answerId": "A",
-        "text": "A polgárok biztonságban érzik magukat, és Moszkva is megnyugszik. A felkelők viszont azt mondják, hogy a kormány most ugyanazt teszi, mint Gerő tette októberben."
+        "text": "A polgárok biztonságban érzik magukat, és Moszkva is megnyugszik. A felkelők viszont azt mondják, hogy a kormány most ugyanazt teszi, amit Gerő októberben."
       },
       {
         "answerId": "B",

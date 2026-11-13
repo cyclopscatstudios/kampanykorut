@@ -12,6 +12,7 @@
     "candidateListData": "valasztokeruletek.json",
     "campaignEvents": "campaign_events.json",
     "newspaper": "newspaper.json",
+    "customPollsters": "custom_pollsters.json",
     "playableSides": {
       "mszmp": {
         "nagy_imre": {

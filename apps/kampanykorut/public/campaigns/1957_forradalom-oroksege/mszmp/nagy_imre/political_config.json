@@ -6,7 +6,7 @@
       "title": "Lassú reformok",
       "summary": "Változtass lépésről lépésre",
       "description": "A forradalom után az MSZMP-ben is változást várnak. Adj időt a vitáknak, és olyan reformokat vigyél a párt elé, amelyek mögé a különböző irányzatok is felsorakozhatnak.",
-      "icon": "people-fill",
+      "icon": "/images/1957_forradalom-oroksege/lassu_reformok_badge.png",
       "completeWhen": {
         "or": [
           {
@@ -33,10 +33,10 @@
     },
     {
       "id": "forradalom_partja",
-      "title": "A Forradalom pártja",
+      "title": "A forradalom pártja",
       "summary": "Vidd tovább október ügyét",
       "description": "A forradalom napjaiban az ország kimondta, milyen változásokat akar. Tedd a többpártrendszert, a magyar semlegességet és a munkástanácsok jogait az MSZMP programjának alapjává.",
-      "icon": "fire",
+      "icon": "/images/1957_forradalom-oroksege/forradalom_partja_badge.png",
       "completeWhen": {
         "and": [
           {
@@ -72,8 +72,8 @@
       "id": "baloldali_szovetseg",
       "title": "Baloldali szövetség",
       "summary": "Keress közös ügyet a szociáldemokratákkal",
-      "description": "Az MSZMP-t és a szociáldemokratákat sok minden elválasztja, de a bérekről és a munkások jogairól mindkét pártnak van mondanivalója. Ülj tárgyalóasztalhoz Kéthly Annával, és keresd meg, miért érdemes együtt kiállnotok.",
-      "icon": "link",
+      "description": "Az MSZMP-t és a szociáldemokratákat sok minden elválasztja, de a bérekről és a munkások jogairól mindkét pártnak van mondanivalója. Ülj tárgyalóasztalhoz Kéthly Annával, és keressétek meg, miben állhattok ki együtt.",
+      "icon": "/images/1957_forradalom-oroksege/szovetseg_badge.png",
       "completeWhen": {
         "type": "answer-selected",
         "questionId": "kethly_feltetelei",
@@ -95,10 +95,10 @@
     },
     {
       "id": "munkasokol_vasokol",
-      "title": "Munkásököl-vasököl",
+      "title": "Munkásököl",
       "summary": "Sorakoztasd fel a munkásságot az MSZMP mögött",
       "description": "A gyárakban és a szakszervezetekben már arról vitáznak, ki képviselje őket az új országgyűlésben. Vidd el az MSZMP programját az üzemekbe, és mutasd meg, hogy a munkásság egy zászló alatt is hallathatja a hangját.",
-      "icon": "hammer",
+      "icon": "/images/1957_forradalom-oroksege/munkasokol_badge.png",
       "completeWhen": {
         "or": [
           {
@@ -123,7 +123,7 @@
       "title": "Semleges híd",
       "summary": "Tarts jó viszonyt Moszkvával és a Nyugattal is",
       "description": "A semleges Magyarország akkor marad meg, ha egyik nagyhatalom sem érzi fenyegetésnek. Köss szerződést mindkét oldallal, és légy a híd Kelet és Nyugat között.",
-      "icon": "globe-europe-africa",
+      "icon": "/images/1957_forradalom-oroksege/semleges_hid.png",
       "completeWhen": {
         "or": [
           {
@@ -156,7 +156,7 @@
       "title": "Nyitás Nyugat felé",
       "summary": "Kösd az országot a nyugati piacokhoz",
       "description": "Ausztria példája mutatja, hogy a semlegesség és a jólét összefér. Nyiss a nyugati hitelek és piacok felé, és építsd az új köztársaságot nyugati mintára.",
-      "icon": "compass-fill",
+      "icon": "/images/1957_forradalom-oroksege/nyugat.png",
       "completeWhen": {
         "or": [
           {
@@ -189,8 +189,8 @@
       "id": "nemzeti_egyseg",
       "title": "Nemzeti egység",
       "summary": "Építs széles koalíciót a választás előtt",
-      "description": "A forradalmat az egész ország vívta meg, ne egyetlen párt. Kapcsold össze a listádat a forradalom többi pártjával, és ígérj közös kormányt.",
-      "icon": "link",
+      "description": "A forradalmat az egész ország vívta meg, nem egyetlen párt. Kapcsold össze a listádat a forradalom többi pártjával, és ígérj közös kormányt.",
+      "icon": "/images/1957_forradalom-oroksege/nemzeti_egyseg.png",
       "completeWhen": {
         "and": [
           {
@@ -239,7 +239,7 @@
       "title": "Saját többség",
       "summary": "Mozgósíts az önálló győzelemért",
       "description": "Ha az MSZMP egyedül szerez többséget, senkivel sem kell alkudnod a forradalom programjáról. Indulj önállóan, és mozgósítsd a párt minden szervezetét.",
-      "icon": "megaphone-fill",
+      "icon": "/images/1957_forradalom-oroksege/sajat_tobbseg.png",
       "completeWhen": {
         "type": "answer-selected",
         "questionId": "listakapcsolas",
@@ -318,7 +318,7 @@
       "id": "kadar",
       "name": "Kádár János",
       "groupId": "partok",
-      "icon": "person-fill",
+      "icon": "/images/1957_forradalom-oroksege/kadar_badge.png",
       "tone": "tense",
       "label": "Elégedetlen",
       "description": "A pártszervezet embere. Lassabb reformokat akar."
@@ -327,7 +327,7 @@
       "id": "kethly",
       "name": "Kéthly Anna",
       "groupId": "partok",
-      "icon": "person-fill",
+      "icon": "/images/1957_forradalom-oroksege/kethly_badge.png",
       "tone": "calm",
       "label": "Tárgyalna",
       "description": "Versenytárs és lehetséges partner. Garanciákat vár."
@@ -336,7 +336,7 @@
       "id": "kisgazdak",
       "name": "Kisgazdák",
       "groupId": "partok",
-      "icon": "basket-fill",
+      "icon": "/images/1957_forradalom-oroksege/fkgp_badge.png",
       "tone": "good",
       "label": "Koalíciós partner",
       "description": "Tildy Zoltán és Kovács Béla az ideiglenes kormányban ülnek."
@@ -345,7 +345,7 @@
       "id": "corvin",
       "name": "Corvin köz",
       "groupId": "tarsadalom",
-      "icon": "shield-fill",
+      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.png",
       "tone": "tense",
       "label": "Türelmetlen",
       "description": "A felkelők elszámoltatást követelnek."
@@ -354,7 +354,7 @@
       "id": "munkastanacsok",
       "name": "Munkástanácsok",
       "groupId": "tarsadalom",
-      "icon": "building-fill",
+      "icon": "/images/1957_forradalom-oroksege/munkastancsok_badge.png",
       "tone": "calm",
       "label": "Várakozó",
       "description": "A gyárak vezetésébe akarnak beleszólni."
@@ -363,16 +363,16 @@
       "id": "moszkva",
       "name": "Moszkva",
       "groupId": "kulfold",
-      "icon": "star-fill",
+      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png",
       "tone": "tense",
       "label": "Gyanakvó",
-      "description": "Elfogadta a semlegességet, de figyel."
+      "description": "Elfogadta a semlegességet, de minden lépésedet figyeli."
     },
     {
       "id": "nyugat",
       "name": "Nyugat",
       "groupId": "kulfold",
-      "icon": "globe-americas",
+      "icon": "/images/1957_forradalom-oroksege/nyugat_badge.png",
       "tone": "calm",
       "label": "Kivár",
       "description": "Washington és Bécs figyeli, merre indul az új köztársaság."
@@ -545,7 +545,7 @@
     {
       "id": "szocialdemokrata_megallapodas",
       "title": "Baloldali kormány",
-      "body": "Az MSZMP és az SZDP közösen alakít kormányt. Kéthly Anna garanciái a kormányprogram részei lettek.",
+      "body": "Az MSZMP és az SZDP közösen alakít kormányt. Kéthly Anna garanciái bekerültek a kormányprogramba.",
       "icon": "people-fill",
       "outcomes": ["coalition"],
       "when": {
@@ -557,7 +557,7 @@
     {
       "id": "tarka_koalicio",
       "title": "Tarka koalíció",
-      "body": "Nagy Imre több párttal osztozik a hatalmon. A miniszteri székeket szétosztották, de minden döntés alkuba kerül, és a kormány az első válságnál megingik.",
+      "body": "Nagy Imre több párttal osztozik a hatalmon. A miniszteri székeket szétosztották, de minden döntés alkuba kerül, és a kormány az első válságnál meginog.",
       "icon": "people-fill",
       "outcomes": ["weak-coalition"]
     },

@@ -74,7 +74,7 @@
       },
       {
         "id": "D",
-        "label": "Mindkettőjüket meghívod egy felkelő tanácsba, amely a kormányt tanácsolja."
+        "label": "Mindkettőjüket meghívod egy felkelő tanácsba, amely tanácsot ad a kormánynak."
       }
     ],
     "affects": [
@@ -90,7 +90,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Lassabb kivonulás a szovjet garanciákért cserébe."
+        "label": "Elfogadod a lassabb kivonulást a szovjet garanciákért."
       },
       {
         "id": "B",
@@ -196,7 +196,7 @@
   {
     "id": "kadar_ultimatum",
     "title": "Kádár ultimátuma",
-    "question": "Kádár János a pártvezetésben kimondja: a régi apparátus nélkül nincs kormányzóképes párt, a reformokat lassítani kell. Ha nem kap garanciát, a párt egy része vele tart.",
+    "question": "Kádár János a pártvezetésben kimondja: a régi apparátus nélkül nincs kormányzóképes párt, a reformokat lassítani kell. Ha nem kap garanciát, a párt egy része vele tart. Mit válaszolsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -219,7 +219,7 @@
   {
     "id": "kethly_feltetelei",
     "title": "Kéthly feltételei",
-    "question": "Kéthly Anna kész tárgyalni, de feltételt szab: írásos garanciát a többpártrendszerre, a szabad szakszervezetekre és arra, hogy az SZDP soha többé nem olvad be.",
+    "question": "Kéthly Anna kész tárgyalni, de feltételt szab: írásos garanciát a többpártrendszerre, a szabad szakszervezetekre és arra, hogy az SZDP soha többé nem olvad be. Mit felelsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -330,7 +330,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Egyetemi autonómia, és az orosz nyelv választható lesz."
+        "label": "Megadod az egyetemi autonómiát, az orosz nyelv választható lesz."
       },
       {
         "id": "B",
@@ -449,7 +449,7 @@
   {
     "id": "kik_szavazhatnak",
     "title": "Kik szavazhatnak?",
-    "question": "A választási törvényről vitatkoznak: szavazhatnak-e az emigránsok, a volt ÁVH-sok, és leszállítsák-e a korhatárt 18 évre. Mit javasolsz?",
+    "question": "Vita folyik a választási törvényről: szavazhatnak-e az emigránsok és a volt ÁVH-sok, és 18 évre csökkenjen-e a korhatár? Mit javasolsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -623,11 +623,11 @@
       },
       {
         "id": "B",
-        "label": "Osztrák mintájú négyhatalmi szerződést."
+        "label": "Osztrák mintájú négyhatalmi szerződést kötsz."
       },
       {
         "id": "C",
-        "label": "Kétoldalú megállapodást Moszkvával."
+        "label": "Kétoldalú megállapodást kötsz Moszkvával."
       },
       {
         "id": "D",

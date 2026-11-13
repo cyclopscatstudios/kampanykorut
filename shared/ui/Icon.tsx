@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { BootstrapIcon, IconSource } from "../types";
+import { IconName, IconSource } from "../types";
 import type { Colors } from "../types/color";
 import { svgIcons } from "./icons";
 
@@ -8,7 +8,7 @@ type IconSize = "xs" | "sm" | "normal" | "large" | "medium";
 export type IconColor = Colors | "currentColor";
 
 export interface IconProps {
-  name: BootstrapIcon;
+  name: IconName;
   size?: IconSize | number;
   color?: IconColor;
   source?: IconSource;
@@ -27,6 +27,22 @@ export function Icon({
   const iconSizeStyle =
     typeof size === "number" ? { fontSize: size } : undefined;
   const iconColor = getIconColor(color);
+
+  if (name.startsWith("/")) {
+    return (
+      <img
+        src={name}
+        alt=""
+        aria-hidden
+        className={classNames(
+          "inline-block h-[1em] w-[1em] object-contain align-[-0.125em]",
+          iconSizeClass,
+          className,
+        )}
+        style={iconSizeStyle}
+      />
+    );
+  }
 
   if (source === "svg") {
     const SvgIcon = svgIcons[name as keyof typeof svgIcons];

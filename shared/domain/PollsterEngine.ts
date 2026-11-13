@@ -8,6 +8,7 @@ import { MandateCalculator } from "./MandateCalculator";
 const log = createLogger("PollsterEngine");
 
 export const AGGREGATE_POLLSTER_ID = "aggregate";
+const ALL_POLLSTER_IDS = "all_pollsters";
 
 @injectable()
 export class PollsterEngine {
@@ -18,7 +19,12 @@ export class PollsterEngine {
   }
 
   configure(customPollsters?: Pollster[]) {
-    const pollsters = new Map(DEFAULT_POLLSTERS.map((p) => [p.id, p]));
+    const excludeDefaults = customPollsters?.some(
+      (p) => p.id === ALL_POLLSTER_IDS && p.exclude,
+    );
+    const pollsters = new Map(
+      excludeDefaults ? [] : DEFAULT_POLLSTERS.map((p) => [p.id, p]),
+    );
 
     if (customPollsters) {
       log.debug("configuring PollsterEngine with custom pollsters", {
@@ -26,6 +32,7 @@ export class PollsterEngine {
       });
 
       for (const pollster of customPollsters) {
+        if (pollster.id === ALL_POLLSTER_IDS) continue;
         if (pollster.exclude) {
           pollsters.delete(pollster.id);
         } else {

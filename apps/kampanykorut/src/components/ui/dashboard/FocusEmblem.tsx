@@ -16,8 +16,9 @@ export function FocusEmblem({ focus }: { focus: FocusView }) {
       >
         <Icon
           name={focus.icon ?? "signpost-split-fill"}
-          size={30}
+          size={focus.icon?.startsWith("/") ? 72 : 30}
           color="currentColor"
+          className="rounded-full"
         />
       </span>
       {style.badge && (

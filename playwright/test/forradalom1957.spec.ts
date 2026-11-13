@@ -48,7 +48,9 @@ test("1957: a focus must be chosen before the first turn", async ({
 
   await page.getByTestId("politicalStatusButton").click();
   await page.getByRole("tab", { name: "Fókuszok" }).click();
-  await expect(page.getByTestId("focusSchedule")).toHaveText(
+  await expect(
+    page.getByTestId("focusBranch-irany").getByTestId("focusSchedule"),
+  ).toHaveText(
     "Az 1. kör előtt válassz irányt, különben nem haladhatsz tovább.",
   );
   await expect(page.getByTestId("selectFocus-lassu_reformok")).toBeVisible();

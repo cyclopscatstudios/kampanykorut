@@ -3,7 +3,7 @@
     "id": "forradalom",
     "name": "A forradalom megítélése",
     "icon": "fire",
-    "description": "Mennyire áll ki valaki 1956 októbere mellett. Pozitív: a forradalom vívmányainak védelme.",
+    "description": "Mennyire áll ki valaki 1956 októbere mellett.",
     "default": {
       "strength": 1,
       "opinion": 1
@@ -67,7 +67,7 @@
     "id": "fold",
     "name": "Beszolgáltatás és tsz",
     "icon": "basket-fill",
-    "description": "A paraszti föld sorsa. Pozitív: a beszolgáltatás eltörlése és a szabad kilépés a termelőszövetkezetből.",
+    "description": "A paraszti föld sorsa.",
     "default": {
       "strength": 2,
       "opinion": 2
@@ -127,7 +127,7 @@
     "id": "egyhaz",
     "name": "Az egyházak szerepe",
     "icon": "bank2",
-    "description": "Az egyházak szabadsága és a hitoktatás. Pozitív: szabad egyházi élet és iskolák.",
+    "description": "Az egyházak szabadsága és a hitoktatás.",
     "default": {
       "strength": 1,
       "opinion": 1
@@ -171,7 +171,7 @@
     "id": "munkastanacsok",
     "name": "Munkástanácsok",
     "icon": "building-fill",
-    "description": "A gyárak önigazgatása. Pozitív: a munkástanácsok valódi jogkört kapnak.",
+    "description": "A gyárak önigazgatása.",
     "default": {
       "strength": 1,
       "opinion": 0
@@ -223,7 +223,7 @@
     "id": "kelet_nyugat",
     "name": "Kelet vagy Nyugat",
     "icon": "compass-fill",
-    "description": "Merre forduljon a semleges ország. Pozitív: nyitás Nyugat felé, negatív: szoros kapcsolat Moszkvával.",
+    "description": "Merre forduljon a semleges ország.",
     "default": {
       "strength": 1,
       "opinion": 0

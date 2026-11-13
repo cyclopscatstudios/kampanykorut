@@ -58,7 +58,13 @@ function ChronicleNode({ event }: { event: PublicEvent }) {
         >
           <Icon
             name={event.icon ?? (major ? "star-fill" : "circle-fill")}
-            size={major ? 36 : 22}
+            size={
+              major && event.icon?.startsWith("/")
+                ? 126
+                : event.icon?.startsWith("/")
+                  ? 84
+                  : 30
+            }
             color="currentColor"
           />
         </span>

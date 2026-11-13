@@ -1,11 +1,11 @@
 {
   "title": "A forradalom öröksége",
   "year": "1957",
-  "background": "/foti_1956_cover.jpg",
+  "background": "/fortepan_39947-1920x1268-1.jpg",
   "intro": {
     "title": "A forradalom öröksége",
-    "subtitle": "Magyarország · 1957 eleje",
-    "text": "1956. október 23-án tüntetők vonultak Budapest utcáira. Estére eldördültek az első lövések, a tüntetésből pedig forradalom lett. Napokig tartottak a véres összecsapások. A szovjet csapatok végül kivonultak, Magyarország pedig kimondta semlegességét.\n\nA harcok után Nagy Imre vezetésével széles koalíciós kormány alakult. Egy asztalhoz ültek a szocialisták, a kisgazdák, a szociáldemokraták és a parasztpártiak. A forradalom napjaiban összefogtak. Most együtt kell kormányozniuk egy országot, amelynek a jövőjéről már nagyon különbözően gondolkodnak.\n\n1957 elején járunk. Októberben szabad országgyűlési választást tartanak. A pártok újjászerveződnek, a munkástanácsok beleszólást követelnek a gyárak irányításába, a felkelők pedig számonkérést sürgetnek a sortüzekért. Közben a kormánynak Moszkvával is tárgyalnia kell, hogy a kivívott semlegességet megőrizze.\n\nNagy Imre a forradalom arca, és egyelőre az ő pártja a legerősebb. A többséghez azonban várhatóan szövetségesekre lesz szüksége. Októberben az ország arról dönt, kire bízza a kormányzást, és a forradalom ígéretei közül melyekből lesz törvény."
+    "subtitle": "Magyarország · 1957. január 1.",
+    "text": "1956. október 23-án tüntetők vonultak Budapest utcáira. Estére eldördültek az első lövések, és a tüntetésből forradalom lett. Napokig tartottak a véres harcok, ám a szovjet csapatok végül kivonultak, Magyarország pedig kimondta semlegességét.\n\nNagy Imre vezetésével koalíciós kormány alakult: szocialisták, kisgazdák, szociáldemokraták és parasztpártiak ülnek egy asztalnál. A forradalom napjaiban egyetlen jelszó fogta össze őket: „Ruszkik haza!” Abban viszont, hogy milyen legyen az ország, és mit jelentsen a forradalom győzelme, ma éles ellentétek választják el őket.\n\n1957. január 1-jén járunk. Októberben szabad országgyűlési választást tartanak. A pártok újjászerveződnek, a munkástanácsok beleszólást követelnek a gyárak irányításába, a felkelők pedig számonkérést sürgetnek a sortüzekért. Vita folyik a földek sorsáról, az államosításokról és arról, meddig terjedjen az elszámoltatás. A kormánynak közben Moszkvával is tárgyalnia kell, hogy az ország megőrizze függetlenségét és semlegességét.\n\nNagy Imre a forradalom jelképe, és egyelőre az ő pártja a legerősebb. A többséghez azonban valószínűleg szövetségesekre lesz szüksége. A választáson az ország arról dönt, kire bízza a kormányzást, és a forradalom ígéreteiből mi válik törvénnyé."
   },
   "election": {
     "type": "proportional"
@@ -49,7 +49,7 @@
     },
     {
       "id": "kadar_part",
-      "name": "Szocialista Munkáspárt (Kádár)",
+      "name": "Magyar Munkáspárt",
       "leader": "Kádár János",
       "color": "#6d1b1b",
       "dormant": true

@@ -1,11 +1,16 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useId, useRef, useState } from "react";
+import { container } from "tsyringe";
+import { buildFocusOverview, FocusView, getFocuses } from "@/shared/domain";
 import { CampaignConfig, CampaignState } from "@/shared/types";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
+import { Tooltip } from "../../../../../../shared/ui/Tooltip";
+import { StateEngine } from "../../../logic/application";
 import { useGetCampaigns } from "../../../logic/application/hooks/useGetCampaigns";
 import { BottomSheet } from "../BottomSheet";
+import { focusStatusStyle } from "../dashboard/focusStatusStyle";
 import { CampaignBadgeInfo, getCampaignBadgeInfo } from "./campaignBadge.utils";
 
 export interface CampaignBadgeProps {
@@ -27,6 +32,14 @@ export function CampaignBadge({
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const panelId = useId();
+  const focuses =
+    open && state && config && getFocuses(config).length > 0
+      ? buildFocusOverview(
+          state,
+          config,
+          container.resolve(StateEngine).getHistory() ?? [],
+        ).selected
+      : [];
 
   useEffect(() => {
     if (!open || variant !== "dropdown") {
@@ -70,7 +83,7 @@ export function CampaignBadge({
           aria-label={t("gameHeader.campaignBadge.title")}
           className="absolute left-0 top-full z-50 mt-2 w-80 overflow-hidden rounded-xl border border-[#4462aa] bg-[#161e30] shadow-xl"
         >
-          <CampaignDetails info={info} />
+          <CampaignDetails info={info} focuses={focuses} />
         </div>
       )}
       {variant === "sheet" && (
@@ -82,7 +95,7 @@ export function CampaignBadge({
           fitContent
         >
           <div className="-mx-4.5 -mt-3 overflow-hidden">
-            <CampaignDetails info={info} surface="sheet" />
+            <CampaignDetails info={info} focuses={focuses} surface="sheet" />
           </div>
         </BottomSheet>
       )}
@@ -152,9 +165,11 @@ function CampaignChip({
 
 function CampaignDetails({
   info,
+  focuses,
   surface = "dialog",
 }: {
   info: CampaignBadgeInfo;
+  focuses: FocusView[];
   surface?: "dialog" | "sheet";
 }) {
   return (
@@ -208,6 +223,29 @@ function CampaignDetails({
           <Text size="lg" weight="bold" className="leading-snug">
             {info.candidateName ?? "—"}
           </Text>
+          {focuses.length > 0 && (
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              {focuses.map((focus) => (
+                <Tooltip key={focus.id} content={focus.title}>
+                  <span
+                    role="img"
+                    aria-label={focus.title}
+                    className={classNames(
+                      "inline-flex size-7 items-center justify-center rounded-full",
+                      focusStatusStyle[focus.status].emblem,
+                    )}
+                  >
+                    <Icon
+                      name={focus.icon ?? "signpost-split-fill"}
+                      size={focus.icon?.startsWith("/") ? 28 : 14}
+                      color="currentColor"
+                      className="rounded-full"
+                    />
+                  </span>
+                </Tooltip>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

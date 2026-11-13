@@ -1,5 +1,5 @@
 import { Condition } from "./condition";
-import { BootstrapIcon } from "./icon";
+import { IconName } from "./icon";
 
 export type GameMode = "classic" | "strategic";
 
@@ -10,7 +10,7 @@ export interface PoliticalFocus {
   title: string;
   summary: string;
   description: string;
-  icon?: BootstrapIcon;
+  icon?: IconName;
   completeWhen?: Condition;
   failWhen?: Condition;
 }
@@ -42,14 +42,14 @@ export interface RelationStanding {
 export interface RelationGroup {
   id: string;
   title: string;
-  icon?: BootstrapIcon;
+  icon?: IconName;
 }
 
 export interface Relation extends RelationStanding {
   id: string;
   name: string;
   groupId: string;
-  icon?: BootstrapIcon;
+  icon?: IconName;
 }
 
 export interface PoliticalConfig {
@@ -92,7 +92,7 @@ export interface Epilogue {
   id: string;
   title: string;
   body: string;
-  icon?: BootstrapIcon;
+  icon?: IconName;
   outcomes?: GovernmentOutcome[];
   when?: Condition;
 }

@@ -5,21 +5,21 @@
   },
   "papers": [
     {
-      "id": "nepszava",
-      "name": "NÉPSZAVA",
-      "subtitle": "A Szociáldemokrata Párt lapja",
+      "id": "nepszabadsag",
+      "name": "NÉPSZABADSÁG",
+      "subtitle": "Világ proletárjai, egyesüljetek!",
       "price": "Ára: 50 fillér"
     },
     {
       "id": "kis_ujsag",
       "name": "KIS ÚJSÁG",
-      "subtitle": "A Független Kisgazdapárt lapja",
+      "subtitle": "A Független Kisgazda-, Földmunkás- és Polgári Párt politikai napilapja",
       "price": "Ára: 50 fillér"
     },
     {
-      "id": "igazsag",
-      "name": "IGAZSÁG",
-      "subtitle": "A forradalmi ifjúság lapja",
+      "id": "magyar_nemzet",
+      "name": "Magyar Nemzet",
+      "subtitle": "Független politikai napilap",
       "price": "Ára: 40 fillér"
     },
     {
@@ -27,14 +27,32 @@
       "name": "ÚJ EMBER",
       "subtitle": "Katolikus hetilap",
       "price": "Ára: 60 fillér"
+    },
+    {
+      "id": "ludas_matyi",
+      "name": "LUDAS MATYI",
+      "subtitle": "Szatirikus hetilap",
+      "price": "Ára: 70 fillér"
     }
   ],
   "items": [
+    {
+      "id": "egyiksem_vezet",
+      "paper": "ludas_matyi",
+      "headline": "Fölényesen vezet az Egyiksem Párt",
+      "lead": "A megkérdezettek döntő többsége most vasárnap az Egyiksem Pártra szavazna – legalábbis a Ludas Matyi nem reprezentatív felmérése szerint.",
+      "image": "/images/1957_forradalom-oroksege/ludas_matyi_egyiksem_felmeres.png",
+      "when": {
+        "type": "turn",
+        "max": 5
+      }
+    },
     {
       "id": "igazsag_pongratz",
       "paper": "igazsag",
       "headline": "Pongrátz: a forradalom még nem ért véget",
       "lead": "A Corvin köz parancsnoka szerint addig nincs nyugalom, amíg az ÁVH vezetői szabadon járnak.",
+      "image": "/images/1957_forradalom-oroksege/pongratz_gergely.png",
       "when": {
         "type": "turn",
         "max": 5
@@ -45,6 +63,7 @@
       "paper": "nepszava",
       "headline": "Kéthly Anna: a munkásság nem mond le a szabadságáról",
       "lead": "Az SZDP elnöke a Népszava székházában kijelentette, hogy pártja önállóan indul a választáson.",
+      "image": "/images/1957_forradalom-oroksege/kethley_hazatert.png",
       "when": {
         "type": "turn",
         "max": 8
@@ -55,6 +74,7 @@
       "paper": "nepszava",
       "headline": "Tüntetés a Corvin közben",
       "lead": "Több ezren követelték az ÁVH-sok perének gyorsítását. Pongrátz Gergely szerint a forradalom még nem ért véget.",
+      "image": "/images/1957_forradalom-oroksege/corvin_koz_tuntetes.jpg",
       "when": {
         "and": [
           {
@@ -87,6 +107,7 @@
       "paper": "kis_ujsag",
       "headline": "Elhagyta az országot az utolsó szovjet szerelvény",
       "lead": "Záhonynál hajnalban lépte át a határt az utolsó katonai vonat. A határőrök nemzeti színű szalaggal zárták le a sorompót.",
+      "image": "/images/1957_forradalom-oroksege/utolso_szerelvenyek.jpg",
       "when": {
         "type": "turn",
         "min": 5
@@ -163,7 +184,7 @@
       "id": "kadar_lista",
       "paper": "nepszava",
       "headline": "Kádár saját listát állít",
-      "lead": "A Szocialista Munkáspárt alakuló ülésén Kádár János rendet és fokozatosságot ígért.",
+      "lead": "A Magyar Munkáspárt alakuló ülésén Kádár János rendet és fokozatosságot ígért.",
       "when": {
         "type": "event-triggered",
         "eventId": "kadar_szakadas"

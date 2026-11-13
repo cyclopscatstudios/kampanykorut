@@ -47,8 +47,9 @@
     ],
     "announcement": {
       "title": "Kettészakadt az MSZMP",
-      "body": "Kádár János és a pártapparátus egy része kivált, és Szocialista Munkáspárt néven önálló listát állít. Budapesten és Borsodban sok tag követi őket.",
-      "icon": "scissors",
+      "body": "Kádár János és a pártapparátus egy része kivált, és Magyar Munkáspárt néven önálló listát állít. Budapesten és Borsodban sok tag követi őket.",
+      "icon": "/images/1957_forradalom-oroksege/kadar_badge.png",
+      "imageUri": "/images/1957_forradalom-oroksege/mszmp_szakadas.jpg",
       "major": true
     }
   },
@@ -705,7 +706,7 @@
             "relationId": "corvin",
             "tone": "good",
             "label": "Elégedett",
-            "description": "Gerő és Hegedüs bíróság elé áll."
+            "description": "Gerő és Hegedüs bíróság elé állnak."
           },
           {
             "type": "set-relation",
@@ -1326,7 +1327,7 @@
             "relationId": "nyugat",
             "tone": "calm",
             "label": "Tárgyal",
-            "description": "A nyugati hatalmak kész a négyhatalmi szerződésre."
+            "description": "A nyugati hatalmak készek a négyhatalmi szerződésre."
           }
         ]
       },
@@ -1451,6 +1452,7 @@
     "announcement": {
       "title": "Fegyveres tüntetés a Parlament előtt",
       "body": "A Corvin köz felkelői fegyverrel vonultak a Kossuth térre, és a kormány lemondását követelték. Vidéken sokan megijedtek, a rend pártjai erősödnek.",
+      "imageUri": "/images/1957_forradalom-oroksege/parlament_tuntetes.png",
       "icon": "exclamation-triangle-fill",
       "major": true
     }
@@ -1487,7 +1489,8 @@
     "announcement": {
       "title": "A Corvin köz Nagy Imre mellett",
       "body": "A Corvin köz parancsnokai az MSZMP nagygyűlésén álltak a pódiumra. A pesti fiatalok tömegesen jelentkeznek kampányolni.",
-      "icon": "shield-fill"
+      "imageUri": "/images/1957_forradalom-oroksege/corvin_kiallas.png",
+      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.png"
     }
   },
   {
@@ -1524,6 +1527,7 @@
     "announcement": {
       "title": "Általános sztrájk",
       "body": "Budapesten és Borsodban leálltak a gyárak. A munkástanácsok szerint a kormány elárulta a forradalmat.",
+      "imageUri": "/images/1957_forradalom-oroksege/sztrajk.png",
       "icon": "slash-circle-fill",
       "major": true
     }
@@ -1915,6 +1919,7 @@
     "announcement": {
       "title": "Kiléptek a kisgazdák a kormányból",
       "body": "Tildy Zoltán és a kisgazda miniszterek lemondtak: a választásig önálló pártként akarnak kampányolni. Az ideiglenes nemzeti kormány meggyengült.",
+      "imageUri": "/images/1957_forradalom-oroksege/fkgp_kilepes.png",
       "icon": "door-open-fill",
       "major": true
     }
@@ -2027,7 +2032,7 @@
     ],
     "announcement": {
       "title": "Kinek a pártja az MSZMP?",
-      "body": "A baloldali lapok szerint Nagy Imre a kisgazdák kegyét keresi. A munkásszavazók egy része elbizonytalanodott, mások egyenesen a kisgazdákra szavaznak.",
+      "body": "A baloldali lapok szerint Nagy Imre a kisgazdák kegyét keresi. A munkásszavazók egy része elbizonytalanodott, mások egyenesen a kisgazdákra szavaznának.",
       "icon": "question-circle-fill"
     }
   },
@@ -2110,6 +2115,7 @@
     "announcement": {
       "title": "Tankok helyett bankok",
       "body": "Pongrátz Gergely kilépett az MSZMP listájáról. Szerinte Nagy Imre a szovjet tankokat nyugati bankokra cserélte: „Nem ezért harcoltunk.”",
+      "imageUri": "/images/1957_forradalom-oroksege/tankok_helyett_bankok.png",
       "icon": "bank",
       "major": true
     }
@@ -2158,6 +2164,7 @@
     "announcement": {
       "title": "Tankok helyett bankok",
       "body": "A Corvin köz felkelői szerint Nagy Imre a szovjet tankokat nyugati bankokra cserélte. „Nem ezért harcoltunk” – mondják.",
+      "imageUri": "/images/1957_forradalom-oroksege/tankok_helyett_bankok.png",
       "icon": "bank"
     }
   },
