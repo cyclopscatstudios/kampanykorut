@@ -213,6 +213,7 @@ function EstimateBody({
             row={row}
             isLeader={estimate.leader?.partyId === row.partyId}
             showParty={!isNational && !!row.candidateName}
+            partyNameOnly={isNational}
             scale={getBarScale(estimate)}
           />
         ))}

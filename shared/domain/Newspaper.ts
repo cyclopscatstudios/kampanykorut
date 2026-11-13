@@ -29,6 +29,7 @@ export function getNewspaper(
   ) {
     return undefined;
   }
+  console.log({ newspaper });
   return newspaper;
 }
 

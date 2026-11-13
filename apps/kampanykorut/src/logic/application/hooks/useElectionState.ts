@@ -124,9 +124,10 @@ export function useElectionState(campaignId: string) {
         config.electionConfig.districtBoost,
         getPlayerVoteKey(config.electionConfig, gameState.playerSide),
       );
+      const sideConfig = forPlayerSide(config, played.playerSide);
       newGameState = publishNewspaperEdition(
         played,
-        forPlayerSide(config, played.playerSide),
+        sideConfig,
         createConditionCheck(
           played,
           [
@@ -134,6 +135,7 @@ export function useElectionState(campaignId: string) {
             { questionId: decision.questionId, answerId: decision.answerId },
           ],
           config.electionConfig,
+          sideConfig.politicalConfig?.relations,
         ),
       );
     } catch (error) {

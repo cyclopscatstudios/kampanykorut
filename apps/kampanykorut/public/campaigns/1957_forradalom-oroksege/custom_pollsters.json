@@ -1,0 +1,57 @@
+[
+  {
+    "id": "orszagos_merleg",
+    "label": "Országos Mérleg",
+    "errorMargin": {
+      "min": 1,
+      "max": 5
+    }
+  },
+  {
+    "id": "szegfuszeg_muhely",
+    "label": "Szegfűszeg Műhely",
+    "errorMargin": {
+      "min": 2,
+      "max": 6
+    }
+  },
+  {
+    "id": "polgari_hirlap",
+    "label": "Polgári Hírlap",
+    "errorMargin": {
+      "min": 1,
+      "max": 5
+    },
+    "bias": [
+      {
+        "type": "result",
+        "partyBias": {
+          "fkgp": 5,
+          "mszmp": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "vidam_vasarnap",
+    "label": "Vidám Vasárnap",
+    "errorMargin": {
+      "min": 1,
+      "max": 5
+    },
+    "bias": [
+      {
+        "type": "result",
+        "partyBias": {
+          "szdp": -3,
+          "mszmp": -3,
+          "dnp": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "all_pollsters",
+    "exclude": true
+  }
+]

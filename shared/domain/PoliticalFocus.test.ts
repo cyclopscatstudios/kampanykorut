@@ -83,9 +83,10 @@ const branches = (state: CampaignState, answers = []) =>
   ]);
 
 describe("PoliticalFocus", () => {
-  it("opens only the first branch at the start", () => {
+  it("opens only the first branch and shows the later ones as upcoming", () => {
     expect(branches(stateWith())).toEqual([
       ["kadar", "open", ["with_kadar:available", "without_kadar:available"]],
+      ["base", "upcoming", ["workers:upcoming", "peasants:upcoming"]],
     ]);
     expect(canSelectFocus(stateWith(), config, "workers")).toBe(false);
   });

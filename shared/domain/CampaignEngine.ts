@@ -22,6 +22,7 @@ import {
   RawEffect,
   RawParty,
   RawQuestion,
+  Relation,
   SetRelationEffect,
   SplitPartyEffect,
   Strategy,
@@ -80,6 +81,7 @@ export class CampaignEngine {
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
     private readonly campaignEvents?: CampaignEvent[],
+    private readonly relations?: Pick<Relation, "id" | "tone">[],
   ) {
     log.debug("CampaignEngine initialized");
   }
@@ -262,6 +264,7 @@ export class CampaignEngine {
       electionConfig,
       (current, effects) =>
         this.applyEventEffects(current, effects, electionConfig),
+      this.relations,
     );
 
     const position = this.getQuestionPosition(
@@ -357,7 +360,12 @@ export class CampaignEngine {
       if (!electionConfig) {
         throw new Error("conditional questions need an election config");
       }
-      context ??= createConditionContext(state, answers, electionConfig);
+      context ??= createConditionContext(
+        state,
+        answers,
+        electionConfig,
+        this.relations,
+      );
       return context;
     };
 

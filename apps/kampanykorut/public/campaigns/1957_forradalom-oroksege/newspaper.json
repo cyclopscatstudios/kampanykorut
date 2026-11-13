@@ -5,51 +5,112 @@
   },
   "papers": [
     {
-      "id": "nepszava",
-      "name": "NÉPSZAVA",
-      "subtitle": "A Szociáldemokrata Párt lapja",
+      "id": "nepszabadsag",
+      "name": "NÉPSZABADSÁG",
+      "subtitle": "Világ proletárjai, egyesüljetek!",
       "price": "Ára: 50 fillér"
     },
     {
       "id": "kis_ujsag",
       "name": "KIS ÚJSÁG",
-      "subtitle": "A Független Kisgazdapárt lapja",
+      "subtitle": "A Független Kisgazda-, Földmunkás- és Polgári Párt politikai napilapja",
       "price": "Ára: 50 fillér"
+    },
+    {
+      "id": "magyar_nemzet",
+      "name": "Magyar Nemzet",
+      "subtitle": "Független politikai napilap",
+      "price": "Ára: 40 fillér"
+    },
+    {
+      "id": "uj_ember",
+      "name": "ÚJ EMBER",
+      "subtitle": "Katolikus hetilap",
+      "price": "Ára: 60 fillér"
+    },
+    {
+      "id": "ludas_matyi",
+      "name": "LUDAS MATYI",
+      "subtitle": "Szatirikus hetilap",
+      "price": "Ára: 70 fillér"
     }
   ],
   "items": [
     {
-      "id": "utolso_szerelvenyek",
-      "paper": "kis_ujsag",
-      "headline": "Elhagyta az országot az utolsó szovjet szerelvény",
-      "lead": "Záhonynál hajnalban lépte át a határt az utolsó katonai vonat. A határőrök nemzeti színű szalaggal zárták le a sorompót."
+      "id": "egyiksem_vezet",
+      "paper": "ludas_matyi",
+      "headline": "Fölényesen vezet az Egyiksem Párt",
+      "lead": "A megkérdezettek döntő többsége most vasárnap az Egyiksem Pártra szavazna – legalábbis a Ludas Matyi nem reprezentatív felmérése szerint.",
+      "image": "/images/1957_forradalom-oroksege/ludas_matyi_egyiksem_felmeres.png",
+      "when": {
+        "type": "turn",
+        "max": 5
+      }
     },
     {
-      "id": "beszolgaltatas_vege",
-      "paper": "kis_ujsag",
-      "headline": "Nincs több beszolgáltatás",
-      "lead": "A gazdák idén először vihették a termést a szabad piacra. A falvakban hálaadó misét tartottak."
-    },
-    {
-      "id": "munkastanacsok_kongresszusa",
-      "paper": "nepszava",
-      "headline": "Összeült a munkástanácsok országos kongresszusa",
-      "lead": "A Csepel Művek küldöttei szerint a gyár azé, aki dolgozik benne. A szakszervezetek önállóságot kérnek."
+      "id": "igazsag_pongratz",
+      "paper": "magyar_nemzet",
+      "headline": "Pongrátz: a forradalom még nem ért véget",
+      "lead": "A Corvin köz parancsnoka szerint addig nincs nyugalom, amíg az ÁVH vezetői szabadon járnak.",
+      "image": "/images/1957_forradalom-oroksege/pongratz_gergely.png",
+      "when": {
+        "type": "turn",
+        "max": 5
+      }
     },
     {
       "id": "kethly_hazatert",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Kéthly Anna: a munkásság nem mond le a szabadságáról",
-      "lead": "Az SZDP elnöke a Népszava székházában tartott beszédében kijelentette, pártja önállóan indul a választáson."
+      "lead": "Az SZDP elnöke a Népszava székházában kijelentette, hogy pártja önállóan indul a választáson.",
+      "image": "/images/1957_forradalom-oroksege/kethly_hazatert.jpg",
+      "when": {
+        "type": "turn",
+        "max": 8
+      }
     },
     {
       "id": "corvin_koz_tuntetes",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Tüntetés a Corvin közben",
       "lead": "Több ezren követelték az ÁVH-sok perének gyorsítását. Pongrátz Gergely szerint a forradalom még nem ért véget.",
+      "image": "/images/1957_forradalom-oroksege/corvin_koz_tuntetes.jpg",
+      "when": {
+        "and": [
+          {
+            "type": "turn",
+            "min": 1,
+            "max": 8
+          },
+          {
+            "type": "relation",
+            "relationId": "corvin",
+            "tone": ["tense", "bad"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "igazsag_listan",
+      "paper": "magyar_nemzet",
+      "headline": "Pongrátz Gergely az MSZMP listáján",
+      "lead": "A Corvin köz parancsnoka szerint Nagy Imre az egyetlen kommunista, akiben a felkelők megbíznak.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "corvin_hangok",
+        "answerId": "A"
+      },
+      "weight": 2
+    },
+    {
+      "id": "utolso_szerelvenyek",
+      "paper": "kis_ujsag",
+      "headline": "Elhagyta az országot az utolsó szovjet szerelvény",
+      "lead": "Záhonynál hajnalban lépte át a határt az utolsó katonai vonat. A határőrök nemzeti színű szalaggal zárták le a sorompót.",
+      "image": "/images/1957_forradalom-oroksege/utolso_szerelvenyek.jpg",
       "when": {
         "type": "turn",
-        "min": 1
+        "min": 5
       }
     },
     {
@@ -58,20 +119,356 @@
       "headline": "ENSZ-küldöttség érkezett Budapestre",
       "lead": "A semlegességi garanciákról tárgyalnak. Washington és Moszkva is figyeli a magyar választást.",
       "when": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "szerelvenyek",
+            "answerId": "C"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "osztrak_ut",
+            "answerId": "A"
+          }
+        ]
+      },
+      "weight": 2
+    },
+    {
+      "id": "uj_ember_biboros",
+      "paper": "uj_ember",
+      "headline": "A bíboros üzenete a nemzethez",
+      "lead": "Mindszenty József szerint az egyház nem kér kiváltságot, csak azt, ami az övé volt.",
+      "when": {
         "type": "turn",
-        "min": 2
+        "min": 3,
+        "max": 7
+      }
+    },
+    {
+      "id": "uj_ember_iskolak",
+      "paper": "uj_ember",
+      "headline": "Újra megnyílnak az egyházi iskolák",
+      "lead": "A piarista és bencés gimnáziumok szeptembertől újra fogadják a diákokat.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "biboros_szava",
+        "answerId": "A"
+      },
+      "weight": 2
+    },
+    {
+      "id": "uj_ember_hitoktatas",
+      "paper": "uj_ember",
+      "headline": "Szabad lesz a hitoktatás",
+      "lead": "A kormány döntése szerint a szülők maguk választhatják meg, részt vesz-e gyermekük a hittanórán.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "biboros_szava",
+        "answerId": "B"
+      },
+      "weight": 2
+    },
+    {
+      "id": "nepszava_szen",
+      "paper": "nepszabadsag",
+      "headline": "Fűtetlen lakások, üres szénraktárak",
+      "lead": "A tatabányai bányászok bérjavítást és beleszólást követelnek. A fővárosban fával fűtenek.",
+      "when": {
+        "type": "turn",
+        "min": 5,
+        "max": 7
       }
     },
     {
       "id": "kadar_lista",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Kádár saját listát állít",
-      "lead": "A Szocialista Munkáspárt alakuló ülésén Kádár János rendet és fokozatosságot ígért.",
+      "lead": "A Magyar Munkáspárt alakuló ülésén Kádár János rendet és fokozatosságot ígért.",
       "when": {
         "type": "event-triggered",
         "eventId": "kadar_szakadas"
       },
       "weight": 3
+    },
+    {
+      "id": "nepszava_ertekezlet",
+      "paper": "nepszabadsag",
+      "headline": "Nagy Imre győzött a pártértekezleten",
+      "lead": "A küldöttek többsége a reformok mellett szavazott. Kádár János hallgatott.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "kadar_ultimatum",
+        "answerId": "B"
+      },
+      "weight": 2
+    },
+    {
+      "id": "nepszava_szot",
+      "paper": "nepszabadsag",
+      "headline": "Független szakszervezetek alakulnak",
+      "lead": "A SZOT feloszlott. A nyomdászok és a vasasok elsőként választottak új vezetőséget.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "szakszervezetek",
+        "answerId": "A"
+      },
+      "weight": 2
+    },
+    {
+      "id": "nepszava_csepel",
+      "paper": "nepszabadsag",
+      "headline": "Kéthly és Nagy egy emelvényen",
+      "lead": "A csepeli nagygyűlésen a két munkáspárt vezetője a munkások közös jogairól beszélt.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "kethly_nagygyules"
+      },
+      "weight": 3
+    },
+    {
+      "id": "nepszava_szdp_kampany",
+      "paper": "nepszabadsag",
+      "headline": "Kéthly: nem engedünk 1948 megismétlésének",
+      "lead": "Az SZDP elnöke a munkáskerületekben arra figyelmeztetett, hogy az MSZMP-nek még nem lehet hinni.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "szdp_kampany"
+      },
+      "weight": 3
+    },
+    {
+      "id": "nepszava_sztrajk",
+      "paper": "nepszabadsag",
+      "headline": "Leálltak a gyárak",
+      "lead": "Budapesten és Borsodban általános sztrájk kezdődött. A munkástanácsok a kormány ígéreteit kérik számon.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "altalanos_sztrajk"
+      },
+      "weight": 3
+    },
+    {
+      "id": "igazsag_gero",
+      "paper": "magyar_nemzet",
+      "headline": "Gerő Ernő a vádlottak padján",
+      "lead": "A volt első titkárt az októberi sortüzek miatt állítják bíróság elé.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "mult_felelosei",
+        "answerId": "B"
+      },
+      "weight": 2
+    },
+    {
+      "id": "igazsag_mefesz",
+      "paper": "magyar_nemzet",
+      "headline": "A MEFESZ diákőrséget követel",
+      "lead": "Az egyetemisták szerint a forradalmat ők kezdték, és nekik is kell megvédeniük.",
+      "when": {
+        "type": "turn",
+        "min": 10,
+        "max": 13
+      }
+    },
+    {
+      "id": "igazsag_arulas",
+      "paper": "magyar_nemzet",
+      "headline": "Elárulták a forradalmat?",
+      "lead": "A Corvin köz felkelői szerint a kormány a régi emberekkel egyezkedik a forradalom helyett.",
+      "when": {
+        "type": "relation",
+        "relationId": "corvin",
+        "tone": ["bad"]
+      }
+    },
+    {
+      "id": "beszolgaltatas_vege",
+      "paper": "kis_ujsag",
+      "headline": "Nincs több beszolgáltatás",
+      "lead": "A gazdák idén először vihették a termést a szabad piacra. A falvakban hálaadó misét tartottak.",
+      "when": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "fold_es_beszolgaltatas",
+            "answerId": "A"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "fold_es_beszolgaltatas",
+            "answerId": "B"
+          }
+        ]
+      },
+      "weight": 2
+    },
+    {
+      "id": "kis_ujsag_kovacs",
+      "paper": "kis_ujsag",
+      "headline": "Kovács Béla: a föld azé, aki megműveli",
+      "lead": "A kisgazdák vezetője szerint a termelőszövetkezetekből mindenkinek szabadon ki kell tudnia lépni.",
+      "when": {
+        "type": "turn",
+        "min": 12,
+        "max": 16
+      }
+    },
+    {
+      "id": "munkastanacsok_kongresszusa",
+      "paper": "nepszabadsag",
+      "headline": "Összeült a munkástanácsok országos kongresszusa",
+      "lead": "A Csepel Művek küldöttei szerint a gyár azé, aki dolgozik benne. A szakszervezetek önállóságot kérnek.",
+      "when": {
+        "type": "turn",
+        "min": 12,
+        "max": 15
+      }
+    },
+    {
+      "id": "kis_ujsag_alkotmany",
+      "paper": "kis_ujsag",
+      "headline": "Bibó István alkotmánya a parlament előtt",
+      "lead": "Az új alaptörvény alkotmánybíróságot és közvetlenül választott köztársasági elnököt ír elő.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "bibo_alkotmanya",
+        "answerId": "A"
+      },
+      "weight": 2
+    },
+    {
+      "id": "nepszava_szovjet_szen",
+      "paper": "nepszabadsag",
+      "headline": "Rövidített műszak a gyárakban",
+      "lead": "A szovjet szénszállítás leállása után Diósgyőrben és Ózdon csak napi hat órát dolgoznak.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "moszkva_nyomas"
+      },
+      "weight": 3
+    },
+    {
+      "id": "kis_ujsag_hitel",
+      "paper": "kis_ujsag",
+      "headline": "Bécsi hitel a gazdáknak",
+      "lead": "A nyugati kölcsönből traktorokat és vetőmagot vásárolnak a szövetkezetek és a magángazdák.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "nyugati_hitel"
+      },
+      "weight": 3
+    },
+    {
+      "id": "igazsag_szabad_europa",
+      "paper": "magyar_nemzet",
+      "headline": "Budapesten sugároz a Szabad Európa",
+      "lead": "A müncheni rádió első pesti adásában a forradalom halottaira emlékezett.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "radio_szabadsaga",
+        "answerId": "A"
+      },
+      "weight": 2
+    },
+    {
+      "id": "kis_ujsag_kilepes",
+      "paper": "kis_ujsag",
+      "headline": "Önállóan megyünk a választásra",
+      "lead": "Tildy Zoltán szerint a kisgazdák nem a kormány ellen, hanem a parasztok mellett léptek ki a koalícióból.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "fkgp_kilepes"
+      },
+      "weight": 3
+    },
+    {
+      "id": "kis_ujsag_vita",
+      "paper": "kis_ujsag",
+      "headline": "Tisztességes vita a földről",
+      "lead": "Kovács Béla szerint Nagy Imrével lehet vitatkozni: ellenfelek vagyunk, nem ellenségek.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "ellenfel_nem_ellenseg",
+        "answerId": "C"
+      },
+      "weight": 2
+    },
+    {
+      "id": "kis_ujsag_1947",
+      "paper": "kis_ujsag",
+      "headline": "Már megint 1947?",
+      "lead": "A kisgazdák szerint az MSZMP kampánya azokat a napokat idézi, amikor Kovács Bélát elhurcolták.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "visszauto_tamadas"
+      },
+      "weight": 3
+    },
+    {
+      "id": "igazsag_pongratz_kilep",
+      "paper": "magyar_nemzet",
+      "headline": "Pongrátz: nem ezért harcoltunk",
+      "lead": "A Corvin köz parancsnoka kilépett az MSZMP listájáról. Szerinte a kormány a tankokat bankokra cserélte.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "pongratz_kilep"
+      },
+      "weight": 3
+    },
+    {
+      "id": "igazsag_bankok",
+      "paper": "magyar_nemzet",
+      "headline": "Tankok helyett bankok?",
+      "lead": "A felkelők szerint a kormány nyugati hitelekért adja el a forradalom függetlenségét.",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "tankok_helyett_bankok"
+      },
+      "weight": 3
+    },
+    {
+      "id": "uj_ember_korlevel",
+      "paper": "uj_ember",
+      "headline": "Püspöki körlevél a választásról",
+      "lead": "A püspöki kar arra kéri a híveket, hogy olyan pártra szavazzanak, amely tiszteli az egyház szabadságát.",
+      "when": {
+        "type": "turn",
+        "min": 19
+      }
+    },
+    {
+      "id": "uj_ember_barankovics",
+      "paper": "uj_ember",
+      "headline": "Barankovics: a hívők hangja a parlamentben",
+      "lead": "A Demokrata Néppárt vezetője szerint a kormánnyal kötött megállapodás a vallásszabadság garanciája.",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "szoszek_es_urna",
+        "answerId": "B"
+      },
+      "weight": 2
+    },
+    {
+      "id": "igazsag_koztarsasag_ter",
+      "paper": "magyar_nemzet",
+      "headline": "Lövések a Köztársaság téren",
+      "lead": "Ismeretlenek lőttek a pártház előtt. A felkelők szerint provokáció történt, a rendőrség nyomoz.",
+      "when": {
+        "type": "turn",
+        "min": 21,
+        "max": 23
+      }
+    },
+    {
+      "id": "kis_ujsag_becs",
+      "paper": "kis_ujsag",
+      "headline": "Bécsben figyelik a magyar semlegességet",
+      "lead": "Az osztrák kancellár szerint a semleges Magyarország Közép-Európa nyugalmának záloga.",
+      "when": {
+        "type": "turn",
+        "min": 22
+      }
     },
     {
       "id": "valasztasi_nagygyules",
@@ -80,7 +477,7 @@
       "lead": "Kovács Béla a kisgazdák záró nagygyűlésén azt mondta: a föld és a szabadság egy és ugyanaz.",
       "when": {
         "type": "turn",
-        "min": 4
+        "min": 22
       }
     }
   ]

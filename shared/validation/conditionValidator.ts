@@ -3,6 +3,8 @@ export interface ConditionReferences {
   candidateIds?: Set<string>;
   eventIds?: Set<string>;
   focusIds?: Set<string>;
+  relationIds?: Set<string>;
+  issueIds?: Set<string>;
 }
 
 export interface ConditionIssue {
@@ -13,6 +15,7 @@ export interface ConditionIssue {
 
 const OPERATORS = ["<", "<=", ">", ">="];
 const STATUSES = ["active", "inactive", "dormant"];
+const TONES = ["good", "calm", "tense", "bad"];
 const COMBINATORS = ["and", "or", "not"] as const;
 
 type Json = Record<string, unknown>;
@@ -254,6 +257,74 @@ function check(
           "unknown-focus",
           `${path}/focusId`,
           `unknown focus "${condition.focusId}"`,
+        );
+      }
+      return;
+    case "issue-position": {
+      if (typeof condition.issueId !== "string") {
+        issue(
+          "condition-invalid",
+          `${path}/issueId`,
+          "issueId must be a string",
+        );
+      } else if (refs.issueIds && !refs.issueIds.has(condition.issueId)) {
+        issue(
+          "unknown-issue",
+          `${path}/issueId`,
+          `unknown issue "${condition.issueId}"`,
+        );
+      }
+      if (condition.party !== undefined) {
+        checkCandidate(condition.party, refs, `${path}/party`, issue);
+      }
+      const { min, max } = condition;
+      if (min === undefined && max === undefined) {
+        issue(
+          "condition-invalid",
+          path,
+          "issue-position needs min, max or both",
+        );
+      }
+      for (const [key, value] of Object.entries({ min, max })) {
+        if (
+          value !== undefined &&
+          (typeof value !== "number" || value < -2 || value > 2)
+        ) {
+          issue(
+            "condition-invalid",
+            `${path}/${key}`,
+            `${key} must be a number between -2 and 2`,
+          );
+        }
+      }
+      return;
+    }
+    case "relation":
+      if (typeof condition.relationId !== "string") {
+        issue(
+          "condition-invalid",
+          `${path}/relationId`,
+          "relationId must be a string",
+        );
+      } else if (
+        refs.relationIds &&
+        !refs.relationIds.has(condition.relationId)
+      ) {
+        issue(
+          "unknown-relation",
+          `${path}/relationId`,
+          `unknown relation "${condition.relationId}"`,
+        );
+      }
+      if (
+        !Array.isArray(condition.tone) ||
+        condition.tone.length === 0 ||
+        condition.tone.some((tone) => !TONES.includes(String(tone)))
+      ) {
+        issue(
+          "condition-invalid",
+          `${path}/tone`,
+          `tone must be a non-empty array of ${TONES.join(", ")}`,
         );
       }
       return;

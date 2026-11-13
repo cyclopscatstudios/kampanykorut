@@ -219,7 +219,12 @@ export function buildFocusOverview(
   answers: Answers,
 ): FocusOverview {
   const selectedIds = getSelectedFocusIds(state);
-  const holds = createConditionCheck(state, answers, config.electionConfig);
+  const holds = createConditionCheck(
+    state,
+    answers,
+    config.electionConfig,
+    config.politicalConfig?.relations,
+  );
   const focuses = new Map(getFocuses(config).map((f) => [f.id, f]));
   const current = getCurrentBranch(state, config);
   const revisable = getRevisableBranch(state, config);
@@ -234,6 +239,8 @@ export function buildFocusOverview(
     selectable: canSelectFocus(state, config, focus.id),
   });
 
+  console.log({ toView, focuses, selectedIds, current, revisable });
+
   const branches: FocusBranchView[] = [];
   for (const branch of getFocusBranches(config)) {
     if (!isOnPath(branch, selectedIds)) {
@@ -242,7 +249,7 @@ export function buildFocusOverview(
     const choice = getChoice(branch, selectedIds);
     const branchState: FocusBranchState = choice
       ? "decided"
-      : isBranchOpen(state, branch)
+      : branch === current && isBranchOpen(state, branch)
         ? "open"
         : "upcoming";
     branches.push({
@@ -267,16 +274,15 @@ export function buildFocusOverview(
               ? branch === revisable
                 ? "available"
                 : "excluded"
-              : branch === current && branchState === "open"
+              : branchState === "open"
                 ? "available"
                 : "upcoming";
         return [toView(focus, status)];
       }),
     });
-    if (branch === current) {
-      break;
-    }
   }
+
+  console.log({ branches });
 
   const views = new Map(
     branches.flatMap((b) => b.focuses).map((f) => [f.id, f]),

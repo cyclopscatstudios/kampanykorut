@@ -758,6 +758,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       ],
     },
     "questions": [],
+    "relations": undefined,
     "resultModifier": ResultModifier {
       "districtVoteTransformer": DistrictVoteTransformer {
         "voterEnvironment": VoterEnvironment {
