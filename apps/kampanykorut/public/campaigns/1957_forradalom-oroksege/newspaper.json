@@ -49,7 +49,7 @@
     },
     {
       "id": "igazsag_pongratz",
-      "paper": "igazsag",
+      "paper": "magyar_nemzet",
       "headline": "Pongrátz: a forradalom még nem ért véget",
       "lead": "A Corvin köz parancsnoka szerint addig nincs nyugalom, amíg az ÁVH vezetői szabadon járnak.",
       "image": "/images/1957_forradalom-oroksege/pongratz_gergely.png",
@@ -60,10 +60,10 @@
     },
     {
       "id": "kethly_hazatert",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Kéthly Anna: a munkásság nem mond le a szabadságáról",
       "lead": "Az SZDP elnöke a Népszava székházában kijelentette, hogy pártja önállóan indul a választáson.",
-      "image": "/images/1957_forradalom-oroksege/kethley_hazatert.png",
+      "image": "/images/1957_forradalom-oroksege/kethly_hazatert.jpg",
       "when": {
         "type": "turn",
         "max": 8
@@ -71,7 +71,7 @@
     },
     {
       "id": "corvin_koz_tuntetes",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Tüntetés a Corvin közben",
       "lead": "Több ezren követelték az ÁVH-sok perének gyorsítását. Pongrátz Gergely szerint a forradalom még nem ért véget.",
       "image": "/images/1957_forradalom-oroksege/corvin_koz_tuntetes.jpg",
@@ -92,7 +92,7 @@
     },
     {
       "id": "igazsag_listan",
-      "paper": "igazsag",
+      "paper": "magyar_nemzet",
       "headline": "Pongrátz Gergely az MSZMP listáján",
       "lead": "A Corvin köz parancsnoka szerint Nagy Imre az egyetlen kommunista, akiben a felkelők megbíznak.",
       "when": {
@@ -171,7 +171,7 @@
     },
     {
       "id": "nepszava_szen",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Fűtetlen lakások, üres szénraktárak",
       "lead": "A tatabányai bányászok bérjavítást és beleszólást követelnek. A fővárosban fával fűtenek.",
       "when": {
@@ -182,7 +182,7 @@
     },
     {
       "id": "kadar_lista",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Kádár saját listát állít",
       "lead": "A Magyar Munkáspárt alakuló ülésén Kádár János rendet és fokozatosságot ígért.",
       "when": {
@@ -193,7 +193,7 @@
     },
     {
       "id": "nepszava_ertekezlet",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Nagy Imre győzött a pártértekezleten",
       "lead": "A küldöttek többsége a reformok mellett szavazott. Kádár János hallgatott.",
       "when": {
@@ -205,7 +205,7 @@
     },
     {
       "id": "nepszava_szot",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Független szakszervezetek alakulnak",
       "lead": "A SZOT feloszlott. A nyomdászok és a vasasok elsőként választottak új vezetőséget.",
       "when": {
@@ -217,7 +217,7 @@
     },
     {
       "id": "nepszava_csepel",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Kéthly és Nagy egy emelvényen",
       "lead": "A csepeli nagygyűlésen a két munkáspárt vezetője a munkások közös jogairól beszélt.",
       "when": {
@@ -228,7 +228,7 @@
     },
     {
       "id": "nepszava_szdp_kampany",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Kéthly: nem engedünk 1948 megismétlésének",
       "lead": "Az SZDP elnöke a munkáskerületekben arra figyelmeztetett, hogy az MSZMP-nek még nem lehet hinni.",
       "when": {
@@ -239,7 +239,7 @@
     },
     {
       "id": "nepszava_sztrajk",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Leálltak a gyárak",
       "lead": "Budapesten és Borsodban általános sztrájk kezdődött. A munkástanácsok a kormány ígéreteit kérik számon.",
       "when": {
@@ -250,7 +250,7 @@
     },
     {
       "id": "igazsag_gero",
-      "paper": "igazsag",
+      "paper": "magyar_nemzet",
       "headline": "Gerő Ernő a vádlottak padján",
       "lead": "A volt első titkárt az októberi sortüzek miatt állítják bíróság elé.",
       "when": {
@@ -262,7 +262,7 @@
     },
     {
       "id": "igazsag_mefesz",
-      "paper": "igazsag",
+      "paper": "magyar_nemzet",
       "headline": "A MEFESZ diákőrséget követel",
       "lead": "Az egyetemisták szerint a forradalmat ők kezdték, és nekik is kell megvédeniük.",
       "when": {
@@ -273,7 +273,7 @@
     },
     {
       "id": "igazsag_arulas",
-      "paper": "igazsag",
+      "paper": "magyar_nemzet",
       "headline": "Elárulták a forradalmat?",
       "lead": "A Corvin köz felkelői szerint a kormány a régi emberekkel egyezkedik a forradalom helyett.",
       "when": {
@@ -316,7 +316,7 @@
     },
     {
       "id": "munkastanacsok_kongresszusa",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Összeült a munkástanácsok országos kongresszusa",
       "lead": "A Csepel Művek küldöttei szerint a gyár azé, aki dolgozik benne. A szakszervezetek önállóságot kérnek.",
       "when": {
@@ -339,7 +339,7 @@
     },
     {
       "id": "nepszava_szovjet_szen",
-      "paper": "nepszava",
+      "paper": "nepszabadsag",
       "headline": "Rövidített műszak a gyárakban",
       "lead": "A szovjet szénszállítás leállása után Diósgyőrben és Ózdon csak napi hat órát dolgoznak.",
       "when": {
@@ -361,7 +361,7 @@
     },
     {
       "id": "igazsag_szabad_europa",
-      "paper": "igazsag",
+      "paper": "magyar_nemzet",
       "headline": "Budapesten sugároz a Szabad Európa",
       "lead": "A müncheni rádió első pesti adásában a forradalom halottaira emlékezett.",
       "when": {
@@ -407,7 +407,7 @@
     },
     {
       "id": "igazsag_pongratz_kilep",
-      "paper": "igazsag",
+      "paper": "magyar_nemzet",
       "headline": "Pongrátz: nem ezért harcoltunk",
       "lead": "A Corvin köz parancsnoka kilépett az MSZMP listájáról. Szerinte a kormány a tankokat bankokra cserélte.",
       "when": {
@@ -418,7 +418,7 @@
     },
     {
       "id": "igazsag_bankok",
-      "paper": "igazsag",
+      "paper": "magyar_nemzet",
       "headline": "Tankok helyett bankok?",
       "lead": "A felkelők szerint a kormány nyugati hitelekért adja el a forradalom függetlenségét.",
       "when": {
@@ -451,7 +451,7 @@
     },
     {
       "id": "igazsag_koztarsasag_ter",
-      "paper": "igazsag",
+      "paper": "magyar_nemzet",
       "headline": "Lövések a Köztársaság téren",
       "lead": "Ismeretlenek lőttek a pártház előtt. A felkelők szerint provokáció történt, a rendőrség nyomoz.",
       "when": {
