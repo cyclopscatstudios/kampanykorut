@@ -536,5 +536,15 @@
       "1": "Leaning for",
       "2": "Strongly for"
     }
+  },
+  "campaignPage": {
+    "sides": "Pick a side",
+    "otherSides": "Other sides",
+    "background": "Campaign background",
+    "meta": {
+      "campaignTitle": "{{campaign}} – Kampánykörút",
+      "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
+      "sideDescription": "{{campaign}}: lead {{candidate}}'s campaign!"
+    }
   }
 }

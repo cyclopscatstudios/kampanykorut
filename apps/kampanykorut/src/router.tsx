@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import { MainGameScreenWrapper, NewGameLayout, RootLayout } from "./AppLayout";
 import { ErrorPage } from "./components/ErrorPage";
+import { campaignPageLoader } from "./components/loaders/campaignPage.loader";
 import { coalitionLoader } from "./components/loaders/coalition.loader";
 import { finalResultLoader } from "./components/loaders/finalResult.loader";
 import { mainGameScreenLoader } from "./components/loaders/mainGameScreen.loader";
@@ -12,6 +13,8 @@ import {
   rootLoader,
 } from "./components/loaders/route.loader";
 import { sideSelectorLoader } from "./components/loaders/sideSelector.loader";
+import { CampaignPage } from "./components/ui/campaignPage/CampaignPage";
+import { CAMPAIGN_PAGE_PATH } from "./components/ui/campaignPage/campaignPage.data";
 import { CoalitionPage } from "./components/ui/coalition/CoalitionPage";
 import { PoliticalDashboardPage } from "./components/ui/dashboard/PoliticalDashboardPage";
 import { FinalResultScreen } from "./components/ui/gameplay/FinalResultScreen/EndResultScreen";
@@ -43,6 +46,12 @@ export const router = createBrowserRouter([
   {
     path: `${NEWS_PATH}/:number`,
     element: <NewsDetailPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: `${CAMPAIGN_PAGE_PATH}/:campaignId/:sideId?`,
+    element: <CampaignPage />,
+    loader: campaignPageLoader,
     errorElement: <ErrorPage />,
   },
   {

@@ -23,9 +23,23 @@ if (import.meta.env.PROD && import.meta.env.VITE_ENVIRONMENT === "production") {
   initAnalytics();
 }
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Toaster />
-    <RouterProvider router={router} />
-  </StrictMode>,
-);
+const rootElement = document.getElementById("root")!;
+
+function mount() {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <Toaster />
+      <RouterProvider router={router} />
+    </StrictMode>,
+  );
+}
+
+if (rootElement.hasChildNodes() && !router.state.initialized) {
+  const unsubscribe = router.subscribe((state) => {
+    if (!state.initialized) return;
+    unsubscribe();
+    mount();
+  });
+} else {
+  mount();
+}
