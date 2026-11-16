@@ -78,7 +78,8 @@
     },
     "actions": {
       "replay": "Play again",
-      "otherCampaign": "Other campaign"
+      "otherCampaign": "Other campaign",
+      "share": "Share"
     },
     "statistics": {
       "menuBar": {
@@ -168,7 +169,54 @@
       "label": "Political focus",
       "none": "You did not choose a focus"
     },
-    "epilogue": "Epilogue"
+    "epilogue": "Epilogue",
+    "share": {
+      "native": "Share",
+      "copy": "Copy link",
+      "copied": "Copied!",
+      "download": "Download image",
+      "close": "Close",
+      "loading": "Preparing your result card…",
+      "failed": "Sharing failed. Please try again.",
+      "text": {
+        "win": "I won the “{{campaign}}” campaign {{metric}}. Could you do it?",
+        "loss": "I lost the “{{campaign}}” campaign {{metric}}. Could you do it?",
+        "deadlock": "I ended the “{{campaign}}” campaign in deadlock {{metric}}. Could you do it?"
+      },
+      "metric": {
+        "seats": "with {{count}} seats",
+        "votes": "with {{share}} of the vote"
+      },
+      "card": {
+        "kicker": {
+          "win": "Victory",
+          "loss": "Defeat",
+          "deadlock": "Deadlock"
+        },
+        "title": {
+          "win": "Victory at the polls",
+          "loss": "Defeat at the polls",
+          "deadlock": "No majority"
+        },
+        "election": {
+          "parliamentary": "Parliamentary election",
+          "mayoral": "Mayoral election"
+        },
+        "player": "My candidate",
+        "seats": "My seats",
+        "votes": "My vote share",
+        "winner": "Winner",
+        "leader": "Largest",
+        "winnerSeats": "{{name}} · {{count}} seats",
+        "turns": "Turns",
+        "cta": {
+          "win": "I won. Could you do it too?",
+          "loss": "I didn't make it. Could you run a better campaign?",
+          "deadlock": "I ended in deadlock. Could you win a majority?"
+        },
+        "ctaButton": "Play for free →"
+      }
+    }
   },
   "gameHeader": {
     "turnsTooltip": "Turns played",
