@@ -173,7 +173,7 @@ function CampaignDetails({
   surface?: "dialog" | "sheet";
 }) {
   return (
-    <div>
+    <div className="flex flex-col">
       <div className="relative h-24 bg-blue-900/50">
         {info.bannerUrl && (
           <img src={info.bannerUrl} alt="" className="size-full object-cover" />
@@ -233,6 +233,9 @@ function CampaignDetails({
                     className={classNames(
                       "inline-flex size-7 items-center justify-center rounded-full",
                       focusStatusStyle[focus.status].emblem,
+                      {
+                        grayscale: focus.status !== "completed",
+                      },
                     )}
                   >
                     <Icon
