@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { t } from "i18next";
 import type { PublicEvent } from "@/shared/domain";
 import { Icon } from "../../../../../../shared/ui/Icon";
-import { Emblem, HoverDetail, Tile } from "./DashboardTile";
+import { Emblem, Tile } from "./DashboardTile";
 
 export function ChronicleTab({ events }: { events: PublicEvent[] }) {
   if (events.length === 0) {
