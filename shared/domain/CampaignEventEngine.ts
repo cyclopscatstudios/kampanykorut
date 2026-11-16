@@ -6,6 +6,7 @@ import {
   CampaignState,
   ElectionConfig,
   HistoryItem,
+  Relation,
 } from "../types";
 import { getCampaignEventState } from "./CampaignStateAccess";
 import { createConditionContext } from "./ConditionContext";
@@ -26,6 +27,7 @@ export class CampaignEventEngine {
     answers: Pick<HistoryItem, "questionId" | "answerId">[],
     electionConfig: ElectionConfig,
     applyEffects: ApplyEventEffects,
+    relations?: Pick<Relation, "id" | "tone">[],
   ): CampaignState {
     let current = state;
 
@@ -36,7 +38,12 @@ export class CampaignEventEngine {
         continue;
       }
 
-      const context = createConditionContext(current, answers, electionConfig);
+      const context = createConditionContext(
+        current,
+        answers,
+        electionConfig,
+        relations,
+      );
       const branch = event.conditions.find((b) =>
         evaluateCondition(b.if, context),
       );

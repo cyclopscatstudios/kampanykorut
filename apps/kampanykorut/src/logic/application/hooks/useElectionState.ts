@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
 import {
   acknowledgeAnnouncement as acknowledge,
+  autoSelectCompletedFocus,
   createConditionCheck,
   forPlayerSide,
   getParliamentaryConfig,
@@ -124,17 +125,24 @@ export function useElectionState(campaignId: string) {
         config.electionConfig.districtBoost,
         getPlayerVoteKey(config.electionConfig, gameState.playerSide),
       );
-      newGameState = publishNewspaperEdition(
-        played,
-        forPlayerSide(config, played.playerSide),
-        createConditionCheck(
+      const sideConfig = forPlayerSide(config, played.playerSide);
+      const answers = [
+        ...(currentHistory ?? []),
+        { questionId: decision.questionId, answerId: decision.answerId },
+      ];
+      newGameState = autoSelectCompletedFocus(
+        publishNewspaperEdition(
           played,
-          [
-            ...(currentHistory ?? []),
-            { questionId: decision.questionId, answerId: decision.answerId },
-          ],
-          config.electionConfig,
+          sideConfig,
+          createConditionCheck(
+            played,
+            answers,
+            config.electionConfig,
+            sideConfig.politicalConfig?.relations,
+          ),
         ),
+        sideConfig,
+        answers,
       );
     } catch (error) {
       log.error("Failed to process turn", {

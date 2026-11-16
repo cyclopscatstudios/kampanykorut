@@ -15,6 +15,7 @@ interface GameChromeProps {
     state?: CampaignState,
     config?: CampaignConfig,
   ) => void;
+  onResumeQuestion?: () => void;
 }
 
 export function GameChrome({
@@ -23,6 +24,7 @@ export function GameChrome({
   config,
   pollsterData,
   handlePollsterChange,
+  onResumeQuestion,
 }: GameChromeProps) {
   const dialogs = useDialogState();
   const { goToMainMenu } = useNavigation();
@@ -36,6 +38,7 @@ export function GameChrome({
         config={config}
         pollsterData={pollsterData}
         handlePollsterChange={handlePollsterChange}
+        onResumeQuestion={onResumeQuestion}
       />
       <GameMain>
         <GameDialogs

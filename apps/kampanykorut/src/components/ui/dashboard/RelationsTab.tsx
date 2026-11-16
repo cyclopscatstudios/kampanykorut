@@ -79,8 +79,9 @@ function RelationCard({ relation }: { relation: RelationView }) {
           >
             <Icon
               name={relation.icon ?? "person-fill"}
-              size={32}
+              size={relation.icon?.startsWith("/") ? 76 : 32}
               color="currentColor"
+              className="rounded-full"
             />
           </span>
           <span

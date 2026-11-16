@@ -14,6 +14,7 @@ interface BottomBarProps {
   onClick: () => void;
   swingFactor?: SwingFactor;
   visitBlocked?: boolean;
+  isReturning?: boolean;
 }
 
 export function BottomBar({
@@ -21,6 +22,7 @@ export function BottomBar({
   onClick,
   swingFactor,
   visitBlocked,
+  isReturning,
 }: BottomBarProps) {
   const population = Math.round((data?.valasztopolgar ?? 0) / 1000);
   const textColor = getSwingFactorTextColor(swingFactor?.id);
@@ -73,7 +75,13 @@ export function BottomBar({
                   disabled={visitBlocked}
                   testId="visitDistrict"
                 >
-                  <Button.Text> {t("bottomBar.visitDistrict")}</Button.Text>
+                  <Button.Text>
+                    {t(
+                      isReturning
+                        ? "bottomBar.returnToDistrict"
+                        : "bottomBar.visitDistrict",
+                    )}
+                  </Button.Text>
                   <Button.Icon name="arrow-right" color="white" />
                 </Button>
               </div>

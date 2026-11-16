@@ -663,6 +663,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
     ],
     "mandateCalculator": MandateCalculator {},
     "mayoralResultCalculator": MayoralResultCalculator {},
+    "politicalConfig": undefined,
     "pollsterEngine": PollsterEngine {
       "mandateCalculator": MandateCalculator {},
       "pollsters": [
@@ -758,6 +759,7 @@ exports[`createCampaignEngine > should create a new campaign engine instance 1`]
       ],
     },
     "questions": [],
+    "relations": undefined,
     "resultModifier": ResultModifier {
       "districtVoteTransformer": DistrictVoteTransformer {
         "voterEnvironment": VoterEnvironment {

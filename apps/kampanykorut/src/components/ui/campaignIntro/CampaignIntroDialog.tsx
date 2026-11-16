@@ -24,8 +24,6 @@ export function CampaignIntroDialog({
     .map((p) => p.trim())
     .filter(Boolean);
 
-  // A clear layer instead of a backdrop: the map stays visible, but the
-  // game waits until the player has read the intro.
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6"

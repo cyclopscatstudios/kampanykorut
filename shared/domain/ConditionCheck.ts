@@ -3,6 +3,7 @@ import {
   Condition,
   ElectionConfig,
   HistoryItem,
+  Relation,
 } from "../types";
 import { createConditionContext } from "./ConditionContext";
 import {
@@ -19,13 +20,19 @@ export function createConditionCheck(
   state: CampaignState,
   answers: Answers,
   electionConfig: ElectionConfig,
+  relations?: Pick<Relation, "id" | "tone">[],
 ): (condition?: Condition) => boolean {
   let context: ReturnType<typeof createConditionContext> | undefined;
   return (condition) => {
     if (!condition) {
       return false;
     }
-    context ??= createConditionContext(state, answers, electionConfig);
+    context ??= createConditionContext(
+      state,
+      answers,
+      electionConfig,
+      relations,
+    );
     try {
       return evaluateCondition(condition, context);
     } catch (error) {

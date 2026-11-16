@@ -29,6 +29,7 @@ interface GameViewProps {
   config: CampaignConfig;
   answer: string | undefined;
   selectedDistrict: District | null;
+  isReturning?: boolean;
   onAnswer: (id?: string) => void;
   onSetAnswer: (answer: string | undefined) => void;
   onSetView: (view: CurrentView) => void;
@@ -44,6 +45,7 @@ export function GameView({
   config,
   answer,
   selectedDistrict,
+  isReturning,
   onAnswer,
   onSetAnswer,
   onSetView,
@@ -142,6 +144,7 @@ export function GameView({
       setSelectedDistrict={onSetDistrict}
       electionConfig={config.electionConfig}
       visitBlocked={visitBlocked}
+      isReturning={isReturning}
       mapOverlay={mapOverlay}
     />
   ) : (
@@ -156,6 +159,7 @@ export function GameView({
       onSetDistrict={onSetDistrict}
       onSetView={onSetView}
       visitBlocked={visitBlocked}
+      isReturning={isReturning}
       mapOverlay={mapOverlay}
     />
   );

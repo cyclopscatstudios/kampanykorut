@@ -14,7 +14,7 @@ export function Tile({
     <article
       aria-label={label}
       className={classNames(
-        "relative flex min-h-[200px] flex-col items-center justify-center gap-3 rounded-xl p-6 text-center",
+        "relative flex min-h-[250px] flex-col items-center justify-center gap-3 rounded-xl p-6 text-center",
         className ??
           "bg-blue-400/8 shadow-[inset_0_0_0_1px_rgba(239,246,255,0.12)]",
       )}
@@ -56,11 +56,13 @@ export function HoverDetail({
         role="tooltip"
         className={
           open
-            ? "pointer-events-none absolute inset-0 flex items-center rounded-xl bg-[#161e30] p-6 text-left shadow-[inset_0_0_0_1px_#4462aa]"
+            ? "absolute inset-0 flex flex-col overflow-y-auto overscroll-contain rounded-xl bg-[#161e30] p-4 text-left shadow-[inset_0_0_0_1px_#4462aa]"
             : "sr-only"
         }
       >
-        <p className="m-0 text-sm leading-[21px] text-slate-100">{detail}</p>
+        <p className="m-0 my-auto text-sm leading-[21px] text-slate-100">
+          {detail}
+        </p>
       </div>
     </div>
   );

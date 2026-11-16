@@ -43,6 +43,7 @@ interface MobileMapViewProps {
   onSetDistrict: (district: District | null) => void;
   onSetView: (view: CurrentView) => void;
   visitBlocked?: boolean;
+  isReturning?: boolean;
   mapOverlay?: ReactNode;
 }
 
@@ -57,6 +58,7 @@ export function MobileMapView({
   onSetDistrict,
   onSetView,
   visitBlocked,
+  isReturning,
   mapOverlay,
 }: MobileMapViewProps) {
   const [view, setView] = useState<MobileView>("list");
@@ -163,6 +165,7 @@ export function MobileMapView({
               onClose={() => setIsSheetOpen(false)}
               onVisit={() => onSetView("QuestionView")}
               visitBlocked={visitBlocked}
+              isReturning={isReturning}
               issues={getAreaIssues(electionConfig, sheetData.megyekod)}
             />
           )
@@ -300,6 +303,7 @@ function DistrictSheetContent({
   onClose,
   onVisit,
   visitBlocked,
+  isReturning,
   issues,
 }: {
   isCityMap: boolean;
@@ -310,6 +314,7 @@ function DistrictSheetContent({
   onClose: () => void;
   onVisit: () => void;
   visitBlocked?: boolean;
+  isReturning?: boolean;
 }) {
   const { leadingParty, swingFactor } = getDistrictInsight(district, parties);
 
@@ -397,7 +402,13 @@ function DistrictSheetContent({
         className="mt-4"
         testId="visitDistrict"
       >
-        <Button.Text>{t("bottomBar.visitDistrict")}</Button.Text>
+        <Button.Text>
+          {t(
+            isReturning
+              ? "bottomBar.returnToDistrict"
+              : "bottomBar.visitDistrict",
+          )}
+        </Button.Text>
         <Button.Icon name="arrow-right" color="white" />
       </Button>
     </div>

@@ -19,6 +19,7 @@ import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
 import { EpilogueCard, GovernmentOutcomeBadge } from "./GovernmentSummary";
 
 export function SummaryPage({ results }: { results: FinalResults }) {
+  console.log({ results });
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const campaignStateEngine = container.resolve(StateEngine);
   const configEngine = container.resolve(ConfigEngine);
@@ -70,6 +71,15 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     [results, currentConfig?.electionConfig.parties],
   );
 
+  console.log({
+    finalOutcome,
+    story,
+    heroAssets,
+    parties,
+    results,
+    currentConfig,
+  });
+
   return (
     <>
       <div className="border-b border-slate-200/65 p-3">
@@ -82,7 +92,7 @@ export function SummaryPage({ results }: { results: FinalResults }) {
       </div>
       <div className="pb-5">
         <div className="flex flex-col md:flex-row gap-4 md:gap-6 px-3 md:px-6 pt-5">
-          <div className="basis-full md:basis-1/2">
+          <div className="flex basis-full flex-col gap-4 md:basis-1/2">
             <ImageWrapper
               src={heroAssets?.imageUri ?? ""}
               type="final"
@@ -90,31 +100,18 @@ export function SummaryPage({ results }: { results: FinalResults }) {
                 story === "playerSideVictory" ? "" : "grayscale"
               }`}
             />
-          </div>
-          <div className="flex basis-full flex-col gap-4 md:basis-1/2">
-            {finalOutcome && <GovernmentOutcomeBadge outcome={finalOutcome} />}
-            <Text color="gray" className="leading-relaxed">
-              {heroAssets?.description}
-            </Text>
-            {finalOutcome?.epilogue && (
-              <EpilogueCard epilogue={finalOutcome.epilogue} />
+            {/* The government card already tells whether a majority formed. */}
+            {results.regions && !finalOutcome && (
+              <MajorityLabels
+                results={results}
+                allSeats={allSeats}
+                parties={currentConfig?.electionConfig.parties}
+              />
             )}
-          </div>
-        </div>
-        {/* The government card already tells whether a majority formed. */}
-        {results.regions && !finalOutcome && (
-          <MajorityLabels
-            results={results}
-            allSeats={allSeats}
-            parties={currentConfig?.electionConfig.parties}
-          />
-        )}
-        <div className="w-full flex justify-center mt-4">
-          <div className="w-full max-w-[500px] px-3 md:px-0">
-            <div className="dark:bg-slate-800/50 p-2 md:p-5 rounded-xl border border-slate-200/65 dark:border-slate-700">
+            <div className="flex justify-center rounded-xl border border-slate-200/65 p-2 md:p-4 dark:border-slate-700 dark:bg-slate-800/50">
               <ParliamentHemicycle
-                width={isDesktop ? 450 : 240}
-                height={isDesktop ? 150 : 100}
+                width={isDesktop ? 420 : 240}
+                height={isDesktop ? 140 : 100}
                 rows={9}
                 order="as-given"
                 showLegend
@@ -122,6 +119,15 @@ export function SummaryPage({ results }: { results: FinalResults }) {
                 parties={parties}
               />
             </div>
+          </div>
+          <div className="flex basis-full flex-col gap-4 md:basis-1/2">
+            {finalOutcome && <GovernmentOutcomeBadge outcome={finalOutcome} />}
+            {finalOutcome?.epilogue && (
+              <EpilogueCard epilogue={finalOutcome.epilogue} />
+            )}
+            <Text color="gray" className="leading-relaxed">
+              {heroAssets?.description}
+            </Text>
           </div>
         </div>
       </div>

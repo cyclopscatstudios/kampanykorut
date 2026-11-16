@@ -1,6 +1,6 @@
 [
   {
-    "id": "q1_igazsagtetel",
+    "id": "igazsagtetel",
     "title": "A győzelem terhe",
     "question": "A Corvin köz felkelői, Pongrátz Gergellyel az élen, gyors elszámoltatást követelnek az ÁVH és a diktatúra felelősei ellen. A pártod régi tagjai közül is többen érintettek. Hogyan válaszolsz?",
     "possibleAnswers": [
@@ -10,18 +10,27 @@
       },
       {
         "id": "B",
-        "label": "Általános megbékélést hirdetsz, a múlttal egy történész bizottság foglalkozik."
+        "label": "Általános megbékélést hirdetsz, a múlttal egy történészbizottság foglalkozik."
       },
       {
         "id": "C",
         "label": "Rendkívüli népbíróságokat állítasz fel, hogy még a választás előtt ítélet szülessen."
+      },
+      {
+        "id": "D",
+        "label": "Igazságtételi bizottságot állítasz fel a felkelők és a jogászok közös vezetésével."
+      }
+    ],
+    "affects": [
+      {
+        "id": "C"
       }
     ]
   },
   {
-    "id": "q2_nemzetorseg",
+    "id": "nemzetorseg",
     "title": "A fegyverek sorsa",
-    "question": "A Nemzetőrség még mindig fegyverben áll. A honvédség és a rendőrség vezetői szerint két fegyveres erő nem fér meg egy államban. Mit teszel?",
+    "question": "A Nemzetőrség még mindig fegyverben áll. A honvédség és a rendőrség vezetői szerint két fegyveres erő nem fér meg egy államban, Moszkva pedig minden fegyveres csoportot ellenforradalmárnak lát. Mit teszel?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -29,18 +38,165 @@
       },
       {
         "id": "B",
-        "label": "Önkéntes leszerelést hirdetsz, aki leadja a fegyvert, földet vagy munkát kap."
+        "label": "Önkéntes leszerelést hirdetsz: aki leadja a fegyvert, földet vagy munkát kap."
       },
       {
         "id": "C",
         "label": "A Nemzetőrség önálló testület marad, a forradalom őreként."
+      },
+      {
+        "id": "D",
+        "label": "A Nemzetőrség rendőri feladatot kap a választásig, utána az új parlament dönt."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
       }
     ]
   },
   {
-    "id": "q3_kadar",
+    "id": "corvin_hangok",
+    "title": "Két hang a Corvin közből",
+    "question": "A Corvin köz két parancsnoka mást akar. Pongrátz Gergely helyet kér a listádon és teljes leszámolást a múlttal. Iván Kovács László a Nemzetőrség vezetését kérné, és nyugalomra intene. Kinek adsz szerepet?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Pongrátz Gergely felkerül az MSZMP listájára."
+      },
+      {
+        "id": "B",
+        "label": "Iván Kovács László vezeti a Nemzetőrséget, Pongrátz kimarad."
+      },
+      {
+        "id": "C",
+        "label": "Egyikük sem kap szerepet. A párt nem a fegyveresek pártja."
+      },
+      {
+        "id": "D",
+        "label": "Mindkettőjüket meghívod egy felkelő tanácsba, amely tanácsot ad a kormánynak."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
+      }
+    ]
+  },
+  {
+    "id": "szerelvenyek",
+    "title": "Az utolsó szerelvények",
+    "question": "A szovjet csapatok kivonulása elakadt Záhonynál. Moszkva lassabb menetrendet kér, cserébe garanciát ad a semlegességre. A Nyugat ENSZ-megfigyelőket ajánl. Mit fogadsz el?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Elfogadod a lassabb kivonulást a szovjet garanciákért."
+      },
+      {
+        "id": "B",
+        "label": "Azonnali kivonulást követelsz, az eredeti határidőre."
+      },
+      {
+        "id": "C",
+        "label": "ENSZ-megfigyelőket hívsz a kivonulás ellenőrzésére."
+      },
+      {
+        "id": "D",
+        "label": "Titokban tárgyalsz Moszkvával, nyilvánosan hallgatsz a menetrendről."
+      }
+    ]
+  },
+  {
+    "id": "biboros_szava",
+    "title": "A bíboros szava",
+    "question": "Mindszenty József bíboros rádióbeszédben követeli az egyházi iskolák és birtokok visszaadását. A falvakban a szószékről is felolvassák. Mit válaszolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Visszaadod az egyházi iskolákat, a földet nem."
+      },
+      {
+        "id": "B",
+        "label": "Az állam és az egyház különválik: szabad hitoktatás, de állami iskolák."
+      },
+      {
+        "id": "C",
+        "label": "Hallgatsz. A bíboros szava nem kormányprogram."
+      },
+      {
+        "id": "D",
+        "label": "Személyesen felkeresed a bíborost, és közös nyilatkozatot ajánlasz."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "C"
+      }
+    ]
+  },
+  {
+    "id": "hideg_tel",
+    "title": "Hideg tél",
+    "question": "Januárra elfogyott a szén. A tatabányai és a borsodi bányákban sztrájkolnak, Budapesten fűtetlenek a lakások. A munkástanácsok bérjavítást és beleszólást kérnek. Hogyan oldod meg?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Leülsz a munkástanácsokkal, bérjavítást és beleszólást ígérsz."
+      },
+      {
+        "id": "B",
+        "label": "Rendeletet adsz ki: kötelező munka, katonai szénszállítás."
+      },
+      {
+        "id": "C",
+        "label": "Osztrák közvetítéssel nyugati szénsegélyt kérsz."
+      },
+      {
+        "id": "D",
+        "label": "Szénjegyet vezetsz be, a gyárak és a kórházak előnyt kapnak."
+      }
+    ],
+    "affects": [
+      {
+        "id": "B"
+      }
+    ]
+  },
+  {
+    "id": "regi_apparatus",
+    "title": "A régi apparátus",
+    "question": "Az MDP egykori funkcionáriusai most az MSZMP irodáiban ülnek. Nélkülük nincs pártszervezet, velük viszont nehéz hitelesen beszélni a forradalomról. Mi legyen velük?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Maradnak a helyükön, a tapasztalatukra szükség van."
+      },
+      {
+        "id": "B",
+        "label": "Átvilágító bizottság dönt mindenkiről egyenként."
+      },
+      {
+        "id": "C",
+        "label": "Elbocsátod a régi vezetőket, új emberek jönnek."
+      },
+      {
+        "id": "D",
+        "label": "Áthelyezed őket a minisztériumokba, a pártszervezetből kikerülnek."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
+      }
+    ]
+  },
+  {
+    "id": "kadar_ultimatum",
     "title": "Kádár ultimátuma",
-    "question": "Kádár János a pártvezetésben kimondja: a régi apparátus nélkül nincs kormányzóképes párt, a reformokat lassítani kell. Ha nem kap garanciát, a párt egy része vele tart.",
+    "question": "Kádár János a pártvezetésben kimondja: a régi apparátus nélkül nincs kormányzóképes párt, a reformokat lassítani kell. Ha nem kap garanciát, a párt egy része vele tart. Mit válaszolsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -53,13 +209,17 @@
       {
         "id": "C",
         "label": "Kizárod Kádárt a vezetésből. A forradalom pártja nem hátrál."
+      },
+      {
+        "id": "D",
+        "label": "Kádárnak felajánlod a belügyminiszteri széket, ha a pártban nem szervezkedik."
       }
     ]
   },
   {
-    "id": "q4_kethly",
+    "id": "kethly_feltetelei",
     "title": "Kéthly feltételei",
-    "question": "Kéthly Anna kész tárgyalni, de feltételt szab: írásos garanciát a többpártrendszerre, a szabad szakszervezetekre és arra, hogy az SZDP soha többé nem olvad be.",
+    "question": "Kéthly Anna kész tárgyalni, de feltételt szab: írásos garanciát a többpártrendszerre, a szabad szakszervezetekre és arra, hogy az SZDP soha többé nem olvad be. Mit felelsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -72,32 +232,418 @@
       {
         "id": "C",
         "label": "Közös listát ajánlasz egyesült munkáspárt néven."
+      },
+      {
+        "id": "D",
+        "label": "Államminiszteri posztot ajánlasz Kéthlynek a választásig."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
       }
     ]
   },
   {
-    "id": "q5_fold_es_gyar",
-    "title": "Föld és gyár",
-    "question": "A munkástanácsok gyárigazgatási jogot követelnek, a kisgazdák a beszolgáltatás végleges eltörlését és a földtulajdon garanciáját. Mire építed a gazdasági programot?",
+    "id": "szakszervezetek",
+    "title": "Szabad szakszervezetek",
+    "question": "A SZOT a régi rendszer szíjhajtója volt. Az SZDP független szakszervezeteket akar, a munkástanácsok szerint viszont az érdekképviselet már az ő dolguk. Mi legyen a SZOT sorsa?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A munkástanácsok valódi jogkört kapnak a gyárak vezetésében."
+        "label": "Független szakszervezetek alakulnak, pártoktól elválasztva."
       },
       {
         "id": "B",
-        "label": "Eltörlöd a beszolgáltatást, a szövetkezetekből szabadon ki lehet lépni."
+        "label": "A SZOT megmarad, de új vezetőséget választ."
       },
       {
         "id": "C",
-        "label": "Tervgazdaság marad, de fokozatos reformmal és magasabb bérekkel."
+        "label": "Az érdekképviseletet a munkástanácsok veszik át."
+      },
+      {
+        "id": "D",
+        "label": "A szakszervezetek és a munkástanácsok közös tanácsot alakítanak."
       }
     ]
   },
   {
-    "id": "q6_semlegesseg",
-    "title": "Semlegesség és Moszkva",
-    "question": "A szovjet csapatok kivonultak, de a szerződések még nincsenek aláírva. Moszkva kereskedelmi megállapodást kínál, Washington segélyt. Mit mondasz a záró nagygyűlésen?",
+    "id": "mult_felelosei",
+    "title": "A múlt felelősei",
+    "question": "Gerő Ernő és Hegedüs András Moszkvából hazatérne. A felkelők bíróságot követelnek, a pártban sokan inkább hallgatnának róluk. Mi legyen velük?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Pártbíróság elé kerülnek, és kizárják őket."
+      },
+      {
+        "id": "B",
+        "label": "Rendes bíróság elé állnak, mint bárki más."
+      },
+      {
+        "id": "C",
+        "label": "Hallgatsz. Moszkvában maradnak, és ez így jó."
+      },
+      {
+        "id": "D",
+        "label": "Kéred a kiadatásukat Moszkvától, de a pert a választás utánra halasztod."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      }
+    }
+  },
+  {
+    "id": "ket_munkaspart",
+    "title": "Két munkáspárt",
+    "question": "Kádár pártja a székházak felét, a Szabad Nép nyomdáját és a pártkassza részét követeli. A gyári pártszervezetek nem tudják, melyik párthoz tartoznak. Hogyan rendezed?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Arányosan megosztod a vagyont Kádár pártjával."
+      },
+      {
+        "id": "B",
+        "label": "A bíróság döntsön a vagyonról."
+      },
+      {
+        "id": "C",
+        "label": "Üzemenként a tagság szavaz, melyik párthoz tartozik."
+      },
+      {
+        "id": "D",
+        "label": "Paktumot ajánlasz Kádárnak: a kampányban nem támadjátok egymást."
+      }
+    ],
+    "visibleIf": {
+      "type": "event-triggered",
+      "eventId": "kadar_szakadas"
+    }
+  },
+  {
+    "id": "egyetemistak",
+    "title": "Az egyetemisták",
+    "question": "A MEFESZ, a forradalmat elindító diákszövetség, egyetemi autonómiát, a kötelező orosz eltörlését és saját diákőrséget követel. Mit felelsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Megadod az egyetemi autonómiát, az orosz nyelv választható lesz."
+      },
+      {
+        "id": "B",
+        "label": "Új, a párthoz kötődő ifjúsági szövetséget alapítasz."
+      },
+      {
+        "id": "C",
+        "label": "Engedélyezed a fegyveres diákőrséget."
+      },
+      {
+        "id": "D",
+        "label": "Leülsz a MEFESZ vezetőivel, és együtt írjátok meg a felsőoktatási törvényt."
+      }
+    ]
+  },
+  {
+    "id": "fold_es_beszolgaltatas",
+    "title": "Föld és beszolgáltatás",
+    "question": "A kisgazdák a beszolgáltatás végleges eltörlését és a szabad kilépést követelik a termelőszövetkezetekből. A te pártod eddig a szövetkezetek mellett állt. Mit ígérsz a falunak?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Eltörlöd a beszolgáltatást, és bárki szabadon kiléphet a tsz-ből."
+      },
+      {
+        "id": "B",
+        "label": "A beszolgáltatás megszűnik, a tsz önkéntes alapon marad."
+      },
+      {
+        "id": "C",
+        "label": "A szövetkezetek maradnak, a beszolgáltatást csökkented."
+      },
+      {
+        "id": "D",
+        "label": "A földkérdésről népszavazást írsz ki a választás utánra."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "C"
+      }
+    ]
+  },
+  {
+    "id": "kie_a_gyar",
+    "title": "Kié a gyár?",
+    "question": "A munkástanácsok országos kongresszusa kimondta: a gyár azé, aki dolgozik benne. A tervhivatal szerint így nincs tervgazdaság. Mekkora jogkört adsz a tanácsoknak?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Valódi irányítást: a tanácsok választják az igazgatót."
+      },
+      {
+        "id": "B",
+        "label": "Tanácsadó szerepet kapnak, az igazgatót a minisztérium nevezi ki."
+      },
+      {
+        "id": "C",
+        "label": "A tervhivatal irányít tovább, a tanácsok szerepe szűkül."
+      },
+      {
+        "id": "D",
+        "label": "A Csepel Művekben próbálod ki az önigazgatást, mintaként."
+      }
+    ]
+  },
+  {
+    "id": "ellenfel_nem_ellenseg",
+    "title": "Ellenfél, nem ellenség",
+    "question": "A kisgazdák kiléptek a kormányból, és a kampányban már ellenfélként állnak veled szemben. A pártban sokan kemény hangot követelnek ellenük, mások Tildy Zoltán barátságára emlékeztetnek. Hogyan beszélsz róluk?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Barátként: Tildyvel együtt csináltuk a forradalmat, a különbség csak árnyalat."
+      },
+      {
+        "id": "B",
+        "label": "Keményen: a nagybirtok és a reakció pártja, amely visszahozná a régi világot."
+      },
+      {
+        "id": "C",
+        "label": "Ellenfélként: programvita a földről és a gyárakról, személyeskedés nélkül."
+      },
+      {
+        "id": "D",
+        "label": "Maradásra bírod a kisgazda minisztereket a kormányban."
+      }
+    ]
+  },
+  {
+    "id": "bibo_alkotmanya",
+    "title": "Bibó alkotmánya",
+    "question": "Bibó István elkészítette az új köztársaság alkotmánytervezetét: erős parlament, alkotmánybíróság, közvetlenül választott köztársasági elnök. A pártodban sokan erősebb kormányfőt szeretnének. Mit támogatsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Bibó tervezetét, ahogy van."
+      },
+      {
+        "id": "B",
+        "label": "Erős kormányfőt, a parlament ellenőrzése mellett."
+      },
+      {
+        "id": "C",
+        "label": "Ideiglenes alaptörvényt, a végleges alkotmányról az új parlament dönt."
+      },
+      {
+        "id": "D",
+        "label": "Bibót kéred fel köztársasági elnöknek az ideiglenes alaptörvény alatt."
+      }
+    ]
+  },
+  {
+    "id": "kik_szavazhatnak",
+    "title": "Kik szavazhatnak?",
+    "question": "Vita folyik a választási törvényről: szavazhatnak-e az emigránsok és a volt ÁVH-sok, és 18 évre csökkenjen-e a korhatár? Mit javasolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mindenki szavazhat, az emigránsok is, és a korhatár 18 év."
+      },
+      {
+        "id": "B",
+        "label": "A volt ÁVH-sok nem szavazhatnak."
+      },
+      {
+        "id": "C",
+        "label": "Marad az 1945-ös választójog, 20 éves korhatárral."
+      },
+      {
+        "id": "D",
+        "label": "A korhatár 18 év lesz, a vitás kérdésekről az alkotmánybíróság dönt."
+      }
+    ]
+  },
+  {
+    "id": "szen_vagy_dollar",
+    "title": "Szén vagy dollár",
+    "question": "Moszkva ötéves szén- és gabonaszerződést kínál kedvező áron. Washington hitelt ajánl, ha az ország nyit a nyugati piacok felé. Melyiket fogadod el?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A szovjet szerződést: biztos szén, biztos piac."
+      },
+      {
+        "id": "B",
+        "label": "A nyugati hitelt, új gépekkel és piacokkal."
+      },
+      {
+        "id": "C",
+        "label": "Mindkettőt, kisebb tételekben."
+      },
+      {
+        "id": "D",
+        "label": "Önellátásra építesz: hazai szén, takarékosság, kemény tél."
+      }
+    ],
+    "affects": [
+      {
+        "id": "B"
+      }
+    ]
+  },
+  {
+    "id": "radio_szabadsaga",
+    "title": "A rádió szabadsága",
+    "question": "A Magyar Rádió és a lapok szabadon írnak, de a papír kevés, és a Szabad Európa Rádió irodát nyitna Budapesten. Milyen sajtótörvényt hozol?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Teljes sajtószabadságot, és engedélyt a Szabad Európának."
+      },
+      {
+        "id": "B",
+        "label": "Állami felügyeletet a rádió felett a választásig."
+      },
+      {
+        "id": "C",
+        "label": "A pártok arányosan kapnak papírt és műsoridőt."
+      },
+      {
+        "id": "D",
+        "label": "A rádiót pártok feletti kuratórium felügyeli."
+      }
+    ]
+  },
+  {
+    "id": "listakapcsolas",
+    "title": "Listakapcsolás",
+    "question": "A választási törvény engedi, hogy a pártok összekapcsolják a listájukat. Kéthly és Bibó is jelezte, hogy kész tárgyalni. Kivel indulsz együtt?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Az SZDP-vel: a két munkáspárt egy tömbben."
+      },
+      {
+        "id": "B",
+        "label": "A Petőfi Párttal: a forradalom pártjai együtt."
+      },
+      {
+        "id": "C",
+        "label": "Egyedül: az MSZMP saját többségre megy."
+      },
+      {
+        "id": "D",
+        "label": "Hárompárti blokkot ajánlasz az SZDP-nek és a Petőfi Pártnak."
+      }
+    ]
+  },
+  {
+    "id": "falujaras",
+    "title": "Falujárás",
+    "question": "A kampány vidéken dől el. A falvakban a kisgazdák plakátjai lógnak, és a parasztok azt kérdezik, mit ígér nekik a kommunisták pártja. Mit mondasz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Földet ígérsz mindenkinek, aki megműveli."
+      },
+      {
+        "id": "B",
+        "label": "Szövetkezeti reformot: önkéntes tsz, gépállomás, hitel."
+      },
+      {
+        "id": "C",
+        "label": "Nem ígérsz semmit, a falu döntsön maga."
+      },
+      {
+        "id": "D",
+        "label": "Gépállomást és olcsó hitelt ígérsz a magángazdáknak is."
+      }
+    ]
+  },
+  {
+    "id": "szoszek_es_urna",
+    "title": "Szószék és urna",
+    "question": "A templomokban vasárnap felolvassák a püspöki kar körlevelét a választásról. A Demokrata Néppárt erre épít, és Barankovics István egyeztetést ajánl. Hogyan közelítesz az egyházakhoz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mindszenty bíborossal tárgyalsz közvetlenül."
+      },
+      {
+        "id": "B",
+        "label": "Barankovicscsal egyezkedsz: a DNP a hívők hangja."
+      },
+      {
+        "id": "C",
+        "label": "Az egyház maradjon a templomban, a politika a parlamentben."
+      },
+      {
+        "id": "D",
+        "label": "A református és az evangélikus egyházzal kötsz megállapodást."
+      }
+    ]
+  },
+  {
+    "id": "koztarsasag_ter",
+    "title": "Lövések a Köztársaság téren",
+    "question": "Ismeretlenek lövéseket adtak le a budapesti pártházatok előtt. Senki sem halt meg, de a tér októberben vérengzés helyszíne volt. A rendőrség rendkívüli intézkedést kér. Mit teszel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Rendkívüli állapotot hirdetsz Budapesten."
+      },
+      {
+        "id": "B",
+        "label": "Független vizsgálóbizottságot állítasz fel."
+      },
+      {
+        "id": "C",
+        "label": "Rádióbeszédben nyugalomra intesz mindenkit."
+      },
+      {
+        "id": "D",
+        "label": "A Nemzetőrséget kéred fel a pártházak védelmére."
+      }
+    ]
+  },
+  {
+    "id": "osztrak_ut",
+    "title": "Az osztrák út",
+    "question": "Ausztria 1955-ben négyhatalmi szerződéssel lett semleges. Most a magyar semlegesség garanciájáról kell dönteni. Melyik utat választod?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "ENSZ-garanciát kérsz a semlegességre."
+      },
+      {
+        "id": "B",
+        "label": "Osztrák mintájú négyhatalmi szerződést kötsz."
+      },
+      {
+        "id": "C",
+        "label": "Kétoldalú megállapodást kötsz Moszkvával."
+      },
+      {
+        "id": "D",
+        "label": "Jugoszláv mintájú el nem kötelezettséget hirdetsz."
+      }
+    ],
+    "affects": [
+      {
+        "id": "A"
+      }
+    ]
+  },
+  {
+    "id": "zaro_nagygyules",
+    "title": "Záró nagygyűlés",
+    "question": "A Kossuth téren százezrek várják a záró beszédedet. A szovjet csapatok elmentek, de a szerződések még nincsenek aláírva. Moszkva kereskedelmi megállapodást kínál, Washington segélyt. Miről beszélsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -105,11 +651,15 @@
       },
       {
         "id": "B",
-        "label": "Semlegesség és kereskedelmi szerződés Moszkvával: a függetlenség nem ellenségeskedés."
+        "label": "Semlegességről és kereskedelmi szerződésről Moszkvával: a függetlenség nem ellenségeskedés."
       },
       {
         "id": "C",
-        "label": "Október 23-ra hivatkozol: a forradalom nem alkuszik, a függetlenség nem eladó."
+        "label": "Október 23-ról: a forradalom nem alkuszik, a függetlenség nem eladó."
+      },
+      {
+        "id": "D",
+        "label": "Kéthly Annával és Bibó Istvánnal közösen lépsz a pódiumra."
       }
     ]
   }

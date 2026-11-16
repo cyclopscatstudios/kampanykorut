@@ -81,15 +81,17 @@ const withdrawal: CampaignEvent = {
 
 const settings = { showAdvisorFeedback: false, language: "hu" as const };
 
-const createEngine = (events: CampaignEvent[] = [withdrawal]) =>
-  new CampaignEngine(
+const createEngine = (events: CampaignEvent[] = [withdrawal]) => {
+  const pollsterEngine = container.resolve(PollsterEngine);
+  pollsterEngine.configure();
+  return new CampaignEngine(
     districts,
     questions,
     [],
     container.resolve(ResultModifier),
     container.resolve(EffectApplier),
     container.resolve(MandateCalculator),
-    container.resolve(PollsterEngine),
+    pollsterEngine,
     container.resolve(MayoralResultCalculator),
     container.resolve(CampaignEventEngine),
     container.resolve(CandidateWithdrawalTransformer),
@@ -97,6 +99,7 @@ const createEngine = (events: CampaignEvent[] = [withdrawal]) =>
     undefined,
     events,
   );
+};
 
 const decision = (
   questionId: string,

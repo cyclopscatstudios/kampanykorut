@@ -18,10 +18,12 @@ import {
   IssueStanceParams,
   PartyListData,
   PartyListVotes,
+  PoliticalConfig,
   RawAnsweEffectProps,
   RawEffect,
   RawParty,
   RawQuestion,
+  Relation,
   SetRelationEffect,
   SplitPartyEffect,
   Strategy,
@@ -45,6 +47,7 @@ import { resolveIssueStance } from "./Issues";
 import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
+import { getFailedFocusEffects } from "./PoliticalFocus";
 import { setRelations } from "./PoliticalRelations";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
 import {
@@ -80,6 +83,8 @@ export class CampaignEngine {
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
     private readonly campaignEvents?: CampaignEvent[],
+    private readonly relations?: Pick<Relation, "id" | "tone">[],
+    private readonly politicalConfig?: PoliticalConfig,
   ) {
     log.debug("CampaignEngine initialized");
   }
@@ -262,6 +267,7 @@ export class CampaignEngine {
       electionConfig,
       (current, effects) =>
         this.applyEventEffects(current, effects, electionConfig),
+      this.relations,
     );
 
     const position = this.getQuestionPosition(
@@ -270,16 +276,19 @@ export class CampaignEngine {
       electionConfig,
       this.getQuestionCursor(state) + 1,
     );
+    const settled = position.isEnded
+      ? this.applyFocusPenalties(afterEvents, answers, electionConfig)
+      : afterEvents;
     const session = {
       ...(position.isEnded && campaignStrategies
         ? this.applyFinalStrategies(
-            afterEvents,
+            settled,
             state,
             history,
             campaignStrategies,
             electionConfig,
           )
-        : afterEvents),
+        : settled),
       ...position,
     };
 
@@ -298,6 +307,24 @@ export class CampaignEngine {
         pollsterId,
       ),
     };
+  }
+
+  private applyFocusPenalties(
+    state: CampaignState,
+    answers: Pick<HistoryItem, "questionId" | "answerId">[],
+    electionConfig: ElectionConfig,
+  ): CampaignState {
+    if (!this.politicalConfig) {
+      return state;
+    }
+    const effects = getFailedFocusEffects(
+      state,
+      { politicalConfig: this.politicalConfig, electionConfig },
+      answers,
+    );
+    return effects.length
+      ? this.applyEventEffects(state, effects, electionConfig)
+      : state;
   }
 
   private applyFinalStrategies(
@@ -357,7 +384,12 @@ export class CampaignEngine {
       if (!electionConfig) {
         throw new Error("conditional questions need an election config");
       }
-      context ??= createConditionContext(state, answers, electionConfig);
+      context ??= createConditionContext(
+        state,
+        answers,
+        electionConfig,
+        this.relations,
+      );
       return context;
     };
 

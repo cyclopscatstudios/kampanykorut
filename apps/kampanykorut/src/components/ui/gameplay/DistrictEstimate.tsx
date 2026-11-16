@@ -80,6 +80,7 @@ export function DistrictEstimate({
                 row={row}
                 isLeader={estimate.leader?.partyId === row.partyId}
                 showParty={!isNational && !!row.candidateName}
+                partyNameOnly={isNational}
                 scale={getBarScale(estimate)}
               />
             ))}
@@ -160,11 +161,13 @@ export function CandidateRow({
   row,
   isLeader,
   showParty,
+  partyNameOnly,
   scale,
 }: {
   row: EstimateRow;
   isLeader: boolean;
   showParty: boolean;
+  partyNameOnly: boolean;
   scale: number;
 }) {
   const toPosition = (value: number) => `${(value / scale) * 100}%`;
@@ -177,7 +180,7 @@ export function CandidateRow({
       />
       <div className="min-w-0">
         <div className="text-[12.5px] font-bold uppercase tracking-[0.2px] text-slate-100">
-          {row.candidateName ?? row.partyName}
+          {partyNameOnly ? row.partyName : (row.candidateName ?? row.partyName)}
         </div>
         {showParty && (
           <div className="mt-px text-[11.5px] text-slate-400">

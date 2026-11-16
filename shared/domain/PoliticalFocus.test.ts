@@ -1,5 +1,6 @@
 import { CampaignConfig, CampaignState } from "../types";
 import {
+  autoSelectCompletedFocus,
   buildFocusOverview,
   canSelectFocus,
   hasFocusNews,
@@ -83,9 +84,10 @@ const branches = (state: CampaignState, answers = []) =>
   ]);
 
 describe("PoliticalFocus", () => {
-  it("opens only the first branch at the start", () => {
+  it("opens only the first branch and shows the later ones as upcoming", () => {
     expect(branches(stateWith())).toEqual([
       ["kadar", "open", ["with_kadar:available", "without_kadar:available"]],
+      ["base", "upcoming", ["workers:upcoming", "peasants:upcoming"]],
     ]);
     expect(canSelectFocus(stateWith(), config, "workers")).toBe(false);
   });
@@ -192,6 +194,60 @@ describe("PoliticalFocus", () => {
     expect(buildFocusOverview(rebel, config, []).latest?.status).toBe(
       "selected",
     );
+  });
+
+  it("picks and locks a focus that is already completed", () => {
+    const pact = {
+      triggeredEventIds: ["pact"],
+      pendingAnnouncementIds: [],
+    };
+    const done = autoSelectCompletedFocus(
+      stateWith({ turn: 1, campaignEvents: pact }),
+      config,
+      [],
+    );
+    expect(done.politicalDashboard?.selectedFocusIds).toEqual(["with_kadar"]);
+    expect(canSelectFocus(done, config, "without_kadar")).toBe(false);
+    expect(isFocusRequired(done, config)).toBe(false);
+
+    const changed = autoSelectCompletedFocus(
+      pick(stateWith({ turn: 1, campaignEvents: pact }), "without_kadar"),
+      config,
+      [],
+    );
+    expect(changed.politicalDashboard?.selectedFocusIds).toEqual([
+      "with_kadar",
+    ]);
+
+    const quiet = stateWith({ turn: 1 });
+    expect(autoSelectCompletedFocus(quiet, config, [])).toBe(quiet);
+  });
+
+  it("rules out a focus that already failed and picks its pair", () => {
+    const answers = [{ questionId: "q1", answerId: "A" }];
+    const open = stateWith({ turn: 1 });
+    expect(
+      buildFocusOverview(open, config, answers).branches[0].focuses.map((f) => [
+        f.id,
+        f.status,
+        f.selectable,
+      ]),
+    ).toEqual([
+      ["with_kadar", "available", true],
+      ["without_kadar", "excluded", false],
+    ]);
+    const done = autoSelectCompletedFocus(open, config, answers);
+    expect(done.politicalDashboard?.selectedFocusIds).toEqual(["with_kadar"]);
+    expect(done.politicalDashboard?.focusLocked).toBe(true);
+
+    const switched = autoSelectCompletedFocus(
+      pick(open, "without_kadar"),
+      config,
+      answers,
+    );
+    expect(switched.politicalDashboard?.selectedFocusIds).toEqual([
+      "with_kadar",
+    ]);
   });
 
   it("reads the single focus of an older save", () => {

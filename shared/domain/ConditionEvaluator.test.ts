@@ -238,6 +238,42 @@ describe("evaluateCondition", () => {
       ).toBe(true);
     });
 
+    it("checks a party's position on an issue", () => {
+      const condition: Condition = {
+        type: "issue-position",
+        issueId: "kelet_nyugat",
+        min: 2,
+      };
+      expect(evaluateCondition(condition, context())).toBe(false);
+      expect(
+        evaluateCondition(condition, context({ getIssuePosition: () => 2 })),
+      ).toBe(true);
+      expect(
+        evaluateCondition(
+          { ...condition, min: undefined, max: -1 },
+          context({ getIssuePosition: () => 0 }),
+        ),
+      ).toBe(false);
+    });
+
+    it("checks the tone of a relation", () => {
+      const condition: Condition = {
+        type: "relation",
+        relationId: "moszkva",
+        tone: ["tense", "bad"],
+      };
+      expect(evaluateCondition(condition, context())).toBe(false);
+      expect(
+        evaluateCondition(condition, context({ getRelationTone: () => "bad" })),
+      ).toBe(true);
+      expect(
+        evaluateCondition(
+          condition,
+          context({ getRelationTone: () => "calm" }),
+        ),
+      ).toBe(false);
+    });
+
     it("checks whether the player plays the candidate", () => {
       const condition: Condition = {
         type: "player-candidate",

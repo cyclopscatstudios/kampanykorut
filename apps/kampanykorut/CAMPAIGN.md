@@ -394,8 +394,11 @@ A `Condition` ([shared/types/condition.ts](shared/types/condition.ts)) is either
 | `{ "type": "candidate-status", "candidateId", "status": "active" \| "inactive" }`                                               | the candidate currently has that status.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `{ "type": "player-candidate", "candidateId" }`                                                                                 | the player plays this candidate (the side chosen in the menu).                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `{ "type": "event-triggered", "eventId" }`                                                                                      | that event has already run.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `{ "type": "focus-selected", "focusId" }`                                                                                       | the player has chosen that focus.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `{ "type": "relation", "relationId", "tone": ("good" \| "calm" \| "tense" \| "bad")[] }`                                        | the relation currently has one of these tones: the one a `set-relation` effect set last, otherwise its starting tone from the political config.                                                                                                                                                                                                                                                                                                                                                                               |
+| `{ "type": "issue-position", "issueId", "party"?, "min"?: number, "max"?: number }`                                             | the party's current position on the issue (see [Issues](#issues)) is within `min`–`max`, both ends included. `party` defaults to the player's party.                                                                                                                                                                                                                                                                                                                                                                          |
 
-The campaign validator reports unknown questions, answers, candidates and events inside conditions, as well as malformed conditions.
+The campaign validator reports unknown questions, answers, candidates, events, focuses, relations and issues inside conditions, as well as malformed conditions.
 
 #### Political config
 
@@ -421,6 +424,19 @@ The coalition phase opens only when the player's party has the most seats but no
 - `requiredBeforeTurn`: while the branch is undecided, no district can be visited from this turn on. Left out, the choice is never forced.
 
 Without `focusBranches`, all focuses form one branch open from turn 1. A `focus-selected` condition holds for any chosen focus.
+
+A focus is completed when its `completeWhen` holds and failed when its `failWhen` holds. If exactly one focus of an open branch is already completed, it is chosen for the player and locked. A chosen focus that is not completed by the end counts as failed, and its optional `failEffects` (the same effects as an answer's `effects`) are applied once after the last turn:
+
+```json
+{
+  "id": "forradalom_partja",
+  "title": "…",
+  "summary": "…",
+  "description": "…",
+  "completeWhen": { "type": "event-triggered", "eventId": "corvin_kiallas" },
+  "failEffects": [{ "type": "uniform-swing", "params": { "mszmp": -2 } }]
+}
+```
 
 #### Newspaper
 

@@ -740,6 +740,8 @@ function checkQuestionConditions(
     candidateIds: ctx.parties,
     eventIds: ctx.eventIds,
     focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
+    issueIds: ctx.issueIds,
   };
   let valid = true;
   data.forEach((question, index) => {
@@ -2165,6 +2167,8 @@ function checkCampaignEvents(
     candidateIds: ctx.parties,
     eventIds,
     focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
+    issueIds: ctx.issueIds,
   };
 
   data.forEach((event, index) => {
@@ -2410,6 +2414,8 @@ function checkPoliticalConfig(
     candidateIds: ctx.parties,
     eventIds: ctx.eventIds,
     focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
+    issueIds: ctx.issueIds,
   };
   checkCoalition(ctx, file, data, refs);
   checkEpilogues(ctx, file, data, refs);
@@ -2482,6 +2488,9 @@ function checkPoliticalConfig(
           report(ctx, "error", issue.code, file, issue.path, issue.message),
         );
       }
+    }
+    if (focus.failEffects !== undefined) {
+      checkEffects(ctx, file, `${path}/failEffects`, focus.failEffects);
     }
   });
 }
@@ -2564,6 +2573,8 @@ function checkNewspaper(
     candidateIds: ctx.parties,
     eventIds: ctx.eventIds,
     focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
+    issueIds: ctx.issueIds,
   };
   const itemIds = new Set<string>();
   data.items.forEach((item, index) => {

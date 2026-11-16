@@ -7,6 +7,7 @@ import {
   StateEngine,
 } from "@/logic/application";
 import {
+  autoSelectCompletedFocus,
   buildDashboardOverview,
   buildFocusOverview,
   buildRelationGroups,
@@ -25,7 +26,7 @@ import { useNavigation } from "../../../hooks/navigationHook";
 import { useParams } from "../../../hooks/useParamsHook";
 import { getCampaignBadgeInfo } from "../gameplay/campaignBadge.utils";
 import { GameChrome } from "../gameplay/GameChrome";
-import { toaster } from "../gameplay/toaster";
+import { focusToast } from "../gameplay/toaster";
 import { ChronicleTab } from "./ChronicleTab";
 import { FocusTab } from "./FocusTab";
 import { OverviewTab } from "./OverviewTab";
@@ -51,8 +52,12 @@ export function PoliticalDashboardPage() {
   const [state, setState] = useState<CampaignState | null>(() =>
     stored
       ? markFocusSeen(
-          markRelationsSeen(
-            markPublicEventsSeen(stored, config.campaignEvents),
+          autoSelectCompletedFocus(
+            markRelationsSeen(
+              markPublicEventsSeen(stored, config.campaignEvents),
+            ),
+            config,
+            answers,
           ),
           config,
           answers,
@@ -186,11 +191,9 @@ export function PoliticalDashboardPage() {
                   return;
                 }
                 setState(markFocusSeen(next, config, answers));
-                const title = getFocuses(config).find(
-                  (f) => f.id === focusId,
-                )?.title;
-                if (title) {
-                  toaster(t("toaster.focusSelected", { title }), "Success");
+                const focus = getFocuses(config).find((f) => f.id === focusId);
+                if (focus) {
+                  focusToast(focus, { id: "focus-selected" });
                 }
               }}
             />
