@@ -297,6 +297,9 @@ function check(
           );
         }
       }
+      if (typeof min === "number" && typeof max === "number" && min > max) {
+        issue("condition-invalid", path, "min must not exceed max");
+      }
       return;
     }
     case "relation":
@@ -319,7 +322,9 @@ function check(
       if (
         !Array.isArray(condition.tone) ||
         condition.tone.length === 0 ||
-        condition.tone.some((tone) => !TONES.includes(String(tone)))
+        condition.tone.some(
+          (tone) => typeof tone !== "string" || !TONES.includes(tone),
+        )
       ) {
         issue(
           "condition-invalid",

@@ -14,7 +14,7 @@ export function Tile({
     <article
       aria-label={label}
       className={classNames(
-        "relative flex h-[250px] flex-col items-center justify-center gap-3 rounded-xl p-6 text-center",
+        "relative flex min-h-[250px] flex-col items-center justify-center gap-3 rounded-xl p-6 text-center",
         className ??
           "bg-blue-400/8 shadow-[inset_0_0_0_1px_rgba(239,246,255,0.12)]",
       )}

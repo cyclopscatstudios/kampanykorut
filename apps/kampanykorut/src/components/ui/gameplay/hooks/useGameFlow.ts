@@ -59,7 +59,12 @@ function gameFlowReducer(
     case "PAUSE_QUESTION":
       return { ...state, currentView: "MapView", questionPaused: true };
     case "RESUME_QUESTION":
-      return { ...state, currentView: "QuestionView", questionPaused: false };
+      return {
+        ...state,
+        currentView: "QuestionView",
+        selectedDistrict: state.visitingDistrict ?? state.selectedDistrict,
+        questionPaused: false,
+      };
   }
 }
 

@@ -329,14 +329,14 @@ export function buildFocusOverview(
     const choice = getChoice(branch, selectedIds);
     const branchState: FocusBranchState = choice
       ? "decided"
-      : branch === current && isBranchOpen(state, branch)
+      : branch.id === current?.id && isBranchOpen(state, branch)
         ? "open"
         : "upcoming";
     branches.push({
       id: branch.id,
       title: branch.title,
       state: branchState,
-      revisable: branch === revisable,
+      revisable: branch.id === revisable?.id,
       availableFromTurn:
         branchState === "upcoming"
           ? getOpeningTurn(state, branch)
@@ -351,7 +351,7 @@ export function buildFocusOverview(
           id === choice
             ? getChosenStatus(focus, holds)
             : choice
-              ? branch === revisable
+              ? branch.id === revisable?.id
                 ? "available"
                 : "excluded"
               : branchState === "open"

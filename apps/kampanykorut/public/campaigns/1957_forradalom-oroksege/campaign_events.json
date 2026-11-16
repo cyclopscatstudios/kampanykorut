@@ -2182,7 +2182,7 @@
     "id": "moszkva_arnyeka",
     "label": "Moszkva felé tolódás",
     "once": true,
-    "priority": 20,
+    "priority": -10,
     "conditions": [
       {
         "if": {

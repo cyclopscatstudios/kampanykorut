@@ -109,6 +109,11 @@ describe("PollsterEngine.getPolls", () => {
     expect(result).not.toHaveProperty("_total");
   });
 
+  it("returns undefined when every pollster is excluded", () => {
+    engine.configure([{ id: "all_pollsters", exclude: true } as Pollster]);
+    expect(engine.getPolls(mockState)).toBeUndefined();
+  });
+
   it("all values are finite numbers", () => {
     const result = engine.getPolls(mockState)!;
     for (const value of Object.values(result)) {

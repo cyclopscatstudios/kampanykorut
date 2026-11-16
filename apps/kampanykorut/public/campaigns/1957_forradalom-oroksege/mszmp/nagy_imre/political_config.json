@@ -209,16 +209,27 @@
       "description": "Szent István királyunk a nyugati kereszténységet választotta, és ezzel Európa nyugati közösségéhez kötötte az országot. Kövesd ezt az örökséget: nyiss a nyugati hitelek és piacok felé, és építsd az új köztársaságot a nyugati demokráciák mintájára.",
       "icon": "/images/1957_forradalom-oroksege/nyugat.png",
       "completeWhen": {
-        "or": [
+        "and": [
           {
-            "type": "answer-selected",
-            "questionId": "szen_vagy_dollar",
-            "answerId": "B"
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "szen_vagy_dollar",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "osztrak_ut",
+                "answerId": "A"
+              }
+            ]
           },
           {
-            "type": "answer-selected",
-            "questionId": "osztrak_ut",
-            "answerId": "A"
+            "not": {
+              "type": "answer-selected",
+              "questionId": "osztrak_ut",
+              "answerId": "C"
+            }
           }
         ]
       },

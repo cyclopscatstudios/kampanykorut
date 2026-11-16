@@ -55,6 +55,10 @@ export class PollsterEngine {
       log.error("cannot get polls, missing actual results percentages");
       return;
     }
+    if (this.pollsters.length === 0) {
+      log.error("cannot get polls, no pollsters configured");
+      return;
+    }
 
     const partyIds = Object.keys(percentages.candidateListResults).filter(
       (k) => k !== "_total",

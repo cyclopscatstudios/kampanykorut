@@ -178,6 +178,9 @@ describe("validateCondition", () => {
     expect(
       codes({ type: "relation", relationId: "moszkva", tone: [] }),
     ).toEqual(["condition-invalid@/if/tone"]);
+    expect(
+      codes({ type: "relation", relationId: "moszkva", tone: [["bad"]] }),
+    ).toEqual(["condition-invalid@/if/tone"]);
   });
 
   it("checks the issue and bounds of an issue-position condition", () => {
@@ -194,6 +197,22 @@ describe("validateCondition", () => {
     expect(codes({ type: "issue-position", issueId: "kelet_nyugat" })).toEqual([
       "condition-invalid@/if",
     ]);
+    expect(
+      codes({
+        type: "issue-position",
+        issueId: "kelet_nyugat",
+        min: 2,
+        max: -2,
+      }),
+    ).toEqual(["condition-invalid@/if"]);
+    expect(
+      codes({
+        type: "issue-position",
+        issueId: "kelet_nyugat",
+        min: 1,
+        max: 1,
+      }),
+    ).toEqual([]);
   });
 
   it("skips reference checks that have no reference set", () => {
