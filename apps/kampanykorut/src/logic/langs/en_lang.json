@@ -459,9 +459,6 @@
     "campaigns": {
       "heading": "Available campaigns"
     },
-    "campaignDialog": {
-      "startButton": "Start campaign"
-    },
     "footer": "Kampánykörút — a free election simulation that runs in your browser.",
     "footerPrivacy": "Privacy notice"
   },
@@ -538,6 +535,7 @@
     }
   },
   "campaignPage": {
+    "start": "Start campaign",
     "sides": "Pick a side",
     "otherSides": "Other sides",
     "background": "Campaign background",

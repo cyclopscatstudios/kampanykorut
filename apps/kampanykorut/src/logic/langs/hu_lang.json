@@ -459,9 +459,6 @@
     "campaigns": {
       "heading": "Elérhető kampányok"
     },
-    "campaignDialog": {
-      "startButton": "Kampány indítása"
-    },
     "footer": "Kampánykörút — ingyenes, böngészőben futó választási szimuláció.",
     "footerPrivacy": "Adatkezelési tájékoztató"
   },
@@ -538,6 +535,7 @@
     }
   },
   "campaignPage": {
+    "start": "Kampány indítása",
     "sides": "Válassz oldalt",
     "otherSides": "Más oldalak",
     "background": "A kampány háttere",

@@ -50,7 +50,7 @@ export function CampaignPageView({ data, onStart }: CampaignPageViewProps) {
             testId="campaignPageStart"
           >
             <Button.Icon name="play-circle-fill" />
-            <Button.Text>{t("landing.campaignDialog.startButton")}</Button.Text>
+            <Button.Text>{t("campaignPage.start")}</Button.Text>
           </Button>
         </div>
       </section>
