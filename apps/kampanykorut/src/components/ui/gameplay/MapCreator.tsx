@@ -26,6 +26,7 @@ interface MapCreatorProps {
   nationalPercentages?: Record<string, number>;
   electionConfig: ElectionConfig;
   visitBlocked?: boolean;
+  isReturning?: boolean;
   mapOverlay?: ReactNode;
 }
 
@@ -39,6 +40,7 @@ export function MapCreator({
   nationalPercentages,
   electionConfig,
   visitBlocked,
+  isReturning,
   mapOverlay,
 }: MapCreatorProps) {
   const swingFactor = getSwingFactorByDistrict(selectedDistrict);
@@ -75,6 +77,7 @@ export function MapCreator({
           onClick={() => setCurrentView("QuestionView")}
           swingFactor={swingFactor}
           visitBlocked={visitBlocked}
+          isReturning={isReturning}
         />
       </div>
     </div>

@@ -3,8 +3,13 @@ import { useTranslate } from "../../../../../../../../shared/logic/hooks/useTran
 import { Tooltip } from "../../../../../../../../shared/ui/Tooltip";
 import { FocusEmblem } from "../../../dashboard/FocusEmblem";
 
-export function FocusResult({ focuses }: { focuses: FocusView[] }) {
+export function FocusResult({ focuses: chosen }: { focuses: FocusView[] }) {
   const t = useTranslate();
+  const focuses = chosen.map((focus) =>
+    focus.status === "completed"
+      ? focus
+      : { ...focus, status: "failed" as const },
+  );
 
   if (focuses.length === 0) {
     return (

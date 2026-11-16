@@ -221,9 +221,9 @@
   },
   {
     "id": "kelet_nyugat",
-    "name": "Kelet vagy Nyugat",
+    "name": "Nyugati orientáció",
     "icon": "compass-fill",
-    "description": "Merre forduljon a semleges ország.",
+    "description": "A nyugati kapcsolatok erősítése.",
     "default": {
       "strength": 1,
       "opinion": 0

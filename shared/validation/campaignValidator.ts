@@ -2489,6 +2489,9 @@ function checkPoliticalConfig(
         );
       }
     }
+    if (focus.failEffects !== undefined) {
+      checkEffects(ctx, file, `${path}/failEffects`, focus.failEffects);
+    }
   });
 }
 

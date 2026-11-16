@@ -211,6 +211,43 @@ describe("useGameFlow", () => {
     });
   });
 
+  describe("paused question", () => {
+    it("remembers a question left for the map until it is resumed", () => {
+      const { result } = renderHook(() =>
+        useGameFlow(mockProcessAnswer, mockCommitTurn),
+      );
+
+      act(() => {
+        result.current.dispatch({ type: "CHANGE_VIEW", view: "QuestionView" });
+      });
+      act(() => {
+        result.current.dispatch({ type: "PAUSE_QUESTION" });
+      });
+      expect(result.current.flow.currentView).toBe("MapView");
+      expect(result.current.flow.questionPaused).toBe(true);
+
+      act(() => {
+        result.current.dispatch({ type: "RESUME_QUESTION" });
+      });
+      expect(result.current.flow.currentView).toBe("QuestionView");
+      expect(result.current.flow.questionPaused).toBe(false);
+    });
+
+    it("forgets the paused question when a new visit starts", () => {
+      const { result } = renderHook(() =>
+        useGameFlow(mockProcessAnswer, mockCommitTurn),
+      );
+
+      act(() => {
+        result.current.dispatch({ type: "PAUSE_QUESTION" });
+      });
+      act(() => {
+        result.current.dispatch({ type: "CHANGE_VIEW", view: "QuestionView" });
+      });
+      expect(result.current.flow.questionPaused).toBe(false);
+    });
+  });
+
   describe("handleAdvisorClose", () => {
     it("commits the pending turn and dismisses advisor", () => {
       const pending = makePending({ advisorFeedback: mockFeedback });

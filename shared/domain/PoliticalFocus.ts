@@ -5,6 +5,7 @@ import {
   FocusBranch,
   FocusStatus,
   PoliticalFocus,
+  RawEffect,
 } from "../types";
 import { getSelectedFocusIds } from "./CampaignStateAccess";
 import { type Answers, createConditionCheck } from "./ConditionCheck";
@@ -87,6 +88,7 @@ function getRevisableBranch(
   if (
     state.isEnded ||
     latest === undefined ||
+    state.politicalDashboard?.focusLocked ||
     state.politicalDashboard?.focusChosenAtTurn !== state.turn
   ) {
     return undefined;
@@ -202,6 +204,7 @@ export function selectFocus(
     : selectedIds;
   const dashboard = { ...state.politicalDashboard };
   delete dashboard.selectedFocusId;
+  delete dashboard.focusLocked;
   return {
     ...state,
     politicalDashboard: {
@@ -211,6 +214,79 @@ export function selectFocus(
       focusChosenAtTurn: state.turn,
     },
   };
+}
+
+export function autoSelectCompletedFocus(
+  state: CampaignState,
+  config: FocusConfig,
+  answers: Answers,
+): CampaignState {
+  if (state.isEnded || getFocuses(config).length === 0) {
+    return state;
+  }
+  const holds = createConditionCheck(
+    state,
+    answers,
+    config.electionConfig,
+    config.politicalConfig?.relations,
+  );
+  const find = (id: string) => getFocuses(config).find((f) => f.id === id);
+  const completes = (id: string) => {
+    const when = find(id)?.completeWhen;
+    return when !== undefined && holds(when);
+  };
+  const fails = (id: string) => {
+    const when = find(id)?.failWhen;
+    return when !== undefined && holds(when);
+  };
+
+  const revisable = getRevisableBranch(state, config);
+  const branch = revisable ?? getCurrentBranch(state, config);
+  if (!branch || (!revisable && !isBranchOpen(state, branch))) {
+    return state;
+  }
+  const completed = branch.focuses.filter(completes);
+  const remaining = branch.focuses.filter((id) => !fails(id));
+  const pick =
+    completed.length === 1
+      ? completed[0]
+      : completed.length === 0 &&
+          remaining.length === 1 &&
+          remaining.length < branch.focuses.length
+        ? remaining[0]
+        : undefined;
+  if (pick === undefined) {
+    return state;
+  }
+  const selectedIds = getSelectedFocusIds(state);
+  const kept = revisable ? selectedIds.slice(0, -1) : selectedIds;
+  const dashboard = { ...state.politicalDashboard };
+  delete dashboard.selectedFocusId;
+  return {
+    ...state,
+    politicalDashboard: {
+      ...dashboard,
+      seenEventIds: dashboard.seenEventIds ?? [],
+      selectedFocusIds: [...kept, pick],
+      focusChosenAtTurn: revisable ? dashboard.focusChosenAtTurn : state.turn,
+      focusLocked: true,
+    },
+  };
+}
+
+export function getFailedFocusEffects(
+  state: CampaignState,
+  config: FocusConfig,
+  answers: Answers,
+): RawEffect[] {
+  const failed = new Set(
+    buildFocusOverview(state, config, answers)
+      .selected.filter((f) => f.status !== "completed")
+      .map((f) => f.id),
+  );
+  return getFocuses(config).flatMap((f) =>
+    failed.has(f.id) ? (f.failEffects ?? []) : [],
+  );
 }
 
 export function buildFocusOverview(
@@ -229,17 +305,21 @@ export function buildFocusOverview(
   const current = getCurrentBranch(state, config);
   const revisable = getRevisableBranch(state, config);
 
-  const toView = (focus: PoliticalFocus, status: FocusStatus): FocusView => ({
-    id: focus.id,
-    title: focus.title,
-    summary: focus.summary,
-    description: focus.description,
-    icon: focus.icon,
-    status,
-    selectable: canSelectFocus(state, config, focus.id),
-  });
-
-  console.log({ toView, focuses, selectedIds, current, revisable });
+  const toView = (focus: PoliticalFocus, status: FocusStatus): FocusView => {
+    const ruledOut =
+      status === "available" &&
+      focus.failWhen !== undefined &&
+      holds(focus.failWhen);
+    return {
+      id: focus.id,
+      title: focus.title,
+      summary: focus.summary,
+      description: focus.description,
+      icon: focus.icon,
+      status: ruledOut ? "excluded" : status,
+      selectable: !ruledOut && canSelectFocus(state, config, focus.id),
+    };
+  };
 
   const branches: FocusBranchView[] = [];
   for (const branch of getFocusBranches(config)) {
@@ -281,8 +361,6 @@ export function buildFocusOverview(
       }),
     });
   }
-
-  console.log({ branches });
 
   const views = new Map(
     branches.flatMap((b) => b.focuses).map((f) => [f.id, f]),

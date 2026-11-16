@@ -45,45 +45,41 @@ function ChronicleNode({ event }: { event: PublicEvent }) {
   const major = Boolean(event.major);
 
   return (
-    <HoverDetail id={`chronicle-${event.id}`} detail={event.body}>
-      <div className="flex items-center gap-4 md:flex-col md:gap-3 md:text-center">
-        <span
-          aria-hidden="true"
-          className={classNames(
-            "inline-flex flex-none items-center justify-center rounded-full bg-[#0f172a]",
-            major
-              ? "size-[84px] text-amber-500 shadow-[inset_0_0_0_4px_#e0a23b,inset_0_0_0_200px_rgba(224,162,59,0.12)] md:size-[124px]"
-              : "ml-2 size-[68px] text-blue-200 shadow-[inset_0_0_0_2px_#54a2ff,inset_0_0_0_200px_rgba(84,162,255,0.10)] md:ml-0 md:mt-5 md:size-[84px]",
-          )}
-        >
-          <Icon
-            name={event.icon ?? (major ? "star-fill" : "circle-fill")}
-            size={
-              major && event.icon?.startsWith("/")
-                ? 126
-                : event.icon?.startsWith("/")
-                  ? 84
-                  : 30
-            }
-            color="currentColor"
-          />
-        </span>
-        <span className="flex flex-col gap-1">
-          {event.turn !== undefined && (
-            <span
-              className={classNames(
-                "text-xs font-bold uppercase tracking-[0.06em]",
-                major ? "text-amber-500" : "text-slate-400",
-              )}
-            >
-              {t("politicalDashboard.turn", { turn: event.turn })}
-            </span>
-          )}
-          <span className="text-base font-bold text-slate-50">
-            {event.title}
+    <div className="flex items-center gap-4 md:flex-col md:gap-3 md:text-center">
+      <span
+        aria-hidden="true"
+        className={classNames(
+          "inline-flex flex-none items-center justify-center rounded-full bg-[#0f172a]",
+          major
+            ? "size-[84px] text-amber-500 shadow-[inset_0_0_0_4px_#e0a23b,inset_0_0_0_200px_rgba(224,162,59,0.12)] md:size-[124px]"
+            : "ml-2 size-[68px] text-blue-200 shadow-[inset_0_0_0_2px_#54a2ff,inset_0_0_0_200px_rgba(84,162,255,0.10)] md:ml-0 md:mt-5 md:size-[84px]",
+        )}
+      >
+        <Icon
+          name={event.icon ?? (major ? "star-fill" : "circle-fill")}
+          size={
+            major && event.icon?.startsWith("/")
+              ? 126
+              : event.icon?.startsWith("/")
+                ? 84
+                : 30
+          }
+          color="currentColor"
+        />
+      </span>
+      <span className="flex flex-col gap-1">
+        {event.turn !== undefined && (
+          <span
+            className={classNames(
+              "text-xs font-bold uppercase tracking-[0.06em]",
+              major ? "text-amber-500" : "text-slate-400",
+            )}
+          >
+            {t("politicalDashboard.turn", { turn: event.turn })}
           </span>
-        </span>
-      </div>
-    </HoverDetail>
+        )}
+        <span className="text-base font-bold text-slate-50">{event.title}</span>
+      </span>
+    </div>
   );
 }

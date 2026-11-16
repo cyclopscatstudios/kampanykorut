@@ -90,6 +90,7 @@ export function createCampaignEngine(
     candidateConfig?.advisorFeedback,
     config.campaignEvents,
     (candidateConfig?.politicalConfig ?? config.politicalConfig)?.relations,
+    candidateConfig?.politicalConfig ?? config.politicalConfig,
   );
 
   return { campaignEngine, configEngine };

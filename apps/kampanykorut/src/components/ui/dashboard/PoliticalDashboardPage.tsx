@@ -7,6 +7,7 @@ import {
   StateEngine,
 } from "@/logic/application";
 import {
+  autoSelectCompletedFocus,
   buildDashboardOverview,
   buildFocusOverview,
   buildRelationGroups,
@@ -51,8 +52,12 @@ export function PoliticalDashboardPage() {
   const [state, setState] = useState<CampaignState | null>(() =>
     stored
       ? markFocusSeen(
-          markRelationsSeen(
-            markPublicEventsSeen(stored, config.campaignEvents),
+          autoSelectCompletedFocus(
+            markRelationsSeen(
+              markPublicEventsSeen(stored, config.campaignEvents),
+            ),
+            config,
+            answers,
           ),
           config,
           answers,

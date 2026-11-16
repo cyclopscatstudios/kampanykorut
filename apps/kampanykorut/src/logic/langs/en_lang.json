@@ -227,6 +227,7 @@
     }
   },
   "gameMenuBar": {
+    "resumeQuestion": "Back to the question",
     "save": "Save game",
     "laod": "Load game",
     "settings": "Settings",
@@ -268,6 +269,7 @@
   },
   "bottomBar": {
     "visitDistrict": "Visit district",
+    "returnToDistrict": "Back to the district",
     "swingFactor": "Swing factor",
     "population": "Population",
     "k": "K",

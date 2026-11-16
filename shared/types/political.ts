@@ -1,4 +1,5 @@
 import { Condition } from "./condition";
+import { RawEffect } from "./effects";
 import { IconName } from "./icon";
 
 export type GameMode = "classic" | "strategic";
@@ -13,6 +14,7 @@ export interface PoliticalFocus {
   icon?: IconName;
   completeWhen?: Condition;
   failWhen?: Condition;
+  failEffects?: RawEffect[];
 }
 
 export interface FocusBranch {
@@ -110,6 +112,7 @@ export interface PoliticalDashboardState {
   seenEventIds: string[];
   selectedFocusIds?: string[];
   focusChosenAtTurn?: number;
+  focusLocked?: boolean;
   selectedFocusId?: string;
   relations?: Record<string, RelationStanding & { changedAtTurn: number }>;
   seenRelationIds?: string[];

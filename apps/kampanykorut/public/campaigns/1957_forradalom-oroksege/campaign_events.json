@@ -70,7 +70,7 @@
             "relationId": "kadar",
             "tone": "calm",
             "label": "Fegyverszünet",
-            "description": "Kádár megkapta a pártszervezetet, és egyelőre hallgat."
+            "description": "Kádár kezébe került a pártszervezet, de egyelőre hallgat."
           }
         ]
       }
@@ -93,7 +93,7 @@
             "relationId": "kadar",
             "tone": "calm",
             "label": "Kivár",
-            "description": "Kádár elfogadta a belügyminiszteri széket, és figyel."
+            "description": "Elfogadta a belügyminiszteri széket, és figyeli az erőviszonyokat."
           }
         ]
       }
@@ -115,8 +115,8 @@
             "type": "set-relation",
             "relationId": "kadar",
             "tone": "tense",
-            "label": "Kivár",
-            "description": "Az értekezlet Nagy Imre mellett döntött, de Kádár köre nem nyugodott bele."
+            "label": "Ellenszegül",
+            "description": "Nagy Imrét választották, de Kádár hívei nem fogadják el a döntést."
           }
         ]
       }
@@ -139,7 +139,7 @@
             "relationId": "corvin",
             "tone": "calm",
             "label": "Türelmes",
-            "description": "A felkelők kivárják a pereket, de figyelnek."
+            "description": "A felkelők kivárnak, de nem mondanak le az elszámoltatásról."
           }
         ]
       },
@@ -195,7 +195,7 @@
             "relationId": "corvin",
             "tone": "tense",
             "label": "Kivár",
-            "description": "A felkelők ülnek a bizottságban, de az ítéleteket várják."
+            "description": "A felkelők részt vesznek a bizottság munkájában, és várják az ítéleteket."
           }
         ]
       }
@@ -218,7 +218,7 @@
             "relationId": "moszkva",
             "tone": "calm",
             "label": "Megnyugodott",
-            "description": "A Nemzetőrség a honvédség része lett."
+            "description": "A Nemzetőrség a honvédség része lett, a felkelők megnyugodtak."
           }
         ]
       },
@@ -305,7 +305,7 @@
             "relationId": "corvin",
             "tone": "tense",
             "label": "Gyanakvó",
-            "description": "A felkelő tanács szép cím, de a parancsnokok valódi szerepet akartak."
+            "description": "A tanács neve jól hangzik, de a parancsnokok valódi beleszólást követelnek."
           }
         ]
       }
@@ -429,7 +429,7 @@
             "relationId": "munkastanacsok",
             "tone": "bad",
             "label": "Sztrájkkal fenyeget",
-            "description": "A tanácsok nem felejtik a katonai szénszállítást."
+            "description": "A katonai szénszállítás miatt a munkástanácsok sztrájkot helyeznek kilátásba."
           }
         ]
       },
@@ -1149,6 +1149,7 @@
     "announcement": {
       "title": "Kéthly nemet mondott",
       "body": "Az SZDP elnöke nyilvánosan visszautasította a listakapcsolást. Szerinte az MSZMP-nek nem lehet hinni, amíg a múltját nem tisztázza.",
+      "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.png",
       "icon": "x-circle-fill"
     }
   },
@@ -1453,7 +1454,7 @@
       "title": "Fegyveres tüntetés a Parlament előtt",
       "body": "A Corvin köz felkelői fegyverrel vonultak a Kossuth térre, és a kormány lemondását követelték. Vidéken sokan megijedtek, a rend pártjai erősödnek.",
       "imageUri": "/images/1957_forradalom-oroksege/parlament_tuntetes.png",
-      "icon": "exclamation-triangle-fill",
+      "icon": "/images/1957_forradalom-oroksege/parlament_tuntete_badge.png",
       "major": true
     }
   },
@@ -1567,6 +1568,7 @@
       "title": "Leállt a szovjet szénszállítás",
       "body": "Moszkva műszaki okokra hivatkozva felfüggesztette a szén- és gabonaszállítást. A gyárakban rövidített műszak van, a boltok előtt sorok állnak.",
       "icon": "snow",
+      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.png",
       "major": true
     }
   },
@@ -1603,7 +1605,7 @@
     "announcement": {
       "title": "Közös nagygyűlés Csepelen",
       "body": "Nagy Imre és Kéthly Anna egy emelvényen beszélt a csepeli munkásoknak. A két munkáspárt szavazói közelebb kerültek egymáshoz.",
-      "icon": "people-fill"
+      "icon": "/images/1957_forradalom-oroksege/szovetseg_badge.png"
     }
   },
   {
@@ -1639,6 +1641,7 @@
     "announcement": {
       "title": "Az SZDP ellened kampányol",
       "body": "Kéthly Anna a munkáskerületekben 1948-ra emlékeztet: aki egyszer beolvasztotta a szociáldemokratákat, megteszi újra.",
+      "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.png",
       "icon": "megaphone-fill"
     }
   },
@@ -1683,6 +1686,8 @@
     "announcement": {
       "title": "A pártszervezet fékez",
       "body": "Kádár emberei a megyei bizottságokban halogatják a reformokat. A választók szerint az MSZMP a régi úton jár.",
+      "imageUri": "/images/1957_forradalom-oroksege/kadar_event.png",
+
       "icon": "hourglass-split"
     }
   },
@@ -1725,6 +1730,7 @@
     "announcement": {
       "title": "Kedvező szovjet ajánlat",
       "body": "Moszkva olcsó szenet és biztos piacot ígér. Washingtonban viszont azt kérdezik, mennyire semleges a semleges Magyarország.",
+      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.png",
       "icon": "star-fill"
     }
   },
@@ -1760,7 +1766,8 @@
     "announcement": {
       "title": "Nyugati hitel érkezik",
       "body": "Bécsi és washingtoni bankok hitelt nyújtanak gépekre és vetőmagra. A gyárakban és a falvakban is jó hírként fogadják.",
-      "icon": "bank"
+      "imageUri": "/images/1957_forradalom-oroksege/nyugati_hitel.png",
+      "icon": "/images/1957_forradalom-oroksege/nyugat.png"
     }
   },
   {
@@ -1797,6 +1804,7 @@
     "announcement": {
       "title": "Elszigetelődés",
       "body": "A nyugati követségek hűvösen fogadják a kormány küldötteit. Az emigráns rádiók szerint Nagy Imre Moszkva embere lett.",
+      "imageUri": "/images/1957_forradalom-oroksege/nyugati_elszigeteltseg.png",
       "icon": "globe-americas"
     }
   },
@@ -1920,7 +1928,7 @@
       "title": "Kiléptek a kisgazdák a kormányból",
       "body": "Tildy Zoltán és a kisgazda miniszterek lemondtak: a választásig önálló pártként akarnak kampányolni. Az ideiglenes nemzeti kormány meggyengült.",
       "imageUri": "/images/1957_forradalom-oroksege/fkgp_kilepes.png",
-      "icon": "door-open-fill",
+      "icon": "/images/1957_forradalom-oroksege/fkgp_badge.png",
       "major": true
     }
   },
@@ -2033,6 +2041,7 @@
     "announcement": {
       "title": "Kinek a pártja az MSZMP?",
       "body": "A baloldali lapok szerint Nagy Imre a kisgazdák kegyét keresi. A munkásszavazók egy része elbizonytalanodott, mások egyenesen a kisgazdákra szavaznának.",
+      "imageUri": "/images/1957_forradalom-oroksege/fkgp_kilepes.png",
       "icon": "question-circle-fill"
     }
   },
@@ -2069,6 +2078,7 @@
     "announcement": {
       "title": "Visszaütött a támadás",
       "body": "A vidéki gyűléseken 1947-et emlegetik, amikor Kovács Bélát elhurcolták. A kisgazdák népszerűbbek, mint valaha.",
+      "imageUri": "/images/1957_forradalom-oroksege/visszauto_tamadas.png",
       "icon": "arrow-return-left"
     }
   },
@@ -2116,7 +2126,7 @@
       "title": "Tankok helyett bankok",
       "body": "Pongrátz Gergely kilépett az MSZMP listájáról. Szerinte Nagy Imre a szovjet tankokat nyugati bankokra cserélte: „Nem ezért harcoltunk.”",
       "imageUri": "/images/1957_forradalom-oroksege/tankok_helyett_bankok.png",
-      "icon": "bank",
+      "icon": "/images/1957_forradalom-oroksege/tankok_helyett_bankok_badge.png",
       "major": true
     }
   },
@@ -2165,7 +2175,7 @@
       "title": "Tankok helyett bankok",
       "body": "A Corvin köz felkelői szerint Nagy Imre a szovjet tankokat nyugati bankokra cserélte. „Nem ezért harcoltunk” – mondják.",
       "imageUri": "/images/1957_forradalom-oroksege/tankok_helyett_bankok.png",
-      "icon": "bank"
+      "icon": "/images/1957_forradalom-oroksege/tankok_helyett_bankok_badge.png"
     }
   },
   {
@@ -2202,6 +2212,7 @@
     "announcement": {
       "title": "Moszkva árnyékában",
       "body": "A nyugati lapok szerint Nagy Imre visszatért Moszkva pórázára. A polgári szavazók a kisgazdák felé fordulnak.",
+      "imageUri": "/images/1957_forradalom-oroksege/nyugati_elszigeteltseg.png",
       "icon": "star-fill"
     }
   },
@@ -2246,7 +2257,8 @@
     "announcement": {
       "title": "Híd Kelet és Nyugat között",
       "body": "Bécsben és Moszkvában is elismerően beszélnek a magyar semlegességről. A kormány nemzetközi tekintélye nő.",
-      "icon": "globe-europe-africa"
+      "imageUri": "/images/1957_forradalom-oroksege/semleges_hid_siker.png",
+      "icon": "/images/1957_forradalom-oroksege/semleges_hid.png"
     }
   },
   {
@@ -2322,7 +2334,9 @@
     "announcement": {
       "title": "Nemzeti egység",
       "body": "Nagy Imre a forradalom pártjainak közös kormányát ígéri. A bizonytalan szavazók szerint így nem lesz újra egypártrendszer.",
-      "icon": "link"
+      "imageUri": "/images/1957_forradalom-oroksege/nemzeti_egyseg_kampany.png",
+
+      "icon": "/images/1957_forradalom-oroksege/nemzeti_egyseg_icon.png"
     }
   },
   {
@@ -2358,6 +2372,7 @@
     "announcement": {
       "title": "Az MSZMP mozgósít",
       "body": "A párt minden üzemben és faluban kampánygyűlést tart. A cél az önálló többség, partnerek nélkül.",
+      "image": "/images/1957_forradalom-oroksege/nepszava_ertekezlet.png",
       "icon": "megaphone-fill"
     }
   }

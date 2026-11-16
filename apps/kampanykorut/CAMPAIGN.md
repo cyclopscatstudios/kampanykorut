@@ -425,6 +425,19 @@ The coalition phase opens only when the player's party has the most seats but no
 
 Without `focusBranches`, all focuses form one branch open from turn 1. A `focus-selected` condition holds for any chosen focus.
 
+A focus is completed when its `completeWhen` holds and failed when its `failWhen` holds. If exactly one focus of an open branch is already completed, it is chosen for the player and locked. A chosen focus that is not completed by the end counts as failed, and its optional `failEffects` (the same effects as an answer's `effects`) are applied once after the last turn:
+
+```json
+{
+  "id": "forradalom_partja",
+  "title": "…",
+  "summary": "…",
+  "description": "…",
+  "completeWhen": { "type": "event-triggered", "eventId": "corvin_kiallas" },
+  "failEffects": [{ "type": "uniform-swing", "params": { "mszmp": -2 } }]
+}
+```
+
 #### Newspaper
 
 A strategic-mode campaign (`politicalConfig.gameMode: "strategic"`) can run a newspaper of pre-written flavour stories: fun facts and easter eggs that never affect votes. Point the manifest's optional `files.newspaper` at the file (e.g. `newspaper.json`):

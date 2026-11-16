@@ -18,6 +18,7 @@ export type GameFlowState = {
   pendingAdvisor: PendingAdvisor | null;
   selectedDistrict: District | null;
   visitingDistrict: District | null;
+  questionPaused: boolean;
 };
 
 export type GameFlowAction =
@@ -25,7 +26,9 @@ export type GameFlowAction =
   | { type: "SET_ANSWER"; answer: string | undefined }
   | { type: "SHOW_ADVISOR"; feedback: AnswerFeedback; turn: PendingTurn }
   | { type: "DISMISS_ADVISOR" }
-  | { type: "CHANGE_VIEW"; view: CurrentView };
+  | { type: "CHANGE_VIEW"; view: CurrentView }
+  | { type: "PAUSE_QUESTION" }
+  | { type: "RESUME_QUESTION" };
 
 function gameFlowReducer(
   state: GameFlowState,
@@ -49,9 +52,14 @@ function gameFlowReducer(
           ...state,
           currentView: action.view,
           visitingDistrict: state.selectedDistrict,
+          questionPaused: false,
         };
       }
-      return { ...state, currentView: action.view };
+      return { ...state, currentView: action.view, questionPaused: false };
+    case "PAUSE_QUESTION":
+      return { ...state, currentView: "MapView", questionPaused: true };
+    case "RESUME_QUESTION":
+      return { ...state, currentView: "QuestionView", questionPaused: false };
   }
 }
 
@@ -61,6 +69,7 @@ const initialState: GameFlowState = {
   pendingAdvisor: null,
   selectedDistrict: null,
   visitingDistrict: null,
+  questionPaused: false,
 };
 
 type ProcessAnswer = (

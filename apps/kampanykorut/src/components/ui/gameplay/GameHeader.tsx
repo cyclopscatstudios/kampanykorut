@@ -38,6 +38,7 @@ export interface GameHeaderProps {
     state?: CampaignState,
     config?: CampaignConfig,
   ) => void;
+  onResumeQuestion?: () => void;
 }
 
 export function GameHeader({
@@ -47,6 +48,7 @@ export function GameHeader({
   handlePollsterChange,
   state,
   config,
+  onResumeQuestion,
 }: GameHeaderProps) {
   const [slot, setSlot] = useState<HTMLElement | null>(null);
   const pollsterEngine = container.resolve(PollsterEngine);
@@ -75,6 +77,7 @@ export function GameHeader({
     config,
     pollsterData,
     handlePollsterChange,
+    onResumeQuestion,
     pollsters,
     hidePollsters: endResultsScreen,
     politicalStatus:
@@ -157,6 +160,7 @@ interface HeaderContentProps {
     state?: CampaignState,
     config?: CampaignConfig,
   ) => void;
+  onResumeQuestion?: () => void;
   pollsters: ReturnType<PollsterEngine["getPollsters"]>;
   hidePollsters: boolean;
   politicalStatus?: {
@@ -199,6 +203,7 @@ function NarrowHeader({
   pollsters,
   hidePollsters,
   politicalStatus,
+  onResumeQuestion,
 }: HeaderContentProps) {
   return (
     <>
@@ -234,8 +239,11 @@ function NarrowHeader({
               appearance="inline"
             />
           </div>
-          <div>
+          <div className="flex items-center gap-1">
             {politicalStatus && <PoliticalStatusButton {...politicalStatus} />}
+            {onResumeQuestion && (
+              <ResumeQuestionButton onClick={onResumeQuestion} />
+            )}
           </div>
           <div className="flex min-w-0 items-center justify-end">
             {!hidePollsters && (
@@ -324,6 +332,7 @@ function WideHeader({
   pollsters,
   hidePollsters,
   politicalStatus,
+  onResumeQuestion,
 }: HeaderContentProps) {
   return (
     <div className="h-[80px] flex justify-between items-center mx-2.5">
@@ -369,6 +378,9 @@ function WideHeader({
           </Menu>
         )}
         {politicalStatus && <PoliticalStatusButton {...politicalStatus} />}
+        {onResumeQuestion && (
+          <ResumeQuestionButton onClick={onResumeQuestion} />
+        )}
       </div>
       {state && config && (
         <div className="text-center">
@@ -422,5 +434,22 @@ function WideHeader({
         </Tooltip>
       </div>
     </div>
+  );
+}
+
+function ResumeQuestionButton({ onClick }: { onClick: () => void }) {
+  const label = t("gameMenuBar.resumeQuestion");
+  return (
+    <Tooltip content={label} position="bottom">
+      <Button
+        variant="tertiary"
+        iconOnly
+        aria-label={label}
+        onClick={onClick}
+        testId="resumeQuestion"
+      >
+        <Button.Icon name="chat-left-text-fill" color="white" size="medium" />
+      </Button>
+    </Tooltip>
   );
 }

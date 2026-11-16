@@ -7,6 +7,7 @@ import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
 import { WarningScreen } from "./components/ui/warning/WarningScreen";
 import { useParams } from "./hooks/useParamsHook";
 import { StateEngine, useStateEngine } from "./logic/application";
+import { useGetCampaigns } from "./logic/application/hooks/useGetCampaigns";
 import { Navigation } from "./logic/application/navigation/Navigation";
 import { NavigationBinder } from "./logic/application/navigation/NavigationBinder";
 import FullscreenBackground from "./ui/Background";
@@ -19,6 +20,21 @@ export function RootLayout() {
   const path = useLoaderData();
   const stateEngine = container.resolve(StateEngine);
   const navigation = container.resolve(Navigation);
+  const { campaignId } = useParams();
+  const campaignLabel = useGetCampaigns().find(
+    (c) => c.id === campaignId,
+  )?.label;
+
+  useEffect(() => {
+    if (!campaignLabel) {
+      return;
+    }
+    const previous = document.title;
+    document.title = `${campaignLabel} – Kampánykörút`;
+    return () => {
+      document.title = previous;
+    };
+  }, [campaignLabel]);
 
   useEffect(() => {
     if (!navigation.isUrlParamMatch("/game")) {

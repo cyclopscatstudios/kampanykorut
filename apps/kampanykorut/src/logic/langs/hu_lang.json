@@ -227,6 +227,7 @@
     }
   },
   "gameMenuBar": {
+    "resumeQuestion": "Vissza a kérdéshez",
     "save": "Játék mentése",
     "laod": "Játék visszatöltése",
     "settings": "Beállítások",
@@ -268,6 +269,7 @@
   },
   "bottomBar": {
     "visitDistrict": "Látogass el a körzetbe",
+    "returnToDistrict": "Vissza a körzetbe",
     "swingFactor": "Ingadozási tényező",
     "population": "Lakosság",
     "k": "E",

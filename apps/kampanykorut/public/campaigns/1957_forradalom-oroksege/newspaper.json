@@ -118,6 +118,8 @@
       "paper": "kis_ujsag",
       "headline": "ENSZ-küldöttség érkezett Budapestre",
       "lead": "A semlegességi garanciákról tárgyalnak. Washington és Moszkva is figyeli a magyar választást.",
+      "image": "/images/1957_forradalom-oroksege/ensz_kuldottseg.png",
+
       "when": {
         "or": [
           {
@@ -196,6 +198,8 @@
       "paper": "nepszava",
       "headline": "Nagy Imre győzött a pártértekezleten",
       "lead": "A küldöttek többsége a reformok mellett szavazott. Kádár János hallgatott.",
+      "image": "/images/1957_forradalom-oroksege/nepszava_ertekezlet.png",
+
       "when": {
         "type": "answer-selected",
         "questionId": "kadar_ultimatum",
@@ -265,6 +269,7 @@
       "paper": "igazsag",
       "headline": "A MEFESZ diákőrséget követel",
       "lead": "Az egyetemisták szerint a forradalmat ők kezdték, és nekik is kell megvédeniük.",
+      "image": "/images/1957_forradalom-oroksege/igazsag_mefesz.png",
       "when": {
         "type": "turn",
         "min": 10,

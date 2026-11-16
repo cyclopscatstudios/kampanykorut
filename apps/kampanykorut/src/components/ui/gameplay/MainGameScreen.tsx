@@ -128,8 +128,19 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
   };
 
   const handleView = (view: CurrentView) => {
-    dispatch({ type: "CHANGE_VIEW", view });
+    dispatch(
+      view === "MapView" && flow.currentView === "QuestionView"
+        ? { type: "PAUSE_QUESTION" }
+        : { type: "CHANGE_VIEW", view },
+    );
     stateEngine.updateCampaignState({ campaignView: { type: view } });
+  };
+
+  const resumeQuestion = () => {
+    dispatch({ type: "RESUME_QUESTION" });
+    stateEngine.updateCampaignState({
+      campaignView: { type: "QuestionView" },
+    });
   };
 
   return (
@@ -138,6 +149,11 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
       config={config}
       pollsterData={state.pollingOpnions ?? null}
       handlePollsterChange={handlePollsterChange}
+      onResumeQuestion={
+        flow.questionPaused && flow.currentView === "MapView"
+          ? resumeQuestion
+          : undefined
+      }
     >
       <div className="flex w-full h-[5px] overflow-hidden">
         {config.electionConfig.parties.map((party) => (
@@ -201,6 +217,11 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
         config={config}
         answer={flow.answer}
         selectedDistrict={flow.selectedDistrict}
+        isReturning={
+          flow.questionPaused &&
+          flow.selectedDistrict?.megyekod === flow.visitingDistrict?.megyekod &&
+          flow.selectedDistrict?.oevk === flow.visitingDistrict?.oevk
+        }
         onAnswer={handleAnswer}
         onSetAnswer={(answer) => dispatch({ type: "SET_ANSWER", answer })}
         onSetView={handleView}
