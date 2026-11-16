@@ -59,7 +59,6 @@ export interface ShareCardData {
   cta: string;
   ctaButton: string;
   displayUrl: string;
-  url: string;
   shareText: string;
   fileName: string;
 }
@@ -72,14 +71,6 @@ export interface ShareCardInput {
   campaignId: string;
   origin: string;
   t: Translate;
-}
-
-export function getShareUrl(origin: string, campaignId: string) {
-  const url = new URL("/", origin);
-  url.searchParams.set("utm_source", "share");
-  url.searchParams.set("utm_medium", "result-card");
-  url.searchParams.set("utm_campaign", campaignId);
-  return url.toString();
 }
 
 export function formatPercent(share: number) {
@@ -151,7 +142,6 @@ export function buildShareCard({
         : DEADLOCK_COLOR;
   const asset = endResults?.[outcomeToStory[base.outcome]];
   const campaignTitle = electionConfig.title;
-  const url = getShareUrl(origin, campaignId);
 
   return {
     ...base,
@@ -177,7 +167,6 @@ export function buildShareCard({
     cta: t(`endResult.share.card.cta.${base.outcome}`),
     ctaButton: t("endResult.share.card.ctaButton"),
     displayUrl: new URL(origin).host.replace(/^www\./, ""),
-    url,
     shareText: t(`endResult.share.text.${base.outcome}`, {
       metric: base.shareMetric,
       campaign: campaignTitle,

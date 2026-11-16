@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import { useMediaQuery } from "usehooks-ts";
 import { createLogger } from "@/shared/logger/logger";
 import { useTranslate } from "../../../../../../../../shared/logic/hooks/useTranslateLang";
 import { Button } from "../../../../../../../../shared/ui/Button";
-import { Tooltip } from "../../../../../../../../shared/ui/Tooltip";
 import type { AnalyticsEvents } from "../../../../../logic/infra/posthog/events";
 import { Dialog } from "../../../Dialog";
 import { toaster } from "../../toaster";
@@ -26,10 +24,8 @@ export function ShareResultDialog({
   onShared,
 }: ShareResultDialogProps) {
   const t = useTranslate();
-  const isTouch = useMediaQuery("(pointer: coarse)");
   const [blob, setBlob] = useState<Blob | null>(null);
   const [failed, setFailed] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -61,34 +57,19 @@ export function ShareResultDialog({
     [blob, card.fileName],
   );
   const canShareNative =
-    isTouch &&
     Boolean(file) &&
     typeof navigator.canShare === "function" &&
     navigator.canShare({ files: [file!] });
-  const message = `${card.shareText} ${card.url}`;
-
   const shareNative = async () => {
     if (!file) return;
     try {
-      await navigator.share({ files: [file], text: message });
+      await navigator.share({ files: [file], text: card.shareText });
       onShared("native");
     } catch (error) {
       if ((error as DOMException)?.name !== "AbortError") {
         log.warn("Native share failed", { error });
         toaster(t("endResult.share.failed"), "Error");
       }
-    }
-  };
-
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(message);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-      onShared("copy");
-    } catch (error) {
-      log.warn("Clipboard write failed", { error });
-      toaster(t("endResult.share.failed"), "Error");
     }
   };
 
@@ -138,21 +119,8 @@ export function ShareResultDialog({
               <Button.Text>{t("endResult.share.native")}</Button.Text>
             </Button>
           )}
-          <Tooltip content={message} position="top">
-            <Button
-              variant={canShareNative ? "secondary" : "primary"}
-              onClick={copyLink}
-              testId="shareCopy"
-              block
-            >
-              <Button.Icon name={copied ? "check-lg" : "link-45deg"} />
-              <Button.Text>
-                {t(copied ? "endResult.share.copied" : "endResult.share.copy")}
-              </Button.Text>
-            </Button>
-          </Tooltip>
           <Button
-            variant="secondary"
+            variant={canShareNative ? "secondary" : "primary"}
             onClick={download}
             disabled={!previewUrl}
             testId="shareDownload"

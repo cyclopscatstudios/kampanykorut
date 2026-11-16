@@ -10,10 +10,16 @@ const cases = [
 for (const [campaignId, partyId, candidateId] of cases) {
   test(`share card renders and can be shared: ${campaignId}`, async ({
     page,
-    context,
     playCampaign,
   }) => {
-    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+    await page.addInitScript(() => {
+      const shared: { text?: string; files?: File[] }[] = [];
+      Object.assign(window, { __shared: shared });
+      navigator.canShare = () => true;
+      navigator.share = async (data) => {
+        shared.push(data as { text?: string; files?: File[] });
+      };
+    });
     const seed = await playCampaign(campaignId, partyId, candidateId);
     await page.goto(
       `/game/${campaignId}/end-results?sessionId=${seed?.sessionId}`,
@@ -29,12 +35,20 @@ for (const [campaignId, partyId, candidateId] of cases) {
       ]),
     ).toEqual([1200, 630]);
 
-    await page.getByTestId("shareCopy").click();
-    const copied = await page.evaluate(() => navigator.clipboard.readText());
-    expect(copied).toContain("Neked sikerülne?");
-    expect(copied).toContain(
-      `utm_source=share&utm_medium=result-card&utm_campaign=${campaignId}`,
+    await page.getByTestId("shareNative").click();
+    const shared = await page.evaluate(() =>
+      (
+        window as unknown as {
+          __shared: { text?: string; files?: File[] }[];
+        }
+      ).__shared.map((data) => ({
+        text: data.text,
+        type: data.files?.[0]?.type,
+      })),
     );
+    expect(shared).toHaveLength(1);
+    expect(shared[0].text).toContain("Neked sikerülne?");
+    expect(shared[0].type).toBe("image/png");
 
     const download = page.waitForEvent("download");
     await page.getByTestId("shareDownload").click();

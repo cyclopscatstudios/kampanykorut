@@ -5,11 +5,7 @@ import type {
   FinalResults,
   MayoralResult,
 } from "@/shared/types";
-import {
-  buildShareCard,
-  getShareUrl,
-  hungarianArticle,
-} from "./shareCard.utils";
+import { buildShareCard, hungarianArticle } from "./shareCard.utils";
 
 const t = ((key: string, options?: Record<string, unknown>) =>
   options ? `${key} ${JSON.stringify(options)}` : key) as unknown as TFunction;
@@ -168,14 +164,6 @@ describe("buildShareCard", () => {
     expect(card.seats).toBeUndefined();
     expect(card.bars).toHaveLength(2);
     expect(card.title).toBe("endResult.share.card.title.loss");
-  });
-});
-
-describe("getShareUrl", () => {
-  it("tags the link for share tracking", () => {
-    expect(getShareUrl("https://kampanykorut.hu", "2024_budapest")).toBe(
-      "https://kampanykorut.hu/?utm_source=share&utm_medium=result-card&utm_campaign=2024_budapest",
-    );
   });
 });
 

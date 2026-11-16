@@ -37,7 +37,7 @@ export interface AnalyticsEvents {
   };
   result_shared: RunProperties & {
     outcome: CampaignOutcome;
-    channel: "native" | "copy" | "download";
+    channel: "native" | "download";
   };
 }
 
