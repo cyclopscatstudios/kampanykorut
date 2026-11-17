@@ -78,7 +78,8 @@
     },
     "actions": {
       "replay": "Újrajátszás",
-      "otherCampaign": "Másik kampány"
+      "otherCampaign": "Másik kampány",
+      "share": "Megosztás"
     },
     "statistics": {
       "menuBar": {
@@ -168,7 +169,52 @@
       "label": "Politikai fókusz",
       "none": "Nem választottál fókuszt"
     },
-    "epilogue": "Epilógus"
+    "epilogue": "Epilógus",
+    "share": {
+      "native": "Megosztás",
+      "download": "Kép letöltése",
+      "close": "Bezárás",
+      "loading": "Eredménykártya készül…",
+      "failed": "A megosztás nem sikerült. Próbáld újra!",
+      "text": {
+        "win": "{{metric}} nyertem {{article}} „{{campaign}}” kampányban. Neked sikerülne?",
+        "loss": "{{metric}} alulmaradtam {{article}} „{{campaign}}” kampányban. Neked sikerülne?",
+        "deadlock": "{{metric}} patthelyzetbe futottam {{article}} „{{campaign}}” kampányban. Neked sikerülne?"
+      },
+      "metric": {
+        "seats": "{{count}} mandátummal",
+        "votes": "A szavazatok {{share}}-ával"
+      },
+      "card": {
+        "kicker": {
+          "win": "Győzelem",
+          "loss": "Vereség",
+          "deadlock": "Patthelyzet"
+        },
+        "title": {
+          "win": "Győzelem az urnáknál",
+          "loss": "Vereség az urnáknál",
+          "deadlock": "Nincs többség"
+        },
+        "election": {
+          "parliamentary": "Országgyűlési választás",
+          "mayoral": "Főpolgármester-választás"
+        },
+        "player": "Az én jelöltem",
+        "seats": "Mandátumaim",
+        "votes": "Szavazataim",
+        "winner": "Győztes",
+        "leader": "Legerősebb",
+        "winnerSeats": "{{name}} · {{count}} mandátum",
+        "turns": "Fordulók",
+        "cta": {
+          "win": "Én megnyertem. Te is képes lennél rá?",
+          "loss": "Nekem nem jött össze. Te jobb kampányt vinnél?",
+          "deadlock": "Nálam patt lett. Te többséget szereznél?"
+        },
+        "ctaButton": "Játssz ingyen →"
+      }
+    }
   },
   "gameHeader": {
     "turnsTooltip": "Lejátszott fordulók",

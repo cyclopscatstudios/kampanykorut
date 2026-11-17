@@ -35,6 +35,10 @@ export interface AnalyticsEvents {
     majority_type: "simple" | "supermajority" | null;
     turns: number;
   };
+  result_shared: RunProperties & {
+    outcome: CampaignOutcome;
+    channel: "native" | "download";
+  };
 }
 
 export type AnalyticsEventName = keyof AnalyticsEvents;
