@@ -1808,52 +1808,6 @@
     }
   },
   {
-    "id": "nemzeti_tobbseg_mozgositas",
-    "label": "Nemzeti többség",
-    "once": true,
-    "conditions": [
-      {
-        "if": {
-          "and": [
-            {
-              "type": "focus-selected",
-              "focusId": "nemzeti_tobbseg"
-            },
-            {
-              "or": [
-                {
-                  "type": "answer-selected",
-                  "questionId": "harom_part_program",
-                  "answerId": "C"
-                },
-                {
-                  "type": "answer-selected",
-                  "questionId": "harom_part_program",
-                  "answerId": "D"
-                }
-              ]
-            }
-          ]
-        },
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "fkgp": 0.8,
-              "dnp": -0.2,
-              "petofi": -0.2
-            }
-          }
-        ]
-      }
-    ],
-    "announcement": {
-      "title": "Mindent az első helyért",
-      "body": "A kisgazdák a hajrában mindenkit mozgósítanak. A falvakban és a kisvárosokban kisgazda plakátok lógnak minden kerítésen.",
-      "icon": "trophy-fill"
-    }
-  },
-  {
     "id": "harom_part_kampany",
     "label": "Három párt, egy program",
     "once": true,
@@ -1863,7 +1817,12 @@
           "and": [
             {
               "type": "focus-selected",
-              "focusId": "harom_part_egy_program"
+              "focusId": "polgari_blokk"
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "kozos_lista",
+              "answerId": "A"
             },
             {
               "or": [
@@ -1897,6 +1856,157 @@
       "title": "Közös program, közös kormány",
       "body": "A három párt vezetői közös gyűlésen mutatták be a programjukat. A bizonytalan szavazók szerint ez végre kiszámítható kormányt ígér.",
       "icon": "puzzle-fill"
+    }
+  },
+  {
+    "id": "osztrak_ut_siker",
+    "label": "Semlegesek, mint Ausztria",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 21
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "osztrak_ut"
+            },
+            {
+              "not": {
+                "type": "relation",
+                "relationId": "moszkva",
+                "tone": ["bad"]
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.9,
+              "mszmp": -0.4,
+              "szdp": -0.2
+            }
+          },
+          {
+            "type": "set-relation",
+            "relationId": "nagy_ferenc",
+            "tone": "tense",
+            "label": "Mellőzve",
+            "description": "Nagy Ferenc szerint a párt Moszkva kedvéért elhallgattatta."
+          },
+          {
+            "type": "set-relation",
+            "relationId": "nyugat",
+            "tone": "calm",
+            "label": "Kivár",
+            "description": "Washington szerint a kisgazdák túl óvatosak lettek."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Semlegesek, mint Ausztria",
+      "body": "Kovács Béla Bécsre hivatkozik: egy semleges ország senkit sem fenyeget. A városi szavazók megnyugszanak, a nyugati megyékben viszont többen hiányolják Nagy Ferencet.",
+      "icon": "globe-europe-africa"
+    }
+  },
+  {
+    "id": "nyugati_kapu_siker",
+    "label": "Nyugati kapu",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 21
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "nyugati_kapu"
+            },
+            {
+              "type": "relation",
+              "relationId": "nagy_ferenc",
+              "tone": ["good"]
+            },
+            {
+              "type": "relation",
+              "relationId": "nyugat",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 1.1,
+              "dnp": -0.3,
+              "szabadsagpart": -0.2
+            }
+          },
+          {
+            "type": "set-relation",
+            "relationId": "moszkva",
+            "tone": "bad",
+            "label": "Ellenséges",
+            "description": "Moszkva szerint a kisgazdák Washington emberei."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kapu nyugat felé",
+      "body": "Nagy Ferenc Sopronban és Szombathelyen beszél, a nyugati megyékben ünnepként fogadják. A szovjet sajtó szerint a kisgazdák a vasfüggönyt akarják lebontani.",
+      "icon": "airplane-fill"
+    }
+  },
+  {
+    "id": "nyugati_kapu_gyanu",
+    "label": "Horthy-vád",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "nyugati_kapu"
+            },
+            {
+              "type": "event-triggered",
+              "eventId": "moszkva_fenyeget"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.6,
+              "mszmp": 0.3,
+              "szdp": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "A vád ráragad",
+      "body": "A baloldali lapok szerint aki Nagy Ferencet hozza vissza, az Horthyt is visszahozná. A munkásnegyedekben és a városokban egyre többen hiszik el.",
+      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.png",
+      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png"
     }
   },
   {

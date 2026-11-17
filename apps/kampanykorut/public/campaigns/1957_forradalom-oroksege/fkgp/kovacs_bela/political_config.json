@@ -213,29 +213,65 @@
       "id": "polgari_blokk",
       "title": "Polgári blokk",
       "summary": "Kapcsold össze a listát a Demokrata Néppárttal és a Petőfi Párttal",
-      "description": "A kisgazdák egyedül nehezen szereznek többséget. Kössetek választási szövetséget a Demokrata Néppárttal és a Petőfi Párttal, hogy a választás után biztosan legyen kormányképes többség.",
+      "description": "A kisgazdák egyedül nehezen szereznek többséget. Kössetek választási szövetséget a Demokrata Néppárttal és a Petőfi Párttal, és a hajrában írjatok közös programot, hogy a választás után biztosan legyen kormányképes többség.",
       "icon": "people-fill",
       "completeWhen": {
-        "type": "answer-selected",
-        "questionId": "kozos_lista",
-        "answerId": "A"
+        "and": [
+          {
+            "type": "answer-selected",
+            "questionId": "kozos_lista",
+            "answerId": "A"
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "harom_part_program",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "harom_part_program",
+                "answerId": "B"
+              }
+            ]
+          }
+        ]
       },
       "failWhen": {
         "or": [
           {
-            "type": "answer-selected",
-            "questionId": "kozos_lista",
-            "answerId": "B"
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "kozos_lista",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kozos_lista",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kozos_lista",
+                "answerId": "D"
+              }
+            ]
           },
           {
-            "type": "answer-selected",
-            "questionId": "kozos_lista",
-            "answerId": "C"
-          },
-          {
-            "type": "answer-selected",
-            "questionId": "kozos_lista",
-            "answerId": "D"
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "harom_part_program",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "harom_part_program",
+                "answerId": "D"
+              }
+            ]
           }
         ]
       },
@@ -286,82 +322,42 @@
       ]
     },
     {
-      "id": "nemzeti_tobbseg",
-      "title": "Nemzeti többség",
-      "summary": "Minden erőt az első helyre",
-      "description": "Kormányt csak az alakíthat, aki a legtöbb mandátumot szerzi. A hajrában ne a partnerekre figyelj, hanem arra, hogy a kisgazdák legyenek az első párt.",
-      "icon": "trophy-fill",
+      "id": "osztrak_ut",
+      "title": "Osztrák út",
+      "summary": "Semlegesség, mint Bécsben: nyugtasd meg Moszkvát",
+      "description": "Ausztria megmutatta, hogy egy semleges ország nyugati módon élhet, ha Moszkva nem érzi magát fenyegetve. Tartsd távol a pártot a Nyugat ölelésétől, és ne adj okot a Horthy-vádra, még ha Nagy Ferenc és a nyugati megyék többet várnának is.",
+      "icon": "globe-europe-africa",
       "completeWhen": {
-        "or": [
+        "and": [
           {
-            "type": "answer-selected",
-            "questionId": "harom_part_program",
-            "answerId": "C"
+            "type": "turn",
+            "min": 21
           },
           {
-            "type": "answer-selected",
-            "questionId": "harom_part_program",
-            "answerId": "D"
+            "not": {
+              "type": "relation",
+              "relationId": "moszkva",
+              "tone": ["bad"]
+            }
           }
         ]
       },
       "failWhen": {
         "or": [
           {
+            "type": "relation",
+            "relationId": "moszkva",
+            "tone": ["bad"]
+          },
+          {
             "type": "answer-selected",
-            "questionId": "harom_part_program",
+            "questionId": "papir_nyugatrol",
             "answerId": "A"
           },
           {
             "type": "answer-selected",
-            "questionId": "harom_part_program",
-            "answerId": "B"
-          }
-        ]
-      },
-      "failEffects": [
-        {
-          "type": "uniform-swing",
-          "params": {
-            "fkgp": -4,
-            "dnp": 1,
-            "petofi": 1,
-            "mszmp": 2
-          }
-        }
-      ]
-    },
-    {
-      "id": "harom_part_egy_program",
-      "title": "Három párt, egy program",
-      "summary": "Írj közös kormányprogramot a partnereiddel",
-      "description": "A választók szeretik tudni, milyen kormányt kapnak. Írjatok közös programot a Demokrata Néppárttal és a Petőfi Párttal még a választás előtt, még ha néhány szavazó a partnerekhez vándorol is.",
-      "icon": "puzzle-fill",
-      "completeWhen": {
-        "or": [
-          {
-            "type": "answer-selected",
-            "questionId": "harom_part_program",
+            "questionId": "nagy_ferenc_megerkezik",
             "answerId": "A"
-          },
-          {
-            "type": "answer-selected",
-            "questionId": "harom_part_program",
-            "answerId": "B"
-          }
-        ]
-      },
-      "failWhen": {
-        "or": [
-          {
-            "type": "answer-selected",
-            "questionId": "harom_part_program",
-            "answerId": "C"
-          },
-          {
-            "type": "answer-selected",
-            "questionId": "harom_part_program",
-            "answerId": "D"
           }
         ]
       },
@@ -370,8 +366,57 @@
           "type": "uniform-swing",
           "params": {
             "fkgp": -3,
-            "dnp": 1,
-            "petofi": 2
+            "mszmp": 2,
+            "szdp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "nyugati_kapu",
+      "title": "Nyugati kapu",
+      "summary": "Nagy Ferenccel és a Nyugattal a hátad mögött",
+      "description": "A nyugati megyék Nagy Ferencet várják, Washington és Bécs a kisgazdákra figyel. Állítsd Nagy Ferencet a kampány élére a Nyugat felé, de számolj vele, hogy Moszkva gyanakvása és a Horthy-vád erősebben ragad rád.",
+      "icon": "airplane-fill",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "turn",
+            "min": 21
+          },
+          {
+            "type": "relation",
+            "relationId": "nagy_ferenc",
+            "tone": ["good"]
+          },
+          {
+            "type": "relation",
+            "relationId": "nyugat",
+            "tone": ["good"]
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "relation",
+            "relationId": "nagy_ferenc",
+            "tone": ["bad", "tense"]
+          },
+          {
+            "type": "relation",
+            "relationId": "nyugat",
+            "tone": ["bad"]
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "fkgp": -3,
+            "dnp": 2,
+            "szabadsagpart": 1
           }
         }
       ]
@@ -401,8 +446,8 @@
     },
     {
       "id": "hajra",
-      "title": "Kampányhajrá",
-      "focuses": ["nemzeti_tobbseg", "harom_part_egy_program"],
+      "title": "Bécs vagy Washington?",
+      "focuses": ["osztrak_ut", "nyugati_kapu"],
       "availableFromTurn": 19,
       "requiredBeforeTurn": 21
     }
