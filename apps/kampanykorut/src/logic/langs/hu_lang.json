@@ -505,9 +505,6 @@
     "campaigns": {
       "heading": "Elérhető kampányok"
     },
-    "campaignDialog": {
-      "startButton": "Kampány indítása"
-    },
     "footer": "Kampánykörút — ingyenes, böngészőben futó választási szimuláció.",
     "footerPrivacy": "Adatkezelési tájékoztató"
   },
@@ -581,6 +578,17 @@
       "0": "Megosztott",
       "1": "Inkább támogatják",
       "2": "Erős támogatás"
+    }
+  },
+  "campaignPage": {
+    "start": "Kampány indítása",
+    "sides": "Válassz oldalt",
+    "otherSides": "Más oldalak",
+    "background": "A kampány háttere",
+    "meta": {
+      "campaignTitle": "{{campaign}} – Kampánykörút",
+      "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
+      "sideDescription": "{{campaign}}: vezesd {{candidate}} kampányát!"
     }
   }
 }

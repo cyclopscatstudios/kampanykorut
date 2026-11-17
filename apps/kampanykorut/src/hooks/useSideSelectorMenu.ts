@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router";
 import { container } from "tsyringe";
 import { createLogger } from "@/shared/logger";
 import { Candidate, PlayableSide } from "@/shared/types";
@@ -10,36 +11,61 @@ import { useNavigation } from "./navigationHook";
 
 const log = createLogger("useSideSelectorMenu");
 
+function resolveSide(
+  playableSides: PlayableSide[],
+  partyId: string | null,
+): { party: PlayableSide; candidate?: Candidate } | undefined {
+  const party = playableSides.find((s) => s.id === partyId);
+  if (!party) return undefined;
+  const playableCandidates = party.mainCandidates.filter((c) =>
+    party.playableCandidates?.includes(c.id),
+  );
+  return {
+    party,
+    candidate:
+      playableCandidates.length === 1 ? playableCandidates[0] : undefined,
+  };
+}
+
 export function useSideSelectorMenu(id: string) {
-  const [selectedParty, setSelectedParty] = useState<
-    PlayableSide | undefined
-  >();
+  const campaignConfig = container.resolve(ConfigEngine).getCampaignConfig(id);
+  const [searchParams] = useSearchParams();
+  const [preset] = useState(() =>
+    resolveSide(
+      campaignConfig.electionConfig.playableSides,
+      searchParams.get("side"),
+    ),
+  );
+  const [selectedParty, setSelectedParty] = useState<PlayableSide | undefined>(
+    preset?.party,
+  );
   const [selectedCandidate, setSelectedCandidate] = useState<
     Candidate | undefined
-  >();
+  >(preset?.candidate);
   const { saveSession } = useStateEngine();
   const { goBack, goToCampaign } = useNavigation();
   const { sessionId } = useStateEngine();
-  const campaignConfig = container.resolve(ConfigEngine).getCampaignConfig(id);
+
+  const saveSide = (partyId?: string, candidateId?: string) =>
+    saveSession("campaignState", { playerSide: { partyId, candidateId } });
+
+  useEffect(() => {
+    if (preset) saveSide(preset.party.id, preset.candidate?.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [preset]);
 
   const handlePartyChange = (partyId: string) => {
-    const party = campaignConfig.electionConfig.playableSides.find(
-      (s) => s.id === partyId,
+    const side = resolveSide(
+      campaignConfig.electionConfig.playableSides,
+      partyId,
     );
-    if (!party) {
+    if (!side) {
       log.error("party was not found", { campaignId: id, partyId });
       return;
     }
-    setSelectedParty(party);
-    const playableCandidates = party.mainCandidates.filter((c) =>
-      party.playableCandidates?.includes(c.id),
-    );
-    const autoCandidate =
-      playableCandidates.length === 1 ? playableCandidates[0] : undefined;
-    setSelectedCandidate(autoCandidate);
-    saveSession("campaignState", {
-      playerSide: { partyId: party.id, candidateId: autoCandidate?.id },
-    });
+    setSelectedParty(side.party);
+    setSelectedCandidate(side.candidate);
+    saveSide(side.party.id, side.candidate?.id);
   };
 
   const handleCandidateChange = (candidateId: string) => {
@@ -55,9 +81,7 @@ export function useSideSelectorMenu(id: string) {
       return;
     }
     setSelectedCandidate(candidate);
-    saveSession("campaignState", {
-      playerSide: { partyId: selectedParty?.id, candidateId },
-    });
+    saveSide(selectedParty?.id, candidateId);
   };
 
   const startGame = (id: string) => {

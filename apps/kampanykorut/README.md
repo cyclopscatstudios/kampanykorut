@@ -83,6 +83,19 @@ Campaigns with `isPublished: false` in `game_modes.json` are hidden from the cam
 window.debugMode.enable();
 ```
 
+### Public campaign pages
+
+Every published campaign gets `/kampany/<campaignId>` and `/kampany/<campaignId>/<sideId>` pages. `yarn build` prerenders them into `dist/kampany/*.html` (title, description, `og:*` tags and the page body) and appends them to `dist/sitemap.xml`; nginx serves the prerendered file and the SPA takes over in the browser.
+
+Share images live in `public/og/` and are committed. After adding or publishing a campaign, or changing a side's name or portrait, regenerate them:
+
+```sh
+yarn workspace kampanykorut og-images            # every published campaign
+yarn workspace kampanykorut og-images <campaignId>
+```
+
+A unit test fails if a published campaign or side has no share image.
+
 ## ⚡ Performance Considerations
 
 - 🧠 Heavy components are memoized to prevent unnecessary re-renders

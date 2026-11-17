@@ -1,4 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
+import { createElement, type ReactNode } from "react";
+import { MemoryRouter } from "react-router";
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { CampaignConfig } from "@/shared/types/configs/campaign-config";
@@ -75,6 +77,12 @@ vi.mock("./navigationHook", () => ({
 
 const GAME_ID = "2022_ogyv_default";
 
+const renderSideSelector = (entry = "/") =>
+  renderHook(() => useSideSelectorMenu(GAME_ID), {
+    wrapper: ({ children }: { children: ReactNode }) =>
+      createElement(MemoryRouter, { initialEntries: [entry] }, children),
+  });
+
 describe("useSideSelectorMenu", () => {
   const localStorageMock = {
     getItem: vi.fn(),
@@ -91,7 +99,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("returns sides from election config", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+    const { result } = renderSideSelector();
 
     expect(result.current.playableSides).toHaveLength(3);
     expect(result.current.playableSides[0].value).toBe("ellenzeki_osszefogas");
@@ -99,7 +107,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("has no selected party or candidate initially", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+    const { result } = renderSideSelector();
 
     expect(result.current.selectedParty).toBeUndefined();
     expect(result.current.selectedCandidate).toBeUndefined();
@@ -107,7 +115,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange sets the selected party", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+    const { result } = renderSideSelector();
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
@@ -117,7 +125,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange populates candidateOptions from the selected party", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+    const { result } = renderSideSelector();
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
@@ -131,7 +139,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange clears selectedCandidate when party changes", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+    const { result } = renderSideSelector();
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
@@ -149,7 +157,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange auto-selects the only playable candidate", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+    const { result } = renderSideSelector();
 
     act(() => {
       result.current.handlePartyChange("lmp");
@@ -159,7 +167,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("handlePartyChange does not auto-select when multiple candidates are playable", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+    const { result } = renderSideSelector();
 
     act(() => {
       result.current.handlePartyChange("ellenzeki_osszefogas");
@@ -169,7 +177,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("goBack calls transition with Back", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+    const { result } = renderSideSelector();
 
     act(() => {
       result.current.goBack();
@@ -179,7 +187,7 @@ describe("useSideSelectorMenu", () => {
   });
 
   it("startGame navigates to the game route", () => {
-    const { result } = renderHook(() => useSideSelectorMenu(GAME_ID));
+    const { result } = renderSideSelector();
 
     act(() => {
       result.current.startGame(GAME_ID);
@@ -188,5 +196,12 @@ describe("useSideSelectorMenu", () => {
     const navigatedTo = mockNavigate.mock.calls[0][0] as string;
     expect(navigatedTo).toContain(`/game/${GAME_ID}`);
     expect(navigatedTo).toMatch(/sessionId=[\w-]+/);
+  });
+
+  it("preselects the side given in the side query param", () => {
+    const { result } = renderSideSelector("/?side=lmp");
+
+    expect(result.current.selectedParty?.id).toBe("lmp");
+    expect(result.current.selectedCandidate?.id).toBe("vitezy_david");
   });
 });

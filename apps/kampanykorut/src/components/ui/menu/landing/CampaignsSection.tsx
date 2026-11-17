@@ -5,12 +5,12 @@ import type { Campaign } from "./types";
 
 interface CampaignsSectionProps {
   campaigns: Campaign[];
-  onSelectCampaign: (campaign: Campaign) => void;
+  onOpenCampaign: (campaign: Campaign) => void;
 }
 
 export function CampaignsSection({
   campaigns,
-  onSelectCampaign,
+  onOpenCampaign,
 }: CampaignsSectionProps) {
   if (campaigns.length === 0) {
     return null;
@@ -28,7 +28,7 @@ export function CampaignsSection({
           <CampaignCard
             key={campaign.id}
             campaign={campaign}
-            onSelect={onSelectCampaign}
+            onOpen={onOpenCampaign}
           />
         ))}
       </div>

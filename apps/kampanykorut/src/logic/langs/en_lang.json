@@ -505,9 +505,6 @@
     "campaigns": {
       "heading": "Available campaigns"
     },
-    "campaignDialog": {
-      "startButton": "Start campaign"
-    },
     "footer": "Kampánykörút — a free election simulation that runs in your browser.",
     "footerPrivacy": "Privacy notice"
   },
@@ -581,6 +578,17 @@
       "0": "Divided",
       "1": "Leaning for",
       "2": "Strongly for"
+    }
+  },
+  "campaignPage": {
+    "start": "Start campaign",
+    "sides": "Pick a side",
+    "otherSides": "Other sides",
+    "background": "Campaign background",
+    "meta": {
+      "campaignTitle": "{{campaign}} – Kampánykörút",
+      "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
+      "sideDescription": "{{campaign}}: lead {{candidate}}'s campaign!"
     }
   }
 }
