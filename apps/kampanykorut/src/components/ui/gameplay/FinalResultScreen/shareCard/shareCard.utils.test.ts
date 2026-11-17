@@ -5,7 +5,11 @@ import type {
   FinalResults,
   MayoralResult,
 } from "@/shared/types";
-import { buildShareCard, hungarianArticle } from "./shareCard.utils";
+import {
+  buildShareCard,
+  formatPercent,
+  hungarianArticle,
+} from "./shareCard.utils";
 
 const t = ((key: string, options?: Record<string, unknown>) =>
   options ? `${key} ${JSON.stringify(options)}` : key) as unknown as TFunction;
@@ -89,6 +93,7 @@ const build = (results: FinalResults, cfg = config, st = state) =>
     history: [],
     campaignId: "2026_tavaszi-szel",
     origin: "https://kampanykorut.hu",
+    locale: "hu",
     t,
   });
 
@@ -178,5 +183,12 @@ describe("hungarianArticle", () => {
     ["10 nap", "a"],
   ])("%s → %s", (word, article) => {
     expect(hungarianArticle(word)).toBe(article);
+  });
+});
+
+describe("formatPercent", () => {
+  it("follows the selected language", () => {
+    expect(formatPercent(0.4782, "hu")).toBe("47,8%");
+    expect(formatPercent(0.4782, "en")).toBe("47.8%");
   });
 });

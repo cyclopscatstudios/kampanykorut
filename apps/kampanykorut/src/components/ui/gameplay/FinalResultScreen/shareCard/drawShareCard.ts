@@ -10,6 +10,7 @@ const PAD = 56;
 const BG = "#0a1224";
 const FONT = "Montserrat, system-ui, sans-serif";
 const CTA_H = 96;
+const IMAGE_TIMEOUT_MS = 8000;
 
 export async function renderShareCard(data: ShareCardData): Promise<Blob> {
   await loadFonts();
@@ -54,9 +55,20 @@ async function loadFonts() {
 function loadImage(src: string) {
   return new Promise<HTMLImageElement>((resolve, reject) => {
     const img = new Image();
+    const timeout = setTimeout(() => {
+      img.onload = img.onerror = null;
+      img.src = "";
+      reject(new Error(`Image load timed out: ${src}`));
+    }, IMAGE_TIMEOUT_MS);
     img.crossOrigin = "anonymous";
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error(`Image failed to load: ${src}`));
+    img.onload = () => {
+      clearTimeout(timeout);
+      resolve(img);
+    };
+    img.onerror = () => {
+      clearTimeout(timeout);
+      reject(new Error(`Image failed to load: ${src}`));
+    };
     img.src = src;
   });
 }

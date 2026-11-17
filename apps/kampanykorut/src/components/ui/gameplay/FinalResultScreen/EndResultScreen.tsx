@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import i18next from "i18next";
 import { useState } from "react";
 import { useLoaderData } from "react-router";
 import { container } from "tsyringe";
@@ -94,6 +95,7 @@ export function FinalResultScreen() {
         history: history ?? [],
         campaignId,
         origin: window.location.origin,
+        locale: i18next.language || "hu",
         t,
       }),
     );

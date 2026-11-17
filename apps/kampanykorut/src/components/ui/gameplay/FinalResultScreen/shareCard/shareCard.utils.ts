@@ -70,11 +70,12 @@ export interface ShareCardInput {
   history: HistoryItem[];
   campaignId: string;
   origin: string;
+  locale: string;
   t: Translate;
 }
 
-export function formatPercent(share: number) {
-  return `${(share * 100).toLocaleString("hu-HU", {
+export function formatPercent(share: number, locale: string) {
+  return `${(share * 100).toLocaleString(locale, {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   })}%`;
@@ -101,6 +102,7 @@ export function buildShareCard({
   history,
   campaignId,
   origin,
+  locale,
   t,
 }: ShareCardInput): ShareCardData {
   const electionConfig = config.electionConfig;
@@ -119,7 +121,7 @@ export function buildShareCard({
 
   const mayoral = results.mayoralResult;
   const base = mayoral
-    ? buildMayoral(results, playerCandidateId, partyById, t)
+    ? buildMayoral(results, playerCandidateId, partyById, locale, t)
     : buildParliamentary(
         results,
         config,
@@ -252,6 +254,7 @@ function buildMayoral(
   results: FinalResults,
   playerCandidateId: string | undefined,
   partyById: PartyLookup,
+  locale: string,
   t: Translate,
 ): ModeResult {
   const mayoral = results.mayoralResult!;
@@ -271,20 +274,20 @@ function buildMayoral(
   return {
     outcome,
     metricLabel: t("endResult.share.card.votes"),
-    metricValue: formatPercent(playerShare),
+    metricValue: formatPercent(playerShare, locale),
     winnerLabel: t(
       mayoral.outcome.kind === "winner"
         ? "endResult.share.card.winner"
         : "endResult.share.card.leader",
     ),
-    winnerValue: `${leaderParty?.name ?? leader?.candidateId ?? "–"} · ${formatPercent(leader?.share ?? 0)}`,
+    winnerValue: `${leaderParty?.name ?? leader?.candidateId ?? "–"} · ${formatPercent(leader?.share ?? 0, locale)}`,
     winnerColor: leaderParty?.color ?? FALLBACK_COLOR,
     bars: mayoral.standings.slice(0, 4).map((s) => ({
       color: partyById(s.candidateId)?.color ?? "#94a3b8",
       share: s.share,
     })),
     shareMetric: t("endResult.share.metric.votes", {
-      share: formatPercent(playerShare),
+      share: formatPercent(playerShare, locale),
     }),
   };
 }

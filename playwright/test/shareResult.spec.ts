@@ -28,12 +28,8 @@ for (const [campaignId, partyId, candidateId] of cases) {
 
     const preview = page.getByTestId("shareCardPreview").locator("img");
     await expect(preview).toBeVisible();
-    expect(
-      await preview.evaluate((img: HTMLImageElement) => [
-        img.naturalWidth,
-        img.naturalHeight,
-      ]),
-    ).toEqual([1200, 630]);
+    await expect(preview).toHaveJSProperty("naturalWidth", 1200);
+    await expect(preview).toHaveJSProperty("naturalHeight", 630);
 
     await page.getByTestId("shareNative").click();
     const shared = await page.evaluate(() =>
