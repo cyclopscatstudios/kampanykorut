@@ -72,29 +72,29 @@
     "_other": 159722
   },
   "playableSides": [
+{
+  "id": "mszmp",
+  "label": "MSZMP",
+  "description": "Az MSZMP a forradalom napjaiban alakult meg a feloszlott Magyar Dolgozók Pártja helyén. A legnagyobb választói tábor áll mögötte, de az új név ellenére sokan még a régi pártot látják benne. Nagy Imre hívei a többpártrendszerben keresik a szocializmus helyét, és beleszólást adnának a munkástanácsoknak az üzemek vezetésébe. Kádár köre óvatosabb reformokat sürget. Attól tartanak, hogy a gyors változások megbontják a párt egységét.",
+  "mainCandidates": [
     {
-      "id": "mszmp",
-      "label": "MSZMP",
-      "description": "A forradalom napjaiban újjáalakult reformszocialista párt. A legnagyobb tábor az övé, de a régi pártállam öröksége bizalmatlanságot kelt.",
-      "mainCandidates": [
-        {
-          "id": "nagy_imre",
-          "label": "Nagy Imre",
-          "description": "A forradalmi kormány miniszterelnöke, a semlegesség kimondója. Az ország legismertebb politikusa."
-        },
-        {
-          "id": "kadar_janos",
-          "label": "Kádár János",
-          "description": "Az MSZMP egyik alapítója, a pártszervezet és a fokozatosság embere."
-        },
-        {
-          "id": "losonczy_geza",
-          "label": "Losonczy Géza",
-          "description": "Államminiszter, Nagy Imre reformköréhez tartozik."
-        }
-      ],
-      "playableCandidates": ["nagy_imre"]
+      "id": "nagy_imre",
+      "label": "Nagy Imre",
+      "description": "Októberben a Parlament előtt az ő nevét skandálta a tömeg. A forradalom napjaiban visszatért a kormány élére, bejelentette Magyarország semlegességét, és koalíciót alakított a kisgazdákkal, a szociáldemokratákkal és a parasztpártiakkal. Az ország legismertebb politikusaként vezeti az MSZMP kampányát. Sokan azok közül is inkább valamelyik koalíciós partnerére szavaznának, akik októberben őt akarták a kormány élére."
     },
+    {
+      "id": "kadar_janos",
+      "label": "Kádár János",
+      "description": "Az MSZMP egyik alapítója, a pártszervezet és a fokozatosság embere."
+    },
+    {
+      "id": "losonczy_geza",
+      "label": "Losonczy Géza",
+      "description": "Államminiszter, Nagy Imre reformköréhez tartozik."
+    }
+  ],
+  "playableCandidates": ["nagy_imre"]
+},
     {
       "id": "fkgp",
       "label": "Kisgazdapárt",

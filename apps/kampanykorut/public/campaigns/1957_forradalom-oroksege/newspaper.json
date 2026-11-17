@@ -70,6 +70,17 @@
       }
     },
     {
+      "id": "marai_hazatert",
+      "paper": "magyar_nemzet",
+      "headline": "Márai Sándor hazatért Magyarországra",
+      "lead": "A kilenc esztendeje emigrációban élő író ismét Budapestre érkezett. A hírek szerint hamarosan új kötete jelenhet meg itthon.",
+      "image": "/images/1957_forradalom-oroksege/marai_sandor.png",
+      "when": {
+        "type": "turn",
+        "max": 8
+      }
+    },
+    {
       "id": "corvin_koz_tuntetes",
       "paper": "nepszabadsag",
       "headline": "Tüntetés a Corvin közben",
@@ -141,6 +152,7 @@
       "paper": "uj_ember",
       "headline": "A bíboros üzenete a nemzethez",
       "lead": "Mindszenty József szerint az egyház nem kér kiváltságot, csak azt, ami az övé volt.",
+      "image": "/images/1957_forradalom-oroksege/mindszenty_jozsef.png",
       "when": {
         "type": "turn",
         "min": 3,
