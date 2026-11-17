@@ -451,6 +451,7 @@
     "potential": "Possible majority",
     "potentialHint": "It only forms if every party you approach accepts the offer.",
     "partnerHint": "One partner is best: every further partner weakens your government.",
+    "partnerHintMany": "Up to {{max}} partners keep your government strong: every further partner weakens it.",
     "tooManyPartners": "You are making an offer to {{count}} parties. If they all accept, your government will be weak.",
     "governmentSeats": "Government majority",
     "seats": "{{seats}} seats",

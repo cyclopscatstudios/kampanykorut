@@ -73,6 +73,7 @@ export interface CoalitionPartner {
 
 export interface CoalitionConfig {
   partners: CoalitionPartner[];
+  maxStrongPartners?: number;
 }
 
 export type GovernmentOutcome =

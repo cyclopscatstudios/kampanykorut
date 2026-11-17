@@ -56,6 +56,15 @@ export interface FinalOutcome {
 // it down, so a broad coalition is never worth it.
 export const MAX_STRONG_COALITION_PARTNERS = 1;
 
+export function getMaxStrongCoalitionPartners(
+  config: Pick<CampaignConfig, "politicalConfig">,
+): number {
+  return (
+    config.politicalConfig?.coalition?.maxStrongPartners ??
+    MAX_STRONG_COALITION_PARTNERS
+  );
+}
+
 function getSeatSetup(state: CampaignState, config: CoalitionConfig) {
   const parliamentary = getParliamentaryConfig(config.electionConfig);
   if (
@@ -194,7 +203,7 @@ export function buildCoalitionResult(
     outcome:
       seats < setup.majority
         ? "failed"
-        : accepted.length > MAX_STRONG_COALITION_PARTNERS
+        : accepted.length > getMaxStrongCoalitionPartners(config)
           ? "weak-coalition"
           : "coalition",
     partnerCount: accepted.length,

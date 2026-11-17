@@ -5,6 +5,7 @@ import {
   buildFinalOutcome,
   getEndResultStory,
   getGovernmentOutcome,
+  getMaxStrongCoalitionPartners,
   needsCoalitionOffer,
   submitCoalitionOffer,
 } from "./Coalition";
@@ -152,6 +153,30 @@ describe("Coalition", () => {
     expect(buildCoalitionResult(accepted, config)).toMatchObject({
       seats: 360,
       outcome: "weak-coalition",
+      partnerCount: 2,
+    });
+  });
+
+  it("keeps a broader government strong when the side allows more partners", () => {
+    const roomy = {
+      ...config,
+      politicalConfig: {
+        ...config.politicalConfig!,
+        coalition: {
+          ...config.politicalConfig!.coalition!,
+          maxStrongPartners: 2,
+        },
+      },
+    } as typeof config;
+    const accepted = submitCoalitionOffer(hung, roomy, answeredA, [
+      "yellow",
+      "red",
+    ]);
+
+    expect(getMaxStrongCoalitionPartners(roomy)).toBe(2);
+    expect(getMaxStrongCoalitionPartners(config)).toBe(1);
+    expect(buildCoalitionResult(accepted, roomy)).toMatchObject({
+      outcome: "coalition",
       partnerCount: 2,
     });
   });

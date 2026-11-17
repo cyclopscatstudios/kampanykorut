@@ -879,6 +879,24 @@ describe("validateCampaign", () => {
       ]);
     });
 
+    it("checks the strong coalition partner limit", () => {
+      const partners = [
+        { partyId: "party_b", acceptReason: "Igen", rejectReason: "Nem" },
+      ];
+      const check = (maxStrongPartners: unknown) =>
+        codes(
+          validate(
+            withPolitical({
+              gameMode: "strategic",
+              coalition: { partners, maxStrongPartners },
+            }),
+          ),
+        );
+      expect(check(2)).toEqual([]);
+      expect(check(0)).toEqual(["error:coalition-invalid"]);
+      expect(check(1.5)).toEqual(["error:coalition-invalid"]);
+    });
+
     const relationConfig = (relation: object) => ({
       gameMode: "strategic",
       relationGroups: [{ id: "party", title: "Párton belül" }],
