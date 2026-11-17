@@ -2650,6 +2650,21 @@ function checkCoalition(
     );
     return;
   }
+  const maxStrongPartners = (data.coalition as Record<string, unknown>)
+    .maxStrongPartners;
+  if (
+    maxStrongPartners !== undefined &&
+    (!Number.isInteger(maxStrongPartners) || (maxStrongPartners as number) < 1)
+  ) {
+    report(
+      ctx,
+      "error",
+      "coalition-invalid",
+      file,
+      "/coalition/maxStrongPartners",
+      "coalition maxStrongPartners must be a positive whole number",
+    );
+  }
   const seen = new Set<string>();
   partners.forEach((partner, index) => {
     const path = `/coalition/partners/${index}`;

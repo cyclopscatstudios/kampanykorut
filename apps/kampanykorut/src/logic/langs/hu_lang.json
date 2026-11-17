@@ -451,6 +451,7 @@
     "potential": "Lehetséges többség",
     "potentialHint": "Csak akkor jön létre, ha minden megkeresett párt elfogadja az ajánlatot.",
     "partnerHint": "Egy partner a legjobb: minden további partner gyengíti a kormányodat.",
+    "partnerHintMany": "Legfeljebb {{max}} partnerrel erős a kormányod: minden további partner gyengíti.",
     "tooManyPartners": "{{count}} pártnak ajánlasz. Ha mind elfogadja, gyenge kormányt alakítasz.",
     "governmentSeats": "Kormánytöbbség",
     "seats": "{{seats}} mandátum",

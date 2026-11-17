@@ -8,7 +8,7 @@ import {
   buildCoalitionView,
   type CoalitionResponseView,
   forPlayerSide,
-  MAX_STRONG_COALITION_PARTNERS,
+  getMaxStrongCoalitionPartners,
   type SeatParty,
   submitCoalitionOffer,
 } from "@/shared/domain";
@@ -37,6 +37,7 @@ export function CoalitionPage() {
     [campaignId, playerSide],
   );
   const [offered, setOffered] = useState<string[]>([]);
+  const maxStrongPartners = getMaxStrongCoalitionPartners(config);
 
   const view = useMemo(
     () => (state ? buildCoalitionView(state, config) : undefined),
@@ -116,14 +117,16 @@ export function CoalitionPage() {
               data-testid="coalitionPartnerHint"
               className={classNames(
                 "m-0 text-sm font-semibold",
-                offered.length > MAX_STRONG_COALITION_PARTNERS
+                offered.length > maxStrongPartners
                   ? "text-amber-200"
                   : "text-slate-400",
               )}
             >
-              {offered.length > MAX_STRONG_COALITION_PARTNERS
+              {offered.length > maxStrongPartners
                 ? t("coalition.tooManyPartners", { count: offered.length })
-                : t("coalition.partnerHint")}
+                : maxStrongPartners > 1
+                  ? t("coalition.partnerHintMany", { max: maxStrongPartners })
+                  : t("coalition.partnerHint")}
             </p>
           )}
 
