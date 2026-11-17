@@ -322,42 +322,82 @@
       ]
     },
     {
-      "id": "osztrak_ut",
-      "title": "Osztrák út",
-      "summary": "Semlegesség, mint Bécsben: nyugtasd meg Moszkvát",
-      "description": "Ausztria megmutatta, hogy egy semleges ország nyugati módon élhet, ha Moszkva nem érzi magát fenyegetve. Tartsd távol a pártot a Nyugat ölelésétől, és ne adj okot a Horthy-vádra, még ha Nagy Ferenc és a nyugati megyék többet várnának is.",
-      "icon": "globe-europe-africa",
+      "id": "elegtetel_1947",
+      "title": "Elégtétel 1947-ért",
+      "summary": "Mondd ki, mi történt veled és a párttal 1947-ben",
+      "description": "Kovács Bélát 1947-ben a szovjetek hurcolták el, a pártot szeletenként verték szét. Tedd a hajrá középpontjába az elégtételt: rehabilitációs törvényt és a felelősök számonkérését. A jobbszárny és a felkelők melletted állnak, de Nagy Imre és Moszkva bosszút hall ki belőle, és a bizonytalanok is megijedhetnek.",
+      "icon": "megaphone-fill",
       "completeWhen": {
         "and": [
           {
-            "type": "turn",
-            "min": 21
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "C"
+              }
+            ]
           },
           {
-            "not": {
-              "type": "relation",
-              "relationId": "moszkva",
-              "tone": ["bad"]
-            }
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "D"
+              }
+            ]
           }
         ]
       },
       "failWhen": {
         "or": [
           {
-            "type": "relation",
-            "relationId": "moszkva",
-            "tone": ["bad"]
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "D"
+              }
+            ]
           },
           {
             "type": "answer-selected",
-            "questionId": "papir_nyugatrol",
-            "answerId": "A"
+            "questionId": "nagy_imrerol",
+            "answerId": "C"
           },
           {
             "type": "answer-selected",
-            "questionId": "nagy_ferenc_megerkezik",
-            "answerId": "A"
+            "questionId": "kormanytarskent",
+            "answerId": "D"
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "C"
+              }
+            ]
           }
         ]
       },
@@ -366,47 +406,81 @@
           "type": "uniform-swing",
           "params": {
             "fkgp": -3,
-            "mszmp": 2,
-            "szdp": 1
+            "szabadsagpart": 1,
+            "dnp": 1,
+            "mszmp": 1
           }
         }
       ]
     },
     {
-      "id": "nyugati_kapu",
-      "title": "Nyugati kapu",
-      "summary": "Nagy Ferenccel és a Nyugattal a hátad mögött",
-      "description": "A nyugati megyék Nagy Ferencet várják, Washington és Bécs a kisgazdákra figyel. Állítsd Nagy Ferencet a kampány élére a Nyugat felé, de számolj vele, hogy Moszkva gyanakvása és a Horthy-vád erősebben ragad rád.",
-      "icon": "airplane-fill",
+      "id": "nem_bosszut_allunk",
+      "title": "Nem bosszút állunk",
+      "summary": "A jövőről beszélj, ne 1947-ről",
+      "description": "Aki 1947-ben szenvedett, annak a szájából a megbocsátás a legerősebb üzenet. Beszélj a jövőről, és nyugtasd meg a bizonytalanokat. A jobbszárny türelmetlen lesz, és a Kádár-oldal azt vágja a fejedhez, hogy a kisgazdák egyszer már mindent odaadtak.",
+      "icon": "peace-fill",
       "completeWhen": {
         "and": [
           {
-            "type": "turn",
-            "min": 21
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "B"
+              }
+            ]
           },
           {
-            "type": "relation",
-            "relationId": "nagy_ferenc",
-            "tone": ["good"]
-          },
-          {
-            "type": "relation",
-            "relationId": "nyugat",
-            "tone": ["good"]
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "C"
+              }
+            ]
           }
         ]
       },
       "failWhen": {
         "or": [
           {
-            "type": "relation",
-            "relationId": "nagy_ferenc",
-            "tone": ["bad", "tense"]
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "D"
+              }
+            ]
           },
           {
-            "type": "relation",
-            "relationId": "nyugat",
-            "tone": ["bad"]
+            "type": "answer-selected",
+            "questionId": "nagy_imrerol",
+            "answerId": "B"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "zaro_nagygyules",
+            "answerId": "D"
           }
         ]
       },
@@ -415,8 +489,9 @@
           "type": "uniform-swing",
           "params": {
             "fkgp": -3,
-            "dnp": 2,
-            "szabadsagpart": 1
+            "mszmp": 1,
+            "petofi": 1,
+            "dnp": 1
           }
         }
       ]
@@ -446,8 +521,8 @@
     },
     {
       "id": "hajra",
-      "title": "Bécs vagy Washington?",
-      "focuses": ["osztrak_ut", "nyugati_kapu"],
+      "title": "Kampányhajrá",
+      "focuses": ["elegtetel_1947", "nem_bosszut_allunk"],
       "availableFromTurn": 19,
       "requiredBeforeTurn": 21
     }

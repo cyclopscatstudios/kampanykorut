@@ -1859,27 +1859,77 @@
     }
   },
   {
-    "id": "osztrak_ut_siker",
-    "label": "Semlegesek, mint Ausztria",
+    "id": "elegtetel_jobbszarny",
+    "label": "A jobbszárny Kovács mögött",
+    "once": true,
+    "priority": 95,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "focus-selected",
+              "focusId": "elegtetel_1947"
+            },
+            {
+              "not": {
+                "type": "event-triggered",
+                "eventId": "szabadsagpart_kivalik"
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "jobbszarny",
+            "tone": "good",
+            "label": "Lelkes",
+            "description": "Sulyok szerint végre kimondtad, ami 1947-ben történt."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elegtetel_siker",
+    "label": "Elégtétel 1947-ért",
     "once": true,
     "conditions": [
       {
         "if": {
           "and": [
             {
-              "type": "turn",
-              "min": 21
-            },
-            {
               "type": "focus-selected",
-              "focusId": "osztrak_ut"
+              "focusId": "elegtetel_1947"
             },
             {
-              "not": {
-                "type": "relation",
-                "relationId": "moszkva",
-                "tone": ["bad"]
-              }
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "egyszer_mar_elvesztettetek",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "egyszer_mar_elvesztettetek",
+                  "answerId": "C"
+                }
+              ]
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "zaro_nagygyules",
+                  "answerId": "B"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "zaro_nagygyules",
+                  "answerId": "D"
+                }
+              ]
             }
           ]
         },
@@ -1888,105 +1938,56 @@
             "type": "uniform-swing",
             "params": {
               "fkgp": 0.9,
-              "mszmp": -0.4,
-              "szdp": -0.2
+              "szabadsagpart": -0.3,
+              "mszmp": -0.3
             }
           },
           {
             "type": "set-relation",
-            "relationId": "nagy_ferenc",
+            "relationId": "corvin",
+            "tone": "good",
+            "label": "Szövetséges",
+            "description": "A Corvin köz szerint a kisgazdák nem felejtenek."
+          },
+          {
+            "type": "set-relation",
+            "relationId": "nagy_imre",
             "tone": "tense",
-            "label": "Mellőzve",
-            "description": "Nagy Ferenc szerint a párt Moszkva kedvéért elhallgattatta."
-          },
-          {
-            "type": "set-relation",
-            "relationId": "nyugat",
-            "tone": "calm",
-            "label": "Kivár",
-            "description": "Washington szerint a kisgazdák túl óvatosak lettek."
-          }
-        ]
-      }
-    ],
-    "announcement": {
-      "title": "Semlegesek, mint Ausztria",
-      "body": "Kovács Béla Bécsre hivatkozik: egy semleges ország senkit sem fenyeget. A városi szavazók megnyugszanak, a nyugati megyékben viszont többen hiányolják Nagy Ferencet.",
-      "icon": "globe-europe-africa"
-    }
-  },
-  {
-    "id": "nyugati_kapu_siker",
-    "label": "Nyugati kapu",
-    "once": true,
-    "conditions": [
-      {
-        "if": {
-          "and": [
-            {
-              "type": "turn",
-              "min": 21
-            },
-            {
-              "type": "focus-selected",
-              "focusId": "nyugati_kapu"
-            },
-            {
-              "type": "relation",
-              "relationId": "nagy_ferenc",
-              "tone": ["good"]
-            },
-            {
-              "type": "relation",
-              "relationId": "nyugat",
-              "tone": ["good"]
-            }
-          ]
-        },
-        "effects": [
-          {
-            "type": "uniform-swing",
-            "params": {
-              "fkgp": 1.1,
-              "dnp": -0.3,
-              "szabadsagpart": -0.2
-            }
+            "label": "Feszült",
+            "description": "Nagy Imre szerint a számonkérés a koalíciót is szétfeszítené."
           },
           {
             "type": "set-relation",
             "relationId": "moszkva",
             "tone": "bad",
             "label": "Ellenséges",
-            "description": "Moszkva szerint a kisgazdák Washington emberei."
+            "description": "Moszkva szerint a kisgazdák 1947-ért akarnak bosszút állni."
           }
         ]
       }
     ],
     "announcement": {
-      "title": "Kapu nyugat felé",
-      "body": "Nagy Ferenc Sopronban és Szombathelyen beszél, a nyugati megyékben ünnepként fogadják. A szovjet sajtó szerint a kisgazdák a vasfüggönyt akarják lebontani.",
-      "icon": "airplane-fill"
+      "title": "Elégtétel 1947-ért",
+      "body": "Kovács Béla a saját elhurcolásáról beszél, és rehabilitációs törvényt ígér. A falvakban sokan sírnak a gyűléseken, a baloldali lapok szerint viszont a kisgazdák bosszúra készülnek.",
+      "icon": "megaphone-fill"
     }
   },
   {
-    "id": "nyugati_kapu_gyanu",
-    "label": "Horthy-vád",
+    "id": "elegtetel_bosszu",
+    "label": "Bosszúszomj",
     "once": true,
     "conditions": [
       {
         "if": {
           "and": [
             {
-              "type": "turn",
-              "min": 22
-            },
-            {
               "type": "focus-selected",
-              "focusId": "nyugati_kapu"
+              "focusId": "elegtetel_1947"
             },
             {
-              "type": "event-triggered",
-              "eventId": "moszkva_fenyeget"
+              "type": "answer-selected",
+              "questionId": "zaro_nagygyules",
+              "answerId": "D"
             }
           ]
         },
@@ -1994,19 +1995,183 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fkgp": -0.6,
-              "mszmp": 0.3,
-              "szdp": 0.2
+              "fkgp": -0.5,
+              "petofi": 0.2,
+              "dnp": 0.2,
+              "szdp": 0.1
             }
           }
         ]
       }
     ],
     "announcement": {
-      "title": "A vád ráragad",
-      "body": "A baloldali lapok szerint aki Nagy Ferencet hozza vissza, az Horthyt is visszahozná. A munkásnegyedekben és a városokban egyre többen hiszik el.",
-      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.png",
-      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png"
+      "title": "Félnek a bizonytalanok",
+      "body": "A záró nagygyűlésen a bosszúról is szó esett. A bizonytalan szavazók egy része úgy érzi, a kisgazdák nem a jövőt, hanem a régi sérelmeket választották.",
+      "icon": "exclamation-triangle-fill"
+    }
+  },
+  {
+    "id": "nem_bosszut_jobbszarny",
+    "label": "Türelmetlen jobbszárny",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 20
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "nem_bosszut_allunk"
+            },
+            {
+              "not": {
+                "type": "event-triggered",
+                "eventId": "szabadsagpart_kivalik"
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.4,
+              "dnp": 0.3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Morog a jobbszárny",
+      "body": "Sulyok Dezső hívei szerint Kovács Béla elfelejtette, ki hurcolta el. A jobbszárny egy része a hajrában már a Demokrata Néppárt gyűléseire jár.",
+      "icon": "arrow-right-circle-fill"
+    }
+  },
+  {
+    "id": "nem_bosszut_siker",
+    "label": "Nem bosszút állunk",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "focus-selected",
+              "focusId": "nem_bosszut_allunk"
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "egyszer_mar_elvesztettetek",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "egyszer_mar_elvesztettetek",
+                  "answerId": "B"
+                }
+              ]
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "zaro_nagygyules",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "zaro_nagygyules",
+                  "answerId": "B"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "zaro_nagygyules",
+                  "answerId": "C"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.9,
+              "petofi": -0.2,
+              "dnp": -0.1,
+              "mszmp": -0.3
+            }
+          },
+          {
+            "type": "set-relation",
+            "relationId": "nagy_imre",
+            "tone": "calm",
+            "label": "Tisztelt ellenfél",
+            "description": "Nagy Imre szerint Kovács Béla nagyvonalú ellenfél."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Nem bosszút állunk",
+      "body": "Kovács Béla azt mondja, aki 1947-ben szenvedett, az tudja a legjobban, hogy a bosszú nem épít országot. A bizonytalan szavazók most először hallják, hogy a kisgazdák a jövőről beszélnek.",
+      "icon": "peace-fill"
+    }
+  },
+  {
+    "id": "szeletenkent",
+    "label": "Szeletenként odaadtátok",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "focus-selected",
+              "focusId": "nem_bosszut_allunk"
+            },
+            {
+              "type": "event-triggered",
+              "eventId": "kadar_szakadas"
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "egyszer_mar_elvesztettetek",
+                  "answerId": "B"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "egyszer_mar_elvesztettetek",
+                  "answerId": "D"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.5,
+              "kadar_part": 0.3,
+              "szabadsagpart": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Szeletenként odaadtátok",
+      "body": "Kádár János lapja szerint aki 1947-et megbocsátja, az 1957-et is odaadná. A vádra a kisgazdák csak csendben válaszoltak, és ez sokaknak elég volt.",
+      "icon": "scissors"
     }
   },
   {
