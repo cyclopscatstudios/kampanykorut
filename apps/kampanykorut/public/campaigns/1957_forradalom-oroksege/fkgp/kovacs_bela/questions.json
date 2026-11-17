@@ -48,7 +48,7 @@
   {
     "id": "senki_ne_almodozzon",
     "title": "Senki ne álmodozzon",
-    "question": "Pécsen nagygyűlést tartasz. A beszédírók két változatot hoztak: az egyikben kimondod, hogy nincs visszaút a grófok, bankárok és gyárosok világához, a másikban erről hallgatsz. Mit mondasz a tér előtt?",
+    "question": "Pécsen nagygyűlést tartasz. A beszédírók két változatot hoztak: az egyikben kimondod, hogy nincs visszaút a grófok, bankárok és gyárosok világához, a másikban erről hallgatsz. Mit mondasz a téren?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -71,7 +71,7 @@
   {
     "id": "templom_foldje",
     "title": "Templom földje, paraszt földje",
-    "question": "Mindszenty József bíboros rádióbeszédben követeli az egyházi birtokok és iskolák visszaadását. A szószékről is felolvassák. A földek egy részén ma 1945-ben földet kapott parasztok gazdálkodnak, sokan közülük a ti szavazóitok.",
+    "question": "Mindszenty József bíboros rádióbeszédben követeli az egyházi birtokok és iskolák visszaadását. A szószékről is felolvassák. Az egyházi földek egy részén ma az 1945-ös földosztás újgazdái gazdálkodnak, sokan közülük a ti szavazóitok.",
     "possibleAnswers": [
       {
         "id": "A",
@@ -94,7 +94,7 @@
   {
     "id": "hideg_tel_kormanyban",
     "title": "Hideg tél a kormányban",
-    "question": "Januárra elfogyott a szén. Tatabányán és Borsodban sztrájkolnak a bányászok, Budapesten fűtetlenek a lakások. A kormány tagjaként a kisgazdák is felelősek. Mit javasolsz a minisztertanácson?",
+    "question": "Januárra elfogyott a szén. Tatabányán és Borsodban sztrájkolnak a bányászok, Budapesten fűtetlenek a lakások. A kormány tagjaiként a kisgazdák is felelősek. Mit javasolsz a minisztertanácson?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -129,7 +129,7 @@
       },
       {
         "id": "C",
-        "label": "Bocsánatkérést kérsz tőlük 1947-ért, és utána maradhatnak."
+        "label": "Bocsánatkérést vársz tőlük 1947-ért, és utána maradhatnak."
       },
       {
         "id": "D",
@@ -171,7 +171,7 @@
       },
       {
         "id": "B",
-        "label": "Elfogadod a fokozatos csökkentést, ha idén a felére csökken."
+        "label": "Elfogadod a fokozatos csökkentést, ha idén legalább a felére mérséklik."
       },
       {
         "id": "C",
@@ -186,7 +186,7 @@
   {
     "id": "level_amerikabol",
     "title": "Levél Amerikából",
-    "question": "Nagy Ferenc, a volt miniszterelnök levelet írt Washingtonból: hazatérne, és részt venne a kampányban. Az emigráció körében sokan várják, a kormányban és Moszkvában sokan tartanak tőle. Mit válaszolsz?",
+    "question": "Nagy Ferenc, a volt miniszterelnök levelet írt Washingtonból: hazatérne, és részt venne a kampányban. Itthon sokan várják, a kormányban és Moszkvában sokan tartanak tőle. Mit válaszolsz?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -225,7 +225,7 @@
       },
       {
         "id": "D",
-        "label": "Kivárod a kampány hajráját, addig a kormányból is szerepelsz."
+        "label": "Kivárod a kampány hajráját, addig kormánytagként is szerepelsz."
       }
     ],
     "visibleIf": {
@@ -252,7 +252,7 @@
       },
       {
         "id": "D",
-        "label": "Sulyok Dezsőnek üzensz, hogy a választás után beszéltek."
+        "label": "Az emigrációban élő Sulyok Dezsőnek üzensz: a választás után megbeszélitek."
       }
     ],
     "visibleIf": {
@@ -265,7 +265,7 @@
   {
     "id": "orvosok_intelme",
     "title": "Az orvosok intelme",
-    "question": "A szovjet fogság nyomot hagyott rajtad. Az orvosok pihenőt rendelnek, különben a nyári kampánykörút az egészségedbe kerülhet. A párt közben minden faluba vár.",
+    "question": "A szovjet fogság nyomot hagyott rajtad. Az orvosok pihenőt rendelnek, különben a nyári kampánykörút az egészségedbe kerülhet. Közben minden faluban várnak.",
     "possibleAnswers": [
       {
         "id": "A",
@@ -321,7 +321,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Mindenki visszakapja a lakását, ezt az első kormányrendeletetek lesz."
+        "label": "Mindenki visszakapja a lakását, ez lesz az első kormányrendeletetek."
       },
       {
         "id": "B",
@@ -374,7 +374,7 @@
   {
     "id": "kie_a_gyar",
     "title": "Kie legyen a gyár?",
-    "question": "A gyárosok egykori családjai visszakérik az államosított üzemeket, a munkástanácsok szerint a gyár azé, aki dolgozik benne. A kisgazda programból eddig hiányzott a válasz. Mit írsz bele?",
+    "question": "A régi gyároscsaládok visszakérik az államosított üzemeket, a munkástanácsok szerint a gyár azé, aki dolgozik benne. A kisgazda programból eddig hiányzott a válasz. Mit írsz bele?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -483,7 +483,7 @@
   {
     "id": "svabok",
     "title": "A svábok",
-    "question": "1946-ban, kisgazda vezetésű kormány alatt, több tízezer német anyanyelvű családot telepítettek ki. A Dunántúlon és Baranyában a maradók most bocsánatkérést várnak a párttól is.",
+    "question": "1946-ban, kisgazda vezetésű kormány alatt, több tízezer német anyanyelvű családot telepítettek ki. A Dunántúlon, főleg Baranyában a maradók most bocsánatkérést várnak a párttól is.",
     "possibleAnswers": [
       {
         "id": "A",
@@ -506,7 +506,7 @@
   {
     "id": "kozos_lista",
     "title": "Közös lista",
-    "question": "A választási törvény lehetővé teszi a listák összekapcsolását. Barankovics István és Bibó István is jelezte, hogy kész tárgyalni. Milyen feltétellel indultok együtt?",
+    "question": "A választási törvény lehetővé teszi a listák összekapcsolását. Barankovics István és Bibó István is jelezte, hogy kész tárgyalni. Kivel kapcsolod össze a listát?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -776,7 +776,7 @@
       },
       {
         "id": "C",
-        "label": "Nem reagálsz, a vádak magukért beszélnek."
+        "label": "Nem reagálsz, válaszra sem méltatod a vádakat."
       },
       {
         "id": "D",
@@ -837,7 +837,7 @@
       },
       {
         "id": "D",
-        "label": "Kisebb példányszámban jelensz meg, saját erőből."
+        "label": "A lap kisebb példányszámban, saját erőből jelenik meg."
       }
     ],
     "visibleIf": {
@@ -1028,7 +1028,7 @@
       },
       {
         "id": "C",
-        "label": "Visszavágsz: ti voltatok, akik elvették."
+        "label": "Visszavágsz: ti voltatok azok, akik elvették."
       },
       {
         "id": "D",
@@ -1055,7 +1055,7 @@
       },
       {
         "id": "D",
-        "label": "1947-ről és a bosszúról."
+        "label": "1947-ről és az elégtételről."
       }
     ]
   }

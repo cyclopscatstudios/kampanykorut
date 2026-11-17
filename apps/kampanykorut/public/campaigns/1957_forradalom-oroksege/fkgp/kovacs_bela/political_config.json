@@ -5,8 +5,8 @@
       "id": "negyvenotos_part",
       "title": "A 45-ös párt",
       "summary": "Fogadj be mindenkit, aki nem baloldali",
-      "description": "1945-ben minden nem baloldali szavazó a kisgazdákra szavazott. Nyisd meg a pártot újra mindenki előtt, és építs széles tábort, de vigyázz, hogy a jobbszárny ne vegye át az irányítást. Nagy Imre és Kéthly Anna gyanakodva figyeli, kik lépnek be hozzád.",
-      "icon": "flag-fill",
+      "description": "1945-ben szinte minden nem baloldali szavazó a kisgazdákra szavazott. Nyisd meg a pártot újra mindenki előtt, és építs széles tábort, de vigyázz, hogy a jobbszárny ne vegye át az irányítást. Nagy Imre és Kéthly Anna gyanakodva figyeli, kik lépnek be hozzád.",
+      "icon": "/images/1957_forradalom-oroksege/45_part.png",
       "completeWhen": {
         "and": [
           {
@@ -65,7 +65,7 @@
       "title": "Nincs visszaút",
       "summary": "A föld a parasztoké, a gyár a népé marad",
       "description": "Kovács Béla Pécsen kimondta: senki ne álmodozzon a grófok és gyárosok világáról. Építs modern paraszti-polgári pártot, amely megtartja a földreformot, és nem adja vissza a gyárakat.",
-      "icon": "signpost-split-fill",
+      "icon": "/images/1957_forradalom-oroksege/nincs_visszaut.png",
       "completeWhen": {
         "and": [
           {
@@ -130,7 +130,7 @@
       "title": "Saját zászló",
       "summary": "Lépj ki a kormányból a megfelelő pillanatban",
       "description": "A kisgazdák csak akkor győzhetnek, ha a választók nem Nagy Imre árnyékában látják őket. Lépj ki az ideiglenes kormányból, de válaszd meg jól a pillanatot és a hangot: a túl korai és a túl késői kilépés is visszaüt.",
-      "icon": "door-open-fill",
+      "icon": "/images/1957_forradalom-oroksege/sajat_zaszlo.png",
       "completeWhen": {
         "and": [
           {
@@ -179,7 +179,7 @@
       "title": "Bent maradunk",
       "summary": "Maradj a kormányban a választásig",
       "description": "A kormányban ülve beleszólhatsz a föld, a beszolgáltatás és a kárpótlás ügyeibe, és a jó döntések a kisgazdák érdemei is lesznek. Az ára az, hogy a jobbszárny türelmetlen lesz, és akár ki is válhat a pártból.",
-      "icon": "building-fill",
+      "icon": "/images/1957_forradalom-oroksege/bent_maradunk.png",
       "completeWhen": {
         "and": [
           {
@@ -213,8 +213,8 @@
       "id": "polgari_blokk",
       "title": "Polgári blokk",
       "summary": "Kapcsold össze a listát a Demokrata Néppárttal és a Petőfi Párttal",
-      "description": "A kisgazdák egyedül nehezen szereznek többséget. Kössetek választási szövetséget a Demokrata Néppárttal és a Petőfi Párttal, és a hajrában írjatok közös programot, hogy a választás után biztosan legyen kormányképes többség.",
-      "icon": "people-fill",
+      "description": "A kisgazdák egyedül nehezen szereznek többséget. Köss választási szövetséget a Demokrata Néppárttal és a Petőfi Párttal, és a hajrában írjatok közös programot, hogy a választás után legyen kormányképes többség.",
+      "icon": "/images/1957_forradalom-oroksege/polgari_blokk.png",
       "completeWhen": {
         "and": [
           {
@@ -290,8 +290,8 @@
       "id": "falu_partja",
       "title": "A falu pártja",
       "summary": "Nyerd meg a parasztokat egyedül",
-      "description": "A falu dönti el a választást, és ott Nagy Imre földosztó emléke és a Petőfi Párt is versenyez a kisgazdákkal. Legyél te a gazdák első számú pártja: a föld, a gépek és a beszolgáltatás ügyében is te állj ki értük.",
-      "icon": "basket-fill",
+      "description": "A falu dönti el a választást, és ott Nagy Imre, az 1945-ös földosztó miniszter, meg a Petőfi Párt is versenyez a kisgazdákkal. Legyél te a gazdák első számú pártja: a föld, a gépek és a beszolgáltatás ügyében is te állj ki értük.",
+      "icon": "/images/1957_forradalom-oroksege/falu_partja.png",
       "completeWhen": {
         "and": [
           {
@@ -325,8 +325,8 @@
       "id": "elegtetel_1947",
       "title": "Elégtétel 1947-ért",
       "summary": "Mondd ki, mi történt veled és a párttal 1947-ben",
-      "description": "Kovács Bélát 1947-ben a szovjetek hurcolták el, a pártot szeletenként verték szét. Tedd a hajrá középpontjába az elégtételt: rehabilitációs törvényt és a felelősök számonkérését. A jobbszárny és a felkelők melletted állnak, de Nagy Imre és Moszkva bosszút hall ki belőle, és a bizonytalanok is megijedhetnek.",
-      "icon": "megaphone-fill",
+      "description": "Kovács Bélát 1947-ben a szovjetek hurcolták el, a pártot Rákosiék szeletenként verték szét. Tedd a hajrá középpontjába az elégtételt: rehabilitációs törvényt és a felelősök számonkérését. A jobbszárny és a felkelők melletted állnak, de Nagy Imre és Moszkva bosszút hall ki belőle, és a bizonytalanok is megijedhetnek.",
+      "icon": "/images/1957_forradalom-oroksege/elegtetel_1947.png",
       "completeWhen": {
         "and": [
           {
@@ -417,8 +417,8 @@
       "id": "nem_bosszut_allunk",
       "title": "Nem bosszút állunk",
       "summary": "A jövőről beszélj, ne 1947-ről",
-      "description": "Aki 1947-ben szenvedett, annak a szájából a megbocsátás a legerősebb üzenet. Beszélj a jövőről, és nyugtasd meg a bizonytalanokat. A jobbszárny türelmetlen lesz, és a Kádár-oldal azt vágja a fejedhez, hogy a kisgazdák egyszer már mindent odaadtak.",
-      "icon": "peace-fill",
+      "description": "Ha az 1947-ben elhurcolt Kovács Béla megbocsátásról beszél, azt a bizonytalanok is elhiszik. Beszélj a jövőről, és nyugtasd meg őket. A jobbszárny türelmetlen lesz, és a Kádár-oldal azt vágja a fejedhez, hogy a kisgazdák egyszer már mindent odaadtak.",
+      "icon": "/images/1957_forradalom-oroksege/nem_bosszut_allunk.png",
       "completeWhen": {
         "and": [
           {
@@ -545,20 +545,20 @@
     }
   ],
   "relations": [
-    {
+      {
       "id": "nagy_imre",
       "name": "Nagy Imre",
       "groupId": "partok",
-      "icon": "/images/1957_forradalom-oroksege/nagy_imre.png",
+      "icon": "/images/1957_forradalom-oroksege/nagy_imre_badge.png",
       "tone": "calm",
       "label": "Hálás, de óvatos",
-      "description": "A miniszterelnök a koalíciós partnere, és 1945-ben ő osztotta a földet."
+      "description": "A miniszterelnök és koalíciós partnered. 1945-ben ő osztotta a földet."
     },
     {
       "id": "jobbszarny",
       "name": "Sulyok Dezső és a jobbszárny",
       "groupId": "partok",
-      "icon": "arrow-right-circle-fill",
+      "icon": "/images/1957_forradalom-oroksege/sulyok_dezso_badge.png",
       "tone": "calm",
       "label": "Kivár",
       "description": "A párt jobbszárnya figyeli, mennyit enged a vezetés a kormánynak."
@@ -567,7 +567,7 @@
       "id": "nagy_ferenc",
       "name": "Nagy Ferenc",
       "groupId": "partok",
-      "icon": "airplane-fill",
+      "icon": "/images/1957_forradalom-oroksege/nagy_ferenc_badge.png",
       "tone": "calm",
       "label": "Hazavágyik",
       "description": "A volt miniszterelnök Washingtonban él, és hazatérne."
@@ -576,7 +576,7 @@
       "id": "barankovics",
       "name": "Barankovics István",
       "groupId": "partok",
-      "icon": "bank2",
+      "icon": "/images/1957_forradalom-oroksege/barankovics_istvan_badge.png",
       "tone": "good",
       "label": "Rokon tábor",
       "description": "A Demokrata Néppárt vezetője, a természetes partner."
@@ -585,10 +585,10 @@
       "id": "bibo",
       "name": "Bibó István",
       "groupId": "partok",
-      "icon": "book-fill",
+      "icon": "/images/1957_forradalom-oroksege/bibo_istvan.png",
       "tone": "good",
       "label": "Barát",
-      "description": "A Petőfi Párt államminisztere, 1945 szellemének őrzője."
+      "description": "A Petőfi Párt államminisztere, a földreform és a köztársaság védelmezője."
     },
     {
       "id": "kethly",
@@ -597,13 +597,13 @@
       "icon": "/images/1957_forradalom-oroksege/kethly_badge.png",
       "tone": "calm",
       "label": "Régi vetélytárs",
-      "description": "A szociáldemokraták vezetője, 1945-ben a baloldali blokkban állt a kisgazdákkal szemben."
+      "description": "A szociáldemokraták vezetője. Pártja 1946-ban a Baloldali Blokkban a kisgazdák ellen fordult."
     },
     {
       "id": "gazdak",
       "name": "Gazdakörök",
       "groupId": "tarsadalom",
-      "icon": "basket-fill",
+      "icon": "/images/1957_forradalom-oroksege/gazdakorok.png",
       "tone": "calm",
       "label": "Várakozó",
       "description": "A parasztság a föld és a beszolgáltatás ügyében vár válaszokat."
@@ -738,7 +738,7 @@
     {
       "id": "tarka_koalicio",
       "title": "Tarka koalíció",
-      "body": "Négy párt kormányoz együtt. Kovács Béla miniszterelnök, de minden döntés előtt négy pártot kell meggyőznie, és a koalíció már az első télen recseg.",
+      "body": "Négy párt kormányoz együtt. Kovács Béla miniszterelnök, de minden döntés előtt három partnert kell meggyőznie, és a koalíció már az első télen recseg.",
       "icon": "puzzle",
       "outcomes": ["weak-coalition"]
     },

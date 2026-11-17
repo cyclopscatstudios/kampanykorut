@@ -5,7 +5,7 @@
   "intro": {
     "title": "A forradalom öröksége",
     "subtitle": "Magyarország · 1957. január 1.",
-    "text": "1956. október 23-án tüntetők vonultak Budapest utcáira. Az esti lövések után a tüntetésből forradalom lett. A harcok végén a szovjet csapatok kivonultak, Magyarország pedig kinyilvánította semlegességét.\n\nNagy Imre koalíciós kormánya szocialistákból, kisgazdákból, szociáldemokratákból és parasztpártiakból áll. A „Ruszkik haza!” jelszó egyesítette őket, de arról már nincs egyetértés, milyen legyen az ország jövője. Most 1957 januárja van; ősszel szabad országgyűlési választást tartanak.\n\nA pártok készülnek a választásra. A munkástanácsok nagyobb beleszólást követelnek a gyárak irányításába, a felkelők pedig felelősségre vonást a sortüzekért. Vita folyik a földekről, az államosításokról és a Moszkvához fűződő viszonyról is. Nagy Imre pártja a legerősebb, de a kormányzáshoz szövetségesekre lehet szüksége. Ősszel a választók döntik el, milyen irányt vesz az ország."
+    "text": "1956. október 23-án tüntetők vonultak Budapest utcáira. Az esti lövések után a tüntetésből forradalom lett. A harcok végén a szovjet csapatok kivonultak, Magyarország pedig kinyilvánította semlegességét.\n\nNagy Imre koalíciós kormánya szocialistákból, kisgazdákból, szociáldemokratákból és parasztpártiakból áll. A „Ruszkik haza!” jelszó egyesítette őket, de arról már nincs egyetértés, milyen legyen az ország jövője. Most 1957 januárja van; ősszel szabad országgyűlési választást tartanak.\n\nA munkástanácsok nagyobb beleszólást követelnek a gyárak irányításába, a felkelők pedig felelősségre vonást a sortüzekért. Vita folyik a földekről, az államosításokról és a Moszkvához fűződő viszonyról is. Nagy Imre pártja a legerősebb, de a kormányzáshoz szövetségesekre lehet szüksége."
   },
   "election": {
     "type": "proportional"
@@ -172,11 +172,11 @@
       "candidateAssets": [
         {
           "id": "kovacs_bela",
-          "portrait": "/images/1957_forradalom-oroksege/fkgp_badge.png",
-          "slogan": "/images/1957_forradalom-oroksege/fkgp_badge.png"
+          "portrait": "/images/1957_forradalom-oroksege/kovacs_bela.png",
+          "slogan": "/images/1957_forradalom-oroksege/fkgp_szlogen.png"
         }
       ],
-      "party_logo": "/images/1957_forradalom-oroksege/fkgp_badge.png"
+      "party_logo": "/images/1957_forradalom-oroksege/fkgp_logo.png"
     }
   ]
 }
