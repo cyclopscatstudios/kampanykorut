@@ -307,7 +307,7 @@ Clicking an area on the map lists its issues (strength 1+) with their strength a
 
 `campaign_events.json` (manifest key `files.campaignEvents`)
 
-Optional, campaign-wide (shared by every playable side). Events are evaluated at the end of every answered turn, after the answer's effects (and, on the last turn, the campaign strategies) have been applied and the results recalculated. Corresponds to the `CampaignEvent` type ([shared/types/campaign-event.ts](shared/types/campaign-event.ts)); evaluated by `CampaignEventEngine` ([shared/domain/CampaignEventEngine.ts](shared/domain/CampaignEventEngine.ts)).
+Optional. Campaign-wide by default (shared by every playable side); a playable candidate can have its own file (`files.playableSides.<partyId>.<candidateId>.campaignEvents`), which replaces the campaign-wide one while that side is played, so one side's events never run for another. Events are evaluated at the end of every answered turn, after the answer's effects (and, on the last turn, the campaign strategies) have been applied and the results recalculated. Corresponds to the `CampaignEvent` type ([shared/types/campaign-event.ts](shared/types/campaign-event.ts)); evaluated by `CampaignEventEngine` ([shared/domain/CampaignEventEngine.ts](shared/domain/CampaignEventEngine.ts)).
 
 ```json
 [

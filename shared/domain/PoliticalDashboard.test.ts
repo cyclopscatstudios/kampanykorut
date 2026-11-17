@@ -1,6 +1,7 @@
 import { CampaignConfig, CampaignEvent, CampaignState } from "../types";
 import {
   buildDashboardOverview,
+  forPlayerSide,
   getGameMode,
   getPublicEvents,
   getTotalTurns,
@@ -29,6 +30,34 @@ const stateWith = (overrides: Partial<CampaignState> = {}): CampaignState =>
   }) as CampaignState;
 
 describe("PoliticalDashboard", () => {
+  it("swaps in the played candidate's own political config and events", () => {
+    const config = {
+      politicalConfig: { gameMode: "classic" },
+      campaignEvents: events,
+      playableSides: {
+        a: {
+          x: {
+            questions: [],
+            answerEffect: [],
+            politicalConfig: { gameMode: "strategic" },
+            campaignEvents: [event("own")],
+          },
+          y: { questions: [], answerEffect: [] },
+        },
+      },
+    } as Pick<
+      CampaignConfig,
+      "politicalConfig" | "playableSides" | "campaignEvents"
+    >;
+
+    const own = forPlayerSide(config, { partyId: "a", candidateId: "x" });
+    expect(own.politicalConfig?.gameMode).toBe("strategic");
+    expect(own.campaignEvents?.map((e) => e.id)).toEqual(["own"]);
+    expect(forPlayerSide(config, { partyId: "a", candidateId: "y" })).toBe(
+      config,
+    );
+  });
+
   it("treats a campaign without political config as classic", () => {
     expect(getGameMode({})).toBe("classic");
     expect(getGameMode(undefined)).toBe("classic");

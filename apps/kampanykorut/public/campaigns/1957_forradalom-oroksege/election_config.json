@@ -53,6 +53,14 @@
       "leader": "Kádár János",
       "color": "#6d1b1b",
       "dormant": true
+    },
+    {
+      "id": "szabadsagpart",
+      "name": "Magyar Szabadságpárt",
+      "shortName": "Szabadságpárt",
+      "leader": "Sulyok Dezső",
+      "color": "#546e7a",
+      "dormant": true
     }
   ],
   "partyListVotes": {
@@ -102,7 +110,8 @@
           "label": "Tildy Zoltán",
           "description": "Volt köztársasági elnök, a forradalmi kormány államminisztere."
         }
-      ]
+      ],
+      "playableCandidates": ["kovacs_bela"]
     },
     {
       "id": "szdp",
@@ -157,6 +166,17 @@
         }
       ],
       "party_logo": "/images/1957_forradalom-oroksege/mszmp.png"
+    },
+    {
+      "id": "fkgp",
+      "candidateAssets": [
+        {
+          "id": "kovacs_bela",
+          "portrait": "/images/1957_forradalom-oroksege/fkgp_badge.png",
+          "slogan": "/images/1957_forradalom-oroksege/fkgp_badge.png"
+        }
+      ],
+      "party_logo": "/images/1957_forradalom-oroksege/fkgp_badge.png"
     }
   ]
 }

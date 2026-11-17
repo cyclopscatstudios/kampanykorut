@@ -2932,22 +2932,26 @@ function checkRelations(ctx: Context, file: string, data: Json) {
   });
 }
 
-function readSidePoliticalConfigs(ctx: Context, playableSides: unknown) {
+function readSideFiles(
+  ctx: Context,
+  playableSides: unknown,
+  key: "politicalConfig" | "campaignEvents",
+) {
   if (!isObject(playableSides)) {
     return [];
   }
   return Object.entries(playableSides).flatMap(([partyId, candidates]) =>
     isObject(candidates)
       ? Object.entries(candidates).flatMap(([candidateId, paths]) =>
-          isObject(paths) && paths.politicalConfig !== undefined
+          isObject(paths) && paths[key] !== undefined
             ? [
                 {
-                  file: String(paths.politicalConfig),
+                  file: String(paths[key]),
                   data: readFile(
                     ctx,
-                    paths.politicalConfig,
+                    paths[key],
                     "manifest.json",
-                    `/files/playableSides/${partyId}/${candidateId}/politicalConfig`,
+                    `/files/playableSides/${partyId}/${candidateId}/${key}`,
                   ),
                 },
               ]
@@ -3097,26 +3101,35 @@ export function validateCampaign(
         );
   const politicalFiles: { file: string; data: unknown }[] = [
     { file: String(files.politicalConfig), data: politicalData },
-    ...readSidePoliticalConfigs(ctx, files.playableSides),
+    ...readSideFiles(ctx, files.playableSides, "politicalConfig"),
   ];
   politicalFiles.forEach(({ data }) => collectPoliticalIds(ctx, data));
 
-  const eventsData =
-    files.campaignEvents === undefined
-      ? undefined
-      : readFile(
-          ctx,
-          files.campaignEvents,
-          "manifest.json",
-          "/files/campaignEvents",
-        );
-  if (Array.isArray(eventsData)) {
-    eventsData.filter(isObject).forEach((event) => {
-      if (typeof event.id === "string") {
-        ctx.eventIds.add(event.id);
-      }
-    });
-  }
+  const eventFiles: { file: string; data: unknown }[] = [
+    ...(files.campaignEvents === undefined
+      ? []
+      : [
+          {
+            file: String(files.campaignEvents),
+            data: readFile(
+              ctx,
+              files.campaignEvents,
+              "manifest.json",
+              "/files/campaignEvents",
+            ),
+          },
+        ]),
+    ...readSideFiles(ctx, files.playableSides, "campaignEvents"),
+  ];
+  eventFiles.forEach(({ data }) => {
+    if (Array.isArray(data)) {
+      data.filter(isObject).forEach((event) => {
+        if (typeof event.id === "string") {
+          ctx.eventIds.add(event.id);
+        }
+      });
+    }
+  });
 
   const allQuestions = new Map<string, Set<string>>();
   if (isObject(files.playableSides)) {
@@ -3129,14 +3142,9 @@ export function validateCampaign(
     );
   }
 
-  if (files.campaignEvents !== undefined) {
-    checkCampaignEvents(
-      ctx,
-      String(files.campaignEvents),
-      eventsData,
-      allQuestions,
-    );
-  }
+  eventFiles.forEach(({ file, data }) =>
+    checkCampaignEvents(ctx, file, data, allQuestions),
+  );
 
   politicalFiles.forEach(({ file, data }) =>
     checkPoliticalConfig(ctx, file, data, allQuestions),

@@ -54,6 +54,7 @@ async function loadCandidateConfig(
     advisorFeedbackAssets,
     endResults,
     politicalConfig,
+    campaignEvents,
   ] = await Promise.all([
     paths.questions
       ? fetchCampaignFile<CandidateConfig["questions"]>(route, paths.questions)
@@ -94,6 +95,12 @@ async function loadCandidateConfig(
           paths.politicalConfig,
         )
       : Promise.resolve(undefined),
+    paths.campaignEvents
+      ? fetchCampaignFile<CandidateConfig["campaignEvents"]>(
+          route,
+          paths.campaignEvents,
+        )
+      : Promise.resolve(undefined),
   ]);
 
   return {
@@ -104,6 +111,7 @@ async function loadCandidateConfig(
     advisorFeedbackAssets,
     endResults,
     politicalConfig,
+    campaignEvents,
   };
 }
 

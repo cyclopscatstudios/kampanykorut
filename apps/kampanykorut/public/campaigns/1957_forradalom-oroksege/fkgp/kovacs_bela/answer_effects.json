@@ -1,0 +1,1704 @@
+[
+  {
+    "id": "aldozatok_partja",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5,
+              "petofi": 0.2,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "mszmp": -0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "dnp": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kik_johetnek",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.8,
+              "mszmp": 0.2,
+              "dnp": -0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.2,
+              "petofi": 0.2
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "dnp": -0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "senki_ne_almodozzon",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "petofi": -0.2,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.7,
+              "mszmp": -0.2,
+              "szdp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1,
+              "dnp": 0.3
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "fold",
+              "shift": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "templom_foldje",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5,
+              "dnp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.2,
+              "dnp": 0.4
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "fold",
+              "shift": -1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4,
+              "dnp": 0.1,
+              "petofi": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.1,
+              "dnp": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hideg_tel_kormanyban",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1,
+              "mszmp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "mszmp": -0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "kelet_nyugat",
+              "shift": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dobi_emberei",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1,
+              "petofi": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kulaklistak",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5,
+              "petofi": -0.2
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "fold",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beszolgaltatas_vege",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.7,
+              "mszmp": -0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "mszmp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "mszmp": -0.2
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "fold",
+              "shift": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "level_amerikabol",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "kelet_nyugat",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kilepes_ideje",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jobbszarny_poszt",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "orvosok_intelme",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kitelepitettek",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "szdp": 0.3,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kitelepitettek_igeret",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "szdp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kie_a_gyar",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "szdp": 0.4,
+              "mszmp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "szdp": -0.1
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "munkastanacsok",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tsz_gepallomas",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "mszmp": -0.2
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "fold",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.1,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tsz_program",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "mszmp": -0.2
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "fold",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "petofi": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "svabok",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4,
+              "dnp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kozos_lista",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "dnp": 0.1,
+              "petofi": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "dnp": 0.2,
+              "petofi": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "petofi": 0.2,
+              "dnp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5,
+              "dnp": -0.1,
+              "petofi": -0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nagy_ferenc_megerkezik",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "kelet_nyugat",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.7
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sulyok_ajanlata",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sulyok_ajanlata_kint",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": []
+      }
+    ]
+  },
+  {
+    "id": "moszkva_miniszterek",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "mszmp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5,
+              "mszmp": -0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "horthy_arnyeka",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "kelet_nyugat",
+              "shift": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "papir_kormanytol",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "kelet_nyugat",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "papir_nyugatrol",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3
+            }
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "kelet_nyugat",
+              "shift": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kormanytarskent",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1,
+              "mszmp": 0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nagy_imrerol",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "harom_part_program",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "dnp": 0.2,
+              "petofi": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "dnp": 0.1,
+              "petofi": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5,
+              "dnp": -0.1,
+              "petofi": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4,
+              "dnp": -0.1,
+              "petofi": -0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "egyszer_mar_elvesztettetek",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.8,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.3,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": -0.2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zaro_nagygyules",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "petofi": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.7,
+              "mszmp": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4,
+              "dnp": 0.1,
+              "petofi": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.2,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
