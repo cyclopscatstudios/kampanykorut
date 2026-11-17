@@ -5,7 +5,7 @@
       "id": "negyvenotos_part",
       "title": "A 45-ös párt",
       "summary": "Fogadj be mindenkit, aki nem baloldali",
-      "description": "1945-ben minden nem baloldali szavazó a kisgazdákra szavazott. Nyisd meg a pártot újra mindenki előtt, és építs széles tábort, de vigyázz, hogy a jobbszárny ne vegye át az irányítást.",
+      "description": "1945-ben minden nem baloldali szavazó a kisgazdákra szavazott. Nyisd meg a pártot újra mindenki előtt, és építs széles tábort, de vigyázz, hogy a jobbszárny ne vegye át az irányítást. Nagy Imre és Kéthly Anna gyanakodva figyeli, kik lépnek be hozzád.",
       "icon": "flag-fill",
       "completeWhen": {
         "and": [

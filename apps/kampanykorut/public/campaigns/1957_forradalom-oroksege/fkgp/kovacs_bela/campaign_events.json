@@ -1314,6 +1314,36 @@
     ]
   },
   {
+    "id": "szabadsagpart_kihivas_valasz",
+    "label": "A Szabadságpártról",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szabadsagpart_kihivas",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "bibo",
+            "tone": "tense",
+            "label": "Gyanakszik",
+            "description": "Bibó szerint aki Sulyokkal kormányozna, az 1945 előtti világot hozza vissza."
+          },
+          {
+            "type": "set-relation",
+            "relationId": "moszkva",
+            "tone": "bad",
+            "label": "Ellenséges",
+            "description": "Moszkva szerint a kisgazdák a szélsőjobbal szövetkeznek."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "harom_part_program_valasz",
     "label": "A közös programról",
     "once": true,
@@ -1687,6 +1717,35 @@
       "imageUri": "/images/1957_forradalom-oroksege/mszmp_szakadas.jpg",
       "major": true
     }
+  },
+  {
+    "id": "negyvenotos_gyanu",
+    "label": "Gyanakvó baloldal",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "focus-selected",
+          "focusId": "negyvenotos_part"
+        },
+        "effects": [
+          {
+            "type": "set-relation",
+            "relationId": "nagy_imre",
+            "tone": "tense",
+            "label": "Gyanakszik",
+            "description": "Nagy Imre szerint a kisgazdák a régi rendszer embereivel építik újra 1945 gyűjtőpártját."
+          },
+          {
+            "type": "set-relation",
+            "relationId": "kethly",
+            "tone": "tense",
+            "label": "Bizalmatlan",
+            "description": "Kéthly Anna szerint a Kisgazdapárt megint a reakció menedéke lesz."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "kormany_kisgazda_arca",

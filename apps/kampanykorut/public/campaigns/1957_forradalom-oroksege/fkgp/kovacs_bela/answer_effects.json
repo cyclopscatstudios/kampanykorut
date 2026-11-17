@@ -1211,6 +1211,61 @@
     ]
   },
   {
+    "id": "szabadsagpart_kihivas",
+    "answers": [
+      {
+        "id": "A",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.4,
+              "szabadsagpart": 0.2,
+              "mszmp": -0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.6,
+              "szabadsagpart": -0.4,
+              "mszmp": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.1,
+              "szabadsagpart": 0.3,
+              "mszmp": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szabadsagpart": 0.3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "moszkva_miniszterek",
     "answers": [
       {

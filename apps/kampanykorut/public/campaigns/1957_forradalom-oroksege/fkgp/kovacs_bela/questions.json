@@ -572,10 +572,20 @@
       }
     ],
     "visibleIf": {
-      "not": {
-        "type": "event-triggered",
-        "eventId": "fkgp_kilepes"
-      }
+      "and": [
+        {
+          "not": {
+            "type": "event-triggered",
+            "eventId": "fkgp_kilepes"
+          }
+        },
+        {
+          "not": {
+            "type": "event-triggered",
+            "eventId": "szabadsagpart_kivalik"
+          }
+        }
+      ]
     }
   },
   {
@@ -603,8 +613,75 @@
     "visibleIf": {
       "and": [
         {
+          "and": [
+            {
+              "type": "event-triggered",
+              "eventId": "fkgp_kilepes"
+            },
+            {
+              "not": {
+                "or": [
+                  {
+                    "type": "answer-selected",
+                    "questionId": "sulyok_ajanlata",
+                    "answerId": "A"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "sulyok_ajanlata",
+                    "answerId": "B"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "sulyok_ajanlata",
+                    "answerId": "C"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "sulyok_ajanlata",
+                    "answerId": "D"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "not": {
+            "type": "event-triggered",
+            "eventId": "szabadsagpart_kivalik"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "szabadsagpart_kihivas",
+    "title": "Jobbról támadnak",
+    "question": "Sulyok Dezső Magyar Szabadságpártja a nyugati megyékben a kisgazdák szavazóit gyűjti. Gyűléseiken azt mondják, Kovács Béla elárulta 1945 győzteseit. Hogyan válaszolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Élesen elhatárolódsz: aki a régi rendszert sírja vissza, annak nincs helye a kisgazdák között."
+      },
+      {
+        "id": "B",
+        "label": "Hazahívod a tagokat: aki visszatér, attól az elnökség nem kérdez semmit."
+      },
+      {
+        "id": "C",
+        "label": "Választás utáni együttműködést ajánlasz Sulyoknak, hogy a jobboldali szavazat ne vesszen el."
+      },
+      {
+        "id": "D",
+        "label": "Nem veszel róluk tudomást, a kisgazdák nem vitatkoznak szakadárokkal."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
           "type": "event-triggered",
-          "eventId": "fkgp_kilepes"
+          "eventId": "szabadsagpart_kivalik"
         },
         {
           "not": {
@@ -627,6 +704,26 @@
               {
                 "type": "answer-selected",
                 "questionId": "sulyok_ajanlata",
+                "answerId": "D"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata_kint",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata_kint",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata_kint",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata_kint",
                 "answerId": "D"
               }
             ]

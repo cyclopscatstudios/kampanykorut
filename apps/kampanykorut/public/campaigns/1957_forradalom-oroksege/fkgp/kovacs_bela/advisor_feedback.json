@@ -462,6 +462,27 @@
     ]
   },
   {
+    "questionId": "szabadsagpart_kihivas",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A városok és a bizonytalanok megnyugszanak, a Horthy-vád gyengül. Sulyok viszont mártírt játszik, és a nyugati megyékben ez hat."
+      },
+      {
+        "answerId": "B",
+        "text": "Sokan visszajönnek, Sulyok vezérkara magára marad. A baloldali lapok szerint viszont a kisgazdák kapuja jobbra tárva-nyitva."
+      },
+      {
+        "answerId": "C",
+        "text": "Számtanilag okos, politikailag drága. Bibó és Moszkva is felkapja a fejét, és a bizonytalanok azt kérdezik, kivel kormányoznál."
+      },
+      {
+        "answerId": "D",
+        "text": "Méltóságteljes, de a Szabadságpárt hangja a nyugati megyékben egyre erősebb. Aki hallgat, annak a nevében más beszél."
+      }
+    ]
+  },
+  {
     "questionId": "moszkva_miniszterek",
     "answers": [
       {
