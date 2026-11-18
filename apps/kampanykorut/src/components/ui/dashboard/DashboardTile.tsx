@@ -56,7 +56,7 @@ export function HoverDetail({
         role="tooltip"
         className={
           open
-            ? "absolute inset-0 flex flex-col overflow-y-auto overscroll-contain rounded-xl bg-[#161e30] p-4 text-left shadow-[inset_0_0_0_1px_#4462aa]"
+            ? "absolute inset-0 flex flex-col overflow-y-auto rounded-xl bg-[#161e30] p-4 text-left shadow-[inset_0_0_0_1px_#4462aa]"
             : "sr-only"
         }
       >

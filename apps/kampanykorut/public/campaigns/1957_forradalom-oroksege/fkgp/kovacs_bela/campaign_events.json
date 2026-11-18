@@ -1639,7 +1639,7 @@
             "type": "shift-relation",
             "relationId": "kethly",
             "steps": -2,
-            "description": "Kéthly Anna szerint a Kisgazdapárt megint a reakció menedéke lesz."
+            "description": "Kéthly Anna szerint a Kisgazdapárt megint a reakciósok menedéke lesz."
           }
         ]
       }
@@ -1720,7 +1720,7 @@
     "announcement": {
       "title": "Egy zászló alatt a polgári és paraszti pártok",
       "body": "A Kisgazdapárt, a Demokrata Néppárt és a Petőfi Párt összekapcsolta a listáját. A választók most már tudják, milyen kormány alakulhat.",
-      "icon": "people-fill"
+      "icon": "/images/1957_forradalom-oroksege/polgari_blokk.png"
     }
   },
   {
@@ -1812,7 +1812,7 @@
     "announcement": {
       "title": "Közös program, közös kormány",
       "body": "A három párt vezetői közös gyűlésen mutatták be a programjukat. A bizonytalan szavazók szerint ez végre kiszámítható kormányt ígér.",
-      "icon": "puzzle-fill"
+      "icon": "/images/1957_forradalom-oroksege/harom_part_kampany.png"
     }
   },
   {
@@ -2001,7 +2001,7 @@
     "announcement": {
       "title": "Morog a jobbszárny",
       "body": "Sulyok Dezső hívei szerint Kovács Béla elfelejtette, ki hurcolta el. A jobbszárny egy része a hajrában már a Demokrata Néppárt gyűléseire jár.",
-      "icon": "arrow-right-circle-fill"
+      "icon": "/images/1957_forradalom-oroksege/nem_bosszut_jobbszarny.png"
     }
   },
   {
@@ -2270,6 +2270,7 @@
     "announcement": {
       "title": "Eltitkolt betegség",
       "body": "A baloldali lapok megírták, hogy Kovács Béla hónapok óta beteg, és ezt a párt eltitkolta. A szavazók azt kérdezik, mi mást titkolnak még.",
+      "imageUri": "/images/1957_forradalom-oroksege/visszauto_tamadas.png",
       "icon": "eye-fill"
     }
   },
@@ -2306,6 +2307,7 @@
     "announcement": {
       "title": "Ki vezeti a kisgazdákat?",
       "body": "Nagy Ferenc és Kovács Béla egymásnak ellentmondó nyilatkozatokat tett. A lapok szerint a pártnak két vezetője van, és egyik sem tudja, mit mond a másik.",
+      "imageUri": "/images/1957_forradalom-oroksege/nagy_ferenc.png",
       "icon": "people"
     }
   },
@@ -2341,7 +2343,8 @@
     ],
     "announcement": {
       "title": "Nagy Ferenc a saját útját járja",
-      "body": "Nagy Ferenc nyugati rádióknak nyilatkozik, és nem a kisgazdák programjáról beszél. Az emigráció egy része a Demokrata Néppártot támogatja.",
+      "body": "Nagy Ferenc nyugati rádióknak nyilatkozik, és nem a kisgazdák programjáról beszél. Az emigránsok egy része a Demokrata Néppártot támogatja.",
+            "imageUri": "/images/1957_forradalom-oroksege/nagy_ferenc.png",
       "icon": "signpost-split-fill"
     }
   },
@@ -2369,8 +2372,8 @@
       }
     ],
     "announcement": {
-      "title": "Kinek a pártja a Kisgazdapárt?",
-      "body": "A polgári lapok szerint Kovács Béla Nagy Imre kegyét keresi. A szavazók egy része azt kérdezi, akkor miért nem rögtön az MSZMP-re szavaz.",
+      "title": "Kit képviselnek a kisgazdák?",
+      "body": "A polgári lapok véleménye szerint Kovács Béla Nagy Imre kegyét keresi. A szavazók egy része azt kérdezi, akkor miért ne inkább az MSZMP-re szavazzon.",
       "icon": "question-circle-fill"
     }
   }

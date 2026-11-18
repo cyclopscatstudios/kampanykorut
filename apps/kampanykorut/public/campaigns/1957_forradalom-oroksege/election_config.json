@@ -124,35 +124,6 @@
           "description": "A párt elnöke, a demokratikus baloldal legismertebb alakja."
         }
       ]
-    },
-    {
-      "id": "petofi",
-      "label": "Petőfi Párt",
-      "description": "A népi írók és a parasztság pártja, harmadikutas programmal.",
-      "mainCandidates": [
-        {
-          "id": "farkas_ferenc",
-          "label": "Farkas Ferenc",
-          "description": "A párt főtitkára."
-        },
-        {
-          "id": "bibo_istvan",
-          "label": "Bibó István",
-          "description": "Államminiszter, jogtudós, a demokratikus átmenet gondolkodója."
-        }
-      ]
-    },
-    {
-      "id": "dnp",
-      "label": "Demokrata Néppárt",
-      "description": "Kereszténydemokrata párt, a vallásszabadság és a szociális igazságosság képviselője.",
-      "mainCandidates": [
-        {
-          "id": "farkas_denes",
-          "label": "Farkas Dénes",
-          "description": "Az újjáalakult párt vezetője."
-        }
-      ]
     }
   ],
   "electionAssets": [
