@@ -24,7 +24,7 @@ import {
   RawParty,
   RawQuestion,
   Relation,
-  SetRelationEffect,
+  RelationEffect,
   SplitPartyEffect,
   Strategy,
   StrategyReward,
@@ -83,7 +83,10 @@ export class CampaignEngine {
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
     private readonly campaignEvents?: CampaignEvent[],
-    private readonly relations?: Pick<Relation, "id" | "tone">[],
+    private readonly relations?: Pick<
+      Relation,
+      "id" | "tone" | "label" | "labels"
+    >[],
     private readonly politicalConfig?: PoliticalConfig,
   ) {
     log.debug("CampaignEngine initialized");
@@ -633,7 +636,7 @@ export class CampaignEngine {
   ): CampaignState {
     let current = state;
     let batch: RawEffect[] = [];
-    const relations: SetRelationEffect[] = [];
+    const relations: RelationEffect[] = [];
     const flush = () => {
       current = this.applyRawEffects(current, batch);
       batch = [];
@@ -652,7 +655,10 @@ export class CampaignEngine {
       } else if (effect.type === "split-party") {
         flush();
         current = this.splitParty(current, effect);
-      } else if (effect.type === "set-relation") {
+      } else if (
+        effect.type === "set-relation" ||
+        effect.type === "shift-relation"
+      ) {
         relations.push(effect);
       } else if (effect.type === EffectType.IssueStance) {
         flush();
@@ -668,10 +674,10 @@ export class CampaignEngine {
     flush();
 
     if (current === state) {
-      return setRelations(state, relations);
+      return setRelations(state, relations, this.relations);
     }
     return {
-      ...setRelations(current, relations),
+      ...setRelations(current, relations, this.relations),
       ...this.calculateResults(
         current.candidateListData,
         current.partyListData,

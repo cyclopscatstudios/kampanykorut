@@ -979,6 +979,60 @@ describe("validateCampaign", () => {
       ]);
     });
 
+    it("accepts a shift and tone labels, and reports bad ones", () => {
+      const events = (effect: object) => (f: Record<string, unknown>) => {
+        file(f as never, "manifest.json").files.campaignEvents = "events.json";
+        f["events.json"] = [
+          {
+            id: "e",
+            conditions: [{ if: { type: "turn", min: 1 }, effects: [effect] }],
+          },
+        ];
+      };
+      const labels = {
+        good: "Támogat",
+        calm: "Kivár",
+        tense: "Elégedetlen",
+        bad: "Ellenséges",
+      };
+      expect(
+        validate((f) => {
+          withPolitical(relationConfig({ labels }))(f);
+          events({
+            type: "shift-relation",
+            relationId: "kadar_wing",
+            steps: -2,
+            description: "Bírálnak.",
+          })(f);
+        }),
+      ).toEqual([]);
+
+      const result = validate((f) => {
+        withPolitical(
+          relationConfig({ labels: { good: "Támogat", angry: "x" } }),
+        )(f);
+        events({
+          type: "shift-relation",
+          relationId: "ghost",
+          steps: 0.5,
+          description: "",
+        })(f);
+      });
+      expect(codes(result)).toEqual([
+        "error:unknown-relation",
+        "error:relation-invalid",
+        "error:relation-invalid",
+        "error:relation-invalid",
+      ]);
+      expect(
+        codes(
+          validate((f) => {
+            withPolitical(relationConfig({ labels: { good: "Támogat" } }))(f);
+          }),
+        ),
+      ).toEqual(["warning:relation-labels-incomplete"]);
+    });
+
     it("reports a config that is not an object", () => {
       expect(codes(validate(withPolitical([])))).toEqual([
         "error:political-config-invalid",

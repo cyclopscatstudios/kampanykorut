@@ -347,6 +347,7 @@ describe("CampaignEngine campaign events", () => {
         label: "Lelkes",
         description: "A diákság kiáll melletted.",
         changedAtTurn: 1,
+        score: 4,
       },
     });
     expect(next.mayoralResult?.districts[0].votes).toEqual(

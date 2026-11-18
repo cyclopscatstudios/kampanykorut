@@ -380,6 +380,23 @@ In one step it marks the candidate `inactive` (with `reason`, default `"withdraw
 
 From then on the candidate cannot win, receives no votes from answer effects, strategy rewards or later events (their keys are dropped from those effects), and is left out of the polls. The player's own candidate is never withdrawn: a branch that withdraws a playable candidate must exclude the player with `{ "not": { "type": "player-candidate", "candidateId": … } }` directly in the branch condition or in its top-level `and`, otherwise the validator reports `withdraw-playable-candidate`. The engine also skips such a withdrawal if it would hit the player's candidate. The ratios in the example above are a design placeholder, not historical data.
 
+##### Relation changes
+
+An event branch can change a relation from the political config. Most changes should add up, so a `shift-relation` moves the relation's hidden score by `steps` instead of replacing it:
+
+```json
+{
+  "type": "shift-relation",
+  "relationId": "gazdak",
+  "steps": 2,
+  "description": "A gazdakörök örülnek a döntésnek."
+}
+```
+
+The score runs from -6 to 6, and the tone comes from it: `good` from 3, `calm` from 0, `tense` from -3, `bad` below that. A relation starts at the score of its tone (good 4, calm 1, tense -2, bad -5), so one `+3` lifts a `bad` relation only to `tense`. The shown label is the relation's `labels` entry for the new tone (`"labels": { "good": "…", "calm": "…", "tense": "…", "bad": "…" }`); without one the previous label stays. `description` replaces the relation's text.
+
+A `set-relation` (`tone`, `label`, `description`) replaces the standing outright and resets the score to that tone. Use it only for strong turning points, such as a split.
+
 ##### Conditions
 
 A `Condition` ([shared/types/condition.ts](shared/types/condition.ts)) is either a logical combination or a single check; combinations can be nested freely.
@@ -395,7 +412,7 @@ A `Condition` ([shared/types/condition.ts](shared/types/condition.ts)) is either
 | `{ "type": "player-candidate", "candidateId" }`                                                                                 | the player plays this candidate (the side chosen in the menu).                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `{ "type": "event-triggered", "eventId" }`                                                                                      | that event has already run.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `{ "type": "focus-selected", "focusId" }`                                                                                       | the player has chosen that focus.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `{ "type": "relation", "relationId", "tone": ("good" \| "calm" \| "tense" \| "bad")[] }`                                        | the relation currently has one of these tones: the one a `set-relation` effect set last, otherwise its starting tone from the political config.                                                                                                                                                                                                                                                                                                                                                                               |
+| `{ "type": "relation", "relationId", "tone": ("good" \| "calm" \| "tense" \| "bad")[] }`                                        | the relation currently has one of these tones: its tone after the `shift-relation` and `set-relation` changes so far, otherwise its starting tone from the political config.                                                                                                                                                                                                                                                                                                                                                  |
 | `{ "type": "issue-position", "issueId", "party"?, "min"?: number, "max"?: number }`                                             | the party's current position on the issue (see [Issues](#issues)) is within `min`–`max`, both ends included. `party` defaults to the player's party.                                                                                                                                                                                                                                                                                                                                                                          |
 
 The campaign validator reports unknown questions, answers, candidates, events, focuses, relations and issues inside conditions, as well as malformed conditions.

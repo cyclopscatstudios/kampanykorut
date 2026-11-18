@@ -552,7 +552,13 @@
       "icon": "/images/1957_forradalom-oroksege/nagy_imre_badge.png",
       "tone": "calm",
       "label": "Hálás, de óvatos",
-      "description": "A miniszterelnök és koalíciós partnered. 1945-ben ő osztotta a földet."
+      "description": "A miniszterelnök és koalíciós partnered. 1945-ben ő osztotta a földet.",
+      "labels": {
+        "good": "Baráti",
+        "calm": "Tisztel",
+        "tense": "Feszült",
+        "bad": "Ellenséges"
+      }
     },
     {
       "id": "jobbszarny",
@@ -561,7 +567,13 @@
       "icon": "/images/1957_forradalom-oroksege/sulyok_dezso_badge.png",
       "tone": "calm",
       "label": "Kivár",
-      "description": "A párt jobbszárnya figyeli, mennyit enged a vezetés a kormánynak."
+      "description": "A párt jobbszárnya figyeli, mennyit enged a vezetés a kormánynak.",
+      "labels": {
+        "good": "Lelkes",
+        "calm": "Kivár",
+        "tense": "Türelmetlen",
+        "bad": "Kijáratot keres"
+      }
     },
     {
       "id": "nagy_ferenc",
@@ -570,7 +582,13 @@
       "icon": "/images/1957_forradalom-oroksege/nagy_ferenc_badge.png",
       "tone": "calm",
       "label": "Hazavágyik",
-      "description": "A volt miniszterelnök Washingtonban él, és hazatérne."
+      "description": "A volt miniszterelnök Washingtonban él, és hazatérne.",
+      "labels": {
+        "good": "Elégedett",
+        "calm": "Elfogadja",
+        "tense": "Sértett",
+        "bad": "Saját utat jár"
+      }
     },
     {
       "id": "barankovics",
@@ -579,7 +597,13 @@
       "icon": "/images/1957_forradalom-oroksege/barankovics_istvan_badge.png",
       "tone": "good",
       "label": "Rokon tábor",
-      "description": "A Demokrata Néppárt vezetője, a természetes partner."
+      "description": "A Demokrata Néppárt vezetője, a természetes partner.",
+      "labels": {
+        "good": "Szövetséges",
+        "calm": "Kivár",
+        "tense": "Sértett",
+        "bad": "Elutasító"
+      }
     },
     {
       "id": "bibo",
@@ -588,7 +612,13 @@
       "icon": "/images/1957_forradalom-oroksege/bibo_istvan.png",
       "tone": "good",
       "label": "Barát",
-      "description": "A Petőfi Párt államminisztere, a földreform és a köztársaság védelmezője."
+      "description": "A Petőfi Párt államminisztere, a földreform és a köztársaság védelmezője.",
+      "labels": {
+        "good": "Barát",
+        "calm": "Kivár",
+        "tense": "Gyanakszik",
+        "bad": "Elutasító"
+      }
     },
     {
       "id": "kethly",
@@ -597,7 +627,13 @@
       "icon": "/images/1957_forradalom-oroksege/kethly_badge.png",
       "tone": "calm",
       "label": "Régi vetélytárs",
-      "description": "A szociáldemokraták vezetője. Pártja 1946-ban a Baloldali Blokkban a kisgazdák ellen fordult."
+      "description": "A szociáldemokraták vezetője. Pártja 1946-ban a Baloldali Blokkban a kisgazdák ellen fordult.",
+      "labels": {
+        "good": "Tárgyalna",
+        "calm": "Régi vetélytárs",
+        "tense": "Bizalmatlan",
+        "bad": "Riadót fúj"
+      }
     },
     {
       "id": "gazdak",
@@ -606,7 +642,13 @@
       "icon": "/images/1957_forradalom-oroksege/gazdakorok.png",
       "tone": "calm",
       "label": "Várakozó",
-      "description": "A parasztság a föld és a beszolgáltatás ügyében vár válaszokat."
+      "description": "A parasztság a föld és a beszolgáltatás ügyében vár válaszokat.",
+      "labels": {
+        "good": "Lelkes",
+        "calm": "Várakozó",
+        "tense": "Elégedetlen",
+        "bad": "Félti a földjét"
+      }
     },
     {
       "id": "corvin",
@@ -615,7 +657,13 @@
       "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.png",
       "tone": "tense",
       "label": "Türelmetlen",
-      "description": "Elszámoltatást követelnek a felkelők."
+      "description": "Elszámoltatást követelnek a felkelők.",
+      "labels": {
+        "good": "Szövetséges",
+        "calm": "Tisztel",
+        "tense": "Türelmetlen",
+        "bad": "Árulót kiált"
+      }
     },
     {
       "id": "moszkva",
@@ -624,7 +672,13 @@
       "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png",
       "tone": "tense",
       "label": "Gyanakvó",
-      "description": "1947 óta a kisgazdákban a nyugati befolyást látja."
+      "description": "1947 óta a kisgazdákban a nyugati befolyást látja.",
+      "labels": {
+        "good": "Elégedett",
+        "calm": "Kivár",
+        "tense": "Gyanakvó",
+        "bad": "Ellenséges"
+      }
     },
     {
       "id": "nyugat",
@@ -633,7 +687,13 @@
       "icon": "/images/1957_forradalom-oroksege/nyugat.png",
       "tone": "good",
       "label": "Rokonszenvez",
-      "description": "A nyugati hatalmak a kisgazdákban látják a polgári Magyarországot."
+      "description": "A nyugati hatalmak a kisgazdákban látják a polgári Magyarországot.",
+      "labels": {
+        "good": "Rokonszenvez",
+        "calm": "Kivár",
+        "tense": "Csalódott",
+        "bad": "Elfordul"
+      }
     }
   ],
   "coalition": {

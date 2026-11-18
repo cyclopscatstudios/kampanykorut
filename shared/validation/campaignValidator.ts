@@ -1947,25 +1947,60 @@ function checkEventEffects(
       checkWithdrawEffect(ctx, file, effectPath, effect, guard);
     } else if (isObject(effect) && effect.type === "split-party") {
       checkSplitEffect(ctx, file, effectPath, effect);
-    } else if (isObject(effect) && effect.type === "set-relation") {
+    } else if (isObject(effect) && effect.type === "shift-relation") {
+      checkRelationId(ctx, file, effectPath, effect);
       if (
-        typeof effect.relationId !== "string" ||
-        !ctx.relationIds.has(effect.relationId)
+        typeof effect.steps !== "number" ||
+        !Number.isInteger(effect.steps) ||
+        effect.steps === 0
       ) {
         report(
           ctx,
           "error",
-          "unknown-relation",
+          "relation-invalid",
           file,
-          `${effectPath}/relationId`,
-          `unknown relation "${String(effect.relationId)}"`,
+          `${effectPath}/steps`,
+          "steps must be a non-zero whole number",
         );
       }
+      if (typeof effect.description !== "string" || !effect.description) {
+        report(
+          ctx,
+          "error",
+          "relation-invalid",
+          file,
+          `${effectPath}/description`,
+          "description must be a non-empty string",
+        );
+      }
+    } else if (isObject(effect) && effect.type === "set-relation") {
+      checkRelationId(ctx, file, effectPath, effect);
       checkRelationStanding(ctx, file, effectPath, effect);
     } else {
       checkEffect(ctx, file, effectPath, effect);
     }
   });
+}
+
+function checkRelationId(
+  ctx: Context,
+  file: string,
+  path: string,
+  effect: Json,
+) {
+  if (
+    typeof effect.relationId !== "string" ||
+    !ctx.relationIds.has(effect.relationId)
+  ) {
+    report(
+      ctx,
+      "error",
+      "unknown-relation",
+      file,
+      `${path}/relationId`,
+      `unknown relation "${String(effect.relationId)}"`,
+    );
+  }
 }
 
 function checkSplitEffect(
@@ -2929,6 +2964,36 @@ function checkRelations(ctx: Context, file: string, data: Json) {
       );
     }
     checkRelationStanding(ctx, file, path, relation);
+    if (relation.labels !== undefined) {
+      const labels = relation.labels;
+      if (
+        !isObject(labels) ||
+        Object.entries(labels).some(
+          ([tone, label]) =>
+            !RELATION_TONES.includes(tone as RelationTone) ||
+            typeof label !== "string" ||
+            !label,
+        )
+      ) {
+        report(
+          ctx,
+          "error",
+          "relation-invalid",
+          file,
+          `${path}/labels`,
+          `labels must map ${RELATION_TONES.join(", ")} to non-empty strings`,
+        );
+      } else if (RELATION_TONES.some((tone) => !(tone in labels))) {
+        report(
+          ctx,
+          "warning",
+          "relation-labels-incomplete",
+          file,
+          `${path}/labels`,
+          "labels should name every tone, or a shift into a missing tone keeps the previous label",
+        );
+      }
+    }
   });
 }
 

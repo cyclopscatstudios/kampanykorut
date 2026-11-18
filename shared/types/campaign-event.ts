@@ -28,11 +28,20 @@ export interface SetRelationEffect extends RelationStanding {
   relationId: string;
 }
 
+export interface ShiftRelationEffect {
+  type: "shift-relation";
+  relationId: string;
+  steps: number;
+  description: string;
+}
+
+export type RelationEffect = SetRelationEffect | ShiftRelationEffect;
+
 export type CampaignEventEffect =
   | RawEffect
   | WithdrawCandidateEffect
   | SplitPartyEffect
-  | SetRelationEffect;
+  | RelationEffect;
 
 export interface CampaignEventBranch {
   if: Condition;
