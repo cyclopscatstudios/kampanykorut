@@ -94,10 +94,12 @@ test("1957: answers and events move the party on the issues", async ({
   });
 });
 
-test("1957: relations bring their consequences", async ({ playCampaign }) => {
+test("1957: relation changes add up to their consequences", async ({
+  playCampaign,
+}) => {
   const seedData = await playCampaign(CAMPAIGN_ID, "mszmp", "nagy_imre", {
     kethly_feltetelei: "C",
-    szakszervezetek: "B",
+    szakszervezetek: "C",
     szerelvenyek: "C",
   });
   const triggered = seedData?.state?.campaignEvents?.triggeredEventIds;
