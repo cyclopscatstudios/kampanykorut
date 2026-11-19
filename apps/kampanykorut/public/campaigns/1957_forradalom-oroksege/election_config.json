@@ -15,6 +15,7 @@
   "thresholdPercent": 0,
   "districtMap": "1945",
   "districtBoost": true,
+  "allowDeadlock": false,
   "parties": [
     {
       "id": "mszmp",
@@ -98,12 +99,12 @@
     {
       "id": "fkgp",
       "label": "Kisgazdapárt",
-      "description": "Az 1945-ös választás győztese. A vidék, a földtulajdon és a polgári szabadságjogok pártja.",
+      "description": "Az 1945-ös választáson a Kisgazdapárt szerezte meg a szavazatok többségét. Azóta a kommunisták kiszorították a hatalomból, vidéken azonban sok helyen ma is ugyanazok szervezik újjá a pártot, akik akkor győzelemre vitték. A kisgazdák a föld magántulajdonát és a polgári szabadságjogokat védik, és a forradalom óta ismét részt vesznek a kormányzásban.",
       "mainCandidates": [
         {
           "id": "kovacs_bela",
           "label": "Kovács Béla",
-          "description": "A párt főtitkára, a szovjet fogságból hazatért kisgazda vezető."
+          "description": "A Kisgazdapárt főtitkárát 1947-ben a szovjet hatóságok hurcolták el. Évekig tartó fogság után tért haza, a forradalom napjaiban pedig miniszteri tisztséget vállalt Nagy Imre kormányában. Most ő vezeti a kisgazdák kampányát. Vidéken sokan még abból az időből ismerik, amikor a párt a földhöz jutott gazdák érdekeit képviselte."
         },
         {
           "id": "tildy_zoltan",

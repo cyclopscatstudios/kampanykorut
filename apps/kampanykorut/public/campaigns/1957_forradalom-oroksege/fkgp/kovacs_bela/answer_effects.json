@@ -503,8 +503,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fkgp": 0.3,
-              "mszmp": 0.1
+              "fkgp": 0.1,
+              "mszmp": 0.3
             }
           }
         ]

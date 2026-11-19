@@ -47,6 +47,7 @@ interface ElectionConfigBase {
   intro?: CampaignIntro;
   background?: string;
   districtBoost?: boolean;
+  allowDeadlock?: boolean;
   baseResults?: Record<string, Record<string, number>>;
   parties: RawParty[];
   playableSides: PlayableSide[];

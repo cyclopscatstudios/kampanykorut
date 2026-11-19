@@ -220,6 +220,7 @@ function buildParliamentary(
       finalOutcome?.outcome,
       winner.party === playerPartyId,
       noWinner,
+      config.electionConfig.allowDeadlock,
     ),
   );
   const playerSeats =

@@ -81,6 +81,17 @@
       }
     },
     {
+      "id": "hamvas_visszater",
+      "paper": "magyar_nemzet",
+      "headline": "Hamvas Béla visszatér a Fővárosi Könyvtárba",
+      "lead": "A Fővárosi Könyvtár igazgatósága visszahelyezte állásába Hamvas Béla írót, a könyvtár egykori munkatársát.",
+      "image": "/images/1957_forradalom-oroksege/hamvas_bela.jpg",
+      "when": {
+        "type": "turn",
+        "max": 10
+      }
+    },
+    {
       "id": "corvin_koz_tuntetes",
       "paper": "nepszabadsag",
       "headline": "Tüntetés a Corvin közben",

@@ -260,4 +260,16 @@ describe("getEndResultStory", () => {
     );
     expect(getEndResultStory("opposition", false, true)).toBe("deadlock");
   });
+
+  it("turns a deadlock into defeat when the campaign allows none", () => {
+    expect(getEndResultStory("failed", false, true, false)).toBe(
+      "playerSideDefeat",
+    );
+    expect(getEndResultStory(undefined, false, true, false)).toBe(
+      "playerSideDefeat",
+    );
+    expect(getEndResultStory("coalition", false, true, false)).toBe(
+      "playerSideVictory",
+    );
+  });
 });
