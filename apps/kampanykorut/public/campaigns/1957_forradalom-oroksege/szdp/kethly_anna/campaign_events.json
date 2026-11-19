@@ -2842,6 +2842,13 @@
             }
           },
           {
+            "type": "uniform-swing",
+            "params": {
+              "petofi": 3.0,
+              "fkgp": -3.0
+            }
+          },
+          {
             "type": "shift-relation",
             "relationId": "kisgazdak",
             "steps": -1,
@@ -2852,10 +2859,58 @@
     ],
     "announcement": {
       "title": "Kettészakadt a Kisgazdapárt",
-      "body": "Sulyok Dezső és a kisgazda jobbszárny szerint Kovács Béla a szociáldemokratákkal összefogva elárulta a polgárokat. Magyar Szabadságpárt néven önálló listát állítanak.",
+      "body": "Sulyok Dezső és a kisgazda jobbszárny szerint Kovács Béla a szociáldemokratákkal összefogva elárulta a polgárokat. Magyar Szabadságpárt néven önálló listát állítanak. A szakadás után sok baloldali kisgazda gazda a Petőfi Párthoz pártol át.",
       "icon": "/images/1957_forradalom-oroksege/sulyok_dezso_badge.png",
       "imageUri": "/images/1957_forradalom-oroksege/fkgp_szakadas.png",
       "major": true
+    }
+  },
+  {
+    "id": "ket_szakadas_utan",
+    "label": "Két szétesett párt között",
+    "once": true,
+    "priority": 70,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "event-triggered",
+              "eventId": "kadar_szakadas"
+            },
+            {
+              "type": "event-triggered",
+              "eventId": "szabadsagpart_kivalik"
+            },
+            {
+              "not": {
+                "type": "event-triggered",
+                "eventId": "marosan_atlep"
+              }
+            },
+            {
+              "type": "turn",
+              "min": 19
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 2.0,
+              "petofi": 2.4,
+              "mszmp": -2.0,
+              "fkgp": -2.4
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Az egység pártjai",
+      "body": "A kommunisták és a kisgazdák is kettészakadtak, a szociáldemokraták és a Petőfi Párt viszont egyben maradt. Sok csalódott választó szerint most ők az egyetlen biztos pont.",
+      "icon": "people-fill"
     }
   },
   {
@@ -3377,9 +3432,9 @@
             "type": "uniform-swing",
             "params": {
               "szdp": 0.5,
-              "petofi": 0.4,
-              "mszmp": -0.4,
-              "fkgp": -0.4
+              "petofi": 2.5,
+              "mszmp": -0.5,
+              "fkgp": -2.0
             }
           },
           {

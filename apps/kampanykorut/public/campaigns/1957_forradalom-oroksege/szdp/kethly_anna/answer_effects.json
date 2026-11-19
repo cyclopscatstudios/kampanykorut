@@ -747,7 +747,8 @@
             "type": "uniform-swing",
             "params": {
               "szdp": 0.18,
-              "petofi": 0.2
+              "petofi": 0.6,
+              "fkgp": -0.4
             }
           }
         ]
@@ -950,7 +951,8 @@
             "type": "uniform-swing",
             "params": {
               "szdp": 0.18,
-              "petofi": -0.1
+              "petofi": 0.8,
+              "fkgp": -0.8
             }
           }
         ]
@@ -1294,7 +1296,8 @@
             "type": "uniform-swing",
             "params": {
               "szdp": 0.18,
-              "petofi": 0.2
+              "petofi": 0.6,
+              "fkgp": -0.4
             }
           }
         ]
@@ -1347,7 +1350,8 @@
             "type": "uniform-swing",
             "params": {
               "szdp": 0.18,
-              "petofi": 0.2
+              "petofi": 0.6,
+              "fkgp": -0.4
             }
           }
         ]
