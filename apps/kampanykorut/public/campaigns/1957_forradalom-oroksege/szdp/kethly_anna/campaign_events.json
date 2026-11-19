@@ -3569,7 +3569,7 @@
   },
   {
     "id": "merlegnyelv_kampany",
-    "label": "Mérlegnyelv",
+    "label": "A stabilitás pártja",
     "once": true,
     "conditions": [
       {
@@ -3599,21 +3599,21 @@
             "type": "shift-relation",
             "relationId": "kormanyzokepesseg",
             "steps": 1,
-            "description": "A választók szerint nélkületek nincs kormány."
+            "description": "A választók szerint egy Kéthly vezette kormány tartós lenne."
           },
           {
             "type": "shift-relation",
             "relationId": "bibo",
             "steps": 1,
-            "description": "Bibó István szerint a mérlegnyelv a szabadság biztosítéka."
+            "description": "Bibó István szerint a stabil, többpárti kormány a szabadság biztosítéka."
           }
         ]
       }
     ],
     "announcement": {
-      "title": "Nélkülünk nincs kormány",
-      "body": "A szociáldemokraták hajrája egyszerű üzenetre épül: bármelyik nagy párt nyer, csak velük kormányozhat. A bizonytalanok megnyugszanak.",
-      "icon": "symmetry-vertical"
+      "title": "Csak velünk lesz stabil kormány",
+      "body": "A szociáldemokraták hajrája egyszerű üzenetre épül: a forradalom után nyugalom kell, és csak Kéthly Anna vezetésével lesz tartós kormány. A bizonytalanok megnyugszanak.",
+      "icon": "shield-fill-check"
     }
   },
   {

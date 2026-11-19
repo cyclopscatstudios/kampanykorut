@@ -450,10 +450,10 @@
     },
     {
       "id": "merlegnyelv",
-      "title": "Mérlegnyelv",
-      "summary": "Nélkülünk nincs kormány",
-      "description": "A hajrában ne az első helyet ígérd, hanem azt, hogy nélkületek nem lesz kormány. A partnereid könnyebben mondanak igent, és a bizonytalanok is megnyugszanak, de a kampány így kevésbé lelkesít.",
-      "icon": "symmetry-vertical",
+      "title": "A stabilitás pártja",
+      "summary": "Csak velünk lesz stabil kormány",
+      "description": "A hajrában azt üzend, hogy a forradalom után az országnak nyugalom kell, és csak a szociáldemokraták vezetésével lesz tartós, kiszámítható kormány. Ehhez megbízható szövetséges és kormányzóképes párt kell. A bizonytalanok megnyugszanak, de a kampány így kevésbé lelkesít.",
+      "icon": "shield-fill-check",
       "completeWhen": {
         "and": [
           {
