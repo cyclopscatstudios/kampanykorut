@@ -642,7 +642,12 @@ function checkAnswerConditions(
   });
 }
 
-function checkQuestions(ctx: Context, file: string, data: unknown) {
+function checkQuestions(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  eventIds: Set<string> = ctx.eventIds,
+) {
   const questions = new Map<string, QuestionInfo>();
   if (!Array.isArray(data) || data.length === 0) {
     report(
@@ -723,7 +728,7 @@ function checkQuestions(ctx: Context, file: string, data: unknown) {
     }
     questions.set(question.id, { index, answers });
   });
-  checkQuestionConditions(ctx, file, data, questions);
+  checkQuestionConditions(ctx, file, data, questions, eventIds);
   return questions;
 }
 
@@ -732,13 +737,14 @@ function checkQuestionConditions(
   file: string,
   data: unknown[],
   questions: Map<string, QuestionInfo>,
+  eventIds: Set<string>,
 ) {
   const refs = {
     questions: new Map(
       [...questions].map(([id, info]) => [id, info.answers] as const),
     ),
     candidateIds: ctx.parties,
-    eventIds: ctx.eventIds,
+    eventIds,
     focusIds: ctx.focusIds,
     relationIds: ctx.relationIds,
     issueIds: ctx.issueIds,
@@ -1824,6 +1830,7 @@ function checkPlayableSides(
   sides: ReturnType<typeof checkElectionConfig>,
   electionConfigFile: string,
   allQuestions: Map<string, Set<string>>,
+  eventIdsFor: (side: string) => Set<string>,
 ) {
   for (const [partyId, candidates] of Object.entries(playableSides)) {
     const sidePath = `/files/playableSides/${partyId}`;
@@ -1887,6 +1894,7 @@ function checkPlayableSides(
         ctx,
         String(paths.questions),
         read("questions"),
+        eventIdsFor(`${partyId}/${candidateId}`),
       );
       questions.forEach(({ answers }, questionId) => {
         const known = allQuestions.get(questionId) ?? new Set<string>();
@@ -2417,6 +2425,7 @@ function checkPoliticalConfig(
   file: string,
   data: unknown,
   questions: Map<string, Set<string>>,
+  eventIds: Set<string> = ctx.eventIds,
 ) {
   if (data === undefined) {
     return;
@@ -2447,7 +2456,7 @@ function checkPoliticalConfig(
   const refs = {
     questions,
     candidateIds: ctx.parties,
-    eventIds: ctx.eventIds,
+    eventIds,
     focusIds: ctx.focusIds,
     relationIds: ctx.relationIds,
     issueIds: ctx.issueIds,
@@ -3011,6 +3020,7 @@ function readSideFiles(
           isObject(paths) && paths[key] !== undefined
             ? [
                 {
+                  side: `${partyId}/${candidateId}`,
                   file: String(paths[key]),
                   data: readFile(
                     ctx,
@@ -3164,13 +3174,13 @@ export function validateCampaign(
           "manifest.json",
           "/files/politicalConfig",
         );
-  const politicalFiles: { file: string; data: unknown }[] = [
+  const politicalFiles: { file: string; data: unknown; side?: string }[] = [
     { file: String(files.politicalConfig), data: politicalData },
     ...readSideFiles(ctx, files.playableSides, "politicalConfig"),
   ];
   politicalFiles.forEach(({ data }) => collectPoliticalIds(ctx, data));
 
-  const eventFiles: { file: string; data: unknown }[] = [
+  const eventFiles: { file: string; data: unknown; side?: string }[] = [
     ...(files.campaignEvents === undefined
       ? []
       : [
@@ -3186,15 +3196,26 @@ export function validateCampaign(
         ]),
     ...readSideFiles(ctx, files.playableSides, "campaignEvents"),
   ];
-  eventFiles.forEach(({ data }) => {
+  // A side's own event file replaces the campaign-wide one, so its questions
+  // and political config may only refer to the events that side really runs.
+  const campaignEventIds = new Set<string>();
+  const sideEventIds = new Map<string, Set<string>>();
+  eventFiles.forEach(({ data, side }) => {
+    const ids = side ? new Set<string>() : campaignEventIds;
+    if (side) {
+      sideEventIds.set(side, ids);
+    }
     if (Array.isArray(data)) {
       data.filter(isObject).forEach((event) => {
         if (typeof event.id === "string") {
+          ids.add(event.id);
           ctx.eventIds.add(event.id);
         }
       });
     }
   });
+  const eventIdsFor = (side: string) =>
+    sideEventIds.get(side) ?? campaignEventIds;
 
   const allQuestions = new Map<string, Set<string>>();
   if (isObject(files.playableSides)) {
@@ -3204,6 +3225,7 @@ export function validateCampaign(
       sides,
       electionConfigFile,
       allQuestions,
+      eventIdsFor,
     );
   }
 
@@ -3211,8 +3233,14 @@ export function validateCampaign(
     checkCampaignEvents(ctx, file, data, allQuestions),
   );
 
-  politicalFiles.forEach(({ file, data }) =>
-    checkPoliticalConfig(ctx, file, data, allQuestions),
+  politicalFiles.forEach(({ file, data, side }) =>
+    checkPoliticalConfig(
+      ctx,
+      file,
+      data,
+      allQuestions,
+      side ? eventIdsFor(side) : ctx.eventIds,
+    ),
   );
 
   if (files.newspaper !== undefined) {

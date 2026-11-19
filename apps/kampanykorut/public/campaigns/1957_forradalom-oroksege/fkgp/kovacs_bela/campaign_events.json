@@ -1600,10 +1600,12 @@
             },
             "fromByMegye": {
               "1": {
-                "mszmp": 0.24
+                "mszmp": 0.24,
+                "fkgp": 0.02
               },
               "11": {
-                "mszmp": 0.26
+                "mszmp": 0.26,
+                "fkgp": 0.02
               }
             }
           }
@@ -1813,7 +1815,7 @@
     ],
     "announcement": {
       "title": "Közös program, közös kormány",
-      "body": "A három párt vezetői közös gyűlésen mutatták be a programjukat. A bizonytalan szavazók szerint ez végre kiszámítható kormányt ígér.",
+      "body": "A három párt vezetői közös gyűlésen álltak ki egymás mellett. A bizonytalan szavazók szerint ez végre kiszámítható kormányt ígér.",
       "imageUri": "/images/1957_forradalom-oroksege/polgari_blokk_siker.png",
       "icon": "/images/1957_forradalom-oroksege/harom_part_kampany.png"
     }
@@ -1889,6 +1891,20 @@
                   "answerId": "D"
                 }
               ]
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "kormanytarskent",
+                "answerId": "D"
+              }
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "nagy_imrerol",
+                "answerId": "C"
+              }
             }
           ]
         },
@@ -2052,6 +2068,13 @@
                   "answerId": "C"
                 }
               ]
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "nagy_imrerol",
+                "answerId": "B"
+              }
             }
           ]
         },
@@ -2126,7 +2149,7 @@
     ],
     "announcement": {
       "title": "Szeletenként odaadtátok",
-      "body": "Kádár János lapja szerint aki 1947-et megbocsátja, az 1957-et is odaadná. A vádra a kisgazdák csak csendben válaszoltak, és ez sokaknak elég volt.",
+      "body": "Kádár János lapja szerint aki 1947-et megbocsátja, az 1957-et is odaadná. A vád megragadt, akármit feleltek rá a kisgazdák, és sokaknak ez elég volt.",
       "icon": "scissors"
     }
   },

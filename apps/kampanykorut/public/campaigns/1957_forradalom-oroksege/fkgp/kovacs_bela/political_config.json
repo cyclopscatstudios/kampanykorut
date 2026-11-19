@@ -90,6 +90,13 @@
             }
           },
           {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "templom_foldje",
+              "answerId": "B"
+            }
+          },
+          {
             "type": "turn",
             "min": 14
           }
@@ -356,6 +363,20 @@
                 "answerId": "D"
               }
             ]
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "kormanytarskent",
+              "answerId": "D"
+            }
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "nagy_imrerol",
+              "answerId": "C"
+            }
           }
         ]
       },
@@ -453,6 +474,13 @@
                 "answerId": "C"
               }
             ]
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "nagy_imrerol",
+              "answerId": "B"
+            }
           }
         ]
       },
@@ -753,7 +781,7 @@
           ]
         },
         "acceptReason": "Kéthly Anna kész belépni, ha a munkások jogai megmaradnak. Igent mond, de ez már tarka kormány lesz.",
-        "rejectReason": "Kéthly Anna nem ül egy kormányba a gyárak visszaadásának híveivel. Nemet mond."
+        "rejectReason": "Kéthly Anna nem bízik eléggé a kisgazdákban, vagy nem ül egy kormányba a gyárak visszaadásának híveivel. Nemet mond."
       }
     ]
   },
