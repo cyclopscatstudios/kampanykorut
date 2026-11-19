@@ -3233,13 +3233,34 @@ export function validateCampaign(
     checkCampaignEvents(ctx, file, data, allQuestions),
   );
 
+  // The campaign-wide political config is used by every side without its own,
+  // so it may only refer to events that all of those sides run.
+  const sidesWithOwnConfig = new Set(politicalFiles.map(({ side }) => side));
+  const inheritingSides = isObject(files.playableSides)
+    ? Object.entries(files.playableSides).flatMap(([partyId, candidates]) =>
+        isObject(candidates)
+          ? Object.keys(candidates)
+              .map((candidateId) => `${partyId}/${candidateId}`)
+              .filter((side) => !sidesWithOwnConfig.has(side))
+          : [],
+      )
+    : [];
+  const sharedEventIds =
+    inheritingSides.length === 0
+      ? ctx.eventIds
+      : new Set(
+          [...ctx.eventIds].filter((id) =>
+            inheritingSides.every((side) => eventIdsFor(side).has(id)),
+          ),
+        );
+
   politicalFiles.forEach(({ file, data, side }) =>
     checkPoliticalConfig(
       ctx,
       file,
       data,
       allQuestions,
-      side ? eventIdsFor(side) : ctx.eventIds,
+      side ? eventIdsFor(side) : sharedEventIds,
     ),
   );
 

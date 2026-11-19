@@ -1095,6 +1095,38 @@ describe("validateCampaign", () => {
       ).toEqual([["unknown-event", "side/events.json"]]);
     });
 
+    it("checks the shared political config against every inheriting side", () => {
+      const result = validate((f) => {
+        withEvents([withdrawal()])(f);
+        file(f, "manifest.json").files.politicalConfig = "political.json";
+        f["political.json"] = {
+          gameMode: "strategic",
+          coalition: {
+            partners: [
+              {
+                partyId: "party_b",
+                acceptWhen: {
+                  type: "event-triggered",
+                  eventId: withdrawal().id,
+                },
+                acceptReason: "Igen",
+                rejectReason: "Nem",
+              },
+            ],
+          },
+        };
+        file(
+          f,
+          "manifest.json",
+        ).files.playableSides.party_a.candidate_a.campaignEvents =
+          "side/events.json";
+        f["side/events.json"] = [];
+      });
+      expect(result.map((d) => [d.code, d.file])).toEqual([
+        ["unknown-event", "political.json"],
+      ]);
+    });
+
     it("checks side questions against the events that side runs", () => {
       const seesGlobalEvent = (f: Files) => {
         withEvents([withdrawal()])(f);
