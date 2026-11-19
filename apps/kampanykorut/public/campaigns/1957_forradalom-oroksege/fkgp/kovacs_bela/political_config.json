@@ -1,0 +1,839 @@
+{
+  "gameMode": "strategic",
+  "focuses": [
+    {
+      "id": "negyvenotos_part",
+      "title": "A 45-ös párt",
+      "summary": "Fogadj be mindenkit, aki nem baloldali",
+      "description": "1945-ben szinte minden nem baloldali szavazó a kisgazdákra szavazott. Nyisd meg a pártot újra mindenki előtt, és építs széles tábort, de vigyázz, hogy a jobbszárny ne vegye át az irányítást. Nagy Imre és Kéthly Anna gyanakodva figyeli, kik lépnek be hozzád.",
+      "icon": "/images/1957_forradalom-oroksege/45_part.png",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "kik_johetnek",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kik_johetnek",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "type": "turn",
+            "min": 20
+          },
+          {
+            "not": {
+              "type": "event-triggered",
+              "eventId": "szabadsagpart_kivalik"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "event-triggered",
+            "eventId": "szabadsagpart_kivalik"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kik_johetnek",
+            "answerId": "C"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "fkgp": -4,
+            "dnp": 2,
+            "mszmp": 1,
+            "petofi": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "nincs_visszaut",
+      "title": "Nincs visszaút",
+      "summary": "A föld a parasztoké, a gyár a népé marad",
+      "description": "Kovács Béla Pécsen kimondta: senki ne álmodozzon a grófok és gyárosok világáról. Építs modern paraszti-polgári pártot, amely megtartja a földreformot, és nem adja vissza a gyárakat.",
+      "icon": "/images/1957_forradalom-oroksege/nincs_visszaut.png",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "senki_ne_almodozzon",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "senki_ne_almodozzon",
+                "answerId": "C"
+              }
+            ]
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "kie_a_gyar",
+              "answerId": "A"
+            }
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "templom_foldje",
+              "answerId": "B"
+            }
+          },
+          {
+            "type": "turn",
+            "min": 14
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "senki_ne_almodozzon",
+            "answerId": "D"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "templom_foldje",
+            "answerId": "B"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kie_a_gyar",
+            "answerId": "A"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "fkgp": -5,
+            "petofi": 2,
+            "mszmp": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "sajat_zaszlo",
+      "title": "Saját zászló",
+      "summary": "Lépj ki a kormányból a megfelelő pillanatban",
+      "description": "A kisgazdák csak akkor győzhetnek, ha a választók nem Nagy Imre árnyékában látják őket. Lépj ki az ideiglenes kormányból, de válaszd meg jól a pillanatot és a hangot: a túl korai és a túl késői kilépés is visszaüt.",
+      "icon": "/images/1957_forradalom-oroksege/sajat_zaszlo.png",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "answer-selected",
+            "questionId": "kilepes_ideje",
+            "answerId": "C"
+          },
+          {
+            "type": "event-triggered",
+            "eventId": "fkgp_kilepes"
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "kilepes_ideje",
+            "answerId": "A"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kilepes_ideje",
+            "answerId": "B"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kilepes_ideje",
+            "answerId": "D"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "fkgp": -3,
+            "mszmp": 2,
+            "dnp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "bent_maradunk",
+      "title": "Bent maradunk",
+      "summary": "Maradj a kormányban a választásig",
+      "description": "A kormányban ülve beleszólhatsz a föld, a beszolgáltatás és a kárpótlás ügyeibe, és a jó döntések a kisgazdák érdemei is lesznek. Az ára az, hogy a jobbszárny türelmetlen lesz, és akár ki is válhat a pártból.",
+      "icon": "/images/1957_forradalom-oroksege/bent_maradunk.png",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "turn",
+            "min": 21
+          },
+          {
+            "not": {
+              "type": "event-triggered",
+              "eventId": "szabadsagpart_kivalik"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "type": "event-triggered",
+        "eventId": "szabadsagpart_kivalik"
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "fkgp": -4,
+            "mszmp": 2,
+            "dnp": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "polgari_blokk",
+      "title": "Polgári blokk",
+      "summary": "Kapcsold össze a listát a Demokrata Néppárttal és a Petőfi Párttal",
+      "description": "A kisgazdák egyedül nehezen szereznek többséget. Köss választási szövetséget a Demokrata Néppárttal és a Petőfi Párttal, és a hajrában írjatok közös programot, hogy a választás után legyen kormányképes többség.",
+      "icon": "/images/1957_forradalom-oroksege/polgari_blokk.png",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "answer-selected",
+            "questionId": "kozos_lista",
+            "answerId": "A"
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "harom_part_program",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "harom_part_program",
+                "answerId": "B"
+              }
+            ]
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "kozos_lista",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kozos_lista",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kozos_lista",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "harom_part_program",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "harom_part_program",
+                "answerId": "D"
+              }
+            ]
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "fkgp": -3,
+            "dnp": 1,
+            "petofi": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "falu_partja",
+      "title": "A falu pártja",
+      "summary": "Nyerd meg a parasztokat egyedül",
+      "description": "A falu dönti el a választást, és ott Nagy Imre, az 1945-ös földosztó miniszter, meg a Petőfi Párt is versenyez a kisgazdákkal. Legyél te a gazdák első számú pártja: a föld, a gépek és a beszolgáltatás ügyében is te állj ki értük.",
+      "icon": "/images/1957_forradalom-oroksege/falu_partja.png",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "relation",
+            "relationId": "gazdak",
+            "tone": ["good"]
+          },
+          {
+            "type": "turn",
+            "min": 18
+          }
+        ]
+      },
+      "failWhen": {
+        "type": "relation",
+        "relationId": "gazdak",
+        "tone": ["bad"]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "fkgp": -5,
+            "petofi": 3,
+            "mszmp": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "elegtetel_1947",
+      "title": "Elégtétel 1947-ért",
+      "summary": "Mondd ki, mi történt veled és a párttal 1947-ben",
+      "description": "Kovács Bélát 1947-ben a szovjetek hurcolták el, a pártot Rákosiék szeletenként verték szét. Tedd a hajrá középpontjába az elégtételt: rehabilitációs törvényt és a felelősök számonkérését. A jobbszárny és a felkelők melletted állnak, de Nagy Imre és Moszkva bosszút hall ki belőle, és a bizonytalanok is megijedhetnek.",
+      "icon": "/images/1957_forradalom-oroksege/elegtetel_1947.png",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "C"
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "kormanytarskent",
+              "answerId": "D"
+            }
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "nagy_imrerol",
+              "answerId": "C"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "nagy_imrerol",
+            "answerId": "C"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kormanytarskent",
+            "answerId": "D"
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "C"
+              }
+            ]
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "fkgp": -3,
+            "szabadsagpart": 1,
+            "dnp": 1,
+            "mszmp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "nem_bosszut_allunk",
+      "title": "Nem bosszút állunk",
+      "summary": "A jövőről beszélj, ne 1947-ről",
+      "description": "Ha az 1947-ben elhurcolt Kovács Béla megbocsátásról beszél, azt a bizonytalanok is elhiszik. Beszélj a jövőről, és nyugtasd meg őket. A jobbszárny türelmetlen lesz, és a Kádár-oldal azt vágja a fejedhez, hogy a kisgazdák egyszer már mindent odaadtak.",
+      "icon": "/images/1957_forradalom-oroksege/nem_bosszut_allunk.png",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "B"
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "zaro_nagygyules",
+                "answerId": "C"
+              }
+            ]
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "nagy_imrerol",
+              "answerId": "B"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "egyszer_mar_elvesztettetek",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "nagy_imrerol",
+            "answerId": "B"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "zaro_nagygyules",
+            "answerId": "D"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "fkgp": -3,
+            "mszmp": 1,
+            "petofi": 1,
+            "dnp": 1
+          }
+        }
+      ]
+    }
+  ],
+  "focusBranches": [
+    {
+      "id": "irany",
+      "title": "Milyen kisgazdapárt?",
+      "focuses": ["negyvenotos_part", "nincs_visszaut"],
+      "availableFromTurn": 1,
+      "requiredBeforeTurn": 1
+    },
+    {
+      "id": "kormany",
+      "title": "Kilépsz a kormányból?",
+      "focuses": ["sajat_zaszlo", "bent_maradunk"],
+      "availableFromTurn": 7,
+      "requiredBeforeTurn": 9
+    },
+    {
+      "id": "tamasz",
+      "title": "Kire támaszkodsz?",
+      "focuses": ["polgari_blokk", "falu_partja"],
+      "availableFromTurn": 13,
+      "requiredBeforeTurn": 15
+    },
+    {
+      "id": "hajra",
+      "title": "Kampányhajrá",
+      "focuses": ["elegtetel_1947", "nem_bosszut_allunk"],
+      "availableFromTurn": 19,
+      "requiredBeforeTurn": 21
+    }
+  ],
+  "relationGroups": [
+    {
+      "id": "partok",
+      "title": "Pártok",
+      "icon": "flag-fill"
+    },
+    {
+      "id": "tarsadalom",
+      "title": "Társadalom",
+      "icon": "people-fill"
+    },
+    {
+      "id": "kulfold",
+      "title": "Külföld",
+      "icon": "globe-europe-africa"
+    }
+  ],
+  "relations": [
+    {
+      "id": "nagy_imre",
+      "name": "Nagy Imre",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/nagy_imre_badge.png",
+      "tone": "calm",
+      "label": "Hálás, de óvatos",
+      "description": "A miniszterelnök és koalíciós partnered. 1945-ben ő osztotta a földet.",
+      "labels": {
+        "good": "Baráti",
+        "calm": "Tisztel",
+        "tense": "Feszült",
+        "bad": "Ellenséges"
+      }
+    },
+    {
+      "id": "jobbszarny",
+      "name": "Sulyok Dezső és a jobbszárny",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/sulyok_dezso_badge.png",
+      "tone": "calm",
+      "label": "Kivár",
+      "description": "A párt jobbszárnya figyeli, mennyit enged a vezetés a kormánynak.",
+      "labels": {
+        "good": "Lelkes",
+        "calm": "Kivár",
+        "tense": "Türelmetlen",
+        "bad": "Kijáratot keres"
+      }
+    },
+    {
+      "id": "nagy_ferenc",
+      "name": "Nagy Ferenc",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/nagy_ferenc_badge.png",
+      "tone": "calm",
+      "label": "Hazavágyik",
+      "description": "A volt miniszterelnök Washingtonban él, és hazatérne.",
+      "labels": {
+        "good": "Elégedett",
+        "calm": "Elfogadja",
+        "tense": "Sértett",
+        "bad": "Saját utat jár"
+      }
+    },
+    {
+      "id": "barankovics",
+      "name": "Barankovics István",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/barankovics_istvan_badge.png",
+      "tone": "good",
+      "label": "Rokon tábor",
+      "description": "A Demokrata Néppárt vezetője, a természetes partner.",
+      "labels": {
+        "good": "Szövetséges",
+        "calm": "Kivár",
+        "tense": "Sértett",
+        "bad": "Elutasító"
+      }
+    },
+    {
+      "id": "bibo",
+      "name": "Bibó István",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/bibo_istvan.png",
+      "tone": "good",
+      "label": "Barát",
+      "description": "A Petőfi Párt államminisztere, a földreform és a köztársaság védelmezője.",
+      "labels": {
+        "good": "Barát",
+        "calm": "Kivár",
+        "tense": "Gyanakszik",
+        "bad": "Elutasító"
+      }
+    },
+    {
+      "id": "kethly",
+      "name": "Kéthly Anna",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/kethly_badge.png",
+      "tone": "calm",
+      "label": "Régi vetélytárs",
+      "description": "A szociáldemokraták vezetője. Pártja 1946-ban a Baloldali Blokkban a kisgazdák ellen fordult.",
+      "labels": {
+        "good": "Tárgyalna",
+        "calm": "Régi vetélytárs",
+        "tense": "Bizalmatlan",
+        "bad": "Riadót fúj"
+      }
+    },
+    {
+      "id": "gazdak",
+      "name": "Gazdakörök",
+      "groupId": "tarsadalom",
+      "icon": "/images/1957_forradalom-oroksege/gazdakorok.png",
+      "tone": "calm",
+      "label": "Várakozó",
+      "description": "A parasztság a föld és a beszolgáltatás ügyében vár válaszokat.",
+      "labels": {
+        "good": "Lelkes",
+        "calm": "Várakozó",
+        "tense": "Elégedetlen",
+        "bad": "Félti a földjét"
+      }
+    },
+    {
+      "id": "corvin",
+      "name": "Corvin köz",
+      "groupId": "tarsadalom",
+      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.png",
+      "tone": "tense",
+      "label": "Türelmetlen",
+      "description": "Elszámoltatást követelnek a felkelők.",
+      "labels": {
+        "good": "Szövetséges",
+        "calm": "Tisztel",
+        "tense": "Türelmetlen",
+        "bad": "Árulót kiált"
+      }
+    },
+    {
+      "id": "moszkva",
+      "name": "Moszkva",
+      "groupId": "kulfold",
+      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png",
+      "tone": "tense",
+      "label": "Gyanakvó",
+      "description": "1947 óta a kisgazdákban a nyugati befolyást látja.",
+      "labels": {
+        "good": "Elégedett",
+        "calm": "Kivár",
+        "tense": "Gyanakvó",
+        "bad": "Ellenséges"
+      }
+    },
+    {
+      "id": "nyugat",
+      "name": "Nyugat",
+      "groupId": "kulfold",
+      "icon": "/images/1957_forradalom-oroksege/nyugat.png",
+      "tone": "good",
+      "label": "Rokonszenvez",
+      "description": "A nyugati hatalmak a kisgazdákban látják a polgári Magyarországot.",
+      "labels": {
+        "good": "Rokonszenvez",
+        "calm": "Kivár",
+        "tense": "Csalódott",
+        "bad": "Elfordul"
+      }
+    }
+  ],
+  "coalition": {
+    "maxStrongPartners": 2,
+    "partners": [
+      {
+        "partyId": "dnp",
+        "acceptWhen": {
+          "not": {
+            "type": "relation",
+            "relationId": "barankovics",
+            "tone": ["bad"]
+          }
+        },
+        "acceptReason": "Barankovics István szerint a keresztény polgárok és a gazdák egy kormányba valók. Igent mond.",
+        "rejectReason": "Barankovics nem felejtette el, hogyan bántál a Demokrata Néppárttal. Nemet mond."
+      },
+      {
+        "partyId": "petofi",
+        "acceptWhen": {
+          "and": [
+            {
+              "not": {
+                "type": "relation",
+                "relationId": "bibo",
+                "tone": ["bad"]
+              }
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "kie_a_gyar",
+                "answerId": "A"
+              }
+            }
+          ]
+        },
+        "acceptReason": "Bibó István szerint a földreform és a köztársaság biztonságban van veled. Igent mond.",
+        "rejectReason": "Bibó szerint a programod a régi világot hozná vissza. Nemet mond."
+      },
+      {
+        "partyId": "szdp",
+        "acceptWhen": {
+          "and": [
+            {
+              "type": "relation",
+              "relationId": "kethly",
+              "tone": ["good", "calm"]
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "kie_a_gyar",
+                "answerId": "A"
+              }
+            }
+          ]
+        },
+        "acceptReason": "Kéthly Anna kész belépni, ha a munkások jogai megmaradnak. Igent mond, de ez már tarka kormány lesz.",
+        "rejectReason": "Kéthly Anna nem bízik eléggé a kisgazdákban, vagy nem ül egy kormányba a gyárak visszaadásának híveivel. Nemet mond."
+      }
+    ]
+  },
+  "epilogues": [
+    {
+      "id": "ket_kisgazdapart",
+      "title": "Két kisgazdapárt",
+      "body": "A kisgazdák kormányt alakítanak, de a parlamentben két kisgazdapárt ül. Sulyok Dezső Szabadságpártja minden törvénynél jobbról támadja Kovács Bélát.",
+      "icon": "scissors",
+      "outcomes": ["single-majority", "coalition", "weak-coalition"],
+      "when": {
+        "type": "event-triggered",
+        "eventId": "szabadsagpart_kivalik"
+      }
+    },
+    {
+      "id": "gyanakvo_szomszed",
+      "title": "Gyanakvó szomszéd",
+      "body": "Kovács Béla kormányt alakít, de Moszkva bizalmatlan. A semlegességi szerződés aláírása hónapokig húzódik, és a határ túloldalán hadgyakorlatok kezdődnek.",
+      "icon": "eye-fill",
+      "outcomes": ["single-majority", "coalition", "weak-coalition"],
+      "when": {
+        "type": "relation",
+        "relationId": "moszkva",
+        "tone": ["bad"]
+      }
+    },
+    {
+      "id": "egyedul",
+      "title": "1945 visszatér",
+      "body": "A kisgazdák egyedül is többséget szereztek. Kovács Béla miniszterelnök lesz, és most bizonyíthatja, hogy a párt másodszor nem adja ki a kezéből az országot.",
+      "icon": "trophy-fill",
+      "outcomes": ["single-majority"]
+    },
+    {
+      "id": "polgari_kormany",
+      "title": "Polgári-paraszti kormány",
+      "body": "Kovács Béla kormányt alakít. A föld a parasztoké marad, a köztársaság semleges, és a kormányban a kisgazdák mellett a partnereik is ott ülnek.",
+      "icon": "people-fill",
+      "outcomes": ["coalition"]
+    },
+    {
+      "id": "tarka_koalicio",
+      "title": "Tarka koalíció",
+      "body": "Négy párt kormányoz együtt. Kovács Béla miniszterelnök, de minden döntés előtt három partnert kell meggyőznie, és a koalíció már az első télen recseg.",
+      "icon": "puzzle",
+      "outcomes": ["weak-coalition"]
+    },
+    {
+      "id": "ellenzekben",
+      "title": "Ellenzékben",
+      "body": "A kisgazdák nem kerülnek kormányra. Kovács Béla az új demokrácia ellenzéki vezetője lesz, és a falu hangját a parlamentben kell képviselnie."
+    }
+  ]
+}

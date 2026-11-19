@@ -87,12 +87,16 @@ type CommitTurn = (pending: PendingTurn) => CampaignState;
 export function useGameFlow(
   processAnswer: ProcessAnswer,
   commitTurn: CommitTurn,
+  hasPendingAnnouncement: (state: CampaignState) => boolean = () => false,
 ) {
   const [flow, dispatch] = useReducer(gameFlowReducer, initialState);
 
   const applyTurnResult = (result: CampaignState) => {
     if (result.isEnded) {
-      dispatch({ type: "CHANGE_VIEW", view: "VoteCountingView" });
+      dispatch({
+        type: "CHANGE_VIEW",
+        view: hasPendingAnnouncement(result) ? "MapView" : "VoteCountingView",
+      });
       return;
     }
     if (result.turn % 2 === 0) {

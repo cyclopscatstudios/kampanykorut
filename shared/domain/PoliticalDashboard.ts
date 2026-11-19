@@ -32,9 +32,15 @@ export function forPlayerSide<
 >(config: T, playerSide: PlayerSide | undefined): T {
   const own = playerSide?.candidateId
     ? config.playableSides?.[playerSide.partyId]?.[playerSide.candidateId]
-        ?.politicalConfig
     : undefined;
-  return own ? { ...config, politicalConfig: own } : config;
+  if (!own?.politicalConfig && !own?.campaignEvents) {
+    return config;
+  }
+  return {
+    ...config,
+    ...(own.politicalConfig && { politicalConfig: own.politicalConfig }),
+    ...(own.campaignEvents && { campaignEvents: own.campaignEvents }),
+  };
 }
 
 export function getGameMode(

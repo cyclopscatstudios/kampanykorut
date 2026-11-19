@@ -62,6 +62,7 @@ export function SummaryPage({ results }: { results: FinalResults }) {
     finalOutcome?.outcome,
     winner.party === playerSideId,
     noWinner,
+    currentConfig?.electionConfig.allowDeadlock,
   );
   const heroAssets = sideEndResults?.[story];
 

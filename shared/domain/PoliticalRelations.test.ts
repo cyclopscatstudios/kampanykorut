@@ -87,6 +87,7 @@ describe("PoliticalRelations", () => {
         label: "Feszült",
         description: "Nyíltan szembehelyezkednek.",
         changedAtTurn: 6,
+        score: -2,
       },
     });
     expect(getUnseenRelationIds(changed)).toEqual(["kadar_wing"]);
@@ -113,6 +114,73 @@ describe("PoliticalRelations", () => {
     expect(again.politicalDashboard?.relations?.kadar_wing.changedAtTurn).toBe(
       8,
     );
+  });
+
+  describe("shift-relation", () => {
+    const definitions = [
+      {
+        id: "kadar_wing",
+        tone: "calm" as const,
+        label: "Kivár",
+        labels: {
+          good: "Támogat",
+          calm: "Kivár",
+          tense: "Elégedetlen",
+          bad: "Ellenséges",
+        },
+      },
+    ];
+    const shift = (steps: number, description = "Változott.") => ({
+      type: "shift-relation" as const,
+      relationId: "kadar_wing",
+      steps,
+      description,
+    });
+    const standing = (s: CampaignState) =>
+      s.politicalDashboard?.relations?.kadar_wing;
+
+    it("adds steps to the starting tone and labels the resulting tone", () => {
+      const once = setRelations(state, [shift(-2, "Bírálnak.")], definitions);
+      expect(standing(once)).toEqual({
+        tone: "tense",
+        label: "Elégedetlen",
+        description: "Bírálnak.",
+        changedAtTurn: 6,
+        score: -1,
+      });
+
+      const twice = setRelations(once, [shift(-3)], definitions);
+      expect(standing(twice)).toMatchObject({ tone: "bad", score: -4 });
+    });
+
+    it("needs several good steps to climb back from a bad standing", () => {
+      const bad = setRelations(
+        state,
+        [{ ...ultimatum, tone: "bad", label: "Ellenséges" }],
+        definitions,
+      );
+      const better = setRelations(bad, [shift(3)], definitions);
+      expect(standing(better)).toMatchObject({ tone: "tense", score: -2 });
+
+      const good = setRelations(better, [shift(3), shift(3)], definitions);
+      expect(standing(good)).toMatchObject({ tone: "good", score: 4 });
+    });
+
+    it("keeps the score within the range", () => {
+      const high = setRelations(state, [shift(20)], definitions);
+      expect(standing(high)?.score).toBe(6);
+      const low = setRelations(high, [shift(-30)], definitions);
+      expect(standing(low)?.score).toBe(-6);
+    });
+
+    it("keeps the current label when the tone has no label and does not change", () => {
+      const changed = setRelations(
+        state,
+        [shift(1)],
+        [{ id: "kadar_wing", tone: "calm", label: "Kivár" }],
+      );
+      expect(standing(changed)).toMatchObject({ tone: "calm", label: "Kivár" });
+    });
   });
 
   it("leaves the state untouched without relation effects", () => {

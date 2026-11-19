@@ -271,6 +271,16 @@ export function getEndResultStory(
   outcome: GovernmentOutcome | undefined,
   playerWon: boolean,
   noWinner: boolean,
+  allowDeadlock = true,
+): EndResultStory {
+  const story = pickEndResultStory(outcome, playerWon, noWinner);
+  return story === "deadlock" && !allowDeadlock ? "playerSideDefeat" : story;
+}
+
+function pickEndResultStory(
+  outcome: GovernmentOutcome | undefined,
+  playerWon: boolean,
+  noWinner: boolean,
 ): EndResultStory {
   switch (outcome) {
     case "single-majority":

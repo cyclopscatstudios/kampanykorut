@@ -415,7 +415,13 @@
       "icon": "/images/1957_forradalom-oroksege/kadar_badge.png",
       "tone": "tense",
       "label": "Elégedetlen",
-      "description": "Az MSZMP régi vezetését képviseli, lassabb reformokat akar."
+      "description": "Az MSZMP régi vezetését képviseli, lassabb reformokat akar.",
+      "labels": {
+        "good": "Lojális",
+        "calm": "Kivár",
+        "tense": "Elégedetlen",
+        "bad": "Ellenséges"
+      }
     },
     {
       "id": "kethly",
@@ -424,7 +430,13 @@
       "icon": "/images/1957_forradalom-oroksege/kethly_badge.png",
       "tone": "calm",
       "label": "Tárgyalna",
-      "description": "Versenytárs, de kész tárgyalni, garanciákat vár."
+      "description": "Versenytárs, de kész tárgyalni, garanciákat vár.",
+      "labels": {
+        "good": "Szövetséges",
+        "calm": "Tárgyalna",
+        "tense": "Bizalmatlan",
+        "bad": "Elutasító"
+      }
     },
     {
       "id": "kisgazdak",
@@ -433,7 +445,13 @@
       "icon": "/images/1957_forradalom-oroksege/fkgp_badge.png",
       "tone": "good",
       "label": "Koalíciós partner",
-      "description": "Tildy Zoltán és Kovács Béla a kormány tagjai."
+      "description": "Tildy Zoltán és Kovács Béla a kormány tagjai.",
+      "labels": {
+        "good": "Baráti",
+        "calm": "Udvarias",
+        "tense": "Sértett",
+        "bad": "Ellenséges"
+      }
     },
     {
       "id": "corvin",
@@ -442,7 +460,13 @@
       "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.png",
       "tone": "tense",
       "label": "Türelmetlen",
-      "description": "Elszámoltatást követelnek a felkelők."
+      "description": "Elszámoltatást követelnek a felkelők.",
+      "labels": {
+        "good": "Melletted áll",
+        "calm": "Kivár",
+        "tense": "Türelmetlen",
+        "bad": "Felháborodott"
+      }
     },
     {
       "id": "munkastanacsok",
@@ -451,7 +475,13 @@
       "icon": "/images/1957_forradalom-oroksege/munkastancsok_badge.png",
       "tone": "calm",
       "label": "Várakozó",
-      "description": "Beleszólást követelnek a gyárak irányításába."
+      "description": "Beleszólást követelnek a gyárak irányításába.",
+      "labels": {
+        "good": "Támogat",
+        "calm": "Várakozó",
+        "tense": "Elégedetlen",
+        "bad": "Sztrájkkal fenyeget"
+      }
     },
     {
       "id": "moszkva",
@@ -460,7 +490,13 @@
       "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png",
       "tone": "tense",
       "label": "Gyanakvó",
-      "description": "Elfogadta a semlegességet, de bizalmatlanul figyel."
+      "description": "Elfogadta a semlegességet, de bizalmatlanul figyel.",
+      "labels": {
+        "good": "Elégedett",
+        "calm": "Megnyugodott",
+        "tense": "Gyanakvó",
+        "bad": "Fenyegetőzik"
+      }
     },
     {
       "id": "nyugat",
@@ -469,7 +505,13 @@
       "icon": "/images/1957_forradalom-oroksege/nyugat.png",
       "tone": "calm",
       "label": "Kivár",
-      "description": "A nyugati hatalmak figyelik, merre indul az új köztársaság."
+      "description": "A nyugati hatalmak figyelik, merre indul az új köztársaság.",
+      "labels": {
+        "good": "Rokonszenvez",
+        "calm": "Kivár",
+        "tense": "Csalódott",
+        "bad": "Elfordul"
+      }
     }
   ],
   "coalition": {

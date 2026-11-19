@@ -22,6 +22,7 @@ export interface CandidateConfig {
   endResults?: EndResultProps;
   // Overrides the campaign-wide political config while this candidate plays.
   politicalConfig?: PoliticalConfig;
+  campaignEvents?: CampaignEvent[];
 }
 
 export type PlayableSideConfig = Record<string, CandidateConfig>;

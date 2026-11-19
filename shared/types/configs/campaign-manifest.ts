@@ -6,6 +6,7 @@ export interface CandidateManifest {
   advisorFeedbackAssets?: string;
   endResults?: string;
   politicalConfig?: string;
+  campaignEvents?: string;
 }
 
 export type PlayableSideManifest = Record<string, CandidateManifest>;

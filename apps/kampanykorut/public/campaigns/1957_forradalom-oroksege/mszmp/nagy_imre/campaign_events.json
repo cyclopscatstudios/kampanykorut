@@ -66,10 +66,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kadar",
-            "tone": "calm",
-            "label": "Fegyverszünet",
+            "steps": 2,
             "description": "Kádár kezébe került a pártszervezet, de egyelőre hallgat."
           }
         ]
@@ -89,10 +88,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kadar",
-            "tone": "calm",
-            "label": "Kivár",
+            "steps": 2,
             "description": "Elfogadta a belügyminiszteri széket, és figyeli az erőviszonyokat."
           }
         ]
@@ -112,10 +110,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kadar",
-            "tone": "tense",
-            "label": "Ellenszegül",
+            "steps": -1,
             "description": "Nagy Imrét választották, de Kádár hívei nem fogadják el a döntést."
           }
         ]
@@ -135,10 +132,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "calm",
-            "label": "Türelmes",
+            "steps": 2,
             "description": "A felkelők kivárnak, de nem mondanak le az elszámoltatásról."
           }
         ]
@@ -151,10 +147,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "bad",
-            "label": "Felháborodott",
+            "steps": -3,
             "description": "A Corvin köz árulásnak tartja a megbékélést."
           },
           {
@@ -175,10 +170,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "good",
-            "label": "Elégedett",
+            "steps": 3,
             "description": "Pongrátz Gergely kiáll melletted."
           }
         ]
@@ -191,10 +185,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "tense",
-            "label": "Kivár",
+            "steps": -1,
             "description": "A felkelők részt vesznek a bizottság munkájában, és várják az ítéleteket."
           }
         ]
@@ -214,10 +207,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "calm",
-            "label": "Megnyugodott",
+            "steps": 2,
             "description": "A Nemzetőrség a honvédség része lett, a felkelők megnyugodtak."
           }
         ]
@@ -230,10 +222,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "bad",
-            "label": "Fenyegetve érzi magát",
+            "steps": -3,
             "description": "Moszkva szerint fegyveres felkelőket tűrsz meg."
           }
         ]
@@ -253,10 +244,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "good",
-            "label": "Lelkes",
+            "steps": 3,
             "description": "Pongrátz Gergely a listádon indul."
           }
         ]
@@ -269,10 +259,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "tense",
-            "label": "Megosztott",
+            "steps": -1,
             "description": "Iván Kovács László melletted áll, Pongrátz köre sértett."
           }
         ]
@@ -285,10 +274,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "bad",
-            "label": "Elárulva érzi magát",
+            "steps": -3,
             "description": "A felkelők szerint elfordultál tőlük."
           }
         ]
@@ -301,10 +289,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "tense",
-            "label": "Gyanakvó",
+            "steps": -1,
             "description": "A tanács neve jól hangzik, de a parancsnokok valódi beleszólást követelnek."
           }
         ]
@@ -324,17 +311,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "good",
-            "label": "Elégedett",
+            "steps": 3,
             "description": "A lassabb kivonulás megnyugtatta a Kremlt."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "tense",
-            "label": "Gyanakszik",
+            "steps": -2,
             "description": "Washington szerint engedtél Moszkvának."
           }
         ]
@@ -347,10 +332,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "bad",
-            "label": "Sértett",
+            "steps": -3,
             "description": "A Kreml nem szereti, ha határidőt szabnak neki."
           }
         ]
@@ -363,17 +347,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "good",
-            "label": "Rokonszenvez",
+            "steps": 3,
             "description": "Az ENSZ-megfigyelők meghívását Washingtonban jó néven vették."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "tense",
-            "label": "Fanyalog",
+            "steps": -1,
             "description": "Moszkva nemzetközi ügyet lát a kivonulásban."
           }
         ]
@@ -386,10 +368,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "calm",
-            "label": "Tárgyal",
+            "steps": 2,
             "description": "Moszkva értékeli a csendes diplomáciát."
           }
         ]
@@ -409,10 +390,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "munkastanacsok",
-            "tone": "good",
-            "label": "Partner",
+            "steps": 3,
             "description": "A bányászok szerint szóba álltál velük."
           }
         ]
@@ -425,10 +405,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "munkastanacsok",
-            "tone": "bad",
-            "label": "Sztrájkkal fenyeget",
+            "steps": -3,
             "description": "A katonai szénszállítás miatt a munkástanácsok sztrájkot helyeznek kilátásba."
           }
         ]
@@ -441,17 +420,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "good",
-            "label": "Segít",
+            "steps": 3,
             "description": "Bécs szénsegélyt küldött."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "tense",
-            "label": "Rossz néven veszi",
+            "steps": -1,
             "description": "Moszkva szerint az első bajban nyugatra telefonáltál."
           }
         ]
@@ -464,10 +441,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "munkastanacsok",
-            "tone": "tense",
-            "label": "Türelmetlen",
+            "steps": -2,
             "description": "A szénjegy a tanácsok szerint nem válasz a bányászok követeléseire."
           }
         ]
@@ -487,10 +463,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kadar",
-            "tone": "calm",
-            "label": "Elégedett",
+            "steps": 2,
             "description": "Az apparátus a helyén maradt."
           }
         ]
@@ -503,10 +478,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kadar",
-            "tone": "bad",
-            "label": "Fenyeget",
+            "steps": -3,
             "description": "Az elbocsátott funkcionáriusok Kádár körül gyűlnek."
           }
         ]
@@ -519,10 +493,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kadar",
-            "tone": "tense",
-            "label": "Figyel",
+            "steps": -1,
             "description": "A régi káderek a minisztériumokban is Kádárra hallgatnak."
           }
         ]
@@ -542,10 +515,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kethly",
-            "tone": "good",
-            "label": "Szövetséges",
+            "steps": 3,
             "description": "Kéthly Anna elfogadta a garanciákat."
           }
         ]
@@ -558,10 +530,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kethly",
-            "tone": "tense",
-            "label": "Gyanakvó",
+            "steps": -2,
             "description": "Kéthly szerint a halogatás rossz jel."
           }
         ]
@@ -574,10 +545,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kethly",
-            "tone": "bad",
-            "label": "Elutasító",
+            "steps": -3,
             "description": "Kéthly az 1948-as kényszeregyesítést látja benne."
           }
         ]
@@ -590,10 +560,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kethly",
-            "tone": "calm",
-            "label": "Mérlegel",
+            "steps": 1,
             "description": "Kéthly elfogadta a posztot, de a garanciákat továbbra is várja."
           }
         ]
@@ -624,10 +593,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kethly",
-            "tone": "good",
-            "label": "Elismerő",
+            "steps": 3,
             "description": "Kéthly a saját programját hallja vissza tőled."
           }
         ]
@@ -640,10 +608,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kethly",
-            "tone": "tense",
-            "label": "Enyhül",
+            "steps": -2,
             "description": "Kéthly értékeli a független szakszervezeteket, de még nem bízik benned."
           }
         ]
@@ -656,10 +623,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "munkastanacsok",
-            "tone": "tense",
-            "label": "Csalódott",
+            "steps": -2,
             "description": "A tanácsok a régi SZOT-ot látják új vezetőkkel."
           }
         ]
@@ -672,17 +638,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "munkastanacsok",
-            "tone": "good",
-            "label": "Lelkes",
+            "steps": 3,
             "description": "A tanácsok lettek a munkások érdekképviselete."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kethly",
-            "tone": "tense",
-            "label": "Versenytársat lát",
+            "steps": -2,
             "description": "Kéthly szerint a tanácsok nem pótolják a szakszervezetet."
           }
         ]
@@ -702,17 +666,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "good",
-            "label": "Elégedett",
+            "steps": 3,
             "description": "Gerő és Hegedüs bíróság elé állnak."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kadar",
-            "tone": "bad",
-            "label": "Fenyeget",
+            "steps": -3,
             "description": "A régi gárda szerint a perek nem állnak meg Gerőnél."
           }
         ]
@@ -725,10 +687,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "bad",
-            "label": "Felháborodott",
+            "steps": -3,
             "description": "A felkelők szerint fedezed a felelősöket."
           }
         ]
@@ -741,10 +702,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "tense",
-            "label": "Kellemetlen",
+            "steps": -1,
             "description": "Moszkva nem szívesen ad ki senkit."
           }
         ]
@@ -764,10 +724,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kadar",
-            "tone": "calm",
-            "label": "Békülékeny",
+            "steps": 2,
             "description": "A vagyonmegosztás után Kádár hajlik az együttműködésre."
           }
         ]
@@ -780,17 +739,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kadar",
-            "tone": "bad",
-            "label": "Ellenséges",
+            "steps": -3,
             "description": "Kádár puccsnak nevezi az üzemi szavazásokat."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "munkastanacsok",
-            "tone": "good",
-            "label": "Melletted áll",
+            "steps": 3,
             "description": "A gyári tagság szavazott, és többnyire melletted."
           }
         ]
@@ -803,10 +760,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kadar",
-            "tone": "calm",
-            "label": "Paktum",
+            "steps": 2,
             "description": "Kádár vállalta, hogy a kampányban nem támadjátok egymást."
           }
         ]
@@ -826,10 +782,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "tense",
-            "label": "Jegyzetel",
+            "steps": -1,
             "description": "A kötelező orosz eltörlése nem tetszett a nagykövetségnek."
           }
         ]
@@ -842,17 +797,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "good",
-            "label": "Elégedett",
+            "steps": 3,
             "description": "A diákőrség a forradalom folytatása."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "bad",
-            "label": "Fenyegetve érzi magát",
+            "steps": -3,
             "description": "Moszkva szerint fegyvert adtál a diákok kezébe."
           }
         ]
@@ -872,10 +825,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "munkastanacsok",
-            "tone": "good",
-            "label": "Szövetséges",
+            "steps": 3,
             "description": "A tanácsok választják az igazgatókat."
           }
         ]
@@ -888,10 +840,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "munkastanacsok",
-            "tone": "tense",
-            "label": "Csalódott",
+            "steps": -2,
             "description": "A tanácsadó szerepet kevésnek tartják."
           }
         ]
@@ -904,10 +855,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "munkastanacsok",
-            "tone": "bad",
-            "label": "Elárulva érzi magát",
+            "steps": -3,
             "description": "A tanácsok szerint visszatért a tervhivatal."
           }
         ]
@@ -920,10 +870,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "munkastanacsok",
-            "tone": "calm",
-            "label": "Kíváncsi",
+            "steps": 1,
             "description": "A tanácsok Csepelt figyelik."
           }
         ]
@@ -943,10 +892,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "good",
-            "label": "Elismerő",
+            "steps": 3,
             "description": "A széles választójogot Nyugaton is elismerik."
           }
         ]
@@ -959,17 +907,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "good",
-            "label": "Elégedett",
+            "steps": 3,
             "description": "A volt ÁVH-sok nem szavazhatnak."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "tense",
-            "label": "Aggódik",
+            "steps": -2,
             "description": "A nyugati jogászok kollektív büntetést látnak benne."
           }
         ]
@@ -989,17 +935,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "good",
-            "label": "Elégedett",
+            "steps": 3,
             "description": "A szovjet szerződés biztos piacot ad."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "tense",
-            "label": "Csalódott",
+            "steps": -2,
             "description": "Washington szerint a semlegesség csak papíron létezik."
           }
         ]
@@ -1012,17 +956,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "good",
-            "label": "Partner",
+            "steps": 3,
             "description": "A nyugati hitel megérkezett."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "bad",
-            "label": "Fenyegetőzik",
+            "steps": -3,
             "description": "Moszkva szerint dollárért adtad el a semlegességet."
           }
         ]
@@ -1035,17 +977,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "calm",
-            "label": "Kivár",
+            "steps": 2,
             "description": "Moszkva elfogadja a kisebb szerződést."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "calm",
-            "label": "Kivár",
+            "steps": 1,
             "description": "Washington elfogadja a kisebb hitelt."
           }
         ]
@@ -1058,17 +998,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "calm",
-            "label": "Kivár",
+            "steps": 2,
             "description": "Moszkva szerint a tél majd jobb belátásra bír."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "calm",
-            "label": "Kivár",
+            "steps": 1,
             "description": "Washington szerint a tél majd jobb belátásra bír."
           }
         ]
@@ -1088,17 +1026,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "good",
-            "label": "Elégedett",
+            "steps": 3,
             "description": "A Szabad Európa Rádió irodát nyitott Budapesten."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "tense",
-            "label": "Tiltakozik",
+            "steps": -1,
             "description": "Moszkva propagandát lát a pesti stúdióban."
           }
         ]
@@ -1186,10 +1122,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kethly",
-            "tone": "good",
-            "label": "Közös lista",
+            "steps": 3,
             "description": "Az SZDP és az MSZMP összekapcsolta a listáját."
           }
         ]
@@ -1202,10 +1137,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kethly",
-            "tone": "tense",
-            "label": "Versenytárs",
+            "steps": -2,
             "description": "Az SZDP ellenfélként tekint rád a kampányban."
           }
         ]
@@ -1225,17 +1159,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "bad",
-            "label": "Felháborodott",
+            "steps": -3,
             "description": "A rendkívüli állapot a felkelők szerint Gerő módszere."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "calm",
-            "label": "Megnyugodott",
+            "steps": 2,
             "description": "Moszkva rendet lát Budapesten."
           }
         ]
@@ -1248,10 +1180,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "calm",
-            "label": "Nyugodt",
+            "steps": 2,
             "description": "A felkelők elfogadták a nyugalomra intést."
           }
         ]
@@ -1264,17 +1195,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "corvin",
-            "tone": "good",
-            "label": "Megbízható",
+            "steps": 3,
             "description": "A Nemzetőrség őrzi a pártházakat."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "tense",
-            "label": "Aggódik",
+            "steps": -1,
             "description": "Moszkva fegyveres felkelőket lát a pártházak előtt."
           }
         ]
@@ -1294,17 +1223,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "good",
-            "label": "Támogat",
+            "steps": 3,
             "description": "Washington kiáll az ENSZ-garancia mellett."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "tense",
-            "label": "Gyanakszik",
+            "steps": -1,
             "description": "Moszkva szerint az ENSZ-ben a Nyugat szavaz többségben."
           }
         ]
@@ -1317,17 +1244,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "calm",
-            "label": "Tárgyal",
+            "steps": 2,
             "description": "Moszkva kész egy osztrák mintájú szerződésre."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "calm",
-            "label": "Tárgyal",
+            "steps": 1,
             "description": "A nyugati hatalmak készek a négyhatalmi szerződésre."
           }
         ]
@@ -1340,17 +1265,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "good",
-            "label": "Elégedett",
+            "steps": 3,
             "description": "A kétoldalú megállapodás Moszkvában született."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "bad",
-            "label": "Csalódott",
+            "steps": -3,
             "description": "A Nyugat szerint a semlegességet Moszkvában írták alá."
           }
         ]
@@ -1363,17 +1286,15 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "tense",
-            "label": "Gyanakszik",
+            "steps": -1,
             "description": "Moszkva Tito útját látja benne."
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "calm",
-            "label": "Kivár",
+            "steps": 1,
             "description": "Washington kíváncsian figyeli a jugoszláv mintát."
           }
         ]
@@ -1393,10 +1314,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "tense",
-            "label": "Aggódik",
+            "steps": -1,
             "description": "Moszkva nyugati sodródástól tart."
           }
         ]
@@ -1409,10 +1329,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "moszkva",
-            "tone": "good",
-            "label": "Elfogadja",
+            "steps": 3,
             "description": "A kereskedelmi szerződés megnyugtatta a Kremlt."
           }
         ]
@@ -1687,7 +1606,6 @@
       "title": "A pártszervezet fékez",
       "body": "Kádár emberei a megyei bizottságokban halogatják a reformokat. A választók szerint az MSZMP a régi úton jár.",
       "imageUri": "/images/1957_forradalom-oroksege/kadar_event.png",
-
       "icon": "hourglass-split"
     }
   },
@@ -1718,10 +1636,9 @@
             }
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "tense",
-            "label": "Gyanakszik",
+            "steps": -2,
             "description": "Washington szerint túl közel kerültél Moszkvához."
           }
         ]
@@ -1846,10 +1763,9 @@
             }
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kisgazdak",
-            "tone": "calm",
-            "label": "Barátságos versenytárs",
+            "steps": -2,
             "description": "A kisgazdák kiléptek a kormányból, de Tildy Zoltán jó szóval búcsúzott."
           }
         ]
@@ -1893,10 +1809,9 @@
             }
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kisgazdak",
-            "tone": "tense",
-            "label": "Versenytárs",
+            "steps": -2,
             "description": "Kovács Béla szerint a kormány a kommunisták kezében maradt."
           }
         ]
@@ -1915,10 +1830,9 @@
             }
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kisgazdak",
-            "tone": "tense",
-            "label": "Versenytárs",
+            "steps": -2,
             "description": "Kovács Béla szerint a kormány a kommunisták kezében maradt."
           }
         ]
@@ -1945,10 +1859,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kisgazdak",
-            "tone": "good",
-            "label": "Baráti",
+            "steps": 2,
             "description": "Tildy Zoltán meghatódott a szavaidon."
           }
         ]
@@ -1961,10 +1874,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kisgazdak",
-            "tone": "bad",
-            "label": "Ellenséges",
+            "steps": -3,
             "description": "Kovács Béla szerint 1947 hangján beszélsz."
           }
         ]
@@ -1977,10 +1889,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kisgazdak",
-            "tone": "calm",
-            "label": "Tisztelt ellenfél",
+            "steps": -2,
             "description": "A kisgazdák vitáznak veled, de tisztelnek."
           }
         ]
@@ -1993,10 +1904,9 @@
         },
         "effects": [
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "kisgazdak",
-            "tone": "bad",
-            "label": "Sértett",
+            "steps": -3,
             "description": "Kovács Béla pártszakítást lát a maradó miniszterekben."
           }
         ]
@@ -2200,10 +2110,9 @@
             }
           },
           {
-            "type": "set-relation",
+            "type": "shift-relation",
             "relationId": "nyugat",
-            "tone": "bad",
-            "label": "Elfordul",
+            "steps": -3,
             "description": "A nyugati lapok szerint visszatértél Moszkva pórázára."
           }
         ]
@@ -2335,7 +2244,6 @@
       "title": "Nemzeti egység",
       "body": "Nagy Imre a forradalom pártjainak közös kormányát ígéri. A bizonytalan szavazók szerint így nem lesz újra egypártrendszer.",
       "imageUri": "/images/1957_forradalom-oroksege/nemzeti_egyseg_kampany.png",
-
       "icon": "/images/1957_forradalom-oroksege/nemzeti_egyseg_icon.png"
     }
   },

@@ -979,6 +979,60 @@ describe("validateCampaign", () => {
       ]);
     });
 
+    it("accepts a shift and tone labels, and reports bad ones", () => {
+      const events = (effect: object) => (f: Record<string, unknown>) => {
+        file(f as never, "manifest.json").files.campaignEvents = "events.json";
+        f["events.json"] = [
+          {
+            id: "e",
+            conditions: [{ if: { type: "turn", min: 1 }, effects: [effect] }],
+          },
+        ];
+      };
+      const labels = {
+        good: "Támogat",
+        calm: "Kivár",
+        tense: "Elégedetlen",
+        bad: "Ellenséges",
+      };
+      expect(
+        validate((f) => {
+          withPolitical(relationConfig({ labels }))(f);
+          events({
+            type: "shift-relation",
+            relationId: "kadar_wing",
+            steps: -2,
+            description: "Bírálnak.",
+          })(f);
+        }),
+      ).toEqual([]);
+
+      const result = validate((f) => {
+        withPolitical(
+          relationConfig({ labels: { good: "Támogat", angry: "x" } }),
+        )(f);
+        events({
+          type: "shift-relation",
+          relationId: "ghost",
+          steps: 0.5,
+          description: "",
+        })(f);
+      });
+      expect(codes(result)).toEqual([
+        "error:unknown-relation",
+        "error:relation-invalid",
+        "error:relation-invalid",
+        "error:relation-invalid",
+      ]);
+      expect(
+        codes(
+          validate((f) => {
+            withPolitical(relationConfig({ labels: { good: "Támogat" } }))(f);
+          }),
+        ),
+      ).toEqual(["warning:relation-labels-incomplete"]);
+    });
+
     it("reports a config that is not an object", () => {
       expect(codes(validate(withPolitical([])))).toEqual([
         "error:political-config-invalid",
@@ -1019,6 +1073,81 @@ describe("validateCampaign", () => {
 
     it("accepts a valid events file", () => {
       expect(validate(withEvents([withdrawal()]))).toEqual([]);
+    });
+
+    it("checks an events file that belongs to one candidate", () => {
+      const withSideEvents = (events: unknown) => (f: Files) => {
+        file(
+          f,
+          "manifest.json",
+        ).files.playableSides.party_a.candidate_a.campaignEvents =
+          "side/events.json";
+        f["side/events.json"] = events;
+      };
+      expect(validate(withSideEvents([withdrawal()]))).toEqual([]);
+      const event = withdrawal();
+      event.conditions[0].if = {
+        type: "event-triggered",
+        eventId: "nope",
+      } as never;
+      expect(
+        validate(withSideEvents([event])).map((d) => [d.code, d.file]),
+      ).toEqual([["unknown-event", "side/events.json"]]);
+    });
+
+    it("checks the shared political config against every inheriting side", () => {
+      const result = validate((f) => {
+        withEvents([withdrawal()])(f);
+        file(f, "manifest.json").files.politicalConfig = "political.json";
+        f["political.json"] = {
+          gameMode: "strategic",
+          coalition: {
+            partners: [
+              {
+                partyId: "party_b",
+                acceptWhen: {
+                  type: "event-triggered",
+                  eventId: withdrawal().id,
+                },
+                acceptReason: "Igen",
+                rejectReason: "Nem",
+              },
+            ],
+          },
+        };
+        file(
+          f,
+          "manifest.json",
+        ).files.playableSides.party_a.candidate_a.campaignEvents =
+          "side/events.json";
+        f["side/events.json"] = [];
+      });
+      expect(result.map((d) => [d.code, d.file])).toEqual([
+        ["unknown-event", "political.json"],
+      ]);
+    });
+
+    it("checks side questions against the events that side runs", () => {
+      const seesGlobalEvent = (f: Files) => {
+        withEvents([withdrawal()])(f);
+        file(f, "side/questions.json")[1].visibleIf = {
+          type: "event-triggered",
+          eventId: withdrawal().id,
+        };
+      };
+      expect(validate(seesGlobalEvent)).toEqual([]);
+      const result = validate((f) => {
+        seesGlobalEvent(f);
+        file(
+          f,
+          "manifest.json",
+        ).files.playableSides.party_a.candidate_a.campaignEvents =
+          "side/events.json";
+        f["side/events.json"] = [];
+      });
+      expect(result.map((d) => [d.code, d.file])).toEqual([
+        ["unknown-event", "side/questions.json"],
+      ]);
     });
 
     it("reports a missing events file", () => {

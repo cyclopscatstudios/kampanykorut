@@ -52,6 +52,7 @@ export interface Relation extends RelationStanding {
   name: string;
   groupId: string;
   icon?: IconName;
+  labels?: Partial<Record<RelationTone, string>>;
 }
 
 export interface PoliticalConfig {
@@ -115,7 +116,10 @@ export interface PoliticalDashboardState {
   focusChosenAtTurn?: number;
   focusLocked?: boolean;
   selectedFocusId?: string;
-  relations?: Record<string, RelationStanding & { changedAtTurn: number }>;
+  relations?: Record<
+    string,
+    RelationStanding & { changedAtTurn: number; score?: number }
+  >;
   seenRelationIds?: string[];
   seenFocusStatus?: string;
 }

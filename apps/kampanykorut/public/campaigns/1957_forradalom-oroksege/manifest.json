@@ -10,7 +10,6 @@
     "issues": "issues.json",
     "voterEnvironmentConfig": "voter_environment_config.json",
     "candidateListData": "valasztokeruletek.json",
-    "campaignEvents": "campaign_events.json",
     "newspaper": "newspaper.json",
     "customPollsters": "custom_pollsters.json",
     "playableSides": {
@@ -21,7 +20,19 @@
           "politicalConfig": "mszmp/nagy_imre/political_config.json",
           "advisorFeedback": "mszmp/nagy_imre/advisor_feedback.json",
           "advisorFeedbackAssets": "mszmp/nagy_imre/advisor_feedback_assets.json",
-          "endResults": "mszmp/nagy_imre/end_results.json"
+          "endResults": "mszmp/nagy_imre/end_results.json",
+          "campaignEvents": "mszmp/nagy_imre/campaign_events.json"
+        }
+      },
+      "fkgp": {
+        "kovacs_bela": {
+          "questions": "fkgp/kovacs_bela/questions.json",
+          "answerEffect": "fkgp/kovacs_bela/answer_effects.json",
+          "politicalConfig": "fkgp/kovacs_bela/political_config.json",
+          "campaignEvents": "fkgp/kovacs_bela/campaign_events.json",
+          "advisorFeedback": "fkgp/kovacs_bela/advisor_feedback.json",
+          "advisorFeedbackAssets": "fkgp/kovacs_bela/advisor_feedback_assets.json",
+          "endResults": "fkgp/kovacs_bela/end_results.json"
         }
       }
     }

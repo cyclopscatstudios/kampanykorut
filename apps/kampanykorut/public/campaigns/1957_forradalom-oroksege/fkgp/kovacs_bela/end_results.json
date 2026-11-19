@@ -1,0 +1,20 @@
+{
+  "playerSideDefeat": {
+    "title": "A falu hangja ellenzékben",
+    "subtitle": "Kovács Béla pártja nem kerül kormányra",
+    "description": "Vereséget szenvedett Kovács Béla Független Kisgazdapártja az 1957-es országgyűlési választáson. A forradalom utáni első szabad választáson a szavazók nem adtak a kisgazdáknak kormányzati többséget. A kisgazdáknak ellenzékből kell megvédeniük a parasztok földjét és a polgári szabadságjogokat, és újra kell gondolniuk, miért nem hitték el nekik, hogy 1947 nem ismétlődik meg.",
+    "imageUri": "/images/1957_forradalom-oroksege/fkgp_vereseg.png"
+  },
+  "playerSideVictory": {
+    "title": "A kisgazdák második esélye",
+    "subtitle": "Kovács Béla győzelmével új korszak kezdődik",
+    "description": "Történelmi eredmény született az 1957-es országgyűlési választáson: Kovács Béla vezetésével a Független Kisgazdapárt szerezte meg a legtöbb mandátumot. Tizenkét évvel 1945 után a kisgazdák ismét az ország legnagyobb pártja. A győzelem felelősséggel jár: a földet a parasztoknál kell tartani, a semlegességet meg kell őrizni, és meg kell mutatni, hogy a párt másodszor nem engedi kicsúszni a kezéből az országot.",
+    "imageUri": "/images/1957_forradalom-oroksege/fkgp_gyozelem.png"
+  },
+  "deadlock": {
+    "title": "Elmaradt a többség",
+    "subtitle": "Bizonytalan jövő előtt Kovács Béla",
+    "description": "Nem sikerült megszereznie a parlamenti többséget Kovács Béla Független Kisgazdapártjának az 1957-es országgyűlési választáson. A forradalom utáni első szabad választáson a magyar társadalom megosztottnak bizonyult. A kisgazdák előtt most nehéz tárgyalások állnak a Demokrata Néppárttal és a Petőfi Párttal, és ha a polgári-paraszti szövetség nem áll össze, Nagy Imre pártja alakíthat kormányt.",
+    "imageUri": "/images/1957_forradalom-oroksege/visszauto_tamadas.png"
+  }
+}

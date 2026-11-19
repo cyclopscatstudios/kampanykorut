@@ -1,9 +1,11 @@
 import {
   CampaignConfig,
   CampaignState,
+  Relation,
+  RelationEffect,
   RelationGroup,
   RelationStanding,
-  SetRelationEffect,
+  RelationTone,
 } from "../types";
 
 export interface RelationView extends RelationStanding {
@@ -19,20 +21,77 @@ export interface RelationGroupView extends RelationGroup {
 
 type RelationsConfig = Pick<CampaignConfig, "politicalConfig">;
 
+export const RELATION_SCORE_RANGE = 6;
+
+const TONE_SCORES: Record<RelationTone, number> = {
+  good: 4,
+  calm: 1,
+  tense: -2,
+  bad: -5,
+};
+
+export function getRelationToneForScore(score: number): RelationTone {
+  if (score >= 3) {
+    return "good";
+  }
+  if (score >= 0) {
+    return "calm";
+  }
+  if (score >= -3) {
+    return "tense";
+  }
+  return "bad";
+}
+
+type RelationDefinition = Pick<Relation, "id" | "tone"> &
+  Partial<Pick<Relation, "label" | "labels">>;
+
 export function setRelations(
   state: CampaignState,
-  effects: SetRelationEffect[],
+  effects: RelationEffect[],
+  definitions: RelationDefinition[] = [],
 ): CampaignState {
   if (effects.length === 0) {
     return state;
   }
   const relations = { ...state.politicalDashboard?.relations };
-  for (const { relationId, tone, label, description } of effects) {
+  for (const effect of effects) {
+    const { relationId, description } = effect;
+    if (effect.type === "set-relation") {
+      relations[relationId] = {
+        tone: effect.tone,
+        label: effect.label,
+        description,
+        changedAtTurn: state.turn,
+        score: TONE_SCORES[effect.tone],
+      };
+      continue;
+    }
+    const definition = definitions.find((r) => r.id === relationId);
+    const current = relations[relationId];
+    const currentTone = current?.tone ?? definition?.tone ?? "calm";
+    const score = Math.max(
+      -RELATION_SCORE_RANGE,
+      Math.min(
+        RELATION_SCORE_RANGE,
+        (current?.score ?? TONE_SCORES[currentTone]) + effect.steps,
+      ),
+    );
+    const tone = getRelationToneForScore(score);
+    const label =
+      definition?.labels?.[tone] ??
+      (tone === currentTone
+        ? (current?.label ?? definition?.label)
+        : undefined) ??
+      current?.label ??
+      definition?.label ??
+      "";
     relations[relationId] = {
       tone,
       label,
       description,
       changedAtTurn: state.turn,
+      score,
     };
   }
   const changed = new Set(effects.map((e) => e.relationId));

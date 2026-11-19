@@ -5,7 +5,7 @@
   "intro": {
     "title": "A forradalom öröksége",
     "subtitle": "Magyarország · 1957. január 1.",
-    "text": "1956. október 23-án tüntetők vonultak Budapest utcáira. Az esti lövések után a tüntetésből forradalom lett. A harcok végén a szovjet csapatok kivonultak, Magyarország pedig kinyilvánította semlegességét.\n\nNagy Imre koalíciós kormánya szocialistákból, kisgazdákból, szociáldemokratákból és parasztpártiakból áll. A „Ruszkik haza!” jelszó egyesítette őket, de arról már nincs egyetértés, milyen legyen az ország jövője. Most 1957 januárja van; ősszel szabad országgyűlési választást tartanak.\n\nA pártok készülnek a választásra. A munkástanácsok nagyobb beleszólást követelnek a gyárak irányításába, a felkelők pedig felelősségre vonást a sortüzekért. Vita folyik a földekről, az államosításokról és a Moszkvához fűződő viszonyról is. Nagy Imre pártja a legerősebb, de a kormányzáshoz szövetségesekre lehet szüksége. Ősszel a választók döntik el, milyen irányt vesz az ország."
+    "text": "1956. október 23-án tüntetők vonultak Budapest utcáira. Az esti lövések után a tüntetésből forradalom lett. A harcok végén a szovjet csapatok kivonultak, Magyarország pedig kinyilvánította semlegességét.\n\nNagy Imre koalíciós kormánya szocialistákból, kisgazdákból, szociáldemokratákból és parasztpártiakból áll. A „Ruszkik haza!” jelszó egyesítette őket, de arról már nincs egyetértés, milyen legyen az ország jövője. Most 1957 januárja van; ősszel szabad országgyűlési választást tartanak.\n\nA munkástanácsok nagyobb beleszólást követelnek a gyárak irányításába, a felkelők pedig felelősségre vonást a sortüzekért. Vita folyik a földekről, az államosításokról és a Moszkvához fűződő viszonyról is. Nagy Imre pártja a legerősebb, de a kormányzáshoz szövetségesekre lehet szüksége."
   },
   "election": {
     "type": "proportional"
@@ -15,6 +15,7 @@
   "thresholdPercent": 0,
   "districtMap": "1945",
   "districtBoost": true,
+  "allowDeadlock": false,
   "parties": [
     {
       "id": "mszmp",
@@ -53,6 +54,14 @@
       "leader": "Kádár János",
       "color": "#6d1b1b",
       "dormant": true
+    },
+    {
+      "id": "szabadsagpart",
+      "name": "Magyar Szabadságpárt",
+      "shortName": "Szabadságpárt",
+      "leader": "Sulyok Dezső",
+      "color": "#546e7a",
+      "dormant": true
     }
   ],
   "partyListVotes": {
@@ -67,12 +76,12 @@
     {
       "id": "mszmp",
       "label": "MSZMP",
-      "description": "A forradalom napjaiban újjáalakult reformszocialista párt. A legnagyobb tábor az övé, de a régi pártállam öröksége bizalmatlanságot kelt.",
+      "description": "Az MSZMP a forradalom napjaiban alakult meg a feloszlott Magyar Dolgozók Pártja helyén. A legnagyobb választói tábor áll mögötte, de az új név ellenére sokan még a régi pártot látják benne. Nagy Imre hívei a többpártrendszerben keresik a szocializmus helyét, és beleszólást adnának a munkástanácsoknak az üzemek vezetésébe. Kádár köre óvatosabb reformokat sürget. Attól tartanak, hogy a gyors változások megbontják a párt egységét.",
       "mainCandidates": [
         {
           "id": "nagy_imre",
           "label": "Nagy Imre",
-          "description": "A forradalmi kormány miniszterelnöke, a semlegesség kimondója. Az ország legismertebb politikusa."
+          "description": "Októberben a Parlament előtt az ő nevét skandálta a tömeg. A forradalom napjaiban visszatért a kormány élére, bejelentette Magyarország semlegességét, és koalíciót alakított a kisgazdákkal, a szociáldemokratákkal és a parasztpártiakkal. Az ország legismertebb politikusaként vezeti az MSZMP kampányát. Sokan azok közül is inkább valamelyik koalíciós partnerére szavaznának, akik októberben őt akarták a kormány élére."
         },
         {
           "id": "kadar_janos",
@@ -90,19 +99,20 @@
     {
       "id": "fkgp",
       "label": "Kisgazdapárt",
-      "description": "Az 1945-ös választás győztese. A vidék, a földtulajdon és a polgári szabadságjogok pártja.",
+      "description": "Az 1945-ös választáson a Kisgazdapárt szerezte meg a szavazatok többségét. Azóta a kommunisták kiszorították a hatalomból, vidéken azonban sok helyen ma is ugyanazok szervezik újjá a pártot, akik akkor győzelemre vitték. A kisgazdák a föld magántulajdonát és a polgári szabadságjogokat védik, és a forradalom óta ismét részt vesznek a kormányzásban.",
       "mainCandidates": [
         {
           "id": "kovacs_bela",
           "label": "Kovács Béla",
-          "description": "A párt főtitkára, a szovjet fogságból hazatért kisgazda vezető."
+          "description": "A Kisgazdapárt főtitkárát 1947-ben a szovjet hatóságok hurcolták el. Évekig tartó fogság után tért haza, a forradalom napjaiban pedig miniszteri tisztséget vállalt Nagy Imre kormányában. Most ő vezeti a kisgazdák kampányát. Vidéken sokan még abból az időből ismerik, amikor a párt a földhöz jutott gazdák érdekeit képviselte."
         },
         {
           "id": "tildy_zoltan",
           "label": "Tildy Zoltán",
           "description": "Volt köztársasági elnök, a forradalmi kormány államminisztere."
         }
-      ]
+      ],
+      "playableCandidates": ["kovacs_bela"]
     },
     {
       "id": "szdp",
@@ -113,35 +123,6 @@
           "id": "kethly_anna",
           "label": "Kéthly Anna",
           "description": "A párt elnöke, a demokratikus baloldal legismertebb alakja."
-        }
-      ]
-    },
-    {
-      "id": "petofi",
-      "label": "Petőfi Párt",
-      "description": "A népi írók és a parasztság pártja, harmadikutas programmal.",
-      "mainCandidates": [
-        {
-          "id": "farkas_ferenc",
-          "label": "Farkas Ferenc",
-          "description": "A párt főtitkára."
-        },
-        {
-          "id": "bibo_istvan",
-          "label": "Bibó István",
-          "description": "Államminiszter, jogtudós, a demokratikus átmenet gondolkodója."
-        }
-      ]
-    },
-    {
-      "id": "dnp",
-      "label": "Demokrata Néppárt",
-      "description": "Kereszténydemokrata párt, a vallásszabadság és a szociális igazságosság képviselője.",
-      "mainCandidates": [
-        {
-          "id": "farkas_denes",
-          "label": "Farkas Dénes",
-          "description": "Az újjáalakult párt vezetője."
         }
       ]
     }
@@ -157,6 +138,17 @@
         }
       ],
       "party_logo": "/images/1957_forradalom-oroksege/mszmp.png"
+    },
+    {
+      "id": "fkgp",
+      "candidateAssets": [
+        {
+          "id": "kovacs_bela",
+          "portrait": "/images/1957_forradalom-oroksege/kovacs_bela.png",
+          "slogan": "/images/1957_forradalom-oroksege/fkgp_szlogen.png"
+        }
+      ],
+      "party_logo": "/images/1957_forradalom-oroksege/fkgp_logo.png"
     }
   ]
 }
