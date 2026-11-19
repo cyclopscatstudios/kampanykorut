@@ -1095,6 +1095,29 @@ describe("validateCampaign", () => {
       ).toEqual([["unknown-event", "side/events.json"]]);
     });
 
+    it("checks side questions against the events that side runs", () => {
+      const seesGlobalEvent = (f: Files) => {
+        withEvents([withdrawal()])(f);
+        file(f, "side/questions.json")[1].visibleIf = {
+          type: "event-triggered",
+          eventId: withdrawal().id,
+        };
+      };
+      expect(validate(seesGlobalEvent)).toEqual([]);
+      const result = validate((f) => {
+        seesGlobalEvent(f);
+        file(
+          f,
+          "manifest.json",
+        ).files.playableSides.party_a.candidate_a.campaignEvents =
+          "side/events.json";
+        f["side/events.json"] = [];
+      });
+      expect(result.map((d) => [d.code, d.file])).toEqual([
+        ["unknown-event", "side/questions.json"],
+      ]);
+    });
+
     it("reports a missing events file", () => {
       const result = validate((f) => {
         file(f, "manifest.json").files.campaignEvents = "events.json";

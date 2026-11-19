@@ -48,6 +48,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
   const { flow, dispatch, handleAnswer, handleAdvisorClose } = useGameFlow(
     processAnswer,
     commitTurn,
+    (result) => Boolean(getPendingAnnouncement(result, config.campaignEvents)),
   );
   const sessionId = stateEngine.getSessionId();
   const partyId = state.playerSide?.partyId;
@@ -59,14 +60,20 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
   const isResumed = state.turn > 0;
   const isIntroOpen = isIntroPending(state, config.electionConfig);
   // Announcements and the newspaper only come up on the map, so they never
-  // collide with the advisor feedback that may follow an answer.
+  // collide with the advisor feedback that may follow an answer. Events fired
+  // by the last answer are announced before the vote counting starts.
   const pendingAnnouncement =
-    !state.isEnded &&
-    !flow.pendingAdvisor &&
-    !isIntroOpen &&
-    flow.currentView === "MapView"
+    !flow.pendingAdvisor && !isIntroOpen && flow.currentView === "MapView"
       ? getPendingAnnouncement(state, config.campaignEvents)
       : undefined;
+
+  const isFinaleAcknowledged =
+    state.isEnded && flow.currentView === "MapView" && !pendingAnnouncement;
+  useEffect(() => {
+    if (isFinaleAcknowledged) {
+      dispatch({ type: "CHANGE_VIEW", view: "VoteCountingView" });
+    }
+  }, [isFinaleAcknowledged, dispatch]);
 
   const editions = useMemo(
     () => buildNewspaperEditions(state, config),

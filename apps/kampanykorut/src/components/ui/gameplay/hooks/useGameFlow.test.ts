@@ -342,5 +342,22 @@ describe("useGameFlow", () => {
 
       expect(result.current.flow.currentView).toBe("VoteCountingView");
     });
+
+    it("stays on the map when the last answer fired an announcement", () => {
+      mockProcessAnswer.mockReturnValue(makePending());
+      mockCommitTurn.mockReturnValue({ turn: 1, isEnded: true });
+      const { result } = renderHook(() =>
+        useGameFlow(mockProcessAnswer, mockCommitTurn, () => true),
+      );
+      act(() => {
+        result.current.dispatch({ type: "CHANGE_VIEW", view: "QuestionView" });
+      });
+
+      act(() => {
+        result.current.handleAnswer("a1");
+      });
+
+      expect(result.current.flow.currentView).toBe("MapView");
+    });
   });
 });

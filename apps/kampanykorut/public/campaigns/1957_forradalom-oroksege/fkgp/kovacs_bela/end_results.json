@@ -2,7 +2,7 @@
   "playerSideDefeat": {
     "title": "A falu hangja ellenzékben",
     "subtitle": "Kovács Béla pártja nem kerül kormányra",
-    "description": "Vereséget szenvedett Kovács Béla Független Kisgazdapártja az 1957-es országgyűlési választáson. A forradalom utáni első szabad választáson a szavazók többsége más pártra bízta az ország vezetését. A kisgazdáknak ellenzékből kell megvédeniük a parasztok földjét és a polgári szabadságjogokat, és újra kell gondolniuk, miért nem hitték el nekik, hogy 1947 nem ismétlődik meg.",
+    "description": "Vereséget szenvedett Kovács Béla Független Kisgazdapártja az 1957-es országgyűlési választáson. A forradalom utáni első szabad választáson a szavazók nem adtak a kisgazdáknak kormányzati többséget. A kisgazdáknak ellenzékből kell megvédeniük a parasztok földjét és a polgári szabadságjogokat, és újra kell gondolniuk, miért nem hitték el nekik, hogy 1947 nem ismétlődik meg.",
     "imageUri": "/images/1957_forradalom-oroksege/fkgp_vereseg.png"
   },
   "playerSideVictory": {
