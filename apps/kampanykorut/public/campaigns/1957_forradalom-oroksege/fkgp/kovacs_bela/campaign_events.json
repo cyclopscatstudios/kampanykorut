@@ -1762,7 +1762,8 @@
     "announcement": {
       "title": "A falu a kisgazdáké",
       "body": "A gazdakörök sorra állnak a kisgazdák mellé. A Petőfi Párt és az MSZMP falusi gyűlésein egyre kevesebben vannak.",
-      "icon": "basket-fill"
+      "imageUri": "/images/1957_forradalom-oroksege/falu_partja_siker.png",
+      "icon": "/images/1957_forradalom-oroksege/falu_partja_siker_badge.png"
     }
   },
   {
