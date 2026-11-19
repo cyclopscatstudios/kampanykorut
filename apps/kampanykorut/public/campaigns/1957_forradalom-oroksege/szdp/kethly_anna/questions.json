@@ -1,0 +1,743 @@
+[
+  {
+    "id": "hazateres_becsbol",
+    "title": "Hazatérés Bécsből",
+    "question": "Hazaértél a Szocialista Internacionálé bécsi üléséről. Az osztrák, a brit és a nyugatnémet testvérpártok segítenének az újjáalakult pártnak: pénzt, papírt és nyomdagépet adnának. Mit fogadsz el?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mindent elfogadsz, a pártnak most kell a pénz és a papír."
+      },
+      {
+        "id": "B",
+        "label": "Csak a papírt és a nyomdagépet fogadod el, pénzt nem."
+      },
+      {
+        "id": "C",
+        "label": "Megköszönöd, de a párt a tagdíjakból áll talpra."
+      },
+      {
+        "id": "D",
+        "label": "A segítséget a szakszervezeteknek kéred, ne a pártnak."
+      }
+    ]
+  },
+  {
+    "id": "ki_volt_a_birad",
+    "title": "Ki volt a bírád?",
+    "question": "Kiderült, ki ítélt el 1954-ben életfogytiglanra, és kik hallgattak ki az Andrássy úton. Többen ma is a minisztériumokban dolgoznak. A Corvin köz azt várja, hogy nevezd meg őket. Mit teszel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Név szerint megnevezed őket, és bíróság elé állításukat követeled."
+      },
+      {
+        "id": "B",
+        "label": "Feljelentést teszel, a többit a független bíróságra bízod."
+      },
+      {
+        "id": "C",
+        "label": "Megbocsátasz: nem a saját sérelmeidért politizálsz."
+      },
+      {
+        "id": "D",
+        "label": "Hallgatsz róla, a kampányt nem a múltra építed."
+      }
+    ]
+  },
+  {
+    "id": "kie_a_nepszava",
+    "title": "Kié a Népszava?",
+    "question": "A Népszava 1877 óta a szociáldemokraták lapja volt, 1948 óta viszont a SZOT adja ki. A szerkesztőség fele visszajönne hozzátok, a másik fele a szakszervezeteknél maradna. Mit akarsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Visszaköveteled: a Népszava a párté volt, és a párté lesz."
+      },
+      {
+        "id": "B",
+        "label": "Közös lapot javasolsz a szakszervezetekkel."
+      },
+      {
+        "id": "C",
+        "label": "Új lapot indítasz Népszava néven, a régi maradjon a SZOT-é."
+      },
+      {
+        "id": "D",
+        "label": "A szerkesztőségre bízod: szavazzanak az újságírók."
+      }
+    ]
+  },
+  {
+    "id": "corvin_kovetelese",
+    "title": "A győzelem terhe",
+    "question": "A Corvin köz felkelői, Pongrátz Gergellyel az élen, gyors elszámoltatást követelnek az ÁVH és a diktatúra felelősei ellen. Kormánytársként neked is állást kell foglalnod. Mit javasolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Független bíróságot és törvényes eljárást."
+      },
+      {
+        "id": "B",
+        "label": "Rendkívüli népbíróságot, még a választás előtt."
+      },
+      {
+        "id": "C",
+        "label": "Amnesztiát mindenkinek, aki nem ölt."
+      },
+      {
+        "id": "D",
+        "label": "Igazságügyi bizottságot, a felkelők képviselőivel."
+      }
+    ]
+  },
+  {
+    "id": "banyaszsztrajk",
+    "title": "Hideg tél",
+    "question": "Januárra elfogyott a szén. A tatabányai és a borsodi bányászok sztrájkolnak, bérjavítást és beleszólást kérnek. A kormány, amelynek te is tagja vagy, a munka folytatását kéri. Kinek az oldalára állsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A sztrájkolók mellé: a munkáspárt nem hagyja magukra a bányászokat."
+      },
+      {
+        "id": "B",
+        "label": "Közvetítesz: béremelés most, a beleszólásról tárgyalás."
+      },
+      {
+        "id": "C",
+        "label": "A kormány mellé: a szénre most az egész országnak szüksége van."
+      },
+      {
+        "id": "D",
+        "label": "Szénsegélyt szervezel a nyugati testvérpártoktól."
+      }
+    ]
+  },
+  {
+    "id": "asszony_a_kormany_elen",
+    "title": "Asszony a kormány élén?",
+    "question": "Kádár lapjai és néhány falusi plébános is azt írja: a politika nem asszonynak való, egy hatvanhét éves hajadon nem vezethet kormányt. A kérdést a riporterek is felteszik. Mit felelsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nem felelsz rá: a programodról beszélsz, nem magadról."
+      },
+      {
+        "id": "B",
+        "label": "Visszavágsz: harmincöt éve ülsz a parlamentben, többet láttál, mint bármelyik bírálód."
+      },
+      {
+        "id": "C",
+        "label": "Programot csinálsz belőle: egyenlő bért, bölcsődét és nyugdíjat ígérsz a nőknek."
+      },
+      {
+        "id": "D",
+        "label": "Humorral felelsz: Jeanne d'Arc is nő volt, és ő sem a püspököktől kért engedélyt."
+      }
+    ]
+  },
+  {
+    "id": "szabad_szakszervezet",
+    "title": "A szabad szakszervezet",
+    "question": "A SZOT 1948 óta a párt szíjhajtója volt. Most a munkástanácsok is maguknak követelik az érdekképviseletet. Melyik utat támogatod?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A SZOT reformját: új vezetőség, de egy szakszervezeti szövetség marad."
+      },
+      {
+        "id": "B",
+        "label": "Új, szabad szociáldemokrata szakszervezeteket alapítasz."
+      },
+      {
+        "id": "C",
+        "label": "A munkástanácsokat: az érdekképviselet is az övék legyen."
+      },
+      {
+        "id": "D",
+        "label": "Mindkettőt: a szakszervezet a bérért felel, a munkástanács a gyár irányításáért."
+      }
+    ]
+  },
+  {
+    "id": "lakas_nyugdij_bolcsode",
+    "title": "Lakás, nyugdíj, bölcsőde",
+    "question": "Budapesten évekig kell várni egy szoba-konyhás lakásra, a nyugdíjak kicsik, a bölcsődékben nincs hely. A szociálpolitika régóta a te szakterületed. Mit ígérsz a választóknak?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nagy lakásépítési programot és emelt nyugdíjat, nyugati hitelből."
+      },
+      {
+        "id": "B",
+        "label": "Bölcsődét minden gyárba és egyenlő bért a nőknek."
+      },
+      {
+        "id": "C",
+        "label": "Szerény, de biztos emelést: csak annyit, amennyit a költségvetés elbír."
+      },
+      {
+        "id": "D",
+        "label": "Mindent egyszerre: lakást, nyugdíjat és bölcsődét egy hároméves tervben."
+      }
+    ]
+  },
+  {
+    "id": "csepel_tanacsa",
+    "title": "Csepel tanácsa",
+    "question": "A Csepel Vas- és Fémművek munkástanácsa, a forradalom egyik legerősebb gyári szervezete, három helyet kér a listádon. Cserébe kiállnak melletted a gyárakban. Mit felelsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mindhárom helyet megadod, az első tíz között."
+      },
+      {
+        "id": "B",
+        "label": "Egy biztos helyet adsz, a többit később."
+      },
+      {
+        "id": "C",
+        "label": "Nem adsz helyet: a munkástanács ne legyen semmilyen párté."
+      },
+      {
+        "id": "D",
+        "label": "Közös listát ajánlasz minden munkástanácsnak, nem csak Csepelnek."
+      }
+    ]
+  },
+  {
+    "id": "a_gyar_jovoje",
+    "title": "Kié a gyár?",
+    "question": "A munkástanácsok országos kongresszusa kimondta: a gyár azé, aki dolgozik benne. A tervhivatal szerint így nincs tervgazdaság, a kisgazdák egy része pedig a kisebb üzemek visszaadását kéri. Mi a programod?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A gyár a munkástanácsé, a terv csak keret."
+      },
+      {
+        "id": "B",
+        "label": "Állami tulajdon munkástanácsi beleszólással."
+      },
+      {
+        "id": "C",
+        "label": "Vegyes gazdaság: a nagyipar állami, a kisipar és a kiskereskedelem szabad."
+      },
+      {
+        "id": "D",
+        "label": "A kisebb üzemeket visszaadod a régi tulajdonosaiknak."
+      }
+    ]
+  },
+  {
+    "id": "szen_es_hitel",
+    "title": "Szén vagy dollár",
+    "question": "Moszkva ötéves szénszerződést kínál kedvező áron. Washington hitelt adna, a brit és a skandináv szociáldemokraták pedig közvetítenének. Mit támogatsz a kormányban?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A nyugati hitelt, a testvérpártok garanciájával."
+      },
+      {
+        "id": "B",
+        "label": "A szovjet szenet: a gyárak most nem állhatnak le."
+      },
+      {
+        "id": "C",
+        "label": "Mindkettőt, hogy egyiktől se függjünk."
+      },
+      {
+        "id": "D",
+        "label": "Egyiket sem: skandináv szénre és osztrák kereskedelemre építesz."
+      }
+    ]
+  },
+  {
+    "id": "kadar_lapjai",
+    "title": "Kádár lapjai",
+    "question": "A Szabad Nép régi szerzői Kádár köréhez húznak, és cikksorozatot indítanak rólad: Kéthly Anna, az angol munkáspárt ügynöke. Felidézik az 1954-es kémvádat is. Hogyan válaszolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Pert indítasz rágalmazásért."
+      },
+      {
+        "id": "B",
+        "label": "Arra kéred Nagy Imrét, hogy határolódjon el a cikkektől."
+      },
+      {
+        "id": "C",
+        "label": "Visszatámadsz: az MSZMP-ben ma is ott ülnek, akik 1950-ben elítéltek."
+      },
+      {
+        "id": "D",
+        "label": "Nyilvánosságra hozod a peraktákat, hogy mindenki lássa, mi volt a vád."
+      }
+    ]
+  },
+  {
+    "id": "nagy_imre_ajanlata",
+    "title": "Nagy Imre ajánlata",
+    "question": "Nagy Imre négyszemközt ajánlatot tesz: közös baloldali programot, a választás után miniszterelnök-helyettesi posztot, és azt, hogy a kampányban nem támadjátok egymást. Mit felelsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Elfogadod: a baloldal együtt erősebb."
+      },
+      {
+        "id": "B",
+        "label": "A fegyverszünetet elfogadod, a közös programot nem."
+      },
+      {
+        "id": "C",
+        "label": "Elutasítod: 1948-ban is így kezdődött."
+      },
+      {
+        "id": "D",
+        "label": "Feltételt szabsz: előbb a régi apparátus távozzon az MSZMP-ből."
+      }
+    ]
+  },
+  {
+    "id": "bibo_tervezete",
+    "title": "Bibó alkotmánya",
+    "question": "Bibó István elkészítette az új köztársaság alkotmánytervezetét: erős parlament, alkotmánybíróság, a munkástanácsok jogai az alkotmányban. A Petőfi Párt kéri, hogy álljatok ki mellette együtt. Mit teszel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Teljes mellszélességgel kiállsz mellette, közös sajtótájékoztatón."
+      },
+      {
+        "id": "B",
+        "label": "Támogatod, de kiegészíted a szociális jogokkal."
+      },
+      {
+        "id": "C",
+        "label": "Az alkotmányozást a választás utánra halasztanád."
+      },
+      {
+        "id": "D",
+        "label": "Saját szociáldemokrata alkotmánytervezetet készítesz."
+      }
+    ]
+  },
+  {
+    "id": "marosan_az_ajtoban",
+    "title": "Marosán az ajtóban",
+    "question": "Kádár kiválása után Marosán György és az 1948-as fúzió hívei visszakérik magukat az SZDP-be. Népszerűek a gyárakban, de ők vitték a pártot a kommunisták közé. Ha nemet mondasz, Kádárhoz mennek. Mit döntesz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mindenkit visszaveszel: a munkásmozgalomnak egységre van szüksége."
+      },
+      {
+        "id": "B",
+        "label": "Visszaveszed őket, de vezető posztot nem kapnak."
+      },
+      {
+        "id": "C",
+        "label": "Nemet mondasz: aki 1948-ban elárulta a pártot, menjen Kádárhoz."
+      },
+      {
+        "id": "D",
+        "label": "Egyenként döntesz: aki bocsánatot kér, jöhet."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "type": "event-triggered",
+          "eventId": "kadar_szakadas"
+        },
+        {
+          "not": {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "szakasits_levele",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "szakasits_levele",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "szakasits_levele",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "szakasits_levele",
+                "answerId": "D"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "szakasits_levele",
+    "title": "Szakasits levele",
+    "question": "Szakasits Árpád, a párt egykori elnöke, aki 1948-ban a fúziót vezette, utána pedig a kommunisták börtönében ült, levelet ír neked. Bocsánatot kér, és helyet kér a pártban. Mit felelsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Visszafogadod, és nyilvánosan kezet fogsz vele."
+      },
+      {
+        "id": "B",
+        "label": "Megbocsátasz neki, de a pártba nem veszed vissza."
+      },
+      {
+        "id": "C",
+        "label": "Nem válaszolsz a levélre."
+      },
+      {
+        "id": "D",
+        "label": "Nyilvánosan felolvasod a levelet: a fúzió hibáját ő maga ismerje be."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      }
+    }
+  },
+  {
+    "id": "gyar_es_falu",
+    "title": "Gyár és falu",
+    "question": "Kovács Béla közös munkás-paraszt programot ajánl: a földet nem veszik el, a gyárakat nem adják vissza, a beszolgáltatás megszűnik. Az SZDP-nek a falvakban alig van szava, a kisgazdák jobbszárnya viszont dühös lenne. Mit felelsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Elfogadod, közösen mutatjátok be a programot."
+      },
+      {
+        "id": "B",
+        "label": "A beszolgáltatás eltörlését támogatod, a közös programot nem."
+      },
+      {
+        "id": "C",
+        "label": "Elutasítod: a szociáldemokraták a munkások pártja."
+      },
+      {
+        "id": "D",
+        "label": "Ellenajánlatot teszel: szövetkezeti falut, önkéntes termelőszövetkezetekkel."
+      }
+    ]
+  },
+  {
+    "id": "atjelentkezok",
+    "title": "Két munkáspárt",
+    "question": "Kádár kiválása után a gyári pártszervezetek nem tudják, hová tartoznak. Több csepeli és diósgyőri MSZMP-szervezet nálad jelentkezne át. Mit teszel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mindenkit befogadsz, aki jön."
+      },
+      {
+        "id": "B",
+        "label": "Befogadod a tagokat, a vezetőiket nem."
+      },
+      {
+        "id": "C",
+        "label": "Nagy Imrének hagyod őket: most nem gyengíted."
+      },
+      {
+        "id": "D",
+        "label": "Közös gyári bizottságot javasolsz Nagy Imrével, amíg a tagok döntenek."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "type": "event-triggered",
+          "eventId": "kadar_szakadas"
+        },
+        {
+          "not": {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "a_gyarkapuban",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "a_gyarkapuban",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "a_gyarkapuban",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "a_gyarkapuban",
+                "answerId": "D"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "a_gyarkapuban",
+    "title": "A gyárkapuban",
+    "question": "Az Egyesült Izzó kapujában az MSZMP és az SZDP agitátorai egymás mellett osztják a röplapot. A munkások azt kérdezik: mi a különbség köztetek? Mit mondanak a te embereid?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mi nem ültünk az ÁVH mellett."
+      },
+      {
+        "id": "B",
+        "label": "Mi szabad szakszervezetet és munkástanácsot adunk, ők tervhivatalt."
+      },
+      {
+        "id": "C",
+        "label": "Nincs nagy különbség, de mi soha nem olvadtunk be."
+      },
+      {
+        "id": "D",
+        "label": "Kéthly Anna börtönben ült, Nagy Imre Moszkvában élt."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      }
+    }
+  },
+  {
+    "id": "valasztojog",
+    "title": "Kik szavazhatnak?",
+    "question": "Vita folyik a választási törvényről: szavazhatnak-e az emigránsok és a volt ÁVH-sok, és csökkenjen-e a korhatár 18 évre. Mit javasolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "18 év, és mindenki szavazhat, akit nem ítéltek el."
+      },
+      {
+        "id": "B",
+        "label": "18 év, de a volt ÁVH-sok nem szavazhatnak."
+      },
+      {
+        "id": "C",
+        "label": "Maradjon 20 év, és az emigránsok is szavazzanak."
+      },
+      {
+        "id": "D",
+        "label": "18 év, és a háztartásbeli nők is külön igazolás nélkül szavazhassanak."
+      }
+    ]
+  },
+  {
+    "id": "az_angolok_embere",
+    "title": "Az angolok embere",
+    "question": "Moszkva hivatalos lapja szerint a Labour Party és a Szocialista Internacionálé Kéthly asszonyon keresztül akarja Magyarországot a NATO-ba vinni. A szovjet nagykövet magyarázatot kér a kormánytól. Mit teszel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Elhatárolódsz: a párt semleges, és nem kér külföldi tanácsot."
+      },
+      {
+        "id": "B",
+        "label": "Vállalod: a nyugati szociáldemokraták a barátaink, és ők is a semlegesség mellett állnak."
+      },
+      {
+        "id": "C",
+        "label": "Meghívod a szovjet nagykövetet a párt kongresszusára."
+      },
+      {
+        "id": "D",
+        "label": "Az ENSZ-hez fordulsz, és nemzetközi garanciát kérsz a semlegességre."
+      }
+    ]
+  },
+  {
+    "id": "semlegesseg_garanciaja",
+    "title": "Az osztrák út",
+    "question": "Ausztria 1955-ben négyhatalmi szerződéssel lett semleges, és ott a szociáldemokraták is kormányoznak. A kormányban most a magyar semlegesség garanciájáról kell dönteni. Mit javasolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Osztrák mintát: négyhatalmi szerződést."
+      },
+      {
+        "id": "B",
+        "label": "ENSZ-garanciát, nyugati megfigyelőkkel."
+      },
+      {
+        "id": "C",
+        "label": "Kétoldalú szerződést Moszkvával, ahogy a szovjetek kérik."
+      },
+      {
+        "id": "D",
+        "label": "Népszavazást a semlegességről, a választással egy napon."
+      }
+    ]
+  },
+  {
+    "id": "radiovita",
+    "title": "Rádióvita Nagy Imrével",
+    "question": "A Magyar Rádió élő vitát rendez Nagy Imre és közted. Egymillió ember hallgatja. Mire építed a vitát?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A programra: a különbséget a szakszervezetekben és a munkástanácsokban mutatod meg."
+      },
+      {
+        "id": "B",
+        "label": "Személyesen: Nagy Imre is a kormányban ült, amikor téged elítéltek."
+      },
+      {
+        "id": "C",
+        "label": "Tisztelettel: elismered az érdemeit, és a jövőről beszélsz."
+      },
+      {
+        "id": "D",
+        "label": "A kormányképességre: megmutatod, hogy van csapatod és van költségvetésed."
+      }
+    ]
+  },
+  {
+    "id": "listakapcsolas_nyitott",
+    "title": "Listakapcsolás",
+    "question": "A választási törvény engedi a listák összekapcsolását. Bibó István kész tárgyalni, és Kádár kiválása óta Nagy Imre is ajánlatot tett. Kivel indulsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A Petőfi Párttal."
+      },
+      {
+        "id": "B",
+        "label": "Nagy Imre MSZMP-jével."
+      },
+      {
+        "id": "C",
+        "label": "Egyedül, a saját zászlód alatt."
+      },
+      {
+        "id": "D",
+        "label": "Mindkettővel: széles demokratikus baloldali blokk."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "type": "event-triggered",
+          "eventId": "kadar_szakadas"
+        },
+        {
+          "not": {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas_zart",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas_zart",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas_zart",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas_zart",
+                "answerId": "D"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "listakapcsolas_zart",
+    "title": "Listakapcsolás",
+    "question": "A választási törvény engedi a listák összekapcsolását. Bibó István kész tárgyalni. Nagy Imrével viszont nem köthetsz szövetséget, amíg Kádár emberei a pártjában ülnek. Mit döntesz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A Petőfi Párttal kapcsolod össze a listát."
+      },
+      {
+        "id": "B",
+        "label": "Egyedül indulsz."
+      },
+      {
+        "id": "C",
+        "label": "A Petőfi Párttal és a kisgazdákkal: a november 3-i kormány pártjaival."
+      },
+      {
+        "id": "D",
+        "label": "Kivársz, hátha Nagy Imre megszabadul Kádártól."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      }
+    }
+  },
+  {
+    "id": "asszonyok_a_kossuth_teren",
+    "title": "Asszonyok a Kossuth téren",
+    "question": "Asszonyok nagygyűlést szerveznek a Kossuth téren, és téged hívnak szónoknak. Egyenlő bért, bölcsődét és magasabb családi pótlékot követelnek. Mit mondasz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mindhármat vállalod, és kimondod: Magyarországnak női miniszterelnök kell."
+      },
+      {
+        "id": "B",
+        "label": "Vállalod a követeléseket, de a beszédet a teljes programodra építed."
+      },
+      {
+        "id": "C",
+        "label": "Fischer Józsefet küldöd el, te a gyárakban kampányolsz."
+      },
+      {
+        "id": "D",
+        "label": "Nem mész el: nem akarod, hogy a nők pártjának lássanak."
+      }
+    ]
+  },
+  {
+    "id": "kethly_zarobeszede",
+    "title": "Záró nagygyűlés",
+    "question": "A Kossuth téren százezrek várják a záró beszédedet. Ez az utolsó alkalom, hogy elmondd, miért a szociáldemokratákra szavazzanak. Mi lesz a fő üzenet?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Szabadság: soha többé egypárti diktatúra, soha többé fúzió."
+      },
+      {
+        "id": "B",
+        "label": "Jólét: lakás, nyugdíj, bölcsőde, osztrák életszínvonal."
+      },
+      {
+        "id": "C",
+        "label": "Munkásdemokrácia: a gyár a munkásé, a föld a parasztoké."
+      },
+      {
+        "id": "D",
+        "label": "Összefogás: nélkülünk nem lesz kormány."
+      }
+    ]
+  }
+]

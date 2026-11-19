@@ -16,6 +16,13 @@
   "districtMap": "1945",
   "districtBoost": true,
   "allowDeadlock": false,
+  "baseResults": {
+    "szdp": {
+      "szdp": 4,
+      "mszmp": -3,
+      "fkgp": -1
+    }
+  },
   "parties": [
     {
       "id": "mszmp",
@@ -117,14 +124,15 @@
     {
       "id": "szdp",
       "label": "Szociáldemokrata Párt",
-      "description": "Önálló munkáspárt, amely nem felejtette el az 1948-as kényszeregyesítést.",
+      "description": "A Szociáldemokrata Párt a forradalom napjaiban alakult újjá, nyolc évvel azután, hogy 1948-ban erőszakkal beolvasztották a kommunista pártba. Múltja tiszta, a gyárakban és Budapesten erős, de szervezete gyenge, és sokan még nem látják kormányzópártnak. A munkások szavazataiért Nagy Imre pártjával kell megküzdenie úgy, hogy a két munkáspárt vitájából ne a kisgazdák nyerjenek.",
       "mainCandidates": [
         {
           "id": "kethly_anna",
           "label": "Kéthly Anna",
-          "description": "A párt elnöke, a demokratikus baloldal legismertebb alakja."
+          "description": "Böhm Vilmos a magyar politika Jeanne d'Arcjának nevezte. 1922 óta ült a parlamentben, 1948-ban nemet mondott a kommunistákkal való egyesülésre, ezért kizárták, majd életfogytiglani börtönre ítélték. A forradalom napjaiban a párt elnöke és Nagy Imre kormányának államminisztere lett. Most az első asszony, aki pártot vezet egy magyar választáson."
         }
-      ]
+      ],
+      "playableCandidates": ["kethly_anna"]
     }
   ],
   "electionAssets": [
@@ -149,6 +157,17 @@
         }
       ],
       "party_logo": "/images/1957_forradalom-oroksege/fkgp_logo.png"
+    },
+    {
+      "id": "szdp",
+      "candidateAssets": [
+        {
+          "id": "kethly_anna",
+          "portrait": "/images/1957_forradalom-oroksege/kethly_badge.png",
+          "slogan": "/images/1957_forradalom-oroksege/kethly_badge.png"
+        }
+      ],
+      "party_logo": "/images/1957_forradalom-oroksege/kethly_badge.png"
     }
   ]
 }

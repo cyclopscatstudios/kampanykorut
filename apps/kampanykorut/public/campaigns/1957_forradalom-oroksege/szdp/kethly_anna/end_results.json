@@ -1,0 +1,20 @@
+{
+  "playerSideDefeat": {
+    "title": "Ellenzékben a szociáldemokraták",
+    "subtitle": "Kéthly Anna pártja nem kerül kormányra",
+    "description": "Nem sikerült kormányra jutnia Kéthly Anna Szociáldemokrata Pártjának az 1957-es országgyűlési választáson. A forradalom utáni első szabad választáson a munkások egy része Nagy Imrére, a vidék a kisgazdákra szavazott. A szociáldemokratáknak ellenzékből kell megvédeniük a szabad szakszervezeteket és a munkástanácsokat, és vigyázniuk kell, hogy 1948 ne ismétlődjön meg.",
+    "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.png"
+  },
+  "playerSideVictory": {
+    "title": "Kéthly Anna győzelme",
+    "subtitle": "A szociáldemokraták az ország legnagyobb pártja",
+    "description": "Történelmi eredmény született az 1957-es országgyűlési választáson: Kéthly Anna vezetésével a Szociáldemokrata Párt szerezte meg a legtöbb mandátumot. Kilenc évvel azután, hogy a pártot erőszakkal beolvasztották, a szociáldemokraták vezetik az országot. Most meg kell mutatniuk, hogy a szabadság és a szocializmus megfér egymás mellett.",
+    "imageUri": "/images/1957_forradalom-oroksege/kethly_hazatert.jpg"
+  },
+  "deadlock": {
+    "title": "Elmaradt a többség",
+    "subtitle": "Bizonytalan jövő előtt Kéthly Anna",
+    "description": "Nem sikerült parlamenti többséget szereznie Kéthly Anna Szociáldemokrata Pártjának az 1957-es országgyűlési választáson. A szociáldemokraták a legnagyobb párt, de a partnereik nem állnak mögéjük. Hosszú tárgyalások jönnek, és ha nem áll össze a kormány, a régi nagy pártok újra lépéselőnybe kerülnek.",
+    "imageUri": "/images/1957_forradalom-oroksege/nepszava_ertekezlet.png"
+  }
+}

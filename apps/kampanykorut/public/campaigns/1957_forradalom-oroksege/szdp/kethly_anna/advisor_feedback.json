@@ -1,0 +1,569 @@
+[
+  {
+    "questionId": "hazateres_becsbol",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A pártkassza megtelik, a Szabad Nép pedig másnap angol fontokról ír. Moszkvában is olvassák."
+      },
+      {
+        "answerId": "B",
+        "text": "Okos határ: a papír nem gyanús, a pénz az lenne. A testvérpártok megértik."
+      },
+      {
+        "answerId": "C",
+        "text": "Tiszta, de lassú. A gyári titkárok örülnek, a szervezés viszont hónapokat csúszik."
+      },
+      {
+        "answerId": "D",
+        "text": "A munkások hálásak, a pártközpont viszont üres marad. Kormányt nem lehet szakszervezeti irodából csinálni."
+      }
+    ]
+  },
+  {
+    "questionId": "ki_volt_a_birad",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A tömeg megtapsol, Nagy Imre viszont úgy érzi, a pártját vádolod. A Jeanne d'Arcokat ilyenkor máglyára is vihetik."
+      },
+      {
+        "answerId": "B",
+        "text": "Jogállami válasz, Bibó elégedett. A Corvin köz lassúnak tartja, de nem árulónak."
+      },
+      {
+        "answerId": "C",
+        "text": "Nagyvonalú gesztus, a nők és az idősek meghatódnak. A felkelők nem értik, és ezt meg is mondják."
+      },
+      {
+        "answerId": "D",
+        "text": "Csend. Így senkit sem bántasz meg, de a saját történeted a legerősebb fegyvered, és most letetted."
+      }
+    ]
+  },
+  {
+    "questionId": "kie_a_nepszava",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A nyomda a tiéd, a SZOT vezetői viszont ellenséget látnak benned. Ők is munkásokat képviselnek."
+      },
+      {
+        "answerId": "B",
+        "text": "Kompromisszum, amit a munkások értenek. A lap hangja viszont nem csak a tiéd lesz."
+      },
+      {
+        "answerId": "C",
+        "text": "Két Népszava az utcán: a rikkancsok sem tudják, melyik az igazi."
+      },
+      {
+        "answerId": "D",
+        "text": "Demokratikus megoldás, az újságírók többsége hozzád áll. Ezt a Nyugat is észreveszi."
+      }
+    ]
+  },
+  {
+    "questionId": "corvin_kovetelese",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A jogászok bólogatnak, a felkelők morognak. Bibó Istvánban viszont szövetségest szereztél."
+      },
+      {
+        "answerId": "B",
+        "text": "A Corvin köz éljenez, de a népbíróság szót a szociáldemokraták 1945 óta ismerik, és nem jó emlékből."
+      },
+      {
+        "answerId": "C",
+        "text": "Békülékeny, csak korai. A temetők még frissek, és ezt a felkelők a szemedre vetik."
+      },
+      {
+        "answerId": "D",
+        "text": "Ügyes: a felkelőket bevonod, nem kirekeszted. Nagy Imre viszont úgy érzi, a feje fölött döntöttél."
+      }
+    ]
+  },
+  {
+    "questionId": "banyaszsztrajk",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A bányászok a te nevedet kiabálják. A minisztertanácsban viszont azt kérdezik, kormánytárs vagy-e még."
+      },
+      {
+        "answerId": "B",
+        "text": "Ezt nevezik kormányzásnak. A bányászok nem éljeneznek, de visszamennek a tárnákba."
+      },
+      {
+        "answerId": "C",
+        "text": "Felelős döntés, csak a bányászok nem így látják. Borsodban ezt nem felejtik el."
+      },
+      {
+        "answerId": "D",
+        "text": "Hajókon jön a Ruhr-vidéki szén, és vele a hír: Kéthlynek vannak barátai. Moszkva nem örül."
+      }
+    ]
+  },
+  {
+    "questionId": "asszony_a_kormany_elen",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Méltóságteljes, de a csend itt beleegyezésnek hangzik. Az asszonyok azt várták, hogy kiállsz."
+      },
+      {
+        "answerId": "B",
+        "text": "Erős válasz. A parlamenti tudósítók emlékeznek rá, hogy 1922 óta ott ülsz, és ezt most leírják."
+      },
+      {
+        "answerId": "C",
+        "text": "Az asszonyok gyűlésein tapsolnak. A pártközpont viszont kérdezi, miből fizetjük a bölcsődéket."
+      },
+      {
+        "answerId": "D",
+        "text": "A mondatot másnap egész Budapest idézi. A püspöki karnál kevésbé nevetnek."
+      }
+    ]
+  },
+  {
+    "questionId": "szabad_szakszervezet",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A régi apparátus megnyugszik, Marosán is elégedett. A gyárakban viszont azt kérdezik, mi változott."
+      },
+      {
+        "answerId": "B",
+        "text": "Nyugaton így működik, és a testvérpártok segítenek. Itthon viszont a munkástanácsok rivális szervezetet látnak benne."
+      },
+      {
+        "answerId": "C",
+        "text": "A munkástanácsok éljeneznek. A pártban sokan félnek, hogy így a párt szerepe elfogy."
+      },
+      {
+        "answerId": "D",
+        "text": "A legbonyolultabb megoldás, de mindenki talál benne valamit. A nyugati szociáldemokraták is így csinálják."
+      }
+    ]
+  },
+  {
+    "questionId": "lakas_nyugdij_bolcsode",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Fischer József már rajzolja a lakótelepeket. Moszkva szerint a nyugati hitel nyugati befolyás."
+      },
+      {
+        "answerId": "B",
+        "text": "Az asszonyok gyűlésein ez a legnagyobb taps. A gyárigazgatók számolnak."
+      },
+      {
+        "answerId": "C",
+        "text": "Hiteles, és a pénzügyminisztérium is aláírná. Lelkesedést viszont nem kelt."
+      },
+      {
+        "answerId": "D",
+        "text": "A plakát szép, a számok nem jönnek ki. A riporterek ki fogják számolni helyetted."
+      }
+    ]
+  },
+  {
+    "questionId": "csepel_tanacsa",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Csepel a tiéd, és ezt a szomszéd gyárak is látják. Nagy Imre emberei viszont dühösek: ezek az ő szavazóik voltak."
+      },
+      {
+        "answerId": "B",
+        "text": "Óvatos igen. Csepel elfogadja, de figyeli, betartod-e."
+      },
+      {
+        "answerId": "C",
+        "text": "Elvszerű, csak a munkástanácsok másképp értik. Ők most csalódottak."
+      },
+      {
+        "answerId": "D",
+        "text": "Nagy gesztus, a listád viszont tarka lesz. Ki fogja ezeket a képviselőket összefogni?"
+      }
+    ]
+  },
+  {
+    "questionId": "a_gyar_jovoje",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A munkástanácsok programja, kimondva. Az osztrák elvtársak csodálkoznak, Moszkva gyanakszik."
+      },
+      {
+        "answerId": "B",
+        "text": "Óvatos, ezt Nagy Imre is aláírná. Épp ezért nem különbözöl tőle eléggé."
+      },
+      {
+        "answerId": "C",
+        "text": "A bécsi modell. A középosztály figyel, a kisgazdák szerint ellopod a programjukat."
+      },
+      {
+        "answerId": "D",
+        "text": "Ezt a szociáldemokrata szavazók nem bocsátják meg. A Ganz-gyárban már plakátot festenek ellened."
+      }
+    ]
+  },
+  {
+    "questionId": "szen_es_hitel",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A dollár megérkezik, a Szabad Nép pedig Kéthly kölcsöne címmel ír vezércikket."
+      },
+      {
+        "answerId": "B",
+        "text": "A bányászok örülnek, a testvérpártok csodálkoznak. Moszkva most egy kicsit jobban bízik benned."
+      },
+      {
+        "answerId": "C",
+        "text": "Kiegyensúlyozott, ezt mindkét oldal elfogadja. Látványos sikert viszont nem hoz."
+      },
+      {
+        "answerId": "D",
+        "text": "Szép terv, csak a svéd szén drága, és télre nem ér ide."
+      }
+    ]
+  },
+  {
+    "questionId": "kadar_lapjai",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Lassú, de tiszta út. A bíróság nem dönt a választásig, a sajtó viszont figyel."
+      },
+      {
+        "answerId": "B",
+        "text": "Nagy Imre elhatárolódik, de kelletlenül. Ő is tudja, hogy ezek a cikkek az ő pártjából jönnek."
+      },
+      {
+        "answerId": "C",
+        "text": "A közönség tapsol, a kisgazdák pedig nevetnek: a két munkáspárt egymást tépi."
+      },
+      {
+        "answerId": "D",
+        "text": "Az akták magukért beszélnek. Az olvasók megdöbbennek, a régi bírák elbújnak."
+      }
+    ]
+  },
+  {
+    "questionId": "nagy_imre_ajanlata",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A munkásegység szép szó, csak 1948-ban is ezt mondták. A választók egy része nem fogja tudni, miért rátok szavazzon, és miért ne Nagy Imrére."
+      },
+      {
+        "answerId": "B",
+        "text": "Okos: nincs belharc, és nem kötöd meg a kezed. Nagy Imre tudja, hogy ez fél igen."
+      },
+      {
+        "answerId": "C",
+        "text": "A pártban tapsolnak, 1948 sebe még fáj. A kisgazdák pedig örülnek, hogy a baloldal megosztott marad."
+      },
+      {
+        "answerId": "D",
+        "text": "Kemény feltétel, és Kádár is tudomást szerez róla. Lehet, hogy éppen ez löki ki az MSZMP-ből."
+      }
+    ]
+  },
+  {
+    "questionId": "bibo_tervezete",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Két tiszta múltú párt egy asztalnál. A fotó másnap minden lapban ott van."
+      },
+      {
+        "answerId": "B",
+        "text": "Bibó elfogadja, a szociális jogok pedig a te kézjegyed lesznek."
+      },
+      {
+        "answerId": "C",
+        "text": "Bibó csalódott. Nagy Imre örül, neki is jól jön az idő."
+      },
+      {
+        "answerId": "D",
+        "text": "Két alkotmányterv, két tábor. A jogászok vitatkoznak, a választók nem értik."
+      }
+    ]
+  },
+  {
+    "questionId": "marosan_az_ajtoban",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Marosán a gyárakban ér valamit, a pártközpontban viszont már a régi irodáját keresi."
+      },
+      {
+        "answerId": "B",
+        "text": "Bent vannak, de rövid pórázon. Marosán ezt megalázónak tartja, és nem titkolja."
+      },
+      {
+        "answerId": "C",
+        "text": "Tiszta lap. Marosán viszont nem marad otthon: holnap Kádár mellett áll a pódiumon."
+      },
+      {
+        "answerId": "D",
+        "text": "Néhányan bocsánatot kérnek, Marosán nem. Ő már tárgyal valakivel."
+      }
+    ]
+  },
+  {
+    "questionId": "szakasits_levele",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Szép gesztus, a fotó bejárja a lapokat. Csak éppen 1948 is vele együtt tér vissza."
+      },
+      {
+        "answerId": "B",
+        "text": "Emberi és okos válasz. A fúzió többi híve viszont érti az üzenetet."
+      },
+      {
+        "answerId": "C",
+        "text": "A hallgatás is válasz. Szakasits hívei ezt megsértődve olvassák ki belőle."
+      },
+      {
+        "answerId": "D",
+        "text": "Erős pillanat, a teremben csend van. Szakasitsnak fáj, az MSZMP-nek is."
+      }
+    ]
+  },
+  {
+    "questionId": "gyar_es_falu",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A fotón Kéthly és Kovács Béla kezet fog. A falvakban először hallják a nevedet jó szóval, Sulyok Dezső pedig dühöng."
+      },
+      {
+        "answerId": "B",
+        "text": "A parasztok megjegyzik, a kisgazdák kevésbé hálásak, mint remélted."
+      },
+      {
+        "answerId": "C",
+        "text": "Tiszta munkáspárti vonal. A falu marad a kisgazdáké és Nagy Imréé."
+      },
+      {
+        "answerId": "D",
+        "text": "Bibó szerint jó ötlet, Kovács szerint kollektivizálás új néven."
+      }
+    ]
+  },
+  {
+    "questionId": "atjelentkezok",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A taglétszám ugrásszerűen nő. Nagy Imre viszont úgy érzi, a legrosszabb pillanatban fordultál ellene."
+      },
+      {
+        "answerId": "B",
+        "text": "Óvatos átvétel. A munkások jönnek, a régi titkárok maradnak, ahol voltak."
+      },
+      {
+        "answerId": "C",
+        "text": "Nagy Imre hálás. A gyárakban viszont azt kérdezik, miért nem kellenek nektek."
+      },
+      {
+        "answerId": "D",
+        "text": "Kormányzati gondolkodás. A tagok lassan döntenek, de a gyárakban rend marad."
+      }
+    ]
+  },
+  {
+    "questionId": "a_gyarkapuban",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ütős mondat, a munkások nevetnek. Az MSZMP-sek viszont már nem állnak meg veletek beszélgetni."
+      },
+      {
+        "answerId": "B",
+        "text": "Program a program ellen. A munkások ezt értik, és el is viszik a röplapot."
+      },
+      {
+        "answerId": "C",
+        "text": "Őszinte, de nem lelkesítő. Ha nincs különbség, miért ne a nagyobbikra szavazzanak?"
+      },
+      {
+        "answerId": "D",
+        "text": "Igaz is, fáj is. Nagy Imre emberei este már erről beszélnek a pártházban."
+      }
+    ]
+  },
+  {
+    "questionId": "valasztojog",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Jogállami és következetes. A Corvin köz szerint viszont így a verőemberek is szavazhatnak."
+      },
+      {
+        "answerId": "B",
+        "text": "A felkelők elégedettek, a fiatalok is. Moszkva szerint ez a megtorlás első lépése."
+      },
+      {
+        "answerId": "C",
+        "text": "Az emigránsok a kisgazdákra szavaznak, a fiatal munkások pedig rátok szavaztak volna."
+      },
+      {
+        "answerId": "D",
+        "text": "Az asszonyok hálásak, a választási irodák kevésbé. A falvakban így több nő megy szavazni."
+      }
+    ]
+  },
+  {
+    "questionId": "az_angolok_embere",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Moszkva megnyugszik, a londoni elvtársak viszont értetlenül olvassák a nyilatkozatot."
+      },
+      {
+        "answerId": "B",
+        "text": "Egyenes válasz, a választók értékelik. Moszkva szerint viszont beismerted."
+      },
+      {
+        "answerId": "C",
+        "text": "Merész gesztus. A nagykövet eljön, a nyugati vendégek pedig zavartan ülnek mellette."
+      },
+      {
+        "answerId": "D",
+        "text": "Államférfiúi lépés, ilyet egy miniszterelnöktől várnak. Moszkva szerint viszont nemzetközi ügyet csinálsz belőle."
+      }
+    ]
+  },
+  {
+    "questionId": "semlegesseg_garanciaja",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Kipróbált recept, Bécsben működik. Mindenki elfogadja, de senkit sem lelkesít."
+      },
+      {
+        "answerId": "B",
+        "text": "A Nyugat tapsol. Moszkva szerint viszont ez a NATO előszobája."
+      },
+      {
+        "answerId": "C",
+        "text": "Moszkva elégedett, a felkelők nem. Kéthly Anna mint Moszkva barátja: ezt senki sem várta."
+      },
+      {
+        "answerId": "D",
+        "text": "Demokratikus megoldás, Bibó is támogatja. A nagyhatalmak viszont nem szeretik, ha a nép dönt helyettük."
+      }
+    ]
+  },
+  {
+    "questionId": "radiovita",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Kemény, de tisztességes vita. A hallgatók szerint te voltál a felkészültebb."
+      },
+      {
+        "answerId": "B",
+        "text": "A stúdióban csend lett. Nagy Imre szavazói elbizonytalanodtak, de nem mind hozzád mentek."
+      },
+      {
+        "answerId": "C",
+        "text": "Méltóságteljes vita. Senki sem vesztett, de nagyot sem nyertél."
+      },
+      {
+        "answerId": "D",
+        "text": "Számok és nevek. Nem a legizgalmasabb vita, de sokan most először látnak benned miniszterelnököt."
+      }
+    ]
+  },
+  {
+    "questionId": "listakapcsolas_nyitott",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Két tiszta múltú párt egy listán. Ha a nagyok gyengülnek, ebből kormány lehet."
+      },
+      {
+        "answerId": "B",
+        "text": "Kádár nélkül már más az MSZMP. A közös lista viszont azt sugallja, hogy ti vagytok a kisebbik testvér."
+      },
+      {
+        "answerId": "C",
+        "text": "Saját zászló, saját mandátumok. A választás után viszont mindenkit újra meg kell kérned."
+      },
+      {
+        "answerId": "D",
+        "text": "Nagy blokk, nagy többség. Csak a plakátokon a te neved lesz a legkisebb betűkkel."
+      }
+    ]
+  },
+  {
+    "questionId": "listakapcsolas_zart",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Két tiszta múltú párt egy listán. Ha a nagyok gyengülnek, ebből kormány lehet."
+      },
+      {
+        "answerId": "B",
+        "text": "Saját zászló, saját mandátumok. A választás után viszont mindenkit újra meg kell kérned."
+      },
+      {
+        "answerId": "C",
+        "text": "A forradalom kormánya, kommunisták nélkül. Szép eszme, csak a munkásoknak nehéz elmagyarázni."
+      },
+      {
+        "answerId": "D",
+        "text": "A várakozás drága. Bibó nem vár, és az idő is fogy."
+      }
+    ]
+  },
+  {
+    "questionId": "asszonyok_a_kossuth_teren",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Történelmi mondat, a tér felrobban. Vidéken viszont nem mindenki tapsol."
+      },
+      {
+        "answerId": "B",
+        "text": "Nem csak a nőkhöz beszéltél, hanem az egész országhoz. Ez egy miniszterelnök-jelölt beszéde volt."
+      },
+      {
+        "answerId": "C",
+        "text": "Fischer jól beszélt, de nem te voltál. Az asszonyok ezt megjegyezték."
+      },
+      {
+        "answerId": "D",
+        "text": "Az üres pódiumot lefényképezik. Ez a kép a kampány végéig kísérni fog."
+      }
+    ]
+  },
+  {
+    "questionId": "kethly_zarobeszede",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A tér zúgja a nevedet. Az MSZMP-sek csendben hallgatják, ők is tudják, kiről szól."
+      },
+      {
+        "answerId": "B",
+        "text": "Kormányprogram, nem kiáltvány. Akik bizonytalanok voltak, most hazafelé számolnak."
+      },
+      {
+        "answerId": "C",
+        "text": "A forradalom programja a te szádból. A munkások lelkesek, a polgárok kevésbé."
+      },
+      {
+        "answerId": "D",
+        "text": "Józan üzenet: nélkületek nincs kormány. A mérlegnyelv szerepe nem a legszebb, de a legbiztosabb."
+      }
+    ]
+  }
+]
