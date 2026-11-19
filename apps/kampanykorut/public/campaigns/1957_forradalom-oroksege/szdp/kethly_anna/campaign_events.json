@@ -3080,7 +3080,7 @@
       "title": "Az asszonyok Kéthly Annára szavaznak",
       "body": "A piacokon, a gyárakban és a mosókonyhákban is Kéthly Annáról beszélnek. A közvélemény-kutatók szerint a nők körében az SZDP a legnépszerűbb párt.",
       "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.png",
-      "icon": "gender-female"
+      "icon": "/images/1957_forradalom-oroksege/noi_szavazok.png"
     }
   },
   {
@@ -3160,7 +3160,7 @@
       "title": "Kéthly-láz",
       "body": "Kéthly Anna arcképe minden gyárkapun ott van. A börtönt megjárt asszonyt a munkások és a diákok is ünneplik, Nagy Imre emberei pedig idegesen figyelik.",
       "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.png",
-      "icon": "person-standing-dress"
+      "icon": "/images/1957_forradalom-oroksege/kethly_badge.png"
     }
   },
   {

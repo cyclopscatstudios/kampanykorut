@@ -163,11 +163,11 @@
       "candidateAssets": [
         {
           "id": "kethly_anna",
-          "portrait": "/images/1957_forradalom-oroksege/kethly_badge.png",
-          "slogan": "/images/1957_forradalom-oroksege/kethly_badge.png"
+          "portrait": "/images/1957_forradalom-oroksege/kethly_anna.png",
+          "slogan": "/images/1957_forradalom-oroksege/szdp_slogan.png"
         }
       ],
-      "party_logo": "/images/1957_forradalom-oroksege/kethly_badge.png"
+      "party_logo": "/images/1957_forradalom-oroksege/szdp_logo.png"
     }
   ]
 }
