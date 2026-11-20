@@ -143,6 +143,17 @@ export function MobileMapView({
         onClose={() => setIsSheetOpen(false)}
         hideTitle
         fitContent
+        tall
+        footer={
+          sheetMode === "district" &&
+          sheetData && (
+            <DistrictSheetFooter
+              onVisit={() => onSetView("QuestionView")}
+              visitBlocked={visitBlocked}
+              isReturning={isReturning}
+            />
+          )
+        }
       >
         {sheetMode === "estimate" ? (
           <EstimateSheetContent
@@ -163,9 +174,6 @@ export function MobileMapView({
               parties={electionConfig.parties}
               nationalPercentages={nationalPercentages}
               onClose={() => setIsSheetOpen(false)}
-              onVisit={() => onSetView("QuestionView")}
-              visitBlocked={visitBlocked}
-              isReturning={isReturning}
               issues={getAreaIssues(electionConfig, sheetData.megyekod)}
             />
           )
@@ -301,9 +309,6 @@ function DistrictSheetContent({
   parties,
   nationalPercentages,
   onClose,
-  onVisit,
-  visitBlocked,
-  isReturning,
   issues,
 }: {
   isCityMap: boolean;
@@ -312,9 +317,6 @@ function DistrictSheetContent({
   parties: RawParty[];
   nationalPercentages?: Record<string, number>;
   onClose: () => void;
-  onVisit: () => void;
-  visitBlocked?: boolean;
-  isReturning?: boolean;
 }) {
   const { leadingParty, swingFactor } = getDistrictInsight(district, parties);
 
@@ -390,16 +392,29 @@ function DistrictSheetContent({
           isCityMap={isCityMap}
         />
       </div>
+    </div>
+  );
+}
 
+function DistrictSheetFooter({
+  onVisit,
+  visitBlocked,
+  isReturning,
+}: {
+  onVisit: () => void;
+  visitBlocked?: boolean;
+  isReturning?: boolean;
+}) {
+  return (
+    <div className="flex flex-col gap-2">
       {visitBlocked && (
-        <FocusRequiredNote className="mt-4 flex-wrap justify-center" />
+        <FocusRequiredNote className="flex-wrap justify-center" />
       )}
       <Button
         size="large"
         block
         onClick={onVisit}
         disabled={visitBlocked}
-        className="mt-4"
         testId="visitDistrict"
       >
         <Button.Text>

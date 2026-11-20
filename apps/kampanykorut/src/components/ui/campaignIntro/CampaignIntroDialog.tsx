@@ -26,7 +26,7 @@ export function CampaignIntroDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-3 backdrop-blur-sm md:p-6"
       data-testid="campaignIntroDialog"
     >
       <article
@@ -34,39 +34,44 @@ export function CampaignIntroDialog({
         aria-modal="true"
         aria-labelledby="campaignIntroTitle"
         className={classNames(
-          "flex max-h-full w-full max-w-[560px] flex-col gap-3 overflow-y-auto rounded-[3px] px-4 pb-4 pt-4 shadow-[0_18px_40px_rgba(0,0,0,0.6)] md:rotate-[0.5deg] md:px-7 md:pb-5 md:pt-5",
+          "flex max-h-full w-full max-w-[560px] flex-col gap-3 overflow-hidden rounded-[3px] px-4 pb-4 pt-4 shadow-[0_18px_40px_rgba(0,0,0,0.6)] md:rotate-[0.5deg] md:px-7 md:pb-5 md:pt-5",
           "bg-[radial-gradient(ellipse_at_30%_20%,#f4ecd6_0%,#ebe0c2_60%,#ddd0ad_100%)]",
           "font-['Old_Standard_TT',Georgia,serif] text-[#1c1a17]",
         )}
       >
-        <div className="flex items-center justify-center gap-2.5 font-[Montserrat,sans-serif] text-[10px] font-bold uppercase tracking-[0.16em] text-[#3a352c]">
-          <span aria-hidden="true" className="h-px w-7 bg-[#3a352c]" />
-          {t("campaignIntro.label")}
-          <span aria-hidden="true" className="h-px w-7 bg-[#3a352c]" />
-        </div>
-
-        <h2
-          id="campaignIntroTitle"
-          className="m-0 text-center font-['Playfair_Display',Georgia,serif] text-[40px] font-black italic leading-[0.95] tracking-[-0.02em] md:text-[56px]"
+        <div
+          tabIndex={0}
+          className="-mx-4 flex min-h-0 flex-col gap-3 overflow-y-auto overscroll-contain px-4 md:-mx-7 md:px-7"
         >
-          {intro.title ?? fallbackTitle}
-        </h2>
-
-        {intro.subtitle && (
-          <div className="border-y-2 border-[#1c1a17] px-0.5 py-1 text-center text-[11px] font-bold md:text-xs">
-            {intro.subtitle}
+          <div className="flex items-center justify-center gap-2.5 font-[Montserrat,sans-serif] text-[10px] font-bold uppercase tracking-[0.16em] text-[#3a352c]">
+            <span aria-hidden="true" className="h-px w-7 bg-[#3a352c]" />
+            {t("campaignIntro.label")}
+            <span aria-hidden="true" className="h-px w-7 bg-[#3a352c]" />
           </div>
-        )}
 
-        <div className="flex flex-col gap-2.5 text-[15px] leading-[1.45] md:text-base">
-          {paragraphs.map((paragraph, i) => (
-            <p key={i} className="m-0">
-              {paragraph}
-            </p>
-          ))}
+          <h2
+            id="campaignIntroTitle"
+            className="m-0 text-center font-['Playfair_Display',Georgia,serif] text-[40px] font-black italic leading-[0.95] tracking-[-0.02em] md:text-[56px]"
+          >
+            {intro.title ?? fallbackTitle}
+          </h2>
+
+          {intro.subtitle && (
+            <div className="border-y-2 border-[#1c1a17] px-0.5 py-1 text-center text-[11px] font-bold md:text-xs">
+              {intro.subtitle}
+            </div>
+          )}
+
+          <div className="flex flex-col gap-2.5 text-[15px] leading-[1.45] md:text-base">
+            {paragraphs.map((paragraph, i) => (
+              <p key={i} className="m-0">
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-1 flex justify-center border-t border-[#1c1a17]/35 pt-3 font-[Montserrat,sans-serif]">
+        <div className="flex shrink-0 justify-center border-t border-[#1c1a17]/35 pt-3 font-[Montserrat,sans-serif]">
           <Button
             onClick={onConfirm}
             className="w-full md:w-auto md:min-w-[220px]"
