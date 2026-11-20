@@ -43,7 +43,7 @@ export function RootLayout() {
   }, [navigation, stateEngine]);
 
   return (
-    <div className="relative flex flex-col w-screen h-screen bg-[#0f172a]">
+    <div className="relative flex flex-col w-screen h-dvh bg-[#0f172a]">
       <WarningScreen
         allowWarning={environment === "dev"}
         label="Development Version"

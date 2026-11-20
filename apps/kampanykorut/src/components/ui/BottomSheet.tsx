@@ -10,6 +10,8 @@ interface BottomSheetProps {
   children: ReactNode;
   hideTitle?: boolean;
   fitContent?: boolean;
+  tall?: boolean;
+  footer?: ReactNode;
 }
 
 export function BottomSheet({
@@ -19,15 +21,19 @@ export function BottomSheet({
   children,
   hideTitle,
   fitContent,
+  tall,
+  footer,
 }: BottomSheetProps) {
   const panelRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
     const previouslyFocused = document.activeElement as HTMLElement | null;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    panelRef.current?.focus();
+    bodyRef.current?.scrollTo({ top: 0 });
+    panelRef.current?.focus({ preventScroll: true });
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
@@ -56,7 +62,10 @@ export function BottomSheet({
         aria-hidden={!open}
         aria-label={title}
         className={classNames(
-          "fixed inset-x-0 bottom-0 z-41 flex max-h-[70dvh] flex-col overflow-hidden rounded-t-[20px] bg-[#22355a] pt-2.5 shadow-[0_-12px_40px_rgba(0,0,0,0.4)]",
+          "fixed inset-x-0 bottom-0 z-41 flex flex-col overflow-hidden rounded-t-[20px] bg-[#22355a] pt-2.5 shadow-[0_-12px_40px_rgba(0,0,0,0.4)]",
+          tall
+            ? "max-h-[calc(100dvh-env(safe-area-inset-top)-16px)]"
+            : "max-h-[70dvh]",
           !fitContent && "h-[420px]",
           "transition-[transform,visibility] duration-280 ease-[cubic-bezier(.32,.72,0,1)]",
           open ? "translate-y-0" : "translate-y-full invisible",
@@ -79,13 +88,20 @@ export function BottomSheet({
           </div>
         )}
         <div
+          ref={bodyRef}
           className={classNames(
-            "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4.5 pb-[calc(16px+env(safe-area-inset-bottom))]",
+            "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4.5",
+            footer ? "pb-3" : "pb-[calc(16px+env(safe-area-inset-bottom))]",
             hideTitle && "pt-3",
           )}
         >
           {children}
         </div>
+        {footer && (
+          <div className="shrink-0 border-t border-white/8 px-4.5 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))]">
+            {footer}
+          </div>
+        )}
       </div>
     </>
   );
