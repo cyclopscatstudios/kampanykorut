@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "factchk": {
+      "source": "LilMGenius/paperthin",
+      "commit": "ed0df4b45f1e88b57ed9141504f3cb3e32c9715d",
+      "sourceType": "github",
+      "skillPath": "skills/depth/factchk/SKILL.md",
+      "computedHash": "cae0f4410c3deb984a3ad1ff19fe787ff6a78221100750ebfc5a038b5a903730"
+    }
+  }
+}

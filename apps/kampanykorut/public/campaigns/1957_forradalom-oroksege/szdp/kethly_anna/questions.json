@@ -125,7 +125,7 @@
       },
       {
         "id": "B",
-        "label": "Visszavágsz: harmincöt éve ülsz a parlamentben, többet láttál, mint bármelyik bírálód."
+        "label": "Visszavágsz: harmincöt éve kerültél a parlamentbe, többet láttál, mint bármelyik bírálód."
       },
       {
         "id": "C",
@@ -267,7 +267,7 @@
       },
       {
         "id": "C",
-        "label": "Visszatámadsz: az MSZMP-ben ma is ott ülnek, akik 1950-ben elítéltek."
+        "label": "Visszatámadsz: az MSZMP-ben ma is ott ülnek, akik 1954-ben elítéltek."
       },
       {
         "id": "D",
@@ -565,7 +565,7 @@
   {
     "id": "semlegesseg_garanciaja",
     "title": "Az osztrák út",
-    "question": "Ausztria 1955-ben négyhatalmi szerződéssel lett semleges, és ott a szociáldemokraták is kormányoznak. A kormányban most a magyar semlegesség garanciájáról kell dönteni. Mit javasolsz?",
+    "question": "Ausztria 1955-ben a négyhatalmi államszerződéssel nyerte vissza függetlenségét, és még abban az évben kimondta a semlegességét. Ott a szociáldemokraták is kormányon vannak. A kormányban most a magyar semlegesség garanciájáról kell dönteni. Mit javasolsz?",
     "possibleAnswers": [
       {
         "id": "A",

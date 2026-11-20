@@ -119,7 +119,7 @@
       "title": "Jóléti állam",
       "summary": "Lakás, nyugdíj, bölcsőde, osztrák mintára",
       "description": "Szociáldemokrácia, ahogy Bécsben és Stockholmban: vegyes gazdaság, szabad szakszervezetek, lakásépítés és nyugdíj. A városi középosztály és a tisztviselők is felfigyelnek rád, de a kisgazdák szerint az ő szavazóikat csábítod, és a munkástanácsok gyanakodnak.",
-      "icon": "house-heart-fill",
+      "icon": "/images/1957_forradalom-oroksege/joleti_allam.png",
       "completeWhen": {
         "and": [
           {
@@ -191,7 +191,7 @@
       "title": "A gyár a munkásé",
       "summary": "Demokratikus szocializmus a munkástanácsokkal",
       "description": "A forradalom gyáraiban a munkástanácsok vették át az irányítást. Legyen a programod a demokratikus szocializmus: közösségi tulajdon, munkásönigazgatás, szabad választások. Az MSZMP munkásszavazói átjöhetnek hozzád, de a polgárok és a Nyugat gyanakszik.",
-      "icon": "gear-wide-connected",
+      "icon": "/images/1957_forradalom-oroksege/gyar_a_munkase.png",
       "completeWhen": {
         "and": [
           {
@@ -278,7 +278,7 @@
       "title": "Harmadik erő",
       "summary": "Nem a kommunisták, nem a régi világ",
       "description": "Bibó Istvánnal közös demokratikus centrum: a földreform és a nagyipar marad, de a szabadság és a jogállam az első. Kevesebb a belharc az MSZMP-vel, és a Petőfi Párt erős partner lesz, a saját szavazótáborod viszont lassabban nő.",
-      "icon": "signpost-split-fill",
+      "icon": "/images/1957_forradalom-oroksege/harmadik_ero.png",
       "completeWhen": {
         "and": [
           {
@@ -337,7 +337,7 @@
       "title": "Az igazi baloldal",
       "summary": "Versenyezz nyíltan az MSZMP-vel a munkásokért",
       "description": "Mi nem ültünk az ÁVH mellett. Versenyezz nyíltan Nagy Imrével a munkások szavazataiért: itt jön a legtöbb szavazat, de itt a legnagyobb a veszély is. Ha a két munkáspárt testvérharca elmérgesedik, a kisgazdák nevetnek a markukba.",
-      "icon": "fire",
+      "icon": "/images/1957_forradalom-oroksege/igazi_baloldal.png",
       "completeWhen": {
         "and": [
           {
@@ -378,8 +378,8 @@
       "id": "elso_asszony",
       "title": "Az első asszony",
       "summary": "Kéthly Anna miniszterelnök-jelölt",
-      "description": "Mondd ki, amit senki sem mert: Magyarország első női miniszterelnöke Kéthly Anna lehet. A nők és a változást akarók melléd állnak, de csak akkor hiszik el, ha a párt kormányzóképesnek látszik. Ha nem, a merész mondatból komolytalan szlogen lesz.",
-      "icon": "gender-female",
+      "description": "Jelentsd be, hogy Kéthly Anna lehet Magyarország első női miniszterelnöke. A nők és a változást akarók melléd állnak, de csak akkor hiszik el, ha a párt kormányzóképesnek látszik. Ha nem, a merész mondatból komolytalan szlogen lesz.",
+      "icon": "/images/1957_forradalom-oroksege/elso_asszony.png",
       "completeWhen": {
         "and": [
           {
@@ -453,7 +453,7 @@
       "title": "A stabilitás pártja",
       "summary": "Csak velünk lesz stabil kormány",
       "description": "A hajrában azt üzend, hogy a forradalom után az országnak nyugalom kell, és csak a szociáldemokraták vezetésével lesz tartós, kiszámítható kormány. Ehhez megbízható szövetséges és kormányzóképes párt kell. A bizonytalanok megnyugszanak, de a kampány így kevésbé lelkesít.",
-      "icon": "shield-fill-check",
+      "icon": "/images/1957_forradalom-oroksege/merlegnyelv.png",
       "completeWhen": {
         "and": [
           {
@@ -866,7 +866,7 @@
       "id": "elso_asszony",
       "title": "Az első asszony",
       "icon": "gender-female",
-      "body": "Kéthly Anna Magyarország első női miniszterelnöke. Harmincöt évvel azután, hogy először ült be a parlamentbe, most a kormányfői székben ül, és a világsajtó Budapestre figyel.",
+      "body": "Kéthly Anna Magyarország első női miniszterelnöke. Harmincöt évvel azután, hogy 1922-ben bejutott a parlamentbe, ő vezeti a kormányt, és a világsajtó Budapestre figyel.",
       "outcomes": ["single-majority", "coalition", "weak-coalition"],
       "when": {
         "type": "focus-selected",
@@ -896,7 +896,7 @@
       "id": "szocdem_kormany",
       "title": "Szociáldemokrata kormány",
       "icon": "people-fill",
-      "body": "Kéthly Anna kormányt alakít egy partnerrel. A munkástanácsok és a szabad szakszervezetek mellett a köztársaság semleges marad, és a kormány nyugati testvérpártjai segítségére is számíthat.",
+      "body": "Kéthly Anna kormányt alakít egy partnerrel. A gyárakban megmaradnak a munkástanácsok és a szabad szakszervezetek, az ország semleges marad, és a kormány számíthat a nyugati testvérpártok segítségére.",
       "outcomes": ["coalition"]
     },
     {

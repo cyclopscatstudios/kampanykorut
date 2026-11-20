@@ -2947,6 +2947,7 @@
     "announcement": {
       "title": "Két munkáspárt veszekszik, a gazda nevet",
       "body": "Az SZDP és az MSZMP nyílt háborúja elriasztja a bizonytalanokat. Amíg a két munkáspárt egymást vádolja, a kisgazdák csendben gyűjtik a szavazatokat.",
+      "imageUri": "/images/1957_forradalom-oroksege/polgari_blokk_siker.png",
       "icon": "emoji-angry"
     }
   },
@@ -2984,7 +2985,8 @@
     "announcement": {
       "title": "Elég volt a baloldali vitákból",
       "body": "A Kis Újság gúnyos vezércikkben írja meg, hogy a munkáspártok egymással vannak elfoglalva. A bizonytalan munkások egy része a kisgazdák felé fordul.",
-      "icon": "megaphone-fill"
+      "imageUri": "/images/1957_forradalom-oroksege/feszult_baloldal_event.png",
+      "icon": "/images/1957_forradalom-oroksege/feszult_baloldal.png"
     }
   },
   {
@@ -3059,7 +3061,7 @@
       "title": "A szociáldemokraták kormányra készülnek",
       "body": "A Magyar Nemzet szerint az SZDP-nek van programja, csapata és költségvetése. A bizonytalan szavazók először gondolnak rá úgy, mint lehetséges kormánypártra.",
       "imageUri": "/images/1957_forradalom-oroksege/kethly_hazatert.jpg",
-      "icon": "bank2"
+      "icon": "/images/1957_forradalom-oroksege/kormanykepes.png"
     }
   },
   {
@@ -3134,7 +3136,7 @@
     "announcement": {
       "title": "Az asszonyok Kéthly Annára szavaznak",
       "body": "A piacokon, a gyárakban és a mosókonyhákban is Kéthly Annáról beszélnek. A közvélemény-kutatók szerint a nők körében az SZDP a legnépszerűbb párt.",
-      "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.png",
+      "imageUri": "/images/1957_forradalom-oroksege/noi_szavazok_mellette.png",
       "icon": "/images/1957_forradalom-oroksege/noi_szavazok.png"
     }
   },
@@ -3306,7 +3308,7 @@
     "announcement": {
       "title": "Áll a szervezet",
       "body": "Kelemen Gyula jelenti: a párt kétszáz gyárban és minden megyeszékhelyen újra működik. A választók látják, hogy a szociáldemokraták mögött nemcsak egy ember áll.",
-      "imageUri": "/images/1957_forradalom-oroksege/nepszava_ertekezlet.png",
+      "imageUri": "/images/1957_forradalom-oroksege/partszervezet.png",
       "icon": "diagram-3-fill"
     }
   },
@@ -3348,7 +3350,7 @@
     "announcement": {
       "title": "Bécsi mintára",
       "body": "Az SZDP bemutatta lakás- és nyugdíjprogramját. A tisztviselők, a tanárok és a nyugdíjasok is felfigyelnek, és a kisgazdák városi szavazói közül is sokan átjönnek.",
-      "icon": "house-heart-fill"
+      "icon": "/images/1957_forradalom-oroksege/joleti_allam_siker.png"
     }
   },
   {
@@ -3400,7 +3402,7 @@
     "announcement": {
       "title": "A munkástanácsok a szociáldemokraták mellett",
       "body": "A Nagy-budapesti Központi Munkástanács nyilatkozatban áll ki az SZDP programja mellett. Az MSZMP gyári szervezeteiben sokan elbizonytalanodnak.",
-      "imageUri": "/images/1957_forradalom-oroksege/sztrajk.png",
+      "imageUri": "/images/1957_forradalom-oroksege/gyar_a_munkase_siker.png",
       "icon": "gear-wide-connected"
     }
   },
@@ -3449,8 +3451,8 @@
     "announcement": {
       "title": "Kéthly és Bibó: a harmadik út",
       "body": "A szociáldemokraták és a Petőfi Párt közös nagygyűlést tart. Sok kiábrándult kommunista és csalódott kisgazda szerint ők jelentik a jövőt.",
-      "imageUri": "/images/1957_forradalom-oroksege/bibo_istvan.png",
-      "icon": "signpost-split-fill"
+      "imageUri": "/images/1957_forradalom-oroksege/harmadik_ero_siker_event.png",
+      "icon": "/images/1957_forradalom-oroksege/harmadik_ero_siker.png"
     }
   },
   {
@@ -3564,7 +3566,7 @@
       "title": "Az első asszony",
       "body": "Az SZDP plakátjain egyetlen mondat áll: Kéthly Anna miniszterelnök. Az ország először vitatkozik arról, vezetheti-e nő a kormányt.",
       "imageUri": "/images/1957_forradalom-oroksege/kethly_hazatert.jpg",
-      "icon": "gender-female"
+      "icon": "/images/1957_forradalom-oroksege/elso_asszony.png"
     }
   },
   {
