@@ -90,7 +90,10 @@
       "overview": {
         "constituencySeats": "Egyéni mandátumok",
         "listSeats": "Listás mandátumok",
-        "partyListResults": "Pártilistás eredmények",
+        "partyListResults": "Pártlistás eredmény",
+        "regionalSeats": "Területi mandátumok",
+        "nationalSeats": "Kompenzációs mandátumok",
+        "totalSeats": "Összesen {{seats}}/{{all}} mandátum",
         "rankingTabs": {
           "victories": "Győzelmek",
           "defeats": "Vereségek",
