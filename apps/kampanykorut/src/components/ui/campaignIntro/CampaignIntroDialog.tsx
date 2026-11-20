@@ -26,7 +26,7 @@ export function CampaignIntroDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-3 backdrop-blur-sm md:p-6"
       data-testid="campaignIntroDialog"
     >
       <article
