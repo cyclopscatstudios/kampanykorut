@@ -39,7 +39,10 @@ export function CampaignIntroDialog({
           "font-['Old_Standard_TT',Georgia,serif] text-[#1c1a17]",
         )}
       >
-        <div className="-mx-4 flex min-h-0 flex-col gap-3 overflow-y-auto overscroll-contain px-4 md:-mx-7 md:px-7">
+        <div
+          tabIndex={0}
+          className="-mx-4 flex min-h-0 flex-col gap-3 overflow-y-auto overscroll-contain px-4 md:-mx-7 md:px-7"
+        >
           <div className="flex items-center justify-center gap-2.5 font-[Montserrat,sans-serif] text-[10px] font-bold uppercase tracking-[0.16em] text-[#3a352c]">
             <span aria-hidden="true" className="h-px w-7 bg-[#3a352c]" />
             {t("campaignIntro.label")}

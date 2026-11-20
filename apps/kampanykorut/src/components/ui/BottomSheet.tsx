@@ -28,11 +28,14 @@ export function BottomSheet({
   const bodyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (open) bodyRef.current?.scrollTo({ top: 0 });
+  }, [open]);
+
+  useEffect(() => {
     if (!open) return;
     const previouslyFocused = document.activeElement as HTMLElement | null;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    bodyRef.current?.scrollTo({ top: 0 });
     panelRef.current?.focus({ preventScroll: true });
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();

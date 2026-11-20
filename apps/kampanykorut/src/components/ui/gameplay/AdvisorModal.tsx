@@ -67,7 +67,10 @@ export function AdvisorModal({
               </Heading>
             </div>
           </div>
-          <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain pb-3">
+          <div
+            tabIndex={0}
+            className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain pb-3"
+          >
             <div className="flex gap-5 justify-center py-3">
               {[
                 asset?.primaryAdvisorImageUri,
