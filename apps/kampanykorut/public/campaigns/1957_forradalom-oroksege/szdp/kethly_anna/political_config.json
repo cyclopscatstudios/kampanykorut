@@ -556,15 +556,15 @@
       "id": "baloldal",
       "title": "Milyen baloldal?",
       "focuses": ["joleti_allam", "gyar_a_munkase"],
-      "availableFromTurn": 7,
-      "requiredBeforeTurn": 9
+      "availableFromTurn": 6,
+      "requiredBeforeTurn": 7
     },
     {
       "id": "szemben",
       "title": "Kivel szemben?",
       "focuses": ["harmadik_ero", "igazi_baloldal"],
-      "availableFromTurn": 13,
-      "requiredBeforeTurn": 15
+      "availableFromTurn": 12,
+      "requiredBeforeTurn": 13
     },
     {
       "id": "hajra",

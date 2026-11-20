@@ -2916,19 +2916,26 @@
   {
     "id": "testverharc",
     "label": "A két munkáspárt veszekszik",
-    "once": false,
+    "once": true,
     "conditions": [
       {
         "if": {
           "and": [
             {
               "type": "turn",
-              "min": 4
+              "min": 4,
+              "max": 16
             },
             {
               "type": "relation",
               "relationId": "baloldal",
               "tone": ["bad"]
+            },
+            {
+              "not": {
+                "type": "event-triggered",
+                "eventId": "szabadsagpart_kivalik"
+              }
             }
           ]
         },
@@ -2936,9 +2943,9 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fkgp": 0.4,
-              "szdp": -0.1,
-              "mszmp": -0.3
+              "fkgp": 1.4,
+              "szdp": -0.7,
+              "mszmp": -0.7
             }
           }
         ]
@@ -2946,7 +2953,7 @@
     ],
     "announcement": {
       "title": "Két munkáspárt veszekszik, a gazda nevet",
-      "body": "Az SZDP és az MSZMP nyílt háborúja elriasztja a bizonytalanokat. Amíg a két munkáspárt egymást vádolja, a kisgazdák csendben gyűjtik a szavazatokat.",
+      "body": "Az SZDP és az MSZMP nyílt háborúja elriasztja a bizonytalanokat. Amíg a két munkáspárt egymást vádolja, a kisgazdák csendben gyűjtik a szavazatokat: a felmérések szerint mindkét munkáspárt veszített.",
       "imageUri": "/images/1957_forradalom-oroksege/polgari_blokk_siker.png",
       "icon": "emoji-angry"
     }
@@ -2981,13 +2988,7 @@
           }
         ]
       }
-    ],
-    "announcement": {
-      "title": "Elég volt a baloldali vitákból",
-      "body": "A Kis Újság gúnyos vezércikkben írja meg, hogy a munkáspártok egymással vannak elfoglalva. A bizonytalan munkások egy része a kisgazdák felé fordul.",
-      "imageUri": "/images/1957_forradalom-oroksege/feszult_baloldal_event.png",
-      "icon": "/images/1957_forradalom-oroksege/feszult_baloldal.png"
-    }
+    ]
   },
   {
     "id": "bekes_verseny",
@@ -3019,12 +3020,7 @@
           }
         ]
       }
-    ],
-    "announcement": {
-      "title": "Tisztességes verseny a baloldalon",
-      "body": "Az SZDP és az MSZMP vitázik, de nem gyűlölködik. A munkások szerint ez a demokrácia, és egyik munkáspárttól sem fordulnak el.",
-      "icon": "hand-thumbs-up-fill"
-    }
+    ]
   },
   {
     "id": "kormanykepes",
@@ -3056,13 +3052,7 @@
           }
         ]
       }
-    ],
-    "announcement": {
-      "title": "A szociáldemokraták kormányra készülnek",
-      "body": "A Magyar Nemzet szerint az SZDP-nek van programja, csapata és költségvetése. A bizonytalan szavazók először gondolnak rá úgy, mint lehetséges kormánypártra.",
-      "imageUri": "/images/1957_forradalom-oroksege/kethly_hazatert.jpg",
-      "icon": "/images/1957_forradalom-oroksege/kormanykepes.png"
-    }
+    ]
   },
   {
     "id": "komolytalan",
@@ -3094,12 +3084,7 @@
           }
         ]
       }
-    ],
-    "announcement": {
-      "title": "Szép szavak, üres kassza",
-      "body": "A lapok kiszámolták, mennyibe kerülnének az ígéreteid. A bizonytalanok szerint a szociáldemokraták jó ellenzék, de nem kormány.",
-      "icon": "exclamation-triangle-fill"
-    }
+    ]
   },
   {
     "id": "noi_szavazok_mellette",
@@ -3132,13 +3117,7 @@
           }
         ]
       }
-    ],
-    "announcement": {
-      "title": "Az asszonyok Kéthly Annára szavaznak",
-      "body": "A piacokon, a gyárakban és a mosókonyhákban is Kéthly Annáról beszélnek. A közvélemény-kutatók szerint a nők körében az SZDP a legnépszerűbb párt.",
-      "imageUri": "/images/1957_forradalom-oroksege/noi_szavazok_mellette.png",
-      "icon": "/images/1957_forradalom-oroksege/noi_szavazok.png"
-    }
+    ]
   },
   {
     "id": "noi_szavazok_elfordulnak",
@@ -3170,12 +3149,7 @@
           }
         ]
       }
-    ],
-    "announcement": {
-      "title": "Az asszonyok csalódtak",
-      "body": "A női szavazók egy része úgy érzi, Kéthly Anna nem állt ki értük. A templomokban és a piacokon a Demokrata Néppárt és az MSZMP agitátorai gyűjtik a csalódottakat.",
-      "icon": "gender-female"
-    }
+    ]
   },
   {
     "id": "kethly_laz",
@@ -3263,12 +3237,7 @@
           }
         ]
       }
-    ],
-    "announcement": {
-      "title": "Kereszttűzben Kéthly Anna",
-      "body": "Minden támadás Kéthly Annát éri, és nincs mögötte erős csapat, amely a sajtóban megvédené. Egy hét alatt több százalékot veszít a párt.",
-      "icon": "bullseye"
-    }
+    ]
   },
   {
     "id": "partszervezet",
