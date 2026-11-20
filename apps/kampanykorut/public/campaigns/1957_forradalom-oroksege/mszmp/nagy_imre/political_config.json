@@ -127,10 +127,10 @@
       "id": "munkasokol_vasokol",
       "title": "Egy zászló alatt",
       "summary": "Tedd az MSZMP-t a munkásság fő erejévé",
-      "description": "A munkások támogatásáért az MSZMP-nek kell versenybe szállnia. Vidd el a párt programját az üzemekbe és a szakszervezetekbe, és nyerd meg magadnak azokat, akik eddig a szociáldemokratákban látták érdekeik képviselőjét.",
+      "description": "A munkások támogatásáért az MSZMP-nek kell versenybe szállnia. Vidd el a párt programját az üzemekbe és a szakszervezetekbe, és nyerd meg magadnak azokat, akik eddig a szociáldemokratákban látták érdekeik képviselőjét. Ehhez egységes párt kell: ha Kádárék kiválnak, a munkásság nem követ.",
       "icon": "/images/1957_forradalom-oroksege/munkasokol_badge.png",
       "completeWhen": {
-        "or": [
+        "and": [
           {
             "type": "answer-selected",
             "questionId": "szakszervezetek",
@@ -140,6 +140,12 @@
             "type": "answer-selected",
             "questionId": "kie_a_gyar",
             "answerId": "A"
+          },
+          {
+            "not": {
+              "type": "event-triggered",
+              "eventId": "kadar_szakadas"
+            }
           }
         ]
       },

@@ -2283,5 +2283,96 @@
       "image": "/images/1957_forradalom-oroksege/nepszava_ertekezlet.png",
       "icon": "megaphone-fill"
     }
+  },
+  {
+    "id": "egy_zaszlo_siker",
+    "label": "Egy zászló alatt",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 16
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "munkasokol_vasokol"
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "szakszervezetek",
+              "answerId": "C"
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "kie_a_gyar",
+              "answerId": "A"
+            },
+            {
+              "not": {
+                "type": "event-triggered",
+                "eventId": "kadar_szakadas"
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 7,
+              "szdp": -6
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Egy zászló alatt",
+      "body": "A munkástanácsok és az üzemi szervezetek az MSZMP mellé álltak. A szociáldemokrata törzsszavazók tömegesen lépnek át, Kéthly pártja a gyárakban elveszíti a hátországát.",
+      "icon": "/images/1957_forradalom-oroksege/munkasokol_badge.png",
+      "major": true
+    }
+  },
+  {
+    "id": "munkasok_egyedul",
+    "label": "A munkások pártja egyedül",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "sajat_tobbseg"
+            },
+            {
+              "type": "event-triggered",
+              "eventId": "egy_zaszlo_siker"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 5,
+              "szdp": -3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "A munkások pártja egyedül",
+      "body": "Az egységes MSZMP partnerek nélkül kér felhatalmazást. Az üzemekből indított kampány a szociáldemokrata szavazók maradékát is megmozgatja.",
+      "icon": "megaphone-fill"
+    }
   }
 ]
