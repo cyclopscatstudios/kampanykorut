@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect, useMemo } from "react";
+import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
 import {
   buildSeatCountView,
@@ -16,6 +17,7 @@ import {
   DistrictPoligon,
   PollingOpnions,
 } from "@/shared/types";
+import { StateEngine } from "../../../logic/application";
 import { MapCreator } from "./MapCreator";
 import { MobileMapView } from "./MobileMapView";
 import { QuestionCard } from "./QuestionCard";
@@ -104,7 +106,11 @@ export function GameView({
         setCurrentView={onSetView}
         handleOnClick={onAnswer}
         cityName={selectedDistrict?.telepules}
-        randomAnswerOrder={config.electionConfig.randomAnswerOrder}
+        answerOrderSeed={
+          config.electionConfig.randomAnswerOrder
+            ? container.resolve(StateEngine).getSessionId()
+            : undefined
+        }
       />
     );
   }

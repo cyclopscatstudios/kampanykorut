@@ -1,7 +1,5 @@
-const sessionSeed = Math.floor(Math.random() * 2 ** 32);
-
-function hashString(value: string, seed: number): number {
-  let hash = seed ^ 0x811c9dc5;
+function hashString(value: string): number {
+  let hash = 0x811c9dc5;
   for (let i = 0; i < value.length; i++) {
     hash = Math.imul(hash ^ value.charCodeAt(i), 0x01000193);
   }
@@ -19,17 +17,15 @@ function mulberry32(seed: number): () => number {
   };
 }
 
-// Seeded by question id so the order survives leaving and returning to the question.
 export function orderAnswers<T>(
   answers: T[],
   questionId: string,
-  random: boolean | undefined,
-  seed: number = sessionSeed,
+  seed: string | undefined,
 ): T[] {
-  if (!random) {
+  if (!seed) {
     return answers;
   }
-  const next = mulberry32(hashString(questionId, seed));
+  const next = mulberry32(hashString(`${seed}:${questionId}`));
   const shuffled = [...answers];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(next() * (i + 1));

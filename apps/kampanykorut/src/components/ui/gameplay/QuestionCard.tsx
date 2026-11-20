@@ -28,7 +28,7 @@ export interface Question {
   setCurrentView: (currentView: CurrentView) => void;
   handleOnClick: (answer?: string) => void;
   cityName?: string;
-  randomAnswerOrder?: boolean;
+  answerOrderSeed?: string;
 }
 
 export function QuestionCard({
@@ -41,13 +41,13 @@ export function QuestionCard({
   setCurrentView,
   handleOnClick,
   cityName,
-  randomAnswerOrder,
+  answerOrderSeed,
 }: Question) {
   const { portrait, slogan, party_logo } = useAssets();
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const orderedAnswers = useMemo(
-    () => orderAnswers(possibleAnswers, id, randomAnswerOrder),
-    [possibleAnswers, id, randomAnswerOrder],
+    () => orderAnswers(possibleAnswers, id, answerOrderSeed),
+    [possibleAnswers, id, answerOrderSeed],
   );
   return (
     <div
