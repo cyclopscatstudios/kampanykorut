@@ -85,6 +85,6 @@
     "tags": ["alternate-history"],
     "campaignBanner": "default-banner.png",
     "thinCampaignBanner": "default-banner-thin.png",
-    "isPublished": false
+    "isPublished": true
   }
 ]
