@@ -45,6 +45,13 @@ import {
 } from "./modules/news/news.repository";
 import { MongoNewsRepository } from "./modules/news/news.repository.mongo";
 import type { NewsSource } from "./modules/news/news.sync";
+import { playTimeModule } from "./modules/play-time/play-time.module";
+import {
+  InMemoryPlayTimeRepository,
+  type PlayTimeRepository,
+} from "./modules/play-time/play-time.repository";
+import { MongoPlayTimeRepository } from "./modules/play-time/play-time.repository.mongo";
+import type { PlayTimeRateLimit } from "./modules/play-time/play-time.routes";
 import { mongo } from "./plugins/mongo";
 import { problemDetails } from "./plugins/problem-details";
 import { openApi } from "./plugins/swagger";
@@ -64,6 +71,8 @@ export interface AppDeps {
   bugReportRateLimit?: BugReportRateLimit;
   turnstile?: TurnstileVerifier | null;
   mailer?: Mailer | null;
+  playTimeRepository?: PlayTimeRepository;
+  playTimeRateLimit?: PlayTimeRateLimit;
   now?: () => Date;
 }
 
@@ -73,6 +82,10 @@ const PROBE_URLS = new Set(["/health", "/ready"]);
 const BUG_REPORT_RATE_LIMIT: BugReportRateLimit = {
   max: 5,
   timeWindow: "1 hour",
+};
+const PLAY_TIME_RATE_LIMIT: PlayTimeRateLimit = {
+  max: 60,
+  timeWindow: "1 minute",
 };
 const BUG_REPORT_OUTBOX_INTERVAL_MS = 60_000;
 const BUG_REPORT_DAILY_INTERVAL_MS = 24 * 60 * 60_000;
@@ -192,6 +205,13 @@ export async function buildApp(config: AppConfig, deps: AppDeps = {}) {
     now: deps.now,
   });
 
+  await app.register(playTimeModule, {
+    repository:
+      deps.playTimeRepository ?? (await createPlayTimeRepository(app)),
+    rateLimit: deps.playTimeRateLimit ?? PLAY_TIME_RATE_LIMIT,
+    now: deps.now,
+  });
+
   warnAboutBugReportSetup(app);
 
   return app;
@@ -244,6 +264,20 @@ async function createBugReportRepository(
   }
 
   const repository = new MongoBugReportRepository(connection);
+  await repository.init();
+  return repository;
+}
+
+async function createPlayTimeRepository(
+  app: FastifyInstance,
+): Promise<PlayTimeRepository> {
+  const connection = await mongoConnection(app);
+  if (!connection) {
+    app.log.warn("MONGODB_URI is not set, play times are kept in memory");
+    return new InMemoryPlayTimeRepository();
+  }
+
+  const repository = new MongoPlayTimeRepository(connection);
   await repository.init();
   return repository;
 }

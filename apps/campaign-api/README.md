@@ -165,3 +165,24 @@ public issue.
   after the "fixed" mail or after 12 months. The "fixed" mail carries
   `List-Unsubscribe` / one-click headers pointing to
   `POST /api/v1/bug-reports/unsubscribe/:token`.
+
+### Play time
+
+The game posts to `POST /api/v1/play-time/:sessionId/events`
+(`src/modules/play-time`) with `{ type, campaignId }`, where `type` is `start`,
+`heartbeat`, `pause` or `finish`. The client never sends durations; the API
+measures the time between events with its own clock and stores one record per
+game session in the `playTimes` collection (`activeMs`, `segments`, `status`,
+`startedAt`, `finishedAt`).
+
+- The game sends `start` when a game route (`/game/:id`, dashboard, coalition)
+  is visible, a `heartbeat` every 30 s, `pause` when the tab is hidden, the
+  page is closed or the player leaves the game, and `finish` when the final
+  result screen loads. Players who turned off the usage statistics send
+  nothing.
+- Time between two events counts only while the session is active and the gap
+  is at most 90 s, so a lost `pause` (crash, killed tab) adds no time away.
+  Several tabs of one session are counted once.
+- Events after `finish`, and `pause` / `finish` for unknown sessions, are
+  ignored. Concurrent updates are resolved with a `revision` field. The
+  endpoint allows 60 requests / minute / IP and answers `204`.

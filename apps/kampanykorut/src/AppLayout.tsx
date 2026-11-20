@@ -10,6 +10,7 @@ import { StateEngine, useStateEngine } from "./logic/application";
 import { useGetCampaigns } from "./logic/application/hooks/useGetCampaigns";
 import { Navigation } from "./logic/application/navigation/Navigation";
 import { NavigationBinder } from "./logic/application/navigation/NavigationBinder";
+import { usePlayTimeTracking } from "./logic/application/playTime/usePlayTimeTracking";
 import FullscreenBackground from "./ui/Background";
 
 const log = createLogger("AppLayout");
@@ -24,6 +25,7 @@ export function RootLayout() {
   const campaignLabel = useGetCampaigns().find(
     (c) => c.id === campaignId,
   )?.label;
+  usePlayTimeTracking();
 
   useEffect(() => {
     if (!campaignLabel) {
