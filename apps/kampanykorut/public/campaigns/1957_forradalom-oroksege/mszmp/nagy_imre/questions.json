@@ -615,7 +615,7 @@
   {
     "id": "osztrak_ut",
     "title": "Az osztrák út",
-    "question": "Ausztria 1955-ben négyhatalmi szerződéssel lett semleges. Most a magyar semlegesség garanciájáról kell dönteni. Melyik utat választod?",
+    "question": "Ausztria 1955-ben a négyhatalmi államszerződéssel nyerte vissza függetlenségét, és még abban az évben kimondta a semlegességét. Most a magyar semlegesség garanciájáról kell dönteni. Melyik utat választod?",
     "possibleAnswers": [
       {
         "id": "A",

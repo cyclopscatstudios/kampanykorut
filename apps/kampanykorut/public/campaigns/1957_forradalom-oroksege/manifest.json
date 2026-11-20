@@ -34,6 +34,17 @@
           "advisorFeedbackAssets": "fkgp/kovacs_bela/advisor_feedback_assets.json",
           "endResults": "fkgp/kovacs_bela/end_results.json"
         }
+      },
+      "szdp": {
+        "kethly_anna": {
+          "questions": "szdp/kethly_anna/questions.json",
+          "answerEffect": "szdp/kethly_anna/answer_effects.json",
+          "politicalConfig": "szdp/kethly_anna/political_config.json",
+          "campaignEvents": "szdp/kethly_anna/campaign_events.json",
+          "advisorFeedback": "szdp/kethly_anna/advisor_feedback.json",
+          "advisorFeedbackAssets": "szdp/kethly_anna/advisor_feedback_assets.json",
+          "endResults": "szdp/kethly_anna/end_results.json"
+        }
       }
     }
   }
