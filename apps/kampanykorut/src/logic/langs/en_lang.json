@@ -91,6 +91,9 @@
         "constituencySeats": "Constituency seats",
         "listSeats": "List seats",
         "partyListResults": "Party list results",
+        "regionalSeats": "Regional seats",
+        "nationalSeats": "Compensation seats",
+        "totalSeats": "Total: {{seats}}/{{all}} seats",
         "rankingTabs": {
           "victories": "Victories",
           "defeats": "Defeats",

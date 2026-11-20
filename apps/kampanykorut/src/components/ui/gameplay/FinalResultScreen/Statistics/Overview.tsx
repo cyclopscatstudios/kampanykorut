@@ -1,5 +1,8 @@
 import { t } from "i18next";
-import { getParliamentaryConfig } from "@/shared/domain";
+import {
+  getParliamentaryConfig,
+  isProportionalElection,
+} from "@/shared/domain";
 import {
   CampaignConfig,
   CampaignState,
@@ -35,6 +38,7 @@ export function Overview({
   const party = results.mandates.find((party) => party.party === playerSide);
   const percentage = results.percentages.partyListResults[playerSide];
   const seatConfig = getParliamentaryConfig(config.electionConfig);
+  const proportional = isProportionalElection(seatConfig);
 
   return (
     <div className="flex flex-col justify-center items-stretch md:items-center min-w-0">
@@ -46,12 +50,20 @@ export function Overview({
             <MandateOverview
               all={seatConfig.allSeats - seatConfig.listSeats}
               mandates={party?.constituencySeats ?? 0}
-              label={t("endResult.statistics.overview.constituencySeats")}
+              label={t(
+                proportional
+                  ? "endResult.statistics.overview.regionalSeats"
+                  : "endResult.statistics.overview.constituencySeats",
+              )}
             />
             <MandateOverview
               all={seatConfig.listSeats}
               mandates={party?.listSeats ?? 0}
-              label={t("endResult.statistics.overview.listSeats")}
+              label={t(
+                proportional
+                  ? "endResult.statistics.overview.nationalSeats"
+                  : "endResult.statistics.overview.listSeats",
+              )}
             />
           </>
         )}
@@ -60,6 +72,14 @@ export function Overview({
           percentage={Number(percentage.toFixed(2)) * 100}
         />
       </div>
+      {seatConfig && party && (
+        <Text className="text-center mb-3">
+          {t("endResult.statistics.overview.totalSeats", {
+            seats: party.totalSeats,
+            all: seatConfig.allSeats,
+          })}
+        </Text>
+      )}
       <MobileRankings
         config={config}
         largestVictories={largestVictories}
