@@ -104,6 +104,7 @@ export function GameView({
         setCurrentView={onSetView}
         handleOnClick={onAnswer}
         cityName={selectedDistrict?.telepules}
+        randomAnswerOrder={config.electionConfig.randomAnswerOrder}
       />
     );
   }

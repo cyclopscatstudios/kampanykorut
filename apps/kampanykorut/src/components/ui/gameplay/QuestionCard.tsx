@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { t } from "i18next";
+import { useMemo } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { CurrentView } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
@@ -9,6 +10,7 @@ import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useAssets } from "../../../hooks/useAssets";
 import { CommonWrapper } from "../CommonWrapper";
 import { Heading } from "../Heading";
+import { orderAnswers } from "./answerOrder.utils";
 
 interface Answer {
   id: string;
@@ -26,6 +28,7 @@ export interface Question {
   setCurrentView: (currentView: CurrentView) => void;
   handleOnClick: (answer?: string) => void;
   cityName?: string;
+  randomAnswerOrder?: boolean;
 }
 
 export function QuestionCard({
@@ -38,9 +41,14 @@ export function QuestionCard({
   setCurrentView,
   handleOnClick,
   cityName,
+  randomAnswerOrder,
 }: Question) {
   const { portrait, slogan, party_logo } = useAssets();
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const orderedAnswers = useMemo(
+    () => orderAnswers(possibleAnswers, id, randomAnswerOrder),
+    [possibleAnswers, id, randomAnswerOrder],
+  );
   return (
     <div
       className="flex flex-col p-3 md:p-4 bg-slate-900 h-full"
@@ -60,7 +68,7 @@ export function QuestionCard({
             {question}
           </Heading>
         </div>
-        {possibleAnswers.map((a, index) => (
+        {orderedAnswers.map((a, index) => (
           <AnswerRow
             answer={a}
             index={index}
