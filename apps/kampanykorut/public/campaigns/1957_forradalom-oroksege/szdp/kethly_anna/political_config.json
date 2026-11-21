@@ -827,7 +827,8 @@
           ]
         },
         "acceptReason": "Kovács Béla szerint a föld és a gyár ügyében megértitek egymást. A kisgazdák beszállnak.",
-        "rejectReason": "Kovács Béla szerint a programod a gazdáknak nem ad biztonságot. Nemet mond."
+        "rejectReason": "Kovács Béla szerint a programod a gazdáknak nem ad biztonságot. Nemet mond.",
+        "weight": 2
       }
     ]
   },

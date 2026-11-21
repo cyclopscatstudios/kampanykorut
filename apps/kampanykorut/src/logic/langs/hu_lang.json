@@ -456,6 +456,8 @@
     "partnerHint": "Egy partner a legjobb: minden további partner gyengíti a kormányodat.",
     "partnerHintMany": "Legfeljebb {{max}} partnerrel erős a kormányod: minden további partner gyengíti.",
     "tooManyPartners": "{{count}} pártnak ajánlasz. Ha mind elfogadja, gyenge kormányt alakítasz.",
+    "distantPartner": "Távoli partnert választottál: ha elfogadja, gyenge kormányt alakítasz.",
+    "distantHint": "Ideológiailag távoli párt: többet gyengít a kormányon, mint egy közeli partner.",
     "governmentSeats": "Kormánytöbbség",
     "seats": "{{seats}} mandátum",
     "submit": "Ajánlat elküldése ({{parties}})",

@@ -764,6 +764,7 @@
       },
       {
         "partyId": "szdp",
+        "weight": 3,
         "acceptWhen": {
           "and": [
             {

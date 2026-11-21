@@ -70,10 +70,13 @@ export interface CoalitionPartner {
   acceptWhen?: Condition;
   acceptReason: string;
   rejectReason: string;
+  // An ideologically distant partner counts as more than one.
+  weight?: number;
 }
 
 export interface CoalitionConfig {
   partners: CoalitionPartner[];
+  // Compared with the summed partner weights.
   maxStrongPartners?: number;
 }
 
