@@ -19,6 +19,7 @@ export * from "./mayoral-result";
 export * from "./menu.types";
 export * from "./news";
 export * from "./newspaper";
+export * from "./play-time";
 export * from "./political";
 export * from "./question";
 export * from "./settings";
