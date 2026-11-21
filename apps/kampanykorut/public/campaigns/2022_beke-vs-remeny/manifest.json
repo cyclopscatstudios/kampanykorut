@@ -14,7 +14,8 @@
     "tags": ["historical"],
     "campaignBanner": "ogyv-2022-default-banner.png",
     "thinCampaignBanner": "ogyv-2022-default-banner-thin.png",
-    "status": "published"
+    "status": "published",
+    "addedAt": "2026-08-01"
   },
   "files": {
     "electionConfig": "election_config.json",

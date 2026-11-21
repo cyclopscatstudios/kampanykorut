@@ -11,7 +11,8 @@
     "tags": ["historical"],
     "campaignBanner": "2026_tavaszi_szel_vizet_araszt-banner.png",
     "thinCampaignBanner": "2026_tavaszi_szel-banner-thin.png",
-    "status": "published"
+    "status": "published",
+    "addedAt": "2026-08-01"
   },
   "files": {
     "electionConfig": "election_config.json",
