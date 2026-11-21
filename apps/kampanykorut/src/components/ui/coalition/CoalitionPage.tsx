@@ -8,13 +8,16 @@ import {
   buildCoalitionView,
   type CoalitionResponseView,
   forPlayerSide,
+  getCoalitionWeight,
   getMaxStrongCoalitionPartners,
+  type PartnerSeatParty,
   type SeatParty,
   submitCoalitionOffer,
 } from "@/shared/domain";
 import { CampaignState, GovernmentOutcome } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
+import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { useParams } from "../../../hooks/useParamsHook";
 import { GameChrome } from "../gameplay/GameChrome";
@@ -38,6 +41,7 @@ export function CoalitionPage() {
   );
   const [offered, setOffered] = useState<string[]>([]);
   const maxStrongPartners = getMaxStrongCoalitionPartners(config);
+  const weakens = getCoalitionWeight(config, offered) > maxStrongPartners;
 
   const view = useMemo(
     () => (state ? buildCoalitionView(state, config) : undefined),
@@ -117,16 +121,16 @@ export function CoalitionPage() {
               data-testid="coalitionPartnerHint"
               className={classNames(
                 "m-0 text-sm font-semibold",
-                offered.length > maxStrongPartners
-                  ? "text-amber-200"
-                  : "text-slate-400",
+                weakens ? "text-amber-200" : "text-slate-400",
               )}
             >
               {offered.length > maxStrongPartners
                 ? t("coalition.tooManyPartners", { count: offered.length })
-                : maxStrongPartners > 1
-                  ? t("coalition.partnerHintMany", { max: maxStrongPartners })
-                  : t("coalition.partnerHint")}
+                : weakens
+                  ? t("coalition.distantPartner")
+                  : maxStrongPartners > 1
+                    ? t("coalition.partnerHintMany", { max: maxStrongPartners })
+                    : t("coalition.partnerHint")}
             </p>
           )}
 
@@ -139,7 +143,7 @@ export function CoalitionPage() {
                   <ResponseCard response={party as CoalitionResponseView} />
                 ) : (
                   <PartnerCard
-                    party={party}
+                    party={party as PartnerSeatParty}
                     selected={offered.includes(party.partyId)}
                     onToggle={() => toggle(party.partyId)}
                   />
@@ -193,7 +197,7 @@ function PartnerCard({
   selected,
   onToggle,
 }: {
-  party: SeatParty;
+  party: PartnerSeatParty;
   selected: boolean;
   onToggle: () => void;
 }) {
@@ -219,6 +223,17 @@ function PartnerCard({
           {t("coalition.seats", { seats: party.seats })}
         </span>
       </span>
+      {party.weight > 1 && (
+        <Tooltip content={t("coalition.distantHint")}>
+          <span
+            data-testid={`coalitionDistant-${party.partyId}`}
+            aria-label={t("coalition.distantHint")}
+            className="inline-flex text-amber-300"
+          >
+            <Icon name="exclamation-diamond-fill" size={16} />
+          </span>
+        </Tooltip>
+      )}
       <span
         aria-hidden="true"
         className={classNames(
