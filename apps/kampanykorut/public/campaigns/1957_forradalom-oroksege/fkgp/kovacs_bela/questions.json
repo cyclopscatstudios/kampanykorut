@@ -1,0 +1,1062 @@
+[
+  {
+    "id": "aldozatok_partja",
+    "title": "Az áldozatok pártja",
+    "question": "A Corvin köz felkelői gyors elszámoltatást követelnek az ÁVH és a diktatúra felelősei ellen. Téged 1947-ben a szovjetek hurcoltak el, ezért a felkelők szerint neked kell a legjobban értened őket. Mit mondasz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Független bíróságot kérsz, és elmondod, hogy a saját ügyedben sem bosszút akarsz."
+      },
+      {
+        "id": "B",
+        "label": "A felkelők mellé állsz: rendkívüli népbíróságot követelsz még a választás előtt."
+      },
+      {
+        "id": "C",
+        "label": "Megbékélést hirdetsz: a múlt sebeit nem a bíróságok gyógyítják."
+      },
+      {
+        "id": "D",
+        "label": "Kártalanítást kérsz az áldozatoknak, a felelősségre vonást a kormányra bízod."
+      }
+    ]
+  },
+  {
+    "id": "kik_johetnek",
+    "title": "Kik jöhetnek be?",
+    "question": "A pártirodák előtt sorban állnak a belépők. Köztük vannak 1945 előtti főszolgabírók, csendőrtisztek és legitimisták is. A kerületi titkárok kérdezik, kit vegyenek fel.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mindenkit felveszel, aki nem volt nyilas vagy ávós. A párt mindenkié, aki nem baloldali."
+      },
+      {
+        "id": "B",
+        "label": "Csak azokat veszed fel, akiket a helyi szervezet ismer és jótáll értük."
+      },
+      {
+        "id": "C",
+        "label": "A régi rendszer tisztviselőit nem veszed fel, a pártnak 1945 szellemében kell újjászületnie."
+      },
+      {
+        "id": "D",
+        "label": "Felveszed őket, de vezető tisztséget két évig nem kaphatnak."
+      }
+    ]
+  },
+  {
+    "id": "senki_ne_almodozzon",
+    "title": "Senki ne álmodozzon",
+    "question": "Pécsen nagygyűlést tartasz. A beszédírók két változatot hoztak: az egyikben kimondod, hogy nincs visszaút a grófok, bankárok és gyárosok világához, a másikban erről hallgatsz. Mit mondasz a téren?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Kimondod: senki ne álmodozzon a régi világ visszatéréséről. A föld a parasztoké marad."
+      },
+      {
+        "id": "B",
+        "label": "A régi világról hallgatsz, inkább a szabadságról és a semlegességről beszélsz."
+      },
+      {
+        "id": "C",
+        "label": "Kimondod, de hozzáteszed: a kisipar, a kisbolt és a magánföld szabad lesz."
+      },
+      {
+        "id": "D",
+        "label": "A jogos tulajdon visszaadásáról beszélsz, az egyházi és a magánbirtokokról is."
+      }
+    ]
+  },
+  {
+    "id": "templom_foldje",
+    "title": "Templom földje, paraszt földje",
+    "question": "Mindszenty József bíboros rádióbeszédben követeli az egyházi birtokok és iskolák visszaadását. A szószékről is felolvassák. Az egyházi földek egy részén ma az 1945-ös földosztás újgazdái gazdálkodnak, sokan közülük a ti szavazóitok.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Az iskolákat visszaadnád, a földet nem: a föld a parasztoké marad."
+      },
+      {
+        "id": "B",
+        "label": "A bíboros mellé állsz: amit elvettek, azt vissza kell adni."
+      },
+      {
+        "id": "C",
+        "label": "Állami kárpótlást ígérsz az egyháznak a földért cserébe."
+      },
+      {
+        "id": "D",
+        "label": "Kitérsz: ez az egyház és a kormány ügye, nem a párté."
+      }
+    ]
+  },
+  {
+    "id": "hideg_tel_kormanyban",
+    "title": "Hideg tél a kormányban",
+    "question": "Januárra elfogyott a szén. Tatabányán és Borsodban sztrájkolnak a bányászok, Budapesten fűtetlenek a lakások. A kormány tagjaiként a kisgazdák is felelősek. Mit javasolsz a minisztertanácson?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A falvakból fát és élelmet szervezel a városoknak, a gazdakörök segítségével."
+      },
+      {
+        "id": "B",
+        "label": "Kiállsz a kormány mellett, és együtt kéred a bányászokat, hogy dolgozzanak."
+      },
+      {
+        "id": "C",
+        "label": "Nyilvánosan elhatárolódsz: nem a kisgazdák tervezték a szénhiányt."
+      },
+      {
+        "id": "D",
+        "label": "Nyugati szénsegélyt kérsz Bécsen keresztül."
+      }
+    ]
+  },
+  {
+    "id": "dobi_emberei",
+    "title": "Dobi emberei",
+    "question": "Dobi István és a régi baloldali kisgazdák, akik 1947 után a kommunistákkal maradtak, most Kádár Jánossal tárgyalnak. A vidéki szervezetekben még sok hívük van. Mit teszel velük?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nyilvánosan kizárod őket a pártból."
+      },
+      {
+        "id": "B",
+        "label": "Csendben hagyod őket elmenni, a szervezeteket átveszed."
+      },
+      {
+        "id": "C",
+        "label": "Bocsánatkérést vársz tőlük 1947-ért, és utána maradhatnak."
+      },
+      {
+        "id": "D",
+        "label": "Megkéred Tildy Zoltánt, hogy beszéljen velük."
+      }
+    ]
+  },
+  {
+    "id": "kulaklistak",
+    "title": "Kuláklisták",
+    "question": "A Rákosi-korszakban kuláknak bélyegzett gazdák rehabilitációt követelnek. Sokukat kitelepítették, a földjüket elvették, a gyerekeiket nem vették fel az egyetemre. Mit ígérsz nekik?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Teljes rehabilitációt és a földjük visszaadását."
+      },
+      {
+        "id": "B",
+        "label": "Rehabilitációt és pénzbeli kárpótlást, a föld marad, ahol van."
+      },
+      {
+        "id": "C",
+        "label": "Csak erkölcsi rehabilitációt: a pénz most a szénre és a kenyérre kell."
+      },
+      {
+        "id": "D",
+        "label": "Bizottságot állítasz fel, amely ügyenként dönt."
+      }
+    ]
+  },
+  {
+    "id": "beszolgaltatas_vege",
+    "title": "Vége a beszolgáltatásnak?",
+    "question": "A kormány a beszolgáltatásról tárgyal. Nagy Imre fokozatos csökkentést javasol, a kisgazda miniszterek a teljes eltörlést. A rendeletet a ti aláírásotok nélkül nem lehet kiadni. Mit teszel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Kitartasz a teljes és azonnali eltörlés mellett, különben nem írod alá."
+      },
+      {
+        "id": "B",
+        "label": "Elfogadod a fokozatos csökkentést, ha idén legalább a felére mérséklik."
+      },
+      {
+        "id": "C",
+        "label": "Nem alkudozol: a kérdést a választás utánra hagyod, és kampányt építesz rá."
+      },
+      {
+        "id": "D",
+        "label": "Az eltörlés mellett a tsz-ből való szabad kilépést is a rendeletbe íratod."
+      }
+    ]
+  },
+  {
+    "id": "level_amerikabol",
+    "title": "Levél Amerikából",
+    "question": "Nagy Ferenc, a volt miniszterelnök levelet írt Washingtonból: hazatérne, és részt venne a kampányban. Itthon sokan várják, a kormányban és Moszkvában sokan tartanak tőle. Mit válaszolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Hazahívod, és felajánlod neki a lista élét."
+      },
+      {
+        "id": "B",
+        "label": "Hazahívod, de világossá teszed: a pártot Kovács Béla vezeti."
+      },
+      {
+        "id": "C",
+        "label": "A kormánnyal közösen hívod haza, a nemzeti megbékélés jegyében."
+      },
+      {
+        "id": "D",
+        "label": "Halogatod: előbb legyen meg a választás."
+      }
+    ]
+  },
+  {
+    "id": "kilepes_ideje",
+    "title": "Ajtócsapás vagy kézfogás",
+    "question": "A pártvezetés eldöntötte, hogy a kisgazdák kilépnek az ideiglenes kormányból, és a saját zászlójuk alatt indulnak. A kérdés az, mikor és hogyan.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Most lépsz ki, Nagy Imrének megköszönöd az együttműködést."
+      },
+      {
+        "id": "B",
+        "label": "Most lépsz ki, és nyilvánosan megnevezed a kormány hibáit."
+      },
+      {
+        "id": "C",
+        "label": "Kivárod a földtörvény elfogadását, és utána, nyár elején szépen kilépsz."
+      },
+      {
+        "id": "D",
+        "label": "Kivárod a kampány hajráját, addig kormánytagként is szerepelsz."
+      }
+    ],
+    "visibleIf": {
+      "type": "focus-selected",
+      "focusId": "sajat_zaszlo"
+    }
+  },
+  {
+    "id": "jobbszarny_poszt",
+    "title": "A bent maradás ára",
+    "question": "A kisgazdák a választásig a kormányban maradnak. A jobbszárny ezt csak akkor fogadja el, ha a párt egy újabb minisztériumot kap, lehetőleg a belügyet.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Kiharcolod a belügyet egy jobboldali kisgazdának."
+      },
+      {
+        "id": "B",
+        "label": "Egy államtitkárságot szerzel nekik a földművelésügyben."
+      },
+      {
+        "id": "C",
+        "label": "Elutasítod: a koalíció nem alku tárgya."
+      },
+      {
+        "id": "D",
+        "label": "Az emigrációban élő Sulyok Dezsőnek üzensz: a választás után megbeszélitek."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "focus-selected",
+        "focusId": "sajat_zaszlo"
+      }
+    }
+  },
+  {
+    "id": "orvosok_intelme",
+    "title": "Az orvosok intelme",
+    "question": "A szovjet fogság nyomot hagyott rajtad. Az orvosok pihenőt rendelnek, különben a nyári kampánykörút az egészségedbe kerülhet. Közben minden faluban várnak.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Lassítasz: a falujárás helyett rádióbeszédeket tartasz."
+      },
+      {
+        "id": "B",
+        "label": "Vállalod a terhet, és végigjárod az országot."
+      },
+      {
+        "id": "C",
+        "label": "Megosztod a terhet: a vidéki körút felét B. Szabó István és Tildy viszi."
+      },
+      {
+        "id": "D",
+        "label": "Eltitkolod a betegséget, és mindenhol ott vagy."
+      }
+    ]
+  },
+  {
+    "id": "kitelepitettek",
+    "title": "A kitelepítettek lakásai",
+    "question": "Az 1951-ben Budapestről kitelepített családok visszakérik a lakásaikat. A lakásokban ma munkáscsaládok laknak, akiket ugyanaz az állam költöztetett oda. A kormány rendeletet készít, és a te tárcád is dönt.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A régi lakók azonnal visszakapják a lakásukat."
+      },
+      {
+        "id": "B",
+        "label": "Kárpótlást és új lakást kapnak, a mostani lakók maradnak."
+      },
+      {
+        "id": "C",
+        "label": "Mindkét család marad, közös lakbérrel, amíg új lakás épül."
+      },
+      {
+        "id": "D",
+        "label": "A kérdést a bíróságokra bízod."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "event-triggered",
+        "eventId": "fkgp_kilepes"
+      }
+    }
+  },
+  {
+    "id": "kitelepitettek_igeret",
+    "title": "A kitelepítettek lakásai",
+    "question": "Az 1951-ben Budapestről kitelepített családok visszakérik a lakásaikat, ahol ma munkáscsaládok laknak. A kormány halogatja a döntést, ti ellenzékből szabadon ígérhettek. Mit ígérsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mindenki visszakapja a lakását, ez lesz az első kormányrendeletetek."
+      },
+      {
+        "id": "B",
+        "label": "Kárpótlást és lakásépítési programot ígérsz."
+      },
+      {
+        "id": "C",
+        "label": "Bírálod a kormányt, hogy még mindig nem döntött."
+      },
+      {
+        "id": "D",
+        "label": "Nem ígérsz semmit, a kérdés túl bonyolult."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "type": "event-triggered",
+          "eventId": "fkgp_kilepes"
+        },
+        {
+          "not": {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "kitelepitettek",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kitelepitettek",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kitelepitettek",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kitelepitettek",
+                "answerId": "D"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "kie_a_gyar",
+    "title": "Kie legyen a gyár?",
+    "question": "A régi gyároscsaládok visszakérik az államosított üzemeket, a munkástanácsok szerint a gyár azé, aki dolgozik benne. A kisgazda programból eddig hiányzott a válasz. Mit írsz bele?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A gyárakat vissza kell adni a jogos tulajdonosaiknak."
+      },
+      {
+        "id": "B",
+        "label": "A nagyipar állami marad, a kisipar, a kisbolt és a műhely szabad lesz."
+      },
+      {
+        "id": "C",
+        "label": "A munkástanácsok vezessék a gyárakat, az állam csak felügyeljen."
+      },
+      {
+        "id": "D",
+        "label": "Szövetkezeti tulajdont javasolsz, a dolgozók részvényeivel."
+      }
+    ]
+  },
+  {
+    "id": "tsz_gepallomas",
+    "title": "A tsz és a gépállomás",
+    "question": "A rendelet már lehetővé teszi a tsz-ből való kilépést, de a traktorok a gépállomásokon maradtak. A kilépők kézi erővel szántanak. A földművelésügyi tárca most dönthet a gépekről.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A gépállomásokat feloszlatod, a gépeket a gazdakörök kapják meg."
+      },
+      {
+        "id": "B",
+        "label": "A gépállomások maradnak, de mindenki egyforma áron bérelhet tőlük."
+      },
+      {
+        "id": "C",
+        "label": "A tsz-ek megtartják a gépeket, a kilépők hitelt kapnak saját gépre."
+      },
+      {
+        "id": "D",
+        "label": "A döntést a választás utánra hagyod."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "event-triggered",
+        "eventId": "fkgp_kilepes"
+      }
+    }
+  },
+  {
+    "id": "tsz_program",
+    "title": "A tsz és a gépállomás",
+    "question": "A tsz-ből már ki lehet lépni, de a traktorok a gépállomásokon maradtak. A kormány nem dönt. A falujáráson a gazdák azt kérdezik, mit tennél te.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A gépállomásokat feloszlatod, a gépeket a gazdakörök kapják meg."
+      },
+      {
+        "id": "B",
+        "label": "Egyforma bérleti díjat ígérsz mindenkinek."
+      },
+      {
+        "id": "C",
+        "label": "Szövetkezeti gépközösségeket ígérsz a kilépőknek."
+      },
+      {
+        "id": "D",
+        "label": "A kormányt támadod, programot nem mondasz."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "type": "event-triggered",
+          "eventId": "fkgp_kilepes"
+        },
+        {
+          "not": {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "tsz_gepallomas",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "tsz_gepallomas",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "tsz_gepallomas",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "tsz_gepallomas",
+                "answerId": "D"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "svabok",
+    "title": "A svábok",
+    "question": "1946-ban, kisgazda vezetésű kormány alatt, több tízezer német anyanyelvű családot telepítettek ki. A Dunántúlon, főleg Baranyában a maradók most bocsánatkérést várnak a párttól is.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A párt nevében bocsánatot kérsz."
+      },
+      {
+        "id": "B",
+        "label": "A kitelepítést a szövetséges hatalmak döntésének nevezed."
+      },
+      {
+        "id": "C",
+        "label": "Kárpótlást ígérsz a visszatérőknek."
+      },
+      {
+        "id": "D",
+        "label": "Nem szólsz a kérdésről a kampányban."
+      }
+    ]
+  },
+  {
+    "id": "kozos_lista",
+    "title": "Közös lista",
+    "question": "A választási törvény lehetővé teszi a listák összekapcsolását. Barankovics István és Bibó István is jelezte, hogy kész tárgyalni. Kivel kapcsolod össze a listát?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Hármas listakapcsolás: a Demokrata Néppárt és a Petőfi Párt is veled indul."
+      },
+      {
+        "id": "B",
+        "label": "Csak a Demokrata Néppárttal kapcsolsz."
+      },
+      {
+        "id": "C",
+        "label": "Csak a Petőfi Párttal kapcsolsz."
+      },
+      {
+        "id": "D",
+        "label": "Egyedül indulsz, a kisgazdáknak nincs szükségük mankóra."
+      }
+    ]
+  },
+  {
+    "id": "nagy_ferenc_megerkezik",
+    "title": "Nagy Ferenc megérkezik",
+    "question": "Nagy Ferenc megérkezett Ferihegyre, ezrek várták. Most azt kérdezi, mi lesz az ő szerepe a kampányban. A párt egy része vele, egy másik része veled tart.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Ő vezeti a listát, te a pártot."
+      },
+      {
+        "id": "B",
+        "label": "A külügyi kérdések szóvivője lesz, Nyugat felé ő a párt arca."
+      },
+      {
+        "id": "C",
+        "label": "Díszvendég a nagygyűléseken, de a kampányt te viszed."
+      },
+      {
+        "id": "D",
+        "label": "Távol tartod a kampánytól, hogy ne adjon fegyvert Moszkvának."
+      }
+    ]
+  },
+  {
+    "id": "sulyok_ajanlata",
+    "title": "Sulyok ajánlata",
+    "question": "Sulyok Dezső hazatért az emigrációból. Azt mondja, a kormányban ülő kisgazdák beolvadtak Nagy Imre pártjába. Helyet kér a listán a jobbszárnynak, különben saját pártot alapít.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Három befutó helyet adsz neki és embereinek."
+      },
+      {
+        "id": "B",
+        "label": "Egy helyet adsz, ha nyilvánosan támogatja a kormányban maradást."
+      },
+      {
+        "id": "C",
+        "label": "Elutasítod: a párt nem zsarolható."
+      },
+      {
+        "id": "D",
+        "label": "Tildy Zoltánra bízod a tárgyalást."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "not": {
+            "type": "event-triggered",
+            "eventId": "fkgp_kilepes"
+          }
+        },
+        {
+          "not": {
+            "type": "event-triggered",
+            "eventId": "szabadsagpart_kivalik"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "sulyok_ajanlata_kint",
+    "title": "Sulyok ajánlata",
+    "question": "Sulyok Dezső hazatért az emigrációból. Örül, hogy a kisgazdák kiléptek a kormányból, és helyet kér a listán a jobbszárnynak. Azt is jelzi, hogy enélkül saját pártot alapíthat.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Két befutó helyet adsz neki."
+      },
+      {
+        "id": "B",
+        "label": "Egy helyet adsz, és közös nyilatkozatot kérsz a földreformról."
+      },
+      {
+        "id": "C",
+        "label": "Elutasítod: a párt nem zsarolható."
+      },
+      {
+        "id": "D",
+        "label": "Nem válaszolsz, hadd várjon."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "and": [
+            {
+              "type": "event-triggered",
+              "eventId": "fkgp_kilepes"
+            },
+            {
+              "not": {
+                "or": [
+                  {
+                    "type": "answer-selected",
+                    "questionId": "sulyok_ajanlata",
+                    "answerId": "A"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "sulyok_ajanlata",
+                    "answerId": "B"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "sulyok_ajanlata",
+                    "answerId": "C"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "sulyok_ajanlata",
+                    "answerId": "D"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "not": {
+            "type": "event-triggered",
+            "eventId": "szabadsagpart_kivalik"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "szabadsagpart_kihivas",
+    "title": "Jobbról támadnak",
+    "question": "Sulyok Dezső Magyar Szabadságpártja a nyugati megyékben a kisgazdák szavazóit gyűjti. Gyűléseiken azt mondják, Kovács Béla elárulta 1945 győzteseit. Hogyan válaszolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Élesen elhatárolódsz: aki a régi rendszert sírja vissza, annak nincs helye a kisgazdák között."
+      },
+      {
+        "id": "B",
+        "label": "Hazahívod a tagokat: aki visszatér, attól az elnökség nem kérdez semmit."
+      },
+      {
+        "id": "C",
+        "label": "Választás utáni együttműködést ajánlasz Sulyoknak, hogy a jobboldali szavazat ne vesszen el."
+      },
+      {
+        "id": "D",
+        "label": "Nem veszel róluk tudomást, a kisgazdák nem vitatkoznak szakadárokkal."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "type": "event-triggered",
+          "eventId": "szabadsagpart_kivalik"
+        },
+        {
+          "not": {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata",
+                "answerId": "D"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata_kint",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata_kint",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata_kint",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "sulyok_ajanlata_kint",
+                "answerId": "D"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "moszkva_miniszterek",
+    "title": "Moszkva üzenete",
+    "question": "A szovjet nagykövet közölte Nagy Imrével: a semlegességi szerződés aláírása előtt Moszkva nem szeretne kisgazda belügyi vezetőket látni. Nagy Imre tőled kér segítséget.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A kisgazda vezetőket máshová helyezed, a szerződés fontosabb."
+      },
+      {
+        "id": "B",
+        "label": "Kiállsz az embereid mellett: Moszkva nem szólhat bele a kormányba."
+      },
+      {
+        "id": "C",
+        "label": "Nyilvánosságra hozod a kérést."
+      },
+      {
+        "id": "D",
+        "label": "Nagy Imrére bízod: ő a miniszterelnök."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "event-triggered",
+        "eventId": "fkgp_kilepes"
+      }
+    }
+  },
+  {
+    "id": "horthy_arnyeka",
+    "title": "Horthy árnyéka",
+    "question": "Moszkva lapjai és Kádár János pártjának újsága szerint a kisgazdák a Horthy-korszakot hoznák vissza. A szovjet nagykövet nyilatkozatot vár a semlegességről.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nyilatkozatot teszel: semlegesség, földreform, köztársaság."
+      },
+      {
+        "id": "B",
+        "label": "Visszavágsz: a kommunisták ne tanítsanak demokráciára."
+      },
+      {
+        "id": "C",
+        "label": "Nem reagálsz, válaszra sem méltatod a vádakat."
+      },
+      {
+        "id": "D",
+        "label": "Nagy Ferencet küldöd a nyugati rádiókba, hogy cáfoljon."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "type": "event-triggered",
+          "eventId": "fkgp_kilepes"
+        },
+        {
+          "not": {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "moszkva_miniszterek",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "moszkva_miniszterek",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "moszkva_miniszterek",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "moszkva_miniszterek",
+                "answerId": "D"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "papir_kormanytol",
+    "title": "Papír a Kis Újságnak",
+    "question": "A Kis Újság újraindult, de nincs elég papír. A kormány kiutalást ajánl a koalíciós lapoknak, cserébe arra kér, hogy a választásig ne támadják egymást.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Elfogadod a papírt és a feltételt."
+      },
+      {
+        "id": "B",
+        "label": "Elfogadod a papírt, a feltételt nem."
+      },
+      {
+        "id": "C",
+        "label": "Nyugati papírt hozatsz osztrák kereskedőktől."
+      },
+      {
+        "id": "D",
+        "label": "A lap kisebb példányszámban, saját erőből jelenik meg."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "event-triggered",
+        "eventId": "fkgp_kilepes"
+      }
+    }
+  },
+  {
+    "id": "papir_nyugatrol",
+    "title": "Papír a Kis Újságnak",
+    "question": "A Kis Újság újraindult, de nincs elég papír, a kormány pedig az ellenzéki lapoknak keveset utal ki. Egy amerikai magyar alapítvány papírt és pénzt ajánl.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Elfogadod a támogatást."
+      },
+      {
+        "id": "B",
+        "label": "Elfogadod a papírt, a pénzt nem."
+      },
+      {
+        "id": "C",
+        "label": "Elutasítod, és a kormánytól követelsz igazságos kiutalást."
+      },
+      {
+        "id": "D",
+        "label": "Röplapokra váltasz, a lapot felfüggeszted."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "type": "event-triggered",
+          "eventId": "fkgp_kilepes"
+        },
+        {
+          "not": {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "papir_kormanytol",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "papir_kormanytol",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "papir_kormanytol",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "papir_kormanytol",
+                "answerId": "D"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "kormanytarskent",
+    "title": "Kormánytársként",
+    "question": "A kampány hajrájában vagytok, és a kisgazdák még mindig a kormányban ülnek. A szavazók azt kérdezik, miben különböztök Nagy Imrétől. Mit mondasz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A kormány sikerei a kisgazdák érdemei is, a hibák nem."
+      },
+      {
+        "id": "B",
+        "label": "Kimondod: a föld és a magántulajdon kérdésében mások vagyunk."
+      },
+      {
+        "id": "C",
+        "label": "Nagy Imrét dicséred, csak a pártját bírálod."
+      },
+      {
+        "id": "D",
+        "label": "A koalíció sikereiről beszélsz, a különbségekről hallgatsz."
+      }
+    ],
+    "visibleIf": {
+      "not": {
+        "type": "event-triggered",
+        "eventId": "fkgp_kilepes"
+      }
+    }
+  },
+  {
+    "id": "nagy_imrerol",
+    "title": "Nagy Imréről",
+    "question": "A kampány hajrájában vagytok, ellenfélként álltok szemben Nagy Imrével. A pártban sokan kemény hangot követelnek, mások emlékeztetnek: ő osztotta a földet 1945-ben. Hogyan beszélsz róla?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Tisztelettel: a földosztó miniszter, akinek ma más a programja."
+      },
+      {
+        "id": "B",
+        "label": "Keményen: a kommunisták nem változnak meg."
+      },
+      {
+        "id": "C",
+        "label": "Barátként: a választás után is számítasz rá."
+      },
+      {
+        "id": "D",
+        "label": "Nem beszélsz róla, csak a saját programodról."
+      }
+    ],
+    "visibleIf": {
+      "and": [
+        {
+          "type": "event-triggered",
+          "eventId": "fkgp_kilepes"
+        },
+        {
+          "not": {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "kormanytarskent",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kormanytarskent",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kormanytarskent",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "kormanytarskent",
+                "answerId": "D"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "harom_part_program",
+    "title": "Három párt, egy program?",
+    "question": "Barankovics és Bibó közös kormányprogramot ajánl a választás előtt. Ez biztosítaná a koalíciót, de a saját ígéreteitekből is engedni kellene.",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Aláírod a közös programot, a földről és a semlegességről közös fejezettel."
+      },
+      {
+        "id": "B",
+        "label": "Közös nyilatkozatot írsz alá, de program nélkül."
+      },
+      {
+        "id": "C",
+        "label": "Elutasítod: előbb a választás, utána a koalíció."
+      },
+      {
+        "id": "D",
+        "label": "A saját programodat ajánlod fel közösnek."
+      }
+    ]
+  },
+  {
+    "id": "egyszer_mar_elvesztettetek",
+    "title": "Egyszer már elvesztettétek",
+    "question": "A rádióvitában Kádár János embere a szemedre hányja: a kisgazdák 1945-ben megnyerték az országot, aztán szeletenként odaadták. Mit válaszolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A saját elhurcolásodról beszélsz: nem odaadtuk, elvették tőlünk."
+      },
+      {
+        "id": "B",
+        "label": "Elismered a hibákat, és elmondod, mit tanult a párt."
+      },
+      {
+        "id": "C",
+        "label": "Visszavágsz: ti voltatok azok, akik elvették."
+      },
+      {
+        "id": "D",
+        "label": "Tildyre mutatsz: ő írta alá, nem te."
+      }
+    ]
+  },
+  {
+    "id": "zaro_nagygyules",
+    "title": "Záró nagygyűlés",
+    "question": "A kampány utolsó napján a Kossuth téren beszélsz. Százezrek várnak. Ez lehet az utolsó nagy beszéded. Miről szólsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A földről: a magyar paraszt végre a saját földjén gazdálkodik."
+      },
+      {
+        "id": "B",
+        "label": "A szabadságról: senki többé nem hurcolhat el senkit."
+      },
+      {
+        "id": "C",
+        "label": "A nemzeti egységről: a választás után mindenkivel kész vagy együttműködni."
+      },
+      {
+        "id": "D",
+        "label": "1947-ről és az elégtételről."
+      }
+    ]
+  }
+]

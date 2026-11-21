@@ -21,6 +21,12 @@ export function SettingsDialog({
 }) {
   const { settings, updateSettings } = useSettings();
   const [settingsForm, setSettingsForm] = useState<GameSettings>(settings);
+  const [syncedSettings, setSyncedSettings] = useState(settings);
+
+  if (syncedSettings !== settings) {
+    setSyncedSettings(settings);
+    setSettingsForm(settings);
+  }
 
   const isEqual = JSON.stringify(settings) === JSON.stringify(settingsForm);
 
@@ -84,6 +90,17 @@ export function SettingsBody({
           setSettingsForm((prev: GameSettings) => ({
             ...prev,
             showAdvisorFeedback: e.target.checked,
+          }))
+        }
+      />
+      <Checkbox
+        id="newspaperAutoOpen"
+        label={t("settingsMenu.newspaperAutoOpen.label")}
+        defaultChecked={settingsForm.newspaperAutoOpen !== false}
+        onChange={(e) =>
+          setSettingsForm((prev: GameSettings) => ({
+            ...prev,
+            newspaperAutoOpen: e.target.checked,
           }))
         }
       />

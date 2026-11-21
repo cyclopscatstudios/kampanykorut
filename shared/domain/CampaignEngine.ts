@@ -15,12 +15,17 @@ import {
   FinalResults,
   GameSettings,
   HistoryItem,
+  IssueStanceParams,
   PartyListData,
   PartyListVotes,
+  PoliticalConfig,
   RawAnsweEffectProps,
   RawEffect,
   RawParty,
   RawQuestion,
+  Relation,
+  RelationEffect,
+  SplitPartyEffect,
   Strategy,
   StrategyReward,
   WithdrawCandidateEffect,
@@ -28,6 +33,7 @@ import {
 import type { CampaignEventEngine } from "./CampaignEventEngine";
 import {
   getCandidateStatus,
+  getDormantPartyStates,
   getInactiveCandidateIds,
 } from "./CampaignStateAccess";
 import { createConditionContext } from "./ConditionContext";
@@ -37,16 +43,28 @@ import {
   excludeInactiveCandidates,
   excludeInactiveFromConditionalEffects,
 } from "./InactiveCandidateFilter";
+import { resolveIssueStance } from "./Issues";
 import { getMajorityType } from "./Majority";
 import type { MandateCalculator } from "./MandateCalculator";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
+import { getFailedFocusEffects } from "./PoliticalFocus";
+import { setRelations } from "./PoliticalRelations";
 import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "./PollsterEngine";
+import {
+  calculateProportionalResults,
+  isProportionalElection,
+} from "./ProportionalSeatCalculator";
 import {
   countEligibleQuestions,
   findNextQuestionIndex,
 } from "./QuestionEligibility";
 import type { ResultModifier } from "./ResultModifier";
 import type { CandidateWithdrawalTransformer } from "./ResultTransformer/CandidateWithdrawalTransformer";
+import {
+  splitCandidateListData,
+  splitPartyListData,
+  splitPartyListVotes,
+} from "./ResultTransformer/PartySplit";
 
 const log = createLogger("CampaignEngine");
 
@@ -65,6 +83,11 @@ export class CampaignEngine {
     private readonly initialPartyData?: PartyListData[],
     private readonly advisorFeedback?: AdvisorFeedback[],
     private readonly campaignEvents?: CampaignEvent[],
+    private readonly relations?: Pick<
+      Relation,
+      "id" | "tone" | "label" | "labels"
+    >[],
+    private readonly politicalConfig?: PoliticalConfig,
   ) {
     log.debug("CampaignEngine initialized");
   }
@@ -116,6 +139,7 @@ export class CampaignEngine {
       partyListVotes = baseApplied.partyListVotes;
     }
 
+    const dormantParties = getDormantPartyStates(electionConfig?.parties);
     const startState = {
       activeCampaignId: campaignId,
       turn: 0,
@@ -123,11 +147,13 @@ export class CampaignEngine {
       partyListData,
       partyListVotes,
       playerSide: savedState?.playerSide,
+      ...(dormantParties && { candidates: dormantParties }),
       ...this.calculateResults(
         candidateListData,
         partyListData,
         electionConfig,
         partyListVotes,
+        dormantParties && Object.keys(dormantParties),
       ),
       isEnded: false,
       isBaseResultsAlreadyApplied: true,
@@ -176,20 +202,32 @@ export class CampaignEngine {
     }
 
     const inactiveCandidateIds = getInactiveCandidateIds(state);
-    const appliedEffects = this.effectApplier.getAppliedEffects(
+    const effects = this.effectApplier.resolveConditionalEffects(
       excludeInactiveCandidates(decision.effects, inactiveCandidateIds),
-      state.candidateListData ?? [],
-      state.turn,
       excludeInactiveFromConditionalEffects(
         decision.conditionalEffects,
         inactiveCandidateIds,
       ),
+      history,
+    );
+    const stanced = this.applyIssueStances(
+      state,
+      effects.flatMap((e) =>
+        e.type === EffectType.IssueStance ? [e.params] : [],
+      ),
+      electionConfig,
+    );
+    const appliedEffects = this.effectApplier.getAppliedEffects(
+      effects.filter((e) => e.type !== EffectType.IssueStance),
+      stanced.candidateListData ?? [],
+      state.turn,
+      undefined,
       decision.selectedDistrict,
       districtBoost,
       playerVoteKey,
       history,
     );
-    const modified = this.resultModifier.apply(state, appliedEffects);
+    const modified = this.resultModifier.apply(stanced, appliedEffects);
 
     const nextTurn = state.turn + 1;
     const candidateListData = this.resultModifier.filterUnwantedValues(
@@ -207,11 +245,11 @@ export class CampaignEngine {
     );
 
     const answered = {
-      ...state,
+      ...stanced,
       turn: nextTurn,
-      candidateListData: candidateListData ?? state.candidateListData,
-      partyListData: partyListData ?? state.partyListData,
-      partyListVotes: partyListVotes ?? state.partyListVotes,
+      candidateListData: candidateListData ?? stanced.candidateListData,
+      partyListData: partyListData ?? stanced.partyListData,
+      partyListVotes: partyListVotes ?? stanced.partyListVotes,
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
         state.currentQuestion,
@@ -232,6 +270,7 @@ export class CampaignEngine {
       electionConfig,
       (current, effects) =>
         this.applyEventEffects(current, effects, electionConfig),
+      this.relations,
     );
 
     const position = this.getQuestionPosition(
@@ -240,16 +279,19 @@ export class CampaignEngine {
       electionConfig,
       this.getQuestionCursor(state) + 1,
     );
+    const settled = position.isEnded
+      ? this.applyFocusPenalties(afterEvents, answers, electionConfig)
+      : afterEvents;
     const session = {
       ...(position.isEnded && campaignStrategies
         ? this.applyFinalStrategies(
-            afterEvents,
+            settled,
             state,
             history,
             campaignStrategies,
             electionConfig,
           )
-        : afterEvents),
+        : settled),
       ...position,
     };
 
@@ -268,6 +310,24 @@ export class CampaignEngine {
         pollsterId,
       ),
     };
+  }
+
+  private applyFocusPenalties(
+    state: CampaignState,
+    answers: Pick<HistoryItem, "questionId" | "answerId">[],
+    electionConfig: ElectionConfig,
+  ): CampaignState {
+    if (!this.politicalConfig) {
+      return state;
+    }
+    const effects = getFailedFocusEffects(
+      state,
+      { politicalConfig: this.politicalConfig, electionConfig },
+      answers,
+    );
+    return effects.length
+      ? this.applyEventEffects(state, effects, electionConfig)
+      : state;
   }
 
   private applyFinalStrategies(
@@ -327,7 +387,12 @@ export class CampaignEngine {
       if (!electionConfig) {
         throw new Error("conditional questions need an election config");
       }
-      context ??= createConditionContext(state, answers, electionConfig);
+      context ??= createConditionContext(
+        state,
+        answers,
+        electionConfig,
+        this.relations,
+      );
       return context;
     };
 
@@ -571,6 +636,7 @@ export class CampaignEngine {
   ): CampaignState {
     let current = state;
     let batch: RawEffect[] = [];
+    const relations: RelationEffect[] = [];
     const flush = () => {
       current = this.applyRawEffects(current, batch);
       batch = [];
@@ -586,6 +652,21 @@ export class CampaignEngine {
         }
         flush();
         current = this.withdrawCandidate(current, effect);
+      } else if (effect.type === "split-party") {
+        flush();
+        current = this.splitParty(current, effect);
+      } else if (
+        effect.type === "set-relation" ||
+        effect.type === "shift-relation"
+      ) {
+        relations.push(effect);
+      } else if (effect.type === EffectType.IssueStance) {
+        flush();
+        current = this.applyIssueStances(
+          current,
+          [effect.params],
+          electionConfig,
+        );
       } else {
         batch.push(effect);
       }
@@ -593,10 +674,10 @@ export class CampaignEngine {
     flush();
 
     if (current === state) {
-      return state;
+      return setRelations(state, relations, this.relations);
     }
     return {
-      ...current,
+      ...setRelations(current, relations, this.relations),
       ...this.calculateResults(
         current.candidateListData,
         current.partyListData,
@@ -635,6 +716,36 @@ export class CampaignEngine {
       partyListData: modified.partyListData ?? state.partyListData,
       partyListVotes: modified.partyListVotes ?? state.partyListVotes,
     };
+  }
+
+  private applyIssueStances(
+    state: CampaignState,
+    stances: IssueStanceParams[],
+    electionConfig: ElectionConfig,
+  ): CampaignState {
+    let current = state;
+    for (const params of stances) {
+      const { issuePositions, targets } = resolveIssueStance(
+        current,
+        electionConfig,
+        params,
+        getInactiveCandidateIds(current),
+      );
+      const modified = targets.length
+        ? this.resultModifier.apply(current, [
+            { type: EffectType.DistrictVoteTransfer, target: targets },
+          ])
+        : null;
+      current = {
+        ...current,
+        issuePositions,
+        candidateListData:
+          modified?.candidateListData ?? current.candidateListData,
+        partyListData: modified?.partyListData ?? current.partyListData,
+        partyListVotes: modified?.partyListVotes ?? current.partyListVotes,
+      };
+    }
+    return current;
   }
 
   private withdrawCandidate(
@@ -684,6 +795,53 @@ export class CampaignEngine {
     };
   }
 
+  private splitParty(
+    state: CampaignState,
+    effect: SplitPartyEffect,
+  ): CampaignState {
+    const { partyId } = effect;
+    if (getCandidateStatus(state, partyId) !== "dormant") {
+      throw new Error(`cannot split into non-dormant party "${partyId}"`);
+    }
+    const sources = Object.keys({
+      ...effect.from,
+      ...Object.assign({}, ...Object.values(effect.fromByMegye ?? {})),
+    }).sort();
+    const invalidSource = sources.find(
+      (source) =>
+        source === partyId || getCandidateStatus(state, source) !== "active",
+    );
+    if (invalidSource) {
+      throw new Error(
+        `cannot split votes of "${invalidSource}" into "${partyId}"`,
+      );
+    }
+
+    log.info("Party splits", { partyId, sources, turn: state.turn });
+
+    return {
+      ...state,
+      candidateListData: splitCandidateListData(
+        state.candidateListData ?? [],
+        effect,
+      ),
+      ...(state.partyListData && {
+        partyListData: splitPartyListData(state.partyListData, effect),
+      }),
+      ...(state.partyListVotes && {
+        partyListVotes: splitPartyListVotes(state.partyListVotes, effect),
+      }),
+      candidates: {
+        ...state.candidates,
+        [partyId]: {
+          status: "active",
+          splitFromIds: Object.keys(effect.from).sort(),
+          changedAtTurn: state.turn,
+        },
+      },
+    };
+  }
+
   private warnOnConfigVersionChange(
     savedState: CampaignState,
     currentVersion?: string,
@@ -705,6 +863,16 @@ export class CampaignEngine {
     partyListVotes?: PartyListVotes,
     inactiveCandidateIds: string[] = [],
   ): Pick<CampaignState, "results" | "mayoralResult"> {
+    const parliamentary = getParliamentaryConfig(electionConfig);
+    if (isProportionalElection(parliamentary)) {
+      if (!candidateListData) {
+        log.error("Missing candidate data for proportional calculation");
+        return {};
+      }
+      return {
+        results: calculateProportionalResults(candidateListData, parliamentary),
+      };
+    }
     if (!electionConfig || !isMayoralElection(electionConfig)) {
       return {
         results: this.mandateCalculator.calculate(

@@ -30,13 +30,22 @@
               "karacsony_gergely": 0.1,
               "_abstain": 0.1
             }
+          },
+          {
+            "type": "set-relation",
+            "relationId": "szentkiralyi",
+            "tone": "good",
+            "label": "Szövetséges",
+            "description": "Teszt: Szentkirályi Alexandra visszalépett, és melléd állt."
           }
         ]
       }
     ],
     "announcement": {
       "title": "Szentkirályi Alexandra visszalép",
-      "body": "Teszt bejelentés: a főpolgármester-választási mezőny megváltozott."
+      "body": "Teszt bejelentés: a főpolgármester-választási mezőny megváltozott.",
+      "icon": "person-dash-fill",
+      "major": true
     }
   }
 ]

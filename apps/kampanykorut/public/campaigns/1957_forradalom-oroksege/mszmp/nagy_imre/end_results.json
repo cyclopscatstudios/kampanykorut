@@ -1,0 +1,20 @@
+{
+  "playerSideDefeat": {
+    "title": "Az ellenzék kormányoz",
+    "subtitle": "Nagy Imre pártja ellenzékbe szorul",
+    "description": "Vereséget szenvedett Nagy Imre Magyar Szocialista Munkáspártja az 1957-es országgyűlési választáson. A forradalom utáni első szabad választáson a szavazók többsége más pártra bízta az ország vezetését, amely egyedül is képes kormányt alakítani. Az MSZMP-nek ellenzékből kell megvédenie a forradalom vívmányait, és újra kell gondolnia, miért fordultak el tőle a munkások és a parasztok. Nagy Imre előtt most az a kérdés áll, hogy a megújult szocializmus eszméje túléli-e a vereséget, és képes lesz-e pártja a következő választáson visszaszerezni a bizalmat.",
+    "imageUri": "/images/1957_forradalom-oroksege/mszmp_vereseg.png"
+  },
+  "playerSideVictory": {
+    "title": "A forradalom öröksége",
+    "subtitle": "Nagy Imre győzelmével új korszak kezdődik",
+    "description": "Történelmi eredmény született az 1957-es országgyűlési választáson: Nagy Imre vezetésével a Magyar Szocialista Munkáspárt szerezte meg a legtöbb mandátumot. A forradalom után megtartott első szabad választáson a magyarok immár több párt közül dönthettek, és a reformszocialisták mellett tették le voksukat. Nagy Imre a szocializmus megújítására, a nemzeti függetlenség megőrzésére és a forradalom vívmányainak megszilárdítására kapott felhatalmazást. A választási győzelem azonban egy új korszak kezdete is: a kormány előtt az ország újjáépítése, a gazdaság talpra állítása és a demokratikus intézmények megerősítése áll.",
+    "imageUri": "/images/1957_forradalom-oroksege/mszmp_gyozelem.png"
+  },
+  "deadlock": {
+    "title": "Elmaradt a többség",
+    "subtitle": "Bizonytalan jövő előtt Nagy Imre",
+    "description": "Nem sikerült megszereznie a parlamenti többséget Nagy Imre Magyar Szocialista Munkáspártjának az 1957-es országgyűlési választáson. A forradalom utáni első szabad választáson a magyar társadalom megosztottnak bizonyult, és egyik politikai irányzat sem kapott egyértelmű felhatalmazást az önálló kormányzásra. Az MSZMP előtt most nehéz koalíciós tárgyalások állnak, amelyek kimenetele korántsem biztos. A szociáldemokraták, a kisgazdák és a többi parlamenti párt eltérően képzelik el az ország jövőjét, miközben a forradalom egykori szövetségeseit egyre mélyebb politikai ellentétek választják el egymástól. Nagy Imrének most kompromisszumokat kell kötnie, ha meg akarja őrizni vezető szerepét, és tovább kívánja vinni a szocializmus megújítására épülő programját.",
+    "imageUri": "/images/1957_forradalom-oroksege/mszmp_vereseg.png"
+  }
+}

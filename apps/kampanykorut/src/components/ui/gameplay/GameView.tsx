@@ -1,6 +1,13 @@
-import { useEffect } from "react";
+import { type ReactNode, useEffect, useMemo } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { isCityDistrictMap } from "@/shared/domain";
+import {
+  buildSeatCountView,
+  getParliamentaryConfig,
+  hasCapitalInset,
+  isCityDistrictMap,
+  isFocusRequired,
+  isProportionalElection,
+} from "@/shared/domain";
 import {
   CampaignConfig,
   CampaignState,
@@ -12,6 +19,7 @@ import {
 import { MapCreator } from "./MapCreator";
 import { MobileMapView } from "./MobileMapView";
 import { QuestionCard } from "./QuestionCard";
+import { SeatCountScreen } from "./VoteCountingScreen/SeatCountScreen";
 import { VoteCountingScreen } from "./VoteCountingScreen/VoteCountingScreen";
 
 interface GameViewProps {
@@ -21,11 +29,13 @@ interface GameViewProps {
   config: CampaignConfig;
   answer: string | undefined;
   selectedDistrict: District | null;
+  isReturning?: boolean;
   onAnswer: (id?: string) => void;
   onSetAnswer: (answer: string | undefined) => void;
   onSetView: (view: CurrentView) => void;
   onSetDistrict: (district: District | null) => void;
   onVoteCountingComplete: () => void;
+  mapOverlay?: ReactNode;
 }
 
 export function GameView({
@@ -35,15 +45,32 @@ export function GameView({
   config,
   answer,
   selectedDistrict,
+  isReturning,
   onAnswer,
   onSetAnswer,
   onSetView,
   onSetDistrict,
   onVoteCountingComplete,
+  mapOverlay,
 }: GameViewProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const proportional = getParliamentaryConfig(config.electionConfig);
+  const seatCountView = useMemo(
+    () =>
+      isProportionalElection(proportional) && state.results
+        ? buildSeatCountView(
+            state.results,
+            proportional.allSeats,
+            proportional.listSeats,
+          )
+        : undefined,
+    [proportional, state.results],
+  );
 
-  const skipVoteCounting = currentView === "VoteCountingView" && !isDesktop;
+  // The seat count is the reveal of a proportional election, so unlike the
+  // generic counting animation it is shown on mobile too.
+  const skipVoteCounting =
+    currentView === "VoteCountingView" && !isDesktop && !seatCountView;
   useEffect(() => {
     if (skipVoteCounting) {
       onVoteCountingComplete();
@@ -52,6 +79,17 @@ export function GameView({
 
   if (skipVoteCounting) {
     return null;
+  }
+
+  if (currentView === "VoteCountingView" && seatCountView) {
+    return (
+      <SeatCountScreen
+        view={seatCountView}
+        parties={config.electionConfig.parties}
+        year={config.electionConfig.year}
+        onComplete={onVoteCountingComplete}
+      />
+    );
   }
 
   if (currentView === "QuestionView") {
@@ -83,8 +121,11 @@ export function GameView({
     );
   }
 
+  const visitBlocked = isFocusRequired(state, config);
   const isCityMap = isCityDistrictMap(config.electionConfig);
-  const capitalCity = isCityMap ? [] : getCapitalCity(config.districts);
+  const capitalCity = hasCapitalInset(config.electionConfig)
+    ? getCapitalCity(config.districts)
+    : [];
   const candidateListData =
     pollsData?.candidateListData ?? state.candidateListData ?? [];
   const percentages = pollsData?.percentages ?? state.results?.percentages;
@@ -102,6 +143,9 @@ export function GameView({
       selectedDistrict={selectedDistrict}
       setSelectedDistrict={onSetDistrict}
       electionConfig={config.electionConfig}
+      visitBlocked={visitBlocked}
+      isReturning={isReturning}
+      mapOverlay={mapOverlay}
     />
   ) : (
     <MobileMapView
@@ -114,6 +158,9 @@ export function GameView({
       selectedDistrict={selectedDistrict}
       onSetDistrict={onSetDistrict}
       onSetView={onSetView}
+      visitBlocked={visitBlocked}
+      isReturning={isReturning}
+      mapOverlay={mapOverlay}
     />
   );
 }

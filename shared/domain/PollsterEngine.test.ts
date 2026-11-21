@@ -53,6 +53,17 @@ describe("PollsterEngine.configure", () => {
     expect(engine.getPollsters()).toEqual([...defaultPollsters, ...custom]);
   });
 
+  it("keeps only custom pollsters when all_pollsters is excluded", () => {
+    const custom: Pollster[] = [
+      { id: "custom", label: "Custom", errorMargin: { min: 1, max: 3 } },
+    ];
+    engine.configure([
+      ...custom,
+      { id: "all_pollsters", exclude: true } as Pollster,
+    ]);
+    expect(engine.getPollsters()).toEqual(custom);
+  });
+
   it("calling configure() again resets to defaults only", () => {
     const custom: Pollster[] = [
       { id: "custom", label: "Custom", errorMargin: { min: 1, max: 3 } },
@@ -96,6 +107,11 @@ describe("PollsterEngine.getPolls", () => {
     expect(result).toHaveProperty("party_a");
     expect(result).toHaveProperty("party_b");
     expect(result).not.toHaveProperty("_total");
+  });
+
+  it("returns undefined when every pollster is excluded", () => {
+    engine.configure([{ id: "all_pollsters", exclude: true } as Pollster]);
+    expect(engine.getPolls(mockState)).toBeUndefined();
   });
 
   it("all values are finite numbers", () => {

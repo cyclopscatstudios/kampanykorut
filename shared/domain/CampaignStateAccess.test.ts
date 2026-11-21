@@ -42,6 +42,7 @@ describe("CampaignStateAccess", () => {
     expect(getCampaignEventState(legacyState)).toEqual({
       triggeredEventIds: [],
       pendingAnnouncementIds: [],
+      triggeredAtTurn: {},
     });
   });
 
@@ -49,6 +50,7 @@ describe("CampaignStateAccess", () => {
     const campaignEvents = {
       triggeredEventIds: ["szentkiralyi_withdrawal"],
       pendingAnnouncementIds: ["szentkiralyi_withdrawal"],
+      triggeredAtTurn: { szentkiralyi_withdrawal: 26 },
     };
 
     expect(getCampaignEventState({ campaignEvents })).toEqual(campaignEvents);
@@ -72,6 +74,7 @@ describe("announcements", () => {
     campaignEvents: {
       triggeredEventIds: ["silent", "withdrawal"],
       pendingAnnouncementIds: ["missing", "withdrawal"],
+      triggeredAtTurn: { withdrawal: 2 },
     },
   } as CampaignState;
 
@@ -90,6 +93,7 @@ describe("announcements", () => {
     expect(next.campaignEvents).toEqual({
       triggeredEventIds: ["silent", "withdrawal"],
       pendingAnnouncementIds: ["missing"],
+      triggeredAtTurn: { withdrawal: 2 },
     });
     expect(state.campaignEvents?.pendingAnnouncementIds).toEqual([
       "missing",

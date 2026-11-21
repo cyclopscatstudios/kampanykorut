@@ -1,3 +1,5 @@
+import classNames from "classnames";
+import i18next from "i18next";
 import { useState } from "react";
 import { useLoaderData } from "react-router";
 import { container } from "tsyringe";
@@ -9,6 +11,8 @@ import { Button } from "../../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../../shared/ui/Icon";
 import { useNavigation } from "../../../../hooks/navigationHook";
 import { StateEngine } from "../../../../logic/application/StateEngine";
+import { getRunProperties } from "../../../../logic/infra/posthog/events";
+import { track } from "../../../../logic/infra/posthog/track";
 import { GameChrome } from "../GameChrome";
 import {
   ConfirmCampaignSelectorModal,
@@ -17,6 +21,8 @@ import {
 import { ElectionMap } from "./ElectionMap";
 import { MayoralDistrictTable } from "./MayoralDistricts";
 import { MayoralSummaryPage } from "./MayoralSummaryPage";
+import { buildShareCard, ShareCardData } from "./shareCard/shareCard.utils";
+import { ShareResultDialog } from "./shareCard/ShareResultDialog";
 import { Achievements } from "./Statistics/Achievements";
 import { Statistics } from "./Statistics/Statistics";
 import { SummaryPage } from "./SummaryPage";
@@ -77,6 +83,23 @@ export function FinalResultScreen() {
   const state = stateEngine.getCampaignState();
   const mayoralResult = results.mayoralResult;
   const visibleScreens = mayoralResult ? mayoralScreens : screens;
+  const campaignId = state?.activeCampaignId;
+  const [shareCard, setShareCard] = useState<ShareCardData | null>(null);
+  const openShare = () => {
+    if (!state || !campaignId) return;
+    setShareCard(
+      buildShareCard({
+        results,
+        config,
+        state,
+        history: history ?? [],
+        campaignId,
+        origin: window.location.origin,
+        locale: i18next.language || "hu",
+        t,
+      }),
+    );
+  };
   const summary = mayoralResult ? (
     <MayoralSummaryPage mayoralResult={mayoralResult} config={config} />
   ) : (
@@ -99,6 +122,23 @@ export function FinalResultScreen() {
         <ConfirmCampaignSelectorModal
           onCancel={() => setConfirmAction(null)}
           onConfirm={goToCampaignSelector}
+        />
+      )}
+      {shareCard && campaignId && (
+        <ShareResultDialog
+          card={shareCard}
+          onClose={() => setShareCard(null)}
+          onShared={(channel) =>
+            track("result_shared", {
+              ...getRunProperties(
+                stateEngine.getSessionId(),
+                campaignId,
+                state?.playerSide,
+              ),
+              outcome: shareCard.outcome,
+              channel,
+            })
+          }
         />
       )}
       <div className="m-2 flex flex-col flex-1 min-h-0 min-w-0 md:flex-none">
@@ -130,15 +170,28 @@ export function FinalResultScreen() {
                   {t("endResult.actions.otherCampaign")}
                 </Button.Text>
               </Button>
-              <Button onClick={() => setConfirmAction("restart")}>
+              <Button
+                variant="tertiary"
+                onClick={() => setConfirmAction("restart")}
+              >
                 <Button.Icon name="arrow-counterclockwise" />
                 <Button.Text>{t("endResult.actions.replay")}</Button.Text>
               </Button>
+              {state && campaignId && (
+                <Button onClick={openShare} testId="shareResult">
+                  <Button.Icon name="share-fill" />
+                  <Button.Text>{t("endResult.actions.share")}</Button.Text>
+                </Button>
+              )}
             </div>
           </div>
           <div
             key={activeScreen}
-            className="flex-1 min-h-0 min-w-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto overflow-x-hidden md:overflow-visible"
+            className={classNames(
+              "flex-1 min-h-0 min-w-0 md:flex-none md:h-[620px] w-full md:w-[1100px] mb-3 overflow-y-auto overflow-x-hidden",
+              // The summary story can run longer than the fixed panel.
+              activeScreen !== "summaryPage" && "md:overflow-visible",
+            )}
           >
             {activeScreen === "statistics" && (
               <Statistics results={results} config={config} />

@@ -677,6 +677,87 @@ describe("CampaignEngine campaign strategies", () => {
   });
 });
 
+describe("CampaignEngine failed focus penalty", () => {
+  const lastQuestion: RawQuestion = {
+    id: "q_last",
+    question: "Last question",
+    possibleAnswers: [{ id: "A", label: "Answer A" }],
+  };
+  const penalty: RawEffect = {
+    type: EffectType.UniformSwing,
+    params: { party_a: -5, party_b: 5 },
+  };
+  const engineWith = (completeWhen?: object) =>
+    new CampaignEngine(
+      mockCandidateListData,
+      [lastQuestion],
+      [],
+      container.resolve(ResultModifier),
+      container.resolve(EffectApplier),
+      container.resolve(MandateCalculator),
+      container.resolve(PollsterEngine),
+      container.resolve(MayoralResultCalculator),
+      container.resolve(CampaignEventEngine),
+      container.resolve(CandidateWithdrawalTransformer),
+      mockPartyListData,
+      undefined,
+      undefined,
+      undefined,
+      {
+        gameMode: "strategic",
+        focuses: [
+          {
+            id: "reform",
+            title: "Reform",
+            summary: "",
+            description: "",
+            completeWhen: completeWhen as never,
+            failEffects: [penalty],
+          },
+          { id: "other", title: "Other", summary: "", description: "" },
+        ],
+      },
+    );
+
+  const share = (engine: CampaignEngine, selectedFocusIds: string[]) =>
+    engine.processTurn(
+      {
+        ...campaignState,
+        turn: 0,
+        currentQuestion: lastQuestion,
+        politicalDashboard: { seenEventIds: [], selectedFocusIds },
+      },
+      {
+        questionId: "q_last",
+        answerId: "A",
+        effects: [{ type: EffectType.UniformSwing, params: { party_a: 0 } }],
+      },
+      [],
+      { showAdvisorFeedback: false, language: "en" },
+      mockElectionConfig,
+    ).results!.percentages.candidateListResults.party_a;
+
+  const failing = engineWith({
+    type: "answer-selected",
+    questionId: "q_last",
+    answerId: "B",
+  });
+
+  it("costs popularity after the last turn when the chosen focus failed", () => {
+    expect(share(failing, ["reform"])).toBeLessThan(share(failing, []));
+  });
+
+  it("leaves a completed or unchosen focus without penalty", () => {
+    const completed = engineWith({
+      type: "answer-selected",
+      questionId: "q_last",
+      answerId: "A",
+    });
+    expect(share(completed, ["reform"])).toBe(share(completed, []));
+    expect(share(failing, ["other"])).toBe(share(failing, []));
+  });
+});
+
 describe("CampaignEngine.getFinalResults majority", () => {
   const engine = new CampaignEngine(
     mockCandidateListData,

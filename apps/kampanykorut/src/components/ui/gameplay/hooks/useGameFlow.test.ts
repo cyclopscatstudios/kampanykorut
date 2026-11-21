@@ -211,6 +211,68 @@ describe("useGameFlow", () => {
     });
   });
 
+  describe("paused question", () => {
+    it("remembers a question left for the map until it is resumed", () => {
+      const { result } = renderHook(() =>
+        useGameFlow(mockProcessAnswer, mockCommitTurn),
+      );
+
+      act(() => {
+        result.current.dispatch({ type: "CHANGE_VIEW", view: "QuestionView" });
+      });
+      act(() => {
+        result.current.dispatch({ type: "PAUSE_QUESTION" });
+      });
+      expect(result.current.flow.currentView).toBe("MapView");
+      expect(result.current.flow.questionPaused).toBe(true);
+
+      act(() => {
+        result.current.dispatch({ type: "RESUME_QUESTION" });
+      });
+      expect(result.current.flow.currentView).toBe("QuestionView");
+      expect(result.current.flow.questionPaused).toBe(false);
+    });
+
+    it("resumes the paused visit even after another district was picked", () => {
+      const paused = { telepules: "Pécs" } as District;
+      const other = { telepules: "Győr" } as District;
+      const { result } = renderHook(() =>
+        useGameFlow(mockProcessAnswer, mockCommitTurn),
+      );
+
+      act(() => {
+        result.current.dispatch({ type: "SELECT_DISTRICT", district: paused });
+      });
+      act(() => {
+        result.current.dispatch({ type: "CHANGE_VIEW", view: "QuestionView" });
+      });
+      act(() => {
+        result.current.dispatch({ type: "PAUSE_QUESTION" });
+      });
+      act(() => {
+        result.current.dispatch({ type: "SELECT_DISTRICT", district: other });
+      });
+      act(() => {
+        result.current.dispatch({ type: "RESUME_QUESTION" });
+      });
+      expect(result.current.flow.selectedDistrict).toBe(paused);
+    });
+
+    it("forgets the paused question when a new visit starts", () => {
+      const { result } = renderHook(() =>
+        useGameFlow(mockProcessAnswer, mockCommitTurn),
+      );
+
+      act(() => {
+        result.current.dispatch({ type: "PAUSE_QUESTION" });
+      });
+      act(() => {
+        result.current.dispatch({ type: "CHANGE_VIEW", view: "QuestionView" });
+      });
+      expect(result.current.flow.questionPaused).toBe(false);
+    });
+  });
+
   describe("handleAdvisorClose", () => {
     it("commits the pending turn and dismisses advisor", () => {
       const pending = makePending({ advisorFeedback: mockFeedback });
@@ -279,6 +341,23 @@ describe("useGameFlow", () => {
       });
 
       expect(result.current.flow.currentView).toBe("VoteCountingView");
+    });
+
+    it("stays on the map when the last answer fired an announcement", () => {
+      mockProcessAnswer.mockReturnValue(makePending());
+      mockCommitTurn.mockReturnValue({ turn: 1, isEnded: true });
+      const { result } = renderHook(() =>
+        useGameFlow(mockProcessAnswer, mockCommitTurn, () => true),
+      );
+      act(() => {
+        result.current.dispatch({ type: "CHANGE_VIEW", view: "QuestionView" });
+      });
+
+      act(() => {
+        result.current.handleAnswer("a1");
+      });
+
+      expect(result.current.flow.currentView).toBe("MapView");
     });
   });
 });

@@ -52,7 +52,13 @@ function recordingApply() {
   const apply: ApplyEventEffects = (current, effects) => {
     calls.push(
       ...effects.map((e) =>
-        "params" in e ? Object.keys(e.params).join() : e.candidateId,
+        "params" in e
+          ? Object.keys(e.params).join()
+          : "candidateId" in e
+            ? e.candidateId
+            : "partyId" in e
+              ? e.partyId
+              : e.relationId,
       ),
     );
     return { ...current };
@@ -88,6 +94,7 @@ describe("CampaignEventEngine", () => {
     expect(result.campaignEvents).toEqual({
       triggeredEventIds: ["withdrawal"],
       pendingAnnouncementIds: ["withdrawal"],
+      triggeredAtTurn: { withdrawal: 20 },
     });
   });
 

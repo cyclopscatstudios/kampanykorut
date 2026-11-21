@@ -1,6 +1,7 @@
 import { t } from "i18next";
-import { type RefObject, useRef, useState } from "react";
+import { type ReactNode, type RefObject, useRef, useState } from "react";
 import { useResizeObserver } from "usehooks-ts";
+import { AreaIssueView, getAreaIssues } from "@/shared/domain/Issues";
 import {
   CandidateListData,
   CurrentView,
@@ -12,6 +13,7 @@ import {
 import { Button } from "@/shared/ui/Button";
 import { BottomSheet } from "../BottomSheet";
 import { getWinnerResultByCandidateList } from "../map.utils";
+import { AreaIssues } from "./AreaIssues";
 import {
   formatVoters,
   getDistrictInsight,
@@ -19,6 +21,7 @@ import {
   getSwingColor,
 } from "./districtInsight.utils";
 import { DistrictList, InsightBadge } from "./DistrictList";
+import { FocusRequiredNote } from "./FocusRequiredNote";
 import { MapWrapper } from "./MapWrapper";
 import { CollapsibleEstimate, EstimateSheetContent } from "./MobileEstimate";
 import { getSwingFactorByDistrict } from "./swingFactor.utils";
@@ -39,6 +42,9 @@ interface MobileMapViewProps {
   selectedDistrict: District | null;
   onSetDistrict: (district: District | null) => void;
   onSetView: (view: CurrentView) => void;
+  visitBlocked?: boolean;
+  isReturning?: boolean;
+  mapOverlay?: ReactNode;
 }
 
 export function MobileMapView({
@@ -51,6 +57,9 @@ export function MobileMapView({
   selectedDistrict,
   onSetDistrict,
   onSetView,
+  visitBlocked,
+  isReturning,
+  mapOverlay,
 }: MobileMapViewProps) {
   const [view, setView] = useState<MobileView>("list");
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -75,20 +84,26 @@ export function MobileMapView({
 
   return (
     <div className="h-full overflow-y-auto bg-[radial-gradient(90%_60%_at_50%_0%,rgba(40,80,160,0.12),transparent_60%)] pt-3">
-      <div className="mx-4 mb-3 flex gap-1 rounded-[10px] border border-white/8 bg-white/4 p-0.75">
-        {(["list", "map"] as const).map((option) => (
-          <Button
-            key={option}
-            variant="tab"
-            size="md"
-            block
-            selected={view === option}
-            onClick={() => setView(option)}
-            className="flex-1"
-          >
-            <Button.Text>{t(`districtList.view.${option}`)}</Button.Text>
-          </Button>
-        ))}
+      {visitBlocked && (
+        <FocusRequiredNote className="mx-4 mb-3 flex-wrap rounded-[10px] bg-amber-400/8 px-3 py-2" />
+      )}
+      <div className="mx-4 mb-3 flex items-center gap-2">
+        {mapOverlay && <div className="shrink-0">{mapOverlay}</div>}
+        <div className="flex flex-1 gap-1 rounded-[10px] border border-white/8 bg-white/4 p-0.75">
+          {(["list", "map"] as const).map((option) => (
+            <Button
+              key={option}
+              variant="tab"
+              size="md"
+              block
+              selected={view === option}
+              onClick={() => setView(option)}
+              className="flex-1"
+            >
+              <Button.Text>{t(`districtList.view.${option}`)}</Button.Text>
+            </Button>
+          ))}
+        </div>
       </div>
 
       {view === "list" ? (
@@ -128,6 +143,17 @@ export function MobileMapView({
         onClose={() => setIsSheetOpen(false)}
         hideTitle
         fitContent
+        tall
+        footer={
+          sheetMode === "district" &&
+          sheetData && (
+            <DistrictSheetFooter
+              onVisit={() => onSetView("QuestionView")}
+              visitBlocked={visitBlocked}
+              isReturning={isReturning}
+            />
+          )
+        }
       >
         {sheetMode === "estimate" ? (
           <EstimateSheetContent
@@ -148,7 +174,7 @@ export function MobileMapView({
               parties={electionConfig.parties}
               nationalPercentages={nationalPercentages}
               onClose={() => setIsSheetOpen(false)}
-              onVisit={() => onSetView("QuestionView")}
+              issues={getAreaIssues(electionConfig, sheetData.megyekod)}
             />
           )
         )}
@@ -283,14 +309,14 @@ function DistrictSheetContent({
   parties,
   nationalPercentages,
   onClose,
-  onVisit,
+  issues,
 }: {
   isCityMap: boolean;
   district: CandidateListData;
+  issues: AreaIssueView[];
   parties: RawParty[];
   nationalPercentages?: Record<string, number>;
   onClose: () => void;
-  onVisit: () => void;
 }) {
   const { leadingParty, swingFactor } = getDistrictInsight(district, parties);
 
@@ -308,9 +334,11 @@ function DistrictSheetContent({
           <div className="mt-0.5 text-xl font-bold tracking-[-0.3px] text-slate-100">
             {isCityMap
               ? getDistrictName(district, isCityMap)
-              : `${district.megye} · ${getDistrictName(district, isCityMap)}`}
+              : district.telepules === district.megye
+                ? district.megye
+                : `${district.megye} · ${getDistrictName(district, isCityMap)}`}
           </div>
-          {!isCityMap && (
+          {!isCityMap && district.telepules !== district.megye && (
             <div className="mt-px text-xs text-blue-400">
               {district.telepules}
             </div>
@@ -348,6 +376,11 @@ function DistrictSheetContent({
             </SheetMetric>
           </div>
         )}
+        {issues.length > 0 && (
+          <div className="col-span-2">
+            <AreaIssues issues={issues} />
+          </div>
+        )}
       </div>
 
       <div className="mt-4.5">
@@ -359,9 +392,38 @@ function DistrictSheetContent({
           isCityMap={isCityMap}
         />
       </div>
+    </div>
+  );
+}
 
-      <Button size="large" block onClick={onVisit} className="mt-4">
-        <Button.Text>{t("bottomBar.visitDistrict")}</Button.Text>
+function DistrictSheetFooter({
+  onVisit,
+  visitBlocked,
+  isReturning,
+}: {
+  onVisit: () => void;
+  visitBlocked?: boolean;
+  isReturning?: boolean;
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      {visitBlocked && (
+        <FocusRequiredNote className="flex-wrap justify-center" />
+      )}
+      <Button
+        size="large"
+        block
+        onClick={onVisit}
+        disabled={visitBlocked}
+        testId="visitDistrict"
+      >
+        <Button.Text>
+          {t(
+            isReturning
+              ? "bottomBar.returnToDistrict"
+              : "bottomBar.visitDistrict",
+          )}
+        </Button.Text>
         <Button.Icon name="arrow-right" color="white" />
       </Button>
     </div>

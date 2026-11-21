@@ -1,0 +1,16 @@
+{
+  "maxTurnout": 92,
+  "eligibleVoters": 6050000,
+  "turnoutHistory": [
+    {
+      "year": "1947",
+      "turnoutPercentage": 93.8,
+      "turnout": 4999840
+    },
+    {
+      "year": "1945",
+      "turnoutPercentage": 92.5,
+      "turnout": 4772569
+    }
+  ]
+}

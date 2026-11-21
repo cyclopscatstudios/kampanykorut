@@ -3,27 +3,41 @@ import { CampaignConfig, District, RawParty } from "@/shared/types";
 import { Text } from "../../../../../../../shared/ui/Text";
 import { Badge } from "../../Badge";
 import { CommonWrapper } from "../../CommonWrapper";
-import { type Candidate, getPartyById } from "./electionMap.utils";
+import {
+  type Candidate,
+  getPartyById,
+  getResultTitle,
+} from "./electionMap.utils";
 
 interface DistrictResultProps {
   district: District | null;
   candidates: Candidate[];
   config: CampaignConfig;
+  regionSeats?: number;
 }
 
 export function DistrictResult({
   district,
   candidates,
   config,
+  regionSeats,
 }: DistrictResultProps) {
   return (
     <CommonWrapper fullHeight={false} className="w-full md:w-auto min-w-0">
-      <div className="w-full md:w-[400px] md:h-[444px] shrink-0 p-2">
+      <div
+        className="w-full md:w-[400px] md:h-[444px] shrink-0 p-2"
+        data-testid="districtResult"
+      >
         <div className="text-center">
-          <Text>
-            {district?.megye} {district?.oevk}
-          </Text>
-          <Text size="xs">{district?.telepules}</Text>
+          <Text>{district && getResultTitle(district)}</Text>
+          {district && district.telepules !== district.megye && (
+            <Text size="xs">{district.telepules}</Text>
+          )}
+          {regionSeats !== undefined && (
+            <Text size="xs">
+              {t("endResult.electionMap.regionSeats", { count: regionSeats })}
+            </Text>
+          )}
         </div>
         <div className="">
           <div className="md:max-h-[400px] md:overflow-y-auto md:pr-2">
@@ -63,17 +77,29 @@ function CandidateResult({
             <Text weight="bold" size="xs">
               {candidate.name}
             </Text>
-            <Text size="xs">{party?.name ?? "Független"}</Text>
+            {candidate.name !== party?.name && (
+              <Text size="xs">{party?.name ?? "Független"}</Text>
+            )}
           </div>
         </div>
         <div className="ml-[15px]">
-          {candidate.isWinner && (
-            <Badge
-              label={t("endResult.electionMap.winner")}
-              color="green"
-              icon="check-circle-fill"
-            />
-          )}
+          {candidate.seats !== undefined
+            ? candidate.seats > 0 && (
+                <Badge
+                  label={t("endResult.electionMap.seats", {
+                    count: candidate.seats,
+                  })}
+                  color="green"
+                  icon="check-circle-fill"
+                />
+              )
+            : candidate.isWinner && (
+                <Badge
+                  label={t("endResult.electionMap.winner")}
+                  color="green"
+                  icon="check-circle-fill"
+                />
+              )}
         </div>
       </div>
       <div>

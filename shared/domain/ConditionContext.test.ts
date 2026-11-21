@@ -107,4 +107,55 @@ describe("createConditionContext", () => {
     expect(ctx.triggeredEventIds).toEqual([]);
     expect(ctx.getCandidateStatus("party_a")).toBe("active");
   });
+
+  it("reads a relation's tone from the state, else from its starting tone", () => {
+    const state = {
+      ...mayoralState,
+      politicalDashboard: {
+        seenEventIds: [],
+        relations: {
+          moszkva: {
+            tone: "bad",
+            label: "Rossz",
+            description: "",
+            changedAtTurn: 3,
+          },
+        },
+      },
+    } as CampaignState;
+    const ctx = createConditionContext(state, [], mayoralConfig, [
+      { id: "moszkva", tone: "tense" },
+      { id: "nyugat", tone: "calm" },
+    ]);
+
+    expect(ctx.getRelationTone?.("moszkva")).toBe("bad");
+    expect(ctx.getRelationTone?.("nyugat")).toBe("calm");
+    expect(ctx.getRelationTone?.("corvin")).toBeUndefined();
+  });
+
+  it("reads the player party's issue position, moved or starting", () => {
+    const config = {
+      ...mayoralConfig,
+      issues: [
+        { id: "kelet_nyugat", name: "KNY", positions: { karacsony: 0 } },
+      ],
+    } as ElectionConfig;
+    const state = {
+      ...mayoralState,
+      playerSide: { partyId: "karacsony" },
+    } as CampaignState;
+    expect(
+      createConditionContext(state, [], config).getIssuePosition?.(
+        "kelet_nyugat",
+      ),
+    ).toBe(0);
+    const moved = {
+      ...state,
+      issuePositions: { kelet_nyugat: { karacsony: 2 } },
+    };
+    const ctx = createConditionContext(moved, [], config);
+    expect(ctx.getIssuePosition?.("kelet_nyugat")).toBe(2);
+    expect(ctx.getIssuePosition?.("kelet_nyugat", "vitezy")).toBeUndefined();
+    expect(ctx.getIssuePosition?.("nope")).toBeUndefined();
+  });
 });

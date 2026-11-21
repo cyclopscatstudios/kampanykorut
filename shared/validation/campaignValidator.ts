@@ -1,8 +1,18 @@
 import { evaluateCondition } from "../domain/ConditionEvaluator";
 import { defaultGroups } from "../domain/DefaultGroups";
 import { getQuestionCondition } from "../domain/QuestionEligibility";
-import { CandidateStatus, Condition, RawQuestion } from "../types";
-import { validateCondition } from "./conditionValidator";
+import {
+  CandidateStatus,
+  Condition,
+  GAME_MODES,
+  GameMode,
+  GOVERNMENT_OUTCOMES,
+  GovernmentOutcome,
+  RawQuestion,
+  RELATION_TONES,
+  RelationTone,
+} from "../types";
+import { ConditionReferences, validateCondition } from "./conditionValidator";
 
 export type Severity = "error" | "warning";
 
@@ -37,11 +47,12 @@ const EFFECT_TYPES = [
   "vote-allocation",
   "turnout-change",
   "district-vote-transfer",
+  "issue-stance",
 ];
 
-const DISTRICT_MAPS = ["2011", "2024", "budapest-districts"];
+const DISTRICT_MAPS = ["2011", "2024", "budapest-districts", "1945"];
 
-const ELECTION_TYPES = ["parliamentary", "mayoral"];
+const ELECTION_TYPES = ["parliamentary", "mayoral", "proportional"];
 
 const RESULT_RULES = ["plurality"];
 
@@ -62,8 +73,14 @@ interface Context {
   groups: Set<string>;
   districts: Set<string>;
   electionType?: string;
+  regionMegyekods?: Set<number>;
+  regionIds?: Set<string>;
+  issueIds: Set<string>;
   playableCandidates: Set<string>;
   eventIds: Set<string>;
+  focusIds: Set<string>;
+  relationIds: Set<string>;
+  dormantParties: Set<string>;
 }
 
 const isObject = (value: unknown): value is Json =>
@@ -401,7 +418,136 @@ function checkEffect(
     case "district-vote-transfer":
       checkDistrictTransfer(ctx, file, paramsPath, effect.params);
       break;
+    case "issue-stance":
+      checkIssueStance(ctx, file, paramsPath, effect.params);
+      break;
   }
+}
+
+const isIssuePosition = (value: unknown) =>
+  isFiniteNumber(value) && value >= -2 && value <= 2;
+
+function checkIssueStance(
+  ctx: Context,
+  file: string,
+  path: string,
+  params: unknown,
+) {
+  const error = (at: string, message: string) =>
+    report(ctx, "error", "effect-params-invalid", file, at, message);
+  if (!isObject(params)) {
+    error(path, "params must be an object");
+    return;
+  }
+  if (typeof params.issueId !== "string" || !ctx.issueIds.has(params.issueId)) {
+    report(
+      ctx,
+      "error",
+      "unknown-issue",
+      file,
+      `${path}/issueId`,
+      `unknown issue "${String(params.issueId)}" (is the issues file listed in the manifest?)`,
+    );
+  }
+  if (params.party !== undefined) {
+    checkParty(ctx, file, `${path}/party`, params.party);
+  }
+  const hasShift = params.shift !== undefined;
+  const hasPosition = params.position !== undefined;
+  if (hasShift === hasPosition) {
+    error(path, "give exactly one of shift or position");
+  } else if (hasShift && !isFiniteNumber(params.shift)) {
+    error(`${path}/shift`, "shift must be a finite number");
+  } else if (hasPosition && !isIssuePosition(params.position)) {
+    error(`${path}/position`, "position must be a number from -2 to 2");
+  }
+}
+
+function checkIssueArea(
+  ctx: Context,
+  file: string,
+  path: string,
+  area: unknown,
+) {
+  if (
+    !isObject(area) ||
+    !isFiniteNumber(area.strength) ||
+    area.strength < 0 ||
+    area.strength > 3 ||
+    !isIssuePosition(area.opinion)
+  ) {
+    report(
+      ctx,
+      "error",
+      "issues-invalid",
+      file,
+      path,
+      "an area needs strength (0 to 3) and opinion (-2 to 2)",
+    );
+  }
+}
+
+function checkIssues(ctx: Context, file: string, data: unknown) {
+  const error = (path: string, message: string) =>
+    report(ctx, "error", "issues-invalid", file, path, message);
+  if (!Array.isArray(data)) {
+    error("", "issues must be an array");
+    return;
+  }
+  data.forEach((issue, i) => {
+    const path = `/${i}`;
+    if (!isObject(issue)) {
+      error(path, "issue must be an object");
+      return;
+    }
+    if (typeof issue.id !== "string" || typeof issue.name !== "string") {
+      error(path, "issue needs a string id and name");
+    } else if (ctx.issueIds.has(issue.id)) {
+      report(
+        ctx,
+        "error",
+        "duplicate-id",
+        file,
+        `${path}/id`,
+        `duplicate issue id "${issue.id}"`,
+      );
+    } else {
+      ctx.issueIds.add(issue.id);
+    }
+    if (issue.default !== undefined) {
+      checkIssueArea(ctx, file, `${path}/default`, issue.default);
+    }
+    if (issue.areas !== undefined && !isObject(issue.areas)) {
+      error(`${path}/areas`, "areas must be an object");
+    }
+    Object.entries(isObject(issue.areas) ? issue.areas : {}).forEach(
+      ([key, area]) => {
+        const known =
+          ctx.regionIds?.has(key) ||
+          [...ctx.districts].some((d) => d.startsWith(`${key}-`));
+        if (!known) {
+          error(
+            `${path}/areas/${key}`,
+            `"${key}" is neither a region id nor a megyekod`,
+          );
+        }
+        checkIssueArea(ctx, file, `${path}/areas/${key}`, area);
+      },
+    );
+    if (!isObject(issue.positions)) {
+      error(`${path}/positions`, "positions must map parties to -2..2");
+      return;
+    }
+    Object.entries(issue.positions).forEach(([party, position]) => {
+      checkParty(ctx, file, `${path}/positions/${party}`, party);
+      if (!isIssuePosition(position)) {
+        error(
+          `${path}/positions/${party}`,
+          "position must be a number from -2 to 2",
+        );
+      }
+    });
+  });
 }
 
 function checkEffects(
@@ -496,7 +642,12 @@ function checkAnswerConditions(
   });
 }
 
-function checkQuestions(ctx: Context, file: string, data: unknown) {
+function checkQuestions(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  eventIds: Set<string> = ctx.eventIds,
+) {
   const questions = new Map<string, QuestionInfo>();
   if (!Array.isArray(data) || data.length === 0) {
     report(
@@ -577,7 +728,7 @@ function checkQuestions(ctx: Context, file: string, data: unknown) {
     }
     questions.set(question.id, { index, answers });
   });
-  checkQuestionConditions(ctx, file, data, questions);
+  checkQuestionConditions(ctx, file, data, questions, eventIds);
   return questions;
 }
 
@@ -586,13 +737,17 @@ function checkQuestionConditions(
   file: string,
   data: unknown[],
   questions: Map<string, QuestionInfo>,
+  eventIds: Set<string>,
 ) {
   const refs = {
     questions: new Map(
       [...questions].map(([id, info]) => [id, info.answers] as const),
     ),
     candidateIds: ctx.parties,
-    eventIds: ctx.eventIds,
+    eventIds,
+    focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
+    issueIds: ctx.issueIds,
   };
   let valid = true;
   data.forEach((question, index) => {
@@ -1126,7 +1281,7 @@ function checkElectionDefinition(
       `resultRule must be one of ${RESULT_RULES.join(", ")}`,
     );
   }
-  if (election.type === "parliamentary" && election.resultRule !== undefined) {
+  if (election.type !== "mayoral" && election.resultRule !== undefined) {
     report(
       ctx,
       "warning",
@@ -1139,7 +1294,147 @@ function checkElectionDefinition(
   return String(election.type);
 }
 
-function checkElectionConfig(ctx: Context, file: string, data: unknown) {
+interface RegionsFile {
+  file: string;
+  data: unknown;
+}
+
+function checkProportionalRegions(
+  ctx: Context,
+  file: string,
+  data: Json,
+  regionsFile: RegionsFile | undefined,
+) {
+  const election = data.election as Json;
+  if (election.regions !== undefined) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/election/regions",
+      "regions belong in their own file (manifest files.regions)",
+    );
+  }
+  if (!regionsFile) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      "manifest.json",
+      "/files/regions",
+      "a proportional election needs a regions file",
+    );
+    return;
+  }
+  const regions = regionsFile.data;
+  const error = (path: string, message: string) =>
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      regionsFile.file,
+      path,
+      message,
+    );
+  if (!Array.isArray(regions) || regions.length === 0) {
+    error("", "regions must be a non-empty array");
+    return;
+  }
+  const ids = new Set<string>();
+  const counties = new Set<number>();
+  let regionSeats = 0;
+  regions.forEach((region, i) => {
+    const path = `/${i}`;
+    if (!isObject(region)) {
+      error(path, "region must be an object");
+      return;
+    }
+    if (typeof region.id !== "string" || typeof region.name !== "string") {
+      error(path, "region needs a string id and name");
+    } else if (ids.has(region.id)) {
+      report(
+        ctx,
+        "error",
+        "duplicate-id",
+        regionsFile.file,
+        `${path}/id`,
+        `duplicate region id "${region.id}"`,
+      );
+    } else {
+      ids.add(region.id);
+    }
+    if (!Number.isInteger(region.seats) || (region.seats as number) <= 0) {
+      error(`${path}/seats`, "seats must be a positive integer");
+    } else {
+      regionSeats += region.seats as number;
+    }
+    if (!Array.isArray(region.megyekods) || region.megyekods.length === 0) {
+      error(`${path}/megyekods`, "megyekods must be a non-empty array");
+      return;
+    }
+    region.megyekods.forEach((code, j) => {
+      if (!Number.isInteger(code)) {
+        error(`${path}/megyekods/${j}`, "megyekod must be an integer");
+      } else if (counties.has(code as number)) {
+        error(
+          `${path}/megyekods/${j}`,
+          `megyekod ${String(code)} belongs to more than one region`,
+        );
+      } else {
+        counties.add(code as number);
+      }
+    });
+  });
+  ctx.regionMegyekods = counties;
+  ctx.regionIds = ids;
+  if (
+    isFiniteNumber(data.listSeats) &&
+    isFiniteNumber(data.allSeats) &&
+    regionSeats + data.listSeats !== data.allSeats
+  ) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/allSeats",
+      `allSeats (${data.allSeats}) must equal the region seats (${regionSeats}) plus listSeats (${data.listSeats})`,
+    );
+  }
+}
+
+function checkRegionCoverage(ctx: Context, file: string, data: unknown) {
+  if (!ctx.regionMegyekods || !Array.isArray(data)) {
+    return;
+  }
+  const missing = new Set<number>();
+  data.filter(isObject).forEach((row) => {
+    if (
+      Number.isInteger(row.megyekod) &&
+      !ctx.regionMegyekods?.has(row.megyekod as number)
+    ) {
+      missing.add(row.megyekod as number);
+    }
+  });
+  if (missing.size > 0) {
+    report(
+      ctx,
+      "error",
+      "region-missing",
+      file,
+      "",
+      `megyekod ${[...missing].sort((a, b) => a - b).join(", ")} is not in any region, so its votes would be lost`,
+    );
+  }
+}
+
+function checkElectionConfig(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  regionsFile?: RegionsFile,
+) {
   if (!isObject(data)) {
     report(
       ctx,
@@ -1154,20 +1449,28 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
   const electionType = checkElectionDefinition(ctx, file, data.election);
   ctx.electionType = electionType;
   const seatKeys =
-    electionType === "parliamentary"
+    electionType === "parliamentary" || electionType === "proportional"
       ? ["listSeats", "allSeats", "thresholdPercent"]
       : [];
   for (const key of seatKeys) {
-    if (!isFiniteNumber(data[key]) || (data[key] as number) <= 0) {
+    const zeroAllowed =
+      key === "thresholdPercent" && electionType === "proportional";
+    const value = data[key];
+    if (!isFiniteNumber(value) || value < 0 || (value === 0 && !zeroAllowed)) {
       report(
         ctx,
         "error",
         "election-config-invalid",
         file,
         `/${key}`,
-        `${key} must be a positive number`,
+        zeroAllowed
+          ? `${key} must be zero or a positive number`
+          : `${key} must be a positive number`,
       );
     }
+  }
+  if (electionType === "proportional") {
+    checkProportionalRegions(ctx, file, data, regionsFile);
   }
   if (!DISTRICT_MAPS.includes(String(data.districtMap))) {
     report(
@@ -1212,6 +1515,28 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
         );
       }
       ctx.parties.add(party.id);
+      if (party.dormant !== undefined && typeof party.dormant !== "boolean") {
+        report(
+          ctx,
+          "error",
+          "election-config-invalid",
+          file,
+          `/parties/${i}/dormant`,
+          "dormant must be a boolean",
+        );
+      } else if (party.dormant) {
+        ctx.dormantParties.add(party.id);
+      }
+      if (party.leader !== undefined && typeof party.leader !== "string") {
+        report(
+          ctx,
+          "error",
+          "election-config-invalid",
+          file,
+          `/parties/${i}/leader`,
+          "leader must be a string",
+        );
+      }
     });
   }
   if (isObject(data.partyListVotes)) {
@@ -1290,7 +1615,95 @@ function checkElectionConfig(ctx: Context, file: string, data: unknown) {
     });
   }
   checkImageFields(ctx, file, data.electionAssets, "/electionAssets");
+  checkBaseResults(ctx, file, data.baseResults, sides);
+  checkIntro(ctx, file, data.intro);
   return sides;
+}
+
+function checkIntro(ctx: Context, file: string, intro: unknown) {
+  if (intro === undefined) {
+    return;
+  }
+  const valid =
+    isObject(intro) &&
+    typeof intro.text === "string" &&
+    intro.text.trim() !== "" &&
+    ["title", "subtitle"].every(
+      (key) => intro[key] === undefined || typeof intro[key] === "string",
+    );
+  if (!valid) {
+    report(
+      ctx,
+      "error",
+      "election-config-invalid",
+      file,
+      "/intro",
+      "intro needs a non-empty string text; title and subtitle must be strings",
+    );
+  }
+}
+
+// baseResults is keyed by the player's side, then by party; a flat party map
+// is silently ignored by the engine, so it is rejected here.
+function checkBaseResults(
+  ctx: Context,
+  file: string,
+  baseResults: unknown,
+  sides: Map<string, unknown>,
+) {
+  if (baseResults === undefined) {
+    return;
+  }
+  if (!isObject(baseResults)) {
+    report(
+      ctx,
+      "error",
+      "base-results-invalid",
+      file,
+      "/baseResults",
+      "baseResults must be an object of side -> party -> number",
+    );
+    return;
+  }
+  for (const [side, swings] of Object.entries(baseResults)) {
+    const path = `/baseResults/${side}`;
+    if (!sides.has(side)) {
+      report(
+        ctx,
+        "error",
+        "base-results-invalid",
+        file,
+        path,
+        `"${side}" is not a playable side`,
+      );
+    }
+    if (!isObject(swings)) {
+      report(
+        ctx,
+        "error",
+        "base-results-invalid",
+        file,
+        path,
+        "must be an object of party -> number",
+      );
+      continue;
+    }
+    for (const [party, value] of Object.entries(swings)) {
+      if (!party.startsWith("_")) {
+        checkParty(ctx, file, `${path}/${party}`, party);
+      }
+      if (!isFiniteNumber(value)) {
+        report(
+          ctx,
+          "error",
+          "base-results-invalid",
+          file,
+          `${path}/${party}`,
+          "value must be a finite number",
+        );
+      }
+    }
+  }
 }
 
 function checkCandidateListData(ctx: Context, file: string, data: unknown) {
@@ -1417,6 +1830,7 @@ function checkPlayableSides(
   sides: ReturnType<typeof checkElectionConfig>,
   electionConfigFile: string,
   allQuestions: Map<string, Set<string>>,
+  eventIdsFor: (side: string) => Set<string>,
 ) {
   for (const [partyId, candidates] of Object.entries(playableSides)) {
     const sidePath = `/files/playableSides/${partyId}`;
@@ -1480,6 +1894,7 @@ function checkPlayableSides(
         ctx,
         String(paths.questions),
         read("questions"),
+        eventIdsFor(`${partyId}/${candidateId}`),
       );
       questions.forEach(({ answers }, questionId) => {
         const known = allQuestions.get(questionId) ?? new Set<string>();
@@ -1538,10 +1953,128 @@ function checkEventEffects(
     const effectPath = `${path}/${i}`;
     if (isObject(effect) && effect.type === "withdraw-candidate") {
       checkWithdrawEffect(ctx, file, effectPath, effect, guard);
+    } else if (isObject(effect) && effect.type === "split-party") {
+      checkSplitEffect(ctx, file, effectPath, effect);
+    } else if (isObject(effect) && effect.type === "shift-relation") {
+      checkRelationId(ctx, file, effectPath, effect);
+      if (
+        typeof effect.steps !== "number" ||
+        !Number.isInteger(effect.steps) ||
+        effect.steps === 0
+      ) {
+        report(
+          ctx,
+          "error",
+          "relation-invalid",
+          file,
+          `${effectPath}/steps`,
+          "steps must be a non-zero whole number",
+        );
+      }
+      if (typeof effect.description !== "string" || !effect.description) {
+        report(
+          ctx,
+          "error",
+          "relation-invalid",
+          file,
+          `${effectPath}/description`,
+          "description must be a non-empty string",
+        );
+      }
+    } else if (isObject(effect) && effect.type === "set-relation") {
+      checkRelationId(ctx, file, effectPath, effect);
+      checkRelationStanding(ctx, file, effectPath, effect);
     } else {
       checkEffect(ctx, file, effectPath, effect);
     }
   });
+}
+
+function checkRelationId(
+  ctx: Context,
+  file: string,
+  path: string,
+  effect: Json,
+) {
+  if (
+    typeof effect.relationId !== "string" ||
+    !ctx.relationIds.has(effect.relationId)
+  ) {
+    report(
+      ctx,
+      "error",
+      "unknown-relation",
+      file,
+      `${path}/relationId`,
+      `unknown relation "${String(effect.relationId)}"`,
+    );
+  }
+}
+
+function checkSplitEffect(
+  ctx: Context,
+  file: string,
+  path: string,
+  effect: Json,
+) {
+  const error = (code: string, at: string, message: string) =>
+    report(ctx, "error", code, file, at, message);
+
+  const partyId = effect.partyId;
+  if (typeof partyId !== "string" || !ctx.dormantParties.has(partyId)) {
+    error(
+      "split-party-invalid",
+      `${path}/partyId`,
+      `partyId must be a dormant party in parties (got "${String(partyId)}")`,
+    );
+  }
+  const checkShares = (shares: unknown, at: string) => {
+    if (!isObject(shares) || !Object.keys(shares).length) {
+      error("effect-invalid", at, "shares must be a non-empty object");
+      return;
+    }
+    for (const [source, share] of Object.entries(shares)) {
+      if (
+        !ctx.parties.has(source) ||
+        source === partyId ||
+        ctx.dormantParties.has(source)
+      ) {
+        error(
+          "unknown-candidate",
+          `${at}/${source}`,
+          `"${source}" is not another active party in parties`,
+        );
+      }
+      if (!isFiniteNumber(share) || share < 0 || share > 1) {
+        error(
+          "effect-invalid",
+          `${at}/${source}`,
+          "share must be between 0 and 1",
+        );
+      }
+    }
+  };
+  checkShares(effect.from, `${path}/from`);
+  if (effect.fromByMegye !== undefined) {
+    if (!isObject(effect.fromByMegye)) {
+      error(
+        "effect-invalid",
+        `${path}/fromByMegye`,
+        "fromByMegye must be an object",
+      );
+      return;
+    }
+    for (const [megyekod, shares] of Object.entries(effect.fromByMegye)) {
+      if (!/^\d+$/.test(megyekod)) {
+        error(
+          "effect-invalid",
+          `${path}/fromByMegye/${megyekod}`,
+          "fromByMegye keys must be megyekod numbers",
+        );
+      }
+      checkShares(shares, `${path}/fromByMegye/${megyekod}`);
+    }
+  }
 }
 
 function excludesPlayer(condition: unknown, candidateId: string): boolean {
@@ -1672,7 +2205,14 @@ function checkCampaignEvents(
       .filter((id): id is string => typeof id === "string"),
   );
   const seen = new Set<string>();
-  const refs = { questions, candidateIds: ctx.parties, eventIds };
+  const refs = {
+    questions,
+    candidateIds: ctx.parties,
+    eventIds,
+    focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
+    issueIds: ctx.issueIds,
+  };
 
   data.forEach((event, index) => {
     const path = `/${index}`;
@@ -1776,6 +2316,739 @@ function checkCampaignEvents(
   });
 }
 
+function checkFocusBranches(ctx: Context, file: string, data: Json) {
+  const invalid = (path: string, message: string) =>
+    report(ctx, "error", "focus-branch-invalid", file, path, message);
+  for (const key of ["focusSelection", "focusLockEventId"] as const) {
+    if (data[key] !== undefined) {
+      invalid(`/${key}`, `${key} is replaced by focusBranches`);
+    }
+  }
+  if (data.focusBranches === undefined) {
+    return;
+  }
+  if (!Array.isArray(data.focusBranches)) {
+    invalid("/focusBranches", "focusBranches must be an array");
+    return;
+  }
+  const focusIds = new Set(
+    (Array.isArray(data.focuses) ? data.focuses : [])
+      .filter(isObject)
+      .map((focus) => focus.id)
+      .filter((id): id is string => typeof id === "string"),
+  );
+  const branchIds = new Set<string>();
+  const placed = new Set<string>();
+  data.focusBranches.forEach((branch, i) => {
+    const path = `/focusBranches/${i}`;
+    if (!isObject(branch)) {
+      invalid(path, "branch must be an object");
+      return;
+    }
+    if (typeof branch.id !== "string" || !branch.id) {
+      invalid(`${path}/id`, "id must be a non-empty string");
+    } else if (branchIds.has(branch.id)) {
+      invalid(`${path}/id`, `duplicate branch id "${branch.id}"`);
+    } else {
+      branchIds.add(branch.id);
+    }
+    if (branch.title !== undefined && typeof branch.title !== "string") {
+      invalid(`${path}/title`, "title must be a string");
+    }
+    if (!Array.isArray(branch.focuses) || branch.focuses.length < 2) {
+      invalid(`${path}/focuses`, "a branch needs at least two focuses");
+    } else {
+      branch.focuses.forEach((id, j) => {
+        if (typeof id !== "string" || !focusIds.has(id)) {
+          invalid(`${path}/focuses/${j}`, `unknown focus "${String(id)}"`);
+        } else if (placed.has(id)) {
+          invalid(
+            `${path}/focuses/${j}`,
+            `focus "${id}" is already in an earlier branch`,
+          );
+        }
+      });
+    }
+    if (
+      branch.requires !== undefined &&
+      (typeof branch.requires !== "string" || !placed.has(branch.requires))
+    ) {
+      invalid(
+        `${path}/requires`,
+        "requires must name a focus of an earlier branch",
+      );
+    }
+    for (const key of ["availableFromTurn", "requiredBeforeTurn"] as const) {
+      const value = branch[key];
+      if (
+        value !== undefined &&
+        (!Number.isInteger(value) || (value as number) < 1)
+      ) {
+        invalid(`${path}/${key}`, `${key} must be a turn number from 1`);
+      }
+    }
+    if (
+      Number.isInteger(branch.availableFromTurn) &&
+      Number.isInteger(branch.requiredBeforeTurn) &&
+      (branch.requiredBeforeTurn as number) <
+        (branch.availableFromTurn as number)
+    ) {
+      invalid(
+        `${path}/requiredBeforeTurn`,
+        "a branch cannot be required before it opens",
+      );
+    }
+    if (Array.isArray(branch.focuses)) {
+      branch.focuses.forEach((id) => {
+        if (typeof id === "string") {
+          placed.add(id);
+        }
+      });
+    }
+  });
+  focusIds.forEach((id) => {
+    if (!placed.has(id)) {
+      report(
+        ctx,
+        "warning",
+        "focus-unused",
+        file,
+        "/focusBranches",
+        `focus "${id}" is in no branch`,
+      );
+    }
+  });
+}
+
+function checkPoliticalConfig(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  questions: Map<string, Set<string>>,
+  eventIds: Set<string> = ctx.eventIds,
+) {
+  if (data === undefined) {
+    return;
+  }
+  if (!isObject(data)) {
+    report(
+      ctx,
+      "error",
+      "political-config-invalid",
+      file,
+      "",
+      "political config must be an object",
+    );
+    return;
+  }
+  if (!GAME_MODES.includes(data.gameMode as GameMode)) {
+    report(
+      ctx,
+      "error",
+      "game-mode-invalid",
+      file,
+      "/gameMode",
+      `gameMode must be one of ${GAME_MODES.join(", ")}`,
+    );
+  }
+  checkRelations(ctx, file, data);
+  checkFocusBranches(ctx, file, data);
+  const refs = {
+    questions,
+    candidateIds: ctx.parties,
+    eventIds,
+    focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
+    issueIds: ctx.issueIds,
+  };
+  checkCoalition(ctx, file, data, refs);
+  checkEpilogues(ctx, file, data, refs);
+  if (data.focuses === undefined) {
+    return;
+  }
+  if (!Array.isArray(data.focuses)) {
+    report(
+      ctx,
+      "error",
+      "focus-invalid",
+      file,
+      "/focuses",
+      "focuses must be an array",
+    );
+    return;
+  }
+  const seen = new Set<string>();
+  data.focuses.forEach((focus, index) => {
+    const path = `/focuses/${index}`;
+    if (!isObject(focus)) {
+      report(
+        ctx,
+        "error",
+        "focus-invalid",
+        file,
+        path,
+        "focus must be an object",
+      );
+      return;
+    }
+    for (const key of ["id", "title", "summary", "description"] as const) {
+      if (typeof focus[key] !== "string" || !focus[key]) {
+        report(
+          ctx,
+          "error",
+          "focus-invalid",
+          file,
+          `${path}/${key}`,
+          `${key} must be a non-empty string`,
+        );
+      }
+    }
+    if (typeof focus.id === "string") {
+      if (seen.has(focus.id)) {
+        report(
+          ctx,
+          "error",
+          "focus-duplicate",
+          file,
+          `${path}/id`,
+          `duplicate focus id "${focus.id}"`,
+        );
+      }
+      seen.add(focus.id);
+    }
+    if (focus.excludes !== undefined) {
+      report(
+        ctx,
+        "error",
+        "focus-invalid",
+        file,
+        `${path}/excludes`,
+        "excludes is replaced by focusBranches",
+      );
+    }
+    for (const key of ["completeWhen", "failWhen"] as const) {
+      if (focus[key] !== undefined) {
+        validateCondition(focus[key], refs, `${path}/${key}`).forEach((issue) =>
+          report(ctx, "error", issue.code, file, issue.path, issue.message),
+        );
+      }
+    }
+    if (focus.failEffects !== undefined) {
+      checkEffects(ctx, file, `${path}/failEffects`, focus.failEffects);
+    }
+  });
+}
+
+type ConditionRefs = ConditionReferences;
+
+function checkNewspaper(
+  ctx: Context,
+  file: string,
+  data: unknown,
+  strategic: boolean,
+  questions: Map<string, Set<string>>,
+) {
+  if (data === undefined) {
+    return;
+  }
+  const invalid = (path: string, message: string) =>
+    report(ctx, "error", "newspaper-invalid", file, path, message);
+  if (!isObject(data)) {
+    invalid("", "newspaper must be an object");
+    return;
+  }
+  if (!strategic) {
+    report(
+      ctx,
+      "warning",
+      "newspaper-unused",
+      file,
+      "",
+      "the newspaper only shows in strategic mode",
+    );
+  }
+  if (data.cadence !== undefined) {
+    const cadence = data.cadence;
+    if (
+      !isObject(cadence) ||
+      !Number.isInteger(cadence.minTurns) ||
+      !Number.isInteger(cadence.maxTurns) ||
+      (cadence.minTurns as number) < 1 ||
+      (cadence.maxTurns as number) < (cadence.minTurns as number)
+    ) {
+      invalid(
+        "/cadence",
+        "cadence needs whole minTurns >= 1 and maxTurns >= minTurns",
+      );
+    }
+  }
+  const paperIds = new Set<string>();
+  if (!Array.isArray(data.papers) || data.papers.length === 0) {
+    invalid("/papers", "papers must be a non-empty array");
+  } else {
+    data.papers.forEach((paper, index) => {
+      const path = `/papers/${index}`;
+      if (!isObject(paper)) {
+        invalid(path, "paper must be an object");
+        return;
+      }
+      for (const key of ["id", "name"] as const) {
+        if (typeof paper[key] !== "string" || !paper[key]) {
+          invalid(`${path}/${key}`, `${key} must be a non-empty string`);
+        }
+      }
+      if (typeof paper.id === "string") {
+        if (paperIds.has(paper.id)) {
+          invalid(`${path}/id`, `duplicate paper id "${paper.id}"`);
+        }
+        paperIds.add(paper.id);
+      }
+      if (paper.logo !== undefined) {
+        checkPublicAsset(ctx, file, `${path}/logo`, paper.logo);
+      }
+    });
+  }
+  if (!Array.isArray(data.items)) {
+    invalid("/items", "items must be an array");
+    return;
+  }
+  const refs = {
+    questions,
+    candidateIds: ctx.parties,
+    eventIds: ctx.eventIds,
+    focusIds: ctx.focusIds,
+    relationIds: ctx.relationIds,
+    issueIds: ctx.issueIds,
+  };
+  const itemIds = new Set<string>();
+  data.items.forEach((item, index) => {
+    const path = `/items/${index}`;
+    if (!isObject(item)) {
+      invalid(path, "item must be an object");
+      return;
+    }
+    for (const key of ["id", "headline", "lead"] as const) {
+      if (typeof item[key] !== "string" || !item[key]) {
+        invalid(`${path}/${key}`, `${key} must be a non-empty string`);
+      }
+    }
+    if (typeof item.id === "string") {
+      if (itemIds.has(item.id)) {
+        invalid(`${path}/id`, `duplicate item id "${item.id}"`);
+      }
+      itemIds.add(item.id);
+    }
+    if (item.paper !== undefined && !paperIds.has(String(item.paper))) {
+      invalid(`${path}/paper`, `unknown paper "${String(item.paper)}"`);
+    }
+    if (item.image !== undefined) {
+      checkPublicAsset(ctx, file, `${path}/image`, item.image);
+    }
+    if (
+      item.weight !== undefined &&
+      (typeof item.weight !== "number" || item.weight < 0)
+    ) {
+      invalid(`${path}/weight`, "weight must be a number >= 0");
+    }
+    if (item.priority !== undefined && item.priority !== "pinned") {
+      invalid(`${path}/priority`, 'priority must be "pinned"');
+    }
+    checkConditionField(ctx, file, item.when, refs, `${path}/when`);
+  });
+}
+
+function checkConditionField(
+  ctx: Context,
+  file: string,
+  condition: unknown,
+  refs: ConditionRefs,
+  path: string,
+) {
+  if (condition !== undefined) {
+    validateCondition(condition, refs, path).forEach((issue) =>
+      report(ctx, "error", issue.code, file, issue.path, issue.message),
+    );
+  }
+}
+
+function checkCoalition(
+  ctx: Context,
+  file: string,
+  data: Record<string, unknown>,
+  refs: ConditionRefs,
+) {
+  if (data.coalition === undefined) {
+    return;
+  }
+  const partners = isObject(data.coalition)
+    ? data.coalition.partners
+    : undefined;
+  if (!Array.isArray(partners)) {
+    report(
+      ctx,
+      "error",
+      "coalition-invalid",
+      file,
+      "/coalition",
+      "coalition needs a partners array",
+    );
+    return;
+  }
+  const maxStrongPartners = (data.coalition as Record<string, unknown>)
+    .maxStrongPartners;
+  if (
+    maxStrongPartners !== undefined &&
+    (!Number.isInteger(maxStrongPartners) || (maxStrongPartners as number) < 1)
+  ) {
+    report(
+      ctx,
+      "error",
+      "coalition-invalid",
+      file,
+      "/coalition/maxStrongPartners",
+      "coalition maxStrongPartners must be a positive whole number",
+    );
+  }
+  const seen = new Set<string>();
+  partners.forEach((partner, index) => {
+    const path = `/coalition/partners/${index}`;
+    if (
+      !isObject(partner) ||
+      typeof partner.acceptReason !== "string" ||
+      typeof partner.rejectReason !== "string"
+    ) {
+      report(
+        ctx,
+        "error",
+        "coalition-invalid",
+        file,
+        path,
+        "coalition partner needs a partyId, acceptReason and rejectReason",
+      );
+      return;
+    }
+    const partyId = String(partner.partyId);
+    if (!ctx.parties.has(partyId)) {
+      report(
+        ctx,
+        "error",
+        "unknown-party",
+        file,
+        `${path}/partyId`,
+        `unknown party "${partyId}"`,
+      );
+    } else if (seen.has(partyId)) {
+      report(
+        ctx,
+        "error",
+        "coalition-duplicate",
+        file,
+        `${path}/partyId`,
+        `duplicate coalition partner "${partyId}"`,
+      );
+    }
+    seen.add(partyId);
+    if (
+      partner.weight !== undefined &&
+      (typeof partner.weight !== "number" || !(partner.weight > 0))
+    ) {
+      report(
+        ctx,
+        "error",
+        "coalition-invalid",
+        file,
+        `${path}/weight`,
+        "coalition partner weight must be a positive number",
+      );
+    }
+    checkConditionField(
+      ctx,
+      file,
+      partner.acceptWhen,
+      refs,
+      `${path}/acceptWhen`,
+    );
+  });
+}
+
+function checkEpilogues(
+  ctx: Context,
+  file: string,
+  data: Record<string, unknown>,
+  refs: ConditionRefs,
+) {
+  if (data.epilogues === undefined) {
+    return;
+  }
+  if (!Array.isArray(data.epilogues)) {
+    report(
+      ctx,
+      "error",
+      "epilogue-invalid",
+      file,
+      "/epilogues",
+      "epilogues must be an array",
+    );
+    return;
+  }
+  const seen = new Set<string>();
+  data.epilogues.forEach((epilogue, index) => {
+    const path = `/epilogues/${index}`;
+    if (
+      !isObject(epilogue) ||
+      typeof epilogue.id !== "string" ||
+      typeof epilogue.title !== "string" ||
+      typeof epilogue.body !== "string"
+    ) {
+      report(
+        ctx,
+        "error",
+        "epilogue-invalid",
+        file,
+        path,
+        "epilogue needs a string id, title and body",
+      );
+      return;
+    }
+    if (seen.has(epilogue.id)) {
+      report(
+        ctx,
+        "error",
+        "epilogue-duplicate",
+        file,
+        `${path}/id`,
+        `duplicate epilogue id "${epilogue.id}"`,
+      );
+    }
+    seen.add(epilogue.id);
+    if (
+      epilogue.outcomes !== undefined &&
+      (!Array.isArray(epilogue.outcomes) ||
+        epilogue.outcomes.some(
+          (o) => !GOVERNMENT_OUTCOMES.includes(o as GovernmentOutcome),
+        ))
+    ) {
+      report(
+        ctx,
+        "error",
+        "epilogue-invalid",
+        file,
+        `${path}/outcomes`,
+        `outcomes must be a list of ${GOVERNMENT_OUTCOMES.join(", ")}`,
+      );
+    }
+    checkConditionField(ctx, file, epilogue.when, refs, `${path}/when`);
+  });
+}
+
+function collectPoliticalIds(ctx: Context, data: unknown) {
+  if (!isObject(data)) {
+    return;
+  }
+  const collect = (items: unknown, ids: Set<string>) => {
+    if (Array.isArray(items)) {
+      items.filter(isObject).forEach((item) => {
+        if (typeof item.id === "string") {
+          ids.add(item.id);
+        }
+      });
+    }
+  };
+  collect(data.focuses, ctx.focusIds);
+  collect(data.relations, ctx.relationIds);
+}
+
+function checkRelationStanding(
+  ctx: Context,
+  file: string,
+  path: string,
+  standing: Json,
+) {
+  if (!RELATION_TONES.includes(standing.tone as RelationTone)) {
+    report(
+      ctx,
+      "error",
+      "relation-invalid",
+      file,
+      `${path}/tone`,
+      `tone must be one of ${RELATION_TONES.join(", ")}`,
+    );
+  }
+  for (const key of ["label", "description"] as const) {
+    if (typeof standing[key] !== "string" || !standing[key]) {
+      report(
+        ctx,
+        "error",
+        "relation-invalid",
+        file,
+        `${path}/${key}`,
+        `${key} must be a non-empty string`,
+      );
+    }
+  }
+}
+
+function checkRelations(ctx: Context, file: string, data: Json) {
+  const groupIds = new Set<string>();
+  if (data.relationGroups !== undefined) {
+    if (!Array.isArray(data.relationGroups)) {
+      report(
+        ctx,
+        "error",
+        "relation-invalid",
+        file,
+        "/relationGroups",
+        "relationGroups must be an array",
+      );
+    } else {
+      data.relationGroups.forEach((group, index) => {
+        if (
+          !isObject(group) ||
+          typeof group.id !== "string" ||
+          typeof group.title !== "string" ||
+          !group.title
+        ) {
+          report(
+            ctx,
+            "error",
+            "relation-invalid",
+            file,
+            `/relationGroups/${index}`,
+            "relation group needs a string id and title",
+          );
+          return;
+        }
+        groupIds.add(group.id);
+      });
+    }
+  }
+  if (data.relations === undefined) {
+    return;
+  }
+  if (!Array.isArray(data.relations)) {
+    report(
+      ctx,
+      "error",
+      "relation-invalid",
+      file,
+      "/relations",
+      "relations must be an array",
+    );
+    return;
+  }
+  const seen = new Set<string>();
+  data.relations.forEach((relation, index) => {
+    const path = `/relations/${index}`;
+    if (!isObject(relation)) {
+      report(
+        ctx,
+        "error",
+        "relation-invalid",
+        file,
+        path,
+        "relation must be an object",
+      );
+      return;
+    }
+    if (typeof relation.id !== "string" || typeof relation.name !== "string") {
+      report(
+        ctx,
+        "error",
+        "relation-invalid",
+        file,
+        path,
+        "relation needs a string id and name",
+      );
+    } else if (seen.has(relation.id)) {
+      report(
+        ctx,
+        "error",
+        "relation-duplicate",
+        file,
+        `${path}/id`,
+        `duplicate relation id "${relation.id}"`,
+      );
+    }
+    if (typeof relation.id === "string") {
+      seen.add(relation.id);
+    }
+    if (
+      typeof relation.groupId !== "string" ||
+      !groupIds.has(relation.groupId)
+    ) {
+      report(
+        ctx,
+        "error",
+        "unknown-relation-group",
+        file,
+        `${path}/groupId`,
+        `unknown relation group "${String(relation.groupId)}"`,
+      );
+    }
+    checkRelationStanding(ctx, file, path, relation);
+    if (relation.labels !== undefined) {
+      const labels = relation.labels;
+      if (
+        !isObject(labels) ||
+        Object.entries(labels).some(
+          ([tone, label]) =>
+            !RELATION_TONES.includes(tone as RelationTone) ||
+            typeof label !== "string" ||
+            !label,
+        )
+      ) {
+        report(
+          ctx,
+          "error",
+          "relation-invalid",
+          file,
+          `${path}/labels`,
+          `labels must map ${RELATION_TONES.join(", ")} to non-empty strings`,
+        );
+      } else if (RELATION_TONES.some((tone) => !(tone in labels))) {
+        report(
+          ctx,
+          "warning",
+          "relation-labels-incomplete",
+          file,
+          `${path}/labels`,
+          "labels should name every tone, or a shift into a missing tone keeps the previous label",
+        );
+      }
+    }
+  });
+}
+
+function readSideFiles(
+  ctx: Context,
+  playableSides: unknown,
+  key: "politicalConfig" | "campaignEvents",
+) {
+  if (!isObject(playableSides)) {
+    return [];
+  }
+  return Object.entries(playableSides).flatMap(([partyId, candidates]) =>
+    isObject(candidates)
+      ? Object.entries(candidates).flatMap(([candidateId, paths]) =>
+          isObject(paths) && paths[key] !== undefined
+            ? [
+                {
+                  side: `${partyId}/${candidateId}`,
+                  file: String(paths[key]),
+                  data: readFile(
+                    ctx,
+                    paths[key],
+                    "manifest.json",
+                    `/files/playableSides/${partyId}/${candidateId}/${key}`,
+                  ),
+                },
+              ]
+            : [],
+        )
+      : [],
+  );
+}
+
 export function validateCampaign(
   header: CampaignHeaderInput,
   source: CampaignSource,
@@ -1789,6 +3062,10 @@ export function validateCampaign(
     districts: new Set(),
     playableCandidates: new Set(),
     eventIds: new Set(),
+    focusIds: new Set(),
+    relationIds: new Set(),
+    issueIds: new Set(),
+    dormantParties: new Set(),
   };
 
   for (const banner of ["campaignBanner", "thinCampaignBanner"] as const) {
@@ -1840,6 +3117,13 @@ export function validateCampaign(
   }
 
   const electionConfigFile = String(files.electionConfig);
+  const regionsFile =
+    files.regions === undefined
+      ? undefined
+      : {
+          file: String(files.regions),
+          data: readFile(ctx, files.regions, "manifest.json", "/files/regions"),
+        };
   const sides = checkElectionConfig(
     ctx,
     electionConfigFile,
@@ -1849,6 +3133,7 @@ export function validateCampaign(
       "manifest.json",
       "/files/electionConfig",
     ),
+    regionsFile,
   );
   readFile(
     ctx,
@@ -1856,16 +3141,25 @@ export function validateCampaign(
     "manifest.json",
     "/files/voterEnvironmentConfig",
   );
+  const candidateListData = readFile(
+    ctx,
+    files.candidateListData,
+    "manifest.json",
+    "/files/candidateListData",
+  );
   checkCandidateListData(
     ctx,
     String(files.candidateListData),
-    readFile(
-      ctx,
-      files.candidateListData,
-      "manifest.json",
-      "/files/candidateListData",
-    ),
+    candidateListData,
   );
+  checkRegionCoverage(ctx, String(files.candidateListData), candidateListData);
+  if (files.issues !== undefined) {
+    checkIssues(
+      ctx,
+      String(files.issues),
+      readFile(ctx, files.issues, "manifest.json", "/files/issues"),
+    );
+  }
   for (const optional of ["partyListData", "customPollsters"] as const) {
     if (files[optional] !== undefined) {
       readFile(ctx, files[optional], "manifest.json", `/files/${optional}`);
@@ -1879,22 +3173,57 @@ export function validateCampaign(
     );
   }
 
-  const eventsData =
-    files.campaignEvents === undefined
+  const politicalData =
+    files.politicalConfig === undefined
       ? undefined
       : readFile(
           ctx,
-          files.campaignEvents,
+          files.politicalConfig,
           "manifest.json",
-          "/files/campaignEvents",
+          "/files/politicalConfig",
         );
-  if (Array.isArray(eventsData)) {
-    eventsData.filter(isObject).forEach((event) => {
-      if (typeof event.id === "string") {
-        ctx.eventIds.add(event.id);
-      }
-    });
-  }
+  const politicalFiles: { file: string; data: unknown; side?: string }[] = [
+    { file: String(files.politicalConfig), data: politicalData },
+    ...readSideFiles(ctx, files.playableSides, "politicalConfig"),
+  ];
+  politicalFiles.forEach(({ data }) => collectPoliticalIds(ctx, data));
+
+  const eventFiles: { file: string; data: unknown; side?: string }[] = [
+    ...(files.campaignEvents === undefined
+      ? []
+      : [
+          {
+            file: String(files.campaignEvents),
+            data: readFile(
+              ctx,
+              files.campaignEvents,
+              "manifest.json",
+              "/files/campaignEvents",
+            ),
+          },
+        ]),
+    ...readSideFiles(ctx, files.playableSides, "campaignEvents"),
+  ];
+  // A side's own event file replaces the campaign-wide one, so its questions
+  // and political config may only refer to the events that side really runs.
+  const campaignEventIds = new Set<string>();
+  const sideEventIds = new Map<string, Set<string>>();
+  eventFiles.forEach(({ data, side }) => {
+    const ids = side ? new Set<string>() : campaignEventIds;
+    if (side) {
+      sideEventIds.set(side, ids);
+    }
+    if (Array.isArray(data)) {
+      data.filter(isObject).forEach((event) => {
+        if (typeof event.id === "string") {
+          ids.add(event.id);
+          ctx.eventIds.add(event.id);
+        }
+      });
+    }
+  });
+  const eventIdsFor = (side: string) =>
+    sideEventIds.get(side) ?? campaignEventIds;
 
   const allQuestions = new Map<string, Set<string>>();
   if (isObject(files.playableSides)) {
@@ -1904,14 +3233,53 @@ export function validateCampaign(
       sides,
       electionConfigFile,
       allQuestions,
+      eventIdsFor,
     );
   }
 
-  if (files.campaignEvents !== undefined) {
-    checkCampaignEvents(
+  eventFiles.forEach(({ file, data }) =>
+    checkCampaignEvents(ctx, file, data, allQuestions),
+  );
+
+  // The campaign-wide political config is used by every side without its own,
+  // so it may only refer to events that all of those sides run.
+  const sidesWithOwnConfig = new Set(politicalFiles.map(({ side }) => side));
+  const inheritingSides = isObject(files.playableSides)
+    ? Object.entries(files.playableSides).flatMap(([partyId, candidates]) =>
+        isObject(candidates)
+          ? Object.keys(candidates)
+              .map((candidateId) => `${partyId}/${candidateId}`)
+              .filter((side) => !sidesWithOwnConfig.has(side))
+          : [],
+      )
+    : [];
+  const sharedEventIds =
+    inheritingSides.length === 0
+      ? ctx.eventIds
+      : new Set(
+          [...ctx.eventIds].filter((id) =>
+            inheritingSides.every((side) => eventIdsFor(side).has(id)),
+          ),
+        );
+
+  politicalFiles.forEach(({ file, data, side }) =>
+    checkPoliticalConfig(
       ctx,
-      String(files.campaignEvents),
-      eventsData,
+      file,
+      data,
+      allQuestions,
+      side ? eventIdsFor(side) : sharedEventIds,
+    ),
+  );
+
+  if (files.newspaper !== undefined) {
+    checkNewspaper(
+      ctx,
+      String(files.newspaper),
+      readFile(ctx, files.newspaper, "manifest.json", "/files/newspaper"),
+      politicalFiles.some(
+        ({ data }) => isObject(data) && data.gameMode === "strategic",
+      ),
       allQuestions,
     );
   }

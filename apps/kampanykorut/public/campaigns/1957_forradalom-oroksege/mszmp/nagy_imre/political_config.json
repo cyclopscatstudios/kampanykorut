@@ -1,0 +1,837 @@
+{
+  "gameMode": "strategic",
+  "focuses": [
+    {
+      "id": "lassu_reformok",
+      "title": "Lassú reformok",
+      "summary": "Változtass lépésről lépésre",
+      "description": "A forradalom után az MSZMP-ben is változást várnak, ám a reformok kérdésében megosztott a párt. Adj időt a vitáknak, és olyan reformokat vigyél elé, amelyek mentén a különböző irányzatok együtt maradhatnak.",
+      "icon": "/images/1957_forradalom-oroksege/lassu_reformok_badge.png",
+      "completeWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "kadar_ultimatum",
+            "answerId": "A"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kadar_ultimatum",
+            "answerId": "B"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kadar_ultimatum",
+            "answerId": "D"
+          }
+        ]
+      },
+      "failWhen": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "szdp": 2,
+            "kadar_part": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "forradalom_partja",
+      "title": "A forradalom pártja",
+      "summary": "Vidd tovább október ügyét",
+      "description": "A forradalom napjaiban az ország kimondta, milyen változásokat akar. Az MSZMP terhelt múltja nem tűnik el, de a párt vállalhatja, hogy a forradalom követeléseit viszi tovább. Tedd programjának alapjává a többpártrendszert, a magyar semlegességet és a munkástanácsok jogait",
+      "icon": "/images/1957_forradalom-oroksege/forradalom_partja_badge.png",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "answer-selected",
+            "questionId": "kadar_ultimatum",
+            "answerId": "C"
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "regi_apparatus",
+              "answerId": "A"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "kadar_ultimatum",
+            "answerId": "A"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kadar_ultimatum",
+            "answerId": "D"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "fkgp": 2,
+            "szdp": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "baloldali_szovetseg",
+      "title": "Baloldali szövetség",
+      "summary": "Működj együtt Kéthly szociáldemokratáival",
+      "description": "A munkások érdekeit nem csak az MSZMP képviselheti. Köss szövetséget Kéthly Anna pártjával: állapodjatok meg a bérek és a munkásjogok közös képviseletéről, miközben mindkét párt megőrzi önállóságát.",
+      "icon": "/images/1957_forradalom-oroksege/szovetseg_badge.png",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "kethly_feltetelei",
+        "answerId": "A"
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "kethly_feltetelei",
+            "answerId": "C"
+          },
+          {
+            "type": "event-triggered",
+            "eventId": "szdp_kampany"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "fkgp": 1,
+            "szdp": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "munkasokol_vasokol",
+      "title": "Egy zászló alatt",
+      "summary": "Tedd az MSZMP-t a munkásság fő erejévé",
+      "description": "A munkások támogatásáért az MSZMP-nek kell versenybe szállnia. Vidd el a párt programját az üzemekbe és a szakszervezetekbe, és nyerd meg magadnak azokat, akik eddig a szociáldemokratákban látták érdekeik képviselőjét. Ehhez egységes párt kell: ha Kádárék kiválnak, a munkásság nem követ.",
+      "icon": "/images/1957_forradalom-oroksege/munkasokol_badge.png",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "answer-selected",
+            "questionId": "szakszervezetek",
+            "answerId": "C"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "kie_a_gyar",
+            "answerId": "A"
+          },
+          {
+            "not": {
+              "type": "event-triggered",
+              "eventId": "kadar_szakadas"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "type": "event-triggered",
+        "eventId": "altalanos_sztrajk"
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "fkgp": 1,
+            "szdp": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "semleges_hid",
+      "title": "Semleges híd",
+      "summary": "Tarts jó viszonyt Moszkvával és a Nyugattal is",
+      "description": "Századunk eddigi története megmutatta, milyen bajt hozhat, ha Magyarország valamelyik nagyhatalmi oldalhoz húz: végül mindig mások érdekei sodorják veszélybe az országot. A semlegesség csak úgy maradhat fenn, ha Moszkva és a Nyugat is partnerként tekint ránk. Köss szerződést mindkét oldallal, és légy híd Kelet és Nyugat között.",
+      "icon": "/images/1957_forradalom-oroksege/semleges_hid.png",
+      "completeWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "szen_vagy_dollar",
+            "answerId": "C"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "osztrak_ut",
+            "answerId": "B"
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "event-triggered",
+            "eventId": "moszkva_nyomas"
+          },
+          {
+            "type": "event-triggered",
+            "eventId": "nyugati_elszigeteltseg"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "fkgp": 2,
+            "petofi": 2,
+            "szdp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "nyitas_nyugat",
+      "title": "Nyitás Nyugat felé",
+      "summary": "Kösd az országot a nyugati piacokhoz",
+      "description": "Szent István királyunk a nyugati kereszténységet választotta, és ezzel Európa nyugati közösségéhez kötötte az országot. Kövesd ezt az örökséget: nyiss a nyugati hitelek és piacok felé, és építsd az új köztársaságot a nyugati demokráciák mintájára.",
+      "icon": "/images/1957_forradalom-oroksege/nyugat.png",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "szen_vagy_dollar",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "osztrak_ut",
+                "answerId": "A"
+              }
+            ]
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "osztrak_ut",
+              "answerId": "C"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "osztrak_ut",
+            "answerId": "C"
+          },
+          {
+            "type": "event-triggered",
+            "eventId": "nyugati_elszigeteltseg"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "fkgp": 2,
+            "petofi": 2,
+            "szdp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "nemzeti_egyseg",
+      "title": "Konszolidáció",
+      "summary": "Szerezz legalább egy forradalmi pártot szövetségesnek",
+      "description": "Az MSZMP még nem nyerte vissza mindenki bizalmát. Ha legalább egy forradalmi párt közös listára lép veled, az új irány hitelét is erősítheti. Kössetek választási szövetséget, és vállaljatok közös kormányzást.",
+      "icon": "/images/1957_forradalom-oroksege/nemzeti_egyseg_icon.png",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "not": {
+              "type": "event-triggered",
+              "eventId": "kethly_elutasitja"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "C"
+          },
+          {
+            "type": "event-triggered",
+            "eventId": "kethly_elutasitja"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "fkgp": 2,
+            "petofi": 1,
+            "szdp": 1,
+            "dnp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "sajat_tobbseg",
+      "title": "Önálló legitimitás",
+      "summary": "Vállald a múltat, és indulj egyedül",
+      "description": "Az MSZMP nem támaszkodhat örökké más pártokra. Vállald a múlt terheit, és kérd a választók felhatalmazását a forradalom programjára. Mutasd meg, hogy a párt önállóan is legitim politikai erő lehet.",
+      "icon": "/images/1957_forradalom-oroksege/sajat_tobbseg.png",
+      "completeWhen": {
+        "type": "answer-selected",
+        "questionId": "listakapcsolas",
+        "answerId": "C"
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "A"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "B"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "D"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "fkgp": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "bibo_utja",
+      "title": "Bibó útja",
+      "summary": "Kormányozz Bibó Istvánnal",
+      "description": "Kéthly pártját meggyengítetted, a forradalom másik öröksége Bibó Istváné. A Petőfi Párt kész veled kormányozni, de jogállamot, szabad sajtót és nyitást kér Nyugat felé. Kössetek listaszövetséget, és vállald Bibó feltételeit.",
+      "icon": "/images/1957_forradalom-oroksege/bibo_istvan.png",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "B"
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "igazsagtetel",
+              "answerId": "C"
+            }
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "bibo_alkotmanya",
+              "answerId": "B"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "A"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "C"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "D"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "fkgp": 2,
+            "petofi": 2,
+            "szdp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "baloldali_kormany",
+      "title": "Baloldali kormány",
+      "summary": "Kormányozz Kéthly Annával",
+      "description": "A két munkáspárt együtt indul, és közös kormányprogrammal lép a választók elé. Kéthly Anna csak akkor áll melléd, ha bízik benned: tartsd meg, amit a szövetségkötéskor ígértél.",
+      "icon": "/images/1957_forradalom-oroksege/kethly_badge.png",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "type": "relation",
+            "relationId": "kethly",
+            "tone": ["good"]
+          },
+          {
+            "not": {
+              "type": "event-triggered",
+              "eventId": "kethly_elutasitja"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "B"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "C"
+          },
+          {
+            "type": "event-triggered",
+            "eventId": "kethly_elutasitja"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "szdp": 2,
+            "fkgp": 2,
+            "petofi": 1
+          }
+        }
+      ]
+    }
+  ],
+  "focusBranches": [
+    {
+      "id": "irany",
+      "title": "Merre viszed a pártot?",
+      "focuses": ["lassu_reformok", "forradalom_partja"],
+      "availableFromTurn": 1,
+      "requiredBeforeTurn": 1
+    },
+    {
+      "id": "szovetseg",
+      "title": "Kire támaszkodsz?",
+      "focuses": ["baloldali_szovetseg", "munkasokol_vasokol"],
+      "availableFromTurn": 7,
+      "requiredBeforeTurn": 9
+    },
+    {
+      "id": "koztarsasag",
+      "title": "Milyen köztársaság?",
+      "focuses": ["semleges_hid", "nyitas_nyugat"],
+      "availableFromTurn": 13,
+      "requiredBeforeTurn": 15
+    },
+    {
+      "id": "hajra_baloldal",
+      "title": "Kampányhajrá",
+      "focuses": ["baloldali_kormany", "nemzeti_egyseg"],
+      "requires": "baloldali_szovetseg",
+      "availableFromTurn": 19,
+      "requiredBeforeTurn": 21
+    },
+    {
+      "id": "hajra_zaszlo",
+      "title": "Kampányhajrá",
+      "focuses": ["sajat_tobbseg", "bibo_utja"],
+      "requires": "munkasokol_vasokol",
+      "availableFromTurn": 19,
+      "requiredBeforeTurn": 21
+    }
+  ],
+  "relationGroups": [
+    {
+      "id": "partok",
+      "title": "Pártok",
+      "icon": "flag-fill"
+    },
+    {
+      "id": "tarsadalom",
+      "title": "Társadalom",
+      "icon": "people-fill"
+    },
+    {
+      "id": "kulfold",
+      "title": "Külföld",
+      "icon": "globe-europe-africa"
+    }
+  ],
+  "relations": [
+    {
+      "id": "kadar",
+      "name": "Kádár János",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/kadar_badge.png",
+      "tone": "tense",
+      "label": "Elégedetlen",
+      "description": "Az MSZMP régi vezetését képviseli, lassabb reformokat akar.",
+      "labels": {
+        "good": "Lojális",
+        "calm": "Kivár",
+        "tense": "Elégedetlen",
+        "bad": "Ellenséges"
+      }
+    },
+    {
+      "id": "kethly",
+      "name": "Kéthly Anna",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/kethly_badge.png",
+      "tone": "calm",
+      "label": "Tárgyalna",
+      "description": "Versenytárs, de kész tárgyalni, garanciákat vár.",
+      "labels": {
+        "good": "Szövetséges",
+        "calm": "Tárgyalna",
+        "tense": "Bizalmatlan",
+        "bad": "Elutasító"
+      }
+    },
+    {
+      "id": "kisgazdak",
+      "name": "Kisgazdák",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/fkgp_badge.png",
+      "tone": "good",
+      "label": "Koalíciós partner",
+      "description": "Tildy Zoltán és Kovács Béla a kormány tagjai.",
+      "labels": {
+        "good": "Baráti",
+        "calm": "Udvarias",
+        "tense": "Sértett",
+        "bad": "Ellenséges"
+      }
+    },
+    {
+      "id": "corvin",
+      "name": "Corvin köz",
+      "groupId": "tarsadalom",
+      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.png",
+      "tone": "tense",
+      "label": "Türelmetlen",
+      "description": "Elszámoltatást követelnek a felkelők.",
+      "labels": {
+        "good": "Melletted áll",
+        "calm": "Kivár",
+        "tense": "Türelmetlen",
+        "bad": "Felháborodott"
+      }
+    },
+    {
+      "id": "munkastanacsok",
+      "name": "Munkástanácsok",
+      "groupId": "tarsadalom",
+      "icon": "/images/1957_forradalom-oroksege/munkastancsok_badge.png",
+      "tone": "calm",
+      "label": "Várakozó",
+      "description": "Beleszólást követelnek a gyárak irányításába.",
+      "labels": {
+        "good": "Támogat",
+        "calm": "Várakozó",
+        "tense": "Elégedetlen",
+        "bad": "Sztrájkkal fenyeget"
+      }
+    },
+    {
+      "id": "moszkva",
+      "name": "Moszkva",
+      "groupId": "kulfold",
+      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png",
+      "tone": "tense",
+      "label": "Gyanakvó",
+      "description": "Elfogadta a semlegességet, de bizalmatlanul figyel.",
+      "labels": {
+        "good": "Elégedett",
+        "calm": "Megnyugodott",
+        "tense": "Gyanakvó",
+        "bad": "Fenyegetőzik"
+      }
+    },
+    {
+      "id": "nyugat",
+      "name": "Nyugat",
+      "groupId": "kulfold",
+      "icon": "/images/1957_forradalom-oroksege/nyugat.png",
+      "tone": "calm",
+      "label": "Kivár",
+      "description": "A nyugati hatalmak figyelik, merre indul az új köztársaság.",
+      "labels": {
+        "good": "Rokonszenvez",
+        "calm": "Kivár",
+        "tense": "Csalódott",
+        "bad": "Elfordul"
+      }
+    }
+  ],
+  "coalition": {
+    "partners": [
+      {
+        "partyId": "szdp",
+        "acceptWhen": {
+          "and": [
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "kethly_feltetelei",
+                "answerId": "C"
+              }
+            },
+            {
+              "not": {
+                "type": "relation",
+                "relationId": "kethly",
+                "tone": ["bad"]
+              }
+            }
+          ]
+        },
+        "acceptReason": "Kéthly Anna emlékszik, hogy nem akartad beolvasztani a pártját. Igent mond.",
+        "rejectReason": "Kéthly Anna nem bízik benned, és 1948 jár a fejében. Nemet mond."
+      },
+      {
+        "partyId": "petofi",
+        "acceptWhen": {
+          "and": [
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "igazsagtetel",
+                "answerId": "C"
+              }
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "bibo_alkotmanya",
+                "answerId": "B"
+              }
+            },
+            {
+              "or": [
+                {
+                  "type": "focus-selected",
+                  "focusId": "nyitas_nyugat"
+                },
+                {
+                  "type": "relation",
+                  "relationId": "nyugat",
+                  "tone": ["good"]
+                }
+              ]
+            }
+          ]
+        },
+        "acceptReason": "Bibó István szerint a kormányod a jogállam útján jár. A Petőfi Párt beszáll.",
+        "rejectReason": "Bibó István szerint a népbíróságok, az erős kormányfő vagy a Nyugattól való távolságtartás nem a jogállam útja. Nemet mond."
+      },
+      {
+        "partyId": "kadar_part",
+        "acceptWhen": {
+          "type": "relation",
+          "relationId": "kadar",
+          "tone": ["good", "calm"]
+        },
+        "acceptReason": "Kádár kész a kiegyezésre, ha a pártszervezetek ügyében te engedsz.",
+        "rejectReason": "Kádár nem felejti el, hogy kizártad. Nemet mond."
+      }
+    ]
+  },
+  "epilogues": [
+    {
+      "id": "ket_munkaspart",
+      "title": "Két munkáspárt",
+      "body": "Az MSZMP kettészakadt, a parlamentben két munkáspárt ül. Nagy Imre megőrizte a forradalom hitelét, de a baloldal megosztott maradt.",
+      "icon": "scissors",
+      "when": {
+        "type": "event-triggered",
+        "eventId": "kadar_szakadas"
+      }
+    },
+    {
+      "id": "hideg_beke",
+      "title": "Hideg béke",
+      "body": "Nagy Imre kormányt alakít, de Moszkva gazdasági nyomása alatt. A semleges köztársaság első éve a szénjegyek és a sorban állás éve lesz.",
+      "icon": "snow",
+      "outcomes": ["single-majority", "coalition", "weak-coalition"],
+      "when": {
+        "type": "relation",
+        "relationId": "moszkva",
+        "tone": ["bad"]
+      }
+    },
+    {
+      "id": "fegyveres_arnyek",
+      "title": "Fegyveres árnyék",
+      "body": "Nagy Imre kormányoz, de a Corvin köz felkelői nem tették le a fegyvert. Az új köztársaság első éveit tüntetések és fenyegetések kísérik.",
+      "icon": "shield-fill",
+      "outcomes": ["single-majority", "coalition", "weak-coalition"],
+      "when": {
+        "type": "relation",
+        "relationId": "corvin",
+        "tone": ["bad"]
+      }
+    },
+    {
+      "id": "osztrak_ut",
+      "title": "Az osztrák út",
+      "body": "Magyarország Ausztria mintájára semleges köztársaság lesz, amelyet Kelet és Nyugat is elismer. Nagy Imre kormánya nyugati hitelekből és szovjet szénből építi az új gazdaságot.",
+      "icon": "globe-europe-africa",
+      "outcomes": ["single-majority", "coalition"],
+      "when": {
+        "and": [
+          {
+            "type": "relation",
+            "relationId": "nyugat",
+            "tone": ["good"]
+          },
+          {
+            "type": "relation",
+            "relationId": "moszkva",
+            "tone": ["good", "calm"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "forradalom_mandatuma",
+      "title": "A forradalom mandátuma",
+      "body": "Az MSZMP egyedül szerzett többséget. Nagy Imre kormánya erős felhatalmazással kezdheti el az új köztársaság építését.",
+      "icon": "trophy-fill",
+      "outcomes": ["single-majority"]
+    },
+    {
+      "id": "szocialdemokrata_megallapodas",
+      "title": "Baloldali kormány",
+      "body": "Az MSZMP és az SZDP közösen alakít kormányt. Kéthly Anna garanciái bekerültek a kormányprogramba.",
+      "icon": "people-fill",
+      "outcomes": ["coalition"],
+      "when": {
+        "type": "relation",
+        "relationId": "kethly",
+        "tone": ["good"]
+      }
+    },
+    {
+      "id": "tarka_koalicio",
+      "title": "Tarka koalíció",
+      "body": "Nagy Imre több párttal osztozik a hatalmon. A miniszteri székeket szétosztották, de minden döntés alkuba kerül, és a kormány az első válságnál meginog.",
+      "icon": "people-fill",
+      "outcomes": ["weak-coalition"]
+    },
+    {
+      "id": "bibo_feltetelei",
+      "title": "Bibó feltételei",
+      "body": "A Petőfi Párt beszállt a kormányba, és Bibó István felügyeli az alkotmányozást. Független bíróságok, szabad sajtó, nyitás Nyugat felé: a köztársaság demokratikusabb, mint valaha. A többség azonban szűk, és minden vita a koalíció végét fenyegeti.",
+      "icon": "bank2",
+      "outcomes": ["coalition"],
+      "when": {
+        "type": "coalition-partner",
+        "partyId": "petofi"
+      }
+    },
+    {
+      "id": "koalicios_kormany",
+      "title": "Koalíciós kormány",
+      "body": "Nagy Imre csak más pártok támogatásával kormányozhat. Minden törvényért meg kell küzdeni, de a demokrácia működik.",
+      "icon": "diagram-3-fill",
+      "outcomes": ["coalition"]
+    },
+    {
+      "id": "ellenzekben",
+      "title": "Ellenzékben",
+      "body": "Az MSZMP nem kerül kormányra. Nagy Imre az új demokrácia ellenzéki vezetője lesz, és a forradalom öröksége más pártok kezébe kerül.",
+      "icon": "door-open-fill"
+    }
+  ]
+}

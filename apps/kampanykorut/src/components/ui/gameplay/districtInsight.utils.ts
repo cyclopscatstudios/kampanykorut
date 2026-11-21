@@ -53,6 +53,17 @@ export function isSameDistrict(
   return !!a && !!b && a.megyekod === b.megyekod && a.oevk === b.oevk;
 }
 
+// A district that covers a whole county (the 1945 map) is named after the
+// county alone; otherwise the county is followed by the district name.
+export function getDistrictTitle(
+  district: Pick<CandidateListData, "megye" | "oevk" | "telepules">,
+  isCityMap: boolean,
+): string {
+  return district.telepules === district.megye
+    ? district.megye
+    : `${district.megye} ${getDistrictName(district, isCityMap)}`;
+}
+
 export function getDistrictName(
   district: Pick<CandidateListData, "oevk" | "telepules">,
   isCityMap: boolean,

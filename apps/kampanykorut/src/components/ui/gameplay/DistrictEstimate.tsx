@@ -1,8 +1,10 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
+import { AreaIssueView } from "@/shared/domain/Issues";
 import { CandidateListData, RawParty } from "@/shared/types";
 import { Icon } from "../../../../../../shared/ui/Icon";
+import { AreaIssues } from "./AreaIssues";
 import {
   Estimate,
   EstimateRow,
@@ -11,7 +13,7 @@ import {
   getBarScale,
   getScopedEstimate,
 } from "./districtEstimate.utils";
-import { getDistrictName } from "./districtInsight.utils";
+import { getDistrictTitle } from "./districtInsight.utils";
 import type { SwingFactor } from "./swingFactor.utils";
 
 const TOSSUP_COLOR = "#e5b93a";
@@ -22,6 +24,7 @@ interface DistrictEstimateProps {
   parties: RawParty[];
   nationalPercentages?: Record<string, number>;
   isCityMap: boolean;
+  issues?: AreaIssueView[];
 }
 
 export function DistrictEstimate({
@@ -30,6 +33,7 @@ export function DistrictEstimate({
   parties,
   nationalPercentages,
   isCityMap,
+  issues = [],
 }: DistrictEstimateProps) {
   const [scope, setScope] = useState<EstimateScope>("district");
 
@@ -44,7 +48,7 @@ export function DistrictEstimate({
 
   const title = isNational
     ? t(isCityMap ? "estimatePanel.cityTitle" : "estimatePanel.nationalTitle")
-    : district && `${district.megye} ${getDistrictName(district, isCityMap)}`;
+    : district && getDistrictTitle(district, isCityMap);
   const subtitle = isNational
     ? t(
         isCityMap
@@ -52,7 +56,9 @@ export function DistrictEstimate({
           : "estimatePanel.nationalSubtitle",
       )
     : district &&
-      `${district.telepules} · ${t("estimatePanel.districtSubtitle")}`;
+      (district.telepules === district.megye
+        ? t("estimatePanel.districtSubtitle")
+        : `${district.telepules} · ${t("estimatePanel.districtSubtitle")}`);
 
   return (
     <div className="flex h-full flex-col gap-3.5 px-5 pt-4.5 pb-4">
@@ -74,10 +80,12 @@ export function DistrictEstimate({
                 row={row}
                 isLeader={estimate.leader?.partyId === row.partyId}
                 showParty={!isNational && !!row.candidateName}
+                partyNameOnly={isNational}
                 scale={getBarScale(estimate)}
               />
             ))}
           </div>
+          {!isNational && <AreaIssues issues={issues} />}
         </>
       ) : (
         <div className="flex flex-1 items-center justify-center text-center text-sm font-light text-slate-400">
@@ -136,7 +144,7 @@ export function StatusTag({
       : (estimate.leader?.color ?? TOSSUP_COLOR);
   const label =
     isNational && estimate.leader
-      ? t("estimatePanel.advantage", { party: estimate.leader.partyName })
+      ? t("estimatePanel.advantage", { party: estimate.leader.shortName })
       : t(`estimatePanel.status.${estimate.status satisfies EstimateStatus}`);
 
   return (
@@ -153,11 +161,13 @@ export function CandidateRow({
   row,
   isLeader,
   showParty,
+  partyNameOnly,
   scale,
 }: {
   row: EstimateRow;
   isLeader: boolean;
   showParty: boolean;
+  partyNameOnly: boolean;
   scale: number;
 }) {
   const toPosition = (value: number) => `${(value / scale) * 100}%`;
@@ -170,7 +180,7 @@ export function CandidateRow({
       />
       <div className="min-w-0">
         <div className="text-[12.5px] font-bold uppercase tracking-[0.2px] text-slate-100">
-          {row.candidateName ?? row.partyName}
+          {partyNameOnly ? row.partyName : (row.candidateName ?? row.partyName)}
         </div>
         {showParty && (
           <div className="mt-px text-[11.5px] text-slate-400">

@@ -17,9 +17,30 @@ export function getInactiveCandidateIds(
   state: Pick<CampaignState, "candidates">,
 ): string[] {
   return Object.entries(state.candidates ?? {})
-    .filter(([, candidate]) => candidate.status === "inactive")
+    .filter(([, candidate]) => candidate.status !== "active")
     .map(([id]) => id)
     .sort();
+}
+
+export function getDormantPartyStates(
+  parties: { id: string; dormant?: boolean }[] = [],
+): CampaignState["candidates"] {
+  const dormant = parties.filter((party) => party.dormant);
+  if (!dormant.length) {
+    return undefined;
+  }
+  return Object.fromEntries(
+    dormant.map((party) => [party.id, { status: "dormant" as const }]),
+  );
+}
+
+export function getVisibleParties<T extends { id: string }>(
+  parties: T[],
+  state: Pick<CampaignState, "candidates"> | undefined,
+): T[] {
+  return parties.filter(
+    (party) => state?.candidates?.[party.id]?.status !== "dormant",
+  );
 }
 
 export function getCampaignEventState(
@@ -28,6 +49,7 @@ export function getCampaignEventState(
   return {
     triggeredEventIds: state.campaignEvents?.triggeredEventIds ?? [],
     pendingAnnouncementIds: state.campaignEvents?.pendingAnnouncementIds ?? [],
+    triggeredAtTurn: state.campaignEvents?.triggeredAtTurn ?? {},
   };
 }
 
@@ -35,15 +57,15 @@ export function acknowledgeAnnouncement(
   state: CampaignState,
   eventId: string,
 ): CampaignState {
-  const { triggeredEventIds, pendingAnnouncementIds } =
-    getCampaignEventState(state);
+  const eventState = getCampaignEventState(state);
+  const { pendingAnnouncementIds } = eventState;
   if (!pendingAnnouncementIds.includes(eventId)) {
     return state;
   }
   return {
     ...state,
     campaignEvents: {
-      triggeredEventIds,
+      ...eventState,
       pendingAnnouncementIds: pendingAnnouncementIds.filter(
         (id) => id !== eventId,
       ),
@@ -62,4 +84,14 @@ export function getPendingAnnouncement(
     }
   }
   return undefined;
+}
+
+export function getSelectedFocusIds(
+  state: Pick<CampaignState, "politicalDashboard">,
+): string[] {
+  const dashboard = state.politicalDashboard;
+  return (
+    dashboard?.selectedFocusIds ??
+    (dashboard?.selectedFocusId ? [dashboard.selectedFocusId] : [])
+  );
 }

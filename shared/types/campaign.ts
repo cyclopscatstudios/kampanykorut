@@ -2,8 +2,11 @@ import { Answer } from "./answer";
 import { AnswerFeedback } from "./answer-feedback";
 import { District } from "./district";
 import { ConditionalRawEffect, RawEffect } from "./effects";
+import { IssuePositions } from "./issue";
 import { Mandate, PartyVotes } from "./mandate";
 import { MayoralResult } from "./mayoral-result";
+import { NewspaperState } from "./newspaper";
+import { CoalitionState, PoliticalDashboardState } from "./political";
 import { RawQuestion } from "./question";
 
 export interface CampaignState {
@@ -18,7 +21,13 @@ export interface CampaignState {
   results?: CalculateResults;
   mayoralResult?: MayoralResult;
   candidates?: Record<string, CandidateCampaignState>;
+  // Party positions on issues that moved away from the configured ones.
+  issuePositions?: IssuePositions;
   campaignEvents?: CampaignEventState;
+  politicalDashboard?: PoliticalDashboardState;
+  coalition?: CoalitionState;
+  newspaper?: NewspaperState;
+  introSeen?: boolean;
   campaignConfigVersion?: string;
   questionCursor?: number;
   decisionCount?: number;
@@ -29,7 +38,8 @@ export interface CampaignState {
   isBaseResultsAlreadyApplied: boolean;
 }
 
-export type CandidateStatus = "active" | "inactive";
+// "dormant": a party that only enters the race through a split-party event.
+export type CandidateStatus = "active" | "inactive" | "dormant";
 
 export type CandidateInactiveReason =
   | "withdrawal"
@@ -40,12 +50,14 @@ export interface CandidateCampaignState {
   status: CandidateStatus;
   inactiveReason?: CandidateInactiveReason;
   endorsedCandidateId?: string;
+  splitFromIds?: string[];
   changedAtTurn?: number;
 }
 
 export interface CampaignEventState {
   triggeredEventIds: string[];
   pendingAnnouncementIds: string[];
+  triggeredAtTurn?: Record<string, number>;
 }
 
 export type CurrentView = "MapView" | "QuestionView" | "VoteCountingView";
@@ -98,6 +110,15 @@ export interface CalculateResults {
     total: PartyVotes;
   };
   percentages: PartyResults;
+  regions?: RegionSeatResult[];
+}
+
+export interface RegionSeatResult {
+  id: string;
+  name: string;
+  seats: number;
+  votes: PartyVotes;
+  allocation: Record<string, number>;
 }
 
 export interface PartyResults {

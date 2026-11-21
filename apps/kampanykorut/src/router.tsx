@@ -1,15 +1,22 @@
 import { createBrowserRouter } from "react-router";
 import { MainGameScreenWrapper, NewGameLayout, RootLayout } from "./AppLayout";
 import { ErrorPage } from "./components/ErrorPage";
+import { campaignPageLoader } from "./components/loaders/campaignPage.loader";
+import { coalitionLoader } from "./components/loaders/coalition.loader";
 import { finalResultLoader } from "./components/loaders/finalResult.loader";
 import { mainGameScreenLoader } from "./components/loaders/mainGameScreen.loader";
 import { mainMenuLoader } from "./components/loaders/mainMenu.loader";
 import { newGameSelectorLoader } from "./components/loaders/newGameSelector.loader";
+import { politicalDashboardLoader } from "./components/loaders/politicalDashboard.loader";
 import {
   landingPageRouter,
   rootLoader,
 } from "./components/loaders/route.loader";
 import { sideSelectorLoader } from "./components/loaders/sideSelector.loader";
+import { CampaignPage } from "./components/ui/campaignPage/CampaignPage";
+import { CAMPAIGN_PAGE_PATH } from "./components/ui/campaignPage/campaignPage.data";
+import { CoalitionPage } from "./components/ui/coalition/CoalitionPage";
+import { PoliticalDashboardPage } from "./components/ui/dashboard/PoliticalDashboardPage";
 import { FinalResultScreen } from "./components/ui/gameplay/FinalResultScreen/EndResultScreen";
 import { AboutMenu } from "./components/ui/menu/AboutMenu";
 import { ClassicModeSelectorMenu } from "./components/ui/menu/ClassicModeSelectorMenu";
@@ -39,6 +46,12 @@ export const router = createBrowserRouter([
   {
     path: `${NEWS_PATH}/:number`,
     element: <NewsDetailPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: `${CAMPAIGN_PAGE_PATH}/:campaignId/:sideId?`,
+    element: <CampaignPage />,
+    loader: campaignPageLoader,
     errorElement: <ErrorPage />,
   },
   {
@@ -78,6 +91,16 @@ export const router = createBrowserRouter([
         path: "game/:id",
         element: <MainGameScreenWrapper />,
         loader: mainGameScreenLoader,
+      },
+      {
+        path: "game/:id/dashboard",
+        element: <PoliticalDashboardPage />,
+        loader: politicalDashboardLoader,
+      },
+      {
+        path: "game/:id/coalition",
+        element: <CoalitionPage />,
+        loader: coalitionLoader,
       },
       {
         path: "game/:id/end-results",

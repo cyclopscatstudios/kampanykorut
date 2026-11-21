@@ -2,8 +2,15 @@ import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
 import {
   acknowledgeAnnouncement as acknowledge,
+  autoSelectCompletedFocus,
+  createConditionCheck,
+  forPlayerSide,
   getParliamentaryConfig,
   getPlayerVoteKey,
+  getVisibleParties,
+  markIntroSeen,
+  markNewspaperRead,
+  publishNewspaperEdition,
 } from "@/shared/domain";
 import { createLogger } from "@/shared/logger";
 import { StorageEngine } from "@/shared/logic/application/StorageEngine";
@@ -105,7 +112,7 @@ export function useElectionState(campaignId: string) {
     };
     let newGameState: CampaignState;
     try {
-      newGameState = campaignEngine.processTurn(
+      const played = campaignEngine.processTurn(
         gameState,
         decision,
         currentHistory ?? [],
@@ -117,6 +124,25 @@ export function useElectionState(campaignId: string) {
           : undefined,
         config.electionConfig.districtBoost,
         getPlayerVoteKey(config.electionConfig, gameState.playerSide),
+      );
+      const sideConfig = forPlayerSide(config, played.playerSide);
+      const answers = [
+        ...(currentHistory ?? []),
+        { questionId: decision.questionId, answerId: decision.answerId },
+      ];
+      newGameState = autoSelectCompletedFocus(
+        publishNewspaperEdition(
+          played,
+          sideConfig,
+          createConditionCheck(
+            played,
+            answers,
+            config.electionConfig,
+            sideConfig.politicalConfig?.relations,
+          ),
+        ),
+        sideConfig,
+        answers,
       );
     } catch (error) {
       log.error("Failed to process turn", {
@@ -189,6 +215,24 @@ export function useElectionState(campaignId: string) {
     saveSession("campaignState", next);
   };
 
+  const markNewspaperAsRead = () => {
+    const next = markNewspaperRead(gameState);
+    if (next === gameState) {
+      return;
+    }
+    setGameState(next);
+    saveSession("campaignState", next);
+  };
+
+  const markIntroAsSeen = () => {
+    const next = markIntroSeen(gameState);
+    if (next === gameState) {
+      return;
+    }
+    setGameState(next);
+    saveSession("campaignState", next);
+  };
+
   const getAnswer = (answers?: Answer[], answerId?: string) => {
     return answers?.find((a) => a.id === answerId);
   };
@@ -251,14 +295,31 @@ export function useElectionState(campaignId: string) {
     setGameState(newGameState);
   };
 
+  const candidates = gameState?.candidates;
+  const playerSide = gameState?.playerSide;
+  const visibleConfig = useMemo(() => {
+    const sideConfig = forPlayerSide(config, playerSide);
+    const parties = getVisibleParties(config.electionConfig.parties, {
+      candidates,
+    });
+    return parties.length === config.electionConfig.parties.length
+      ? sideConfig
+      : {
+          ...sideConfig,
+          electionConfig: { ...config.electionConfig, parties },
+        };
+  }, [config, candidates, playerSide]);
+
   return {
     state: gameState,
-    config,
+    config: visibleConfig,
     processAnswer,
     commitTurn,
     finishCampaign,
     getFinalResults,
     acknowledgeAnnouncement,
+    markNewspaperRead: markNewspaperAsRead,
+    markIntroSeen: markIntroAsSeen,
     getMapDataByPolls: getListDataByPollProjection,
   };
 }

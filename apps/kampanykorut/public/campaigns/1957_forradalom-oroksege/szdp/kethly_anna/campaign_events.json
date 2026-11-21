@@ -1,0 +1,3749 @@
+[
+  {
+    "id": "hazateres_becsbol_valasz",
+    "label": "Hazatérés Bécsből (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "hazateres_becsbol",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 2,
+            "description": "A testvérpártok örülnek, hogy élsz a segítségükkel."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -2,
+            "description": "Moszkva szerint a szociáldemokraták nyugati pénzből kampányolnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A párt gyorsan talpra áll, irodák nyílnak minden megyében."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "hazateres_becsbol",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "A testvérpártok megértik, hogy óvatos vagy."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A pártsajtó újra megjelenik."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "hazateres_becsbol",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -1,
+            "description": "A testvérpártok csalódottak, a segítségük kihasználatlan maradt."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A gyárakban tisztelik, hogy a párt a saját lábán áll."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "hazateres_becsbol",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A munkások látják, hogy a segítség hozzájuk jutott."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A pártközpont üres, a szervezés akadozik."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ki_volt_a_birad_valasz",
+    "label": "Ki volt a bírád? (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ki_volt_a_birad",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 2,
+            "description": "A felkelők szerint Kéthly Anna nem felejt."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -2,
+            "description": "Nagy Imre úgy érzi, az ő pártját vádolod."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Az MSZMP-ben sokan magukra veszik a vádat."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ki_volt_a_birad",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 1,
+            "description": "A felkelők lassúnak tartják, de elfogadják."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 1,
+            "description": "Bibó István szerint ez a jogállam útja."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ki_volt_a_birad",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -2,
+            "description": "A felkelők nem értik, miért bocsátasz meg."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 1,
+            "description": "Az asszonyok meghatódtak a nagyvonalúságodon."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 1,
+            "description": "Nagy Imre megkönnyebbült."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ki_volt_a_birad",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -1,
+            "description": "A felkelők szerint hallgatsz, amikor beszélni kellene."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kie_a_nepszava_valasz",
+    "label": "Kié a Népszava? (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kie_a_nepszava",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -1,
+            "description": "A szakszervezeti emberek szerint elveszed a munkások lapját."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A pártnak újra van napilapja."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kie_a_nepszava",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A gyárakban örülnek a közös lapnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": 1,
+            "description": "Az MSZMP szerint ez korrekt megoldás."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kie_a_nepszava",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "Két Népszava jelenik meg, az olvasók nem tudják, melyik a tiéd."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kie_a_nepszava",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A demokratikus döntést a gyárakban is megbecsülik."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "A nyugati sajtó elismeréssel ír a döntésről."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "corvin_kovetelese_valasz",
+    "label": "A győzelem terhe (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "corvin_kovetelese",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -1,
+            "description": "A felkelők szerint a bíróság túl lassú."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 1,
+            "description": "Bibó István a jogállam szövetségesét látja benned."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "corvin_kovetelese",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 2,
+            "description": "A felkelők szerint a szociáldemokraták velük vannak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": -2,
+            "description": "Bibó István szerint a népbíróság nem a jogállam útja."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A bizonytalanok forradalmi bosszút hallanak ki belőle."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "corvin_kovetelese",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -2,
+            "description": "A felkelők szerint elárulod a forradalmat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 1,
+            "description": "Nagy Imre megkönnyebbült."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "corvin_kovetelese",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 1,
+            "description": "A felkelők örülnek, hogy beleszólhatnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A javaslat kormányzati felelősségről árulkodik."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "banyaszsztrajk_valasz",
+    "label": "Hideg tél (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "banyaszsztrajk",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 2,
+            "description": "A bányászok a te nevedet kiabálják."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -2,
+            "description": "A minisztertanácsban azt kérdezik, kormánytárs vagy-e még."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Az MSZMP szerint a kormány hátába szúrtál."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "banyaszsztrajk",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A bányászok visszamennek a tárnákba."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 2,
+            "description": "A közvetítés sikere kormányzóképességet mutat."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "banyaszsztrajk",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -2,
+            "description": "A bányászok szerint a szociáldemokraták cserben hagyták őket."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A kormány felelős tagjaként viselkedtél."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 1,
+            "description": "Nagy Imre hálás a támogatásért."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "banyaszsztrajk",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "A testvérpártok segítenek, és ezt meg is írják."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva szerint a nyugati szén nyugati befolyás."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "Kiderül, hogy Kéthly Annának vannak barátai."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "asszony_a_kormany_elen_valasz",
+    "label": "Asszony a kormány élén? (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "asszony_a_kormany_elen",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": -1,
+            "description": "Az asszonyok azt várták, hogy kiállsz."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "asszony_a_kormany_elen",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 2,
+            "description": "Az asszonyok büszkék a válaszodra."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A tapasztalatodat a bírálóid sem vitatják."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "asszony_a_kormany_elen",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 3,
+            "description": "A nők gyűlésein téged ünnepelnek."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A pártközpont azt kérdezi, miből fizetjük ki."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "asszony_a_kormany_elen",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 1,
+            "description": "A mondatot egész Budapest idézi."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A püspöki kar és a vidéki szavazók sértőnek érzik."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "szabad_szakszervezet_valasz",
+    "label": "A szabad szakszervezet (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szabad_szakszervezet",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -2,
+            "description": "A munkástanácsok szerint a régi szíjhajtót mented meg."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": 1,
+            "description": "Marosán és a régi szakszervezeti vezetők elégedettek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szabad_szakszervezet",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -1,
+            "description": "A munkástanácsok rivális szervezetet látnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "A nyugati szakszervezetek segítséget ígérnek."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Az MSZMP szerint bontod a munkásegységet."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szabad_szakszervezet",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 2,
+            "description": "A munkástanácsok a szövetségesüket látják benned."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A pártban sokan attól félnek, hogy a párt szerepe elfogy."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szabad_szakszervezet",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A munkástanácsok elfogadják a munkamegosztást."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A javaslat átgondolt és kivitelezhető."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lakas_nyugdij_bolcsode_valasz",
+    "label": "Lakás, nyugdíj, bölcsőde (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "lakas_nyugdij_bolcsode",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A program kidolgozott, a számok kijönnek."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 1,
+            "description": "Az asszonyok lakást és nyugdíjat várnak tőled."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva szerint a nyugati hitel nyugati befolyás."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "lakas_nyugdij_bolcsode",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 2,
+            "description": "A dolgozó nők a programodról beszélnek."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A gyárakban örülnek a bölcsődéknek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "lakas_nyugdij_bolcsode",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 2,
+            "description": "A pénzügyi szakemberek szerint hiteles a program."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "lakas_nyugdij_bolcsode",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -2,
+            "description": "A riporterek kiszámolták, hogy a program kifizethetetlen."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 1,
+            "description": "Az asszonyok remélik, hogy valami megvalósul belőle."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "csepel_tanacsa_valasz",
+    "label": "Csepel tanácsa (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "csepel_tanacsa",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 2,
+            "description": "Csepel melletted áll, és ezt a többi gyár is látja."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A lista élén tapasztalatlan munkásvezetők állnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Az MSZMP szerint elcsábítod a szavazóit."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "csepel_tanacsa",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "Csepel elfogadja, de figyeli, betartod-e."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "csepel_tanacsa",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -1,
+            "description": "A munkástanácsok csalódottak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A párt listája szakértőkből áll."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "csepel_tanacsa",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A munkástanácsok örülnek a nagy gesztusnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A lista tarka lesz, nehéz lesz összefogni."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Az MSZMP szerint elcsábítod a szavazóit."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a_gyar_jovoje_valasz",
+    "label": "Kié a gyár? (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "a_gyar_jovoje",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 2,
+            "description": "A munkástanácsok a programjukat hallják tőled."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -1,
+            "description": "Az osztrák elvtársak csodálkoznak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A tervhivatal szerint így nincs gazdaságirányítás."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "a_gyar_jovoje",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A munkástanácsok elfogadják a beleszólást."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "Óvatos, kivitelezhető program."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "a_gyar_jovoje",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A középosztály is figyelni kezd rád."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": 1,
+            "description": "A kisgazdák szerint ez az ő programjuk is."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "A bécsi modell a Nyugatnak is ismerős."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "a_gyar_jovoje",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -3,
+            "description": "A munkások szerint a szociáldemokraták a gyárosok oldalára álltak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": -2,
+            "description": "Marosán szerint a párt elárulta a munkásokat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": 1,
+            "description": "A kisgazdák meglepődve örülnek."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "szen_es_hitel_valasz",
+    "label": "Szén vagy dollár (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szen_es_hitel",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 2,
+            "description": "A testvérpártok közvetítése sikeres."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -2,
+            "description": "Moszkva szerint Kéthly Anna Washington felé viszi az országot."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": -1,
+            "description": "Marosán szerint a párt nyugati pénzért adja el magát."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szen_es_hitel",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 2,
+            "description": "Moszkva meglepődve fogadja a támogatásodat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -1,
+            "description": "A testvérpártok csodálkoznak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A gyárak dolgozhatnak tovább."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szen_es_hitel",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 1,
+            "description": "Moszkva elfogadja a kiegyensúlyozott döntést."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "A Nyugat is elfogadja."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A döntés józan kormányzati gondolkodást mutat."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szen_es_hitel",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "A skandinávok örülnek a megrendelésnek."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A svéd szén drága, és télre nem ér ide."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kadar_lapjai_valasz",
+    "label": "Kádár lapjai (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kadar_lapjai",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A jogi út higgadtságot mutat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "A per az MSZMP-t is kínos helyzetbe hozza."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kadar_lapjai",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -1,
+            "description": "Nagy Imre kelletlenül határolódik el."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": 1,
+            "description": "Nagy Imre és Kéthly Anna egy oldalon áll Kádár ellen."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kadar_lapjai",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -3,
+            "description": "A két munkáspárt egymást vádolja."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -2,
+            "description": "Nagy Imre szerint az egész pártját sértetted meg."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 1,
+            "description": "A felkelők egyetértenek veled."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kadar_lapjai",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 1,
+            "description": "A felkelők megdöbbenve olvassák az aktákat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "Az akták hitelessé teszik a pártot."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Az aktákban szovjet tanácsadók neve is szerepel."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nagy_imre_ajanlata_valasz",
+    "label": "Nagy Imre ajánlata (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "nagy_imre_ajanlata",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": 3,
+            "description": "A két munkáspárt fegyverszünetet kötött."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 2,
+            "description": "Nagy Imre szövetségest lát benned."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": 2,
+            "description": "Marosán és a fúzió hívei elégedettek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "nagy_imre_ajanlata",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": 2,
+            "description": "A két párt nem támadja egymást."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 1,
+            "description": "Nagy Imre tudja, hogy ez fél igen."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "nagy_imre_ajanlata",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -2,
+            "description": "Az MSZMP sértődötten fogadja az elutasítást."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -2,
+            "description": "Nagy Imre szerint nem bízol benne."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 1,
+            "description": "A felkelők szerint jól tetted."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "nagy_imre_ajanlata",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -1,
+            "description": "Nagy Imre szerint olyat kérsz, amit nem teljesíthet."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A feltétel határozottságot mutat."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bibo_tervezete_valasz",
+    "label": "Bibó alkotmánya (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "bibo_tervezete",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 2,
+            "description": "Bibó István szövetségesének tart."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "Két tiszta múltú párt egy asztalnál."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "bibo_tervezete",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 1,
+            "description": "Bibó elfogadja a kiegészítést."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 1,
+            "description": "A szociális jogok a nőknek is szólnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A munkástanácsok jogai is benne vannak."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "bibo_tervezete",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": -2,
+            "description": "Bibó csalódott."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 1,
+            "description": "Nagy Imrének is jól jön az idő."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "bibo_tervezete",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": -1,
+            "description": "Bibó szerint két tervezet csak megosztja a demokratákat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A párt saját alkotmánytervvel jelentkezik."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "marosan_az_ajtoban_valasz",
+    "label": "Marosán az ajtóban (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "marosan_az_ajtoban",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": 3,
+            "description": "Marosán és hívei visszatértek a pártba."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -1,
+            "description": "A felkelők szerint a fúziósokat is befogadod."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A pártban két tábor alakul."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "marosan_az_ajtoban",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": 1,
+            "description": "Marosán bent van, de nem elégedett."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A vezetés egységes marad."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "marosan_az_ajtoban",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": -6,
+            "description": "Marosán Kádár János mellé áll."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 1,
+            "description": "A felkelők szerint tiszta maradt a párt."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A párt vezetése egységes."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "marosan_az_ajtoban",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": -1,
+            "description": "Marosán nem kér bocsánatot."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A döntés méltányos és átgondolt."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "szakasits_levele_valasz",
+    "label": "Szakasits levele (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szakasits_levele",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": 2,
+            "description": "A fúzió hívei szerint nekik is van helyük a pártban."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -1,
+            "description": "A felkelők szerint a fúzió embereit is befogadod."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A párt múltja újra vita tárgya."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szakasits_levele",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": -1,
+            "description": "A fúzió hívei sértve érzik magukat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A párt vezetése egységes marad."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szakasits_levele",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": -2,
+            "description": "A fúzió hívei szerint a párt bosszúálló."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szakasits_levele",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": -2,
+            "description": "A fúzió hívei megalázottnak érzik magukat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Az MSZMP-ben is sokan magukra veszik."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A párt lezárta 1948 ügyét."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gyar_es_falu_valasz",
+    "label": "Gyár és falu (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "gyar_es_falu",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": 2,
+            "description": "Kovács Béla szövetségest lát benned."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Az MSZMP szerint a kisgazdák mellé álltál."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": -1,
+            "description": "Marosán szerint a párt a parasztpárthoz dörgölőzik."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "gyar_es_falu",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": 1,
+            "description": "A kisgazdák értékelik a támogatást."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "gyar_es_falu",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": -2,
+            "description": "Kovács Béla csalódott."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": 1,
+            "description": "A munkásszárny elégedett."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "gyar_es_falu",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": -1,
+            "description": "Kovács Béla szerint ez kollektivizálás új néven."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 1,
+            "description": "Bibó István szerint jó ötlet."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "atjelentkezok_valasz",
+    "label": "Két munkáspárt (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "atjelentkezok",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -3,
+            "description": "Az MSZMP szerint elcsábítod a tagjait."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -2,
+            "description": "Nagy Imre szerint a bajában támadod meg."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "atjelentkezok",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Az MSZMP nehezményezi az átjelentkezéseket."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -1,
+            "description": "Nagy Imre csalódott."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "atjelentkezok",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": 2,
+            "description": "Az MSZMP hálás a lojalitásodért."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 2,
+            "description": "Nagy Imre megköszöni a gesztust."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "atjelentkezok",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": 1,
+            "description": "A két párt együtt kezeli a helyzetet."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 1,
+            "description": "Nagy Imre elfogadja a javaslatot."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A javaslat felelősségről árulkodik."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a_gyarkapuban_valasz",
+    "label": "A gyárkapuban (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "a_gyarkapuban",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -3,
+            "description": "Az MSZMP agitátorai sértve érzik magukat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 1,
+            "description": "A felkelők egyetértenek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "a_gyarkapuban",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Az MSZMP szerint ez nem igaz."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A munkástanácsok örülnek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "a_gyarkapuban",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": 1,
+            "description": "A két párt agitátorai békében osztják a röplapot."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "a_gyarkapuban",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -2,
+            "description": "Az MSZMP személyes támadást lát benne."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -2,
+            "description": "Nagy Imre megsértődik."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "valasztojog_valasz",
+    "label": "Kik szavazhatnak? (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "valasztojog",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -1,
+            "description": "A felkelők szerint az ÁVH-sok is szavazhatnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "Jogállami, következetes javaslat."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "valasztojog",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 1,
+            "description": "A felkelők egyetértenek."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva szerint ez megtorlás."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "valasztojog",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "Az emigráció örül."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -1,
+            "description": "A fiatal munkások szerint kihagytad őket."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "valasztojog",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 2,
+            "description": "Az asszonyok szerint végre valaki gondolt rájuk."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A választási irodák szerint nehéz lesz lebonyolítani."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "az_angolok_embere_valasz",
+    "label": "Az angolok embere (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "az_angolok_embere",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 2,
+            "description": "Moszkva tudomásul veszi az elhatárolódást."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -2,
+            "description": "A testvérpártok megsértődnek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "az_angolok_embere",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "A testvérpártok hálásak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -2,
+            "description": "Moszkva szerint beismerted."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "Határozott, nyílt válasz."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "az_angolok_embere",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 1,
+            "description": "A nagykövet elfogadja a meghívást."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -1,
+            "description": "A testvérpártok furcsállják."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "marosan",
+            "steps": 1,
+            "description": "A munkásszárny örül a gesztusnak."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "az_angolok_embere",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "Az ENSZ-ben támogatják a javaslatot."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva szerint nemzetközivé teszed az ügyet."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "Államférfiúi lépés."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "semlegesseg_garanciaja_valasz",
+    "label": "Az osztrák út (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "semlegesseg_garanciaja",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "A Nyugat támogatja az osztrák mintát."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 1,
+            "description": "Moszkva is elfogadja, hiszen Bécsben is aláírta."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "Kipróbált, hiteles javaslat."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "semlegesseg_garanciaja",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 2,
+            "description": "A Nyugat örül a javaslatnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -2,
+            "description": "Moszkva szerint ez a NATO előszobája."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "semlegesseg_garanciaja",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 2,
+            "description": "Moszkva elégedett."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -1,
+            "description": "A testvérpártok csalódottak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -1,
+            "description": "A felkelők szerint ezért harcoltak?"
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "semlegesseg_garanciaja",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 1,
+            "description": "Bibó István támogatja a népszavazást."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A nagyhatalmak nem szeretik a bizonytalanságot."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "radiovita_valasz",
+    "label": "Rádióvita Nagy Imrével (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "radiovita",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Kemény, de tisztességes vita volt."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A hallgatók szerint te voltál a felkészültebb."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "radiovita",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -3,
+            "description": "A vita után a két munkáspárt nyíltan ellenség."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -3,
+            "description": "Nagy Imre ezt nem bocsátja meg."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 1,
+            "description": "A felkelők szerint kimondtad az igazat."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "radiovita",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": 1,
+            "description": "A vita után a két párt viszonya javult."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 1,
+            "description": "Nagy Imre megköszöni a tisztességes vitát."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 1,
+            "description": "Az asszonyok szerint méltóságteljes voltál."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "radiovita",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 2,
+            "description": "A hallgatók először látják kormányzópártnak az SZDP-t."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "listakapcsolas_nyitott_valasz",
+    "label": "Listakapcsolás (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "listakapcsolas_nyitott",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 2,
+            "description": "Bibó István szövetségesnek tart."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -1,
+            "description": "Nagy Imre csalódott."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "listakapcsolas_nyitott",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 2,
+            "description": "Nagy Imre elégedett."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": 2,
+            "description": "A két munkáspárt egy listán."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": -1,
+            "description": "Bibó csalódott."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "listakapcsolas_nyitott",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": -1,
+            "description": "Bibó szerint elszalasztottad a lehetőséget."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -1,
+            "description": "Nagy Imre szerint gőgös vagy."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "listakapcsolas_nyitott",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 1,
+            "description": "Bibó elfogadja."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": 1,
+            "description": "Nagy Imre is elfogadja."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A blokkban az SZDP elvész a nagyok között."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "listakapcsolas_zart_valasz",
+    "label": "Listakapcsolás (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "listakapcsolas_zart",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 2,
+            "description": "Bibó István szövetségesnek tart."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "listakapcsolas_zart",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": -1,
+            "description": "Bibó szerint elszalasztottad a lehetőséget."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "listakapcsolas_zart",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": 2,
+            "description": "Kovács Béla elfogadja az ajánlatot."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 1,
+            "description": "Bibó örül a széles összefogásnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -1,
+            "description": "A munkások szerint a kisgazdák nem az ő pártjuk."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "listakapcsolas_zart",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": -1,
+            "description": "Bibó nem vár tovább."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "asszonyok_a_kossuth_teren_valasz",
+    "label": "Asszonyok a Kossuth téren (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "asszonyok_a_kossuth_teren",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 3,
+            "description": "Az asszonyok téged választanak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": -1,
+            "description": "A vidéki férfiak egy része megijed."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "asszonyok_a_kossuth_teren",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 2,
+            "description": "Az asszonyok elégedettek."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A beszéd egy miniszterelnök-jelölté volt."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "asszonyok_a_kossuth_teren",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": -2,
+            "description": "Az asszonyok csalódottak, hogy nem jöttél el."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A gyárakban örülnek a látogatásnak."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "asszonyok_a_kossuth_teren",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": -3,
+            "description": "Az asszonyok sértve érzik magukat."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kethly_zarobeszede_valasz",
+    "label": "Záró nagygyűlés (viszonyok)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kethly_zarobeszede",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -1,
+            "description": "Az MSZMP magára veszi."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 1,
+            "description": "A felkelők éljeneznek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kethly_zarobeszede",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A beszéd kormányprogram volt."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 1,
+            "description": "Az asszonyok a programodat ismételgetik."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kethly_zarobeszede",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A munkástanácsok zászlókat lengetnek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kethly_zarobeszede",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A választók kormányzópártként gondolnak rátok."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 1,
+            "description": "Bibó egyetért."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kadar_szakadas",
+    "label": "Kádár ultimátuma",
+    "once": true,
+    "priority": 100,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 10,
+              "max": 16
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "nagy_imre_ajanlata",
+                "answerId": "A"
+              }
+            },
+            {
+              "type": "relation",
+              "relationId": "munkastanacsok",
+              "tone": ["good"]
+            },
+            {
+              "or": [
+                {
+                  "type": "focus-selected",
+                  "focusId": "igazi_baloldal"
+                },
+                {
+                  "and": [
+                    {
+                      "type": "focus-selected",
+                      "focusId": "gyar_a_munkase"
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "csepel_tanacsa",
+                          "answerId": "A"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "csepel_tanacsa",
+                          "answerId": "D"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "nagy_imre_ajanlata",
+                      "answerId": "D"
+                    },
+                    {
+                      "type": "relation",
+                      "relationId": "nagy_imre",
+                      "tone": ["tense", "bad"]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "split-party",
+            "partyId": "kadar_part",
+            "from": {
+              "mszmp": 0.18
+            },
+            "fromByMegye": {
+              "1": {
+                "mszmp": 0.24
+              },
+              "11": {
+                "mszmp": 0.26
+              }
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -1,
+            "description": "Nagy Imre pártja kettészakadt, és szerinte ebben neked is részed volt."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kettészakadt az MSZMP",
+      "body": "A gyárakban a szociáldemokraták vitték el az MSZMP munkásszavazóit. Kádár János szerint Nagy Imre reformjai szétverték a pártot, és ultimátumot adott: nem kapott választ, ezért híveivel Magyar Munkáspárt néven önálló listát állít.",
+      "icon": "/images/1957_forradalom-oroksege/kadar_badge.png",
+      "imageUri": "/images/1957_forradalom-oroksege/mszmp_szakadas.jpg",
+      "major": true
+    }
+  },
+  {
+    "id": "marosan_atlep",
+    "label": "Marosán Kádárhoz áll",
+    "once": true,
+    "priority": 90,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "event-triggered",
+              "eventId": "kadar_szakadas"
+            },
+            {
+              "type": "turn",
+              "min": 15
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "marosan_az_ajtoban",
+                  "answerId": "C"
+                },
+                {
+                  "type": "relation",
+                  "relationId": "marosan",
+                  "tone": ["bad"]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": -2.5,
+              "kadar_part": 2.0,
+              "mszmp": 0.5
+            }
+          },
+          {
+            "type": "set-relation",
+            "relationId": "marosan",
+            "tone": "bad",
+            "label": "Kádárnál",
+            "description": "Marosán György és a fúzió hívei Kádár János pártjába léptek át."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Marosán Kádárhoz állt",
+      "body": "Marosán György és az 1948-as fúzió régi hívei Kádár János Magyar Munkáspártjába léptek át. Csepelen és Diósgyőrben több szociáldemokrata szervezet követi őket.",
+      "icon": "/images/1957_forradalom-oroksege/kadar_badge.png",
+      "imageUri": "/images/1957_forradalom-oroksege/kadar_event.png",
+      "major": true
+    }
+  },
+  {
+    "id": "szabadsagpart_kivalik",
+    "label": "Kiválik a kisgazda jobbszárny",
+    "once": true,
+    "priority": 80,
+    "conditions": [
+      {
+        "if": {
+          "or": [
+            {
+              "and": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "gyar_es_falu",
+                  "answerId": "A"
+                },
+                {
+                  "type": "turn",
+                  "min": 17
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "listakapcsolas_zart",
+                  "answerId": "C"
+                },
+                {
+                  "type": "turn",
+                  "min": 22
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "type": "relation",
+                  "relationId": "kisgazdak",
+                  "tone": ["good"]
+                },
+                {
+                  "type": "focus-selected",
+                  "focusId": "harmadik_ero"
+                },
+                {
+                  "type": "turn",
+                  "min": 19
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "split-party",
+            "partyId": "szabadsagpart",
+            "from": {
+              "fkgp": 0.14
+            },
+            "fromByMegye": {
+              "1": {
+                "fkgp": 0.2
+              },
+              "5": {
+                "fkgp": 0.2
+              },
+              "6": {
+                "fkgp": 0.2
+              },
+              "7": {
+                "fkgp": 0.18
+              }
+            }
+          },
+          {
+            "type": "uniform-swing",
+            "params": {
+              "petofi": 3.0,
+              "fkgp": -3.0
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": -1,
+            "description": "Kovács Béla pártja kettészakadt, és a jobbszárny a veled kötött alkut okolja."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kettészakadt a Kisgazdapárt",
+      "body": "Sulyok Dezső és a kisgazda jobbszárny szerint Kovács Béla a szociáldemokratákkal összefogva elárulta a polgárokat. Magyar Szabadságpárt néven önálló listát állítanak. A szakadás után sok baloldali kisgazda gazda a Petőfi Párthoz pártol át.",
+      "icon": "/images/1957_forradalom-oroksege/sulyok_dezso_badge.png",
+      "imageUri": "/images/1957_forradalom-oroksege/fkgp_szakadas.png",
+      "major": true
+    }
+  },
+  {
+    "id": "ket_szakadas_utan",
+    "label": "Két szétesett párt között",
+    "once": true,
+    "priority": 70,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "event-triggered",
+              "eventId": "kadar_szakadas"
+            },
+            {
+              "type": "event-triggered",
+              "eventId": "szabadsagpart_kivalik"
+            },
+            {
+              "not": {
+                "type": "event-triggered",
+                "eventId": "marosan_atlep"
+              }
+            },
+            {
+              "type": "turn",
+              "min": 19
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 2.0,
+              "petofi": 2.4,
+              "mszmp": -2.0,
+              "fkgp": -2.4
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Az egység pártjai",
+      "body": "A kommunisták és a kisgazdák is kettészakadtak, a szociáldemokraták és a Petőfi Párt viszont egyben maradt. Sok csalódott választó szerint most ők az egyetlen biztos pont.",
+      "icon": "people-fill"
+    }
+  },
+  {
+    "id": "testverharc",
+    "label": "A két munkáspárt veszekszik",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 4,
+              "max": 16
+            },
+            {
+              "type": "relation",
+              "relationId": "baloldal",
+              "tone": ["bad"]
+            },
+            {
+              "not": {
+                "type": "event-triggered",
+                "eventId": "szabadsagpart_kivalik"
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 1.4,
+              "szdp": -0.7,
+              "mszmp": -0.7
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Két munkáspárt veszekszik, a gazda nevet",
+      "body": "Az SZDP és az MSZMP nyílt háborúja elriasztja a bizonytalanokat. Amíg a két munkáspárt egymást vádolja, a kisgazdák csendben gyűjtik a szavazatokat: a felmérések szerint mindkét munkáspárt veszített.",
+      "imageUri": "/images/1957_forradalom-oroksege/polgari_blokk_siker.png",
+      "icon": "emoji-angry"
+    }
+  },
+  {
+    "id": "feszult_baloldal",
+    "label": "Feszült a baloldal",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 6
+            },
+            {
+              "type": "relation",
+              "relationId": "baloldal",
+              "tone": ["tense"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fkgp": 0.5,
+              "mszmp": -0.2,
+              "szdp": -0.1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bekes_verseny",
+    "label": "Békés verseny",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 12
+            },
+            {
+              "type": "relation",
+              "relationId": "baloldal",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 0.6,
+              "mszmp": 0.2,
+              "fkgp": -0.5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kormanykepes",
+    "label": "Kormányképes párt",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 12
+            },
+            {
+              "type": "relation",
+              "relationId": "kormanyzokepesseg",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 1.0,
+              "mszmp": -0.5,
+              "fkgp": -0.5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "komolytalan",
+    "label": "Komolytalan párt",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 12
+            },
+            {
+              "type": "relation",
+              "relationId": "kormanyzokepesseg",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": -1.0,
+              "mszmp": 0.5,
+              "fkgp": 0.5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "noi_szavazok_mellette",
+    "label": "Az asszonyok Kéthly mellett",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 10
+            },
+            {
+              "type": "relation",
+              "relationId": "noi_szavazok",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 1.0,
+              "dnp": -0.3,
+              "mszmp": -0.3,
+              "fkgp": -0.4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "noi_szavazok_elfordulnak",
+    "label": "Az asszonyok elfordulnak",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 10
+            },
+            {
+              "type": "relation",
+              "relationId": "noi_szavazok",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": -0.8,
+              "dnp": 0.4,
+              "mszmp": 0.4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kethly_laz",
+    "label": "Kéthly-láz",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 4
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "jeanne_darc"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 1.0,
+              "mszmp": -0.6,
+              "fkgp": -0.2
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nagy_imre",
+            "steps": -1,
+            "description": "Nagy Imre szerint személyi kultuszt építesz."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kéthly-láz",
+      "body": "Kéthly Anna arcképe minden gyárkapun ott van. A börtönt megjárt asszonyt a munkások és a diákok is ünneplik, Nagy Imre emberei pedig idegesen figyelik.",
+      "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.png",
+      "icon": "/images/1957_forradalom-oroksege/kethly_badge.png"
+    }
+  },
+  {
+    "id": "kethly_kereszttuz",
+    "label": "Személyes kereszttűz",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 10
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "jeanne_darc"
+            },
+            {
+              "or": [
+                {
+                  "type": "relation",
+                  "relationId": "corvin",
+                  "tone": ["bad"]
+                },
+                {
+                  "type": "relation",
+                  "relationId": "baloldal",
+                  "tone": ["bad"]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": -1.0,
+              "mszmp": 0.5,
+              "fkgp": 0.5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "partszervezet",
+    "label": "Pártszervezetek minden gyárban",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 8
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "part_az_ero"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 0.5,
+              "mszmp": -0.3
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 2,
+            "description": "A pártszervezetek minden megyében működnek."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Áll a szervezet",
+      "body": "Kelemen Gyula jelenti: a párt kétszáz gyárban és minden megyeszékhelyen újra működik. A választók látják, hogy a szociáldemokraták mögött nemcsak egy ember áll.",
+      "imageUri": "/images/1957_forradalom-oroksege/partszervezet.png",
+      "icon": "diagram-3-fill"
+    }
+  },
+  {
+    "id": "joleti_allam_siker",
+    "label": "Jóléti program",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 15
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "joleti_allam"
+            },
+            {
+              "type": "relation",
+              "relationId": "kormanyzokepesseg",
+              "tone": ["good", "calm"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 0.8,
+              "fkgp": -0.4,
+              "mszmp": -0.4
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Bécsi mintára",
+      "body": "Az SZDP bemutatta lakás- és nyugdíjprogramját. A tisztviselők, a tanárok és a nyugdíjasok is felfigyelnek, és a kisgazdák városi szavazói közül is sokan átjönnek.",
+      "icon": "/images/1957_forradalom-oroksege/joleti_allam_siker.png"
+    }
+  },
+  {
+    "id": "gyar_a_munkase_siker",
+    "label": "A munkástanácsok pártja",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 15
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "gyar_a_munkase"
+            },
+            {
+              "type": "relation",
+              "relationId": "munkastanacsok",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 1.0,
+              "mszmp": -0.8
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva szerint a munkástanácsok jugoszláv eretnekség."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -1,
+            "description": "A nyugati testvérpártok szerint túl messzire mentél."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "A munkástanácsok a szociáldemokraták mellett",
+      "body": "A Nagy-budapesti Központi Munkástanács nyilatkozatban áll ki az SZDP programja mellett. Az MSZMP gyári szervezeteiben sokan elbizonytalanodnak.",
+      "imageUri": "/images/1957_forradalom-oroksege/gyar_a_munkase_siker.png",
+      "icon": "gear-wide-connected"
+    }
+  },
+  {
+    "id": "harmadik_ero_siker",
+    "label": "Harmadik erő",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 18
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "harmadik_ero"
+            },
+            {
+              "type": "relation",
+              "relationId": "bibo",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 0.5,
+              "petofi": 2.5,
+              "mszmp": -0.5,
+              "fkgp": -2.0
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": 1,
+            "description": "A harmadik erő nem a testvérharcra épít."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kéthly és Bibó: a harmadik út",
+      "body": "A szociáldemokraták és a Petőfi Párt közös nagygyűlést tart. Sok kiábrándult kommunista és csalódott kisgazda szerint ők jelentik a jövőt.",
+      "imageUri": "/images/1957_forradalom-oroksege/harmadik_ero_siker_event.png",
+      "icon": "/images/1957_forradalom-oroksege/harmadik_ero_siker.png"
+    }
+  },
+  {
+    "id": "igazi_baloldal_hatas",
+    "label": "Nyílt verseny",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 14
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "igazi_baloldal"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 1.0,
+              "mszmp": -1.0
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "baloldal",
+            "steps": -2,
+            "description": "A két munkáspárt nyíltan verseng a munkásokért."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Nyílt verseny a munkásokért",
+      "body": "Az SZDP agitátorai minden gyárkapuban ott vannak, és nyíltan Nagy Imre pártja ellen kampányolnak. A munkások egy része átpártol, a két párt viszonya elhidegül.",
+      "icon": "fire"
+    }
+  },
+  {
+    "id": "elso_asszony_kampany",
+    "label": "Az első asszony",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "elso_asszony"
+            },
+            {
+              "type": "relation",
+              "relationId": "kormanyzokepesseg",
+              "tone": ["good", "calm"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 1.2,
+              "dnp": -0.3,
+              "mszmp": -0.5,
+              "fkgp": -0.4
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "noi_szavazok",
+            "steps": 1,
+            "description": "Az asszonyok miniszterelnököt látnak benned."
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "elso_asszony"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": -0.5,
+              "fkgp": 0.3,
+              "mszmp": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Az első asszony",
+      "body": "Az SZDP plakátjain egyetlen mondat áll: Kéthly Anna miniszterelnök. Az ország először vitatkozik arról, vezetheti-e nő a kormányt.",
+      "imageUri": "/images/1957_forradalom-oroksege/kethly_hazatert.jpg",
+      "icon": "/images/1957_forradalom-oroksege/elso_asszony.png"
+    }
+  },
+  {
+    "id": "merlegnyelv_kampany",
+    "label": "A stabilitás pártja",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "merlegnyelv"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 0.6,
+              "petofi": 0.2,
+              "mszmp": -0.4,
+              "fkgp": -0.4
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kormanyzokepesseg",
+            "steps": 1,
+            "description": "A választók szerint egy Kéthly vezette kormány tartós lenne."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "bibo",
+            "steps": 1,
+            "description": "Bibó István szerint a stabil, többpárti kormány a szabadság biztosítéka."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Csak velünk lesz stabil kormány",
+      "body": "A szociáldemokraták hajrája egyszerű üzenetre épül: a forradalom után nyugalom kell, és csak Kéthly Anna vezetésével lesz tartós kormány. A bizonytalanok megnyugszanak.",
+      "icon": "shield-fill-check"
+    }
+  },
+  {
+    "id": "corvin_arulas",
+    "label": "A Corvin köz árulót kiált",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 5
+            },
+            {
+              "type": "relation",
+              "relationId": "corvin",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": -0.6,
+              "fkgp": 0.3,
+              "petofi": 0.3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "A Corvin köz árulót kiált",
+      "body": "A felkelők röplapjai szerint a szociáldemokraták elárulták a forradalmat. A diákok és a fiatal munkások egy része elfordul a párttól.",
+      "imageUri": "/images/1957_forradalom-oroksege/corvin_koz_tuntetes.jpg",
+      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.png"
+    }
+  },
+  {
+    "id": "altalanos_sztrajk",
+    "label": "Általános sztrájk",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 8
+            },
+            {
+              "type": "relation",
+              "relationId": "munkastanacsok",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": -1.0,
+              "mszmp": 0.3,
+              "fkgp": 0.4,
+              "petofi": 0.3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Általános sztrájk",
+      "body": "A munkástanácsok általános sztrájkot hirdettek, mert szerintük a pártok cserben hagyták őket. A munkáspártként induló SZDP-t különösen keményen bírálják.",
+      "imageUri": "/images/1957_forradalom-oroksege/sztrajk.png",
+      "icon": "/images/1957_forradalom-oroksege/munkastancsok_badge.png"
+    }
+  },
+  {
+    "id": "moszkva_nyomas",
+    "label": "Moszkva nyomása",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 10
+            },
+            {
+              "type": "relation",
+              "relationId": "moszkva",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": -0.6,
+              "mszmp": 0.3,
+              "fkgp": 0.3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Moszkva lelassítja a szénszállítást",
+      "body": "A szovjet kormány a vasúti nehézségekre hivatkozva felfüggeszti a szénszállítást. A Pravda szerint a magyar szociáldemokraták a Labour Party utasításait követik.",
+      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.png",
+      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png"
+    }
+  },
+  {
+    "id": "nyugati_hitel",
+    "label": "Nyugati segítség",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 15
+            },
+            {
+              "type": "relation",
+              "relationId": "nyugat",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "szdp": 0.6,
+              "mszmp": -0.3,
+              "fkgp": -0.3
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva szerint a nyugati segítség nyugati befolyás."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "A testvérpártok segítenek",
+      "body": "Az osztrák és a skandináv szociáldemokraták közvetítésével nyugati hitel érkezik lakásépítésre. Az SZDP-ről kiderül, hogy kapcsolatai is vannak, nemcsak elvei.",
+      "imageUri": "/images/1957_forradalom-oroksege/nyugati_hitel.png",
+      "icon": "/images/1957_forradalom-oroksege/nyugat.png"
+    }
+  }
+]

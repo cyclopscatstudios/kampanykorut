@@ -91,14 +91,15 @@ An array with one entry per question, mapping each of its possible answers to th
 
 #### Effect types
 
-Every `Effect` has the shape `{ type: string, params: ... }`. Four types exist today:
+Every `Effect` has the shape `{ type: string, params: ... }`. Five types exist today:
 
-| `type`                   | `params` shape                                                                                                                  | Behavior                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `uniform-swing`          | `Record<partyId, number>`                                                                                                       | Shifts each listed party's national vote share by the given number of percentage points, e.g. `{ "ellenzeki_osszefogas": 2.5, "fidesz": -2.5 }`.                                                                                                                                                                                                                                                                                                                                                                                     |
-| `vote-allocation`        | `{ newVotes: number, share: Record<partyId, number> }`                                                                          | Adds `newVotes` brand-new votes to the electorate, distributed across parties according to `share`.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `district-vote-transfer` | `{ groupId: string, targetParty: string, amount: number, from: { type: "party", party: string } \| { type: "bizonytalan" } }[]` | Moves up to `amount` votes to `targetParty` in every district belonging to `groupId`, sourced either from a named rival party or from the `bizonytalan` ("undecided", i.e. not-yet-committed eligible voters) pool. `groupId` refers to a district group defined either in the built-in [`DefaultGroups`](shared/domain/DefaultGroups.ts) (`nagyvarosok`, `billego_korzetek`, `kis_telepulesek`, `vegyes_oevk`, `nyugati_megyek`, `keleti_megyek`, `eszaki_megyek`, `deli_megyek`, …) or in the campaign's own `custom_groups.json`. |
-| `turnout-change`         | `Record<partyId, number>`                                                                                                       | Adjusts a party's supporter turnout/motivation. ⚠️ Currently being reworked — not actively used by any shipped answer-effect file yet.                                                                                                                                                                                                                                                                                                                                                                                               |
+| `type`                   | `params` shape                                                                                                                  | Behavior                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `uniform-swing`          | `Record<partyId, number>`                                                                                                       | Shifts each listed party's national vote share by the given number of percentage points, e.g. `{ "ellenzeki_osszefogas": 2.5, "fidesz": -2.5 }`.                                                                                                                                                                                                                                                                                                                                                                                        |
+| `vote-allocation`        | `{ newVotes: number, share: Record<partyId, number> }`                                                                          | Adds `newVotes` brand-new votes to the electorate, distributed across parties according to `share`.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `district-vote-transfer` | `{ groupId: string, targetParty: string, amount: number, from: { type: "party", party: string } \| { type: "bizonytalan" } }[]` | Moves up to `amount` votes to `targetParty` in every district belonging to `groupId`, sourced either from a named rival party or from the `bizonytalan` ("undecided", i.e. not-yet-committed eligible voters) pool. `groupId` refers to a district group defined either in the built-in [`DefaultGroups`](shared/domain/DefaultGroups.ts) (`nagyvarosok`, `billego_korzetek`, `kis_telepulesek`, `vegyes_oevk`, `nyugati_megyek`, `keleti_megyek`, `eszaki_megyek`, `deli_megyek`, …) or in the campaign's own `custom_groups.json`.    |
+| `turnout-change`         | `Record<partyId, number>`                                                                                                       | Adjusts a party's supporter turnout/motivation. ⚠️ Currently being reworked — not actively used by any shipped answer-effect file yet.                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `issue-stance`           | `{ issueId: string, shift?: number, position?: number, party?: partyId }`                                                       | Moves a party's position on an issue (see [Issues](#issues)) by `shift`, or to `position`; give exactly one. Without `party` it moves the player's party. Positions stay within -2..2. Votes then move district by district: where the party got closer to the local opinion it gains, where it moved away it loses, by `distance change × strength × 2%` of its votes there. Leaving voters go mostly to the parties closest to the local opinion, arriving voters come mostly from the furthest ones. Also usable in campaign events. |
 
 > **Known inconsistency (TODO):** `params` is an object for `uniform-swing`, `vote-allocation` and `turnout-change`, but an array for `district-vote-transfer`. The plan is to unify every effect type on an array-based `params` shape.
 
@@ -254,8 +255,9 @@ Describes the election itself: seat math, the real-world party list, and which p
 | `thresholdPercent`                   | parliamentary | `number`                                                           | Minimum share of national party-list votes (in percent) a party needs to qualify for list-seat compensation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `districtMap`                        | yes           | `"2011" \| "2024" \| "budapest-districts"`                         | Map geometry from `public/assets/jsons/shared/`. `"2011"` / `"2024"`: the 106 OEVK constituencies by the year the map was adopted, shown as a country map plus a Budapest map. `"budapest-districts"`: the 23 Budapest districts (`budapest_districts.json`), shown as a single city map with district names instead of OEVK numbers; `candidateListData` rows must use `megyekod: 1` and `oevk: 1`–`23`. The boundaries come from OpenStreetMap (ODbL); the map shows the required “© OpenStreetMap” attribution.                                                                                                            |
 | `districtBoost`                      | no            | `boolean`                                                          | When `true`, every even-numbered turn where the player has a district selected grants their party a bonus transfer of 500 undecided ("bizonytalan") votes in that district — see `EffectApplier.getBoosterEffect`.                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `allowDeadlock`                      | no            | `boolean`                                                          | Default `true`. When `false`, the end screen never tells the `deadlock` story: a hung parliament or a failed coalition counts as `playerSideDefeat`, so the game ends in victory (alone or in coalition) or defeat.                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `baseResults`                        | no            | `Record<partyId, number>`                                          | A one-off `uniform-swing`-style adjustment (percentage points per party) applied once, before the first question, to seed the starting poll numbers.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `parties`                            | yes           | `{ id: string, name: string, color: string }[]`                    | Every party competing in the election, used for labels/legend colors throughout the UI — not just the ones the player can choose.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `parties`                            | yes           | `{ id: string, name: string, color: string, leader?: string }[]`   | Every party competing in the election, used for labels/legend colors throughout the UI — not just the ones the player can choose. `leader` names the face of the party list: in a district without named candidates (`jeloltek`), the map panels show it with the party below, and the end-results panel adds the seats each party won in the district's region.                                                                                                                                                                                                                                                              |
 | `partyListVotes`                     | yes           | `Record<partyId, number>`                                          | The real/base national party-list vote counts, used as the starting point before any in-game effects are applied. The `_other` key groups votes for parties not listed individually.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `playableSides`                      | yes           | `PlayableSide[]`                                                   | The sides (parties/coalitions) offered on the campaign's start screen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `playableSides[].mainCandidates`     | yes           | `{ id: string, label: string, description?: string }[]`            | Candidates shown for this side on the start screen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -263,11 +265,50 @@ Describes the election itself: seat math, the real-world party list, and which p
 | `electionAssets`                     | yes           | `ElectionAsset[]`                                                  | Image assets (logo, portraits, campaign slogans), keyed by the matching `playableSides[].id` and `mainCandidates[].id`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | `electionAssets[].candidateAssets`   | yes           | `{ id: string, portrait: string, slogan: string }[]`               | Portrait and campaign-slogan image paths per candidate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
+#### Proportional regions
+
+An election with `"election": { "type": "proportional" }` keeps its multi-member regions in a separate file, pointed at by the manifest's `files.regions` (e.g. `regions.json`), and loaded into `election.regions`:
+
+```json
+[{ "id": "vk01", "name": "Budapest", "seats": 63, "megyekods": [1] }]
+```
+
+Every `megyekod` of the candidate data must belong to exactly one region, and the region seats plus `listSeats` must equal `allSeats`.
+
+#### Issues
+
+`issues.json` (manifest key `files.issues`), loaded into `electionConfig.issues`. Optional; a strategic-mode feature for now. Issues are a finer way to move votes than naming the parties that win and lose: an answer moves the party on an issue (`issue-stance` effect), and the electorate of each area decides who gains.
+
+```json
+[
+  {
+    "id": "forradalom",
+    "name": "A forradalom megítélése",
+    "icon": "fire",
+    "description": "Pozitív: a forradalom vívmányainak védelme.",
+    "default": { "strength": 1, "opinion": 1 },
+    "areas": { "vk01": { "strength": 3, "opinion": 2 } },
+    "positions": { "mszmp": 1, "fkgp": 2, "kadar_part": -2 }
+  }
+]
+```
+
+| Field         | Required | Type                                                  | Meaning                                                                                                                                                  |
+| ------------- | -------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`, `name`  | yes      | `string`                                              | Identifier and display name.                                                                                                                             |
+| `icon`        | no       | Bootstrap icon name                                   | Shown on the issue chip of the map panel.                                                                                                                |
+| `description` | no       | `string`                                              | Tooltip text; say what the positive end of the scale means.                                                                                              |
+| `default`     | no       | `{ strength, opinion }`                               | Applies to every area without its own entry. Without it such areas ignore the issue.                                                                     |
+| `areas`       | no       | `Record<regionId \| megyekod, { strength, opinion }>` | `strength` 0–3: how much the issue moves voters there. `opinion` -2..2: strongly against … strongly for.                                                 |
+| `positions`   | yes      | `Record<partyId, number>`                             | Each party's starting position, -2..2. A party without one counts as 0. Answers and events move them; the state keeps the moved ones (`issuePositions`). |
+
+Clicking an area on the map lists its issues (strength 1+) with their strength and the local opinion. The effect of an answer is not previewed; the question text should make the stakes clear.
+
 #### Campaign events
 
 `campaign_events.json` (manifest key `files.campaignEvents`)
 
-Optional, campaign-wide (shared by every playable side). Events are evaluated at the end of every answered turn, after the answer's effects (and, on the last turn, the campaign strategies) have been applied and the results recalculated. Corresponds to the `CampaignEvent` type ([shared/types/campaign-event.ts](shared/types/campaign-event.ts)); evaluated by `CampaignEventEngine` ([shared/domain/CampaignEventEngine.ts](shared/domain/CampaignEventEngine.ts)).
+Optional. Campaign-wide by default (shared by every playable side); a playable candidate can have its own file (`files.playableSides.<partyId>.<candidateId>.campaignEvents`), which replaces the campaign-wide one while that side is played, so one side's events never run for another. Events are evaluated at the end of every answered turn, after the answer's effects (and, on the last turn, the campaign strategies) have been applied and the results recalculated. Corresponds to the `CampaignEvent` type ([shared/types/campaign-event.ts](shared/types/campaign-event.ts)); evaluated by `CampaignEventEngine` ([shared/domain/CampaignEventEngine.ts](shared/domain/CampaignEventEngine.ts)).
 
 ```json
 [
@@ -340,6 +381,23 @@ In one step it marks the candidate `inactive` (with `reason`, default `"withdraw
 
 From then on the candidate cannot win, receives no votes from answer effects, strategy rewards or later events (their keys are dropped from those effects), and is left out of the polls. The player's own candidate is never withdrawn: a branch that withdraws a playable candidate must exclude the player with `{ "not": { "type": "player-candidate", "candidateId": … } }` directly in the branch condition or in its top-level `and`, otherwise the validator reports `withdraw-playable-candidate`. The engine also skips such a withdrawal if it would hit the player's candidate. The ratios in the example above are a design placeholder, not historical data.
 
+##### Relation changes
+
+An event branch can change a relation from the political config. Most changes should add up, so a `shift-relation` moves the relation's hidden score by `steps` instead of replacing it:
+
+```json
+{
+  "type": "shift-relation",
+  "relationId": "gazdak",
+  "steps": 2,
+  "description": "A gazdakörök örülnek a döntésnek."
+}
+```
+
+The score runs from -6 to 6, and the tone comes from it: `good` from 3, `calm` from 0, `tense` from -3, `bad` below that. A relation starts at the score of its tone (good 4, calm 1, tense -2, bad -5), so one `+3` lifts a `bad` relation only to `tense`. The shown label is the relation's `labels` entry for the new tone (`"labels": { "good": "…", "calm": "…", "tense": "…", "bad": "…" }`); without one the previous label stays. `description` replaces the relation's text.
+
+A `set-relation` (`tone`, `label`, `description`) replaces the standing outright and resets the score to that tone. Use it only for strong turning points, such as a split.
+
 ##### Conditions
 
 A `Condition` ([shared/types/condition.ts](shared/types/condition.ts)) is either a logical combination or a single check; combinations can be nested freely.
@@ -354,5 +412,84 @@ A `Condition` ([shared/types/condition.ts](shared/types/condition.ts)) is either
 | `{ "type": "candidate-status", "candidateId", "status": "active" \| "inactive" }`                                               | the candidate currently has that status.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `{ "type": "player-candidate", "candidateId" }`                                                                                 | the player plays this candidate (the side chosen in the menu).                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `{ "type": "event-triggered", "eventId" }`                                                                                      | that event has already run.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `{ "type": "focus-selected", "focusId" }`                                                                                       | the player has chosen that focus.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `{ "type": "relation", "relationId", "tone": ("good" \| "calm" \| "tense" \| "bad")[] }`                                        | the relation currently has one of these tones: its tone after the `shift-relation` and `set-relation` changes so far, otherwise its starting tone from the political config.                                                                                                                                                                                                                                                                                                                                                  |
+| `{ "type": "issue-position", "issueId", "party"?, "min"?: number, "max"?: number }`                                             | the party's current position on the issue (see [Issues](#issues)) is within `min`–`max`, both ends included. `party` defaults to the player's party.                                                                                                                                                                                                                                                                                                                                                                          |
 
-The campaign validator reports unknown questions, answers, candidates and events inside conditions, as well as malformed conditions.
+The campaign validator reports unknown questions, answers, candidates, events, focuses, relations and issues inside conditions, as well as malformed conditions.
+
+#### Political config
+
+`political_config.json` holds the strategic mode: `gameMode`, `focuses`, `focusBranches`, `relationGroups`/`relations`, `coalition` and `epilogues`. It can be campaign-wide (`files.politicalConfig`) or belong to one playable candidate (`files.playableSides.<partyId>.<candidateId>.politicalConfig`). A candidate's own file replaces the campaign-wide one while that side is played, so another side never sees its focuses.
+
+The coalition phase opens only when the player's party has the most seats but no majority. Every accepted partner shares power: with one partner the outcome is `"coalition"`, with two or more it is `"weak-coalition"`, which the end screen shows as a weak government. `coalition.maxStrongPartners` (a whole number, default 1) raises that limit for one side: with `2`, a government of two partners is still `"coalition"` and only three or more make it weak. Epilogues can target either outcome.
+
+`focusBranches` makes the focuses a tree. Each branch is a fork: the player picks one of its focuses. The choice can still be changed until the next turn is played, then it is final. Every chosen focus stays, so the player's path is the list of choices. Branches open one at a time in the listed order; the next one opens at the earliest in the turn after the previous choice. Turns count from 1 (the first question is turn 1).
+
+```json
+"focusBranches": [
+  { "id": "irany", "title": "Merre viszed a pártot?",
+    "focuses": ["lassu_reformok", "forradalom_partja"],
+    "availableFromTurn": 1, "requiredBeforeTurn": 2 },
+  { "id": "igazsagtetel", "requires": "forradalom_partja",
+    "focuses": ["megtorlas", "amnesztia"], "availableFromTurn": 3 }
+]
+```
+
+- `focuses`: at least two focus ids; a focus belongs to one branch only.
+- `requires`: a focus of an earlier branch. The branch is on the path only if that focus was chosen, otherwise it is skipped.
+- `availableFromTurn`: the branch can be decided from this turn on (default 1).
+- `requiredBeforeTurn`: while the branch is undecided, no district can be visited from this turn on. Left out, the choice is never forced.
+
+Without `focusBranches`, all focuses form one branch open from turn 1. A `focus-selected` condition holds for any chosen focus.
+
+A focus is completed when its `completeWhen` holds and failed when its `failWhen` holds. If exactly one focus of an open branch is already completed, it is chosen for the player and locked. A chosen focus that is not completed by the end counts as failed, and its optional `failEffects` (the same effects as an answer's `effects`) are applied once after the last turn:
+
+```json
+{
+  "id": "forradalom_partja",
+  "title": "…",
+  "summary": "…",
+  "description": "…",
+  "completeWhen": { "type": "event-triggered", "eventId": "corvin_kiallas" },
+  "failEffects": [{ "type": "uniform-swing", "params": { "mszmp": -2 } }]
+}
+```
+
+#### Newspaper
+
+A strategic-mode campaign (`politicalConfig.gameMode: "strategic"`) can run a newspaper of pre-written flavour stories: fun facts and easter eggs that never affect votes. Point the manifest's optional `files.newspaper` at the file (e.g. `newspaper.json`):
+
+```json
+{
+  "cadence": { "minTurns": 2, "maxTurns": 3 },
+  "papers": [
+    {
+      "id": "nephang",
+      "name": "NÉPHANG",
+      "subtitle": "Független politikai napilap",
+      "logo": "/images/<route>/newspaper/nephang-logo.svg",
+      "price": "Ára: 4,80 Ft"
+    }
+  ],
+  "items": [
+    {
+      "id": "szivartartok",
+      "paper": "nephang",
+      "headline": "Szivartartók a Parlament folyosóján",
+      "lead": "A felsőházi ülésterem előtt számozott réztartók sorakoznak…",
+      "image": "/images/<route>/newspaper/szivartarto.jpg",
+      "imageCredit": "Fotó: …",
+      "when": { "type": "turn", "min": 3 },
+      "weight": 1
+    }
+  ]
+}
+```
+
+- **Papers**: each has an `id` and a `name` (the masthead), and optionally a `subtitle`, a `price` line and a `logo` shown beside the name. Each paper numbers its own issues.
+- **Items**: `id`, `headline` and `lead` are required; keep the lead to two or three sentences. `paper` picks the paper (the first one when left out). `image` is a public path, shown in greyscale, with an optional `imageCredit`.
+- **Timing**: after every answered decision, once `cadence.minTurns`–`maxTurns` turns have passed since the last edition (2–3 by default; the first edition comes after `minTurns`), one story is printed. Only stories not printed yet and whose `when` condition holds are eligible (see [Conditions](#conditions)). An eligible `"priority": "pinned"` story always comes first; otherwise the pick is weighted by `weight` (default 1; 0 leaves the story out unless it is pinned) and seeded, so a reloaded session prints the same story. With nothing eligible, the next turn tries again.
+- **In the game**: a new edition opens by itself on the map. Event announcements also come up only on the map, after any advisor feedback. An edition printed in a turn that brought an event announcement does not open by itself: only the newspaper button's dot and strip show it. Otherwise it opens with "Elolvastam" and "Nem kérek több értesítést". The latter turns the pop-up off for every campaign (it can be turned back on in Settings); from then on the newspaper button in the map's top-left corner gets a dot and a short "Rendkívüli kiadás!" strip instead. The button also pages back through every edition so far.
+
+The campaign validator checks the shape, unknown papers, duplicate ids, missing images and logos, and the conditions; it warns when the campaign is not in strategic mode.

@@ -38,6 +38,10 @@ function withoutInactive(
       );
       return params.length ? ({ ...effect, params } as RawEffect) : null;
     }
+    case EffectType.IssueStance:
+      return effect.params.party && inactive.has(effect.params.party)
+        ? null
+        : effect;
     default:
       return effect;
   }

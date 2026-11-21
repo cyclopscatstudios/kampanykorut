@@ -88,7 +88,9 @@ export function createCampaignEngine(
     container.resolve(CandidateWithdrawalTransformer),
     config.partyListData,
     candidateConfig?.advisorFeedback,
-    config.campaignEvents,
+    candidateConfig?.campaignEvents ?? config.campaignEvents,
+    (candidateConfig?.politicalConfig ?? config.politicalConfig)?.relations,
+    candidateConfig?.politicalConfig ?? config.politicalConfig,
   );
 
   return { campaignEngine, configEngine };

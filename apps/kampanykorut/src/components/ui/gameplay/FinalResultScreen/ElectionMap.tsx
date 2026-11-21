@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
 import { StateEngine } from "@/logic/application";
@@ -6,7 +6,13 @@ import { CampaignConfig, District, MayoralResult } from "@/shared/types";
 import { BottomSheet } from "../../BottomSheet";
 import { MapWrapper } from "../MapWrapper";
 import { DistrictResult } from "./DistrictResult";
-import { calculateVotePercentages, getCandidates } from "./electionMap.utils";
+import {
+  calculateVotePercentages,
+  getCandidates,
+  getDistrictRegion,
+  getPartyRows,
+  getResultTitle,
+} from "./electionMap.utils";
 import { MayoralDistrictPanel } from "./MayoralDistricts";
 
 export function ElectionMap({
@@ -20,9 +26,12 @@ export function ElectionMap({
   const state = stateEngine.getCampaignState();
   const [district, setDistrict] = useState<District | null>(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const closeDistrict = useCallback(() => setDistrict(null), []);
+  const closeDistrict = () => setDistrict(null);
   const votes = calculateVotePercentages(district?.partok);
-  const candidates = getCandidates(district?.jeloltek, votes);
+  const region = getDistrictRegion(district, config, state?.results);
+  const candidates = district?.jeloltek
+    ? getCandidates(district.jeloltek, votes)
+    : getPartyRows(votes, config, region);
   const districtDetails = mayoralResult ? (
     <MayoralDistrictPanel
       district={district}
@@ -34,6 +43,7 @@ export function ElectionMap({
       candidates={candidates}
       config={config}
       district={district}
+      regionSeats={region?.seats}
     />
   );
 
@@ -58,7 +68,7 @@ export function ElectionMap({
         <BottomSheet
           open={district !== null}
           onClose={closeDistrict}
-          title={district ? `${district.megye} ${district.oevk}` : ""}
+          title={district ? getResultTitle(district) : ""}
           fitContent
         >
           {district && districtDetails}
