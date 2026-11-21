@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { t } from "i18next";
-import { useMemo } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { CurrentView } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
@@ -49,12 +49,22 @@ export function QuestionCard({
     () => orderAnswers(possibleAnswers, id, answerOrderSeed),
     [possibleAnswers, id, answerOrderSeed],
   );
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0 });
+  }, [id]);
+
   return (
     <div
       className="flex flex-col p-3 md:p-4 bg-slate-900 h-full"
       data-testid={id}
     >
-      <div className="w-full flex-1 min-h-0 flex flex-col justify-start items-center mb-4 md:max-h-[500px] overflow-y-auto">
+      <div
+        ref={scrollRef}
+        className="w-full flex-1 min-h-0 flex flex-col justify-start items-center mb-4 md:max-h-[500px] overflow-y-auto"
+      >
         <div className="w-full mb-4 p-2 border-l-3 border-blue-500">
           {affects && (
             <Tooltip
@@ -64,7 +74,11 @@ export function QuestionCard({
               <StrategicDecisionBadge />
             </Tooltip>
           )}
-          <Heading level={5} color="lightBlue">
+          <Heading
+            level={5}
+            color="lightBlue"
+            className="max-md:text-lg max-md:leading-snug"
+          >
             {question}
           </Heading>
         </div>
@@ -176,9 +190,9 @@ function NarrowActions({
   party_logo,
 }: QuestionCardActionsProps) {
   return (
-    <div className="h-39 shrink-0">
+    <div className="shrink-0">
       <div className="flex items-center gap-2 mb-3">
-        <div className="size-[56px] shrink-0 border border-slate-600 rounded overflow-hidden">
+        <div className="size-12 shrink-0 border border-slate-600 rounded overflow-hidden">
           <img src={portrait} className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 bg-slate-700 border border-slate-600 p-2">
@@ -191,11 +205,19 @@ function NarrowActions({
             {cityName}
           </Text>
         </div>
-        <div className="size-[56px] shrink-0 border border-slate-600 rounded overflow-hidden">
+        <div className="size-12 shrink-0 border border-slate-600 rounded overflow-hidden">
           <img src={party_logo} className="w-full h-full object-cover" />
         </div>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex gap-2">
+        <Button
+          variant="secondary"
+          onClick={() => setCurrentView("MapView")}
+          className="shrink-0"
+        >
+          <Button.Icon name="map" />
+          <Button.Text>{t("questionCard.buttons.mapView")}</Button.Text>
+        </Button>
         <Button
           block
           disabled={!answer}
@@ -203,15 +225,10 @@ function NarrowActions({
           onClick={() => {
             handleOnClick(answer);
           }}
+          className="flex-1"
         >
           <Button.Text>{t("questionCard.buttons.continue")}</Button.Text>
-        </Button>
-        <Button
-          block
-          variant="secondary"
-          onClick={() => setCurrentView("MapView")}
-        >
-          <Button.Text>{t("questionCard.buttons.mapView")}</Button.Text>
+          <Button.Icon name="arrow-right" />
         </Button>
       </div>
     </div>

@@ -67,7 +67,7 @@ test("1957: the map panel names the party leaders and the region's seats", async
     `/game/${CAMPAIGN_ID}/end-results?sessionId=${seedData?.sessionId}`,
   );
   await expect(page).toHaveURL(/coalition/);
-  await page.getByTestId("coalitionPartner-fkgp").click();
+  await page.getByTestId("coalitionPartner-szdp").click();
   await page.getByTestId("coalitionSubmit").click();
   await page.getByTestId("coalitionContinue").click();
   await expect(page).toHaveURL(/end-results/);

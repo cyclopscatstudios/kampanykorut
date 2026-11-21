@@ -2748,6 +2748,19 @@ function checkCoalition(
       );
     }
     seen.add(partyId);
+    if (
+      partner.weight !== undefined &&
+      (typeof partner.weight !== "number" || !(partner.weight > 0))
+    ) {
+      report(
+        ctx,
+        "error",
+        "coalition-invalid",
+        file,
+        `${path}/weight`,
+        "coalition partner weight must be a positive number",
+      );
+    }
     checkConditionField(
       ctx,
       file,
@@ -3059,19 +3072,14 @@ export function validateCampaign(
     if (header[banner]) {
       checkPublicAsset(
         ctx,
-        "game_modes.json",
-        `/${header.id}/${banner}`,
+        "manifest.json",
+        `/listing/${banner}`,
         `/images/${header.route}/${header[banner]}`,
       );
     }
   }
 
-  const manifest = readFile(
-    ctx,
-    "manifest.json",
-    "game_modes.json",
-    `/${header.id}`,
-  );
+  const manifest = readFile(ctx, "manifest.json", "manifest.json", "");
   if (!isObject(manifest)) {
     if (manifest !== undefined) {
       report(

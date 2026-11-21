@@ -91,6 +91,9 @@
         "constituencySeats": "Constituency seats",
         "listSeats": "List seats",
         "partyListResults": "Party list results",
+        "regionalSeats": "Regional seats",
+        "nationalSeats": "Compensation seats",
+        "totalSeats": "Total: {{seats}}/{{all}} seats",
         "rankingTabs": {
           "victories": "Victories",
           "defeats": "Defeats",
@@ -453,6 +456,8 @@
     "partnerHint": "One partner is best: every further partner weakens your government.",
     "partnerHintMany": "Up to {{max}} partners keep your government strong: every further partner weakens it.",
     "tooManyPartners": "You are making an offer to {{count}} parties. If they all accept, your government will be weak.",
+    "distantPartner": "You picked a distant partner: if it accepts, your government will be weak.",
+    "distantHint": "Ideologically distant party: it weakens your government more than a close partner.",
     "governmentSeats": "Government majority",
     "seats": "{{seats}} seats",
     "submit": "Send offer ({{parties}})",

@@ -33,6 +33,7 @@ describe("loadCampaignConfig", () => {
       campaignBanner: "/images/mock/campaign-1-banner.png",
       year: 2024,
       tags: ["mock", "test"],
+      status: "published",
     });
   });
 

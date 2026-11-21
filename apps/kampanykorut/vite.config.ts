@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import { defineConfig } from "vitest/config";
+import { campaignCatalogPlugin } from "./plugins/campaignCatalog";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -43,7 +44,12 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ["playwright", "playwright-report"],
   },
-  plugins: [react(), svgr(), tailwindcss()],
+  plugins: [
+    react(),
+    svgr(),
+    tailwindcss(),
+    campaignCatalogPlugin(path.resolve(__dirname, "public")),
+  ],
   test: {
     setupFiles: ["./src/test/setup.ts"],
     globals: true,

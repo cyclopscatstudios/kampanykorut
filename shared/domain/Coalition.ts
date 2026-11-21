@@ -23,9 +23,13 @@ export interface SeatParty {
   seats: number;
 }
 
+export interface PartnerSeatParty extends SeatParty {
+  weight: number;
+}
+
 export interface CoalitionView {
   player: SeatParty;
-  partners: SeatParty[];
+  partners: PartnerSeatParty[];
   allSeats: number;
   majority: number;
 }
@@ -104,6 +108,17 @@ function getPartners(config: CoalitionConfig): CoalitionPartner[] {
   return config.politicalConfig?.coalition?.partners ?? [];
 }
 
+export function getCoalitionWeight(
+  config: Pick<CampaignConfig, "politicalConfig">,
+  partyIds: string[],
+): number {
+  const partners = config.politicalConfig?.coalition?.partners ?? [];
+  return partyIds.reduce(
+    (sum, id) => sum + (partners.find((p) => p.partyId === id)?.weight ?? 1),
+    0,
+  );
+}
+
 export function buildCoalitionView(
   state: CampaignState,
   config: CoalitionConfig,
@@ -114,7 +129,10 @@ export function buildCoalitionView(
   }
   const partners = getPartners(config)
     .filter((partner) => partner.partyId !== setup.player.partyId)
-    .map((partner) => setup.toSeatParty(partner.partyId))
+    .map((partner) => ({
+      ...setup.toSeatParty(partner.partyId),
+      weight: partner.weight ?? 1,
+    }))
     .filter((party) => party.seats > 0)
     .sort((a, b) => b.seats - a.seats);
   return {
@@ -203,7 +221,10 @@ export function buildCoalitionResult(
     outcome:
       seats < setup.majority
         ? "failed"
-        : accepted.length > getMaxStrongCoalitionPartners(config)
+        : getCoalitionWeight(
+              config,
+              accepted.map((r) => r.partyId),
+            ) > getMaxStrongCoalitionPartners(config)
           ? "weak-coalition"
           : "coalition",
     partnerCount: accepted.length,
