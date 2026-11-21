@@ -14,6 +14,14 @@
       "mi_hazank": 1.5,
       "mkkp": 3,
       "_other": 5
+    },
+    "fidesz": {
+      "tisza": -20,
+      "fidesz": 6,
+      "dk": 5,
+      "mi_hazank": 1.5,
+      "mkkp": 3,
+      "_other": 5
     }
   },
   "parties": [
@@ -48,6 +56,19 @@
         }
       ],
       "playableCandidates": ["magyar_peter"]
+    },
+    {
+      "id": "fidesz",
+      "label": "Fidesz–KDNP",
+      "description": "2010 óta kétharmados többséggel kormányzó pártszövetség. A 2024-es EP-választást megnyerte, de történetének egyik leggyengébb EP-eredményével, miközben egy néhány hónapos kihívó a második helyre ugrott. A 2026-os választásig két év van hátra: a kormánynak egyszerre kell kormányoznia és kampányolnia.",
+      "mainCandidates": [
+        {
+          "id": "orban_viktor",
+          "label": "Orbán Viktor",
+          "description": "1998 és 2002, majd 2010 óta Magyarország miniszterelnöke, a Fidesz elnöke. A magyar politika legtapasztaltabb kampányolója most olyan kihívóval találkozik, aki az ő korábbi táborából érkezett. A kérdés az, hogy időben komolyan veszi-e."
+        }
+      ],
+      "playableCandidates": ["orban_viktor"]
     }
   ],
   "electionAssets": [
@@ -61,6 +82,17 @@
         }
       ],
       "party_logo": "/images/2026_tavaszi-szel/tisza-part.png"
+    },
+    {
+      "id": "fidesz",
+      "candidateAssets": [
+        {
+          "id": "orban_viktor",
+          "portrait": "/images/2026_tavaszi-szel/orban_viktor_portrait.png",
+          "slogan": "/images/2026_tavaszi-szel/fidesz-2026_kampany_szoveg.png"
+        }
+      ],
+      "party_logo": "/images/2026_tavaszi-szel/fidesz-kdnp.png"
     }
   ]
 }

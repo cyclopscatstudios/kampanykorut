@@ -14,6 +14,7 @@ import {
 } from "../domain/Coalition";
 import { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
 import { EffectApplier } from "../domain/EffectApplier";
+import { getMajorityThresholds } from "../domain/Majority";
 import { MandateCalculator } from "../domain/MandateCalculator";
 import { MayoralResultCalculator } from "../domain/MayoralResultCalculator";
 import {
@@ -195,7 +196,8 @@ export function loadSide(campaign: string, side: string) {
     }
 
     const governments: Government[] = [];
-    const outcome = getGovernmentOutcome(state, config);
+    const outcome =
+      getGovernmentOutcome(state, config) ?? getClassicOutcome(state);
     if (outcome === "single-majority") {
       governments.push({ partners: [], outcome });
     } else if (needsCoalitionOffer(state, config)) {
@@ -231,6 +233,15 @@ export function loadSide(campaign: string, side: string) {
       ),
       missingAnswers,
     };
+  }
+
+  function getClassicOutcome(state: CampaignState) {
+    const seats =
+      state.results?.mandates.find((m) => m.party === party)?.totalSeats ?? 0;
+    const allSeats = electionConfig.allSeats as number;
+    return seats >= getMajorityThresholds(allSeats).simple
+      ? ("single-majority" as const)
+      : undefined;
   }
 
   const playLine = (line: Pick<WinningLine, "focuses" | "answers">) =>
@@ -309,13 +320,27 @@ export function renderWinningPaths(fixture: WinningPathsFile): string {
     string,
     { name: string; shortName?: string; leader?: string }
   >(electionConfig.parties.map((p: { id: string }) => [p.id, p]));
+  const candidateLabel = (sideId: string) => {
+    const [partyId, candidateId] = sideId.split("/");
+    return (
+      electionConfig.playableSides
+        ?.find((s: { id: string }) => s.id === partyId)
+        ?.mainCandidates?.find((c: { id: string }) => c.id === candidateId)
+        ?.label ?? sideId
+    );
+  };
   const partyName = (id: string) =>
     parties.get(id)?.shortName ?? parties.get(id)?.name ?? id;
 
+  const strategic = sides.some(
+    (side) => campaignFiles(fixture.campaign, side).sideFiles.politicalConfig,
+  );
   out.push(
     `# ${electionConfig.title ?? fixture.campaign}: győztes utak`,
     "",
-    "Minden fókuszúthoz egy válaszsor, amellyel mind a 4 fókusz teljesül, és létrejön a kormány. " +
+    (strategic
+      ? "Minden fókuszúthoz egy válaszsor, amellyel mind a 4 fókusz teljesül, és létrejön a kormány. "
+      : "Minden útvonalhoz egy válaszsor, amellyel a párt önálló többséget szerez. ") +
       "A `winningPaths.test.ts` ezeket játssza végig. Hangolás után: `UPDATE_WINNING_PATHS=1 yarn test winningPaths`.",
   );
 
@@ -328,13 +353,14 @@ export function renderWinningPaths(fixture: WinningPathsFile): string {
       ]),
     );
     const focuses = new Map<string, string>(
-      read(sideFiles.politicalConfig).focuses.map(
-        (f: { id: string; title: string }) => [f.id, f.title],
-      ),
+      (sideFiles.politicalConfig
+        ? read(sideFiles.politicalConfig).focuses
+        : []
+      ).map((f: { id: string; title: string }) => [f.id, f.title]),
     );
     out.push(
       "",
-      `## ${partyName(party)}: ${parties.get(party)?.leader ?? sideId}`,
+      `## ${partyName(party)}: ${parties.get(party)?.leader ?? candidateLabel(sideId)}`,
     );
 
     const groups = new Map<string, WinningLine[]>();
@@ -352,7 +378,9 @@ export function renderWinningPaths(fixture: WinningPathsFile): string {
         "| --- | --- | --- |",
       );
       for (const line of lines) {
-        const path = line.focuses.map((f) => focuses.get(f) ?? f).join(" → ");
+        const path = line.focuses.length
+          ? line.focuses.map((f) => focuses.get(f) ?? f).join(" → ")
+          : line.name;
         const government = line.governments
           .map((g) =>
             g.partners.length

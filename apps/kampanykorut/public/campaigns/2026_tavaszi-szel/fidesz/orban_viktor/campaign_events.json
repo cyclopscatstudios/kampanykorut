@@ -1,0 +1,715 @@
+[
+  {
+    "id": "tisza_szigetek",
+    "label": "A TISZA szigetei (háttér)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 4,
+              "max": 4
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "gyoztunk",
+                  "answerId": "C"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "gyoztunk",
+                  "answerId": "D"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.81,
+              "tisza": 3.24,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 4,
+              "max": 4
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "gyoztunk",
+              "answerId": "A"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.18,
+              "tisza": 1.8,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "turn",
+          "min": 4,
+          "max": 4
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.45,
+              "tisza": 2.52,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Szigetek az országban",
+      "body": "A nyár végére több száz helyi TISZA Sziget alakult. A párt szervezete még laza, de már a kisvárosokban is van kihez fordulni.",
+      "icon": "geo-alt-fill"
+    }
+  },
+  {
+    "id": "tisza_kerdoiv",
+    "label": "Kérdőívezés és országjárás (háttér)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 10,
+              "max": 10
+            },
+            {
+              "and": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "hibahatar",
+                  "answerId": "C"
+                },
+                {
+                  "not": {
+                    "type": "answer-selected",
+                    "questionId": "gyoztunk",
+                    "answerId": "A"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.81,
+              "tisza": 3.24,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 10,
+              "max": 10
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "gyoztunk",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "hibahatar",
+                  "answerId": "A"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.18,
+              "tisza": 1.8,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "turn",
+          "min": 10,
+          "max": 10
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.45,
+              "tisza": 2.52,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kopogtatnak a TISZA-sok",
+      "body": "A TISZA aktivistái kérdőívekkel járják az országot. A párt a kormányoldal hallgatását is a saját történetébe építi.",
+      "icon": "clipboard-check-fill"
+    }
+  },
+  {
+    "id": "tisza_orszagjaras",
+    "label": "80 napos országjárás (háttér)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 16,
+              "max": 16
+            },
+            {
+              "or": [
+                {
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "felvetelek",
+                      "answerId": "C"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "felvetelek",
+                      "answerId": "D"
+                    }
+                  ]
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "mtva_elott",
+                  "answerId": "D"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.81,
+              "tisza": 3.24,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 16,
+              "max": 16
+            },
+            {
+              "and": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "kortermek",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "menetrend",
+                  "answerId": "A"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.18,
+              "tisza": 1.8,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "turn",
+          "min": 16,
+          "max": 16
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.45,
+              "tisza": 2.52,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Nyolcvan nap, százhat körzet",
+      "body": "Magyar Péter Tokajból indult országjárása minden héten új városokban jár. A nagykanizsai kongresszus után a TISZA már kormányprogramról beszél.",
+      "icon": "signpost-split-fill"
+    }
+  },
+  {
+    "id": "tisza_jeloltek",
+    "label": "A TISZA jelöltjei (háttér)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 20,
+              "max": 20
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "szazhat_nev",
+                  "answerId": "B"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "szazhat_nev",
+                  "answerId": "C"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.81,
+              "tisza": 3.24,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 20,
+              "max": 20
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "szazhat_nev",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "szazhat_nev",
+                  "answerId": "D"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.18,
+              "tisza": 1.8,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "turn",
+          "min": 20,
+          "max": 20
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.45,
+              "tisza": 2.52,
+              "dk": -0.99,
+              "mkkp": -0.54,
+              "mi_hazank": -0.18
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Helyben ismert arcok",
+      "body": "A TISZA jelöltjei között polgármesterek, orvosok és tanárok vannak. Sok körzetben a helyiek régóta ismerik őket.",
+      "icon": "people-fill"
+    }
+  },
+  {
+    "id": "visszaut_a_lejaratas",
+    "label": "Visszaüt a lejáratás",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 8,
+              "max": 12
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "mtva_elott",
+              "answerId": "D"
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "felvetelek",
+                  "answerId": "C"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "felvetelek",
+                  "answerId": "D"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.175,
+              "tisza": 0.35
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Visszaüt a lejáratás",
+      "body": "A kormányoldali kampány hetek óta Magyar Péter személyéről szól. A mérések szerint ez a bizonytalanokat inkább a TISZA felé tolja.",
+      "icon": "arrow-counterclockwise"
+    }
+  },
+  {
+    "id": "elszamolas_siker",
+    "label": "Látszik a változás",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 23,
+              "max": 23
+            },
+            {
+              "or": [
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szikla_utca",
+                      "answerId": "C"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szikla_utca",
+                      "answerId": "C"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": 0.5,
+              "tisza": -0.5
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Látszik a változás",
+      "body": "A kórházi, vasúti és gyermekvédelmi vállalások közül legalább kettő határidőre teljesült. A TISZA programbemutatója után a sajtó a kormány számait is összeveti az ígéretekkel, és ezúttal van mit összevetni.",
+      "icon": "graph-up-arrow",
+      "major": true
+    }
+  },
+  {
+    "id": "elszamolas_kudarc",
+    "label": "Ígéretek, eredmények nélkül",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 23,
+              "max": 23
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "kortermek",
+                "answerId": "A"
+              }
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "menetrend",
+                "answerId": "A"
+              }
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "szikla_utca",
+                "answerId": "C"
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -2.0,
+              "tisza": 2.0
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Ígéretek, eredmények nélkül",
+      "body": "Két év után sem a kórházakban, sem a vasúton, sem a gyermekvédelemben nem látszik érdemi változás. A TISZA programja mellé a kormány nem tud számokat tenni.",
+      "icon": "graph-down-arrow",
+      "major": true
+    }
+  },
+  {
+    "id": "koltsegvetes_szorul",
+    "label": "Szorul a költségvetés",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22,
+              "max": 22
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "evertekelo",
+              "answerId": "B"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.6,
+              "tisza": 0.6
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Szorul a költségvetés",
+      "body": "A hiány a tervezettnél jóval nagyobb, a kórházi és vasúti programok forrásait átcsoportosítják. Az elemzők szerint a kormány egyszerre többet ígért, mint amennyit a költségvetés elbír.",
+      "icon": "cash-stack"
+    }
+  },
+  {
+    "id": "jobbik_nem_indul",
+    "label": "A Jobbik nem állít listát",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "turn",
+          "min": 24,
+          "max": 24
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "A Jobbik nem állít listát",
+      "body": "A Jobbik nem tudta teljesíteni az országos lista feltételeit, az MSZP és az LMP nem indul. Öt országos lista lesz a szavazólapon.",
+      "icon": "card-checklist"
+    }
+  },
+  {
+    "id": "mi_hazank_visszalep",
+    "label": "A Mi Hazánk visszalép a szoros körzetekben",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 25,
+              "max": 25
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "marcius_15",
+              "answerId": "D"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "withdraw-district-candidates",
+            "partyId": "mi_hazank",
+            "closeRace": {
+              "between": ["fidesz", "tisza"],
+              "maxGapPercent": 3
+            },
+            "redistribution": {
+              "fidesz": 0.6,
+              "tisza": 0.15,
+              "_abstain": 0.25
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Visszalépések a szoros körzetekben",
+      "body": "A Mi Hazánk néhány egyéni jelöltje az utolsó hetekben visszalépett ott, ahol a Fidesz és a TISZA között szoros a verseny. A párt országos listája indul.",
+      "icon": "person-dash-fill"
+    }
+  }
+]
