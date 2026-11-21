@@ -5,10 +5,16 @@ import type {
   CampaignListing,
   CampaignStatus,
 } from "../../../shared/types/configs/campaign-manifest";
+import type { GameMode } from "../../../shared/types/political";
 
 const CAMPAIGN_STATUSES: CampaignStatus[] = ["draft", "candidate", "published"];
 
-export type CampaignCatalogEntry = CampaignListing & { route: string };
+export type CampaignCatalogEntry = CampaignListing & {
+  route: string;
+  gameMode: GameMode;
+};
+
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 export const CAMPAIGN_CATALOG_PATH = "assets/jsons/campaigns.json";
 
@@ -23,7 +29,11 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-function parseListing(route: string, listing: unknown): CampaignCatalogEntry {
+function parseListing(
+  route: string,
+  listing: unknown,
+  gameMode: GameMode,
+): CampaignCatalogEntry {
   const fail = (message: string): never => {
     throw new Error(`[campaign-catalog] ${route}/manifest.json: ${message}`);
   };
@@ -51,6 +61,12 @@ function parseListing(route: string, listing: unknown): CampaignCatalogEntry {
   ) {
     fail("listing.thinCampaignBanner must be a string");
   }
+  if (
+    listing.addedAt !== undefined &&
+    (typeof listing.addedAt !== "string" || !ISO_DATE.test(listing.addedAt))
+  ) {
+    fail("listing.addedAt must be a YYYY-MM-DD date");
+  }
   if (!CAMPAIGN_STATUSES.includes(listing.status as CampaignStatus)) {
     fail(`listing.status must be one of ${CAMPAIGN_STATUSES.join(", ")}`);
   }
@@ -67,7 +83,33 @@ function parseListing(route: string, listing: unknown): CampaignCatalogEntry {
       ? { thinCampaignBanner: listing.thinCampaignBanner as string }
       : {}),
     status: listing.status as CampaignStatus,
+    ...(listing.addedAt ? { addedAt: listing.addedAt as string } : {}),
+    gameMode,
   };
+}
+
+function politicalConfigPaths(files: unknown): string[] {
+  if (!isRecord(files)) return [];
+  const paths: unknown[] = [files.politicalConfig];
+  if (isRecord(files.playableSides)) {
+    for (const side of Object.values(files.playableSides)) {
+      if (!isRecord(side)) continue;
+      for (const candidate of Object.values(side)) {
+        if (isRecord(candidate)) paths.push(candidate.politicalConfig);
+      }
+    }
+  }
+  return paths.filter((p): p is string => typeof p === "string");
+}
+
+function detectGameMode(campaignDir: string, files: unknown): GameMode {
+  const strategic = politicalConfigPaths(files).some((relativePath) => {
+    const configPath = path.join(campaignDir, relativePath);
+    if (!existsSync(configPath)) return false;
+    const config: unknown = JSON.parse(readFileSync(configPath, "utf8"));
+    return isRecord(config) && config.gameMode === "strategic";
+  });
+  return strategic ? "strategic" : "classic";
 }
 
 export function buildCampaignCatalog(
@@ -83,7 +125,14 @@ export function buildCampaignCatalog(
     const manifest: unknown = JSON.parse(readFileSync(manifestPath, "utf8"));
     if (!isRecord(manifest) || manifest.listing === undefined) continue;
 
-    entries.push(parseListing(dirent.name, manifest.listing));
+    const campaignDir = path.join(campaignsDir, dirent.name);
+    entries.push(
+      parseListing(
+        dirent.name,
+        manifest.listing,
+        detectGameMode(campaignDir, manifest.files),
+      ),
+    );
   }
 
   const seen = new Set<string>();

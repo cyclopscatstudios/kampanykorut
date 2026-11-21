@@ -48,6 +48,31 @@
     "label": "Válassz egy kampányt",
     "placeholder": "Válassz..."
   },
+  "campaignSelector": {
+    "count": "{{count}} kampány",
+    "sort": {
+      "label": "Rendezés",
+      "year": "Évjárat szerint",
+      "yearShort": "Évjárat",
+      "added": "Legutóbb hozzáadott",
+      "addedShort": "Legújabb"
+    },
+    "new": "Új",
+    "emptyTitle": "Még nem választottál kampányt",
+    "emptyText": "Válassz egy kampányt a listából. Itt jelenik meg a bannere és a bemutatója.",
+    "mobileHint": "Koppints egy kampányra a részletekért.",
+    "tags": {
+      "historical": "Történelmi",
+      "alternate-history": "Alternatív történelem",
+      "test": "Teszt"
+    },
+    "mode": {
+      "classic": "Klasszikus",
+      "classicHint": "Kérdés-válasz kampány: interjúkon és vitákon dől el a választás.",
+      "strategic": "Stratégiai",
+      "strategicHint": "Fókuszfa, ügyek és szövetségek: fordulóról fordulóra építed a kampányt."
+    }
+  },
   "sideSelector": {
     "party": {
       "label": "Válassz egy pártot",
@@ -595,6 +620,37 @@
       "campaignTitle": "{{campaign}} – Kampánykörút",
       "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
       "sideDescription": "{{campaign}}: vezesd {{candidate}} kampányát!"
+    }
+  },
+  "cheat": {
+    "title": "Cheat",
+    "minimize": "Lekicsinyítés",
+    "expand": "Kinyitás",
+    "close": "Kikapcsolás",
+    "ids": {
+      "label": "ID-k",
+      "hint": "Megmutatja a kérdések, válaszok és fókuszok azonosítóját."
+    },
+    "effects": {
+      "label": "Hatások",
+      "hint": "Vidd az egeret egy válasz fölé, és látod, mit változtat."
+    },
+    "path": {
+      "label": "Győztes út",
+      "hint": "Válassz egy tesztelt győztes utat: a hozzá tartozó válasz és fókuszok zöld jelölést kapnak.",
+      "none": "Ehhez az oldalhoz még nincs győztes út.",
+      "pick": "Válassz utat",
+      "recommended": "Most ez a válasz:"
+    },
+    "effect": {
+      "none": "Nincs hatása",
+      "if": "Ha",
+      "replace": "felülírja",
+      "swing": "Országos",
+      "turnout": "Részvétel",
+      "allocation": "Új szavazók",
+      "transfer": "Körzet",
+      "stance": "Ügyállás"
     }
   }
 }

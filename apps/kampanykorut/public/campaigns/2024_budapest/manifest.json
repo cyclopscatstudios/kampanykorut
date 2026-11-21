@@ -11,7 +11,8 @@
     "tags": ["historical"],
     "campaignBanner": "default-banner.png",
     "thinCampaignBanner": "default-banner-thin.png",
-    "status": "published"
+    "status": "published",
+    "addedAt": "2026-10-31"
   },
   "files": {
     "electionConfig": "election_config.json",

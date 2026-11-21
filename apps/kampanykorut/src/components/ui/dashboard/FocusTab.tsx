@@ -6,15 +6,19 @@ import type {
   FocusView,
 } from "@/shared/domain";
 import { Button } from "../../../../../../shared/ui/Button";
+import { Icon } from "../../../../../../shared/ui/Icon";
+import { useCheatSettings } from "../../../debug/cheat/cheatStore";
 import { HoverDetail } from "./DashboardTile";
 import { FocusEmblem } from "./FocusEmblem";
 import { focusStatusStyle } from "./focusStatusStyle";
 
 export function FocusTab({
   overview,
+  recommendedFocusIds = [],
   onSelect,
 }: {
   overview: FocusOverview;
+  recommendedFocusIds?: string[];
   onSelect: (focusId: string) => void;
 }) {
   const single = overview.branches.length === 1 && !overview.branches[0].title;
@@ -33,6 +37,7 @@ export function FocusTab({
               : (branch.title ??
                 t("politicalDashboard.focus.branch", { index: index + 1 }))
           }
+          recommendedFocusIds={recommendedFocusIds}
           onSelect={onSelect}
         />
       ))}
@@ -46,10 +51,12 @@ export function FocusTab({
 function BranchSection({
   branch,
   heading,
+  recommendedFocusIds,
   onSelect,
 }: {
   branch: FocusBranchView;
   heading?: string;
+  recommendedFocusIds: string[];
   onSelect: (focusId: string) => void;
 }) {
   const schedule =
@@ -87,7 +94,12 @@ function BranchSection({
       )}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {branch.focuses.map((focus) => (
-          <FocusCard key={focus.id} focus={focus} onSelect={onSelect} />
+          <FocusCard
+            key={focus.id}
+            focus={focus}
+            isRecommended={recommendedFocusIds.includes(focus.id)}
+            onSelect={onSelect}
+          />
         ))}
       </div>
     </section>
@@ -96,23 +108,43 @@ function BranchSection({
 
 function FocusCard({
   focus,
+  isRecommended,
   onSelect,
 }: {
   focus: FocusView;
+  isRecommended: boolean;
   onSelect: (focusId: string) => void;
 }) {
   const style = focusStatusStyle[focus.status];
+  const cheat = useCheatSettings();
+  const showId = cheat.enabled && cheat.showIds;
 
   return (
     <div className="flex flex-col gap-3">
       <HoverDetail id={`focus-${focus.id}`} detail={focus.description}>
         <article
           aria-label={focus.title}
+          data-recommended={isRecommended || undefined}
           className={classNames(
-            "flex min-h-[240px] flex-col items-center justify-center gap-3 rounded-xl p-6 text-center",
+            "relative flex min-h-[240px] flex-col items-center justify-center gap-3 rounded-xl p-6 text-center",
             style.card,
+            isRecommended &&
+              "ring-4 ring-emerald-400 shadow-lg shadow-emerald-500/40",
           )}
         >
+          {isRecommended && (
+            <Icon
+              name="check-circle-fill"
+              size="large"
+              color="currentColor"
+              className="absolute right-3 top-3 text-emerald-400"
+            />
+          )}
+          {showId && (
+            <span className="absolute left-3 top-3 rounded bg-amber-400/15 px-1.5 py-0.5 font-mono text-[11px] text-amber-200">
+              {focus.id}
+            </span>
+          )}
           <FocusEmblem focus={focus} />
           <span className="text-xl font-bold text-slate-50">{focus.title}</span>
           <span className="text-sm text-slate-300">{focus.summary}</span>

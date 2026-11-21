@@ -1,15 +1,18 @@
 import classNames from "classnames";
 import { t } from "i18next";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { CurrentView } from "@/shared/types";
+import { Answer as AnswerEffects, CurrentView, RawParty } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
 import { Icon } from "../../../../../../shared/ui/Icon";
 import { Text } from "../../../../../../shared/ui/Text";
 import { Tooltip } from "../../../../../../shared/ui/Tooltip";
+import { useCheatSettings } from "../../../debug/cheat/cheatStore";
+import { EffectList } from "../../../debug/cheat/EffectList";
 import { useAssets } from "../../../hooks/useAssets";
 import { CommonWrapper } from "../CommonWrapper";
 import { Heading } from "../Heading";
+import { orderAnswers } from "./answerOrder.utils";
 
 interface Answer {
   id: string;
@@ -23,10 +26,14 @@ export interface Question {
   possibleAnswers: Answer[];
   answer?: string;
   affects?: { id: string }[];
+  answerEffects?: AnswerEffects[];
+  parties?: Pick<RawParty, "id" | "name">[];
+  recommendedAnswer?: string;
   setAnswer: (a: string) => void;
   setCurrentView: (currentView: CurrentView) => void;
   handleOnClick: (answer?: string) => void;
   cityName?: string;
+  answerOrderSeed?: string;
 }
 
 export function QuestionCard({
@@ -35,13 +42,24 @@ export function QuestionCard({
   possibleAnswers,
   answer,
   affects,
+  answerEffects,
+  parties = [],
+  recommendedAnswer,
   setAnswer,
   setCurrentView,
   handleOnClick,
   cityName,
+  answerOrderSeed,
 }: Question) {
+  const cheat = useCheatSettings();
+  const showIds = cheat.enabled && cheat.showIds;
+  const showEffects = cheat.enabled && cheat.showEffects;
   const { portrait, slogan, party_logo } = useAssets();
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const orderedAnswers = useMemo(
+    () => orderAnswers(possibleAnswers, id, answerOrderSeed),
+    [possibleAnswers, id, answerOrderSeed],
+  );
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -67,6 +85,7 @@ export function QuestionCard({
               <StrategicDecisionBadge />
             </Tooltip>
           )}
+          {showIds && <CheatId value={id} className="mb-1" />}
           <Heading
             level={5}
             color="lightBlue"
@@ -75,15 +94,32 @@ export function QuestionCard({
             {question}
           </Heading>
         </div>
-        {possibleAnswers.map((a, index) => (
-          <AnswerRow
-            answer={a}
-            index={index}
-            key={a.id}
-            isSelected={a.id === answer}
-            onClick={setAnswer}
-          />
-        ))}
+        {orderedAnswers.map((a, index) => {
+          const row = (
+            <AnswerRow
+              answer={a}
+              index={index}
+              key={a.id}
+              isSelected={a.id === answer}
+              isRecommended={a.id === recommendedAnswer}
+              showId={showIds}
+              onClick={setAnswer}
+            />
+          );
+          const effects = answerEffects?.find((e) => e.id === a.id);
+          return showEffects && effects ? (
+            <Tooltip
+              key={a.id}
+              block
+              position={isDesktop ? "right" : "top"}
+              content={<EffectList answer={effects} parties={parties} />}
+            >
+              {row}
+            </Tooltip>
+          ) : (
+            row
+          );
+        })}
       </div>
       <div className="mt-2 shrink-0">
         {isDesktop ? (
@@ -243,6 +279,8 @@ interface QuestionRowProps {
   index: number;
   answer: Answer;
   isSelected: boolean;
+  isRecommended?: boolean;
+  showId?: boolean;
   onClick: (answer: string) => void;
 }
 
@@ -250,15 +288,23 @@ export function AnswerRow({
   answer,
   index,
   isSelected,
+  isRecommended,
+  showId,
   onClick,
 }: QuestionRowProps) {
   const keys = ["A", "B", "C", "D"];
   return (
-    <div onClick={() => onClick(answer.id)} className="w-full mb-2">
+    <div
+      onClick={() => onClick(answer.id)}
+      className="w-full mb-2"
+      data-recommended={isRecommended || undefined}
+    >
       <CommonWrapper
         block
         className={classNames("cursor-pointer", {
           "border-blue-500 shadow-lg shadow-blue-500/50": isSelected,
+          "ring-2 ring-emerald-400 shadow-lg shadow-emerald-500/40":
+            isRecommended,
         })}
         customBorder={false}
       >
@@ -277,10 +323,39 @@ export function AnswerRow({
                 {keys[index]}
               </Text>
             </div>
-            <Text color={isSelected ? "white" : "gray"}>{answer.label}</Text>
+            <Text color={isSelected ? "white" : "gray"} className="flex-1">
+              {answer.label}
+            </Text>
+            {showId && <CheatId value={answer.id} />}
+            {isRecommended && (
+              <Icon
+                name="check-circle-fill"
+                color="currentColor"
+                className="ml-2 shrink-0 text-emerald-400"
+              />
+            )}
           </div>
         </div>
       </CommonWrapper>
     </div>
+  );
+}
+
+function CheatId({
+  value,
+  className = "ml-2",
+}: {
+  value: string;
+  className?: string;
+}) {
+  return (
+    <span
+      className={classNames(
+        className,
+        "inline-block shrink-0 rounded bg-amber-400/15 px-1.5 py-0.5 font-mono text-[11px] text-amber-200",
+      )}
+    >
+      {value}
+    </span>
   );
 }

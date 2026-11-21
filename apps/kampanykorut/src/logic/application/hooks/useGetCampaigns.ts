@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createLogger } from "@/shared/logger";
-import type { CampaignStatus } from "@/shared/types";
+import type { CampaignStatus, GameMode } from "@/shared/types";
 import { fetchJSON } from "../fetchJSON";
 import { getDataPath } from "../PathResolver";
 
@@ -14,6 +14,8 @@ export interface CampaignHeader {
   campaignBanner: string;
   thinCampaignBanner?: string;
   status: CampaignStatus;
+  addedAt?: string;
+  gameMode: GameMode;
 }
 
 const environment = import.meta.env.VITE_ENVIRONMENT;

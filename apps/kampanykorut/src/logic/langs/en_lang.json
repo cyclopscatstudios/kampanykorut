@@ -48,6 +48,32 @@
     "label": "Select a campaign",
     "placeholder": "Select..."
   },
+  "campaignSelector": {
+    "count_one": "{{count}} campaign",
+    "count_other": "{{count}} campaigns",
+    "sort": {
+      "label": "Sort",
+      "year": "By year",
+      "yearShort": "Year",
+      "added": "Recently added",
+      "addedShort": "Newest"
+    },
+    "new": "New",
+    "emptyTitle": "No campaign selected yet",
+    "emptyText": "Pick a campaign from the list. Its banner and summary will appear here.",
+    "mobileHint": "Tap a campaign for details.",
+    "tags": {
+      "historical": "Historical",
+      "alternate-history": "Alternate history",
+      "test": "Test"
+    },
+    "mode": {
+      "classic": "Classic",
+      "classicHint": "Question-and-answer campaign: interviews and debates decide the election.",
+      "strategic": "Strategic",
+      "strategicHint": "Focus tree, issues and alliances: build your campaign turn by turn."
+    }
+  },
   "sideSelector": {
     "party": {
       "label": "Select a party",
@@ -595,6 +621,37 @@
       "campaignTitle": "{{campaign}} – Kampánykörút",
       "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
       "sideDescription": "{{campaign}}: lead {{candidate}}'s campaign!"
+    }
+  },
+  "cheat": {
+    "title": "Cheat",
+    "minimize": "Minimize",
+    "expand": "Expand",
+    "close": "Turn off",
+    "ids": {
+      "label": "IDs",
+      "hint": "Shows the id of questions, answers and focuses."
+    },
+    "effects": {
+      "label": "Effects",
+      "hint": "Hover an answer to see what it changes."
+    },
+    "path": {
+      "label": "Winning path",
+      "hint": "Pick a tested winning path: the matching answer and focuses get a green mark.",
+      "none": "No winning path for this side yet.",
+      "pick": "Choose a path",
+      "recommended": "Answer now:"
+    },
+    "effect": {
+      "none": "No effect",
+      "if": "If",
+      "replace": "replaces",
+      "swing": "Swing",
+      "turnout": "Turnout",
+      "allocation": "New votes",
+      "transfer": "District",
+      "stance": "Issue"
     }
   }
 }
