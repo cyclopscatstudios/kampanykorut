@@ -473,6 +473,59 @@
     }
   },
   {
+    "id": "pride_tiltas_ellenere",
+    "label": "Pride a tiltás ellenére",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 15,
+              "max": 15
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "pride_torveny",
+              "answerId": "C"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 15,
+              "max": 15
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "pride_torveny",
+              "answerId": "B"
+            }
+          ]
+        },
+        "effects": []
+      }
+    ],
+    "announcement": {
+      "title": "Pride a tiltás ellenére",
+      "body": "Június 28-án a tiltás ellenére tízezrek vonulnak Budapesten. A főváros önkormányzati rendezvényként tartja meg a felvonulást, a rendőrség nem oszlatja fel.",
+      "icon": "flag-fill"
+    }
+  },
+  {
     "id": "elszamolas_siker",
     "label": "Látszik a változás",
     "once": true,
