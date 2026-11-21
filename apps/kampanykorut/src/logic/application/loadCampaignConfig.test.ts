@@ -34,6 +34,7 @@ describe("loadCampaignConfig", () => {
       year: 2024,
       tags: ["mock", "test"],
       status: "published",
+      gameMode: "classic",
     });
   });
 

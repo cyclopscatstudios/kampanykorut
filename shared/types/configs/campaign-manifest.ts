@@ -53,4 +53,5 @@ export interface CampaignListing {
   campaignBanner: string;
   thinCampaignBanner?: string;
   status: CampaignStatus;
+  addedAt?: string;
 }

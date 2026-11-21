@@ -48,6 +48,32 @@
     "label": "Select a campaign",
     "placeholder": "Select..."
   },
+  "campaignSelector": {
+    "count_one": "{{count}} campaign",
+    "count_other": "{{count}} campaigns",
+    "sort": {
+      "label": "Sort",
+      "year": "By year",
+      "yearShort": "Year",
+      "added": "Recently added",
+      "addedShort": "Newest"
+    },
+    "new": "New",
+    "emptyTitle": "No campaign selected yet",
+    "emptyText": "Pick a campaign from the list. Its banner and summary will appear here.",
+    "mobileHint": "Tap a campaign for details.",
+    "tags": {
+      "historical": "Historical",
+      "alternate-history": "Alternate history",
+      "test": "Test"
+    },
+    "mode": {
+      "classic": "Classic",
+      "classicHint": "Question-and-answer campaign: interviews and debates decide the election.",
+      "strategic": "Strategic",
+      "strategicHint": "Focus tree, issues and alliances: build your campaign turn by turn."
+    }
+  },
   "sideSelector": {
     "party": {
       "label": "Select a party",

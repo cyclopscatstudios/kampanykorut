@@ -20,6 +20,7 @@ const campaign: CampaignHeader = {
   route: "2024_budapest",
   campaignBanner: "default-banner.png",
   status: "published",
+  gameMode: "classic",
 };
 
 const electionConfig = {
