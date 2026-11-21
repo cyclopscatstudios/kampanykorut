@@ -30,7 +30,7 @@ const readJSON = async (file) => JSON.parse(await readFile(file, "utf-8"));
 // Campaign data is read from the built static files; when campaigns move to
 // campaign-api, only these two loaders need to switch to API calls.
 const loadCampaigns = () =>
-  readJSON(path.join(distDir, "assets/jsons/game_modes.json"));
+  readJSON(path.join(distDir, "assets/jsons/campaigns.json"));
 const loadElectionConfig = (route) =>
   readJSON(path.join(distDir, "campaigns", route, "election_config.json"));
 
@@ -52,7 +52,9 @@ const { buildCampaignPageData, campaignPagePath, renderCampaignPage } =
   await import(pathToFileURL(path.join(ssrDir, "entry-server.js")).href);
 
 const template = await readFile(path.join(distDir, "index.html"), "utf-8");
-const campaigns = (await loadCampaigns()).filter((c) => c.isPublished);
+const campaigns = (await loadCampaigns()).filter(
+  (c) => c.status === "published",
+);
 const sitemapEntries = [];
 
 for (const campaign of campaigns) {

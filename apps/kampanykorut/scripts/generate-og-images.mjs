@@ -1,5 +1,5 @@
-import { createReadStream } from "node:fs";
-import { mkdir, readFile, rm } from "node:fs/promises";
+import { createReadStream, existsSync } from "node:fs";
+import { mkdir, readdir, readFile, rm } from "node:fs/promises";
 import { createServer } from "node:http";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -119,9 +119,16 @@ const browser = await chromium.launch({
 });
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
 
-const campaigns = (
-  await readJSON(path.join(publicDir, "assets/jsons/game_modes.json"))
-).filter((c) => c.isPublished && (!only || c.id === only));
+const campaignsDir = path.join(publicDir, "campaigns");
+const campaigns = [];
+for (const dirent of await readdir(campaignsDir, { withFileTypes: true })) {
+  const manifestPath = path.join(campaignsDir, dirent.name, "manifest.json");
+  if (!dirent.isDirectory() || !existsSync(manifestPath)) continue;
+  const { listing } = await readJSON(manifestPath);
+  if (listing?.status === "published" && (!only || listing.id === only)) {
+    campaigns.push({ ...listing, route: dirent.name });
+  }
+}
 let count = 0;
 for (const campaign of campaigns) {
   const electionConfig = await readJSON(

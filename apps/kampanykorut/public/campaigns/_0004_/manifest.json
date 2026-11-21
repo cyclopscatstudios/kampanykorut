@@ -3,6 +3,16 @@
   "metadata": {
     "version": "0.1.0"
   },
+  "listing": {
+    "id": "0004_test_1945_map",
+    "label": "0004: 1945-ös térkép teszt (mock)",
+    "description": "Arányos tesztkampány az 1945-ös mintájú, 16 választókerületes térképen: 350 + 50 mandátum, D'Hondt.",
+    "year": 0,
+    "tags": ["test"],
+    "campaignBanner": "default-banner.png",
+    "thinCampaignBanner": "default-banner-thin.png",
+    "status": "draft"
+  },
   "files": {
     "electionConfig": "election_config.json",
     "regions": "regions.json",

@@ -3072,19 +3072,14 @@ export function validateCampaign(
     if (header[banner]) {
       checkPublicAsset(
         ctx,
-        "game_modes.json",
-        `/${header.id}/${banner}`,
+        "manifest.json",
+        `/listing/${banner}`,
         `/images/${header.route}/${header[banner]}`,
       );
     }
   }
 
-  const manifest = readFile(
-    ctx,
-    "manifest.json",
-    "game_modes.json",
-    `/${header.id}`,
-  );
+  const manifest = readFile(ctx, "manifest.json", "manifest.json", "");
   if (!isObject(manifest)) {
     if (manifest !== undefined) {
       report(

@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useGetCampaigns, useSettings } from "@/logic/application";
+import {
+  isCampaignListed,
+  useGetCampaigns,
+  useSettings,
+} from "@/logic/application";
 import { track } from "../../../../logic/infra/posthog/track";
 import { NewsSection } from "../../news/NewsSection";
 import { CampaignsSection } from "./CampaignsSection";
@@ -11,8 +15,8 @@ export function LandingPage() {
   // Subscribing here forces the whole landing tree to re-render on language
   // change, since the texts below are read via `t()` at render time.
   useSettings();
-  const campaigns = useGetCampaigns().filter(
-    (campaign) => campaign.isPublished,
+  const campaigns = useGetCampaigns().filter((campaign) =>
+    isCampaignListed(campaign),
   );
 
   const newsBelowCampaigns =

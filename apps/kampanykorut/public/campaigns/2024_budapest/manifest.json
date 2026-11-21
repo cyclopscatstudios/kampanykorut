@@ -3,6 +3,16 @@
   "metadata": {
     "version": "0.1.0"
   },
+  "listing": {
+    "id": "2024_budapest",
+    "label": "2024: Budapest",
+    "description": "2024 tavaszán a fővárosban négyesélyesnek indul a főpolgármester-választás. Karácsony Gergely második ciklusáért küzd, a Fidesz–KDNP Szentkirályi Alexandrát indítja, Vitézy Dávid pedig a BKK volt vezérigazgatójaként, az LMP és a Podmaniczky Mozgalom támogatásával száll ringbe. Januárban Karácsony vezet. Vitézynek fel kell zárkóznia, és meg kell szólítania azokat is, akik eddig máshová húztak. Karácsonynak meg kell védenie öt év mérlegét egy gyorsan átalakuló mezőnyben, ahol Szentkirályi sorsa is kérdéses. Ki rendezi át a fővárosi erőviszonyokat?",
+    "year": 2024,
+    "tags": ["historical"],
+    "campaignBanner": "default-banner.png",
+    "thinCampaignBanner": "default-banner-thin.png",
+    "status": "published"
+  },
   "files": {
     "electionConfig": "election_config.json",
     "voterEnvironmentConfig": "voter_environment_config.json",

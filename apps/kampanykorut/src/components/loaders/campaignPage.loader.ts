@@ -1,6 +1,6 @@
 import { data, type LoaderFunctionArgs } from "react-router";
 import { container } from "tsyringe";
-import { StorageEngine } from "@/logic/application";
+import { isCampaignListed, StorageEngine } from "@/logic/application";
 import type { ElectionConfig } from "@/shared/types/configs/election-config";
 import { fetchJSON } from "../../logic/application/fetchJSON";
 import { getCampaignHeaderById } from "../../logic/application/getCampaignHeaderById";
@@ -13,7 +13,7 @@ export async function campaignPageLoader({ params }: LoaderFunctionArgs) {
   const debugMode =
     container.resolve(StorageEngine).getItem("debugMode", "localStorage") ===
     "true";
-  if (!campaign || (!campaign.isPublished && !debugMode)) {
+  if (!campaign || !isCampaignListed(campaign, debugMode)) {
     throw data(null, { status: 404 });
   }
   const electionConfig = await fetchJSON<ElectionConfig>(
