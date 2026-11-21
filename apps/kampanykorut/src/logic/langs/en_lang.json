@@ -622,5 +622,36 @@
       "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
       "sideDescription": "{{campaign}}: lead {{candidate}}'s campaign!"
     }
+  },
+  "cheat": {
+    "title": "Cheat",
+    "minimize": "Minimize",
+    "expand": "Expand",
+    "close": "Turn off",
+    "ids": {
+      "label": "IDs",
+      "hint": "Shows the id of questions, answers and focuses."
+    },
+    "effects": {
+      "label": "Effects",
+      "hint": "Hover an answer to see what it changes."
+    },
+    "path": {
+      "label": "Winning path",
+      "hint": "Pick a tested winning path: the matching answer and focuses get a green mark.",
+      "none": "No winning path for this side yet.",
+      "pick": "Choose a path",
+      "recommended": "Answer now:"
+    },
+    "effect": {
+      "none": "No effect",
+      "if": "If",
+      "replace": "replaces",
+      "swing": "Swing",
+      "turnout": "Turnout",
+      "allocation": "New votes",
+      "transfer": "District",
+      "stance": "Issue"
+    }
   }
 }

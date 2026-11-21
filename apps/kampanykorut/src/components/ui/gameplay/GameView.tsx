@@ -17,6 +17,7 @@ import {
   DistrictPoligon,
   PollingOpnions,
 } from "@/shared/types";
+import { useFollowedLine } from "../../../debug/cheat/winningLines";
 import { StateEngine } from "../../../logic/application";
 import { MapCreator } from "./MapCreator";
 import { MobileMapView } from "./MobileMapView";
@@ -56,6 +57,7 @@ export function GameView({
   mapOverlay,
 }: GameViewProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const followedLine = useFollowedLine(state);
   const proportional = getParliamentaryConfig(config.electionConfig);
   const seatCountView = useMemo(
     () =>
@@ -101,6 +103,13 @@ export function GameView({
         question={state.currentQuestion?.question ?? ""}
         possibleAnswers={state.currentQuestion?.possibleAnswers ?? []}
         affects={state.currentQuestion?.affects}
+        answerEffects={state.answerEffects}
+        parties={config.electionConfig.parties}
+        recommendedAnswer={
+          state.currentQuestion
+            ? followedLine?.answers[state.currentQuestion.id]
+            : undefined
+        }
         answer={answer}
         setAnswer={onSetAnswer}
         setCurrentView={onSetView}

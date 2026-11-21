@@ -13,4 +13,5 @@ export type SessionKey =
   | "autoSaveRegistry"
   | "language"
   | "debugMode"
+  | "cheatMode"
   | "newsReadState";
