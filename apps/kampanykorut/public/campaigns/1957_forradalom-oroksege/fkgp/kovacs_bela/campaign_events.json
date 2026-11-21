@@ -1484,8 +1484,8 @@
     "announcement": {
       "title": "A kisgazdák kilépnek a kormányból",
       "body": "Kovács Béla bejelentette, hogy a Független Kisgazdapárt kilép az ideiglenes kormányból, és saját zászló alatt indul a választáson.",
-      "imageUri": "/images/1957_forradalom-oroksege/fkgp_kilepes.png",
-      "icon": "/images/1957_forradalom-oroksege/fkgp_badge.png",
+      "imageUri": "/images/1957_forradalom-oroksege/fkgp_kilepes.webp",
+      "icon": "/images/1957_forradalom-oroksege/fkgp_badge.webp",
       "major": true
     }
   },
@@ -1565,8 +1565,8 @@
     "announcement": {
       "title": "Kettészakadt a Kisgazdapárt",
       "body": "Sulyok Dezső és a jobbszárny kilépett, és Magyar Szabadságpárt néven önálló listát állít. Budapesten és a nyugati megyékben sok tag követi őket.",
-      "imageUri": "/images/1957_forradalom-oroksege/fkgp_szakadas.png",
-      "icon": "/images/1957_forradalom-oroksege/fkgp_badge.png",
+      "imageUri": "/images/1957_forradalom-oroksege/fkgp_szakadas.webp",
+      "icon": "/images/1957_forradalom-oroksege/fkgp_badge.webp",
       "major": true
     }
   },
@@ -1615,8 +1615,8 @@
     "announcement": {
       "title": "Kettészakadt az MSZMP",
       "body": "Kádár János és a pártapparátus egy része kivált, és Magyar Munkáspárt néven önálló listát állít. Dobi István és a kizárt baloldali kisgazdák is hozzájuk csatlakoztak.",
-      "icon": "/images/1957_forradalom-oroksege/kadar_badge.png",
-      "imageUri": "/images/1957_forradalom-oroksege/mszmp_szakadas.jpg",
+      "icon": "/images/1957_forradalom-oroksege/kadar_badge.webp",
+      "imageUri": "/images/1957_forradalom-oroksege/mszmp_szakadas.webp",
       "major": true
     }
   },
@@ -1722,8 +1722,8 @@
     "announcement": {
       "title": "Egy zászló alatt a polgári és paraszti pártok",
       "body": "A Kisgazdapárt, a Demokrata Néppárt és a Petőfi Párt összekapcsolta a listáját. A választók most már tudják, milyen kormány alakulhat.",
-      "imageUri": "/images/1957_forradalom-oroksege/polgari_blokk_siker.png",
-      "icon": "/images/1957_forradalom-oroksege/polgari_blokk.png"
+      "imageUri": "/images/1957_forradalom-oroksege/polgari_blokk_siker.webp",
+      "icon": "/images/1957_forradalom-oroksege/polgari_blokk.webp"
     }
   },
   {
@@ -1764,8 +1764,8 @@
     "announcement": {
       "title": "A falu a kisgazdáké",
       "body": "A gazdakörök sorra állnak a kisgazdák mellé. A Petőfi Párt és az MSZMP falusi gyűlésein egyre kevesebben vannak.",
-      "imageUri": "/images/1957_forradalom-oroksege/falu_partja_siker.png",
-      "icon": "/images/1957_forradalom-oroksege/falu_partja_siker_badge.png"
+      "imageUri": "/images/1957_forradalom-oroksege/falu_partja_siker.webp",
+      "icon": "/images/1957_forradalom-oroksege/falu_partja_siker_badge.webp"
     }
   },
   {
@@ -1816,8 +1816,8 @@
     "announcement": {
       "title": "Közös program, közös kormány",
       "body": "A három párt vezetői közös gyűlésen álltak ki egymás mellett. A bizonytalan szavazók szerint ez végre kiszámítható kormányt ígér.",
-      "imageUri": "/images/1957_forradalom-oroksege/polgari_blokk_siker.png",
-      "icon": "/images/1957_forradalom-oroksege/harom_part_kampany.png"
+      "imageUri": "/images/1957_forradalom-oroksege/polgari_blokk_siker.webp",
+      "icon": "/images/1957_forradalom-oroksege/harom_part_kampany.webp"
     }
   },
   {
@@ -2020,8 +2020,8 @@
     "announcement": {
       "title": "Morog a jobbszárny",
       "body": "Sulyok Dezső hívei szerint Kovács Béla elfelejtette, ki hurcolta el. A jobbszárny egy része a hajrában már a Demokrata Néppárt gyűléseire jár.",
-      "imageUri": "/images/1957_forradalom-oroksege/fkgp_szakadas.png",
-      "icon": "/images/1957_forradalom-oroksege/nem_bosszut_jobbszarny.png"
+      "imageUri": "/images/1957_forradalom-oroksege/fkgp_szakadas.webp",
+      "icon": "/images/1957_forradalom-oroksege/nem_bosszut_jobbszarny.webp"
     }
   },
   {
@@ -2187,8 +2187,8 @@
     "announcement": {
       "title": "A felkelők szerint a kisgazdák megalkudtak",
       "body": "A Corvin köz röplapjai szerint a kisgazdák már megint megalkudtak. A fiatal szavazók egy része a Petőfi Párt felé fordul.",
-      "imageUri": "/images/1957_forradalom-oroksege/corvin_koz_tuntetes.jpg",
-      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.png"
+      "imageUri": "/images/1957_forradalom-oroksege/corvin_koz_tuntetes.webp",
+      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.webp"
     }
   },
   {
@@ -2225,8 +2225,8 @@
     "announcement": {
       "title": "Moszkva figyelmeztet",
       "body": "A szovjet sajtó szerint egy kisgazda kormány veszélyeztetné a semlegességi szerződést. A városokban sokan megijednek.",
-      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.png",
-      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png",
+      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.webp",
+      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.webp",
       "major": true
     }
   },
@@ -2297,8 +2297,8 @@
     "announcement": {
       "title": "Eltitkolt betegség",
       "body": "A baloldali lapok megírták, hogy Kovács Béla hónapok óta beteg, és ezt a párt eltitkolta. A szavazók azt kérdezik, mi mást titkolnak még.",
-      "imageUri": "/images/1957_forradalom-oroksege/visszauto_tamadas.png",
-      "icon": "/images/1957_forradalom-oroksege/kovacs_titka.png"
+      "imageUri": "/images/1957_forradalom-oroksege/visszauto_tamadas.webp",
+      "icon": "/images/1957_forradalom-oroksege/kovacs_titka.webp"
     }
   },
   {
@@ -2334,8 +2334,8 @@
     "announcement": {
       "title": "Ki vezeti a kisgazdákat?",
       "body": "Nagy Ferenc és Kovács Béla egymásnak ellentmondó nyilatkozatokat tett. A lapok szerint a pártnak két vezetője van, és egyik sem tudja, mit mond a másik.",
-      "imageUri": "/images/1957_forradalom-oroksege/nagy_ferenc.png",
-      "icon": "/images/1957_forradalom-oroksege/ket_kapitany.png"
+      "imageUri": "/images/1957_forradalom-oroksege/nagy_ferenc.webp",
+      "icon": "/images/1957_forradalom-oroksege/ket_kapitany.webp"
     }
   },
   {
@@ -2371,7 +2371,7 @@
     "announcement": {
       "title": "Nagy Ferenc a saját útját járja",
       "body": "Nagy Ferenc nyugati rádióknak nyilatkozik, és nem a kisgazdák programjáról beszél. Az emigránsok egy része a Demokrata Néppártot támogatja.",
-      "imageUri": "/images/1957_forradalom-oroksege/nagy_ferenc.png",
+      "imageUri": "/images/1957_forradalom-oroksege/nagy_ferenc.webp",
       "icon": "signpost-split-fill"
     }
   },

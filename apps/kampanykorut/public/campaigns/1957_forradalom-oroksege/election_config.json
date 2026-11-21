@@ -141,33 +141,33 @@
       "candidateAssets": [
         {
           "id": "nagy_imre",
-          "portrait": "/images/1957_forradalom-oroksege/nagy_imre.png",
-          "slogan": "/images/1957_forradalom-oroksege/mszmp_szlogen.png"
+          "portrait": "/images/1957_forradalom-oroksege/nagy_imre.webp",
+          "slogan": "/images/1957_forradalom-oroksege/mszmp_szlogen.webp"
         }
       ],
-      "party_logo": "/images/1957_forradalom-oroksege/mszmp.png"
+      "party_logo": "/images/1957_forradalom-oroksege/mszmp.webp"
     },
     {
       "id": "fkgp",
       "candidateAssets": [
         {
           "id": "kovacs_bela",
-          "portrait": "/images/1957_forradalom-oroksege/kovacs_bela.png",
-          "slogan": "/images/1957_forradalom-oroksege/fkgp_szlogen.png"
+          "portrait": "/images/1957_forradalom-oroksege/kovacs_bela.webp",
+          "slogan": "/images/1957_forradalom-oroksege/fkgp_szlogen.webp"
         }
       ],
-      "party_logo": "/images/1957_forradalom-oroksege/fkgp_logo.png"
+      "party_logo": "/images/1957_forradalom-oroksege/fkgp_logo.webp"
     },
     {
       "id": "szdp",
       "candidateAssets": [
         {
           "id": "kethly_anna",
-          "portrait": "/images/1957_forradalom-oroksege/kethly_anna.png",
-          "slogan": "/images/1957_forradalom-oroksege/szdp_slogan.png"
+          "portrait": "/images/1957_forradalom-oroksege/kethly_anna.webp",
+          "slogan": "/images/1957_forradalom-oroksege/szdp_slogan.webp"
         }
       ],
-      "party_logo": "/images/1957_forradalom-oroksege/szdp_logo.png"
+      "party_logo": "/images/1957_forradalom-oroksege/szdp_logo.webp"
     }
   ]
 }

@@ -41,7 +41,7 @@
       "paper": "ludas_matyi",
       "headline": "Fölényesen vezet az Egyiksem Párt",
       "lead": "A megkérdezettek döntő többsége most vasárnap az Egyiksem Pártra szavazna – legalábbis a Ludas Matyi nem reprezentatív felmérése szerint.",
-      "image": "/images/1957_forradalom-oroksege/ludas_matyi_egyiksem_felmeres.png",
+      "image": "/images/1957_forradalom-oroksege/ludas_matyi_egyiksem_felmeres.webp",
       "when": {
         "type": "turn",
         "max": 5
@@ -52,7 +52,7 @@
       "paper": "magyar_nemzet",
       "headline": "Pongrátz: a forradalom még nem ért véget",
       "lead": "A Corvin köz parancsnoka szerint addig nincs nyugalom, amíg az ÁVH vezetői szabadon járnak.",
-      "image": "/images/1957_forradalom-oroksege/pongratz_gergely.png",
+      "image": "/images/1957_forradalom-oroksege/pongratz_gergely.webp",
       "when": {
         "type": "turn",
         "max": 5
@@ -63,7 +63,7 @@
       "paper": "nepszabadsag",
       "headline": "Kéthly Anna: a munkásság nem mond le a szabadságáról",
       "lead": "Az SZDP elnöke a Népszava székházában kijelentette, hogy pártja önállóan indul a választáson.",
-      "image": "/images/1957_forradalom-oroksege/kethly_hazatert.jpg",
+      "image": "/images/1957_forradalom-oroksege/kethly_hazatert.webp",
       "when": {
         "type": "turn",
         "max": 8
@@ -74,7 +74,7 @@
       "paper": "magyar_nemzet",
       "headline": "Márai Sándor hazatért Magyarországra",
       "lead": "A kilenc esztendeje emigrációban élő író ismét Budapestre érkezett. A hírek szerint hamarosan új kötete jelenhet meg itthon.",
-      "image": "/images/1957_forradalom-oroksege/marai_sandor.png",
+      "image": "/images/1957_forradalom-oroksege/marai_sandor.webp",
       "when": {
         "type": "turn",
         "max": 8
@@ -85,7 +85,7 @@
       "paper": "magyar_nemzet",
       "headline": "Hamvas Béla visszatér a Fővárosi Könyvtárba",
       "lead": "A Fővárosi Könyvtár igazgatósága visszahelyezte állásába Hamvas Béla írót, a könyvtár egykori munkatársát.",
-      "image": "/images/1957_forradalom-oroksege/hamvas_bela.jpg",
+      "image": "/images/1957_forradalom-oroksege/hamvas_bela.webp",
       "when": {
         "type": "turn",
         "max": 10
@@ -96,7 +96,7 @@
       "paper": "nepszabadsag",
       "headline": "Tüntetés a Corvin közben",
       "lead": "Több ezren követelték az ÁVH-sok perének gyorsítását. Pongrátz Gergely szerint a forradalom még nem ért véget.",
-      "image": "/images/1957_forradalom-oroksege/corvin_koz_tuntetes.jpg",
+      "image": "/images/1957_forradalom-oroksege/corvin_koz_tuntetes.webp",
       "when": {
         "and": [
           {
@@ -129,7 +129,7 @@
       "paper": "kis_ujsag",
       "headline": "Elhagyta az országot az utolsó szovjet szerelvény",
       "lead": "Záhonynál hajnalban lépte át a határt az utolsó katonai vonat. A határőrök nemzeti színű szalaggal zárták le a sorompót.",
-      "image": "/images/1957_forradalom-oroksege/utolso_szerelvenyek.jpg",
+      "image": "/images/1957_forradalom-oroksege/utolso_szerelvenyek.webp",
       "when": {
         "type": "turn",
         "min": 5
@@ -140,7 +140,7 @@
       "paper": "kis_ujsag",
       "headline": "ENSZ-küldöttség érkezett Budapestre",
       "lead": "A semlegességi garanciákról tárgyalnak. Washington és Moszkva is figyeli a magyar választást.",
-      "image": "/images/1957_forradalom-oroksege/ensz_kuldottseg.png",
+      "image": "/images/1957_forradalom-oroksege/ensz_kuldottseg.webp",
 
       "when": {
         "or": [
@@ -163,7 +163,7 @@
       "paper": "uj_ember",
       "headline": "A bíboros üzenete a nemzethez",
       "lead": "Mindszenty József szerint az egyház nem kér kiváltságot, csak azt, ami az övé volt.",
-      "image": "/images/1957_forradalom-oroksege/mindszenty_jozsef.png",
+      "image": "/images/1957_forradalom-oroksege/mindszenty_jozsef.webp",
       "when": {
         "type": "turn",
         "min": 3,
@@ -221,7 +221,7 @@
       "paper": "nepszabadsag",
       "headline": "Nagy Imre győzött a pártértekezleten",
       "lead": "A küldöttek többsége a reformok mellett szavazott. Kádár János hallgatott.",
-      "image": "/images/1957_forradalom-oroksege/nepszava_ertekezlet.png",
+      "image": "/images/1957_forradalom-oroksege/nepszava_ertekezlet.webp",
 
       "when": {
         "type": "answer-selected",
@@ -292,7 +292,7 @@
       "paper": "magyar_nemzet",
       "headline": "A MEFESZ diákőrséget követel",
       "lead": "Az egyetemisták szerint a forradalmat ők kezdték, és nekik is kell megvédeniük.",
-      "image": "/images/1957_forradalom-oroksege/igazsag_mefesz.png",
+      "image": "/images/1957_forradalom-oroksege/igazsag_mefesz.webp",
       "when": {
         "type": "turn",
         "min": 10,
