@@ -3,6 +3,7 @@ import {
   buildCoalitionResult,
   buildCoalitionView,
   buildFinalOutcome,
+  getCoalitionWeight,
   getEndResultStory,
   getGovernmentOutcome,
   getMaxStrongCoalitionPartners,
@@ -179,6 +180,34 @@ describe("Coalition", () => {
       outcome: "coalition",
       partnerCount: 2,
     });
+  });
+
+  it("counts a distant partner as more than one", () => {
+    const roomy = {
+      ...config,
+      politicalConfig: {
+        ...config.politicalConfig!,
+        coalition: {
+          ...config.politicalConfig!.coalition!,
+          maxStrongPartners: 2,
+          partners: config.politicalConfig!.coalition!.partners.map((p) =>
+            p.partyId === "red" ? { ...p, weight: 3 } : p,
+          ),
+        },
+      },
+    } as typeof config;
+
+    expect(getCoalitionWeight(roomy, ["yellow", "red"])).toBe(4);
+    expect(
+      buildCoalitionView(hung, roomy)?.partners.find((p) => p.partyId === "red")
+        ?.weight,
+    ).toBe(3);
+    expect(
+      buildCoalitionResult(
+        submitCoalitionOffer(hung, roomy, answeredA, ["red"]),
+        roomy,
+      ),
+    ).toMatchObject({ outcome: "weak-coalition", partnerCount: 1 });
   });
 
   it("allows only one offer, and only to partners with seats", () => {
