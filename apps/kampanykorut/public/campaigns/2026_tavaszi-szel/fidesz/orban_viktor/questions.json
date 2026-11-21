@@ -1,0 +1,600 @@
+[
+  {
+    "id": "gyoztunk",
+    "title": "Győztünk?",
+    "question": "2024. június 10-én a Fidesz–KDNP 44,82 százalékkal megnyerte az EP-választást, de ez a pártszövetség addigi leggyengébb EP-eredménye. A néhány hónapja országosan ismert TISZA 29,60 százalékot és hét mandátumot szerzett. A választási éjszakán a párt győzelmet ünnepel. Milyen következtetést vonsz le?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Másnap körzetenkénti felmérést rendelsz, és bejelented a kormányülésen: a választók üzentek, a kormány a következő két évben a belföldi ügyekre áll át."
+      },
+      {
+        "id": "B",
+        "label": "Megköszönöd a győzelmet, a nyilvánosság előtt nincs fordulat, de csendben elrendeled a körzeti felmérést."
+      },
+      {
+        "id": "C",
+        "label": "Győztünk, és ez a lényeg. A TISZA egyszeri buborék, a kampánygépezet marad, ahogy van."
+      },
+      {
+        "id": "D",
+        "label": "A TISZA-t azonnal fő ellenségnek nyilvánítod, és a kormányoldali média minden erejét Magyar Péter személyére fordítod."
+      }
+    ]
+  },
+  {
+    "id": "patriotak",
+    "title": "Patrióták Európáért",
+    "question": "2024. június 30-án Bécsben bejelented a Patrióták Európáért szövetséget, amelyből az EP harmadik legnagyobb frakciója lehet. A nyári hetek kevés belföldi napot hagynak. Mennyi időt szánsz rá?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Te vezeted a frakcióépítést: hetekig utazol, a pártelnökökkel személyesen egyeztetsz."
+      },
+      {
+        "id": "B",
+        "label": "Bejelented a szövetséget, a szervezést a fideszes EP-delegációra és a külügyre bízod, te itthon maradsz."
+      },
+      {
+        "id": "C",
+        "label": "Hazai kampánytémát csinálsz belőle: plakátokon hirdeted, hogy a patrióták elfoglalják Brüsszelt."
+      },
+      {
+        "id": "D",
+        "label": "Kimaradsz a frakcióalapításból, a Fidesz egyelőre független marad az EP-ben."
+      }
+    ]
+  },
+  {
+    "id": "bekemisszio",
+    "title": "Kijev, Moszkva, Peking",
+    "question": "2024 júliusában, az uniós elnökség első heteiben Kijevbe, Moszkvába és Pekingbe készülsz. Az utakat békemisszióként mutatnád be. Itthon a nyár eleje óta egyre több a panasz a kórházakra és a megélhetésre. Mi marad a naptáradban?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mindhárom helyre elutazol, a belföldi programot őszre halasztod."
+      },
+      {
+        "id": "B",
+        "label": "Kijevbe és Moszkvába elmész, a pekingi utat a külügyminiszterre bízod, és augusztusra belföldi programot hirdetsz."
+      },
+      {
+        "id": "C",
+        "label": "Csak Kijevbe mész, a béketervet az uniós elnökség intézményein keresztül viszed tovább."
+      },
+      {
+        "id": "D",
+        "label": "Elmarad a misszió. A nyarat vidéki országjárással töltöd, épp azokban a városokban, ahol a TISZA is megfordult."
+      }
+    ]
+  },
+  {
+    "id": "kortermek",
+    "title": "Negyven fok a kórteremben",
+    "question": "2024 augusztusában a hőhullám idején több kórházban leállnak a klímák, műtéteket halasztanak, a folyosókon betegek várnak. Az ellenzék kórházjárást szervez, a felvételek órák alatt bejárják az országot. Mit tesz a kormány?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Rendkívüli karbantartási alapot indítasz, kórházanként nyilvános ütemtervvel és 2025 végi határidővel."
+      },
+      {
+        "id": "B",
+        "label": "A tíz legrosszabb állapotú kórházban azonnali javítást rendelsz el, kamerák előtt."
+      },
+      {
+        "id": "C",
+        "label": "Az intézményvezetőkre bízod a válságkezelést, a kormányszóvivő szerint a hálózat stabil."
+      },
+      {
+        "id": "D",
+        "label": "A kórházjárást szervező politikusokat a betegek zavarása miatt feljelentéssel fenyegeted."
+      }
+    ]
+  },
+  {
+    "id": "gatakon",
+    "title": "A gátakon",
+    "question": "2024 szeptemberében a Duna árhulláma országos védekezést igényel. Az operatív törzs ülései után rendszeresen tájékoztatsz. A TISZA önkéntesei is lapátolnak a gátakon, a polgármesterek a kormánytól várnak segítséget. Hogyan vezeted a védekezést?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Személyesen vezeted az operatív törzset, és a gátakon minden önkéntest szívesen látsz, pártállástól függetlenül."
+      },
+      {
+        "id": "B",
+        "label": "Vezeted a törzset, és a polgármesterekkel olyan helyreállítási megállapodást kötsz, ami az apadás után is megmarad."
+      },
+      {
+        "id": "C",
+        "label": "Vezeted a törzset, de a kormányoldali média csak a kormányzati védekezést mutatja, a tiszás önkénteseket nem."
+      },
+      {
+        "id": "D",
+        "label": "A védekezést a katasztrófavédelemre bízod, te a nemzetközi programodon maradsz."
+      }
+    ]
+  },
+  {
+    "id": "mtva_elott",
+    "title": "Az MTVA előtt",
+    "question": "2024. október 5-én a TISZA a közmédia székháza elé hívja a támogatóit. A közmédia eddig alig vagy torzítva tudósított a pártról. Most több tízezer ember áll a Kunigunda útján. Hogyan reagál a kormányoldal?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A közmédia átveszi a petíciót, a híradó beszámol a tüntetésről, a kormány nem kommentálja."
+      },
+      {
+        "id": "B",
+        "label": "A híradó tudósít, de a tüntetést a kormányszóvivő kommentárjával keretezi."
+      },
+      {
+        "id": "C",
+        "label": "A közmédia nem tudósít. Ami nincs a híradóban, az nem történt meg."
+      },
+      {
+        "id": "D",
+        "label": "A kormányoldali média idegen érdekek vonulásaként mutatja be a tüntetést."
+      }
+    ]
+  },
+  {
+    "id": "hibahatar",
+    "title": "Egy pont a hibahatáron belül",
+    "question": "2024. október végén a 21 Kutatóközpont a biztos pártválasztók között 41–40-es TISZA-előnyt mér, a Publicus is TISZA-előnyt közöl. A kormányközeli intézetek mást mérnek. A párt vezetői megnyugtatást várnak tőled. Mit mondasz nekik?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Levonod a következtetést: körzetenkénti felmérést rendelsz, és újrarendezed a kormányzati programot."
+      },
+      {
+        "id": "B",
+        "label": "Elrendeled a felmérést, a nyilvánosság felé viszont ellenzéki kutatóknak nevezed a mérőket."
+      },
+      {
+        "id": "C",
+        "label": "Kétes kutatók, a saját méréseink mást mutatnak. Nincs változás."
+      },
+      {
+        "id": "D",
+        "label": "A hírek ellensúlyozására rezsijóváírást hirdetsz még karácsony előtt."
+      }
+    ]
+  },
+  {
+    "id": "felvetelek",
+    "title": "A felvételek",
+    "question": "2024 novemberében sorra jelennek meg a titokban rögzített hanganyagok, köztük a Vogel Evelinnel folytatott beszélgetések. A kormányoldali sajtó minden nap új részletet közöl. A frakció tőled várja a hangnemet. Mit mondasz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nem kommentálod a felvételeket. A frakció a TISZA adó-, energia- és uniós politikáját kérdezi."
+      },
+      {
+        "id": "B",
+        "label": "A kormányoldali sajtó közli a felvételeket, a pártvezetés hallgat."
+      },
+      {
+        "id": "C",
+        "label": "A parlamentben te magad idézel a felvételekből."
+      },
+      {
+        "id": "D",
+        "label": "Országos plakátkampányt indítasz Magyar Péter személye ellen."
+      }
+    ]
+  },
+  {
+    "id": "szikla_utca",
+    "title": "A Szikla utcai kapu",
+    "question": "December 3. Magyar Péter a pécsi Szikla utcai gyermekotthonhoz tart, úton van a sajtó és Menczer Tamás is. A minisztérium szerint a gyerekek érdekeit zárt látogatási rend védi. A fenntartó egy idei ellenőrzésre hivatkozik, amelynek megállapításairól a nyilvánosság semmit sem tud. Kinek adod át az ügy kezelését?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A fenntartó közli a látogatási szabályokat, a minisztérium pedig határidőt ad az ellenőrzés nyilvános, anonimizált összefoglalójára."
+      },
+      {
+        "id": "B",
+        "label": "Menczer Tamás kapja meg a nyilvános választ, a minisztérium az intézményre bízza a szakmai kérdéseket."
+      },
+      {
+        "id": "C",
+        "label": "Független vizsgálatot rendelsz el több intézményben, és vállalod, hogy a személyes adatok védelmével közzéteszitek a megállapításokat."
+      },
+      {
+        "id": "D",
+        "label": "Az intézmény zárva marad, a minisztérium nem nyilatkozik."
+      }
+    ]
+  },
+  {
+    "id": "dombovar",
+    "title": "Dombóvár után",
+    "question": "2025. január 12-én Csibi Krisztina nagy fölénnyel nyeri a Tolna 2-es időközi választást, a TISZA nem állít jelöltet. A párt ünnepel. Egy belső elemzés szerint a győzelem a szervezetről sokat, a TISZA elleni közvetlen versenyről keveset mond. Mit kezdesz vele?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A győzelem ellenére szervezeti felülvizsgálatot indítasz: hol gyenge a helyi hálózat egy kétpárti versenyben."
+      },
+      {
+        "id": "B",
+        "label": "Megtartjátok a győztes módszert: kopogtatás, a helyi elit, a polgármesterek."
+      },
+      {
+        "id": "C",
+        "label": "A TISZA meg sem mert jelenni. A győzelem bizonyítja, hogy nincs veszély."
+      },
+      {
+        "id": "D",
+        "label": "Pénzt csoportosítasz a vidéki szervezetekhez, de a körzeti jelölteket nem nézitek át."
+      }
+    ]
+  },
+  {
+    "id": "evertekelo",
+    "title": "Megélhetés és költségvetés",
+    "question": "2025 februárjában évértékelőt tartasz. A gazdaság évek óta alig nő, az élelmiszerárak magasak, a kórházi és vasúti programok pénzt kérnek. Minden vállalás ugyanabból a költségvetésből jön. Mi kap fedezetet?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A kórházi és vasúti program kapja az első helyet, a családi adókedvezmény bővítése 2026-ra csúszik."
+      },
+      {
+        "id": "B",
+        "label": "Mindent egyszerre ígérsz: 14. havi nyugdíjat, szja-kedvezményt, lakáshitelt és közszolgáltatási programot."
+      },
+      {
+        "id": "C",
+        "label": "A megélhetési csomag kap elsőbbséget, a közszolgáltatási program lassabban halad."
+      },
+      {
+        "id": "D",
+        "label": "Az évértékelő a háborúról és Brüsszelről szól, költségvetési vállalás nincs."
+      }
+    ]
+  },
+  {
+    "id": "pride_torveny",
+    "title": "A Pride-törvény",
+    "question": "2025 márciusában a parlament elé kerül a Pride betiltása és az arcfelismerés használata a gyülekezési ügyekben. A frakció egy része szerint ez mozgósítja a tábort. Mások szerint a városi szavazók elfordulnak, és nyáron újabb tüntetés jön. Mit teszel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nem nyitsz frontot: a gyermekvédelmi törvény marad, tiltás nincs."
+      },
+      {
+        "id": "B",
+        "label": "A tiltás bekerül, de a rendőrség nem használ arcfelismerést."
+      },
+      {
+        "id": "C",
+        "label": "Teljes tiltás és arcfelismerés, a tavaszi kampányt erre építed."
+      },
+      {
+        "id": "D",
+        "label": "Népszavazást hirdetsz a kérdésről."
+      }
+    ]
+  },
+  {
+    "id": "eu_forrasok",
+    "title": "Az uniós források",
+    "question": "2025 áprilisában Kollár Kinga az Európai Parlamentben a jogállamisági eljárásról beszél. A kormányoldal szerint a TISZA az uniós források visszatartását támogatja. A befagyasztott pénzek közben kórházakat, iskolákat és vasútvonalakat érintenek. Mit lépsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Nem a TISZA-t támadod, hanem tárgyalási csomagot küldesz Brüsszelbe a források egy részéért, határidőkkel."
+      },
+      {
+        "id": "B",
+        "label": "A forrásokat a kampányban Brüsszel zsarolásaként mutatod be, tárgyalás nincs."
+      },
+      {
+        "id": "C",
+        "label": "Hazaárulással vádolod Kollár Kingát és a TISZA-t."
+      },
+      {
+        "id": "D",
+        "label": "Hazai forrásból hirdetsz programot a befagyasztott helyett."
+      }
+    ]
+  },
+  {
+    "id": "menetrend",
+    "title": "Menetrend szerint",
+    "question": "2025 májusában a MÁV saját adatai szerint 2024-ben a vonatok átlagos pontossága 78,47 százalék volt. A nyári menetrend előtt a minisztérium két tervet hoz. Az ingázók közben a késésekről és a zsúfolt kocsikról posztolnak. Melyiket választod?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Lázár János ütemezett felújítási programot kap a legrosszabb vonalakra, havi nyilvános pontossági jelentéssel."
+      },
+      {
+        "id": "B",
+        "label": "Új szerelvényeket rendelsz, és az év végéig sorra átadod őket ünnepségekkel."
+      },
+      {
+        "id": "C",
+        "label": "A vasút állapotáért a korábbi kormányokat hibáztatod, a MÁV a régi keretből gazdálkodik."
+      },
+      {
+        "id": "D",
+        "label": "Néhány vonal üzemeltetését koncesszióba adod."
+      }
+    ]
+  },
+  {
+    "id": "ellenzeki_mezo",
+    "title": "Változik az ellenzéki mező",
+    "question": "2025. június 7-én a Momentum bejelenti, hogy nem indul a választáson, mert a kormányváltást akarja segíteni. A júniusi Medián-mérés 51–36-os TISZA-előnyt mutat a biztos szavazók között. Az ellenzéki verseny kétpólusúvá válik. Hogyan alkalmazkodsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Elfogadod a kétpólusú versenyt: minden üzenet a TISZA programjával való összevetésre épül."
+      },
+      {
+        "id": "B",
+        "label": "Olyan üzeneteket erősítesz, amelyek a kisebb ellenzéki pártokat tartják életben, hogy megosszák a kormányváltó szavazókat."
+      },
+      {
+        "id": "C",
+        "label": "A mérések hamisak, a TISZA-buborék ki fog pukkadni."
+      },
+      {
+        "id": "D",
+        "label": "Jobboldali üzenetekkel fordulsz a Mi Hazánk szavazói felé, hogy ne szivárogjanak el."
+      }
+    ]
+  },
+  {
+    "id": "tusvanyos",
+    "title": "Tusványos",
+    "question": "2025. július 26-án Tusványoson szólalsz fel. A párt a Harcosok Klubja után új kampányhálózatot vár tőled. Közben Magyar Péter Tokajból indult 80 napos országjárása minden héten új városokban jár. Mit jelentesz be?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Digitális Polgári Köröket, influencerekkel és országos online hálózattal."
+      },
+      {
+        "id": "B",
+        "label": "Nyílt lakossági fórumokat a körzetekben, képviselőkkel és miniszterekkel."
+      },
+      {
+        "id": "C",
+        "label": "A Harcosok Klubját és a DPK-t egyetlen mozgalommá egyesíted, közös vezetővel."
+      },
+      {
+        "id": "D",
+        "label": "Nem építesz új szervezetet, a meglévő helyi szervezeteket erősíted forrással."
+      }
+    ]
+  },
+  {
+    "id": "munkacs",
+    "title": "Munkács",
+    "question": "2025. augusztus 21-én orosz rakéták eltalálnak egy munkácsi civil üzemet, magyar dolgozók is megsérülnek. A háború közvetlenül Kárpátalján, a magyarlakta vidéken csap le. A kampányban a béke üzenete eddig a Fidesz egyik fő témája volt. Mit mondasz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Elítéled a támadást, segítséget küldesz Kárpátaljára, és a háborús üzenetet visszaveszed a kampányban."
+      },
+      {
+        "id": "B",
+        "label": "Elítéled, de a kampány fő üzenete marad: a TISZA háborúba vinné az országot."
+      },
+      {
+        "id": "C",
+        "label": "Óvatos külügyi nyilatkozatot adsz ki, a támadót nem nevezed meg."
+      },
+      {
+        "id": "D",
+        "label": "A választás tétjét nyíltan háború vagy béke kérdésévé teszed."
+      }
+    ]
+  },
+  {
+    "id": "kotcse",
+    "title": "Kötcsei kinevezés",
+    "question": "2025 szeptemberében Kötcsén kell bejelentened, ki vezeti a Fidesz kampányát. Orbán Balázs mozgalmi kampányt építene, Gyürk András a korábbi országos kampányok koordinátoraként a körzetekre és a kampányfegyelemre esküszik. Kinek adsz mandátumot?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Orbán Balázsnak: mozgalmi kampány, DPK, országos erődemonstrációk."
+      },
+      {
+        "id": "B",
+        "label": "Gyürk Andrásnak: körzeti kampány, helyi jelöltek, szigorú kampányfegyelem."
+      },
+      {
+        "id": "C",
+        "label": "Megosztott mandátum: Orbán Balázs az üzenetet, Gyürk András a körzeteket viszi."
+      },
+      {
+        "id": "D",
+        "label": "Te magad vezeted a kampányt, minden napi döntés hozzád kerül."
+      }
+    ]
+  },
+  {
+    "id": "bekemenet",
+    "title": "Október 23.",
+    "question": "2025. október 23-án a Fidesz Békemenetet, a TISZA Nemzeti Menetet szervez Budapesten. A sajtó a tömegek méretét fogja összevetni. Hogyan készülsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A lehető legnagyobb Békemenet, buszokkal az ország minden részéből."
+      },
+      {
+        "id": "B",
+        "label": "Kisebb budapesti ünnepség, helyette 106 körzeti ünnep a helyi jelöltekkel."
+      },
+      {
+        "id": "C",
+        "label": "Az ünnepi beszédben provokációnak nevezed a TISZA menetét."
+      },
+      {
+        "id": "D",
+        "label": "Elmarad a Békemenet: a kormány megemlékezik, a párt nem vonul."
+      }
+    ]
+  },
+  {
+    "id": "szazhat_nev",
+    "title": "Százhat név",
+    "question": "2025 novemberében a TISZA bemutatja egyéni jelöltjelöltjeit: polgármesterek, orvosok, tanárok, helyben ismert emberek. A Fidesz listáján sok a régi képviselő. A frakció tőled várja a döntést a jelöltekről. Mit teszel?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Előrehozod a cseréket: a gyenge, régi képviselők helyére helyben ismert jelöltek jönnek."
+      },
+      {
+        "id": "B",
+        "label": "A régi képviselők maradnak, a frakció egysége fontosabb."
+      },
+      {
+        "id": "C",
+        "label": "A TISZA jelöltjeinek múltját kutatjátok, a kormánysajtó egyenként támadja őket."
+      },
+      {
+        "id": "D",
+        "label": "Csak a legszorosabb körzetekben cserélsz jelöltet."
+      }
+    ]
+  },
+  {
+    "id": "szolo_utca",
+    "title": "A Szőlő utca",
+    "question": "2025 decemberében a Szőlő utcai javítóintézetben történt visszaélésekről újabb megrázó felvételek kerülnek nyilvánosságra. Magyar Péter december 13-ra tüntetést hirdet a gyermekvédelem állapota miatt. A kérdés most az, mit tud felmutatni a kormány Pécs óta. Hogyan válaszolsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Bemutatod a Pécs óta elkészült vizsgálat eredményeit és az új ellenőrzési rendet."
+      },
+      {
+        "id": "B",
+        "label": "A kormánysajtó és Menczer Tamás a tüntetés szervezőit támadja."
+      },
+      {
+        "id": "C",
+        "label": "Lemondatod az illetékes államtitkárt, és vállalod a politikai felelősséget."
+      },
+      {
+        "id": "D",
+        "label": "A javítóintézeteket a Belügyminisztériumhoz csatolod, rendőri vezetéssel."
+      }
+    ]
+  },
+  {
+    "id": "kongresszus",
+    "title": "Kongresszus",
+    "question": "2026. január 10-én a Fidesz kongresszusán bemutatod a 106 egyéni jelöltet. A párt a kampány fő ígéreteit is tőled várja. Napirenden van a fix 3 százalékos lakáshitel folytatása, az anyák szja-kedvezményének bővítése és a 14. havi nyugdíj. Miről szól a beszéd?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "A teljesítésről: kórházak és vasút számokkal, a jelöltek helyi vállalásokkal."
+      },
+      {
+        "id": "B",
+        "label": "Bejelented a 14. havi nyugdíjat, az anyák szja-kedvezményét és a lakáshitel folytatását."
+      },
+      {
+        "id": "C",
+        "label": "Háború vagy béke: a kongresszus egyetlen témája."
+      },
+      {
+        "id": "D",
+        "label": "Az ellenzéki programot bírálod, saját vállalás nincs."
+      }
+    ]
+  },
+  {
+    "id": "elszamolas",
+    "title": "Mit sikerült megcsinálni?",
+    "question": "2026. február 7-én a TISZA bemutatja a „Működő és Emberséges Magyarország” programját. A kampány innentől arról szól, mi volt elvégezhető 2024 óta, és mi maradt ígéret. Az újságírók a kórházakról, a vasútról és a gyermekvédelemről kérdeznek. Hogyan felelsz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Számokkal elszámolsz: mi készült el a kórházakban, a vasúton és a gyermekvédelemben."
+      },
+      {
+        "id": "B",
+        "label": "A megélhetési vállalásokra helyezed a hangsúlyt: nyugdíj, családi adókedvezmény, lakáshitel."
+      },
+      {
+        "id": "C",
+        "label": "Ellentámadás: a TISZA programja szerinted adóemelési terv."
+      },
+      {
+        "id": "D",
+        "label": "Elismered a lemaradást, és új határidőket vállalsz."
+      }
+    ]
+  },
+  {
+    "id": "vezetek",
+    "title": "A vezeték",
+    "question": "2026 februárjának végén leáll a Barátság kőolajvezeték, a közel-keleti háború miatt megugranak az energiaárak. Az ellátás biztonsága valódi kormányzati feladat. A kampányban a háború és az energia lesz a fő téma. Mit tesz a kormány?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Válságstábot hívsz össze, felszabadítod a tartalékokat, és naponta nyíltan tájékoztatsz."
+      },
+      {
+        "id": "B",
+        "label": "Ársapkát vezetsz be, és a leállás ukrán felelősségét hangsúlyozod."
+      },
+      {
+        "id": "C",
+        "label": "A válságot Brüsszelre és a TISZA-ra fogod."
+      },
+      {
+        "id": "D",
+        "label": "Gyorsított bővítést rendelsz el az adriai vezetéken, diverzifikációs csomaggal."
+      }
+    ]
+  },
+  {
+    "id": "marcius_15",
+    "title": "Március 15.",
+    "question": "2026. március 15-én a Fidesz és a TISZA párhuzamos tömegrendezvényen mutat erőt Budapesten. Négy hét van hátra. A stáb megosztott: a biztos tábor mozgósítására vagy a még nyitott egyéni körzetekre menjen az utolsó hetek energiája? Egy régi kapcsolat szerint a Mi Hazánk vezetőivel is lehetne beszélni a szoros körzetekről. Mit döntesz?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Mozgósítás: a hajrá a biztos táborról szól."
+      },
+      {
+        "id": "B",
+        "label": "A nyitott körzetek: a miniszterek a billegő körzetekben kampányolnak."
+      },
+      {
+        "id": "C",
+        "label": "Nemzetközi szövetségesek szólalnak fel a Kossuth téren."
+      },
+      {
+        "id": "D",
+        "label": "Csendes egyeztetést kezdesz Toroczkai Lászlóval a szoros körzetekről."
+      }
+    ]
+  },
+  {
+    "id": "utolso_vasarnap",
+    "title": "Az utolsó vasárnap",
+    "question": "2026. április 7-én Budapestre látogat J. D. Vance amerikai alelnök, és melletted áll ki. Több mérés nagy TISZA-előnyt mutat. Már csak napok vannak hátra. Ki tud még választókat vinni a szavazóhelyiségig?",
+    "possibleAnswers": [
+      {
+        "id": "A",
+        "label": "Közös nagygyűlés Vance-szel Budapesten."
+      },
+      {
+        "id": "B",
+        "label": "Az utolsó napok a billegő körzeteké, házról házra."
+      },
+      {
+        "id": "C",
+        "label": "Záró tévéinterjú a két év kormányzati munkájáról, új ígéret nélkül."
+      },
+      {
+        "id": "D",
+        "label": "Utolsó hétvégi támadó kampány Magyar Péter ellen."
+      }
+    ]
+  }
+]

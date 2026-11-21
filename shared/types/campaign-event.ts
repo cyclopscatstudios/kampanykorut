@@ -14,6 +14,15 @@ export interface WithdrawCandidateEffect {
   redistribution: Record<string, number>;
 }
 
+// Withdraws the party's candidate only in districts where the two named parties
+// are within `maxGapPercent` points of each other; its list stays in the race.
+export interface WithdrawDistrictCandidatesEffect {
+  type: "withdraw-district-candidates";
+  partyId: string;
+  closeRace: { between: [string, string]; maxGapPercent: number };
+  redistribution: Record<string, number>;
+}
+
 // `from` is the share of each source party's votes the new party takes in every
 // district; `fromByMegye` overrides it county by county (keyed by megyekod).
 export interface SplitPartyEffect {
@@ -40,6 +49,7 @@ export type RelationEffect = SetRelationEffect | ShiftRelationEffect;
 export type CampaignEventEffect =
   | RawEffect
   | WithdrawCandidateEffect
+  | WithdrawDistrictCandidatesEffect
   | SplitPartyEffect
   | RelationEffect;
 
