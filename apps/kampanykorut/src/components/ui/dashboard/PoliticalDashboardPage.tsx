@@ -22,6 +22,7 @@ import {
 } from "@/shared/domain";
 import { CampaignState } from "@/shared/types";
 import { Button } from "../../../../../../shared/ui/Button";
+import { useFollowedLine } from "../../../debug/cheat/winningLines";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { useParams } from "../../../hooks/useParamsHook";
 import { getCampaignBadgeInfo } from "../gameplay/campaignBadge.utils";
@@ -88,6 +89,7 @@ export function PoliticalDashboardPage() {
         : undefined,
     [state, config, hasFocuses, answers],
   );
+  const followedLine = useFollowedLine(state ?? undefined);
 
   useEffect(() => {
     if (state && state.politicalDashboard !== stored?.politicalDashboard) {
@@ -185,6 +187,7 @@ export function PoliticalDashboardPage() {
           {tab === "focuses" && focusOverview && (
             <FocusTab
               overview={focusOverview}
+              recommendedFocusIds={followedLine?.focuses}
               onSelect={(focusId) => {
                 const next = selectFocus(state, config, focusId);
                 if (next === state) {

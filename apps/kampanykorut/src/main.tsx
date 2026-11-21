@@ -8,6 +8,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Toaster } from "react-hot-toast";
 import { RouterProvider } from "react-router-dom";
+import { initCheatConsole } from "./debug/cheat/cheatConsole";
 import { initDevApi } from "./initApi";
 import { initAnalytics } from "./logic/infra/posthog/posthog";
 import { initStorageErrorNotifier } from "./logic/infra/storageErrorNotifier";
@@ -17,6 +18,10 @@ initStorageErrorNotifier();
 
 if (import.meta.env.DEV || import.meta.env.PLAYWRIGHT === "true") {
   initDevApi();
+}
+
+if (import.meta.env.VITE_ENVIRONMENT !== "production") {
+  initCheatConsole();
 }
 
 if (import.meta.env.PROD && import.meta.env.VITE_ENVIRONMENT === "production") {
