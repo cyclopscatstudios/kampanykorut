@@ -6,7 +6,7 @@
       "title": "A magyar Jeanne d'Arc",
       "summary": "Építsd a kampányt Kéthly Anna személyére",
       "description": "Böhm Vilmos a magyar politika Jeanne d'Arcjának nevezte Kéthly Annát. 1948-ban nemet mondott, és börtönt viselt érte. Tedd a kampány középpontjába a személyét: a népszerűsége gyorsan nő, de minden támadás egyenesen őt éri, és Nagy Imrével személyes párbaj lesz belőle.",
-      "icon": "/images/1957_forradalom-oroksege/jeanne_darc.png",
+      "icon": "/images/1957_forradalom-oroksege/jeanne_darc.webp",
       "completeWhen": {
         "and": [
           {
@@ -69,7 +69,7 @@
       "title": "A párt az erő",
       "summary": "Építs szervezetet, ne személyi kultuszt",
       "description": "A szociáldemokrácia nem egy ember mozgalma. Állítsd talpra a gyári szervezeteket, a szakszervezeti csoportokat és a vezetőséget Kelemen Gyulával és Fischer Józseffel. Lassabban nő a népszerűség, de a párt kormányzóképesnek látszik, és egy Kéthlyt érő támadás kevésbé árt. Vigyázz, hogy a fúzió régi hívei ne szakítsák ketté a pártot.",
-      "icon": "/images/1957_forradalom-oroksege/part_az_ero.png",
+      "icon": "/images/1957_forradalom-oroksege/part_az_ero.webp",
       "completeWhen": {
         "and": [
           {
@@ -119,7 +119,7 @@
       "title": "Jóléti állam",
       "summary": "Lakás, nyugdíj, bölcsőde, osztrák mintára",
       "description": "Szociáldemokrácia, ahogy Bécsben és Stockholmban: vegyes gazdaság, szabad szakszervezetek, lakásépítés és nyugdíj. A városi középosztály és a tisztviselők is felfigyelnek rád, de a kisgazdák szerint az ő szavazóikat csábítod, és a munkástanácsok gyanakodnak.",
-      "icon": "/images/1957_forradalom-oroksege/joleti_allam.png",
+      "icon": "/images/1957_forradalom-oroksege/joleti_allam.webp",
       "completeWhen": {
         "and": [
           {
@@ -191,7 +191,7 @@
       "title": "A gyár a munkásé",
       "summary": "Demokratikus szocializmus a munkástanácsokkal",
       "description": "A forradalom gyáraiban a munkástanácsok vették át az irányítást. Legyen a programod a demokratikus szocializmus: közösségi tulajdon, munkásönigazgatás, szabad választások. Az MSZMP munkásszavazói átjöhetnek hozzád, de a polgárok és a Nyugat gyanakszik.",
-      "icon": "/images/1957_forradalom-oroksege/gyar_a_munkase.png",
+      "icon": "/images/1957_forradalom-oroksege/gyar_a_munkase.webp",
       "completeWhen": {
         "and": [
           {
@@ -278,7 +278,7 @@
       "title": "Harmadik erő",
       "summary": "Nem a kommunisták, nem a régi világ",
       "description": "Bibó Istvánnal közös demokratikus centrum: a földreform és a nagyipar marad, de a szabadság és a jogállam az első. Kevesebb a belharc az MSZMP-vel, és a Petőfi Párt erős partner lesz, a saját szavazótáborod viszont lassabban nő.",
-      "icon": "/images/1957_forradalom-oroksege/harmadik_ero.png",
+      "icon": "/images/1957_forradalom-oroksege/harmadik_ero.webp",
       "completeWhen": {
         "and": [
           {
@@ -337,7 +337,7 @@
       "title": "Az igazi baloldal",
       "summary": "Versenyezz nyíltan az MSZMP-vel a munkásokért",
       "description": "Mi nem ültünk az ÁVH mellett. Versenyezz nyíltan Nagy Imrével a munkások szavazataiért: itt jön a legtöbb szavazat, de itt a legnagyobb a veszély is. Ha a két munkáspárt testvérharca elmérgesedik, a kisgazdák nevetnek a markukba.",
-      "icon": "/images/1957_forradalom-oroksege/igazi_baloldal.png",
+      "icon": "/images/1957_forradalom-oroksege/igazi_baloldal.webp",
       "completeWhen": {
         "and": [
           {
@@ -379,7 +379,7 @@
       "title": "Az első asszony",
       "summary": "Kéthly Anna miniszterelnök-jelölt",
       "description": "Jelentsd be, hogy Kéthly Anna lehet Magyarország első női miniszterelnöke. A nők és a változást akarók melléd állnak, de csak akkor hiszik el, ha a párt kormányzóképesnek látszik. Ha nem, a merész mondatból komolytalan szlogen lesz.",
-      "icon": "/images/1957_forradalom-oroksege/elso_asszony.png",
+      "icon": "/images/1957_forradalom-oroksege/elso_asszony.webp",
       "completeWhen": {
         "and": [
           {
@@ -453,7 +453,7 @@
       "title": "A stabilitás pártja",
       "summary": "Csak velünk lesz stabil kormány",
       "description": "A hajrában azt üzend, hogy a forradalom után az országnak nyugalom kell, és csak a szociáldemokraták vezetésével lesz tartós, kiszámítható kormány. Ehhez megbízható szövetséges és kormányzóképes párt kell. A bizonytalanok megnyugszanak, de a kampány így kevésbé lelkesít.",
-      "icon": "/images/1957_forradalom-oroksege/merlegnyelv.png",
+      "icon": "/images/1957_forradalom-oroksege/merlegnyelv.webp",
       "completeWhen": {
         "and": [
           {
@@ -601,7 +601,7 @@
       "id": "nagy_imre",
       "name": "Nagy Imre",
       "groupId": "partok",
-      "icon": "/images/1957_forradalom-oroksege/nagy_imre_badge.png",
+      "icon": "/images/1957_forradalom-oroksege/nagy_imre_badge.webp",
       "tone": "calm",
       "label": "Versenytárs",
       "description": "A miniszterelnök és kormánytársad, de a munkásszavazókért veled versenyez.",
@@ -616,7 +616,7 @@
       "id": "kisgazdak",
       "name": "Kovács Béla",
       "groupId": "partok",
-      "icon": "/images/1957_forradalom-oroksege/kovacs_bela_badge.png",
+      "icon": "/images/1957_forradalom-oroksege/kovacs_bela_badge.webp",
       "tone": "calm",
       "label": "Tisztel",
       "description": "A Kisgazdapárt vezetője. 1947-ben egy oldalon álltatok a szalámitaktika ellen.",
@@ -631,7 +631,7 @@
       "id": "bibo",
       "name": "Bibó István",
       "groupId": "partok",
-      "icon": "/images/1957_forradalom-oroksege/bibo_istvan.png",
+      "icon": "/images/1957_forradalom-oroksege/bibo_istvan.webp",
       "tone": "good",
       "label": "Rokon lélek",
       "description": "A Petőfi Párt államminisztere. A jogállam és a harmadik út embere.",
@@ -646,7 +646,7 @@
       "id": "marosan",
       "name": "Marosán és a fúziósok",
       "groupId": "partok",
-      "icon": "/images/1957_forradalom-oroksege/marosan_gyorgy_badge.png",
+      "icon": "/images/1957_forradalom-oroksege/marosan_gyorgy_badge.webp",
       "tone": "calm",
       "label": "Kivár",
       "description": "Az 1948-as fúzió régi hívei. Népszerűek a gyárakban, és figyelik, merre viszed a pártot.",
@@ -661,7 +661,7 @@
       "id": "baloldal",
       "name": "Baloldali belharc",
       "groupId": "kampany",
-      "icon": "/images/1957_forradalom-oroksege/baloldali_belharc.png",
+      "icon": "/images/1957_forradalom-oroksege/baloldali_belharc.webp",
       "tone": "calm",
       "label": "Verseny",
       "description": "Hogyan versenyez a két munkáspárt. Ha elmérgesedik, a kisgazdák nyernek rajta.",
@@ -676,7 +676,7 @@
       "id": "kormanyzokepesseg",
       "name": "Kormányzóképesség",
       "groupId": "kampany",
-      "icon": "/images/1957_forradalom-oroksege/kormanyzokepesseg.png",
+      "icon": "/images/1957_forradalom-oroksege/kormanyzokepesseg.webp",
       "tone": "tense",
       "label": "Kis párt",
       "description": "Elhiszik-e a választók, hogy az SZDP kormányozni tud.",
@@ -691,7 +691,7 @@
       "id": "munkastanacsok",
       "name": "Munkástanácsok",
       "groupId": "tarsadalom",
-      "icon": "/images/1957_forradalom-oroksege/munkastancsok_badge.png",
+      "icon": "/images/1957_forradalom-oroksege/munkastancsok_badge.webp",
       "tone": "calm",
       "label": "Reménykednek",
       "description": "A gyárak munkástanácsai azt figyelik, ki áll ki értük.",
@@ -706,7 +706,7 @@
       "id": "noi_szavazok",
       "name": "Női szavazók",
       "groupId": "tarsadalom",
-      "icon": "/images/1957_forradalom-oroksege/noi_szavazok.png",
+      "icon": "/images/1957_forradalom-oroksege/noi_szavazok.webp",
       "tone": "calm",
       "label": "Kivárnak",
       "description": "A választók többsége nő. Figyelik, mit kezd egy asszony a politikában.",
@@ -721,7 +721,7 @@
       "id": "corvin",
       "name": "Corvin köz",
       "groupId": "tarsadalom",
-      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.png",
+      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.webp",
       "tone": "tense",
       "label": "Türelmetlen",
       "description": "Elszámoltatást követelnek a felkelők.",
@@ -736,7 +736,7 @@
       "id": "moszkva",
       "name": "Moszkva",
       "groupId": "kulfold",
-      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png",
+      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.webp",
       "tone": "tense",
       "label": "Gyanakvó",
       "description": "1954-ben kémként ítéltek el. Moszkva ma is a Labour Party emberét látja benned.",
@@ -751,7 +751,7 @@
       "id": "nyugat",
       "name": "Testvérpártok",
       "groupId": "kulfold",
-      "icon": "/images/1957_forradalom-oroksege/nyugat.png",
+      "icon": "/images/1957_forradalom-oroksege/nyugat.webp",
       "tone": "good",
       "label": "Segítenek",
       "description": "A Szocialista Internacionálé pártjai, az osztrák, a brit és a skandináv szociáldemokraták.",

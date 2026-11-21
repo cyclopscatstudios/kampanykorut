@@ -26,6 +26,7 @@ export function ImageWrapper({
     >
       <img
         src={src}
+        decoding="async"
         className={classNames(
           "max-w-full max-h-full object-contain",
           className,

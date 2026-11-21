@@ -34,6 +34,10 @@ export function Icon({
         src={name}
         alt=""
         aria-hidden
+        loading="lazy"
+        decoding="async"
+        width={typeof size === "number" ? size : undefined}
+        height={typeof size === "number" ? size : undefined}
         className={classNames(
           "inline-block h-[1em] w-[1em] object-contain align-[-0.125em]",
           iconSizeClass,

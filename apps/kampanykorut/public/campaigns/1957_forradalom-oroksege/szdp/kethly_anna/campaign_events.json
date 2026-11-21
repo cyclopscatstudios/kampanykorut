@@ -2700,8 +2700,8 @@
     "announcement": {
       "title": "Kettészakadt az MSZMP",
       "body": "A gyárakban a szociáldemokraták vitték el az MSZMP munkásszavazóit. Kádár János szerint Nagy Imre reformjai szétverték a pártot, és ultimátumot adott: nem kapott választ, ezért híveivel Magyar Munkáspárt néven önálló listát állít.",
-      "icon": "/images/1957_forradalom-oroksege/kadar_badge.png",
-      "imageUri": "/images/1957_forradalom-oroksege/mszmp_szakadas.jpg",
+      "icon": "/images/1957_forradalom-oroksege/kadar_badge.webp",
+      "imageUri": "/images/1957_forradalom-oroksege/mszmp_szakadas.webp",
       "major": true
     }
   },
@@ -2760,8 +2760,8 @@
     "announcement": {
       "title": "Marosán Kádárhoz állt",
       "body": "Marosán György és az 1948-as fúzió régi hívei Kádár János Magyar Munkáspártjába léptek át. Csepelen és Diósgyőrben több szociáldemokrata szervezet követi őket.",
-      "icon": "/images/1957_forradalom-oroksege/kadar_badge.png",
-      "imageUri": "/images/1957_forradalom-oroksege/kadar_event.png",
+      "icon": "/images/1957_forradalom-oroksege/kadar_badge.webp",
+      "imageUri": "/images/1957_forradalom-oroksege/kadar_event.webp",
       "major": true
     }
   },
@@ -2860,8 +2860,8 @@
     "announcement": {
       "title": "Kettészakadt a Kisgazdapárt",
       "body": "Sulyok Dezső és a kisgazda jobbszárny szerint Kovács Béla a szociáldemokratákkal összefogva elárulta a polgárokat. Magyar Szabadságpárt néven önálló listát állítanak. A szakadás után sok baloldali kisgazda gazda a Petőfi Párthoz pártol át.",
-      "icon": "/images/1957_forradalom-oroksege/sulyok_dezso_badge.png",
-      "imageUri": "/images/1957_forradalom-oroksege/fkgp_szakadas.png",
+      "icon": "/images/1957_forradalom-oroksege/sulyok_dezso_badge.webp",
+      "imageUri": "/images/1957_forradalom-oroksege/fkgp_szakadas.webp",
       "major": true
     }
   },
@@ -2954,7 +2954,7 @@
     "announcement": {
       "title": "Két munkáspárt veszekszik, a gazda nevet",
       "body": "Az SZDP és az MSZMP nyílt háborúja elriasztja a bizonytalanokat. Amíg a két munkáspárt egymást vádolja, a kisgazdák csendben gyűjtik a szavazatokat: a felmérések szerint mindkét munkáspárt veszített.",
-      "imageUri": "/images/1957_forradalom-oroksege/polgari_blokk_siker.png",
+      "imageUri": "/images/1957_forradalom-oroksege/polgari_blokk_siker.webp",
       "icon": "emoji-angry"
     }
   },
@@ -3190,8 +3190,8 @@
     "announcement": {
       "title": "Kéthly-láz",
       "body": "Kéthly Anna arcképe minden gyárkapun ott van. A börtönt megjárt asszonyt a munkások és a diákok is ünneplik, Nagy Imre emberei pedig idegesen figyelik.",
-      "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.png",
-      "icon": "/images/1957_forradalom-oroksege/kethly_badge.png"
+      "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.webp",
+      "icon": "/images/1957_forradalom-oroksege/kethly_badge.webp"
     }
   },
   {
@@ -3277,7 +3277,7 @@
     "announcement": {
       "title": "Áll a szervezet",
       "body": "Kelemen Gyula jelenti: a párt kétszáz gyárban és minden megyeszékhelyen újra működik. A választók látják, hogy a szociáldemokraták mögött nemcsak egy ember áll.",
-      "imageUri": "/images/1957_forradalom-oroksege/partszervezet.png",
+      "imageUri": "/images/1957_forradalom-oroksege/partszervezet.webp",
       "icon": "diagram-3-fill"
     }
   },
@@ -3319,7 +3319,7 @@
     "announcement": {
       "title": "Bécsi mintára",
       "body": "Az SZDP bemutatta lakás- és nyugdíjprogramját. A tisztviselők, a tanárok és a nyugdíjasok is felfigyelnek, és a kisgazdák városi szavazói közül is sokan átjönnek.",
-      "icon": "/images/1957_forradalom-oroksege/joleti_allam_siker.png"
+      "icon": "/images/1957_forradalom-oroksege/joleti_allam_siker.webp"
     }
   },
   {
@@ -3371,7 +3371,7 @@
     "announcement": {
       "title": "A munkástanácsok a szociáldemokraták mellett",
       "body": "A Nagy-budapesti Központi Munkástanács nyilatkozatban áll ki az SZDP programja mellett. Az MSZMP gyári szervezeteiben sokan elbizonytalanodnak.",
-      "imageUri": "/images/1957_forradalom-oroksege/gyar_a_munkase_siker.png",
+      "imageUri": "/images/1957_forradalom-oroksege/gyar_a_munkase_siker.webp",
       "icon": "gear-wide-connected"
     }
   },
@@ -3420,8 +3420,8 @@
     "announcement": {
       "title": "Kéthly és Bibó: a harmadik út",
       "body": "A szociáldemokraták és a Petőfi Párt közös nagygyűlést tart. Sok kiábrándult kommunista és csalódott kisgazda szerint ők jelentik a jövőt.",
-      "imageUri": "/images/1957_forradalom-oroksege/harmadik_ero_siker_event.png",
-      "icon": "/images/1957_forradalom-oroksege/harmadik_ero_siker.png"
+      "imageUri": "/images/1957_forradalom-oroksege/harmadik_ero_siker_event.webp",
+      "icon": "/images/1957_forradalom-oroksege/harmadik_ero_siker.webp"
     }
   },
   {
@@ -3534,8 +3534,8 @@
     "announcement": {
       "title": "Az első asszony",
       "body": "Az SZDP plakátjain egyetlen mondat áll: Kéthly Anna miniszterelnök. Az ország először vitatkozik arról, vezetheti-e nő a kormányt.",
-      "imageUri": "/images/1957_forradalom-oroksege/kethly_hazatert.jpg",
-      "icon": "/images/1957_forradalom-oroksege/elso_asszony.png"
+      "imageUri": "/images/1957_forradalom-oroksege/kethly_hazatert.webp",
+      "icon": "/images/1957_forradalom-oroksege/elso_asszony.webp"
     }
   },
   {
@@ -3621,8 +3621,8 @@
     "announcement": {
       "title": "A Corvin köz árulót kiált",
       "body": "A felkelők röplapjai szerint a szociáldemokraták elárulták a forradalmat. A diákok és a fiatal munkások egy része elfordul a párttól.",
-      "imageUri": "/images/1957_forradalom-oroksege/corvin_koz_tuntetes.jpg",
-      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.png"
+      "imageUri": "/images/1957_forradalom-oroksege/corvin_koz_tuntetes.webp",
+      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.webp"
     }
   },
   {
@@ -3660,8 +3660,8 @@
     "announcement": {
       "title": "Általános sztrájk",
       "body": "A munkástanácsok általános sztrájkot hirdettek, mert szerintük a pártok cserben hagyták őket. A munkáspártként induló SZDP-t különösen keményen bírálják.",
-      "imageUri": "/images/1957_forradalom-oroksege/sztrajk.png",
-      "icon": "/images/1957_forradalom-oroksege/munkastancsok_badge.png"
+      "imageUri": "/images/1957_forradalom-oroksege/sztrajk.webp",
+      "icon": "/images/1957_forradalom-oroksege/munkastancsok_badge.webp"
     }
   },
   {
@@ -3698,8 +3698,8 @@
     "announcement": {
       "title": "Moszkva lelassítja a szénszállítást",
       "body": "A szovjet kormány a vasúti nehézségekre hivatkozva felfüggeszti a szénszállítást. A Pravda szerint a magyar szociáldemokraták a Labour Party utasításait követik.",
-      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.png",
-      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.png"
+      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.webp",
+      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.webp"
     }
   },
   {
@@ -3742,8 +3742,8 @@
     "announcement": {
       "title": "A testvérpártok segítenek",
       "body": "Az osztrák és a skandináv szociáldemokraták közvetítésével nyugati hitel érkezik lakásépítésre. Az SZDP-ről kiderül, hogy kapcsolatai is vannak, nemcsak elvei.",
-      "imageUri": "/images/1957_forradalom-oroksege/nyugati_hitel.png",
-      "icon": "/images/1957_forradalom-oroksege/nyugat.png"
+      "imageUri": "/images/1957_forradalom-oroksege/nyugati_hitel.webp",
+      "icon": "/images/1957_forradalom-oroksege/nyugat.webp"
     }
   }
 ]

@@ -10,8 +10,8 @@
     "description": "Alternatív történelem: 1956-ban elmarad a szovjet invázió, és 1957 őszén szabad választás jön. Nagy Imre MSZMP-jével kell megnyerned az első szabad választást, és meg kell őrizned a forradalom örökségét.",
     "year": 1957,
     "tags": ["alternate-history"],
-    "campaignBanner": "default-banner.png",
-    "thinCampaignBanner": "default-banner-thin.png",
+    "campaignBanner": "default-banner.webp",
+    "thinCampaignBanner": "default-banner-thin.webp",
     "status": "published",
     "addedAt": "2026-11-09"
   },
