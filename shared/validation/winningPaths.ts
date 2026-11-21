@@ -85,13 +85,26 @@ function partnerSets(ids: string[]): string[][] {
   return sets;
 }
 
-export function loadSide(campaign: string, side: string) {
+function campaignFiles(campaign: string, side: string) {
   const root = join(campaignsDir, campaign);
   const read = (file: string) =>
     JSON.parse(readFileSync(join(root, file), "utf8"));
   const { files } = read("manifest.json");
   const [party, candidate] = side.split("/");
-  const sideFiles = files.playableSides[party][candidate];
+  return {
+    read,
+    files,
+    party,
+    candidate,
+    sideFiles: files.playableSides[party][candidate],
+  };
+}
+
+export function loadSide(campaign: string, side: string) {
+  const { read, files, party, candidate, sideFiles } = campaignFiles(
+    campaign,
+    side,
+  );
 
   const districts = read(files.candidateListData);
   const electionConfig = read(files.electionConfig);
@@ -285,4 +298,77 @@ export function improveLine(
     if (best === base) break;
   }
   return best;
+}
+
+export function renderWinningPaths(fixture: WinningPathsFile): string {
+  const out: string[] = [];
+  const sides = [...new Set(fixture.lines.map((l) => l.side))];
+  const first = campaignFiles(fixture.campaign, sides[0]);
+  const electionConfig = first.read(first.files.electionConfig);
+  const parties = new Map<
+    string,
+    { name: string; shortName?: string; leader?: string }
+  >(electionConfig.parties.map((p: { id: string }) => [p.id, p]));
+  const partyName = (id: string) =>
+    parties.get(id)?.shortName ?? parties.get(id)?.name ?? id;
+
+  out.push(
+    `# ${electionConfig.title ?? fixture.campaign}: győztes utak`,
+    "",
+    "Minden fókuszúthoz egy válaszsor, amellyel mind a 4 fókusz teljesül, és létrejön a kormány. " +
+      "A `winningPaths.test.ts` ezeket játssza végig. Hangolás után: `UPDATE_WINNING_PATHS=1 yarn test winningPaths`.",
+  );
+
+  for (const sideId of sides) {
+    const { read, sideFiles, party } = campaignFiles(fixture.campaign, sideId);
+    const questions = new Map<string, string>(
+      read(sideFiles.questions).map((q: { id: string; title: string }) => [
+        q.id,
+        q.title,
+      ]),
+    );
+    const focuses = new Map<string, string>(
+      read(sideFiles.politicalConfig).focuses.map(
+        (f: { id: string; title: string }) => [f.id, f.title],
+      ),
+    );
+    out.push(
+      "",
+      `## ${partyName(party)}: ${parties.get(party)?.leader ?? sideId}`,
+    );
+
+    const groups = new Map<string, WinningLine[]>();
+    for (const line of fixture.lines.filter((l) => l.side === sideId)) {
+      const key = Object.keys(line.answers).join(",");
+      groups.set(key, [...(groups.get(key) ?? []), line]);
+    }
+    for (const [key, lines] of groups) {
+      const order = key.split(",");
+      out.push(
+        "",
+        order.map((q, i) => `${i + 1}. ${questions.get(q) ?? q}`).join(" · "),
+        "",
+        "| Út | Partner | Válaszok |",
+        "| --- | --- | --- |",
+      );
+      for (const line of lines) {
+        const path = line.focuses.map((f) => focuses.get(f) ?? f).join(" → ");
+        const government = line.governments
+          .map((g) =>
+            g.partners.length
+              ? g.partners
+                  .map((id) => parties.get(id)?.leader ?? partyName(id))
+                  .join(" + ")
+              : "önálló többség",
+          )
+          .join(" vagy ");
+        const answers = order
+          .map((q) => line.answers[q])
+          .join("")
+          .replace(/(.{5})(?=.)/g, "$1 ");
+        out.push(`| ${path} | ${government} | \`${answers}\` |`);
+      }
+    }
+  }
+  return `${out.join("\n")}\n`;
 }

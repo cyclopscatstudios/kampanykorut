@@ -10,12 +10,7 @@
         "semleges_hid",
         "baloldali_kormany"
       ],
-      "governments": [
-        {
-          "partners": ["szdp"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["szdp"], "outcome": "coalition" }],
       "answers": {
         "igazsagtetel": "A",
         "nemzetorseg": "A",
@@ -53,12 +48,7 @@
         "semleges_hid",
         "nemzeti_egyseg"
       ],
-      "governments": [
-        {
-          "partners": ["szdp"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["szdp"], "outcome": "coalition" }],
       "answers": {
         "igazsagtetel": "A",
         "nemzetorseg": "A",
@@ -96,12 +86,7 @@
         "nyitas_nyugat",
         "baloldali_kormany"
       ],
-      "governments": [
-        {
-          "partners": ["szdp"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["szdp"], "outcome": "coalition" }],
       "answers": {
         "igazsagtetel": "A",
         "nemzetorseg": "A",
@@ -139,12 +124,7 @@
         "nyitas_nyugat",
         "nemzeti_egyseg"
       ],
-      "governments": [
-        {
-          "partners": ["szdp"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["szdp"], "outcome": "coalition" }],
       "answers": {
         "igazsagtetel": "A",
         "nemzetorseg": "A",
@@ -182,12 +162,7 @@
         "semleges_hid",
         "sajat_tobbseg"
       ],
-      "governments": [
-        {
-          "partners": [],
-          "outcome": "single-majority"
-        }
-      ],
+      "governments": [{ "partners": [], "outcome": "single-majority" }],
       "answers": {
         "igazsagtetel": "A",
         "nemzetorseg": "A",
@@ -226,14 +201,8 @@
         "bibo_utja"
       ],
       "governments": [
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        },
-        {
-          "partners": ["szdp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi"], "outcome": "coalition" },
+        { "partners": ["szdp"], "outcome": "coalition" }
       ],
       "answers": {
         "igazsagtetel": "A",
@@ -273,14 +242,8 @@
         "bibo_utja"
       ],
       "governments": [
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        },
-        {
-          "partners": ["szdp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi"], "outcome": "coalition" },
+        { "partners": ["szdp"], "outcome": "coalition" }
       ],
       "answers": {
         "igazsagtetel": "A",
@@ -319,12 +282,7 @@
         "semleges_hid",
         "baloldali_kormany"
       ],
-      "governments": [
-        {
-          "partners": ["szdp"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["szdp"], "outcome": "coalition" }],
       "answers": {
         "igazsagtetel": "A",
         "nemzetorseg": "A",
@@ -362,12 +320,7 @@
         "semleges_hid",
         "nemzeti_egyseg"
       ],
-      "governments": [
-        {
-          "partners": ["szdp"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["szdp"], "outcome": "coalition" }],
       "answers": {
         "igazsagtetel": "A",
         "nemzetorseg": "A",
@@ -405,12 +358,7 @@
         "nyitas_nyugat",
         "baloldali_kormany"
       ],
-      "governments": [
-        {
-          "partners": ["szdp"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["szdp"], "outcome": "coalition" }],
       "answers": {
         "igazsagtetel": "A",
         "nemzetorseg": "A",
@@ -448,12 +396,7 @@
         "nyitas_nyugat",
         "nemzeti_egyseg"
       ],
-      "governments": [
-        {
-          "partners": ["szdp"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["szdp"], "outcome": "coalition" }],
       "answers": {
         "igazsagtetel": "A",
         "nemzetorseg": "A",
@@ -491,12 +434,7 @@
         "nyitas_nyugat",
         "sajat_tobbseg"
       ],
-      "governments": [
-        {
-          "partners": [],
-          "outcome": "single-majority"
-        }
-      ],
+      "governments": [{ "partners": [], "outcome": "single-majority" }],
       "answers": {
         "igazsagtetel": "A",
         "nemzetorseg": "D",
@@ -535,10 +473,7 @@
         "elegtetel_1947"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "B",
@@ -577,10 +512,7 @@
         "nem_bosszut_allunk"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "A",
@@ -619,10 +551,7 @@
         "elegtetel_1947"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "A",
@@ -661,10 +590,7 @@
         "nem_bosszut_allunk"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "A",
@@ -703,10 +629,7 @@
         "elegtetel_1947"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "B",
@@ -745,10 +668,7 @@
         "nem_bosszut_allunk"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "A",
@@ -787,10 +707,7 @@
         "elegtetel_1947"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "B",
@@ -829,10 +746,7 @@
         "nem_bosszut_allunk"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "A",
@@ -871,10 +785,7 @@
         "elegtetel_1947"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "B",
@@ -913,10 +824,7 @@
         "nem_bosszut_allunk"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "A",
@@ -955,10 +863,7 @@
         "elegtetel_1947"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "A",
@@ -997,10 +902,7 @@
         "nem_bosszut_allunk"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "A",
@@ -1039,10 +941,7 @@
         "elegtetel_1947"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "B",
@@ -1081,10 +980,7 @@
         "nem_bosszut_allunk"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "A",
@@ -1123,10 +1019,7 @@
         "elegtetel_1947"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "B",
@@ -1165,10 +1058,7 @@
         "nem_bosszut_allunk"
       ],
       "governments": [
-        {
-          "partners": ["petofi", "dnp"],
-          "outcome": "coalition"
-        }
+        { "partners": ["petofi", "dnp"], "outcome": "coalition" }
       ],
       "answers": {
         "aldozatok_partja": "A",
@@ -1206,12 +1096,7 @@
         "harmadik_ero",
         "elso_asszony"
       ],
-      "governments": [
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["petofi"], "outcome": "coalition" }],
       "answers": {
         "hazateres_becsbol": "B",
         "ki_volt_a_birad": "A",
@@ -1243,12 +1128,7 @@
       "name": "A magyar Jeanne d'Arc → Jóléti állam → Harmadik erő → A stabilitás pártja",
       "side": "szdp/kethly_anna",
       "focuses": ["jeanne_darc", "joleti_allam", "harmadik_ero", "merlegnyelv"],
-      "governments": [
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["petofi"], "outcome": "coalition" }],
       "answers": {
         "hazateres_becsbol": "B",
         "ki_volt_a_birad": "A",
@@ -1286,14 +1166,8 @@
         "elso_asszony"
       ],
       "governments": [
-        {
-          "partners": ["mszmp"],
-          "outcome": "coalition"
-        },
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
+        { "partners": ["mszmp"], "outcome": "coalition" },
+        { "partners": ["petofi"], "outcome": "coalition" }
       ],
       "answers": {
         "hazateres_becsbol": "B",
@@ -1331,12 +1205,7 @@
         "igazi_baloldal",
         "merlegnyelv"
       ],
-      "governments": [
-        {
-          "partners": ["mszmp"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["mszmp"], "outcome": "coalition" }],
       "answers": {
         "hazateres_becsbol": "B",
         "ki_volt_a_birad": "A",
@@ -1373,12 +1242,7 @@
         "harmadik_ero",
         "elso_asszony"
       ],
-      "governments": [
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["petofi"], "outcome": "coalition" }],
       "answers": {
         "hazateres_becsbol": "B",
         "ki_volt_a_birad": "A",
@@ -1415,12 +1279,7 @@
         "harmadik_ero",
         "merlegnyelv"
       ],
-      "governments": [
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["petofi"], "outcome": "coalition" }],
       "answers": {
         "hazateres_becsbol": "B",
         "ki_volt_a_birad": "A",
@@ -1458,14 +1317,8 @@
         "elso_asszony"
       ],
       "governments": [
-        {
-          "partners": ["mszmp"],
-          "outcome": "coalition"
-        },
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
+        { "partners": ["mszmp"], "outcome": "coalition" },
+        { "partners": ["petofi"], "outcome": "coalition" }
       ],
       "answers": {
         "hazateres_becsbol": "B",
@@ -1504,14 +1357,8 @@
         "merlegnyelv"
       ],
       "governments": [
-        {
-          "partners": ["mszmp"],
-          "outcome": "coalition"
-        },
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
+        { "partners": ["mszmp"], "outcome": "coalition" },
+        { "partners": ["petofi"], "outcome": "coalition" }
       ],
       "answers": {
         "hazateres_becsbol": "B",
@@ -1549,12 +1396,7 @@
         "harmadik_ero",
         "elso_asszony"
       ],
-      "governments": [
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["petofi"], "outcome": "coalition" }],
       "answers": {
         "hazateres_becsbol": "B",
         "ki_volt_a_birad": "A",
@@ -1586,12 +1428,7 @@
       "name": "A párt az erő → Jóléti állam → Harmadik erő → A stabilitás pártja",
       "side": "szdp/kethly_anna",
       "focuses": ["part_az_ero", "joleti_allam", "harmadik_ero", "merlegnyelv"],
-      "governments": [
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["petofi"], "outcome": "coalition" }],
       "answers": {
         "hazateres_becsbol": "B",
         "ki_volt_a_birad": "A",
@@ -1629,14 +1466,8 @@
         "elso_asszony"
       ],
       "governments": [
-        {
-          "partners": ["mszmp"],
-          "outcome": "coalition"
-        },
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
+        { "partners": ["mszmp"], "outcome": "coalition" },
+        { "partners": ["petofi"], "outcome": "coalition" }
       ],
       "answers": {
         "hazateres_becsbol": "B",
@@ -1675,14 +1506,8 @@
         "merlegnyelv"
       ],
       "governments": [
-        {
-          "partners": ["mszmp"],
-          "outcome": "coalition"
-        },
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
+        { "partners": ["mszmp"], "outcome": "coalition" },
+        { "partners": ["petofi"], "outcome": "coalition" }
       ],
       "answers": {
         "hazateres_becsbol": "B",
@@ -1720,12 +1545,7 @@
         "harmadik_ero",
         "elso_asszony"
       ],
-      "governments": [
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["petofi"], "outcome": "coalition" }],
       "answers": {
         "hazateres_becsbol": "B",
         "ki_volt_a_birad": "A",
@@ -1762,12 +1582,7 @@
         "harmadik_ero",
         "merlegnyelv"
       ],
-      "governments": [
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
-      ],
+      "governments": [{ "partners": ["petofi"], "outcome": "coalition" }],
       "answers": {
         "hazateres_becsbol": "B",
         "ki_volt_a_birad": "A",
@@ -1805,14 +1620,8 @@
         "elso_asszony"
       ],
       "governments": [
-        {
-          "partners": ["mszmp"],
-          "outcome": "coalition"
-        },
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
+        { "partners": ["mszmp"], "outcome": "coalition" },
+        { "partners": ["petofi"], "outcome": "coalition" }
       ],
       "answers": {
         "hazateres_becsbol": "B",
@@ -1851,14 +1660,8 @@
         "merlegnyelv"
       ],
       "governments": [
-        {
-          "partners": ["mszmp"],
-          "outcome": "coalition"
-        },
-        {
-          "partners": ["petofi"],
-          "outcome": "coalition"
-        }
+        { "partners": ["mszmp"], "outcome": "coalition" },
+        { "partners": ["petofi"], "outcome": "coalition" }
       ],
       "answers": {
         "hazateres_becsbol": "B",

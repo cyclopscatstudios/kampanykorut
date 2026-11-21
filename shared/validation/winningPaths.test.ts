@@ -1,11 +1,13 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { format } from "prettier";
 import { describe, expect, it } from "vitest";
 import {
   describeGovernments,
   improveLine,
   isWinning,
   loadSide,
+  renderWinningPaths,
   winningPathsDir,
   type WinningPathsFile,
 } from "./winningPaths";
@@ -18,6 +20,14 @@ const files = readdirSync(winningPathsDir)
 
 describe.each(files)("winning paths $name", ({ file }) => {
   const fixture: WinningPathsFile = JSON.parse(readFileSync(file, "utf8"));
+  const summary = file.replace(/\.json$/, ".md");
+
+  const renderSummary = () =>
+    format(renderWinningPaths(fixture), { parser: "markdown" });
+
+  it.skipIf(update)("matches its summary", async () => {
+    expect(readFileSync(summary, "utf8")).toBe(await renderSummary());
+  });
   const sides = [...new Set(fixture.lines.map((l) => l.side))];
 
   describe.each(sides)("%s", (sideId) => {
@@ -42,7 +52,7 @@ describe.each(files)("winning paths $name", ({ file }) => {
 
     it.runIf(update)(
       "refreshes the fixture",
-      () => {
+      async () => {
         const side = loadSide(fixture.campaign, sideId);
         const lost: string[] = [];
         for (const line of lines) {
@@ -57,7 +67,11 @@ describe.each(files)("winning paths $name", ({ file }) => {
           line.answers = result.answers;
           line.governments = result.governments;
         }
-        writeFileSync(file, `${JSON.stringify(fixture, null, 2)}\n`);
+        writeFileSync(
+          file,
+          await format(JSON.stringify(fixture), { parser: "json" }),
+        );
+        writeFileSync(summary, await renderSummary());
         expect(lost).toEqual([]);
       },
       3600000,
