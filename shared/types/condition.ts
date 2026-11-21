@@ -68,6 +68,11 @@ export type IssuePositionCondition = {
   max?: number;
 };
 
+export type CoalitionPartnerCondition = {
+  type: "coalition-partner";
+  partyId: string;
+};
+
 export type LeafCondition =
   | TurnCondition
   | CandidateSupportCondition
@@ -78,6 +83,7 @@ export type LeafCondition =
   | EventTriggeredCondition
   | FocusSelectedCondition
   | RelationCondition
+  | CoalitionPartnerCondition
   | IssuePositionCondition;
 
 export type Condition =
@@ -97,4 +103,5 @@ export interface ConditionContext {
   selectedFocusIds?: string[];
   getRelationTone?(relationId: string): RelationTone | undefined;
   getIssuePosition?(issueId: string, party?: string): number | undefined;
+  coalitionPartnerIds?: string[];
 }

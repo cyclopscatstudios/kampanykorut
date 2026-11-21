@@ -104,6 +104,8 @@ function evaluateLeaf(
       const tone = context.getRelationTone?.(condition.relationId);
       return tone !== undefined && condition.tone.includes(tone);
     }
+    case "coalition-partner":
+      return context.coalitionPartnerIds?.includes(condition.partyId) ?? false;
     default:
       throw new ConditionEvaluationError(
         `unknown condition type "${(condition as { type?: unknown }).type}"`,

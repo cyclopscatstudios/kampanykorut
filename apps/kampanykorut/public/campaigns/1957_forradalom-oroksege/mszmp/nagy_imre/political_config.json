@@ -364,6 +364,131 @@
           }
         }
       ]
+    },
+    {
+      "id": "bibo_utja",
+      "title": "Bibó útja",
+      "summary": "Kormányozz Bibó Istvánnal",
+      "description": "Kéthly pártját meggyengítetted, a forradalom másik öröksége Bibó Istváné. A Petőfi Párt kész veled kormányozni, de jogállamot, szabad sajtót és nyitást kér Nyugat felé. Kössetek listaszövetséget, és vállald Bibó feltételeit.",
+      "icon": "/images/1957_forradalom-oroksege/bibo_istvan.png",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "B"
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "igazsagtetel",
+              "answerId": "C"
+            }
+          },
+          {
+            "not": {
+              "type": "answer-selected",
+              "questionId": "bibo_alkotmanya",
+              "answerId": "B"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "A"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "C"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "D"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "fkgp": 2,
+            "petofi": 2,
+            "szdp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "baloldali_kormany",
+      "title": "Baloldali kormány",
+      "summary": "Kormányozz Kéthly Annával",
+      "description": "A két munkáspárt együtt indul, és közös kormányprogrammal lép a választók elé. Kéthly Anna csak akkor áll melléd, ha bízik benned: tartsd meg, amit a szövetségkötéskor ígértél.",
+      "icon": "/images/1957_forradalom-oroksege/kethly_badge.png",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "type": "relation",
+            "relationId": "kethly",
+            "tone": ["good"]
+          },
+          {
+            "not": {
+              "type": "event-triggered",
+              "eventId": "kethly_elutasitja"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "B"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "listakapcsolas",
+            "answerId": "C"
+          },
+          {
+            "type": "event-triggered",
+            "eventId": "kethly_elutasitja"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "mszmp": -5,
+            "szdp": 2,
+            "fkgp": 2,
+            "petofi": 1
+          }
+        }
+      ]
     }
   ],
   "focusBranches": [
@@ -389,9 +514,18 @@
       "requiredBeforeTurn": 15
     },
     {
-      "id": "hajra",
+      "id": "hajra_baloldal",
       "title": "Kampányhajrá",
-      "focuses": ["nemzeti_egyseg", "sajat_tobbseg"],
+      "focuses": ["baloldali_kormany", "nemzeti_egyseg"],
+      "requires": "baloldali_szovetseg",
+      "availableFromTurn": 19,
+      "requiredBeforeTurn": 21
+    },
+    {
+      "id": "hajra_zaszlo",
+      "title": "Kampányhajrá",
+      "focuses": ["sajat_tobbseg", "bibo_utja"],
+      "requires": "munkasokol_vasokol",
       "availableFromTurn": 19,
       "requiredBeforeTurn": 21
     }
@@ -562,52 +696,24 @@
                 "questionId": "bibo_alkotmanya",
                 "answerId": "B"
               }
-            }
-          ]
-        },
-        "acceptReason": "Bibó István szerint a kormányod a jogállam útján jár. A Petőfi Párt beszáll.",
-        "rejectReason": "Bibó István szerint a népbíróságok és az erős kormányfő nem a jogállam útja. Nemet mond."
-      },
-      {
-        "partyId": "fkgp",
-        "acceptWhen": {
-          "and": [
-            {
-              "not": {
-                "type": "relation",
-                "relationId": "kisgazdak",
-                "tone": ["bad"]
-              }
             },
             {
               "or": [
                 {
-                  "type": "answer-selected",
-                  "questionId": "fold_es_beszolgaltatas",
-                  "answerId": "A"
+                  "type": "focus-selected",
+                  "focusId": "nyitas_nyugat"
                 },
                 {
-                  "and": [
-                    {
-                      "type": "answer-selected",
-                      "questionId": "fold_es_beszolgaltatas",
-                      "answerId": "B"
-                    },
-                    {
-                      "not": {
-                        "type": "answer-selected",
-                        "questionId": "szoszek_es_urna",
-                        "answerId": "C"
-                      }
-                    }
-                  ]
+                  "type": "relation",
+                  "relationId": "nyugat",
+                  "tone": ["good"]
                 }
               ]
             }
           ]
         },
-        "acceptReason": "A beszolgáltatás eltörlése meggyőzte Kovács Bélát. A kisgazdák nagykoalícióra készek.",
-        "rejectReason": "A kisgazdák szerint a programod nem ad biztonságot a gazdáknak, és a kampány sértéseit sem felejtették el."
+        "acceptReason": "Bibó István szerint a kormányod a jogállam útján jár. A Petőfi Párt beszáll.",
+        "rejectReason": "Bibó István szerint a népbíróságok, az erős kormányfő vagy a Nyugattól való távolságtartás nem a jogállam útja. Nemet mond."
       },
       {
         "partyId": "kadar_part",
@@ -702,6 +808,17 @@
       "body": "Nagy Imre több párttal osztozik a hatalmon. A miniszteri székeket szétosztották, de minden döntés alkuba kerül, és a kormány az első válságnál meginog.",
       "icon": "people-fill",
       "outcomes": ["weak-coalition"]
+    },
+    {
+      "id": "bibo_feltetelei",
+      "title": "Bibó feltételei",
+      "body": "A Petőfi Párt beszállt a kormányba, és Bibó István felügyeli az alkotmányozást. Független bíróságok, szabad sajtó, nyitás Nyugat felé: a köztársaság demokratikusabb, mint valaha. A többség azonban szűk, és minden vita a koalíció végét fenyegeti.",
+      "icon": "bank2",
+      "outcomes": ["coalition"],
+      "when": {
+        "type": "coalition-partner",
+        "partyId": "petofi"
+      }
     },
     {
       "id": "koalicios_kormany",

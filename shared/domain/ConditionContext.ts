@@ -57,6 +57,9 @@ export function createConditionContext(
     getRelationTone: (relationId) =>
       state.politicalDashboard?.relations?.[relationId]?.tone ??
       relations.find((r) => r.id === relationId)?.tone,
+    coalitionPartnerIds: state.coalition?.responses
+      .filter((r) => r.accepted)
+      .map((r) => r.partyId),
     getIssuePosition: (issueId, party = state.playerSide?.partyId) => {
       const issue = getIssues(electionConfig).find((i) => i.id === issueId);
       return issue && party

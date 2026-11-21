@@ -333,6 +333,9 @@ function check(
         );
       }
       return;
+    case "coalition-partner":
+      checkCandidate(condition.partyId, refs, `${path}/partyId`, issue);
+      return;
     default:
       issue(
         "condition-type-unknown",

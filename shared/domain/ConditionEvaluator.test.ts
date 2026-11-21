@@ -274,6 +274,26 @@ describe("evaluateCondition", () => {
       ).toBe(false);
     });
 
+    it("checks whether a party accepted the coalition offer", () => {
+      const condition: Condition = {
+        type: "coalition-partner",
+        partyId: "vitezy",
+      };
+      expect(evaluateCondition(condition, context())).toBe(false);
+      expect(
+        evaluateCondition(
+          condition,
+          context({ coalitionPartnerIds: ["karacsony"] }),
+        ),
+      ).toBe(false);
+      expect(
+        evaluateCondition(
+          condition,
+          context({ coalitionPartnerIds: ["vitezy"] }),
+        ),
+      ).toBe(true);
+    });
+
     it("checks whether the player plays the candidate", () => {
       const condition: Condition = {
         type: "player-candidate",
