@@ -1,13 +1,16 @@
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
+import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
 import { CampaignConfig, HistoryItem } from "@/shared/types";
 import { Button } from "../../../../../../../shared/ui/Button";
 import { Text } from "../../../../../../../shared/ui/Text";
+import { StateEngine } from "../../../../logic/application";
 import { noop } from "../../../../logic/application/utils";
 import { CommonWrapper } from "../../CommonWrapper";
 import { Heading } from "../../Heading";
+import { orderAnswers } from "../answerOrder.utils";
 import { AnswerRow } from "../QuestionCard";
 
 interface TurnHistoryProps {
@@ -214,7 +217,13 @@ function QuestionCardItem({
         <Heading level={4} color="lightBlue" className="mb-4">
           {question?.question}
         </Heading>
-        {question?.possibleAnswers.map((a, index) => (
+        {orderAnswers(
+          question.possibleAnswers,
+          question.id,
+          config.electionConfig.randomAnswerOrder
+            ? container.resolve(StateEngine).getSessionId()
+            : undefined,
+        ).map((a, index) => (
           <AnswerRow
             key={a.id}
             answer={a}
