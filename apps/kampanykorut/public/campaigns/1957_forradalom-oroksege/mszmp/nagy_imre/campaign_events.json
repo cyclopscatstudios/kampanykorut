@@ -2374,5 +2374,86 @@
       "body": "Az egységes MSZMP partnerek nélkül kér felhatalmazást. Az üzemekből indított kampány a szociáldemokrata szavazók maradékát is megmozgatja.",
       "icon": "megaphone-fill"
     }
+  },
+  {
+    "id": "bibo_listaja",
+    "label": "Közös lista Bibóval",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "bibo_utja"
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "listakapcsolas",
+              "answerId": "B"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 1,
+              "petofi": 2,
+              "szdp": -1
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Közös lista Bibóval",
+      "body": "Nagy Imre és Bibó István közös nagygyűlésen mutatja be a jogállami programot. A városi értelmiség és a fiatalok a két párt közös listája mögé állnak.",
+      "icon": "/images/1957_forradalom-oroksege/bibo_istvan.png"
+    }
+  },
+  {
+    "id": "baloldali_kormanyprogram",
+    "label": "Közös kormányprogram",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "baloldali_kormany"
+            },
+            {
+              "type": "relation",
+              "relationId": "kethly",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 1,
+              "szdp": 1
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Közös kormányprogram",
+      "body": "Nagy Imre és Kéthly Anna aláírta a két munkáspárt közös kormányprogramját. A szakszervezetek és a munkástanácsok egyaránt támogatják.",
+      "icon": "/images/1957_forradalom-oroksege/kethly_badge.png"
+    }
   }
 ]

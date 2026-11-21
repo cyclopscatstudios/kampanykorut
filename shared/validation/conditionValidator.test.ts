@@ -165,6 +165,13 @@ describe("validateCondition", () => {
     ]);
   });
 
+  it("checks the party of a coalition-partner condition", () => {
+    expect(codes({ type: "coalition-partner", partyId: "vitezy" })).toEqual([]);
+    expect(codes({ type: "coalition-partner", partyId: "nope" })).toEqual([
+      "unknown-candidate@/if/partyId",
+    ]);
+  });
+
   it("checks the relation and tones of a relation condition", () => {
     expect(
       codes({ type: "relation", relationId: "moszkva", tone: ["bad"] }),
