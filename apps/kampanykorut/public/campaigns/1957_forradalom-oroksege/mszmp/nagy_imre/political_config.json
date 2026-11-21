@@ -716,47 +716,6 @@
         "rejectReason": "Bibó István szerint a népbíróságok, az erős kormányfő vagy a Nyugattól való távolságtartás nem a jogállam útja. Nemet mond."
       },
       {
-        "partyId": "fkgp",
-        "acceptWhen": {
-          "and": [
-            {
-              "not": {
-                "type": "relation",
-                "relationId": "kisgazdak",
-                "tone": ["bad"]
-              }
-            },
-            {
-              "or": [
-                {
-                  "type": "answer-selected",
-                  "questionId": "fold_es_beszolgaltatas",
-                  "answerId": "A"
-                },
-                {
-                  "and": [
-                    {
-                      "type": "answer-selected",
-                      "questionId": "fold_es_beszolgaltatas",
-                      "answerId": "B"
-                    },
-                    {
-                      "not": {
-                        "type": "answer-selected",
-                        "questionId": "szoszek_es_urna",
-                        "answerId": "C"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        "acceptReason": "A beszolgáltatás eltörlése meggyőzte Kovács Bélát. A kisgazdák nagykoalícióra készek.",
-        "rejectReason": "A kisgazdák szerint a programod nem ad biztonságot a gazdáknak, és a kampány sértéseit sem felejtették el."
-      },
-      {
         "partyId": "kadar_part",
         "acceptWhen": {
           "type": "relation",
@@ -849,17 +808,6 @@
       "body": "Nagy Imre több párttal osztozik a hatalmon. A miniszteri székeket szétosztották, de minden döntés alkuba kerül, és a kormány az első válságnál meginog.",
       "icon": "people-fill",
       "outcomes": ["weak-coalition"]
-    },
-    {
-      "id": "nagy_kiegyezes",
-      "title": "A nagy kiegyezés",
-      "body": "Az MSZMP és a kisgazdák közös kormánya biztos többséggel indul, de minden reformról alkudni kell. Kovács Béla a földkérdésben és a gazdaságban is fékez, a munkástanácsok csalódottak. A forradalom vívmányai megmaradnak, a lendülete elvész.",
-      "icon": "diagram-3-fill",
-      "outcomes": ["coalition"],
-      "when": {
-        "type": "coalition-partner",
-        "partyId": "fkgp"
-      }
     },
     {
       "id": "bibo_feltetelei",
