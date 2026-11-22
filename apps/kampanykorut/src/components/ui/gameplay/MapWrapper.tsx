@@ -50,6 +50,7 @@ export function MapWrapper({
   return (
     <div
       style={{ width, height }}
+      data-surface="card"
       className={classNames(
         "relative overflow-hidden rounded-md bg-blue-400/10 border border-blue-50/10",
         className,

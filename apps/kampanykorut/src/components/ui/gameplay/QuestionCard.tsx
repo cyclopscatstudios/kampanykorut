@@ -76,7 +76,10 @@ export function QuestionCard({
         ref={scrollRef}
         className="w-full flex-1 min-h-0 flex flex-col justify-start items-center mb-4 md:max-h-[500px] overflow-y-auto"
       >
-        <div className="w-full mb-4 p-2 border-l-3 border-blue-500">
+        <div
+          data-question-title
+          className="w-full mb-4 p-2 border-l-3 border-blue-500"
+        >
           {affects && (
             <Tooltip
               content={t("badge.strategicDecision.tooltip")}
@@ -297,6 +300,8 @@ export function AnswerRow({
     <div
       onClick={() => onClick(answer.id)}
       className="w-full mb-2"
+      data-answer
+      data-selected={isSelected || undefined}
       data-recommended={isRecommended || undefined}
     >
       <CommonWrapper

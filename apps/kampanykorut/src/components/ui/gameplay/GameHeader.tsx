@@ -96,7 +96,10 @@ export function GameHeader({
   };
 
   return createPortal(
-    <header className="w-full border-b-2 border-blue-400 bg-[rgba(15,23,42,0.92)]">
+    <header
+      data-game-header
+      className="w-full border-b-2 border-blue-400 bg-[rgba(15,23,42,0.92)]"
+    >
       {isDesktop ? (
         <WideHeader {...contentProps} />
       ) : (
@@ -338,6 +341,7 @@ function WideHeader({
     <div className="h-[80px] flex justify-between items-center mx-2.5">
       <div className="flex justify-between items-center gap-2">
         <div
+          data-header-logo
           className="flex justify-center items-center cursor-pointer mr-1.5"
           onClick={() => onOpen("gameMenu")}
         >

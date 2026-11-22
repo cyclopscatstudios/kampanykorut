@@ -41,7 +41,7 @@ export function getSeasonalBackground(
   defaultBackground: string,
   season: Season | null,
 ): string {
-  if (!season || background !== defaultBackground) {
+  if (!season || !background.endsWith(defaultBackground)) {
     return background;
   }
   return SEASON_BACKGROUNDS[season];

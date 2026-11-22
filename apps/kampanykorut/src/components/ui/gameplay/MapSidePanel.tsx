@@ -72,6 +72,7 @@ export function MapSidePanel({
   return (
     <div
       style={{ width, height }}
+      data-surface="card"
       className="flex flex-col overflow-hidden rounded-md border border-blue-50/10 bg-blue-400/10"
     >
       {hasCapital && (

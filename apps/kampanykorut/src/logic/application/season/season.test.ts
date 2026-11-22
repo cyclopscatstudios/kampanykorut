@@ -63,6 +63,16 @@ describe("getSeasonalBackground", () => {
     );
   });
 
+  it("swaps the default background given as an absolute URL", () => {
+    expect(
+      getSeasonalBackground(
+        "https://kampanykorut.hu/parlament_night.jpg",
+        fallback,
+        "winter",
+      ),
+    ).toBe(SEASON_BACKGROUNDS.winter);
+  });
+
   it("keeps a campaign's own background in season", () => {
     expect(
       getSeasonalBackground("/images/1957/bg.webp", fallback, "winter"),

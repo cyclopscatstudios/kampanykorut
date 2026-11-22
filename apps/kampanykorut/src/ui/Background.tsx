@@ -20,7 +20,7 @@ function FullscreenBackground({
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="absolute inset-0 bg-black/50" />
+      <div data-background-dim className="absolute inset-0 bg-black/50" />
       {snowfall && <Snowfall />}
       <div className="flex items-center justify-center w-full h-full">
         <div
