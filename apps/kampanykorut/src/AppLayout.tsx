@@ -72,7 +72,7 @@ export function RootLayout() {
       />
       <div id={GAME_HEADER_SLOT_ID} />
       <div className="flex-1 min-h-0">
-        <FullscreenBackground path={background} snowfall={season === "winter"}>
+        <FullscreenBackground path={background} winter={season === "winter"}>
           <NavigationBinder />
           <Outlet />
         </FullscreenBackground>

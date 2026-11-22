@@ -1,14 +1,15 @@
 import classNames from "classnames";
+import { FestiveLights } from "./FestiveLights";
 import { Snowfall } from "./Snowfall";
 
 function FullscreenBackground({
   children,
   path,
-  snowfall = false,
+  winter = false,
 }: {
   children: React.ReactNode;
   path: string;
-  snowfall?: boolean;
+  winter?: boolean;
 }) {
   return (
     <div
@@ -21,7 +22,7 @@ function FullscreenBackground({
       }}
     >
       <div data-background-dim className="absolute inset-0 bg-black/50" />
-      {snowfall && <Snowfall />}
+      {winter && <Snowfall />}
       <div className="flex items-center justify-center w-full h-full">
         <div
           data-frame
@@ -29,6 +30,7 @@ function FullscreenBackground({
             "size-full md:w-[1200px] md:h-[750px] bg-[rgba(15,23,42,0.92)] rounded-sm shadow-xl shadow-black/60 relative md:overflow-hidden",
           )}
         >
+          {winter && <FestiveLights />}
           <div className="flex items-center justify-center w-full h-full">
             {children}
           </div>
