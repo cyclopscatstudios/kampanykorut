@@ -33,6 +33,9 @@
     },
     "newspaperAutoOpen": {
       "label": "Open new newspaper editions automatically"
+    },
+    "seasonalTheme": {
+      "label": "Festive winter theme (snowfall, frosted buttons)"
     }
   },
   "loadSavedGamesMenu": {

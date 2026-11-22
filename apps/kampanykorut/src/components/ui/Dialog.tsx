@@ -55,6 +55,7 @@ export function Dialog({
       onClick={closeOnBackdrop ? onClose : undefined}
     >
       <div
+        data-panel="dialog"
         className={`md:min-w-[400px] max-w-[90vw] max-h-[85vh] overflow-y-auto bg-[#161e30] rounded-xl border border-[#4462aa] shadow-xl ${panelClassName}`}
         onClick={(e) => e.stopPropagation()}
       >
@@ -67,7 +68,12 @@ export function Dialog({
 
 export function DialogHeader({ children }: { children: ReactNode }) {
   return (
-    <div className="border-b border-[#4462aa] p-3 text-center">{children}</div>
+    <div
+      data-panel-header
+      className="border-b border-[#4462aa] p-3 text-center"
+    >
+      {children}
+    </div>
   );
 }
 

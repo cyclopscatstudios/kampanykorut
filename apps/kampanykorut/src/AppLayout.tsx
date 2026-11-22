@@ -8,9 +8,12 @@ import { WarningScreen } from "./components/ui/warning/WarningScreen";
 import { useParams } from "./hooks/useParamsHook";
 import { StateEngine, useStateEngine } from "./logic/application";
 import { useGetCampaigns } from "./logic/application/hooks/useGetCampaigns";
+import { useSeason } from "./logic/application/hooks/useSeason";
 import { Navigation } from "./logic/application/navigation/Navigation";
 import { NavigationBinder } from "./logic/application/navigation/NavigationBinder";
+import { getDataPath } from "./logic/application/PathResolver";
 import { usePlayTimeTracking } from "./logic/application/playTime/usePlayTimeTracking";
+import { getSeasonalBackground } from "./logic/application/season/season";
 import FullscreenBackground from "./ui/Background";
 
 const log = createLogger("AppLayout");
@@ -18,7 +21,13 @@ const log = createLogger("AppLayout");
 const environment = import.meta.env.VITE_ENVIRONMENT;
 
 export function RootLayout() {
-  const path = useLoaderData();
+  const path = useLoaderData() as string;
+  const season = useSeason();
+  const background = getSeasonalBackground(
+    path,
+    getDataPath("background"),
+    season,
+  );
   const stateEngine = container.resolve(StateEngine);
   const navigation = container.resolve(Navigation);
   const { campaignId } = useParams();
@@ -63,7 +72,7 @@ export function RootLayout() {
       />
       <div id={GAME_HEADER_SLOT_ID} />
       <div className="flex-1 min-h-0">
-        <FullscreenBackground path={path}>
+        <FullscreenBackground path={background} snowfall={season === "winter"}>
           <NavigationBinder />
           <Outlet />
         </FullscreenBackground>

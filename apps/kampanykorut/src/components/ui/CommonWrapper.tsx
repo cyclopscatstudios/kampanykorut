@@ -15,6 +15,7 @@ export function CommonWrapper({
 }) {
   return (
     <div
+      data-surface="card"
       className={classNames(
         "bg-blue-400/10 rounded-md border",
         {
