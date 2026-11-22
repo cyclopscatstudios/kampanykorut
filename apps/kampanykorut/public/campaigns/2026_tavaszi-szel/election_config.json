@@ -6,6 +6,7 @@
   "thresholdPercent": 5,
   "districtMap": "2024",
   "districtBoost": true,
+  "randomAnswerOrder": true,
   "baseResults": {
     "tisza": {
       "tisza": -20,
@@ -88,11 +89,11 @@
       "candidateAssets": [
         {
           "id": "orban_viktor",
-          "portrait": "/images/2026_tavaszi-szel/orban_viktor_portrait.png",
-          "slogan": "/images/2026_tavaszi-szel/fidesz-2026_kampany_szoveg.png"
+          "portrait": "/images/2026_tavaszi-szel/ov-portrait.png",
+          "slogan": "/images/2026_tavaszi-szel/fidesz_szlogen.png"
         }
       ],
-      "party_logo": "/images/2026_tavaszi-szel/fidesz-kdnp.png"
+      "party_logo": "/images/2026_tavaszi-szel/fidesz.png"
     }
   ]
 }

@@ -19,7 +19,6 @@ import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";
 import { EpilogueCard, GovernmentOutcomeBadge } from "./GovernmentSummary";
 
 export function SummaryPage({ results }: { results: FinalResults }) {
-  console.log({ results });
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const campaignStateEngine = container.resolve(StateEngine);
   const configEngine = container.resolve(ConfigEngine);
@@ -71,15 +70,6 @@ export function SummaryPage({ results }: { results: FinalResults }) {
       buildPartiesFromResults(results, currentConfig?.electionConfig.parties),
     [results, currentConfig?.electionConfig.parties],
   );
-
-  console.log({
-    finalOutcome,
-    story,
-    heroAssets,
-    parties,
-    results,
-    currentConfig,
-  });
 
   return (
     <>
