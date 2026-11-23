@@ -1953,6 +1953,11 @@ function checkEventEffects(
     const effectPath = `${path}/${i}`;
     if (isObject(effect) && effect.type === "withdraw-candidate") {
       checkWithdrawEffect(ctx, file, effectPath, effect, guard);
+    } else if (
+      isObject(effect) &&
+      effect.type === "withdraw-district-candidates"
+    ) {
+      checkDistrictWithdrawEffect(ctx, file, effectPath, effect);
     } else if (isObject(effect) && effect.type === "split-party") {
       checkSplitEffect(ctx, file, effectPath, effect);
     } else if (isObject(effect) && effect.type === "shift-relation") {
@@ -2169,6 +2174,85 @@ function checkWithdrawEffect(
         targetPath,
         `"${target}" is not another candidate in parties`,
       );
+    }
+    if (!isFiniteNumber(share) || share < 0 || share > 1) {
+      error("effect-invalid", targetPath, "share must be between 0 and 1");
+    } else {
+      total += share;
+    }
+  }
+  if (Math.abs(total - 1) > 1e-9) {
+    error(
+      "redistribution-sum",
+      `${path}/redistribution`,
+      `shares must add up to 1 (got ${total})`,
+    );
+  }
+}
+
+function checkDistrictWithdrawEffect(
+  ctx: Context,
+  file: string,
+  path: string,
+  effect: Json,
+) {
+  const error = (code: string, at: string, message: string) =>
+    report(ctx, "error", code, file, at, message);
+
+  if (ctx.electionType === "mayoral") {
+    error(
+      "withdraw-not-supported",
+      path,
+      "withdraw-district-candidates needs a parliamentary election",
+    );
+  }
+  const partyId = effect.partyId;
+  if (typeof partyId !== "string" || !ctx.parties.has(partyId)) {
+    error(
+      "unknown-party",
+      `${path}/partyId`,
+      `unknown party "${String(partyId)}"`,
+    );
+  }
+  const closeRace = effect.closeRace;
+  const between = isObject(closeRace) ? closeRace.between : undefined;
+  if (
+    !Array.isArray(between) ||
+    between.length !== 2 ||
+    between.some((id) => typeof id !== "string" || !ctx.parties.has(id)) ||
+    between[0] === between[1]
+  ) {
+    error(
+      "effect-invalid",
+      `${path}/closeRace/between`,
+      "between must name two different parties",
+    );
+  }
+  const maxGap = isObject(closeRace) ? closeRace.maxGapPercent : undefined;
+  if (!isFiniteNumber(maxGap) || maxGap <= 0 || maxGap > 100) {
+    error(
+      "effect-invalid",
+      `${path}/closeRace/maxGapPercent`,
+      "maxGapPercent must be between 0 and 100",
+    );
+  }
+  const redistribution = effect.redistribution;
+  if (!isObject(redistribution) || !Object.keys(redistribution).length) {
+    error(
+      "effect-invalid",
+      `${path}/redistribution`,
+      "redistribution must be a non-empty object",
+    );
+    return;
+  }
+  let total = 0;
+  for (const [target, share] of Object.entries(redistribution)) {
+    const targetPath = `${path}/redistribution/${target}`;
+    if (
+      target !== "_abstain" &&
+      (!ctx.parties.has(target) || target === partyId)
+    ) {
+      error("unknown-party", targetPath, `"${target}" is not another party`);
     }
     if (!isFiniteNumber(share) || share < 0 || share > 1) {
       error("effect-invalid", targetPath, "share must be between 0 and 1");

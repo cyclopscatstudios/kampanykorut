@@ -21,6 +21,7 @@ export interface CampaignState {
   results?: CalculateResults;
   mayoralResult?: MayoralResult;
   candidates?: Record<string, CandidateCampaignState>;
+  districtWithdrawals?: Record<string, DistrictRef[]>;
   // Party positions on issues that moved away from the configured ones.
   issuePositions?: IssuePositions;
   campaignEvents?: CampaignEventState;
@@ -61,6 +62,8 @@ export interface CampaignEventState {
 }
 
 export type CurrentView = "MapView" | "QuestionView" | "VoteCountingView";
+
+export type DistrictRef = Pick<CandidateListData, "megyekod" | "oevk">;
 
 export interface CampaignView {
   type: CurrentView;
