@@ -148,6 +148,26 @@
               "tisza": 0.105
             }
           }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "patriotak",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": -0.158,
+                  "tisza": 0.105
+                }
+              }
+            ],
+            "mode": "merge"
+          }
         ]
       },
       {
@@ -209,8 +229,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": 0.035,
-              "tisza": -0.035
+              "fidesz": -0.035,
+              "tisza": 0.035
             }
           }
         ]
@@ -365,6 +385,26 @@
               "fidesz": 0.02,
               "tisza": 0.02
             }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "gatakon",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": -0.105,
+                  "tisza": 0.053
+                }
+              }
+            ],
+            "mode": "merge"
           }
         ]
       }
@@ -558,7 +598,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": -0.035
+              "fidesz": -0.07,
+              "tisza": 0.035
             }
           }
         ]
@@ -829,6 +870,26 @@
               "tisza": -0.07
             }
           }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "patriotak",
+                "answerId": "C"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": -0.053,
+                  "tisza": 0.053
+                }
+              }
+            ],
+            "mode": "merge"
+          }
         ]
       },
       {
@@ -904,8 +965,8 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": 0.035,
-              "tisza": -0.035
+              "fidesz": -0.035,
+              "tisza": 0.035
             }
           }
         ]
@@ -1165,6 +1226,25 @@
               "fidesz": 0.03
             }
           }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "tusvanyos",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "turnout-change",
+                "params": {
+                  "fidesz": 0.02
+                }
+              }
+            ],
+            "mode": "merge"
+          }
         ]
       },
       {
@@ -1241,6 +1321,31 @@
               }
             ],
             "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "dombovar",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "district-vote-transfer",
+                "params": [
+                  {
+                    "groupId": "billego_korzetek",
+                    "targetParty": "fidesz",
+                    "from": {
+                      "type": "party",
+                      "party": "tisza"
+                    },
+                    "amount": 60
+                  }
+                ]
+              }
+            ],
+            "mode": "merge"
           }
         ]
       },
@@ -1301,6 +1406,31 @@
             "params": {
               "fidesz": 0.03
             }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "kotcse",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": 0.053
+                }
+              },
+              {
+                "type": "turnout-change",
+                "params": {
+                  "fidesz": 0.02
+                }
+              }
+            ],
+            "mode": "merge"
           }
         ]
       },
@@ -1431,6 +1561,26 @@
               "tisza": 0.07
             }
           }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "dombovar",
+                "answerId": "C"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": -0.053,
+                  "tisza": 0.158
+                }
+              }
+            ],
+            "mode": "merge"
+          }
         ]
       },
       {
@@ -1498,8 +1648,8 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "fidesz": 0.28,
-                  "tisza": -0.21
+                  "fidesz": 0.21,
+                  "tisza": -0.158
                 }
               }
             ],
@@ -1516,8 +1666,8 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "fidesz": 0.14,
-                  "tisza": -0.105
+                  "fidesz": 0.105,
+                  "tisza": -0.079
                 }
               }
             ],
@@ -1552,6 +1702,26 @@
               "fidesz": 0.07,
               "tisza": -0.07
             }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "szikla_utca",
+                "answerId": "D"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": -0.105,
+                  "tisza": 0.105
+                }
+              }
+            ],
+            "mode": "merge"
           }
         ]
       },
@@ -1656,6 +1826,24 @@
               }
             ],
             "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "evertekelo",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": -0.158,
+                  "tisza": 0.105
+                }
+              }
+            ],
+            "mode": "merge"
           }
         ]
       },
@@ -1716,8 +1904,8 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "fidesz": 0.14,
-                  "tisza": -0.14
+                  "fidesz": 0.105,
+                  "tisza": -0.105
                 }
               }
             ],
@@ -1734,8 +1922,8 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "fidesz": 0.052,
-                  "tisza": -0.052
+                  "fidesz": 0.039,
+                  "tisza": -0.039
                 }
               }
             ],
@@ -1752,8 +1940,8 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "fidesz": 0.14,
-                  "tisza": -0.14
+                  "fidesz": 0.105,
+                  "tisza": -0.105
                 }
               }
             ],
@@ -1770,8 +1958,8 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "fidesz": 0.052,
-                  "tisza": -0.052
+                  "fidesz": 0.039,
+                  "tisza": -0.039
                 }
               }
             ],
@@ -1788,8 +1976,8 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "fidesz": 0.14,
-                  "tisza": -0.14
+                  "fidesz": 0.105,
+                  "tisza": -0.105
                 }
               }
             ],
@@ -1806,8 +1994,8 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "fidesz": 0.105,
-                  "tisza": -0.105
+                  "fidesz": 0.079,
+                  "tisza": -0.079
                 }
               }
             ],
@@ -1824,8 +2012,8 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "fidesz": 0.14,
-                  "tisza": -0.14
+                  "fidesz": 0.105,
+                  "tisza": -0.105
                 }
               }
             ],
@@ -1842,8 +2030,8 @@
               {
                 "type": "uniform-swing",
                 "params": {
-                  "fidesz": 0.105,
-                  "tisza": -0.105
+                  "fidesz": 0.079,
+                  "tisza": -0.079
                 }
               }
             ],
@@ -1952,6 +2140,24 @@
               }
             ],
             "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "kongresszus",
+                "answerId": "D"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": -0.105,
+                  "tisza": 0.105
+                }
+              }
+            ],
+            "mode": "merge"
           }
         ]
       },
@@ -2050,6 +2256,42 @@
               }
             ],
             "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "munkacs",
+                "answerId": "A"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": 0.053,
+                  "tisza": -0.053
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "kotcse",
+                "answerId": "D"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": -0.158,
+                  "tisza": 0.053
+                }
+              }
+            ],
+            "mode": "merge"
           }
         ]
       },
@@ -2068,6 +2310,26 @@
             "params": {
               "fidesz": 0.02
             }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "munkacs",
+                "answerId": "C"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": -0.105,
+                  "tisza": 0.158
+                }
+              }
+            ],
+            "mode": "merge"
           }
         ]
       },
@@ -2161,6 +2423,7 @@
           {
             "type": "uniform-swing",
             "params": {
+              "tisza": 0.035,
               "mi_hazank": -0.035
             }
           }
@@ -2186,6 +2449,25 @@
             "params": {
               "fidesz": 0.02
             }
+          }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [
+              {
+                "questionId": "munkacs",
+                "answerId": "D"
+              }
+            ],
+            "effects": [
+              {
+                "type": "turnout-change",
+                "params": {
+                  "fidesz": 0.02
+                }
+              }
+            ],
+            "mode": "merge"
           }
         ]
       },
@@ -2235,6 +2517,24 @@
                     }
                   }
                 ]
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [
+              {
+                "questionId": "kotcse",
+                "answerId": "D"
+              }
+            ],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "fidesz": -0.053,
+                  "tisza": 0.053
+                }
               }
             ],
             "mode": "merge"

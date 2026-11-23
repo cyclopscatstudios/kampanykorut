@@ -15,14 +15,32 @@
             {
               "or": [
                 {
-                  "type": "answer-selected",
-                  "questionId": "gyoztunk",
-                  "answerId": "C"
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "C"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "D"
+                    }
+                  ]
                 },
                 {
-                  "type": "answer-selected",
-                  "questionId": "gyoztunk",
-                  "answerId": "D"
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "patriotak",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "bekemisszio",
+                      "answerId": "A"
+                    }
+                  ]
                 }
               ]
             }
@@ -32,11 +50,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.81,
-              "tisza": 3.24,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.9,
+              "tisza": 3.1,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -50,9 +68,36 @@
               "max": 4
             },
             {
-              "type": "answer-selected",
-              "questionId": "gyoztunk",
-              "answerId": "A"
+              "and": [
+                {
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "B"
+                    }
+                  ]
+                },
+                {
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "bekemisszio",
+                      "answerId": "B"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "bekemisszio",
+                      "answerId": "D"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -60,11 +105,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.18,
-              "tisza": 1.8,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.26,
+              "tisza": 2.2,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -79,11 +124,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.45,
-              "tisza": 2.52,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.5,
+              "tisza": 2.7,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -109,18 +154,43 @@
               "max": 10
             },
             {
-              "and": [
+              "or": [
                 {
-                  "type": "answer-selected",
-                  "questionId": "hibahatar",
-                  "answerId": "C"
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "hibahatar",
+                      "answerId": "C"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "D"
+                    }
+                  ]
                 },
                 {
-                  "not": {
-                    "type": "answer-selected",
-                    "questionId": "gyoztunk",
-                    "answerId": "A"
-                  }
+                  "and": [
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "hibahatar",
+                          "answerId": "B"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "hibahatar",
+                          "answerId": "C"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "mtva_elott",
+                      "answerId": "D"
+                    }
+                  ]
                 }
               ]
             }
@@ -130,11 +200,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.81,
-              "tisza": 3.24,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.9,
+              "tisza": 3.1,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -148,16 +218,34 @@
               "max": 10
             },
             {
-              "or": [
+              "and": [
                 {
-                  "type": "answer-selected",
-                  "questionId": "gyoztunk",
-                  "answerId": "A"
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "hibahatar",
+                      "answerId": "A"
+                    }
+                  ]
                 },
                 {
-                  "type": "answer-selected",
-                  "questionId": "hibahatar",
-                  "answerId": "A"
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "mtva_elott",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "mtva_elott",
+                      "answerId": "B"
+                    }
+                  ]
                 }
               ]
             }
@@ -167,11 +255,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.18,
-              "tisza": 1.8,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.26,
+              "tisza": 2.2,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -186,11 +274,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.45,
-              "tisza": 2.52,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.5,
+              "tisza": 2.7,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -244,11 +332,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.81,
-              "tisza": 3.24,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.9,
+              "tisza": 3.1,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -262,16 +350,144 @@
               "max": 16
             },
             {
-              "and": [
+              "or": [
                 {
-                  "type": "answer-selected",
-                  "questionId": "kortermek",
-                  "answerId": "A"
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "A"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "B"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
-                  "type": "answer-selected",
-                  "questionId": "menetrend",
-                  "answerId": "A"
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "B"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "D"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "A"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "B"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "A"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "B"
+                        }
+                      ]
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "B"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "D"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "B"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "D"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }
@@ -281,11 +497,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.18,
-              "tisza": 1.8,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.26,
+              "tisza": 2.2,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -300,11 +516,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.45,
-              "tisza": 2.52,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.5,
+              "tisza": 2.7,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -349,11 +565,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.81,
-              "tisza": 3.24,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.9,
+              "tisza": 3.1,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -367,16 +583,52 @@
               "max": 20
             },
             {
-              "or": [
+              "and": [
                 {
-                  "type": "answer-selected",
-                  "questionId": "szazhat_nev",
-                  "answerId": "A"
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szazhat_nev",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szazhat_nev",
+                      "answerId": "D"
+                    }
+                  ]
                 },
                 {
-                  "type": "answer-selected",
-                  "questionId": "szazhat_nev",
-                  "answerId": "D"
+                  "or": [
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "kotcse",
+                          "answerId": "B"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "kotcse",
+                          "answerId": "C"
+                        }
+                      ]
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "dombovar",
+                          "answerId": "A"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "dombovar",
+                          "answerId": "B"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }
@@ -386,11 +638,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.18,
-              "tisza": 1.8,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.26,
+              "tisza": 2.2,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -405,11 +657,11 @@
           {
             "type": "uniform-swing",
             "params": {
-              "fidesz": -0.45,
-              "tisza": 2.52,
-              "dk": -0.99,
-              "mkkp": -0.54,
-              "mi_hazank": -0.18
+              "fidesz": -0.5,
+              "tisza": 2.7,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
             }
           }
         ]
@@ -583,6 +835,31 @@
                   ]
                 }
               ]
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "evertekelo",
+                  "answerId": "A"
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "eu_forrasok",
+                      "answerId": "A"
+                    },
+                    {
+                      "not": {
+                        "type": "answer-selected",
+                        "questionId": "patriotak",
+                        "answerId": "C"
+                      }
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -602,6 +879,111 @@
       "body": "A kórházi, vasúti és gyermekvédelmi vállalások közül legalább kettő határidőre teljesült. A TISZA programbemutatója után a sajtó a kormány számait is összeveti az ígéretekkel, és ezúttal van mit összevetni.",
       "icon": "graph-up-arrow",
       "major": true
+    }
+  },
+  {
+    "id": "programok_forras_nelkul",
+    "label": "Programok forrás nélkül",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 23,
+              "max": 23
+            },
+            {
+              "or": [
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szikla_utca",
+                      "answerId": "C"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szikla_utca",
+                      "answerId": "C"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "not": {
+                "or": [
+                  {
+                    "type": "answer-selected",
+                    "questionId": "evertekelo",
+                    "answerId": "A"
+                  },
+                  {
+                    "and": [
+                      {
+                        "type": "answer-selected",
+                        "questionId": "eu_forrasok",
+                        "answerId": "A"
+                      },
+                      {
+                        "not": {
+                          "type": "answer-selected",
+                          "questionId": "patriotak",
+                          "answerId": "C"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.4,
+              "tisza": 0.4
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Félúton megállt programok",
+      "body": "A kórházi, vasúti és gyermekvédelmi programok elindultak, de a költségvetésben nem maradt rájuk elég pénz, az uniós források pedig továbbra is be vannak fagyasztva. Több felújítás áll, a határidők csúsznak, a TISZA programbemutatóján ezt veti a kormány szemére.",
+      "icon": "cone-striped"
     }
   },
   {
@@ -710,7 +1092,7 @@
           {
             "type": "uniform-swing",
             "params": {
-              "tisza": 0.2
+              "tisza": 2.0
             }
           }
         ]
@@ -718,7 +1100,7 @@
     ],
     "announcement": {
       "title": "A Jobbik nem állít listát",
-      "body": "A Jobbik nem tudta teljesíteni az országos lista feltételeit, az MSZP és az LMP nem indul. Öt országos lista lesz a szavazólapon.",
+      "body": "A Jobbik nem tudta teljesíteni az országos lista feltételeit, az MSZP és az LMP nem indul. Öt országos lista lesz a szavazólapon, a visszalépő pártok szavazóinak többsége a TISZA felé fordul.",
       "icon": "card-checklist"
     }
   },
@@ -739,6 +1121,13 @@
               "type": "answer-selected",
               "questionId": "marcius_15",
               "answerId": "D"
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "ellenzeki_mezo",
+                "answerId": "D"
+              }
             }
           ]
         },
@@ -763,6 +1152,49 @@
       "title": "Visszalépések a szoros körzetekben",
       "body": "A Mi Hazánk néhány egyéni jelöltje az utolsó hetekben visszalépett ott, ahol a Fidesz és a TISZA között szoros a verseny. A párt országos listája indul.",
       "icon": "person-dash-fill"
+    }
+  },
+  {
+    "id": "toroczkai_nemet_mond",
+    "label": "Toroczkai nemet mond",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 25,
+              "max": 25
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "marcius_15",
+              "answerId": "D"
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "ellenzeki_mezo",
+              "answerId": "D"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.3,
+              "tisza": 0.3,
+              "mi_hazank": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Toroczkai nemet mond",
+      "body": "A Mi Hazánk elnöke nyilvánosságra hozza, hogy a Fidesz visszalépésekről tárgyalt vele. A tavalyi kampány után, amely az ő szavazóit célozta, nem lát okot a segítségre. A hír a TISZA-t is mozgósítja.",
+      "icon": "person-x-fill"
     }
   }
 ]

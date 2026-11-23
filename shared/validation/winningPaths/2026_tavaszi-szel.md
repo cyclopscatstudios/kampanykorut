@@ -8,6 +8,6 @@ Minden útvonalhoz egy válaszsor, amellyel a párt önálló többséget szerez
 
 | Út                                         | Partner        | Válaszok                          |
 | ------------------------------------------ | -------------- | --------------------------------- |
-| Kormányzati fordulat                       | önálló többség | `ABBAA AAACA AAAAA BACBA AAAAB C` |
-| Helyi kampány és megélhetés                | önálló többség | `BBBAA BBACA CABBA DABBA ABBAD B` |
-| Késői fordulat, Mi Hazánk-visszalépésekkel | önálló többség | `CCACC CABAA AAAAA BACBA AAAAD C` |
+| Kormányzati fordulat                       | önálló többség | `BBBAA AAACA AAAAA BACBA AAAAD C` |
+| Helyi kampány és megélhetés                | önálló többség | `BBBAA BBACA CAABA DABBA ABBAD B` |
+| Késői fordulat, Mi Hazánk-visszalépésekkel | önálló többség | `CBBAA CCACA AAAAA BABCA AAAAD C` |
