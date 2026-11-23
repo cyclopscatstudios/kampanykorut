@@ -6,19 +6,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Másnap körzetenkénti felmérést rendelsz, és bejelented a kormányülésen: a választók üzentek, a kormány a következő két évben a belföldi ügyekre áll át."
+        "label": "Másnap körzetenkénti felmérést rendelsz el, és a kormányülésen bejelented, hogy a következő két évben a belföldi ügyek kerülnek előre."
       },
       {
         "id": "B",
-        "label": "Megköszönöd a győzelmet, a nyilvánosság előtt nincs fordulat, de csendben elrendeled a körzeti felmérést."
+        "label": "A győzelmi beszédben megköszönöd a bizalmat, a pártközpontban pedig zárt körben elrendeled a körzeti felmérést."
       },
       {
         "id": "C",
-        "label": "Győztünk, és ez a lényeg. A TISZA egyszeri buborék, a kampánygépezet marad, ahogy van."
+        "label": "Megköszönöd a győzelmet, és jelzed, hogy a kampánystáb összetételén és módszerein nem változtatsz."
       },
       {
         "id": "D",
-        "label": "A TISZA-t azonnal fő ellenségnek nyilvánítod, és a kormányoldali média minden erejét Magyar Péter személyére fordítod."
+        "label": "A kormányoldali médiában Magyar Péter személye és múltja kerül a középpontba az őszi napirenden."
       }
     ]
   },
@@ -41,7 +41,7 @@
       },
       {
         "id": "D",
-        "label": "Kimaradsz a frakcióalapításból, a Fidesz egyelőre független marad az EP-ben."
+        "label": "Nem csatlakozol az új frakcióhoz, a Fidesz független képviselőként dolgozik tovább az EP-ben."
       }
     ]
   },
@@ -64,7 +64,7 @@
       },
       {
         "id": "D",
-        "label": "Elmarad a misszió. A nyarat vidéki országjárással töltöd, épp azokban a városokban, ahol a TISZA is megfordult."
+        "label": "Elhalasztod a missziót, és a nyáron vidéki országjárásra indulsz."
       }
     ]
   },
@@ -83,11 +83,11 @@
       },
       {
         "id": "C",
-        "label": "Az intézményvezetőkre bízod a válságkezelést, a kormányszóvivő szerint a hálózat stabil."
+        "label": "A válságkezelést az intézményvezetőkre bízod, a kormányszóvivő a hálózat működéséről ad tájékoztatást."
       },
       {
         "id": "D",
-        "label": "A kórházjárást szervező politikusokat a betegek zavarása miatt feljelentéssel fenyegeted."
+        "label": "A minisztérium jogi lépéseket helyez kilátásba a kórházjárást szervezőkkel szemben a betegjogok megsértése miatt."
       }
     ]
   },
@@ -98,19 +98,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Személyesen vezeted az operatív törzset, és a gátakon minden önkéntest szívesen látsz, pártállástól függetlenül."
+        "label": "Személyesen vezeted az operatív törzset, és a tiszás önkéntesek is szervezetten kapnak helyet a gátakon."
       },
       {
         "id": "B",
-        "label": "Vezeted a törzset, és a polgármesterekkel olyan helyreállítási megállapodást kötsz, ami az apadás után is megmarad."
+        "label": "Vezeted a törzset, és a polgármesterekkel hosszabb távú helyreállítási megállapodást írsz alá."
       },
       {
         "id": "C",
-        "label": "Vezeted a törzset, de a kormányoldali média csak a kormányzati védekezést mutatja, a tiszás önkénteseket nem."
+        "label": "Vezeted a törzset, a kormányzati kommunikáció a hivatásos védekezőket és a honvédséget mutatja."
       },
       {
         "id": "D",
-        "label": "A védekezést a katasztrófavédelemre bízod, te a nemzetközi programodon maradsz."
+        "label": "A védekezés irányítását a katasztrófavédelemre bízod, és tartod a nemzetközi programodat."
       }
     ]
   },
@@ -121,19 +121,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A közmédia átveszi a petíciót, a híradó beszámol a tüntetésről, a kormány nem kommentálja."
+        "label": "A közmédia vezetése átveszi a petíciót, a híradó tudósít a tüntetésről."
       },
       {
         "id": "B",
-        "label": "A híradó tudósít, de a tüntetést a kormányszóvivő kommentárjával keretezi."
+        "label": "A híradó tudósít a tüntetésről, a kormányszóvivő pedig stúdióban reagál."
       },
       {
         "id": "C",
-        "label": "A közmédia nem tudósít. Ami nincs a híradóban, az nem történt meg."
+        "label": "A közmédia a saját szerkesztési elvei szerint dönt, külön tudósítás nem készül."
       },
       {
         "id": "D",
-        "label": "A kormányoldali média idegen érdekek vonulásaként mutatja be a tüntetést."
+        "label": "A kormányoldali média a tüntetés szervezőinek külföldi kapcsolatait kezdi vizsgálni."
       }
     ]
   },
@@ -144,19 +144,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Levonod a következtetést: körzetenkénti felmérést rendelsz, és újrarendezed a kormányzati programot."
+        "label": "Körzetenkénti felmérést rendelsz el, és átrendezed a kormányzati program sorrendjét."
       },
       {
         "id": "B",
-        "label": "Elrendeled a felmérést, a nyilvánosság felé viszont ellenzéki kutatóknak nevezed a mérőket."
+        "label": "Elrendeled a belső felmérést, nyilvánosan pedig a mérések módszertanát kérdőjelezed meg."
       },
       {
         "id": "C",
-        "label": "Kétes kutatók, a saját méréseink mást mutatnak. Nincs változás."
+        "label": "A saját kutatóintézeteitek számaira hivatkozol, a kormány programja változatlan marad."
       },
       {
         "id": "D",
-        "label": "A hírek ellensúlyozására rezsijóváírást hirdetsz még karácsony előtt."
+        "label": "Karácsony előtti rezsijóváírást jelentesz be."
       }
     ]
   },
@@ -167,19 +167,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nem kommentálod a felvételeket. A frakció a TISZA adó-, energia- és uniós politikáját kérdezi."
+        "label": "Nem nyilatkozol a felvételekről, a frakció a TISZA adó-, energia- és uniós javaslatairól kérdez a parlamentben."
       },
       {
         "id": "B",
-        "label": "A kormányoldali sajtó közli a felvételeket, a pártvezetés hallgat."
+        "label": "A kormányoldali sajtó részletesen közli a felvételeket, a pártvezetés nem nyilatkozik."
       },
       {
         "id": "C",
-        "label": "A parlamentben te magad idézel a felvételekből."
+        "label": "A parlamenti vitában te magad idézel a felvételekből."
       },
       {
         "id": "D",
-        "label": "Országos plakátkampányt indítasz Magyar Péter személye ellen."
+        "label": "Országos plakátkampányt indítasz, amely Magyar Péter hiteltelenségéről szól."
       }
     ]
   },
@@ -202,30 +202,30 @@
       },
       {
         "id": "D",
-        "label": "Az intézmény zárva marad, a minisztérium nem nyilatkozik."
+        "label": "Az intézmény a látogatási rendre hivatkozva zárva marad, a minisztérium nem nyilatkozik a folyamatban lévő ügyről."
       }
     ]
   },
   {
     "id": "dombovar",
     "title": "Dombóvár után",
-    "question": "2025. január 12-én Csibi Krisztina nagy fölénnyel nyeri a Tolna 2-es időközi választást, a TISZA nem állít jelöltet. A párt ünnepel. Egy belső elemzés szerint a győzelem a szervezetről sokat, a TISZA elleni közvetlen versenyről keveset mond. Mit kezdesz vele?",
+    "question": "2025. január 12-én Csibi Krisztina nagy fölénnyel nyeri a Tolna 2-es időközi választást, a TISZA nem állít jelöltet. A párt ünnepel. Mit kezdesz az eredménnyel?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A győzelem ellenére szervezeti felülvizsgálatot indítasz: hol gyenge a helyi hálózat egy kétpárti versenyben."
+        "label": "Szervezeti felülvizsgálatot indítasz minden körzetben egy kétpárti verseny forgatókönyvével."
       },
       {
         "id": "B",
-        "label": "Megtartjátok a győztes módszert: kopogtatás, a helyi elit, a polgármesterek."
+        "label": "A győztes módszert viszed tovább: kopogtatás, a helyi elit és a polgármesterek bevonása."
       },
       {
         "id": "C",
-        "label": "A TISZA meg sem mert jelenni. A győzelem bizonyítja, hogy nincs veszély."
+        "label": "A győzelmet a kampányban arra használod, hogy megmutasd: a TISZA nem mer helyben megmérettetni magát."
       },
       {
         "id": "D",
-        "label": "Pénzt csoportosítasz a vidéki szervezetekhez, de a körzeti jelölteket nem nézitek át."
+        "label": "Pluszforrást csoportosítasz a vidéki szervezetekhez, a jelöltállítás rendje marad."
       }
     ]
   },
@@ -240,15 +240,15 @@
       },
       {
         "id": "B",
-        "label": "Mindent egyszerre ígérsz: 14. havi nyugdíjat, szja-kedvezményt, lakáshitelt és közszolgáltatási programot."
+        "label": "Bejelented a 14. havi nyugdíjat, az szja-kedvezményt, a lakáshitelt és a közszolgáltatási programot is."
       },
       {
         "id": "C",
-        "label": "A megélhetési csomag kap elsőbbséget, a közszolgáltatási program lassabban halad."
+        "label": "A megélhetési csomag kap elsőbbséget, a közszolgáltatási program a következő évekre ütemezve folytatódik."
       },
       {
         "id": "D",
-        "label": "Az évértékelő a háborúról és Brüsszelről szól, költségvetési vállalás nincs."
+        "label": "Az évértékelő a háborúról és a brüsszeli vitákról szól, a költségvetési részleteket a pénzügyminiszter mutatja be később."
       }
     ]
   },
@@ -259,19 +259,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nem nyitsz frontot: a gyermekvédelmi törvény marad, tiltás nincs."
+        "label": "A gyermekvédelmi törvény marad, új tiltást nem nyújtotok be."
       },
       {
         "id": "B",
-        "label": "A tiltás bekerül, de a rendőrség nem használ arcfelismerést."
+        "label": "Megszavazzátok a tiltást, de arcfelismerést nem engedtek alkalmazni."
       },
       {
         "id": "C",
-        "label": "Teljes tiltás és arcfelismerés, a tavaszi kampányt erre építed."
+        "label": "Megszavazzátok a tiltást és az arcfelismerés használatát, és a tavaszi kampányban is előtérbe kerül a téma."
       },
       {
         "id": "D",
-        "label": "Népszavazást hirdetsz a kérdésről."
+        "label": "Népszavazást kezdeményezel a kérdésről."
       }
     ]
   },
@@ -282,19 +282,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nem a TISZA-t támadod, hanem tárgyalási csomagot küldesz Brüsszelbe a források egy részéért, határidőkkel."
+        "label": "Tárgyalási csomagot küldesz Brüsszelbe a befagyasztott források egy részéért, határidőkkel."
       },
       {
         "id": "B",
-        "label": "A forrásokat a kampányban Brüsszel zsarolásaként mutatod be, tárgyalás nincs."
+        "label": "A kampányban a forrásokat a brüsszeli nyomásgyakorlás eszközeként mutatod be, új tárgyalási ajánlat nincs."
       },
       {
         "id": "C",
-        "label": "Hazaárulással vádolod Kollár Kingát és a TISZA-t."
+        "label": "Nyilvánosan hazaárulással vádolod Kollár Kingát és a TISZA-t."
       },
       {
         "id": "D",
-        "label": "Hazai forrásból hirdetsz programot a befagyasztott helyett."
+        "label": "Hazai költségvetési programot hirdetsz a befagyasztott források pótlására."
       }
     ]
   },
@@ -305,19 +305,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Lázár János ütemezett felújítási programot kap a legrosszabb vonalakra, havi nyilvános pontossági jelentéssel."
+        "label": "Lázár János ütemezett felújítási programot kap a leggyengébb vonalakra, havi nyilvános pontossági jelentéssel."
       },
       {
         "id": "B",
-        "label": "Új szerelvényeket rendelsz, és az év végéig sorra átadod őket ünnepségekkel."
+        "label": "Új szerelvényeket rendelsz, és az év végéig sorra forgalomba állnak."
       },
       {
         "id": "C",
-        "label": "A vasút állapotáért a korábbi kormányokat hibáztatod, a MÁV a régi keretből gazdálkodik."
+        "label": "A MÁV a meglévő keretből gazdálkodik, a kormány a korábbi évek elmaradt beruházásaira hivatkozik."
       },
       {
         "id": "D",
-        "label": "Néhány vonal üzemeltetését koncesszióba adod."
+        "label": "Néhány mellékvonal üzemeltetését koncesszióba adod."
       }
     ]
   },
@@ -328,19 +328,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Elfogadod a kétpólusú versenyt: minden üzenet a TISZA programjával való összevetésre épül."
+        "label": "A kampány üzeneteit a TISZA programjával való pontos összevetésre építed."
       },
       {
         "id": "B",
-        "label": "Olyan üzeneteket erősítesz, amelyek a kisebb ellenzéki pártokat tartják életben, hogy megosszák a kormányváltó szavazókat."
+        "label": "A kormányoldali média több teret ad a kisebb ellenzéki pártoknak."
       },
       {
         "id": "C",
-        "label": "A mérések hamisak, a TISZA-buborék ki fog pukkadni."
+        "label": "A kormányközeli intézetek méréseit állítod a középpontba, a kampányterv nem változik."
       },
       {
         "id": "D",
-        "label": "Jobboldali üzenetekkel fordulsz a Mi Hazánk szavazói felé, hogy ne szivárogjanak el."
+        "label": "Jobboldali témákkal a Mi Hazánk szavazóit szólítod meg."
       }
     ]
   },
@@ -351,7 +351,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Digitális Polgári Köröket, influencerekkel és országos online hálózattal."
+        "label": "Digitális Polgári Köröket, országos online hálózattal és ismert közösségimédia-arcokkal."
       },
       {
         "id": "B",
@@ -363,7 +363,7 @@
       },
       {
         "id": "D",
-        "label": "Nem építesz új szervezetet, a meglévő helyi szervezeteket erősíted forrással."
+        "label": "Nem indítasz új szervezetet, a meglévő helyi szervezeteket erősíted forrással."
       }
     ]
   },
@@ -374,19 +374,19 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Elítéled a támadást, segítséget küldesz Kárpátaljára, és a háborús üzenetet visszaveszed a kampányban."
+        "label": "Elítéled a támadást, segélyt küldesz Kárpátaljára, és a következő hetekben a béke-üzenet helyett a segítségnyújtásról beszélsz."
       },
       {
         "id": "B",
-        "label": "Elítéled, de a kampány fő üzenete marad: a TISZA háborúba vinné az országot."
+        "label": "Elítéled a támadást, a kampány fő üzenete pedig továbbra is az, hogy a TISZA háborúba vinné az országot."
       },
       {
         "id": "C",
-        "label": "Óvatos külügyi nyilatkozatot adsz ki, a támadót nem nevezed meg."
+        "label": "A külügyminisztérium nyilatkozatban sajnálatát fejezi ki, a támadót nem nevezi meg."
       },
       {
         "id": "D",
-        "label": "A választás tétjét nyíltan háború vagy béke kérdésévé teszed."
+        "label": "Bejelented, hogy a választás tétje háború vagy béke."
       }
     ]
   },
@@ -409,7 +409,7 @@
       },
       {
         "id": "D",
-        "label": "Te magad vezeted a kampányt, minden napi döntés hozzád kerül."
+        "label": "Te magad vezeted a kampányt, a napi döntések hozzád futnak be."
       }
     ]
   },
@@ -428,11 +428,11 @@
       },
       {
         "id": "C",
-        "label": "Az ünnepi beszédben provokációnak nevezed a TISZA menetét."
+        "label": "Az ünnepi beszédben a TISZA menetét a nemzeti ünnep megzavarásának nevezed."
       },
       {
         "id": "D",
-        "label": "Elmarad a Békemenet: a kormány megemlékezik, a párt nem vonul."
+        "label": "A párt nem szervez menetet, a kormány hivatalos megemlékezést tart."
       }
     ]
   },
@@ -443,15 +443,15 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Előrehozod a cseréket: a gyenge, régi képviselők helyére helyben ismert jelöltek jönnek."
+        "label": "Előrehozod a jelöltcseréket: több régi képviselő helyére helyben ismert új jelölt kerül."
       },
       {
         "id": "B",
-        "label": "A régi képviselők maradnak, a frakció egysége fontosabb."
+        "label": "A frakció egysége érdekében a jelenlegi képviselők maradnak a jelöltek."
       },
       {
         "id": "C",
-        "label": "A TISZA jelöltjeinek múltját kutatjátok, a kormánysajtó egyenként támadja őket."
+        "label": "A kormányoldali sajtó a TISZA jelöltjeinek múltját kezdi bemutatni, körzetről körzetre."
       },
       {
         "id": "D",
@@ -470,7 +470,7 @@
       },
       {
         "id": "B",
-        "label": "A kormánysajtó és Menczer Tamás a tüntetés szervezőit támadja."
+        "label": "A kormányoldali sajtó és Menczer Tamás a tüntetés szervezőinek indítékait kérdőjelezi meg."
       },
       {
         "id": "C",
@@ -489,7 +489,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A teljesítésről: kórházak és vasút számokkal, a jelöltek helyi vállalásokkal."
+        "label": "A beszéd a vállalások teljesítéséről szól: kórházi és vasúti számok, a jelöltek helyi vállalásai."
       },
       {
         "id": "B",
@@ -497,11 +497,11 @@
       },
       {
         "id": "C",
-        "label": "Háború vagy béke: a kongresszus egyetlen témája."
+        "label": "A beszéd egyetlen témája a háború és a béke kérdése."
       },
       {
         "id": "D",
-        "label": "Az ellenzéki programot bírálod, saját vállalás nincs."
+        "label": "A beszéd a TISZA programjának bírálatára épül, új vállalás nélkül."
       }
     ]
   },
@@ -520,11 +520,11 @@
       },
       {
         "id": "C",
-        "label": "Ellentámadás: a TISZA programja szerinted adóemelési terv."
+        "label": "A TISZA programjának adóterheit állítod a középpontba."
       },
       {
         "id": "D",
-        "label": "Elismered a lemaradást, és új határidőket vállalsz."
+        "label": "Elismered a csúszásokat, és új határidőket jelentesz be."
       }
     ]
   },
@@ -539,11 +539,11 @@
       },
       {
         "id": "B",
-        "label": "Ársapkát vezetsz be, és a leállás ukrán felelősségét hangsúlyozod."
+        "label": "Ársapkát vezetsz be, és a leállásért az ukrán felet teszed felelőssé."
       },
       {
         "id": "C",
-        "label": "A válságot Brüsszelre és a TISZA-ra fogod."
+        "label": "A válságért Brüsszelt és a TISZA szankciópolitikáját teszed felelőssé."
       },
       {
         "id": "D",
@@ -558,11 +558,11 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Mozgósítás: a hajrá a biztos táborról szól."
+        "label": "A biztos tábor mozgósítására mész: nagygyűlések, aktivisták, telefonos kampány."
       },
       {
         "id": "B",
-        "label": "A nyitott körzetek: a miniszterek a billegő körzetekben kampányolnak."
+        "label": "A miniszterek a hátralévő hetekben a billegő körzetekben kampányolnak."
       },
       {
         "id": "C",
@@ -585,15 +585,15 @@
       },
       {
         "id": "B",
-        "label": "Az utolsó napok a billegő körzeteké, házról házra."
+        "label": "Az utolsó napokban a jelöltek és a miniszterek a billegő körzetekben kopogtatnak."
       },
       {
         "id": "C",
-        "label": "Záró tévéinterjú a két év kormányzati munkájáról, új ígéret nélkül."
+        "label": "Záró tévéinterjút adsz a két év kormányzati munkájáról, új ígéret nélkül."
       },
       {
         "id": "D",
-        "label": "Utolsó hétvégi támadó kampány Magyar Péter ellen."
+        "label": "Az utolsó hétvégén Magyar Péterről szóló kampányfilmet indítotok."
       }
     ]
   }
