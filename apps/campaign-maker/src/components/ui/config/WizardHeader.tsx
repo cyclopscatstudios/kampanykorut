@@ -1,6 +1,6 @@
-import { Icon } from "@/shared/ui";
-import { Button } from "@/shared/ui/Button";
-import { useTranslate } from "@/shared/logic/hooks";
+import { Icon } from "@shared/ui";
+import { Button } from "@shared/ui/Button";
+import { useTranslate } from "@shared/logic/hooks";
 import { useCampaignDraft } from "./CampaignDraftContext";
 import { downloadCampaignDraft } from "./exportCampaignDraft";
 

@@ -1,7 +1,7 @@
-import { BootstrapIcon, CampaignConfig } from "@/shared/types";
-import { Icon } from "@/shared/ui";
-import type { Colors } from "../../../../../../../../shared/types/color";
-import { Text } from "../../../../../../../../shared/ui/Text";
+import { BootstrapIcon, CampaignConfig } from "@shared/types";
+import type { Colors } from "@shared/types/color";
+import { Icon } from "@shared/ui";
+import { Text } from "@shared/ui/Text";
 import { CommonWrapper } from "../../../CommonWrapper";
 import { calculateVotePercentages } from "../electionMap.utils";
 import type { StatisticResult } from "../statistics.utils";

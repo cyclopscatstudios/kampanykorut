@@ -1,5 +1,5 @@
-import { useTranslate } from "@/shared/logic/hooks";
-import { Button } from "@/shared/ui/Button";
+import { useTranslate } from "@shared/logic/hooks";
+import { Button } from "@shared/ui/Button";
 import { WizardStep } from "./wizardSteps";
 
 interface WizardFooterProps {

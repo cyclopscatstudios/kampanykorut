@@ -1,17 +1,17 @@
 import "reflect-metadata";
-import "./logic/infra/sentry";
+import "@logic/infra/sentry";
 import "./di/container";
-import "./logic/i18n/i18n";
+import "@logic/i18n/i18n";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./index.css";
+import { initAnalytics } from "@logic/infra/posthog/posthog";
+import { initStorageErrorNotifier } from "@logic/infra/storageErrorNotifier";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Toaster } from "react-hot-toast";
 import { RouterProvider } from "react-router-dom";
 import { initCheatConsole } from "./debug/cheat/cheatConsole";
 import { initDevApi } from "./initApi";
-import { initAnalytics } from "./logic/infra/posthog/posthog";
-import { initStorageErrorNotifier } from "./logic/infra/storageErrorNotifier";
 import { router } from "./router";
 
 initStorageErrorNotifier();

@@ -1,7 +1,7 @@
+import { formatNewsDate } from "@logic/application/news/news.format";
+import type { NewsCover, NewsLang, NewsType } from "@shared/types";
 import classNames from "classnames";
 import { t } from "i18next";
-import type { NewsCover, NewsLang, NewsType } from "@/shared/types";
-import { formatNewsDate } from "../../../logic/application/news/news.format";
 
 const PLACEHOLDER =
   "bg-[repeating-linear-gradient(135deg,rgba(148,163,184,0.10)_0_8px,rgba(148,163,184,0.04)_8px_16px)]";

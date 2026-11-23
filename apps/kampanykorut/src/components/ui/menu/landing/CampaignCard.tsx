@@ -1,5 +1,5 @@
+import { Text } from "@shared/ui/Text";
 import { Link } from "react-router-dom";
-import { Text } from "../../../../../../../shared/ui/Text";
 import { campaignPagePath } from "../../campaignPage/campaignPage.data";
 import { Heading } from "../../Heading";
 import type { Campaign } from "./types";

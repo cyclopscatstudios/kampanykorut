@@ -1,8 +1,8 @@
+import type { PoliticalFocus } from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { toast, type ToastOptions } from "react-hot-toast";
-import type { PoliticalFocus } from "@/shared/types";
-import { Icon } from "../../../../../../shared/ui/Icon";
 
 export type ToastType = "Success" | "Error" | "Normal" | "Focus";
 

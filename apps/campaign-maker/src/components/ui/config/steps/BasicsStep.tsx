@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import { useLocation } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { Icon } from "@/shared/ui";
-import { useTranslate } from "@/shared/logic/hooks";
+import { Icon } from "@shared/ui";
+import { useTranslate } from "@shared/logic/hooks";
 import { FormField } from "../../form/FormField";
 import { NumberInput } from "../../form/NumberInput";
 import { TextInput } from "../../form/TextInput";

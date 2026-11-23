@@ -1,11 +1,11 @@
-import { inject } from "tsyringe";
-import { createLogger } from "../logger";
+import { createLogger } from "@shared/logger";
 import {
   AppliedEffect,
   CampaignState,
   CandidateListData,
   EffectType,
-} from "../types";
+} from "@shared/types";
+import { inject } from "tsyringe";
 import { DistrictVoteTransformer } from "./ResultTransformer/DistrictVoteTransformer";
 import { UnionSwingTransformer } from "./ResultTransformer/UnionSwingTransformer";
 import { VoteShareTransformer } from "./ResultTransformer/VoteShareTransformer";

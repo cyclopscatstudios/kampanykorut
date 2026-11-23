@@ -1,11 +1,11 @@
+import { useSettings } from "@logic/application/hooks/useSettings";
+import { PRIVACY_PATH } from "@logic/application/privacyPath";
+import { noop } from "@logic/application/utils";
+import { GameSettings } from "@shared/types";
+import { supportedLanguages } from "@shared/types/languages";
+import { Button } from "@shared/ui/Button";
 import { t } from "i18next";
 import { useState } from "react";
-import { GameSettings } from "@/shared/types";
-import { supportedLanguages } from "../../../../../../shared/types/languages";
-import { Button } from "../../../../../../shared/ui/Button";
-import { useSettings } from "../../../logic/application/hooks/useSettings";
-import { PRIVACY_PATH } from "../../../logic/application/privacyPath";
-import { noop } from "../../../logic/application/utils";
 import { Checkbox } from "../Checkbox";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Dropdown } from "../Dropdown";

@@ -1,14 +1,14 @@
-import classNames from "classnames";
-import { t } from "i18next";
-import { useState } from "react";
 import {
   CampaignConfig,
   District,
   MayoralDistrictResult,
   MayoralResult,
-} from "@/shared/types";
-import { Icon } from "../../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../../shared/ui/Text";
+} from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
+import classNames from "classnames";
+import { t } from "i18next";
+import { useState } from "react";
 import { CommonWrapper } from "../../CommonWrapper";
 import {
   formatShare,

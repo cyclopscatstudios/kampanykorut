@@ -1,7 +1,7 @@
 import type { Story } from "@ladle/react";
+import type { NewsType } from "@shared/types";
 import { useState } from "react";
 import { MemoryRouter } from "react-router-dom";
-import type { NewsType } from "@/shared/types";
 import { sampleNews, sampleNewsDetail } from "./news.fixtures";
 import { NewsArchiveView } from "./NewsArchivePage";
 import { NewsBellView } from "./NewsBell";

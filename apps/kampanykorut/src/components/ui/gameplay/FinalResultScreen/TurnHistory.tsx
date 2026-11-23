@@ -1,13 +1,13 @@
+import { StateEngine } from "@logic/application";
+import { noop } from "@logic/application/utils";
+import { CampaignConfig, HistoryItem } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Text } from "@shared/ui/Text";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
-import { CampaignConfig, HistoryItem } from "@/shared/types";
-import { Button } from "../../../../../../../shared/ui/Button";
-import { Text } from "../../../../../../../shared/ui/Text";
-import { StateEngine } from "../../../../logic/application";
-import { noop } from "../../../../logic/application/utils";
 import { CommonWrapper } from "../../CommonWrapper";
 import { Heading } from "../../Heading";
 import { orderAnswers } from "../answerOrder.utils";

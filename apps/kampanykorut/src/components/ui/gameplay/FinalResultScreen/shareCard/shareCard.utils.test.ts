@@ -1,10 +1,10 @@
-import type { TFunction } from "i18next";
 import type {
   CampaignConfig,
   CampaignState,
   FinalResults,
   MayoralResult,
-} from "@/shared/types";
+} from "@shared/types";
+import type { TFunction } from "i18next";
 import {
   buildShareCard,
   formatPercent,

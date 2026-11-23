@@ -1,5 +1,5 @@
+import type { MayoralOutcome } from "@shared/types";
 import { v4 as uuidv4 } from "uuid";
-import type { MayoralOutcome } from "@/shared/types";
 
 export const ANALYTICS_SCHEMA_VERSION = 1;
 

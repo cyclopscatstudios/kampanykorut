@@ -1,8 +1,8 @@
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../../shared/ui/Icon";
 import { CAMPAIGN_SORTS, type CampaignSort } from "./campaignSelector.utils";
 
 const labels = {

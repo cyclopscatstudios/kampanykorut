@@ -1,4 +1,4 @@
-import type { BootstrapIcon, FocusStatus } from "@/shared/types";
+import type { BootstrapIcon, FocusStatus } from "@shared/types";
 
 interface FocusStatusStyle {
   card: string;

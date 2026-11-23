@@ -1,8 +1,4 @@
-import classNames from "classnames";
-import { t } from "i18next";
-import { useMemo, useState } from "react";
-import { container } from "tsyringe";
-import { ConfigEngine, StateEngine } from "@/logic/application";
+import { ConfigEngine, StateEngine } from "@logic/application";
 import {
   buildCoalitionResult,
   buildCoalitionView,
@@ -13,11 +9,15 @@ import {
   type PartnerSeatParty,
   type SeatParty,
   submitCoalitionOffer,
-} from "@/shared/domain";
-import { CampaignState, GovernmentOutcome } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
+} from "@shared/domain";
+import { CampaignState, GovernmentOutcome } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Tooltip } from "@shared/ui/Tooltip";
+import classNames from "classnames";
+import { t } from "i18next";
+import { useMemo, useState } from "react";
+import { container } from "tsyringe";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { useParams } from "../../../hooks/useParamsHook";
 import { GameChrome } from "../gameplay/GameChrome";

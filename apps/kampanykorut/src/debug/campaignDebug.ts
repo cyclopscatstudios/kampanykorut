@@ -1,5 +1,5 @@
+import { StorageEngine } from "@logic/application";
 import { container } from "tsyringe";
-import { StorageEngine } from "@/logic/application";
 
 declare global {
   interface Window {

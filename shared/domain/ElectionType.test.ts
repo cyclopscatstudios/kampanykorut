@@ -1,4 +1,4 @@
-import { ElectionConfig } from "../types";
+import { ElectionConfig } from "@shared/types";
 import {
   getElectionType,
   getParliamentaryConfig,

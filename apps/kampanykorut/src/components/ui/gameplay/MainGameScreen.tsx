@@ -1,6 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
-import { container } from "tsyringe";
-import { StateEngine, useElectionState } from "@/logic/application";
+import { StateEngine, useElectionState } from "@logic/application";
+import { useSettings } from "@logic/application/hooks/useSettings";
+import {
+  getLoadDurationBucket,
+  getRunProperties,
+} from "@logic/infra/posthog/events";
+import { takeCampaignLoadDuration } from "@logic/infra/posthog/loadTiming";
+import { trackOnce } from "@logic/infra/posthog/track";
 import {
   buildNewspaperEditions,
   getPendingAnnouncement,
@@ -8,16 +13,11 @@ import {
   isIntroPending,
   PollsterEngine,
   shouldOpenEdition,
-} from "@/shared/domain";
-import { createLogger } from "@/shared/logger";
-import { CampaignConfig, CampaignState, CurrentView } from "@/shared/types";
-import { useSettings } from "../../../logic/application/hooks/useSettings";
-import {
-  getLoadDurationBucket,
-  getRunProperties,
-} from "../../../logic/infra/posthog/events";
-import { takeCampaignLoadDuration } from "../../../logic/infra/posthog/loadTiming";
-import { trackOnce } from "../../../logic/infra/posthog/track";
+} from "@shared/domain";
+import { createLogger } from "@shared/logger";
+import { CampaignConfig, CampaignState, CurrentView } from "@shared/types";
+import { useEffect, useMemo, useState } from "react";
+import { container } from "tsyringe";
 import { CampaignIntroDialog } from "../campaignIntro/CampaignIntroDialog";
 import { NewspaperButton } from "../newspaper/NewspaperButton";
 import { NewspaperDialog } from "../newspaper/NewspaperDialog";

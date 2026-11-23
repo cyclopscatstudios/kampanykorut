@@ -1,10 +1,10 @@
+import { ConfigEngine, StateEngine } from "@logic/application";
+import { loadCampaignConfig } from "@logic/application/loadCampaignConfig";
+import { markCampaignLoadStart } from "@logic/infra/posthog/loadTiming";
+import { track } from "@logic/infra/posthog/track";
+import { createLogger, setLogTags } from "@shared/logger";
 import type { LoaderFunctionArgs } from "react-router";
 import { container } from "tsyringe";
-import { ConfigEngine, StateEngine } from "@/logic/application";
-import { createLogger, setLogTags } from "@/shared/logger";
-import { loadCampaignConfig } from "../../logic/application/loadCampaignConfig";
-import { markCampaignLoadStart } from "../../logic/infra/posthog/loadTiming";
-import { track } from "../../logic/infra/posthog/track";
 
 const log = createLogger("mainGameScreenLoader");
 

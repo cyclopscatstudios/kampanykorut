@@ -1,9 +1,9 @@
+import { StateEngine } from "@logic/application";
+import { Button } from "@shared/ui/Button";
+import { Tooltip } from "@shared/ui/Tooltip";
 import classNames from "classnames";
 import { t } from "i18next";
 import { container } from "tsyringe";
-import { StateEngine } from "@/logic/application";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { PoliticalEmblem } from "../dashboard/PoliticalEmblem";
 

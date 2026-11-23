@@ -1,6 +1,6 @@
+import { CandidateListData, VoterEnvironmentConfig } from "@shared/types";
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it } from "vitest";
-import { CandidateListData, VoterEnvironmentConfig } from "../../types";
 import {
   mockCandidateListData,
   mockPartyListData,

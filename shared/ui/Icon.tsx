@@ -1,6 +1,6 @@
+import { IconName, IconSource } from "@shared/types";
+import type { Colors } from "@shared/types/color";
 import classNames from "classnames";
-import { IconName, IconSource } from "../types";
-import type { Colors } from "../types/color";
 import { svgIcons } from "./icons";
 
 type IconSize = "xs" | "sm" | "normal" | "large" | "medium";

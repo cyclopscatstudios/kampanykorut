@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useTranslate } from "@/shared/logic/hooks";
+import { useTranslate } from "@shared/logic/hooks";
 import { getStepIndexFromPath, WIZARD_STEPS } from "../wizardSteps";
 import { WizardStepEyebrow } from "../WizardStepEyebrow";
 

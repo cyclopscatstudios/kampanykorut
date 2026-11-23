@@ -4,7 +4,7 @@ import {
   CoalitionPartner,
   Epilogue,
   GovernmentOutcome,
-} from "../types";
+} from "@shared/types";
 import { type Answers, createConditionCheck } from "./ConditionCheck";
 import { getParliamentaryConfig } from "./ElectionType";
 import { getMajorityThresholds } from "./Majority";

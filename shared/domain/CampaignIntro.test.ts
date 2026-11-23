@@ -1,5 +1,5 @@
+import { CampaignState } from "@shared/types";
 import { describe, expect, it } from "vitest";
-import { CampaignState } from "../types";
 import { isIntroPending, markIntroSeen } from "./CampaignIntro";
 
 const intro = { intro: { text: "Történelmi háttér." } };

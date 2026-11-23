@@ -1,6 +1,6 @@
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
+import { GameSettings } from "@shared/types";
 import { vi } from "vitest";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
-import { GameSettings } from "@/shared/types";
 import { SettingsEngine } from "./SettingsEngine";
 
 const makeStorageMock = (storedValue: string | null = null) => ({

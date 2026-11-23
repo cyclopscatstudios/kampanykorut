@@ -1,7 +1,7 @@
+import { GameSettings } from "@shared/types";
 import { act, renderHook } from "@testing-library/react";
 import { container } from "tsyringe";
 import { vi } from "vitest";
-import { GameSettings } from "@/shared/types";
 import { SettingsEngine } from "../SettingsEngine";
 import { useSettings } from "./useSettings";
 

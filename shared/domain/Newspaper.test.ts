@@ -1,4 +1,4 @@
-import { CampaignConfig, CampaignState, Condition } from "../types";
+import { CampaignConfig, CampaignState, Condition } from "@shared/types";
 import {
   buildNewspaperEditions,
   getNewspaper,

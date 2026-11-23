@@ -1,15 +1,15 @@
-import classNames from "classnames";
-import { t } from "i18next";
-import { useCallback, useMemo, useState } from "react";
-import { useMediaQuery } from "usehooks-ts";
 import {
   CampaignConfig,
   CampaignState,
   CandidateListData,
   FinalResults,
-} from "@/shared/types";
-import { Button } from "../../../../../../../../shared/ui/Button";
-import { Text } from "../../../../../../../../shared/ui/Text";
+} from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Text } from "@shared/ui/Text";
+import classNames from "classnames";
+import { t } from "i18next";
+import { useCallback, useMemo, useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
 import { Badge } from "../../../Badge";
 import { BottomSheet } from "../../../BottomSheet";
 import { SidebarPanel } from "../../../SidebarPanel";

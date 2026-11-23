@@ -1,15 +1,12 @@
-import { t } from "i18next";
-import {
-  getParliamentaryConfig,
-  isProportionalElection,
-} from "@/shared/domain";
+import { getParliamentaryConfig, isProportionalElection } from "@shared/domain";
 import {
   CampaignConfig,
   CampaignState,
   FinalResults,
   HistoryItem,
-} from "@/shared/types";
-import { Text } from "../../../../../../../../shared/ui/Text";
+} from "@shared/types";
+import { Text } from "@shared/ui/Text";
+import { t } from "i18next";
 import type { StatisticResult } from "../statistics.utils";
 import { SupportChart } from "./Chart";
 import { ListOverview } from "./ListOverview";

@@ -1,9 +1,9 @@
+import { isCampaignListed, StorageEngine } from "@logic/application";
+import { fetchJSON } from "@logic/application/fetchJSON";
+import { getCampaignHeaderById } from "@logic/application/getCampaignHeaderById";
+import type { ElectionConfig } from "@shared/types/configs/election-config";
 import { data, type LoaderFunctionArgs } from "react-router";
 import { container } from "tsyringe";
-import { isCampaignListed, StorageEngine } from "@/logic/application";
-import type { ElectionConfig } from "@/shared/types/configs/election-config";
-import { fetchJSON } from "../../logic/application/fetchJSON";
-import { getCampaignHeaderById } from "../../logic/application/getCampaignHeaderById";
 import { buildCampaignPageData } from "../ui/campaignPage/campaignPage.data";
 
 export async function campaignPageLoader({ params }: LoaderFunctionArgs) {

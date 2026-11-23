@@ -3,7 +3,7 @@ import {
   CampaignConfig,
   CandidateListData,
   RegionSeatResult,
-} from "@/shared/types";
+} from "@shared/types";
 
 export type VotePercentage = {
   votes?: number;

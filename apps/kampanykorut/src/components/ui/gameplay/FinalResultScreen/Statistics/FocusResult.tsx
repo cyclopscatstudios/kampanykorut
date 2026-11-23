@@ -1,6 +1,6 @@
-import type { FocusView } from "@/shared/domain";
-import { useTranslate } from "../../../../../../../../shared/logic/hooks/useTranslateLang";
-import { Tooltip } from "../../../../../../../../shared/ui/Tooltip";
+import type { FocusView } from "@shared/domain";
+import { useTranslate } from "@shared/logic/hooks/useTranslateLang";
+import { Tooltip } from "@shared/ui/Tooltip";
 import { FocusEmblem } from "../../../dashboard/FocusEmblem";
 
 export function FocusResult({ focuses: chosen }: { focuses: FocusView[] }) {

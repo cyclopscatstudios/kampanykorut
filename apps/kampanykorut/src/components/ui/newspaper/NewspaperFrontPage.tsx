@@ -1,8 +1,8 @@
 import "./newspaper.css";
+import { NewspaperEditionView } from "@shared/types";
 import classNames from "classnames";
 import { t } from "i18next";
 import type { ReactNode } from "react";
-import { NewspaperEditionView } from "@/shared/types";
 
 const MASTHEAD = "font-['Playfair_Display',Georgia,serif] italic font-black";
 const HEADLINE = "font-['Alfa_Slab_One',Georgia,serif] uppercase";

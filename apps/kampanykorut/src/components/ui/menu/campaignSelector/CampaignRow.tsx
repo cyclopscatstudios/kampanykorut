@@ -1,5 +1,5 @@
+import type { CampaignHeader } from "@logic/application";
 import classNames from "classnames";
-import type { CampaignHeader } from "@/logic/application";
 import { stripYearPrefix } from "../../gameplay/campaignBadge.utils";
 import { CampaignChips, NewBadge } from "./CampaignChips";
 import { isNewCampaign } from "./campaignSelector.utils";

@@ -3,7 +3,7 @@ import {
   Condition,
   ConditionContext,
   LeafCondition,
-} from "../types";
+} from "@shared/types";
 
 export class ConditionEvaluationError extends Error {
   constructor(

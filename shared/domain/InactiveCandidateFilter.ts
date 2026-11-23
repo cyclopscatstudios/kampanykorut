@@ -1,4 +1,4 @@
-import { ConditionalRawEffect, EffectType, RawEffect } from "../types";
+import { ConditionalRawEffect, EffectType, RawEffect } from "@shared/types";
 
 function omitKeys<T>(record: Record<string, T>, ids: Set<string>) {
   return Object.fromEntries(

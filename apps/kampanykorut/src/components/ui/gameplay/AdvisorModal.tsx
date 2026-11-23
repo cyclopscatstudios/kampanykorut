@@ -1,12 +1,12 @@
+import { useSettings } from "@logic/application/hooks/useSettings";
+import { AdvisorFeedbackAssets } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { AdvisorFeedbackAssets } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
-import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Heading } from "../Heading";
 
 interface AdvisorModalProps {

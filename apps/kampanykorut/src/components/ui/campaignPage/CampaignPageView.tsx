@@ -1,10 +1,10 @@
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
+import { Tooltip } from "@shared/ui/Tooltip";
 import classNames from "classnames";
 import { t } from "i18next";
 import { Link } from "react-router-dom";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { Heading } from "../Heading";
 import {
   campaignBannerPath,

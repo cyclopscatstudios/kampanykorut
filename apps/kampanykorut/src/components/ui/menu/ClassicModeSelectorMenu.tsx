@@ -1,7 +1,3 @@
-import { t } from "i18next";
-import { useEffect, useState } from "react";
-import { container } from "tsyringe";
-import { useMediaQuery } from "usehooks-ts";
 import {
   type CampaignHeader,
   isCampaignListed,
@@ -9,9 +5,13 @@ import {
   StorageEngine,
   useGetCampaigns,
   useStateEngine,
-} from "@/logic/application";
-import { Button } from "../../../../../../shared/ui/Button";
-import { MenuLayout } from "../../../../../../shared/ui/menu/MenuLayout";
+} from "@logic/application";
+import { Button } from "@shared/ui/Button";
+import { MenuLayout } from "@shared/ui/menu/MenuLayout";
+import { t } from "i18next";
+import { useEffect, useState } from "react";
+import { container } from "tsyringe";
+import { useMediaQuery } from "usehooks-ts";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { CampaignPreview } from "./campaignSelector/CampaignPreview";
 import { CampaignRow } from "./campaignSelector/CampaignRow";

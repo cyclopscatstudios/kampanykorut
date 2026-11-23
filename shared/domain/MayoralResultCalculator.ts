@@ -1,4 +1,3 @@
-import { injectable } from "tsyringe";
 import {
   CandidateListData,
   MayoralDistrictResult,
@@ -6,7 +5,8 @@ import {
   MayoralResult,
   MayoralStanding,
   MayoralTally,
-} from "../types";
+} from "@shared/types";
+import { injectable } from "tsyringe";
 
 export interface MayoralCalculationOptions {
   inactiveCandidateIds?: Iterable<string>;

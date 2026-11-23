@@ -1,8 +1,8 @@
+import { StateEngine } from "@logic/application";
+import { Button } from "@shared/ui/Button";
 import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
-import { StateEngine } from "@/logic/application";
-import { Button } from "../../../../../../shared/ui/Button";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";

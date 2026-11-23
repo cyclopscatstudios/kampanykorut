@@ -7,7 +7,7 @@ import {
   NewspaperEditionView,
   NewspaperItem,
   NewspaperState,
-} from "../types";
+} from "@shared/types";
 import { getCampaignEventState } from "./CampaignStateAccess";
 import { isStrategicMode } from "./PoliticalDashboard";
 

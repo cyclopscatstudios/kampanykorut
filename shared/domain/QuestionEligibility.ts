@@ -1,4 +1,4 @@
-import { Condition, ConditionContext, RawQuestion } from "../types";
+import { Condition, ConditionContext, RawQuestion } from "@shared/types";
 import { evaluateCondition } from "./ConditionEvaluator";
 
 type AnswerRef = { questionId: string; answerId: string };

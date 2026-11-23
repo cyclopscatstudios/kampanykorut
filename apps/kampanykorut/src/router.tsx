@@ -1,3 +1,5 @@
+import { NEWS_PATH } from "@logic/application/news/newsPaths";
+import { PRIVACY_PATH } from "@logic/application/privacyPath";
 import { createBrowserRouter } from "react-router";
 import { MainGameScreenWrapper, NewGameLayout, RootLayout } from "./AppLayout";
 import { ErrorPage } from "./components/ErrorPage";
@@ -29,8 +31,6 @@ import { SettingsMenu } from "./components/ui/menu/SettingsMenu";
 import { SideSelectorMenu } from "./components/ui/menu/SideSelectorMenu";
 import { NewsArchivePage } from "./components/ui/news/NewsArchivePage";
 import { NewsDetailPage } from "./components/ui/news/NewsDetailPage";
-import { NEWS_PATH } from "./logic/application/news/newsPaths";
-import { PRIVACY_PATH } from "./logic/application/privacyPath";
 
 export const router = createBrowserRouter([
   {

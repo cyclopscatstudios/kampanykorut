@@ -1,13 +1,13 @@
-import { type LoaderFunctionArgs, redirect } from "react-router";
-import { container } from "tsyringe";
-import { ConfigEngine, StateEngine } from "@/logic/application";
+import { ConfigEngine, StateEngine } from "@logic/application";
+import { loadCampaignConfig } from "@logic/application/loadCampaignConfig";
 import {
   buildCoalitionResult,
   forPlayerSide,
   needsCoalitionOffer,
-} from "@/shared/domain";
-import { createLogger, setLogTags } from "@/shared/logger";
-import { loadCampaignConfig } from "../../logic/application/loadCampaignConfig";
+} from "@shared/domain";
+import { createLogger, setLogTags } from "@shared/logger";
+import { type LoaderFunctionArgs, redirect } from "react-router";
+import { container } from "tsyringe";
 
 const log = createLogger("coalitionLoader");
 

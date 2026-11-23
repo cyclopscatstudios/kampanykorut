@@ -1,5 +1,5 @@
+import { ABSTAIN_KEY, CandidateListData } from "@shared/types";
 import { injectable } from "tsyringe";
-import { ABSTAIN_KEY, CandidateListData } from "../../types";
 
 @injectable()
 export class CandidateWithdrawalTransformer {

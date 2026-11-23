@@ -1,4 +1,4 @@
-import { CampaignState } from "../types";
+import { CampaignState } from "@shared/types";
 import {
   acknowledgeAnnouncement,
   getCampaignEventState,

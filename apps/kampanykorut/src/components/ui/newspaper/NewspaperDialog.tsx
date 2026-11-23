@@ -1,7 +1,7 @@
+import { NewspaperEditionView } from "@shared/types";
+import { Button } from "@shared/ui/Button";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
-import { NewspaperEditionView } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
 import { NewspaperFrontPage } from "./NewspaperFrontPage";
 
 // "arrival": a new edition opened by itself, answered with "read" or

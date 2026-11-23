@@ -1,7 +1,7 @@
+import { useSettings } from "@logic/application";
+import { type LanguageId, supportedLanguages } from "@shared/types";
+import { Button } from "@shared/ui/Button";
 import classNames from "classnames";
-import { useSettings } from "@/logic/application";
-import { type LanguageId, supportedLanguages } from "@/shared/types";
-import { Button } from "@/shared/ui/Button";
 
 interface LanguageSwitcherProps {
   className?: string;

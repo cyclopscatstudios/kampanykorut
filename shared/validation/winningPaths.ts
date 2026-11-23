@@ -2,38 +2,38 @@ import "reflect-metadata";
 import { readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { container } from "tsyringe";
-import { CampaignEngine } from "../domain/CampaignEngine";
-import { CampaignEventEngine } from "../domain/CampaignEventEngine";
+import { CampaignEngine } from "@shared/domain/CampaignEngine";
+import { CampaignEventEngine } from "@shared/domain/CampaignEventEngine";
 import {
   buildCoalitionResult,
   buildCoalitionView,
   getGovernmentOutcome,
   needsCoalitionOffer,
   submitCoalitionOffer,
-} from "../domain/Coalition";
-import { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
-import { EffectApplier } from "../domain/EffectApplier";
-import { getMajorityThresholds } from "../domain/Majority";
-import { MandateCalculator } from "../domain/MandateCalculator";
-import { MayoralResultCalculator } from "../domain/MayoralResultCalculator";
+} from "@shared/domain/Coalition";
+import { DistrictGroupEngine } from "@shared/domain/DistrictGroupEngine";
+import { EffectApplier } from "@shared/domain/EffectApplier";
+import { getMajorityThresholds } from "@shared/domain/Majority";
+import { MandateCalculator } from "@shared/domain/MandateCalculator";
+import { MayoralResultCalculator } from "@shared/domain/MayoralResultCalculator";
 import {
   autoSelectCompletedFocus,
   buildFocusOverview,
   canSelectFocus,
   selectFocus,
-} from "../domain/PoliticalFocus";
-import { PollsterEngine } from "../domain/PollsterEngine";
-import { ResultModifier } from "../domain/ResultModifier";
-import { CandidateWithdrawalTransformer } from "../domain/ResultTransformer/CandidateWithdrawalTransformer";
-import { VoterEnvironment } from "../domain/VoterEnvironment";
+} from "@shared/domain/PoliticalFocus";
+import { PollsterEngine } from "@shared/domain/PollsterEngine";
+import { ResultModifier } from "@shared/domain/ResultModifier";
+import { CandidateWithdrawalTransformer } from "@shared/domain/ResultTransformer/CandidateWithdrawalTransformer";
+import { VoterEnvironment } from "@shared/domain/VoterEnvironment";
 import type {
   CampaignState,
   Decision,
   GovernmentOutcome,
   HistoryItem,
   RawAnsweEffectProps,
-} from "../types";
+} from "@shared/types";
+import { container } from "tsyringe";
 
 export const campaignsDir = resolve(
   dirname(fileURLToPath(import.meta.url)),

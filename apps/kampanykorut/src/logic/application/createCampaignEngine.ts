@@ -1,4 +1,3 @@
-import { container } from "tsyringe";
 import {
   CampaignEngine,
   CampaignEventEngine,
@@ -10,9 +9,10 @@ import {
   PollsterEngine,
   ResultModifier,
   VoterEnvironment,
-} from "@/shared/domain";
-import { createLogger } from "@/shared/logger";
-import { CampaignConfig } from "@/shared/types";
+} from "@shared/domain";
+import { createLogger } from "@shared/logger";
+import { CampaignConfig } from "@shared/types";
+import { container } from "tsyringe";
 import { ConfigEngine } from "./ConfigEngine";
 
 const log = createLogger("createCampaignEngine");

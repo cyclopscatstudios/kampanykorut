@@ -1,5 +1,5 @@
+import type { CampaignHeader } from "@logic/application";
 import { describe, expect, it } from "vitest";
-import type { CampaignHeader } from "@/logic/application";
 import { isNewCampaign, sortCampaigns } from "./campaignSelector.utils";
 
 function campaign(id: string, year: number, addedAt?: string): CampaignHeader {

@@ -1,5 +1,5 @@
-import type { SeatParty } from "@/shared/domain";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
+import type { SeatParty } from "@shared/domain";
+import { Tooltip } from "@shared/ui/Tooltip";
 
 export function SeatBar({
   parties,

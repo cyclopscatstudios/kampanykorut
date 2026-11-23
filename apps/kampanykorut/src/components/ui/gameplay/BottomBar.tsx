@@ -1,9 +1,9 @@
+import { District } from "@shared/types";
+import type { Colors } from "@shared/types/color";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
-import { District } from "@/shared/types";
-import type { Colors } from "../../../../../../shared/types/color";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
 import { CommonWrapper } from "../CommonWrapper";
 import { FocusRequiredNote } from "./FocusRequiredNote";
 import type { SwingFactor } from "./swingFactor.utils";

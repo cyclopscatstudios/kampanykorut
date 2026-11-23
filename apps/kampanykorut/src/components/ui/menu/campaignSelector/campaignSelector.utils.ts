@@ -1,4 +1,4 @@
-import type { CampaignHeader } from "@/logic/application";
+import type { CampaignHeader } from "@logic/application";
 
 export type CampaignSort = "year" | "added";
 

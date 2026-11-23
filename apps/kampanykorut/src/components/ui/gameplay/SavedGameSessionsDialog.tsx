@@ -1,13 +1,10 @@
+import { type SavedCampaignSessionInfo, StateEngine } from "@logic/application";
+import { Button } from "@shared/ui/Button";
+import { Text } from "@shared/ui/Text";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
-import {
-  type SavedCampaignSessionInfo,
-  StateEngine,
-} from "@/logic/application";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Text } from "../../../../../../shared/ui/Text";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
 import { loadSession } from "./loadSession";

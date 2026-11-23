@@ -1,5 +1,5 @@
+import type { Colors } from "@shared/types/color";
 import classNames from "classnames";
-import type { Colors } from "../../../../../shared/types/color";
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5;
 

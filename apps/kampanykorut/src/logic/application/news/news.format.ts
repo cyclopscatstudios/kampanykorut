@@ -1,4 +1,4 @@
-import type { NewsLang } from "@/shared/types";
+import type { NewsLang } from "@shared/types";
 
 const LOCALES: Record<NewsLang, string> = { hu: "hu-HU", en: "en-GB" };
 const TIME_ZONE = "Europe/Budapest";

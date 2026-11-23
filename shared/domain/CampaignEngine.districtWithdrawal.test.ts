@@ -1,4 +1,3 @@
-import { container } from "tsyringe";
 import {
   CampaignEvent,
   CandidateListData,
@@ -6,7 +5,8 @@ import {
   EffectType,
   ElectionConfig,
   RawQuestion,
-} from "../types";
+} from "@shared/types";
+import { container } from "tsyringe";
 import { CampaignEngine } from "./CampaignEngine";
 import { CampaignEventEngine } from "./CampaignEventEngine";
 import { EffectApplier } from "./EffectApplier";

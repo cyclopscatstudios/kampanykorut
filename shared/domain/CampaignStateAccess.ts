@@ -4,7 +4,7 @@ import {
   CampaignEventState,
   CampaignState,
   CandidateStatus,
-} from "../types";
+} from "@shared/types";
 
 export function getCandidateStatus(
   state: Pick<CampaignState, "candidates">,

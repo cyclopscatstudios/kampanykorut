@@ -1,18 +1,18 @@
-import { t } from "i18next";
-import { Dispatch, SetStateAction, useState } from "react";
-import { container } from "tsyringe";
-import { ConfigEngine, Navigation } from "@/logic/application";
-import type { BugReportEnvironment, BugReportResponse } from "@/shared/types";
-import { Button } from "../../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../../shared/ui/Text";
-import { Tooltip } from "../../../../../../../shared/ui/Tooltip";
+import { ConfigEngine, Navigation } from "@logic/application";
 import {
   BugReportApiError,
   githubIssueUrl,
   submitBugReport,
-} from "../../../../logic/application/bugReport/bugReportApi";
-import { TURNSTILE_SITE_KEY } from "../../../../logic/application/bugReport/turnstile";
+} from "@logic/application/bugReport/bugReportApi";
+import { TURNSTILE_SITE_KEY } from "@logic/application/bugReport/turnstile";
+import type { BugReportEnvironment, BugReportResponse } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
+import { Tooltip } from "@shared/ui/Tooltip";
+import { t } from "i18next";
+import { Dispatch, SetStateAction, useState } from "react";
+import { container } from "tsyringe";
 import { Dialog, DialogBody, DialogHeader } from "../../Dialog";
 import { Heading } from "../../Heading";
 import { TextInput } from "../../TextInput";

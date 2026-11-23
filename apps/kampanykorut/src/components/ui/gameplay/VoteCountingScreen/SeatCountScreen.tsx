@@ -1,9 +1,9 @@
+import { type SeatCountView, tallyRevealedSeats } from "@shared/domain";
+import type { RawParty } from "@shared/types";
+import { Button } from "@shared/ui/Button";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useMemo, useState } from "react";
-import { type SeatCountView, tallyRevealedSeats } from "@/shared/domain";
-import type { RawParty } from "@/shared/types";
-import { Button } from "../../../../../../../shared/ui/Button";
 
 const REVEAL_INTERVAL_MS = 450;
 

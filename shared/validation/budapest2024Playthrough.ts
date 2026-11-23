@@ -1,17 +1,16 @@
 import { readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { container } from "tsyringe";
-import { CampaignEngine } from "../domain/CampaignEngine";
-import { CampaignEventEngine } from "../domain/CampaignEventEngine";
-import { DistrictGroupEngine } from "../domain/DistrictGroupEngine";
-import { EffectApplier } from "../domain/EffectApplier";
-import { MandateCalculator } from "../domain/MandateCalculator";
-import { MayoralResultCalculator } from "../domain/MayoralResultCalculator";
-import { PollsterEngine } from "../domain/PollsterEngine";
-import { ResultModifier } from "../domain/ResultModifier";
-import { CandidateWithdrawalTransformer } from "../domain/ResultTransformer/CandidateWithdrawalTransformer";
-import { VoterEnvironment } from "../domain/VoterEnvironment";
+import { CampaignEngine } from "@shared/domain/CampaignEngine";
+import { CampaignEventEngine } from "@shared/domain/CampaignEventEngine";
+import { DistrictGroupEngine } from "@shared/domain/DistrictGroupEngine";
+import { EffectApplier } from "@shared/domain/EffectApplier";
+import { MandateCalculator } from "@shared/domain/MandateCalculator";
+import { MayoralResultCalculator } from "@shared/domain/MayoralResultCalculator";
+import { PollsterEngine } from "@shared/domain/PollsterEngine";
+import { ResultModifier } from "@shared/domain/ResultModifier";
+import { CandidateWithdrawalTransformer } from "@shared/domain/ResultTransformer/CandidateWithdrawalTransformer";
+import { VoterEnvironment } from "@shared/domain/VoterEnvironment";
 import {
   CampaignEvent,
   CampaignState,
@@ -25,7 +24,8 @@ import {
   RawQuestion,
   Strategy,
   VoterEnvironmentConfig,
-} from "../types";
+} from "@shared/types";
+import { container } from "tsyringe";
 
 const campaignDir = resolve(
   dirname(fileURLToPath(import.meta.url)),

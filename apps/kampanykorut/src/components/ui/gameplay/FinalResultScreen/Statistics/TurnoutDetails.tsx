@@ -1,6 +1,6 @@
+import { CampaignConfig, CampaignState } from "@shared/types";
+import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
-import { CampaignConfig, CampaignState } from "@/shared/types";
-import { Text } from "../../../../../../../../shared/ui/Text";
 import { CommonWrapper } from "../../../CommonWrapper";
 import { Heading } from "../../../Heading";
 

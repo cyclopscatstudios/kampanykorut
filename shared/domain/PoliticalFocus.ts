@@ -6,7 +6,7 @@ import {
   FocusStatus,
   PoliticalFocus,
   RawEffect,
-} from "../types";
+} from "@shared/types";
 import { getSelectedFocusIds } from "./CampaignStateAccess";
 import { type Answers, createConditionCheck } from "./ConditionCheck";
 
