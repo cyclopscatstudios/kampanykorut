@@ -1,5 +1,5 @@
+import { Text } from "@shared/ui/Text";
 import { forwardRef, useId } from "react";
-import { Text } from "../../../../../shared/ui/Text";
 
 export interface CheckboxProps {
   label?: string;

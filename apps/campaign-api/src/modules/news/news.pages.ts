@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncTypebox } from "@fastify/type-provider-typebox";
+import { NEWS_TYPE_SLUGS } from "@shared/types/news";
 import { Type } from "typebox";
-import { NEWS_TYPE_SLUGS } from "../../../../../shared/types/news";
 import {
   NEWS_PATH,
   renderNewsDetailPage,

@@ -1,13 +1,13 @@
-import classNames from "classnames";
-import { type ReactNode, useState } from "react";
-import { isCityDistrictMap } from "@/shared/domain";
+import { isCityDistrictMap } from "@shared/domain";
 import {
   CandidateListData,
   District,
   DistrictPoligon,
   ElectionConfig,
-} from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
+} from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import classNames from "classnames";
+import { type ReactNode, useState } from "react";
 import { useWheelZoom, type ViewBox } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
 

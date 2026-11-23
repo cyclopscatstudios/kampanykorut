@@ -1,4 +1,4 @@
-import { Pollster } from "../types/pollsters";
+import { Pollster } from "@shared/types/pollsters";
 
 export const defaultPollsters: Pollster[] = [
   {

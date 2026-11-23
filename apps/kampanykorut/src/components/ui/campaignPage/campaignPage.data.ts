@@ -1,6 +1,6 @@
+import type { CampaignHeader } from "@logic/application/hooks/useGetCampaigns";
+import type { ElectionConfig } from "@shared/types/configs/election-config";
 import { t } from "i18next";
-import type { ElectionConfig } from "@/shared/types/configs/election-config";
-import type { CampaignHeader } from "../../../logic/application/hooks/useGetCampaigns";
 import { truncate } from "../menu/landing/utils";
 
 export const CAMPAIGN_PAGE_PATH = "/kampany";

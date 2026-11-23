@@ -1,5 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
-import { container } from "tsyringe";
+import {
+  getCampaignOutcome,
+  getMayoralCampaignOutcome,
+  getRunProperties,
+} from "@logic/infra/posthog/events";
+import { track, trackOnce } from "@logic/infra/posthog/track";
 import {
   acknowledgeAnnouncement as acknowledge,
   autoSelectCompletedFocus,
@@ -11,9 +15,9 @@ import {
   markIntroSeen,
   markNewspaperRead,
   publishNewspaperEdition,
-} from "@/shared/domain";
-import { createLogger } from "@/shared/logger";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
+} from "@shared/domain";
+import { createLogger } from "@shared/logger";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
 import {
   Answer,
   CampaignState,
@@ -21,14 +25,10 @@ import {
   District,
   ElectionConfig,
   PendingTurn,
-} from "@/shared/types";
+} from "@shared/types";
+import { useEffect, useMemo, useState } from "react";
+import { container } from "tsyringe";
 import { useNavigation } from "../../../hooks/navigationHook";
-import {
-  getCampaignOutcome,
-  getMayoralCampaignOutcome,
-  getRunProperties,
-} from "../../infra/posthog/events";
-import { track, trackOnce } from "../../infra/posthog/track";
 import { ConfigEngine } from "../ConfigEngine";
 import { createCampaignEngine } from "../createCampaignEngine";
 import { useSettings } from "./useSettings";

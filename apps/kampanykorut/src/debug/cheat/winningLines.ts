@@ -1,5 +1,5 @@
+import type { CampaignState } from "@shared/types";
 import { useEffect, useState } from "react";
-import type { CampaignState } from "@/shared/types";
 import { useCheatSettings } from "./cheatStore";
 
 export interface WinningLine {
@@ -16,7 +16,7 @@ interface WinningPathsFile {
 }
 
 const files = import.meta.glob<WinningPathsFile>(
-  "../../../../../shared/validation/winningPaths/*.json",
+  "@shared/validation/winningPaths/*.json",
   { import: "default" },
 );
 

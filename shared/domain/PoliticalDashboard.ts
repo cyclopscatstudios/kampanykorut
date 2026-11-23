@@ -5,7 +5,7 @@ import {
   CampaignState,
   GameMode,
   PlayerSide,
-} from "../types";
+} from "@shared/types";
 import { getCampaignEventState } from "./CampaignStateAccess";
 import type { Answers } from "./ConditionCheck";
 import { hasFocusNews } from "./PoliticalFocus";

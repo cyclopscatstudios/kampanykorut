@@ -1,9 +1,9 @@
+import { AreaIssueView } from "@shared/domain/Issues";
+import { CandidateListData, RawParty } from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import { AreaIssueView } from "@/shared/domain/Issues";
-import { CandidateListData, RawParty } from "@/shared/types";
-import { Icon } from "../../../../../../shared/ui/Icon";
 import { AreaIssues } from "./AreaIssues";
 import {
   Estimate,

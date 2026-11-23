@@ -1,6 +1,6 @@
+import { CampaignConfig } from "@shared/types";
 import { t } from "i18next";
 import { useState } from "react";
-import { CampaignConfig } from "@/shared/types";
 import type { StatisticResult } from "../statistics.utils";
 
 export function MobileRankings({

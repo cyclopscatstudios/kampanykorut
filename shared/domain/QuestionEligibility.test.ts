@@ -1,5 +1,5 @@
+import { ConditionContext, RawQuestion } from "@shared/types";
 import { vi } from "vitest";
-import { ConditionContext, RawQuestion } from "../types";
 import {
   countEligibleQuestions,
   findNextQuestionIndex,

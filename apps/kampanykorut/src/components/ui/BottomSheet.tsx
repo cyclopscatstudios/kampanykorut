@@ -1,7 +1,7 @@
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { type ReactNode, useEffect, useRef } from "react";
-import { Icon } from "../../../../../shared/ui/Icon";
 
 interface BottomSheetProps {
   open: boolean;

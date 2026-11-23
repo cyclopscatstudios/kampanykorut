@@ -1,4 +1,4 @@
-import { CalculateResults, Mandate } from "../types";
+import { CalculateResults, Mandate } from "@shared/types";
 import { getMajorityThresholds } from "./Majority";
 
 export interface SeatCountRegion {

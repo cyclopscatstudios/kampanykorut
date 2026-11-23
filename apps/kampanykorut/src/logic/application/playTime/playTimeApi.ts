@@ -1,4 +1,4 @@
-import type { PlayTimeEventRequest } from "@/shared/types";
+import type { PlayTimeEventRequest } from "@shared/types";
 
 const API_BASE = (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
 

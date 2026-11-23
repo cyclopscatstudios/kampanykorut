@@ -1,7 +1,7 @@
 import rateLimit from "@fastify/rate-limit";
 import type { FastifyPluginAsyncTypebox } from "@fastify/type-provider-typebox";
+import { PLAY_TIME_EVENT_TYPES } from "@shared/types/play-time";
 import { Type } from "typebox";
-import { PLAY_TIME_EVENT_TYPES } from "../../../../../shared/types/play-time";
 import type { PlayTimeService } from "./play-time.service";
 
 export const PLAY_TIME_PATH = "/api/v1/play-time";

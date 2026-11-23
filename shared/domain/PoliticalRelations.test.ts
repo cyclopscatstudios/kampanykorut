@@ -1,4 +1,4 @@
-import { CampaignConfig, CampaignState } from "../types";
+import { CampaignConfig, CampaignState } from "@shared/types";
 import { hasDashboardNews } from "./PoliticalDashboard";
 import {
   buildRelationGroups,

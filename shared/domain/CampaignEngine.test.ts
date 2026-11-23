@@ -1,5 +1,3 @@
-import { container } from "tsyringe";
-import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import {
   AdvisorFeedback,
   CampaignState,
@@ -12,7 +10,9 @@ import {
   RawParty,
   RawQuestion,
   Strategy,
-} from "../types";
+} from "@shared/types";
+import { container } from "tsyringe";
+import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { CampaignEngine } from "./CampaignEngine";
 import { CampaignEventEngine } from "./CampaignEventEngine";
 import { EffectApplier } from "./EffectApplier";

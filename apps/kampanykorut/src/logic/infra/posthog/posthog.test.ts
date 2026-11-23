@@ -1,8 +1,8 @@
+import type { SettingsEngine } from "@logic/application/SettingsEngine";
+import type { StorageEngine } from "@shared/logic/application/StorageEngine";
+import type { GameSettings } from "@shared/types";
 import posthog, { type CaptureResult } from "posthog-js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { StorageEngine } from "@/shared/logic/application/StorageEngine";
-import type { GameSettings } from "@/shared/types";
-import type { SettingsEngine } from "../../application/SettingsEngine";
 import {
   initAnalytics,
   redactEventUrls,

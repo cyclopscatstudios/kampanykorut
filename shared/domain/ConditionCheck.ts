@@ -4,7 +4,7 @@ import {
   ElectionConfig,
   HistoryItem,
   Relation,
-} from "../types";
+} from "@shared/types";
 import { createConditionContext } from "./ConditionContext";
 import {
   ConditionEvaluationError,

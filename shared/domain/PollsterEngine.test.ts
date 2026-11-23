@@ -1,6 +1,6 @@
+import { CampaignState } from "@shared/types";
+import { Pollster } from "@shared/types/pollsters";
 import { beforeEach, describe, expect, it, Mock, vi } from "vitest";
-import { CampaignState } from "../types";
-import { Pollster } from "../types/pollsters";
 import { defaultPollsters } from "./DefaultPollsters";
 import { MandateCalculator } from "./MandateCalculator";
 import { mockCandidateListData, mockPartyListData } from "./mocks/mockListData";

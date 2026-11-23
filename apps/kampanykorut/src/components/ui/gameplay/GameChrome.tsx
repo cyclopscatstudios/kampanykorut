@@ -1,5 +1,5 @@
+import { CampaignConfig, CampaignState, PollingOpnions } from "@shared/types";
 import type { ReactNode } from "react";
-import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
 import { CheatPanel } from "../../../debug/cheat/CheatPanel";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { GameDialogs } from "./GameDialogs";

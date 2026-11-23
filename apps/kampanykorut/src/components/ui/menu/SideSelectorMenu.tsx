@@ -1,20 +1,17 @@
+import { useGetCampaigns } from "@logic/application/hooks/useGetCampaigns";
+import { CampaignConfig } from "@shared/types/configs";
+import { Candidate, PlayableSide } from "@shared/types/configs/election-config";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
+import { Tooltip } from "@shared/ui/Tooltip";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useLayoutEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router";
 import { useMediaQuery } from "usehooks-ts";
-import { CampaignConfig } from "@/shared/types/configs";
-import {
-  Candidate,
-  PlayableSide,
-} from "@/shared/types/configs/election-config";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useCampaignBanner } from "../../../hooks/useCampaignBanner";
 import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
-import { useGetCampaigns } from "../../../logic/application/hooks/useGetCampaigns";
 import { BottomSheet } from "../BottomSheet";
 import { CommonWrapper } from "../CommonWrapper";
 import { Dropdown } from "../Dropdown";

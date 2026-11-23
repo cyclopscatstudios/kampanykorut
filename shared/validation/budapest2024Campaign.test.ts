@@ -1,8 +1,6 @@
-import { container } from "tsyringe";
-import { describe, expect, it } from "vitest";
-import { evaluateCondition } from "../domain/ConditionEvaluator";
-import { MayoralResultCalculator } from "../domain/MayoralResultCalculator";
-import { CandidateWithdrawalTransformer } from "../domain/ResultTransformer/CandidateWithdrawalTransformer";
+import { evaluateCondition } from "@shared/domain/ConditionEvaluator";
+import { MayoralResultCalculator } from "@shared/domain/MayoralResultCalculator";
+import { CandidateWithdrawalTransformer } from "@shared/domain/ResultTransformer/CandidateWithdrawalTransformer";
 import {
   CampaignEvent,
   CandidateListData,
@@ -10,7 +8,9 @@ import {
   ConditionContext,
   VoterEnvironmentConfig,
   WithdrawCandidateEffect,
-} from "../types";
+} from "@shared/types";
+import { container } from "tsyringe";
+import { describe, expect, it } from "vitest";
 import {
   always,
   createBudapestCampaign,

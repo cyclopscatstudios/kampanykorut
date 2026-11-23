@@ -1,18 +1,18 @@
-import type { TFunction } from "i18next";
+import type { CampaignOutcome } from "@logic/infra/posthog/events";
 import {
   buildFinalOutcome,
   forPlayerSide,
   getEndResultStory,
   getMajorityType,
   getParliamentaryConfig,
-} from "@/shared/domain";
+} from "@shared/domain";
 import type {
   CampaignConfig,
   CampaignState,
   FinalResults,
   HistoryItem,
-} from "@/shared/types";
-import type { CampaignOutcome } from "../../../../../logic/infra/posthog/events";
+} from "@shared/types";
+import type { TFunction } from "i18next";
 import { getMayoralHeadline } from "../mayoralResult.utils";
 
 export const SHARE_CARD_WIDTH = 1200;

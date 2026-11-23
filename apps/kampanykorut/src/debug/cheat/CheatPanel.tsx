@@ -1,3 +1,7 @@
+import type { CampaignState, IconName } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Tooltip } from "@shared/ui/Tooltip";
 import { t } from "i18next";
 import {
   type PointerEvent,
@@ -6,10 +10,6 @@ import {
   useRef,
   useState,
 } from "react";
-import type { CampaignState, IconName } from "@/shared/types";
-import { Button } from "../../../../../shared/ui/Button";
-import { Icon } from "../../../../../shared/ui/Icon";
-import { Tooltip } from "../../../../../shared/ui/Tooltip";
 import { Switch } from "../../components/ui/Switch";
 import {
   type CheatSettings,

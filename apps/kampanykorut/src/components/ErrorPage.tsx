@@ -1,9 +1,9 @@
+import { createLogger } from "@shared/logger";
+import { Button } from "@shared/ui/Button";
+import { Text } from "@shared/ui/Text";
 import { useEffect } from "react";
 import { isRouteErrorResponse, useRouteError } from "react-router";
 import errorImg from "/broken-route.svg?url";
-import { createLogger } from "@/shared/logger";
-import { Button } from "../../../../shared/ui/Button";
-import { Text } from "../../../../shared/ui/Text";
 import { useNavigation } from "../hooks/navigationHook";
 import { Heading } from "./ui/Heading";
 

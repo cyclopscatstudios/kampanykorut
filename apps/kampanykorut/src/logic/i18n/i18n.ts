@@ -1,10 +1,10 @@
+import type { SessionKey } from "@logic/application/SessionKey";
+import en from "@logic/langs/en_lang.json";
+import hu from "@logic/langs/hu_lang.json";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { container } from "tsyringe";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
-import type { SessionKey } from "../application/SessionKey";
-import en from "../langs/en_lang.json";
-import hu from "../langs/hu_lang.json";
 
 export const SUPPORTED_LANGUAGES = ["en", "hu"] as const;
 export type Language = (typeof SUPPORTED_LANGUAGES)[number];

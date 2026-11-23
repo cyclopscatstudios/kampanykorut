@@ -1,6 +1,6 @@
+import { Text } from "@shared/ui";
+import { Button } from "@shared/ui/Button";
 import { ReactNode, useState } from "react";
-import { Text } from "@/shared/ui";
-import { Button } from "@/shared/ui/Button";
 
 export function WarningScreen({
   allowWarning,

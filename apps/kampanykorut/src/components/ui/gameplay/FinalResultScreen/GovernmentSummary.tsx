@@ -1,9 +1,9 @@
+import type { FinalOutcome } from "@shared/domain";
+import { useTranslate } from "@shared/logic/hooks/useTranslateLang";
+import type { BootstrapIcon, GovernmentOutcome } from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
+import { Tooltip } from "@shared/ui/Tooltip";
 import classNames from "classnames";
-import type { FinalOutcome } from "@/shared/domain";
-import type { BootstrapIcon, GovernmentOutcome } from "@/shared/types";
-import { useTranslate } from "../../../../../../../shared/logic/hooks/useTranslateLang";
-import { Icon } from "../../../../../../../shared/ui/Icon";
-import { Tooltip } from "../../../../../../../shared/ui/Tooltip";
 
 const outcomeStyle: Record<
   GovernmentOutcome,

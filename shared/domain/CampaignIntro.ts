@@ -1,4 +1,4 @@
-import { CampaignState, ElectionConfig } from "../types";
+import { CampaignState, ElectionConfig } from "@shared/types";
 
 export function isIntroPending(
   state: Pick<CampaignState, "introSeen" | "turn" | "isEnded">,

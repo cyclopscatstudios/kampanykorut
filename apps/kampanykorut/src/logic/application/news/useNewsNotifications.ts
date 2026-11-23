@@ -1,6 +1,6 @@
+import type { NewsItem } from "@shared/types";
 import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
-import type { NewsItem } from "@/shared/types";
 import { NewsReadState } from "./NewsReadState";
 import { useNews } from "./useNews";
 

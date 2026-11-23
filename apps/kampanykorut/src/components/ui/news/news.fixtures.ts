@@ -1,4 +1,4 @@
-import type { NewsDetail, NewsItem } from "@/shared/types";
+import type { NewsDetail, NewsItem } from "@shared/types";
 
 const cover = (seed: string) => ({
   large16x9Url: `https://picsum.photos/seed/${seed}/1200/675`,

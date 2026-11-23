@@ -1,4 +1,4 @@
-import { createLogger } from "../logger";
+import { createLogger } from "@shared/logger";
 import {
   ABSTAIN_KEY,
   AdvisorFeedback,
@@ -31,7 +31,7 @@ import {
   StrategyReward,
   WithdrawCandidateEffect,
   WithdrawDistrictCandidatesEffect,
-} from "../types";
+} from "@shared/types";
 import type { CampaignEventEngine } from "./CampaignEventEngine";
 import {
   getCandidateStatus,

@@ -1,6 +1,6 @@
-import { evaluateCondition } from "../domain/ConditionEvaluator";
-import { defaultGroups } from "../domain/DefaultGroups";
-import { getQuestionCondition } from "../domain/QuestionEligibility";
+import { evaluateCondition } from "@shared/domain/ConditionEvaluator";
+import { defaultGroups } from "@shared/domain/DefaultGroups";
+import { getQuestionCondition } from "@shared/domain/QuestionEligibility";
 import {
   CandidateStatus,
   Condition,
@@ -11,7 +11,7 @@ import {
   RawQuestion,
   RELATION_TONES,
   RelationTone,
-} from "../types";
+} from "@shared/types";
 import { ConditionReferences, validateCondition } from "./conditionValidator";
 
 export type Severity = "error" | "warning";

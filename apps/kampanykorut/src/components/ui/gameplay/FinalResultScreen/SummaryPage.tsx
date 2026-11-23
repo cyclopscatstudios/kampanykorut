@@ -1,7 +1,4 @@
-import { useMemo } from "react";
-import { container } from "tsyringe";
-import { useMediaQuery } from "usehooks-ts";
-import { ConfigEngine, StateEngine } from "@/logic/application";
+import { ConfigEngine, StateEngine } from "@logic/application";
 import {
   buildFinalOutcome,
   forPlayerSide,
@@ -9,10 +6,13 @@ import {
   getMajorityStatus,
   getMajorityType,
   getParliamentaryConfig,
-} from "@/shared/domain";
-import { FinalResults, Mandate, RawParty } from "@/shared/types";
-import { useTranslate } from "../../../../../../../shared/logic/hooks/useTranslateLang";
-import { Text } from "../../../../../../../shared/ui/Text";
+} from "@shared/domain";
+import { useTranslate } from "@shared/logic/hooks/useTranslateLang";
+import { FinalResults, Mandate, RawParty } from "@shared/types";
+import { Text } from "@shared/ui/Text";
+import { useMemo } from "react";
+import { container } from "tsyringe";
+import { useMediaQuery } from "usehooks-ts";
 import { Heading } from "../../Heading";
 import { ImageWrapper } from "../ImageWrapper";
 import { ParliamentHemicycle, type Party } from "../ParliamentHemicyle";

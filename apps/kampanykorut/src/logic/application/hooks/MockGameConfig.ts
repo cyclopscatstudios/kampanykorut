@@ -3,7 +3,7 @@ import {
   CampaignConfig,
   DistrictPoligon,
   VoterEnvironmentConfig,
-} from "@/shared/types";
+} from "@shared/types";
 
 export const candidateListData = [
   {

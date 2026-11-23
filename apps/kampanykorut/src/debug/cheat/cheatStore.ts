@@ -1,6 +1,6 @@
+import { StorageEngine } from "@logic/application";
 import { useSyncExternalStore } from "react";
 import { container } from "tsyringe";
-import { StorageEngine } from "@/logic/application";
 
 export interface CheatSettings {
   enabled: boolean;

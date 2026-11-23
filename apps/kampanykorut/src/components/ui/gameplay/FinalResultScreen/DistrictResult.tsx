@@ -1,6 +1,6 @@
+import { CampaignConfig, District, RawParty } from "@shared/types";
+import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
-import { CampaignConfig, District, RawParty } from "@/shared/types";
-import { Text } from "../../../../../../../shared/ui/Text";
 import { Badge } from "../../Badge";
 import { CommonWrapper } from "../../CommonWrapper";
 import {

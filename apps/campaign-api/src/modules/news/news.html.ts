@@ -1,4 +1,4 @@
-import { NEWS_TYPE_SLUGS } from "../../../../../shared/types/news";
+import { NEWS_TYPE_SLUGS } from "@shared/types/news";
 import { NEWS_TYPES, type NewsLang, type NewsType } from "./news.parse";
 import type { NewsRecord } from "./news.repository";
 

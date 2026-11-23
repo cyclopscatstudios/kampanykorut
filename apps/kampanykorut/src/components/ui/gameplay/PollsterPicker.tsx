@@ -1,8 +1,8 @@
+import { AGGREGATE_POLLSTER_ID } from "@shared/domain";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useId, useRef, useState } from "react";
-import { AGGREGATE_POLLSTER_ID } from "@/shared/domain";
-import { Icon } from "../../../../../../shared/ui/Icon";
 
 export interface PollsterOption {
   id: string;

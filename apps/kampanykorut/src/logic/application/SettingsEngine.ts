@@ -1,8 +1,8 @@
+import { setLanguage } from "@logic/i18n/i18n";
+import { createLogger } from "@shared/logger/logger";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
+import { GameSettings, LanguageId, supportedLanguages } from "@shared/types";
 import { inject, singleton } from "tsyringe";
-import { createLogger } from "@/shared/logger/logger";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
-import { GameSettings, LanguageId, supportedLanguages } from "@/shared/types";
-import { setLanguage } from "../i18n/i18n";
 import { Emitter } from "./Emitter";
 import type { SessionKey } from "./SessionKey";
 

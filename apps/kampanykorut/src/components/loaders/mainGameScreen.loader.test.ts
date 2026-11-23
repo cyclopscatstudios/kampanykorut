@@ -1,15 +1,15 @@
+import { ConfigEngine } from "@logic/application/ConfigEngine";
+import { StateEngine } from "@logic/application/StateEngine";
+import { CampaignConfig } from "@shared/types";
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { CampaignConfig } from "@/shared/types";
-import { ConfigEngine } from "../../logic/application/ConfigEngine";
-import { StateEngine } from "../../logic/application/StateEngine";
 import { mainGameScreenLoader } from "./mainGameScreen.loader";
 
 const { loadCampaignConfigMock } = vi.hoisted(() => ({
   loadCampaignConfigMock: vi.fn(),
 }));
 
-vi.mock("../../logic/application/loadCampaignConfig", () => ({
+vi.mock("@logic/application/loadCampaignConfig", () => ({
   loadCampaignConfig: loadCampaignConfigMock,
 }));
 

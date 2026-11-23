@@ -1,5 +1,5 @@
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { initStorageErrorNotifier } from "./storageErrorNotifier";
 
 const { toasterMock } = vi.hoisted(() => ({ toasterMock: vi.fn() }));

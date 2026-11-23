@@ -1,5 +1,5 @@
+import { CandidateListData } from "@shared/types";
 import { container } from "tsyringe";
-import { CandidateListData } from "../types";
 import { MayoralResultCalculator } from "./MayoralResultCalculator";
 
 function district(

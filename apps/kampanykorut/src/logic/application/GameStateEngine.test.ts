@@ -1,7 +1,7 @@
+import { DistrictGroupEngine, VoterEnvironment } from "@shared/domain";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { ConfigEngine } from "./ConfigEngine";
 import { Navigation } from "./navigation/Navigation";
 import { type SavedCampaignSessionInfo, StateEngine } from "./StateEngine";

@@ -1,6 +1,6 @@
+import { GameSettings } from "@shared/types";
 import { useEffect, useState } from "react";
 import { container } from "tsyringe";
-import { GameSettings } from "@/shared/types";
 import { SettingsEngine } from "../SettingsEngine";
 
 export function useSettings() {

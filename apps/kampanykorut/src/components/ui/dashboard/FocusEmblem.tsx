@@ -1,6 +1,6 @@
+import type { FocusView } from "@shared/domain";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
-import type { FocusView } from "@/shared/domain";
-import { Icon } from "../../../../../../shared/ui/Icon";
 import { focusStatusStyle } from "./focusStatusStyle";
 
 export function FocusEmblem({ focus }: { focus: FocusView }) {

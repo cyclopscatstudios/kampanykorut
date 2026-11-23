@@ -1,4 +1,4 @@
-import { ParliamentaryElectionConfig } from "../../types";
+import { ParliamentaryElectionConfig } from "@shared/types";
 
 export const mockElectionConfig: ParliamentaryElectionConfig = {
   title: "Mock Election",

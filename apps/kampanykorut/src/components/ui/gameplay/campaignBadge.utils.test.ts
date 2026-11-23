@@ -1,5 +1,5 @@
-import type { CampaignConfig, CampaignState } from "@/shared/types";
-import type { CampaignHeader } from "../../../logic/application/hooks/useGetCampaigns";
+import type { CampaignHeader } from "@logic/application/hooks/useGetCampaigns";
+import type { CampaignConfig, CampaignState } from "@shared/types";
 import { getCampaignBadgeInfo, stripYearPrefix } from "./campaignBadge.utils";
 
 const config = {

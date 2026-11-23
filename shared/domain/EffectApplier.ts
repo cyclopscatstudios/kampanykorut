@@ -1,5 +1,4 @@
-import { injectable } from "tsyringe";
-import { createLogger } from "../logger";
+import { createLogger } from "@shared/logger";
 import {
   AppliedEffect,
   CandidateListData,
@@ -11,7 +10,8 @@ import {
   HistoryItem,
   PartyShareParams,
   RawEffect,
-} from "../types";
+} from "@shared/types";
+import { injectable } from "tsyringe";
 import { DistrictGroupEngine } from "./DistrictGroupEngine";
 import { MandateCalculator } from "./MandateCalculator";
 

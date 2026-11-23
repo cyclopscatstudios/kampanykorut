@@ -1,4 +1,4 @@
-import { CandidateListData, RawParty } from "@/shared/types";
+import { CandidateListData, RawParty } from "@shared/types";
 import { SwingFactorId } from "../../../types/utils";
 import { getWinnerResultByCandidateList } from "../map.utils";
 import { getSwingFactorByDistrict, SwingFactor } from "./swingFactor.utils";

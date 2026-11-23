@@ -1,4 +1,4 @@
-import { CandidateListData, PartyListData } from "../../types/campaign";
+import { CandidateListData, PartyListData } from "@shared/types/campaign";
 
 export const mockCandidateListData: CandidateListData[] = [
   {

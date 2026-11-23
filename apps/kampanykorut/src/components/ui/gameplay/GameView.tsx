@@ -1,6 +1,4 @@
-import { type ReactNode, useEffect, useMemo } from "react";
-import { container } from "tsyringe";
-import { useMediaQuery } from "usehooks-ts";
+import { StateEngine } from "@logic/application";
 import {
   buildSeatCountView,
   getParliamentaryConfig,
@@ -8,7 +6,7 @@ import {
   isCityDistrictMap,
   isFocusRequired,
   isProportionalElection,
-} from "@/shared/domain";
+} from "@shared/domain";
 import {
   CampaignConfig,
   CampaignState,
@@ -16,9 +14,11 @@ import {
   District,
   DistrictPoligon,
   PollingOpnions,
-} from "@/shared/types";
+} from "@shared/types";
+import { type ReactNode, useEffect, useMemo } from "react";
+import { container } from "tsyringe";
+import { useMediaQuery } from "usehooks-ts";
 import { useFollowedLine } from "../../../debug/cheat/winningLines";
-import { StateEngine } from "../../../logic/application";
 import { MapCreator } from "./MapCreator";
 import { MobileMapView } from "./MobileMapView";
 import { QuestionCard } from "./QuestionCard";

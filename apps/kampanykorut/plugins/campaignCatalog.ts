@@ -1,11 +1,11 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
-import type { Plugin } from "vite";
 import type {
   CampaignListing,
   CampaignStatus,
-} from "../../../shared/types/configs/campaign-manifest";
-import type { GameMode } from "../../../shared/types/political";
+} from "@shared/types/configs/campaign-manifest";
+import type { GameMode } from "@shared/types/political";
+import type { Plugin } from "vite";
 
 const CAMPAIGN_STATUSES: CampaignStatus[] = ["draft", "candidate", "published"];
 

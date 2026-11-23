@@ -1,7 +1,7 @@
+import { createLogger } from "@shared/logger";
+import { CampaignState } from "@shared/types";
+import { Pollster } from "@shared/types/pollsters";
 import { injectable } from "tsyringe";
-import { createLogger } from "../logger";
-import { CampaignState } from "../types";
-import { Pollster } from "../types/pollsters";
 import { defaultPollsters as DEFAULT_POLLSTERS } from "./DefaultPollsters";
 import { MandateCalculator } from "./MandateCalculator";
 

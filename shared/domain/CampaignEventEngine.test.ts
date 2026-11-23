@@ -1,5 +1,3 @@
-import { container } from "tsyringe";
-import { vi } from "vitest";
 import {
   CampaignEvent,
   CampaignState,
@@ -7,7 +5,9 @@ import {
   ElectionConfig,
   MayoralResult,
   RawEffect,
-} from "../types";
+} from "@shared/types";
+import { container } from "tsyringe";
+import { vi } from "vitest";
 import { ApplyEventEffects, CampaignEventEngine } from "./CampaignEventEngine";
 import { ConditionEvaluationError } from "./ConditionEvaluator";
 import { mockElectionConfig } from "./mocks/mockElectionConfig";

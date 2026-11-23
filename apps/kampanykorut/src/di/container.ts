@@ -1,4 +1,11 @@
-import { container } from "tsyringe";
+import { ConfigEngine } from "@logic/application/ConfigEngine";
+import { Emitter } from "@logic/application/Emitter";
+import { uuidGenerator } from "@logic/application/IdGenerator";
+import { Navigation } from "@logic/application/navigation/Navigation";
+import type { SessionKey } from "@logic/application/SessionKey";
+import { SettingsEngine } from "@logic/application/SettingsEngine";
+import { StateEngine } from "@logic/application/StateEngine";
+import { StateHandler } from "@logic/application/StateHandler";
 import {
   CampaignEventEngine,
   CandidateWithdrawalTransformer,
@@ -11,17 +18,10 @@ import {
   UnionSwingTransformer,
   VoterEnvironment,
   VoteShareTransformer,
-} from "@/shared/domain";
-import { PollsterEngine } from "@/shared/domain/PollsterEngine";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
-import { ConfigEngine } from "../logic/application/ConfigEngine";
-import { Emitter } from "../logic/application/Emitter";
-import { uuidGenerator } from "../logic/application/IdGenerator";
-import { Navigation } from "../logic/application/navigation/Navigation";
-import type { SessionKey } from "../logic/application/SessionKey";
-import { SettingsEngine } from "../logic/application/SettingsEngine";
-import { StateEngine } from "../logic/application/StateEngine";
-import { StateHandler } from "../logic/application/StateHandler";
+} from "@shared/domain";
+import { PollsterEngine } from "@shared/domain/PollsterEngine";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
+import { container } from "tsyringe";
 
 const emitter = new Emitter();
 container.registerInstance(Emitter, emitter);

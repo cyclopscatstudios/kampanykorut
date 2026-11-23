@@ -1,16 +1,16 @@
+import { StateEngine, useStateEngine } from "@logic/application";
+import { useGetCampaigns } from "@logic/application/hooks/useGetCampaigns";
+import { Navigation } from "@logic/application/navigation/Navigation";
+import { NavigationBinder } from "@logic/application/navigation/NavigationBinder";
+import { usePlayTimeTracking } from "@logic/application/playTime/usePlayTimeTracking";
+import { createLogger } from "@shared/logger/logger";
 import { useEffect } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import { container } from "tsyringe";
-import { createLogger } from "@/shared/logger/logger";
 import { GAME_HEADER_SLOT_ID } from "./components/ui/gameplay/gameHeaderSlot";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
 import { WarningScreen } from "./components/ui/warning/WarningScreen";
 import { useParams } from "./hooks/useParamsHook";
-import { StateEngine, useStateEngine } from "./logic/application";
-import { useGetCampaigns } from "./logic/application/hooks/useGetCampaigns";
-import { Navigation } from "./logic/application/navigation/Navigation";
-import { NavigationBinder } from "./logic/application/navigation/NavigationBinder";
-import { usePlayTimeTracking } from "./logic/application/playTime/usePlayTimeTracking";
 import FullscreenBackground from "./ui/Background";
 
 const log = createLogger("AppLayout");

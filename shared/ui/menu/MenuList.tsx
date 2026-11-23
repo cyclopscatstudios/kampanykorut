@@ -1,7 +1,7 @@
+import { useTranslateLang } from "@shared/logic/hooks";
+import { BootstrapIcon } from "@shared/types";
+import { type MenuItem } from "@shared/types/menu.types";
 import { useNavigate } from "react-router-dom";
-import { useTranslateLang } from "../../logic/hooks";
-import { BootstrapIcon } from "../../types";
-import { type MenuItem } from "../../types/menu.types";
 import { Button, ButtonVariant } from "../Button";
 import { Icon } from "../Icon";
 import { Text } from "../Text";

@@ -1,4 +1,4 @@
-import { CampaignConfig } from "@/shared/types";
+import { CampaignConfig } from "@shared/types";
 import {
   calculateVotePercentages,
   getDistrictRegion,

@@ -1,6 +1,6 @@
+import type { CampaignHeader } from "@logic/application";
+import { Icon } from "@shared/ui/Icon";
 import { t } from "i18next";
-import type { CampaignHeader } from "@/logic/application";
-import { Icon } from "../../../../../../../shared/ui/Icon";
 import { stripYearPrefix } from "../../gameplay/campaignBadge.utils";
 import { campaignImageUrl } from "./campaignSelector.utils";
 

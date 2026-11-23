@@ -1,12 +1,8 @@
+import type { FocusBranchView, FocusOverview, FocusView } from "@shared/domain";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
-import type {
-  FocusBranchView,
-  FocusOverview,
-  FocusView,
-} from "@/shared/domain";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
 import { useCheatSettings } from "../../../debug/cheat/cheatStore";
 import { HoverDetail } from "./DashboardTile";
 import { FocusEmblem } from "./FocusEmblem";

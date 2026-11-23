@@ -1,8 +1,8 @@
 import "./newspaper.css";
+import { Button } from "@shared/ui/Button";
+import { Tooltip } from "@shared/ui/Tooltip";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 
 const RIBBON_MS = 3500;
 

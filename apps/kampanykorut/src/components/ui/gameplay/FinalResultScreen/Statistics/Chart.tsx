@@ -1,3 +1,4 @@
+import { CampaignConfig, HistoryItem } from "@shared/types";
 import {
   Legend,
   Line,
@@ -8,7 +9,6 @@ import {
   YAxis,
 } from "recharts";
 import { useMediaQuery } from "usehooks-ts";
-import { CampaignConfig, HistoryItem } from "@/shared/types";
 import { CommonWrapper } from "../../../CommonWrapper";
 
 function createChartData(history: HistoryItem[]) {
