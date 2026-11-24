@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
       { path: "settings", element: <SettingsMenu /> },
       { path: "load-game", element: <LoadSavedSessionsMenu /> },
       { path: "about", element: <AboutMenu /> },
-      { path: PRIVACY_PATH.slice(1), element: <PrivacyPage /> },
+      { path: "privacy", element: <PrivacyPage /> },
       {
         path: "new-game",
         element: <NewGameLayout />,

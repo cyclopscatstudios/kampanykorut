@@ -2,6 +2,8 @@ import { Text } from "@shared/ui/Text";
 import { Link } from "react-router-dom";
 import { campaignPagePath } from "../../campaignPage/campaignPage.data";
 import { Heading } from "../../Heading";
+import { CampaignChips, NewBadge } from "../campaignSelector/CampaignChips";
+import { isNewCampaign } from "../campaignSelector/campaignSelector.utils";
 import type { Campaign } from "./types";
 import { CAMPAIGN_TEASER_LENGTH, truncate } from "./utils";
 
@@ -23,9 +25,13 @@ export function CampaignCard({ campaign, onOpen }: CampaignCardProps) {
         className="h-auto w-full object-contain"
       />
       <div className="flex flex-col gap-2 p-5">
-        <Heading level={3} color="white">
-          {campaign.label}
-        </Heading>
+        <span className="flex items-center gap-2">
+          <Heading level={3} color="white">
+            {campaign.label}
+          </Heading>
+          {isNewCampaign(campaign) && <NewBadge />}
+        </span>
+        <CampaignChips campaign={campaign} />
         <Text as="p" color="gray" size="sm">
           {truncate(campaign.description, CAMPAIGN_TEASER_LENGTH)}
         </Text>

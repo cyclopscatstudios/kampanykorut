@@ -1,5 +1,6 @@
 import { t } from "i18next";
 import { Heading } from "../../Heading";
+import { sortCampaigns } from "../campaignSelector/campaignSelector.utils";
 import { CampaignCard } from "./CampaignCard";
 import type { Campaign } from "./types";
 
@@ -16,7 +17,7 @@ export function CampaignsSection({
     return null;
   }
 
-  const sortedCampaigns = [...campaigns].sort((a, b) => b.year - a.year);
+  const sortedCampaigns = sortCampaigns(campaigns, "added");
 
   return (
     <section className="mx-auto max-w-5xl px-6 py-16">

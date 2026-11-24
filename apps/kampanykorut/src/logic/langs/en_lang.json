@@ -534,7 +534,7 @@
   "landing": {
     "hero": {
       "heading": "Hungarian election campaign simulator",
-      "description": "Kampánykörút is a free political strategy game in which you run a Hungarian parliamentary election campaign. Campaign district by district, make political decisions, follow the polls, and see whether you manage to win a majority in the National Assembly.",
+      "description": "Kampánykörút is a free political strategy game in which you run Hungarian election campaigns, from parliamentary elections to the Budapest mayoral race. Campaign, make political decisions, follow the polls, and see whether you manage to win the election.",
       "startButton": "Start game"
     },
     "campaigns": {

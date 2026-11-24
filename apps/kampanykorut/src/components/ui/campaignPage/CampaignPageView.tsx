@@ -1,7 +1,6 @@
 import { Button } from "@shared/ui/Button";
 import { Icon } from "@shared/ui/Icon";
 import { Text } from "@shared/ui/Text";
-import { Tooltip } from "@shared/ui/Tooltip";
 import classNames from "classnames";
 import { t } from "i18next";
 import { Link } from "react-router-dom";
@@ -16,13 +15,28 @@ import {
 interface CampaignPageViewProps {
   data: CampaignPageData;
   onStart: (sideId?: string) => void;
+  onBack: () => void;
 }
 
-export function CampaignPageView({ data, onStart }: CampaignPageViewProps) {
+export function CampaignPageView({
+  data,
+  onStart,
+  onBack,
+}: CampaignPageViewProps) {
   const { campaign, sides, side } = data;
 
   return (
     <div className="flex flex-col gap-10" data-testid="campaignPage">
+      <Button
+        variant="tertiary"
+        size="sm"
+        className="w-fit"
+        onClick={onBack}
+        testId="campaignPageBack"
+      >
+        <Button.Icon name="backspace-fill" />
+        <Button.Text>{t("menuList.button.back")}</Button.Text>
+      </Button>
       <section className="relative overflow-hidden rounded-xl border border-blue-500/30">
         <img
           src={campaignBannerPath(campaign)}
@@ -189,11 +203,5 @@ function SideCard({
     </Link>
   );
 
-  return side.description ? (
-    <Tooltip content={side.description} block>
-      {card}
-    </Tooltip>
-  ) : (
-    card
-  );
+  return card;
 }

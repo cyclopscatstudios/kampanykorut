@@ -533,7 +533,7 @@
   "landing": {
     "hero": {
       "heading": "Magyar választási kampányszimulátor",
-      "description": "A Kampánykörút egy ingyenes politikai stratégiai játék, amelyben egy magyar országgyűlési választási kampányt irányíthatsz. Kampányolj választókerületenként, hozz politikai döntéseket, kövesd a közvélemény-kutatásokat, majd nézd meg, sikerül-e többséget szerezned az Országgyűlésben.",
+      "description": "A Kampánykörút egy ingyenes politikai stratégiai játék, amelyben magyar választási kampányokat irányíthatsz, az országgyűlési választástól a budapesti főpolgármester-választásig. Kampányolj, hozz politikai döntéseket, kövesd a közvélemény-kutatásokat, majd nézd meg, sikerül-e győznöd a választáson.",
       "startButton": "Játék indítása"
     },
     "campaigns": {
