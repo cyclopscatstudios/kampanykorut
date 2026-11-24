@@ -6,6 +6,8 @@ import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
+import { DeleteSaveButton } from "../gameplay/DeleteSaveButton";
+import { SaveExpiryNote } from "../gameplay/SaveExpiryNote";
 import { Heading } from "../Heading";
 import { TextInput } from "../TextInput";
 
@@ -16,7 +18,7 @@ interface SaveGameSessionProps {
 
 type SlotSelection =
   | { type: "empty"; index: number; name: string }
-  | { type: "used"; session: SavedCampaignSessionInfo };
+  | { type: "used"; session: SavedCampaignSessionInfo; name: string };
 
 export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
   const gameStateEngine = container.resolve(StateEngine);
@@ -24,10 +26,17 @@ export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
   const activeCampaignId =
     gameStateEngine.getCampaignState()?.activeCampaignId ?? "";
   const [selection, setSelection] = useState<SlotSelection | null>(null);
+  const [, setVersion] = useState(0);
 
-  const canSave =
-    selection !== null &&
-    (selection.type === "used" || selection.name.trim() !== "");
+  const canSave = selection !== null && selection.name.trim() !== "";
+
+  const deleteSlot = (session: SavedCampaignSessionInfo) => {
+    gameStateEngine.deleteSavedSession(session);
+    if (selection?.type === "used" && selection.session.id === session.id) {
+      setSelection(null);
+    }
+    setVersion((v) => v + 1);
+  };
 
   const close = () => {
     setSelection(null);
@@ -36,11 +45,10 @@ export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
 
   const handleSave = () => {
     if (!selection) return;
-    if (selection.type === "used") {
-      gameStateEngine.saveToSlot(selection.session.name, selection.session.id);
-    } else {
-      gameStateEngine.saveToSlot(selection.name.trim());
-    }
+    gameStateEngine.saveToSlot(
+      selection.name.trim(),
+      selection.type === "used" ? selection.session.id : undefined,
+    );
     close();
   };
 
@@ -73,6 +81,7 @@ export function SaveGameSession({ isOpen, setIsOpen }: SaveGameSessionProps) {
           usedSlots={usedSlots}
           selection={selection}
           setSelection={setSelection}
+          onDelete={deleteSlot}
         />
       </DialogBody>
     </Dialog>
@@ -85,6 +94,7 @@ interface SaveGameSessionBodyProps {
   activeCampaignId: string;
   selection: SlotSelection | null;
   setSelection: (selection: SlotSelection) => void;
+  onDelete: (session: SavedCampaignSessionInfo) => void;
 }
 
 function SaveGameSessionBody({
@@ -93,6 +103,7 @@ function SaveGameSessionBody({
   activeCampaignId,
   selection,
   setSelection,
+  onDelete,
 }: SaveGameSessionBodyProps) {
   const selectEmptySlot = (index: number) => {
     setSelection({
@@ -102,8 +113,8 @@ function SaveGameSessionBody({
     });
   };
 
-  const changeEmptySlotName = (name: string) => {
-    if (selection?.type === "empty") {
+  const changeName = (name: string) => {
+    if (selection) {
       setSelection({ ...selection, name });
     }
   };
@@ -117,7 +128,7 @@ function SaveGameSessionBody({
               placeholder={t("emptySlot.placeholder")}
               value={selection.name}
               autoFocus
-              onChange={(e) => changeEmptySlotName(e.target.value)}
+              onChange={(e) => changeName(e.target.value)}
             />
           </div>
         ) : (
@@ -131,35 +142,57 @@ function SaveGameSessionBody({
           </button>
         ),
       )}
-      {usedSlots.map((sessionInfo) => (
-        <button
-          key={sessionInfo.sessionId}
-          type="button"
-          aria-pressed={
-            selection?.type === "used" &&
-            selection.session.sessionId === sessionInfo.sessionId
-          }
-          className={slotClassName(
-            selection?.type === "used" &&
-              selection.session.sessionId === sessionInfo.sessionId,
-          )}
-          onClick={() => setSelection({ type: "used", session: sessionInfo })}
-        >
-          <Text color="darkBlue" weight="bold" className="break-all">
-            {sessionInfo.name}
-          </Text>
-          <Text color="darkBlue" weight="normal" size="sm">
-            {formatDate(sessionInfo.lastSaved)}
-          </Text>
-        </button>
-      ))}
+      {usedSlots.map((sessionInfo) => {
+        const isSelected =
+          selection?.type === "used" && selection.session.id === sessionInfo.id;
+        return (
+          <div key={sessionInfo.id} className="relative shrink-0">
+            {isSelected ? (
+              <div className={classNames(slotClassName(true), "pr-12")}>
+                <TextInput
+                  placeholder={t("emptySlot.placeholder")}
+                  value={selection.name}
+                  autoFocus
+                  onChange={(e) => changeName(e.target.value)}
+                />
+                <Text color="darkBlue" weight="normal" size="sm">
+                  {formatDate(sessionInfo.lastSaved)}
+                </Text>
+              </div>
+            ) : (
+              <button
+                type="button"
+                className={classNames(slotClassName(false), "px-12")}
+                onClick={() =>
+                  setSelection({
+                    type: "used",
+                    session: sessionInfo,
+                    name: sessionInfo.name,
+                  })
+                }
+              >
+                <Text color="darkBlue" weight="bold" className="break-all">
+                  {sessionInfo.name}
+                </Text>
+                <Text color="darkBlue" weight="normal" size="sm">
+                  {formatDate(sessionInfo.lastSaved)}
+                </Text>
+              </button>
+            )}
+            <div className="absolute top-2 right-2">
+              <DeleteSaveButton onConfirm={() => onDelete(sessionInfo)} />
+            </div>
+          </div>
+        );
+      })}
+      {usedSlots.length > 0 && <SaveExpiryNote />}
     </div>
   );
 }
 
 function slotClassName(isSelected: boolean) {
   return classNames(
-    "w-full min-h-[64px] p-3 border rounded flex flex-col justify-center items-center text-center cursor-pointer shrink-0",
+    "w-full min-h-[64px] p-3 border rounded flex flex-col justify-center items-center gap-1 text-center cursor-pointer shrink-0",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
     {
       "bg-blue-200 border-blue-500": isSelected,

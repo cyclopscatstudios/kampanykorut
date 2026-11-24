@@ -653,5 +653,14 @@
       "transfer": "District",
       "stance": "Issue"
     }
+  },
+  "savedSessions": {
+    "delete": {
+      "label": "Delete save",
+      "hint": "Delete save. The game state and round history are removed too.",
+      "confirm": "Delete"
+    },
+    "expiryHint": "Saves are deleted automatically after 30 days.",
+    "expiryLabel": "Kept for 30 days"
   }
 }

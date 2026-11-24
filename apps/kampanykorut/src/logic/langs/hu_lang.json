@@ -652,5 +652,14 @@
       "transfer": "Körzet",
       "stance": "Ügyállás"
     }
+  },
+  "savedSessions": {
+    "delete": {
+      "label": "Mentés törlése",
+      "hint": "Mentés törlése. A játékállás és a fordulók története is törlődik.",
+      "confirm": "Törlés"
+    },
+    "expiryHint": "A mentések 30 nap után automatikusan törlődnek.",
+    "expiryLabel": "30 napig őrizzük"
   }
 }
