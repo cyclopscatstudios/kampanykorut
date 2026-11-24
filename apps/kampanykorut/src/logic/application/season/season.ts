@@ -36,12 +36,20 @@ export function getCurrentSeason(): Season | null {
   return resolveSeason(new Date(), import.meta.env.VITE_SEASON);
 }
 
+function toPathname(url: string): string {
+  try {
+    return new URL(url, "http://localhost").pathname;
+  } catch {
+    return url;
+  }
+}
+
 export function getSeasonalBackground(
   background: string,
   defaultBackground: string,
   season: Season | null,
 ): string {
-  if (!season || background !== defaultBackground) {
+  if (!season || toPathname(background) !== toPathname(defaultBackground)) {
     return background;
   }
   return SEASON_BACKGROUNDS[season];
