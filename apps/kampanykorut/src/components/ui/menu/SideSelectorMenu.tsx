@@ -512,6 +512,10 @@ function BadgeDisplay({
 }) {
   const badges = getBadgesForTarget(config, party, candidate);
 
+  if (!badges || badges.length === 0) {
+    return null;
+  }
+
   return (
     <div className="bg-slate-800/40 rounded-lg p-5 backdrop-blur-sm border border-blue-50/30">
       <div className="flex items-center mb-2">

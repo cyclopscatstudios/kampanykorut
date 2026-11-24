@@ -378,7 +378,7 @@ function DistrictSheetContent({
         )}
         {issues.length > 0 && (
           <div className="col-span-2">
-            <AreaIssues issues={issues} />
+            <AreaIssues issues={issues} collapsible />
           </div>
         )}
       </div>
