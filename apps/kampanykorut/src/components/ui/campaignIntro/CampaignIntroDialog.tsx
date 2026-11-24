@@ -1,8 +1,8 @@
 import "../newspaper/newspaper.css";
+import { CampaignIntro } from "@shared/types";
+import { Button } from "@shared/ui/Button";
 import classNames from "classnames";
 import { t } from "i18next";
-import { CampaignIntro } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
 
 export function CampaignIntroDialog({
   intro,

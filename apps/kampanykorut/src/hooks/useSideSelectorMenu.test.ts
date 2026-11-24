@@ -1,10 +1,10 @@
+import { ConfigEngine } from "@logic/application/ConfigEngine";
+import { CampaignConfig } from "@shared/types/configs/campaign-config";
 import { act, renderHook } from "@testing-library/react";
 import { createElement, type ReactNode } from "react";
 import { MemoryRouter } from "react-router";
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { CampaignConfig } from "@/shared/types/configs/campaign-config";
-import { ConfigEngine } from "../logic/application/ConfigEngine";
 import { useSideSelectorMenu } from "./useSideSelectorMenu";
 
 const mockConfig: CampaignConfig = {

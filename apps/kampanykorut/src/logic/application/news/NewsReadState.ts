@@ -1,7 +1,7 @@
+import { createLogger } from "@shared/logger/logger";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
+import type { NewsItem } from "@shared/types";
 import { inject, singleton } from "tsyringe";
-import { createLogger } from "@/shared/logger/logger";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
-import type { NewsItem } from "@/shared/types";
 import { Emitter } from "../Emitter";
 import type { SessionKey } from "../SessionKey";
 

@@ -1,4 +1,4 @@
-import { NEWS_TYPE_SLUGS, NEWS_TYPES, type NewsType } from "@/shared/types";
+import { NEWS_TYPE_SLUGS, NEWS_TYPES, type NewsType } from "@shared/types";
 
 export const NEWS_PATH = "/news";
 

@@ -1,6 +1,6 @@
+import { createLogger } from "@shared/logger";
+import type { CampaignStatus, GameMode } from "@shared/types";
 import { useEffect, useState } from "react";
-import { createLogger } from "@/shared/logger";
-import type { CampaignStatus, GameMode } from "@/shared/types";
 import { fetchJSON } from "../fetchJSON";
 import { getDataPath } from "../PathResolver";
 

@@ -1,5 +1,5 @@
+import { CandidateListData } from "@shared/types";
 import { describe, expect, it } from "vitest";
-import { CandidateListData } from "../types";
 import { VoterEnvironment } from "./VoterEnvironment";
 
 const makeDistrict = (

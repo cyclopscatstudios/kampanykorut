@@ -1,7 +1,7 @@
+import { CampaignEventAnnouncement } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
-import { CampaignEventAnnouncement } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Text } from "../../../../../../shared/ui/Text";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Heading } from "../Heading";
 import { ImageWrapper } from "./ImageWrapper";

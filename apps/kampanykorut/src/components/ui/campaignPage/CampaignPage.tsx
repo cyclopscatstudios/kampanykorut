@@ -1,7 +1,7 @@
+import { useSettings } from "@logic/application";
+import { track } from "@logic/infra/posthog/track";
 import { useMemo } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { useSettings } from "@/logic/application";
-import { track } from "../../../logic/infra/posthog/track";
 import { NewsPageLayout } from "../news/NewsPageLayout";
 import {
   buildCampaignPageMeta,

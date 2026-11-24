@@ -1,18 +1,18 @@
-import { container } from "tsyringe";
 import {
   ConfigEngine,
   createCampaignEngine,
   loadCampaignConfig,
   StateEngine,
-} from "@/logic/application";
-import { getPlayerVoteKey } from "@/shared/domain";
+} from "@logic/application";
+import { getPlayerVoteKey } from "@shared/domain";
 import {
   CampaignState,
   Decision,
   GameSettings,
   HistoryItem,
   PlayerSide,
-} from "@/shared/types";
+} from "@shared/types";
+import { container } from "tsyringe";
 
 /** questionId -> answerId. Questions not listed fall back to their first possible answer. */
 export type AnswerPlan = Record<string, string>;

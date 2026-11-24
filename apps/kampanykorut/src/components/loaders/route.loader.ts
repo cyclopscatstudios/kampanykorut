@@ -1,6 +1,6 @@
+import { loadCampaignConfig } from "@logic/application/loadCampaignConfig";
+import { getDataPath } from "@logic/application/PathResolver";
 import type { LoaderFunctionArgs } from "react-router";
-import { loadCampaignConfig } from "../../logic/application/loadCampaignConfig";
-import { getDataPath } from "../../logic/application/PathResolver";
 
 const environment = import.meta.env.VITE_ENVIRONMENT;
 const showLandingPage = import.meta.env.VITE_LANDING;

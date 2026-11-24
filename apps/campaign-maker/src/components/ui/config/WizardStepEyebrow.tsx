@@ -1,4 +1,4 @@
-import { useTranslate } from "@/shared/logic/hooks";
+import { useTranslate } from "@shared/logic/hooks";
 import { WIZARD_STEPS } from "./wizardSteps";
 
 export function WizardStepEyebrow({ stepIndex }: { stepIndex: number }) {

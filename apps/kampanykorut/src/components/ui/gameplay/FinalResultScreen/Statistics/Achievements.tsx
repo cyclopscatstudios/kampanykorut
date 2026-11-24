@@ -1,11 +1,11 @@
+import { ConfigEngine, StateEngine } from "@logic/application";
+import { buildFocusOverview, isStrategicMode } from "@shared/domain";
+import { CampaignConfig, CampaignState } from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
 import classNames from "classnames";
 import { t } from "i18next";
 import { container } from "tsyringe";
-import { ConfigEngine, StateEngine } from "@/logic/application";
-import { buildFocusOverview, isStrategicMode } from "@/shared/domain";
-import { CampaignConfig, CampaignState } from "@/shared/types";
-import { Icon } from "../../../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../../../shared/ui/Text";
 import { CommonWrapper } from "../../../CommonWrapper";
 import { FocusResult } from "./FocusResult";
 

@@ -1,16 +1,16 @@
-import { t } from "i18next";
-import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import type { NewsDetail, NewsLang } from "@/shared/types";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
-import { isExternalUrl } from "../../../logic/application/news/news.format";
-import { NEWS_PATH } from "../../../logic/application/news/newsPaths";
+import { isExternalUrl } from "@logic/application/news/news.format";
+import { NEWS_PATH } from "@logic/application/news/newsPaths";
 import {
   type NewsDetailState,
   useNewsDetail,
   useNewsLang,
-} from "../../../logic/application/news/useNews";
+} from "@logic/application/news/useNews";
+import type { NewsDetail, NewsLang } from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
+import { t } from "i18next";
+import { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { NewsPageLayout } from "./NewsPageLayout";
 import { NewsCoverImage, NewsDate, NewsTypeBadge, Skeleton } from "./NewsParts";
 

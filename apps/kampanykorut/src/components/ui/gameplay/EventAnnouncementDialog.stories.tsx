@@ -1,6 +1,6 @@
 import type { Story } from "@ladle/react";
+import type { CampaignEventAnnouncement } from "@shared/types";
 import { useState } from "react";
-import type { CampaignEventAnnouncement } from "@/shared/types";
 import vitezyMozgalom from "../../../../public/images/2024_budapest/szentkiralyi_visszalep.png";
 import { EventAnnouncementDialog } from "./EventAnnouncementDialog";
 

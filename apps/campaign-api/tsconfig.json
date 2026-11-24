@@ -17,10 +17,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/shared/types": ["../../shared/types"],
-      "@/shared/types/*": ["../../shared/types/*"],
-      "@/shared/domain": ["../../shared/domain"],
-      "@/shared/domain/*": ["../../shared/domain/*"]
+      "@shared/*": ["../../shared/*"]
     }
   },
   "include": ["src", "tsup.config.ts", "vitest.config.ts"]

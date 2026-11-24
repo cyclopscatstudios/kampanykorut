@@ -1,4 +1,4 @@
-import { CampaignState, ElectionConfig, Issue } from "../types";
+import { CampaignState, ElectionConfig, Issue } from "@shared/types";
 import { getAreaIssues, resolveIssueStance } from "./Issues";
 
 const issue: Issue = {

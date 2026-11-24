@@ -1,12 +1,12 @@
+import { useSettings } from "@logic/application/hooks/useSettings";
+import { AdvisorFeedbackAssets } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { AdvisorFeedbackAssets } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
-import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Heading } from "../Heading";
 
 interface AdvisorModalProps {
@@ -71,7 +71,7 @@ export function AdvisorModal({
             tabIndex={0}
             className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain pb-3"
           >
-            <div className="flex gap-5 justify-center py-3">
+            <div className="mt-auto flex gap-5 justify-center py-3">
               {[
                 asset?.primaryAdvisorImageUri,
                 asset?.secondaryAdvisorImageUri,
@@ -98,7 +98,7 @@ export function AdvisorModal({
                 );
               })}
             </div>
-            <div className="mx-3">
+            <div className="mx-3 my-auto">
               <div className="bg-[#1d2840] p-3 rounded-xl">
                 <Text className="text-sm leading-relaxed text-gray-200">
                   {advice}

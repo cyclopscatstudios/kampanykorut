@@ -1,4 +1,4 @@
-import { CandidateListData } from "@/shared/types";
+import { CandidateListData } from "@shared/types";
 
 export interface StatisticResult {
   district: CandidateListData;

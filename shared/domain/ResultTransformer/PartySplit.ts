@@ -3,7 +3,7 @@ import {
   PartyListData,
   PartyListVotes,
   SplitPartyEffect,
-} from "../../types";
+} from "@shared/types";
 
 type Votes = Record<string, number | undefined>;
 

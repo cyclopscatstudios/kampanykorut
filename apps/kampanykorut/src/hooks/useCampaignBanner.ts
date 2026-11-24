@@ -1,6 +1,6 @@
+import { fetchJSON } from "@logic/application/fetchJSON";
+import type { CampaignHeader } from "@logic/application/hooks/useGetCampaigns";
 import { useEffect, useState } from "react";
-import { fetchJSON } from "../logic/application/fetchJSON";
-import type { CampaignHeader } from "../logic/application/hooks/useGetCampaigns";
 
 export function useCampaignBanner(
   campaignId: string | undefined,

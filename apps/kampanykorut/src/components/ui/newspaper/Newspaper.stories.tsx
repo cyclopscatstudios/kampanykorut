@@ -1,6 +1,6 @@
 import type { Story } from "@ladle/react";
+import type { NewspaperEditionView } from "@shared/types";
 import { useState } from "react";
-import type { NewspaperEditionView } from "@/shared/types";
 import nephangLogo from "../../../../public/images/_0003_/newspaper/nephang-logo.svg";
 import { NewspaperButton } from "./NewspaperButton";
 import { NewspaperDialog, NewspaperDialogMode } from "./NewspaperDialog";

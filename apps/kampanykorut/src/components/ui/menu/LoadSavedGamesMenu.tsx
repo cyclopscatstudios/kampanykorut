@@ -1,13 +1,10 @@
+import { type SavedCampaignSessionInfo, StateEngine } from "@logic/application";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
 import { useState } from "react";
 import { container } from "tsyringe";
-import {
-  type SavedCampaignSessionInfo,
-  StateEngine,
-} from "@/logic/application";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { loadSession } from "../gameplay/loadSession";
 import { SavedSessionsBody } from "../gameplay/SavedGameSessionsDialog";

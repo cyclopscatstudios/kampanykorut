@@ -1,9 +1,9 @@
 import type { Story } from "@ladle/react";
+import { StorageEngine } from "@logic/application";
+import { campaignState } from "@shared/domain/mocks/mockCampaignState";
+import { CampaignConfig, FinalResults } from "@shared/types";
 import { createMemoryRouter, RouterProvider } from "react-router";
 import { container } from "tsyringe";
-import { StorageEngine } from "@/logic/application";
-import { campaignState } from "@/shared/domain/mocks/mockCampaignState";
-import { CampaignConfig, FinalResults } from "@/shared/types";
 import FullscreenBackground from "../../../../ui/Background";
 import { FinalResultScreen } from "./EndResultScreen";
 

@@ -1,0 +1,20 @@
+{
+  "playerSideVictory": {
+    "title": "Győzelem az urnáknál",
+    "subtitle": "Az ötödik ciklus",
+    "description": "A Fidesz–KDNP megszerezte a parlamenti többséget a 2026-os országgyűlési választáson. A TISZA két év alatt országos párttá nőtt, de a kormány időben belátta, hogy a győzelemhez már nem elég a megszokott kampány. Orbán Viktor újabb ciklusra kapott felhatalmazást, és ezúttal a kórházak, a vasút és a gyermekvédelem ügyében is számon kérik majd rajta, amit vállalt.",
+    "imageUri": "/images/2026_tavaszi-szel/fidesz_gyozelem.png"
+  },
+  "playerSideDefeat": {
+    "title": "Vereség az urnáknál",
+    "subtitle": "Véget ér egy korszak",
+    "description": "A TISZA Párt megszerezte a parlamenti többséget, ezzel véget ért a Fidesz–KDNP tizenhat éve tartó kormányzása. A kormányoldal túl későn vagy túl kevés ügyben mutatott fel változást, miközben a kihívó országos szervezetet épített. Orbán Viktor pártja ellenzékből folytatja.",
+    "imageUri": "/images/2026_tavaszi-szel/fidesz_vereseg.png"
+  },
+  "deadlock": {
+    "title": "Kormányválság",
+    "subtitle": "Nincs parlamenti többség",
+    "description": "A 2026-os választás egyik nagy pártnak sem hozott önálló többséget. A Fidesz–KDNP és a TISZA között rendkívül szoros lett az eredmény, a kormányalakítás hetekig tartó bizonytalanságot ígér.",
+    "imageUri": "/images/2026_tavaszi-szel/patthelyzet.png"
+  }
+}

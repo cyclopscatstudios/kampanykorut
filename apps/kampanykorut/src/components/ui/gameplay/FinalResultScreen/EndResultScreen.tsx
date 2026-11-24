@@ -1,18 +1,18 @@
+import { StateEngine } from "@logic/application/StateEngine";
+import { getRunProperties } from "@logic/infra/posthog/events";
+import { track } from "@logic/infra/posthog/track";
+import { createLogger } from "@shared/logger/logger";
+import { useTranslate } from "@shared/logic/hooks/useTranslateLang";
+import { FinalResults } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import i18next from "i18next";
 import { useState } from "react";
 import { useLoaderData } from "react-router";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
-import { createLogger } from "@/shared/logger/logger";
-import { FinalResults } from "@/shared/types";
-import { useTranslate } from "../../../../../../../shared/logic/hooks/useTranslateLang";
-import { Button } from "../../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../../shared/ui/Icon";
 import { useNavigation } from "../../../../hooks/navigationHook";
-import { StateEngine } from "../../../../logic/application/StateEngine";
-import { getRunProperties } from "../../../../logic/infra/posthog/events";
-import { track } from "../../../../logic/infra/posthog/track";
 import { GameChrome } from "../GameChrome";
 import {
   ConfirmCampaignSelectorModal,

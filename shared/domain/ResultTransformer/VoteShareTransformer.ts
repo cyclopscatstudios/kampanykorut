@@ -1,11 +1,11 @@
-import { inject, singleton } from "tsyringe";
 import {
   CandidateListData,
   PartyId,
   PartyListData,
   PartyListVotes,
   Share,
-} from "../../types";
+} from "@shared/types";
+import { inject, singleton } from "tsyringe";
 import { VoterEnvironment } from "../VoterEnvironment";
 
 @singleton()

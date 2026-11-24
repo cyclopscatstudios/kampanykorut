@@ -1,12 +1,12 @@
+import { Answer as AnswerEffects, CurrentView, RawParty } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
+import { Tooltip } from "@shared/ui/Tooltip";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useLayoutEffect, useMemo, useRef } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { Answer as AnswerEffects, CurrentView, RawParty } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useCheatSettings } from "../../../debug/cheat/cheatStore";
 import { EffectList } from "../../../debug/cheat/EffectList";
 import { useAssets } from "../../../hooks/useAssets";

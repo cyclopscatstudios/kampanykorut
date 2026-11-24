@@ -1,4 +1,4 @@
-import { Text } from "../../../../../../../../shared/ui/Text";
+import { Text } from "@shared/ui/Text";
 import { CommonWrapper } from "../../../CommonWrapper";
 import { Heading } from "../../../Heading";
 

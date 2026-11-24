@@ -1,4 +1,4 @@
-import { createLogger } from "../logger";
+import { createLogger } from "@shared/logger";
 import {
   ABSTAIN_KEY,
   AdvisorFeedback,
@@ -10,6 +10,7 @@ import {
   ConditionalAnswer,
   ConditionContext,
   Decision,
+  DistrictRef,
   EffectType,
   ElectionConfig,
   FinalResults,
@@ -29,7 +30,8 @@ import {
   Strategy,
   StrategyReward,
   WithdrawCandidateEffect,
-} from "../types";
+  WithdrawDistrictCandidatesEffect,
+} from "@shared/types";
 import type { CampaignEventEngine } from "./CampaignEventEngine";
 import {
   getCandidateStatus,
@@ -230,8 +232,9 @@ export class CampaignEngine {
     const modified = this.resultModifier.apply(stanced, appliedEffects);
 
     const nextTurn = state.turn + 1;
-    const candidateListData = this.resultModifier.filterUnwantedValues(
-      modified?.candidateListData,
+    const candidateListData = withoutWithdrawnVotes(
+      this.resultModifier.filterUnwantedValues(modified?.candidateListData),
+      state.districtWithdrawals,
     );
     const partyListData = modified?.partyListData;
     const partyListVotes = modified?.partyListVotes;
@@ -652,6 +655,9 @@ export class CampaignEngine {
         }
         flush();
         current = this.withdrawCandidate(current, effect);
+      } else if (effect.type === "withdraw-district-candidates") {
+        flush();
+        current = this.withdrawDistrictCandidates(current, effect);
       } else if (effect.type === "split-party") {
         flush();
         current = this.splitParty(current, effect);
@@ -711,8 +717,10 @@ export class CampaignEngine {
     return {
       ...state,
       candidateListData:
-        this.resultModifier.filterUnwantedValues(modified.candidateListData) ??
-        state.candidateListData,
+        withoutWithdrawnVotes(
+          this.resultModifier.filterUnwantedValues(modified.candidateListData),
+          state.districtWithdrawals,
+        ) ?? state.candidateListData,
       partyListData: modified.partyListData ?? state.partyListData,
       partyListVotes: modified.partyListVotes ?? state.partyListVotes,
     };
@@ -791,6 +799,67 @@ export class CampaignEngine {
           }),
           changedAtTurn: state.turn,
         },
+      },
+    };
+  }
+
+  private withdrawDistrictCandidates(
+    state: CampaignState,
+    effect: WithdrawDistrictCandidatesEffect,
+  ): CampaignState {
+    const { partyId, closeRace, redistribution } = effect;
+    if (partyId === state.playerSide?.partyId) {
+      log.warn("Skipped district withdrawal of the player's own party", {
+        partyId,
+      });
+      return state;
+    }
+    const [first, second] = closeRace.between;
+    const withdrawn = state.districtWithdrawals?.[partyId] ?? [];
+    const isClose = (district: CandidateListData) => {
+      if (!district.partok[partyId] || isSameDistrictIn(withdrawn, district)) {
+        return false;
+      }
+      const total = Object.values(district.partok).reduce(
+        (sum: number, votes) => sum + (votes ?? 0),
+        0,
+      );
+      if (!total) {
+        return false;
+      }
+      const gap =
+        (Math.abs(
+          (district.partok[first] ?? 0) - (district.partok[second] ?? 0),
+        ) /
+          total) *
+        100;
+      return gap <= closeRace.maxGapPercent;
+    };
+    const districts = (state.candidateListData ?? []).filter(isClose);
+    if (!districts.length) {
+      return state;
+    }
+
+    log.info("Party withdraws district candidates", {
+      partyId,
+      districts: districts.length,
+      turn: state.turn,
+    });
+
+    return {
+      ...state,
+      candidateListData: this.withdrawalTransformer.redistribute(
+        state.candidateListData ?? [],
+        partyId,
+        redistribution,
+        (district) => isSameDistrictIn(districts, district),
+      ),
+      districtWithdrawals: {
+        ...state.districtWithdrawals,
+        [partyId]: [
+          ...withdrawn,
+          ...districts.map(({ megyekod, oevk }) => ({ megyekod, oevk })),
+        ],
       },
     };
   }
@@ -1090,4 +1159,32 @@ export class CampaignEngine {
     }
     return answers.find((e) => e.id === currentQuestion?.id)?.answers;
   }
+}
+
+function isSameDistrictIn(list: DistrictRef[], district: DistrictRef) {
+  return list.some(
+    (d) => d.megyekod === district.megyekod && d.oevk === district.oevk,
+  );
+}
+
+function withoutWithdrawnVotes(
+  candidateListData: CandidateListData[] | undefined,
+  withdrawals: CampaignState["districtWithdrawals"],
+): CandidateListData[] | undefined {
+  if (!candidateListData || !withdrawals) {
+    return candidateListData;
+  }
+  const entries = Object.entries(withdrawals);
+  return candidateListData.map((district) => {
+    const parties = entries
+      .filter(([, list]) => isSameDistrictIn(list, district))
+      .map(([partyId]) => partyId)
+      .filter((partyId) => district.partok[partyId]);
+    if (!parties.length) {
+      return district;
+    }
+    const partok = { ...district.partok };
+    parties.forEach((partyId) => (partok[partyId] = 0));
+    return { ...district, partok };
+  });
 }

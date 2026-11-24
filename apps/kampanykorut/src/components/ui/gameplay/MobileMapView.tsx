@@ -1,7 +1,4 @@
-import { t } from "i18next";
-import { type ReactNode, type RefObject, useRef, useState } from "react";
-import { useResizeObserver } from "usehooks-ts";
-import { AreaIssueView, getAreaIssues } from "@/shared/domain/Issues";
+import { AreaIssueView, getAreaIssues } from "@shared/domain/Issues";
 import {
   CandidateListData,
   CurrentView,
@@ -9,8 +6,11 @@ import {
   DistrictPoligon,
   ElectionConfig,
   RawParty,
-} from "@/shared/types";
-import { Button } from "@/shared/ui/Button";
+} from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { t } from "i18next";
+import { type ReactNode, type RefObject, useRef, useState } from "react";
+import { useResizeObserver } from "usehooks-ts";
 import { BottomSheet } from "../BottomSheet";
 import { getWinnerResultByCandidateList } from "../map.utils";
 import { AreaIssues } from "./AreaIssues";

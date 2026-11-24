@@ -1,8 +1,8 @@
+import { useTranslateLang } from "@shared/logic/hooks/useTranslateLang";
+import { MenuItemId } from "@shared/types/menu.types";
+import { MenuLayout } from "@shared/ui/menu/MenuLayout";
+import { MenuList } from "@shared/ui/menu/MenuList";
 import { t } from "i18next";
-import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
-import { MenuItemId } from "../../../../../../shared/types/menu.types";
-import { MenuLayout } from "../../../../../../shared/ui/menu/MenuLayout";
-import { MenuList } from "../../../../../../shared/ui/menu/MenuList";
 
 export function NewGameMenu() {
   const classicMode = useTranslateLang("newGameMenu.classicMode");

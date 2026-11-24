@@ -1,4 +1,4 @@
-import type { PlayTimeEventRequest } from "@/shared/types";
+import type { PlayTimeEventRequest } from "@shared/types";
 import { sendPlayTimeEvent } from "./playTimeApi";
 
 export const HEARTBEAT_INTERVAL_MS = 30_000;

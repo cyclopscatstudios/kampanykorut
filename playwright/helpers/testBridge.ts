@@ -1,5 +1,5 @@
 import type { Page } from "@playwright/test";
-import type { PlayerSide } from "@/shared/types";
+import type { PlayerSide } from "@shared/types";
 
 /** questionId -> answerId. Questions not listed fall back to their first possible answer. */
 type AnswerPlan = Record<string, string>;

@@ -1,4 +1,3 @@
-import { container } from "tsyringe";
 import {
   CampaignEvent,
   CampaignState,
@@ -9,7 +8,8 @@ import {
   MayoralElectionConfig,
   RawQuestion,
   Strategy,
-} from "../types";
+} from "@shared/types";
+import { container } from "tsyringe";
 import { CampaignEngine } from "./CampaignEngine";
 import { CampaignEventEngine } from "./CampaignEventEngine";
 import { EffectApplier } from "./EffectApplier";

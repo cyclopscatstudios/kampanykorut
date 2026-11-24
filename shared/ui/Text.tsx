@@ -1,5 +1,5 @@
+import type { Colors } from "@shared/types/color";
 import classNames from "classnames";
-import type { Colors } from "../types/color";
 
 type TextWeight = "light" | "normal" | "medium" | "bold";
 type TextSize = "xs" | "sm" | "base" | "lg" | "xl";

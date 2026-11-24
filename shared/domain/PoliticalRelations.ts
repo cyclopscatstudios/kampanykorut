@@ -6,7 +6,7 @@ import {
   RelationGroup,
   RelationStanding,
   RelationTone,
-} from "../types";
+} from "@shared/types";
 
 export interface RelationView extends RelationStanding {
   id: string;

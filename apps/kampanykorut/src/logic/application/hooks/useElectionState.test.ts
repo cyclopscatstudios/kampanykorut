@@ -1,8 +1,8 @@
+import type { CampaignConfig, PendingTurn } from "@shared/types";
+import { EffectType } from "@shared/types";
 import { act, renderHook } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { container } from "tsyringe";
-import type { CampaignConfig, PendingTurn } from "@/shared/types";
-import { EffectType } from "@/shared/types";
 import { ConfigEngine } from "../ConfigEngine";
 import { useElectionState } from "./useElectionState";
 

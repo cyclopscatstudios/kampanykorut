@@ -1,11 +1,8 @@
-import { t } from "i18next";
-import { useEffect, useMemo, useState } from "react";
-import { container } from "tsyringe";
 import {
   ConfigEngine,
   createCampaignEngine,
   StateEngine,
-} from "@/logic/application";
+} from "@logic/application";
 import {
   autoSelectCompletedFocus,
   buildDashboardOverview,
@@ -19,9 +16,12 @@ import {
   markRelationsSeen,
   PollsterEngine,
   selectFocus,
-} from "@/shared/domain";
-import { CampaignState } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
+} from "@shared/domain";
+import { CampaignState } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { t } from "i18next";
+import { useEffect, useMemo, useState } from "react";
+import { container } from "tsyringe";
 import { useFollowedLine } from "../../../debug/cheat/winningLines";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { useParams } from "../../../hooks/useParamsHook";

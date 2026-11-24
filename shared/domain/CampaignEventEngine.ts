@@ -1,5 +1,4 @@
-import { injectable } from "tsyringe";
-import { createLogger } from "../logger";
+import { createLogger } from "@shared/logger";
 import {
   CampaignEvent,
   CampaignEventEffect,
@@ -7,7 +6,8 @@ import {
   ElectionConfig,
   HistoryItem,
   Relation,
-} from "../types";
+} from "@shared/types";
+import { injectable } from "tsyringe";
 import { getCampaignEventState } from "./CampaignStateAccess";
 import { createConditionContext } from "./ConditionContext";
 import { evaluateCondition } from "./ConditionEvaluator";

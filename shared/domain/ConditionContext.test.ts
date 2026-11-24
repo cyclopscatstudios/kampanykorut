@@ -1,4 +1,4 @@
-import { CampaignState, ElectionConfig, MayoralResult } from "../types";
+import { CampaignState, ElectionConfig, MayoralResult } from "@shared/types";
 import { createConditionContext } from "./ConditionContext";
 import { mockElectionConfig } from "./mocks/mockElectionConfig";
 

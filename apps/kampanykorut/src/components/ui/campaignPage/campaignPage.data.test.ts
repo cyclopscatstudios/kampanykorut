@@ -1,9 +1,9 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
+import type { CampaignHeader } from "@logic/application/hooks/useGetCampaigns";
+import type { ElectionConfig } from "@shared/types/configs/election-config";
 import { describe, expect, it } from "vitest";
-import type { ElectionConfig } from "@/shared/types/configs/election-config";
 import { buildCampaignCatalog } from "../../../../plugins/campaignCatalog";
-import type { CampaignHeader } from "../../../logic/application/hooks/useGetCampaigns";
 import { applyMetaToHtml } from "../../../prerender/applyMetaToHtml";
 import {
   buildCampaignPageData,

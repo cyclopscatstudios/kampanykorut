@@ -1,11 +1,11 @@
-import { t } from "i18next";
 import type {
   DashboardOverview,
   FocusOverview,
   PublicEvent,
-} from "@/shared/domain";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
+} from "@shared/domain";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { t } from "i18next";
 import { Emblem, HoverDetail, Tile } from "./DashboardTile";
 import { FocusEmblem } from "./FocusEmblem";
 import { focusStatusStyle } from "./focusStatusStyle";

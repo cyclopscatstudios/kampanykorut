@@ -1,13 +1,13 @@
-import classNames from "classnames";
-import { t } from "i18next";
-import { useState } from "react";
-import { getAreaIssues } from "@/shared/domain/Issues";
+import { getAreaIssues } from "@shared/domain/Issues";
 import {
   CandidateListData,
   District,
   DistrictPoligon,
   ElectionConfig,
-} from "@/shared/types";
+} from "@shared/types";
+import classNames from "classnames";
+import { t } from "i18next";
+import { useState } from "react";
 import { DistrictEstimate } from "./DistrictEstimate";
 import { isSameDistrict } from "./districtInsight.utils";
 import { MapWrapper } from "./MapWrapper";

@@ -1,4 +1,4 @@
-import { CampaignConfig, CampaignState, Mandate } from "../types";
+import { CampaignConfig, CampaignState, Mandate } from "@shared/types";
 import {
   buildCoalitionResult,
   buildCoalitionView,

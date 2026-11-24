@@ -1,4 +1,4 @@
-import { RegionSeatResult } from "../types";
+import { RegionSeatResult } from "@shared/types";
 import {
   buildSeatCountView,
   getMajorityStatus,

@@ -1,6 +1,6 @@
+import { loadTurnstile } from "@logic/application/bugReport/turnstile";
 import i18next from "i18next";
 import { useEffect, useLayoutEffect, useRef } from "react";
-import { loadTurnstile } from "../../../../logic/application/bugReport/turnstile";
 
 interface TurnstileWidgetProps {
   siteKey: string;

@@ -1,8 +1,8 @@
+import { StateEngine } from "@logic/application";
+import { CampaignConfig, District, MayoralResult } from "@shared/types";
 import { useState } from "react";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
-import { StateEngine } from "@/logic/application";
-import { CampaignConfig, District, MayoralResult } from "@/shared/types";
 import { BottomSheet } from "../../BottomSheet";
 import { MapWrapper } from "../MapWrapper";
 import { DistrictResult } from "./DistrictResult";

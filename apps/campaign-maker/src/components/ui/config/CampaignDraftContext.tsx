@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
-import { RawParty } from "@/shared/types";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
+import { RawParty } from "@shared/types";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
 import type { SessionKey } from "../../../logic/application/SessionKey";
 
 export interface BaseResultModifier {

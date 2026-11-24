@@ -1,4 +1,4 @@
-import { Condition, ConditionContext } from "../types";
+import { Condition, ConditionContext } from "@shared/types";
 import {
   ConditionEvaluationError,
   evaluateCondition,

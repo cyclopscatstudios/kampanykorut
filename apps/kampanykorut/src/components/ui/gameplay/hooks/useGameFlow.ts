@@ -1,11 +1,11 @@
-import { useReducer } from "react";
 import {
   AnswerFeedback,
   CampaignState,
   CurrentView,
   District,
   PendingTurn,
-} from "@/shared/types";
+} from "@shared/types";
+import { useReducer } from "react";
 
 type PendingAdvisor = {
   feedback: AnswerFeedback;

@@ -1,8 +1,8 @@
+import { CandidateListData, RawParty } from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import { CandidateListData, RawParty } from "@/shared/types";
-import { Icon } from "../../../../../../shared/ui/Icon";
 import { CandidateRow, StatusTag } from "./DistrictEstimate";
 import {
   Estimate,

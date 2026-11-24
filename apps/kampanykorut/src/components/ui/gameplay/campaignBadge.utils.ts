@@ -1,6 +1,6 @@
-import { getPlayerVoteKey } from "@/shared/domain";
-import { CampaignConfig, CampaignState } from "@/shared/types";
-import type { CampaignHeader } from "../../../logic/application/hooks/useGetCampaigns";
+import type { CampaignHeader } from "@logic/application/hooks/useGetCampaigns";
+import { getPlayerVoteKey } from "@shared/domain";
+import { CampaignConfig, CampaignState } from "@shared/types";
 
 export interface CampaignBadgeInfo {
   year?: string;

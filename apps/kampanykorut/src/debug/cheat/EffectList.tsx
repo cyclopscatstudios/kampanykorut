@@ -1,12 +1,12 @@
-import { t } from "i18next";
 import {
   type Answer,
   EffectType,
   type IconName,
   type RawEffect,
   type RawParty,
-} from "@/shared/types";
-import { Icon } from "../../../../../shared/ui/Icon";
+} from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
+import { t } from "i18next";
 
 interface EffectListProps {
   answer: Answer;

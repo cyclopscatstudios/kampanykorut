@@ -1,12 +1,12 @@
-import type { ReactNode } from "react";
-import { isCityDistrictMap } from "@/shared/domain";
+import { isCityDistrictMap } from "@shared/domain";
 import {
   CandidateListData,
   CurrentView,
   District,
   DistrictPoligon,
   ElectionConfig,
-} from "@/shared/types";
+} from "@shared/types";
+import type { ReactNode } from "react";
 import { BottomBar } from "./BottomBar";
 import { MapSidePanel } from "./MapSidePanel";
 import { MapWrapper } from "./MapWrapper";

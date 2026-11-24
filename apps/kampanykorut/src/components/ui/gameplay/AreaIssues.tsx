@@ -1,8 +1,8 @@
+import { AreaIssueView } from "@shared/domain/Issues";
+import { Icon } from "@shared/ui/Icon";
 import { t } from "i18next";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { AreaIssueView } from "@/shared/domain/Issues";
-import { Icon } from "../../../../../../shared/ui/Icon";
 
 type OpinionKey = "-2" | "-1" | "0" | "1" | "2";
 

@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import "../di/container";
+import i18n from "@logic/i18n/i18n";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router";
 import {
@@ -12,7 +13,6 @@ import {
 } from "../components/ui/campaignPage/campaignPage.data";
 import { CampaignPageView } from "../components/ui/campaignPage/CampaignPageView";
 import { NewsPageLayout } from "../components/ui/news/NewsPageLayout";
-import i18n from "../logic/i18n/i18n";
 import { applyMetaToHtml } from "./applyMetaToHtml";
 
 export {

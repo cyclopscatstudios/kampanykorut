@@ -1,3 +1,4 @@
+import type { PlayTimeEventRequest } from "@shared/types";
 import {
   afterEach,
   beforeEach,
@@ -7,7 +8,6 @@ import {
   type Mock,
   vi,
 } from "vitest";
-import type { PlayTimeEventRequest } from "@/shared/types";
 import {
   HEARTBEAT_INTERVAL_MS,
   playTimePhase,

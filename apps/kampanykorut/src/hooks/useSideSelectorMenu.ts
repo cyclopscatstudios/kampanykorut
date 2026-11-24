@@ -1,12 +1,12 @@
+import { ConfigEngine } from "@logic/application/ConfigEngine";
+import { useStateEngine } from "@logic/application/hooks";
+import { getRunProperties } from "@logic/infra/posthog/events";
+import { track } from "@logic/infra/posthog/track";
+import { createLogger } from "@shared/logger";
+import { Candidate, PlayableSide } from "@shared/types";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { container } from "tsyringe";
-import { createLogger } from "@/shared/logger";
-import { Candidate, PlayableSide } from "@/shared/types";
-import { ConfigEngine } from "../logic/application/ConfigEngine";
-import { useStateEngine } from "../logic/application/hooks";
-import { getRunProperties } from "../logic/infra/posthog/events";
-import { track } from "../logic/infra/posthog/track";
 import { useNavigation } from "./navigationHook";
 
 const log = createLogger("useSideSelectorMenu");

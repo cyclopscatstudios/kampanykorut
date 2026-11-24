@@ -1,5 +1,5 @@
+import { ABSTAIN_KEY, CandidateListData } from "@shared/types";
 import { injectable } from "tsyringe";
-import { ABSTAIN_KEY, CandidateListData } from "../../types";
 
 @injectable()
 export class CandidateWithdrawalTransformer {
@@ -7,10 +7,14 @@ export class CandidateWithdrawalTransformer {
     districts: CandidateListData[],
     candidateId: string,
     redistribution: Record<string, number>,
+    inDistrict: (district: CandidateListData) => boolean = () => true,
   ): CandidateListData[] {
     const targets = Object.keys(redistribution).sort();
 
     return districts.map((district) => {
+      if (!inDistrict(district)) {
+        return district;
+      }
       const votes = district.partok[candidateId] ?? 0;
       const partok = { ...district.partok, [candidateId]: 0 };
       if (votes <= 0) {

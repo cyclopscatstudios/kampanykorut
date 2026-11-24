@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import {
   isCampaignListed,
   useGetCampaigns,
   useSettings,
-} from "@/logic/application";
-import { track } from "../../../../logic/infra/posthog/track";
+} from "@logic/application";
+import { track } from "@logic/infra/posthog/track";
+import { useNavigate } from "react-router-dom";
 import { NewsSection } from "../../news/NewsSection";
 import { CampaignsSection } from "./CampaignsSection";
 import { LandingFooter } from "./LandingFooter";

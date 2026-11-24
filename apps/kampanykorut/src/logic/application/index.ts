@@ -15,4 +15,4 @@ export * from "./SettingsEngine";
 export * from "./StateEngine";
 export * from "./StateHandler";
 export * from "./utils";
-export * from "@/shared/logic/application/StorageEngine";
+export * from "@shared/logic/application/StorageEngine";

@@ -1,9 +1,9 @@
+import { useTranslateLang } from "@shared/logic/hooks/useTranslateLang";
+import { MenuItemId } from "@shared/types";
+import { MenuList, Text } from "@shared/ui";
 import { useState } from "react";
 import { useLoaderData } from "react-router";
-import { MenuItemId } from "@/shared/types";
-import { MenuList, Text } from "@/shared/ui";
 import logo from "../../../../../../brand-assets/svg/logo-stacked-dark.svg";
-import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
 import { buildInfo } from "../../../buildInfo";
 import { BugReporterButton } from "../gameplay/BugReporter/BugReporterButton";
 import { BugReporterModal } from "../gameplay/BugReporter/BugReporterModal";

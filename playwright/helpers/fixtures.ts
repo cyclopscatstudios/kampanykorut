@@ -1,6 +1,6 @@
 // fixtures.ts
 import { expect, test as base } from "@playwright/test";
-import type { CampaignState } from "@/shared/types";
+import type { CampaignState } from "@shared/types";
 import { TestBridge } from "./testBridge";
 
 export const test = base.extend<{

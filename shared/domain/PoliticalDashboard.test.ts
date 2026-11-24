@@ -1,4 +1,4 @@
-import { CampaignConfig, CampaignEvent, CampaignState } from "../types";
+import { CampaignConfig, CampaignEvent, CampaignState } from "@shared/types";
 import {
   buildDashboardOverview,
   forPlayerSide,

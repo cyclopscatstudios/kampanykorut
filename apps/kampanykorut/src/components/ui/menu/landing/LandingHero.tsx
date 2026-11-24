@@ -1,7 +1,7 @@
+import { Button } from "@shared/ui/Button";
+import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
 import logo from "../../../../../../../brand-assets/svg/logo-stacked-dark.svg";
-import { Button } from "../../../../../../../shared/ui/Button";
-import { Text } from "../../../../../../../shared/ui/Text";
 import { Heading } from "../../Heading";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 

@@ -1,4 +1,4 @@
-import { CandidateListData, RawParty } from "@/shared/types";
+import { CandidateListData, RawParty } from "@shared/types";
 import { SwingFactorId } from "../../../types/utils";
 import type { SwingFactor } from "./swingFactor.utils";
 

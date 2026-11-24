@@ -1,8 +1,8 @@
 import { readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import type { DistrictPoligon } from "@shared/types";
 import { describe, expect, it } from "vitest";
-import type { DistrictPoligon } from "../types";
 
 const sharedDir = resolve(
   dirname(fileURLToPath(import.meta.url)),

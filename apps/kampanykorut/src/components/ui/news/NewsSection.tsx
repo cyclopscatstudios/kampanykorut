@@ -1,17 +1,14 @@
-import classNames from "classnames";
-import { t } from "i18next";
-import { Link } from "react-router-dom";
-import type { NewsItem, NewsLang } from "@/shared/types";
-import { isExternalUrl } from "../../../logic/application/news/news.format";
-import {
-  NEWS_PATH,
-  newsDetailPath,
-} from "../../../logic/application/news/newsPaths";
+import { isExternalUrl } from "@logic/application/news/news.format";
+import { NEWS_PATH, newsDetailPath } from "@logic/application/news/newsPaths";
 import {
   type NewsListState,
   useNews,
   useNewsLang,
-} from "../../../logic/application/news/useNews";
+} from "@logic/application/news/useNews";
+import type { NewsItem, NewsLang } from "@shared/types";
+import classNames from "classnames";
+import { t } from "i18next";
+import { Link } from "react-router-dom";
 import { Heading } from "../Heading";
 import {
   NewsCoverImage,

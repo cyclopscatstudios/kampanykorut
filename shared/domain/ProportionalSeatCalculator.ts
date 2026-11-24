@@ -6,7 +6,7 @@ import {
   PartyVotes,
   ProportionalElectionDefinition,
   RegionSeatResult,
-} from "../types";
+} from "@shared/types";
 import { calcPercentages } from "./ResultModifier.utils";
 
 export interface DHondtResult {

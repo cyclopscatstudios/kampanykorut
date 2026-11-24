@@ -1,6 +1,6 @@
 import type { Story } from "@ladle/react";
+import type { BugReportEnvironment } from "@shared/types";
 import { useLayoutEffect, useState } from "react";
-import type { BugReportEnvironment } from "@/shared/types";
 import { BugReporterModal } from "./BugReporterModal";
 
 const ENVIRONMENT: BugReportEnvironment = {

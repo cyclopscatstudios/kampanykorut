@@ -1,9 +1,9 @@
+import { CandidateListData, District, RawParty } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import { CandidateListData, District, RawParty } from "@/shared/types";
-import { Button } from "@/shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
 import {
   compareBySwing,
   DistrictInsight,

@@ -1,11 +1,11 @@
-import { act, renderHook } from "@testing-library/react";
-import { vi } from "vitest";
 import {
   AnswerFeedback,
   CampaignState,
   District,
   PendingTurn,
-} from "@/shared/types";
+} from "@shared/types";
+import { act, renderHook } from "@testing-library/react";
+import { vi } from "vitest";
 import { useGameFlow } from "./useGameFlow";
 
 const makePending = (overrides: Partial<CampaignState> = {}): PendingTurn => ({

@@ -4,7 +4,7 @@ import {
   MayoralElectionConfig,
   ParliamentaryElectionConfig,
   PlayerSide,
-} from "../types";
+} from "@shared/types";
 
 export function getElectionType(
   config?: Pick<ElectionConfig, "election">,

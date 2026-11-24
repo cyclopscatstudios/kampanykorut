@@ -1,8 +1,8 @@
+import type { AnalyticsEvents } from "@logic/infra/posthog/events";
+import { createLogger } from "@shared/logger/logger";
+import { useTranslate } from "@shared/logic/hooks/useTranslateLang";
+import { Button } from "@shared/ui/Button";
 import { useEffect, useMemo, useState } from "react";
-import { createLogger } from "@/shared/logger/logger";
-import { useTranslate } from "../../../../../../../../shared/logic/hooks/useTranslateLang";
-import { Button } from "../../../../../../../../shared/ui/Button";
-import type { AnalyticsEvents } from "../../../../../logic/infra/posthog/events";
 import { Dialog } from "../../../Dialog";
 import { toaster } from "../../toaster";
 import { renderShareCard } from "./drawShareCard";

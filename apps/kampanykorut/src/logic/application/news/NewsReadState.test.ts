@@ -1,6 +1,6 @@
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
+import type { NewsItem } from "@shared/types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
-import type { NewsItem } from "@/shared/types";
 import type { SessionKey } from "../SessionKey";
 import { NewsReadState } from "./NewsReadState";
 

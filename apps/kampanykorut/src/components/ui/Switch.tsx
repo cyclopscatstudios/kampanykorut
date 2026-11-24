@@ -1,6 +1,6 @@
+import { Text } from "@shared/ui/Text";
 import classNames from "classnames";
 import { forwardRef, useId } from "react";
-import { Text } from "../../../../../shared/ui/Text";
 
 export interface SwitchProps {
   label?: string;

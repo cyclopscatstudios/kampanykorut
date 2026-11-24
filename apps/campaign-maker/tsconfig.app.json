@@ -9,16 +9,7 @@
     "jsx": "react-jsx",
 
     "paths": {
-      "@/shared/logger": ["../../shared/logger"],
-      "@/shared/logger/*": ["../../shared/logger/*"],
-      "@/shared/domain": ["../../shared/domain"],
-      "@/shared/domain/*": ["../../shared/domain/*"],
-      "@/shared/types": ["../../shared/types"],
-      "@/shared/types/*": ["../../shared/types/*"],
-      "@/shared/logic": ["../../shared/logic"],
-      "@/shared/logic/*": ["../../shared/logic/*"],
-      "@/shared/ui": ["../../shared/ui"],
-      "@/shared/ui/*": ["../../shared/ui/*"]
+      "@shared/*": ["../../shared/*"]
     }
   },
   "include": [

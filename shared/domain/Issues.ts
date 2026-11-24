@@ -7,7 +7,7 @@ import {
   IssueArea,
   IssuePositions,
   IssueStanceParams,
-} from "../types";
+} from "@shared/types";
 
 export const MIN_ISSUE_POSITION = -2;
 export const MAX_ISSUE_POSITION = 2;

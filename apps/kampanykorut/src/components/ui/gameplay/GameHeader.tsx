@@ -1,24 +1,24 @@
-import { t } from "i18next";
-import { useLayoutEffect, useState } from "react";
-import { createPortal } from "react-dom";
-import { container } from "tsyringe";
-import { useMediaQuery } from "usehooks-ts";
+import { StateEngine } from "@logic/application";
+import { Navigation } from "@logic/application/navigation/Navigation";
 import {
   AGGREGATE_POLLSTER_ID,
   getTotalTurns,
   hasDashboardNews,
   isStrategicMode,
   PollsterEngine,
-} from "@/shared/domain";
-import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
+} from "@shared/domain";
+import { CampaignConfig, CampaignState, PollingOpnions } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
+import { Tooltip } from "@shared/ui/Tooltip";
+import { t } from "i18next";
+import { useLayoutEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { container } from "tsyringe";
+import { useMediaQuery } from "usehooks-ts";
 import logo from "../../../../../../brand-assets/svg/logo-mark.svg";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
 import { useNavigation } from "../../../hooks/navigationHook";
-import { StateEngine } from "../../../logic/application";
-import { Navigation } from "../../../logic/application/navigation/Navigation";
 import { PoliticalStatusButton } from "../dashboard/PoliticalStatusButton";
 import { Menu, MenuItem, SubMenu } from "../Menu";
 import { BugReporterButton } from "./BugReporter/BugReporterButton";

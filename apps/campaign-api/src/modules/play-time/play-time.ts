@@ -1,4 +1,4 @@
-import type { PlayTimeEventType } from "../../../../../shared/types/play-time";
+import type { PlayTimeEventType } from "@shared/types/play-time";
 
 export const HEARTBEAT_INTERVAL_MS = 30_000;
 export const MAX_ACTIVE_GAP_MS = 3 * HEARTBEAT_INTERVAL_MS;

@@ -1,9 +1,9 @@
+import type { CampaignHeader } from "@logic/application";
+import type { IconName } from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
+import { Tooltip } from "@shared/ui/Tooltip";
 import classNames from "classnames";
 import { t } from "i18next";
-import type { CampaignHeader } from "@/logic/application";
-import type { IconName } from "../../../../../../../shared/types";
-import { Icon } from "../../../../../../../shared/ui/Icon";
-import { Tooltip } from "../../../../../../../shared/ui/Tooltip";
 
 const chipBase =
   "inline-flex h-6 items-center gap-1.5 rounded-full border px-2.5 text-xs whitespace-nowrap";

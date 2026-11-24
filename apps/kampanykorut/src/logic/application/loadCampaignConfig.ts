@@ -1,5 +1,4 @@
-import { container } from "tsyringe";
-import { createLogger } from "@/shared/logger";
+import { createLogger } from "@shared/logger";
 import {
   CampaignConfig,
   CampaignManifest,
@@ -8,7 +7,8 @@ import {
   Issue,
   PlayableSideConfig,
   ProportionalRegion,
-} from "@/shared/types";
+} from "@shared/types";
+import { container } from "tsyringe";
 import { ConfigEngine } from "./ConfigEngine";
 import { fetchCampaignFile } from "./fetchJSON";
 import { getCampaignHeaderById } from "./getCampaignHeaderById";

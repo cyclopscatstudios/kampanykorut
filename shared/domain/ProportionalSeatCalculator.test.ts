@@ -2,7 +2,7 @@ import {
   CandidateListData,
   ParliamentaryElectionConfig,
   ProportionalElectionDefinition,
-} from "../types";
+} from "@shared/types";
 import {
   allocateDHondt,
   calculateProportionalResults,

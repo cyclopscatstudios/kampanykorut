@@ -1,8 +1,8 @@
+import type { RelationGroupView, RelationView } from "@shared/domain";
+import type { BootstrapIcon, RelationTone } from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
-import type { RelationGroupView, RelationView } from "@/shared/domain";
-import type { BootstrapIcon, RelationTone } from "@/shared/types";
-import { Icon } from "../../../../../../shared/ui/Icon";
 import { HoverDetail } from "./DashboardTile";
 
 // Tone differs in colour, badge icon and the label word, never colour alone.
