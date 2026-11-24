@@ -247,7 +247,9 @@ function NarrowHeader({
             />
           </div>
           <div className="flex items-center gap-1">
-            {politicalStatus && <PoliticalStatusButton {...politicalStatus} size="small" />}
+            {politicalStatus && (
+              <PoliticalStatusButton {...politicalStatus} size="small" />
+            )}
             {onResumeQuestion && (
               <ResumeQuestionButton onClick={onResumeQuestion} />
             )}

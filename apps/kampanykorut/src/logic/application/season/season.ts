@@ -3,7 +3,7 @@ export const seasons = ["winter"] as const;
 export type Season = (typeof seasons)[number];
 
 export const SEASON_BACKGROUNDS: Record<Season, string> = {
-  winter: "/backgrounds/parlament_tel.jpg",
+  winter: "/backgrounds/parlament_illustrated.png",
 };
 
 const WINTER_LAST_DAY_OF_JANUARY = 6;

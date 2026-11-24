@@ -7,7 +7,7 @@ export function PoliticalStatusButton({
   hasUnseenEvents,
   onOpen,
   current = false,
-  size
+  size,
 }: {
   hasUnseenEvents: boolean;
   onOpen: () => void;
