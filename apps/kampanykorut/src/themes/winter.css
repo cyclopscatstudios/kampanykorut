@@ -1,0 +1,334 @@
+@layer base {
+  :root {
+    --winter-snowcap: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0,4 C8,0 18,1 26,2 C36,0 50,0 62,2 C74,0 88,1 100,3 L100,6 C96,7 94,9.5 92,6.5 C80,7 70,6 60,7 C56,10 53,10 51,7 C40,6 28,7 18,6.5 C14,9 11,9 9,6.5 C5,6 2,6 0,7 Z' fill='%23f0f9ff' fill-opacity='.92'/%3E%3C/svg%3E");
+    --winter-frost-corner:
+      radial-gradient(
+        140px 36px at 0% 0%,
+        rgba(224, 242, 254, 0.16),
+        rgba(224, 242, 254, 0) 70%
+      ),
+      radial-gradient(
+        110px 30px at 100% 100%,
+        rgba(224, 242, 254, 0.1),
+        rgba(224, 242, 254, 0) 70%
+      );
+    --winter-frozen-fill:
+      radial-gradient(
+        160px 40px at 0% 0%,
+        rgba(240, 249, 255, 0.26),
+        rgba(240, 249, 255, 0) 70%
+      ),
+      radial-gradient(
+        120px 30px at 100% 100%,
+        rgba(240, 249, 255, 0.12),
+        rgba(240, 249, 255, 0) 70%
+      ),
+      linear-gradient(180deg, #4a6fd0, #3459bd);
+    --winter-frozen-shadow:
+      inset 0 0 0 1px rgba(186, 230, 253, 0.35),
+      inset 0 1px 0 rgba(240, 249, 255, 0.45), 0 1px 2px rgba(0, 0, 0, 0.25);
+    --winter-glass-shadow:
+      inset 0 0 0 1px rgba(186, 230, 253, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    --winter-glass-shadow-hover:
+      inset 0 0 0 1px rgba(186, 230, 253, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+}
+
+:root[data-season="winter"] {
+  button[data-variant="primary"]:not(:disabled),
+  button[data-variant="tab"][data-selected]:not(:disabled) {
+    background:
+      var(--winter-snowcap) center 0 / calc(100% - 16px) 7px no-repeat,
+      var(--winter-frozen-fill);
+    box-shadow: var(--winter-frozen-shadow);
+    transition:
+      filter 150ms ease-out,
+      box-shadow 150ms ease-out,
+      transform 150ms ease-out;
+  }
+
+  button[data-variant="primary"]:not(:disabled):hover,
+  button[data-variant="tab"][data-selected]:not(:disabled):hover {
+    filter: brightness(1.08);
+    box-shadow:
+      var(--winter-frozen-shadow),
+      0 2px 6px -1px rgba(0, 0, 0, 0.3);
+  }
+
+  button[data-variant="secondary"]:not(:disabled) {
+    background-image: linear-gradient(180deg, #f8fafc 0%, #e0f2fe 100%);
+  }
+
+  button[data-variant="secondary"]:not(:disabled):hover {
+    background-image: linear-gradient(180deg, #ffffff 0%, #eaf6fe 100%);
+  }
+
+  button[data-variant="tertiary"]:not(:disabled),
+  button[data-variant="tab"]:not([data-selected]):not(:disabled),
+  button[data-variant="hero"]:not(:disabled) {
+    background:
+      var(--winter-frost-corner),
+      linear-gradient(
+        180deg,
+        rgba(186, 230, 253, 0.08),
+        rgba(148, 163, 184, 0.06)
+      );
+    box-shadow: var(--winter-glass-shadow);
+  }
+
+  button[data-variant="hero"]:not(:disabled) {
+    box-shadow:
+      var(--winter-glass-shadow),
+      0 8px 24px -6px rgba(0, 0, 0, 0.6);
+  }
+
+  button[data-variant="tertiary"]:not(:disabled):hover,
+  button[data-variant="tab"]:not([data-selected]):not(:disabled):hover {
+    background:
+      var(--winter-frost-corner),
+      linear-gradient(
+        180deg,
+        rgba(186, 230, 253, 0.14),
+        rgba(148, 163, 184, 0.1)
+      );
+    box-shadow: var(--winter-glass-shadow-hover);
+  }
+
+  button[data-variant="hero"]:not(:disabled):hover {
+    background:
+      var(--winter-frost-corner),
+      linear-gradient(
+        180deg,
+        rgba(186, 230, 253, 0.14),
+        rgba(148, 163, 184, 0.1)
+      );
+    box-shadow:
+      var(--winter-glass-shadow-hover),
+      0 8px 24px -6px rgba(0, 0, 0, 0.6);
+  }
+
+  button[data-variant="tertiary"][data-selected]:not(:disabled) {
+    border-color: #93c5fd;
+    color: #e0f2fe;
+  }
+
+  [data-panel="dialog"],
+  [data-panel="modal"],
+  [data-panel="sheet"] {
+    background-image:
+      var(--winter-snowcap),
+      radial-gradient(
+        260px 80px at 0% 0%,
+        rgba(224, 242, 254, 0.07),
+        rgba(224, 242, 254, 0) 70%
+      );
+    background-position:
+      center 0,
+      0 0;
+    background-size:
+      calc(100% - 28px) 10px,
+      auto;
+    background-repeat: no-repeat;
+  }
+
+  [data-panel="dialog"],
+  [data-panel="dialog"] [data-panel-header] {
+    border-color: #5277bf;
+  }
+
+  [data-panel="modal"] {
+    border-color: #3a5aa0;
+  }
+
+  [data-surface="card"] {
+    background-image: radial-gradient(
+      160px 50px at 0% 0%,
+      rgba(224, 242, 254, 0.1),
+      rgba(224, 242, 254, 0) 70%
+    );
+    border-color: rgba(186, 230, 253, 0.16);
+  }
+
+  input:checked + [data-switch-track] {
+    background: var(--winter-frozen-fill);
+    box-shadow: var(--winter-frozen-shadow);
+  }
+
+  input:checked ~ [data-switch-thumb] {
+    background: linear-gradient(180deg, #ffffff, #e0f2fe);
+  }
+
+  [data-dropdown-list] {
+    border-color: #bae6fd;
+  }
+
+  [data-dropdown-list] > [data-selected] {
+    background-color: #e0f2fe;
+  }
+
+  [data-dropdown-list] > :not([data-selected]):hover {
+    background-color: #f0f9ff;
+  }
+
+  [data-background-dim] {
+    background-color: rgba(4, 12, 30, 0.36);
+  }
+
+  [data-background-dim]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #5b8fd6;
+    mix-blend-mode: color;
+    opacity: 0.3;
+  }
+
+  [data-game-header] {
+    position: relative;
+    border-bottom-color: rgba(186, 230, 253, 0.7);
+  }
+
+  [data-game-header]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 8px;
+    pointer-events: none;
+    background: var(--winter-snowcap) 0 0 / 240px 8px repeat-x;
+    opacity: 0.7;
+    z-index: 1;
+  }
+
+  [data-header-logo] {
+    position: relative;
+  }
+
+  [data-header-logo]::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 3px;
+    width: 34px;
+    height: 8px;
+    pointer-events: none;
+    background: var(--winter-snowcap) 0 0 / 100% 100% no-repeat;
+  }
+
+  [data-question-title] {
+    border-image: linear-gradient(180deg, #e0f2fe, #60a5fa) 1;
+  }
+
+  [data-answer][data-selected] [data-surface="card"] {
+    border-color: #93c5fd;
+    box-shadow:
+      0 0 0 1px rgba(186, 230, 253, 0.3),
+      0 10px 15px -3px rgba(96, 165, 250, 0.35);
+  }
+
+  [data-frost] {
+    background-image:
+      radial-gradient(
+        140px 40px at 0% 0%,
+        rgba(224, 242, 254, 0.12),
+        rgba(224, 242, 254, 0) 70%
+      ),
+      linear-gradient(180deg, rgba(186, 230, 253, 0.06), rgba(186, 230, 253, 0));
+    box-shadow: inset 0 1px 0 rgba(224, 242, 254, 0.1);
+  }
+
+  [data-frame] {
+    box-shadow:
+      inset 0 0 0 1px rgba(186, 230, 253, 0.12),
+      0 20px 25px -5px rgba(0, 0, 0, 0.6),
+      0 8px 10px -6px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.snowfall-layer {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+}
+
+.snowfall-layer-near {
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff 50%, transparent 52%),
+    radial-gradient(2px 2px at 140px 90px, #fff 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 80px 160px, #fff 50%, transparent 52%),
+    radial-gradient(2.5px 2.5px at 180px 190px, #fff 50%, transparent 52%);
+  background-size: 220px 220px;
+  opacity: 0.55;
+  animation: snowfall-near 16s linear infinite;
+}
+
+.snowfall-layer-far {
+  background-image:
+    radial-gradient(3px 3px at 60px 50px, #fff 50%, transparent 52%),
+    radial-gradient(3.5px 3.5px at 260px 210px, #fff 50%, transparent 52%),
+    radial-gradient(2.5px 2.5px at 190px 320px, #fff 50%, transparent 52%);
+  background-size: 360px 360px;
+  opacity: 0.4;
+  filter: blur(0.6px);
+  animation: snowfall-far 22s linear infinite;
+}
+
+@keyframes snowfall-near {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 60px 220px;
+  }
+}
+
+@keyframes snowfall-far {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -90px 360px;
+  }
+}
+
+.festive-bulb {
+  position: absolute;
+  width: 7px;
+  height: 9px;
+  margin-left: -3.5px;
+  border-radius: 50% 50% 45% 45%;
+  box-shadow:
+    0 0 8px 2px currentColor,
+    0 0 20px 5px color-mix(in srgb, currentColor 50%, transparent);
+  animation: festive-twinkle 3.2s ease-in-out infinite alternate;
+}
+
+.festive-bulb::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 1.5px;
+  width: 4px;
+  height: 3px;
+  border-radius: 1px;
+  background: #1e293b;
+}
+
+@keyframes festive-twinkle {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snowfall-layer,
+  .festive-bulb {
+    animation: none;
+  }
+}

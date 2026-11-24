@@ -76,7 +76,10 @@ export function QuestionCard({
         ref={scrollRef}
         className="w-full flex-1 min-h-0 flex flex-col justify-start items-center mb-4 md:max-h-[500px] overflow-y-auto"
       >
-        <div className="w-full mb-4 p-2 border-l-3 border-blue-500">
+        <div
+          data-question-title
+          className="w-full mb-4 p-2 border-l-3 border-blue-500"
+        >
           {affects && (
             <Tooltip
               content={t("badge.strategicDecision.tooltip")}
@@ -173,7 +176,10 @@ function WideActions({
         <Button variant="secondary" onClick={() => setCurrentView("MapView")}>
           <Button.Text>{t("questionCard.buttons.mapView")}</Button.Text>
         </Button>
-        <div className="bg-slate-700 w-[350px] border border-slate-600 p-3 mb-3">
+        <div
+          data-frost
+          className="bg-slate-700 w-[350px] border border-slate-600 p-3 mb-3"
+        >
           <Text
             color="lightBlue"
             weight="bold"
@@ -224,7 +230,10 @@ function NarrowActions({
         <div className="size-12 shrink-0 border border-slate-600 rounded overflow-hidden">
           <img src={portrait} className="w-full h-full object-cover" />
         </div>
-        <div className="flex-1 bg-slate-700 border border-slate-600 p-2">
+        <div
+          data-frost
+          className="flex-1 bg-slate-700 border border-slate-600 p-2"
+        >
           <Text
             color="lightBlue"
             weight="bold"
@@ -297,6 +306,8 @@ export function AnswerRow({
     <div
       onClick={() => onClick(answer.id)}
       className="w-full mb-2"
+      data-answer
+      data-selected={isSelected || undefined}
       data-recommended={isRecommended || undefined}
     >
       <CommonWrapper

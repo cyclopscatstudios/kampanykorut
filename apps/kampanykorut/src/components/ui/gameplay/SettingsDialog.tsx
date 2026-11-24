@@ -1,5 +1,6 @@
 import { useSettings } from "@logic/application/hooks/useSettings";
 import { PRIVACY_PATH } from "@logic/application/privacyPath";
+import { getCurrentSeason } from "@logic/application/season/season";
 import { noop } from "@logic/application/utils";
 import { GameSettings } from "@shared/types";
 import { supportedLanguages } from "@shared/types/languages";
@@ -125,6 +126,19 @@ export function SettingsBody({
           {t("settingsMenu.analytics.privacyLink")}
         </a>
       </div>
+      {getCurrentSeason() && (
+        <Checkbox
+          id="seasonalTheme"
+          label={t("settingsMenu.seasonalTheme.label")}
+          defaultChecked={settingsForm.seasonalTheme !== false}
+          onChange={(e) =>
+            setSettingsForm((prev: GameSettings) => ({
+              ...prev,
+              seasonalTheme: e.target.checked,
+            }))
+          }
+        />
+      )}
       <Dropdown
         id="changeLanguage"
         block

@@ -1,4 +1,4 @@
-import { Button } from "@shared/ui/Button";
+import { Button, ButtonSize } from "@shared/ui/Button";
 import { Tooltip } from "@shared/ui/Tooltip";
 import { t } from "i18next";
 import { PoliticalEmblem } from "./PoliticalEmblem";
@@ -7,10 +7,12 @@ export function PoliticalStatusButton({
   hasUnseenEvents,
   onOpen,
   current = false,
+  size,
 }: {
   hasUnseenEvents: boolean;
   onOpen: () => void;
   current?: boolean;
+  size?: ButtonSize;
 }) {
   const label = current
     ? t("politicalDashboard.entry.current")
@@ -31,6 +33,7 @@ export function PoliticalStatusButton({
           onClick={current ? undefined : onOpen}
           className={current ? "cursor-default!" : undefined}
           testId="politicalStatusButton"
+          size={size}
         >
           <PoliticalEmblem size={40} />
         </Button>

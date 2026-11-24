@@ -96,7 +96,10 @@ export function GameHeader({
   };
 
   return createPortal(
-    <header className="w-full border-b-2 border-blue-400 bg-[rgba(15,23,42,0.92)]">
+    <header
+      data-game-header
+      className="w-full border-b-2 border-blue-400 bg-[rgba(15,23,42,0.92)]"
+    >
       {isDesktop ? (
         <WideHeader {...contentProps} />
       ) : (
@@ -142,7 +145,10 @@ function TurnBadge({
 }) {
   return (
     <Tooltip content={t("gameHeader.turnsTooltip")} position="bottom">
-      <div className="h-10 flex items-center bg-blue-400/10 rounded-md border border-blue-50/10 px-3">
+      <div
+        data-frost
+        className="h-10 flex items-center bg-blue-400/10 rounded-md border border-blue-50/10 px-3"
+      >
         <Text color="lightBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
       </div>
     </Tooltip>
@@ -212,6 +218,7 @@ function NarrowHeader({
           <Button
             variant="tertiary"
             iconOnly
+            data-header-logo
             onClick={() => onOpen("gameMenu")}
           >
             <img src={logo} width="26" height="26" alt="Kampánykörút" />
@@ -240,7 +247,9 @@ function NarrowHeader({
             />
           </div>
           <div className="flex items-center gap-1">
-            {politicalStatus && <PoliticalStatusButton {...politicalStatus} />}
+            {politicalStatus && (
+              <PoliticalStatusButton {...politicalStatus} size="small" />
+            )}
             {onResumeQuestion && (
               <ResumeQuestionButton onClick={onResumeQuestion} />
             )}
@@ -338,6 +347,7 @@ function WideHeader({
     <div className="h-[80px] flex justify-between items-center mx-2.5">
       <div className="flex justify-between items-center gap-2">
         <div
+          data-header-logo
           className="flex justify-center items-center cursor-pointer mr-1.5"
           onClick={() => onOpen("gameMenu")}
         >

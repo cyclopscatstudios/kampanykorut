@@ -66,6 +66,7 @@ export function BottomSheet({
         aria-modal="true"
         aria-hidden={!open}
         aria-label={title}
+        data-panel="sheet"
         className={classNames(
           "fixed inset-x-0 bottom-0 z-41 flex flex-col overflow-hidden rounded-t-[20px] bg-[#22355a] pt-2.5 shadow-[0_-12px_40px_rgba(0,0,0,0.4)]",
           tall

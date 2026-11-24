@@ -57,6 +57,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             />
 
             <span
+              data-switch-track
               className={classNames(
                 "absolute inset-0 rounded-full",
                 "bg-[rgba(148,163,184,0.12)] shadow-btn-tertiary",
@@ -68,6 +69,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
               )}
             />
             <span
+              data-switch-thumb
               className={classNames(
                 "absolute top-0.5 left-0.5 h-5 w-5 rounded-full",
                 "bg-slate-50 shadow-btn-secondary",

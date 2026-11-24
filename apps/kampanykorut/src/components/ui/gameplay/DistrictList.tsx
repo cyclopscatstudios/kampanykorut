@@ -135,6 +135,7 @@ function CountyGroup({
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
+        data-frost
         className={cardClassName(hasSelected && !isOpen)}
         style={{ borderLeftColor: leadingColor }}
       >
@@ -192,6 +193,7 @@ function DistrictCard({
     <button
       type="button"
       onClick={() => onSelect(district)}
+      data-frost
       className={cardClassName(isSelected)}
       style={{ borderLeftColor: leadingParty?.color }}
     >

@@ -33,6 +33,9 @@
     },
     "newspaperAutoOpen": {
       "label": "Hírlap lapszámainak automatikus megjelenítése"
+    },
+    "seasonalTheme": {
+      "label": "Ünnepi téli téma (hóesés, jeges gombok)"
     }
   },
   "loadSavedGamesMenu": {

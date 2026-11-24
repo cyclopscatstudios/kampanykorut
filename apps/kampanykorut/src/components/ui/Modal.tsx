@@ -18,6 +18,7 @@ export function Modal({ title, description, onCancel, onConfirm }: ModalProps) {
       onClick={onCancel}
     >
       <div
+        data-panel="modal"
         className="w-full max-w-100 bg-[#131824] p-5 rounded-xl border-2 border-[#244185] flex flex-col justify-between shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
