@@ -53,3 +53,34 @@ test("the next question starts scrolled to the top", async ({
     ratio: 0.5,
   });
 });
+
+test("1957: the region's issues can be collapsed on the sheet", async ({
+  page,
+  seedCampaign,
+}) => {
+  await page.setViewportSize(VIEWPORT);
+  const seed = await seedCampaign(
+    "1957_forradalom_oroksege",
+    "mszmp",
+    "nagy_imre",
+  );
+  await page.goto(
+    `/game/1957_forradalom_oroksege?sessionId=${seed?.sessionId}`,
+  );
+  await page.getByTestId("campaignIntroConfirm").click();
+  await page.getByRole("button", { name: "Térkép", exact: true }).click();
+  await page.locator("svg path[data-id]").first().click({ force: true });
+
+  const sheet = page.getByRole("dialog");
+  const issue = sheet.getByTestId("areaIssue-forradalom");
+  const toggle = sheet.getByTestId("areaIssuesToggle");
+  await expect(issue).toBeVisible();
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+
+  await toggle.click();
+  await expect(issue).toBeHidden();
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+
+  await toggle.click();
+  await expect(issue).toBeVisible();
+});

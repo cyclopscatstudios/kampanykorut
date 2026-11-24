@@ -16,6 +16,7 @@ import { SidebarPanel } from "../../../SidebarPanel";
 import {
   calculateVotePercentages,
   getPartyById,
+  getResultTitle,
   type VotePercentage,
 } from "../electionMap.utils";
 import { AdvancedProgressBar, ProgressBar } from "./ProgressBar";
@@ -101,11 +102,7 @@ export function DistrictDetails({ state, config }: DistrictDetailsProps) {
         <BottomSheet
           open={selectedDistrict !== null}
           onClose={closeDistrict}
-          title={
-            selectedDistrict
-              ? `${selectedDistrict.megye} ${selectedDistrict.oevk}`
-              : ""
-          }
+          title={selectedDistrict ? getResultTitle(selectedDistrict) : ""}
         >
           {selectedDistrict && (
             <DistrictCard
@@ -127,11 +124,7 @@ export function DistrictDetails({ state, config }: DistrictDetailsProps) {
           selected={selectedCounty}
           onSelect={setSelectedCounty}
           getKey={(county: CountyGroup) => county.megyekod}
-          renderItem={(county) => (
-            <>
-              {county.megye} {county.megyekod}
-            </>
-          )}
+          renderItem={(county) => <>{county.megye}</>}
         />
       </div>
       <div className="w-full md:w-[750px] md:max-h-[500px] md:overflow-y-auto py-2 md:p-2">
@@ -175,6 +168,7 @@ function DistrictCard({ district, config, onOpen }: DistrictCardProps) {
   }, [district.partok, district.jeloltek, config]);
 
   const turnout = getPartyVotesTurnoutPercentage(district);
+  const showSettlement = district.telepules !== district.megye;
 
   const leadingPartyColor =
     Object.values(votePercentage)[0]?.color ?? "#000000";
@@ -197,10 +191,10 @@ function DistrictCard({ district, config, onOpen }: DistrictCardProps) {
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
             <div className="text-sm font-extrabold">
-              {district.megye} {district.oevk}
+              {getResultTitle(district)}
             </div>
             <div className="mt-1 text-xs text-slate-400">
-              {district.telepules} ·{" "}
+              {showSettlement && <>{district.telepules} · </>}
               {t("endResult.statistics.districtDetails.turnout", {
                 value: turnout.toFixed(1),
               })}
@@ -238,9 +232,9 @@ function DistrictCard({ district, config, onOpen }: DistrictCardProps) {
       <div className="flex flex-col md:flex-row justify-between gap-2 mb-2">
         <div className="flex flex-wrap items-baseline">
           <Text weight="bold" size="lg" className="mr-2">
-            {district.megye} {district.oevk}
+            {getResultTitle(district)}
           </Text>
-          <Text color="blue">{district.telepules}</Text>
+          {showSettlement && <Text color="blue">{district.telepules}</Text>}
         </div>
         <div>
           <Text>

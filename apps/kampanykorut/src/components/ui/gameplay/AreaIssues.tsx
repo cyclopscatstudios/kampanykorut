@@ -1,5 +1,6 @@
 import { AreaIssueView } from "@shared/domain/Issues";
 import { Icon } from "@shared/ui/Icon";
+import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -16,14 +17,24 @@ const OPINION_COLORS: Record<OpinionKey, string> = {
 
 const MAX_STRENGTH = 3;
 
+const TITLE_CLASS =
+  "text-[10px] font-semibold uppercase tracking-[1.4px] text-slate-500";
+
 function opinionKey(opinion: number): OpinionKey {
   return String(Math.max(-2, Math.min(2, Math.round(opinion)))) as OpinionKey;
 }
 
 type OpenPopup = { id: string; top: number; left: number };
 
-export function AreaIssues({ issues }: { issues: AreaIssueView[] }) {
+export function AreaIssues({
+  issues,
+  collapsible = false,
+}: {
+  issues: AreaIssueView[];
+  collapsible?: boolean;
+}) {
   const [open, setOpen] = useState<OpenPopup | null>(null);
+  const [expanded, setExpanded] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
 
@@ -53,10 +64,40 @@ export function AreaIssues({ issues }: { issues: AreaIssueView[] }) {
   }
   return (
     <div ref={ref} className="flex flex-col gap-1.5" data-testid="areaIssues">
-      <div className="text-[10px] font-semibold uppercase tracking-[1.4px] text-slate-500">
-        {t("issues.title")}
-      </div>
-      <div className="flex flex-wrap gap-1.5">
+      {collapsible ? (
+        <button
+          type="button"
+          aria-expanded={expanded}
+          onClick={() => {
+            setOpen(null);
+            setExpanded((value) => !value);
+          }}
+          data-testid="areaIssuesToggle"
+          className="flex cursor-pointer items-center justify-between gap-2 rounded-md text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+        >
+          <span className={TITLE_CLASS}>{t("issues.title")}</span>
+          <span className="flex items-center gap-1.5 text-slate-500">
+            {!expanded && (
+              <span className="text-[11px] font-semibold">{issues.length}</span>
+            )}
+            <Icon
+              name="chevron-down"
+              size="xs"
+              color="currentColor"
+              className={classNames("transition-transform duration-150", {
+                "rotate-180": expanded,
+              })}
+            />
+          </span>
+        </button>
+      ) : (
+        <div className={TITLE_CLASS}>{t("issues.title")}</div>
+      )}
+      <div
+        className={classNames("flex flex-wrap gap-1.5", {
+          hidden: !expanded,
+        })}
+      >
         {issues.map((issue) => {
           const key = opinionKey(issue.opinion);
           const color = OPINION_COLORS[key];

@@ -1,6 +1,7 @@
 import { CampaignConfig } from "@shared/types";
 import { t } from "i18next";
 import { useState } from "react";
+import { getResultTitle } from "../electionMap.utils";
 import type { StatisticResult } from "../statistics.utils";
 
 export function MobileRankings({
@@ -83,7 +84,7 @@ export function MobileRankings({
             </span>
             <div className="min-w-0">
               <div className="text-[13px] text-slate-100">
-                {item.district.megye} {item.district.oevk}
+                {getResultTitle(item.district)}
               </div>
               <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-white/10">
                 <div
