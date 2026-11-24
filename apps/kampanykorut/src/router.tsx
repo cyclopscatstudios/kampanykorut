@@ -1,6 +1,6 @@
 import { NEWS_PATH } from "@logic/application/news/newsPaths";
 import { PRIVACY_PATH } from "@logic/application/privacyPath";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, redirect } from "react-router";
 import { MainGameScreenWrapper, NewGameLayout, RootLayout } from "./AppLayout";
 import { ErrorPage } from "./components/ErrorPage";
 import { campaignPageLoader } from "./components/loaders/campaignPage.loader";
@@ -25,7 +25,6 @@ import { ClassicModeSelectorMenu } from "./components/ui/menu/ClassicModeSelecto
 import { LandingPage } from "./components/ui/menu/landing";
 import { LoadSavedSessionsMenu } from "./components/ui/menu/LoadSavedGamesMenu";
 import { MainMenu } from "./components/ui/menu/MainMenu";
-import { NewGameMenu } from "./components/ui/menu/NewGameMenu";
 import { PrivacyPage } from "./components/ui/menu/PrivacyPage";
 import { SettingsMenu } from "./components/ui/menu/SettingsMenu";
 import { SideSelectorMenu } from "./components/ui/menu/SideSelectorMenu";
@@ -69,7 +68,7 @@ export const router = createBrowserRouter([
         path: "new-game",
         element: <NewGameLayout />,
         children: [
-          { index: true, element: <NewGameMenu /> },
+          { index: true, loader: () => redirect("/new-game/classic") },
           {
             path: "classic",
             children: [
