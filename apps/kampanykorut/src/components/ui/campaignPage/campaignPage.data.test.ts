@@ -74,6 +74,7 @@ describe("buildCampaignPageMeta", () => {
     expect(meta.path).toBe("/kampany/2024_budapest/lmp");
     expect(meta.image).toBe("/og/2024_budapest/lmp.jpg");
     expect(meta.title).toContain("Vitézy Dávid");
+    expect(meta.title).toContain(String(campaign.year));
     expect(meta.description.length).toBeLessThanOrEqual(161);
   });
 });
@@ -108,6 +109,19 @@ describe("applyMetaToHtml", () => {
       '<link rel="canonical" href="https://kampanykorut.hu/kampany/x" />',
     );
     expect(html).toContain('<div id="root"><main>body</main></div>');
+  });
+
+  it("replaces the structured data when given", () => {
+    const html = applyMetaToHtml(
+      `${template}<script type="application/ld+json">{"old":1}</script>`,
+      { title: "T", description: "d", path: "/kampany/x", image: "/og/x.jpg" },
+      "",
+      undefined,
+      { name: "</script>" },
+    );
+
+    expect(html).not.toContain('{"old":1}');
+    expect(html).toContain('{"name":"\\u003c/script>"}');
   });
 });
 
