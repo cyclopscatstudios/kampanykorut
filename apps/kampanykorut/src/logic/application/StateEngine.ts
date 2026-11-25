@@ -495,6 +495,7 @@ export class StateEngine extends Emitter<CampaignState> {
       this.saveState("campaignState", {
         activeCampaignId: state?.activeCampaignId,
         playerSide: state?.playerSide,
+        gameMode: state?.gameMode,
       } as CampaignState);
       window.location.assign(
         `/game/${state?.activeCampaignId}?sessionId=${this.getSessionId()}`,

@@ -16,6 +16,8 @@ export interface CampaignHeader {
   status: CampaignStatus;
   addedAt?: string;
   gameMode: GameMode;
+  gameModes?: GameMode[];
+  sideGameModes?: Record<string, Record<string, GameMode[]>>;
 }
 
 const environment = import.meta.env.VITE_ENVIRONMENT;

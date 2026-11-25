@@ -4,6 +4,7 @@ import { Icon } from "@shared/ui/Icon";
 import { Tooltip } from "@shared/ui/Tooltip";
 import classNames from "classnames";
 import { t } from "i18next";
+import { getCampaignGameModes } from "./campaignSelector.utils";
 
 const chipBase =
   "inline-flex h-6 items-center gap-1.5 rounded-full border px-2.5 text-xs whitespace-nowrap";
@@ -11,10 +12,8 @@ const chipBase =
 export function CampaignChips({
   campaign,
 }: {
-  campaign: Pick<CampaignHeader, "tags" | "gameMode">;
+  campaign: Pick<CampaignHeader, "tags" | "gameMode" | "gameModes">;
 }) {
-  const strategic = campaign.gameMode === "strategic";
-
   return (
     <span className="flex flex-wrap items-center gap-1.5">
       {campaign.tags.map((tag) => (
@@ -28,40 +27,54 @@ export function CampaignChips({
           {t(`campaignSelector.tags.${tag}`, { defaultValue: tag })}
         </span>
       ))}
-      <Tooltip
-        content={t(
+      {getCampaignGameModes(campaign).map((mode) => (
+        <ModeChip key={mode} strategic={mode === "strategic"} />
+      ))}
+    </span>
+  );
+}
+
+function ModeChip({ strategic }: { strategic: boolean }) {
+  return (
+    <Tooltip
+      content={t(
+        strategic
+          ? "campaignSelector.mode.strategicHint"
+          : "campaignSelector.mode.classicHint",
+      )}
+    >
+      <span
+        className={classNames(
+          chipBase,
+          "pl-2 font-semibold",
           strategic
-            ? "campaignSelector.mode.strategicHint"
-            : "campaignSelector.mode.classicHint",
+            ? "border-purple-300 bg-purple-600/25 text-blue-50"
+            : "border-slate-600 text-slate-300",
         )}
       >
-        <span
-          className={classNames(
-            chipBase,
-            "pl-2 font-semibold",
-            strategic
-              ? "border-purple-300 bg-purple-600/25 text-blue-50"
-              : "border-slate-600 text-slate-300",
-          )}
-        >
-          {strategic ? (
-            <Icon name="bullseye" color="purple" size="xs" />
-          ) : (
-            <Icon
-              name={"classic" as IconName}
-              source="svg"
-              color="currentColor"
-              size="xs"
-            />
-          )}
-          {t(
-            strategic
-              ? "campaignSelector.mode.strategic"
-              : "campaignSelector.mode.classic",
-          )}
-        </span>
-      </Tooltip>
-    </span>
+        {strategic ? (
+          <Icon name="bullseye" color="purple" size="xs" />
+        ) : (
+          <ClassicIcon />
+        )}
+        {t(
+          strategic
+            ? "campaignSelector.mode.strategic"
+            : "campaignSelector.mode.classic",
+        )}
+      </span>
+    </Tooltip>
+  );
+}
+
+export function ClassicIcon() {
+  return (
+    <Icon
+      name={"classic" as IconName}
+      source="svg"
+      color="currentColor"
+      size="xs"
+    />
   );
 }
 

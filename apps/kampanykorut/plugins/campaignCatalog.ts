@@ -12,6 +12,8 @@ const CAMPAIGN_STATUSES: CampaignStatus[] = ["draft", "candidate", "published"];
 export type CampaignCatalogEntry = CampaignListing & {
   route: string;
   gameMode: GameMode;
+  gameModes: GameMode[];
+  sideGameModes: SideGameModes;
 };
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -32,7 +34,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function parseListing(
   route: string,
   listing: unknown,
-  gameMode: GameMode,
+  modes: Pick<CampaignCatalogEntry, "gameMode" | "gameModes" | "sideGameModes">,
 ): CampaignCatalogEntry {
   const fail = (message: string): never => {
     throw new Error(`[campaign-catalog] ${route}/manifest.json: ${message}`);
@@ -84,37 +86,56 @@ function parseListing(
       : {}),
     status: listing.status as CampaignStatus,
     ...(listing.addedAt ? { addedAt: listing.addedAt as string } : {}),
-    gameMode,
+    ...modes,
   };
 }
 
-function politicalConfigPaths(files: unknown): string[] {
-  if (!isRecord(files)) return [];
-  const paths: unknown[] = [files.politicalConfig];
-  if (isRecord(files.playableSides)) {
-    for (const side of Object.values(files.playableSides)) {
-      if (!isRecord(side)) continue;
-      for (const candidate of Object.values(side)) {
-        if (isRecord(candidate)) paths.push(candidate.politicalConfig);
-      }
-    }
+const MODE_ORDER: GameMode[] = ["classic", "strategic"];
+
+export type SideGameModes = Record<string, Record<string, GameMode[]>>;
+
+function readGameModes(campaignDir: string, relativePath: unknown): GameMode[] {
+  if (typeof relativePath !== "string") return ["classic"];
+  const configPath = path.join(campaignDir, relativePath);
+  if (!existsSync(configPath)) return ["classic"];
+  const config: unknown = JSON.parse(readFileSync(configPath, "utf8"));
+  if (!isRecord(config)) return ["classic"];
+  const listed = config.gameModes;
+  if (Array.isArray(listed) && listed.length > 0) {
+    return MODE_ORDER.filter((mode) => listed.includes(mode));
   }
-  return paths.filter((p): p is string => typeof p === "string");
+  return [config.gameMode === "strategic" ? "strategic" : "classic"];
 }
 
-function detectGameMode(campaignDir: string, files: unknown): GameMode {
-  const strategic = politicalConfigPaths(files).some((relativePath) => {
-    const configPath = path.join(campaignDir, relativePath);
-    if (!existsSync(configPath)) return false;
-    const config: unknown = JSON.parse(readFileSync(configPath, "utf8"));
-    return (
-      isRecord(config) &&
-      (config.gameMode === "strategic" ||
-        (Array.isArray(config.gameModes) &&
-          config.gameModes.includes("strategic")))
-    );
-  });
-  return strategic ? "strategic" : "classic";
+function detectGameModes(campaignDir: string, files: unknown) {
+  const shared = isRecord(files) ? files.politicalConfig : undefined;
+  const sideGameModes: SideGameModes = {};
+  const all = new Set<GameMode>();
+  const sides =
+    isRecord(files) && isRecord(files.playableSides) ? files.playableSides : {};
+  for (const [partyId, side] of Object.entries(sides)) {
+    if (!isRecord(side)) continue;
+    for (const [candidateId, candidate] of Object.entries(side)) {
+      const own = isRecord(candidate) ? candidate.politicalConfig : undefined;
+      const modes = readGameModes(campaignDir, own ?? shared);
+      modes.forEach((mode) => all.add(mode));
+      sideGameModes[partyId] = {
+        ...sideGameModes[partyId],
+        [candidateId]: modes,
+      };
+    }
+  }
+  if (all.size === 0) {
+    readGameModes(campaignDir, shared).forEach((mode) => all.add(mode));
+  }
+  const gameModes = MODE_ORDER.filter((mode) => all.has(mode));
+  return {
+    gameMode: (gameModes.includes("strategic")
+      ? "strategic"
+      : "classic") as GameMode,
+    gameModes,
+    sideGameModes,
+  };
 }
 
 export function buildCampaignCatalog(
@@ -135,7 +156,7 @@ export function buildCampaignCatalog(
       parseListing(
         dirent.name,
         manifest.listing,
-        detectGameMode(campaignDir, manifest.files),
+        detectGameModes(campaignDir, manifest.files),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import type { CampaignHeader } from "@logic/application";
+import type { GameMode } from "@shared/types";
 
 export type CampaignSort = "year" | "added";
 
@@ -36,4 +37,31 @@ export function campaignImageUrl(
   file: string,
 ): string {
   return `/images/${campaign.route}/${file}`;
+}
+
+export function getCampaignGameModes(
+  campaign: Pick<CampaignHeader, "gameMode" | "gameModes">,
+): GameMode[] {
+  return campaign.gameModes?.length ? campaign.gameModes : [campaign.gameMode];
+}
+
+export function isDualModeCampaign(
+  campaign: Pick<CampaignHeader, "gameMode" | "gameModes">,
+): boolean {
+  return getCampaignGameModes(campaign).length > 1;
+}
+
+export function supportsStrategicMode(
+  campaign: Pick<CampaignHeader, "sideGameModes"> | null | undefined,
+  partyId?: string,
+  candidateId?: string,
+): boolean {
+  const sides = campaign?.sideGameModes;
+  if (!sides || !partyId) return true;
+  const candidates = sides[partyId];
+  if (!candidates) return true;
+  const modes = candidateId
+    ? candidates[candidateId]
+    : Object.values(candidates).flat();
+  return !modes || modes.includes("strategic");
 }
