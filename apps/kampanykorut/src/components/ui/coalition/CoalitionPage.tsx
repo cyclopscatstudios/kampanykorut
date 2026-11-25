@@ -1,4 +1,6 @@
 import { ConfigEngine, StateEngine } from "@logic/application";
+import { getRunProperties } from "@logic/infra/posthog/events";
+import { track } from "@logic/infra/posthog/track";
 import {
   buildCoalitionResult,
   buildCoalitionView,
@@ -72,6 +74,23 @@ export function CoalitionPage() {
     );
     stateEngine.updateCampaignState({ coalition: next.coalition });
     setState(next);
+    const resolved = buildCoalitionResult(next, config);
+    if (
+      resolved &&
+      resolved.outcome !== "single-majority" &&
+      resolved.outcome !== "opposition"
+    ) {
+      track("coalition_resolved", {
+        ...getRunProperties(stateEngine.getSessionId(), campaignId, playerSide),
+        government: resolved.outcome,
+        offered,
+        accepted: resolved.responses
+          .filter((r) => r.accepted)
+          .map((r) => r.partyId),
+        seats: resolved.seats,
+        majority: resolved.majority,
+      });
+    }
   };
 
   const barParties: (SeatParty & { pending?: boolean })[] = result

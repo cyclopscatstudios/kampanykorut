@@ -13,6 +13,8 @@ export type LoadDurationBucket = "<1s" | "1-3s" | "3-10s" | ">10s";
 
 export type CampaignOutcome = "win" | "loss" | "deadlock";
 
+export type FinishOutcome = CampaignOutcome | "coalition_needed";
+
 export interface AnalyticsEvents {
   landing_exited: { target: "menu" | "campaign_page" };
   campaign_start_clicked: RunProperties;
@@ -34,9 +36,16 @@ export interface AnalyticsEvents {
     key_kind: "campaign_state" | "turn_history" | "other";
   };
   campaign_finished: RunProperties & {
-    outcome: CampaignOutcome;
+    outcome: FinishOutcome;
     majority_type: "simple" | "supermajority" | null;
     turns: number;
+  };
+  coalition_resolved: RunProperties & {
+    government: "coalition" | "weak-coalition" | "failed";
+    offered: string[];
+    accepted: string[];
+    seats: number;
+    majority: number;
   };
   result_share_opened: RunProperties & { outcome: CampaignOutcome };
   result_shared: RunProperties & {
@@ -167,7 +176,11 @@ export function getCampaignOutcome(
   winnerPartyId: string | undefined,
   hasMajority: boolean,
   playerPartyId: string | undefined,
-): CampaignOutcome {
+  coalitionNeeded = false,
+): FinishOutcome {
+  if (coalitionNeeded) {
+    return "coalition_needed";
+  }
   if (!hasMajority) {
     return "deadlock";
   }

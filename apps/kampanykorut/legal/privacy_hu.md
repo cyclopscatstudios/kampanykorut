@@ -62,7 +62,7 @@ A PostHog az eseményekhez automatikusan hozzáadja a böngésző és az operác
 
 A használati statisztikákban nem rögzítjük a kérdésekre adott konkrét válaszaidat.
 
-**Mit nem használunk:** sütiket, a böngészőben tárolt tartós statisztikai azonosítót, munkamenet-visszajátszást (session replay), automatikus kattintásrögzítést, kérdőíveket, funkciókapcsolókat (feature flag) és távoli konfigurációt. Az események összekapcsolására szolgáló véletlenszerű azonosító csak az aktuális oldalbetöltés idejére, a böngésző memóriájában jön létre; az oldal újratöltése után új azonosító keletkezik. A statisztika nem olvassa a böngésződben tárolt mentett játékállásokat. Nem hozunk létre tartós játékosprofilt.
+**Mit nem használunk:** sütiket, a böngészőben tárolt tartós statisztikai azonosítót, munkamenet-visszajátszást (session replay), automatikus kattintásrögzítést, kérdőíveket, funkciókapcsolókat (feature flag) és távoli konfigurációt. Az események összekapcsolására szolgáló véletlenszerű azonosító csak az aktuális böngészőlap idejére jön létre, a lap munkamenet-tárolójában (sessionStorage); a lap bezárásakor törlődik, egy új lapon új azonosító keletkezik. A statisztika nem olvassa a böngésződben tárolt mentett játékállásokat. Nem hozunk létre tartós játékosprofilt.
 
 **IP-cím:** a hálózati kapcsolat miatt az IP-címed technikailag eljut a PostHoghoz, de úgy állítottuk be a szolgáltatást, hogy az IP-címet ne tárolja az eseményekhez.
 
