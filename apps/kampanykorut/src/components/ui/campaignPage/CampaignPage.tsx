@@ -30,9 +30,17 @@ export function CampaignPage() {
     navigate(sideSelectorPath(data.campaign.id, sideId));
   };
 
+  const back = () => {
+    if ((window.history.state?.idx ?? 0) > 0) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
+
   return (
     <NewsPageLayout>
-      <CampaignPageView data={data} onStart={start} />
+      <CampaignPageView data={data} onStart={start} onBack={back} />
     </NewsPageLayout>
   );
 }

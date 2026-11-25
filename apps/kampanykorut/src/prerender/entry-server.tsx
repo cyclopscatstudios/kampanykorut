@@ -32,7 +32,7 @@ export async function renderCampaignPage(
   const body = renderToString(
     <StaticRouter location={meta.path}>
       <NewsPageLayout>
-        <CampaignPageView data={data} onStart={() => {}} />
+        <CampaignPageView data={data} onStart={() => {}} onBack={() => {}} />
       </NewsPageLayout>
     </StaticRouter>,
   );
