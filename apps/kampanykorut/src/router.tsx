@@ -1,5 +1,4 @@
 import { NEWS_PATH } from "@logic/application/news/newsPaths";
-import { PRIVACY_PATH } from "@logic/application/privacyPath";
 import { createBrowserRouter, redirect } from "react-router";
 import { MainGameScreenWrapper, NewGameLayout, RootLayout } from "./AppLayout";
 import { ErrorPage } from "./components/ErrorPage";
