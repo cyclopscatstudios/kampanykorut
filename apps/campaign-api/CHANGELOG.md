@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/cyclopscatstudios/kampanykorut/compare/campaign-api-v0.5.0...campaign-api-v0.6.0) (2026-11-25)
+
+
+### Features
+
+* measure active play time per game session ([52cc1d2](https://github.com/cyclopscatstudios/kampanykorut/commit/52cc1d2bb2ec45bccb4479936120d158d93de9a7))
+
 ## [0.5.0](https://github.com/cyclopscatstudios/kampanykorut/compare/campaign-api-v0.4.0...campaign-api-v0.5.0) (2026-11-06)
 
 
