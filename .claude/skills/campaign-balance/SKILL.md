@@ -9,6 +9,8 @@ Use the real campaign engine and reproducible simulation output whenever availab
 
 ## Simulation API
 
+When the local Kampánykörút MCP server is available, prefer its `simulate_campaign` tool for repeatable scenarios and `inspect_campaign_question` to verify exact question and answer IDs. The MCP tool takes explicit campaign, side, and candidate IDs and runs outside the browser.
+
 In a Vite development session, `window.kampanykorut.simulateCampaign` runs campaigns through the production domain engine without changing the active game session or saving turn history.
 
 ```js

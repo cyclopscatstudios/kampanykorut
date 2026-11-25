@@ -87,6 +87,10 @@ There is no dedicated dev-only route. Only `published` campaigns (`listing.statu
 
 ## Dev/Debug Tooling (in-browser, `import.meta.env.DEV` only)
 
+### Local assistant tools (MCP)
+
+The repository root `.mcp.json` configures a local, read-only MCP server in `apps/campaign-mcp/`. Install the workspace dependencies with `corepack yarn install`, then restart a compatible assistant client and approve the project MCP server if prompted. The server reads shipped campaign files and can list campaigns, inspect question/answer effects, validate campaign data, and run seeded simulations through the production domain engine. It does not change campaign files or saved games. See `apps/campaign-mcp/README.md` for details.
+
 Two globals are wired up in `main.tsx` via `initDevApi()` (`apps/kampanykorut/src/initApi.ts`), useful for reproducing game state from the browser console **without playing through turns manually**:
 
 ### `window.debugMode`

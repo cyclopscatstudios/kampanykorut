@@ -10,10 +10,11 @@ Create campaign content that fits the existing game data and the selected campai
 ## Before drafting
 
 1. Read `.ai/AGENTS.md` and the relevant campaign's `manifest.json`.
-2. Resolve data paths from the manifest. The campaign's public ID, folder route, party IDs, candidate IDs, question IDs, and answer IDs are distinct values; copy the exact IDs from their source files.
-3. Inspect neighboring content for language, length, naming, and formatting conventions.
-4. For a reality-grounded historical claim, use the existing `$factchk` skill when available. Keep deliberate alternate-history fiction distinct from claims about actual events.
-5. If the requested mechanic is not present in the type definitions or neighboring content, describe the gap and ask whether the user wants a code change before proposing data that assumes it exists.
+2. When the local Kampánykörút MCP server is available, use `list_campaigns` to confirm campaign, side, and candidate IDs, then `inspect_campaign_question` and `validate_campaign` to inspect the relevant content and data consistency.
+3. Resolve data paths from the manifest. The campaign's public ID, folder route, party IDs, candidate IDs, question IDs, and answer IDs are distinct values; copy the exact IDs from their source files.
+4. Inspect neighboring content for language, length, naming, and formatting conventions.
+5. For a reality-grounded historical claim, use the existing `$factchk` skill when available. Keep deliberate alternate-history fiction distinct from claims about actual events.
+6. If the requested mechanic is not present in the type definitions or neighboring content, describe the gap and ask whether the user wants a code change before proposing data that assumes it exists.
 
 ## Drafting rules
 
