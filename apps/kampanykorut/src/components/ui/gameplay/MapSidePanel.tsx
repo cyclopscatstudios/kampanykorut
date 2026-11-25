@@ -1,12 +1,13 @@
-import classNames from "classnames";
-import { t } from "i18next";
-import { useState } from "react";
+import { getAreaIssues } from "@shared/domain/Issues";
 import {
   CandidateListData,
   District,
   DistrictPoligon,
   ElectionConfig,
-} from "@/shared/types";
+} from "@shared/types";
+import classNames from "classnames";
+import { t } from "i18next";
+import { useState } from "react";
 import { DistrictEstimate } from "./DistrictEstimate";
 import { isSameDistrict } from "./districtInsight.utils";
 import { MapWrapper } from "./MapWrapper";
@@ -71,6 +72,7 @@ export function MapSidePanel({
   return (
     <div
       style={{ width, height }}
+      data-surface="card"
       className="flex flex-col overflow-hidden rounded-md border border-blue-50/10 bg-blue-400/10"
     >
       {hasCapital && (
@@ -111,6 +113,9 @@ export function MapSidePanel({
             parties={electionConfig.parties}
             nationalPercentages={nationalPercentages}
             isCityMap={isCityMap}
+            issues={
+              district ? getAreaIssues(electionConfig, district.megyekod) : []
+            }
           />
         )}
       </div>

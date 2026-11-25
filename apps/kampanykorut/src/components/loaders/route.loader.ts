@@ -1,10 +1,24 @@
-import { getDataPath } from "../../logic/application/PathResolver";
+import { loadCampaignConfig } from "@logic/application/loadCampaignConfig";
+import { getDataPath } from "@logic/application/PathResolver";
+import type { LoaderFunctionArgs } from "react-router";
 
 const environment = import.meta.env.VITE_ENVIRONMENT;
 const showLandingPage = import.meta.env.VITE_LANDING;
 
-export function rootLoader() {
-  return getDataPath("background");
+export async function rootLoader({ params }: LoaderFunctionArgs) {
+  const fallback = getDataPath("background");
+  const campaignId = params.id ?? params.campaignId;
+
+  if (!campaignId) {
+    return fallback;
+  }
+
+  try {
+    const config = await loadCampaignConfig(campaignId);
+    return config.electionConfig?.background ?? fallback;
+  } catch {
+    return fallback;
+  }
 }
 
 export function landingPageRouter() {

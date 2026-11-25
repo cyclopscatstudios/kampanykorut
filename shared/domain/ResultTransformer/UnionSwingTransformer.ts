@@ -1,10 +1,10 @@
-import { createLogger } from "../../logger";
+import { createLogger } from "@shared/logger";
 import {
   CandidateListData,
   PartyListData,
   PartyListVotes,
   Share,
-} from "../../types";
+} from "@shared/types";
 
 const log = createLogger("NationalSwingTransform");
 

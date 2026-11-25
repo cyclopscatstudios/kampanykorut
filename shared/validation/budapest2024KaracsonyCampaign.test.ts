@@ -1,5 +1,5 @@
+import { RawQuestion } from "@shared/types";
 import { describe, expect, it } from "vitest";
-import { RawQuestion } from "../types";
 import {
   createBudapestCampaign,
   KARACSONY,

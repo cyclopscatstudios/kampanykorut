@@ -1,0 +1,548 @@
+[
+  {
+    "questionId": "gyoztunk",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez a legnehezebb mondat egy győzelmi éjszaka után, a frakcióban sokan nem fogják érteni. Két év múlva viszont nem azt kérdezik, ki nyerte a júniusi választást, hanem azt, mi változott."
+      },
+      {
+        "answerId": "B",
+        "text": "Okos középút: a tábor ünnepelhet, mi közben megtudjuk, hol fáj. A kérdés az, hogy a felmérés után lesz-e bátorságunk lépni."
+      },
+      {
+        "answerId": "C",
+        "text": "A pártközpont megnyugodott, a tábor elégedett. Csakhogy 29,60 százalék egy három hónapos pártnál nem buborék, hanem figyelmeztetés."
+      },
+      {
+        "answerId": "D",
+        "text": "Ezzel mi tesszük őt a kormányváltás egyetlen arcává. Minden nap, amikor róla beszélünk, ő nyer egy napot."
+      }
+    ]
+  },
+  {
+    "questionId": "patriotak",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Európában ez nagy siker lesz. Itthon viszont azt látják, hogy a miniszterelnök egész nyáron máshol van."
+      },
+      {
+        "answerId": "B",
+        "text": "Jó munkamegosztás. A frakció így is megalakul, a nyár pedig a hazai ügyeké marad."
+      },
+      {
+        "answerId": "C",
+        "text": "A törzsszavazóknak tetszik. A bizonytalanokat Brüsszel elfoglalása kevésbé érdekli, mint a kórházak állapota."
+      },
+      {
+        "answerId": "D",
+        "text": "Ez időt spórol, de a nemzetközi elszigeteltség érvét odaadjuk az ellenfélnek."
+      }
+    ]
+  },
+  {
+    "questionId": "bekemisszio",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Történelmi fotók lesznek. Csak éppen a nyári hőségben a kórházi folyosókról szóló hírek mellett jelennek meg."
+      },
+      {
+        "answerId": "B",
+        "text": "Így a béke üzenete is megmarad, és a választók látják, hogy a miniszterelnök itthon is dolgozik."
+      },
+      {
+        "answerId": "C",
+        "text": "Diplomatikus és visszafogott. A kampányba kevés marad belőle, de a kockázat is kicsi."
+      },
+      {
+        "answerId": "D",
+        "text": "Szokatlan lépés tőlünk. A helyi lapok címlapjára viszont mi kerülünk, nem ők."
+      }
+    ]
+  },
+  {
+    "questionId": "kortermek",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez nem hoz holnap reggelre új klímát, de ha tartjuk a határidőt, a következő nyáron már lesz mit megmutatni. Ha nem tartjuk, azt is mindenki látni fogja."
+      },
+      {
+        "answerId": "B",
+        "text": "Gyors és látványos. A többi száz kórház viszont ugyanúgy vár, és jövőre ugyanitt leszünk."
+      },
+      {
+        "answerId": "C",
+        "text": "A felvételek mást mutatnak, mint amit a szóvivő mond. Ez a különbség lesz a hír."
+      },
+      {
+        "answerId": "D",
+        "text": "Így nem a klímáról, hanem rólunk szól a történet. A fényképeken ők a betegek mellett állnak, mi a kórház kapujában."
+      }
+    ]
+  },
+  {
+    "questionId": "gatakon",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez az a miniszterelnök, akit a bizonytalanok is szívesen látnak: aki ott van, amikor baj van, és nem kérdezi, ki melyik pártra szavaz."
+      },
+      {
+        "answerId": "B",
+        "text": "A gátakon szerzett bizalmat így hónapokig lehet építeni. A polgármesterek emlékezni fognak arra, ki segített."
+      },
+      {
+        "answerId": "C",
+        "text": "A védekezés jó volt. A vágóképek miatt mégis arról fognak beszélni, kit hagytunk ki a képből."
+      },
+      {
+        "answerId": "D",
+        "text": "A szakemberek jól dolgoznak, de a gáton álló emberek a miniszterelnököt keresik, nem a szóvivőt."
+      }
+    ]
+  },
+  {
+    "questionId": "mtva_elott",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A pártközpont dühös lesz. A tüntetés viszont egy nap után véget ér, mert nincs miről beszélni tovább."
+      },
+      {
+        "answerId": "B",
+        "text": "Legalább nem lehet ránk mondani, hogy eltitkoltuk. A kommentárt persze mindenki a saját szemüvegén át nézi."
+      },
+      {
+        "answerId": "C",
+        "text": "Csakhogy megtörtént, és minden telefonon ott van. A hallgatásból lesz a hír."
+      },
+      {
+        "answerId": "D",
+        "text": "A tábor felháborodik, és ez mozgósít. A másik oldalt viszont még jobban, és ők kevesebben voltak eddig."
+      }
+    ]
+  },
+  {
+    "questionId": "hibahatar",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Jobb most, mint soha. Ha júniusban is így döntöttünk volna, ma nem kellene ezen gondolkodni."
+      },
+      {
+        "answerId": "B",
+        "text": "Belül tanulunk, kívül tagadunk. Ez egy darabig működik, de az emberek két mondatot hallanak, és a másodikra emlékeznek."
+      },
+      {
+        "answerId": "C",
+        "text": "A pártban mindenki megkönnyebbül. A mérések viszont jövő hónapban is ezt fogják mutatni."
+      },
+      {
+        "answerId": "D",
+        "text": "Rövid távon segít. A költségvetésben viszont ez a pénz hiányozni fog a kórházaktól."
+      }
+    ]
+  },
+  {
+    "questionId": "felvetelek",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez a nehezebb út, mert a felvételek könnyű sajtónapot adnának. Az érdemi különbségek viszont a választás napjáig megmaradnak."
+      },
+      {
+        "answerId": "B",
+        "text": "Kétfelé beszélünk: a sajtó támad, mi hallgatunk. A választók ezt úgyis összekötik."
+      },
+      {
+        "answerId": "C",
+        "text": "Ha a miniszterelnök hangfelvételekből idéz, akkor a hangfelvétel a legfontosabb ügy az országban. Ezt nem akarjuk."
+      },
+      {
+        "answerId": "D",
+        "text": "A plakátokat mindenki látni fogja, és mindenki azt fogja kérdezni, miért félünk tőle ennyire."
+      }
+    ]
+  },
+  {
+    "questionId": "szikla_utca",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Csendes és szabályos. Ha a jelentés határidőre elkészül, a következő ilyen vitában lesz mit felmutatni."
+      },
+      {
+        "answerId": "B",
+        "text": "Az aktivisták szeretik a kemény hangot. A kapu előtti vita képei viszont a gyerekekről szóló kérdést a személyes összecsapásról szóló hírré teszik."
+      },
+      {
+        "answerId": "C",
+        "text": "Ez kockázatos, mert a vizsgálat kellemetlen dolgokat is találhat. De ha mi tárjuk fel, nem ők fogják."
+      },
+      {
+        "answerId": "D",
+        "text": "A zárt kapu képe rosszabb minden nyilatkozatnál. Azt sugallja, hogy van mit elrejteni."
+      }
+    ]
+  },
+  {
+    "questionId": "dombovar",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A győztes csapatot nem szeretik ellenőrizni. Pont ezért most a legolcsóbb, amíg nincs baj."
+      },
+      {
+        "answerId": "B",
+        "text": "Bevált recept. Csak az a kérdés, beválik-e akkor is, ha a másik oldalon is van jelölt."
+      },
+      {
+        "answerId": "C",
+        "text": "Ugyanez a körzet jövőre egészen máshogy fog kinézni. Most még van időnk felkészülni, de ehhez el kellene ismerni a veszélyt."
+      },
+      {
+        "answerId": "D",
+        "text": "Több pénz, ugyanazokkal az emberekkel. A gyenge jelöltek így is gyengék maradnak."
+      }
+    ]
+  },
+  {
+    "questionId": "evertekelo",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez most nem hoz tapsot. Viszont ezek azok a vállalások, amiket tavaszig tényleg be lehet mutatni."
+      },
+      {
+        "answerId": "B",
+        "text": "A beszéd jól hangzik. A pénzügyminiszter viszont már a terem végében számol, és nem jön ki neki."
+      },
+      {
+        "answerId": "C",
+        "text": "A családok érezni fogják. A kórházakban viszont lassabban látszik majd a változás."
+      },
+      {
+        "answerId": "D",
+        "text": "A tábor tapsol. A többiek azt hallják, hogy a kormánynak nincs mondanivalója a saját ügyeikről."
+      }
+    ]
+  },
+  {
+    "questionId": "pride_torveny",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A Mi Hazánk megkapja a témát. A bizonytalan városi szavazókat viszont nem lökjük át a túloldalra."
+      },
+      {
+        "answerId": "B",
+        "text": "Félmegoldás, mindkét oldalról bírálni fogják. Legalább a nemzetközi botrány kisebb."
+      },
+      {
+        "answerId": "C",
+        "text": "Rövid távon mozgósít. Júniusban viszont százezrek lesznek az utcán, és a nagyvárosokban ezt nehéz lesz visszahozni."
+      },
+      {
+        "answerId": "D",
+        "text": "A kérdés így a választókhoz kerül, és hónapokig napirenden marad. Ez nem biztos, hogy nekünk jó."
+      }
+    ]
+  },
+  {
+    "questionId": "eu_forrasok",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ha ebből tavaszig pénz lesz, az a legerősebb válasz minden vádra. Ha nem lesz, legalább mi próbáltuk meg."
+      },
+      {
+        "answerId": "B",
+        "text": "A törzsszavazóknak ez ismerős történet. A többiek viszont a pénzt látják, ami nem jön."
+      },
+      {
+        "answerId": "C",
+        "text": "Erős szó, és hetekig erről fogunk beszélni. Csak éppen nem a pénzekről, hanem a szóról."
+      },
+      {
+        "answerId": "D",
+        "text": "Jó üzenet, de a költségvetés nem lesz nagyobb attól, hogy kimondjuk."
+      }
+    ]
+  },
+  {
+    "questionId": "menetrend",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A havi jelentés kétélű: ha javul, mindenki látja, ha nem, azt is. Én vállalom."
+      },
+      {
+        "answerId": "B",
+        "text": "Az új vonat jól mutat a képen. A régi pályán viszont ugyanúgy késni fog."
+      },
+      {
+        "answerId": "C",
+        "text": "Tizenöt év után ez már nem működik. Az ingázó nem a 2009-es menetrendet nézi."
+      },
+      {
+        "answerId": "D",
+        "text": "Ez évekig tartó vita lesz, eredmény nélkül. A választásig csak a vitát látják."
+      }
+    ]
+  },
+  {
+    "questionId": "ellenzeki_mezo",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Végre ugyanarról beszélünk, mint a választók. Ha két ajánlat van, a miénknek kell jobbnak lennie."
+      },
+      {
+        "answerId": "B",
+        "text": "Taktikailag okos, de ha kiderül, mi áll mögötte, azt fogják mondani, hogy a saját erőnkből már nem megy."
+      },
+      {
+        "answerId": "C",
+        "text": "Ezt mondtuk tavaly ősszel is. A buborék azóta nagyobb lett."
+      },
+      {
+        "answerId": "D",
+        "text": "Néhány radikális szavazót visszahozhat. A középen állók viszont pont ettől tartanak."
+      }
+    ]
+  },
+  {
+    "questionId": "tusvanyos",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Az online tér fontos, és ott eddig ők voltak erősebbek. De a lájk még nem szavazat."
+      },
+      {
+        "answerId": "B",
+        "text": "Ez fárasztó lesz a minisztereknek. Viszont ott leszünk, ahol eddig csak ők voltak."
+      },
+      {
+        "answerId": "C",
+        "text": "Erős mozgalom lesz belőle a saját táborunkban. Kérdés, hogy a táboron kívül eljut-e bárkihez."
+      },
+      {
+        "answerId": "D",
+        "text": "Kevésbé látványos, de a helyi szervezet a szavazás napján is ott lesz."
+      }
+    ]
+  },
+  {
+    "questionId": "munkacs",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez emberi és felelős. A bizonytalanok ilyenkor azt figyelik, ki viselkedik államférfiként."
+      },
+      {
+        "answerId": "B",
+        "text": "A tábor bólint. Mások szerint egy magyar üzemre hullott rakéta után ez az üzenet furcsán hangzik."
+      },
+      {
+        "answerId": "C",
+        "text": "Ezt a hallgatást mindenki észre fogja venni, főleg Kárpátalján."
+      },
+      {
+        "answerId": "D",
+        "text": "Erős és egyszerű üzenet. Csak éppen mindkét oldalt mozgósítja."
+      }
+    ]
+  },
+  {
+    "questionId": "kotcse",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Nagy energiájú kampány lesz, a tábor imádni fogja. A billegő körzetekben viszont kevesebb ember marad."
+      },
+      {
+        "answerId": "B",
+        "text": "Kevésbé látványos, de Gyürk tudja, hol dől el a választás. Ő nem a nagygyűlésen számol, hanem a körzetben."
+      },
+      {
+        "answerId": "C",
+        "text": "Két kapitány egy hajón. Ha jól megy, mindkettőből kapunk valamit. Ha rosszul, a stáb fele a másik felét fogja hibáztatni."
+      },
+      {
+        "answerId": "D",
+        "text": "Senki nem ismeri jobban a kampányt nálad. Viszont te vagy a miniszterelnök is, és a nap neked is huszonnégy órából áll."
+      }
+    ]
+  },
+  {
+    "questionId": "bekemenet",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Lenyűgöző lesz. A számháborút viszont úgysem nyeri meg senki, és ők is rengetegen lesznek."
+      },
+      {
+        "answerId": "B",
+        "text": "Nem lesz légifotó a Lánchídról. Lesz viszont 106 helyi újságcikk a mi jelöltjeinkről."
+      },
+      {
+        "answerId": "C",
+        "text": "Nemzeti ünnepen a másik oldal megbélyegzése rosszul mutat. Ők ünnepelnek, mi veszekszünk."
+      },
+      {
+        "answerId": "D",
+        "text": "A tábor nem érti, miért adtuk fel az utcát. Ez a lelkesedésen meglátszik."
+      }
+    ]
+  },
+  {
+    "questionId": "szazhat_nev",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A frakcióban lesz néhány megsértett ember. A körzetekben viszont végre olyan jelöltünk lesz, akit a szomszéd is ismer."
+      },
+      {
+        "answerId": "B",
+        "text": "A frakció hálás lesz. A választók viszont ugyanazokat az arcokat látják, mint tizenöt éve."
+      },
+      {
+        "answerId": "C",
+        "text": "Száz helyi botrány helyett száz helyi szolidaritás lesz belőle. A támadott jelöltek ismertebbek lesznek, mint előtte."
+      },
+      {
+        "answerId": "D",
+        "text": "Óvatos, de célzott. Ott változtatunk, ahol a legtöbbet érhet."
+      }
+    ]
+  },
+  {
+    "questionId": "szolo_utca",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Csak akkor működik, ha tényleg van mit bemutatni. Ha nincs, a sajtótájékoztató maga lesz a botrány."
+      },
+      {
+        "answerId": "B",
+        "text": "Ugyanaz a kép, mint Pécsen, csak egy évvel később és nagyobb tömeggel."
+      },
+      {
+        "answerId": "C",
+        "text": "Fájdalmas, de ritka gesztus tőlünk. Azt mutatja, hogy komolyan vesszük."
+      },
+      {
+        "answerId": "D",
+        "text": "Adminisztratív válasz egy emberi kérdésre. Rendet sugall, de nem bizalmat."
+      }
+    ]
+  },
+  {
+    "questionId": "kongresszus",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ha a számok megvannak, ez a legerősebb beszéd. Ha nincsenek, ez lesz a leggyengébb."
+      },
+      {
+        "answerId": "B",
+        "text": "A nyugdíjasok és a családok meghallják. A kérdés csak az, hogy a választás után ki fizeti ki."
+      },
+      {
+        "answerId": "C",
+        "text": "Ismerős üzenet, a terem tapsolni fog. Otthon viszont a számlákat nézik."
+      },
+      {
+        "answerId": "D",
+        "text": "Ha nekünk nincs ajánlatunk, akkor csak az övék marad."
+      }
+    ]
+  },
+  {
+    "questionId": "elszamolas",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez a kampány legfontosabb sajtótájékoztatója. Amit 2024 nyarán elkezdtünk, most vagy megvan, vagy nincs."
+      },
+      {
+        "answerId": "B",
+        "text": "Ez a biztonságos terep. Az újságírók viszont a kórházakról kérdeztek, és ezt mindenki hallja."
+      },
+      {
+        "answerId": "C",
+        "text": "Erről hetekig vitatkozni lehet. Közben senki nem kérdez rá arra, mi lett a mi programjainkkal, és lehet, hogy pont ez a cél."
+      },
+      {
+        "answerId": "D",
+        "text": "Őszinte, de két hónappal a választás előtt az új határidő keveset ér."
+      }
+    ]
+  },
+  {
+    "questionId": "vezetek",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ugyanaz a miniszterelnök, mint a gátakon. Az emberek ilyenkor nem pártot, hanem kormányt keresnek."
+      },
+      {
+        "answerId": "B",
+        "text": "A benzinkútnál ez rövid távon segít. A sorok és a hiány viszont a kampány végére megjöhetnek."
+      },
+      {
+        "answerId": "C",
+        "text": "Egy ellátási válságban a kormányt kérdezik, nem az ellenzéket. Ezt nehéz lesz elmagyarázni."
+      },
+      {
+        "answerId": "D",
+        "text": "Hosszú távú válasz, de látszik rajta, hogy van terv."
+      }
+    ]
+  },
+  {
+    "questionId": "marcius_15",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A táborunk el fog menni szavazni. Csak az a kérdés, hogy ez elég lesz-e."
+      },
+      {
+        "answerId": "B",
+        "text": "Kevés lesz a nagy kép, sok a helyi kép. Egy-egy körzetben néhány száz szavazat dönt."
+      },
+      {
+        "answerId": "C",
+        "text": "Szép kép lesz. A vidéki bizonytalan szavazó viszont nem a külföldi vendégeket nézi."
+      },
+      {
+        "answerId": "D",
+        "text": "Nyilvánosan mindkét fél tagadni fogja. Ha működik, néhány körzetben a Mi Hazánk jelöltje visszalép. Ha kiszivárog, mindkettőnknek fáj."
+      }
+    ]
+  },
+  {
+    "questionId": "utolso_vasarnap",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Erős kép a tábornak. A bizonytalanokat viszont egy amerikai alelnök ritkán győzi meg."
+      },
+      {
+        "answerId": "B",
+        "text": "Nem lesz címlap. Viszont minden kopogtatás egy-egy körzetben számít."
+      },
+      {
+        "answerId": "C",
+        "text": "Ha van mit felmutatni, ez a legjobb zárás. Ha nincs, akkor ez a leghosszabb félóra."
+      },
+      {
+        "answerId": "D",
+        "text": "Az utolsó napon a támadás a másik oldalt mozgósítja a legjobban."
+      }
+    ]
+  }
+]

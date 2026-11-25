@@ -1,8 +1,8 @@
+import { CandidateListData, RawParty } from "@shared/types";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import { CandidateListData, RawParty } from "@/shared/types";
-import { Icon } from "../../../../../../shared/ui/Icon";
 import { CandidateRow, StatusTag } from "./DistrictEstimate";
 import {
   Estimate,
@@ -10,7 +10,7 @@ import {
   getBarScale,
   getScopedEstimate,
 } from "./districtEstimate.utils";
-import { getDistrictName } from "./districtInsight.utils";
+import { getDistrictTitle } from "./districtInsight.utils";
 import type { SwingFactor } from "./swingFactor.utils";
 
 const TOSSUP_COLOR = "#e5b93a";
@@ -122,7 +122,7 @@ export function EstimateSheetContent({
 
   const title = isNational
     ? t(isCityMap ? "estimatePanel.cityTitle" : "estimatePanel.nationalTitle")
-    : district && `${district.megye} ${getDistrictName(district, isCityMap)}`;
+    : district && getDistrictTitle(district, isCityMap);
   const subtitle = isNational
     ? t(
         isCityMap
@@ -213,6 +213,7 @@ function EstimateBody({
             row={row}
             isLeader={estimate.leader?.partyId === row.partyId}
             showParty={!isNational && !!row.candidateName}
+            partyNameOnly={isNational}
             scale={getBarScale(estimate)}
           />
         ))}

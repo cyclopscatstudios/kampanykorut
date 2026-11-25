@@ -1,9 +1,9 @@
+import { CandidateListData, District, RawParty } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import { CandidateListData, District, RawParty } from "@/shared/types";
-import { Button } from "@/shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
 import {
   compareBySwing,
   DistrictInsight,
@@ -135,6 +135,7 @@ function CountyGroup({
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
+        data-frost
         className={cardClassName(hasSelected && !isOpen)}
         style={{ borderLeftColor: leadingColor }}
       >
@@ -192,6 +193,7 @@ function DistrictCard({
     <button
       type="button"
       onClick={() => onSelect(district)}
+      data-frost
       className={cardClassName(isSelected)}
       style={{ borderLeftColor: leadingParty?.color }}
     >

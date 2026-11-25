@@ -1,4 +1,3 @@
-import { container } from "tsyringe";
 import {
   CampaignEvent,
   CampaignState,
@@ -7,7 +6,8 @@ import {
   EffectType,
   MayoralElectionConfig,
   RawQuestion,
-} from "../types";
+} from "@shared/types";
+import { container } from "tsyringe";
 import { CampaignEngine } from "./CampaignEngine";
 import { CampaignEventEngine } from "./CampaignEventEngine";
 import { EffectApplier } from "./EffectApplier";
@@ -81,15 +81,17 @@ const withdrawal: CampaignEvent = {
 
 const settings = { showAdvisorFeedback: false, language: "hu" as const };
 
-const createEngine = (events: CampaignEvent[] = [withdrawal]) =>
-  new CampaignEngine(
+const createEngine = (events: CampaignEvent[] = [withdrawal]) => {
+  const pollsterEngine = container.resolve(PollsterEngine);
+  pollsterEngine.configure();
+  return new CampaignEngine(
     districts,
     questions,
     [],
     container.resolve(ResultModifier),
     container.resolve(EffectApplier),
     container.resolve(MandateCalculator),
-    container.resolve(PollsterEngine),
+    pollsterEngine,
     container.resolve(MayoralResultCalculator),
     container.resolve(CampaignEventEngine),
     container.resolve(CandidateWithdrawalTransformer),
@@ -97,6 +99,7 @@ const createEngine = (events: CampaignEvent[] = [withdrawal]) =>
     undefined,
     events,
   );
+};
 
 const decision = (
   questionId: string,

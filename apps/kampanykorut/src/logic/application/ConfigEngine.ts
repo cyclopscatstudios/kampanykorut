@@ -1,6 +1,5 @@
-import { singleton } from "tsyringe";
-import { createLogger } from "@/shared/logger/logger";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
+import { createLogger } from "@shared/logger/logger";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
 import {
   CampaignConfig,
   CampaignState,
@@ -9,7 +8,8 @@ import {
   ElectionConfig,
   HistoryItem,
   StrategyReward,
-} from "@/shared/types";
+} from "@shared/types";
+import { singleton } from "tsyringe";
 import { Emitter } from "./Emitter";
 import { fetchJSON } from "./fetchJSON";
 import type { SessionKey } from "./SessionKey";
@@ -75,6 +75,8 @@ export class ConfigEngine extends Emitter<CampaignConfig> {
         return "oevk_2024";
       case "budapest-districts":
         return "budapest_districts";
+      case "1945":
+        return "valasztokerulet_1945";
       default:
         log.error("Unknown district map type", { districtMapType });
         return "oevk_2011";

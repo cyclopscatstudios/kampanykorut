@@ -1,5 +1,7 @@
 {
-  "bottomSheet": { "close": "Close" },
+  "bottomSheet": {
+    "close": "Close"
+  },
   "mainMenu": {
     "newGame": "New Game",
     "loadGame": "Load Game",
@@ -28,6 +30,12 @@
     "analytics": {
       "label": "Send anonymous usage statistics",
       "privacyLink": "Privacy notice"
+    },
+    "newspaperAutoOpen": {
+      "label": "Open new newspaper editions automatically"
+    },
+    "seasonalTheme": {
+      "label": "Festive winter theme (snowfall, frosted buttons)"
     }
   },
   "loadSavedGamesMenu": {
@@ -42,6 +50,32 @@
   "gameSelectorMenhu": {
     "label": "Select a campaign",
     "placeholder": "Select..."
+  },
+  "campaignSelector": {
+    "count_one": "{{count}} campaign",
+    "count_other": "{{count}} campaigns",
+    "sort": {
+      "label": "Sort",
+      "year": "By year",
+      "yearShort": "Year",
+      "added": "Recently added",
+      "addedShort": "Newest"
+    },
+    "new": "New",
+    "emptyTitle": "No campaign selected yet",
+    "emptyText": "Pick a campaign from the list. Its banner and summary will appear here.",
+    "mobileHint": "Tap a campaign for details.",
+    "tags": {
+      "historical": "Historical",
+      "alternate-history": "Alternate history",
+      "test": "Test"
+    },
+    "mode": {
+      "classic": "Classic",
+      "classicHint": "Question-and-answer campaign: interviews and debates decide the election.",
+      "strategic": "Strategic",
+      "strategicHint": "Focus tree, issues and alliances: build your campaign turn by turn."
+    }
   },
   "sideSelector": {
     "party": {
@@ -73,7 +107,8 @@
     },
     "actions": {
       "replay": "Play again",
-      "otherCampaign": "Other campaign"
+      "otherCampaign": "Other campaign",
+      "share": "Share"
     },
     "statistics": {
       "menuBar": {
@@ -85,6 +120,9 @@
         "constituencySeats": "Constituency seats",
         "listSeats": "List seats",
         "partyListResults": "Party list results",
+        "regionalSeats": "Regional seats",
+        "nationalSeats": "Compensation seats",
+        "totalSeats": "Total: {{seats}}/{{all}} seats",
         "rankingTabs": {
           "victories": "Victories",
           "defeats": "Defeats",
@@ -105,7 +143,9 @@
       }
     },
     "electionMap": {
-      "winner": "Winner"
+      "winner": "Winner",
+      "seats": "{{count}} seats",
+      "regionSeats": "{{count}} seats in the region"
     },
     "achievements": {
       "completed": "Earned",
@@ -139,6 +179,73 @@
         "validVotes": "Valid votes",
         "points": "{{points}} pp"
       }
+    },
+    "majority": {
+      "leader": "Most seats",
+      "label": "Majority: {{majority}} seats",
+      "reached": "Reached",
+      "missing": "Not reached · {{missing}} short"
+    },
+    "government": {
+      "label": "Government",
+      "single-majority": "Majority of its own",
+      "coalition": "Coalition majority",
+      "weak-coalition": "Weak coalition government",
+      "partners": "With {{count}} coalition partners",
+      "weakHint": "You have to share power with too many parties, so your government will be weak.",
+      "failed": "Failed to form a government",
+      "opposition": "In opposition",
+      "seats": "{{seats}} / {{majority}} seats"
+    },
+    "focus": {
+      "label": "Political focus",
+      "none": "You did not choose a focus"
+    },
+    "epilogue": "Epilogue",
+    "share": {
+      "native": "Share",
+      "download": "Download image",
+      "close": "Close",
+      "loading": "Preparing your result card…",
+      "failed": "Sharing failed. Please try again.",
+      "text": {
+        "win": "I won the “{{campaign}}” campaign {{metric}}. Could you do it?",
+        "loss": "I lost the “{{campaign}}” campaign {{metric}}. Could you do it?",
+        "deadlock": "I ended the “{{campaign}}” campaign in deadlock {{metric}}. Could you do it?"
+      },
+      "metric": {
+        "seats": "with {{count}} seats",
+        "votes": "with {{share}} of the vote"
+      },
+      "card": {
+        "kicker": {
+          "win": "Victory",
+          "loss": "Defeat",
+          "deadlock": "Deadlock"
+        },
+        "title": {
+          "win": "Victory at the polls",
+          "loss": "Defeat at the polls",
+          "deadlock": "No majority"
+        },
+        "election": {
+          "parliamentary": "Parliamentary election",
+          "mayoral": "Mayoral election"
+        },
+        "player": "My candidate",
+        "seats": "My seats",
+        "votes": "My vote share",
+        "winner": "Winner",
+        "leader": "Largest",
+        "winnerSeats": "{{name}} · {{count}} seats",
+        "turns": "Turns",
+        "cta": {
+          "win": "I won. Could you do it too?",
+          "loss": "I didn't make it. Could you run a better campaign?",
+          "deadlock": "I ended in deadlock. Could you win a majority?"
+        },
+        "ctaButton": "Play for free →"
+      }
     }
   },
   "gameHeader": {
@@ -150,7 +257,55 @@
       "party": "Party"
     }
   },
+  "politicalDashboard": {
+    "title": "Political situation",
+    "back": "Back to the campaign",
+    "turn": "Turn {{turn}}",
+    "overview": "Overview",
+    "progress": "Campaign progress",
+    "latestEvent": "Latest event",
+    "empty": {
+      "title": "All quiet so far",
+      "body": "Key developments of the campaign will show up here."
+    },
+    "entry": {
+      "label": "Political situation",
+      "withNews": "Political situation: new event",
+      "current": "Political situation: currently open"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "focuses": "Focuses",
+      "relations": "Relations",
+      "chronicle": "Chronicle"
+    },
+    "focus": {
+      "followed": "Followed focus",
+      "prompt": "Where will you take the party?",
+      "choose": "Choose a direction",
+      "finalNote": "Each fork offers one direction to take. You can still change your choice until the next turn; then it is final and the next fork can open.",
+      "branch": "Fork {{index}}",
+      "select": "Follow this",
+      "status": {
+        "available": "Available",
+        "selected": "Following",
+        "completed": "Completed",
+        "failed": "Failed",
+        "upcoming": "Later",
+        "excluded": "Excluded"
+      },
+      "required": "Choose a political focus first",
+      "requiredHint": "Decide on the Political situation page where you take the party, then you can move on.",
+      "availableFrom": "You can choose a direction from turn {{turn}}.",
+      "requiredBefore": "Choose a direction before turn {{turn}}, or you cannot move on.",
+      "open": "Choose a focus"
+    },
+    "relations": {
+      "new": "New"
+    }
+  },
   "gameMenuBar": {
+    "resumeQuestion": "Back to the question",
     "save": "Save game",
     "laod": "Load game",
     "settings": "Settings",
@@ -192,6 +347,7 @@
   },
   "bottomBar": {
     "visitDistrict": "Visit district",
+    "returnToDistrict": "Back to the district",
     "swingFactor": "Swing factor",
     "population": "Population",
     "k": "K",
@@ -285,6 +441,7 @@
     }
   },
   "toaster": {
+    "focusSelectedEyebrow": "New political direction",
     "settingsUpdated": "Settings updated successfully!",
     "storageQuotaExceeded": "Your browser storage is full, so the game could not be saved. You can keep playing, but progress may be lost if you reload the page.",
     "storageWriteFailed": "The game could not be saved in this browser. You can keep playing, but progress may be lost if you reload the page."
@@ -303,6 +460,39 @@
       "processedVotes": "Processed Votes",
       "pleaseWait": "Please wait"
     }
+  },
+  "seatCount": {
+    "live": "Live",
+    "final": "Final result",
+    "title": "Election night · {{year}}",
+    "progress": "{{done}} / {{total}} regions",
+    "counting": "Counting…",
+    "tally": "Seats allocated so far",
+    "majority": "{{majority}} · majority line",
+    "nationalPending": "+ {{seats}} national list seats at the end of the count",
+    "nationalAdded": "the {{seats}} national list seats are allocated too",
+    "hint": "Each dot is one seat. Proportional system: a region is shared, not won.",
+    "skip": "Skip to the end",
+    "continue": "Continue to the result"
+  },
+  "coalition": {
+    "kicker": "Forming a government",
+    "title": "Coalition offer",
+    "resultTitle": "The parties have answered",
+    "subtitle": "You hold {{seats}} seats; a majority needs {{majority}}. You can make one offer.",
+    "potential": "Possible majority",
+    "potentialHint": "It only forms if every party you approach accepts the offer.",
+    "partnerHint": "One partner is best: every further partner weakens your government.",
+    "partnerHintMany": "Up to {{max}} partners keep your government strong: every further partner weakens it.",
+    "tooManyPartners": "You are making an offer to {{count}} parties. If they all accept, your government will be weak.",
+    "distantPartner": "You picked a distant partner: if it accepts, your government will be weak.",
+    "distantHint": "Ideologically distant party: it weakens your government more than a close partner.",
+    "governmentSeats": "Government majority",
+    "seats": "{{seats}} seats",
+    "submit": "Send offer ({{parties}})",
+    "accepted": "Accepted",
+    "rejected": "Rejected",
+    "continue": "On to the results"
   },
   "bugReporter": {
     "title": "Report a bug",
@@ -344,14 +534,11 @@
   "landing": {
     "hero": {
       "heading": "Hungarian election campaign simulator",
-      "description": "Kampánykörút is a free political strategy game in which you run a Hungarian parliamentary election campaign. Campaign district by district, make political decisions, follow the polls, and see whether you manage to win a majority in the National Assembly.",
+      "description": "Kampánykörút is a free political strategy game in which you run Hungarian election campaigns, from parliamentary elections to the Budapest mayoral race. Campaign, make political decisions, follow the polls, and see whether you manage to win the election.",
       "startButton": "Start game"
     },
     "campaigns": {
       "heading": "Available campaigns"
-    },
-    "campaignDialog": {
-      "startButton": "Start campaign"
     },
     "footer": "Kampánykörút — a free election simulation that runs in your browser.",
     "footerPrivacy": "Privacy notice"
@@ -397,5 +584,86 @@
   "eventAnnouncement": {
     "label": "Campaign event",
     "close": "Continue"
+  },
+  "newspaper": {
+    "entry": {
+      "label": "Newspaper",
+      "withNews": "Newspaper · new edition"
+    },
+    "ribbon": "Extra edition!",
+    "read": "I've read it",
+    "optOut": "Don't show me new editions",
+    "close": "Close",
+    "paging": "Editions",
+    "previous": "Previous edition",
+    "next": "Next edition",
+    "position": "{{current}} / {{total}}",
+    "turn": "Round {{turn}}",
+    "issue": "No. {{issue}}"
+  },
+  "campaignIntro": {
+    "label": "Historical background",
+    "confirm": "Got it"
+  },
+  "issues": {
+    "title": "Issues in the area",
+    "opinion": {
+      "-2": "Strongly opposed",
+      "-1": "Leaning against",
+      "0": "Divided",
+      "1": "Leaning for",
+      "2": "Strongly for"
+    }
+  },
+  "campaignPage": {
+    "start": "Start campaign",
+    "sides": "Pick a side",
+    "otherSides": "Other sides",
+    "background": "Campaign background",
+    "meta": {
+      "campaignTitle": "{{campaign}} – Kampánykörút",
+      "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
+      "sideDescription": "{{campaign}}: lead {{candidate}}'s campaign!"
+    }
+  },
+  "cheat": {
+    "title": "Cheat",
+    "minimize": "Minimize",
+    "expand": "Expand",
+    "close": "Turn off",
+    "ids": {
+      "label": "IDs",
+      "hint": "Shows the id of questions, answers and focuses."
+    },
+    "effects": {
+      "label": "Effects",
+      "hint": "Hover an answer to see what it changes."
+    },
+    "path": {
+      "label": "Winning path",
+      "hint": "Pick a tested winning path: the matching answer and focuses get a green mark.",
+      "none": "No winning path for this side yet.",
+      "pick": "Choose a path",
+      "recommended": "Answer now:"
+    },
+    "effect": {
+      "none": "No effect",
+      "if": "If",
+      "replace": "replaces",
+      "swing": "Swing",
+      "turnout": "Turnout",
+      "allocation": "New votes",
+      "transfer": "District",
+      "stance": "Issue"
+    }
+  },
+  "savedSessions": {
+    "delete": {
+      "label": "Delete save",
+      "hint": "Delete save. The game state and round history are removed too.",
+      "confirm": "Delete"
+    },
+    "expiryHint": "Saves are deleted automatically after 30 days.",
+    "expiryLabel": "Kept for 30 days"
   }
 }

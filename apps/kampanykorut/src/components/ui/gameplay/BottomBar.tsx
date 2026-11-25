@@ -1,10 +1,11 @@
+import { District } from "@shared/types";
+import type { Colors } from "@shared/types/color";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
-import { District } from "@/shared/types";
-import type { Colors } from "../../../../../../shared/types/color";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
 import { CommonWrapper } from "../CommonWrapper";
+import { FocusRequiredNote } from "./FocusRequiredNote";
 import type { SwingFactor } from "./swingFactor.utils";
 import { getSwingFactorTextColor } from "./swingFactor.utils";
 
@@ -12,9 +13,17 @@ interface BottomBarProps {
   data?: District | null;
   onClick: () => void;
   swingFactor?: SwingFactor;
+  visitBlocked?: boolean;
+  isReturning?: boolean;
 }
 
-export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
+export function BottomBar({
+  data,
+  onClick,
+  swingFactor,
+  visitBlocked,
+  isReturning,
+}: BottomBarProps) {
   const population = Math.round((data?.valasztopolgar ?? 0) / 1000);
   const textColor = getSwingFactorTextColor(swingFactor?.id);
 
@@ -37,24 +46,42 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
               </div>
             </div>
             <div className="flex items-center">
-              <div>
-                <Text color="gray" weight="medium">
-                  {t("bottomBar.population")}
-                </Text>
-                <Text>
-                  {population}
-                  {t("bottomBar.k")}
-                </Text>
-              </div>
-              <div className="pl-5">
-                <Text color="gray" weight="medium">
-                  {t("bottomBar.swingFactor")}
-                </Text>
-                <Text color={textColor as Colors}>{swingFactor?.label}</Text>
-              </div>
+              {visitBlocked ? (
+                <FocusRequiredNote />
+              ) : (
+                <>
+                  <div>
+                    <Text color="gray" weight="medium">
+                      {t("bottomBar.population")}
+                    </Text>
+                    <Text>
+                      {population}
+                      {t("bottomBar.k")}
+                    </Text>
+                  </div>
+                  <div className="pl-5">
+                    <Text color="gray" weight="medium">
+                      {t("bottomBar.swingFactor")}
+                    </Text>
+                    <Text color={textColor as Colors}>
+                      {swingFactor?.label}
+                    </Text>
+                  </div>
+                </>
+              )}
               <div className="px-5">
-                <Button onClick={onClick}>
-                  <Button.Text> {t("bottomBar.visitDistrict")}</Button.Text>
+                <Button
+                  onClick={onClick}
+                  disabled={visitBlocked}
+                  testId="visitDistrict"
+                >
+                  <Button.Text>
+                    {t(
+                      isReturning
+                        ? "bottomBar.returnToDistrict"
+                        : "bottomBar.visitDistrict",
+                    )}
+                  </Button.Text>
                   <Button.Icon name="arrow-right" color="white" />
                 </Button>
               </div>
@@ -62,9 +89,13 @@ export function BottomBar({ data, onClick, swingFactor }: BottomBarProps) {
           </>
         ) : (
           <div className="bg-gray-800/50 size-full flex justify-center items-center">
-            <Text weight="light" color="gray">
-              Válassz egy körzetet...
-            </Text>
+            {visitBlocked ? (
+              <FocusRequiredNote />
+            ) : (
+              <Text weight="light" color="gray">
+                Válassz egy körzetet...
+              </Text>
+            )}
           </div>
         )}
       </div>

@@ -1,6 +1,6 @@
+import { DistrictTarget } from "@shared/types";
 import { container } from "tsyringe";
 import { describe, expect, it } from "vitest";
-import { DistrictTarget } from "../../types";
 import {
   mockCandidateListData,
   mockPartyListData,

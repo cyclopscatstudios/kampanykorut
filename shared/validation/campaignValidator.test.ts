@@ -395,6 +395,45 @@ describe("validateCampaign", () => {
     expect(codes(result)).toEqual(["error:election-config-invalid"]);
   });
 
+  it("accepts an intro with text", () => {
+    const result = validate((f) => {
+      file(f, "election_config.json").intro = {
+        subtitle: "Magyarország · 2026 tavasza",
+        text: "Első bekezdés.\n\nMásodik bekezdés.",
+      };
+    });
+    expect(result).toEqual([]);
+  });
+
+  it("reports an intro without text", () => {
+    const result = validate((f) => {
+      file(f, "election_config.json").intro = { title: "Cím", text: " " };
+    });
+    expect(codes(result)).toEqual(["error:election-config-invalid"]);
+  });
+
+  it("accepts side-keyed base results", () => {
+    const result = validate((f) => {
+      file(f, "election_config.json").baseResults = {
+        party_a: { party_a: -2, party_b: 2, _other: 1 },
+      };
+    });
+    expect(codes(result)).toEqual([]);
+  });
+
+  it("reports base results that are not keyed by side", () => {
+    const result = validate((f) => {
+      file(f, "election_config.json").baseResults = {
+        party_a: -2,
+        party_c: { party_b: 2 },
+      };
+    });
+    expect(codes(result)).toEqual([
+      "error:base-results-invalid",
+      "error:base-results-invalid",
+    ]);
+  });
+
   describe("election definition", () => {
     const electionConfig = (f: Files) => file(f, "election_config.json");
 
@@ -414,6 +453,64 @@ describe("validateCampaign", () => {
       delete config.partyListVotes;
       config.parties.push({ id: "candidate_a", name: "A", color: "#111" });
     };
+
+    const toProportional = (regions: unknown) => (f: Files) => {
+      electionConfig(f).election = { type: "proportional" };
+      file(f, "manifest.json").files.regions = "regions.json";
+      f["regions.json"] = regions;
+    };
+
+    it("accepts a proportional election whose regions add up", () => {
+      expect(
+        validate(
+          toProportional([
+            { id: "north", name: "Észak", seats: 100, megyekods: [1] },
+            { id: "south", name: "Dél", seats: 6, megyekods: [2] },
+          ]),
+        ),
+      ).toEqual([]);
+    });
+
+    it("reports regions that do not add up or overlap", () => {
+      const result = validate(
+        toProportional([
+          { id: "north", name: "Észak", seats: 100, megyekods: [1, 2] },
+          { id: "north", name: "Dél", seats: 0, megyekods: [2] },
+        ]),
+      );
+      expect(codes(result)).toEqual([
+        "error:duplicate-id",
+        "error:election-config-invalid",
+        "error:election-config-invalid",
+        "error:election-config-invalid",
+      ]);
+    });
+
+    it("reports counties of the candidate data that no region covers", () => {
+      const result = validate(
+        toProportional([
+          { id: "south", name: "Dél", seats: 106, megyekods: [2] },
+        ]),
+      );
+      expect(codes(result)).toEqual(["error:region-missing"]);
+    });
+
+    it("wants proportional regions in their own file", () => {
+      const result = validate((f) => {
+        electionConfig(f).election = {
+          type: "proportional",
+          regions: [{ id: "all", name: "Mind", seats: 106, megyekods: [1, 2] }],
+        };
+      });
+      expect(result.map((d) => [d.code, d.file, d.path])).toEqual([
+        [
+          "election-config-invalid",
+          "election_config.json",
+          "/election/regions",
+        ],
+        ["election-config-invalid", "manifest.json", "/files/regions"],
+      ]);
+    });
 
     it("accepts a mayoral election without parliamentary seat fields", () => {
       expect(validate(toMayoral)).toEqual([]);
@@ -518,6 +615,431 @@ describe("validateCampaign", () => {
     });
   });
 
+  describe("newspaper", () => {
+    const withNewspaper =
+      (newspaper: unknown, gameMode = "strategic") =>
+      (f: Files) => {
+        const files = file(f, "manifest.json").files;
+        files.politicalConfig = "political.json";
+        files.newspaper = "newspaper.json";
+        f["political.json"] = { gameMode };
+        f["newspaper.json"] = newspaper;
+      };
+    const paper = { id: "nephang", name: "NÉPHANG", logo: "/images/logo.png" };
+    const item = (id: string, extra: object = {}) => ({
+      id,
+      headline: "Cím",
+      lead: "Bevezető",
+      ...extra,
+    });
+
+    it("accepts a valid newspaper", () => {
+      expect(
+        validate(
+          withNewspaper({
+            cadence: { minTurns: 2, maxTurns: 3 },
+            papers: [paper],
+            items: [
+              item("a", { paper: "nephang", image: "/images/win.png" }),
+              item("b", {
+                priority: "pinned",
+                when: { type: "turn", min: 4 },
+              }),
+            ],
+          }),
+        ),
+      ).toEqual([]);
+    });
+
+    it("reports invalid papers and items", () => {
+      const result = validate(
+        withNewspaper({
+          cadence: { minTurns: 3, maxTurns: 2 },
+          papers: [paper, { id: "nephang", name: "", logo: "/nope.png" }],
+          items: [
+            item("a", { paper: "esti", weight: -1 }),
+            item("a", { image: "/nope.jpg", priority: "first" }),
+            item("c", { when: { type: "event-triggered", eventId: "nope" } }),
+          ],
+        }),
+      );
+      expect(codes(result)).toEqual([
+        "error:newspaper-invalid",
+        "error:newspaper-invalid",
+        "error:newspaper-invalid",
+        "error:asset-missing",
+        "error:newspaper-invalid",
+        "error:newspaper-invalid",
+        "error:newspaper-invalid",
+        "error:asset-missing",
+        "error:newspaper-invalid",
+        "error:unknown-event",
+      ]);
+    });
+
+    it("warns when the campaign is not in strategic mode", () => {
+      expect(
+        codes(
+          validate(withNewspaper({ papers: [paper], items: [] }, "classic")),
+        ),
+      ).toEqual(["warning:newspaper-unused"]);
+    });
+  });
+
+  describe("political config", () => {
+    const withPolitical = (config: unknown) => (f: Files) => {
+      file(f, "manifest.json").files.politicalConfig = "political.json";
+      f["political.json"] = config;
+    };
+
+    it("accepts a known game mode", () => {
+      expect(validate(withPolitical({ gameMode: "strategic" }))).toEqual([]);
+    });
+
+    it("checks a political config that belongs to one candidate", () => {
+      const withSide = (config: unknown) => (f: Files) => {
+        file(
+          f,
+          "manifest.json",
+        ).files.playableSides.party_a.candidate_a.politicalConfig =
+          "side/political.json";
+        f["side/political.json"] = config;
+      };
+      expect(validate(withSide({ gameMode: "strategic" }))).toEqual([]);
+      expect(
+        validate(withSide({ gameMode: "arcade" })).map((d) => [d.code, d.file]),
+      ).toEqual([["game-mode-invalid", "side/political.json"]]);
+    });
+
+    it("reports an unknown game mode", () => {
+      expect(codes(validate(withPolitical({ gameMode: "grand" })))).toEqual([
+        "error:game-mode-invalid",
+      ]);
+    });
+
+    const focus = (id: string, extra: object = {}) => ({
+      id,
+      title: id,
+      summary: "Rövid",
+      description: "Hosszú",
+      ...extra,
+    });
+
+    it("accepts focuses whose conditions point to known references", () => {
+      expect(
+        validate(
+          withPolitical({
+            gameMode: "strategic",
+            focuses: [
+              focus("with"),
+              focus("without", {
+                completeWhen: { type: "focus-selected", focusId: "with" },
+              }),
+            ],
+          }),
+        ),
+      ).toEqual([]);
+    });
+
+    it("reports invalid focuses", () => {
+      const result = validate(
+        withPolitical({
+          gameMode: "strategic",
+          focuses: [
+            focus("with"),
+            focus("with", { summary: "" }),
+            focus("other", {
+              failWhen: { type: "event-triggered", eventId: "nope" },
+            }),
+          ],
+        }),
+      );
+      expect(codes(result)).toEqual([
+        "error:focus-invalid",
+        "error:focus-duplicate",
+        "error:unknown-event",
+      ]);
+    });
+
+    it("checks the focus tree", () => {
+      const focuses = ["a", "b", "c", "d"].map((id) => focus(id));
+      expect(
+        validate(
+          withPolitical({
+            gameMode: "strategic",
+            focuses,
+            focusBranches: [
+              { id: "first", focuses: ["a", "b"], requiredBeforeTurn: 2 },
+              {
+                id: "second",
+                requires: "a",
+                focuses: ["c", "d"],
+                availableFromTurn: 3,
+                requiredBeforeTurn: 4,
+              },
+            ],
+          }),
+        ),
+      ).toEqual([]);
+      const result = validate(
+        withPolitical({
+          gameMode: "strategic",
+          focuses: [...focuses, focus("e", { excludes: ["a"] })],
+          focusSelection: { requiredBeforeTurn: 1 },
+          focusBranches: [
+            { id: "first", focuses: ["a", "nope"], requires: "c" },
+            {
+              id: "first",
+              focuses: ["a"],
+              availableFromTurn: 4,
+              requiredBeforeTurn: 2,
+            },
+          ],
+        }),
+      );
+      expect(result.map((d) => `${d.severity}:${d.path}`)).toEqual([
+        "error:/focusSelection",
+        "error:/focusBranches/0/focuses/1",
+        "error:/focusBranches/0/requires",
+        "error:/focusBranches/1/id",
+        "error:/focusBranches/1/focuses",
+        "error:/focusBranches/1/requiredBeforeTurn",
+        "warning:/focusBranches",
+        "warning:/focusBranches",
+        "warning:/focusBranches",
+        "warning:/focusBranches",
+        "error:/focuses/4/excludes",
+      ]);
+    });
+
+    it("accepts coalition partners and epilogues", () => {
+      expect(
+        validate(
+          withPolitical({
+            gameMode: "strategic",
+            coalition: {
+              partners: [
+                {
+                  partyId: "party_b",
+                  acceptWhen: {
+                    type: "answer-selected",
+                    questionId: "q1",
+                    answerId: "A",
+                  },
+                  acceptReason: "Igen",
+                  rejectReason: "Nem",
+                },
+              ],
+            },
+            epilogues: [
+              {
+                id: "won",
+                title: "Kormány",
+                body: "",
+                outcomes: ["coalition"],
+              },
+            ],
+          }),
+        ),
+      ).toEqual([]);
+    });
+
+    it("reports invalid coalition partners and epilogues", () => {
+      const partner = { acceptReason: "Igen", rejectReason: "Nem" };
+      const result = validate(
+        withPolitical({
+          gameMode: "strategic",
+          coalition: {
+            partners: [
+              { ...partner, partyId: "nobody" },
+              { ...partner, partyId: "party_b" },
+              { ...partner, partyId: "party_b" },
+              { partyId: "party_a" },
+            ],
+          },
+          epilogues: [
+            { id: "a", title: "A", body: "", outcomes: ["victory"] },
+            { id: "a", title: "B", body: "" },
+            {
+              id: "c",
+              title: "C",
+              body: "",
+              when: { type: "event-triggered", eventId: "nope" },
+            },
+          ],
+        }),
+      );
+      expect(codes(result)).toEqual([
+        "error:unknown-party",
+        "error:coalition-duplicate",
+        "error:coalition-invalid",
+        "error:epilogue-invalid",
+        "error:epilogue-duplicate",
+        "error:unknown-event",
+      ]);
+    });
+
+    it("checks the strong coalition partner limit", () => {
+      const partners = [
+        { partyId: "party_b", acceptReason: "Igen", rejectReason: "Nem" },
+      ];
+      const check = (maxStrongPartners: unknown) =>
+        codes(
+          validate(
+            withPolitical({
+              gameMode: "strategic",
+              coalition: { partners, maxStrongPartners },
+            }),
+          ),
+        );
+      expect(check(2)).toEqual([]);
+      expect(check(0)).toEqual(["error:coalition-invalid"]);
+      expect(check(1.5)).toEqual(["error:coalition-invalid"]);
+    });
+
+    const relationConfig = (relation: object) => ({
+      gameMode: "strategic",
+      relationGroups: [{ id: "party", title: "Párton belül" }],
+      relations: [
+        {
+          id: "kadar_wing",
+          name: "Kádár-szárny",
+          groupId: "party",
+          tone: "calm",
+          label: "Kivár",
+          description: "Még nem döntöttek.",
+          ...relation,
+        },
+      ],
+    });
+
+    it("accepts relations and an event that changes one", () => {
+      expect(
+        validate((f) => {
+          withPolitical(relationConfig({}))(f);
+          file(f, "manifest.json").files.campaignEvents = "events.json";
+          f["events.json"] = [
+            {
+              id: "ultimatum",
+              conditions: [
+                {
+                  if: { type: "turn", min: 6 },
+                  effects: [
+                    {
+                      type: "set-relation",
+                      relationId: "kadar_wing",
+                      tone: "tense",
+                      label: "Feszült",
+                      description: "Szembehelyezkednek.",
+                    },
+                  ],
+                },
+              ],
+              announcement: {
+                title: "Kádár ultimátuma",
+                body: "Kongresszust követel.",
+                icon: "megaphone-fill",
+                major: true,
+              },
+            },
+          ];
+        }),
+      ).toEqual([]);
+    });
+
+    it("reports invalid relations and changes to unknown relations", () => {
+      const result = validate((f) => {
+        withPolitical(relationConfig({ groupId: "nope", tone: "angry" }))(f);
+        file(f, "manifest.json").files.campaignEvents = "events.json";
+        f["events.json"] = [
+          {
+            id: "e",
+            conditions: [
+              {
+                if: { type: "turn", min: 1 },
+                effects: [
+                  {
+                    type: "set-relation",
+                    relationId: "ghost",
+                    tone: "good",
+                    label: "",
+                    description: "x",
+                  },
+                ],
+              },
+            ],
+          },
+        ];
+      });
+      expect(codes(result)).toEqual([
+        "error:unknown-relation",
+        "error:relation-invalid",
+        "error:unknown-relation-group",
+        "error:relation-invalid",
+      ]);
+    });
+
+    it("accepts a shift and tone labels, and reports bad ones", () => {
+      const events = (effect: object) => (f: Record<string, unknown>) => {
+        file(f as never, "manifest.json").files.campaignEvents = "events.json";
+        f["events.json"] = [
+          {
+            id: "e",
+            conditions: [{ if: { type: "turn", min: 1 }, effects: [effect] }],
+          },
+        ];
+      };
+      const labels = {
+        good: "Támogat",
+        calm: "Kivár",
+        tense: "Elégedetlen",
+        bad: "Ellenséges",
+      };
+      expect(
+        validate((f) => {
+          withPolitical(relationConfig({ labels }))(f);
+          events({
+            type: "shift-relation",
+            relationId: "kadar_wing",
+            steps: -2,
+            description: "Bírálnak.",
+          })(f);
+        }),
+      ).toEqual([]);
+
+      const result = validate((f) => {
+        withPolitical(
+          relationConfig({ labels: { good: "Támogat", angry: "x" } }),
+        )(f);
+        events({
+          type: "shift-relation",
+          relationId: "ghost",
+          steps: 0.5,
+          description: "",
+        })(f);
+      });
+      expect(codes(result)).toEqual([
+        "error:unknown-relation",
+        "error:relation-invalid",
+        "error:relation-invalid",
+        "error:relation-invalid",
+      ]);
+      expect(
+        codes(
+          validate((f) => {
+            withPolitical(relationConfig({ labels: { good: "Támogat" } }))(f);
+          }),
+        ),
+      ).toEqual(["warning:relation-labels-incomplete"]);
+    });
+
+    it("reports a config that is not an object", () => {
+      expect(codes(validate(withPolitical([])))).toEqual([
+        "error:political-config-invalid",
+      ]);
+    });
+  });
+
   describe("campaign events", () => {
     const withdrawal = () => ({
       id: "withdrawal",
@@ -551,6 +1073,81 @@ describe("validateCampaign", () => {
 
     it("accepts a valid events file", () => {
       expect(validate(withEvents([withdrawal()]))).toEqual([]);
+    });
+
+    it("checks an events file that belongs to one candidate", () => {
+      const withSideEvents = (events: unknown) => (f: Files) => {
+        file(
+          f,
+          "manifest.json",
+        ).files.playableSides.party_a.candidate_a.campaignEvents =
+          "side/events.json";
+        f["side/events.json"] = events;
+      };
+      expect(validate(withSideEvents([withdrawal()]))).toEqual([]);
+      const event = withdrawal();
+      event.conditions[0].if = {
+        type: "event-triggered",
+        eventId: "nope",
+      } as never;
+      expect(
+        validate(withSideEvents([event])).map((d) => [d.code, d.file]),
+      ).toEqual([["unknown-event", "side/events.json"]]);
+    });
+
+    it("checks the shared political config against every inheriting side", () => {
+      const result = validate((f) => {
+        withEvents([withdrawal()])(f);
+        file(f, "manifest.json").files.politicalConfig = "political.json";
+        f["political.json"] = {
+          gameMode: "strategic",
+          coalition: {
+            partners: [
+              {
+                partyId: "party_b",
+                acceptWhen: {
+                  type: "event-triggered",
+                  eventId: withdrawal().id,
+                },
+                acceptReason: "Igen",
+                rejectReason: "Nem",
+              },
+            ],
+          },
+        };
+        file(
+          f,
+          "manifest.json",
+        ).files.playableSides.party_a.candidate_a.campaignEvents =
+          "side/events.json";
+        f["side/events.json"] = [];
+      });
+      expect(result.map((d) => [d.code, d.file])).toEqual([
+        ["unknown-event", "political.json"],
+      ]);
+    });
+
+    it("checks side questions against the events that side runs", () => {
+      const seesGlobalEvent = (f: Files) => {
+        withEvents([withdrawal()])(f);
+        file(f, "side/questions.json")[1].visibleIf = {
+          type: "event-triggered",
+          eventId: withdrawal().id,
+        };
+      };
+      expect(validate(seesGlobalEvent)).toEqual([]);
+      const result = validate((f) => {
+        seesGlobalEvent(f);
+        file(
+          f,
+          "manifest.json",
+        ).files.playableSides.party_a.candidate_a.campaignEvents =
+          "side/events.json";
+        f["side/events.json"] = [];
+      });
+      expect(result.map((d) => [d.code, d.file])).toEqual([
+        ["unknown-event", "side/questions.json"],
+      ]);
     });
 
     it("reports a missing events file", () => {
@@ -620,6 +1217,68 @@ describe("validateCampaign", () => {
 
     it("rejects a file that is not an array", () => {
       expect(codes(validate(withEvents({})))).toEqual(["error:events-invalid"]);
+    });
+  });
+
+  describe("split-party event effect", () => {
+    const issues = (effect: object, dormant: unknown = true) =>
+      validate((f: Files) => {
+        file(f, "election_config.json").parties.push({
+          id: "splinter",
+          name: "Splinter",
+          color: "#222",
+          dormant,
+        });
+        file(f, "manifest.json").files.campaignEvents = "events.json";
+        f["events.json"] = [
+          {
+            id: "split",
+            conditions: [{ if: { type: "turn", min: 1 }, effects: [effect] }],
+          },
+        ];
+      }).map((d) => `${d.code}@${d.path}`);
+
+    const split = (patch: object = {}) => ({
+      type: "split-party",
+      partyId: "splinter",
+      from: { party_a: 0.3 },
+      fromByMegye: { "1": { party_a: 0.5, party_b: 0.1 } },
+      ...patch,
+    });
+
+    it("accepts a split into a dormant party", () => {
+      expect(issues(split())).toEqual([]);
+    });
+
+    it("requires the new party to be dormant", () => {
+      expect(issues(split(), false)).toEqual([
+        "split-party-invalid@/0/conditions/0/effects/0/partyId",
+      ]);
+    });
+
+    it("checks the sources and shares", () => {
+      expect(
+        issues(
+          split({
+            from: { splinter: 0.2, party_a: 2 },
+            fromByMegye: { x: {} },
+          }),
+        ),
+      ).toEqual([
+        "unknown-candidate@/0/conditions/0/effects/0/from/splinter",
+        "effect-invalid@/0/conditions/0/effects/0/from/party_a",
+        "effect-invalid@/0/conditions/0/effects/0/fromByMegye/x",
+        "effect-invalid@/0/conditions/0/effects/0/fromByMegye/x",
+      ]);
+    });
+
+    it("rejects a non-boolean dormant flag", () => {
+      expect(issues(split(), "yes")).toEqual([
+        expect.stringMatching(
+          /^election-config-invalid@\/parties\/\d+\/dormant$/,
+        ),
+        "split-party-invalid@/0/conditions/0/effects/0/partyId",
+      ]);
     });
   });
 
@@ -893,6 +1552,71 @@ describe("validateCampaign", () => {
       ).toEqual([
         "warning:condition-not-yet-answered@/0/blocks/0",
         "error:unknown-answer@/1/requires/0/answerId",
+      ]);
+    });
+  });
+
+  describe("issues", () => {
+    const withIssues = (issues: unknown, effect?: unknown) => (f: Files) => {
+      file(f, "manifest.json").files.issues = "issues.json";
+      f["issues.json"] = issues;
+      if (effect) {
+        effects(f)[0].answers[0].effects = [effect];
+      }
+    };
+    const issue = {
+      id: "rev",
+      name: "Forradalom",
+      areas: { "1": { strength: 2, opinion: 1 } },
+      positions: { party_a: 1, party_b: -1 },
+    };
+    const stance = (params: object) => ({ type: "issue-stance", params });
+
+    it("accepts issues and an answer that moves one", () => {
+      expect(
+        validate(withIssues([issue], stance({ issueId: "rev", shift: -1 }))),
+      ).toEqual([]);
+    });
+
+    it("reports an unknown issue in an effect", () => {
+      expect(
+        codes(
+          validate(withIssues([issue], stance({ issueId: "x", shift: 1 }))),
+        ),
+      ).toEqual(["error:unknown-issue"]);
+    });
+
+    it("reports a stance with both shift and position", () => {
+      expect(
+        codes(
+          validate(
+            withIssues(
+              [issue],
+              stance({ issueId: "rev", shift: 1, position: 2 }),
+            ),
+          ),
+        ),
+      ).toEqual(["error:effect-params-invalid"]);
+    });
+
+    it("reports unknown areas, out-of-range values and parties", () => {
+      const result = validate(
+        withIssues([
+          {
+            ...issue,
+            areas: {
+              "9": { strength: 1, opinion: 0 },
+              "1": { strength: 5, opinion: 0 },
+            },
+            positions: { party_a: 3, nobody: 0 },
+          },
+        ]),
+      );
+      expect(result.map((d) => d.path)).toEqual([
+        "/0/areas/1",
+        "/0/areas/9",
+        "/0/positions/party_a",
+        "/0/positions/nobody",
       ]);
     });
   });

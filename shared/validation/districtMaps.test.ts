@@ -1,8 +1,8 @@
 import { readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import type { DistrictPoligon } from "@shared/types";
 import { describe, expect, it } from "vitest";
-import type { DistrictPoligon } from "../types";
 
 const sharedDir = resolve(
   dirname(fileURLToPath(import.meta.url)),
@@ -40,6 +40,33 @@ describe("budapest_districts.json", () => {
       }
       const [lat, lon] = district.centrum.split(" ").map(Number);
       expect(Number.isFinite(lat) && Number.isFinite(lon)).toBe(true);
+    }
+  });
+});
+
+describe("valasztokerulet_1945.json", () => {
+  const districts = read("valasztokerulet_1945");
+
+  it("has the 16 districts keyed as megyekod 1-16, oevk 1", () => {
+    expect(districts.map((d) => [d.maz, d.evk])).toEqual(
+      Array.from({ length: 16 }, (_, i) => [
+        String(i + 1).padStart(2, "0"),
+        "01",
+      ]),
+    );
+  });
+
+  it("has closed polygons of valid coordinates inside Hungary", () => {
+    for (const district of districts) {
+      const ring = points(district.poligon);
+      expect(ring.length).toBeGreaterThan(3);
+      expect(ring[0]).toEqual(ring[ring.length - 1]);
+      for (const [lat, lon] of ring) {
+        expect(lat).toBeGreaterThan(45.7);
+        expect(lat).toBeLessThan(48.6);
+        expect(lon).toBeGreaterThan(16.1);
+        expect(lon).toBeLessThan(22.9);
+      }
     }
   });
 });

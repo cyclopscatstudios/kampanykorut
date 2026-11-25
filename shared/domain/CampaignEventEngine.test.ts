@@ -1,5 +1,3 @@
-import { container } from "tsyringe";
-import { vi } from "vitest";
 import {
   CampaignEvent,
   CampaignState,
@@ -7,7 +5,9 @@ import {
   ElectionConfig,
   MayoralResult,
   RawEffect,
-} from "../types";
+} from "@shared/types";
+import { container } from "tsyringe";
+import { vi } from "vitest";
 import { ApplyEventEffects, CampaignEventEngine } from "./CampaignEventEngine";
 import { ConditionEvaluationError } from "./ConditionEvaluator";
 import { mockElectionConfig } from "./mocks/mockElectionConfig";
@@ -52,7 +52,13 @@ function recordingApply() {
   const apply: ApplyEventEffects = (current, effects) => {
     calls.push(
       ...effects.map((e) =>
-        "params" in e ? Object.keys(e.params).join() : e.candidateId,
+        "params" in e
+          ? Object.keys(e.params).join()
+          : "candidateId" in e
+            ? e.candidateId
+            : "partyId" in e
+              ? e.partyId
+              : e.relationId,
       ),
     );
     return { ...current };
@@ -88,6 +94,7 @@ describe("CampaignEventEngine", () => {
     expect(result.campaignEvents).toEqual({
       triggeredEventIds: ["withdrawal"],
       pendingAnnouncementIds: ["withdrawal"],
+      triggeredAtTurn: { withdrawal: 20 },
     });
   });
 

@@ -1,11 +1,12 @@
+import { useSettings } from "@logic/application/hooks/useSettings";
+import { PRIVACY_PATH } from "@logic/application/privacyPath";
+import { getCurrentSeason } from "@logic/application/season/season";
+import { noop } from "@logic/application/utils";
+import { GameSettings } from "@shared/types";
+import { supportedLanguages } from "@shared/types/languages";
+import { Button } from "@shared/ui/Button";
 import { t } from "i18next";
 import { useState } from "react";
-import { GameSettings } from "@/shared/types";
-import { supportedLanguages } from "../../../../../../shared/types/languages";
-import { Button } from "../../../../../../shared/ui/Button";
-import { useSettings } from "../../../logic/application/hooks/useSettings";
-import { PRIVACY_PATH } from "../../../logic/application/privacyPath";
-import { noop } from "../../../logic/application/utils";
 import { Checkbox } from "../Checkbox";
 import { Dialog, DialogBody, DialogHeader } from "../Dialog";
 import { Dropdown } from "../Dropdown";
@@ -21,6 +22,12 @@ export function SettingsDialog({
 }) {
   const { settings, updateSettings } = useSettings();
   const [settingsForm, setSettingsForm] = useState<GameSettings>(settings);
+  const [syncedSettings, setSyncedSettings] = useState(settings);
+
+  if (syncedSettings !== settings) {
+    setSyncedSettings(settings);
+    setSettingsForm(settings);
+  }
 
   const isEqual = JSON.stringify(settings) === JSON.stringify(settingsForm);
 
@@ -87,6 +94,17 @@ export function SettingsBody({
           }))
         }
       />
+      <Checkbox
+        id="newspaperAutoOpen"
+        label={t("settingsMenu.newspaperAutoOpen.label")}
+        defaultChecked={settingsForm.newspaperAutoOpen !== false}
+        onChange={(e) =>
+          setSettingsForm((prev: GameSettings) => ({
+            ...prev,
+            newspaperAutoOpen: e.target.checked,
+          }))
+        }
+      />
       <div className="flex flex-col gap-1">
         <Checkbox
           id="analyticsEnabled"
@@ -108,6 +126,19 @@ export function SettingsBody({
           {t("settingsMenu.analytics.privacyLink")}
         </a>
       </div>
+      {getCurrentSeason() && (
+        <Checkbox
+          id="seasonalTheme"
+          label={t("settingsMenu.seasonalTheme.label")}
+          defaultChecked={settingsForm.seasonalTheme !== false}
+          onChange={(e) =>
+            setSettingsForm((prev: GameSettings) => ({
+              ...prev,
+              seasonalTheme: e.target.checked,
+            }))
+          }
+        />
+      )}
       <Dropdown
         id="changeLanguage"
         block

@@ -7,6 +7,7 @@ import { loadConfig } from "../../config/env";
 import { InMemoryBugReportRepository } from "../../modules/bug-reports/bug-reports.repository";
 import { renderNewsHtml } from "../../modules/news/news.render";
 import { InMemoryNewsRepository } from "../../modules/news/news.repository";
+import { InMemoryPlayTimeRepository } from "../../modules/play-time/play-time.repository";
 import { LocalObjectStorage } from "./local-storage";
 
 describe("LocalObjectStorage", () => {
@@ -81,6 +82,7 @@ describe("ASSETS_DIR", () => {
       {
         newsRepository: new InMemoryNewsRepository(),
         bugReportRepository: new InMemoryBugReportRepository(),
+        playTimeRepository: new InMemoryPlayTimeRepository(),
       },
     );
 

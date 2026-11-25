@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "version": "0.1.0"
+  },
+  "listing": {
+    "id": "0003_test_proportional",
+    "label": "0003: Arányos választás teszt (mock)",
+    "description": "Arányos választási tesztkampány mock adatokkal: 16 körzet, 350 + 50 mandátum, D'Hondt, 201 a többség.",
+    "year": 0,
+    "tags": ["test"],
+    "campaignBanner": "default-banner.png",
+    "thinCampaignBanner": "default-banner-thin.png",
+    "status": "draft"
+  },
+  "files": {
+    "electionConfig": "election_config.json",
+    "regions": "regions.json",
+    "voterEnvironmentConfig": "voter_environment_config.json",
+    "candidateListData": "oevk_constituency_results.json",
+    "campaignEvents": "campaign_events.json",
+    "politicalConfig": "political_config.json",
+    "newspaper": "newspaper.json",
+    "playableSides": {
+      "green_party": {
+        "emma_wilson": {
+          "questions": "shared/questions.json",
+          "answerEffect": "shared/answer_effects.json",
+          "endResults": "end_results.json"
+        }
+      }
+    }
+  }
+}

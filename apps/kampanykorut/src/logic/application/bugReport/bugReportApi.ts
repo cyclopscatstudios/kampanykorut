@@ -1,4 +1,4 @@
-import type { BugReportRequest, BugReportResponse } from "@/shared/types";
+import type { BugReportRequest, BugReportResponse } from "@shared/types";
 
 const API_BASE = (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
 

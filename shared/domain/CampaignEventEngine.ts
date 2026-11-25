@@ -1,12 +1,13 @@
-import { injectable } from "tsyringe";
-import { createLogger } from "../logger";
+import { createLogger } from "@shared/logger";
 import {
   CampaignEvent,
   CampaignEventEffect,
   CampaignState,
   ElectionConfig,
   HistoryItem,
-} from "../types";
+  Relation,
+} from "@shared/types";
+import { injectable } from "tsyringe";
 import { getCampaignEventState } from "./CampaignStateAccess";
 import { createConditionContext } from "./ConditionContext";
 import { evaluateCondition } from "./ConditionEvaluator";
@@ -26,6 +27,7 @@ export class CampaignEventEngine {
     answers: Pick<HistoryItem, "questionId" | "answerId">[],
     electionConfig: ElectionConfig,
     applyEffects: ApplyEventEffects,
+    relations?: Pick<Relation, "id" | "tone">[],
   ): CampaignState {
     let current = state;
 
@@ -36,7 +38,12 @@ export class CampaignEventEngine {
         continue;
       }
 
-      const context = createConditionContext(current, answers, electionConfig);
+      const context = createConditionContext(
+        current,
+        answers,
+        electionConfig,
+        relations,
+      );
       const branch = event.conditions.find((b) =>
         evaluateCondition(b.if, context),
       );
@@ -70,12 +77,15 @@ export class CampaignEventEngine {
   }
 
   private record(state: CampaignState, event: CampaignEvent): CampaignState {
-    const { triggeredEventIds, pendingAnnouncementIds } =
+    const { triggeredEventIds, pendingAnnouncementIds, triggeredAtTurn } =
       getCampaignEventState(state);
     const isFirstTrigger = !triggeredEventIds.includes(event.id);
     return {
       ...state,
       campaignEvents: {
+        triggeredAtTurn: isFirstTrigger
+          ? { ...triggeredAtTurn, [event.id]: state.turn }
+          : triggeredAtTurn,
         triggeredEventIds: isFirstTrigger
           ? [...triggeredEventIds, event.id]
           : triggeredEventIds,

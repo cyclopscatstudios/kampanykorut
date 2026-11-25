@@ -1,9 +1,9 @@
+import { SettingsEngine } from "@logic/application/SettingsEngine";
+import { createLogger } from "@shared/logger";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
 import posthog, { type CaptureResult } from "posthog-js";
 import { container } from "tsyringe";
-import { createLogger } from "@/shared/logger";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { buildInfo } from "../../../buildInfo";
-import { SettingsEngine } from "../../application/SettingsEngine";
 import { redactSessionIdParam } from "../sentryScrub";
 import { ANALYTICS_SCHEMA_VERSION, getStorageKeyKind } from "./events";
 import { track } from "./track";

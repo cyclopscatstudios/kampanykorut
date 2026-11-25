@@ -1,5 +1,6 @@
 import { Answer } from "./answer";
 import { DistrictTarget, DistrictTargetGroup } from "./district";
+import { IssueStanceParams } from "./issue";
 
 export type PartyShareParams = {
   newVotes: number;
@@ -47,6 +48,10 @@ export type RawEffect =
   | {
       type: EffectType.TurnoutChange;
       params: Record<string, number>;
+    }
+  | {
+      type: EffectType.IssueStance;
+      params: IssueStanceParams;
     };
 
 export type ConditionalRawEffect = {
@@ -63,4 +68,5 @@ export enum EffectType {
   VoteAllocation = "vote-allocation",
   TurnoutChange = "turnout-change",
   DistrictVoteTransfer = "district-vote-transfer",
+  IssueStance = "issue-stance",
 }

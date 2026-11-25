@@ -1,4 +1,4 @@
-import { CandidateListData, RawParty } from "@/shared/types";
+import { CandidateListData, RawParty } from "@shared/types";
 import { SwingFactorId } from "../../../types/utils";
 import type { SwingFactor } from "./swingFactor.utils";
 
@@ -7,6 +7,7 @@ export type EstimateStatus = "safe" | "likely" | "tossup";
 export type EstimateRow = {
   partyId: string;
   partyName: string;
+  shortName: string;
   color: string;
   candidateName?: string;
   percent: number;
@@ -121,8 +122,9 @@ function buildEstimate(
       return {
         partyId,
         partyName: party?.name ?? partyId,
+        shortName: party?.shortName ?? partyId,
         color: party?.color ?? FALLBACK_COLOR,
-        candidateName: candidates?.[partyId]?.[0],
+        candidateName: candidates?.[partyId]?.[0] ?? party?.leader,
         percent,
         low: Math.max(0, percent - margin),
         high: Math.min(100, percent + margin),

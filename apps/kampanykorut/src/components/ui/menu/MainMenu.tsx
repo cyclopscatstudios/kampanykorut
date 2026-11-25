@@ -1,9 +1,9 @@
+import { useTranslateLang } from "@shared/logic/hooks/useTranslateLang";
+import { MenuItemId } from "@shared/types";
+import { MenuList, Text } from "@shared/ui";
 import { useState } from "react";
 import { useLoaderData } from "react-router";
-import { MenuItemId } from "@/shared/types";
-import { MenuList, Text } from "@/shared/ui";
 import logo from "../../../../../../brand-assets/svg/logo-stacked-dark.svg";
-import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
 import { buildInfo } from "../../../buildInfo";
 import { BugReporterButton } from "../gameplay/BugReporter/BugReporterButton";
 import { BugReporterModal } from "../gameplay/BugReporter/BugReporterModal";
@@ -12,7 +12,8 @@ import { NewsBell } from "../news/NewsBell";
 export function MainMenu() {
   const [openBugReporter, setOpenBugReporter] = useState(false);
   const { quotes } = useLoaderData();
-  const [quote, setQuote] = useState(() => getRandomQuote(quotes));
+  const [shuffledQuotes] = useState(() => shuffle(quotes));
+  const [quoteIndex, setQuoteIndex] = useState(0);
   const newGame = useTranslateLang("mainMenu.newGame");
   const loadGame = useTranslateLang("mainMenu.loadGame");
   const settings = useTranslateLang("mainMenu.settings");
@@ -32,10 +33,12 @@ export function MainMenu() {
           <img src={logo} alt="Company Logo" className="w-48 md:w-72 h-auto" />
           <div
             className="cursor-pointer w-[300px] max-w-full md:w-full my-3 md:my-5"
-            onClick={() => setQuote(() => getRandomQuote(quotes))}
+            onClick={() =>
+              setQuoteIndex((i) => (i + 1) % shuffledQuotes.length)
+            }
           >
             <Text color="lightBlue" className="text-sm">
-              {quote}
+              {shuffledQuotes[quoteIndex]}
             </Text>
           </div>
         </div>
@@ -87,7 +90,11 @@ export function MainMenu() {
   );
 }
 
-function getRandomQuote(quotes: Array<string>) {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  return quotes[randomIndex];
+function shuffle(quotes: Array<string>) {
+  const result = [...quotes];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
 }

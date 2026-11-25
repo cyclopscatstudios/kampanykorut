@@ -5,18 +5,26 @@ export interface CandidateManifest {
   advisorFeedback?: string;
   advisorFeedbackAssets?: string;
   endResults?: string;
+  politicalConfig?: string;
+  campaignEvents?: string;
 }
 
 export type PlayableSideManifest = Record<string, CandidateManifest>;
 
 export interface CampaignManifestFiles {
   electionConfig: string;
+  // Regions of a proportional election, merged into election.regions on load.
+  regions?: string;
+  // Issues of the electorate, merged into electionConfig.issues on load.
+  issues?: string;
   voterEnvironmentConfig: string;
   candidateListData: string;
   partyListData?: string;
   customGroups?: string;
   customPollsters?: string;
   campaignEvents?: string;
+  politicalConfig?: string;
+  newspaper?: string;
   playableSides?: Record<string, PlayableSideManifest>;
 }
 
@@ -30,5 +38,20 @@ export interface CampaignManifestMetadata {
 export interface CampaignManifest {
   schemaVersion: number;
   metadata?: CampaignManifestMetadata;
+  listing?: CampaignListing;
   files: CampaignManifestFiles;
+}
+
+export type CampaignStatus = "draft" | "candidate" | "published";
+
+export interface CampaignListing {
+  id: string;
+  label: string;
+  description: string;
+  year: number;
+  tags: string[];
+  campaignBanner: string;
+  thinCampaignBanner?: string;
+  status: CampaignStatus;
+  addedAt?: string;
 }

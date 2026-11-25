@@ -1,5 +1,6 @@
+import { CampaignConfig, CampaignState, PollingOpnions } from "@shared/types";
 import type { ReactNode } from "react";
-import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
+import { CheatPanel } from "../../../debug/cheat/CheatPanel";
 import { useNavigation } from "../../../hooks/navigationHook";
 import { GameDialogs } from "./GameDialogs";
 import { GameHeader } from "./GameHeader";
@@ -15,6 +16,7 @@ interface GameChromeProps {
     state?: CampaignState,
     config?: CampaignConfig,
   ) => void;
+  onResumeQuestion?: () => void;
 }
 
 export function GameChrome({
@@ -23,6 +25,7 @@ export function GameChrome({
   config,
   pollsterData,
   handlePollsterChange,
+  onResumeQuestion,
 }: GameChromeProps) {
   const dialogs = useDialogState();
   const { goToMainMenu } = useNavigation();
@@ -36,6 +39,7 @@ export function GameChrome({
         config={config}
         pollsterData={pollsterData}
         handlePollsterChange={handlePollsterChange}
+        onResumeQuestion={onResumeQuestion}
       />
       <GameMain>
         <GameDialogs
@@ -48,6 +52,7 @@ export function GameChrome({
         />
         {children}
       </GameMain>
+      <CheatPanel state={state} />
     </>
   );
 }

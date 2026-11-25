@@ -1,24 +1,22 @@
-import { useState } from "react";
+import {
+  isCampaignListed,
+  useGetCampaigns,
+  useSettings,
+} from "@logic/application";
+import { track } from "@logic/infra/posthog/track";
 import { useNavigate } from "react-router-dom";
-import { useGetCampaigns, useSettings } from "@/logic/application";
-import { track } from "../../../../logic/infra/posthog/track";
 import { NewsSection } from "../../news/NewsSection";
-import { CampaignDetailsDialog } from "./CampaignDetailsDialog";
 import { CampaignsSection } from "./CampaignsSection";
 import { LandingFooter } from "./LandingFooter";
 import { LandingHero } from "./LandingHero";
-import type { Campaign } from "./types";
 
 export function LandingPage() {
   const navigate = useNavigate();
   // Subscribing here forces the whole landing tree to re-render on language
   // change, since the texts below are read via `t()` at render time.
   useSettings();
-  const campaigns = useGetCampaigns().filter(
-    (campaign) => campaign.isPublished,
-  );
-  const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(
-    null,
+  const campaigns = useGetCampaigns().filter((campaign) =>
+    isCampaignListed(campaign),
   );
 
   const newsBelowCampaigns =
@@ -29,10 +27,8 @@ export function LandingPage() {
     navigate("/menu");
   };
 
-  const goToSideSelector = (campaign: Campaign) => {
-    track("landing_exited", { target: "campaign" });
-    navigate(`/new-game/classic/sides/${campaign.id}`);
-  };
+  const trackCampaignOpened = () =>
+    track("landing_exited", { target: "campaign_page" });
 
   return (
     <div className="min-h-screen w-full bg-[#0f172a] text-slate-100">
@@ -40,15 +36,10 @@ export function LandingPage() {
       {!newsBelowCampaigns && <NewsSection />}
       <CampaignsSection
         campaigns={campaigns}
-        onSelectCampaign={setSelectedCampaign}
+        onOpenCampaign={trackCampaignOpened}
       />
       {newsBelowCampaigns && <NewsSection />}
       <LandingFooter />
-      <CampaignDetailsDialog
-        campaign={selectedCampaign}
-        onClose={() => setSelectedCampaign(null)}
-        onStartCampaign={goToSideSelector}
-      />
     </div>
   );
 }

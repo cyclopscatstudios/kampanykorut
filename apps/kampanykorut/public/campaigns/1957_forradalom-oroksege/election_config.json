@@ -1,0 +1,173 @@
+{
+  "title": "A forradalom öröksége",
+  "year": "1957",
+  "background": "/fortepan_39947-1920x1268-1.jpg",
+  "intro": {
+    "title": "A forradalom öröksége",
+    "subtitle": "Magyarország · 1957. január 1.",
+    "text": "1956. október 23-án tüntetők vonultak Budapest utcáira. Estére eldördültek az első lövések, és a tüntetésből forradalom lett. A harcok végén a szovjet csapatok kivonultak, Magyarország pedig kinyilvánította semlegességét.\n\n1957 januárja van. Az országot szocialistákból, kisgazdákból, szociáldemokratákból és parasztpártiakból álló koalíció vezeti. A forradalom napjaiban még együtt követelték a szovjet csapatok kivonulását. Most a földek sorsáról, az államosított üzemek jövőjéről és a Moszkvához fűződő viszonyról vitáznak.\n\nA munkástanácsok beleszólást követelnek a gyárak vezetésébe, a felkelők pedig azt akarják, hogy vonják felelősségre a sortüzek elrendelőit. Nagy Imre továbbra is az ország legnépszerűbb politikusa. Ősszel szabad országgyűlési választást tartanak, és addig minden pártnak választ kell adnia arra, mit kezdene a forradalom örökségével."
+  },
+  "election": {
+    "type": "proportional"
+  },
+  "listSeats": 50,
+  "allSeats": 400,
+  "thresholdPercent": 0,
+  "districtMap": "1945",
+  "districtBoost": true,
+  "allowDeadlock": false,
+  "baseResults": {
+    "szdp": {
+      "szdp": 4,
+      "mszmp": -3,
+      "fkgp": -1
+    }
+  },
+  "parties": [
+    {
+      "id": "mszmp",
+      "name": "Magyar Szocialista Munkáspárt",
+      "shortName": "MSZMP",
+      "leader": "Nagy Imre",
+      "color": "#c62828"
+    },
+    {
+      "id": "fkgp",
+      "name": "Független Kisgazdapárt",
+      "leader": "Kovács Béla",
+      "color": "#2e7d32"
+    },
+    {
+      "id": "szdp",
+      "name": "Szociáldemokrata Párt",
+      "leader": "Kéthly Anna",
+      "color": "#ef6c00"
+    },
+    {
+      "id": "petofi",
+      "name": "Petőfi Párt",
+      "leader": "Bibó István",
+      "color": "#f9a825"
+    },
+    {
+      "id": "dnp",
+      "name": "Demokrata Néppárt",
+      "leader": "Barankovics István",
+      "color": "#1e88e5"
+    },
+    {
+      "id": "kadar_part",
+      "name": "Magyar Munkáspárt",
+      "leader": "Kádár János",
+      "color": "#6d1b1b",
+      "dormant": true
+    },
+    {
+      "id": "szabadsagpart",
+      "name": "Magyar Szabadságpárt",
+      "shortName": "Szabadságpárt",
+      "leader": "Sulyok Dezső",
+      "color": "#546e7a",
+      "dormant": true
+    }
+  ],
+  "partyListVotes": {
+    "mszmp": 1810159,
+    "szdp": 958319,
+    "fkgp": 1437481,
+    "petofi": 532398,
+    "dnp": 425919,
+    "_other": 159722
+  },
+  "playableSides": [
+    {
+      "id": "mszmp",
+      "label": "MSZMP",
+      "description": "Az MSZMP a forradalom napjaiban alakult meg a feloszlott Magyar Dolgozók Pártja helyén. A legnagyobb választói tábor áll mögötte, de az új név ellenére sokan még a régi pártot látják benne. Nagy Imre hívei a többpártrendszerben keresik a szocializmus helyét, és beleszólást adnának a munkástanácsoknak az üzemek vezetésébe. Kádár köre óvatosabb reformokat sürget. Attól tartanak, hogy a gyors változások megbontják a párt egységét.",
+      "mainCandidates": [
+        {
+          "id": "nagy_imre",
+          "label": "Nagy Imre",
+          "description": "Októberben a Parlament előtt az ő nevét skandálta a tömeg. A forradalom napjaiban visszatért a kormány élére, bejelentette Magyarország semlegességét, és koalíciót alakított a kisgazdákkal, a szociáldemokratákkal és a parasztpártiakkal. Az ország legismertebb politikusaként vezeti az MSZMP kampányát. Sokan azok közül is inkább valamelyik koalíciós partnerére szavaznának, akik októberben őt akarták a kormány élére."
+        },
+        {
+          "id": "kadar_janos",
+          "label": "Kádár János",
+          "description": "Az MSZMP egyik alapítója, a pártszervezet és a fokozatosság embere."
+        },
+        {
+          "id": "losonczy_geza",
+          "label": "Losonczy Géza",
+          "description": "Államminiszter, Nagy Imre reformköréhez tartozik."
+        }
+      ],
+      "playableCandidates": ["nagy_imre"]
+    },
+    {
+      "id": "fkgp",
+      "label": "Kisgazdapárt",
+      "description": "Az 1945-ös választáson a Kisgazdapárt szerezte meg a szavazatok többségét. Azóta a kommunisták kiszorították a hatalomból, vidéken azonban sok helyen ma is ugyanazok szervezik újjá a pártot, akik akkor győzelemre vitték. A kisgazdák a föld magántulajdonát és a polgári szabadságjogokat védik, és a forradalom óta ismét részt vesznek a kormányzásban.",
+      "mainCandidates": [
+        {
+          "id": "kovacs_bela",
+          "label": "Kovács Béla",
+          "description": "A Kisgazdapárt főtitkárát 1947-ben a szovjet hatóságok hurcolták el. Évekig tartó fogság után tért haza, a forradalom napjaiban pedig miniszteri tisztséget vállalt Nagy Imre kormányában. Most ő vezeti a kisgazdák kampányát. Vidéken sokan még abból az időből ismerik, amikor a párt a földhöz jutott gazdák érdekeit képviselte."
+        },
+        {
+          "id": "tildy_zoltan",
+          "label": "Tildy Zoltán",
+          "description": "Volt köztársasági elnök, a forradalmi kormány államminisztere."
+        }
+      ],
+      "playableCandidates": ["kovacs_bela"]
+    },
+    {
+      "id": "szdp",
+      "label": "Szociáldemokrata Párt",
+      "description": "A Szociáldemokrata Párt a forradalom napjaiban alakult újjá, nyolc évvel azután, hogy 1948-ban erőszakkal beolvasztották a kommunista pártba. Múltja tiszta, a gyárakban és Budapesten erős, de szervezete gyenge, és sokan még nem látják kormányzópártnak. A munkások szavazataiért Nagy Imre pártjával kell megküzdenie úgy, hogy a két munkáspárt vitájából ne a kisgazdák nyerjenek.",
+      "mainCandidates": [
+        {
+          "id": "kethly_anna",
+          "label": "Kéthly Anna",
+          "description": "Böhm Vilmos a magyar politika Jeanne d'Arcjának nevezte. 1922 óta ült a parlamentben, 1948-ban nemet mondott a kommunistákkal való egyesülésre, ezért kizárták, majd életfogytiglani börtönre ítélték. A forradalom napjaiban a párt elnöke és Nagy Imre kormányának államminisztere lett. Most az első asszony, aki pártot vezet egy magyar választáson."
+        }
+      ],
+      "playableCandidates": ["kethly_anna"]
+    }
+  ],
+  "electionAssets": [
+    {
+      "id": "mszmp",
+      "candidateAssets": [
+        {
+          "id": "nagy_imre",
+          "portrait": "/images/1957_forradalom-oroksege/nagy_imre.webp",
+          "slogan": "/images/1957_forradalom-oroksege/mszmp_szlogen.webp"
+        }
+      ],
+      "party_logo": "/images/1957_forradalom-oroksege/mszmp.webp"
+    },
+    {
+      "id": "fkgp",
+      "candidateAssets": [
+        {
+          "id": "kovacs_bela",
+          "portrait": "/images/1957_forradalom-oroksege/kovacs_bela.webp",
+          "slogan": "/images/1957_forradalom-oroksege/fkgp_szlogen.webp"
+        }
+      ],
+      "party_logo": "/images/1957_forradalom-oroksege/fkgp_logo.webp"
+    },
+    {
+      "id": "szdp",
+      "candidateAssets": [
+        {
+          "id": "kethly_anna",
+          "portrait": "/images/1957_forradalom-oroksege/kethly_anna.webp",
+          "slogan": "/images/1957_forradalom-oroksege/szdp_slogan.webp"
+        }
+      ],
+      "party_logo": "/images/1957_forradalom-oroksege/szdp_logo.webp"
+    }
+  ]
+}

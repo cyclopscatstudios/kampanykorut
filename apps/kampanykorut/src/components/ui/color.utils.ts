@@ -1,7 +1,4 @@
-import {
-  backgroundColors,
-  type Colors,
-} from "../../../../../shared/types/color";
+import { backgroundColors, type Colors } from "@shared/types/color";
 
 export function getPartyColor(
   partyColor: string,

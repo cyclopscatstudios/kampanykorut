@@ -1,11 +1,12 @@
-import { isCityDistrictMap } from "@/shared/domain";
+import { isCityDistrictMap } from "@shared/domain";
 import {
   CandidateListData,
   CurrentView,
   District,
   DistrictPoligon,
   ElectionConfig,
-} from "@/shared/types";
+} from "@shared/types";
+import type { ReactNode } from "react";
 import { BottomBar } from "./BottomBar";
 import { MapSidePanel } from "./MapSidePanel";
 import { MapWrapper } from "./MapWrapper";
@@ -24,6 +25,9 @@ interface MapCreatorProps {
   setSelectedDistrict: (district: District | null) => void;
   nationalPercentages?: Record<string, number>;
   electionConfig: ElectionConfig;
+  visitBlocked?: boolean;
+  isReturning?: boolean;
+  mapOverlay?: ReactNode;
 }
 
 export function MapCreator({
@@ -35,6 +39,9 @@ export function MapCreator({
   setSelectedDistrict,
   nationalPercentages,
   electionConfig,
+  visitBlocked,
+  isReturning,
+  mapOverlay,
 }: MapCreatorProps) {
   const swingFactor = getSwingFactorByDistrict(selectedDistrict);
   return (
@@ -49,6 +56,7 @@ export function MapCreator({
           selectedDistrict={selectedDistrict}
           electionConfig={electionConfig}
           className="w-full"
+          overlay={mapOverlay}
         />
         <MapSidePanel
           width={SIDE_PANEL_WIDTH}
@@ -68,6 +76,8 @@ export function MapCreator({
           data={selectedDistrict}
           onClick={() => setCurrentView("QuestionView")}
           swingFactor={swingFactor}
+          visitBlocked={visitBlocked}
+          isReturning={isReturning}
         />
       </div>
     </div>

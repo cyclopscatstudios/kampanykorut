@@ -1,11 +1,11 @@
-import { useReducer } from "react";
 import {
   AnswerFeedback,
   CampaignState,
   CurrentView,
   District,
   PendingTurn,
-} from "@/shared/types";
+} from "@shared/types";
+import { useReducer } from "react";
 
 type PendingAdvisor = {
   feedback: AnswerFeedback;
@@ -18,6 +18,7 @@ export type GameFlowState = {
   pendingAdvisor: PendingAdvisor | null;
   selectedDistrict: District | null;
   visitingDistrict: District | null;
+  questionPaused: boolean;
 };
 
 export type GameFlowAction =
@@ -25,7 +26,9 @@ export type GameFlowAction =
   | { type: "SET_ANSWER"; answer: string | undefined }
   | { type: "SHOW_ADVISOR"; feedback: AnswerFeedback; turn: PendingTurn }
   | { type: "DISMISS_ADVISOR" }
-  | { type: "CHANGE_VIEW"; view: CurrentView };
+  | { type: "CHANGE_VIEW"; view: CurrentView }
+  | { type: "PAUSE_QUESTION" }
+  | { type: "RESUME_QUESTION" };
 
 function gameFlowReducer(
   state: GameFlowState,
@@ -49,9 +52,19 @@ function gameFlowReducer(
           ...state,
           currentView: action.view,
           visitingDistrict: state.selectedDistrict,
+          questionPaused: false,
         };
       }
-      return { ...state, currentView: action.view };
+      return { ...state, currentView: action.view, questionPaused: false };
+    case "PAUSE_QUESTION":
+      return { ...state, currentView: "MapView", questionPaused: true };
+    case "RESUME_QUESTION":
+      return {
+        ...state,
+        currentView: "QuestionView",
+        selectedDistrict: state.visitingDistrict ?? state.selectedDistrict,
+        questionPaused: false,
+      };
   }
 }
 
@@ -61,6 +74,7 @@ const initialState: GameFlowState = {
   pendingAdvisor: null,
   selectedDistrict: null,
   visitingDistrict: null,
+  questionPaused: false,
 };
 
 type ProcessAnswer = (
@@ -73,12 +87,16 @@ type CommitTurn = (pending: PendingTurn) => CampaignState;
 export function useGameFlow(
   processAnswer: ProcessAnswer,
   commitTurn: CommitTurn,
+  hasPendingAnnouncement: (state: CampaignState) => boolean = () => false,
 ) {
   const [flow, dispatch] = useReducer(gameFlowReducer, initialState);
 
   const applyTurnResult = (result: CampaignState) => {
     if (result.isEnded) {
-      dispatch({ type: "CHANGE_VIEW", view: "VoteCountingView" });
+      dispatch({
+        type: "CHANGE_VIEW",
+        view: hasPendingAnnouncement(result) ? "MapView" : "VoteCountingView",
+      });
       return;
     }
     if (result.turn % 2 === 0) {

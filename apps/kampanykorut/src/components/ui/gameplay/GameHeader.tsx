@@ -1,17 +1,25 @@
+import { StateEngine } from "@logic/application";
+import { Navigation } from "@logic/application/navigation/Navigation";
+import {
+  AGGREGATE_POLLSTER_ID,
+  getTotalTurns,
+  hasDashboardNews,
+  isStrategicMode,
+  PollsterEngine,
+} from "@shared/domain";
+import { CampaignConfig, CampaignState, PollingOpnions } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
+import { Tooltip } from "@shared/ui/Tooltip";
 import { t } from "i18next";
 import { useLayoutEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
-import { AGGREGATE_POLLSTER_ID, PollsterEngine } from "@/shared/domain";
-import { CampaignConfig, CampaignState, PollingOpnions } from "@/shared/types";
 import logo from "../../../../../../brand-assets/svg/logo-mark.svg";
-import markdown from "../../../../../../brand-assets/svg/logo-wordmark-dark.svg";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
-import { Navigation } from "../../../logic/application/navigation/Navigation";
+import { useNavigation } from "../../../hooks/navigationHook";
+import { PoliticalStatusButton } from "../dashboard/PoliticalStatusButton";
 import { Menu, MenuItem, SubMenu } from "../Menu";
 import { BugReporterButton } from "./BugReporter/BugReporterButton";
 import { CampaignBadge } from "./CampaignBadge";
@@ -30,6 +38,7 @@ export interface GameHeaderProps {
     state?: CampaignState,
     config?: CampaignConfig,
   ) => void;
+  onResumeQuestion?: () => void;
 }
 
 export function GameHeader({
@@ -39,12 +48,17 @@ export function GameHeader({
   handlePollsterChange,
   state,
   config,
+  onResumeQuestion,
 }: GameHeaderProps) {
   const [slot, setSlot] = useState<HTMLElement | null>(null);
   const pollsterEngine = container.resolve(PollsterEngine);
   const pollsters = pollsterEngine.getPollsters();
   const navigationService = container.resolve(Navigation);
   const endResultsScreen = navigationService.isUrlParamMatch("/end-results");
+  const dashboardScreen = navigationService.isUrlParamMatch("/dashboard");
+  const { goToPoliticalDashboard } = useNavigation();
+  const stateEngine = container.resolve(StateEngine);
+  const sessionId = stateEngine.getSessionId();
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useLayoutEffect(() => {
@@ -63,12 +77,29 @@ export function GameHeader({
     config,
     pollsterData,
     handlePollsterChange,
+    onResumeQuestion,
     pollsters,
-    endResultsScreen,
+    hidePollsters: endResultsScreen,
+    politicalStatus:
+      state && config && isStrategicMode(config) && !endResultsScreen
+        ? {
+            current: dashboardScreen,
+            hasUnseenEvents: hasDashboardNews(
+              state,
+              config,
+              stateEngine.getHistory() ?? [],
+            ),
+            onOpen: () =>
+              goToPoliticalDashboard(state.activeCampaignId, sessionId),
+          }
+        : undefined,
   };
 
   return createPortal(
-    <header className="w-full border-b-2 border-blue-400 bg-[rgba(15,23,42,0.92)]">
+    <header
+      data-game-header
+      className="w-full border-b-2 border-blue-400 bg-[rgba(15,23,42,0.92)]"
+    >
       {isDesktop ? (
         <WideHeader {...contentProps} />
       ) : (
@@ -114,7 +145,10 @@ function TurnBadge({
 }) {
   return (
     <Tooltip content={t("gameHeader.turnsTooltip")} position="bottom">
-      <div className="h-10 flex items-center bg-blue-400/10 rounded-md border border-blue-50/10 px-3">
+      <div
+        data-frost
+        className="h-10 flex items-center bg-blue-400/10 rounded-md border border-blue-50/10 px-3"
+      >
         <Text color="lightBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
       </div>
     </Tooltip>
@@ -132,8 +166,14 @@ interface HeaderContentProps {
     state?: CampaignState,
     config?: CampaignConfig,
   ) => void;
+  onResumeQuestion?: () => void;
   pollsters: ReturnType<PollsterEngine["getPollsters"]>;
-  endResultsScreen: boolean;
+  hidePollsters: boolean;
+  politicalStatus?: {
+    hasUnseenEvents: boolean;
+    onOpen: () => void;
+    current: boolean;
+  };
 }
 
 function getPollsterOptions(
@@ -167,7 +207,9 @@ function NarrowHeader({
   pollsterData,
   handlePollsterChange,
   pollsters,
-  endResultsScreen,
+  hidePollsters,
+  politicalStatus,
+  onResumeQuestion,
 }: HeaderContentProps) {
   return (
     <>
@@ -176,6 +218,7 @@ function NarrowHeader({
           <Button
             variant="tertiary"
             iconOnly
+            data-header-logo
             onClick={() => onOpen("gameMenu")}
           >
             <img src={logo} width="26" height="26" alt="Kampánykörút" />
@@ -185,13 +228,7 @@ function NarrowHeader({
           {state && config && (
             <TurnBadge
               currentTurn={state.turn}
-              turns={
-                state.decisionCount ??
-                config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
-                  state.playerSide?.candidateId ?? ""
-                ]?.questions?.length ??
-                0
-              }
+              turns={getTotalTurns(state, config)}
             />
           )}
         </div>
@@ -200,20 +237,32 @@ function NarrowHeader({
         </div>
       </div>
       {state && config && (
-        <div className="flex h-11 items-center justify-between gap-2 border-t border-slate-400/12 px-1.5">
-          <CampaignBadge
-            state={state}
-            config={config}
-            variant="sheet"
-            appearance="inline"
-          />
-          {!endResultsScreen && (
-            <PollsterPicker
-              options={getPollsterOptions(pollsters)}
-              selectedId={pollsterData?.selectedPollsterId}
-              onSelect={(id) => handlePollsterChange?.(id, state, config)}
+        <div className="grid h-11 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 border-t border-slate-400/12 px-1.5">
+          <div className="flex min-w-0 items-center">
+            <CampaignBadge
+              state={state}
+              config={config}
+              variant="sheet"
+              appearance="inline"
             />
-          )}
+          </div>
+          <div className="flex items-center gap-1">
+            {politicalStatus && (
+              <PoliticalStatusButton {...politicalStatus} size="small" />
+            )}
+            {onResumeQuestion && (
+              <ResumeQuestionButton onClick={onResumeQuestion} />
+            )}
+          </div>
+          <div className="flex min-w-0 items-center justify-end">
+            {!hidePollsters && (
+              <PollsterPicker
+                options={getPollsterOptions(pollsters)}
+                selectedId={pollsterData?.selectedPollsterId}
+                onSelect={(id) => handlePollsterChange?.(id, state, config)}
+              />
+            )}
+          </div>
         </div>
       )}
     </>
@@ -290,23 +339,28 @@ function WideHeader({
   pollsterData,
   handlePollsterChange,
   pollsters,
-  endResultsScreen,
+  hidePollsters,
+  politicalStatus,
+  onResumeQuestion,
 }: HeaderContentProps) {
   return (
     <div className="h-[80px] flex justify-between items-center mx-2.5">
       <div className="flex justify-between items-center gap-2">
         <div
-          className="flex justify-center items-center cursor-pointer"
+          data-header-logo
+          className="flex justify-center items-center cursor-pointer mr-1.5"
           onClick={() => onOpen("gameMenu")}
         >
-          <img src={logo} className="mr-1" width="30" height="30" />
-          <img src={markdown} className="mr-3" width="200" height="30" />
+          <img src={logo} className="mr-1" width="40" height="40" />
+          {/* <img src={markdown} className="mr-3" width="200" height="30" /> */}
         </div>
-        {!endResultsScreen && (
+        <CampaignBadge state={state} config={config} />
+
+        {!hidePollsters && (
           <Menu
             align="left"
             trigger={
-              <Button variant="tertiary">
+              <Button variant="tertiary" testId="pollsterMenu">
                 <Button.Icon name="map-fill" color="white" size="medium" />
               </Button>
             }
@@ -333,25 +387,20 @@ function WideHeader({
             </SubMenu>
           </Menu>
         )}
-        <div className="ml-5">
-          <CampaignBadge state={state} config={config} />
-        </div>
+        {politicalStatus && <PoliticalStatusButton {...politicalStatus} />}
+        {onResumeQuestion && (
+          <ResumeQuestionButton onClick={onResumeQuestion} />
+        )}
       </div>
       {state && config && (
         <div className="text-center">
           <TurnBadge
             currentTurn={state.turn}
-            turns={
-              state.decisionCount ??
-              config.playableSides?.[state.playerSide?.partyId ?? ""]?.[
-                state.playerSide?.candidateId ?? ""
-              ]?.questions?.length ??
-              0
-            }
+            turns={getTotalTurns(state, config)}
           />
         </div>
       )}
-      <div className="flex justify-center gap-2">
+      <div className="flex items-center justify-center gap-2">
         <Tooltip content={t("gameMenuBar.save")} position="bottom">
           <Button variant="tertiary" onClick={() => onOpen("saveGame")}>
             <Button.Icon
@@ -395,5 +444,22 @@ function WideHeader({
         </Tooltip>
       </div>
     </div>
+  );
+}
+
+function ResumeQuestionButton({ onClick }: { onClick: () => void }) {
+  const label = t("gameMenuBar.resumeQuestion");
+  return (
+    <Tooltip content={label} position="bottom">
+      <Button
+        variant="tertiary"
+        iconOnly
+        aria-label={label}
+        onClick={onClick}
+        testId="resumeQuestion"
+      >
+        <Button.Icon name="chat-left-text-fill" color="white" size="medium" />
+      </Button>
+    </Tooltip>
   );
 }

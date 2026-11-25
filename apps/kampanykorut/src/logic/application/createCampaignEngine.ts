@@ -1,4 +1,3 @@
-import { container } from "tsyringe";
 import {
   CampaignEngine,
   CampaignEventEngine,
@@ -10,9 +9,10 @@ import {
   PollsterEngine,
   ResultModifier,
   VoterEnvironment,
-} from "@/shared/domain";
-import { createLogger } from "@/shared/logger";
-import { CampaignConfig } from "@/shared/types";
+} from "@shared/domain";
+import { createLogger } from "@shared/logger";
+import { CampaignConfig } from "@shared/types";
+import { container } from "tsyringe";
 import { ConfigEngine } from "./ConfigEngine";
 
 const log = createLogger("createCampaignEngine");
@@ -88,7 +88,9 @@ export function createCampaignEngine(
     container.resolve(CandidateWithdrawalTransformer),
     config.partyListData,
     candidateConfig?.advisorFeedback,
-    config.campaignEvents,
+    candidateConfig?.campaignEvents ?? config.campaignEvents,
+    (candidateConfig?.politicalConfig ?? config.politicalConfig)?.relations,
+    candidateConfig?.politicalConfig ?? config.politicalConfig,
   );
 
   return { campaignEngine, configEngine };

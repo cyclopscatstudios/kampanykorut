@@ -1,9 +1,9 @@
+import { StateEngine } from "@logic/application";
+import { CampaignConfig, MayoralResult } from "@shared/types";
+import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
-import { StateEngine } from "@/logic/application";
-import { CampaignConfig, MayoralResult } from "@/shared/types";
-import { Text } from "../../../../../../../shared/ui/Text";
 import { Heading } from "../../Heading";
 import { ImageWrapper } from "../ImageWrapper";
 import {

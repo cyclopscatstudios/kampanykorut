@@ -3,7 +3,7 @@ import {
   MayoralDistrictResult,
   MayoralOutcome,
   RawParty,
-} from "@/shared/types";
+} from "@shared/types";
 
 export type MayoralHeadline = "victory" | "defeat" | "deadlock";
 

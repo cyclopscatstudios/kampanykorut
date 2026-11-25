@@ -1,10 +1,10 @@
-import { useCallback, useMemo, useState } from "react";
 import {
   CandidateListData,
   District,
   DistrictPoligon,
   ElectionConfig,
-} from "@/shared/types";
+} from "@shared/types";
+import { useCallback, useMemo, useState } from "react";
 import { useWheelZoom, type ViewBox } from "../../hooks/useWheelZoom";
 import {
   getPartyActiveColor,

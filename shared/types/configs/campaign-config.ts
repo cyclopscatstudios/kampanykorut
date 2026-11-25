@@ -5,6 +5,8 @@ import { DistrictGroup } from "../district";
 import { RawAnsweEffectProps } from "../effects";
 import { EndResultProps } from "../end-result";
 import { DistrictPoligon } from "../map";
+import { NewspaperConfig } from "../newspaper";
+import { PoliticalConfig } from "../political";
 import { Pollster } from "../pollsters";
 import { RawQuestion } from "../question";
 import { Strategy } from "../strategy";
@@ -18,6 +20,9 @@ export interface CandidateConfig {
   advisorFeedback?: AdvisorFeedback[];
   advisorFeedbackAssets?: AdvisorFeedbackAssets;
   endResults?: EndResultProps;
+  // Overrides the campaign-wide political config while this candidate plays.
+  politicalConfig?: PoliticalConfig;
+  campaignEvents?: CampaignEvent[];
 }
 
 export type PlayableSideConfig = Record<string, CandidateConfig>;
@@ -32,5 +37,7 @@ export interface CampaignConfig {
   customGroups?: DistrictGroup[];
   customPollsters?: Pollster[];
   campaignEvents?: CampaignEvent[];
+  politicalConfig?: PoliticalConfig;
+  newspaper?: NewspaperConfig;
   playableSides?: Record<string, PlayableSideConfig>;
 }

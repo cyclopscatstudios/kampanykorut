@@ -5,6 +5,9 @@ const refs: ConditionReferences = {
   questions: new Map([["question_12", new Set(["answer_1", "answer_3"])]]),
   candidateIds: new Set(["szentkiralyi", "vitezy", "karacsony"]),
   eventIds: new Set(["szentkiralyi_withdrawal"]),
+  focusIds: new Set(["without_kadar"]),
+  relationIds: new Set(["moszkva"]),
+  issueIds: new Set(["kelet_nyugat"]),
 };
 
 const codes = (condition: unknown, references = refs) =>
@@ -150,6 +153,75 @@ describe("validateCondition", () => {
     ]);
   });
 
+  it("checks the focus of a focus-selected condition", () => {
+    expect(codes({ type: "focus-selected", focusId: "without_kadar" })).toEqual(
+      [],
+    );
+    expect(codes({ type: "focus-selected", focusId: "nope" })).toEqual([
+      "unknown-focus@/if/focusId",
+    ]);
+    expect(codes({ type: "focus-selected" })).toEqual([
+      "condition-invalid@/if/focusId",
+    ]);
+  });
+
+  it("checks the party of a coalition-partner condition", () => {
+    expect(codes({ type: "coalition-partner", partyId: "vitezy" })).toEqual([]);
+    expect(codes({ type: "coalition-partner", partyId: "nope" })).toEqual([
+      "unknown-candidate@/if/partyId",
+    ]);
+  });
+
+  it("checks the relation and tones of a relation condition", () => {
+    expect(
+      codes({ type: "relation", relationId: "moszkva", tone: ["bad"] }),
+    ).toEqual([]);
+    expect(
+      codes({ type: "relation", relationId: "nope", tone: ["sad"] }),
+    ).toEqual([
+      "unknown-relation@/if/relationId",
+      "condition-invalid@/if/tone",
+    ]);
+    expect(
+      codes({ type: "relation", relationId: "moszkva", tone: [] }),
+    ).toEqual(["condition-invalid@/if/tone"]);
+    expect(
+      codes({ type: "relation", relationId: "moszkva", tone: [["bad"]] }),
+    ).toEqual(["condition-invalid@/if/tone"]);
+  });
+
+  it("checks the issue and bounds of an issue-position condition", () => {
+    expect(
+      codes({ type: "issue-position", issueId: "kelet_nyugat", min: 2 }),
+    ).toEqual([]);
+    expect(
+      codes({ type: "issue-position", issueId: "nope", party: "x", max: 3 }),
+    ).toEqual([
+      "unknown-issue@/if/issueId",
+      "unknown-candidate@/if/party",
+      "condition-invalid@/if/max",
+    ]);
+    expect(codes({ type: "issue-position", issueId: "kelet_nyugat" })).toEqual([
+      "condition-invalid@/if",
+    ]);
+    expect(
+      codes({
+        type: "issue-position",
+        issueId: "kelet_nyugat",
+        min: 2,
+        max: -2,
+      }),
+    ).toEqual(["condition-invalid@/if"]);
+    expect(
+      codes({
+        type: "issue-position",
+        issueId: "kelet_nyugat",
+        min: 1,
+        max: 1,
+      }),
+    ).toEqual([]);
+  });
+
   it("skips reference checks that have no reference set", () => {
     expect(
       codes(
@@ -158,6 +230,8 @@ describe("validateCondition", () => {
             { type: "answer-selected", questionId: "any", answerId: "any" },
             { type: "candidate-status", candidateId: "any", status: "active" },
             { type: "event-triggered", eventId: "any" },
+            { type: "focus-selected", focusId: "any" },
+            { type: "relation", relationId: "any", tone: ["good"] },
           ],
         },
         {},

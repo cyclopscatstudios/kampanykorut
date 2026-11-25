@@ -1,0 +1,59 @@
+{
+  "cadence": { "minTurns": 1, "maxTurns": 2 },
+  "papers": [
+    {
+      "id": "nephang",
+      "name": "NÉPHANG",
+      "subtitle": "Független politikai napilap",
+      "logo": "/images/_0003_/newspaper/nephang-logo.svg",
+      "price": "Ára: 4,80 Ft"
+    },
+    {
+      "id": "esti-hirlap",
+      "name": "ESTI HÍRLAP",
+      "subtitle": "Esti bulvárlap",
+      "logo": "/images/_0003_/newspaper/esti-hirlap-logo.svg",
+      "price": "Ára: 3,20 Ft"
+    }
+  ],
+  "items": [
+    {
+      "id": "szivartartok",
+      "paper": "nephang",
+      "headline": "Szivartartók a Parlament folyosóján",
+      "lead": "A felsőházi ülésterem előtt számozott réztartók sorakoznak. A képviselők ide tették le égő szivarjukat, mielőtt beléptek a terembe, és a számról tudták, melyik az övék."
+    },
+    {
+      "id": "kilencvenhat-meter",
+      "paper": "nephang",
+      "headline": "Egyformán magas a hit és a haza",
+      "lead": "Az Országház kupolája és a Szent István-bazilika egyaránt 96 méter magas. A szám a honfoglalás 896-os évére utal: a hit és a haza egyforma súllyal áll a város fölött."
+    },
+    {
+      "id": "korona-az-orszaghazban",
+      "paper": "nephang",
+      "headline": "A Szent Korona új otthona",
+      "lead": "2000 januárja óta a Szent Korona az Országház kupolacsarnokában látható. Díszőrség vigyáz rá éjjel-nappal.",
+      "when": { "type": "turn", "min": 2 }
+    },
+    {
+      "id": "steindl-imre",
+      "paper": "nephang",
+      "headline": "Nem láthatta kész művét",
+      "lead": "Steindl Imre, az Országház tervezője élete végére megvakult, és néhány héttel az épület 1902-es átadása előtt elhunyt.",
+      "weight": 2
+    },
+    {
+      "id": "kampanybusz-eltevedt",
+      "paper": "esti-hirlap",
+      "headline": "Kétszer ért ugyanabba a faluba a kampánybusz",
+      "lead": "A kisvárosi körút harmadik napján a sofőr rossz térképpel indult. A helyiek másodszorra már pogácsával várták a stábot.",
+      "priority": "pinned",
+      "when": {
+        "type": "answer-selected",
+        "questionId": "prop_q3",
+        "answerId": "A"
+      }
+    }
+  ]
+}

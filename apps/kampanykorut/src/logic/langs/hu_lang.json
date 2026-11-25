@@ -1,5 +1,7 @@
 {
-  "bottomSheet": { "close": "Bezárás" },
+  "bottomSheet": {
+    "close": "Bezárás"
+  },
   "mainMenu": {
     "newGame": "Új játék",
     "loadGame": "Játék betöltése",
@@ -28,6 +30,12 @@
     "analytics": {
       "label": "Névtelen használati statisztikák küldése",
       "privacyLink": "Adatkezelési tájékoztató"
+    },
+    "newspaperAutoOpen": {
+      "label": "Hírlap lapszámainak automatikus megjelenítése"
+    },
+    "seasonalTheme": {
+      "label": "Ünnepi téli téma (hóesés, jeges gombok)"
     }
   },
   "loadSavedGamesMenu": {
@@ -42,6 +50,31 @@
   "gameSelectorMenhu": {
     "label": "Válassz egy kampányt",
     "placeholder": "Válassz..."
+  },
+  "campaignSelector": {
+    "count": "{{count}} kampány",
+    "sort": {
+      "label": "Rendezés",
+      "year": "Évjárat szerint",
+      "yearShort": "Évjárat",
+      "added": "Legutóbb hozzáadott",
+      "addedShort": "Legújabb"
+    },
+    "new": "Új",
+    "emptyTitle": "Még nem választottál kampányt",
+    "emptyText": "Válassz egy kampányt a listából. Itt jelenik meg a bannere és a bemutatója.",
+    "mobileHint": "Koppints egy kampányra a részletekért.",
+    "tags": {
+      "historical": "Történelmi",
+      "alternate-history": "Alternatív történelem",
+      "test": "Teszt"
+    },
+    "mode": {
+      "classic": "Klasszikus",
+      "classicHint": "Kérdés-válasz kampány: interjúkon és vitákon dől el a választás.",
+      "strategic": "Stratégiai",
+      "strategicHint": "Fókuszfa, ügyek és szövetségek: fordulóról fordulóra építed a kampányt."
+    }
   },
   "sideSelector": {
     "party": {
@@ -73,7 +106,8 @@
     },
     "actions": {
       "replay": "Újrajátszás",
-      "otherCampaign": "Másik kampány"
+      "otherCampaign": "Másik kampány",
+      "share": "Megosztás"
     },
     "statistics": {
       "menuBar": {
@@ -84,7 +118,10 @@
       "overview": {
         "constituencySeats": "Egyéni mandátumok",
         "listSeats": "Listás mandátumok",
-        "partyListResults": "Pártilistás eredmények",
+        "partyListResults": "Pártlistás eredmény",
+        "regionalSeats": "Területi mandátumok",
+        "nationalSeats": "Kompenzációs mandátumok",
+        "totalSeats": "Összesen {{seats}}/{{all}} mandátum",
         "rankingTabs": {
           "victories": "Győzelmek",
           "defeats": "Vereségek",
@@ -105,7 +142,9 @@
       }
     },
     "electionMap": {
-      "winner": "Győztes"
+      "winner": "Győztes",
+      "seats": "{{count}} mandátum",
+      "regionSeats": "A régió {{count}} mandátuma"
     },
     "achievements": {
       "completed": "Megszerezve",
@@ -139,6 +178,73 @@
         "validVotes": "Érvényes szavazat",
         "points": "{{points}} sz.pont"
       }
+    },
+    "majority": {
+      "leader": "Legtöbb mandátum",
+      "label": "Többség: {{majority}} mandátum",
+      "reached": "Megvan",
+      "missing": "Nincs meg · {{missing}} hiányzik"
+    },
+    "government": {
+      "label": "Kormányalakítás",
+      "single-majority": "Önálló többség",
+      "coalition": "Koalíciós többség",
+      "weak-coalition": "Gyenge koalíciós kormány",
+      "partners": "{{count}} koalíciós partnerrel",
+      "weakHint": "Túl sok párttal kell megosztanod a hatalmat, ezért a kormányod gyenge lesz.",
+      "failed": "Sikertelen kormányalakítás",
+      "opposition": "Ellenzékben",
+      "seats": "{{seats}} / {{majority}} mandátum"
+    },
+    "focus": {
+      "label": "Politikai fókusz",
+      "none": "Nem választottál fókuszt"
+    },
+    "epilogue": "Epilógus",
+    "share": {
+      "native": "Megosztás",
+      "download": "Kép letöltése",
+      "close": "Bezárás",
+      "loading": "Eredménykártya készül…",
+      "failed": "A megosztás nem sikerült. Próbáld újra!",
+      "text": {
+        "win": "{{metric}} nyertem {{article}} „{{campaign}}” kampányban. Neked sikerülne?",
+        "loss": "{{metric}} alulmaradtam {{article}} „{{campaign}}” kampányban. Neked sikerülne?",
+        "deadlock": "{{metric}} patthelyzetbe futottam {{article}} „{{campaign}}” kampányban. Neked sikerülne?"
+      },
+      "metric": {
+        "seats": "{{count}} mandátummal",
+        "votes": "A szavazatok {{share}}-ával"
+      },
+      "card": {
+        "kicker": {
+          "win": "Győzelem",
+          "loss": "Vereség",
+          "deadlock": "Patthelyzet"
+        },
+        "title": {
+          "win": "Győzelem az urnáknál",
+          "loss": "Vereség az urnáknál",
+          "deadlock": "Nincs többség"
+        },
+        "election": {
+          "parliamentary": "Országgyűlési választás",
+          "mayoral": "Főpolgármester-választás"
+        },
+        "player": "Az én jelöltem",
+        "seats": "Mandátumaim",
+        "votes": "Szavazataim",
+        "winner": "Győztes",
+        "leader": "Legerősebb",
+        "winnerSeats": "{{name}} · {{count}} mandátum",
+        "turns": "Fordulók",
+        "cta": {
+          "win": "Én megnyertem. Te is képes lennél rá?",
+          "loss": "Nekem nem jött össze. Te jobb kampányt vinnél?",
+          "deadlock": "Nálam patt lett. Te többséget szereznél?"
+        },
+        "ctaButton": "Játssz ingyen →"
+      }
     }
   },
   "gameHeader": {
@@ -150,7 +256,55 @@
       "party": "Párt"
     }
   },
+  "politicalDashboard": {
+    "title": "Politikai helyzet",
+    "back": "Vissza a kampányhoz",
+    "turn": "{{turn}}. forduló",
+    "overview": "Áttekintés",
+    "progress": "Kampány állása",
+    "latestEvent": "Legutóbbi esemény",
+    "empty": {
+      "title": "Még csend van",
+      "body": "A kampány során itt jelennek meg a fontos fejlemények."
+    },
+    "entry": {
+      "label": "Politikai helyzet",
+      "withNews": "Politikai helyzet: új esemény",
+      "current": "Politikai helyzet: most ezt látod"
+    },
+    "tabs": {
+      "overview": "Áttekintés",
+      "focuses": "Fókuszok",
+      "relations": "Viszonyok",
+      "chronicle": "Krónika"
+    },
+    "focus": {
+      "followed": "Követett fókusz",
+      "prompt": "Merre viszed a pártot?",
+      "choose": "Irány választása",
+      "finalNote": "Egy elágazásban egy irányt választhatsz. A döntést a következő fordulóig még megváltoztathatod, utána végleges, és megnyílhat a következő elágazás.",
+      "branch": "{{index}}. elágazás",
+      "select": "Ezt követem",
+      "status": {
+        "available": "Választható",
+        "selected": "Követed",
+        "completed": "Teljesült",
+        "failed": "Meghiúsult",
+        "upcoming": "Később",
+        "excluded": "Kizárva"
+      },
+      "required": "Előbb válassz politikai fókuszt",
+      "requiredHint": "A Politikai helyzet oldalon döntsd el, merre viszed a pártot, utána haladhatsz tovább.",
+      "availableFrom": "Irányt {{article}} {{turn}}. körtől választhatsz.",
+      "requiredBefore": "{{article}} {{turn}}. kör előtt válassz irányt, különben nem haladhatsz tovább.",
+      "open": "Fókusz választása"
+    },
+    "relations": {
+      "new": "Új"
+    }
+  },
   "gameMenuBar": {
+    "resumeQuestion": "Vissza a kérdéshez",
     "save": "Játék mentése",
     "laod": "Játék visszatöltése",
     "settings": "Beállítások",
@@ -192,6 +346,7 @@
   },
   "bottomBar": {
     "visitDistrict": "Látogass el a körzetbe",
+    "returnToDistrict": "Vissza a körzetbe",
     "swingFactor": "Ingadozási tényező",
     "population": "Lakosság",
     "k": "E",
@@ -285,6 +440,7 @@
     }
   },
   "toaster": {
+    "focusSelectedEyebrow": "Új politikai irány",
     "settingsUpdated": "Beállítások sikeresen frissültek!",
     "storageQuotaExceeded": "A böngésző tárhelye megtelt, ezért a játékállást nem sikerült menteni. A játék folytatható, de az oldal újratöltésekor a haladás elveszhet.",
     "storageWriteFailed": "A játékállást nem sikerült menteni ebben a böngészőben. A játék folytatható, de az oldal újratöltésekor a haladás elveszhet."
@@ -303,6 +459,39 @@
       "processedVotes": "Feldolgozott szavazatok",
       "pleaseWait": "Kérjük, várjon..."
     }
+  },
+  "seatCount": {
+    "live": "Élő",
+    "final": "Végeredmény",
+    "title": "Választási éjszaka · {{year}}",
+    "progress": "{{done}} / {{total}} körzet",
+    "counting": "Számolás…",
+    "tally": "Eddig kiosztott mandátum",
+    "majority": "{{majority}} · többségi határ",
+    "nationalPending": "+ {{seats}} országos listás mandátum a számlálás végén",
+    "nationalAdded": "+ {{seats}} országos listás mandátum kiosztva",
+    "hint": "Minden pötty egy mandátum. Arányos rendszer: a körzet nem a győztesé, hanem megoszlik.",
+    "skip": "Ugrás a végére",
+    "continue": "Tovább az eredményhez"
+  },
+  "coalition": {
+    "kicker": "Kormányalakítás",
+    "title": "Koalíciós ajánlat",
+    "resultTitle": "A pártok válaszoltak",
+    "subtitle": "{{seats}} mandátumod van, a többséghez {{majority}} kell. Egyszer tehetsz ajánlatot.",
+    "potential": "Lehetséges többség",
+    "potentialHint": "Csak akkor jön létre, ha minden megkeresett párt elfogadja az ajánlatot.",
+    "partnerHint": "Egy partner a legjobb: minden további partner gyengíti a kormányodat.",
+    "partnerHintMany": "Legfeljebb {{max}} partnerrel erős a kormányod: minden további partner gyengíti.",
+    "tooManyPartners": "{{count}} pártnak ajánlasz. Ha mind elfogadja, gyenge kormányt alakítasz.",
+    "distantPartner": "Távoli partnert választottál: ha elfogadja, gyenge kormányt alakítasz.",
+    "distantHint": "Ideológiailag távoli párt: többet gyengít a kormányon, mint egy közeli partner.",
+    "governmentSeats": "Kormánytöbbség",
+    "seats": "{{seats}} mandátum",
+    "submit": "Ajánlat elküldése ({{parties}})",
+    "accepted": "Elfogadta",
+    "rejected": "Elutasította",
+    "continue": "Tovább az eredményhez"
   },
   "bugReporter": {
     "title": "Hiba bejelentése",
@@ -344,14 +533,11 @@
   "landing": {
     "hero": {
       "heading": "Magyar választási kampányszimulátor",
-      "description": "A Kampánykörút egy ingyenes politikai stratégiai játék, amelyben egy magyar országgyűlési választási kampányt irányíthatsz. Kampányolj választókerületenként, hozz politikai döntéseket, kövesd a közvélemény-kutatásokat, majd nézd meg, sikerül-e többséget szerezned az Országgyűlésben.",
+      "description": "A Kampánykörút egy ingyenes politikai stratégiai játék, amelyben magyar választási kampányokat irányíthatsz, az országgyűlési választástól a budapesti főpolgármester-választásig. Kampányolj, hozz politikai döntéseket, kövesd a közvélemény-kutatásokat, majd nézd meg, sikerül-e győznöd a választáson.",
       "startButton": "Játék indítása"
     },
     "campaigns": {
       "heading": "Elérhető kampányok"
-    },
-    "campaignDialog": {
-      "startButton": "Kampány indítása"
     },
     "footer": "Kampánykörút — ingyenes, böngészőben futó választási szimuláció.",
     "footerPrivacy": "Adatkezelési tájékoztató"
@@ -397,5 +583,86 @@
   "eventAnnouncement": {
     "label": "Kampányesemény",
     "close": "Tovább"
+  },
+  "newspaper": {
+    "entry": {
+      "label": "Hírlap",
+      "withNews": "Hírlap · új lapszám"
+    },
+    "ribbon": "Rendkívüli kiadás!",
+    "read": "Elolvastam",
+    "optOut": "Nem kérek több értesítést",
+    "close": "Bezárás",
+    "paging": "Lapszámok",
+    "previous": "Előző lapszám",
+    "next": "Következő lapszám",
+    "position": "{{current}} / {{total}}",
+    "turn": "{{turn}}. forduló",
+    "issue": "{{issue}}. szám"
+  },
+  "campaignIntro": {
+    "label": "Történelmi háttér",
+    "confirm": "Megértettem"
+  },
+  "issues": {
+    "title": "Ügyek a térségben",
+    "opinion": {
+      "-2": "Erős ellenzés",
+      "-1": "Inkább ellenzik",
+      "0": "Megosztott",
+      "1": "Inkább támogatják",
+      "2": "Erős támogatás"
+    }
+  },
+  "campaignPage": {
+    "start": "Kampány indítása",
+    "sides": "Válassz oldalt",
+    "otherSides": "Más oldalak",
+    "background": "A kampány háttere",
+    "meta": {
+      "campaignTitle": "{{campaign}} – Kampánykörút",
+      "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
+      "sideDescription": "{{campaign}}: vezesd {{candidate}} kampányát!"
+    }
+  },
+  "cheat": {
+    "title": "Cheat",
+    "minimize": "Lekicsinyítés",
+    "expand": "Kinyitás",
+    "close": "Kikapcsolás",
+    "ids": {
+      "label": "ID-k",
+      "hint": "Megmutatja a kérdések, válaszok és fókuszok azonosítóját."
+    },
+    "effects": {
+      "label": "Hatások",
+      "hint": "Vidd az egeret egy válasz fölé, és látod, mit változtat."
+    },
+    "path": {
+      "label": "Győztes út",
+      "hint": "Válassz egy tesztelt győztes utat: a hozzá tartozó válasz és fókuszok zöld jelölést kapnak.",
+      "none": "Ehhez az oldalhoz még nincs győztes út.",
+      "pick": "Válassz utat",
+      "recommended": "Most ez a válasz:"
+    },
+    "effect": {
+      "none": "Nincs hatása",
+      "if": "Ha",
+      "replace": "felülírja",
+      "swing": "Országos",
+      "turnout": "Részvétel",
+      "allocation": "Új szavazók",
+      "transfer": "Körzet",
+      "stance": "Ügyállás"
+    }
+  },
+  "savedSessions": {
+    "delete": {
+      "label": "Mentés törlése",
+      "hint": "Mentés törlése. A játékállás és a fordulók története is törlődik.",
+      "confirm": "Törlés"
+    },
+    "expiryHint": "A mentések 30 nap után automatikusan törlődnek.",
+    "expiryLabel": "30 napig őrizzük"
   }
 }

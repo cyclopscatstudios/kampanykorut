@@ -1,0 +1,1200 @@
+[
+  {
+    "id": "tisza_szigetek",
+    "label": "A TISZA szigetei (háttér)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 4,
+              "max": 4
+            },
+            {
+              "or": [
+                {
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "C"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "D"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "patriotak",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "bekemisszio",
+                      "answerId": "A"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.9,
+              "tisza": 3.1,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 4,
+              "max": 4
+            },
+            {
+              "and": [
+                {
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "B"
+                    }
+                  ]
+                },
+                {
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "bekemisszio",
+                      "answerId": "B"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "bekemisszio",
+                      "answerId": "D"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.26,
+              "tisza": 2.2,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "turn",
+          "min": 4,
+          "max": 4
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.5,
+              "tisza": 2.7,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Szigetek az országban",
+      "body": "A nyár végére több száz helyi TISZA Sziget alakult. A párt szervezete még laza, de már a kisvárosokban is van kihez fordulni.",
+      "icon": "geo-alt-fill"
+    }
+  },
+  {
+    "id": "tisza_kerdoiv",
+    "label": "Kérdőívezés és országjárás (háttér)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 10,
+              "max": 10
+            },
+            {
+              "or": [
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "hibahatar",
+                      "answerId": "C"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "D"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "hibahatar",
+                          "answerId": "B"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "hibahatar",
+                          "answerId": "C"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "mtva_elott",
+                      "answerId": "D"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.9,
+              "tisza": 3.1,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 10,
+              "max": 10
+            },
+            {
+              "and": [
+                {
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "gyoztunk",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "hibahatar",
+                      "answerId": "A"
+                    }
+                  ]
+                },
+                {
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "mtva_elott",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "mtva_elott",
+                      "answerId": "B"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.26,
+              "tisza": 2.2,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "turn",
+          "min": 10,
+          "max": 10
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.5,
+              "tisza": 2.7,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kopogtatnak a TISZA-sok",
+      "body": "A TISZA aktivistái kérdőívekkel járják az országot. A párt a kormányoldal hallgatását is a saját történetébe építi.",
+      "icon": "clipboard-check-fill"
+    }
+  },
+  {
+    "id": "tisza_orszagjaras",
+    "label": "80 napos országjárás (háttér)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 16,
+              "max": 16
+            },
+            {
+              "or": [
+                {
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "felvetelek",
+                      "answerId": "C"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "felvetelek",
+                      "answerId": "D"
+                    }
+                  ]
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "mtva_elott",
+                  "answerId": "D"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.9,
+              "tisza": 3.1,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 16,
+              "max": 16
+            },
+            {
+              "or": [
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "A"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "B"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "B"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "D"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "A"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "B"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "A"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "gatakon",
+                          "answerId": "B"
+                        }
+                      ]
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "B"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "D"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "B"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "tusvanyos",
+                          "answerId": "D"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.26,
+              "tisza": 2.2,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "turn",
+          "min": 16,
+          "max": 16
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.5,
+              "tisza": 2.7,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Nyolcvan nap, százhat körzet",
+      "body": "Magyar Péter Tokajból indult országjárása minden héten új városokban jár. A nagykanizsai kongresszus után a TISZA már kormányprogramról beszél.",
+      "icon": "signpost-split-fill"
+    }
+  },
+  {
+    "id": "tisza_jeloltek",
+    "label": "A TISZA jelöltjei (háttér)",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 20,
+              "max": 20
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "szazhat_nev",
+                  "answerId": "B"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "szazhat_nev",
+                  "answerId": "C"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.9,
+              "tisza": 3.1,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 20,
+              "max": 20
+            },
+            {
+              "and": [
+                {
+                  "or": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szazhat_nev",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szazhat_nev",
+                      "answerId": "D"
+                    }
+                  ]
+                },
+                {
+                  "or": [
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "kotcse",
+                          "answerId": "B"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "kotcse",
+                          "answerId": "C"
+                        }
+                      ]
+                    },
+                    {
+                      "or": [
+                        {
+                          "type": "answer-selected",
+                          "questionId": "dombovar",
+                          "answerId": "A"
+                        },
+                        {
+                          "type": "answer-selected",
+                          "questionId": "dombovar",
+                          "answerId": "B"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.26,
+              "tisza": 2.2,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "turn",
+          "min": 20,
+          "max": 20
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.5,
+              "tisza": 2.7,
+              "dk": -1.1,
+              "mkkp": -0.6,
+              "mi_hazank": -0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Helyben ismert arcok",
+      "body": "A TISZA jelöltjei között polgármesterek, orvosok és tanárok vannak. Sok körzetben a helyiek régóta ismerik őket.",
+      "icon": "people-fill"
+    }
+  },
+  {
+    "id": "visszaut_a_lejaratas",
+    "label": "Visszaüt a lejáratás",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 8,
+              "max": 12
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "mtva_elott",
+              "answerId": "D"
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "felvetelek",
+                  "answerId": "C"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "felvetelek",
+                  "answerId": "D"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.175,
+              "tisza": 0.35
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Visszaüt a lejáratás",
+      "body": "A kormányoldali kampány hetek óta Magyar Péter személyéről szól. A mérések szerint ez a bizonytalanokat inkább a TISZA felé tolja.",
+      "icon": "arrow-counterclockwise"
+    }
+  },
+  {
+    "id": "pride_tiltas_ellenere",
+    "label": "Pride a tiltás ellenére",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 15,
+              "max": 15
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "pride_torveny",
+              "answerId": "C"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 15,
+              "max": 15
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "pride_torveny",
+              "answerId": "B"
+            }
+          ]
+        },
+        "effects": []
+      }
+    ],
+    "announcement": {
+      "title": "Pride a tiltás ellenére",
+      "body": "Június 28-án a tiltás ellenére tízezrek vonulnak Budapesten. A főváros önkormányzati rendezvényként tartja meg a felvonulást, a rendőrség nem oszlatja fel.",
+      "icon": "flag-fill"
+    }
+  },
+  {
+    "id": "elszamolas_siker",
+    "label": "Látszik a változás",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 23,
+              "max": 23
+            },
+            {
+              "or": [
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szikla_utca",
+                      "answerId": "C"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szikla_utca",
+                      "answerId": "C"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "evertekelo",
+                  "answerId": "A"
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "eu_forrasok",
+                      "answerId": "A"
+                    },
+                    {
+                      "not": {
+                        "type": "answer-selected",
+                        "questionId": "patriotak",
+                        "answerId": "C"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": 0.5,
+              "tisza": -0.5
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Látszik a változás",
+      "body": "A kórházi, vasúti és gyermekvédelmi vállalások közül legalább kettő határidőre teljesült. A TISZA programbemutatója után a sajtó a kormány számait is összeveti az ígéretekkel, és ezúttal van mit összevetni.",
+      "icon": "graph-up-arrow",
+      "major": true
+    }
+  },
+  {
+    "id": "programok_forras_nelkul",
+    "label": "Programok forrás nélkül",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 23,
+              "max": 23
+            },
+            {
+              "or": [
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "kortermek",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szikla_utca",
+                      "answerId": "C"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "type": "answer-selected",
+                      "questionId": "menetrend",
+                      "answerId": "A"
+                    },
+                    {
+                      "type": "answer-selected",
+                      "questionId": "szikla_utca",
+                      "answerId": "C"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "not": {
+                "or": [
+                  {
+                    "type": "answer-selected",
+                    "questionId": "evertekelo",
+                    "answerId": "A"
+                  },
+                  {
+                    "and": [
+                      {
+                        "type": "answer-selected",
+                        "questionId": "eu_forrasok",
+                        "answerId": "A"
+                      },
+                      {
+                        "not": {
+                          "type": "answer-selected",
+                          "questionId": "patriotak",
+                          "answerId": "C"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.4,
+              "tisza": 0.4
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Félúton megállt programok",
+      "body": "A kórházi, vasúti és gyermekvédelmi programok elindultak, de a költségvetésben nem maradt rájuk elég pénz, az uniós források pedig továbbra is be vannak fagyasztva. Több felújítás áll, a határidők csúsznak, a TISZA programbemutatóján ezt veti a kormány szemére.",
+      "icon": "cone-striped"
+    }
+  },
+  {
+    "id": "elszamolas_kudarc",
+    "label": "Ígéretek, eredmények nélkül",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 23,
+              "max": 23
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "kortermek",
+                "answerId": "A"
+              }
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "menetrend",
+                "answerId": "A"
+              }
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "szikla_utca",
+                "answerId": "C"
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -2.0,
+              "tisza": 2.0
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Ígéretek, eredmények nélkül",
+      "body": "Két év után sem a kórházakban, sem a vasúton, sem a gyermekvédelemben nem látszik érdemi változás. A TISZA programja mellé a kormány nem tud számokat tenni.",
+      "icon": "graph-down-arrow",
+      "major": true
+    }
+  },
+  {
+    "id": "koltsegvetes_szorul",
+    "label": "Szorul a költségvetés",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22,
+              "max": 22
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "evertekelo",
+              "answerId": "B"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.6,
+              "tisza": 0.6
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Szorul a költségvetés",
+      "body": "A hiány a tervezettnél jóval nagyobb, a kórházi és vasúti programok forrásait átcsoportosítják. Az elemzők szerint a kormány egyszerre többet ígért, mint amennyit a költségvetés elbír.",
+      "icon": "cash-stack"
+    }
+  },
+  {
+    "id": "jobbik_nem_indul",
+    "label": "A Jobbik nem állít listát",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "turn",
+          "min": 24,
+          "max": 24
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "tisza": 2.0
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "A Jobbik nem állít listát",
+      "body": "A Jobbik nem tudta teljesíteni az országos lista feltételeit, az MSZP és az LMP nem indul. Öt országos lista lesz a szavazólapon, a visszalépő pártok szavazóinak többsége a TISZA felé fordul.",
+      "icon": "card-checklist"
+    }
+  },
+  {
+    "id": "mi_hazank_visszalep",
+    "label": "A Mi Hazánk visszalép a szoros körzetekben",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 25,
+              "max": 25
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "marcius_15",
+              "answerId": "D"
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "ellenzeki_mezo",
+                "answerId": "D"
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "withdraw-district-candidates",
+            "partyId": "mi_hazank",
+            "closeRace": {
+              "between": ["fidesz", "tisza"],
+              "maxGapPercent": 3
+            },
+            "redistribution": {
+              "fidesz": 0.6,
+              "tisza": 0.15,
+              "_abstain": 0.25
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Visszalépések a szoros körzetekben",
+      "body": "A Mi Hazánk néhány egyéni jelöltje az utolsó hetekben visszalépett ott, ahol a Fidesz és a TISZA között szoros a verseny. A párt országos listája indul.",
+      "icon": "person-dash-fill"
+    }
+  },
+  {
+    "id": "toroczkai_nemet_mond",
+    "label": "Toroczkai nemet mond",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 25,
+              "max": 25
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "marcius_15",
+              "answerId": "D"
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "ellenzeki_mezo",
+              "answerId": "D"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "fidesz": -0.3,
+              "tisza": 0.3,
+              "mi_hazank": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Toroczkai nemet mond",
+      "body": "A Mi Hazánk elnöke nyilvánosságra hozza, hogy a Fidesz visszalépésekről tárgyalt vele. A tavalyi kampány után, amely az ő szavazóit célozta, nem lát okot a segítségre. A hír a TISZA-t is mozgósítja.",
+      "icon": "person-x-fill"
+    }
+  }
+]

@@ -1,5 +1,5 @@
+import { NEWS_TYPES } from "@shared/types";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { NEWS_TYPES } from "@/shared/types";
 import { formatNewsDate, isExternalUrl } from "./news.format";
 import {
   fetchLatestNews,

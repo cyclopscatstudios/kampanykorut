@@ -1,4 +1,4 @@
-import { ConditionalRawEffect, EffectType, RawEffect } from "../types";
+import { ConditionalRawEffect, EffectType, RawEffect } from "@shared/types";
 
 function omitKeys<T>(record: Record<string, T>, ids: Set<string>) {
   return Object.fromEntries(
@@ -38,6 +38,10 @@ function withoutInactive(
       );
       return params.length ? ({ ...effect, params } as RawEffect) : null;
     }
+    case EffectType.IssueStance:
+      return effect.params.party && inactive.has(effect.params.party)
+        ? null
+        : effect;
     default:
       return effect;
   }

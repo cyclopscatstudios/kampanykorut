@@ -1,9 +1,9 @@
-import { BootstrapIcon, CampaignConfig } from "@/shared/types";
-import { Icon } from "@/shared/ui";
-import type { Colors } from "../../../../../../../../shared/types/color";
-import { Text } from "../../../../../../../../shared/ui/Text";
+import { BootstrapIcon, CampaignConfig } from "@shared/types";
+import type { Colors } from "@shared/types/color";
+import { Icon } from "@shared/ui";
+import { Text } from "@shared/ui/Text";
 import { CommonWrapper } from "../../../CommonWrapper";
-import { calculateVotePercentages } from "../electionMap.utils";
+import { calculateVotePercentages, getResultTitle } from "../electionMap.utils";
 import type { StatisticResult } from "../statistics.utils";
 import { ProgressBar } from "./ProgressBar";
 
@@ -95,9 +95,7 @@ function ListElement({
       <Text>#{index + 1}</Text>
 
       <div className="flex-1 min-w-0">
-        <Text size="sm">
-          {element.district.megye} {element.district.oevk}
-        </Text>
+        <Text size="sm">{getResultTitle(element.district)}</Text>
 
         <ProgressBar percentage={percentage} color={color} />
       </div>

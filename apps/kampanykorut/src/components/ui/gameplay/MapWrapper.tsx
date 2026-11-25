@@ -1,13 +1,13 @@
-import classNames from "classnames";
-import { useState } from "react";
-import { isCityDistrictMap } from "@/shared/domain";
+import { isCityDistrictMap } from "@shared/domain";
 import {
   CandidateListData,
   District,
   DistrictPoligon,
   ElectionConfig,
-} from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
+} from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import classNames from "classnames";
+import { type ReactNode, useState } from "react";
 import { useWheelZoom, type ViewBox } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
 
@@ -23,6 +23,7 @@ export function MapWrapper({
   stroke = "#000000FF",
   view,
   electionConfig,
+  overlay,
 }: {
   districts: DistrictPoligon[];
   handleDistrict?: (r: District) => void;
@@ -35,6 +36,7 @@ export function MapWrapper({
   stroke?: string;
   view?: ViewBox;
   electionConfig?: ElectionConfig;
+  overlay?: ReactNode;
 }) {
   const initialView = view ?? { x: 0, y: 0, w: width, h: height };
   const [viewBox, setViewBox] = useState<ViewBox>(initialView);
@@ -48,6 +50,7 @@ export function MapWrapper({
   return (
     <div
       style={{ width, height }}
+      data-surface="card"
       className={classNames(
         "relative overflow-hidden rounded-md bg-blue-400/10 border border-blue-50/10",
         className,
@@ -68,6 +71,7 @@ export function MapWrapper({
         isGameEnded={isGameEnded}
         electionConfig={electionConfig}
       />
+      {overlay && <div className="absolute left-2 top-2 z-10">{overlay}</div>}
       {isCityDistrictMap(electionConfig) && (
         <a
           href="https://www.openstreetmap.org/copyright"

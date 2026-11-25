@@ -1,6 +1,6 @@
+import { createLogger } from "@shared/logger";
+import type { NewsDetail, NewsItem, NewsLang, NewsType } from "@shared/types";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { createLogger } from "@/shared/logger";
-import type { NewsDetail, NewsItem, NewsLang, NewsType } from "@/shared/types";
 import { useSettings } from "../hooks/useSettings";
 import {
   fetchLatestNews,

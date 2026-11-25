@@ -1,17 +1,14 @@
+import { NEWS_PATH } from "@logic/application/news/newsPaths";
+import { useNewsDetail, useNewsLang } from "@logic/application/news/useNews";
+import { useNewsNotifications } from "@logic/application/news/useNewsNotifications";
+import type { NewsItem, NewsLang } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Tooltip } from "@shared/ui/Tooltip";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import type { NewsItem, NewsLang } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Tooltip } from "../../../../../../shared/ui/Tooltip";
-import { NEWS_PATH } from "../../../logic/application/news/newsPaths";
-import {
-  useNewsDetail,
-  useNewsLang,
-} from "../../../logic/application/news/useNews";
-import { useNewsNotifications } from "../../../logic/application/news/useNewsNotifications";
 import { Dialog } from "../Dialog";
 import { NewsArticle } from "./NewsDetailPage";
 import { NewsCoverImage, NewsDate, Skeleton } from "./NewsParts";

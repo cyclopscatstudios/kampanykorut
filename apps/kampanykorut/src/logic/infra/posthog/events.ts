@@ -1,5 +1,5 @@
+import type { MayoralOutcome } from "@shared/types";
 import { v4 as uuidv4 } from "uuid";
-import type { MayoralOutcome } from "@/shared/types";
 
 export const ANALYTICS_SCHEMA_VERSION = 1;
 
@@ -14,8 +14,9 @@ export type LoadDurationBucket = "<1s" | "1-3s" | "3-10s" | ">10s";
 export type CampaignOutcome = "win" | "loss" | "deadlock";
 
 export interface AnalyticsEvents {
-  landing_exited: { target: "menu" | "campaign" };
+  landing_exited: { target: "menu" | "campaign_page" };
   campaign_start_clicked: RunProperties;
+  campaign_page_start_clicked: { campaign_id: string; side_id?: string };
   campaign_loaded: RunProperties & {
     resumed: boolean;
     load_ms_bucket?: LoadDurationBucket;
@@ -34,6 +35,10 @@ export interface AnalyticsEvents {
     outcome: CampaignOutcome;
     majority_type: "simple" | "supermajority" | null;
     turns: number;
+  };
+  result_shared: RunProperties & {
+    outcome: CampaignOutcome;
+    channel: "native" | "download";
   };
 }
 

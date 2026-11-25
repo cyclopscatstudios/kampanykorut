@@ -15,6 +15,10 @@ export function useNavigation() {
     navigate(`/game/${campaignId}?sessionId=${sessionId}`);
   };
 
+  const goToPoliticalDashboard = (campaignId: string, sessionId: string) => {
+    navigate(`/game/${campaignId}/dashboard?sessionId=${sessionId}`);
+  };
+
   const goToMainMenu = () => {
     navigate(`/menu`);
   };
@@ -36,6 +40,7 @@ export function useNavigation() {
     goBack,
     goToSideSelector,
     goToCampaign,
+    goToPoliticalDashboard,
     goToCampaignSelector,
     goToFinalResults,
     reloadPage,

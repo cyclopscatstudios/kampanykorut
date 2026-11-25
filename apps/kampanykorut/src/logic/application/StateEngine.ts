@@ -1,9 +1,9 @@
+import { DistrictGroupEngine, VoterEnvironment } from "@shared/domain";
+import { createLogger } from "@shared/logger/logger";
+import type { StorageEngine } from "@shared/logic/application/StorageEngine";
+import { CampaignState, HistoryItem } from "@shared/types";
 import { singleton } from "tsyringe";
 import { v4 as uuidv4 } from "uuid";
-import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
-import { createLogger } from "@/shared/logger/logger";
-import type { StorageEngine } from "@/shared/logic/application/StorageEngine";
-import { CampaignState, HistoryItem } from "@/shared/types";
 import type { ConfigEngine } from "./ConfigEngine";
 import { Emitter } from "./Emitter";
 import type { IdGenerator } from "./IdGenerator";
@@ -38,6 +38,7 @@ export function toStoredCampaignState(state: CampaignState): CampaignState {
 const MAX_SAVED_SESSIONS = 5;
 const MAX_AUTO_SAVES = 5;
 const ACTIVE_SESSION_WINDOW_MS = 60 * 60 * 1000;
+export const SAVED_SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000;
 export const AUTO_SAVE_SLOT_ID = "auto-save-slot";
 
 const log = createLogger("CampaignStateEngine");
@@ -62,6 +63,7 @@ export class StateEngine extends Emitter<CampaignState> {
     this.safeStringify = this.safeStringify.bind(this);
     this.saveState = this.saveState.bind(this);
     this.init();
+    this.getSavedGameSessions();
   }
 
   init(force = false) {
@@ -100,26 +102,63 @@ export class StateEngine extends Emitter<CampaignState> {
       return [];
     }
     const parsed = JSON.parse(savedSessions) as SavedCampaignSessionInfo[];
-    let needsMigration = false;
+    let needsRewrite = false;
+    const now = Date.now();
     const migrated = parsed.map((s) => {
-      if (s.id && s.type) {
+      if (s.id && s.type && s.lastSaved) {
         return s;
       }
-      needsMigration = true;
+      needsRewrite = true;
       return {
         ...s,
         id: s.id || uuidv4(),
         type: s.type ?? "manual",
+        lastSaved: s.lastSaved ?? new Date(now).toISOString(),
       } as SavedCampaignSessionInfo;
     });
-    if (needsMigration) {
+    const expired = migrated.filter((s) => this.isExpired(s, now));
+    const active = migrated.filter((s) => !this.isExpired(s, now));
+    if (expired.length > 0) {
+      needsRewrite = true;
+      expired.forEach((s) => this.clearSessionStorage(s.sessionId));
+      log.info("Expired saved sessions removed", {
+        ids: expired.map((s) => s.id),
+      });
+    }
+    if (needsRewrite) {
       this.storage.setItem(
         "savedSessions",
-        JSON.stringify(migrated),
+        JSON.stringify(active),
         "localStorage",
       );
     }
-    return migrated;
+    return active;
+  }
+
+  deleteSavedSession(session: SavedCampaignSessionInfo) {
+    if (session.type === "auto") {
+      this.unregisterAutoSaveSession(session.sessionId);
+      if (session.sessionId !== this.getSessionId()) {
+        this.clearSessionStorage(session.sessionId);
+      }
+      log.info("Auto-save deleted", { sessionId: session.sessionId });
+      return;
+    }
+    const remaining = this.getSavedGameSessions().filter(
+      (s) => s.id !== session.id,
+    );
+    this.storage.setItem(
+      "savedSessions",
+      JSON.stringify(remaining),
+      "localStorage",
+    );
+    if (!remaining.some((s) => s.sessionId === session.sessionId)) {
+      this.clearSessionStorage(session.sessionId);
+    }
+    log.info("Saved session deleted", {
+      id: session.id,
+      sessionId: session.sessionId,
+    });
   }
 
   getAutoSaveSessions(): SavedCampaignSessionInfo[] {
@@ -618,6 +657,11 @@ export class StateEngine extends Emitter<CampaignState> {
     return (
       !Number.isNaN(savedAt) && Date.now() - savedAt < ACTIVE_SESSION_WINDOW_MS
     );
+  }
+
+  private isExpired(session: SavedCampaignSessionInfo, now: number) {
+    const savedAt = new Date(session.lastSaved ?? "").getTime();
+    return !Number.isNaN(savedAt) && now - savedAt >= SAVED_SESSION_TTL_MS;
   }
 
   private unregisterAutoSaveSession(sessionId: string) {

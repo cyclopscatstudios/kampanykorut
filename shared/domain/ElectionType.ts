@@ -4,7 +4,7 @@ import {
   MayoralElectionConfig,
   ParliamentaryElectionConfig,
   PlayerSide,
-} from "../types";
+} from "@shared/types";
 
 export function getElectionType(
   config?: Pick<ElectionConfig, "election">,
@@ -38,4 +38,11 @@ export function isCityDistrictMap(
   config: Pick<ElectionConfig, "districtMap"> | undefined,
 ): boolean {
   return config?.districtMap === "budapest-districts";
+}
+
+// The capital inset only helps on maps that split Budapest into several districts.
+export function hasCapitalInset(
+  config: Pick<ElectionConfig, "districtMap"> | undefined,
+): boolean {
+  return config?.districtMap === "2011" || config?.districtMap === "2024";
 }

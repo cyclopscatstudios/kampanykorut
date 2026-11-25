@@ -1,12 +1,12 @@
-import { singleton } from "tsyringe";
-import { createLogger } from "@/shared/logger/logger";
+import { createLogger } from "@shared/logger/logger";
 import {
   CampaignConfig,
   CampaignState,
   Decision,
   HistoryItem,
   RawEffect,
-} from "@/shared/types";
+} from "@shared/types";
+import { singleton } from "tsyringe";
 import { Emitter } from "./Emitter";
 
 export interface AffectedQuestion {

@@ -1,12 +1,12 @@
+import { useSettings } from "@logic/application/hooks/useSettings";
+import { AdvisorFeedbackAssets } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { AdvisorFeedbackAssets } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
-import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { Heading } from "../Heading";
 
 interface AdvisorModalProps {
@@ -56,10 +56,10 @@ export function AdvisorModal({
         onClick={onClose}
       >
         <div
-          className="min-h-[450px] w-[550px] md:min-w-[550px] max-w-[90vw] bg-[#161e30] rounded-xl border border-[#4462aa] flex flex-col justify-between shadow-xl"
+          className="flex max-h-[calc(100dvh-24px)] w-[550px] max-w-[calc(100vw-24px)] flex-col overflow-hidden rounded-xl border border-[#4462aa] bg-[#161e30] shadow-xl md:min-h-[450px] md:min-w-[550px]"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="border-b border-[#4462aa] p-3">
+          <div className="shrink-0 border-b border-[#4462aa] p-3">
             <div className="flex justify-center items-center">
               <Icon color="purple" name="info-circle-fill" className="mr-3" />
               <Heading color="lightBlue" level={3}>
@@ -67,43 +67,48 @@ export function AdvisorModal({
               </Heading>
             </div>
           </div>
-          <div className="flex gap-5 justify-center py-3">
-            {[
-              asset?.primaryAdvisorImageUri,
-              asset?.secondaryAdvisorImageUri,
-            ].map((img, i) => {
-              const name =
-                i === 0
-                  ? asset?.primaryAdvisorName
-                  : asset?.secondaryAdvisorName;
-              return (
-                <div key={i} className="flex flex-col items-center gap-2">
-                  <div className="w-[100px] h-[100px] border border-[#4462aa] rounded-xl overflow-hidden">
-                    <img
-                      src={img}
-                      alt={name}
-                      className="w-full h-full object-cover"
-                    />
+          <div
+            tabIndex={0}
+            className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain pb-3"
+          >
+            <div className="mt-auto flex gap-5 justify-center py-3">
+              {[
+                asset?.primaryAdvisorImageUri,
+                asset?.secondaryAdvisorImageUri,
+              ].map((img, i) => {
+                const name =
+                  i === 0
+                    ? asset?.primaryAdvisorName
+                    : asset?.secondaryAdvisorName;
+                return (
+                  <div key={i} className="flex flex-col items-center gap-2">
+                    <div className="size-20 md:size-[100px] border border-[#4462aa] rounded-xl overflow-hidden">
+                      <img
+                        src={img}
+                        alt={name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {name && (
+                      <Text size="xs" weight="medium" className="text-gray-300">
+                        {name}
+                      </Text>
+                    )}
                   </div>
-                  {name && (
-                    <Text size="xs" weight="medium" className="text-gray-300">
-                      {name}
-                    </Text>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          <div className="mx-3">
-            <div className="bg-[#1d2840] p-3 rounded-xl">
-              <Text className="text-sm leading-relaxed text-gray-200">
-                {advice}
-              </Text>
+                );
+              })}
+            </div>
+            <div className="mx-3 my-auto">
+              <div className="bg-[#1d2840] p-3 rounded-xl">
+                <Text className="text-sm leading-relaxed text-gray-200">
+                  {advice}
+                </Text>
+              </div>
             </div>
           </div>
           <div
             className={classNames(
-              "bg-[#1d2840] flex justify-between p-3 rounded-b-xl",
+              "flex shrink-0 justify-between border-t border-[#4462aa]/50 bg-[#1d2840] p-3",
               {
                 "flex-col": !isDesktop,
               },

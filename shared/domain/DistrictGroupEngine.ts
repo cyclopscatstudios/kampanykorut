@@ -1,6 +1,6 @@
+import { createLogger } from "@shared/logger";
+import { CandidateListData, DistrictGroup } from "@shared/types";
 import { injectable } from "tsyringe";
-import { createLogger } from "../logger";
-import { CandidateListData, DistrictGroup } from "../types";
 import { defaultGroups as DEFAULT_GROUPS } from "./DefaultGroups";
 
 const log = createLogger("DistrictGroupEngine");

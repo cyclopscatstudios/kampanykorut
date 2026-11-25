@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { defineConfig } from "vite";
+import { campaignCatalogPlugin } from "../apps/kampanykorut/plugins/campaignCatalog";
 
 const root = path.resolve(__dirname, "..");
 const appRoot = path.resolve(root, "apps/kampanykorut");
@@ -10,11 +11,8 @@ const appRoot = path.resolve(root, "apps/kampanykorut");
 export default defineConfig({
   resolve: {
     alias: {
-      "@/logic/application": path.resolve(appRoot, "src/logic/application"),
-      "@/logic/types": path.resolve(appRoot, "src/logic/types"),
-      "@/shared/logger": path.resolve(root, "shared/logger"),
-      "@/shared/domain": path.resolve(root, "shared/domain"),
-      "@/shared/types": path.resolve(root, "shared/types"),
+      "@logic": path.resolve(appRoot, "src/logic"),
+      "@shared": path.resolve(root, "shared"),
     },
   },
   optimizeDeps: {
@@ -26,5 +24,9 @@ export default defineConfig({
       },
     },
   },
-  plugins: [react({ tsDecorators: true }), tailwindcss()],
+  plugins: [
+    react({ tsDecorators: true }),
+    tailwindcss(),
+    campaignCatalogPlugin(path.resolve(appRoot, "public")),
+  ],
 });

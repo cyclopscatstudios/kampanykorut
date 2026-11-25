@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-import { Icon } from "@/shared/ui";
-import { useTranslate } from "@/shared/logic/hooks";
+import { Icon } from "@shared/ui";
+import { useTranslate } from "@shared/logic/hooks";
 import { WIZARD_STEPS } from "./wizardSteps";
 
 export function WizardSidebar({ currentIndex }: { currentIndex: number }) {

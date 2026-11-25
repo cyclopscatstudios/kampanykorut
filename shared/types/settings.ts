@@ -6,4 +6,7 @@ export interface GameSettings {
   showAdvisorFeedback: boolean;
   language: LanguageId;
   analyticsEnabled?: boolean;
+  // false once the player asked not to have new editions open by themselves.
+  newspaperAutoOpen?: boolean;
+  seasonalTheme?: boolean;
 }

@@ -1,11 +1,11 @@
+import { SettingsEngine } from "@logic/application";
+import { useTranslateLang } from "@shared/logic/hooks/useTranslateLang";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
 import { useNavigate } from "react-router";
 import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
-import { SettingsEngine } from "@/logic/application";
-import { useTranslateLang } from "../../../../../../shared/logic/hooks/useTranslateLang";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
 import privacy_file_en from "../../../assets/kampanykorut_privacy_en.pdf";
 import privacy_file_hu from "../../../assets/kampanykorut_privacy_hu.pdf";
 import { Heading } from "../Heading";

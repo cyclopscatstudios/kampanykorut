@@ -1,0 +1,917 @@
+{
+  "gameMode": "strategic",
+  "focuses": [
+    {
+      "id": "jeanne_darc",
+      "title": "A magyar Jeanne d'Arc",
+      "summary": "Építsd a kampányt Kéthly Anna személyére",
+      "description": "Böhm Vilmos a magyar politika Jeanne d'Arcjának nevezte Kéthly Annát. 1948-ban nemet mondott, és börtönt viselt érte. Tedd a kampány középpontjába a személyét: a népszerűsége gyorsan nő, de minden támadás egyenesen őt éri, és Nagy Imrével személyes párbaj lesz belőle.",
+      "icon": "/images/1957_forradalom-oroksege/jeanne_darc.webp",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "asszony_a_kormany_elen",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "asszony_a_kormany_elen",
+                "answerId": "C"
+              }
+            ]
+          },
+          {
+            "type": "relation",
+            "relationId": "noi_szavazok",
+            "tone": ["good", "calm"]
+          },
+          {
+            "type": "turn",
+            "min": 12
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "asszony_a_kormany_elen",
+            "answerId": "A"
+          },
+          {
+            "type": "relation",
+            "relationId": "noi_szavazok",
+            "tone": ["bad"]
+          },
+          {
+            "type": "relation",
+            "relationId": "nagy_imre",
+            "tone": ["bad"]
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "szdp": -4,
+            "mszmp": 3,
+            "fkgp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "part_az_ero",
+      "title": "A párt az erő",
+      "summary": "Építs szervezetet, ne személyi kultuszt",
+      "description": "A szociáldemokrácia nem egy ember mozgalma. Állítsd talpra a gyári szervezeteket, a szakszervezeti csoportokat és a vezetőséget Kelemen Gyulával és Fischer Józseffel. Lassabban nő a népszerűség, de a párt kormányzóképesnek látszik, és egy Kéthlyt érő támadás kevésbé árt. Vigyázz, hogy a fúzió régi hívei ne szakítsák ketté a pártot.",
+      "icon": "/images/1957_forradalom-oroksege/part_az_ero.webp",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "turn",
+            "min": 16
+          },
+          {
+            "type": "relation",
+            "relationId": "kormanyzokepesseg",
+            "tone": ["good", "calm"]
+          },
+          {
+            "not": {
+              "type": "event-triggered",
+              "eventId": "marosan_atlep"
+            }
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "event-triggered",
+            "eventId": "marosan_atlep"
+          },
+          {
+            "type": "relation",
+            "relationId": "kormanyzokepesseg",
+            "tone": ["bad"]
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "szdp": -4,
+            "mszmp": 2,
+            "petofi": 1,
+            "fkgp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "joleti_allam",
+      "title": "Jóléti állam",
+      "summary": "Lakás, nyugdíj, bölcsőde, osztrák mintára",
+      "description": "Szociáldemokrácia, ahogy Bécsben és Stockholmban: vegyes gazdaság, szabad szakszervezetek, lakásépítés és nyugdíj. A városi középosztály és a tisztviselők is felfigyelnek rád, de a kisgazdák szerint az ő szavazóikat csábítod, és a munkástanácsok gyanakodnak.",
+      "icon": "/images/1957_forradalom-oroksege/joleti_allam.webp",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "lakas_nyugdij_bolcsode",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "lakas_nyugdij_bolcsode",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "lakas_nyugdij_bolcsode",
+                "answerId": "C"
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "a_gyar_jovoje",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "a_gyar_jovoje",
+                "answerId": "C"
+              }
+            ]
+          },
+          {
+            "type": "turn",
+            "min": 14
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "lakas_nyugdij_bolcsode",
+            "answerId": "D"
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "a_gyar_jovoje",
+            "answerId": "D"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "szdp": -3,
+            "fkgp": 1,
+            "mszmp": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "gyar_a_munkase",
+      "title": "A gyár a munkásé",
+      "summary": "Demokratikus szocializmus a munkástanácsokkal",
+      "description": "A forradalom gyáraiban a munkástanácsok vették át az irányítást. Legyen a programod a demokratikus szocializmus: közösségi tulajdon, munkásönigazgatás, szabad választások. Az MSZMP munkásszavazói átjöhetnek hozzád, de a polgárok és a Nyugat gyanakszik.",
+      "icon": "/images/1957_forradalom-oroksege/gyar_a_munkase.webp",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "csepel_tanacsa",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "csepel_tanacsa",
+                "answerId": "B"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "csepel_tanacsa",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "a_gyar_jovoje",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "a_gyar_jovoje",
+                "answerId": "B"
+              }
+            ]
+          },
+          {
+            "type": "relation",
+            "relationId": "munkastanacsok",
+            "tone": ["good"]
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "answer-selected",
+            "questionId": "szabad_szakszervezet",
+            "answerId": "A"
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "a_gyar_jovoje",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "a_gyar_jovoje",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "type": "relation",
+            "relationId": "munkastanacsok",
+            "tone": ["bad"]
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "szdp": -4,
+            "mszmp": 3,
+            "fkgp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "harmadik_ero",
+      "title": "Harmadik erő",
+      "summary": "Nem a kommunisták, nem a régi világ",
+      "description": "Bibó Istvánnal közös demokratikus centrum: a földreform és a nagyipar marad, de a szabadság és a jogállam az első. Kevesebb a belharc az MSZMP-vel, és a Petőfi Párt erős partner lesz, a saját szavazótáborod viszont lassabban nő.",
+      "icon": "/images/1957_forradalom-oroksege/harmadik_ero.webp",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "relation",
+            "relationId": "bibo",
+            "tone": ["good"]
+          },
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "bibo_tervezete",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "bibo_tervezete",
+                "answerId": "B"
+              }
+            ]
+          },
+          {
+            "type": "turn",
+            "min": 19
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "type": "relation",
+            "relationId": "bibo",
+            "tone": ["bad"]
+          },
+          {
+            "type": "answer-selected",
+            "questionId": "bibo_tervezete",
+            "answerId": "C"
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "szdp": -3,
+            "petofi": 1,
+            "mszmp": 1,
+            "fkgp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "igazi_baloldal",
+      "title": "Az igazi baloldal",
+      "summary": "Versenyezz nyíltan az MSZMP-vel a munkásokért",
+      "description": "Mi nem ültünk az ÁVH mellett. Versenyezz nyíltan Nagy Imrével a munkások szavazataiért: itt jön a legtöbb szavazat, de itt a legnagyobb a veszély is. Ha a két munkáspárt testvérharca elmérgesedik, a kisgazdák nevetnek a markukba.",
+      "icon": "/images/1957_forradalom-oroksege/igazi_baloldal.webp",
+      "completeWhen": {
+        "and": [
+          {
+            "type": "relation",
+            "relationId": "munkastanacsok",
+            "tone": ["good"]
+          },
+          {
+            "not": {
+              "type": "relation",
+              "relationId": "baloldal",
+              "tone": ["bad"]
+            }
+          },
+          {
+            "type": "turn",
+            "min": 20
+          }
+        ]
+      },
+      "failWhen": {
+        "type": "relation",
+        "relationId": "baloldal",
+        "tone": ["bad"]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "szdp": -3,
+            "fkgp": 2,
+            "mszmp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "elso_asszony",
+      "title": "Az első asszony",
+      "summary": "Kéthly Anna miniszterelnök-jelölt",
+      "description": "Jelentsd be, hogy Kéthly Anna lehet Magyarország első női miniszterelnöke. A nők és a változást akarók melléd állnak, de csak akkor hiszik el, ha a párt kormányzóképesnek látszik. Ha nem, a merész mondatból komolytalan szlogen lesz.",
+      "icon": "/images/1957_forradalom-oroksege/elso_asszony.webp",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "asszonyok_a_kossuth_teren",
+                "answerId": "A"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "asszonyok_a_kossuth_teren",
+                "answerId": "B"
+              }
+            ]
+          },
+          {
+            "type": "relation",
+            "relationId": "noi_szavazok",
+            "tone": ["good"]
+          },
+          {
+            "type": "relation",
+            "relationId": "kormanyzokepesseg",
+            "tone": ["good", "calm"]
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "asszonyok_a_kossuth_teren",
+                "answerId": "C"
+              },
+              {
+                "type": "answer-selected",
+                "questionId": "asszonyok_a_kossuth_teren",
+                "answerId": "D"
+              }
+            ]
+          },
+          {
+            "type": "relation",
+            "relationId": "kormanyzokepesseg",
+            "tone": ["bad"]
+          },
+          {
+            "type": "relation",
+            "relationId": "noi_szavazok",
+            "tone": ["bad"]
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "szdp": -3,
+            "mszmp": 1,
+            "fkgp": 1,
+            "dnp": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "merlegnyelv",
+      "title": "A stabilitás pártja",
+      "summary": "Csak velünk lesz stabil kormány",
+      "description": "A hajrában azt üzend, hogy a forradalom után az országnak nyugalom kell, és csak a szociáldemokraták vezetésével lesz tartós, kiszámítható kormány. Ehhez megbízható szövetséges és kormányzóképes párt kell. A bizonytalanok megnyugszanak, de a kampány így kevésbé lelkesít.",
+      "icon": "/images/1957_forradalom-oroksege/merlegnyelv.webp",
+      "completeWhen": {
+        "and": [
+          {
+            "or": [
+              {
+                "or": [
+                  {
+                    "type": "answer-selected",
+                    "questionId": "listakapcsolas_nyitott",
+                    "answerId": "A"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "listakapcsolas_nyitott",
+                    "answerId": "B"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "listakapcsolas_nyitott",
+                    "answerId": "D"
+                  }
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "type": "answer-selected",
+                    "questionId": "listakapcsolas_zart",
+                    "answerId": "A"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "listakapcsolas_zart",
+                    "answerId": "C"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "relation",
+            "relationId": "kormanyzokepesseg",
+            "tone": ["good", "calm"]
+          }
+        ]
+      },
+      "failWhen": {
+        "or": [
+          {
+            "or": [
+              {
+                "type": "answer-selected",
+                "questionId": "listakapcsolas_nyitott",
+                "answerId": "C"
+              },
+              {
+                "or": [
+                  {
+                    "type": "answer-selected",
+                    "questionId": "listakapcsolas_zart",
+                    "answerId": "B"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "listakapcsolas_zart",
+                    "answerId": "D"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "relation",
+            "relationId": "kormanyzokepesseg",
+            "tone": ["bad"]
+          }
+        ]
+      },
+      "failEffects": [
+        {
+          "type": "uniform-swing",
+          "params": {
+            "szdp": -2,
+            "petofi": 1,
+            "mszmp": 1
+          }
+        }
+      ]
+    }
+  ],
+  "focusBranches": [
+    {
+      "id": "arc",
+      "title": "Ki a kampány arca?",
+      "focuses": ["jeanne_darc", "part_az_ero"],
+      "availableFromTurn": 1,
+      "requiredBeforeTurn": 1
+    },
+    {
+      "id": "baloldal",
+      "title": "Milyen baloldal?",
+      "focuses": ["joleti_allam", "gyar_a_munkase"],
+      "availableFromTurn": 6,
+      "requiredBeforeTurn": 7
+    },
+    {
+      "id": "szemben",
+      "title": "Kivel szemben?",
+      "focuses": ["harmadik_ero", "igazi_baloldal"],
+      "availableFromTurn": 12,
+      "requiredBeforeTurn": 13
+    },
+    {
+      "id": "hajra",
+      "title": "Kampányhajrá",
+      "focuses": ["elso_asszony", "merlegnyelv"],
+      "availableFromTurn": 19,
+      "requiredBeforeTurn": 21
+    }
+  ],
+  "relationGroups": [
+    {
+      "id": "partok",
+      "title": "Pártok",
+      "icon": "flag-fill"
+    },
+    {
+      "id": "kampany",
+      "title": "Kampány",
+      "icon": "speedometer2"
+    },
+    {
+      "id": "tarsadalom",
+      "title": "Társadalom",
+      "icon": "people-fill"
+    },
+    {
+      "id": "kulfold",
+      "title": "Külföld",
+      "icon": "globe-europe-africa"
+    }
+  ],
+  "relations": [
+    {
+      "id": "nagy_imre",
+      "name": "Nagy Imre",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/nagy_imre_badge.webp",
+      "tone": "calm",
+      "label": "Versenytárs",
+      "description": "A miniszterelnök és kormánytársad, de a munkásszavazókért veled versenyez.",
+      "labels": {
+        "good": "Szövetséges",
+        "calm": "Versenytárs",
+        "tense": "Sértett",
+        "bad": "Ellenség"
+      }
+    },
+    {
+      "id": "kisgazdak",
+      "name": "Kovács Béla",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/kovacs_bela_badge.webp",
+      "tone": "calm",
+      "label": "Tisztel",
+      "description": "A Kisgazdapárt vezetője. 1947-ben egy oldalon álltatok a szalámitaktika ellen.",
+      "labels": {
+        "good": "Szövetséges",
+        "calm": "Tisztel",
+        "tense": "Gyanakszik",
+        "bad": "Elutasító"
+      }
+    },
+    {
+      "id": "bibo",
+      "name": "Bibó István",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/bibo_istvan.webp",
+      "tone": "good",
+      "label": "Rokon lélek",
+      "description": "A Petőfi Párt államminisztere. A jogállam és a harmadik út embere.",
+      "labels": {
+        "good": "Rokon lélek",
+        "calm": "Kivár",
+        "tense": "Gyanakszik",
+        "bad": "Elutasító"
+      }
+    },
+    {
+      "id": "marosan",
+      "name": "Marosán és a fúziósok",
+      "groupId": "partok",
+      "icon": "/images/1957_forradalom-oroksege/marosan_gyorgy_badge.webp",
+      "tone": "calm",
+      "label": "Kivár",
+      "description": "Az 1948-as fúzió régi hívei. Népszerűek a gyárakban, és figyelik, merre viszed a pártot.",
+      "labels": {
+        "good": "Lojális",
+        "calm": "Kivár",
+        "tense": "Sértett",
+        "bad": "Kádárhoz húz"
+      }
+    },
+    {
+      "id": "baloldal",
+      "name": "Baloldali belharc",
+      "groupId": "kampany",
+      "icon": "/images/1957_forradalom-oroksege/baloldali_belharc.webp",
+      "tone": "calm",
+      "label": "Verseny",
+      "description": "Hogyan versenyez a két munkáspárt. Ha elmérgesedik, a kisgazdák nyernek rajta.",
+      "labels": {
+        "good": "Békés verseny",
+        "calm": "Verseny",
+        "tense": "Testvérharc",
+        "bad": "Elmérgesedett"
+      }
+    },
+    {
+      "id": "kormanyzokepesseg",
+      "name": "Kormányzóképesség",
+      "groupId": "kampany",
+      "icon": "/images/1957_forradalom-oroksege/kormanyzokepesseg.webp",
+      "tone": "tense",
+      "label": "Kis párt",
+      "description": "Elhiszik-e a választók, hogy az SZDP kormányozni tud.",
+      "labels": {
+        "good": "Kormányképes",
+        "calm": "Komolyan veszik",
+        "tense": "Kis párt",
+        "bad": "Komolytalan"
+      }
+    },
+    {
+      "id": "munkastanacsok",
+      "name": "Munkástanácsok",
+      "groupId": "tarsadalom",
+      "icon": "/images/1957_forradalom-oroksege/munkastancsok_badge.webp",
+      "tone": "calm",
+      "label": "Reménykednek",
+      "description": "A gyárak munkástanácsai azt figyelik, ki áll ki értük.",
+      "labels": {
+        "good": "Melletted állnak",
+        "calm": "Reménykednek",
+        "tense": "Csalódottak",
+        "bad": "Elfordulnak"
+      }
+    },
+    {
+      "id": "noi_szavazok",
+      "name": "Női szavazók",
+      "groupId": "tarsadalom",
+      "icon": "/images/1957_forradalom-oroksege/noi_szavazok.webp",
+      "tone": "calm",
+      "label": "Kivárnak",
+      "description": "A választók többsége nő. Figyelik, mit kezd egy asszony a politikában.",
+      "labels": {
+        "good": "Melletted állnak",
+        "calm": "Kivárnak",
+        "tense": "Kételkednek",
+        "bad": "Elfordulnak"
+      }
+    },
+    {
+      "id": "corvin",
+      "name": "Corvin köz",
+      "groupId": "tarsadalom",
+      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.webp",
+      "tone": "tense",
+      "label": "Türelmetlen",
+      "description": "Elszámoltatást követelnek a felkelők.",
+      "labels": {
+        "good": "Szövetséges",
+        "calm": "Tisztel",
+        "tense": "Türelmetlen",
+        "bad": "Árulót kiált"
+      }
+    },
+    {
+      "id": "moszkva",
+      "name": "Moszkva",
+      "groupId": "kulfold",
+      "icon": "/images/1957_forradalom-oroksege/moszkva_badge.webp",
+      "tone": "tense",
+      "label": "Gyanakvó",
+      "description": "1954-ben kémként ítéltek el. Moszkva ma is a Labour Party emberét látja benned.",
+      "labels": {
+        "good": "Elfogad",
+        "calm": "Kivár",
+        "tense": "Gyanakvó",
+        "bad": "Ellenséges"
+      }
+    },
+    {
+      "id": "nyugat",
+      "name": "Testvérpártok",
+      "groupId": "kulfold",
+      "icon": "/images/1957_forradalom-oroksege/nyugat.webp",
+      "tone": "good",
+      "label": "Segítenek",
+      "description": "A Szocialista Internacionálé pártjai, az osztrák, a brit és a skandináv szociáldemokraták.",
+      "labels": {
+        "good": "Segítenek",
+        "calm": "Kivárnak",
+        "tense": "Csalódottak",
+        "bad": "Elfordulnak"
+      }
+    }
+  ],
+  "coalition": {
+    "partners": [
+      {
+        "partyId": "petofi",
+        "acceptWhen": {
+          "and": [
+            {
+              "not": {
+                "type": "relation",
+                "relationId": "bibo",
+                "tone": ["bad"]
+              }
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "bibo_tervezete",
+                "answerId": "C"
+              }
+            }
+          ]
+        },
+        "acceptReason": "Bibó István szerint a szociáldemokratákkal a jogállam és a földreform is biztonságban van. Igent mond.",
+        "rejectReason": "Bibó István nem bízik benned, mert az alkotmányt és a jogállamot félretetted. Nemet mond."
+      },
+      {
+        "partyId": "mszmp",
+        "acceptWhen": {
+          "and": [
+            {
+              "type": "event-triggered",
+              "eventId": "kadar_szakadas"
+            },
+            {
+              "not": {
+                "type": "relation",
+                "relationId": "nagy_imre",
+                "tone": ["bad"]
+              }
+            }
+          ]
+        },
+        "acceptReason": "Kádár távozása után Nagy Imre kész egy baloldali kormányra, amelyben nem az MSZMP a vezető erő. Igent mond.",
+        "rejectReason": "Az MSZMP-vel nem lehet kormányozni: vagy Kádár emberei ülnek még benne, vagy Nagy Imre nem bocsátotta meg a kampányt."
+      },
+      {
+        "partyId": "fkgp",
+        "acceptWhen": {
+          "and": [
+            {
+              "type": "relation",
+              "relationId": "kisgazdak",
+              "tone": ["good", "calm"]
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "a_gyar_jovoje",
+                "answerId": "A"
+              }
+            }
+          ]
+        },
+        "acceptReason": "Kovács Béla szerint a föld és a gyár ügyében megértitek egymást. A kisgazdák beszállnak.",
+        "rejectReason": "Kovács Béla szerint a programod a gazdáknak nem ad biztonságot. Nemet mond.",
+        "weight": 2
+      }
+    ]
+  },
+  "epilogues": [
+    {
+      "id": "marosan_kadarnal",
+      "title": "Három munkáspárt",
+      "icon": "scissors",
+      "body": "Kéthly Anna kormányt alakít, de Marosán György és a fúzió régi hívei Kádár pártjából támadják. A gyárakban minden szakszervezeti választás a szociáldemokraták és a kiváltak harca lesz.",
+      "outcomes": ["single-majority", "coalition", "weak-coalition"],
+      "when": {
+        "type": "event-triggered",
+        "eventId": "marosan_atlep"
+      }
+    },
+    {
+      "id": "ket_nagy_szakadt",
+      "title": "A nagyok szétestek",
+      "icon": "lightning-charge-fill",
+      "body": "Az MSZMP és a Kisgazdapárt is kettészakadt, és a szociáldemokraták lettek az ország legnagyobb pártja. A kormányt Kéthly Anna vezeti, a régi nagy pártok maradékai az ellenzékben keresik az utat.",
+      "outcomes": ["single-majority", "coalition"],
+      "when": {
+        "and": [
+          {
+            "type": "event-triggered",
+            "eventId": "kadar_szakadas"
+          },
+          {
+            "type": "event-triggered",
+            "eventId": "szabadsagpart_kivalik"
+          }
+        ]
+      }
+    },
+    {
+      "id": "elso_asszony",
+      "title": "Az első asszony",
+      "icon": "gender-female",
+      "body": "Kéthly Anna Magyarország első női miniszterelnöke. Harmincöt évvel azután, hogy 1922-ben bejutott a parlamentbe, ő vezeti a kormányt, és a világsajtó Budapestre figyel.",
+      "outcomes": ["single-majority", "coalition", "weak-coalition"],
+      "when": {
+        "type": "focus-selected",
+        "focusId": "elso_asszony"
+      }
+    },
+    {
+      "id": "gyanakvo_szomszed",
+      "title": "Gyanakvó szomszéd",
+      "icon": "eye-fill",
+      "body": "Kéthly Anna kormányt alakít, de Moszkva a Labour Party emberét látja benne. A semlegességi szerződés aláírása hónapokig húzódik, és a határ túloldalán hadgyakorlatok kezdődnek.",
+      "outcomes": ["single-majority", "coalition", "weak-coalition"],
+      "when": {
+        "type": "relation",
+        "relationId": "moszkva",
+        "tone": ["bad"]
+      }
+    },
+    {
+      "id": "egyedul",
+      "title": "A munkások pártja kormányoz",
+      "icon": "trophy-fill",
+      "body": "A szociáldemokraták egyedül szereztek többséget. Kéthly Anna miniszterelnök lesz, és most megmutathatja, milyen az a szocializmus, amelyben szabadság is van.",
+      "outcomes": ["single-majority"]
+    },
+    {
+      "id": "szocdem_kormany",
+      "title": "Szociáldemokrata kormány",
+      "icon": "people-fill",
+      "body": "Kéthly Anna kormányt alakít egy partnerrel. A gyárakban megmaradnak a munkástanácsok és a szabad szakszervezetek, az ország semleges marad, és a kormány számíthat a nyugati testvérpártok segítségére.",
+      "outcomes": ["coalition"]
+    },
+    {
+      "id": "tarka_koalicio",
+      "title": "Tarka koalíció",
+      "icon": "puzzle",
+      "body": "Három párt kormányoz együtt. Kéthly Anna miniszterelnök, de minden döntés előtt két partnert kell meggyőznie, és a koalíció már az első télen recseg.",
+      "outcomes": ["weak-coalition"]
+    },
+    {
+      "id": "ellenzekben",
+      "title": "Ellenzékben",
+      "icon": "door-open-fill",
+      "body": "A szociáldemokraták nem kerülnek kormányra. Kéthly Anna az ellenzék padsoraiból vigyáz arra, hogy 1948 ne ismétlődjön meg."
+    }
+  ]
+}

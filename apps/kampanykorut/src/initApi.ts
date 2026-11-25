@@ -1,4 +1,4 @@
-import { createLogger } from "@/shared/logger";
+import { createLogger } from "@shared/logger";
 import { initCampaignDebug } from "./debug/campaignDebug";
 import { initCampaignApi } from "./testing/campaignSeeder";
 

@@ -1,4 +1,4 @@
-import { MayoralDistrictResult } from "@/shared/types";
+import { MayoralDistrictResult } from "@shared/types";
 import {
   formatShare,
   getMayoralDistrictRows,

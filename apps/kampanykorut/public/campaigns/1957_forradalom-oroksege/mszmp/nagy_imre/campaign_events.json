@@ -1,0 +1,2459 @@
+[
+  {
+    "id": "kadar_szakadas",
+    "label": "Kádár kilép az MSZMP-ből",
+    "once": true,
+    "priority": 100,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kadar_ultimatum",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "split-party",
+            "partyId": "kadar_part",
+            "from": {
+              "mszmp": 0.22
+            },
+            "fromByMegye": {
+              "1": {
+                "mszmp": 0.28
+              },
+              "11": {
+                "mszmp": 0.3
+              }
+            }
+          },
+          {
+            "type": "set-relation",
+            "relationId": "kadar",
+            "tone": "bad",
+            "label": "Szakítás",
+            "description": "Kádár János és hívei kiléptek, és saját listát állítottak."
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "party": "mszmp",
+              "shift": 1
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kettészakadt az MSZMP",
+      "body": "Kádár János és a pártapparátus egy része kivált, és Magyar Munkáspárt néven önálló listát állít. Budapesten és Borsodban sok tag követi őket.",
+      "icon": "/images/1957_forradalom-oroksege/kadar_badge.webp",
+      "imageUri": "/images/1957_forradalom-oroksege/mszmp_szakadas.webp",
+      "major": true
+    }
+  },
+  {
+    "id": "kadar_kompromisszum",
+    "label": "Kádár marad",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kadar_ultimatum",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kadar",
+            "steps": 2,
+            "description": "Kádár kezébe került a pártszervezet, de egyelőre hallgat."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kadar_belugy",
+    "label": "Kádár a belügyben",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kadar_ultimatum",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kadar",
+            "steps": 2,
+            "description": "Elfogadta a belügyminiszteri széket, és figyeli az erőviszonyokat."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kadar_ertekezlet",
+    "label": "Pártértekezlet",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kadar_ultimatum",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kadar",
+            "steps": -1,
+            "description": "Nagy Imrét választották, de Kádár hívei nem fogadják el a döntést."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "corvin_birosag",
+    "label": "Bírósági út",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "igazsagtetel",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 2,
+            "description": "A felkelők kivárnak, de nem mondanak le az elszámoltatásról."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "igazsagtetel",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -3,
+            "description": "A Corvin köz árulásnak tartja a megbékélést."
+          },
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "party": "mszmp",
+              "shift": -1
+            }
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "igazsagtetel",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 3,
+            "description": "Pongrátz Gergely kiáll melletted."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "igazsagtetel",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -1,
+            "description": "A felkelők részt vesznek a bizottság munkájában, és várják az ítéleteket."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nemzetorseg_valasz",
+    "label": "A Nemzetőrség sorsa",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "nemzetorseg",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 2,
+            "description": "A Nemzetőrség a honvédség része lett, a felkelők megnyugodtak."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "nemzetorseg",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -3,
+            "description": "Moszkva szerint fegyveres felkelőket tűrsz meg."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "corvin_hangok_valasz",
+    "label": "A Corvin köz parancsnokai",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "corvin_hangok",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 3,
+            "description": "Pongrátz Gergely a listádon indul."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "corvin_hangok",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -1,
+            "description": "Iván Kovács László melletted áll, Pongrátz köre sértett."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "corvin_hangok",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -3,
+            "description": "A felkelők szerint elfordultál tőlük."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "corvin_hangok",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -1,
+            "description": "A tanács neve jól hangzik, de a parancsnokok valódi beleszólást követelnek."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "szerelvenyek_valasz",
+    "label": "A kivonulás menetrendje",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szerelvenyek",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 3,
+            "description": "A lassabb kivonulás megnyugtatta a Kremlt."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -2,
+            "description": "Washington szerint engedtél Moszkvának."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szerelvenyek",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -3,
+            "description": "A Kreml nem szereti, ha határidőt szabnak neki."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szerelvenyek",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 3,
+            "description": "Az ENSZ-megfigyelők meghívását Washingtonban jó néven vették."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva nemzetközi ügyet lát a kivonulásban."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szerelvenyek",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 2,
+            "description": "Moszkva értékeli a csendes diplomáciát."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hideg_tel_valasz",
+    "label": "A szénhiány",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "hideg_tel",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 3,
+            "description": "A bányászok szerint szóba álltál velük."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "hideg_tel",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -3,
+            "description": "A katonai szénszállítás miatt a munkástanácsok sztrájkot helyeznek kilátásba."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "hideg_tel",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 3,
+            "description": "Bécs szénsegélyt küldött."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva szerint az első bajban nyugatra telefonáltál."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "hideg_tel",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -2,
+            "description": "A szénjegy a tanácsok szerint nem válasz a bányászok követeléseire."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "apparatus_valasz",
+    "label": "A régi apparátus",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "regi_apparatus",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kadar",
+            "steps": 2,
+            "description": "Az apparátus a helyén maradt."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "regi_apparatus",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kadar",
+            "steps": -3,
+            "description": "Az elbocsátott funkcionáriusok Kádár körül gyűlnek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "regi_apparatus",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kadar",
+            "steps": -1,
+            "description": "A régi káderek a minisztériumokban is Kádárra hallgatnak."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kethly_valasz",
+    "label": "Kéthly válasza",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kethly_feltetelei",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kethly",
+            "steps": 3,
+            "description": "Kéthly Anna elfogadta a garanciákat."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kethly_feltetelei",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kethly",
+            "steps": -2,
+            "description": "Kéthly szerint a halogatás rossz jel."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kethly_feltetelei",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kethly",
+            "steps": -3,
+            "description": "Kéthly az 1948-as kényszeregyesítést látja benne."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kethly_feltetelei",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kethly",
+            "steps": 1,
+            "description": "Kéthly elfogadta a posztot, de a garanciákat továbbra is várja."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "szakszervezetek_valasz",
+    "label": "A SZOT sorsa",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "answer-selected",
+              "questionId": "szakszervezetek",
+              "answerId": "A"
+            },
+            {
+              "not": {
+                "type": "relation",
+                "relationId": "kethly",
+                "tone": ["bad"]
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kethly",
+            "steps": 3,
+            "description": "Kéthly a saját programját hallja vissza tőled."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szakszervezetek",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kethly",
+            "steps": -2,
+            "description": "Kéthly értékeli a független szakszervezeteket, de még nem bízik benned."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szakszervezetek",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -2,
+            "description": "A tanácsok a régi SZOT-ot látják új vezetőkkel."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szakszervezetek",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 3,
+            "description": "A tanácsok lettek a munkások érdekképviselete."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kethly",
+            "steps": -2,
+            "description": "Kéthly szerint a tanácsok nem pótolják a szakszervezetet."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mult_felelosei_valasz",
+    "label": "Gerő és Hegedüs",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "mult_felelosei",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 3,
+            "description": "Gerő és Hegedüs bíróság elé állnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kadar",
+            "steps": -3,
+            "description": "A régi gárda szerint a perek nem állnak meg Gerőnél."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "mult_felelosei",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -3,
+            "description": "A felkelők szerint fedezed a felelősöket."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "mult_felelosei",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva nem szívesen ad ki senkit."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ket_munkaspart_valasz",
+    "label": "A pártvagyon",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ket_munkaspart",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kadar",
+            "steps": 2,
+            "description": "A vagyonmegosztás után Kádár hajlik az együttműködésre."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ket_munkaspart",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kadar",
+            "steps": -3,
+            "description": "Kádár puccsnak nevezi az üzemi szavazásokat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 3,
+            "description": "A gyári tagság szavazott, és többnyire melletted."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ket_munkaspart",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kadar",
+            "steps": 2,
+            "description": "Kádár vállalta, hogy a kampányban nem támadjátok egymást."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "egyetemistak_valasz",
+    "label": "A MEFESZ",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "egyetemistak",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "A kötelező orosz eltörlése nem tetszett a nagykövetségnek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "egyetemistak",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 3,
+            "description": "A diákőrség a forradalom folytatása."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -3,
+            "description": "Moszkva szerint fegyvert adtál a diákok kezébe."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kie_a_gyar_valasz",
+    "label": "A gyárak irányítása",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kie_a_gyar",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 3,
+            "description": "A tanácsok választják az igazgatókat."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kie_a_gyar",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -2,
+            "description": "A tanácsadó szerepet kevésnek tartják."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kie_a_gyar",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": -3,
+            "description": "A tanácsok szerint visszatért a tervhivatal."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kie_a_gyar",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "munkastanacsok",
+            "steps": 1,
+            "description": "A tanácsok Csepelt figyelik."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kik_szavazhatnak_valasz",
+    "label": "A választójog",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kik_szavazhatnak",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 3,
+            "description": "A széles választójogot Nyugaton is elismerik."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "kik_szavazhatnak",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 3,
+            "description": "A volt ÁVH-sok nem szavazhatnak."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -2,
+            "description": "A nyugati jogászok kollektív büntetést látnak benne."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "szen_vagy_dollar_valasz",
+    "label": "A kereskedelmi döntés",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szen_vagy_dollar",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 3,
+            "description": "A szovjet szerződés biztos piacot ad."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -2,
+            "description": "Washington szerint a semlegesség csak papíron létezik."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szen_vagy_dollar",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 3,
+            "description": "A nyugati hitel megérkezett."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -3,
+            "description": "Moszkva szerint dollárért adtad el a semlegességet."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szen_vagy_dollar",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 2,
+            "description": "Moszkva elfogadja a kisebb szerződést."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "Washington elfogadja a kisebb hitelt."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "szen_vagy_dollar",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 2,
+            "description": "Moszkva szerint a tél majd jobb belátásra bír."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "Washington szerint a tél majd jobb belátásra bír."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "radio_valasz",
+    "label": "A sajtótörvény",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "radio_szabadsaga",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 3,
+            "description": "A Szabad Európa Rádió irodát nyitott Budapesten."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva propagandát lát a pesti stúdióban."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kethly_elutasitja",
+    "label": "Kéthly visszautasítja a listakapcsolást",
+    "once": true,
+    "priority": 10,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "listakapcsolas",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "listakapcsolas",
+                  "answerId": "D"
+                }
+              ]
+            },
+            {
+              "type": "relation",
+              "relationId": "kethly",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.4,
+              "szdp": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kéthly nemet mondott",
+      "body": "Az SZDP elnöke nyilvánosan visszautasította a listakapcsolást. Szerinte az MSZMP-nek nem lehet hinni, amíg a múltját nem tisztázza.",
+      "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.webp",
+      "icon": "x-circle-fill"
+    }
+  },
+  {
+    "id": "listakapcsolas_valasz",
+    "label": "Listakapcsolás",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "listakapcsolas",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "listakapcsolas",
+                  "answerId": "D"
+                }
+              ]
+            },
+            {
+              "not": {
+                "type": "relation",
+                "relationId": "kethly",
+                "tone": ["bad"]
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kethly",
+            "steps": 3,
+            "description": "Az SZDP és az MSZMP összekapcsolta a listáját."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "listakapcsolas",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kethly",
+            "steps": -2,
+            "description": "Az SZDP ellenfélként tekint rád a kampányban."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "koztarsasag_ter_valasz",
+    "label": "A Köztársaság téri lövések",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "koztarsasag_ter",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": -3,
+            "description": "A rendkívüli állapot a felkelők szerint Gerő módszere."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 2,
+            "description": "Moszkva rendet lát Budapesten."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "koztarsasag_ter",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 2,
+            "description": "A felkelők elfogadták a nyugalomra intést."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "koztarsasag_ter",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "corvin",
+            "steps": 3,
+            "description": "A Nemzetőrség őrzi a pártházakat."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva fegyveres felkelőket lát a pártházak előtt."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "osztrak_ut_valasz",
+    "label": "A semlegesség garanciája",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "osztrak_ut",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 3,
+            "description": "Washington kiáll az ENSZ-garancia mellett."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva szerint az ENSZ-ben a Nyugat szavaz többségben."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "osztrak_ut",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 2,
+            "description": "Moszkva kész egy osztrák mintájú szerződésre."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "A nyugati hatalmak készek a négyhatalmi szerződésre."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "osztrak_ut",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 3,
+            "description": "A kétoldalú megállapodás Moszkvában született."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -3,
+            "description": "A Nyugat szerint a semlegességet Moszkvában írták alá."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "osztrak_ut",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva Tito útját látja benne."
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": 1,
+            "description": "Washington kíváncsian figyeli a jugoszláv mintát."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "moszkva_valasz",
+    "label": "Moszkva",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "zaro_nagygyules",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": -1,
+            "description": "Moszkva nyugati sodródástól tart."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "zaro_nagygyules",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "moszkva",
+            "steps": 3,
+            "description": "A kereskedelmi szerződés megnyugtatta a Kremlt."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "corvin_fegyveres_tuntetes",
+    "label": "A Corvin köz fegyveres tüntetése",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 5
+            },
+            {
+              "type": "relation",
+              "relationId": "corvin",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.6,
+              "fkgp": 0.3,
+              "dnp": 0.3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Fegyveres tüntetés a Parlament előtt",
+      "body": "A Corvin köz felkelői fegyverrel vonultak a Kossuth térre, és a kormány lemondását követelték. Vidéken sokan megijedtek, a rend pártjai erősödnek.",
+      "imageUri": "/images/1957_forradalom-oroksege/parlament_tuntetes.webp",
+      "icon": "/images/1957_forradalom-oroksege/parlament_tuntete_badge.webp",
+      "major": true
+    }
+  },
+  {
+    "id": "corvin_kiallas",
+    "label": "A Corvin köz kiáll",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 6
+            },
+            {
+              "type": "relation",
+              "relationId": "corvin",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "A Corvin köz Nagy Imre mellett",
+      "body": "A Corvin köz parancsnokai az MSZMP nagygyűlésén álltak a pódiumra. A pesti fiatalok tömegesen jelentkeznek kampányolni.",
+      "imageUri": "/images/1957_forradalom-oroksege/corvin_kiallas.webp",
+      "icon": "/images/1957_forradalom-oroksege/corvin_koz_badge.webp"
+    }
+  },
+  {
+    "id": "altalanos_sztrajk",
+    "label": "Általános sztrájk",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 8
+            },
+            {
+              "type": "relation",
+              "relationId": "munkastanacsok",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.7,
+              "szdp": 0.4,
+              "fkgp": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Általános sztrájk",
+      "body": "Budapesten és Borsodban leálltak a gyárak. A munkástanácsok szerint a kormány elárulta a forradalmat.",
+      "imageUri": "/images/1957_forradalom-oroksege/sztrajk.webp",
+      "icon": "slash-circle-fill",
+      "major": true
+    }
+  },
+  {
+    "id": "moszkva_nyomas",
+    "label": "Moszkva gazdasági nyomása",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 10
+            },
+            {
+              "type": "relation",
+              "relationId": "moszkva",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.6,
+              "fkgp": 0.2,
+              "szdp": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Leállt a szovjet szénszállítás",
+      "body": "Moszkva műszaki okokra hivatkozva felfüggesztette a szén- és gabonaszállítást. A gyárakban rövidített műszak van, a boltok előtt sorok állnak.",
+      "icon": "snow",
+      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.webp",
+      "major": true
+    }
+  },
+  {
+    "id": "kethly_nagygyules",
+    "label": "Közös nagygyűlés Kéthlyvel",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 11
+            },
+            {
+              "type": "relation",
+              "relationId": "kethly",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "szdp": 0.3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Közös nagygyűlés Csepelen",
+      "body": "Nagy Imre és Kéthly Anna egy emelvényen beszélt a csepeli munkásoknak. A két munkáspárt szavazói közelebb kerültek egymáshoz.",
+      "icon": "/images/1957_forradalom-oroksege/szovetseg_badge.webp"
+    }
+  },
+  {
+    "id": "szdp_kampany",
+    "label": "Az SZDP ellened kampányol",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 11
+            },
+            {
+              "type": "relation",
+              "relationId": "kethly",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.5,
+              "szdp": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Az SZDP ellened kampányol",
+      "body": "Kéthly Anna a munkáskerületekben 1948-ra emlékeztet: aki egyszer beolvasztotta a szociáldemokratákat, megteszi újra.",
+      "imageUri": "/images/1957_forradalom-oroksege/kethly_anna_event.webp",
+      "icon": "megaphone-fill"
+    }
+  },
+  {
+    "id": "kadar_fekez",
+    "label": "A pártszervezet fékez",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 12
+            },
+            {
+              "or": [
+                {
+                  "type": "event-triggered",
+                  "eventId": "kadar_kompromisszum"
+                },
+                {
+                  "type": "event-triggered",
+                  "eventId": "kadar_belugy"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "issue-stance",
+            "params": {
+              "issueId": "forradalom",
+              "party": "mszmp",
+              "shift": -1
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "A pártszervezet fékez",
+      "body": "Kádár emberei a megyei bizottságokban halogatják a reformokat. A választók szerint az MSZMP a régi úton jár.",
+      "imageUri": "/images/1957_forradalom-oroksege/kadar_event.webp",
+      "icon": "hourglass-split"
+    }
+  },
+  {
+    "id": "moszkva_szerzodes",
+    "label": "Kedvező szovjet ajánlat",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 14
+            },
+            {
+              "type": "relation",
+              "relationId": "moszkva",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.4
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -2,
+            "description": "Washington szerint túl közel kerültél Moszkvához."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kedvező szovjet ajánlat",
+      "body": "Moszkva olcsó szenet és biztos piacot ígér. Washingtonban viszont azt kérdezik, mennyire semleges a semleges Magyarország.",
+      "imageUri": "/images/1957_forradalom-oroksege/moszkva_nyomas.webp",
+      "icon": "star-fill"
+    }
+  },
+  {
+    "id": "nyugati_hitel",
+    "label": "Nyugati hitel",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 15
+            },
+            {
+              "type": "relation",
+              "relationId": "nyugat",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Nyugati hitel érkezik",
+      "body": "Bécsi és washingtoni bankok hitelt nyújtanak gépekre és vetőmagra. A gyárakban és a falvakban is jó hírként fogadják.",
+      "imageUri": "/images/1957_forradalom-oroksege/nyugati_hitel.webp",
+      "icon": "/images/1957_forradalom-oroksege/nyugat.webp"
+    }
+  },
+  {
+    "id": "nyugati_elszigeteltseg",
+    "label": "Elszigetelődés",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 18
+            },
+            {
+              "type": "relation",
+              "relationId": "nyugat",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.4,
+              "fkgp": 0.2,
+              "dnp": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Elszigetelődés",
+      "body": "A nyugati követségek hűvösen fogadják a kormány küldötteit. Az emigráns rádiók szerint Nagy Imre Moszkva embere lett.",
+      "imageUri": "/images/1957_forradalom-oroksege/nyugati_elszigeteltseg.webp",
+      "icon": "globe-americas"
+    }
+  },
+  {
+    "id": "fkgp_kilepes",
+    "label": "A kisgazdák kilépnek a kormányból",
+    "once": true,
+    "priority": 50,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 14
+            },
+            {
+              "or": [
+                {
+                  "type": "answer-selected",
+                  "questionId": "fold_es_beszolgaltatas",
+                  "answerId": "A"
+                },
+                {
+                  "type": "answer-selected",
+                  "questionId": "fold_es_beszolgaltatas",
+                  "answerId": "B"
+                }
+              ]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.3,
+              "fkgp": 0.3
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": -2,
+            "description": "A kisgazdák kiléptek a kormányból, de Tildy Zoltán jó szóval búcsúzott."
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 12
+            },
+            {
+              "not": {
+                "or": [
+                  {
+                    "type": "answer-selected",
+                    "questionId": "biboros_szava",
+                    "answerId": "A"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "biboros_szava",
+                    "answerId": "B"
+                  },
+                  {
+                    "type": "answer-selected",
+                    "questionId": "biboros_szava",
+                    "answerId": "D"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.5,
+              "fkgp": 0.5
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": -2,
+            "description": "Kovács Béla szerint a kormány a kommunisták kezében maradt."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "turn",
+          "min": 14
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.5,
+              "fkgp": 0.5
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": -2,
+            "description": "Kovács Béla szerint a kormány a kommunisták kezében maradt."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kiléptek a kisgazdák a kormányból",
+      "body": "Tildy Zoltán és a kisgazda miniszterek lemondtak: a választásig önálló pártként akarnak kampányolni. Az ideiglenes nemzeti kormány meggyengült.",
+      "imageUri": "/images/1957_forradalom-oroksege/fkgp_kilepes.webp",
+      "icon": "/images/1957_forradalom-oroksege/fkgp_badge.webp",
+      "major": true
+    }
+  },
+  {
+    "id": "ellenfel_valasz",
+    "label": "A kisgazdákról",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ellenfel_nem_ellenseg",
+          "answerId": "A"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": 2,
+            "description": "Tildy Zoltán meghatódott a szavaidon."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ellenfel_nem_ellenseg",
+          "answerId": "B"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": -3,
+            "description": "Kovács Béla szerint 1947 hangján beszélsz."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ellenfel_nem_ellenseg",
+          "answerId": "C"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": -2,
+            "description": "A kisgazdák vitáznak veled, de tisztelnek."
+          }
+        ]
+      },
+      {
+        "if": {
+          "type": "answer-selected",
+          "questionId": "ellenfel_nem_ellenseg",
+          "answerId": "D"
+        },
+        "effects": [
+          {
+            "type": "shift-relation",
+            "relationId": "kisgazdak",
+            "steps": -3,
+            "description": "Kovács Béla pártszakítást lát a maradó miniszterekben."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "puha_kommunistak",
+    "label": "Túl barátságos a kisgazdákkal",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 17
+            },
+            {
+              "type": "relation",
+              "relationId": "kisgazdak",
+              "tone": ["good"]
+            },
+            {
+              "type": "event-triggered",
+              "eventId": "fkgp_kilepes"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.4,
+              "szdp": 0.2,
+              "fkgp": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Kinek a pártja az MSZMP?",
+      "body": "A baloldali lapok szerint Nagy Imre a kisgazdák kegyét keresi. A munkásszavazók egy része elbizonytalanodott, mások egyenesen a kisgazdákra szavaznának.",
+      "imageUri": "/images/1957_forradalom-oroksege/fkgp_kilepes.webp",
+      "icon": "question-circle-fill"
+    }
+  },
+  {
+    "id": "visszauto_tamadas",
+    "label": "Visszaüt a kisgazdák elleni kampány",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 17
+            },
+            {
+              "type": "relation",
+              "relationId": "kisgazdak",
+              "tone": ["bad"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.5,
+              "fkgp": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Visszaütött a támadás",
+      "body": "A vidéki gyűléseken 1947-et emlegetik, amikor Kovács Bélát elhurcolták. A kisgazdák népszerűbbek, mint valaha.",
+      "imageUri": "/images/1957_forradalom-oroksege/visszauto_tamadas.webp",
+      "icon": "arrow-return-left"
+    }
+  },
+  {
+    "id": "pongratz_kilep",
+    "label": "Pongrátz kilép az MSZMP listájáról",
+    "once": true,
+    "priority": 20,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "issue-position",
+              "issueId": "kelet_nyugat",
+              "min": 2
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "corvin_hangok",
+              "answerId": "A"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.7,
+              "petofi": 0.2,
+              "fkgp": 0.2
+            }
+          },
+          {
+            "type": "set-relation",
+            "relationId": "corvin",
+            "tone": "bad",
+            "label": "Tankok helyett bankok",
+            "description": "Pongrátz Gergely kilépett a listádról."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Tankok helyett bankok",
+      "body": "Pongrátz Gergely kilépett az MSZMP listájáról. Szerinte Nagy Imre a szovjet tankokat nyugati bankokra cserélte: „Nem ezért harcoltunk.”",
+      "imageUri": "/images/1957_forradalom-oroksege/tankok_helyett_bankok.webp",
+      "icon": "/images/1957_forradalom-oroksege/tankok_helyett_bankok_badge.webp",
+      "major": true
+    }
+  },
+  {
+    "id": "tankok_helyett_bankok",
+    "label": "A Corvin köz a nyugati fordulat ellen",
+    "once": true,
+    "priority": 20,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "issue-position",
+              "issueId": "kelet_nyugat",
+              "min": 2
+            },
+            {
+              "not": {
+                "type": "answer-selected",
+                "questionId": "corvin_hangok",
+                "answerId": "A"
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.4,
+              "petofi": 0.2
+            }
+          },
+          {
+            "type": "set-relation",
+            "relationId": "corvin",
+            "tone": "bad",
+            "label": "Tankok helyett bankok",
+            "description": "A felkelők szerint a kormány eladta a forradalmat a Nyugatnak."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Tankok helyett bankok",
+      "body": "A Corvin köz felkelői szerint Nagy Imre a szovjet tankokat nyugati bankokra cserélte. „Nem ezért harcoltunk” – mondják.",
+      "imageUri": "/images/1957_forradalom-oroksege/tankok_helyett_bankok.webp",
+      "icon": "/images/1957_forradalom-oroksege/tankok_helyett_bankok_badge.webp"
+    }
+  },
+  {
+    "id": "moszkva_arnyeka",
+    "label": "Moszkva felé tolódás",
+    "once": true,
+    "priority": -10,
+    "conditions": [
+      {
+        "if": {
+          "type": "issue-position",
+          "issueId": "kelet_nyugat",
+          "max": -2
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": -0.4,
+              "fkgp": 0.3,
+              "dnp": 0.2
+            }
+          },
+          {
+            "type": "shift-relation",
+            "relationId": "nyugat",
+            "steps": -3,
+            "description": "A nyugati lapok szerint visszatértél Moszkva pórázára."
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Moszkva árnyékában",
+      "body": "A nyugati lapok szerint Nagy Imre visszatért Moszkva pórázára. A polgári szavazók a kisgazdák felé fordulnak.",
+      "imageUri": "/images/1957_forradalom-oroksege/nyugati_elszigeteltseg.webp",
+      "icon": "star-fill"
+    }
+  },
+  {
+    "id": "semleges_hid_siker",
+    "label": "Híd Kelet és Nyugat között",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 18
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "semleges_hid"
+            },
+            {
+              "type": "relation",
+              "relationId": "moszkva",
+              "tone": ["good", "calm"]
+            },
+            {
+              "type": "relation",
+              "relationId": "nyugat",
+              "tone": ["good", "calm"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.6
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Híd Kelet és Nyugat között",
+      "body": "Bécsben és Moszkvában is elismerően beszélnek a magyar semlegességről. A kormány nemzetközi tekintélye nő.",
+      "imageUri": "/images/1957_forradalom-oroksege/semleges_hid_siker.webp",
+      "icon": "/images/1957_forradalom-oroksege/semleges_hid.webp"
+    }
+  },
+  {
+    "id": "nyitas_nyugat_siker",
+    "label": "Nyugati mintára",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 18
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "nyitas_nyugat"
+            },
+            {
+              "type": "relation",
+              "relationId": "nyugat",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.5,
+              "fkgp": -0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Nyugati mintára",
+      "body": "Osztrák és svéd szakértők érkeznek a gazdasági reformhoz. A városi középosztály lelkesen fogadja őket.",
+      "icon": "compass-fill"
+    }
+  },
+  {
+    "id": "nemzeti_egyseg_kampany",
+    "label": "Nemzeti egység",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "nemzeti_egyseg"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.3,
+              "szdp": 0.2,
+              "petofi": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Nemzeti egység",
+      "body": "Nagy Imre a forradalom pártjainak közös kormányát ígéri. A bizonytalan szavazók szerint így nem lesz újra egypártrendszer.",
+      "imageUri": "/images/1957_forradalom-oroksege/nemzeti_egyseg_kampany.webp",
+      "icon": "/images/1957_forradalom-oroksege/nemzeti_egyseg_icon.webp"
+    }
+  },
+  {
+    "id": "sajat_tobbseg_mozgositas",
+    "label": "Mozgósítás",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "sajat_tobbseg"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 0.7,
+              "szdp": -0.2,
+              "petofi": -0.2
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Az MSZMP mozgósít",
+      "body": "A párt minden üzemben és faluban kampánygyűlést tart. A cél az önálló többség, partnerek nélkül.",
+      "image": "/images/1957_forradalom-oroksege/nepszava_ertekezlet.webp",
+      "icon": "megaphone-fill"
+    }
+  },
+  {
+    "id": "egy_zaszlo_siker",
+    "label": "Egy zászló alatt",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 16
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "munkasokol_vasokol"
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "szakszervezetek",
+              "answerId": "C"
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "kie_a_gyar",
+              "answerId": "A"
+            },
+            {
+              "not": {
+                "type": "event-triggered",
+                "eventId": "kadar_szakadas"
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 7,
+              "szdp": -6
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Egy zászló alatt",
+      "body": "A munkástanácsok és az üzemi szervezetek az MSZMP mellé álltak. A szociáldemokrata törzsszavazók tömegesen lépnek át, Kéthly pártja a gyárakban elveszíti a hátországát.",
+      "icon": "/images/1957_forradalom-oroksege/munkasokol_badge.webp",
+      "major": true
+    }
+  },
+  {
+    "id": "munkasok_egyedul",
+    "label": "A munkások pártja egyedül",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "sajat_tobbseg"
+            },
+            {
+              "type": "event-triggered",
+              "eventId": "egy_zaszlo_siker"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 5,
+              "szdp": -3
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "A munkások pártja egyedül",
+      "body": "Az egységes MSZMP partnerek nélkül kér felhatalmazást. Az üzemekből indított kampány a szociáldemokrata szavazók maradékát is megmozgatja.",
+      "icon": "megaphone-fill"
+    }
+  },
+  {
+    "id": "bibo_listaja",
+    "label": "Közös lista Bibóval",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "bibo_utja"
+            },
+            {
+              "type": "answer-selected",
+              "questionId": "listakapcsolas",
+              "answerId": "B"
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 1,
+              "petofi": 2,
+              "szdp": -1
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Közös lista Bibóval",
+      "body": "Nagy Imre és Bibó István közös nagygyűlésen mutatja be a jogállami programot. A városi értelmiség és a fiatalok a két párt közös listája mögé állnak.",
+      "icon": "/images/1957_forradalom-oroksege/bibo_istvan.webp"
+    }
+  },
+  {
+    "id": "baloldali_kormanyprogram",
+    "label": "Közös kormányprogram",
+    "once": true,
+    "conditions": [
+      {
+        "if": {
+          "and": [
+            {
+              "type": "turn",
+              "min": 22
+            },
+            {
+              "type": "focus-selected",
+              "focusId": "baloldali_kormany"
+            },
+            {
+              "type": "relation",
+              "relationId": "kethly",
+              "tone": ["good"]
+            }
+          ]
+        },
+        "effects": [
+          {
+            "type": "uniform-swing",
+            "params": {
+              "mszmp": 1,
+              "szdp": 1
+            }
+          }
+        ]
+      }
+    ],
+    "announcement": {
+      "title": "Közös kormányprogram",
+      "body": "Nagy Imre és Kéthly Anna aláírta a két munkáspárt közös kormányprogramját. A szakszervezetek és a munkástanácsok egyaránt támogatják.",
+      "icon": "/images/1957_forradalom-oroksege/kethly_badge.webp"
+    }
+  }
+]

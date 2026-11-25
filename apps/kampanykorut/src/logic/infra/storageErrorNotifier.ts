@@ -1,8 +1,8 @@
+import i18n from "@logic/i18n/i18n";
+import { createLogger } from "@shared/logger";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
 import { container } from "tsyringe";
-import { createLogger } from "@/shared/logger";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { toaster } from "../../components/ui/gameplay/toaster";
-import i18n from "../i18n/i18n";
 
 const log = createLogger("storageErrorNotifier");
 

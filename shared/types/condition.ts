@@ -1,4 +1,5 @@
 import { CandidateStatus } from "./campaign";
+import type { RelationTone } from "./political";
 
 export type ComparisonOperator = "<" | "<=" | ">" | ">=";
 
@@ -48,6 +49,30 @@ export type EventTriggeredCondition = {
   eventId: string;
 };
 
+export type FocusSelectedCondition = {
+  type: "focus-selected";
+  focusId: string;
+};
+
+export type RelationCondition = {
+  type: "relation";
+  relationId: string;
+  tone: RelationTone[];
+};
+
+export type IssuePositionCondition = {
+  type: "issue-position";
+  issueId: string;
+  party?: string;
+  min?: number;
+  max?: number;
+};
+
+export type CoalitionPartnerCondition = {
+  type: "coalition-partner";
+  partyId: string;
+};
+
 export type LeafCondition =
   | TurnCondition
   | CandidateSupportCondition
@@ -55,7 +80,11 @@ export type LeafCondition =
   | AnswerSelectedCondition
   | CandidateStatusCondition
   | PlayerCandidateCondition
-  | EventTriggeredCondition;
+  | EventTriggeredCondition
+  | FocusSelectedCondition
+  | RelationCondition
+  | CoalitionPartnerCondition
+  | IssuePositionCondition;
 
 export type Condition =
   | AndCondition
@@ -71,4 +100,8 @@ export interface ConditionContext {
   getCandidateStatus(candidateId: string): CandidateStatus;
   playerCandidateId?: string;
   triggeredEventIds: string[];
+  selectedFocusIds?: string[];
+  getRelationTone?(relationId: string): RelationTone | undefined;
+  getIssuePosition?(issueId: string, party?: string): number | undefined;
+  coalitionPartnerIds?: string[];
 }

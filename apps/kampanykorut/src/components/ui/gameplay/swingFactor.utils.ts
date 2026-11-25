@@ -1,5 +1,5 @@
+import { CandidateListData, District } from "@shared/types";
 import { t } from "i18next";
-import { CandidateListData, District } from "@/shared/types";
 import { SwingFactorId } from "../../../types/utils";
 import {
   getWinnerResultByCandidateList,

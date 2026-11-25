@@ -1,12 +1,12 @@
-import { container } from "tsyringe";
-import { beforeEach, describe, expect, it } from "vitest";
 import {
   ConditionalRawEffect,
   DistrictTarget,
   EffectType,
   HistoryItem,
   RawEffect,
-} from "../types";
+} from "@shared/types";
+import { container } from "tsyringe";
+import { beforeEach, describe, expect, it } from "vitest";
 import { EffectApplier } from "./EffectApplier";
 import { mockCandidateListData } from "./mocks/mockListData";
 

@@ -1,12 +1,14 @@
-import { container } from "tsyringe";
-import { createLogger } from "@/shared/logger";
+import { createLogger } from "@shared/logger";
 import {
   CampaignConfig,
   CampaignManifest,
   CandidateConfig,
   CandidateManifest,
+  Issue,
   PlayableSideConfig,
-} from "@/shared/types";
+  ProportionalRegion,
+} from "@shared/types";
+import { container } from "tsyringe";
 import { ConfigEngine } from "./ConfigEngine";
 import { fetchCampaignFile } from "./fetchJSON";
 import { getCampaignHeaderById } from "./getCampaignHeaderById";
@@ -51,6 +53,8 @@ async function loadCandidateConfig(
     advisorFeedback,
     advisorFeedbackAssets,
     endResults,
+    politicalConfig,
+    campaignEvents,
   ] = await Promise.all([
     paths.questions
       ? fetchCampaignFile<CandidateConfig["questions"]>(route, paths.questions)
@@ -85,6 +89,18 @@ async function loadCandidateConfig(
           paths.endResults,
         )
       : Promise.resolve(undefined),
+    paths.politicalConfig
+      ? fetchCampaignFile<CandidateConfig["politicalConfig"]>(
+          route,
+          paths.politicalConfig,
+        )
+      : Promise.resolve(undefined),
+    paths.campaignEvents
+      ? fetchCampaignFile<CandidateConfig["campaignEvents"]>(
+          route,
+          paths.campaignEvents,
+        )
+      : Promise.resolve(undefined),
   ]);
 
   return {
@@ -94,6 +110,8 @@ async function loadCandidateConfig(
     advisorFeedback,
     advisorFeedbackAssets,
     endResults,
+    politicalConfig,
+    campaignEvents,
   };
 }
 
@@ -132,6 +150,8 @@ async function fetchCampaignConfig(
     "customGroups",
     "customPollsters",
     "campaignEvents",
+    "politicalConfig",
+    "newspaper",
   ] as const;
 
   const commonEntries = await Promise.all(
@@ -156,6 +176,22 @@ async function fetchCampaignConfig(
     voterEnvironmentConfig: CampaignConfig["voterEnvironmentConfig"];
     candidateListData: CampaignConfig["candidateListData"];
   };
+
+  if (
+    files.regions &&
+    commonData.electionConfig.election?.type === "proportional"
+  ) {
+    commonData.electionConfig.election.regions = await fetchCampaignFile<
+      ProportionalRegion[]
+    >(header.route, files.regions);
+  }
+
+  if (files.issues) {
+    commonData.electionConfig.issues = await fetchCampaignFile<Issue[]>(
+      header.route,
+      files.issues,
+    );
+  }
 
   const districts = await container
     .resolve(ConfigEngine)

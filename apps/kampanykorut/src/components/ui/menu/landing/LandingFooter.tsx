@@ -1,7 +1,7 @@
+import { PRIVACY_PATH } from "@logic/application/privacyPath";
+import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
 import { Link } from "react-router-dom";
-import { Text } from "../../../../../../../shared/ui/Text";
-import { PRIVACY_PATH } from "../../../../logic/application/privacyPath";
 
 export function LandingFooter() {
   return (

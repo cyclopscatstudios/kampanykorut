@@ -1,7 +1,7 @@
+import { Button } from "@shared/ui/Button";
+import { Text } from "@shared/ui/Text";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../../../../../shared/ui/Button";
-import { Text } from "../../../../../shared/ui/Text";
 
 type Option<T> = {
   label: string;
@@ -82,13 +82,17 @@ export function Dropdown<T>({
             )}
       </Button>
       {open && (
-        <div className="absolute z-10 mt-1 w-full border rounded-md bg-white shadow-lg max-h-60 overflow-auto">
+        <div
+          data-dropdown-list
+          className="absolute z-10 mt-1 w-full border rounded-md bg-white shadow-lg max-h-60 overflow-auto"
+        >
           {options.map((option, key) => {
             const isSelected = option.value === selected?.value;
 
             return (
               <div
                 data-testid={option.value}
+                data-selected={isSelected || undefined}
                 key={key}
                 onClick={() => handleSelect(option.value)}
                 className={classNames(

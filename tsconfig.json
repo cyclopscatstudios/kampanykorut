@@ -18,8 +18,7 @@
     "noUncheckedSideEffectImports": true,
     "jsx": "react-jsx",
     "paths": {
-      "@/shared/types": ["./shared/types"],
-      "@/shared/types/*": ["./shared/types/*"]
+      "@shared/*": ["./shared/*"]
     }
   },
   "include": [

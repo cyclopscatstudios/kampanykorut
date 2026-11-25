@@ -170,6 +170,8 @@ export function Button(props: ButtonProps) {
         {...nativeProps}
         type={type}
         data-testid={testId}
+        data-variant={variant}
+        data-selected={selected || undefined}
         onClick={disabled ? undefined : onClick}
         disabled={disabled}
         className={classNames(

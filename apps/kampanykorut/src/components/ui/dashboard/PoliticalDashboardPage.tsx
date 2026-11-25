@@ -1,0 +1,221 @@
+import {
+  ConfigEngine,
+  createCampaignEngine,
+  StateEngine,
+} from "@logic/application";
+import {
+  autoSelectCompletedFocus,
+  buildDashboardOverview,
+  buildFocusOverview,
+  buildRelationGroups,
+  forPlayerSide,
+  getFocuses,
+  getPublicEvents,
+  markFocusSeen,
+  markPublicEventsSeen,
+  markRelationsSeen,
+  PollsterEngine,
+  selectFocus,
+} from "@shared/domain";
+import { CampaignState } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { t } from "i18next";
+import { useEffect, useMemo, useState } from "react";
+import { container } from "tsyringe";
+import { useFollowedLine } from "../../../debug/cheat/winningLines";
+import { useNavigation } from "../../../hooks/navigationHook";
+import { useParams } from "../../../hooks/useParamsHook";
+import { getCampaignBadgeInfo } from "../gameplay/campaignBadge.utils";
+import { GameChrome } from "../gameplay/GameChrome";
+import { focusToast } from "../gameplay/toaster";
+import { ChronicleTab } from "./ChronicleTab";
+import { FocusTab } from "./FocusTab";
+import { OverviewTab } from "./OverviewTab";
+import { RelationsTab } from "./RelationsTab";
+
+type DashboardTab = "overview" | "focuses" | "relations" | "chronicle";
+
+export function PoliticalDashboardPage() {
+  const { campaignId = "" } = useParams();
+  const stateEngine = container.resolve(StateEngine);
+  const { goToCampaign } = useNavigation();
+  const [stored] = useState(() => stateEngine.getCampaignState());
+  const [config] = useState(() =>
+    forPlayerSide(
+      container.resolve(ConfigEngine).getCampaignConfig(campaignId),
+      stored?.playerSide,
+    ),
+  );
+  const answers = useMemo(() => stateEngine.getHistory() ?? [], [stateEngine]);
+  // Opening the dashboard is what counts as seeing the news, so the stored
+  // state is marked seen right away while the "new" markers still come from
+  // the stored state.
+  const [state, setState] = useState<CampaignState | null>(() =>
+    stored
+      ? markFocusSeen(
+          autoSelectCompletedFocus(
+            markRelationsSeen(
+              markPublicEventsSeen(stored, config.campaignEvents),
+            ),
+            config,
+            answers,
+          ),
+          config,
+          answers,
+        )
+      : null,
+  );
+  const [tab, setTab] = useState<DashboardTab>("overview");
+  const hasFocuses = getFocuses(config).length > 0;
+  const relationGroups = useMemo(
+    () => (stored ? buildRelationGroups(stored, config) : []),
+    [stored, config],
+  );
+  const tabs: DashboardTab[] = [
+    "overview",
+    ...(hasFocuses ? (["focuses"] as const) : []),
+    ...(relationGroups.length > 0 ? (["relations"] as const) : []),
+    "chronicle",
+  ];
+
+  const overview = useMemo(
+    () => (state ? buildDashboardOverview(state, config) : undefined),
+    [state, config],
+  );
+  const focusOverview = useMemo(
+    () =>
+      state && hasFocuses
+        ? buildFocusOverview(state, config, answers)
+        : undefined,
+    [state, config, hasFocuses, answers],
+  );
+  const followedLine = useFollowedLine(state ?? undefined);
+
+  useEffect(() => {
+    if (state && state.politicalDashboard !== stored?.politicalDashboard) {
+      stateEngine.updateCampaignState({
+        politicalDashboard: state.politicalDashboard,
+      });
+    }
+  }, [state, stored, stateEngine]);
+
+  if (!state || !overview) {
+    return null;
+  }
+
+  // The pollster picker filters the map, so a choice made here is saved and
+  // the player is taken back to the map to see it.
+  const handlePollsterChange = (pollsterId: string) => {
+    const { campaignEngine } = createCampaignEngine(
+      config,
+      campaignId,
+      state.playerSide?.partyId,
+      state.playerSide?.candidateId,
+    );
+    const polls = container
+      .resolve(PollsterEngine)
+      .getPollsByPollsterId(pollsterId, state);
+    const projection = campaignEngine.getPollProjection(
+      state,
+      config.electionConfig,
+      polls?.differences,
+      pollsterId,
+    );
+    if (projection) {
+      stateEngine.updateCampaignState({
+        pollingOpnions: { ...projection, selectedPollsterId: pollsterId },
+      });
+    }
+    goToCampaign(campaignId, stateEngine.getSessionId());
+  };
+
+  const { year, partyName } = getCampaignBadgeInfo(state, config, undefined);
+  const context = [
+    year,
+    partyName,
+    t("politicalDashboard.turn", { turn: overview.turn }),
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
+  return (
+    <GameChrome
+      state={state}
+      config={config}
+      pollsterData={state.pollingOpnions ?? null}
+      handlePollsterChange={handlePollsterChange}
+    >
+      <div className="flex-1 overflow-y-auto">
+        <div className="mx-auto flex w-full max-w-[1100px] flex-col gap-6 px-4 py-6 md:px-10 md:py-10">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="flex flex-col gap-1">
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-blue-200">
+                {context}
+              </span>
+              <h1 className="m-0 text-3xl font-extrabold tracking-tight text-slate-50 md:text-4xl">
+                {t("politicalDashboard.title")}
+              </h1>
+            </div>
+            <Button
+              variant="secondary"
+              onClick={() =>
+                goToCampaign(campaignId, stateEngine.getSessionId())
+              }
+              testId="politicalDashboardBack"
+            >
+              <Button.Icon name="arrow-left" />
+              <Button.Text>{t("politicalDashboard.back")}</Button.Text>
+            </Button>
+          </div>
+
+          <div role="tablist" className="flex flex-wrap gap-2">
+            {tabs.map((id) => (
+              <Button
+                key={id}
+                variant="tab"
+                role="tab"
+                aria-selected={tab === id}
+                selected={tab === id}
+                onClick={() => setTab(id)}
+                testId={`dashboardTab-${id}`}
+              >
+                <Button.Text>{t(`politicalDashboard.tabs.${id}`)}</Button.Text>
+              </Button>
+            ))}
+          </div>
+
+          {tab === "focuses" && focusOverview && (
+            <FocusTab
+              overview={focusOverview}
+              recommendedFocusIds={followedLine?.focuses}
+              onSelect={(focusId) => {
+                const next = selectFocus(state, config, focusId);
+                if (next === state) {
+                  return;
+                }
+                setState(markFocusSeen(next, config, answers));
+                const focus = getFocuses(config).find((f) => f.id === focusId);
+                if (focus) {
+                  focusToast(focus, { id: "focus-selected" });
+                }
+              }}
+            />
+          )}
+          {tab === "relations" && <RelationsTab groups={relationGroups} />}
+          {tab === "chronicle" && (
+            <ChronicleTab
+              events={getPublicEvents(state, config.campaignEvents)}
+            />
+          )}
+          {tab === "overview" && (
+            <OverviewTab
+              overview={overview}
+              focus={focusOverview}
+              onOpenFocuses={() => setTab("focuses")}
+            />
+          )}
+        </div>
+      </div>
+    </GameChrome>
+  );
+}

@@ -1,4 +1,4 @@
-import { EffectType, RawEffect } from "../types";
+import { EffectType, RawEffect } from "@shared/types";
 import {
   excludeInactiveCandidates,
   excludeInactiveFromConditionalEffects,

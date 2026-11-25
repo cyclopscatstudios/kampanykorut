@@ -1,0 +1,674 @@
+[
+  {
+    "questionId": "aldozatok_partja",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Erre a mondatra a jogászok és a parasztok is felkapják a fejüket. A Corvin köz lassúnak fogja tartani, de nem árulónak."
+      },
+      {
+        "answerId": "B",
+        "text": "A Corvin köz ünnepel, Moszkva jegyzetel. A népbíróság szó 1945 óta rossz csengésű, és ezt Bibó István biztosan szóvá teszi."
+      },
+      {
+        "answerId": "C",
+        "text": "Nemes gondolat, csak a temetők még frissek. A felkelők azt hallják ki belőle, hogy a kisgazdák már megint megalkudtak."
+      },
+      {
+        "answerId": "D",
+        "text": "Az özvegyek hálásak lesznek, a felkelők kevésbé. Ha a kormány nem lép, a kérdés visszaér hozzád."
+      }
+    ]
+  },
+  {
+    "questionId": "kik_johetnek",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A taglétszám a duplájára nő, Moszkvában pedig előveszik az 1945-ös dossziékat. A jobbszárny ettől a naptól otthon érzi magát."
+      },
+      {
+        "answerId": "B",
+        "text": "Lassabb, de tisztább. A falusi titkárok szeretik, ha ők dönthetnek, a budapesti jelentkezők kevésbé."
+      },
+      {
+        "answerId": "C",
+        "text": "Bibó bólogat, a kizártak viszont nem tűnnek el. Valahol máshol fognak gyülekezni, és lesz, aki összegyűjti őket."
+      },
+      {
+        "answerId": "D",
+        "text": "Okos középút: a szavazatuk a tiéd, a hangjuk egyelőre nem. Két év viszont hosszú idő, és ők ezt nem felejtik el."
+      }
+    ]
+  },
+  {
+    "questionId": "senki_ne_almodozzon",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ez a mondat holnap minden lap címlapján ott lesz. A jobbszárny fanyalog, de a parasztok megértették, hogy a földjük biztonságban van."
+      },
+      {
+        "answerId": "B",
+        "text": "Senkit sem bántottál meg, és senkit sem nyertél meg. A baloldali lapok szerint a hallgatásod is üzenet."
+      },
+      {
+        "answerId": "C",
+        "text": "A tér tapsol, a kisiparosok is. Ez a mondat két tábort fog össze, és mindkettő a kisgazdáké."
+      },
+      {
+        "answerId": "D",
+        "text": "A jobbszárny ünnepel, a falu megijed. Aki 1945-ben földet kapott, most azt kérdezi, kitől fogják visszavenni."
+      }
+    ]
+  },
+  {
+    "questionId": "templom_foldje",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A falu megnyugszik, a püspöki kar kevésbé. Barankovics megérti, Mindszenty viszont nem fogja elfelejteni."
+      },
+      {
+        "answerId": "B",
+        "text": "A templomban tapsolnak, a földeken nem. A Petőfi Párt holnap minden faluba elviszi a hírt."
+      },
+      {
+        "answerId": "C",
+        "text": "Mindenki kap valamit, csak a pénzügyminiszter sápad. A kárpótlás összegéről még sokáig vitatkozni fognak."
+      },
+      {
+        "answerId": "D",
+        "text": "A kitérés is válasz. A papok szerint gyáva vagy, a parasztok szerint bizonytalan."
+      }
+    ]
+  },
+  {
+    "questionId": "hideg_tel_kormanyban",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A városi ember most először lát kisgazda szekeret a háza előtt. Ezt a gesztust nem felejtik el gyorsan."
+      },
+      {
+        "answerId": "B",
+        "text": "Felelős gesztus, de a fagyot senki sem a kisgazdáknak köszöni meg. A sztrájkolók szerint ti is a kormány vagytok."
+      },
+      {
+        "answerId": "C",
+        "text": "Igaz, csak nem elegáns. Nagy Imre szerint a koalíciós partner a bajban nem a sajtónak nyilatkozik."
+      },
+      {
+        "answerId": "D",
+        "text": "A szén megjön, a gyanú is. Moszkva szerint a kisgazdák az első bajban nyugatra telefonáltak."
+      }
+    ]
+  },
+  {
+    "questionId": "dobi_emberei",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A tisztánlátás jólesik, de a kizártaknak is van hova menniük. Kádár most már nem érzi magát egyedül."
+      },
+      {
+        "answerId": "B",
+        "text": "Csendes, hatékony megoldás. A falvakban alig veszik észre, hogy valaki elment."
+      },
+      {
+        "answerId": "C",
+        "text": "Néhányan bocsánatot kérnek, a többiek nem. A jobbszárny szerint most árulókkal ülsz egy asztalnál."
+      },
+      {
+        "answerId": "D",
+        "text": "Tildy jól ismeri őket, hiszen akkor ő is ott volt. Ez egyszerre előny és figyelmeztetés."
+      }
+    ]
+  },
+  {
+    "questionId": "kulaklistak",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A volt kulákok a te embereid lesznek, a földjükön gazdálkodó tsz-tagok viszont megijednek. Ez a kérdés még visszajön."
+      },
+      {
+        "answerId": "B",
+        "text": "Az igazságot pénzben mérik, és ez kevesebb sebet ejt. A falvakban ezt józan beszédnek hallják."
+      },
+      {
+        "answerId": "C",
+        "text": "Felelős válasz, csak nem lelkesítő. A volt kulákok szerint a kisgazdák is elfelejtették őket."
+      },
+      {
+        "answerId": "D",
+        "text": "A bizottság dolgozni fog, a választásig biztosan. Addig a gazdák várnak, és közben figyelnek."
+      }
+    ]
+  },
+  {
+    "questionId": "beszolgaltatas_vege",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Nagy Imre enged, a parasztok ünnepelnek. A rendelet alatt ott a kisgazda aláírás, és ezt minden faluban tudni fogják."
+      },
+      {
+        "answerId": "B",
+        "text": "Jó alku. A falu szerint ez kevesebb, mint amit ígértetek, de több, mint amit valaha kaptak."
+      },
+      {
+        "answerId": "C",
+        "text": "Kampánytéma maradt, rendelet nem lett. Nagy Imre közben a saját nevén csökkentheti a beszolgáltatást."
+      },
+      {
+        "answerId": "D",
+        "text": "Merész csomag, és átment. A tsz-elnökök holnaptól nem alszanak nyugodtan, a gazdák viszont igen."
+      }
+    ]
+  },
+  {
+    "questionId": "level_amerikabol",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Az emigráció ünnepel, a párt egy része kérdezi, akkor ki is a vezető. Moszkvában ezt a nevet nem szeretik hallani."
+      },
+      {
+        "answerId": "B",
+        "text": "Tiszta beszéd, és Nagy Ferenc elfogadja. A kérdés csak az, meddig tartja be."
+      },
+      {
+        "answerId": "C",
+        "text": "Nagy Imre is aláírja a meghívót. Moszkva tiltakozik, a kisgazda jobbszárnya pedig háborog, amiért a miniszterelnök magának tulajdonítja a hazatérés érdemét."
+      },
+      {
+        "answerId": "D",
+        "text": "Nagy Ferenc sértett levelet ír vissza. Hazajön így is, de nem tőled kér engedélyt."
+      }
+    ]
+  },
+  {
+    "questionId": "kilepes_ideje",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Elegáns, csak korai. A kormány még a tél nehézségeivel küzd, és ezt sokan cserbenhagyásnak fogják látni."
+      },
+      {
+        "answerId": "B",
+        "text": "A jobbszárny lelkes, a parasztok egy része zavarban van. Aki a földet osztotta, azt nem szokás így elhagyni."
+      },
+      {
+        "answerId": "C",
+        "text": "Ez a legjobb pillanat: a törvényen ott a kisgazdák neve, a kampányt mégis szabad kézzel vihetitek."
+      },
+      {
+        "answerId": "D",
+        "text": "Sokáig maradtok, és sokáig együtt látnak titeket Nagy Imrével. A hajrában már késő lehet megmutatni, mitől vagytok mások."
+      }
+    ]
+  },
+  {
+    "questionId": "jobbszarny_poszt",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A jobbszárny elégedett, Nagy Imre és Moszkva viszont nem. Egy kisgazda belügyminiszter 1947 után különösen soknak tűnik."
+      },
+      {
+        "answerId": "B",
+        "text": "Kevesebb, mint amit kértek, de a falunak hasznos. A jobbszárny morog, de egyelőre marad."
+      },
+      {
+        "answerId": "C",
+        "text": "Elvhű, de a jobbszárnyban sokan most kezdik keresni a kijáratot."
+      },
+      {
+        "answerId": "D",
+        "text": "Időt nyertél. Sulyok tudja, hogy a választás után már nem lesz alkupozíciója, és ezt ő sem felejti el."
+      }
+    ]
+  },
+  {
+    "questionId": "orvosok_intelme",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Okos döntés, csak kevésbé látványos. A rádióban is jól szólsz, de a parasztok a kezedet akarják megszorítani."
+      },
+      {
+        "answerId": "B",
+        "text": "A falvak imádják, az orvosok aggódnak. A kérdés az, kitart-e a szervezeted a hajráig."
+      },
+      {
+        "answerId": "C",
+        "text": "A párt csapatként jelenik meg, és ez erőt sugároz. Közben te is pihensz egy keveset."
+      },
+      {
+        "answerId": "D",
+        "text": "Most még nem látszik semmi. Egy kampányban viszont kevés titok marad meg a választásig."
+      }
+    ]
+  },
+  {
+    "questionId": "kitelepitettek",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Igazságos, csak a kilakoltatott munkáscsaládok szerint nem. Budapesten ez a rendelet sok szavazatba kerül."
+      },
+      {
+        "answerId": "B",
+        "text": "Senkit sem tesznek ki az utcára, és ezt Budapesten értékelik. A kitelepítettek szerint a kárpótlás nem otthon."
+      },
+      {
+        "answerId": "C",
+        "text": "Praktikus, csak a konyhában lesz feszült a hangulat. Ezt a megoldást egy év múlva sem fogják szeretni."
+      },
+      {
+        "answerId": "D",
+        "text": "A bíróságok lassúak, a választás gyors. Addig mindkét család a kormányt hibáztatja, és ti is a kormány vagytok."
+      }
+    ]
+  },
+  {
+    "questionId": "kitelepitettek_igeret",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A kitelepítettek hálásak, a munkásnegyedekben viszont plakátot ragasztanak ellened."
+      },
+      {
+        "answerId": "B",
+        "text": "Ellenzékből könnyű lakást építeni, de ez legalább hihető ígéret. Budapesten is figyelnek rá."
+      },
+      {
+        "answerId": "C",
+        "text": "Igazad van, és ezt mindenki tudja. Csak azt nem, hogy te mit tennél."
+      },
+      {
+        "answerId": "D",
+        "text": "Őszinte, de a kitelepítettek szerint kényelmes is. Ellenzékből a hallgatás gyengeségnek tűnik."
+      }
+    ]
+  },
+  {
+    "questionId": "kie_a_gyar",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A polgári lapok tapsolnak, a munkásnegyedek megriadnak. Ezzel a mondattal Kéthly Anna és Nagy Imre is kampányolni fog."
+      },
+      {
+        "answerId": "B",
+        "text": "Ez Kovács Béla pécsi programja, és jól hangzik a kisiparosok fülében. A munkások sem ijednek meg tőle."
+      },
+      {
+        "answerId": "C",
+        "text": "Váratlan kisgazda hang, a munkástanácsok meglepődnek. A saját szavazóid viszont nem értik, mi közöd a gyárakhoz."
+      },
+      {
+        "answerId": "D",
+        "text": "Modern ötlet, a közgazdászok szeretik. A falvakban kevesen értik, a városokban kíváncsian hallgatják."
+      }
+    ]
+  },
+  {
+    "questionId": "tsz_gepallomas",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A gazdák ünnepelnek, a gépállomások dolgozói megijednek. A kisgazdák most valóban a falu pártja."
+      },
+      {
+        "answerId": "B",
+        "text": "Igazságos és működik. A tsz-ek nem örülnek, de a vetés idejében megy."
+      },
+      {
+        "answerId": "C",
+        "text": "Az ötlet jó, csak a hitel lassú. A kilépők idén még kézzel szántanak."
+      },
+      {
+        "answerId": "D",
+        "text": "A kormányban ülsz, mégsem döntesz. A falu ezt észreveszi, a Petőfi Párt pedig szóvá teszi."
+      }
+    ]
+  },
+  {
+    "questionId": "tsz_program",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ellenzékből ez erős ígéret, és a gazdák elhiszik. A kormány most gyorsan lépni kényszerül."
+      },
+      {
+        "answerId": "B",
+        "text": "Józan ígéret, a gazdák bólogatnak. Lelkesedni azonban nem lelkesednek."
+      },
+      {
+        "answerId": "C",
+        "text": "A Petőfi Párt ötletét hallják a szádból. Bibó hízeleg, Farkas Ferenc kevésbé."
+      },
+      {
+        "answerId": "D",
+        "text": "Könnyű támadni, nehéz meggyőzni. A gazdák egy ígéretet vártak, nem egy vádat."
+      }
+    ]
+  },
+  {
+    "questionId": "svabok",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Bátor lépés. A sváb falvak hálásak, a pártban viszont néhányan úgy érzik, a régi vezetők helyett kértél bocsánatot."
+      },
+      {
+        "answerId": "B",
+        "text": "Félig igaz, félig kibúvó. A sváb falvak érzik a különbséget."
+      },
+      {
+        "answerId": "C",
+        "text": "Konkrét ígéret, a Dunántúlon meghallják. A felvidéki és székely betelepítettek viszont megkérdezik, akkor mi lesz velük."
+      },
+      {
+        "answerId": "D",
+        "text": "Csendes megoldás, csak a csend is hangos tud lenni. Baranyában ezt észreveszik."
+      }
+    ]
+  },
+  {
+    "questionId": "kozos_lista",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A polgári és paraszti tábor egy zászló alatt. A szövetség a bizonytalan polgári szavazókat is megszólítja, és a koalíció biztosabb, de a saját arcotokat nehezebb megmutatni."
+      },
+      {
+        "answerId": "B",
+        "text": "A keresztény polgárok közös listája. Bibó sértetten veszi tudomásul, hogy kihagytad."
+      },
+      {
+        "answerId": "C",
+        "text": "A falu két pártja együtt indul. Barankovics szerint a templomba járó gazdákat elfelejtetted."
+      },
+      {
+        "answerId": "D",
+        "text": "Magabiztos, és a szavazók egy része szereti. A leendő partnereid viszont jegyzetelnek."
+      }
+    ]
+  },
+  {
+    "questionId": "nagy_ferenc_megerkezik",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Két kapitány egy hajón. A plakátokon jól mutattok együtt, de a kampányban már most két hang szól."
+      },
+      {
+        "answerId": "B",
+        "text": "Ez a legjobb szerep neki: látható, de nem a te helyeden áll. Washington is figyel rá, Moszkva is."
+      },
+      {
+        "answerId": "C",
+        "text": "Óvatos megoldás. Nagy Ferenc mosolyog, de a második nagygyűlés után már unatkozni fog."
+      },
+      {
+        "answerId": "D",
+        "text": "Moszkva elégedett, az emigráció kevésbé. Nagy Ferenc a saját útját kezdi járni, és ez nem a te utad."
+      }
+    ]
+  },
+  {
+    "questionId": "sulyok_ajanlata",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Sulyok marad, a hangja is. Moszkva és a baloldal szerint most már tudni, hová tart a párt."
+      },
+      {
+        "answerId": "B",
+        "text": "Kemény alku, Sulyok gondolkodik. A jobbszárny megosztott, de egyelőre a pártban marad."
+      },
+      {
+        "answerId": "C",
+        "text": "Elvhű, de Sulyok nem blöfföl. A jobbszárny most dönti el, hogy marad-e."
+      },
+      {
+        "answerId": "D",
+        "text": "Tildyt Sulyok nem szereti, és ezt nem is titkolja. A tárgyalásból inkább sértődés lesz."
+      }
+    ]
+  },
+  {
+    "questionId": "sulyok_ajanlata_kint",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Sulyok elégedett, a jobbszárny a pártban marad. A baloldali lapok szerint a kisgazdák jobbra fordultak."
+      },
+      {
+        "answerId": "B",
+        "text": "Sulyok aláírja, bár fanyalogva. A falu megnyugszik, a jobbszárny is marad."
+      },
+      {
+        "answerId": "C",
+        "text": "Ellenzékből a jobbszárnynak kevesebb oka van a kiválásra. Sulyok mérgelődik, de a választást a kisgazdákkal akarja megnyerni."
+      },
+      {
+        "answerId": "D",
+        "text": "Sulyok nem szeret várni. A hallgatást ő is válasznak veszi."
+      }
+    ]
+  },
+  {
+    "questionId": "szabadsagpart_kihivas",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A városok és a bizonytalanok megnyugszanak, a Horthy-vád gyengül. Sulyok viszont mártírt játszik, és a nyugati megyékben ez hat."
+      },
+      {
+        "answerId": "B",
+        "text": "Sokan visszajönnek, Sulyok vezérkara magára marad. A baloldali lapok szerint viszont a kisgazdák kapuja jobbra tárva-nyitva."
+      },
+      {
+        "answerId": "C",
+        "text": "Számtanilag okos, politikailag drága. Bibó és Moszkva is felkapja a fejét, és a bizonytalanok azt kérdezik, kivel kormányoznál."
+      },
+      {
+        "answerId": "D",
+        "text": "Méltóságteljes, de a Szabadságpárt hangja a nyugati megyékben egyre erősebb. Aki hallgat, annak a nevében más beszél."
+      }
+    ]
+  },
+  {
+    "questionId": "moszkva_miniszterek",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A szerződés közelebb kerül, a jobbszárny viszont dühös. Szerintük 1947 ismétlődik."
+      },
+      {
+        "answerId": "B",
+        "text": "Ezt sokan akarták hallani. Moszkva gyanakvása nő, a nyugati megyékben a tiéd a nap."
+      },
+      {
+        "answerId": "C",
+        "text": "A sajtó felháborodik, a szavazók is. Nagy Imre szerint viszont egy koalíciós partner ilyet nem tesz."
+      },
+      {
+        "answerId": "D",
+        "text": "Kényelmes, csak a választók azt látják, hogy a döntést megint nem ti hoztátok."
+      }
+    ]
+  },
+  {
+    "questionId": "horthy_arnyeka",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Három szó, amivel nehéz vitatkozni. A vád nem tűnik el, de a falvakban nem hisznek neki."
+      },
+      {
+        "answerId": "B",
+        "text": "A gyűléseken tapsolnak, a nagykövetségen nem. Egy rosszul időzített visszavágás Moszkvában sokáig emlékezetes marad."
+      },
+      {
+        "answerId": "C",
+        "text": "Méltóságteljes, csak a vád közben terjed. A baloldali munkásnegyedekben sokan elhiszik."
+      },
+      {
+        "answerId": "D",
+        "text": "A Szabad Európa Rádióból cáfolni Moszkva vádját nem a legjobb ötlet. A gyanú így csak nő."
+      }
+    ]
+  },
+  {
+    "questionId": "papir_kormanytol",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A lap megjelenik, csak kicsit kormánylap-ízű. Az olvasók egy része a Szabad Európa Rádióra kapcsol."
+      },
+      {
+        "answerId": "B",
+        "text": "Kockázatos, de a lap éles marad. A kormány legközelebb kevesebb papírt fog kiutalni."
+      },
+      {
+        "answerId": "C",
+        "text": "A lap független, a papír nyugati. A baloldali sajtó szerint a Kis Újságot Bécsből nyomtatják."
+      },
+      {
+        "answerId": "D",
+        "text": "Tisztességes, de kevesen olvassák. A falvakban a Szabad Nép így is hangosabb."
+      }
+    ]
+  },
+  {
+    "questionId": "papir_nyugatrol",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A lap vastag, és mindenhová eljut. A baloldal szerint viszont amerikai pénzből."
+      },
+      {
+        "answerId": "B",
+        "text": "Okos határ. A lap megjelenik, a vád pedig kevésbé ragad."
+      },
+      {
+        "answerId": "C",
+        "text": "Elvhű és jogos követelés. A kormány enged egy keveset, mert a választás előtt nem akar sajtópert."
+      },
+      {
+        "answerId": "D",
+        "text": "Olcsó, de a röplap nem újság. A párt hangja halkabb lesz a hajrában."
+      }
+    ]
+  },
+  {
+    "questionId": "kormanytarskent",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ügyes, csak Nagy Imre is tud ilyen mondatokat. A szavazók egy része el is hiszi neked."
+      },
+      {
+        "answerId": "B",
+        "text": "Tiszta különbség, a falu érti. A koalíciós légkör viszont hidegebb lett."
+      },
+      {
+        "answerId": "C",
+        "text": "Finom megkülönböztetés, de egy plakáton nehéz elmagyarázni."
+      },
+      {
+        "answerId": "D",
+        "text": "Békés és nagylelkű, csak a szavazók most nem a béke miatt választanak pártot."
+      }
+    ]
+  },
+  {
+    "questionId": "nagy_imrerol",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Ellenfél, nem ellenség. A falu érti, és értékeli, hogy nem rugdosod azt, akitől a földet kapta."
+      },
+      {
+        "answerId": "B",
+        "text": "A jobbszárny tapsol, a falu nem. Aki a földjét Nagy Imrétől kapta, az ezt a hangot nem szereti."
+      },
+      {
+        "answerId": "C",
+        "text": "Nagy Imre meghatódik, a szavazóid elbizonytalanodnak. Ha úgyis vele kormányzol, minek rád szavazni?"
+      },
+      {
+        "answerId": "D",
+        "text": "Fegyelmezett kampány, csak a vitákból kimaradsz. A lapok szerint kerülöd a kérdést."
+      }
+    ]
+  },
+  {
+    "questionId": "harom_part_program",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Három párt, egy program: a választók tudják, milyen kormányt kapnak. Néhány szavazód viszont a partnerekhez vándorol."
+      },
+      {
+        "answerId": "B",
+        "text": "A barátság megvan, a részletek nincsenek. A partnerek elfogadják, de nem lelkesednek."
+      },
+      {
+        "answerId": "C",
+        "text": "Minden szavazat a tiéd, ha kapod. A partnereid viszont a választás után emlékezni fognak erre."
+      },
+      {
+        "answerId": "D",
+        "text": "Magabiztos, de a partnerek nem szeretik, ha csak alá kell írniuk valamit."
+      }
+    ]
+  },
+  {
+    "questionId": "egyszer_mar_elvesztettetek",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A stúdióban csend lesz. Ezt a mondatot holnap az egész ország idézi."
+      },
+      {
+        "answerId": "B",
+        "text": "Őszinte és felnőtt válasz. A szavazók értékelik, Kádár embere kevésbé."
+      },
+      {
+        "answerId": "C",
+        "text": "Igaz, de vitában a visszavágás ritkán győz meg senkit. A párthíveid lelkesek, a bizonytalanok nem."
+      },
+      {
+        "answerId": "D",
+        "text": "A saját emberedet áldoztad fel a rádióban. Tildy ezt nem felejti el, és a szavazók sem."
+      }
+    ]
+  },
+  {
+    "questionId": "zaro_nagygyules",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "A tér a falu hangján tapsol. A városi szavazók egy része úgy érzi, róluk nem beszéltél."
+      },
+      {
+        "answerId": "B",
+        "text": "A te szádból ez a mondat mindennél többet ér. A tér elhallgat, aztán zúgni kezd."
+      },
+      {
+        "answerId": "C",
+        "text": "Nagylelkű, kormányfőhöz illő hang. A saját táborod egy része harciasabb beszédet várt."
+      },
+      {
+        "answerId": "D",
+        "text": "A jobbszárny ünnepel, a bizonytalanok megijednek. A kampány utolsó képe egy dühös ember lett."
+      }
+    ]
+  }
+]

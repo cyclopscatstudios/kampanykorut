@@ -1,13 +1,14 @@
+import { useSettings } from "@logic/application/hooks/useSettings";
+import { GameSettings } from "@shared/types";
+import { Button } from "@shared/ui/Button";
+import { Icon } from "@shared/ui/Icon";
+import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
 import { useState } from "react";
-import { GameSettings } from "@/shared/types";
-import { Button } from "../../../../../../shared/ui/Button";
-import { Icon } from "../../../../../../shared/ui/Icon";
-import { Text } from "../../../../../../shared/ui/Text";
 import { useNavigation } from "../../../hooks/navigationHook";
-import { useSettings } from "../../../logic/application/hooks/useSettings";
 import { SettingsBody } from "../gameplay/SettingsDialog";
 import { toaster } from "../gameplay/toaster";
+import { Heading } from "../Heading";
 
 export function SettingsMenu() {
   const { settings, updateSettings } = useSettings();
@@ -23,6 +24,12 @@ export function SettingsMenu() {
 
   return (
     <div className="w-full max-w-md px-4 md:px-0">
+      <div className="mb-5 flex items-center justify-center gap-3">
+        <Icon name="gear-fill" color="lightBlue" size="large" />
+        <Heading level={3} color="lightBlue">
+          {t("mainMenu.settings")}
+        </Heading>
+      </div>
       <SettingsBody
         settingsForm={settingsForm}
         setSettingsForm={setSettingsForm}

@@ -1,7 +1,7 @@
+import { DistrictGroupEngine, VoterEnvironment } from "@shared/domain";
+import { StorageEngine } from "@shared/logic/application/StorageEngine";
 import { container } from "tsyringe";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { DistrictGroupEngine, VoterEnvironment } from "@/shared/domain";
-import { StorageEngine } from "@/shared/logic/application/StorageEngine";
 import { ConfigEngine } from "./ConfigEngine";
 import { Navigation } from "./navigation/Navigation";
 import { type SavedCampaignSessionInfo, StateEngine } from "./StateEngine";
@@ -9,6 +9,8 @@ import { StateHandler } from "./StateHandler";
 
 const FIXED_SESSION_ID = "fixed-test-session-id";
 const FIXED_GENERATED_ID = "generated-uuid";
+const RECENT_SAVE = new Date().toISOString();
+const DAY_MS = 24 * 60 * 60 * 1000;
 
 function makeMemoryLocalStorage() {
   const map = new Map<string, string>();
@@ -221,6 +223,7 @@ describe("StateEngine", () => {
           campaignId: "c1",
           name: "save",
           type: "manual",
+          lastSaved: RECENT_SAVE,
         },
       ];
       mem._map.set("kampanykorut_savedSessions", JSON.stringify(sessions));
@@ -229,6 +232,131 @@ describe("StateEngine", () => {
       engine.getSavedGameSessions();
 
       expect(mem.setItem).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("saved session expiry", () => {
+    function seedManualSave(id: string, lastSaved?: string) {
+      const sessions = JSON.parse(
+        mem._map.get("kampanykorut_savedSessions") ?? "[]",
+      );
+      sessions.push({
+        id,
+        sessionId: `snap-${id}`,
+        campaignId: "c1",
+        name: id,
+        type: "manual",
+        lastSaved,
+      });
+      mem._map.set("kampanykorut_savedSessions", JSON.stringify(sessions));
+      mem._map.set(`kampanykorut_campaignState-snap-${id}`, "{}");
+      mem._map.set(`kampanykorut_turnHistory-snap-${id}`, "[]");
+    }
+
+    it("removes saves older than 30 days together with their state and history", () => {
+      const { engine } = makeEngine();
+      seedManualSave("old", new Date(Date.now() - 31 * DAY_MS).toISOString());
+      seedManualSave("fresh", new Date(Date.now() - 29 * DAY_MS).toISOString());
+
+      const result = engine.getSavedGameSessions();
+
+      expect(result.map((s) => s.id)).toEqual(["fresh"]);
+      expect(
+        mem._map.get("kampanykorut_campaignState-snap-old"),
+      ).toBeUndefined();
+      expect(mem._map.get("kampanykorut_turnHistory-snap-old")).toBeUndefined();
+      expect(mem._map.get("kampanykorut_campaignState-snap-fresh")).toBe("{}");
+      expect(
+        JSON.parse(mem._map.get("kampanykorut_savedSessions") ?? "[]"),
+      ).toHaveLength(1);
+    });
+
+    it("starts the 30 days for legacy saves without a timestamp", () => {
+      const { engine } = makeEngine();
+      seedManualSave("legacy");
+
+      const [result] = engine.getSavedGameSessions();
+
+      expect(result.id).toBe("legacy");
+      expect(result.lastSaved).toBeDefined();
+    });
+
+    it("cleans up expired saves when the engine starts", () => {
+      seedManualSave("old", new Date(Date.now() - 40 * DAY_MS).toISOString());
+
+      makeEngine();
+
+      expect(
+        JSON.parse(mem._map.get("kampanykorut_savedSessions") ?? "[]"),
+      ).toEqual([]);
+      expect(mem._map.get("kampanykorut_turnHistory-snap-old")).toBeUndefined();
+    });
+  });
+
+  describe("deleteSavedSession", () => {
+    it("removes a manual save with its snapshot state and history", () => {
+      const { engine } = makeEngine();
+      const save: SavedCampaignSessionInfo = {
+        id: "slot-1",
+        sessionId: "snap-1",
+        sourceSessionId: FIXED_SESSION_ID,
+        campaignId: "c1",
+        name: "save",
+        type: "manual",
+        lastSaved: RECENT_SAVE,
+      };
+      mem._map.set("kampanykorut_savedSessions", JSON.stringify([save]));
+      mem._map.set("kampanykorut_campaignState-snap-1", "{}");
+      mem._map.set("kampanykorut_turnHistory-snap-1", "[]");
+      mem._map.set(`kampanykorut_campaignState-${FIXED_SESSION_ID}`, "{}");
+
+      engine.deleteSavedSession(save);
+
+      expect(engine.getSavedGameSessions()).toEqual([]);
+      expect(mem._map.get("kampanykorut_campaignState-snap-1")).toBeUndefined();
+      expect(mem._map.get("kampanykorut_turnHistory-snap-1")).toBeUndefined();
+      expect(
+        mem._map.get(`kampanykorut_campaignState-${FIXED_SESSION_ID}`),
+      ).toBe("{}");
+    });
+
+    it("removes an auto-save of another game with its storage", () => {
+      const { engine } = makeEngine();
+      mem._map.set(
+        "kampanykorut_autoSaveRegistry",
+        JSON.stringify([{ campaignId: "c1", sessionId: "other" }]),
+      );
+      mem._map.set(
+        "kampanykorut_campaignState-other",
+        JSON.stringify({ activeCampaignId: "c1", turn: 2 }),
+      );
+      mem._map.set("kampanykorut_turnHistory-other", "[]");
+      mem._map.set("kampanykorut_autoSaveTimestamp-other", RECENT_SAVE);
+      const [autoSave] = engine.getAutoSaveSessions();
+
+      engine.deleteSavedSession(autoSave);
+
+      expect(engine.getAutoSaveSessions()).toEqual([]);
+      expect(mem._map.get("kampanykorut_campaignState-other")).toBeUndefined();
+      expect(mem._map.get("kampanykorut_turnHistory-other")).toBeUndefined();
+      expect(
+        mem._map.get("kampanykorut_autoSaveTimestamp-other"),
+      ).toBeUndefined();
+    });
+
+    it("keeps the live game's data when its auto-save is deleted", () => {
+      const { engine } = makeEngine();
+      engine.updateCampaignState({
+        activeCampaignId: "c1",
+        turn: 2,
+        isEnded: false,
+      });
+      const [autoSave] = engine.getAutoSaveSessions();
+
+      engine.deleteSavedSession(autoSave);
+
+      expect(engine.getAutoSaveSessions()).toEqual([]);
+      expect(engine.getCampaignState()?.turn).toBe(2);
     });
   });
 
@@ -610,7 +738,7 @@ describe("StateEngine", () => {
           sessionId: "old-session",
           campaignId: "c-old",
           name: "first save",
-          lastSaved: "2024-01-01T00:00:00Z",
+          lastSaved: RECENT_SAVE,
         },
       ];
       mem._map.set("kampanykorut_savedSessions", JSON.stringify(existing));
@@ -1106,6 +1234,7 @@ describe("StateEngine", () => {
       campaignId: "2022_ogyv_default",
       name: "saved game",
       type: "manual",
+      lastSaved: RECENT_SAVE,
     };
     const savedState = JSON.stringify({
       activeCampaignId: "2022_ogyv_default",
