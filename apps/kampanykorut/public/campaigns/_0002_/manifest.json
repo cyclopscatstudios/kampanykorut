@@ -6,7 +6,7 @@
   "listing": {
     "id": "0002_test_mayoral",
     "label": "0002: Budapest 2024 teszt (mock)",
-    "description": "Fővárosi főpolgármester-választási tesztkampány mock adatokkal: 23 kerület, 4 döntés, feltételes visszalépés.",
+    "description": "Fővárosi főpolgármester-választási tesztkampány mock adatokkal: 23 kerület, 4 döntés, feltételes visszalépés. Kettős mód: az LMP oldal stratégiaiban is játszható, a DK oldal csak klasszikus.",
     "year": 2024,
     "tags": ["test"],
     "campaignBanner": "default-banner.png",
@@ -29,7 +29,8 @@
       "dk_mszp_parbeszed": {
         "karacsony_gergely": {
           "questions": "shared/questions.json",
-          "answerEffect": "shared/answer_effects.json"
+          "answerEffect": "shared/answer_effects.json",
+          "politicalConfig": "dk_mszp_parbeszed/political_config.json"
         }
       }
     }

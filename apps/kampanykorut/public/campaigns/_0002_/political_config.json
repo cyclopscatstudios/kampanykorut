@@ -1,5 +1,5 @@
 {
-  "gameMode": "strategic",
+  "gameModes": ["classic", "strategic"],
   "focuses": [
     {
       "id": "cooperation",
