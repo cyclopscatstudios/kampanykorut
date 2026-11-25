@@ -5,7 +5,12 @@ import posthog, { type CaptureResult } from "posthog-js";
 import { container } from "tsyringe";
 import { buildInfo } from "../../../buildInfo";
 import { redactSessionIdParam } from "../sentryScrub";
-import { ANALYTICS_SCHEMA_VERSION, getStorageKeyKind } from "./events";
+import {
+  ANALYTICS_SCHEMA_VERSION,
+  type EntryProperties,
+  getEntryProperties,
+  getStorageKeyKind,
+} from "./events";
 import { track } from "./track";
 
 const log = createLogger("posthog");
@@ -37,7 +42,11 @@ export function syncAnalyticsConsent(enabled: boolean) {
   }
 }
 
-function startPosthog(key: string, host: string | undefined) {
+function startPosthog(
+  key: string,
+  host: string | undefined,
+  entry: EntryProperties,
+) {
   log.debug("PostHog analytics initialized");
 
   posthog.init(key, {
@@ -58,6 +67,7 @@ function startPosthog(key: string, host: string | undefined) {
     app_version: buildInfo.version,
     git_commit: buildInfo.gitCommit,
     is_internal: window.location.hostname === "localhost",
+    ...entry,
   });
 }
 
@@ -72,9 +82,10 @@ export function initAnalytics(
     return;
   }
 
+  const entry = getEntryProperties(window.location, document.referrer);
   const applySetting = (enabled: boolean) => {
     if (enabled && !posthog.__loaded) {
-      startPosthog(key, host);
+      startPosthog(key, host, entry);
     }
     syncAnalyticsConsent(enabled);
   };

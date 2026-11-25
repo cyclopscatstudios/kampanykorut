@@ -63,7 +63,11 @@ export function ShareResultDialog({
   const shareNative = async () => {
     if (!file) return;
     try {
-      await navigator.share({ files: [file], text: card.shareText });
+      await navigator.share({
+        files: [file],
+        text: card.shareText,
+        url: card.shareUrl,
+      });
       onShared("native");
     } catch (error) {
       if ((error as DOMException)?.name !== "AbortError") {
