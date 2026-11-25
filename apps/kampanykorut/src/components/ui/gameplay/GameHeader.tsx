@@ -81,7 +81,7 @@ export function GameHeader({
     pollsters,
     hidePollsters: endResultsScreen,
     politicalStatus:
-      state && config && isStrategicMode(config) && !endResultsScreen
+      state && config && isStrategicMode(config, state) && !endResultsScreen
         ? {
             current: dashboardScreen,
             hasUnseenEvents: hasDashboardNews(

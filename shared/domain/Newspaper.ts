@@ -20,10 +20,11 @@ type NewspaperCampaign = Pick<CampaignConfig, "politicalConfig" | "newspaper">;
 
 export function getNewspaper(
   config: NewspaperCampaign,
+  state?: Pick<CampaignState, "gameMode">,
 ): NewspaperConfig | undefined {
   const newspaper = config.newspaper;
   if (
-    !isStrategicMode(config) ||
+    !isStrategicMode(config, state) ||
     !newspaper?.items?.length ||
     !newspaper.papers?.length
   ) {
@@ -47,7 +48,7 @@ export function publishNewspaperEdition(
   config: NewspaperCampaign,
   holds: (condition?: Condition) => boolean,
 ): CampaignState {
-  const newspaper = getNewspaper(config);
+  const newspaper = getNewspaper(config, state);
   if (!newspaper || state.isEnded) {
     return state;
   }
@@ -90,10 +91,10 @@ export function publishNewspaperEdition(
 }
 
 export function buildNewspaperEditions(
-  state: Pick<CampaignState, "newspaper">,
+  state: Pick<CampaignState, "newspaper" | "gameMode">,
   config: NewspaperCampaign,
 ): NewspaperEditionView[] {
-  const newspaper = getNewspaper(config);
+  const newspaper = getNewspaper(config, state);
   if (!newspaper) {
     return [];
   }

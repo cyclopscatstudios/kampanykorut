@@ -6,6 +6,7 @@ import {
   isCityDistrictMap,
   isFocusRequired,
   isProportionalElection,
+  isStrategicMode,
 } from "@shared/domain";
 import {
   CampaignConfig,
@@ -138,6 +139,10 @@ export function GameView({
   }
 
   const visitBlocked = isFocusRequired(state, config);
+  const electionConfig =
+    isStrategicMode(config, state) || !config.electionConfig.issues
+      ? config.electionConfig
+      : { ...config.electionConfig, issues: undefined };
   const isCityMap = isCityDistrictMap(config.electionConfig);
   const capitalCity = hasCapitalInset(config.electionConfig)
     ? getCapitalCity(config.districts)
@@ -158,7 +163,7 @@ export function GameView({
       districts={config.districts}
       selectedDistrict={selectedDistrict}
       setSelectedDistrict={onSetDistrict}
-      electionConfig={config.electionConfig}
+      electionConfig={electionConfig}
       visitBlocked={visitBlocked}
       isReturning={isReturning}
       mapOverlay={mapOverlay}
@@ -169,7 +174,7 @@ export function GameView({
       districts={config.districts}
       capitalCity={capitalCity}
       candidateListData={candidateListData}
-      electionConfig={config.electionConfig}
+      electionConfig={electionConfig}
       nationalPercentages={nationalPercentages}
       selectedDistrict={selectedDistrict}
       onSetDistrict={onSetDistrict}

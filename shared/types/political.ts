@@ -6,6 +6,10 @@ export type GameMode = "classic" | "strategic";
 
 export const GAME_MODES: readonly GameMode[] = ["classic", "strategic"];
 
+export interface GameModeScoped {
+  gameModes?: GameMode[];
+}
+
 export interface PoliticalFocus {
   id: string;
   title: string;
@@ -56,7 +60,8 @@ export interface Relation extends RelationStanding {
 }
 
 export interface PoliticalConfig {
-  gameMode: GameMode;
+  gameMode?: GameMode;
+  gameModes?: GameMode[];
   focuses?: PoliticalFocus[];
   focusBranches?: FocusBranch[];
   relationGroups?: RelationGroup[];

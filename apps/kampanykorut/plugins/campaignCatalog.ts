@@ -107,7 +107,12 @@ function detectGameMode(campaignDir: string, files: unknown): GameMode {
     const configPath = path.join(campaignDir, relativePath);
     if (!existsSync(configPath)) return false;
     const config: unknown = JSON.parse(readFileSync(configPath, "utf8"));
-    return isRecord(config) && config.gameMode === "strategic";
+    return (
+      isRecord(config) &&
+      (config.gameMode === "strategic" ||
+        (Array.isArray(config.gameModes) &&
+          config.gameModes.includes("strategic")))
+    );
   });
   return strategic ? "strategic" : "classic";
 }

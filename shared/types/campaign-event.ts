@@ -2,7 +2,7 @@ import { CandidateInactiveReason } from "./campaign";
 import { Condition } from "./condition";
 import { RawEffect } from "./effects";
 import { BootstrapIcon } from "./icon";
-import { RelationStanding } from "./political";
+import { GameModeScoped, RelationStanding } from "./political";
 
 export const ABSTAIN_KEY = "_abstain";
 
@@ -48,10 +48,13 @@ export type RelationEffect = SetRelationEffect | ShiftRelationEffect;
 
 export type CampaignEventEffect =
   | RawEffect
-  | WithdrawCandidateEffect
-  | WithdrawDistrictCandidatesEffect
-  | SplitPartyEffect
-  | RelationEffect;
+  | ((
+      | WithdrawCandidateEffect
+      | WithdrawDistrictCandidatesEffect
+      | SplitPartyEffect
+      | RelationEffect
+    ) &
+      GameModeScoped);
 
 export interface CampaignEventBranch {
   if: Condition;
@@ -67,7 +70,7 @@ export interface CampaignEventAnnouncement {
   major?: boolean;
 }
 
-export interface CampaignEvent {
+export interface CampaignEvent extends GameModeScoped {
   id: string;
   label?: string;
   once?: boolean;

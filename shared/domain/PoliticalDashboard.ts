@@ -8,6 +8,7 @@ import {
 } from "@shared/types";
 import { getCampaignEventState } from "./CampaignStateAccess";
 import type { Answers } from "./ConditionCheck";
+import { getStateGameMode } from "./GameMode";
 import { hasFocusNews } from "./PoliticalFocus";
 import { getUnseenRelationIds } from "./PoliticalRelations";
 
@@ -45,14 +46,16 @@ export function forPlayerSide<
 
 export function getGameMode(
   config?: Pick<CampaignConfig, "politicalConfig">,
+  state?: Pick<CampaignState, "gameMode"> | null,
 ): GameMode {
-  return config?.politicalConfig?.gameMode ?? "classic";
+  return getStateGameMode(state, config?.politicalConfig);
 }
 
 export function isStrategicMode(
   config?: Pick<CampaignConfig, "politicalConfig">,
+  state?: Pick<CampaignState, "gameMode"> | null,
 ): boolean {
-  return getGameMode(config) === "strategic";
+  return getGameMode(config, state) === "strategic";
 }
 
 export function getTotalTurns(
