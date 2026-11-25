@@ -106,6 +106,18 @@ const { sessionId, state } = await window.kampanykorut.seedCampaign(
 );
 ```
 
+To compare answer patterns without changing the active session or saving turn history:
+
+```js
+await window.kampanykorut.simulateCampaign(
+  "2026_tavaszi_szel",
+  { partyId: "tisza", candidateId: "magyar_peter" },
+  { runs: 100, seed: 42, mode: "random" },
+);
+```
+
+`mode` is `first`, `last`, or seeded `random`; an optional `answerPlan` maps question IDs to fixed answer IDs while unspecified questions use the selected mode. The call returns per-party average/min/max mandates, average party-list vote share, and fractional win share. It replays the real domain engine, but does not visit districts or model human decision-making. Use it to compare controlled scenarios, not as a prediction of how players will behave. Runs are capped at 5,000 per call.
+
 This loads the full `CampaignConfig` (via `loadCampaignConfig`), configures `ConfigEngine`, and sets `activeCampaignId`/`playerSide` on `StateEngine` — equivalent to what the New Game → side-selector flow does, minus the UI clicks.
 
 **To jump straight to the end-results screen** (e.g. to reproduce a mobile layout bug in `SummaryPage`/`EndResultScreen` without playing 10+ turns): after seeding, directly patch the persisted campaign state in `localStorage` and merge in `isEnded: true` plus a `results: CalculateResults`-shaped object (see `shared/types/campaign.ts` for `CalculateResults`/`Mandate`), then navigate to `/game/<id>/end-results?sessionId=<sessionId>`:
