@@ -533,15 +533,35 @@
   },
   "landing": {
     "hero": {
-      "heading": "Hungarian election campaign simulator",
-      "description": "Kampánykörút is a free political strategy game in which you run Hungarian election campaigns, from parliamentary elections to the Budapest mayoral race. Campaign, make political decisions, follow the polls, and see whether you manage to win the election.",
-      "startButton": "Start game"
+      "heading": "You run the campaign.",
+      "description": "Pick a party, make decisions week by week, and see what election night brings.",
+      "kicker": "Hungarian election campaign simulator · free, in your browser",
+      "quickStart": "Quick play",
+      "chooseCampaign": "Choose a campaign",
+      "quickStartHint": "Quick play starts right away: 2026: Tavaszi szél, TISZA · about 15 minutes"
     },
     "campaigns": {
       "heading": "Available campaigns"
     },
     "footer": "Kampánykörút — a free election simulation that runs in your browser.",
-    "footerPrivacy": "Privacy notice"
+    "footerPrivacy": "Privacy notice",
+    "features": {
+      "decisions": {
+        "title": "Decisions",
+        "caption": "Question by question",
+        "tooltip": "Each round you answer a campaign question. Your choices move public opinion and the districts."
+      },
+      "polls": {
+        "title": "Polls",
+        "caption": "See what works",
+        "tooltip": "Fresh numbers from the pollsters help you decide where to campaign next."
+      },
+      "electionNight": {
+        "title": "Election night",
+        "caption": "Districts and seats",
+        "tooltip": "At the end, seats are counted under the real electoral system. Will you win a majority?"
+      }
+    }
   },
   "news": {
     "heading": "What’s new",

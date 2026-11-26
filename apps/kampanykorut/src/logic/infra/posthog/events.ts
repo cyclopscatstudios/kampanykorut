@@ -14,7 +14,9 @@ export type LoadDurationBucket = "<1s" | "1-3s" | "3-10s" | ">10s";
 export type CampaignOutcome = "win" | "loss" | "deadlock";
 
 export interface AnalyticsEvents {
-  landing_exited: { target: "menu" | "campaign_page" };
+  landing_exited: {
+    target: "menu" | "campaign_page" | "quick_start" | "campaign_selector";
+  };
   campaign_start_clicked: RunProperties;
   campaign_page_start_clicked: { campaign_id: string; side_id?: string };
   campaign_chosen: { campaign_id: string };

@@ -532,15 +532,35 @@
   },
   "landing": {
     "hero": {
-      "heading": "Magyar választási kampányszimulátor",
-      "description": "A Kampánykörút egy ingyenes politikai stratégiai játék, amelyben magyar választási kampányokat irányíthatsz, az országgyűlési választástól a budapesti főpolgármester-választásig. Kampányolj, hozz politikai döntéseket, kövesd a közvélemény-kutatásokat, majd nézd meg, sikerül-e győznöd a választáson.",
-      "startButton": "Játék indítása"
+      "heading": "Te vezeted a kampányt.",
+      "description": "Válassz pártot, dönts hétről hétre, és nézd meg, mit hoz a választás éjszakája.",
+      "kicker": "Magyar választási kampányszimulátor · ingyenes, böngészőben",
+      "quickStart": "Gyors játék",
+      "chooseCampaign": "Kampány választása",
+      "quickStartHint": "A Gyors játék rögtön indul: 2026: Tavaszi szél, TISZA · kb. 15 perc"
     },
     "campaigns": {
       "heading": "Elérhető kampányok"
     },
     "footer": "Kampánykörút — ingyenes, böngészőben futó választási szimuláció.",
-    "footerPrivacy": "Adatkezelési tájékoztató"
+    "footerPrivacy": "Adatkezelési tájékoztató",
+    "features": {
+      "decisions": {
+        "title": "Döntések",
+        "caption": "Kérdésről kérdésre",
+        "tooltip": "Minden fordulóban egy kampánykérdésre válaszolsz. A döntéseid mozgatják a közvéleményt és a körzeteket."
+      },
+      "polls": {
+        "title": "Közvélemény-kutatás",
+        "caption": "Látod, mi hat",
+        "tooltip": "A kutatóintézetek friss számai alapján döntheted el, hol kampányolj legközelebb."
+      },
+      "electionNight": {
+        "title": "Választás éjszakája",
+        "caption": "Körzetek és mandátumok",
+        "tooltip": "A végén a valódi választási rendszer szerint számoljuk a mandátumokat. Meglesz a többség?"
+      }
+    }
   },
   "news": {
     "heading": "Újdonságok",
