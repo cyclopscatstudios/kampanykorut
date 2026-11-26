@@ -36,11 +36,19 @@ export function applyMetaToHtml(
   meta: PageMeta,
   body: string,
   origin?: string,
+  jsonLd?: object,
 ) {
   const entries = buildMetaEntries(meta, origin);
   const withoutOld = entries.reduce(removeExisting, template);
   const tags = entries.map(toTag).join("\n    ");
-  return withoutOld
+  const withJsonLd = jsonLd
+    ? withoutOld.replace(
+        /(<script type="application\/ld\+json">)[\s\S]*?(<\/script>)/,
+        (_, open: string, close: string) =>
+          `${open}${JSON.stringify(jsonLd).replace(/</g, "\\u003c")}${close}`,
+      )
+    : withoutOld;
+  return withJsonLd
     .replace(
       /<title>[\s\S]*?<\/title>/,
       `<title>${escapeAttr(meta.title)}</title>\n    ${tags}`,

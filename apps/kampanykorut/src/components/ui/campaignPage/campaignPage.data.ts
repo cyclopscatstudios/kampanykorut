@@ -103,7 +103,7 @@ export function buildCampaignPageMeta({
   return {
     title: t("campaignPage.meta.sideTitle", {
       candidate: side.candidate.label,
-      campaign: campaign.label,
+      year: campaign.year,
     }),
     description: truncate(
       `${t("campaignPage.meta.sideDescription", {
@@ -114,6 +114,36 @@ export function buildCampaignPageMeta({
     ),
     path: campaignPagePath(campaign.id, side.id),
     image: ogImagePath(campaign.id, side.id),
+  };
+}
+
+export function buildCampaignJsonLd(
+  data: CampaignPageData,
+  meta: PageMeta,
+  origin = SITE_ORIGIN,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    name: meta.title,
+    description: meta.description,
+    url: `${origin}${meta.path}`,
+    image: `${origin}${meta.image}`,
+    inLanguage: "hu",
+    genre: "Simulation",
+    gamePlatform: "Web browser",
+    applicationCategory: "Game",
+    operatingSystem: "Web",
+    isPartOf: { "@type": "VideoGame", name: "Kampánykörút", url: `${origin}/` },
+    ...(data.side
+      ? {
+          character: {
+            "@type": "Person",
+            name: data.side.candidate.label,
+          },
+        }
+      : {}),
+    offers: { "@type": "Offer", price: "0", priceCurrency: "HUF" },
   };
 }
 

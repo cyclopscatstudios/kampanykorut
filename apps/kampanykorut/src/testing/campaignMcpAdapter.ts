@@ -441,7 +441,7 @@ export function createCampaignMcpAdapter(publicDir: string) {
               state,
               {
                 questionId: question.id,
-                answerId,
+                answerId: answer.id,
                 effects: answer.effects,
                 conditionalEffects: answer.conditionalEffects,
                 selectedDistrict: null,
@@ -458,7 +458,7 @@ export function createCampaignMcpAdapter(publicDir: string) {
             );
             history.push({
               questionId: question.id,
-              answerId,
+              answerId: answer.id,
               visitedDistrict: {} as HistoryItem["visitedDistrict"],
               turn: state.turn,
               results: state.results!,

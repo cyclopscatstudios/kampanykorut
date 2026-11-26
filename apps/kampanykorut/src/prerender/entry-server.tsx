@@ -4,6 +4,7 @@ import i18n from "@logic/i18n/i18n";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router";
 import {
+  buildCampaignJsonLd,
   buildCampaignPageData,
   buildCampaignPageMeta,
   campaignBannerPath,
@@ -36,5 +37,11 @@ export async function renderCampaignPage(
       </NewsPageLayout>
     </StaticRouter>,
   );
-  return applyMetaToHtml(template, meta, body, origin);
+  return applyMetaToHtml(
+    template,
+    meta,
+    body,
+    origin,
+    buildCampaignJsonLd(data, meta, origin),
+  );
 }
