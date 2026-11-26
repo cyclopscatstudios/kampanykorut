@@ -179,7 +179,8 @@ export class CampaignApi {
     } finally {
       Math.random = originalRandom;
       if (previousConfig) {
-        const previousCampaignId = previousState?.activeCampaignId ?? campaignId;
+        const previousCampaignId =
+          previousState?.activeCampaignId ?? campaignId;
         this.configEngine.configure(previousConfig, previousCampaignId, true);
         createCampaignEngine(
           previousConfig,
@@ -219,9 +220,9 @@ function runCampaign(
   config: Awaited<ReturnType<typeof loadCampaignConfig>>,
   campaignId: string,
   playerSide: PlayerSide | undefined,
-  selectAnswer: (question: NonNullable<CampaignState["currentQuestion"]>) =>
-    | string
-    | undefined,
+  selectAnswer: (
+    question: NonNullable<CampaignState["currentQuestion"]>,
+  ) => string | undefined,
 ) {
   const { campaignEngine } = createCampaignEngine(
     config,
