@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@logic/*": ["../kampanykorut/src/logic/*"],
+      "@shared/*": ["../../shared/*"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}

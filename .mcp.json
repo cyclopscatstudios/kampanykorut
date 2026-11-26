@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kampanykorut": {
+      "command": "yarn",
+      "args": ["workspace", "campaign-mcp", "start"]
+    }
+  }
+}
