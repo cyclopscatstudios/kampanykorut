@@ -42,6 +42,28 @@ export function syncAnalyticsConsent(enabled: boolean) {
   }
 }
 
+const INTERNAL_FLAG_KEY = "kk_internal";
+
+export function isInternalVisit(
+  location: Pick<Location, "hostname" | "search">,
+  storage: Pick<Storage, "getItem" | "setItem" | "removeItem"> = localStorage,
+) {
+  if (location.hostname === "localhost") {
+    return true;
+  }
+  try {
+    const flag = new URLSearchParams(location.search).get("internal");
+    if (flag === "1") {
+      storage.setItem(INTERNAL_FLAG_KEY, "1");
+    } else if (flag === "0") {
+      storage.removeItem(INTERNAL_FLAG_KEY);
+    }
+    return storage.getItem(INTERNAL_FLAG_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
 function startPosthog(
   key: string,
   host: string | undefined,
@@ -51,7 +73,7 @@ function startPosthog(
 
   posthog.init(key, {
     api_host: host,
-    persistence: "memory",
+    persistence: "sessionStorage",
     person_profiles: "never",
     autocapture: false,
     disable_session_recording: true,
@@ -66,9 +88,9 @@ function startPosthog(
     schema_version: ANALYTICS_SCHEMA_VERSION,
     app_version: buildInfo.version,
     git_commit: buildInfo.gitCommit,
-    is_internal: window.location.hostname === "localhost",
-    ...entry,
+    is_internal: isInternalVisit(window.location),
   });
+  posthog.register_once(entry);
 }
 
 export function initAnalytics(

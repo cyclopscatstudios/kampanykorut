@@ -62,7 +62,7 @@ PostHog automatically adds the browser and operating system type, the browser id
 
 The usage statistics do not record your specific answers to the questions.
 
-**What we do not use:** cookies, a lasting statistics identifier stored in your browser, session replay, automatic click capture, surveys, feature flags or remote configuration. The random identifier that links these events is created only for the current page load, in your browser's memory; reloading the page creates a new one. The statistics do not read the saved games stored in your browser. We do not build a lasting player profile.
+**What we do not use:** cookies, a lasting statistics identifier stored in your browser, session replay, automatic click capture, surveys, feature flags or remote configuration. The random identifier that links these events is created only for the current browser tab, in that tab's session storage (sessionStorage); it is deleted when you close the tab, and a new tab gets a new one. The statistics do not read the saved games stored in your browser. We do not build a lasting player profile.
 
 **IP address:** because of the network connection, your IP address technically reaches PostHog, but we have configured the service not to store it with the events.
 
