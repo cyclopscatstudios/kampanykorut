@@ -110,6 +110,16 @@ describe("initAnalytics", () => {
     expect(mockedPosthog.init).toHaveBeenCalledOnce();
   });
 
+  it("registers the entry source as super properties", () => {
+    initAnalytics(storage, settingsEngine(true));
+    expect(mockedPosthog.register).toHaveBeenCalledWith(
+      expect.objectContaining({
+        entry_page: expect.any(String),
+        entry_referring_domain: expect.any(String),
+      }),
+    );
+  });
+
   it("starts without remote flags and with url redaction", () => {
     initAnalytics(storage, settingsEngine(true));
     expect(mockedPosthog.init).toHaveBeenCalledWith(

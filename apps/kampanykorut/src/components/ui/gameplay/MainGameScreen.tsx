@@ -5,7 +5,7 @@ import {
   getRunProperties,
 } from "@logic/infra/posthog/events";
 import { takeCampaignLoadDuration } from "@logic/infra/posthog/loadTiming";
-import { trackOnce } from "@logic/infra/posthog/track";
+import { track, trackOnce } from "@logic/infra/posthog/track";
 import {
   buildNewspaperEditions,
   getPendingAnnouncement,
@@ -119,6 +119,11 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     }
   }, [flow.currentView, state.turn, runProperties]);
 
+  const closeIntro = () => {
+    track("campaign_intro_closed", runProperties);
+    markIntroSeen();
+  };
+
   const handlePollsterChange = (
     id: string,
     state?: CampaignState,
@@ -176,7 +181,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
         open={isIntroOpen}
         intro={config.electionConfig.intro}
         fallbackTitle={config.electionConfig.title}
-        onConfirm={markIntroSeen}
+        onConfirm={closeIntro}
       />
       <AdvisorModal
         advice={flow.pendingAdvisor?.feedback.text ?? ""}

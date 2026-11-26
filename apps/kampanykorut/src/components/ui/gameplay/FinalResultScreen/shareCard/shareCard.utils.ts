@@ -13,6 +13,7 @@ import type {
   HistoryItem,
 } from "@shared/types";
 import type { TFunction } from "i18next";
+import { campaignPagePath } from "../../../campaignPage/campaignPage.data";
 import { getMayoralHeadline } from "../mayoralResult.utils";
 
 export const SHARE_CARD_WIDTH = 1200;
@@ -60,6 +61,7 @@ export interface ShareCardData {
   ctaButton: string;
   displayUrl: string;
   shareText: string;
+  shareUrl: string;
   fileName: string;
 }
 
@@ -94,6 +96,14 @@ const outcomeToStory = {
   loss: "playerSideDefeat",
   deadlock: "deadlock",
 } as const;
+
+export function buildShareUrl(origin: string, campaignId: string) {
+  const url = new URL(campaignPagePath(campaignId), origin);
+  url.searchParams.set("utm_source", "result_card");
+  url.searchParams.set("utm_medium", "share");
+  url.searchParams.set("utm_campaign", campaignId);
+  return url.toString();
+}
 
 export function buildShareCard({
   results,
@@ -174,6 +184,7 @@ export function buildShareCard({
       campaign: campaignTitle,
       article: hungarianArticle(campaignTitle),
     }),
+    shareUrl: buildShareUrl(origin, campaignId),
     fileName: `kampanykorut-${slugify(campaignId)}-${base.outcome}.png`,
   };
 }
