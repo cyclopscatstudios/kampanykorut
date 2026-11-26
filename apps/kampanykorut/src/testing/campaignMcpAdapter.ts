@@ -25,12 +25,12 @@ import type {
   RawQuestion,
 } from "@shared/types";
 import type { CampaignManifest } from "@shared/types/configs/campaign-manifest";
-import { validateCampaign } from "@shared/validation/campaignValidator";
 import type {
   CampaignHeaderInput,
   CampaignSource,
   Diagnostic,
 } from "@shared/validation/campaignValidator";
+import { validateCampaign } from "@shared/validation/campaignValidator";
 import { buildCampaignCatalog } from "../../plugins/campaignCatalog";
 
 type SimulationMode = "first" | "last" | "random";
@@ -416,6 +416,9 @@ export function createCampaignMcpAdapter(publicDir: string) {
               mode,
               random,
             );
+            if (!answerId) {
+              throw new Error(`No answer to select for question "${question.id}"`);
+            }
             const answer = state.answerEffects?.find(
               (item) => item.id === answerId,
             );
