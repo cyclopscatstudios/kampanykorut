@@ -250,12 +250,13 @@ export class CampaignEngine {
     const modified = this.resultModifier.apply(stanced, appliedEffects);
 
     const nextTurn = state.turn + 1;
-    const candidateListData = withoutWithdrawnVotes(
-      this.resultModifier.filterUnwantedValues(modified?.candidateListData),
-      state.districtWithdrawals,
-    );
-    const partyListData = modified?.partyListData;
-    const partyListVotes = modified?.partyListVotes;
+    const candidateListData =
+      withoutWithdrawnVotes(
+        this.resultModifier.filterUnwantedValues(modified?.candidateListData),
+        state.districtWithdrawals,
+      ) ?? stanced.candidateListData;
+    const partyListData = modified?.partyListData ?? stanced.partyListData;
+    const partyListVotes = modified?.partyListVotes ?? stanced.partyListVotes;
 
     const calculated = this.calculateResults(
       candidateListData,
@@ -268,9 +269,9 @@ export class CampaignEngine {
     const answered = {
       ...stanced,
       turn: nextTurn,
-      candidateListData: candidateListData ?? stanced.candidateListData,
-      partyListData: partyListData ?? stanced.partyListData,
-      partyListVotes: partyListVotes ?? stanced.partyListVotes,
+      candidateListData,
+      partyListData,
+      partyListVotes,
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
         state.currentQuestion,
@@ -588,7 +589,7 @@ export class CampaignEngine {
 
       const appliedEffects = this.effectApplier.getAppliedEffects(
         excludeInactiveCandidates(
-          reward.effects,
+          effectsForGameMode(reward.effects, this.getGameMode(state)),
           getInactiveCandidateIds(state),
         ),
         candidateListData,

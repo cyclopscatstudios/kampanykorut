@@ -44,6 +44,11 @@ export function SideSelectorMenu() {
     container.resolve(StateEngine).getCampaignState()?.gameMode === "strategic";
   const isClassicOnly = (partyId: string) =>
     strategicRequested && !supportsStrategicMode(currentCampaign, partyId);
+  const isCandidateClassicOnly = (candidateId: string) =>
+    !!selectedParty &&
+    !isClassicOnly(selectedParty.id) &&
+    strategicRequested &&
+    !supportsStrategicMode(currentCampaign, selectedParty.id, candidateId);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [isBadgeSheetOpen, setIsBadgeSheetOpen] = useState(false);
 
@@ -91,6 +96,7 @@ export function SideSelectorMenu() {
         description: selectedCandidate?.description ?? "",
       }}
       disabled={!selectedParty}
+      isClassicOnly={isCandidateClassicOnly}
       testId="candidateSelector"
     />
   );
