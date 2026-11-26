@@ -144,7 +144,10 @@ export function createCampaignMcpAdapter(publicDir: string) {
       campaign.route,
       manifest.files.electionConfig,
     );
-    if (manifest.files.regions && electionConfig.election?.type === "proportional") {
+    if (
+      manifest.files.regions &&
+      electionConfig.election?.type === "proportional"
+    ) {
       electionConfig.election.regions = readCampaignJson(
         campaign.route,
         manifest.files.regions,
@@ -165,9 +168,8 @@ export function createCampaignMcpAdapter(publicDir: string) {
     >(campaign.route, manifest.files.voterEnvironmentConfig);
     const playableSide: CandidateConfig = {
       questions:
-        readOptional<CandidateConfig["questions"]>(
-          candidateFiles.questions,
-        ) ?? [],
+        readOptional<CandidateConfig["questions"]>(candidateFiles.questions) ??
+        [],
       answerEffect:
         readOptional<CandidateConfig["answerEffect"]>(
           candidateFiles.answerEffect,
@@ -225,10 +227,15 @@ export function createCampaignMcpAdapter(publicDir: string) {
     voterEnvironment.configure(config.voterEnvironmentConfig);
 
     const districtGroupEngine = new DistrictGroupEngine();
-    districtGroupEngine.configure(config.candidateListData, config.customGroups);
+    districtGroupEngine.configure(
+      config.candidateListData,
+      config.customGroups,
+    );
 
     const mandateCalculator = new MandateCalculator();
-    const districtVoteTransformer = new DistrictVoteTransformer(voterEnvironment);
+    const districtVoteTransformer = new DistrictVoteTransformer(
+      voterEnvironment,
+    );
     const resultModifier = new ResultModifier(
       new UnionSwingTransformer(),
       new VoteShareTransformer(voterEnvironment),
@@ -291,7 +298,9 @@ export function createCampaignMcpAdapter(publicDir: string) {
       );
       const paths = manifest.files.playableSides?.[sideId]?.[candidateId];
       if (!paths?.questions) {
-        throw new Error(`No questions are configured for ${sideId}/${candidateId}`);
+        throw new Error(
+          `No questions are configured for ${sideId}/${candidateId}`,
+        );
       }
 
       const questions = readCampaignJson<RawQuestion[]>(
@@ -397,7 +406,10 @@ export function createCampaignMcpAdapter(publicDir: string) {
               input.sideId,
               config.version,
             ),
-            playerSide: { partyId: input.sideId, candidateId: input.candidateId },
+            playerSide: {
+              partyId: input.sideId,
+              candidateId: input.candidateId,
+            },
           };
           const gameSettings: GameSettings = {
             showAdvisorFeedback: false,
@@ -417,7 +429,9 @@ export function createCampaignMcpAdapter(publicDir: string) {
               random,
             );
             if (!answerId) {
-              throw new Error(`No answer to select for question "${question.id}"`);
+              throw new Error(
+                `No answer to select for question "${question.id}"`,
+              );
             }
             const answer = state.answerEffects?.find(
               (item) => item.id === answerId,
