@@ -431,7 +431,7 @@ export function createCampaignMcpAdapter(publicDir: string) {
             const answer = state.answerEffects?.find(
               (item) => item.id === answerId,
             );
-            if (!answerId || !answer) {
+            if (answerId === undefined || !answer) {
               throw new Error(
                 `No answer effects found for question "${question.id}" answerId "${answerId}"`,
               );
