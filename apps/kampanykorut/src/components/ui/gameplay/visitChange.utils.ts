@@ -87,10 +87,13 @@ export function resolvePlayerKey(
   partyId?: string,
   candidateId?: string,
 ) {
-  const first = Object.values(change.districts)[0]?.after ?? {};
-  if (candidateId && candidateId in first && !(partyId && partyId in first)) {
-    return candidateId;
-  }
+  if (!candidateId) return partyId;
+  // A district may omit a zero-vote candidate, so look across all districts.
+  const hasKey = (key: string) =>
+    Object.values(change.districts).some(
+      (district) => key in district.after || key in district.before,
+    );
+  if (hasKey(candidateId) && !(partyId && hasKey(partyId))) return candidateId;
   return partyId;
 }
 

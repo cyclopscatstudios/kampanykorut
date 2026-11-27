@@ -99,6 +99,8 @@ export function SubMenu({ label, children, align = "right" }: SubMenuProps) {
     >
       <button
         type="button"
+        aria-expanded={open}
+        onClick={() => setOpen(true)}
         className="flex w-full items-center justify-between px-4 py-3 hover:bg-gray-100"
       >
         <span>{label}</span>

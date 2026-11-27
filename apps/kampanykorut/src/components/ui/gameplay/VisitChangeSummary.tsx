@@ -31,6 +31,18 @@ export function DeltaBadge({
   always?: boolean;
 }) {
   if (delta === undefined || (!always && !isVisibleDelta(delta))) return null;
+  if (delta === 0) {
+    return (
+      <span
+        className={classNames(
+          "inline-flex shrink-0 items-center text-xs font-bold leading-none tabular-nums",
+          className,
+        )}
+      >
+        {formatPoints(0, digits)}
+      </span>
+    );
+  }
   const up = delta > 0;
   return (
     <ChangePill
@@ -125,7 +137,13 @@ export function VisitChangeSummary({
     summary.lost > 0 && t("visitChange.lost", { count: summary.lost }),
   ].filter((line): line is string => Boolean(line));
   const hasNational = summary.national !== undefined;
-  const nothingMoved = !lines.length && !isVisibleDelta(summary.national);
+  const visitedDelta = summary.visited
+    ? summary.visited.after - summary.visited.before
+    : undefined;
+  const nothingMoved =
+    !lines.length &&
+    !isVisibleDelta(summary.national) &&
+    !isVisibleDelta(visitedDelta);
   const partyName = party?.shortName || party?.name;
 
   if (variant === "strip") {

@@ -16,7 +16,7 @@ import {
   getWinnerResultsByDistrictPoligon,
 } from "../ui/map.utils";
 import { getFillColor } from "./color";
-import { parsePolygon, projectPoints } from "./geometry";
+import { interiorPoint, parsePolygon, projectPoints } from "./geometry";
 import { buildPathD, simplifyDP } from "./path";
 import { computeBounds, computeOffset, computeScale } from "./projection";
 
@@ -101,17 +101,10 @@ export function DistrictMap({
         const id = `${d.maz}-${d.evk}`;
         const simplified = simplifyDP(d.pts, simplifyTolerance);
         const pathD = buildPathD(simplified, bounds, scale, offset);
+        const interior = interiorPoint(simplified);
         const center = {
-          x:
-            offset.x +
-            (simplified.reduce((s, p) => s + p.x, 0) / simplified.length -
-              bounds.minX) *
-              scale,
-          y:
-            offset.y +
-            (bounds.maxY -
-              simplified.reduce((s, p) => s + p.y, 0) / simplified.length) *
-              scale,
+          x: offset.x + (interior.x - bounds.minX) * scale,
+          y: offset.y + (bounds.maxY - interior.y) * scale,
         };
 
         const winnerResult = getWinnerResultsByDistrictPoligon(d, resultIndex);
