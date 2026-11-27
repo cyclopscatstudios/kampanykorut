@@ -338,6 +338,8 @@ For headlines and CTAs, provide 2-3 options:
 - **popups**: For popup and modal copy
 - **ab-testing**: To test copy variations
 
+If a skill listed here is not installed, handle the request with this skill's principles instead of handing it off.
+
 **If the [designskills](https://github.com/zstvns/design-skills) library is installed**, hand off the visual work:
 
 - **web-design**: For designing and building the page from the finished copy

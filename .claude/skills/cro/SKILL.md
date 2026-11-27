@@ -189,6 +189,8 @@ When recommending experiments, consider tests for:
 - **copywriting**: If the page needs a complete copy rewrite
 - **ab-testing**: To properly test recommended changes
 
+If a skill listed here is not installed, handle the request with this skill's principles instead of handing it off.
+
 ---
 
 ## Form Optimization

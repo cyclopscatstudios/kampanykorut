@@ -370,3 +370,5 @@ To see GA4, Search Console, and ad platform numbers in one place, the options in
 - **seo-audit**: For organic traffic analysis
 - **cro**: For conversion optimization (uses this data)
 - **revops**: For pipeline metrics, CRM tracking, and revenue attribution
+
+If a skill listed here is not installed, handle the request with this skill's principles instead of handing it off.
