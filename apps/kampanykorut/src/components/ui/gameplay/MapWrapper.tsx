@@ -7,6 +7,7 @@ import {
 } from "@shared/types";
 import { Button } from "@shared/ui/Button";
 import classNames from "classnames";
+import { t } from "i18next";
 import { type ReactNode, useState } from "react";
 import { useWheelZoom, type ViewBox } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
@@ -77,7 +78,7 @@ export function MapWrapper({
           href="https://www.openstreetmap.org/copyright"
           target="_blank"
           rel="noreferrer"
-          className="absolute bottom-1 left-2 text-[10px] text-slate-400 hover:text-slate-200"
+          className="absolute bottom-1 left-2 text-xs text-slate-400 hover:text-slate-200"
         >
           © OpenStreetMap
         </a>
@@ -85,6 +86,7 @@ export function MapWrapper({
       <div className="absolute bottom-2 right-2 flex gap-1">
         <Button
           variant="tertiary"
+          aria-label={t("mapControls.zoomIn")}
           onClick={() => wheel.zoomIn()}
           className="border border-blue-50/10"
         >
@@ -92,6 +94,7 @@ export function MapWrapper({
         </Button>
         <Button
           variant="tertiary"
+          aria-label={t("mapControls.reset")}
           onClick={() => wheel.resetViewBox(initialView)}
           className="border border-blue-50/10"
         >
@@ -99,6 +102,7 @@ export function MapWrapper({
         </Button>
         <Button
           variant="tertiary"
+          aria-label={t("mapControls.zoomOut")}
           onClick={() => wheel.zoomOut()}
           className="border border-blue-50/10"
         >

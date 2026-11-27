@@ -137,10 +137,10 @@ function CountyGroup({
         aria-expanded={isOpen}
         data-frost
         className={cardClassName(hasSelected && !isOpen)}
-        style={{ borderLeftColor: leadingColor }}
       >
         <div className="flex items-center justify-between gap-2">
-          <span className="text-[15px] font-bold tracking-[-0.2px] text-slate-100">
+          <span className="flex items-center gap-2 text-[15px] font-bold tracking-[-0.2px] text-slate-100">
+            <PartyDot color={leadingColor} />
             {county}
           </span>
           <span className="text-slate-400">
@@ -195,15 +195,18 @@ function DistrictCard({
       onClick={() => onSelect(district)}
       data-frost
       className={cardClassName(isSelected)}
-      style={{ borderLeftColor: leadingParty?.color }}
+      aria-pressed={isSelected}
     >
       <div className="flex items-baseline justify-between gap-2">
-        <span className="text-[15px] font-bold tracking-[-0.2px] text-slate-100">
-          {showCounty && `${district.megye} · `}
-          {getDistrictName(district, isCityMap)}
+        <span className="flex items-center gap-2 text-[15px] font-bold tracking-[-0.2px] text-slate-100">
+          <PartyDot color={leadingParty?.color} />
+          <span>
+            {showCounty && `${district.megye} · `}
+            {getDistrictName(district, isCityMap)}
+          </span>
         </span>
         {isSelected && (
-          <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.6px] text-blue-400">
+          <span className="shrink-0 text-xs font-bold uppercase tracking-[0.6px] text-blue-300">
             {t("districtList.selected")}
           </span>
         )}
@@ -235,7 +238,7 @@ export function InsightBadge({
 }) {
   return (
     <span
-      className="inline-flex items-center gap-1.5 rounded-full border px-2 py-0.75 text-[11px] font-semibold"
+      className="inline-flex items-center gap-1.5 rounded-full border px-2 py-0.75 text-xs font-semibold"
       style={{
         color,
         backgroundColor: `${color}1a`,
@@ -251,9 +254,20 @@ export function InsightBadge({
   );
 }
 
+function PartyDot({ color }: { color?: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className="size-2.5 shrink-0 rounded-full bg-slate-600"
+      style={color ? { backgroundColor: color } : undefined}
+    />
+  );
+}
+
 function cardClassName(isSelected: boolean) {
   return classNames(
-    "flex w-full flex-col gap-1.5 rounded-xl border border-l-[3px] px-3.5 py-3.25 text-left cursor-pointer",
+    "flex w-full flex-col gap-1.5 rounded-xl border px-3.5 py-3.25 text-left cursor-pointer",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-blue",
     isSelected
       ? "border-blue-500/40 bg-blue-500/12"
       : "border-white/8 bg-white/2",

@@ -147,9 +147,14 @@ function TurnBadge({
     <Tooltip content={t("gameHeader.turnsTooltip")} position="bottom">
       <div
         data-frost
-        className="h-10 flex items-center bg-blue-400/10 rounded-md border border-blue-50/10 px-3"
+        className="h-10 flex items-baseline gap-1.5 bg-blue-400/10 rounded-md border border-blue-50/10 px-3 pt-[7px]"
       >
-        <Text color="lightBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
+        <Text as="span" color="lightBlue" size="lg" className="tabular-nums">
+          {`${currentTurn}/${turns}`}
+        </Text>
+        <span className="text-sm text-slate-400">
+          {t("gameHeader.turnsLabel")}
+        </span>
       </div>
     </Tooltip>
   );
@@ -297,7 +302,7 @@ function NarrowMenu({
             name="file-earmark-arrow-up-fill"
             color={activeDialog === "savedGames" ? "darkBlue" : "blue"}
           />
-          {t("gameMenuBar.laod")}
+          {t("gameMenuBar.load")}
         </div>
       </MenuItem>
       <MenuItem onClick={() => onOpen("settings")}>
@@ -402,7 +407,11 @@ function WideHeader({
       )}
       <div className="flex items-center justify-center gap-2">
         <Tooltip content={t("gameMenuBar.save")} position="bottom">
-          <Button variant="tertiary" onClick={() => onOpen("saveGame")}>
+          <Button
+            variant="tertiary"
+            aria-label={t("gameMenuBar.save")}
+            onClick={() => onOpen("saveGame")}
+          >
             <Button.Icon
               name="file-earmark-arrow-down-fill"
               color={activeDialog === "saveGame" ? "darkBlue" : "white"}
@@ -410,8 +419,12 @@ function WideHeader({
             />
           </Button>
         </Tooltip>
-        <Tooltip content={t("gameMenuBar.laod")} position="bottom">
-          <Button variant="tertiary" onClick={() => onOpen("savedGames")}>
+        <Tooltip content={t("gameMenuBar.load")} position="bottom">
+          <Button
+            variant="tertiary"
+            aria-label={t("gameMenuBar.load")}
+            onClick={() => onOpen("savedGames")}
+          >
             <Button.Icon
               name="file-earmark-arrow-up-fill"
               color={activeDialog === "savedGames" ? "darkBlue" : "white"}
@@ -420,7 +433,11 @@ function WideHeader({
           </Button>
         </Tooltip>
         <Tooltip content={t("gameMenuBar.settings")} position="bottom">
-          <Button variant="tertiary" onClick={() => onOpen("settings")}>
+          <Button
+            variant="tertiary"
+            aria-label={t("gameMenuBar.settings")}
+            onClick={() => onOpen("settings")}
+          >
             <Button.Icon
               name="gear-fill"
               color={activeDialog === "settings" ? "darkBlue" : "white"}
@@ -434,7 +451,11 @@ function WideHeader({
           iconColor={activeDialog === "bugReporter" ? "darkBlue" : "white"}
         />
         <Tooltip content={t("gameMenuBar.quit")} position="bottom">
-          <Button variant="tertiary" onClick={() => onOpen("exit")}>
+          <Button
+            variant="tertiary"
+            aria-label={t("gameMenuBar.quit")}
+            onClick={() => onOpen("exit")}
+          >
             <Button.Icon
               name="x-square-fill"
               color={activeDialog === "exit" ? "darkBlue" : "white"}

@@ -250,6 +250,7 @@
   },
   "gameHeader": {
     "turnsTooltip": "Turns played",
+    "turnsLabel": "rounds",
     "campaignBadge": {
       "title": "The campaign",
       "toggle": "Show campaign details",
@@ -307,7 +308,7 @@
   "gameMenuBar": {
     "resumeQuestion": "Back to the question",
     "save": "Save game",
-    "laod": "Load game",
+    "load": "Load game",
     "settings": "Settings",
     "quit": "Quit game",
     "mapMenu": {
@@ -345,11 +346,16 @@
     "title": "Campaign selector",
     "description": "Are you sure you want to return to the campaign selector?"
   },
+  "mapControls": {
+    "zoomIn": "Zoom in",
+    "reset": "Show whole map",
+    "zoomOut": "Zoom out"
+  },
   "bottomBar": {
     "visitDistrict": "Visit district",
     "returnToDistrict": "Back to the district",
     "swingFactor": "Swing factor",
-    "population": "Population",
+    "population": "Voters",
     "k": "K",
     "high": "High",
     "medium": "Medium",
@@ -427,7 +433,8 @@
     "buttons": {
       "continue": "Continue",
       "mapView": "Map view"
-    }
+    },
+    "location": "Location:"
   },
   "advisorFeedback": {
     "title": "Advisor feedback",
@@ -436,6 +443,7 @@
       "ok": "Ok"
     },
     "modal": {
+      "title": "Hide advisor feedback?",
       "description": "You won’t receive strategic hints from advisors anymore.",
       "buttons": {
         "disable": "Disable"

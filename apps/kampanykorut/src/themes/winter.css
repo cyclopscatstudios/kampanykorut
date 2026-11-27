@@ -224,9 +224,7 @@
 
   [data-answer][data-selected] [data-surface="card"] {
     border-color: #93c5fd;
-    box-shadow:
-      0 0 0 1px rgba(186, 230, 253, 0.3),
-      0 10px 15px -3px rgba(96, 165, 250, 0.35);
+    box-shadow: 0 0 0 1px rgba(186, 230, 253, 0.3);
   }
 
   [data-frost] {

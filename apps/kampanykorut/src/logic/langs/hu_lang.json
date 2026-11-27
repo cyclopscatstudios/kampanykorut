@@ -249,6 +249,7 @@
   },
   "gameHeader": {
     "turnsTooltip": "Lejátszott fordulók",
+    "turnsLabel": "forduló",
     "campaignBadge": {
       "title": "A kampány",
       "toggle": "Kampány részletei megnyitása",
@@ -306,7 +307,7 @@
   "gameMenuBar": {
     "resumeQuestion": "Vissza a kérdéshez",
     "save": "Játék mentése",
-    "laod": "Játék visszatöltése",
+    "load": "Játék visszatöltése",
     "settings": "Beállítások",
     "quit": "Kilépés",
     "mapMenu": {
@@ -344,11 +345,16 @@
     "title": "Kampányválasztó",
     "description": "Biztosan visszatérsz a kampányválasztóhoz?"
   },
+  "mapControls": {
+    "zoomIn": "Nagyítás",
+    "reset": "Teljes térkép",
+    "zoomOut": "Kicsinyítés"
+  },
   "bottomBar": {
     "visitDistrict": "Látogass el a körzetbe",
     "returnToDistrict": "Vissza a körzetbe",
     "swingFactor": "Ingadozási tényező",
-    "population": "Lakosság",
+    "population": "Választópolgár",
     "k": "E",
     "high": "Magas",
     "medium": "Közepes",
@@ -394,7 +400,7 @@
       "map": "Térkép"
     },
     "sort": {
-      "none": "Sorrend",
+      "none": "Alapsorrend",
       "swing": "Ingadozás"
     },
     "swing": "Ingadozás",
@@ -426,15 +432,17 @@
     "buttons": {
       "continue": "Következő",
       "mapView": "Térképnézet"
-    }
+    },
+    "location": "Helyszín:"
   },
   "advisorFeedback": {
     "title": "Tanácsadói visszajelzés",
     "buttons": {
-      "turnOff": "Tanácsadói javaslatokat elrejtése",
+      "turnOff": "Tanácsadói javaslatok elrejtése",
       "ok": "Rendben"
     },
     "modal": {
+      "title": "Elrejted a tanácsadói javaslatokat?",
       "description": "Többé nem kapsz stratégiai tanácsokat a tanácsadóktól.",
       "buttons": {
         "disable": "Letiltás"

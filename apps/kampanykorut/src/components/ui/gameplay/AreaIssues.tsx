@@ -18,7 +18,7 @@ const OPINION_COLORS: Record<OpinionKey, string> = {
 const MAX_STRENGTH = 3;
 
 const TITLE_CLASS =
-  "text-[10px] font-semibold uppercase tracking-[1.4px] text-slate-500";
+  "text-xs font-semibold uppercase tracking-[1.4px] text-slate-400";
 
 function opinionKey(opinion: number): OpinionKey {
   return String(Math.max(-2, Math.min(2, Math.round(opinion)))) as OpinionKey;
@@ -76,9 +76,9 @@ export function AreaIssues({
           className="flex cursor-pointer items-center justify-between gap-2 rounded-md text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
         >
           <span className={TITLE_CLASS}>{t("issues.title")}</span>
-          <span className="flex items-center gap-1.5 text-slate-500">
+          <span className="flex items-center gap-1.5 text-slate-400">
             {!expanded && (
-              <span className="text-[11px] font-semibold">{issues.length}</span>
+              <span className="text-xs font-semibold">{issues.length}</span>
             )}
             <Icon
               name="chevron-down"
@@ -126,7 +126,7 @@ export function AreaIssues({
                   size="xs"
                   color="currentColor"
                 />
-                <span className="text-[11px] font-semibold text-slate-200">
+                <span className="text-xs font-semibold text-slate-200">
                   {issue.name}
                 </span>
                 <span className="flex gap-0.5">
@@ -155,17 +155,14 @@ export function AreaIssues({
                     style={{ top: open.top, left: open.left }}
                     data-testid={`areaIssuePopup-${issue.id}`}
                   >
-                    <div className="text-[12px] font-semibold text-slate-100">
+                    <div className="text-xs font-semibold text-slate-100">
                       {issue.name}
                     </div>
-                    <div
-                      className="text-[11px] font-semibold"
-                      style={{ color }}
-                    >
+                    <div className="text-xs font-semibold" style={{ color }}>
                       {opinion}
                     </div>
                     {issue.description && (
-                      <p className="mt-1 text-[11px] text-slate-300">
+                      <p className="mt-1 text-xs text-slate-300">
                         {issue.description}
                       </p>
                     )}

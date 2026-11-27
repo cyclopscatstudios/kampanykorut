@@ -239,6 +239,24 @@ export function DistrictMap({
           />
         );
       })}
+      {renderData
+        .filter(
+          (item) =>
+            selectedDistrict &&
+            item.megyekod === selectedDistrict.megyekod &&
+            item.oevk === selectedDistrict.oevk,
+        )
+        .map((item) => (
+          <path
+            key={`selected-${item.id}`}
+            d={item.pathD}
+            fill="none"
+            stroke="#60a5fa"
+            strokeWidth={strokeWidth * 3}
+            strokeLinejoin="round"
+            pointerEvents="none"
+          />
+        ))}
     </svg>
   );
 }

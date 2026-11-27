@@ -228,7 +228,7 @@ function MobileMap({
     <div className="mx-4 flex flex-col gap-2.5 pb-6">
       <div className="relative rounded-2xl border border-white/8 bg-[rgba(15,29,54,0.55)] p-4">
         <div className="mb-2 flex min-h-[30px] items-center justify-between gap-2">
-          <span className="text-[10.5px] uppercase tracking-[1.4px] text-slate-500">
+          <span className="text-xs uppercase tracking-[1.4px] text-slate-400">
             {t(titleKey, { count: visibleDistricts.length })}
           </span>
           {capitalCity.length > 0 && (
@@ -295,7 +295,7 @@ function MapLegend({
   );
 
   return (
-    <div className="flex flex-wrap gap-x-3 gap-y-1 px-1 text-[10.5px] text-slate-400">
+    <div className="flex flex-wrap gap-x-3 gap-y-1 px-1 text-xs text-slate-400">
       {leadingParties.map((party) => (
         <span key={party.id} className="flex items-center gap-1.5">
           <span
@@ -330,7 +330,7 @@ function DistrictSheetContent({
     <div className="flex flex-col">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[10px] uppercase tracking-[1.6px] text-slate-500">
+          <div className="text-xs uppercase tracking-[1.6px] text-slate-400">
             {t(
               isCityMap
                 ? "districtList.sheet.cityLabel"
@@ -445,7 +445,7 @@ function SheetMetric({
 }) {
   return (
     <div>
-      <div className="text-[9.5px] uppercase tracking-[1.2px] text-slate-500">
+      <div className="text-xs uppercase tracking-[1.2px] text-slate-400">
         {label}
       </div>
       <div className="mt-1 text-sm font-semibold text-slate-100">
