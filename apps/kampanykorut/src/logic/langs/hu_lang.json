@@ -306,6 +306,7 @@
   },
   "gameMenuBar": {
     "resumeQuestion": "Vissza a kérdéshez",
+    "openMenu": "Játékmenü megnyitása",
     "save": "Játék mentése",
     "load": "Játék visszatöltése",
     "settings": "Beállítások",
@@ -353,7 +354,7 @@
   "bottomBar": {
     "visitDistrict": "Látogass el a körzetbe",
     "returnToDistrict": "Vissza a körzetbe",
-    "swingFactor": "Ingadozási tényező",
+    "swingFactor": "Ingadozás",
     "population": "Választópolgár",
     "k": "E",
     "high": "Magas",
@@ -384,6 +385,13 @@
     "cityTitle": "Fővárosi becslés",
     "citySubtitle": "jelöltek, becsült",
     "margin": "Hibahatár",
+    "help": {
+      "toggle": "Mit jelentenek a becslés adatai?",
+      "range": "A sáv (pl. 32–46) a várható eredmény tartománya százalékban.",
+      "margin": "Hibahatár: ennyi százalékponttal (pp) térhet el a valós eredmény a becsléstől.",
+      "status": "Billegő: az előny legfeljebb a hibahatár kétszerese. Esélyes: ennél nagyobb az előny. Biztos: legalább 15 pont az előny.",
+      "oevk": "OEVK: egyéni választókerület, ahol egy képviselőt választanak."
+    },
     "selectDistrict": "Válassz egy körzetet a térképen a becsléshez.",
     "noData": "Még nincs becsülhető adat.",
     "newData": "Új becslés érhető el",
@@ -433,7 +441,8 @@
       "continue": "Következő",
       "mapView": "Térképnézet"
     },
-    "location": "Helyszín:"
+    "location": "Helyszín:",
+    "moreAnswers": "Még {{count}} válasz lejjebb"
   },
   "advisorFeedback": {
     "title": "Tanácsadói visszajelzés",

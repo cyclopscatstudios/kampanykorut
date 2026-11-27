@@ -73,7 +73,7 @@ export function DistrictEstimate({
             </div>
             <StatusTag estimate={estimate} isNational={isNational} />
           </div>
-          <div className="flex min-h-0 flex-col gap-3 overflow-y-auto">
+          <div className="flex min-h-0 flex-col gap-3 overflow-y-auto pb-5 [mask-image:linear-gradient(to_bottom,black_calc(100%-24px),transparent)]">
             {estimate.rows.map((row) => (
               <CandidateRow
                 key={row.partyId}
@@ -95,13 +95,14 @@ export function DistrictEstimate({
         </div>
       )}
       <div className="mt-auto flex items-center justify-between border-t border-white/8 pt-3 text-xs text-slate-400">
-        <span>
+        <span className="flex items-center gap-1">
           {estimate && (
             <>
               {t("estimatePanel.margin")}{" "}
               <b className="font-semibold text-slate-300">
                 ±{estimate.margin} pp
               </b>
+              <EstimateHelp />
             </>
           )}
         </span>
@@ -110,6 +111,7 @@ export function DistrictEstimate({
             <button
               key={option}
               type="button"
+              aria-pressed={scope === option}
               onClick={() => setScope(option)}
               className={classNames(
                 "cursor-pointer rounded px-2 py-1 text-xs font-semibold",
@@ -213,5 +215,32 @@ export function CandidateRow({
         />
       </div>
     </div>
+  );
+}
+
+export function EstimateHelp({ className }: { className?: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span className={classNames("relative inline-flex", className)}>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-label={t("estimatePanel.help.toggle")}
+        onClick={() => setOpen((value) => !value)}
+        className="flex size-6 cursor-pointer items-center justify-center rounded-full text-slate-400 hover:text-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+      >
+        <Icon name="info-circle" size="xs" color="currentColor" />
+      </button>
+      {open && (
+        <span
+          role="note"
+          className="absolute bottom-full left-1/2 z-20 mb-2 flex w-[280px] -translate-x-1/2 flex-col gap-1.5 rounded-lg border border-[#4462aa] bg-[#161e30] p-3 text-xs leading-relaxed text-slate-300 shadow-xl"
+        >
+          {(["range", "margin", "status", "oevk"] as const).map((key) => (
+            <span key={key}>{t(`estimatePanel.help.${key}`)}</span>
+          ))}
+        </span>
+      )}
+    </span>
   );
 }

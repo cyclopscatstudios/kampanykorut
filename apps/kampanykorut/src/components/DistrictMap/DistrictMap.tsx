@@ -246,17 +246,26 @@ export function DistrictMap({
             item.megyekod === selectedDistrict.megyekod &&
             item.oevk === selectedDistrict.oevk,
         )
-        .map((item) => (
+        .flatMap((item) => [
           <path
-            key={`selected-${item.id}`}
+            key={`selected-outer-${item.id}`}
             d={item.pathD}
             fill="none"
-            stroke="#60a5fa"
-            strokeWidth={strokeWidth * 3}
+            stroke="#f8fafc"
+            strokeWidth={strokeWidth * 5}
             strokeLinejoin="round"
             pointerEvents="none"
-          />
-        ))}
+          />,
+          <path
+            key={`selected-inner-${item.id}`}
+            d={item.pathD}
+            fill="none"
+            stroke="#3d63c7"
+            strokeWidth={strokeWidth * 2}
+            strokeLinejoin="round"
+            pointerEvents="none"
+          />,
+        ])}
     </svg>
   );
 }

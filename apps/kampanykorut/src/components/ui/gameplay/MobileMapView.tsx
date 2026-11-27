@@ -29,6 +29,8 @@ import { getSwingFactorByDistrict } from "./swingFactor.utils";
 type MobileView = "list" | "map";
 type SheetMode = "district" | "estimate";
 
+const MOBILE_VIEW_KEY = "kampanykorut_mobileMapView";
+
 const COUNTRY_MAP_RATIO = 0.7;
 const CITY_MAP_RATIO = 0.9;
 
@@ -61,7 +63,13 @@ export function MobileMapView({
   isReturning,
   mapOverlay,
 }: MobileMapViewProps) {
-  const [view, setView] = useState<MobileView>("list");
+  const [view, setViewState] = useState<MobileView>(() =>
+    sessionStorage.getItem(MOBILE_VIEW_KEY) === "map" ? "map" : "list",
+  );
+  const setView = (next: MobileView) => {
+    sessionStorage.setItem(MOBILE_VIEW_KEY, next);
+    setViewState(next);
+  };
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [sheetMode, setSheetMode] = useState<SheetMode>("district");
 
@@ -93,7 +101,7 @@ export function MobileMapView({
           {(["list", "map"] as const).map((option) => (
             <Button
               key={option}
-              variant="tab"
+              variant="tertiary"
               size="md"
               block
               selected={view === option}
@@ -233,7 +241,7 @@ function MobileMap({
           </span>
           {capitalCity.length > 0 && (
             <Button
-              variant="hero"
+              variant="tertiary"
               size="sm"
               onClick={() => setShowCapital((value) => !value)}
               className="shrink-0"
@@ -247,7 +255,7 @@ function MobileMap({
           )}
           <Button
             onClick={onOpenEstimate}
-            variant="hero"
+            variant="tertiary"
             size="sm"
             className="shrink-0"
           >

@@ -58,7 +58,7 @@ export function MapCreator({
         {MAP_VIEW_MODES.map((mode) => (
           <Button
             key={mode}
-            variant="tab"
+            variant="tertiary"
             size="sm"
             selected={view === mode}
             aria-pressed={view === mode}

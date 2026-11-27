@@ -33,10 +33,20 @@ export function AdvisorModal({
     if (!open) return;
     const previouslyFocused = document.activeElement as HTMLElement | null;
     okRef.current?.querySelector("button")?.focus();
-    return () => previouslyFocused?.focus?.();
+    return () => {
+      if (
+        previouslyFocused?.isConnected &&
+        previouslyFocused.getAttribute("role") !== "radio"
+      ) {
+        previouslyFocused.focus();
+      } else {
+        (document.activeElement as HTMLElement | null)?.blur?.();
+      }
+    };
   }, [open]);
 
   useEffect(() => {
+    if (!open) return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (confirmationModal) {
@@ -50,7 +60,7 @@ export function AdvisorModal({
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [confirmationModal, onClose]);
+  }, [open, confirmationModal, onClose]);
 
   if (!open) return null;
 

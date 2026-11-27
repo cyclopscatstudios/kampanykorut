@@ -3,7 +3,7 @@ import { Button } from "@shared/ui/Button";
 import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import {
   compareBySwing,
   DistrictInsight,
@@ -48,7 +48,7 @@ export function DistrictList({
         {SORT_OPTIONS.map((option) => (
           <Button
             key={option}
-            variant="tab"
+            variant="tertiary"
             size="sm"
             selected={sortBy === option}
             onClick={() => setSortBy(option)}
@@ -188,9 +188,16 @@ function DistrictCard({
   onSelect: (district: CandidateListData) => void;
 }) {
   const { district, leadingParty, swingFactor } = insight;
+  const ref = useRef<HTMLButtonElement>(null);
+
+  useLayoutEffect(() => {
+    if (isSelected) ref.current?.scrollIntoView({ block: "nearest" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <button
+      ref={ref}
       type="button"
       onClick={() => onSelect(district)}
       data-frost

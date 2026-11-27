@@ -307,6 +307,7 @@
   },
   "gameMenuBar": {
     "resumeQuestion": "Back to the question",
+    "openMenu": "Open game menu",
     "save": "Save game",
     "load": "Load game",
     "settings": "Settings",
@@ -354,7 +355,7 @@
   "bottomBar": {
     "visitDistrict": "Visit district",
     "returnToDistrict": "Back to the district",
-    "swingFactor": "Swing factor",
+    "swingFactor": "Swing",
     "population": "Voters",
     "k": "K",
     "high": "High",
@@ -385,6 +386,13 @@
     "cityTitle": "Citywide estimate",
     "citySubtitle": "candidates, estimated",
     "margin": "Margin of error",
+    "help": {
+      "toggle": "What do the estimate figures mean?",
+      "range": "The range (e.g. 32–46) is the expected result in percent.",
+      "margin": "Margin of error: how many percentage points (pp) the real result may differ from the estimate.",
+      "status": "Toss-up: the lead is at most twice the margin of error. Likely: a bigger lead. Safe: a lead of at least 15 points.",
+      "oevk": "OEVK: a single-member constituency that elects one MP."
+    },
     "selectDistrict": "Select a district on the map to see its estimate.",
     "noData": "No estimate available yet.",
     "newData": "New estimate available",
@@ -434,7 +442,8 @@
       "continue": "Continue",
       "mapView": "Map view"
     },
-    "location": "Location:"
+    "location": "Location:",
+    "moreAnswers": "{{count}} more below"
   },
   "advisorFeedback": {
     "title": "Advisor feedback",

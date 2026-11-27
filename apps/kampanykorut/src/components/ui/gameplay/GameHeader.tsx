@@ -256,7 +256,7 @@ function NarrowHeader({
               <PoliticalStatusButton {...politicalStatus} size="small" />
             )}
             {onResumeQuestion && (
-              <ResumeQuestionButton onClick={onResumeQuestion} />
+              <ResumeQuestionButton onClick={onResumeQuestion} labeled />
             )}
           </div>
           <div className="flex min-w-0 items-center justify-end">
@@ -349,23 +349,28 @@ function WideHeader({
   onResumeQuestion,
 }: HeaderContentProps) {
   return (
-    <div className="h-[80px] flex justify-between items-center mx-2.5">
+    <div className="h-[60px] flex justify-between items-center mx-2.5">
       <div className="flex justify-between items-center gap-2">
-        <div
+        <button
+          type="button"
           data-header-logo
-          className="flex justify-center items-center cursor-pointer mr-1.5"
+          aria-label={t("gameMenuBar.openMenu")}
+          className="relative flex justify-center items-center cursor-pointer mr-1.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-blue"
           onClick={() => onOpen("gameMenu")}
         >
-          <img src={logo} className="mr-1" width="40" height="40" />
-          {/* <img src={markdown} className="mr-3" width="200" height="30" /> */}
-        </div>
+          <img src={logo} alt="" className="mr-1" width="40" height="40" />
+        </button>
         <CampaignBadge state={state} config={config} />
 
         {!hidePollsters && (
           <Menu
             align="left"
             trigger={
-              <Button variant="tertiary" testId="pollsterMenu">
+              <Button
+                variant="tertiary"
+                testId="pollsterMenu"
+                aria-label={t("gameMenuBar.mapMenu.polls.menuLabel")}
+              >
                 <Button.Icon name="map-fill" color="white" size="medium" />
               </Button>
             }
@@ -468,8 +473,28 @@ function WideHeader({
   );
 }
 
-function ResumeQuestionButton({ onClick }: { onClick: () => void }) {
+function ResumeQuestionButton({
+  onClick,
+  labeled,
+}: {
+  onClick: () => void;
+  labeled?: boolean;
+}) {
   const label = t("gameMenuBar.resumeQuestion");
+  if (labeled) {
+    return (
+      <Button
+        variant="tertiary"
+        size="sm"
+        selected
+        onClick={onClick}
+        testId="resumeQuestion"
+      >
+        <Button.Icon name="arrow-left" />
+        <Button.Text>{label}</Button.Text>
+      </Button>
+    );
+  }
   return (
     <Tooltip content={label} position="bottom">
       <Button

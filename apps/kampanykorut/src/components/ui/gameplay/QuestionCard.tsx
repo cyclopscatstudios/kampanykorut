@@ -7,10 +7,12 @@ import classNames from "classnames";
 import { t } from "i18next";
 import {
   KeyboardEvent,
+  useCallback,
   useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
+  useState,
 } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { useCheatSettings } from "../../../debug/cheat/cheatStore";
@@ -132,72 +134,116 @@ export function QuestionCard({
     window.scrollTo({ top: 0 });
   }, [id]);
 
+  const [hiddenBelow, setHiddenBelow] = useState(0);
+  const measureHidden = useCallback(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const bottom = container.getBoundingClientRect().bottom - 64;
+    const radios =
+      groupRef.current?.querySelectorAll<HTMLElement>('[role="radio"]') ?? [];
+    setHiddenBelow(
+      Array.from(radios).filter((r) => r.getBoundingClientRect().top > bottom)
+        .length,
+    );
+  }, []);
+
+  useEffect(() => {
+    measureHidden();
+    window.addEventListener("resize", measureHidden);
+    return () => window.removeEventListener("resize", measureHidden);
+  }, [id, measureHidden]);
+
+  const scrollToHidden = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+    container.scrollBy({
+      top: container.clientHeight * 0.8,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div
       className="flex flex-col p-3 md:p-4 bg-slate-900 h-full"
       data-testid={id}
     >
-      <div
-        ref={scrollRef}
-        className="w-full flex-1 min-h-0 flex flex-col justify-start items-center mb-4 md:max-h-[500px] overflow-y-auto"
-      >
+      <div className="relative w-full flex-1 min-h-0 flex flex-col mb-4 md:max-h-[500px]">
         <div
-          data-question-title
-          className="w-full mb-4 p-2 border-l-3 border-blue-500"
+          ref={scrollRef}
+          onScroll={measureHidden}
+          className="w-full flex-1 min-h-0 flex flex-col justify-start items-center overflow-y-auto"
         >
-          {affects && (
-            <Tooltip
-              content={t("badge.strategicDecision.tooltip")}
-              position="right"
-            >
-              <StrategicDecisionBadge />
-            </Tooltip>
-          )}
-          {showIds && <CheatId value={id} className="mb-1" />}
-          <Heading
-            id={titleId}
-            level={5}
-            color="lightBlue"
-            className="max-md:text-lg max-md:leading-snug"
+          <div
+            data-question-title
+            className="w-full mb-4 p-2 border-l-3 border-blue-500"
           >
-            {question}
-          </Heading>
-        </div>
-        <div
-          ref={groupRef}
-          role="radiogroup"
-          aria-labelledby={titleId}
-          onKeyDown={onGroupKeyDown}
-          className="w-full"
-        >
-          {orderedAnswers.map((a, index) => {
-            const row = (
-              <AnswerRow
-                answer={a}
-                index={index}
-                key={a.id}
-                isSelected={a.id === answer}
-                isRecommended={a.id === recommendedAnswer}
-                showId={showIds}
-                onClick={setAnswer}
-                focusable={selectedIndex < 0 ? index === 0 : a.id === answer}
-              />
-            );
-            const effects = answerEffects?.find((e) => e.id === a.id);
-            return showEffects && effects ? (
+            {affects && (
               <Tooltip
-                key={a.id}
-                block
-                position={isDesktop ? "right" : "top"}
-                content={<EffectList answer={effects} parties={parties} />}
+                content={t("badge.strategicDecision.tooltip")}
+                position="right"
               >
-                {row}
+                <StrategicDecisionBadge />
               </Tooltip>
-            ) : (
-              row
-            );
-          })}
+            )}
+            {showIds && <CheatId value={id} className="mb-1" />}
+            <Heading
+              id={titleId}
+              level={5}
+              color="lightBlue"
+              className="max-md:text-lg max-md:leading-snug"
+            >
+              {question}
+            </Heading>
+          </div>
+          <div
+            ref={groupRef}
+            role="radiogroup"
+            aria-labelledby={titleId}
+            onKeyDown={onGroupKeyDown}
+            className="w-full"
+          >
+            {orderedAnswers.map((a, index) => {
+              const row = (
+                <AnswerRow
+                  answer={a}
+                  index={index}
+                  key={a.id}
+                  isSelected={a.id === answer}
+                  isRecommended={a.id === recommendedAnswer}
+                  showId={showIds}
+                  onClick={setAnswer}
+                  focusable={selectedIndex < 0 ? index === 0 : a.id === answer}
+                />
+              );
+              const effects = answerEffects?.find((e) => e.id === a.id);
+              return showEffects && effects ? (
+                <Tooltip
+                  key={a.id}
+                  block
+                  position={isDesktop ? "right" : "top"}
+                  content={<EffectList answer={effects} parties={parties} />}
+                >
+                  {row}
+                </Tooltip>
+              ) : (
+                row
+              );
+            })}
+          </div>
         </div>
+        {hiddenBelow > 0 && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex h-16 items-end justify-center bg-linear-to-t from-slate-900 to-transparent pb-1">
+            <button
+              type="button"
+              onClick={scrollToHidden}
+              tabIndex={-1}
+              className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-blue-50/10 bg-slate-800 px-3 py-1 text-xs font-bold text-slate-200 cursor-pointer"
+            >
+              <Icon name="arrow-down" color="currentColor" size="xs" />
+              {t("questionCard.moreAnswers", { count: hiddenBelow })}
+            </button>
+          </div>
+        )}
       </div>
       <div className="mt-2 shrink-0">
         {isDesktop ? (
@@ -415,7 +461,7 @@ export function AnswerRow({
         customBorder={isSelected}
       >
         <div className="w-full">
-          <div className="flex items-center m-4">
+          <div className="flex items-center mx-3 my-3 md:m-4">
             <div
               className={classNames(
                 "size-[25px] rounded mr-2 flex shrink-0 items-center justify-center",
@@ -447,7 +493,7 @@ export function AnswerRow({
   );
 }
 
-const ANSWER_KEYS = ["A", "B", "C", "D"];
+const ANSWER_KEYS = ["A", "B", "C", "D", "E", "F"];
 
 function CheatId({
   value,

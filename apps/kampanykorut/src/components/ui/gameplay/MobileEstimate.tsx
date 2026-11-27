@@ -3,7 +3,7 @@ import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import { CandidateRow, StatusTag } from "./DistrictEstimate";
+import { CandidateRow, EstimateHelp, StatusTag } from "./DistrictEstimate";
 import {
   Estimate,
   EstimateScope,
@@ -218,9 +218,10 @@ function EstimateBody({
           />
         ))}
       </div>
-      <div className="border-t border-white/8 pt-2.5 text-xs text-slate-300">
+      <div className="flex items-center gap-1 border-t border-white/8 pt-2.5 text-xs text-slate-300">
         {t("estimatePanel.margin")}{" "}
         <b className="font-semibold text-slate-200">±{estimate.margin} pp</b>
+        <EstimateHelp />
       </div>
     </div>
   );
