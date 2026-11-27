@@ -74,7 +74,11 @@
       "classic": "Classic",
       "classicHint": "Question-and-answer campaign: interviews and debates decide the election.",
       "strategic": "Strategic",
-      "strategicHint": "Focus tree, issues and alliances: build your campaign turn by turn."
+      "strategicHint": "Focus tree, issues and alliances: build your campaign turn by turn.",
+      "switchLabel": "Strategic mode",
+      "switchCaption": "Focuses · Relations · Newspaper",
+      "switchHint": "Adds a focus tree, relations, issues and a newspaper to the campaign. Turned off, the usual classic campaign starts.",
+      "strategicOnly": "Playable in strategic mode only"
     }
   },
   "sideSelector": {
@@ -94,7 +98,9 @@
       "short": "Badges"
     },
     "showMore": "Show more",
-    "showLess": "Show less"
+    "showLess": "Show less",
+    "classicOnly": "Classic only",
+    "classicOnlyHint": "This side has no strategic content, so the classic campaign starts."
   },
   "endResult": {
     "menuBar": {

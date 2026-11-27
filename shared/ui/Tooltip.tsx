@@ -87,6 +87,8 @@ export function Tooltip({
         className={block ? "block" : "inline-block"}
         onMouseEnter={show}
         onMouseLeave={hide}
+        onFocus={show}
+        onBlur={hide}
       >
         {children}
       </div>

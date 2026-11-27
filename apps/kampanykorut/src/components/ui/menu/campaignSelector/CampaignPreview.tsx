@@ -1,13 +1,19 @@
 import type { CampaignHeader } from "@logic/application";
 import { Icon } from "@shared/ui/Icon";
+import classNames from "classnames";
 import { t } from "i18next";
+import type { ReactNode } from "react";
 import { stripYearPrefix } from "../../gameplay/campaignBadge.utils";
 import { campaignImageUrl } from "./campaignSelector.utils";
 
 export function CampaignPreview({
   campaign,
+  highlighted,
+  children,
 }: {
   campaign: CampaignHeader | null;
+  highlighted?: boolean;
+  children?: ReactNode;
 }) {
   if (!campaign) {
     return (
@@ -32,7 +38,12 @@ export function CampaignPreview({
   return (
     <div
       data-testid="campaignPreview"
-      className="absolute inset-0 flex flex-col overflow-hidden rounded-md border border-blue-50/10 bg-blue-400/6"
+      className={classNames(
+        "absolute inset-0 flex flex-col overflow-hidden rounded-md border transition-colors duration-150",
+        highlighted
+          ? "border-purple-300/55 bg-purple-600/6"
+          : "border-blue-50/10 bg-blue-400/6",
+      )}
     >
       <img
         src={campaignImageUrl(campaign, banner)}
@@ -47,6 +58,7 @@ export function CampaignPreview({
         <p className="min-h-0 flex-1 overflow-y-auto pr-2 text-sm leading-[21px] font-medium text-slate-300">
           {campaign.description}
         </p>
+        {children}
       </div>
     </div>
   );

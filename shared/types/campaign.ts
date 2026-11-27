@@ -6,11 +6,12 @@ import { IssuePositions } from "./issue";
 import { Mandate, PartyVotes } from "./mandate";
 import { MayoralResult } from "./mayoral-result";
 import { NewspaperState } from "./newspaper";
-import { CoalitionState, PoliticalDashboardState } from "./political";
+import { CoalitionState, GameMode, PoliticalDashboardState } from "./political";
 import { RawQuestion } from "./question";
 
 export interface CampaignState {
   activeCampaignId: string;
+  gameMode?: GameMode;
   playerSide?: PlayerSide;
   turn: number;
   currentQuestion?: RawQuestion;

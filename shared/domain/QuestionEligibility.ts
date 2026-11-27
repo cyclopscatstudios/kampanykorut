@@ -1,5 +1,11 @@
-import { Condition, ConditionContext, RawQuestion } from "@shared/types";
+import {
+  Condition,
+  ConditionContext,
+  GameMode,
+  RawQuestion,
+} from "@shared/types";
 import { evaluateCondition } from "./ConditionEvaluator";
+import { isInGameMode } from "./GameMode";
 
 type AnswerRef = { questionId: string; answerId: string };
 
@@ -31,7 +37,11 @@ export function getQuestionCondition(
 export function isQuestionEligible(
   question: RawQuestion,
   getContext: () => ConditionContext,
+  mode?: GameMode,
 ): boolean {
+  if (mode && !isInGameMode(question, mode)) {
+    return false;
+  }
   const condition = getQuestionCondition(question);
   return !condition || evaluateCondition(condition, getContext());
 }
@@ -40,9 +50,10 @@ export function findNextQuestionIndex(
   questions: RawQuestion[],
   fromIndex: number,
   getContext: () => ConditionContext,
+  mode?: GameMode,
 ): number | undefined {
   for (let i = fromIndex; i < questions.length; i++) {
-    if (isQuestionEligible(questions[i], getContext)) {
+    if (isQuestionEligible(questions[i], getContext, mode)) {
       return i;
     }
   }
@@ -53,8 +64,10 @@ export function countEligibleQuestions(
   questions: RawQuestion[],
   fromIndex: number,
   getContext: () => ConditionContext,
+  mode?: GameMode,
 ): number {
   return questions
     .slice(Math.max(0, fromIndex))
-    .filter((question) => isQuestionEligible(question, getContext)).length;
+    .filter((question) => isQuestionEligible(question, getContext, mode))
+    .length;
 }

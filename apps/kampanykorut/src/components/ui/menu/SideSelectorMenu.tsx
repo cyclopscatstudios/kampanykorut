@@ -1,3 +1,4 @@
+import { StateEngine } from "@logic/application";
 import { useGetCampaigns } from "@logic/application/hooks/useGetCampaigns";
 import { CampaignConfig } from "@shared/types/configs";
 import { Candidate, PlayableSide } from "@shared/types/configs/election-config";
@@ -9,6 +10,7 @@ import classNames from "classnames";
 import { t } from "i18next";
 import { useLayoutEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router";
+import { container } from "tsyringe";
 import { useMediaQuery } from "usehooks-ts";
 import { useCampaignBanner } from "../../../hooks/useCampaignBanner";
 import { useSideSelectorMenu } from "../../../hooks/useSideSelectorMenu";
@@ -16,6 +18,8 @@ import { BottomSheet } from "../BottomSheet";
 import { CommonWrapper } from "../CommonWrapper";
 import { Dropdown } from "../Dropdown";
 import { Heading } from "../Heading";
+import { ClassicIcon } from "./campaignSelector/CampaignChips";
+import { supportsStrategicMode } from "./campaignSelector/campaignSelector.utils";
 
 export function SideSelectorMenu() {
   const { id } = useLoaderData();
@@ -36,6 +40,15 @@ export function SideSelectorMenu() {
   const bannerImg = useCampaignBanner(id, true);
   const campaigns = useGetCampaigns();
   const currentCampaign = campaigns.find((c) => c.id === id) ?? null;
+  const strategicRequested =
+    container.resolve(StateEngine).getCampaignState()?.gameMode === "strategic";
+  const isClassicOnly = (partyId: string) =>
+    strategicRequested && !supportsStrategicMode(currentCampaign, partyId);
+  const isCandidateClassicOnly = (candidateId: string) =>
+    !!selectedParty &&
+    !isClassicOnly(selectedParty.id) &&
+    strategicRequested &&
+    !supportsStrategicMode(currentCampaign, selectedParty.id, candidateId);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [isBadgeSheetOpen, setIsBadgeSheetOpen] = useState(false);
 
@@ -62,6 +75,7 @@ export function SideSelectorMenu() {
       avatar={assets.partyAssets?.party_logo}
       optionImage={partyImage}
       isPartySelector
+      isClassicOnly={isClassicOnly}
       testId="partySelector"
     />
   );
@@ -82,6 +96,7 @@ export function SideSelectorMenu() {
         description: selectedCandidate?.description ?? "",
       }}
       disabled={!selectedParty}
+      isClassicOnly={isCandidateClassicOnly}
       testId="candidateSelector"
     />
   );
@@ -265,6 +280,7 @@ interface SelectorItemProps<T extends { label: string; value: string }> {
   entityAsset: { label: string; description: string };
   disabled?: boolean;
   isPartySelector?: boolean;
+  isClassicOnly?: (id: string) => boolean;
   testId?: string;
 }
 
@@ -281,9 +297,12 @@ function SelectorItem<T extends { label: string; value: string }>({
   entityAsset,
   disabled,
   isPartySelector,
+  isClassicOnly = () => false,
   testId,
 }: SelectorItemProps<T>) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const selectedClassicOnly =
+    selectedElement !== undefined && isClassicOnly(selectedElement);
   const step = isPartySelector ? "2.1" : "2.2";
 
   if (!isDesktop) {
@@ -311,6 +330,11 @@ function SelectorItem<T extends { label: string; value: string }>({
           <span className="truncate">{selectedLabel ?? pickerPlaceholder}</span>
           <Icon name="chevron-down" size="xs" color="gray" />
         </button>
+        {selectedClassicOnly && (
+          <div className="flex">
+            <ClassicOnlyNote />
+          </div>
+        )}
         {selectedElement ? (
           <SelectionDetail
             key={selectedElement}
@@ -354,7 +378,8 @@ function SelectorItem<T extends { label: string; value: string }>({
                     contain={isPartySelector}
                     className="size-11 rounded-lg"
                   />
-                  {option.label}
+                  <span className="min-w-0 flex-1">{option.label}</span>
+                  {isClassicOnly(option.value) && <ClassicOnlyPill />}
                 </button>
               );
             })}
@@ -374,6 +399,11 @@ function SelectorItem<T extends { label: string; value: string }>({
           <Heading level={5} className="mb-2" color="white">
             {label}
           </Heading>
+          {selectedClassicOnly && (
+            <div className="ml-auto self-center pb-2">
+              <ClassicOnlyNote />
+            </div>
+          )}
         </div>
         <Dropdown
           value={selectedElement}
@@ -386,6 +416,12 @@ function SelectorItem<T extends { label: string; value: string }>({
           block
           disabled={disabled}
           id={testId}
+          renderItem={(option) => (
+            <span className="flex items-center justify-between gap-3">
+              <span>{option.label}</span>
+              {isClassicOnly(option.value) && <ClassicOnlyPill light />}
+            </span>
+          )}
         />
         {selectedElement ? (
           <div className="flex">
@@ -555,4 +591,37 @@ function getBadgesForTarget(
     (s) => s.target.party === party?.id && s.target.candidate === candidate?.id,
   );
   return strategies;
+}
+
+function ClassicOnlyPill({ light }: { light?: boolean }) {
+  return (
+    <span
+      className={classNames(
+        "inline-flex h-[22px] shrink-0 items-center gap-1.5 rounded-full border pr-2 pl-1.5 text-[11px] font-semibold whitespace-nowrap",
+        light
+          ? "border-slate-400 text-slate-600"
+          : "border-slate-600 text-slate-300",
+      )}
+    >
+      {!light && <ClassicIcon />}
+      {t("sideSelector.classicOnly")}
+    </span>
+  );
+}
+
+function ClassicOnlyNote() {
+  return (
+    <div data-testid="classicOnlyNote">
+      <Tooltip content={t("sideSelector.classicOnlyHint")}>
+        <span
+          tabIndex={0}
+          aria-label={t("sideSelector.classicOnlyHint")}
+          className="inline-flex h-[26px] cursor-help items-center gap-1.5 rounded-full border border-slate-600 pr-2.5 pl-2 text-xs font-semibold text-slate-300"
+        >
+          <ClassicIcon />
+          {t("sideSelector.classicOnly")}
+        </span>
+      </Tooltip>
+    </div>
+  );
 }

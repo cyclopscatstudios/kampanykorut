@@ -19,8 +19,11 @@ import { CampaignRow } from "./campaignSelector/CampaignRow";
 import {
   campaignImageUrl,
   type CampaignSort,
+  getCampaignGameModes,
+  isDualModeCampaign,
   sortCampaigns,
 } from "./campaignSelector/campaignSelector.utils";
+import { ModeSwitch } from "./campaignSelector/ModeSwitch";
 import { SortMenu } from "./campaignSelector/SortMenu";
 
 export function ClassicModeSelectorMenu() {
@@ -50,6 +53,7 @@ export function CampaignSelectorMenuList({
   const { saveSession } = useStateEngine();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [sort, setSort] = useState<CampaignSort>("year");
+  const [strategic, setStrategic] = useState(false);
   const { goBack, goToSideSelector } = useNavigation();
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -62,8 +66,28 @@ export function CampaignSelectorMenuList({
 
   const select = (campaign: CampaignHeader) => {
     setSelectedId(campaign.id);
-    saveSession("campaignState", { activeCampaignId: campaign.id });
+    setStrategic(false);
+    saveSession("campaignState", {
+      activeCampaignId: campaign.id,
+      gameMode: undefined,
+    });
   };
+
+  const changeMode = (next: boolean) => {
+    setStrategic(next);
+    saveSession("campaignState", {
+      gameMode: next ? "strategic" : "classic",
+    });
+  };
+
+  const modeSwitch = (campaign: CampaignHeader, compact?: boolean) => (
+    <ModeSwitch
+      campaign={campaign}
+      strategic={strategic}
+      onChange={changeMode}
+      compact={compact}
+    />
+  );
 
   const countLabel = t("campaignSelector.count", {
     count: campaignHeaders.length,
@@ -143,6 +167,7 @@ export function CampaignSelectorMenuList({
                     <p className="max-h-[126px] overflow-y-auto pr-1.5 text-[13px] leading-[21px] font-medium text-slate-300">
                       {campaign.description}
                     </p>
+                    {modeSwitch(campaign, true)}
                   </div>
                 )}
               </div>
@@ -183,7 +208,16 @@ export function CampaignSelectorMenuList({
           ))}
         </div>
         <div className="relative min-h-[400px] min-w-0">
-          <CampaignPreview campaign={selected} />
+          <CampaignPreview
+            campaign={selected}
+            highlighted={
+              !!selected &&
+              getCampaignGameModes(selected).includes("strategic") &&
+              (strategic || !isDualModeCampaign(selected))
+            }
+          >
+            {selected && modeSwitch(selected)}
+          </CampaignPreview>
         </div>
       </div>
       <div className="flex justify-center gap-6">

@@ -303,6 +303,8 @@ describe("CampaignEngine campaign events", () => {
       undefined,
       undefined,
       events,
+      undefined,
+      { gameMode: "strategic" },
     );
 
   const answer = (questionId: string): Decision => ({

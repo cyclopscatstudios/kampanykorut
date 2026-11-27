@@ -72,7 +72,7 @@ export function getMaxStrongCoalitionPartners(
 function getSeatSetup(state: CampaignState, config: CoalitionConfig) {
   const parliamentary = getParliamentaryConfig(config.electionConfig);
   if (
-    !isStrategicMode(config) ||
+    !isStrategicMode(config, state) ||
     !isProportionalElection(parliamentary) ||
     !state.results
   ) {

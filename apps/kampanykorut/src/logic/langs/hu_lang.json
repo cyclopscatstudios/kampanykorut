@@ -73,7 +73,11 @@
       "classic": "Klasszikus",
       "classicHint": "Kérdés-válasz kampány: interjúkon és vitákon dől el a választás.",
       "strategic": "Stratégiai",
-      "strategicHint": "Fókuszfa, ügyek és szövetségek: fordulóról fordulóra építed a kampányt."
+      "strategicHint": "Fókuszfa, ügyek és szövetségek: fordulóról fordulóra építed a kampányt.",
+      "switchLabel": "Stratégiai mód",
+      "switchCaption": "Fókuszok · Viszonyok · Hírlap",
+      "switchHint": "A kampány mellé fókuszfa, viszonyrendszer, ügyek és újság kerül. Kikapcsolva a megszokott klasszikus kampány indul.",
+      "strategicOnly": "Csak stratégiai módban játszható"
     }
   },
   "sideSelector": {
@@ -93,7 +97,9 @@
       "short": "Jelvények"
     },
     "showMore": "Bővebben",
-    "showLess": "Kevesebb"
+    "showLess": "Kevesebb",
+    "classicOnly": "Csak klasszikus",
+    "classicOnlyHint": "Ennél az oldalnál nincs stratégiai tartalom, ezért a klasszikus kampány indul."
   },
   "endResult": {
     "menuBar": {

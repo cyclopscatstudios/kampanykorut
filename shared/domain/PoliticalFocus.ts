@@ -9,6 +9,7 @@ import {
 } from "@shared/types";
 import { getSelectedFocusIds } from "./CampaignStateAccess";
 import { type Answers, createConditionCheck } from "./ConditionCheck";
+import { getStateGameMode } from "./GameMode";
 
 export interface FocusView {
   id: string;
@@ -137,6 +138,9 @@ export function isFocusRequired(
   state: CampaignState,
   config: BranchConfig,
 ): boolean {
+  if (getStateGameMode(state, config.politicalConfig) !== "strategic") {
+    return false;
+  }
   const branch = getCurrentBranch(state, config);
   return (
     !state.isEnded &&
@@ -157,7 +161,11 @@ export function hasFocusNews(
   config: FocusConfig,
   answers: Answers,
 ): boolean {
-  if (state.isEnded || getFocuses(config).length === 0) {
+  if (
+    state.isEnded ||
+    getStateGameMode(state, config.politicalConfig) !== "strategic" ||
+    getFocuses(config).length === 0
+  ) {
     return false;
   }
   const overview = buildFocusOverview(state, config, answers);

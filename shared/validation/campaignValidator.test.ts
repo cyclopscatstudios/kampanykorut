@@ -717,6 +717,21 @@ describe("validateCampaign", () => {
       ]);
     });
 
+    it("accepts a side playable in both modes", () => {
+      expect(
+        validate(withPolitical({ gameModes: ["classic", "strategic"] })),
+      ).toEqual([]);
+    });
+
+    it("reports an empty or unknown mode list", () => {
+      expect(codes(validate(withPolitical({ gameModes: [] })))).toEqual([
+        "error:game-mode-invalid",
+      ]);
+      expect(
+        codes(validate(withPolitical({ gameModes: ["classic", "grand"] }))),
+      ).toEqual(["error:game-mode-invalid"]);
+    });
+
     const focus = (id: string, extra: object = {}) => ({
       id,
       title: id,

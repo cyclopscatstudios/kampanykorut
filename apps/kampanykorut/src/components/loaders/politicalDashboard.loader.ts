@@ -33,7 +33,7 @@ export async function politicalDashboardLoader({ params }: LoaderFunctionArgs) {
   const config = await loadCampaignConfig(campaignId);
   container.resolve(ConfigEngine).configure(config, campaignId, true);
 
-  if (!isStrategicMode(forPlayerSide(config, state.playerSide))) {
+  if (!isStrategicMode(forPlayerSide(config, state.playerSide), state)) {
     log.info("Classic campaign has no dashboard, back to the game", {
       campaignId,
     });

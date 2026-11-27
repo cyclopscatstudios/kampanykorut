@@ -14,6 +14,7 @@ import {
   EffectType,
   ElectionConfig,
   FinalResults,
+  GameMode,
   GameSettings,
   HistoryItem,
   IssueStanceParams,
@@ -41,6 +42,13 @@ import {
 import { createConditionContext } from "./ConditionContext";
 import type { EffectApplier } from "./EffectApplier";
 import { getParliamentaryConfig, isMayoralElection } from "./ElectionType";
+import {
+  answerForGameMode,
+  effectsForGameMode,
+  filterByGameMode,
+  getStateGameMode,
+  resolveGameMode,
+} from "./GameMode";
 import {
   excludeInactiveCandidates,
   excludeInactiveFromConditionalEffects,
@@ -149,6 +157,7 @@ export class CampaignEngine {
       partyListData,
       partyListVotes,
       playerSide: savedState?.playerSide,
+      gameMode: resolveGameMode(savedState?.gameMode, this.politicalConfig),
       ...(dormantParties && { candidates: dormantParties }),
       ...this.calculateResults(
         candidateListData,
@@ -204,10 +213,19 @@ export class CampaignEngine {
     }
 
     const inactiveCandidateIds = getInactiveCandidateIds(state);
+    const mode = this.getGameMode(state);
+    const decided = answerForGameMode(
+      {
+        id: decision.answerId,
+        effects: decision.effects,
+        conditionalEffects: decision.conditionalEffects,
+      },
+      mode,
+    );
     const effects = this.effectApplier.resolveConditionalEffects(
-      excludeInactiveCandidates(decision.effects, inactiveCandidateIds),
+      excludeInactiveCandidates(decided.effects, inactiveCandidateIds),
       excludeInactiveFromConditionalEffects(
-        decision.conditionalEffects,
+        decided.conditionalEffects,
         inactiveCandidateIds,
       ),
       history,
@@ -232,12 +250,13 @@ export class CampaignEngine {
     const modified = this.resultModifier.apply(stanced, appliedEffects);
 
     const nextTurn = state.turn + 1;
-    const candidateListData = withoutWithdrawnVotes(
-      this.resultModifier.filterUnwantedValues(modified?.candidateListData),
-      state.districtWithdrawals,
-    );
-    const partyListData = modified?.partyListData;
-    const partyListVotes = modified?.partyListVotes;
+    const candidateListData =
+      withoutWithdrawnVotes(
+        this.resultModifier.filterUnwantedValues(modified?.candidateListData),
+        state.districtWithdrawals,
+      ) ?? stanced.candidateListData;
+    const partyListData = modified?.partyListData ?? stanced.partyListData;
+    const partyListVotes = modified?.partyListVotes ?? stanced.partyListVotes;
 
     const calculated = this.calculateResults(
       candidateListData,
@@ -250,9 +269,9 @@ export class CampaignEngine {
     const answered = {
       ...stanced,
       turn: nextTurn,
-      candidateListData: candidateListData ?? stanced.candidateListData,
-      partyListData: partyListData ?? stanced.partyListData,
-      partyListVotes: partyListVotes ?? stanced.partyListVotes,
+      candidateListData,
+      partyListData,
+      partyListVotes,
       advisorFeedback: this.getAdivsorFeedback(
         decision.answerId,
         state.currentQuestion,
@@ -267,7 +286,7 @@ export class CampaignEngine {
     ];
 
     const afterEvents = this.eventEngine.run(
-      this.campaignEvents ?? [],
+      filterByGameMode(this.campaignEvents ?? [], mode),
       answered,
       answers,
       electionConfig,
@@ -320,7 +339,7 @@ export class CampaignEngine {
     answers: Pick<HistoryItem, "questionId" | "answerId">[],
     electionConfig: ElectionConfig,
   ): CampaignState {
-    if (!this.politicalConfig) {
+    if (!this.politicalConfig || this.getGameMode(state) !== "strategic") {
       return state;
     }
     const effects = getFailedFocusEffects(
@@ -399,19 +418,25 @@ export class CampaignEngine {
       return context;
     };
 
-    const index = findNextQuestionIndex(this.questions, fromIndex, getContext);
+    const mode = this.getGameMode(state);
+    const index = findNextQuestionIndex(
+      this.questions,
+      fromIndex,
+      getContext,
+      mode,
+    );
     const currentQuestion =
       index === undefined ? undefined : this.questions[index];
 
     return {
       currentQuestion,
-      answerEffects: this.getAnswerEffects(this.answers, currentQuestion),
+      answerEffects: this.getAnswerEffects(this.answers, mode, currentQuestion),
       questionCursor: index ?? this.questions.length,
       decisionCount:
         state.turn +
         (index === undefined
           ? 0
-          : countEligibleQuestions(this.questions, index, getContext)),
+          : countEligibleQuestions(this.questions, index, getContext, mode)),
       isEnded: index === undefined,
     };
   }
@@ -564,7 +589,7 @@ export class CampaignEngine {
 
       const appliedEffects = this.effectApplier.getAppliedEffects(
         excludeInactiveCandidates(
-          reward.effects,
+          effectsForGameMode(reward.effects, this.getGameMode(state)),
           getInactiveCandidateIds(state),
         ),
         candidateListData,
@@ -634,9 +659,10 @@ export class CampaignEngine {
 
   private applyEventEffects(
     state: CampaignState,
-    effects: CampaignEventEffect[],
+    allEffects: CampaignEventEffect[],
     electionConfig: ElectionConfig,
   ): CampaignState {
+    const effects = effectsForGameMode(allEffects, this.getGameMode(state));
     let current = state;
     let batch: RawEffect[] = [];
     const relations: RelationEffect[] = [];
@@ -1149,15 +1175,22 @@ export class CampaignEngine {
     };
   }
 
+  private getGameMode(state: Pick<CampaignState, "gameMode">): GameMode {
+    return getStateGameMode(state, this.politicalConfig);
+  }
+
   private getAnswerEffects(
     answers: RawAnsweEffectProps[],
+    mode: GameMode,
     currentQuestion?: RawQuestion,
   ) {
     if (!currentQuestion) {
       log.info("no currentQuestion was found, game ends in next turn");
       return;
     }
-    return answers.find((e) => e.id === currentQuestion?.id)?.answers;
+    return answers
+      .find((e) => e.id === currentQuestion?.id)
+      ?.answers.map((answer) => answerForGameMode(answer, mode));
   }
 }
 

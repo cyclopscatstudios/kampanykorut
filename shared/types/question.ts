@@ -1,4 +1,5 @@
 import { Condition } from "./condition";
+import type { GameMode } from "./political";
 
 export interface RawQuestion {
   id: string;
@@ -12,4 +13,5 @@ export interface RawQuestion {
   requires?: { questionId: string; answerId: string }[];
   blocks?: { questionId: string; answerId: string }[];
   visibleIf?: Condition;
+  gameModes?: GameMode[];
 }

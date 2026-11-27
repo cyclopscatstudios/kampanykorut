@@ -1,6 +1,7 @@
 import { Answer } from "./answer";
 import { DistrictTarget, DistrictTargetGroup } from "./district";
 import { IssueStanceParams } from "./issue";
+import type { GameModeScoped } from "./political";
 
 export type PartyShareParams = {
   newVotes: number;
@@ -32,7 +33,7 @@ export type AppliedEffect =
       motivationDelta: Record<string, number>;
     };
 
-export type RawEffect =
+export type RawEffect = (
   | {
       type: EffectType.UniformSwing;
       params: Record<string, number>;
@@ -52,7 +53,9 @@ export type RawEffect =
   | {
       type: EffectType.IssueStance;
       params: IssueStanceParams;
-    };
+    }
+) &
+  GameModeScoped;
 
 export type ConditionalRawEffect = {
   if: {
@@ -61,7 +64,7 @@ export type ConditionalRawEffect = {
   }[];
   mode: "merge" | "replace";
   effects: RawEffect[];
-};
+} & GameModeScoped;
 
 export enum EffectType {
   UniformSwing = "uniform-swing",

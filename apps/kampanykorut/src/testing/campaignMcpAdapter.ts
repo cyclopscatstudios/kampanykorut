@@ -428,6 +428,11 @@ export function createCampaignMcpAdapter(publicDir: string) {
               mode,
               random,
             );
+            if (!answerId) {
+              throw new Error(
+                `No answer to select for question "${question.id}"`,
+              );
+            }
             const answer = state.answerEffects?.find(
               (item) => item.id === answerId,
             );

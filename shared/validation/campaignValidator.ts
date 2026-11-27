@@ -362,6 +362,27 @@ function checkDistrictTransfer(
   });
 }
 
+function checkGameModes(ctx: Context, file: string, path: string, item: Json) {
+  const modes = item.gameModes;
+  if (modes === undefined) {
+    return;
+  }
+  if (
+    !Array.isArray(modes) ||
+    modes.length === 0 ||
+    !modes.every((mode) => GAME_MODES.includes(mode as GameMode))
+  ) {
+    report(
+      ctx,
+      "error",
+      "game-mode-invalid",
+      file,
+      `${path}/gameModes`,
+      `gameModes must be a non-empty array of ${GAME_MODES.join(", ")}`,
+    );
+  }
+}
+
 function checkEffect(
   ctx: Context,
   file: string,
@@ -379,6 +400,7 @@ function checkEffect(
     );
     return;
   }
+  checkGameModes(ctx, file, path, effect);
   if (typeof effect.type !== "string" || !EFFECT_TYPES.includes(effect.type)) {
     report(
       ctx,
@@ -726,6 +748,7 @@ function checkQuestions(
         answers.add(answer.id);
       });
     }
+    checkGameModes(ctx, file, path, question);
     questions.set(question.id, { index, answers });
   });
   checkQuestionConditions(ctx, file, data, questions, eventIds);
@@ -970,6 +993,7 @@ function checkAnswerEffects(
             );
             return;
           }
+          checkGameModes(ctx, file, condPath, cond);
           if (cond.mode !== "merge" && cond.mode !== "replace") {
             report(
               ctx,
@@ -1951,6 +1975,9 @@ function checkEventEffects(
   }
   effects.forEach((effect, i) => {
     const effectPath = `${path}/${i}`;
+    if (isObject(effect) && !EFFECT_TYPES.includes(effect.type as string)) {
+      checkGameModes(ctx, file, effectPath, effect);
+    }
     if (isObject(effect) && effect.type === "withdraw-candidate") {
       checkWithdrawEffect(ctx, file, effectPath, effect, guard);
     } else if (
@@ -2322,6 +2349,7 @@ function checkCampaignEvents(
       );
     }
     seen.add(event.id);
+    checkGameModes(ctx, file, path, event);
     if (event.once !== undefined && typeof event.once !== "boolean") {
       report(
         ctx,
@@ -2525,14 +2553,16 @@ function checkPoliticalConfig(
     );
     return;
   }
-  if (!GAME_MODES.includes(data.gameMode as GameMode)) {
+  if (data.gameModes !== undefined) {
+    checkGameModes(ctx, file, "", data);
+  } else if (!GAME_MODES.includes(data.gameMode as GameMode)) {
     report(
       ctx,
       "error",
       "game-mode-invalid",
       file,
       "/gameMode",
-      `gameMode must be one of ${GAME_MODES.join(", ")}`,
+      `gameMode or gameModes must name ${GAME_MODES.join(", ")}`,
     );
   }
   checkRelations(ctx, file, data);
@@ -3362,7 +3392,11 @@ export function validateCampaign(
       String(files.newspaper),
       readFile(ctx, files.newspaper, "manifest.json", "/files/newspaper"),
       politicalFiles.some(
-        ({ data }) => isObject(data) && data.gameMode === "strategic",
+        ({ data }) =>
+          isObject(data) &&
+          (data.gameMode === "strategic" ||
+            (Array.isArray(data.gameModes) &&
+              data.gameModes.includes("strategic"))),
       ),
       allQuestions,
     );

@@ -1,6 +1,12 @@
 import type { CampaignHeader } from "@logic/application";
 import { describe, expect, it } from "vitest";
-import { isNewCampaign, sortCampaigns } from "./campaignSelector.utils";
+import {
+  getCampaignGameModes,
+  isDualModeCampaign,
+  isNewCampaign,
+  sortCampaigns,
+  supportsStrategicMode,
+} from "./campaignSelector.utils";
 
 function campaign(id: string, year: number, addedAt?: string): CampaignHeader {
   return {
@@ -63,5 +69,37 @@ describe("isNewCampaign", () => {
   it("is not new without a date or with a future date", () => {
     expect(isNewCampaign({}, now)).toBe(false);
     expect(isNewCampaign({ addedAt: "2026-12-24" }, now)).toBe(false);
+  });
+});
+
+describe("game modes", () => {
+  it("falls back to the single game mode of older catalogs", () => {
+    expect(getCampaignGameModes({ gameMode: "strategic" })).toEqual([
+      "strategic",
+    ]);
+    expect(isDualModeCampaign({ gameMode: "strategic" })).toBe(false);
+  });
+
+  it("detects a campaign playable in both modes", () => {
+    expect(
+      isDualModeCampaign({
+        gameMode: "strategic",
+        gameModes: ["classic", "strategic"],
+      }),
+    ).toBe(true);
+  });
+
+  it("tells which sides have strategic content", () => {
+    const header: Pick<CampaignHeader, "sideGameModes"> = {
+      sideGameModes: {
+        lmp: { vitezy: ["classic", "strategic"] },
+        fidesz: { szentkiralyi: ["classic"] },
+      },
+    };
+    expect(supportsStrategicMode(header, "lmp")).toBe(true);
+    expect(supportsStrategicMode(header, "fidesz")).toBe(false);
+    expect(supportsStrategicMode(header, "fidesz", "szentkiralyi")).toBe(false);
+    expect(supportsStrategicMode(header, "unknown")).toBe(true);
+    expect(supportsStrategicMode(null, "fidesz")).toBe(true);
   });
 });

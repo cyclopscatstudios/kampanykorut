@@ -9,6 +9,7 @@ export * from "./ConditionEvaluator";
 export * from "./DistrictGroupEngine";
 export * from "./EffectApplier";
 export * from "./ElectionType";
+export * from "./GameMode";
 export * from "./Majority";
 export * from "./MandateCalculator";
 export * from "./MayoralResultCalculator";

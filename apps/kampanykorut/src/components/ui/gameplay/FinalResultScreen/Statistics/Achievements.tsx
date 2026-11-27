@@ -23,7 +23,7 @@ export function Achievements({ config, state }: AchievmentsProps) {
   }
   const strategies = configEngine.getCampaignStrategies(state, config, history);
   // Focuses take over the role of badges in strategic mode.
-  const focus = isStrategicMode(config) && (
+  const focus = isStrategicMode(config, state) && (
     <FocusResult
       focuses={buildFocusOverview(state, config, history).selected}
     />
