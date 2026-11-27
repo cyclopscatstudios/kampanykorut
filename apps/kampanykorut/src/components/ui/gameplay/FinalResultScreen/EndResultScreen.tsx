@@ -87,18 +87,25 @@ export function FinalResultScreen() {
   const [shareCard, setShareCard] = useState<ShareCardData | null>(null);
   const openShare = () => {
     if (!state || !campaignId) return;
-    setShareCard(
-      buildShareCard({
-        results,
-        config,
-        state,
-        history: history ?? [],
+    const card = buildShareCard({
+      results,
+      config,
+      state,
+      history: history ?? [],
+      campaignId,
+      origin: window.location.origin,
+      locale: i18next.language || "hu",
+      t,
+    });
+    setShareCard(card);
+    track("result_share_opened", {
+      ...getRunProperties(
+        stateEngine.getSessionId(),
         campaignId,
-        origin: window.location.origin,
-        locale: i18next.language || "hu",
-        t,
-      }),
-    );
+        state.playerSide,
+      ),
+      outcome: card.outcome,
+    });
   };
   const summary = mayoralResult ? (
     <MayoralSummaryPage mayoralResult={mayoralResult} config={config} />

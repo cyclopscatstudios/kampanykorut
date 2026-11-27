@@ -478,6 +478,23 @@ export class CampaignEngine {
     };
   }
 
+  getAggregatePollProjection(
+    state: CampaignState,
+    electionConfig?: ElectionConfig,
+  ) {
+    const { polls } = this.getPollsForPollster(
+      state,
+      electionConfig,
+      AGGREGATE_POLLSTER_ID,
+    );
+    return this.getPollProjection(
+      state,
+      electionConfig,
+      polls,
+      AGGREGATE_POLLSTER_ID,
+    );
+  }
+
   getPollProjection(
     state: CampaignState,
     electionConfig?: ElectionConfig,

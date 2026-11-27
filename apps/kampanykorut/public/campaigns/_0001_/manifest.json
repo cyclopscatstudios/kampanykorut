@@ -9,8 +9,8 @@
     "description": "something something test campaign",
     "year": 0,
     "tags": ["test"],
-    "campaignBanner": "default-banner.png",
-    "thinCampaignBanner": "default-banner-thin.png",
+    "campaignBanner": "default-banner.webp",
+    "thinCampaignBanner": "default-banner-thin.webp",
     "status": "draft"
   },
   "files": {

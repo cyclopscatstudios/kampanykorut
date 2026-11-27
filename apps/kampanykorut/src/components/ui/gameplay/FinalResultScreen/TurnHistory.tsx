@@ -1,5 +1,4 @@
 import { StateEngine } from "@logic/application";
-import { noop } from "@logic/application/utils";
 import { CampaignConfig, HistoryItem } from "@shared/types";
 import { Button } from "@shared/ui/Button";
 import { Text } from "@shared/ui/Text";
@@ -229,7 +228,6 @@ function QuestionCardItem({
             answer={a}
             index={index}
             isSelected={a.id === item?.answerId}
-            onClick={noop}
           />
         ))}
       </div>

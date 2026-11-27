@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-26T00:00:00Z",
+  "title": "Design System: Kampánykörút",
+  "extensions": {
+    "colorMeta": {
+      "hq-navy": { "role": "neutral", "displayName": "HQ Navy", "canonical": "#0f172a", "tonalRamp": ["#05080f", "#0a0f1c", "#0f172a", "#1a2338", "#2a3450", "#4a5574", "#8a93ab", "#d6dae4"] },
+      "panel-ink": { "role": "neutral", "displayName": "Panel Ink", "canonical": "#161e30", "tonalRamp": ["#070a11", "#0e1420", "#161e30", "#1d2840", "#2c3a58", "#4a5a7c", "#8b97b2", "#d4d9e5"] },
+      "campaign-blue": { "role": "primary", "displayName": "Campaign Blue", "canonical": "#3d63c7", "tonalRamp": ["#0f1d45", "#15287a", "#1e3fa6", "#2952c8", "#3d63c7", "#6f8fdc", "#a9bdec", "#e4eafa"] },
+      "signal-blue": { "role": "primary", "displayName": "Signal Blue", "canonical": "#60a5fa", "tonalRamp": ["#102a4c", "#1d4ed8", "#3b82f6", "#60a5fa", "#93c5fd", "#bfdbfe", "#dbeafe", "#eff6ff"] },
+      "results-gold": { "role": "secondary", "displayName": "Results Gold", "canonical": "#e0a23b", "tonalRamp": ["#1a1206", "#4a300a", "#7c5212", "#b37a22", "#e0a23b", "#ecc074", "#f5dcaa", "#fcf3e0"] },
+      "slate-muted": { "role": "neutral", "displayName": "Slate Muted", "canonical": "#94a3b8", "tonalRamp": ["#0f172a", "#1e293b", "#334155", "#64748b", "#94a3b8", "#cbd5e1", "#e2e8f0", "#f8fafc"] },
+      "newsprint": { "role": "neutral", "displayName": "Newsprint", "canonical": "#efe6cf", "tonalRamp": ["#1c1a17", "#3a352c", "#6b624f", "#a39878", "#cfc3a2", "#efe6cf", "#f6f0e1", "#fcfaf3"] },
+      "press-red": { "role": "tertiary", "displayName": "Press Red", "canonical": "#8a2a1b", "tonalRamp": ["#2a0c07", "#4f170e", "#8a2a1b", "#b0442f", "#cf6e57", "#e49e8c", "#f2cdc3", "#fbeeea"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Menu and screen titles (Heading level 1)." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles and modal titles (levels 2-3)." },
+      "title": { "displayName": "Title", "purpose": "Panel and card headings." },
+      "body": { "displayName": "Body", "purpose": "Question text, explanations, news content." },
+      "label": { "displayName": "Label", "purpose": "Every button and tab; always bold." },
+      "chip": { "displayName": "Chip", "purpose": "Tiny uppercase status chips such as 'new'." },
+      "newspaper-masthead": { "displayName": "Newspaper Masthead", "purpose": "Scoped to the newspaper event announcement." },
+      "newspaper-headline": { "displayName": "Newspaper Headline", "purpose": "Scoped to the newspaper event announcement." },
+      "newspaper-body": { "displayName": "Newspaper Body", "purpose": "Scoped to the newspaper event announcement." }
+    },
+    "shadows": [
+      { "name": "btn-primary", "value": "0 1px 2px rgba(0, 0, 0, 0.25)", "purpose": "Primary button and selected tab at rest; flat, no glow." },
+      { "name": "btn-primary-hover", "value": "0 2px 6px -1px rgba(0, 0, 0, 0.3)", "purpose": "Primary hover." },
+      { "name": "btn-secondary", "value": "inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(0, 0, 0, 0.08), 0 4px 12px -4px rgba(0, 0, 0, 0.45)", "purpose": "Bevel on the light secondary button." },
+      { "name": "btn-tertiary", "value": "inset 0 0 0 1px rgba(148, 163, 184, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.04)", "purpose": "Glass hairline." },
+      { "name": "btn-tertiary-hover", "value": "inset 0 0 0 1px rgba(148, 163, 184, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.04)", "purpose": "Glass hairline on hover." },
+      { "name": "btn-hero", "value": "inset 0 0 0 1px rgba(148, 163, 184, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 24px -6px rgba(0, 0, 0, 0.6)", "purpose": "Glass button floating on photography." },
+      { "name": "btn-disabled", "value": "inset 0 0 0 1px rgba(148, 163, 184, 0.08)", "purpose": "Disabled controls." },
+      { "name": "frame", "value": "0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.6)", "purpose": "The main game frame over the backdrop." }
+    ],
+    "motion": [
+      { "name": "control-transition", "value": "150ms ease-out", "purpose": "Background, box-shadow and transform on buttons." },
+      { "name": "newspaper-ribbon", "value": "300ms ease-out", "purpose": "Ribbon slides in 12px from the left." },
+      { "name": "sheet-backdrop", "value": "250ms", "purpose": "Bottom sheet backdrop fade." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one move to make now. Flat campaign blue.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Kampány indítása</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 16px; font-family: Montserrat, system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.1px; border: none; border-radius: 8px; cursor: pointer; transition: background 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out; } .ds-btn:focus-visible { outline: none; box-shadow: 0 0 0 2px #0f172a, 0 0 0 4px #60a5fa; } .ds-btn-primary { background: #3d63c7; color: #f8fafc; box-shadow: 0 1px 2px rgba(0,0,0,0.25); } .ds-btn-primary:hover { background: #4a6fd0; box-shadow: 0 2px 6px -1px rgba(0,0,0,0.3); } .ds-btn-primary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "The light alternate in a pair, such as cancel.",
+      "html": "<button class=\"ds-btn-secondary\">Mégse</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 16px; font-family: Montserrat, system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.1px; border: none; border-radius: 8px; cursor: pointer; color: #1e3a8a; background-image: linear-gradient(180deg, #f8fafc 0%, #e0e7ff 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(0,0,0,0.08), 0 4px 12px -4px rgba(0,0,0,0.45); transition: background 150ms ease-out, box-shadow 150ms ease-out; } .ds-btn-secondary:hover { background-image: linear-gradient(180deg, #ffffff 0%, #e6ecf7 100%); box-shadow: inset 0 1px 0 #fff, inset 0 -1px 0 rgba(0,0,0,0.1), 0 6px 16px -4px rgba(0,0,0,0.5); } .ds-btn-secondary:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }"
+    },
+    {
+      "name": "Tertiary (Glass) Button",
+      "kind": "button",
+      "refersTo": "button-tertiary",
+      "description": "Default menu and list button: translucent slate glass with a hairline.",
+      "html": "<div style=\"background:#0f172a;padding:16px\"><button class=\"ds-btn-tertiary\">Új játék</button></div>",
+      "css": ".ds-btn-tertiary { display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 24px; font-family: Montserrat, system-ui, sans-serif; font-size: 15px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; color: #cbd5e1; background: rgba(148,163,184,0.07); backdrop-filter: blur(12px); box-shadow: inset 0 0 0 1px rgba(148,163,184,0.18), inset 0 1px 0 rgba(255,255,255,0.04); transition: background 150ms ease-out, box-shadow 150ms ease-out; } .ds-btn-tertiary:hover { background: rgba(148,163,184,0.16); box-shadow: inset 0 0 0 1px rgba(148,163,184,0.32), inset 0 1px 0 rgba(255,255,255,0.04); } .ds-btn-tertiary:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }"
+    },
+    {
+      "name": "Tabs",
+      "kind": "nav",
+      "refersTo": "button-tab-selected",
+      "description": "Selected tab is a primary fill; idle tabs are faint glass.",
+      "html": "<div class=\"ds-tabs\"><button class=\"ds-tab ds-tab-on\">Áttekintés</button><button class=\"ds-tab\">Fókusz</button><button class=\"ds-tab\">Kapcsolatok</button></div>",
+      "css": ".ds-tabs { display: flex; gap: 8px; background: #0f172a; padding: 12px; } .ds-tab { height: 30px; padding: 0 12px; font-family: Montserrat, system-ui, sans-serif; font-size: 12px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; color: #cbd5e1; background: rgba(148,163,184,0.05); box-shadow: inset 0 0 0 1px rgba(148,163,184,0.14); transition: background 150ms ease-out, box-shadow 150ms ease-out; } .ds-tab:hover { background: rgba(148,163,184,0.12); box-shadow: inset 0 0 0 1px rgba(148,163,184,0.28); } .ds-tab-on, .ds-tab-on:hover { background: #3d63c7; color: #f8fafc; box-shadow: 0 1px 2px rgba(0,0,0,0.25); } .ds-tab:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Glass card sitting flat on the frame.",
+      "html": "<div style=\"background:#0f172a;padding:16px\"><div class=\"ds-card\"><div class=\"ds-card-title\">Budapest 01.</div><div class=\"ds-card-meta\">Fidesz +2,4%</div></div></div>",
+      "css": ".ds-card { background: rgba(96,165,250,0.10); border: 1px solid rgba(239,246,255,0.10); border-radius: 6px; padding: 12px 16px; font-family: Montserrat, system-ui, sans-serif; } .ds-card-title { color: #f8fafc; font-weight: 700; font-size: 16px; } .ds-card-meta { color: #94a3b8; font-size: 14px; margin-top: 4px; }"
+    },
+    {
+      "name": "Dialog",
+      "kind": "custom",
+      "refersTo": "dialog",
+      "description": "Panel-ink dialog with header rule and footer tray.",
+      "html": "<div class=\"ds-dialog\"><div class=\"ds-dialog-head\">Esemény</div><div class=\"ds-dialog-body\">A kampány új szakaszba lépett.</div><div class=\"ds-dialog-foot\"><button class=\"ds-dialog-btn\">Tovább</button></div></div>",
+      "css": ".ds-dialog { width: 400px; background: #161e30; border: 1px solid #4462aa; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.4); font-family: Montserrat, system-ui, sans-serif; color: #f8fafc; overflow: hidden; } .ds-dialog-head { padding: 12px; text-align: center; font-weight: 700; border-bottom: 1px solid #4462aa; } .ds-dialog-body { padding: 16px; color: #cbd5e1; font-size: 14px; } .ds-dialog-foot { background: #1d2840; padding: 12px; display: flex; justify-content: flex-end; } .ds-dialog-btn { height: 40px; padding: 0 16px; background: #3d63c7; color: #f8fafc; font: 700 14px Montserrat, system-ui, sans-serif; border: none; border-radius: 8px; cursor: pointer; } .ds-dialog-btn:hover { background: #4a6fd0; } .ds-dialog-btn:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "text-input",
+      "description": "Dark field with blue-500 focus border.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Jelölt neve</span><input class=\"ds-input\" placeholder=\"Írd be a nevet\" /></label>",
+      "css": ".ds-field { display: block; width: 280px; font-family: Montserrat, system-ui, sans-serif; } .ds-field-label { display: block; margin-bottom: 4px; font-size: 14px; font-weight: 500; color: #d1d5db; } .ds-input { width: 100%; box-sizing: border-box; padding: 8px 12px; background: #1f2937; border: 1px solid #4b5563; border-radius: 8px; color: #fff; font: inherit; outline: none; } .ds-input::placeholder { color: #9ca3af; } .ds-input:focus { border-color: #3b82f6; }"
+    },
+    {
+      "name": "New Chip",
+      "kind": "chip",
+      "refersTo": "chip-new",
+      "description": "Earned-gold status chip.",
+      "html": "<span class=\"ds-chip-new\">Új</span>",
+      "css": ".ds-chip-new { display: inline-block; background: #e0a23b; color: #1a1206; padding: 2px 6px; border-radius: 4px; font-family: Montserrat, system-ui, sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Newspaper Ribbon",
+      "kind": "custom",
+      "refersTo": "newspaper-ribbon",
+      "description": "Parchment entry point to the newspaper sub-world.",
+      "html": "<button class=\"ds-ribbon\"><span class=\"ds-ribbon-kicker\">Rendkívüli kiadás</span><span class=\"ds-ribbon-title\">Megjelent a reggeli lap</span></button>",
+      "css": ".ds-ribbon { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; max-width: 260px; padding: 6px 12px 6px 16px; background: #efe6cf; color: #1c1a17; border: none; border-radius: 0 6px 6px 0; box-shadow: 0 6px 16px rgba(0,0,0,0.35); cursor: pointer; text-align: left; } .ds-ribbon-kicker { font: 700 10px Montserrat, system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: #8a2a1b; } .ds-ribbon-title { font: 400 15px 'Alfa Slab One', Georgia, serif; } .ds-ribbon:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Campaign HQ",
+    "overview": "Kampánykörút looks like a campaign war room after dark. A full-bleed photograph of the place or the moment sits behind everything, dimmed to half brightness. On top of it floats one deep-navy frame (hq-navy at 92% opacity, 1200 × 750 on desktop, edge to edge on phones) that holds the whole game. Inside the frame, everything is screen light: slate text on navy, translucent glass panels drawn with 1px inset hairlines, and one royal campaign blue that marks the action you can take now. Results gold is held back until the count comes in.\n\nThe density is that of a working tool, not a poster. Controls are compact (30/40/50px heights), labels are bold Montserrat at small sizes, and panels are separated by hairlines and faint tint, not heavy shadows. Expression comes from the backdrop photography, the map, party colors and the occasional sub-world (the newspaper, the winter season), never from decorating the chrome.\n\nThe primary and selected-tab buttons are flat on purpose: no gloss, no blue glow. That choice is written into the theme source and is a standing rejection.",
+    "keyCharacteristics": [
+      "One dark frame over a dimmed photographic backdrop",
+      "One action color (campaign blue); gold only for earned outcomes",
+      "Glass panels: translucent slate fill plus 1px inset hairline",
+      "Montserrat throughout, bold for every control",
+      "Compact, three-step control sizing (30 / 40 / 50px)",
+      "Party colors carry the data; the UI stays blue-slate so they read"
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Campaign blue fills only the primary action and the selected tab. Everything else that is interactive stays glass or light. If two filled blue buttons share a view, one of them is wrong.", "section": "colors" },
+      { "name": "The Earned Gold Rule", "body": "Gold appears only when the player has earned something: a result, an outcome, a milestone, something new. Never on chrome, navigation, or ordinary buttons.", "section": "colors" },
+      { "name": "The Party Colors Own the Data Rule", "body": "Maps, seat bars and vote shares use party colors. UI chrome never borrows a party hue, so no party is visually privileged by the interface.", "section": "colors" },
+      { "name": "The Bold Controls Rule", "body": "Every button, tab and link is weight 700. Body text never is, except strong inside news content.", "section": "typography" },
+      { "name": "The Newsprint Stays in the Paper Rule", "body": "The three serif faces load with the newspaper component and appear nowhere else.", "section": "typography" },
+      { "name": "The Hairline Before Shadow Rule", "body": "A surface that sits on the frame gets a 1px inset hairline or a blue-50/10 border, not a drop shadow. Shadows mean \"this floats above the frame\".", "section": "elevation" },
+      { "name": "The No Glow Rule", "body": "Blue never glows. Primary surfaces get a neutral black shadow only.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do build every button with @shared/ui/Button and pick a variant; don't hand-roll button styles.",
+      "Do put new panels on the glass recipe: translucent slate or blue-400/10 fill, 1px blue-50/10 border or inset hairline, 6–12px radius.",
+      "Do give interactive elements the 2px signal-blue focus ring offset against hq-navy.",
+      "Do expose data-variant, data-selected, data-surface and data-panel on new components so seasonal skins can reach them.",
+      "Do use slate-muted for secondary copy and chalk or ice-text for primary copy on dark.",
+      "Do respect prefers-reduced-motion for any ambient animation."
+    ],
+    "donts": [
+      "Don't add gloss, gradients or a blue glow to primary or selected-tab buttons; they are flat on purpose.",
+      "Don't use results gold on chrome, navigation or ordinary actions.",
+      "Don't use party colors in UI chrome, or UI blue in data that party colors should own.",
+      "Don't use the newspaper serifs or parchment tones outside the newspaper.",
+      "Don't add a second sans-serif or a display face to the core UI.",
+      "Don't put drop shadows on surfaces that sit flat on the frame; use a hairline.",
+      "Don't introduce new raw hex panel colors; reuse panel-ink, panel-footer, modal-ink and the rule colors."
+    ]
+  }
+}

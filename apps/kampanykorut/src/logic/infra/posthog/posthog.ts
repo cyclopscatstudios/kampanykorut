@@ -5,7 +5,12 @@ import posthog, { type CaptureResult } from "posthog-js";
 import { container } from "tsyringe";
 import { buildInfo } from "../../../buildInfo";
 import { redactSessionIdParam } from "../sentryScrub";
-import { ANALYTICS_SCHEMA_VERSION, getStorageKeyKind } from "./events";
+import {
+  ANALYTICS_SCHEMA_VERSION,
+  type EntryProperties,
+  getEntryProperties,
+  getStorageKeyKind,
+} from "./events";
 import { track } from "./track";
 
 const log = createLogger("posthog");
@@ -37,12 +42,38 @@ export function syncAnalyticsConsent(enabled: boolean) {
   }
 }
 
-function startPosthog(key: string, host: string | undefined) {
+const INTERNAL_FLAG_KEY = "kk_internal";
+
+export function isInternalVisit(
+  location: Pick<Location, "hostname" | "search">,
+  storage: Pick<Storage, "getItem" | "setItem" | "removeItem"> = localStorage,
+) {
+  if (location.hostname === "localhost") {
+    return true;
+  }
+  try {
+    const flag = new URLSearchParams(location.search).get("internal");
+    if (flag === "1") {
+      storage.setItem(INTERNAL_FLAG_KEY, "1");
+    } else if (flag === "0") {
+      storage.removeItem(INTERNAL_FLAG_KEY);
+    }
+    return storage.getItem(INTERNAL_FLAG_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function startPosthog(
+  key: string,
+  host: string | undefined,
+  entry: EntryProperties,
+) {
   log.debug("PostHog analytics initialized");
 
   posthog.init(key, {
     api_host: host,
-    persistence: "memory",
+    persistence: "sessionStorage",
     person_profiles: "never",
     autocapture: false,
     disable_session_recording: true,
@@ -57,8 +88,9 @@ function startPosthog(key: string, host: string | undefined) {
     schema_version: ANALYTICS_SCHEMA_VERSION,
     app_version: buildInfo.version,
     git_commit: buildInfo.gitCommit,
-    is_internal: window.location.hostname === "localhost",
+    is_internal: isInternalVisit(window.location),
   });
+  posthog.register_once(entry);
 }
 
 export function initAnalytics(
@@ -72,9 +104,10 @@ export function initAnalytics(
     return;
   }
 
+  const entry = getEntryProperties(window.location, document.referrer);
   const applySetting = (enabled: boolean) => {
     if (enabled && !posthog.__loaded) {
-      startPosthog(key, host);
+      startPosthog(key, host, entry);
     }
     syncAnalyticsConsent(enabled);
   };

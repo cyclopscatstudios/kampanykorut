@@ -128,6 +128,9 @@ describe("news pages", () => {
     expect((first.body.match(/class="card"/g) ?? []).length).toBe(12);
     expect(first.body).toContain('<link rel="next"');
     expect(first.body).toContain('href="/news?type=update" class="on"');
+    expect(first.body).toContain(
+      '<meta name="robots" content="noindex, follow">',
+    );
     expect((second.body.match(/class="card"/g) ?? []).length).toBe(2);
     expect(second.body).not.toContain('class="more"');
     expect((campaigns.body.match(/class="card"/g) ?? []).length).toBe(1);

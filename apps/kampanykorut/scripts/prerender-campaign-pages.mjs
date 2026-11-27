@@ -48,8 +48,12 @@ function sitemapEntry(urlPath, priority) {
   </url>`;
 }
 
-const { buildCampaignPageData, campaignPagePath, renderCampaignPage } =
-  await import(pathToFileURL(path.join(ssrDir, "entry-server.js")).href);
+const {
+  buildCampaignPageData,
+  campaignPagePath,
+  renderCampaignPage,
+  renderLandingPage,
+} = await import(pathToFileURL(path.join(ssrDir, "entry-server.js")).href);
 
 const template = await readFile(path.join(distDir, "index.html"), "utf-8");
 const campaigns = (await loadCampaigns()).filter(
@@ -69,6 +73,24 @@ for (const campaign of campaigns) {
     await writePage(urlPath, await renderCampaignPage(template, data, origin));
     sitemapEntries.push(sitemapEntry(urlPath, data.side ? "0.7" : "0.8"));
   }
+}
+
+await writePage("/landing", await renderLandingPage(template, campaigns));
+
+const staticPages = [
+  { path: "/about", title: "A játékról – Kampánykörút" },
+  { path: "/privacy", title: "Adatkezelési tájékoztató – Kampánykörút" },
+];
+
+for (const page of staticPages) {
+  const url = `${origin}${page.path}`;
+  const html = template
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${page.title}</title>`)
+    .replace(/(<link rel="canonical" href=")[^"]*/, `$1${url}`)
+    .replace(/(property="og:url"\s+content=")[^"]*/, `$1${url}`)
+    .replace(/(property="og:title"\s+content=")[^"]*/, `$1${page.title}`)
+    .replace(/(name="twitter:title"\s+content=")[^"]*/, `$1${page.title}`);
+  await writePage(page.path, html);
 }
 
 const sitemapFile = path.join(distDir, "sitemap.xml");

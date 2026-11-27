@@ -7,6 +7,7 @@ import type {
 import type { TFunction } from "i18next";
 import {
   buildShareCard,
+  buildShareUrl,
   formatPercent,
   hungarianArticle,
 } from "./shareCard.utils";
@@ -190,5 +191,13 @@ describe("formatPercent", () => {
   it("follows the selected language", () => {
     expect(formatPercent(0.4782, "hu")).toBe("47,8%");
     expect(formatPercent(0.4782, "en")).toBe("47.8%");
+  });
+});
+
+describe("buildShareUrl", () => {
+  it("links to the campaign page with share utm parameters", () => {
+    expect(buildShareUrl("https://kampanykorut.hu", "1957_x")).toBe(
+      "https://kampanykorut.hu/kampany/1957_x?utm_source=result_card&utm_medium=share&utm_campaign=1957_x",
+    );
   });
 });

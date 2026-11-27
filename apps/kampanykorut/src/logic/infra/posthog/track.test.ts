@@ -118,6 +118,12 @@ describe("event property helpers", () => {
     },
   );
 
+  it("marks a hung parliament the player can still govern as coalition_needed", () => {
+    expect(getCampaignOutcome("mszmp", false, "mszmp", true)).toBe(
+      "coalition_needed",
+    );
+  });
+
   it.each([
     [{ kind: "winner", candidateId: "vitezy" }, "win"],
     [{ kind: "winner", candidateId: "karacsony" }, "loss"],

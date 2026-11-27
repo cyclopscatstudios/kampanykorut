@@ -1,6 +1,11 @@
 import { NEWS_PATH } from "@logic/application/news/newsPaths";
 import { createBrowserRouter, redirect } from "react-router";
-import { MainGameScreenWrapper, NewGameLayout, RootLayout } from "./AppLayout";
+import {
+  MainGameScreenWrapper,
+  NewGameLayout,
+  RootLayout,
+  ScrollLayout,
+} from "./AppLayout";
 import { ErrorPage } from "./components/ErrorPage";
 import { campaignPageLoader } from "./components/loaders/campaignPage.loader";
 import { coalitionLoader } from "./components/loaders/coalition.loader";
@@ -32,78 +37,83 @@ import { NewsDetailPage } from "./components/ui/news/NewsDetailPage";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <LandingPage />,
-    loader: landingPageRouter,
-  },
-  {
-    path: NEWS_PATH,
-    element: <NewsArchivePage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: `${NEWS_PATH}/:number`,
-    element: <NewsDetailPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: `${CAMPAIGN_PAGE_PATH}/:campaignId/:sideId?`,
-    element: <CampaignPage />,
-    loader: campaignPageLoader,
-    errorElement: <ErrorPage />,
-  },
-  {
-    element: <RootLayout />,
-    loader: rootLoader,
-    errorElement: <ErrorPage />,
-    hydrateFallbackElement: <div>loading...</div>,
+    element: <ScrollLayout />,
     children: [
-      { path: "menu", element: <MainMenu />, loader: mainMenuLoader },
-      { path: "settings", element: <SettingsMenu /> },
-      { path: "load-game", element: <LoadSavedSessionsMenu /> },
-      { path: "about", element: <AboutMenu /> },
-      { path: "privacy", element: <PrivacyPage /> },
       {
-        path: "new-game",
-        element: <NewGameLayout />,
+        path: "/",
+        element: <LandingPage />,
+        loader: landingPageRouter,
+      },
+      {
+        path: NEWS_PATH,
+        element: <NewsArchivePage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: `${NEWS_PATH}/:number`,
+        element: <NewsDetailPage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: `${CAMPAIGN_PAGE_PATH}/:campaignId/:sideId?`,
+        element: <CampaignPage />,
+        loader: campaignPageLoader,
+        errorElement: <ErrorPage />,
+      },
+      {
+        element: <RootLayout />,
+        loader: rootLoader,
+        errorElement: <ErrorPage />,
+        hydrateFallbackElement: <div>loading...</div>,
         children: [
-          { index: true, loader: () => redirect("/new-game/classic") },
+          { path: "menu", element: <MainMenu />, loader: mainMenuLoader },
+          { path: "settings", element: <SettingsMenu /> },
+          { path: "load-game", element: <LoadSavedSessionsMenu /> },
+          { path: "about", element: <AboutMenu /> },
+          { path: "privacy", element: <PrivacyPage /> },
           {
-            path: "classic",
+            path: "new-game",
+            element: <NewGameLayout />,
             children: [
+              { index: true, loader: () => redirect("/new-game/classic") },
               {
-                index: true,
-                element: <ClassicModeSelectorMenu />,
-                loader: newGameSelectorLoader,
-              },
-              {
-                path: "sides/:campaignId",
-                element: <SideSelectorMenu />,
-                loader: sideSelectorLoader,
+                path: "classic",
+                children: [
+                  {
+                    index: true,
+                    element: <ClassicModeSelectorMenu />,
+                    loader: newGameSelectorLoader,
+                  },
+                  {
+                    path: "sides/:campaignId",
+                    element: <SideSelectorMenu />,
+                    loader: sideSelectorLoader,
+                  },
+                ],
               },
             ],
           },
+          {
+            path: "game/:id",
+            element: <MainGameScreenWrapper />,
+            loader: mainGameScreenLoader,
+          },
+          {
+            path: "game/:id/dashboard",
+            element: <PoliticalDashboardPage />,
+            loader: politicalDashboardLoader,
+          },
+          {
+            path: "game/:id/coalition",
+            element: <CoalitionPage />,
+            loader: coalitionLoader,
+          },
+          {
+            path: "game/:id/end-results",
+            element: <FinalResultScreen />,
+            loader: finalResultLoader,
+          },
         ],
-      },
-      {
-        path: "game/:id",
-        element: <MainGameScreenWrapper />,
-        loader: mainGameScreenLoader,
-      },
-      {
-        path: "game/:id/dashboard",
-        element: <PoliticalDashboardPage />,
-        loader: politicalDashboardLoader,
-      },
-      {
-        path: "game/:id/coalition",
-        element: <CoalitionPage />,
-        loader: coalitionLoader,
-      },
-      {
-        path: "game/:id/end-results",
-        element: <FinalResultScreen />,
-        loader: finalResultLoader,
       },
     ],
   },

@@ -5,17 +5,23 @@ import {
   getRunProperties,
 } from "@logic/infra/posthog/events";
 import { takeCampaignLoadDuration } from "@logic/infra/posthog/loadTiming";
-import { trackOnce } from "@logic/infra/posthog/track";
+import { track, trackOnce } from "@logic/infra/posthog/track";
 import {
   buildNewspaperEditions,
   getPendingAnnouncement,
   hasUnreadEdition,
+  isCityDistrictMap,
   isIntroPending,
   PollsterEngine,
   shouldOpenEdition,
 } from "@shared/domain";
 import { createLogger } from "@shared/logger";
-import { CampaignConfig, CampaignState, CurrentView } from "@shared/types";
+import {
+  CampaignConfig,
+  CampaignState,
+  CurrentView,
+  PendingTurn,
+} from "@shared/types";
 import { useEffect, useMemo, useState } from "react";
 import { container } from "tsyringe";
 import { CampaignIntroDialog } from "../campaignIntro/CampaignIntroDialog";
@@ -26,6 +32,9 @@ import { EventAnnouncementDialog } from "./EventAnnouncementDialog";
 import { GameChrome } from "./GameChrome";
 import { GameView } from "./GameView";
 import { useGameFlow } from "./hooks/useGameFlow";
+import { useVisitChange } from "./hooks/useVisitChange";
+import { getMapView } from "./mapView";
+import { resolvePlayerKey } from "./visitChange.utils";
 
 const log = createLogger("MainGameScreen");
 
@@ -42,12 +51,23 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     markNewspaperRead,
     markIntroSeen,
     getMapDataByPolls,
+    getAggregateProjection,
   } = useElectionState(campaignId);
   const { settings, updateSettings } = useSettings();
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
+  const visitChange = useVisitChange(
+    state,
+    getAggregateProjection,
+    isCityDistrictMap(config.electionConfig),
+  );
+  const commitAndTrackChange = (pending: PendingTurn) => {
+    const result = commitTurn(pending);
+    visitChange.onTurnCommitted(result);
+    return result;
+  };
   const { flow, dispatch, handleAnswer, handleAdvisorClose } = useGameFlow(
     processAnswer,
-    commitTurn,
+    commitAndTrackChange,
     (result) => Boolean(getPendingAnnouncement(result, config.campaignEvents)),
   );
   const sessionId = stateEngine.getSessionId();
@@ -119,6 +139,11 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
     }
   }, [flow.currentView, state.turn, runProperties]);
 
+  const closeIntro = () => {
+    track("campaign_intro_closed", runProperties);
+    markIntroSeen();
+  };
+
   const handlePollsterChange = (
     id: string,
     state?: CampaignState,
@@ -135,6 +160,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
   };
 
   const handleView = (view: CurrentView) => {
+    if (view === "QuestionView") visitChange.closeSummary();
     dispatch(
       view === "MapView" && flow.currentView === "QuestionView"
         ? { type: "PAUSE_QUESTION" }
@@ -176,7 +202,7 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
         open={isIntroOpen}
         intro={config.electionConfig.intro}
         fallbackTitle={config.electionConfig.title}
-        onConfirm={markIntroSeen}
+        onConfirm={closeIntro}
       />
       <AdvisorModal
         advice={flow.pendingAdvisor?.feedback.text ?? ""}
@@ -236,6 +262,22 @@ export function MainGameScreen({ campaignId }: { campaignId: string }) {
           dispatch({ type: "SELECT_DISTRICT", district })
         }
         onVoteCountingComplete={finishCampaign}
+        visitChange={
+          visitChange.change && getMapView(settings) === "detailed"
+            ? {
+                change: visitChange.change,
+                visited: flow.visitingDistrict,
+                partyId: resolvePlayerKey(
+                  visitChange.change,
+                  partyId,
+                  candidateId,
+                ),
+                isCityMap: isCityDistrictMap(config.electionConfig),
+                isSummaryOpen: visitChange.isSummaryOpen,
+                onCloseSummary: visitChange.closeSummary,
+              }
+            : undefined
+        }
       />
     </GameChrome>
   );

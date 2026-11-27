@@ -123,7 +123,7 @@ test("proportional test campaign: a focus must be chosen before the first visit"
   await expect(page.getByTestId("selectFocus-own_majority")).toBeVisible();
 
   await page.getByTestId("pollsterMenu").click();
-  await page.getByRole("button", { name: "Közvélemény-kutatók" }).hover();
+  await page.getByRole("button", { name: "Közvélemény-kutatók ›" }).hover();
   await page.getByText("Felmérések átlaga").click();
   await expect(page).not.toHaveURL(/dashboard/);
   await expect(statusButton).toHaveAccessibleName("Politikai helyzet");

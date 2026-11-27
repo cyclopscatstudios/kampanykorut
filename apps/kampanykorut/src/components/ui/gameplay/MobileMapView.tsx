@@ -25,9 +25,19 @@ import { FocusRequiredNote } from "./FocusRequiredNote";
 import { MapWrapper } from "./MapWrapper";
 import { CollapsibleEstimate, EstimateSheetContent } from "./MobileEstimate";
 import { getSwingFactorByDistrict } from "./swingFactor.utils";
+import {
+  getMapChanges,
+  getVisibleDeltas,
+  type MapChange,
+  type VisitChange,
+  type VisitChangeView,
+} from "./visitChange.utils";
+import { VisitChangeSummary } from "./VisitChangeSummary";
 
 type MobileView = "list" | "map";
 type SheetMode = "district" | "estimate";
+
+const MOBILE_VIEW_KEY = "kampanykorut_mobileMapView";
 
 const COUNTRY_MAP_RATIO = 0.7;
 const CITY_MAP_RATIO = 0.9;
@@ -45,6 +55,7 @@ interface MobileMapViewProps {
   visitBlocked?: boolean;
   isReturning?: boolean;
   mapOverlay?: ReactNode;
+  visitChange?: VisitChangeView;
 }
 
 export function MobileMapView({
@@ -60,8 +71,29 @@ export function MobileMapView({
   visitBlocked,
   isReturning,
   mapOverlay,
+  visitChange,
 }: MobileMapViewProps) {
-  const [view, setView] = useState<MobileView>("list");
+  const changes = visitChange
+    ? getMapChanges(visitChange.change, visitChange.partyId)
+    : undefined;
+  const listChanges = visitChange
+    ? getVisibleDeltas(visitChange.change, visitChange.partyId)
+    : undefined;
+  const [view, setViewState] = useState<MobileView>(() => {
+    try {
+      return sessionStorage.getItem(MOBILE_VIEW_KEY) === "map" ? "map" : "list";
+    } catch {
+      return "list";
+    }
+  });
+  const setView = (next: MobileView) => {
+    setViewState(next);
+    try {
+      sessionStorage.setItem(MOBILE_VIEW_KEY, next);
+    } catch {
+      return;
+    }
+  };
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [sheetMode, setSheetMode] = useState<SheetMode>("district");
 
@@ -93,7 +125,7 @@ export function MobileMapView({
           {(["list", "map"] as const).map((option) => (
             <Button
               key={option}
-              variant="tab"
+              variant="tertiary"
               size="md"
               block
               selected={view === option}
@@ -106,12 +138,28 @@ export function MobileMapView({
         </div>
       </div>
 
+      {visitChange?.isSummaryOpen && (
+        <VisitChangeSummary
+          view={visitChange}
+          parties={electionConfig.parties}
+          className="mx-4 mb-3 w-auto!"
+        />
+      )}
+
+      {!selectedDistrict && !visitBlocked && (
+        <p className="mx-4 mb-3 text-sm font-semibold text-slate-200">
+          {t("districtList.selectPrompt")}
+        </p>
+      )}
+
       {view === "list" ? (
         <DistrictList
           isCityMap={isCityMap}
           candidateListData={candidateListData}
           parties={electionConfig.parties}
           selectedDistrict={selectedDistrict}
+          changes={listChanges}
+          scrollToSelected={!visitChange?.isSummaryOpen}
           onSelect={(district) =>
             openDistrict(getWinnerResultByCandidateList(district))
           }
@@ -126,6 +174,7 @@ export function MobileMapView({
           selectedDistrict={selectedDistrict}
           onSelect={openDistrict}
           onOpenEstimate={openEstimate}
+          changes={changes}
         />
       )}
 
@@ -163,6 +212,7 @@ export function MobileMapView({
             parties={electionConfig.parties}
             nationalPercentages={nationalPercentages}
             isCityMap={isCityMap}
+            visitChange={visitChange?.change}
             onClose={() => setIsSheetOpen(false)}
           />
         ) : (
@@ -175,6 +225,7 @@ export function MobileMapView({
               nationalPercentages={nationalPercentages}
               onClose={() => setIsSheetOpen(false)}
               issues={getAreaIssues(electionConfig, sheetData.megyekod)}
+              visitChange={visitChange?.change}
             />
           )
         )}
@@ -192,6 +243,7 @@ function MobileMap({
   selectedDistrict,
   onSelect,
   onOpenEstimate,
+  changes,
 }: {
   isCityMap: boolean;
   districts: DistrictPoligon[];
@@ -201,6 +253,7 @@ function MobileMap({
   selectedDistrict: District | null;
   onSelect: (district: District) => void;
   onOpenEstimate: () => void;
+  changes?: Record<string, MapChange>;
 }) {
   const [showCapital, setShowCapital] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -222,12 +275,12 @@ function MobileMap({
     <div className="mx-4 flex flex-col gap-2.5 pb-6">
       <div className="relative rounded-2xl border border-white/8 bg-[rgba(15,29,54,0.55)] p-4">
         <div className="mb-2 flex min-h-[30px] items-center justify-between gap-2">
-          <span className="text-[10.5px] uppercase tracking-[1.4px] text-slate-500">
+          <span className="text-xs uppercase tracking-[1.4px] text-slate-400">
             {t(titleKey, { count: visibleDistricts.length })}
           </span>
           {capitalCity.length > 0 && (
             <Button
-              variant="hero"
+              variant="tertiary"
               size="sm"
               onClick={() => setShowCapital((value) => !value)}
               className="shrink-0"
@@ -241,7 +294,7 @@ function MobileMap({
           )}
           <Button
             onClick={onOpenEstimate}
-            variant="hero"
+            variant="tertiary"
             size="sm"
             className="shrink-0"
           >
@@ -260,6 +313,7 @@ function MobileMap({
               handleDistrict={onSelect}
               selectedDistrict={selectedDistrict}
               electionConfig={electionConfig}
+              changes={changes}
             />
           )}
         </div>
@@ -289,7 +343,7 @@ function MapLegend({
   );
 
   return (
-    <div className="flex flex-wrap gap-x-3 gap-y-1 px-1 text-[10.5px] text-slate-400">
+    <div className="flex flex-wrap gap-x-3 gap-y-1 px-1 text-xs text-slate-400">
       {leadingParties.map((party) => (
         <span key={party.id} className="flex items-center gap-1.5">
           <span
@@ -310,6 +364,7 @@ function DistrictSheetContent({
   nationalPercentages,
   onClose,
   issues,
+  visitChange,
 }: {
   isCityMap: boolean;
   district: CandidateListData;
@@ -317,6 +372,7 @@ function DistrictSheetContent({
   parties: RawParty[];
   nationalPercentages?: Record<string, number>;
   onClose: () => void;
+  visitChange?: VisitChange;
 }) {
   const { leadingParty, swingFactor } = getDistrictInsight(district, parties);
 
@@ -324,7 +380,7 @@ function DistrictSheetContent({
     <div className="flex flex-col">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[10px] uppercase tracking-[1.6px] text-slate-500">
+          <div className="text-xs uppercase tracking-[1.6px] text-slate-400">
             {t(
               isCityMap
                 ? "districtList.sheet.cityLabel"
@@ -390,6 +446,7 @@ function DistrictSheetContent({
           parties={parties}
           nationalPercentages={nationalPercentages}
           isCityMap={isCityMap}
+          visitChange={visitChange}
         />
       </div>
     </div>
@@ -439,7 +496,7 @@ function SheetMetric({
 }) {
   return (
     <div>
-      <div className="text-[9.5px] uppercase tracking-[1.2px] text-slate-500">
+      <div className="text-xs uppercase tracking-[1.2px] text-slate-400">
         {label}
       </div>
       <div className="mt-1 text-sm font-semibold text-slate-100">

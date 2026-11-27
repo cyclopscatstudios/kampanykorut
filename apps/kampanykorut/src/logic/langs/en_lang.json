@@ -7,7 +7,8 @@
     "loadGame": "Load Game",
     "modMaker": "Mod Maker",
     "settings": "Settings",
-    "about": "About"
+    "about": "About",
+    "backToLanding": "Back to the home page"
   },
   "newGameMenu": {
     "classicMode": "Classic mode",
@@ -250,6 +251,7 @@
   },
   "gameHeader": {
     "turnsTooltip": "Turns played",
+    "turnsLabel": "rounds",
     "campaignBadge": {
       "title": "The campaign",
       "toggle": "Show campaign details",
@@ -306,11 +308,18 @@
   },
   "gameMenuBar": {
     "resumeQuestion": "Back to the question",
+    "openMenu": "Open game menu",
     "save": "Save game",
-    "laod": "Load game",
+    "load": "Load game",
     "settings": "Settings",
     "quit": "Quit game",
     "mapMenu": {
+      "label": "Map settings",
+      "view": {
+        "menuLabel": "Map view",
+        "classic": "Classic",
+        "detailed": "Detailed"
+      },
       "polls": {
         "menuLabel": "Pollsters",
         "average": "Polling average"
@@ -345,15 +354,40 @@
     "title": "Campaign selector",
     "description": "Are you sure you want to return to the campaign selector?"
   },
+  "visitChange": {
+    "title": "Effect of your visit",
+    "subtitle": "Estimated change, based on the poll average",
+    "national": "{{party}} national list",
+    "city": "{{party}} city-wide result",
+    "gained_one": "Took the lead in {{count}} district",
+    "gained_other": "Took the lead in {{count}} districts",
+    "lost_one": "Lost the lead in {{count}} district",
+    "lost_other": "Lost the lead in {{count}} districts",
+    "noneToggle": "Why is there no change?",
+    "none": "The polls show no change larger than half a percentage point.",
+    "close": "Close summary",
+    "up": "up {{value}} percentage points",
+    "down": "down {{value}} percentage points",
+    "countUp_one": "Support rose in {{count}} district",
+    "countUp_other": "Support rose in {{count}} districts",
+    "countDown_one": "Support fell in {{count}} district",
+    "countDown_other": "Support fell in {{count}} districts"
+  },
+  "mapControls": {
+    "zoomIn": "Zoom in",
+    "reset": "Show whole map",
+    "zoomOut": "Zoom out"
+  },
   "bottomBar": {
     "visitDistrict": "Visit district",
     "returnToDistrict": "Back to the district",
-    "swingFactor": "Swing factor",
-    "population": "Population",
+    "swingFactor": "Swing",
+    "population": "Voters",
     "k": "K",
     "high": "High",
     "medium": "Medium",
-    "low": "Low"
+    "low": "Low",
+    "selectPrompt": "Click a district on the map, then visit it to campaign there."
   },
   "estimatePanel": {
     "tabs": {
@@ -378,6 +412,13 @@
     "cityTitle": "Citywide estimate",
     "citySubtitle": "candidates, estimated",
     "margin": "Margin of error",
+    "help": {
+      "toggle": "What do the estimate figures mean?",
+      "range": "The range (e.g. 32–46) is the expected result in percent.",
+      "margin": "Margin of error: how many percentage points (pp) the real result may differ from the estimate.",
+      "status": "Toss-up: the lead is at most twice the margin of error. Likely: a bigger lead. Safe: a lead of at least 15 points.",
+      "oevk": "OEVK: a single-member constituency that elects one MP."
+    },
     "selectDistrict": "Select a district on the map to see its estimate.",
     "noData": "No estimate available yet.",
     "newData": "New estimate available",
@@ -413,7 +454,8 @@
       "label": "Constituency",
       "currentLead": "Current standing",
       "cityLabel": "District"
-    }
+    },
+    "selectPrompt": "Pick a district from the list or the map, then visit it to campaign there."
   },
   "badge": {
     "strategicDecision": {
@@ -425,7 +467,9 @@
     "buttons": {
       "continue": "Continue",
       "mapView": "Map view"
-    }
+    },
+    "location": "Location:",
+    "moreAnswers": "{{count}} more below"
   },
   "advisorFeedback": {
     "title": "Advisor feedback",
@@ -434,6 +478,7 @@
       "ok": "Ok"
     },
     "modal": {
+      "title": "Hide advisor feedback?",
       "description": "You won’t receive strategic hints from advisors anymore.",
       "buttons": {
         "disable": "Disable"
@@ -533,9 +578,16 @@
   },
   "landing": {
     "hero": {
-      "heading": "Hungarian election campaign simulator",
-      "description": "Kampánykörút is a free political strategy game in which you run Hungarian election campaigns, from parliamentary elections to the Budapest mayoral race. Campaign, make political decisions, follow the polls, and see whether you manage to win the election.",
-      "startButton": "Start game"
+      "heading": "You run the campaign.",
+      "description": "Pick a campaign and a side, make decisions week by week, and see how many seats election night brings. Free, no sign-up, in your browser.",
+      "chooseCampaign": "Choose a campaign",
+      "randomStart": "Random campaign",
+      "randomStartHint": "Random campaign starts a classic campaign with a random side.",
+      "continue": "Continue",
+      "continueDetail": "{{campaign}} · after {{turn}} turns",
+      "menu": "Menu",
+      "mapAlt": "The in-game district map of Hungary",
+      "mapCaption": "Real constituencies, seats counted under the Hungarian electoral system."
     },
     "campaigns": {
       "heading": "Available campaigns"
@@ -608,11 +660,11 @@
   "issues": {
     "title": "Issues in the area",
     "opinion": {
-      "-2": "Strongly opposed",
-      "-1": "Leaning against",
       "0": "Divided",
       "1": "Leaning for",
-      "2": "Strongly for"
+      "2": "Strongly for",
+      "-2": "Strongly opposed",
+      "-1": "Leaning against"
     }
   },
   "campaignPage": {
@@ -621,8 +673,8 @@
     "otherSides": "Other sides",
     "background": "Campaign background",
     "meta": {
-      "campaignTitle": "{{campaign}} – Kampánykörút",
-      "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
+      "campaignTitle": "{{campaign}} – election simulator | Kampánykörút",
+      "sideTitle": "{{candidate}}'s campaign – {{year}} election | Kampánykörút",
       "sideDescription": "{{campaign}}: lead {{candidate}}'s campaign!"
     }
   },

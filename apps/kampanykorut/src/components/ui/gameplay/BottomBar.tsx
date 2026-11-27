@@ -1,13 +1,12 @@
 import { District } from "@shared/types";
-import type { Colors } from "@shared/types/color";
 import { Button } from "@shared/ui/Button";
 import { Icon } from "@shared/ui/Icon";
 import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
 import { CommonWrapper } from "../CommonWrapper";
+import { getSwingColor } from "./districtInsight.utils";
 import { FocusRequiredNote } from "./FocusRequiredNote";
 import type { SwingFactor } from "./swingFactor.utils";
-import { getSwingFactorTextColor } from "./swingFactor.utils";
 
 interface BottomBarProps {
   data?: District | null;
@@ -25,7 +24,6 @@ export function BottomBar({
   isReturning,
 }: BottomBarProps) {
   const population = Math.round((data?.valasztopolgar ?? 0) / 1000);
-  const textColor = getSwingFactorTextColor(swingFactor?.id);
 
   return (
     <CommonWrapper block fullHeight={false}>
@@ -35,7 +33,8 @@ export function BottomBar({
             <div className="flex items-center px-5">
               <Icon
                 name="geo-alt-fill"
-                className="text-fuchsia-600"
+                color="currentColor"
+                className="text-blue-300"
                 size="large"
               />
               <div className="pl-5">
@@ -63,9 +62,16 @@ export function BottomBar({
                     <Text color="gray" weight="medium">
                       {t("bottomBar.swingFactor")}
                     </Text>
-                    <Text color={textColor as Colors}>
+                    <div
+                      className="font-bold"
+                      style={{
+                        color: swingFactor
+                          ? getSwingColor(swingFactor)
+                          : undefined,
+                      }}
+                    >
                       {swingFactor?.label}
-                    </Text>
+                    </div>
                   </div>
                 </>
               )}
@@ -92,9 +98,10 @@ export function BottomBar({
             {visitBlocked ? (
               <FocusRequiredNote />
             ) : (
-              <Text weight="light" color="gray">
-                Válassz egy körzetet...
-              </Text>
+              <div className="flex items-center gap-3 px-5">
+                <Icon name="hand-index-thumb" className="text-blue-300" />
+                <Text weight="bold">{t("bottomBar.selectPrompt")}</Text>
+              </div>
             )}
           </div>
         )}

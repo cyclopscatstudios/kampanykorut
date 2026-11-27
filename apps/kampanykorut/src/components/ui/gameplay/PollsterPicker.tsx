@@ -3,6 +3,7 @@ import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useEffect, useId, useRef, useState } from "react";
+import { MAP_VIEWS, type MapView } from "./mapView";
 
 export interface PollsterOption {
   id: string;
@@ -13,6 +14,8 @@ export interface PollsterPickerProps {
   options: PollsterOption[];
   selectedId?: string;
   onSelect: (id: string) => void;
+  mapView?: MapView;
+  onMapViewChange?: (view: MapView) => void;
 }
 
 export function PollsterAvatar({
@@ -54,6 +57,8 @@ export function PollsterPicker({
   options,
   selectedId = AGGREGATE_POLLSTER_ID,
   onSelect,
+  mapView,
+  onMapViewChange,
 }: PollsterPickerProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -108,40 +113,76 @@ export function PollsterPicker({
         />
       </button>
       {open && (
-        <ul
-          id={listId}
-          role="listbox"
-          aria-label={t("gameMenuBar.mapMenu.polls.menuLabel")}
-          className="absolute right-0 top-full z-50 mt-1 flex w-[270px] flex-col gap-0.5 rounded-xl border border-[#4462aa] bg-[#161e30] p-1.5 shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
-        >
-          {options.map((option) => {
-            const isSelected = option.id === selectedId;
-            return (
-              <li key={option.id} role="none">
-                <button
-                  type="button"
-                  role="option"
-                  aria-selected={isSelected}
-                  onClick={() => {
-                    onSelect(option.id);
-                    setOpen(false);
-                  }}
-                  className={classNames(
-                    "flex h-11 w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 text-left text-sm font-medium text-slate-50",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
-                    isSelected ? "bg-blue-400/15" : "hover:bg-white/5",
-                  )}
-                >
-                  <PollsterAvatar id={option.id} className="size-6" />
-                  <span className="flex-1">{option.label}</span>
-                  {isSelected && (
-                    <Icon name="check-lg" size="sm" color="blue" />
-                  )}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="absolute right-0 top-full z-50 mt-1 flex w-[270px] flex-col gap-1.5 rounded-xl border border-[#4462aa] bg-[#161e30] p-1.5 shadow-[0_20px_40px_rgba(0,0,0,0.45)]">
+          {options.length > 0 && (
+            <ul
+              id={listId}
+              role="listbox"
+              aria-label={t("gameMenuBar.mapMenu.polls.menuLabel")}
+              className="flex flex-col gap-0.5"
+            >
+              {options.map((option) => {
+                const isSelected = option.id === selectedId;
+                return (
+                  <li key={option.id} role="none">
+                    <button
+                      type="button"
+                      role="option"
+                      aria-selected={isSelected}
+                      onClick={() => {
+                        onSelect(option.id);
+                        setOpen(false);
+                      }}
+                      className={classNames(
+                        "flex h-11 w-full cursor-pointer items-center gap-2.5 rounded-lg px-2.5 text-left text-sm font-medium text-slate-50",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
+                        isSelected ? "bg-blue-400/15" : "hover:bg-white/5",
+                      )}
+                    >
+                      <PollsterAvatar id={option.id} className="size-6" />
+                      <span className="flex-1">{option.label}</span>
+                      {isSelected && (
+                        <Icon name="check-lg" size="sm" color="blue" />
+                      )}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+          {mapView && onMapViewChange && (
+            <div
+              role="group"
+              aria-labelledby={`${listId}-view`}
+              className="flex flex-col gap-1 border-t border-white/8 px-1 pt-2 first:border-t-0 first:pt-0"
+            >
+              <span
+                id={`${listId}-view`}
+                className="px-1.5 text-xs uppercase tracking-[1.2px] text-slate-400"
+              >
+                {t("gameMenuBar.mapMenu.view.menuLabel")}
+              </span>
+              <div className="grid grid-cols-2 gap-1">
+                {MAP_VIEWS.map((view) => (
+                  <button
+                    key={view}
+                    type="button"
+                    aria-pressed={mapView === view}
+                    onClick={() => onMapViewChange(view)}
+                    className={classNames(
+                      "h-10 cursor-pointer rounded-lg text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
+                      mapView === view
+                        ? "bg-blue-400/15 text-slate-50 ring-1 ring-inset ring-blue-400"
+                        : "text-slate-300 hover:bg-white/5",
+                    )}
+                  >
+                    {t(`gameMenuBar.mapMenu.view.${view}`)}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

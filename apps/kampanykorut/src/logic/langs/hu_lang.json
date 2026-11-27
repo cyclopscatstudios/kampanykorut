@@ -7,7 +7,8 @@
     "loadGame": "Játék betöltése",
     "modMaker": "Mod készítő",
     "settings": "Beállítások",
-    "about": "A játékról"
+    "about": "A játékról",
+    "backToLanding": "Vissza a kezdőlapra"
   },
   "newGameMenu": {
     "classicMode": "Klasszikus mód",
@@ -249,6 +250,7 @@
   },
   "gameHeader": {
     "turnsTooltip": "Lejátszott fordulók",
+    "turnsLabel": "forduló",
     "campaignBadge": {
       "title": "A kampány",
       "toggle": "Kampány részletei megnyitása",
@@ -305,11 +307,18 @@
   },
   "gameMenuBar": {
     "resumeQuestion": "Vissza a kérdéshez",
+    "openMenu": "Játékmenü megnyitása",
     "save": "Játék mentése",
-    "laod": "Játék visszatöltése",
+    "load": "Játék visszatöltése",
     "settings": "Beállítások",
     "quit": "Kilépés",
     "mapMenu": {
+      "label": "Térkép beállításai",
+      "view": {
+        "menuLabel": "Térképnézet",
+        "classic": "Klasszikus",
+        "detailed": "Részletes"
+      },
       "polls": {
         "menuLabel": "Közvélemény-kutatók",
         "average": "Felmérések átlaga"
@@ -344,15 +353,36 @@
     "title": "Kampányválasztó",
     "description": "Biztosan visszatérsz a kampányválasztóhoz?"
   },
+  "visitChange": {
+    "title": "A látogatás hatása",
+    "subtitle": "Becsült változás a felmérések átlaga alapján",
+    "national": "{{party}} országos lista",
+    "city": "{{party}} fővárosi eredménye",
+    "gained": "Átvetted a vezetést {{count}} körzetben",
+    "lost": "Elvesztetted a vezetést {{count}} körzetben",
+    "noneToggle": "Miért nincs változás?",
+    "none": "A felmérések nem mutatnak fél százalékpontnál nagyobb változást.",
+    "close": "Összefoglaló bezárása",
+    "up": "{{value}} százalékponttal nőtt",
+    "down": "{{value}} százalékponttal csökkent",
+    "countUp": "{{count}} körzetben nőtt a támogatottság",
+    "countDown": "{{count}} körzetben csökkent a támogatottság"
+  },
+  "mapControls": {
+    "zoomIn": "Nagyítás",
+    "reset": "Teljes térkép",
+    "zoomOut": "Kicsinyítés"
+  },
   "bottomBar": {
     "visitDistrict": "Látogass el a körzetbe",
     "returnToDistrict": "Vissza a körzetbe",
-    "swingFactor": "Ingadozási tényező",
-    "population": "Lakosság",
+    "swingFactor": "Ingadozás",
+    "population": "Választópolgár",
     "k": "E",
     "high": "Magas",
     "medium": "Közepes",
-    "low": "Alacsony"
+    "low": "Alacsony",
+    "selectPrompt": "Kattints egy körzetre a térképen, és látogass el oda kampányolni."
   },
   "estimatePanel": {
     "tabs": {
@@ -377,6 +407,13 @@
     "cityTitle": "Fővárosi becslés",
     "citySubtitle": "jelöltek, becsült",
     "margin": "Hibahatár",
+    "help": {
+      "toggle": "Mit jelentenek a becslés adatai?",
+      "range": "A sáv (pl. 32–46) a várható eredmény tartománya százalékban.",
+      "margin": "Hibahatár: ennyi százalékponttal (pp) térhet el a valós eredmény a becsléstől.",
+      "status": "Billegő: az előny legfeljebb a hibahatár kétszerese. Esélyes: ennél nagyobb az előny. Biztos: legalább 15 pont az előny.",
+      "oevk": "OEVK: egyéni választókerület, ahol egy képviselőt választanak."
+    },
     "selectDistrict": "Válassz egy körzetet a térképen a becsléshez.",
     "noData": "Még nincs becsülhető adat.",
     "newData": "Új becslés érhető el",
@@ -393,7 +430,7 @@
       "map": "Térkép"
     },
     "sort": {
-      "none": "Sorrend",
+      "none": "Alapsorrend",
       "swing": "Ingadozás"
     },
     "swing": "Ingadozás",
@@ -412,7 +449,8 @@
       "label": "Választókerület",
       "currentLead": "Jelenlegi állás",
       "cityLabel": "Kerület"
-    }
+    },
+    "selectPrompt": "Válassz egy körzetet a listából vagy a térképen, és látogass el oda kampányolni."
   },
   "badge": {
     "strategicDecision": {
@@ -424,15 +462,18 @@
     "buttons": {
       "continue": "Következő",
       "mapView": "Térképnézet"
-    }
+    },
+    "location": "Helyszín:",
+    "moreAnswers": "Még {{count}} válasz lejjebb"
   },
   "advisorFeedback": {
     "title": "Tanácsadói visszajelzés",
     "buttons": {
-      "turnOff": "Tanácsadói javaslatokat elrejtése",
+      "turnOff": "Tanácsadói javaslatok elrejtése",
       "ok": "Rendben"
     },
     "modal": {
+      "title": "Elrejted a tanácsadói javaslatokat?",
       "description": "Többé nem kapsz stratégiai tanácsokat a tanácsadóktól.",
       "buttons": {
         "disable": "Letiltás"
@@ -532,9 +573,16 @@
   },
   "landing": {
     "hero": {
-      "heading": "Magyar választási kampányszimulátor",
-      "description": "A Kampánykörút egy ingyenes politikai stratégiai játék, amelyben magyar választási kampányokat irányíthatsz, az országgyűlési választástól a budapesti főpolgármester-választásig. Kampányolj, hozz politikai döntéseket, kövesd a közvélemény-kutatásokat, majd nézd meg, sikerül-e győznöd a választáson.",
-      "startButton": "Játék indítása"
+      "heading": "Te vezeted a kampányt.",
+      "description": "Válassz kampányt és oldalt, dönts hétről hétre, és nézd meg, hány mandátumot hoz a választás éjszakája. Ingyenes, regisztráció nélkül, a böngésződben.",
+      "chooseCampaign": "Kampány választása",
+      "randomStart": "Véletlen kampány",
+      "randomStartHint": "A Véletlen kampány egy klasszikus kampányt indít véletlenszerű oldallal.",
+      "continue": "Folytatás",
+      "continueDetail": "{{campaign}} · {{turn}} forduló után",
+      "menu": "Menü",
+      "mapAlt": "Magyarország választókerületi térképe a játékban",
+      "mapCaption": "Valódi választókerületek, a magyar választási rendszer szerint számolt mandátumok."
     },
     "campaigns": {
       "heading": "Elérhető kampányok"
@@ -607,11 +655,11 @@
   "issues": {
     "title": "Ügyek a térségben",
     "opinion": {
-      "-2": "Erős ellenzés",
-      "-1": "Inkább ellenzik",
       "0": "Megosztott",
       "1": "Inkább támogatják",
-      "2": "Erős támogatás"
+      "2": "Erős támogatás",
+      "-2": "Erős ellenzés",
+      "-1": "Inkább ellenzik"
     }
   },
   "campaignPage": {
@@ -620,8 +668,8 @@
     "otherSides": "Más oldalak",
     "background": "A kampány háttere",
     "meta": {
-      "campaignTitle": "{{campaign}} – Kampánykörút",
-      "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
+      "campaignTitle": "{{campaign}} – választási szimulátor | Kampánykörút",
+      "sideTitle": "{{candidate}} kampánya – Választás {{year}} | Kampánykörút",
       "sideDescription": "{{campaign}}: vezesd {{candidate}} kampányát!"
     }
   },

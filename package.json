@@ -13,6 +13,7 @@
     "kampanykorut:landing": "cross-env VITE_LANDING=true yarn workspace kampanykorut dev",
     "cmaker": "yarn workspace campaign-maker dev",
     "api": "yarn workspace campaign-api dev",
+    "campaign-mcp": "yarn workspace campaign-mcp start",
     "build:api": "yarn workspace campaign-api build",
     "build:privacy-pdf": "node apps/kampanykorut/legal/build-privacy-pdf.mjs",
     "test:api": "yarn workspace campaign-api test",
