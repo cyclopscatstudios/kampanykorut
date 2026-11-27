@@ -324,7 +324,7 @@
   {
     "id": "2022_ogyv_fidesz-12",
     "title": "Kamatstop a lakáshiteleknél",
-    "question": "Decemberben a jegybank az infláció miatt kamatot emel, amit egyre több változó kamatozású lakáshiteles érezne meg. A bankok és a jegybank a piaci jelzések torzításától tartanak. Mit jelentesz be?",
+    "question": "Decemberben a jegybank az infláció miatt kamatot emel, amit a változó kamatozású lakáshitelesek is megéreznének. A bankok és a jegybank a piaci jelzések torzításától tartanak. Mit jelentesz be?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -441,7 +441,7 @@
   {
     "id": "2022_ogyv_fidesz-16",
     "title": "Miniszterelnök-jelölti vita",
-    "question": "Márki-Zay Péter nyilvános miniszterelnök-jelölti vitára hív. 2006 óta hivatalban lévő kormányfőként nem vettél részt ilyen vitán, a részvétel legitimálhatja az ellenfelet, az elutasítás viszont támadható. Mit teszel?",
+    "question": "Márki-Zay Péter nyilvános miniszterelnök-jelölti vitára hív. 2006 óta nem vettél részt ilyen vitán. Hivatalban lévő kormányfőként a részvétel legitimálhatja az ellenfelet, az elutasítás viszont támadható. Mit teszel?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -579,7 +579,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Nnem reagálsz személyesen, helyi jelöltek és hétköznapi támogatók mondják el, miért érzik sértőnek a kijelentéseket."
+        "label": "Nem reagálsz személyesen: helyi jelöltek és hétköznapi támogatók mondják el, miért érzik sértőnek a kijelentéseket."
       },
       {
         "id": "B",

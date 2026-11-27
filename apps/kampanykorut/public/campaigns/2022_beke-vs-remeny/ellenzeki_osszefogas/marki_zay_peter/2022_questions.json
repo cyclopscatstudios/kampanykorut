@@ -56,7 +56,7 @@
       },
       {
         "id": "B",
-        "label": "Karácsony Gergellyel, a Párbeszéd vezetőjével"
+        "label": "Karácsony Gergellyel, a Párbeszéd társelnökével"
       },
       {
         "id": "C",
@@ -84,7 +84,7 @@
       },
       {
         "id": "C",
-        "label": "Az interjúk továbbra is spontánok maradnak, de létrehozol egy fact-check csapatot, amely gyorsan javítja az esetleges tévedéseidet."
+        "label": "Az interjúk spontánok maradnak, de létrehozol egy tényellenőrző csapatot, amely gyorsan javítja az esetleges tévedéseidet."
       },
       {
         "id": "D",
@@ -191,7 +191,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Elfogadod a kormánypárti médiaszerepléseket és vitákat. Úgy gondolod, hogy minden elérhető fórumon meg kell szólítanod a bizonytalan választókat."
+        "label": "Elfogadod a kormánypárti médiumok meghívásait és vitáit, és minden elérhető fórumon a bizonytalan választókhoz szólsz."
       },
       {
         "id": "B",
@@ -214,15 +214,15 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Azt hangsúlyozod, hogy keresztény-konzervatív értékek mentén beszéltél a kérdésről, és szerinted a kormány nem hiteles jobboldaliként."
+        "label": "Azt hangsúlyozod, hogy keresztény-konzervatív értékek mentén beszéltél a kérdésről, és szerinted a kormány jobboldaliként nem hiteles."
       },
       {
         "id": "B",
-        "label": "A képmutatásra akartál rávilágítani: miközben a kormányban is vannak melegek, mégis homofób törvényeket hoznak."
+        "label": "Azt mondod, a képmutatásra akartál rávilágítani: miközben a kormányban is vannak melegek, mégis homofób törvényeket hoznak."
       },
       {
         "id": "C",
-        "label": "Ha bárkit megbántottam, elnézést kérek. A problémám nem az emberek magánéletével van, hanem a képmutatással."
+        "label": "Elnézést kérsz, ha bárkit megbántottál, és hangsúlyozod, hogy nem az emberek magánéletével, hanem a képmutatással van problémád."
       },
       {
         "id": "D",
@@ -506,7 +506,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Megpróbálod minél szélesebb körbe eljuttatni az ellenzéki programot, hogy minél több ember elovlassa"
+        "label": "Minél szélesebb körben terjeszted a teljes ellenzéki programot."
       },
       {
         "id": "B",
@@ -518,7 +518,7 @@
       },
       {
         "id": "D",
-        "label": "Egy teljes, több órás műsort szentelsz a progrma bemutatásának az ellenzéki pártok vezetőivel."
+        "label": "Többórás műsort szentelsz a program bemutatásának az ellenzéki pártok vezetőivel."
       }
     ]
   },
@@ -640,7 +640,7 @@
   {
     "id": "2022_ogyv-26",
     "title": "Március 15-i nagygyűlés",
-    "question": "Közeleg március 15-e. A Fidesz ismét Békemenetet szervez, amelyen várhatóan hatalmas tömeg vesz részt. Milyen rendezvényt szervez az ellenzéki összefogás?",
+    "question": "Közeleg március 15-e. A Fidesz ismét Békemenetet szervez, amelyen várhatóan hatalmas tömeg vesz részt. Hogyan szervezi meg az ellenzéki összefogás a saját rendezvényét?",
     "possibleAnswers": [
       {
         "id": "A",

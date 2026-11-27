@@ -29,7 +29,7 @@
       },
       {
         "answerId": "B",
-        "text": "A magyar politikában egy szűk rétegen kívül még senkit sem sikerült pusztán szakpolitikai érvekkel választást nyerni. Valószínűleg most sem ez lesz a döntő."
+        "text": "A magyar politikában pusztán szakpolitikai érvekkel még senki sem nyert választást. Valószínűleg most sem ez lesz a döntő."
       },
       {
         "answerId": "C",
@@ -238,7 +238,7 @@
         ],
         "answer": {
           "answerId": "C",
-          "text": "Bár nem szólítottad meg közvetlenül az idősebb választókat, a személyes történetek bemutatása kimondottan segítenek a megítélésedben több más kérdésben is."
+          "text": "Bár nem szólítottad meg közvetlenül az idősebb választókat, a személyes történetek bemutatása kimondottan segít a megítélésedben több más kérdésben is."
         }
       }
     ],
@@ -287,7 +287,7 @@
       },
       {
         "answerId": "C",
-        "text": "Érthető, hogy megpróbálod elkerülni az állásfoglalást, de ettől a téma még támadási felület marad az ellenzék számára. Ráadásul a saját törzsszavazóid egy része is elégedetlen lehet."
+        "text": "Érthető, hogy megpróbálod elkerülni az állásfoglalást, de ettől a téma még támadási felület marad veled szemben. Ráadásul a saját törzsszavazóid egy része is elégedetlen lehet."
       },
       {
         "answerId": "D",
