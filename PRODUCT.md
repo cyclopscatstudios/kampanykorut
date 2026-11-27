@@ -29,7 +29,7 @@ A playable model of real Hungarian elections: real district results and boundari
 - Session flow: landing, campaign selector (published/candidate/draft listing, "Új" badge for recent additions, classic vs strategic game mode), side and candidate selection, turn-based question loop with a district map, final results screen. Games are saved locally and can be resumed.
 - Campaign content lives as data under `apps/kampanykorut/public/campaigns/<route>/` (format in `apps/kampanykorut/CAMPAIGN.md`).
 - Supporting services: campaign-api (news from GitHub Discussions, bug reports, play-time), a local campaign MCP server for authoring/simulation.
-- Analytics are cookieless and minimal (PostHog EU, opt-out in Settings, privacy page in HU/EN); see `docs/analitika-terv.md`.
+- Analytics are cookieless and minimal (PostHog EU, opt-out in Settings, privacy page in HU/EN); events are typed in `apps/kampanykorut/src/logic/infra/posthog/events.ts`.
 
 ## Capabilities and Constraints
 

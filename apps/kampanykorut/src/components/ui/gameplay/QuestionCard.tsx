@@ -138,6 +138,13 @@ export function QuestionCard({
   const measureHidden = useCallback(() => {
     const container = scrollRef.current;
     if (!container) return;
+    if (
+      container.scrollTop + container.clientHeight >=
+      container.scrollHeight - 1
+    ) {
+      setHiddenBelow(0);
+      return;
+    }
     const bottom = container.getBoundingClientRect().bottom - 64;
     const radios =
       groupRef.current?.querySelectorAll<HTMLElement>('[role="radio"]') ?? [];

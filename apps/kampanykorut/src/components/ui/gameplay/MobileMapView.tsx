@@ -63,12 +63,20 @@ export function MobileMapView({
   isReturning,
   mapOverlay,
 }: MobileMapViewProps) {
-  const [view, setViewState] = useState<MobileView>(() =>
-    sessionStorage.getItem(MOBILE_VIEW_KEY) === "map" ? "map" : "list",
-  );
+  const [view, setViewState] = useState<MobileView>(() => {
+    try {
+      return sessionStorage.getItem(MOBILE_VIEW_KEY) === "map" ? "map" : "list";
+    } catch {
+      return "list";
+    }
+  });
   const setView = (next: MobileView) => {
-    sessionStorage.setItem(MOBILE_VIEW_KEY, next);
     setViewState(next);
+    try {
+      sessionStorage.setItem(MOBILE_VIEW_KEY, next);
+    } catch {
+      return;
+    }
   };
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [sheetMode, setSheetMode] = useState<SheetMode>("district");
