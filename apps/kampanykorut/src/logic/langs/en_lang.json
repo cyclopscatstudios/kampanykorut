@@ -647,8 +647,8 @@
     "otherSides": "Other sides",
     "background": "Campaign background",
     "meta": {
-      "campaignTitle": "{{campaign}} – Kampánykörút",
-      "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
+      "campaignTitle": "{{campaign}} – election simulator | Kampánykörút",
+      "sideTitle": "{{candidate}}'s campaign – {{year}} election | Kampánykörút",
       "sideDescription": "{{campaign}}: lead {{candidate}}'s campaign!"
     }
   },

@@ -14,6 +14,7 @@ import {
   getVisibleParties,
   markIntroSeen,
   markNewspaperRead,
+  needsCoalitionOffer,
   publishNewspaperEdition,
 } from "@shared/domain";
 import { createLogger } from "@shared/logger";
@@ -199,6 +200,10 @@ export function useElectionState(campaignId: string) {
             finalResults?.winnerParty?.party,
             Boolean(finalResults?.winnerParty?.hasMajority),
             playerSideId,
+            needsCoalitionOffer(
+              gameState,
+              forPlayerSide(config, gameState.playerSide),
+            ),
           ),
       majority_type: finalResults?.winnerParty?.majorityType ?? null,
       turns: gameState.turn,

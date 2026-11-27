@@ -4,6 +4,7 @@ import i18n from "@logic/i18n/i18n";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router";
 import {
+  buildCampaignJsonLd,
   buildCampaignPageData,
   buildCampaignPageMeta,
   campaignBannerPath,
@@ -40,7 +41,13 @@ export async function renderCampaignPage(
       </NewsPageLayout>
     </StaticRouter>,
   );
-  return applyMetaToHtml(template, meta, body, origin);
+  return applyMetaToHtml(
+    template,
+    meta,
+    body,
+    origin,
+    buildCampaignJsonLd(data, meta, origin),
+  );
 }
 
 const PRE_HYDRATION_LINKS = `<script>(function(){var r=document.querySelector("#root > div");if(!r)return;var m={landingChooseCampaign:"/new-game/classic",landingRandomStart:"/new-game/classic",landingMenu:"/menu"};r.addEventListener("click",function(e){var b=e.target.closest("[data-testid]");var u=b&&m[b.getAttribute("data-testid")];if(u)location.href=u;});})();</script>`;

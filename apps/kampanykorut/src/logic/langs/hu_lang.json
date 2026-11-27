@@ -646,8 +646,8 @@
     "otherSides": "Más oldalak",
     "background": "A kampány háttere",
     "meta": {
-      "campaignTitle": "{{campaign}} – Kampánykörút",
-      "sideTitle": "{{candidate}} – {{campaign}} – Kampánykörút",
+      "campaignTitle": "{{campaign}} – választási szimulátor | Kampánykörút",
+      "sideTitle": "{{candidate}} kampánya – Választás {{year}} | Kampánykörút",
       "sideDescription": "{{campaign}}: vezesd {{candidate}} kampányát!"
     }
   },

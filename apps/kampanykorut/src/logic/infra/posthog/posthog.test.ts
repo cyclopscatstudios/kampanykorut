@@ -5,6 +5,7 @@ import posthog, { type CaptureResult } from "posthog-js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   initAnalytics,
+  isInternalVisit,
   redactEventUrls,
   syncAnalyticsConsent,
 } from "./posthog";
@@ -14,6 +15,7 @@ vi.mock("posthog-js", () => ({
     __loaded: false,
     init: vi.fn(),
     register: vi.fn(),
+    register_once: vi.fn(),
     has_opted_out_capturing: vi.fn(() => false),
     opt_in_capturing: vi.fn(),
     opt_out_capturing: vi.fn(),
@@ -24,6 +26,7 @@ const mockedPosthog = posthog as unknown as {
   __loaded: boolean;
   init: ReturnType<typeof vi.fn>;
   register: ReturnType<typeof vi.fn>;
+  register_once: ReturnType<typeof vi.fn>;
   has_opted_out_capturing: ReturnType<typeof vi.fn>;
   opt_in_capturing: ReturnType<typeof vi.fn>;
   opt_out_capturing: ReturnType<typeof vi.fn>;
@@ -110,9 +113,9 @@ describe("initAnalytics", () => {
     expect(mockedPosthog.init).toHaveBeenCalledOnce();
   });
 
-  it("registers the entry source as super properties", () => {
+  it("keeps the first entry source of the tab", () => {
     initAnalytics(storage, settingsEngine(true));
-    expect(mockedPosthog.register).toHaveBeenCalledWith(
+    expect(mockedPosthog.register_once).toHaveBeenCalledWith(
       expect.objectContaining({
         entry_page: expect.any(String),
         entry_referring_domain: expect.any(String),
@@ -125,11 +128,38 @@ describe("initAnalytics", () => {
     expect(mockedPosthog.init).toHaveBeenCalledWith(
       "phc_test",
       expect.objectContaining({
-        persistence: "memory",
+        persistence: "sessionStorage",
         advanced_disable_flags: true,
         before_send: redactEventUrls,
       }),
     );
+  });
+});
+
+describe("isInternalVisit", () => {
+  const memoryStorage = () => {
+    const map = new Map<string, string>();
+    return {
+      getItem: (key: string) => map.get(key) ?? null,
+      setItem: (key: string, value: string) => void map.set(key, value),
+      removeItem: (key: string) => void map.delete(key),
+    };
+  };
+  const site = (search = "") => ({ hostname: "kampanykorut.hu", search });
+
+  it("treats localhost as internal", () => {
+    expect(
+      isInternalVisit({ hostname: "localhost", search: "" }, memoryStorage()),
+    ).toBe(true);
+  });
+
+  it("remembers the internal flag until it is turned off", () => {
+    const storage = memoryStorage();
+    expect(isInternalVisit(site(), storage)).toBe(false);
+    expect(isInternalVisit(site("?internal=1"), storage)).toBe(true);
+    expect(isInternalVisit(site(), storage)).toBe(true);
+    expect(isInternalVisit(site("?internal=0"), storage)).toBe(false);
+    expect(isInternalVisit(site(), storage)).toBe(false);
   });
 });
 

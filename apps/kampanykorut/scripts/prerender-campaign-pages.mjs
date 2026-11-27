@@ -77,6 +77,22 @@ for (const campaign of campaigns) {
 
 await writePage("/landing", await renderLandingPage(template, campaigns));
 
+const staticPages = [
+  { path: "/about", title: "A játékról – Kampánykörút" },
+  { path: "/privacy", title: "Adatkezelési tájékoztató – Kampánykörút" },
+];
+
+for (const page of staticPages) {
+  const url = `${origin}${page.path}`;
+  const html = template
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${page.title}</title>`)
+    .replace(/(<link rel="canonical" href=")[^"]*/, `$1${url}`)
+    .replace(/(property="og:url"\s+content=")[^"]*/, `$1${url}`)
+    .replace(/(property="og:title"\s+content=")[^"]*/, `$1${page.title}`)
+    .replace(/(name="twitter:title"\s+content=")[^"]*/, `$1${page.title}`);
+  await writePage(page.path, html);
+}
+
 const sitemapFile = path.join(distDir, "sitemap.xml");
 const sitemap = await readFile(sitemapFile, "utf-8");
 await writeFile(

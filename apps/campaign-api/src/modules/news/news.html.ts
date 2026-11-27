@@ -228,6 +228,7 @@ export function renderNewsListPage(options: {
     path,
     ogType: "website",
     image: items.find((news) => news.cover)?.cover?.large16x9Url ?? null,
+    robots: type ? "noindex, follow" : undefined,
     head: nextPath
       ? `<link rel="next" href="${attr(absoluteUrl(siteUrl, nextPath))}">`
       : "",
