@@ -170,6 +170,7 @@ The density is that of a working tool, not a poster. Controls are compact (30/40
 The primary and selected-tab buttons are flat on purpose: no gloss, no blue glow. That choice is written into the theme source and is a standing rejection.
 
 **Key Characteristics:**
+
 - One dark frame over a dimmed photographic backdrop
 - One action color (campaign blue); gold only for earned outcomes
 - Glass panels: translucent slate fill plus 1px inset hairline
@@ -182,13 +183,16 @@ The primary and selected-tab buttons are flat on purpose: no gloss, no blue glow
 A cold blue-slate night palette with a single warm exception.
 
 ### Primary
+
 - **Campaign Blue** (`campaign-blue`): the primary button and the selected tab. It means "this is the move". `campaign-blue-lift` is its hover state only.
 - **Signal Blue** (`signal-blue`): focus rings (2px, offset against `hq-navy`), the 2px rule under the game header, the subtab underline, selected tertiary borders, links (`link-blue`, hover to blue-300).
 
 ### Secondary
+
 - **Results Gold** (`results-gold`): outcomes and achievements only: government outcome badges, the winning result on the summary page, chronicle milestones, the "new" campaign chip. Paired with `gold-ink` for text on solid gold, or used as a 2px inset ring over an `amber-400/8` tint with `amber-200` text.
 
 ### Neutral
+
 - **HQ Navy** (`hq-navy`): the frame, the game header, the focus-ring offset. Usually applied at 92% over the backdrop.
 - **Panel Ink** (`panel-ink`) with **Dialog Rule** (`dialog-rule`) borders: dialogs. **Panel Footer** (`panel-footer`) is the dialog's button tray.
 - **Modal Ink** (`modal-ink`) with a 2px **Modal Rule** (`modal-rule`) border: confirmation modals, which sit one layer above dialogs.
@@ -199,6 +203,7 @@ A cold blue-slate night palette with a single warm exception.
 Party colors come from campaign data, not from this palette, and are shaded by `getPartyColor` during play. They are the only saturated hues allowed in data views.
 
 ### Named Rules
+
 **The One Signal Rule.** Campaign blue fills only the primary action and the selected tab. Everything else that is interactive stays glass or light. If two filled blue buttons share a view, one of them is wrong.
 
 **The Earned Gold Rule.** Gold appears only when the player has earned something: a result, an outcome, a milestone, something new. Never on chrome, navigation, or ordinary buttons.
@@ -214,6 +219,7 @@ Party colors come from campaign data, not from this palette, and are shaded by `
 **Character:** One geometric sans that does everything. Weight carries the hierarchy: bold for anything clickable or titled, regular for reading, medium for menu labels.
 
 ### Hierarchy
+
 - **Display** (700, `text-4xl` → `lg:text-5xl`, tight tracking): menu and screen titles (Heading level 1).
 - **Headline** (700, `text-3xl` → `lg:text-4xl`): section titles (level 2); level 3 (`text-2xl` → `lg:text-3xl`) titles modals.
 - **Title** (700, `text-xl`–`text-2xl`): panel and card headings (levels 4–5).
@@ -224,6 +230,7 @@ Party colors come from campaign data, not from this palette, and are shaded by `
 `Heading` asks for a `font-display` utility that the theme does not define, so headings currently render in the inherited Montserrat. Add the token or drop the class; don't add a second display face to the core UI.
 
 ### Named Rules
+
 **The Bold Controls Rule.** Every button, tab and link is weight 700. Body text never is, except `strong` inside news content.
 
 **The Newsprint Stays in the Paper Rule.** The three serif faces load with the newspaper component and appear nowhere else.
@@ -242,6 +249,7 @@ Party colors come from campaign data, not from this palette, and are shaded by `
 Hybrid, and mostly tonal. Depth comes from translucency against the dimmed photo and from 1px inset hairlines (`inset 0 0 0 1px` slate at 14–22%). Drop shadows are reserved for things that float: the frame, hero buttons, dialogs, the newspaper ribbon. The secondary button is the one control with a physical bevel (a top inset highlight and a bottom inset shade), because it is the light object on a dark field.
 
 ### Shadow Vocabulary
+
 - **Primary rest** (`0 1px 2px rgba(0,0,0,0.25)`): primary button and selected tab. Hover deepens to `0 2px 6px -1px rgba(0,0,0,0.3)`.
 - **Glass hairline** (`inset 0 0 0 1px rgba(148,163,184,0.18), inset 0 1px 0 rgba(255,255,255,0.04)`): tertiary buttons. The hairline rises to 0.32 on hover.
 - **Hero float** (`…hairline 0.22…, 0 8px 24px -6px rgba(0,0,0,0.6)`): hero buttons over photography.
@@ -249,6 +257,7 @@ Hybrid, and mostly tonal. Depth comes from translucency against the dimmed photo
 - **Frame** (`shadow-xl` in black/60): the main game frame.
 
 ### Named Rules
+
 **The Hairline Before Shadow Rule.** A surface that sits on the frame gets a 1px inset hairline or a `blue-50/10` border, not a drop shadow. Shadows mean "this floats above the frame".
 
 **The No Glow Rule.** Blue never glows. Primary surfaces get a neutral black shadow only.
@@ -260,7 +269,9 @@ Gently rounded, never pill-shaped except for avatars, badges and progress dots (
 ## Components
 
 ### Buttons
+
 Flat, bold and compact. One component (`@shared/ui/Button`) with eight variants exposed as `data-variant`, which the seasonal skins hook into.
+
 - **Shape:** 8px radius; heights of 30 / 40 / 50px (`sm` / `md` / `lg`), with icon-only versions square at the same sizes.
 - **Primary:** campaign blue, chalk text, primary rest shadow; lifts color on hover and nudges down 1px when pressed.
 - **Secondary:** a light chalk-to-indigo-50 gradient with secondary-ink text and the bevel shadow. Used for cancel and for the alternate choice in a pair.
@@ -273,6 +284,7 @@ Flat, bold and compact. One component (`@shared/ui/Button`) with eight variants 
 - **Motion:** background, box-shadow and transform transitions at 150ms ease-out.
 
 ### Cards / Containers
+
 - **Corner Style:** 6px.
 - **Background:** `bg-blue-400/10`, which reads as a cool tint of the frame.
 - **Border:** 1px `blue-50/10`.
@@ -280,33 +292,40 @@ Flat, bold and compact. One component (`@shared/ui/Button`) with eight variants 
 - **Hook:** `data-surface="card"` (CommonWrapper, map panel, side panel); a selected answer card gets a blue-300 border.
 
 ### Dialogs and Modals
+
 - **Dialog:** panel-ink fill, 1px dialog-rule border, 12px radius, `shadow-xl`, 40% black backdrop. Header has 12px padding, centered text and a bottom rule; body has 16px padding; footer is the panel-footer tray.
 - **Modal (confirm):** modal-ink fill, 2px modal-rule border, 20px padding, a 50px blue-900 circle holding a warning icon, a level-3 ice-text heading, then confirm (primary) and cancel (secondary). Sits at `z-60` above dialogs.
 - **Bottom sheet:** the mobile form of side panels and dialogs, with a 45% black backdrop that fades in.
 
 ### Inputs / Fields
+
 - **Style:** gray-800 fill, 1px gray-600 border, 8px radius, 8 × 12px padding, white text with gray-400 placeholder. Label is 14px medium gray-300.
 - **Focus:** the border shifts to blue-500.
 - **Error / Disabled:** red-500 border with red-500 helper text; disabled drops to 50% opacity.
 
 ### Chips and Badges
+
 - **Badge:** a full pill in a named color at `text-xs`, with an optional check icon.
 - **Status tint:** an 8% tint (`amber-400/8`, `green-400/8`, `blue-400/8`) with matching 200-level text, used for outcome and focus states.
 - **New chip:** solid results gold, gold-ink text, 9px uppercase extra-bold.
 
 ### Navigation
+
 - **Game header:** a three-column bar (left context, centered logo, right actions) with a 2px signal-blue bottom rule. Its slots hold 40px glass pills (`blue-400/10`, `blue-50/10` border, 6px radius).
 - **Menus:** stacks of large block tertiary buttons with an icon and a medium-weight ice-text label, plus an optional back button at the end.
 
 ### Newspaper (scoped sub-world)
+
 The event announcement is a period newspaper: `newsprint` paper, `press-ink` text, a `press-red` 10px uppercase kicker, Playfair Display masthead, Alfa Slab One headlines and Old Standard TT body. Its entry point is a parchment ribbon that slides in from the left (300ms ease-out) with a soft drop shadow. This sub-world is self-contained and is the only place warm paper tones and serifs appear.
 
 ### Winter season (scoped sub-world)
+
 `:root[data-season="winter"]` reskins existing components through their data attributes without changing layout: snowcaps on primary buttons, selected tabs and panel tops; frost corner gradients on glass; icier borders (`#5277bf` on dialogs); a blue color-blend on the backdrop dim; snowfall layers and festive bulbs, all turned off under `prefers-reduced-motion`. New seasonal skins should follow the same pattern: hook `data-*` attributes and never fork components.
 
 ## Do's and Don'ts
 
 ### Do:
+
 - **Do** build every button with `@shared/ui/Button` and pick a variant; don't hand-roll button styles.
 - **Do** put new panels on the glass recipe: translucent slate or blue-400/10 fill, 1px `blue-50/10` border or inset hairline, 6–12px radius.
 - **Do** give interactive elements the 2px signal-blue focus ring offset against `hq-navy`.
@@ -315,6 +334,7 @@ The event announcement is a period newspaper: `newsprint` paper, `press-ink` tex
 - **Do** respect `prefers-reduced-motion` for any ambient animation.
 
 ### Don't:
+
 - **Don't** add gloss, gradients or a blue glow to primary or selected-tab buttons; they are flat on purpose.
 - **Don't** use results gold on chrome, navigation or ordinary actions.
 - **Don't** use party colors in UI chrome, or UI blue in data that party colors should own.
