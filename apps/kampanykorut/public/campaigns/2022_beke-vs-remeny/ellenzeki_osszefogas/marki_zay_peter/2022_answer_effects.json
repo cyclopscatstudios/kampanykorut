@@ -1230,6 +1230,36 @@
             "type": "uniform-swing",
             "params": { "ellenzeki_osszefogas": 0.3, "fidesz": 0.1 }
           }
+        ],
+        "conditionalEffects": [
+          {
+            "if": [{ "questionId": "2022_ogyv-18", "answerId": "A" }],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "ellenzeki_osszefogas": -1.2,
+                  "fidesz": 0.8,
+                  "mi_hazank": 0.4
+                }
+              }
+            ],
+            "mode": "merge"
+          },
+          {
+            "if": [{ "questionId": "2022_ogyv-18", "answerId": "C" }],
+            "effects": [
+              {
+                "type": "uniform-swing",
+                "params": {
+                  "ellenzeki_osszefogas": -2,
+                  "fidesz": 1.5,
+                  "mi_hazank": 0.5
+                }
+              }
+            ],
+            "mode": "merge"
+          }
         ]
       },
       {
