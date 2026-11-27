@@ -106,6 +106,12 @@ export function MobileMapView({
         </div>
       </div>
 
+      {!selectedDistrict && !visitBlocked && (
+        <p className="mx-4 mb-3 text-sm font-semibold text-slate-200">
+          {t("districtList.selectPrompt")}
+        </p>
+      )}
+
       {view === "list" ? (
         <DistrictList
           isCityMap={isCityMap}

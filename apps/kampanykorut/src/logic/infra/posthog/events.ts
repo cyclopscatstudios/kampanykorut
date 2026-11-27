@@ -15,7 +15,12 @@ export type CampaignOutcome = "win" | "loss" | "deadlock";
 
 export interface AnalyticsEvents {
   landing_exited: {
-    target: "menu" | "campaign_page" | "quick_start" | "campaign_selector";
+    target:
+      | "menu"
+      | "campaign_page"
+      | "random_start"
+      | "campaign_selector"
+      | "continue";
   };
   campaign_start_clicked: RunProperties;
   campaign_page_start_clicked: { campaign_id: string; side_id?: string };

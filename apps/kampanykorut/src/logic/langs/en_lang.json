@@ -353,7 +353,8 @@
     "k": "K",
     "high": "High",
     "medium": "Medium",
-    "low": "Low"
+    "low": "Low",
+    "selectPrompt": "Click a district on the map, then visit it to campaign there."
   },
   "estimatePanel": {
     "tabs": {
@@ -413,7 +414,8 @@
       "label": "Constituency",
       "currentLead": "Current standing",
       "cityLabel": "District"
-    }
+    },
+    "selectPrompt": "Pick a district from the list or the map, then visit it to campaign there."
   },
   "badge": {
     "strategicDecision": {
@@ -534,34 +536,21 @@
   "landing": {
     "hero": {
       "heading": "You run the campaign.",
-      "description": "Pick a party, make decisions week by week, and see what election night brings.",
-      "kicker": "Hungarian election campaign simulator · free, in your browser",
-      "quickStart": "Quick play",
+      "description": "Pick a campaign and a side, make decisions week by week, and see how many seats election night brings. Free, no sign-up, in your browser.",
       "chooseCampaign": "Choose a campaign",
-      "quickStartHint": "Quick play starts right away: 2026: Tavaszi szél, TISZA · about 15 minutes"
+      "randomStart": "Random campaign",
+      "randomStartHint": "Random campaign starts a classic campaign with a random side.",
+      "continue": "Continue",
+      "continueDetail": "{{campaign}} · after {{turn}} turns",
+      "menu": "Menu",
+      "mapAlt": "The in-game district map of Hungary",
+      "mapCaption": "Real constituencies, seats counted under the Hungarian electoral system."
     },
     "campaigns": {
       "heading": "Available campaigns"
     },
     "footer": "Kampánykörút — a free election simulation that runs in your browser.",
-    "footerPrivacy": "Privacy notice",
-    "features": {
-      "decisions": {
-        "title": "Decisions",
-        "caption": "Question by question",
-        "tooltip": "Each round you answer a campaign question. Your choices move public opinion and the districts."
-      },
-      "polls": {
-        "title": "Polls",
-        "caption": "See what works",
-        "tooltip": "Fresh numbers from the pollsters help you decide where to campaign next."
-      },
-      "electionNight": {
-        "title": "Election night",
-        "caption": "Districts and seats",
-        "tooltip": "At the end, seats are counted under the real electoral system. Will you win a majority?"
-      }
-    }
+    "footerPrivacy": "Privacy notice"
   },
   "news": {
     "heading": "What’s new",
@@ -628,11 +617,11 @@
   "issues": {
     "title": "Issues in the area",
     "opinion": {
-      "-2": "Strongly opposed",
-      "-1": "Leaning against",
       "0": "Divided",
       "1": "Leaning for",
-      "2": "Strongly for"
+      "2": "Strongly for",
+      "-2": "Strongly opposed",
+      "-1": "Leaning against"
     }
   },
   "campaignPage": {

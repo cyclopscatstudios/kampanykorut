@@ -1,71 +1,101 @@
 import { Button } from "@shared/ui/Button";
 import { Icon } from "@shared/ui/Icon";
-import { Tooltip } from "@shared/ui/Tooltip";
 import { t } from "i18next";
 import logo from "../../../../../../../brand-assets/svg/logo-horizontal-dark.svg";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
-const HERO_BACKGROUND = "/parlament_night.jpg";
+const HERO_BACKGROUND = "/parlament_night.webp";
+const MAP_PREVIEW = {
+  src: "/landing/map-preview.webp",
+  width: 1040,
+  height: 650,
+};
 
-const FEATURES = [
-  {
-    id: "decisions",
-    icon: "chat-left-text-fill",
-    tint: "bg-blue-400/15 text-blue-300",
-  },
-  {
-    id: "polls",
-    icon: "bar-chart-fill",
-    tint: "bg-amber-400/15 text-amber-300",
-  },
-  {
-    id: "electionNight",
-    icon: "trophy-fill",
-    tint: "bg-cyan-300/15 text-cyan-300",
-  },
-] as const;
+export interface ContinueInfo {
+  campaign: string;
+  turn: number;
+}
 
 interface LandingHeroProps {
-  onQuickStart: () => void;
   onChooseCampaign: () => void;
+  onRandomStart: () => void;
+  isStartingRandom?: boolean;
+  onOpenMenu: () => void;
+  continueInfo?: ContinueInfo;
+  onContinue?: () => void;
 }
 
 export function LandingHero({
-  onQuickStart,
   onChooseCampaign,
+  onRandomStart,
+  isStartingRandom,
+  onOpenMenu,
+  continueInfo,
+  onContinue,
 }: LandingHeroProps) {
   return (
     <section
       className="relative px-4 pb-14"
       style={{
-        backgroundImage: `linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.82) 55%, #0f172a 100%), url(${HERO_BACKGROUND})`,
+        backgroundImage: `linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.82) 55%, #0f172a 96%), url(${HERO_BACKGROUND})`,
         backgroundSize: "cover",
         backgroundPosition: "center 35%",
       }}
     >
       <header className="mx-auto flex max-w-6xl items-center justify-between gap-4 py-5">
-        <img src={logo} alt="Kampánykörút" className="h-9 w-auto md:h-10" />
-        <LanguageSwitcher />
+        <img
+          src={logo}
+          alt="Kampánykörút"
+          width={162}
+          height={36}
+          className="h-9 w-auto md:h-10"
+        />
+        <nav className="flex items-center gap-4">
+          <Button
+            variant="link"
+            onClick={onOpenMenu}
+            testId="landingMenu"
+            className="text-slate-200 hover:text-white"
+          >
+            <Button.Icon name="list" />
+            <Button.Text>{t("landing.hero.menu")}</Button.Text>
+          </Button>
+          <LanguageSwitcher />
+        </nav>
       </header>
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-10 pt-8 md:pt-14">
-        <div className="flex min-w-0 flex-[1_1_460px] flex-col gap-6">
-          <span className="inline-flex items-center gap-2 self-start rounded-full bg-blue-400/10 px-3 py-1.5 text-sm font-semibold text-blue-50 ring-1 ring-blue-400/35">
-            <Icon name="check-lg" size="sm" color="currentColor" />
-            {t("landing.hero.kicker")}
-          </span>
-          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white md:text-6xl">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 pt-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:pt-14">
+        <div className="flex min-w-0 flex-col gap-6">
+          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-balance text-white md:text-6xl">
             {t("landing.hero.heading")}
           </h1>
-          <p className="max-w-xl text-lg text-blue-50">
+          <p className="max-w-xl text-lg text-pretty text-blue-50">
             {t("landing.hero.description")}
           </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <Button size="lg" onClick={onQuickStart} testId="landingQuickStart">
-              <Button.Icon name="play-circle-fill" />
-              <Button.Text>{t("landing.hero.quickStart")}</Button.Text>
-            </Button>
+          {continueInfo && onContinue && (
+            <button
+              type="button"
+              onClick={onContinue}
+              data-testid="landingContinue"
+              className="flex items-center gap-3 self-stretch rounded-lg bg-slate-900/60 px-4 py-3 text-left ring-1 ring-slate-400/25 transition-colors hover:bg-slate-900/80 hover:ring-blue-400/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 sm:self-start"
+            >
+              <Icon name="arrow-counterclockwise" color="currentColor" />
+              <span className="flex min-w-0 flex-col">
+                <span className="font-bold text-white">
+                  {t("landing.hero.continue")}
+                </span>
+                <span className="truncate text-sm text-slate-300">
+                  {t("landing.hero.continueDetail", { ...continueInfo })}
+                </span>
+              </span>
+              <Icon
+                name="arrow-right"
+                color="currentColor"
+                className="ml-auto text-slate-300"
+              />
+            </button>
+          )}
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Button
-              variant="hero"
               size="lg"
               onClick={onChooseCampaign}
               testId="landingChooseCampaign"
@@ -73,42 +103,35 @@ export function LandingHero({
               <Button.Icon name="grid-fill" />
               <Button.Text>{t("landing.hero.chooseCampaign")}</Button.Text>
             </Button>
+            <Button
+              variant="hero"
+              size="lg"
+              onClick={onRandomStart}
+              disabled={isStartingRandom}
+              aria-busy={isStartingRandom}
+              testId="landingRandomStart"
+            >
+              <Button.Icon name="dice-5-fill" />
+              <Button.Text>{t("landing.hero.randomStart")}</Button.Text>
+            </Button>
           </div>
-          <p className="text-sm text-slate-400">
-            {t("landing.hero.quickStartHint")}
+          <p className="text-sm text-slate-300">
+            {t("landing.hero.randomStartHint")}
           </p>
         </div>
-        <ul className="flex min-w-0 flex-[1_1_380px] flex-col gap-3">
-          {FEATURES.map((feature) => (
-            <li key={feature.id}>
-              <Tooltip
-                block
-                position="bottom"
-                content={
-                  <span className="block max-w-xs text-slate-900">
-                    {t(`landing.features.${feature.id}.tooltip`)}
-                  </span>
-                }
-              >
-                <div className="flex items-center gap-4 rounded-xl bg-slate-900/60 px-4 py-3.5 ring-1 ring-slate-400/20 backdrop-blur-sm">
-                  <span
-                    className={`flex size-13 flex-none items-center justify-center rounded-xl ${feature.tint}`}
-                  >
-                    <Icon name={feature.icon} size={24} color="currentColor" />
-                  </span>
-                  <span className="flex min-w-0 flex-col">
-                    <span className="text-lg font-bold text-white">
-                      {t(`landing.features.${feature.id}.title`)}
-                    </span>
-                    <span className="text-sm text-slate-400">
-                      {t(`landing.features.${feature.id}.caption`)}
-                    </span>
-                  </span>
-                </div>
-              </Tooltip>
-            </li>
-          ))}
-        </ul>
+        <figure className="flex min-w-0 flex-col gap-3">
+          <img
+            src={MAP_PREVIEW.src}
+            width={MAP_PREVIEW.width}
+            height={MAP_PREVIEW.height}
+            alt={t("landing.hero.mapAlt")}
+            fetchPriority="high"
+            className="h-auto w-full drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
+          />
+          <figcaption className="text-sm text-slate-300">
+            {t("landing.hero.mapCaption")}
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

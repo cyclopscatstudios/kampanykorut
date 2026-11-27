@@ -8,7 +8,7 @@ import { usePlayTimeTracking } from "@logic/application/playTime/usePlayTimeTrac
 import { getSeasonalBackground } from "@logic/application/season/season";
 import { createLogger } from "@shared/logger/logger";
 import { useEffect } from "react";
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, ScrollRestoration, useLoaderData } from "react-router-dom";
 import { container } from "tsyringe";
 import { GAME_HEADER_SLOT_ID } from "./components/ui/gameplay/gameHeaderSlot";
 import { MainGameScreen } from "./components/ui/gameplay/MainGameScreen";
@@ -19,6 +19,15 @@ import FullscreenBackground from "./ui/Background";
 const log = createLogger("AppLayout");
 
 const environment = import.meta.env.VITE_ENVIRONMENT;
+
+export function ScrollLayout() {
+  return (
+    <>
+      <ScrollRestoration />
+      <Outlet />
+    </>
+  );
+}
 
 export function RootLayout() {
   const path = useLoaderData() as string;

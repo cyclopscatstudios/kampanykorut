@@ -92,9 +92,10 @@ export function BottomBar({
             {visitBlocked ? (
               <FocusRequiredNote />
             ) : (
-              <Text weight="light" color="gray">
-                Válassz egy körzetet...
-              </Text>
+              <div className="flex items-center gap-3 px-5">
+                <Icon name="hand-index-thumb" className="text-blue-300" />
+                <Text weight="bold">{t("bottomBar.selectPrompt")}</Text>
+              </div>
             )}
           </div>
         )}

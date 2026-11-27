@@ -17,7 +17,7 @@ export function CampaignsSection({
     return null;
   }
 
-  const sortedCampaigns = sortCampaigns(campaigns, "added");
+  const sortedCampaigns = sortCampaigns(campaigns, "year");
 
   return (
     <section className="mx-auto max-w-5xl px-6 py-16">

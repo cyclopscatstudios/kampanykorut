@@ -352,7 +352,8 @@
     "k": "E",
     "high": "Magas",
     "medium": "Közepes",
-    "low": "Alacsony"
+    "low": "Alacsony",
+    "selectPrompt": "Kattints egy körzetre a térképen, és látogass el oda kampányolni."
   },
   "estimatePanel": {
     "tabs": {
@@ -412,7 +413,8 @@
       "label": "Választókerület",
       "currentLead": "Jelenlegi állás",
       "cityLabel": "Kerület"
-    }
+    },
+    "selectPrompt": "Válassz egy körzetet a listából vagy a térképen, és látogass el oda kampányolni."
   },
   "badge": {
     "strategicDecision": {
@@ -533,34 +535,21 @@
   "landing": {
     "hero": {
       "heading": "Te vezeted a kampányt.",
-      "description": "Válassz pártot, dönts hétről hétre, és nézd meg, mit hoz a választás éjszakája.",
-      "kicker": "Magyar választási kampányszimulátor · ingyenes, böngészőben",
-      "quickStart": "Gyors játék",
+      "description": "Válassz kampányt és oldalt, dönts hétről hétre, és nézd meg, hány mandátumot hoz a választás éjszakája. Ingyenes, regisztráció nélkül, a böngésződben.",
       "chooseCampaign": "Kampány választása",
-      "quickStartHint": "A Gyors játék rögtön indul: 2026: Tavaszi szél, TISZA · kb. 15 perc"
+      "randomStart": "Véletlen kampány",
+      "randomStartHint": "A Véletlen kampány egy klasszikus kampányt indít véletlenszerű oldallal.",
+      "continue": "Folytatás",
+      "continueDetail": "{{campaign}} · {{turn}} forduló után",
+      "menu": "Menü",
+      "mapAlt": "Magyarország választókerületi térképe a játékban",
+      "mapCaption": "Valódi választókerületek, a magyar választási rendszer szerint számolt mandátumok."
     },
     "campaigns": {
       "heading": "Elérhető kampányok"
     },
     "footer": "Kampánykörút — ingyenes, böngészőben futó választási szimuláció.",
-    "footerPrivacy": "Adatkezelési tájékoztató",
-    "features": {
-      "decisions": {
-        "title": "Döntések",
-        "caption": "Kérdésről kérdésre",
-        "tooltip": "Minden fordulóban egy kampánykérdésre válaszolsz. A döntéseid mozgatják a közvéleményt és a körzeteket."
-      },
-      "polls": {
-        "title": "Közvélemény-kutatás",
-        "caption": "Látod, mi hat",
-        "tooltip": "A kutatóintézetek friss számai alapján döntheted el, hol kampányolj legközelebb."
-      },
-      "electionNight": {
-        "title": "Választás éjszakája",
-        "caption": "Körzetek és mandátumok",
-        "tooltip": "A végén a valódi választási rendszer szerint számoljuk a mandátumokat. Meglesz a többség?"
-      }
-    }
+    "footerPrivacy": "Adatkezelési tájékoztató"
   },
   "news": {
     "heading": "Újdonságok",
@@ -627,11 +616,11 @@
   "issues": {
     "title": "Ügyek a térségben",
     "opinion": {
-      "-2": "Erős ellenzés",
-      "-1": "Inkább ellenzik",
       "0": "Megosztott",
       "1": "Inkább támogatják",
-      "2": "Erős támogatás"
+      "2": "Erős támogatás",
+      "-2": "Erős ellenzés",
+      "-1": "Inkább ellenzik"
     }
   },
   "campaignPage": {

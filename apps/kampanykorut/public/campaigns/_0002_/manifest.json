@@ -9,8 +9,8 @@
     "description": "Fővárosi főpolgármester-választási tesztkampány mock adatokkal: 23 kerület, 4 döntés, feltételes visszalépés.",
     "year": 2024,
     "tags": ["test"],
-    "campaignBanner": "default-banner.png",
-    "thinCampaignBanner": "default-banner-thin.png",
+    "campaignBanner": "default-banner.webp",
+    "thinCampaignBanner": "default-banner-thin.webp",
     "status": "draft"
   },
   "files": {

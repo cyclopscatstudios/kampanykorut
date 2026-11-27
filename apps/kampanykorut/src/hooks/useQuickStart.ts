@@ -1,31 +1,37 @@
 import { StateEngine } from "@logic/application";
+import type { CampaignHeader } from "@logic/application/hooks/useGetCampaigns";
+import { loadCampaignConfig } from "@logic/application/loadCampaignConfig";
 import { getRunProperties } from "@logic/infra/posthog/events";
 import { track } from "@logic/infra/posthog/track";
 import type { CampaignState } from "@shared/types";
 import { container } from "tsyringe";
 import { useNavigation } from "./navigationHook";
+import { pickRandomCampaign, pickRandomSide } from "./randomStart";
 
-export const QUICK_START = {
-  campaignId: "2026_tavaszi_szel",
-  partyId: "tisza",
-  candidateId: "magyar_peter",
-} as const;
+export function useQuickStart(campaigns: CampaignHeader[]) {
+  const { goToCampaign, goToCampaignSelector } = useNavigation();
 
-export function useQuickStart() {
-  const { goToCampaign } = useNavigation();
-
-  return () => {
-    const { campaignId, partyId, candidateId } = QUICK_START;
+  return async () => {
+    const campaignId = pickRandomCampaign(campaigns);
+    const config = campaignId
+      ? await loadCampaignConfig(campaignId).catch(() => undefined)
+      : undefined;
+    const side =
+      config && pickRandomSide(config.electionConfig.playableSides ?? []);
+    if (!campaignId || !side) {
+      goToCampaignSelector();
+      return;
+    }
     const stateEngine = container.resolve(StateEngine);
     stateEngine.startNewSession();
     stateEngine.saveState("campaignState", {
       activeCampaignId: campaignId,
-      playerSide: { partyId, candidateId },
+      playerSide: side,
     } as CampaignState);
     const sessionId = stateEngine.getSessionId();
     track(
       "campaign_start_clicked",
-      getRunProperties(sessionId, campaignId, { partyId, candidateId }),
+      getRunProperties(sessionId, campaignId, side),
     );
     goToCampaign(campaignId, sessionId);
   };
