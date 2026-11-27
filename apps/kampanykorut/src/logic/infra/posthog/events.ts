@@ -16,7 +16,14 @@ export type CampaignOutcome = "win" | "loss" | "deadlock";
 export type FinishOutcome = CampaignOutcome | "coalition_needed";
 
 export interface AnalyticsEvents {
-  landing_exited: { target: "menu" | "campaign_page" };
+  landing_exited: {
+    target:
+      | "menu"
+      | "campaign_page"
+      | "random_start"
+      | "campaign_selector"
+      | "continue";
+  };
   campaign_start_clicked: RunProperties;
   campaign_page_start_clicked: { campaign_id: string; side_id?: string };
   campaign_chosen: { campaign_id: string };

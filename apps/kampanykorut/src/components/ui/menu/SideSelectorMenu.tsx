@@ -382,7 +382,7 @@ function SelectorItem<T extends { label: string; value: string }>({
             label: item.label,
             value: item.value,
           }))}
-          placeholder={t("sideSelector.party.dropdown")}
+          placeholder={pickerPlaceholder}
           block
           disabled={disabled}
           id={testId}

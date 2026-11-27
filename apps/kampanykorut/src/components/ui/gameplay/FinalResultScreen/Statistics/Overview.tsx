@@ -7,12 +7,16 @@ import {
 } from "@shared/types";
 import { Text } from "@shared/ui/Text";
 import { t } from "i18next";
+import { lazy, Suspense } from "react";
 import type { StatisticResult } from "../statistics.utils";
-import { SupportChart } from "./Chart";
 import { ListOverview } from "./ListOverview";
 import { MandateOverview } from "./MandateOverview";
 import { MobileRankings } from "./MobileRankings";
 import { PercentagesOverview } from "./PercentagesOverview";
+
+const SupportChart = lazy(() =>
+  import("./Chart").then((m) => ({ default: m.SupportChart })),
+);
 
 export function Overview({
   results,
@@ -112,11 +116,13 @@ export function Overview({
         />
       </div>
       <div className="w-full mt-4">
-        <SupportChart
-          label={t("endResult.statistics.overview.supportTrendLabel")}
-          turnHistory={turnHistory}
-          config={config}
-        />
+        <Suspense>
+          <SupportChart
+            label={t("endResult.statistics.overview.supportTrendLabel")}
+            turnHistory={turnHistory}
+            config={config}
+          />
+        </Suspense>
       </div>
     </div>
   );

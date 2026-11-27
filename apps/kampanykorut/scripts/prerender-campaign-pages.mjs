@@ -48,8 +48,12 @@ function sitemapEntry(urlPath, priority) {
   </url>`;
 }
 
-const { buildCampaignPageData, campaignPagePath, renderCampaignPage } =
-  await import(pathToFileURL(path.join(ssrDir, "entry-server.js")).href);
+const {
+  buildCampaignPageData,
+  campaignPagePath,
+  renderCampaignPage,
+  renderLandingPage,
+} = await import(pathToFileURL(path.join(ssrDir, "entry-server.js")).href);
 
 const template = await readFile(path.join(distDir, "index.html"), "utf-8");
 const campaigns = (await loadCampaigns()).filter(
@@ -70,6 +74,8 @@ for (const campaign of campaigns) {
     sitemapEntries.push(sitemapEntry(urlPath, data.side ? "0.7" : "0.8"));
   }
 }
+
+await writePage("/landing", await renderLandingPage(template, campaigns));
 
 const staticPages = [
   { path: "/about", title: "A játékról – Kampánykörút" },

@@ -147,9 +147,14 @@ function TurnBadge({
     <Tooltip content={t("gameHeader.turnsTooltip")} position="bottom">
       <div
         data-frost
-        className="h-10 flex items-center bg-blue-400/10 rounded-md border border-blue-50/10 px-3"
+        className="h-10 flex items-baseline gap-1.5 bg-blue-400/10 rounded-md border border-blue-50/10 px-3 pt-[7px]"
       >
-        <Text color="lightBlue" size="lg">{`${currentTurn}/${turns}`}</Text>
+        <Text as="span" color="lightBlue" size="lg" className="tabular-nums">
+          {`${currentTurn}/${turns}`}
+        </Text>
+        <span className="text-sm text-slate-400">
+          {t("gameHeader.turnsLabel")}
+        </span>
       </div>
     </Tooltip>
   );
@@ -251,7 +256,7 @@ function NarrowHeader({
               <PoliticalStatusButton {...politicalStatus} size="small" />
             )}
             {onResumeQuestion && (
-              <ResumeQuestionButton onClick={onResumeQuestion} />
+              <ResumeQuestionButton onClick={onResumeQuestion} labeled />
             )}
           </div>
           <div className="flex min-w-0 items-center justify-end">
@@ -297,7 +302,7 @@ function NarrowMenu({
             name="file-earmark-arrow-up-fill"
             color={activeDialog === "savedGames" ? "darkBlue" : "blue"}
           />
-          {t("gameMenuBar.laod")}
+          {t("gameMenuBar.load")}
         </div>
       </MenuItem>
       <MenuItem onClick={() => onOpen("settings")}>
@@ -344,23 +349,28 @@ function WideHeader({
   onResumeQuestion,
 }: HeaderContentProps) {
   return (
-    <div className="h-[80px] flex justify-between items-center mx-2.5">
+    <div className="h-[60px] flex justify-between items-center mx-2.5">
       <div className="flex justify-between items-center gap-2">
-        <div
+        <button
+          type="button"
           data-header-logo
-          className="flex justify-center items-center cursor-pointer mr-1.5"
+          aria-label={t("gameMenuBar.openMenu")}
+          className="relative flex justify-center items-center cursor-pointer mr-1.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-blue"
           onClick={() => onOpen("gameMenu")}
         >
-          <img src={logo} className="mr-1" width="40" height="40" />
-          {/* <img src={markdown} className="mr-3" width="200" height="30" /> */}
-        </div>
+          <img src={logo} alt="" className="mr-1" width="40" height="40" />
+        </button>
         <CampaignBadge state={state} config={config} />
 
         {!hidePollsters && (
           <Menu
             align="left"
             trigger={
-              <Button variant="tertiary" testId="pollsterMenu">
+              <Button
+                variant="tertiary"
+                testId="pollsterMenu"
+                aria-label={t("gameMenuBar.mapMenu.polls.menuLabel")}
+              >
                 <Button.Icon name="map-fill" color="white" size="medium" />
               </Button>
             }
@@ -402,7 +412,11 @@ function WideHeader({
       )}
       <div className="flex items-center justify-center gap-2">
         <Tooltip content={t("gameMenuBar.save")} position="bottom">
-          <Button variant="tertiary" onClick={() => onOpen("saveGame")}>
+          <Button
+            variant="tertiary"
+            aria-label={t("gameMenuBar.save")}
+            onClick={() => onOpen("saveGame")}
+          >
             <Button.Icon
               name="file-earmark-arrow-down-fill"
               color={activeDialog === "saveGame" ? "darkBlue" : "white"}
@@ -410,8 +424,12 @@ function WideHeader({
             />
           </Button>
         </Tooltip>
-        <Tooltip content={t("gameMenuBar.laod")} position="bottom">
-          <Button variant="tertiary" onClick={() => onOpen("savedGames")}>
+        <Tooltip content={t("gameMenuBar.load")} position="bottom">
+          <Button
+            variant="tertiary"
+            aria-label={t("gameMenuBar.load")}
+            onClick={() => onOpen("savedGames")}
+          >
             <Button.Icon
               name="file-earmark-arrow-up-fill"
               color={activeDialog === "savedGames" ? "darkBlue" : "white"}
@@ -420,7 +438,11 @@ function WideHeader({
           </Button>
         </Tooltip>
         <Tooltip content={t("gameMenuBar.settings")} position="bottom">
-          <Button variant="tertiary" onClick={() => onOpen("settings")}>
+          <Button
+            variant="tertiary"
+            aria-label={t("gameMenuBar.settings")}
+            onClick={() => onOpen("settings")}
+          >
             <Button.Icon
               name="gear-fill"
               color={activeDialog === "settings" ? "darkBlue" : "white"}
@@ -434,7 +456,11 @@ function WideHeader({
           iconColor={activeDialog === "bugReporter" ? "darkBlue" : "white"}
         />
         <Tooltip content={t("gameMenuBar.quit")} position="bottom">
-          <Button variant="tertiary" onClick={() => onOpen("exit")}>
+          <Button
+            variant="tertiary"
+            aria-label={t("gameMenuBar.quit")}
+            onClick={() => onOpen("exit")}
+          >
             <Button.Icon
               name="x-square-fill"
               color={activeDialog === "exit" ? "darkBlue" : "white"}
@@ -447,8 +473,28 @@ function WideHeader({
   );
 }
 
-function ResumeQuestionButton({ onClick }: { onClick: () => void }) {
+function ResumeQuestionButton({
+  onClick,
+  labeled,
+}: {
+  onClick: () => void;
+  labeled?: boolean;
+}) {
   const label = t("gameMenuBar.resumeQuestion");
+  if (labeled) {
+    return (
+      <Button
+        variant="tertiary"
+        size="sm"
+        selected
+        onClick={onClick}
+        testId="resumeQuestion"
+      >
+        <Button.Icon name="arrow-left" />
+        <Button.Text>{label}</Button.Text>
+      </Button>
+    );
+  }
   return (
     <Tooltip content={label} position="bottom">
       <Button

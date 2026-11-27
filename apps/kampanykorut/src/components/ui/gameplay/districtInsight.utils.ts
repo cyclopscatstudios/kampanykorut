@@ -10,9 +10,9 @@ export type DistrictInsight = {
 };
 
 const SWING_COLORS: Record<SwingFactorId, string> = {
-  [SwingFactorId.High]: "#b8364a",
-  [SwingFactorId.Medium]: "#d4a73a",
-  [SwingFactorId.Low]: "#5ba84a",
+  [SwingFactorId.High]: "#93c5fd",
+  [SwingFactorId.Medium]: "#cbd5e1",
+  [SwingFactorId.Low]: "#94a3b8",
 };
 
 const SWING_ORDER: Record<SwingFactorId, number> = {

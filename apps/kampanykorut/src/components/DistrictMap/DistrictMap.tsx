@@ -239,6 +239,33 @@ export function DistrictMap({
           />
         );
       })}
+      {renderData
+        .filter(
+          (item) =>
+            selectedDistrict &&
+            item.megyekod === selectedDistrict.megyekod &&
+            item.oevk === selectedDistrict.oevk,
+        )
+        .flatMap((item) => [
+          <path
+            key={`selected-outer-${item.id}`}
+            d={item.pathD}
+            fill="none"
+            stroke="#f8fafc"
+            strokeWidth={strokeWidth * 5}
+            strokeLinejoin="round"
+            pointerEvents="none"
+          />,
+          <path
+            key={`selected-inner-${item.id}`}
+            d={item.pathD}
+            fill="none"
+            stroke="#3d63c7"
+            strokeWidth={strokeWidth * 2}
+            strokeLinejoin="round"
+            pointerEvents="none"
+          />,
+        ])}
     </svg>
   );
 }

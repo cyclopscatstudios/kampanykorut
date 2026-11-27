@@ -5,7 +5,7 @@ import { Icon } from "@shared/ui/Icon";
 import { Text } from "@shared/ui/Text";
 import classNames from "classnames";
 import { t } from "i18next";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { Heading } from "../Heading";
 
@@ -26,8 +26,24 @@ export function AdvisorModal({
   const { updateSettings } = useSettings();
 
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const panelRef = useRef<HTMLDivElement>(null);
+  const okRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!open) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    okRef.current?.querySelector("button")?.focus();
+    return () => {
+      if (previouslyFocused?.isConnected) {
+        previouslyFocused.focus();
+      } else {
+        (document.activeElement as HTMLElement | null)?.blur?.();
+      }
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (confirmationModal) {
@@ -35,11 +51,13 @@ export function AdvisorModal({
         } else {
           onClose();
         }
+      } else if (e.key === "Tab" && !confirmationModal) {
+        trapFocus(e, panelRef.current);
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [confirmationModal, onClose]);
+  }, [open, confirmationModal, onClose]);
 
   if (!open) return null;
 
@@ -56,13 +74,21 @@ export function AdvisorModal({
         onClick={onClose}
       >
         <div
+          ref={panelRef}
+          role="dialog"
+          aria-modal={!confirmationModal}
+          aria-labelledby="advisorFeedbackTitle"
           className="flex max-h-[calc(100dvh-24px)] w-[550px] max-w-[calc(100vw-24px)] flex-col overflow-hidden rounded-xl border border-[#4462aa] bg-[#161e30] shadow-xl md:min-h-[450px] md:min-w-[550px]"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="shrink-0 border-b border-[#4462aa] p-3">
             <div className="flex justify-center items-center">
-              <Icon color="purple" name="info-circle-fill" className="mr-3" />
-              <Heading color="lightBlue" level={3}>
+              <Icon
+                color="currentColor"
+                name="info-circle-fill"
+                className="mr-3 text-blue-300"
+              />
+              <Heading id="advisorFeedbackTitle" color="lightBlue" level={3}>
                 {t("advisorFeedback.title")}
               </Heading>
             </div>
@@ -124,15 +150,21 @@ export function AdvisorModal({
               <Button.Text>{t("advisorFeedback.buttons.turnOff")}</Button.Text>
             </Button>
 
-            <Button className="w-[120px]" onClick={onClose} block={!isDesktop}>
-              <Button.Text>{t("advisorFeedback.buttons.ok")}</Button.Text>
-            </Button>
+            <div ref={okRef} className="contents">
+              <Button
+                className="w-[120px]"
+                onClick={onClose}
+                block={!isDesktop}
+              >
+                <Button.Text>{t("advisorFeedback.buttons.ok")}</Button.Text>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
       {confirmationModal && (
         <ConfirmationModal
-          title={t("exitDialog.title")}
+          title={t("advisorFeedback.modal.title")}
           description={t("advisorFeedback.modal.description")}
           onCancel={() => setConfirmationModal(false)}
           onConfirm={handleDisable}
@@ -155,12 +187,32 @@ export function ConfirmationModal({
   onConfirm,
   description,
 }: ConfirmationModalProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const buttons = panelRef.current?.querySelectorAll("button");
+    buttons?.[buttons.length - 1]?.focus();
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Tab") trapFocus(e, panelRef.current);
+    };
+    window.addEventListener("keydown", handler);
+    return () => {
+      window.removeEventListener("keydown", handler);
+      previouslyFocused?.focus?.();
+    };
+  }, []);
+
   return (
     <div
       className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50"
       onClick={onCancel}
     >
       <div
+        ref={panelRef}
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="confirmationModalTitle"
         className="md:min-w-[550px] max-w-[90vw] bg-[#131824] p-5 rounded-xl border-2 border-[#244185] flex flex-col justify-between shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
@@ -175,7 +227,7 @@ export function ConfirmationModal({
             </div>
           </div>
 
-          <Heading color="lightBlue" level={3}>
+          <Heading id="confirmationModalTitle" color="lightBlue" level={3}>
             {title}
           </Heading>
         </div>
@@ -202,4 +254,24 @@ export function ConfirmationModal({
       </div>
     </div>
   );
+}
+
+function trapFocus(e: KeyboardEvent, container: HTMLElement | null) {
+  if (!container) return;
+  const focusable = Array.from(
+    container.querySelectorAll<HTMLElement>(
+      'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])',
+    ),
+  );
+  if (focusable.length === 0) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  const active = document.activeElement;
+  if (e.shiftKey && (active === first || !container.contains(active))) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && (active === last || !container.contains(active))) {
+    e.preventDefault();
+    first.focus();
+  }
 }

@@ -16,7 +16,7 @@ import {
 import { getDistrictTitle } from "./districtInsight.utils";
 import type { SwingFactor } from "./swingFactor.utils";
 
-const TOSSUP_COLOR = "#e5b93a";
+const TOSSUP_COLOR = "#cbd5e1";
 
 interface DistrictEstimateProps {
   district?: CandidateListData;
@@ -73,7 +73,7 @@ export function DistrictEstimate({
             </div>
             <StatusTag estimate={estimate} isNational={isNational} />
           </div>
-          <div className="flex min-h-0 flex-col gap-3 overflow-y-auto">
+          <div className="flex min-h-0 flex-col gap-3 overflow-y-auto pb-5 [mask-image:linear-gradient(to_bottom,black_calc(100%-24px),transparent)]">
             {estimate.rows.map((row) => (
               <CandidateRow
                 key={row.partyId}
@@ -94,14 +94,15 @@ export function DistrictEstimate({
             : t("estimatePanel.selectDistrict")}
         </div>
       )}
-      <div className="mt-auto flex items-center justify-between border-t border-white/8 pt-3 text-[11px] text-slate-400">
-        <span>
+      <div className="mt-auto flex items-center justify-between border-t border-white/8 pt-3 text-xs text-slate-400">
+        <span className="flex items-center gap-1">
           {estimate && (
             <>
               {t("estimatePanel.margin")}{" "}
               <b className="font-semibold text-slate-300">
                 ±{estimate.margin} pp
               </b>
+              <EstimateHelp />
             </>
           )}
         </span>
@@ -110,9 +111,10 @@ export function DistrictEstimate({
             <button
               key={option}
               type="button"
+              aria-pressed={scope === option}
               onClick={() => setScope(option)}
               className={classNames(
-                "cursor-pointer rounded px-2 py-1 text-[10.5px] font-semibold",
+                "cursor-pointer rounded px-2 py-1 text-xs font-semibold",
                 scope === option
                   ? "bg-white/10 text-white"
                   : "text-slate-400 hover:text-slate-200",
@@ -149,7 +151,7 @@ export function StatusTag({
 
   return (
     <span
-      className="shrink-0 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[1.2px]"
+      className="shrink-0 rounded-full border px-2.5 py-1 text-xs font-bold uppercase tracking-[1.2px]"
       style={{ color, borderColor: `${color}66` }}
     >
       {label}
@@ -179,16 +181,14 @@ export function CandidateRow({
         style={{ backgroundColor: row.color }}
       />
       <div className="min-w-0">
-        <div className="text-[12.5px] font-bold uppercase tracking-[0.2px] text-slate-100">
+        <div className="text-xs font-bold uppercase tracking-[0.2px] text-slate-100">
           {partyNameOnly ? row.partyName : (row.candidateName ?? row.partyName)}
         </div>
         {showParty && (
-          <div className="mt-px text-[11.5px] text-slate-400">
-            {row.partyName}
-          </div>
+          <div className="mt-px text-xs text-slate-400">{row.partyName}</div>
         )}
         {isLeader && (
-          <span className="mt-1.5 inline-flex items-center gap-1 rounded-full border border-orange-500/35 bg-orange-500/14 py-0.75 pr-2.25 pl-1.75 text-[11px] font-semibold text-orange-300">
+          <span className="mt-1.5 inline-flex items-center gap-1 rounded-full border border-slate-400/30 bg-slate-400/10 py-0.75 pr-2.25 pl-1.75 text-xs font-semibold text-slate-200">
             <Icon name="caret-up-fill" size="xs" color="currentColor" />
             {t("estimatePanel.leads")}
           </span>
@@ -196,7 +196,7 @@ export function CandidateRow({
       </div>
       <div className="text-right tabular-nums">
         <div className="text-sm font-bold text-slate-100">~{row.percent} %</div>
-        <div className="mt-px text-[10.5px] font-medium text-slate-500">
+        <div className="mt-px text-xs font-medium text-slate-400">
           {row.low}–{row.high}
         </div>
       </div>
@@ -215,5 +215,32 @@ export function CandidateRow({
         />
       </div>
     </div>
+  );
+}
+
+export function EstimateHelp({ className }: { className?: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span className={classNames("relative inline-flex", className)}>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-label={t("estimatePanel.help.toggle")}
+        onClick={() => setOpen((value) => !value)}
+        className="flex size-6 cursor-pointer items-center justify-center rounded-full text-slate-400 hover:text-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+      >
+        <Icon name="info-circle" size="xs" color="currentColor" />
+      </button>
+      {open && (
+        <span
+          role="note"
+          className="absolute bottom-full left-1/2 z-20 mb-2 flex w-[280px] -translate-x-1/2 flex-col gap-1.5 rounded-lg border border-[#4462aa] bg-[#161e30] p-3 text-xs leading-relaxed text-slate-300 shadow-xl"
+        >
+          {(["range", "margin", "status", "oevk"] as const).map((key) => (
+            <span key={key}>{t(`estimatePanel.help.${key}`)}</span>
+          ))}
+        </span>
+      )}
+    </span>
   );
 }

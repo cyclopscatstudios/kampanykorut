@@ -52,19 +52,3 @@ export function getSwingFactorByDistrict(
     id: SwingFactorId.Low,
   };
 }
-
-export function getSwingFactorTextColor(swingFactor?: SwingFactorId) {
-  if (!swingFactor) {
-    return "white";
-  }
-  if (swingFactor === SwingFactorId.High) {
-    return "red";
-  }
-  if (swingFactor === SwingFactorId.Medium) {
-    return "yellow";
-  }
-  if (swingFactor === SwingFactorId.Low) {
-    return "green";
-  }
-  return "white";
-}

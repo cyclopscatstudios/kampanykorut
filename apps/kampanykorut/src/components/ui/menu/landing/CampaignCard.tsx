@@ -22,6 +22,10 @@ export function CampaignCard({ campaign, onOpen }: CampaignCardProps) {
       <img
         src={`/images/${campaign.route}/${campaign.campaignBanner}`}
         alt={campaign.label}
+        width={1672}
+        height={941}
+        loading="lazy"
+        decoding="async"
         className="h-auto w-full object-contain"
       />
       <div className="flex flex-col gap-2 p-5">

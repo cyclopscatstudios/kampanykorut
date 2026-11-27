@@ -3,7 +3,7 @@ import { Icon } from "@shared/ui/Icon";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
-import { CandidateRow, StatusTag } from "./DistrictEstimate";
+import { CandidateRow, EstimateHelp, StatusTag } from "./DistrictEstimate";
 import {
   Estimate,
   EstimateScope,
@@ -13,7 +13,7 @@ import {
 import { getDistrictTitle } from "./districtInsight.utils";
 import type { SwingFactor } from "./swingFactor.utils";
 
-const TOSSUP_COLOR = "#e5b93a";
+const TOSSUP_COLOR = "#cbd5e1";
 
 interface MobileEstimateProps {
   district?: CandidateListData;
@@ -58,7 +58,7 @@ export function CollapsibleEstimate({
         className="flex cursor-pointer flex-col gap-2.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md"
       >
         <span className="flex items-center justify-between gap-2">
-          <span className="text-[13px] font-bold text-slate-50">
+          <span className="text-sm font-bold text-slate-50">
             {t("estimatePanel.mobile.title")}
           </span>
           <span className="flex min-w-0 items-center gap-2.5">
@@ -218,9 +218,10 @@ function EstimateBody({
           />
         ))}
       </div>
-      <div className="border-t border-white/8 pt-2.5 text-[11px] text-slate-300">
+      <div className="flex items-center gap-1 border-t border-white/8 pt-2.5 text-xs text-slate-300">
         {t("estimatePanel.margin")}{" "}
         <b className="font-semibold text-slate-200">±{estimate.margin} pp</b>
+        <EstimateHelp />
       </div>
     </div>
   );
@@ -253,7 +254,7 @@ function ScopeSwitch({
             disabled={disabled}
             onClick={() => onChange(option)}
             className={classNames(
-              "h-8 rounded-md text-[12.5px] font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
+              "h-8 rounded-md text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
               scope === option
                 ? "bg-white/12 text-white"
                 : "text-slate-400 enabled:cursor-pointer enabled:hover:text-slate-200 disabled:text-slate-500",
@@ -280,7 +281,7 @@ function SummaryLabel({ estimate }: { estimate: Estimate }) {
 
   return (
     <span
-      className="truncate text-[10px] font-bold uppercase tracking-[1.2px]"
+      className="truncate text-xs font-bold uppercase tracking-[1.2px]"
       style={{ color }}
     >
       {t(`estimatePanel.status.${estimate.status}`)}
