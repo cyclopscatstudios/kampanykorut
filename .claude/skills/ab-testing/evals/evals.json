@@ -35,7 +35,7 @@
     {
       "id": 3,
       "prompt": "Our test has been running for 3 days and Variant B is winning with 95% confidence. Should we call it?",
-      "expected_output": "Should immediately address the peeking problem. Should explain that checking results early inflates false positive rates. Should recommend running for the full pre-calculated duration regardless of early results. Should explain why early significance can be misleading (regression to the mean, day-of-week effects, audience mix shifts). Should provide guidance on when it IS appropriate to stop early (sequential testing methods). Should recommend the pre-test commitment to duration.",
+      "expected_output": "Should immediately address the peeking problem. Should explain that checking results early inflates false positive rates. Should establish whether the test is fixed-horizon; for fixed-horizon tests, should recommend running the full pre-calculated duration regardless of early results. Should explain why early significance can be misleading (regression to the mean, day-of-week effects, audience mix shifts). Should provide guidance on when it IS appropriate to stop early (sequential testing methods). Should recommend the pre-test commitment to duration.",
       "assertions": [
         "Addresses the peeking problem directly",
         "Explains why early significance is misleading",

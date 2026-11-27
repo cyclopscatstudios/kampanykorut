@@ -154,7 +154,7 @@ dataLayer.push({
 
 ```javascript
 // Event with conversion value
-gtag('event', 'purchase', {
+gtag('event', 'generate_lead', {
   'value': 99.99,
   'currency': 'USD'
 });
@@ -264,7 +264,9 @@ Reports > Real-time
 
 ### Filters
 
-Admin > Data streams > [Stream] > Configure tag settings > Define internal traffic
+Admin > Data streams > [Stream] > Configure tag settings > Define internal traffic (this only labels events with `traffic_type`)
+
+Then exclude it: Admin > Data settings > Data filters > create an Internal Traffic filter, validate it in Testing state, and set it to Active.
 
 **Exclude:**
 - Internal IP addresses

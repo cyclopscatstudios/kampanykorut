@@ -34,10 +34,7 @@ export function AdvisorModal({
     const previouslyFocused = document.activeElement as HTMLElement | null;
     okRef.current?.querySelector("button")?.focus();
     return () => {
-      if (
-        previouslyFocused?.isConnected &&
-        previouslyFocused.getAttribute("role") !== "radio"
-      ) {
+      if (previouslyFocused?.isConnected) {
         previouslyFocused.focus();
       } else {
         (document.activeElement as HTMLElement | null)?.blur?.();

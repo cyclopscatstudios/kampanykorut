@@ -123,7 +123,13 @@ dataLayer.push({
 ### Form Submission
 
 ```javascript
+// Attempt only: the DOM submit event fires before the request completes.
 document.querySelector('#contact-form').addEventListener('submit', function() {
+  dataLayer.push({ 'event': 'form_submit_attempted', 'formName': 'contact' });
+});
+
+// Conversion: push from the app's confirmed-success handler (e.g. HTTP 2xx)
+function onContactFormSuccess() {
   dataLayer.push({
     'event': 'form_submitted',
     'formName': 'contact',
@@ -202,10 +208,10 @@ dataLayer.push({
 
 ### GA4 Configuration Tag
 
-**Tag Type:** Google Analytics: GA4 Configuration
+**Tag Type:** Google tag (replaces the former "GA4 Configuration" tag type)
 
 **Settings:**
-- Measurement ID: G-XXXXXXXX
+- Tag ID: G-XXXXXXXX
 - Send page view: Checked (for pageviews)
 - User Properties: Add any user-level dimensions
 
@@ -216,7 +222,7 @@ dataLayer.push({
 **Tag Type:** Google Analytics: GA4 Event
 
 **Settings:**
-- Configuration Tag: Select your config tag
+- Measurement ID: your G- ID (or the Google tag settings variable)
 - Event Name: {{DL - event_name}} or hardcode
 - Event Parameters: Add parameters from dataLayer
 
@@ -344,7 +350,8 @@ function grantConsent() {
 
 1. Enable Consent Overview in Admin
 2. Configure consent for each tag
-3. Tags respect consent state automatically
+3. For each tag (especially Custom HTML pixels such as Facebook), set Advanced Settings > Consent Settings to require the relevant consent types; the default "Not set" performs no extra checks, so the tag can fire while consent is denied
+4. Verify behavior in both denied and granted states in Preview before publishing
 
 ---
 
