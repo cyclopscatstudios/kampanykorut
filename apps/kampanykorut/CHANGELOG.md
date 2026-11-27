@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.7.0](https://github.com/cyclopscatstudios/kampanykorut/compare/kampanykorut-v0.6.0...kampanykorut-v0.7.0) (2026-11-27)
+
+
+### Features
+
+* add landing page rendering and random campaign selection ([9ccce24](https://github.com/cyclopscatstudios/kampanykorut/commit/9ccce24044889d452ec09ab75b43f336c9bbdd08))
+* add visit change summary and map view functionality ([6fda502](https://github.com/cyclopscatstudios/kampanykorut/commit/6fda5029ee7e58ba9f9356817330343a6a709d99))
+* **analytics:** keep the visitor id per tab, flag internal visits, track coalitions ([fb7b74d](https://github.com/cyclopscatstudios/kampanykorut/commit/fb7b74d63c2898403a19e57b81c8967bdb542d1e))
+* **analytics:** pótolt tölcsér-események és belépési forrás ([65fd845](https://github.com/cyclopscatstudios/kampanykorut/commit/65fd845572b93beb656f2ede0313e7d0768a1c50))
+* **analytics:** track intro close, share opening, campaign choice and entry source ([d2960c4](https://github.com/cyclopscatstudios/kampanykorut/commit/d2960c4e7158ccf18fb25af31fdc2dcd444d0227))
+* enhance UI components and improve accessibility across the application ([ec31471](https://github.com/cyclopscatstudios/kampanykorut/commit/ec31471fe7eb25a38789c02b5bc55ad50802b3bc))
+* **landing:** rövidebb hero, Gyors játék és közvetlen kampányválasztó ([a7f77ff](https://github.com/cyclopscatstudios/kampanykorut/commit/a7f77ffd7f097c72db9a95cfeb81f29d70599e21))
+* **landing:** shorter hero with quick play and direct campaign selector ([0d9979c](https://github.com/cyclopscatstudios/kampanykorut/commit/0d9979c9d1339cc18479233103aef11374e6467a))
+
+
+### Bug Fixes
+
+* address review feedback (advisor focus restore, prerender quick start link, skill reference docs) ([b51edf3](https://github.com/cyclopscatstudios/kampanykorut/commit/b51edf340b375a663ce6b2f96d16733652c83c87))
+* address review feedback on visit change summary ([54278f4](https://github.com/cyclopscatstudios/kampanykorut/commit/54278f419748711483ac148bddba8a1588ad575f))
+* guard quick start after unmount, storage failures and overflow at max scroll ([f6dca68](https://github.com/cyclopscatstudios/kampanykorut/commit/f6dca6835de74b959a724ce7985c8b980112b2a4))
+* **mcp:** narrow simulated answer id before processing a turn ([6f26c01](https://github.com/cyclopscatstudios/kampanykorut/commit/6f26c0157bd998d41b29e9a69de3246c9f27ec52))
+* **mcp:** only reject a missing simulated answer id ([25a26ad](https://github.com/cyclopscatstudios/kampanykorut/commit/25a26ad884dd5e84f36f507324669d4f546f5428))
+
 ## [0.6.0](https://github.com/cyclopscatstudios/kampanykorut/compare/kampanykorut-v0.5.0...kampanykorut-v0.6.0) (2026-11-25)
 
 
