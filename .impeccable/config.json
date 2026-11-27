@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "montserrat",
+        "createdAt": "2026-11-27T10:15:26.806Z",
+        "reason": "DESIGN.md: Montserrat is the documented brand face for all core UI (apps/kampanykorut/DESIGN.md Typography)"
+      }
+    ]
+  }
+}

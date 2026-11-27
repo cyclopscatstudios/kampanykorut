@@ -10,8 +10,8 @@
     "description": "Alternatív történelem: Az 1956-os forradalom után a szovjet csapatok kivonultak, Magyarország pedig kinyilvánította semlegességét. A koalíció pártjai most a földek sorsáról, az államosított gyárak jövőjéről és a Moszkvához fűződő viszonyról vitáznak. 1957 őszén szabad országgyűlési választást tartanak, és addig minden pártnak meg kell mondania, mit kezdene a forradalom örökségével.",
     "year": 1957,
     "tags": ["alternate-history"],
-    "campaignBanner": "default-banner.webp",
-    "thinCampaignBanner": "default-banner-thin.webp",
+    "campaignBanner": "default-banner.png",
+    "thinCampaignBanner": "default-banner-thin.png",
     "status": "published",
     "addedAt": "2026-11-09"
   },

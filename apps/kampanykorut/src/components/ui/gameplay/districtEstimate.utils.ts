@@ -94,7 +94,7 @@ export function getNationalEstimate(
   return buildEstimate(shares, parties, margin);
 }
 
-function toShares(partok: Record<string, number | undefined>) {
+export function toShares(partok: Record<string, number | undefined>) {
   const entries = Object.entries(partok).filter(
     (entry): entry is [string, number] =>
       typeof entry[1] === "number" && entry[1] > 0,

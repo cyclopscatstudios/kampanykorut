@@ -12,6 +12,7 @@ import {
 } from "./districtEstimate.utils";
 import { getDistrictTitle } from "./districtInsight.utils";
 import type { SwingFactor } from "./swingFactor.utils";
+import { districtKey, type VisitChange } from "./visitChange.utils";
 
 const TOSSUP_COLOR = "#cbd5e1";
 
@@ -21,6 +22,7 @@ interface MobileEstimateProps {
   parties: RawParty[];
   nationalPercentages?: Record<string, number>;
   isCityMap: boolean;
+  visitChange?: VisitChange;
 }
 
 /**
@@ -34,6 +36,7 @@ export function CollapsibleEstimate({
   parties,
   nationalPercentages,
   isCityMap,
+  visitChange,
 }: MobileEstimateProps) {
   const [open, setOpen] = useState(false);
   const [scope, setScope] = useState<EstimateScope>("district");
@@ -92,6 +95,7 @@ export function CollapsibleEstimate({
             swingFactor={swingFactor}
             parties={parties}
             nationalPercentages={nationalPercentages}
+            visitChange={visitChange}
           />
         </>
       )}
@@ -106,6 +110,7 @@ export function EstimateSheetContent({
   parties,
   nationalPercentages,
   isCityMap,
+  visitChange,
   onClose,
 }: MobileEstimateProps & { onClose: () => void }) {
   const [scope, setScope] = useState<EstimateScope>(
@@ -166,6 +171,7 @@ export function EstimateSheetContent({
         swingFactor={swingFactor}
         parties={parties}
         nationalPercentages={nationalPercentages}
+        visitChange={visitChange}
       />
       {!district && (
         <p className="text-center text-xs text-slate-300">
@@ -186,6 +192,7 @@ function EstimateBody({
   swingFactor,
   parties,
   nationalPercentages,
+  visitChange,
 }: Omit<MobileEstimateProps, "isCityMap"> & { scope: EstimateScope }) {
   const estimate = getScopedEstimate({
     scope,
@@ -195,6 +202,9 @@ function EstimateBody({
     nationalPercentages,
   });
   const isNational = scope === "national";
+  const deltas = isNational
+    ? visitChange?.national
+    : district && visitChange?.districts[districtKey(district)]?.deltas;
 
   if (!estimate) {
     return (
@@ -213,6 +223,8 @@ function EstimateBody({
             row={row}
             isLeader={estimate.leader?.partyId === row.partyId}
             showParty={!isNational && !!row.candidateName}
+            delta={deltas?.[row.partyId]}
+            deltaDigits={isNational ? 1 : 0}
             partyNameOnly={isNational}
             scale={getBarScale(estimate)}
           />
