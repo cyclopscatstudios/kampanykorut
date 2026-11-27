@@ -29,7 +29,7 @@
       },
       {
         "answerId": "B",
-        "text": "A magyar politikában egy szűk rétegen kívül még senkit sem sikerült pusztán szakpolitikai érvekkel választást nyerni. Valószínűleg most sem ez lesz a döntő."
+        "text": "A magyar politikában pusztán szakpolitikai érvekkel még senki sem nyert választást. Valószínűleg most sem ez lesz a döntő."
       },
       {
         "answerId": "C",
@@ -238,7 +238,7 @@
         ],
         "answer": {
           "answerId": "C",
-          "text": "Bár nem szólítottad meg közvetlenül az idősebb választókat, a személyes történetek bemutatása kimondottan segítenek a megítélésedben több más kérdésben is."
+          "text": "Bár nem szólítottad meg közvetlenül az idősebb választókat, a személyes történetek bemutatása kimondottan segít a megítélésedben több más kérdésben is."
         }
       }
     ],
@@ -287,7 +287,11 @@
       },
       {
         "answerId": "C",
-        "text": "Érthető, hogy megpróbálod elkerülni az állásfoglalást, de ettől a téma még támadási felület marad az ellenzék számára. Ráadásul a saját törzsszavazóid egy része is elégedetlen lehet."
+        "text": "Érthető, hogy megpróbálod elkerülni az állásfoglalást, de ettől a téma még támadási felület marad veled szemben. Ráadásul a saját törzsszavazóid egy része is elégedetlen lehet."
+      },
+      {
+        "answerId": "D",
+        "text": "Az érvénytelen szavazat egyértelműen jelzi az elutasítást, és összhangban van a civil szervezetek kampányával. A választás eredményére azonban alig hat."
       }
     ]
   },
@@ -555,7 +559,7 @@
       },
       {
         "answerId": "B",
-        "text": "A választási rendszer sajátosságaira való figyelmeztetés önmagában igaz, de könnyen azt az érzetet keltheti, hogy valójában nem bíztok a győzelemben."
+        "text": "A további mozgósításra való figyelmeztetés önmagában indokolt, de könnyen azt az érzetet keltheti, hogy valójában nem bíztok a győzelemben."
       },
       {
         "answerId": "C",
@@ -627,6 +631,69 @@
       {
         "answerId": "D",
         "text": "A visszafogott kampány csökkentheti az újabb hibák esélyét, de ezzel az utolsó napok kezdeményezéséről is lemondhatsz."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-35",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Világos választóvonalat húzol, ami a saját táborodat mozgósítja. A Fidesz viszont könnyen fordíthatja ezt arra, hogy a háború felé sodornád az országot."
+      },
+      {
+        "answerId": "B",
+        "text": "Szakmailag erős üzenet, de a választók többsége nem a gázszerződések részletei alapján dönt."
+      },
+      {
+        "answerId": "C",
+        "text": "Elkerülöd a kockázatot, de egy ilyen találkozó mellett szó nélkül elmenni is üzenet."
+      },
+      {
+        "answerId": "D",
+        "text": "A levél gyorsan eljut a kormánypárti médiába, ahol a külföldi beavatkozás kérésének bizonyítékaként mutatják be."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-36",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Elveszed a Fidesz egyik legerősebb érvét, és megnyugtatod azokat, akik féltik az árstopot."
+      },
+      {
+        "answerId": "B",
+        "text": "A hiány valós, de az árstop sokak számára kézzelfogható segítség. A bírálat könnyen úgy hangzik, mintha elvennéd tőlük."
+      },
+      {
+        "answerId": "C",
+        "text": "Ésszerű alternatíva, de nehezebb elmagyarázni, mint egy egyszerű árstopot."
+      },
+      {
+        "answerId": "D",
+        "text": "A figyelmeztetés igaz lehet, de most a választók a kedvezményt érzik, nem az utána következő árakat."
+      }
+    ]
+  },
+  {
+    "questionId": "2022_ogyv-37",
+    "answers": [
+      {
+        "answerId": "A",
+        "text": "Az aláírásgyűjtés jó alkalom a személyes találkozásokra, és az aktivistáid is gyakorlatot szereznek a mozgósításban."
+      },
+      {
+        "answerId": "B",
+        "text": "A gyűjtés így is sikerülhet, de kimaradsz egy olyan ügyből, amely közös akcióba vonja az ellenzéki szavazókat."
+      },
+      {
+        "answerId": "C",
+        "text": "Ügyes megoldás: vidéken a megélhetési kérdés közelebb áll a választókhoz, mint egy budapesti egyetem."
+      },
+      {
+        "answerId": "D",
+        "text": "Az adatbázis később hasznos lehet, de a pártok úgy érezhetik, hogy kivonod magad a közös akcióból."
       }
     ]
   }

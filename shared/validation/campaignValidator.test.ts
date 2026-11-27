@@ -332,6 +332,30 @@ describe("validateCampaign", () => {
     expect(codes(result)).toContain("error:duplicate-id");
   });
 
+  it("reports duplicate answer effects", () => {
+    const result = validate((f) => {
+      effects(f).push(effects(f)[0]);
+    });
+    expect(codes(result)).toContain("error:duplicate-id");
+  });
+
+  it("reports alternatives of unknown or alternative questions", () => {
+    expect(
+      codes(
+        validate((f) => {
+          file(f, "side/questions.json")[1].alternativeTo = "q9";
+        }),
+      ),
+    ).toContain("error:unknown-question");
+    expect(
+      codes(
+        validate((f) => {
+          file(f, "side/questions.json")[1].alternativeTo = "q1";
+        }),
+      ),
+    ).toEqual([]);
+  });
+
   it("reports conditions on unknown answers", () => {
     const result = validate((f) => {
       effects(f)[1].answers[0].conditionalEffects[0].if[0].answerId = "Z";

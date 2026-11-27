@@ -5,6 +5,7 @@ import {
   findNextQuestionIndex,
   getQuestionCondition,
   isQuestionEligible,
+  pickQuestionVariants,
 } from "./QuestionEligibility";
 
 const question = (
@@ -111,5 +112,33 @@ describe("question eligibility", () => {
     const getContext = vi.fn(context());
     findNextQuestionIndex([question("q1")], 0, getContext);
     expect(getContext).not.toHaveBeenCalled();
+  });
+});
+
+describe("question alternatives", () => {
+  const questions = [
+    question("q1"),
+    question("q2"),
+    question("q1b", { alternativeTo: "q1" }),
+    question("q3"),
+  ];
+
+  it("draws one variant per main question", () => {
+    expect(pickQuestionVariants([question("q1")])).toBeUndefined();
+    expect(pickQuestionVariants(questions, () => 0)).toEqual({ q1: "q1" });
+    expect(pickQuestionVariants(questions, () => 0.99)).toEqual({ q1: "q1b" });
+  });
+
+  it("shows the drawn alternative at its own position", () => {
+    const variants = { q1: "q1b" };
+    expect(findNextQuestionIndex(questions, 0, context(), variants)).toBe(1);
+    expect(findNextQuestionIndex(questions, 2, context(), variants)).toBe(2);
+    expect(countEligibleQuestions(questions, 0, context(), variants)).toBe(3);
+  });
+
+  it("keeps the main question when no variant was drawn", () => {
+    expect(findNextQuestionIndex(questions, 0, context())).toBe(0);
+    expect(findNextQuestionIndex(questions, 2, context())).toBe(3);
+    expect(countEligibleQuestions(questions, 0, context())).toBe(3);
   });
 });
