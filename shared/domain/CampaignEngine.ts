@@ -59,6 +59,7 @@ import {
 import {
   countEligibleQuestions,
   findNextQuestionIndex,
+  pickQuestionVariants,
 } from "./QuestionEligibility";
 import type { ResultModifier } from "./ResultModifier";
 import type { CandidateWithdrawalTransformer } from "./ResultTransformer/CandidateWithdrawalTransformer";
@@ -100,6 +101,7 @@ export class CampaignEngine {
     electionConfig?: ElectionConfig,
     palyerSideId?: string,
     campaignConfigVersion?: string,
+    random: () => number = Math.random,
   ): CampaignState {
     if (
       savedState &&
@@ -142,6 +144,7 @@ export class CampaignEngine {
     }
 
     const dormantParties = getDormantPartyStates(electionConfig?.parties);
+    const questionVariants = pickQuestionVariants(this.questions, random);
     const startState = {
       activeCampaignId: campaignId,
       turn: 0,
@@ -160,6 +163,7 @@ export class CampaignEngine {
       isEnded: false,
       isBaseResultsAlreadyApplied: true,
       ...(campaignConfigVersion && { campaignConfigVersion }),
+      ...(questionVariants && { questionVariants }),
     };
     const position = this.getQuestionPosition(
       startState,
@@ -399,7 +403,12 @@ export class CampaignEngine {
       return context;
     };
 
-    const index = findNextQuestionIndex(this.questions, fromIndex, getContext);
+    const index = findNextQuestionIndex(
+      this.questions,
+      fromIndex,
+      getContext,
+      state.questionVariants,
+    );
     const currentQuestion =
       index === undefined ? undefined : this.questions[index];
 
@@ -411,7 +420,12 @@ export class CampaignEngine {
         state.turn +
         (index === undefined
           ? 0
-          : countEligibleQuestions(this.questions, index, getContext)),
+          : countEligibleQuestions(
+              this.questions,
+              index,
+              getContext,
+              state.questionVariants,
+            )),
       isEnded: index === undefined,
     };
   }

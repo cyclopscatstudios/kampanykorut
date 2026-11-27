@@ -7,7 +7,7 @@ import { Mandate, PartyVotes } from "./mandate";
 import { MayoralResult } from "./mayoral-result";
 import { NewspaperState } from "./newspaper";
 import { CoalitionState, PoliticalDashboardState } from "./political";
-import { RawQuestion } from "./question";
+import { QuestionVariants, RawQuestion } from "./question";
 
 export interface CampaignState {
   activeCampaignId: string;
@@ -31,6 +31,7 @@ export interface CampaignState {
   introSeen?: boolean;
   campaignConfigVersion?: string;
   questionCursor?: number;
+  questionVariants?: QuestionVariants;
   decisionCount?: number;
   isEnded: boolean;
   advisorFeedback?: AnswerFeedback;

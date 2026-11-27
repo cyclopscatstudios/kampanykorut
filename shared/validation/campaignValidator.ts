@@ -728,8 +728,49 @@ function checkQuestions(
     }
     questions.set(question.id, { index, answers });
   });
+  checkQuestionAlternatives(ctx, file, data);
   checkQuestionConditions(ctx, file, data, questions, eventIds);
   return questions;
+}
+
+function checkQuestionAlternatives(
+  ctx: Context,
+  file: string,
+  data: unknown[],
+) {
+  const byId = new Map(
+    data.flatMap((question) =>
+      isObject(question) && typeof question.id === "string"
+        ? [[question.id, question] as const]
+        : [],
+    ),
+  );
+  data.forEach((question, index) => {
+    if (!isObject(question) || question.alternativeTo === undefined) {
+      return;
+    }
+    const path = `/${index}/alternativeTo`;
+    const main = byId.get(question.alternativeTo as string);
+    if (!main || main === question) {
+      report(
+        ctx,
+        "error",
+        "unknown-question",
+        file,
+        path,
+        `alternativeTo must name another question, got "${String(question.alternativeTo)}"`,
+      );
+    } else if (main.alternativeTo !== undefined) {
+      report(
+        ctx,
+        "error",
+        "question-invalid",
+        file,
+        path,
+        `"${String(question.alternativeTo)}" is itself an alternative`,
+      );
+    }
+  });
 }
 
 function checkQuestionConditions(
@@ -896,6 +937,16 @@ function checkAnswerEffects(
         "entry must be an object with a string id",
       );
       return;
+    }
+    if (covered.has(entry.id)) {
+      report(
+        ctx,
+        "error",
+        "duplicate-id",
+        file,
+        `${path}/id`,
+        `duplicate answer effects for question "${entry.id}"`,
+      );
     }
     const question = questions.get(entry.id);
     if (!question) {
