@@ -74,7 +74,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "A hagyományos televíziókra, rádiókra és országos plakátkampányra támaszkodsz, ezekkel lehet a legtöbb választót fegyelmezetten elérni."
+        "label": "A hagyományos televíziókra, rádiókra és országos plakátkampányra támaszkodsz."
       },
       {
         "id": "B",
@@ -130,7 +130,7 @@
   {
     "id": "2022_ogyv_fidesz-5",
     "title": "Az ellenfél mondatai",
-    "question": "Márki-Zay hosszú élő videókban és interjúkban gyakran fogalmaz félreérthetően. Októberben például azt mondja, hogy „a fél kormány meleg”, később pedig újabb sértő vagy könnyen kiforgatható mondatok kerülnek elő. Hogyan használja ezeket a kampány?",
+    "question": "Márki-Zay hosszú élő videókban és interjúkban gyakran fogalmaz félreérthetően. Októberben például azt mondja, hogy „a fél kormány meleg”, később pedig újabb sértő vagy könnyen kiforgatható mondatok kerülnek elő. Hogyan használod fel ezeket?",
     "possibleAnswers": [
       {
         "id": "A",
@@ -193,7 +193,7 @@
       },
       {
         "id": "C",
-        "label": "A teljes 13. havi nyugdíjat és a rendvédelmi dolgozók fegyverpénzét fizeted ki, mert ezek a legfegyelmezettebb választói csoportokat érik el."
+        "label": "A teljes 13. havi nyugdíjat és a rendvédelmi dolgozók fegyverpénzét fizeted ki."
       },
       {
         "id": "D",
@@ -347,11 +347,11 @@
   {
     "id": "2022_ogyv_fidesz-13",
     "title": "Élelmiszerárstop",
-    "question": "Januárra az infláció a mindennapi bevásárlás központi témája lesz. Hat alapvető élelmiszer árának 2021. október 15-i szintre történő visszaállítása kerül az asztalodra. Melyik megoldást választod?",
+    "question": "Januárra az infláció a mindennapi bevásárlás központi témája lesz. Hat alapvető élelmiszer (cukor, liszt, étolaj, sertéscomb, csirkemell és far-hát, tej) árának 2021. október 15-i szintre történő visszaállítása kerül az asztalodra. Melyik megoldást választod?",
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Február 1-jétől árstopot rendelsz el a cukorra, lisztre, étolajra, sertéscombra, csirkemellre és a 2,8 százalékos tejre."
+        "label": "Február 1-jétől árstopot rendelsz el a cukorra, lisztre, étolajra, sertéscombra, csirkemellre, csirke far-hátra és a 2,8 százalékos tejre."
       },
       {
         "id": "B",
@@ -378,7 +378,7 @@
       },
       {
         "id": "B",
-        "label": "Külön napra teszed a népszavazást, hogy az országgyűlési választás a kormány teljesítményéről szóljon."
+        "label": "Külön napra teszed a népszavazást."
       },
       {
         "id": "C",
@@ -386,7 +386,7 @@
       },
       {
         "id": "D",
-        "label": "Elhalasztod a népszavazást, mert a kérdések megosztóak, és nem akarod mozgósítani az ellenzéki nagyvárosi szavazókat."
+        "label": "Elhalasztod a népszavazást a választás utánra."
       }
     ],
     "affects": [
@@ -541,7 +541,7 @@
       },
       {
         "id": "C",
-        "label": "Élesen elválasztod az állami tájékoztatást a Fidesz kampányától, még akkor is, ha ezzel jelentős elérésről mondasz le."
+        "label": "Élesen elválasztod az állami tájékoztatást a Fidesz kampányától."
       },
       {
         "id": "D",
@@ -643,7 +643,7 @@
       },
       {
         "id": "B",
-        "label": "Megvétózod a szankciókat, mert szerinted azok jobban ártanak Európának, mint Oroszországnak."
+        "label": "Megvétózod a szankciókat, és azt mondod: jobban ártanak Európának, mint Oroszországnak."
       },
       {
         "id": "C",
@@ -741,7 +741,7 @@
     "possibleAnswers": [
       {
         "id": "A",
-        "label": "Megvéded a jelenlegi lakossági árakat, és ezért elutasítasz minden olyan szankciót, amely közvetlenül érinti az orosz gázt vagy olajat."
+        "label": "Megvéded a jelenlegi lakossági árakat, és elutasítasz minden olyan szankciót, amely közvetlenül érinti az orosz gázt vagy olajat."
       },
       {
         "id": "B",
@@ -864,7 +864,7 @@
       },
       {
         "id": "C",
-        "label": "Az adatvédelmi és visszaélési kockázatok miatt kizárólag önkéntes, friss feliratkozások alapján keresitek a választókat."
+        "label": "Kizárólag önkéntes, friss feliratkozások alapján keresitek a választókat."
       },
       {
         "id": "D",
