@@ -12,6 +12,7 @@ import { DistrictEstimate } from "./DistrictEstimate";
 import { isSameDistrict } from "./districtInsight.utils";
 import { MapWrapper } from "./MapWrapper";
 import type { SwingFactor } from "./swingFactor.utils";
+import type { MapChange, VisitChange } from "./visitChange.utils";
 
 type SidePanelTab = "capital" | "estimate";
 
@@ -28,6 +29,8 @@ interface MapSidePanelProps {
   nationalPercentages?: Record<string, number>;
   electionConfig: ElectionConfig;
   isCityMap: boolean;
+  changes?: Record<string, MapChange>;
+  visitChange?: VisitChange;
 }
 
 export function MapSidePanel({
@@ -41,6 +44,8 @@ export function MapSidePanel({
   nationalPercentages,
   electionConfig,
   isCityMap,
+  changes,
+  visitChange,
 }: MapSidePanelProps) {
   const hasCapital = capitalCity.length > 0;
   const [tab, setTab] = useState<SidePanelTab>("estimate");
@@ -104,6 +109,7 @@ export function MapSidePanel({
               handleDistrict={setSelectedDistrict}
               selectedDistrict={selectedDistrict}
               electionConfig={electionConfig}
+              changes={changes}
             />
           </div>
         ) : (
@@ -113,6 +119,7 @@ export function MapSidePanel({
             parties={electionConfig.parties}
             nationalPercentages={nationalPercentages}
             isCityMap={isCityMap}
+            visitChange={visitChange}
             issues={
               district ? getAreaIssues(electionConfig, district.megyekod) : []
             }

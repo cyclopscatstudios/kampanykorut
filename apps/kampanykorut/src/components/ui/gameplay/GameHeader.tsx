@@ -1,4 +1,5 @@
 import { StateEngine } from "@logic/application";
+import { useSettings } from "@logic/application/hooks/useSettings";
 import { Navigation } from "@logic/application/navigation/Navigation";
 import {
   AGGREGATE_POLLSTER_ID,
@@ -25,6 +26,7 @@ import { BugReporterButton } from "./BugReporter/BugReporterButton";
 import { CampaignBadge } from "./CampaignBadge";
 import { GAME_HEADER_SLOT_ID } from "./gameHeaderSlot";
 import type { DialogId } from "./hooks/useDialogState";
+import { getMapView, MAP_VIEWS } from "./mapView";
 import { PollsterOption, PollsterPicker } from "./PollsterPicker";
 
 export interface GameHeaderProps {
@@ -216,6 +218,7 @@ function NarrowHeader({
   politicalStatus,
   onResumeQuestion,
 }: HeaderContentProps) {
+  const { settings, updateSettings } = useSettings();
   return (
     <>
       <div className="mx-2.5 grid h-[60px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2">
@@ -260,13 +263,13 @@ function NarrowHeader({
             )}
           </div>
           <div className="flex min-w-0 items-center justify-end">
-            {!hidePollsters && (
-              <PollsterPicker
-                options={getPollsterOptions(pollsters)}
-                selectedId={pollsterData?.selectedPollsterId}
-                onSelect={(id) => handlePollsterChange?.(id, state, config)}
-              />
-            )}
+            <PollsterPicker
+              options={hidePollsters ? [] : getPollsterOptions(pollsters)}
+              selectedId={pollsterData?.selectedPollsterId}
+              onSelect={(id) => handlePollsterChange?.(id, state, config)}
+              mapView={getMapView(settings)}
+              onMapViewChange={(view) => updateSettings({ mapView: view })}
+            />
           </div>
         </div>
       )}
@@ -348,6 +351,7 @@ function WideHeader({
   politicalStatus,
   onResumeQuestion,
 }: HeaderContentProps) {
+  const { settings, updateSettings } = useSettings();
   return (
     <div className="h-[60px] flex justify-between items-center mx-2.5">
       <div className="flex justify-between items-center gap-2">
@@ -362,19 +366,19 @@ function WideHeader({
         </button>
         <CampaignBadge state={state} config={config} />
 
-        {!hidePollsters && (
-          <Menu
-            align="left"
-            trigger={
-              <Button
-                variant="tertiary"
-                testId="pollsterMenu"
-                aria-label={t("gameMenuBar.mapMenu.polls.menuLabel")}
-              >
-                <Button.Icon name="map-fill" color="white" size="medium" />
-              </Button>
-            }
-          >
+        <Menu
+          align="left"
+          trigger={
+            <Button
+              variant="tertiary"
+              testId="pollsterMenu"
+              aria-label={t("gameMenuBar.mapMenu.label")}
+            >
+              <Button.Icon name="map-fill" color="white" size="medium" />
+            </Button>
+          }
+        >
+          {!hidePollsters && (
             <SubMenu label={t("gameMenuBar.mapMenu.polls.menuLabel")}>
               {getPollsterOptions(pollsters).map((pollster) => (
                 <MenuItem
@@ -395,8 +399,23 @@ function WideHeader({
                 </MenuItem>
               ))}
             </SubMenu>
-          </Menu>
-        )}
+          )}
+          <SubMenu label={t("gameMenuBar.mapMenu.view.menuLabel")}>
+            {MAP_VIEWS.map((view) => (
+              <MenuItem
+                key={view}
+                onClick={() => updateSettings({ mapView: view })}
+              >
+                <div className="flex justify-between items-center px-2 gap-2">
+                  {t(`gameMenuBar.mapMenu.view.${view}`)}
+                  {getMapView(settings) === view && (
+                    <Icon name="check-lg" color="darkBlue" />
+                  )}
+                </div>
+              </MenuItem>
+            ))}
+          </SubMenu>
+        </Menu>
         {politicalStatus && <PoliticalStatusButton {...politicalStatus} />}
         {onResumeQuestion && (
           <ResumeQuestionButton onClick={onResumeQuestion} />

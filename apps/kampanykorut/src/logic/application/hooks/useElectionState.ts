@@ -326,5 +326,7 @@ export function useElectionState(campaignId: string) {
     markNewspaperRead: markNewspaperAsRead,
     markIntroSeen: markIntroAsSeen,
     getMapDataByPolls: getListDataByPollProjection,
+    getAggregateProjection: (state: CampaignState) =>
+      campaignEngine.getAggregatePollProjection(state, config.electionConfig),
   };
 }

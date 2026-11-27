@@ -13,6 +13,8 @@ import {
   getSwingColor,
   isSameDistrict,
 } from "./districtInsight.utils";
+import { districtKey } from "./visitChange.utils";
+import { ChangeCountBadges, DeltaBadge } from "./VisitChangeSummary";
 
 export type DistrictSort = "none" | "swing";
 
@@ -24,6 +26,8 @@ interface DistrictListProps {
   parties: RawParty[];
   selectedDistrict: District | null;
   onSelect: (district: CandidateListData) => void;
+  changes?: Record<string, number>;
+  scrollToSelected?: boolean;
 }
 
 export function DistrictList({
@@ -32,6 +36,8 @@ export function DistrictList({
   parties,
   selectedDistrict,
   onSelect,
+  changes,
+  scrollToSelected = true,
 }: DistrictListProps) {
   const [sortBy, setSortBy] = useState<DistrictSort>("none");
   const [openCounty, setOpenCounty] = useState<string | null>(
@@ -66,6 +72,8 @@ export function DistrictList({
                 insight={insight}
                 isCityMap
                 isSelected={isSameDistrict(insight.district, selectedDistrict)}
+                delta={changes?.[districtKey(insight.district)]}
+                scrollToSelected={scrollToSelected}
                 onSelect={onSelect}
               />
             ))
@@ -83,6 +91,8 @@ export function DistrictList({
                   }
                   selectedDistrict={selectedDistrict}
                   onSelect={onSelect}
+                  changes={changes}
+                  scrollToSelected={scrollToSelected}
                 />
               ))
             : [...insights]
@@ -97,6 +107,8 @@ export function DistrictList({
                       insight.district,
                       selectedDistrict,
                     )}
+                    delta={changes?.[districtKey(insight.district)]}
+                    scrollToSelected={scrollToSelected}
                     onSelect={onSelect}
                   />
                 ))}
@@ -112,6 +124,8 @@ function CountyGroup({
   onToggle,
   selectedDistrict,
   onSelect,
+  changes,
+  scrollToSelected,
 }: {
   county: string;
   insights: DistrictInsight[];
@@ -119,6 +133,8 @@ function CountyGroup({
   onToggle: () => void;
   selectedDistrict: District | null;
   onSelect: (district: CandidateListData) => void;
+  changes?: Record<string, number>;
+  scrollToSelected?: boolean;
 }) {
   const voters = insights.reduce(
     (sum, insight) => sum + insight.district.valasztopolgar,
@@ -142,6 +158,13 @@ function CountyGroup({
           <span className="flex items-center gap-2 text-[15px] font-bold tracking-[-0.2px] text-slate-100">
             <PartyDot color={leadingColor} />
             {county}
+            {changes && (
+              <ChangeCountBadges
+                deltas={insights
+                  .map((insight) => changes[districtKey(insight.district)])
+                  .filter((delta): delta is number => delta !== undefined)}
+              />
+            )}
           </span>
           <span className="text-slate-400">
             <Icon
@@ -165,6 +188,8 @@ function CountyGroup({
               insight={insight}
               isCityMap={false}
               isSelected={isSameDistrict(insight.district, selectedDistrict)}
+              delta={changes?.[districtKey(insight.district)]}
+              scrollToSelected={scrollToSelected}
               onSelect={onSelect}
             />
           ))}
@@ -180,18 +205,23 @@ function DistrictCard({
   isSelected,
   showCounty,
   onSelect,
+  delta,
+  scrollToSelected,
 }: {
   insight: DistrictInsight;
   isCityMap: boolean;
   isSelected: boolean;
   showCounty?: boolean;
   onSelect: (district: CandidateListData) => void;
+  delta?: number;
+  scrollToSelected?: boolean;
 }) {
   const { district, leadingParty, swingFactor } = insight;
   const ref = useRef<HTMLButtonElement>(null);
 
   useLayoutEffect(() => {
-    if (isSelected) ref.current?.scrollIntoView({ block: "nearest" });
+    if (isSelected && scrollToSelected)
+      ref.current?.scrollIntoView({ block: "nearest" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -211,6 +241,7 @@ function DistrictCard({
             {showCounty && `${district.megye} · `}
             {getDistrictName(district, isCityMap)}
           </span>
+          <DeltaBadge delta={delta} />
         </span>
         {isSelected && (
           <span className="shrink-0 text-xs font-bold uppercase tracking-[0.6px] text-blue-300">

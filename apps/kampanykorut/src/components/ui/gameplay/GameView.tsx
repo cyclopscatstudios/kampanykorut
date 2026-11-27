@@ -22,6 +22,7 @@ import { useFollowedLine } from "../../../debug/cheat/winningLines";
 import { MapCreator } from "./MapCreator";
 import { MobileMapView } from "./MobileMapView";
 import { QuestionCard } from "./QuestionCard";
+import type { VisitChangeView } from "./visitChange.utils";
 import { SeatCountScreen } from "./VoteCountingScreen/SeatCountScreen";
 import { VoteCountingScreen } from "./VoteCountingScreen/VoteCountingScreen";
 
@@ -39,6 +40,7 @@ interface GameViewProps {
   onSetDistrict: (district: District | null) => void;
   onVoteCountingComplete: () => void;
   mapOverlay?: ReactNode;
+  visitChange?: VisitChangeView;
 }
 
 export function GameView({
@@ -55,6 +57,7 @@ export function GameView({
   onSetDistrict,
   onVoteCountingComplete,
   mapOverlay,
+  visitChange,
 }: GameViewProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const followedLine = useFollowedLine(state);
@@ -162,6 +165,7 @@ export function GameView({
       visitBlocked={visitBlocked}
       isReturning={isReturning}
       mapOverlay={mapOverlay}
+      visitChange={visitChange}
     />
   ) : (
     <MobileMapView
@@ -177,6 +181,7 @@ export function GameView({
       visitBlocked={visitBlocked}
       isReturning={isReturning}
       mapOverlay={mapOverlay}
+      visitChange={visitChange}
     />
   );
 }

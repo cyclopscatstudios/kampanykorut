@@ -7,7 +7,8 @@
     "loadGame": "Load Game",
     "modMaker": "Mod Maker",
     "settings": "Settings",
-    "about": "About"
+    "about": "About",
+    "backToLanding": "Back to the home page"
   },
   "newGameMenu": {
     "classicMode": "Classic mode",
@@ -313,6 +314,12 @@
     "settings": "Settings",
     "quit": "Quit game",
     "mapMenu": {
+      "label": "Map settings",
+      "view": {
+        "menuLabel": "Map view",
+        "classic": "Classic",
+        "detailed": "Detailed"
+      },
       "polls": {
         "menuLabel": "Pollsters",
         "average": "Polling average"
@@ -346,6 +353,25 @@
   "campaignSelectorDialog": {
     "title": "Campaign selector",
     "description": "Are you sure you want to return to the campaign selector?"
+  },
+  "visitChange": {
+    "title": "Effect of your visit",
+    "subtitle": "Estimated change, based on the poll average",
+    "national": "{{party}} national list",
+    "city": "{{party}} city-wide result",
+    "gained_one": "Took the lead in {{count}} district",
+    "gained_other": "Took the lead in {{count}} districts",
+    "lost_one": "Lost the lead in {{count}} district",
+    "lost_other": "Lost the lead in {{count}} districts",
+    "noneToggle": "Why is there no change?",
+    "none": "The polls show no change larger than half a percentage point.",
+    "close": "Close summary",
+    "up": "up {{value}} percentage points",
+    "down": "down {{value}} percentage points",
+    "countUp_one": "Support rose in {{count}} district",
+    "countUp_other": "Support rose in {{count}} districts",
+    "countDown_one": "Support fell in {{count}} district",
+    "countDown_other": "Support fell in {{count}} districts"
   },
   "mapControls": {
     "zoomIn": "Zoom in",

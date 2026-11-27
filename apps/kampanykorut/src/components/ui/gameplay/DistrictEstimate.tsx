@@ -15,6 +15,8 @@ import {
 } from "./districtEstimate.utils";
 import { getDistrictTitle } from "./districtInsight.utils";
 import type { SwingFactor } from "./swingFactor.utils";
+import { districtKey, type VisitChange } from "./visitChange.utils";
+import { DeltaBadge } from "./VisitChangeSummary";
 
 const TOSSUP_COLOR = "#cbd5e1";
 
@@ -25,6 +27,7 @@ interface DistrictEstimateProps {
   nationalPercentages?: Record<string, number>;
   isCityMap: boolean;
   issues?: AreaIssueView[];
+  visitChange?: VisitChange;
 }
 
 export function DistrictEstimate({
@@ -34,10 +37,14 @@ export function DistrictEstimate({
   nationalPercentages,
   isCityMap,
   issues = [],
+  visitChange,
 }: DistrictEstimateProps) {
   const [scope, setScope] = useState<EstimateScope>("district");
 
   const isNational = scope === "national";
+  const deltas = isNational
+    ? visitChange?.national
+    : district && visitChange?.districts[districtKey(district)]?.deltas;
   const estimate = getScopedEstimate({
     scope,
     district,
@@ -82,6 +89,8 @@ export function DistrictEstimate({
                 showParty={!isNational && !!row.candidateName}
                 partyNameOnly={isNational}
                 scale={getBarScale(estimate)}
+                delta={deltas?.[row.partyId]}
+                deltaDigits={isNational ? 1 : 0}
               />
             ))}
           </div>
@@ -165,12 +174,16 @@ export function CandidateRow({
   showParty,
   partyNameOnly,
   scale,
+  delta,
+  deltaDigits,
 }: {
   row: EstimateRow;
   isLeader: boolean;
   showParty: boolean;
   partyNameOnly: boolean;
   scale: number;
+  delta?: number;
+  deltaDigits?: number;
 }) {
   const toPosition = (value: number) => `${(value / scale) * 100}%`;
 
@@ -189,13 +202,15 @@ export function CandidateRow({
         )}
         {isLeader && (
           <span className="mt-1.5 inline-flex items-center gap-1 rounded-full border border-slate-400/30 bg-slate-400/10 py-0.75 pr-2.25 pl-1.75 text-xs font-semibold text-slate-200">
-            <Icon name="caret-up-fill" size="xs" color="currentColor" />
+            <Icon name="flag-fill" size="xs" color="currentColor" />
             {t("estimatePanel.leads")}
           </span>
         )}
       </div>
       <div className="text-right tabular-nums">
-        <div className="text-sm font-bold text-slate-100">~{row.percent} %</div>
+        <div className="flex items-center justify-end gap-1.5 text-sm font-bold text-slate-100">
+          <DeltaBadge delta={delta} digits={deltaDigits} />~{row.percent} %
+        </div>
         <div className="mt-px text-xs font-medium text-slate-400">
           {row.low}–{row.high}
         </div>

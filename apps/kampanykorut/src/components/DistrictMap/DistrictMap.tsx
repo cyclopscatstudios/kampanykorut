@@ -33,6 +33,7 @@ interface DistrictMapProps {
   strokeWidth?: number;
   simplifyTolerance?: number;
   selectedDistrict?: { megyekod: number; oevk: number } | null;
+  changes?: Record<string, { delta: number; standout: boolean }>;
   wheel: ReturnType<typeof useWheelZoom>;
   viewBox: ViewBox;
   isGameEnded?: boolean;
@@ -59,6 +60,7 @@ export function DistrictMap({
   viewBox,
   isGameEnded,
   electionConfig,
+  changes,
 }: DistrictMapProps) {
   const [hovered, setHovered] = useState<string | null>(null);
   const [pressed, setPressed] = useState<string | null>(null);
@@ -99,6 +101,18 @@ export function DistrictMap({
         const id = `${d.maz}-${d.evk}`;
         const simplified = simplifyDP(d.pts, simplifyTolerance);
         const pathD = buildPathD(simplified, bounds, scale, offset);
+        const center = {
+          x:
+            offset.x +
+            (simplified.reduce((s, p) => s + p.x, 0) / simplified.length -
+              bounds.minX) *
+              scale,
+          y:
+            offset.y +
+            (bounds.maxY -
+              simplified.reduce((s, p) => s + p.y, 0) / simplified.length) *
+              scale,
+        };
 
         const winnerResult = getWinnerResultsByDistrictPoligon(d, resultIndex);
         const { winner, diffPercentage } = winnerResult;
@@ -111,6 +125,7 @@ export function DistrictMap({
           megyekod: Number(d.maz),
           oevk: Number(d.evk),
           pathD,
+          center,
           winnerResult,
           base: getPartyColor(partyColor, diffPercentage, isGameEnded),
           hover: getPartyHoverColor(partyColor, diffPercentage),
@@ -266,6 +281,32 @@ export function DistrictMap({
             pointerEvents="none"
           />,
         ])}
+      {changes && (
+        <g aria-hidden="true" pointerEvents="none">
+          {renderData.map((item) => {
+            const mapChange = changes[`${item.megyekod}-${item.oevk}`];
+            if (!mapChange) return null;
+            const { delta, standout } = mapChange;
+            const s = strokeWidth * (standout ? 7 : 4.5);
+            const { x, y } = item.center;
+            const up = delta > 0;
+            const points = up
+              ? `${x},${y - s} ${x + s},${y + s * 0.75} ${x - s},${y + s * 0.75}`
+              : `${x},${y + s} ${x + s},${y - s * 0.75} ${x - s},${y - s * 0.75}`;
+            return (
+              <polygon
+                key={`change-${item.id}`}
+                data-change={up ? "up" : "down"}
+                points={points}
+                fill={up ? "#f8fafc" : "#0f172a"}
+                stroke={up ? "#0f172a" : "#f8fafc"}
+                strokeWidth={strokeWidth * 1.4}
+                strokeLinejoin="round"
+              />
+            );
+          })}
+        </g>
+      )}
     </svg>
   );
 }

@@ -11,6 +11,7 @@ import { t } from "i18next";
 import { type ReactNode, useState } from "react";
 import { useWheelZoom, type ViewBox } from "../../../hooks/useWheelZoom";
 import { DistrictMap } from "../../DistrictMap/DistrictMap";
+import type { MapChange } from "./visitChange.utils";
 
 export function MapWrapper({
   districts,
@@ -25,6 +26,7 @@ export function MapWrapper({
   view,
   electionConfig,
   overlay,
+  changes,
 }: {
   districts: DistrictPoligon[];
   handleDistrict?: (r: District) => void;
@@ -38,6 +40,7 @@ export function MapWrapper({
   view?: ViewBox;
   electionConfig?: ElectionConfig;
   overlay?: ReactNode;
+  changes?: Record<string, MapChange>;
 }) {
   const initialView = view ?? { x: 0, y: 0, w: width, h: height };
   const [viewBox, setViewBox] = useState<ViewBox>(initialView);
@@ -70,6 +73,7 @@ export function MapWrapper({
         viewBox={viewBox}
         wheel={wheel}
         isGameEnded={isGameEnded}
+        changes={changes}
         electionConfig={electionConfig}
       />
       {overlay && <div className="absolute left-2 top-2 z-10">{overlay}</div>}

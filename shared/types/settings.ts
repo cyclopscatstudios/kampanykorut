@@ -9,4 +9,5 @@ export interface GameSettings {
   // false once the player asked not to have new editions open by themselves.
   newspaperAutoOpen?: boolean;
   seasonalTheme?: boolean;
+  mapView?: "classic" | "detailed";
 }

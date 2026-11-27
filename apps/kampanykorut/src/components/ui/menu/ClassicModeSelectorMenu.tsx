@@ -50,7 +50,7 @@ export function CampaignSelectorMenuList({
   const { saveSession } = useStateEngine();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [sort, setSort] = useState<CampaignSort>("year");
-  const { goBack, goToSideSelector } = useNavigation();
+  const { goToMainMenu, goToSideSelector } = useNavigation();
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export function CampaignSelectorMenuList({
       size="large"
       block={!isDesktop}
       className={isDesktop ? "w-60" : undefined}
-      onClick={goBack}
+      onClick={goToMainMenu}
     >
       <Button.Icon name="backspace-fill" />
       <Button.Text>{t("menuList.button.back")}</Button.Text>

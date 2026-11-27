@@ -7,7 +7,8 @@
     "loadGame": "Játék betöltése",
     "modMaker": "Mod készítő",
     "settings": "Beállítások",
-    "about": "A játékról"
+    "about": "A játékról",
+    "backToLanding": "Vissza a kezdőlapra"
   },
   "newGameMenu": {
     "classicMode": "Klasszikus mód",
@@ -312,6 +313,12 @@
     "settings": "Beállítások",
     "quit": "Kilépés",
     "mapMenu": {
+      "label": "Térkép beállításai",
+      "view": {
+        "menuLabel": "Térképnézet",
+        "classic": "Klasszikus",
+        "detailed": "Részletes"
+      },
       "polls": {
         "menuLabel": "Közvélemény-kutatók",
         "average": "Felmérések átlaga"
@@ -345,6 +352,21 @@
   "campaignSelectorDialog": {
     "title": "Kampányválasztó",
     "description": "Biztosan visszatérsz a kampányválasztóhoz?"
+  },
+  "visitChange": {
+    "title": "A látogatás hatása",
+    "subtitle": "Becsült változás a felmérések átlaga alapján",
+    "national": "{{party}} országos lista",
+    "city": "{{party}} fővárosi eredménye",
+    "gained": "Átvetted a vezetést {{count}} körzetben",
+    "lost": "Elvesztetted a vezetést {{count}} körzetben",
+    "noneToggle": "Miért nincs változás?",
+    "none": "A felmérések nem mutatnak fél százalékpontnál nagyobb változást.",
+    "close": "Összefoglaló bezárása",
+    "up": "{{value}} százalékponttal nőtt",
+    "down": "{{value}} százalékponttal csökkent",
+    "countUp": "{{count}} körzetben nőtt a támogatottság",
+    "countDown": "{{count}} körzetben csökkent a támogatottság"
   },
   "mapControls": {
     "zoomIn": "Nagyítás",

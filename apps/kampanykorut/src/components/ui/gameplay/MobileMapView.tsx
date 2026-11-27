@@ -25,6 +25,14 @@ import { FocusRequiredNote } from "./FocusRequiredNote";
 import { MapWrapper } from "./MapWrapper";
 import { CollapsibleEstimate, EstimateSheetContent } from "./MobileEstimate";
 import { getSwingFactorByDistrict } from "./swingFactor.utils";
+import {
+  getMapChanges,
+  getVisibleDeltas,
+  type MapChange,
+  type VisitChange,
+  type VisitChangeView,
+} from "./visitChange.utils";
+import { VisitChangeSummary } from "./VisitChangeSummary";
 
 type MobileView = "list" | "map";
 type SheetMode = "district" | "estimate";
@@ -47,6 +55,7 @@ interface MobileMapViewProps {
   visitBlocked?: boolean;
   isReturning?: boolean;
   mapOverlay?: ReactNode;
+  visitChange?: VisitChangeView;
 }
 
 export function MobileMapView({
@@ -62,7 +71,14 @@ export function MobileMapView({
   visitBlocked,
   isReturning,
   mapOverlay,
+  visitChange,
 }: MobileMapViewProps) {
+  const changes = visitChange
+    ? getMapChanges(visitChange.change, visitChange.partyId)
+    : undefined;
+  const listChanges = visitChange
+    ? getVisibleDeltas(visitChange.change, visitChange.partyId)
+    : undefined;
   const [view, setViewState] = useState<MobileView>(() => {
     try {
       return sessionStorage.getItem(MOBILE_VIEW_KEY) === "map" ? "map" : "list";
@@ -122,6 +138,14 @@ export function MobileMapView({
         </div>
       </div>
 
+      {visitChange?.isSummaryOpen && (
+        <VisitChangeSummary
+          view={visitChange}
+          parties={electionConfig.parties}
+          className="mx-4 mb-3 w-auto!"
+        />
+      )}
+
       {!selectedDistrict && !visitBlocked && (
         <p className="mx-4 mb-3 text-sm font-semibold text-slate-200">
           {t("districtList.selectPrompt")}
@@ -134,6 +158,8 @@ export function MobileMapView({
           candidateListData={candidateListData}
           parties={electionConfig.parties}
           selectedDistrict={selectedDistrict}
+          changes={listChanges}
+          scrollToSelected={!visitChange?.isSummaryOpen}
           onSelect={(district) =>
             openDistrict(getWinnerResultByCandidateList(district))
           }
@@ -148,6 +174,7 @@ export function MobileMapView({
           selectedDistrict={selectedDistrict}
           onSelect={openDistrict}
           onOpenEstimate={openEstimate}
+          changes={changes}
         />
       )}
 
@@ -185,6 +212,7 @@ export function MobileMapView({
             parties={electionConfig.parties}
             nationalPercentages={nationalPercentages}
             isCityMap={isCityMap}
+            visitChange={visitChange?.change}
             onClose={() => setIsSheetOpen(false)}
           />
         ) : (
@@ -197,6 +225,7 @@ export function MobileMapView({
               nationalPercentages={nationalPercentages}
               onClose={() => setIsSheetOpen(false)}
               issues={getAreaIssues(electionConfig, sheetData.megyekod)}
+              visitChange={visitChange?.change}
             />
           )
         )}
@@ -214,6 +243,7 @@ function MobileMap({
   selectedDistrict,
   onSelect,
   onOpenEstimate,
+  changes,
 }: {
   isCityMap: boolean;
   districts: DistrictPoligon[];
@@ -223,6 +253,7 @@ function MobileMap({
   selectedDistrict: District | null;
   onSelect: (district: District) => void;
   onOpenEstimate: () => void;
+  changes?: Record<string, MapChange>;
 }) {
   const [showCapital, setShowCapital] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -282,6 +313,7 @@ function MobileMap({
               handleDistrict={onSelect}
               selectedDistrict={selectedDistrict}
               electionConfig={electionConfig}
+              changes={changes}
             />
           )}
         </div>
@@ -332,6 +364,7 @@ function DistrictSheetContent({
   nationalPercentages,
   onClose,
   issues,
+  visitChange,
 }: {
   isCityMap: boolean;
   district: CandidateListData;
@@ -339,6 +372,7 @@ function DistrictSheetContent({
   parties: RawParty[];
   nationalPercentages?: Record<string, number>;
   onClose: () => void;
+  visitChange?: VisitChange;
 }) {
   const { leadingParty, swingFactor } = getDistrictInsight(district, parties);
 
@@ -412,6 +446,7 @@ function DistrictSheetContent({
           parties={parties}
           nationalPercentages={nationalPercentages}
           isCityMap={isCityMap}
+          visitChange={visitChange}
         />
       </div>
     </div>

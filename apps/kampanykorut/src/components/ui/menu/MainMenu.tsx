@@ -1,8 +1,10 @@
 import { useTranslateLang } from "@shared/logic/hooks/useTranslateLang";
 import { MenuItemId } from "@shared/types";
 import { MenuList, Text } from "@shared/ui";
+import { Button } from "@shared/ui/Button";
+import { Tooltip } from "@shared/ui/Tooltip";
 import { useState } from "react";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import logo from "../../../../../../brand-assets/svg/logo-stacked-dark.svg";
 import { buildInfo } from "../../../buildInfo";
 import { BugReporterButton } from "../gameplay/BugReporter/BugReporterButton";
@@ -18,9 +20,23 @@ export function MainMenu() {
   const loadGame = useTranslateLang("mainMenu.loadGame");
   const settings = useTranslateLang("mainMenu.settings");
   const about = useTranslateLang("mainMenu.about");
+  const backToLanding = useTranslateLang("mainMenu.backToLanding");
+  const navigate = useNavigate();
 
   return (
     <div className="relative w-full h-full flex flex-col overflow-y-auto">
+      <div className="absolute top-0 left-0 p-4 z-20">
+        <Tooltip content={backToLanding} position="right">
+          <Button
+            variant="underline"
+            aria-label={backToLanding}
+            testId="backToLanding"
+            onClick={() => navigate("/")}
+          >
+            <Button.Icon name="house-fill" />
+          </Button>
+        </Tooltip>
+      </div>
       <div className="absolute top-0 right-0 p-4 flex gap-2 z-20">
         <NewsBell />
         <BugReporterButton
