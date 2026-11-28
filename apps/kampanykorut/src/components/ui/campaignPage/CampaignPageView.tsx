@@ -41,7 +41,7 @@ export function CampaignPageView({
         <img
           src={campaignBannerPath(campaign)}
           alt=""
-          className="absolute inset-0 size-full object-cover"
+          className="absolute inset-0 size-full object-cover [view-transition-name:campaign-banner]"
         />
         <div className="absolute inset-0 bg-linear-to-t from-[#0f172a] via-[#0f172a]/70 to-transparent" />
         <div className="relative flex flex-col gap-5 p-5 pt-36 sm:flex-row sm:items-end sm:justify-between sm:p-8 sm:pt-64">

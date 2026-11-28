@@ -36,6 +36,14 @@
     inset 0 0 0 1px rgba(148, 163, 184, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 24px -6px rgba(0, 0, 0, 0.6);
   --shadow-btn-disabled: inset 0 0 0 1px rgba(148, 163, 184, 0.08);
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --animate-dice-roll: dice-roll 600ms linear 150ms infinite;
+
+  @keyframes dice-roll {
+    to {
+      rotate: 360deg;
+    }
+  }
 }
 
 /* ── Background gradients — @utility so hover: variant works ── */

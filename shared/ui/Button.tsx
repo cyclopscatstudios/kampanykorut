@@ -86,7 +86,6 @@ function variantClasses(
         "bg-btn-primary text-slate-50",
         "shadow-btn-primary",
         "hover:bg-btn-primary-hover hover:shadow-btn-primary-hover",
-        "active:translate-y-px",
       ].join(" ");
 
     case "secondary":
@@ -176,7 +175,8 @@ export function Button(props: ButtonProps) {
         disabled={disabled}
         className={classNames(
           "inline-flex items-center justify-center font-bold whitespace-nowrap",
-          "transition-[background,box-shadow,transform] duration-150 ease-out",
+          "transition-[background-color,box-shadow,scale] duration-150 ease-out-strong",
+          "touch-manipulation select-none",
           "font-montserrat tracking-[0.1px]",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-blue",
           !isSubtab && !isLink && "rounded-lg",
@@ -184,7 +184,7 @@ export function Button(props: ButtonProps) {
           sizeCls,
           block && "w-full",
           variantClasses(variant, selected, disabled),
-          !disabled && "cursor-pointer",
+          !disabled && "cursor-pointer active:scale-[0.97]",
           className,
         )}
       >

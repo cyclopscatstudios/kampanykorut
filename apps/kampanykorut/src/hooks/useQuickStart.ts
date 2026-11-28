@@ -19,8 +19,17 @@ export function useQuickStart(campaigns: CampaignHeader[]) {
     };
   }, []);
 
-  return async () => {
-    const campaignId = pickRandomCampaign(campaigns);
+  const picked = useRef<string | undefined>(undefined);
+
+  const prepare = () => {
+    picked.current ??= pickRandomCampaign(campaigns);
+    if (picked.current) {
+      loadCampaignConfig(picked.current).catch(() => undefined);
+    }
+  };
+
+  const start = async () => {
+    const campaignId = picked.current ?? pickRandomCampaign(campaigns);
     const config = campaignId
       ? await loadCampaignConfig(campaignId).catch(() => undefined)
       : undefined;
@@ -44,4 +53,6 @@ export function useQuickStart(campaigns: CampaignHeader[]) {
     );
     goToCampaign(campaignId, sessionId);
   };
+
+  return { start, prepare };
 }

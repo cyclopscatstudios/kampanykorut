@@ -39,14 +39,15 @@ export function LandingPage() {
   const quickStart = useQuickStart(campaigns);
 
   const startRandomGame = () => {
+    if (isStartingRandom) return;
     track("landing_exited", { target: "random_start" });
     setIsStartingRandom(true);
-    quickStart().finally(() => setIsStartingRandom(false));
+    quickStart.start().finally(() => setIsStartingRandom(false));
   };
 
   const goToCampaignSelector = () => {
     track("landing_exited", { target: "campaign_selector" });
-    navigate("/new-game/classic");
+    navigate("/new-game/classic", { viewTransition: true });
   };
 
   const openMenu = () => {
@@ -68,6 +69,7 @@ export function LandingPage() {
       <LandingHero
         onChooseCampaign={goToCampaignSelector}
         onRandomStart={startRandomGame}
+        onRandomIntent={quickStart.prepare}
         isStartingRandom={isStartingRandom}
         onOpenMenu={openMenu}
         continueInfo={

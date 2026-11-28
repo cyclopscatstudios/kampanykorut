@@ -32,7 +32,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
             aria-pressed={isActive}
             aria-label={language.label}
             onClick={() => selectLanguage(language.id)}
-            className="uppercase"
+            className="relative uppercase after:absolute after:inset-x-0 after:-inset-y-2 after:content-['']"
           >
             {language.id}
           </Button>
