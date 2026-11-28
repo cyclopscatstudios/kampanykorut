@@ -1,0 +1,34 @@
+{
+  "playerSideVictory": {
+    "title": "Vitézy Dávid Budapest új főpolgármestere",
+    "subtitle": "Új korszak a Városházán",
+    "description": "Vitézy Dávid megnyerte a főpolgármester-választást, és pártok feletti városvezetést ígérve foglalhatja el a Városháza dolgozószobáját. A szakértelemre és a működő Budapestre épített kampány átrajzolta a fővárosi erőviszonyokat: a változást akaró szavazók mögé álltak, Karácsony Gergely pedig öt év után átadni kényszerül a hivatalt. Most kiderül, hogy a kampányban felvázolt fejlesztéseket meg lehet-e valósítani egy megosztott Fővárosi Közgyűléssel és a kormánnyal szemben is.",
+    "imageUri": "/images/2024_budapest/karacsony_consolidation_vitezy.png"
+  },
+  "playerSideDefeat": {
+    "title": "Vereség a fővárosban",
+    "subtitle": "Nem jött el a változás",
+    "description": "Vitézy Dávid nem tudta megszerezni a főpolgármesteri széket. A szakmai városvezetés üzenete sokakat megszólított, de nem eleget ahhoz, hogy átrendezze a fővárosi erőviszonyokat. A Podmaniczky Mozgalom és az LMP szövetsége a Fővárosi Közgyűlésben folytatja a munkát.",
+    "imageUri": "/images/2024_budapest/default-banner.webp"
+  },
+  "playerSideDefeatBy": {
+    "karacsony_gergely": {
+      "title": "Karácsony Gergely marad",
+      "subtitle": "Újabb öt év a Városházán",
+      "description": "Karácsony Gergely megvédte főpolgármesteri székét, Vitézy Dávid pedig alulmaradt a fővárosi párharcban. A kihívó kampánya felrázta a választást, és a változást akaró budapestiek jelentős részét maga mögé állította, de a baloldali szavazók végül kitartottak a hivatalban lévő főpolgármester mellett. Vitézy a Fővárosi Közgyűlésben folytatja, ahol a mozgalma megkerülhetetlen erővé vált.",
+      "imageUri": "/images/2024_budapest/default-banner.webp"
+    },
+    "szentkiralyi_alexandra": {
+      "title": "Szentkirályi Alexandra nyert",
+      "subtitle": "A Fidesz visszaszerezte Budapestet",
+      "description": "A megosztott ellenzéki mezőnyben Szentkirályi Alexandra lett Budapest főpolgármestere. Vitézy Dávid és Karácsony Gergely egymás elől vitték el a változást akaró szavazatokat, a kormánypárti tábor pedig egységesen mozdult. Vitézy a Fővárosi Közgyűlésben próbálja számon kérni a kampányban elhangzott ígéreteket.",
+      "imageUri": "/images/2024_budapest/szentkiralyi_nem_lep_vissza.png"
+    }
+  },
+  "deadlock": {
+    "title": "Holtverseny",
+    "subtitle": "Minden szavazat számít",
+    "description": "Budapest történetének legszorosabb főpolgármester-választásán nem lehet győztest hirdetni. Mindkét tábor újraszámlálást követel, a döntés a választási bizottságokon és a bíróságokon múlik. A főváros heteken át vezető nélkül várja, ki költözhet be a Városházára.",
+    "imageUri": "/images/2024_budapest/default-banner.webp"
+  }
+}

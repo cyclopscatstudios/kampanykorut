@@ -13,6 +13,7 @@ import {
 } from "@shared/domain/Coalition";
 import { DistrictGroupEngine } from "@shared/domain/DistrictGroupEngine";
 import { EffectApplier } from "@shared/domain/EffectApplier";
+import { getPlayerVoteKey } from "@shared/domain/ElectionType";
 import { getMajorityThresholds } from "@shared/domain/Majority";
 import { MandateCalculator } from "@shared/domain/MandateCalculator";
 import { MayoralResultCalculator } from "@shared/domain/MayoralResultCalculator";
@@ -32,6 +33,7 @@ import type {
   GovernmentOutcome,
   HistoryItem,
   RawAnsweEffectProps,
+  Strategy,
 } from "@shared/types";
 import { container } from "tsyringe";
 
@@ -54,6 +56,7 @@ export interface WinningLine {
   name: string;
   side: string;
   focuses: string[];
+  strategy?: string;
   governments: Government[];
   answers: Record<string, string>;
 }
@@ -67,6 +70,7 @@ export interface LineResult {
   focuses: { id: string; status: string }[];
   governments: Government[];
   seats: Record<string, number>;
+  strategyMatches: Record<string, number>;
   answers: Record<string, string>;
   missingAnswers: string[];
 }
@@ -113,14 +117,17 @@ export function loadSide(campaign: string, side: string) {
   if (files.issues) electionConfig.issues = read(files.issues);
   const questions = read(sideFiles.questions);
   const answerEffects: RawAnsweEffectProps[] = read(sideFiles.answerEffect);
-  const events = sideFiles.campaignEvents
-    ? read(sideFiles.campaignEvents)
+  const eventsFile = sideFiles.campaignEvents ?? files.campaignEvents;
+  const events = eventsFile ? read(eventsFile) : undefined;
+  const strategies: Strategy[] | undefined = sideFiles.campaignStrategies
+    ? read(sideFiles.campaignStrategies)
     : undefined;
+  const groups = files.customGroups ? read(files.customGroups) : [];
   const politicalConfig = sideFiles.politicalConfig
     ? read(sideFiles.politicalConfig)
     : undefined;
 
-  container.resolve(DistrictGroupEngine).configure(districts, []);
+  container.resolve(DistrictGroupEngine).configure(districts, groups);
   container.resolve(VoterEnvironment).configure({
     ...read(files.voterEnvironmentConfig),
     listData: districts,
@@ -144,6 +151,8 @@ export function loadSide(campaign: string, side: string) {
     politicalConfig,
   );
   const config = { politicalConfig, electionConfig } as never;
+  const playerSide = { partyId: party, candidateId: candidate };
+  const playerKey = getPlayerVoteKey(electionConfig, playerSide) ?? party;
 
   function play(
     focuses: string[],
@@ -151,7 +160,7 @@ export function loadSide(campaign: string, side: string) {
   ): LineResult {
     let state: CampaignState = {
       ...engine.createInitialState(campaign, null, electionConfig, party),
-      playerSide: { partyId: party, candidateId: candidate },
+      playerSide,
     };
     const history: HistoryItem[] = [];
     const missingAnswers: string[] = [];
@@ -186,9 +195,9 @@ export function loadSide(campaign: string, side: string) {
         history,
         { showAdvisorFeedback: false, language: "hu" } as never,
         electionConfig,
-        undefined,
+        strategies,
         false,
-        party,
+        playerKey,
       );
       history.push({ questionId: question.id, answerId } as HistoryItem);
       state = autoSelectCompletedFocus(state, config, history);
@@ -196,11 +205,13 @@ export function loadSide(campaign: string, side: string) {
     }
 
     const governments: Government[] = [];
-    const outcome =
-      getGovernmentOutcome(state, config) ?? getClassicOutcome(state);
+    const mayoral = state.mayoralResult;
+    const outcome = mayoral
+      ? getMayoralOutcome(state)
+      : (getGovernmentOutcome(state, config) ?? getClassicOutcome(state));
     if (outcome === "single-majority") {
       governments.push({ partners: [], outcome });
-    } else if (needsCoalitionOffer(state, config)) {
+    } else if (!mayoral && needsCoalitionOffer(state, config)) {
       const ids = buildCoalitionView(state, config)!.partners.map(
         (p) => p.partyId,
       );
@@ -225,14 +236,38 @@ export function loadSide(campaign: string, side: string) {
         status: f.status,
       })),
       governments,
-      seats: Object.fromEntries(
-        (state.results?.mandates ?? []).map((m) => [m.party, m.totalSeats]),
+      seats: mayoral
+        ? Object.fromEntries(
+            Object.entries(mayoral.percentages).map(([id, share]) => [
+              id,
+              Math.round(share * 1000),
+            ]),
+          )
+        : Object.fromEntries(
+            (state.results?.mandates ?? []).map((m) => [m.party, m.totalSeats]),
+          ),
+      strategyMatches: Object.fromEntries(
+        (strategies ?? []).map((strategy) => [
+          strategy.id,
+          strategy.conditions.filter((c) =>
+            history.some(
+              (h) => h.questionId === c.questionId && h.answerId === c.answerId,
+            ),
+          ).length,
+        ]),
       ),
       answers: Object.fromEntries(
         history.map((h) => [h.questionId, h.answerId]),
       ),
       missingAnswers,
     };
+  }
+
+  function getMayoralOutcome(state: CampaignState) {
+    const outcome = state.mayoralResult?.outcome;
+    return outcome?.kind === "winner" && outcome.candidateId === playerKey
+      ? ("single-majority" as const)
+      : undefined;
   }
 
   function getClassicOutcome(state: CampaignState) {
@@ -247,14 +282,28 @@ export function loadSide(campaign: string, side: string) {
   const playLine = (line: Pick<WinningLine, "focuses" | "answers">) =>
     play(line.focuses, (questionId) => line.answers[questionId]);
 
-  return { play, playLine, party };
+  const strategyTarget = (id?: string) =>
+    Math.max(
+      0,
+      ...(strategies?.find((s) => s.id === id)?.rewards ?? []).map(
+        (r) => r.minMatches,
+      ),
+    );
+
+  return { play, playLine, party: playerKey, strategyTarget };
 }
 
 const govKey = (g: Government) => `${g.outcome}:${g.partners.join("+")}`;
 
-export function isWinning(result: LineResult, focuses: string[]): boolean {
+export function isWinning(
+  result: LineResult,
+  focuses: string[],
+  strategy?: { id: string; target: number },
+): boolean {
   return (
     result.missingAnswers.length === 0 &&
+    (!strategy ||
+      (result.strategyMatches[strategy.id] ?? 0) >= strategy.target) &&
     result.focuses.map((f) => f.id).join("/") === focuses.join("/") &&
     result.focuses.every((f) => f.status === "completed") &&
     result.governments.length > 0
@@ -270,8 +319,15 @@ export function improveLine(
   focuses: string[],
   start: Record<string, string>,
   rounds = 6,
+  strategyId?: string,
 ): LineResult {
+  const strategy = strategyId
+    ? { id: strategyId, target: side.strategyTarget(strategyId) }
+    : undefined;
   const score = (r: LineResult) => {
+    const matches = strategy
+      ? Math.min(r.strategyMatches[strategy.id] ?? 0, strategy.target)
+      : 0;
     const completed = r.focuses.filter((f) => f.status === "completed").length;
     const onPath = r.focuses.map((f) => f.id).join("/") === focuses.join("/");
     const best = r.governments.some((g) => g.outcome === "single-majority")
@@ -281,7 +337,8 @@ export function improveLine(
         : 0;
     return (
       (onPath ? 1 : 0) * 1e6 +
-      (isWinning(r, focuses) ? 1e5 : 0) +
+      (isWinning(r, focuses, strategy) ? 1e5 : 0) +
+      matches * 5000 +
       completed * 2000 +
       best * 1000 +
       (r.seats[side.party] ?? 0)
@@ -335,12 +392,15 @@ export function renderWinningPaths(fixture: WinningPathsFile): string {
   const strategic = sides.some(
     (side) => campaignFiles(fixture.campaign, side).sideFiles.politicalConfig,
   );
+  const mayoral = electionConfig.election?.type === "mayoral";
   out.push(
     `# ${electionConfig.title ?? fixture.campaign}: győztes utak`,
     "",
     (strategic
       ? "Minden fókuszúthoz egy válaszsor, amellyel mind a 4 fókusz teljesül, és létrejön a kormány. "
-      : "Minden útvonalhoz egy válaszsor, amellyel a párt önálló többséget szerez. ") +
+      : mayoral
+        ? "Minden kampánystratégiához egy válaszsor, amellyel a stratégia teljes jutalma teljesül, és a jelölt megnyeri a választást. "
+        : "Minden útvonalhoz egy válaszsor, amellyel a párt önálló többséget szerez. ") +
       "A `winningPaths.test.ts` ezeket játssza végig. Hangolás után: `UPDATE_WINNING_PATHS=1 yarn test winningPaths`.",
   );
 
@@ -358,9 +418,20 @@ export function renderWinningPaths(fixture: WinningPathsFile): string {
         : []
       ).map((f: { id: string; title: string }) => [f.id, f.title]),
     );
+    const strategies = new Map<string, string>(
+      (sideFiles.campaignStrategies
+        ? read(sideFiles.campaignStrategies)
+        : []
+      ).map((s: { id: string; label: string }) => [s.id, s.label]),
+    );
+    const sideLabel = mayoral
+      ? (electionConfig.playableSides?.find(
+          (s: { id: string }) => s.id === party,
+        )?.label ?? party)
+      : partyName(party);
     out.push(
       "",
-      `## ${partyName(party)}: ${parties.get(party)?.leader ?? candidateLabel(sideId)}`,
+      `## ${sideLabel}: ${parties.get(party)?.leader ?? candidateLabel(sideId)}`,
     );
 
     const groups = new Map<string, WinningLine[]>();
@@ -380,14 +451,18 @@ export function renderWinningPaths(fixture: WinningPathsFile): string {
       for (const line of lines) {
         const path = line.focuses.length
           ? line.focuses.map((f) => focuses.get(f) ?? f).join(" → ")
-          : line.name;
+          : line.strategy
+            ? (strategies.get(line.strategy) ?? line.name)
+            : line.name;
         const government = line.governments
           .map((g) =>
             g.partners.length
               ? g.partners
                   .map((id) => parties.get(id)?.leader ?? partyName(id))
                   .join(" + ")
-              : "önálló többség",
+              : mayoral
+                ? "győzelem"
+                : "önálló többség",
           )
           .join(" vagy ");
         const answers = order

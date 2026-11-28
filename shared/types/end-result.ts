@@ -5,6 +5,7 @@ export interface EndResultProps {
   playerSideDefeat: Asset;
   playerSideVictory: Asset;
   deadlock: Asset;
+  playerSideDefeatBy?: Record<string, Asset>;
 }
 
 export interface Asset {

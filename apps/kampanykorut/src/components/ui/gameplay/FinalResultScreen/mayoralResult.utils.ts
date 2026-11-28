@@ -1,5 +1,6 @@
 import {
   CampaignState,
+  EndResultProps,
   MayoralDistrictResult,
   MayoralOutcome,
   RawParty,
@@ -15,6 +16,21 @@ export function getMayoralHeadline(
     return "deadlock";
   }
   return outcome.candidateId === playerCandidateId ? "victory" : "defeat";
+}
+
+export function getMayoralEndResultAsset(
+  endResults: EndResultProps | undefined,
+  outcome: MayoralOutcome,
+  playerCandidateId: string | undefined,
+) {
+  const headline = getMayoralHeadline(outcome, playerCandidateId);
+  if (headline === "victory") return endResults?.playerSideVictory;
+  if (headline === "deadlock") return endResults?.deadlock;
+  const winnerId = outcome.kind === "winner" ? outcome.candidateId : undefined;
+  return (
+    (winnerId && endResults?.playerSideDefeatBy?.[winnerId]) ||
+    endResults?.playerSideDefeat
+  );
 }
 
 export function getWithdrawnCandidates(
