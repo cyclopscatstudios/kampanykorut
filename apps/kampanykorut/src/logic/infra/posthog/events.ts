@@ -25,6 +25,10 @@ export interface AnalyticsEvents {
       | "continue";
   };
   campaign_start_clicked: RunProperties;
+  about_start_clicked: {
+    placement: "hero" | "footer";
+    target: "campaign_selector" | "random_start";
+  };
   campaign_page_start_clicked: { campaign_id: string; side_id?: string };
   campaign_chosen: { campaign_id: string };
   campaign_loaded: RunProperties & {

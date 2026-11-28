@@ -717,5 +717,86 @@
     },
     "expiryHint": "Saves are deleted automatically after 30 days.",
     "expiryLabel": "Kept for 30 days"
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "About the game – election simulator | Kampánykörút",
+      "description": "What is Kampánykörút? A browser-based Hungarian election simulator with real districts, Classic and Strategic modes, from 1957 to 2026."
+    },
+    "hero": {
+      "kicker": "About the game",
+      "heading": "One campaign, many decisions, one election night.",
+      "description": "In Kampánykörút you run a Hungarian election campaign. You travel the country district by district, answer questions, and your decisions add up to seats calculated with the real electoral rules.",
+      "facts": "Free, no sign-up, in your browser and on your phone.",
+      "caption": "Picking a district in the 2026 campaign: the estimate with its margin of error before you visit."
+    },
+    "how": {
+      "heading": "How a campaign works",
+      "steps": [
+        "Pick a campaign, a party and its candidate. Every side is playable.",
+        "Each turn, pick a district on the map and check the estimate.",
+        "Visit it and answer a question: an interview, a debate, a scandal or a strategic call.",
+        "Your answer moves vote shares, voter enthusiasm and momentum. Your advisors give feedback.",
+        "On election night the game calculates the result: constituency, list and compensation seats."
+      ],
+      "caption": "A question from the 2026 campaign, in Hódmezővásárhely."
+    },
+    "modes": {
+      "heading": "Two game modes",
+      "description": "Each campaign is built for one mode. The campaign selector shows which one next to the campaign name.",
+      "classic": {
+        "summary": "A question-and-answer campaign. Interviews, debates and campaign events decide how the election goes.",
+        "features": [
+          "One district visit and one question per turn, with four answers",
+          "District and national estimates with a margin of error",
+          "Advisor feedback after your decisions",
+          "Campaign events that depend on your earlier answers"
+        ],
+        "where": "Classic campaigns: 2022, 2024 (Budapest) and 2026. Fully playable on a phone."
+      },
+      "strategic": {
+        "summary": "Beyond the questions you build your party over the long run: choose a direction, take positions on issues and watch your relations with the other parties.",
+        "features": [
+          "Focus tree: follow one direction per branch, which opens or closes new options",
+          "Regional issues: different questions matter in each region, and your stance shifts with your answers",
+          "Political situation page with relations and a chronicle",
+          "A newspaper that reports on the campaign issue by issue",
+          "A coalition offer if you have no majority after the election"
+        ],
+        "where": "Strategic campaign: 1957: A forradalom öröksége (The Legacy of the Revolution), with three playable parties."
+      }
+    },
+    "night": {
+      "heading": "Election night",
+      "description": "At the end of the campaign the game calculates the result with the Hungarian electoral system and shows what led to it.",
+      "features": [
+        "A summary with the seat distribution in parliament",
+        "An election map with results by district",
+        "Statistics: constituency and list seats, closest districts, turnout",
+        "History: the decision from every turn can be reviewed",
+        "Badges in campaigns that have them",
+        "A shareable result card and one-click replay"
+      ],
+      "resultsCaption": "Parliamentary result at the end of the 2022 campaign.",
+      "mayoralCaption": "The 2024 Budapest campaign ends with a mayoral election and results by district."
+    },
+    "campaigns": {
+      "heading": "Available campaigns",
+      "description": "Historical and alternate-history campaigns. Open a campaign for its background and playable sides."
+    },
+    "cta": {
+      "heading": "Start your first campaign",
+      "description": "Pick a campaign and a side, or start a random campaign. The game saves automatically so you can continue later."
+    },
+    "shots": {
+      "classicMap": "Hungary's electoral district map in the game, with a selected district and its estimate",
+      "classicQuestion": "A campaign question with four answers in the 2026 campaign",
+      "mobileQuestion": "A campaign question on a phone",
+      "strategicFocus": "The Focuses tab of the Political situation page in the 1957 campaign",
+      "strategicIssues": "Regional map with issue strength in the 1957 campaign",
+      "coalition": "A coalition offer after the election in the 1957 campaign",
+      "results": "Election summary with the seat distribution in parliament",
+      "mayoral": "Mayoral election result in the 2024 Budapest campaign"
+    }
   }
 }
