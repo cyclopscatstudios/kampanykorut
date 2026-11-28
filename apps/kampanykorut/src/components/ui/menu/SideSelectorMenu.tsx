@@ -292,7 +292,7 @@ function SelectorItem<T extends { label: string; value: string }>({
     )?.label;
 
     return (
-      <div className="rounded-xl border border-slate-400/15 border-t-2 border-t-blue-500 bg-[#1b2b49] p-3.5 flex flex-col gap-3">
+      <div className="rounded-b-xl border border-slate-400/15 border-t-2 border-t-blue-500 bg-[#1b2b49] p-3.5 flex flex-col gap-3">
         <div className="flex items-baseline gap-1.5">
           <span className="text-[10.5px] font-semibold text-slate-500">
             {step}
