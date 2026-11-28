@@ -19,6 +19,10 @@ import {
   rootLoader,
 } from "./components/loaders/route.loader";
 import { sideSelectorLoader } from "./components/loaders/sideSelector.loader";
+import {
+  ABOUT_PAGE_PATH,
+  AboutPage,
+} from "./components/ui/aboutPage/AboutPage";
 import { CampaignPage } from "./components/ui/campaignPage/CampaignPage";
 import { CAMPAIGN_PAGE_PATH } from "./components/ui/campaignPage/campaignPage.data";
 import { CoalitionPage } from "./components/ui/coalition/CoalitionPage";
@@ -43,6 +47,11 @@ export const router = createBrowserRouter([
         path: "/",
         element: <LandingPage />,
         loader: landingPageRouter,
+      },
+      {
+        path: ABOUT_PAGE_PATH,
+        element: <AboutPage />,
+        errorElement: <ErrorPage />,
       },
       {
         path: NEWS_PATH,

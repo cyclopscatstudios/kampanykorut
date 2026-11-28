@@ -712,5 +712,86 @@
     },
     "expiryHint": "A mentések 30 nap után automatikusan törlődnek.",
     "expiryLabel": "30 napig őrizzük"
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "A játékról – választási szimulátor | Kampánykörút",
+      "description": "Mi a Kampánykörút? Böngészős magyar választási szimulátor valódi választókerületekkel, Klasszikus és Stratégiai móddal, 1957-től 2026-ig."
+    },
+    "hero": {
+      "kicker": "A játékról",
+      "heading": "Egy kampány, sok döntés, egy választási éjszaka.",
+      "description": "A Kampánykörútban egy magyar választási kampányt vezetsz. Körzetről körzetre járod az országot, kérdésekre válaszolsz, és a döntéseid a valódi választási szabályok szerint számolt mandátumokká állnak össze.",
+      "facts": "Ingyenes, regisztráció nélkül játszható, böngészőben és telefonon is.",
+      "caption": "Körzetválasztás a 2026-os kampányban: becsült állás hibahatárral, mielőtt ellátogatsz."
+    },
+    "how": {
+      "heading": "Így zajlik egy kampány",
+      "steps": [
+        "Kiválasztasz egy kampányt, egy pártot és a jelöltjét. Minden oldal játszható.",
+        "Minden fordulóban kiválasztasz egy körzetet a térképen, és megnézed a becsült állást.",
+        "Ellátogatsz oda, és egy kérdésre válaszolsz: interjú, vita, botrány vagy stratégiai döntés.",
+        "A válaszod megmozdítja a szavazatarányokat, a szavazók lelkesedését és a lendületet. A tanácsadóid visszajeleznek.",
+        "A választás éjszakáján a játék kiszámolja az eredményt: egyéni, listás és kompenzációs mandátumokat."
+      ],
+      "caption": "Egy kérdés a 2026-os kampányból, Hódmezővásárhelyen."
+    },
+    "modes": {
+      "heading": "Két játékmód",
+      "description": "Minden kampány az egyik módban készül. A kampányválasztóban a kampány neve mellett látod, melyikben.",
+      "classic": {
+        "summary": "Kérdés-válasz kampány. Interjúkon, vitákon és kampányeseményeken dől el, hogyan alakul a választás.",
+        "features": [
+          "Fordulónként egy körzetlátogatás és egy kérdés, négy válaszlehetőséggel",
+          "Körzeti és országos becslés hibahatárral",
+          "Tanácsadói visszajelzés a döntéseid után",
+          "Kampányesemények, amelyek a korábbi válaszaidtól függenek"
+        ],
+        "where": "Klasszikus kampány: 2022, 2024 (Budapest) és 2026. Telefonon is végigjátszható."
+      },
+      "strategic": {
+        "summary": "A kérdések mellett hosszabb távon is építed a pártodat: irányt választasz, ügyekben foglalsz állást, és figyelned kell a többi párttal való viszonyra.",
+        "features": [
+          "Fókuszfa: elágazásonként egy irányt követsz, és ez új lehetőségeket nyit vagy zár le",
+          "Ügyek a térségben: régiónként más kérdések számítanak, és az álláspontod mozog a válaszaiddal",
+          "Politikai helyzet oldal viszonyokkal és krónikával",
+          "Hírlap, amely lapszámonként beszámol a kampány fejleményeiről",
+          "Koalíciós ajánlat, ha a választás után nincs meg a többséged"
+        ],
+        "where": "Stratégiai kampány: 1957: A forradalom öröksége, három játszható párttal."
+      }
+    },
+    "night": {
+      "heading": "A választás éjszakája",
+      "description": "A kampány végén a játék a magyar választási rendszer szerint kiszámolja az eredményt, és megmutatja, mi vezetett hozzá.",
+      "features": [
+        "Összefoglaló a parlament mandátumeloszlásával",
+        "Választási térkép körzetenkénti eredménnyel",
+        "Statisztikák: egyéni és listás mandátumok, legszorosabb körzetek, részvétel",
+        "Előzmények: minden forduló döntése visszanézhető",
+        "Jelvények azokban a kampányokban, amelyekben vannak",
+        "Megosztható eredménykártya és újrajátszás egy kattintással"
+      ],
+      "resultsCaption": "Országgyűlési eredmény a 2022-es kampány végén.",
+      "mayoralCaption": "A 2024-es budapesti kampány főpolgármester-választással és kerületi eredményekkel zárul."
+    },
+    "campaigns": {
+      "heading": "Elérhető kampányok",
+      "description": "Történelmi és alternatív történelmi kampányok. Kattints egy kampányra a háttérért és a játszható oldalakért."
+    },
+    "cta": {
+      "heading": "Kezdd el az első kampányodat",
+      "description": "Válassz kampányt és oldalt, vagy indíts egy véletlen kampányt. A játék automatikusan ment, később folytathatod."
+    },
+    "shots": {
+      "classicMap": "Magyarország választókerületi térképe a játékban, kijelölt körzettel és becsült állással",
+      "classicQuestion": "Kampánykérdés négy válaszlehetőséggel a 2026-os kampányban",
+      "mobileQuestion": "Kampánykérdés telefonos nézetben",
+      "strategicFocus": "A Politikai helyzet oldal Fókuszok füle az 1957-es kampányban",
+      "strategicIssues": "Régiós térkép az ügyek erősségével az 1957-es kampányban",
+      "coalition": "Koalíciós ajánlat a választás után az 1957-es kampányban",
+      "results": "Választási összefoglaló a parlament mandátumeloszlásával",
+      "mayoral": "Főpolgármester-választási eredmény a 2024-es budapesti kampányban"
+    }
   }
 }
