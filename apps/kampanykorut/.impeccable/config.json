@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "src/components/ui/menu/SideSelectorMenu.tsx"
+        ],
+        "createdAt": "2026-11-28T11:20:11.929Z",
+        "reason": "Claude: top corners are square (rounded-b-xl) so the top accent no longer meets a radius; verified by screenshot in PR #172"
+      }
+    ]
+  }
+}
