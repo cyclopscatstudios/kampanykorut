@@ -27,6 +27,33 @@
     U+2215, U+FEFF, U+FFFD;
 }
 
+::view-transition-old(root) {
+  animation-duration: 120ms;
+}
+
+::view-transition-new(root) {
+  animation-duration: 200ms;
+}
+
+::view-transition-group(campaign-banner) {
+  animation-duration: 280ms;
+  animation-timing-function: var(--ease-out-strong);
+}
+
+::view-transition-old(campaign-banner),
+::view-transition-new(campaign-banner) {
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 @layer components {
   .news-content a {
     @apply text-blue-400 underline underline-offset-2 hover:text-blue-300;

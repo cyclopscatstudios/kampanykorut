@@ -1,5 +1,6 @@
 import { Button } from "@shared/ui/Button";
 import { Icon } from "@shared/ui/Icon";
+import classNames from "classnames";
 import { t } from "i18next";
 import logo from "../../../../../../../brand-assets/svg/logo-horizontal-dark.svg";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -11,6 +12,14 @@ const MAP_PREVIEW = {
   height: 650,
 };
 
+function revealWhenLoaded(img: HTMLImageElement | null) {
+  if (!img || img.complete) return;
+  img.dataset.loading = "";
+  const reveal = () => delete img.dataset.loading;
+  img.addEventListener("load", reveal, { once: true });
+  img.addEventListener("error", reveal, { once: true });
+}
+
 export interface ContinueInfo {
   campaign: string;
   turn: number;
@@ -19,6 +28,7 @@ export interface ContinueInfo {
 interface LandingHeroProps {
   onChooseCampaign: () => void;
   onRandomStart: () => void;
+  onRandomIntent?: () => void;
   isStartingRandom?: boolean;
   onOpenMenu: () => void;
   continueInfo?: ContinueInfo;
@@ -28,6 +38,7 @@ interface LandingHeroProps {
 export function LandingHero({
   onChooseCampaign,
   onRandomStart,
+  onRandomIntent,
   isStartingRandom,
   onOpenMenu,
   continueInfo,
@@ -55,7 +66,7 @@ export function LandingHero({
             variant="link"
             onClick={onOpenMenu}
             testId="landingMenu"
-            className="text-slate-200 hover:text-white"
+            className="relative text-slate-200 after:absolute after:-inset-x-2 after:-inset-y-3 after:content-[''] hover:text-white"
           >
             <Button.Icon name="list" />
             <Button.Text>{t("landing.hero.menu")}</Button.Text>
@@ -107,11 +118,20 @@ export function LandingHero({
               variant="hero"
               size="lg"
               onClick={onRandomStart}
-              disabled={isStartingRandom}
+              onPointerEnter={onRandomIntent}
+              onFocus={onRandomIntent}
+              onTouchStart={onRandomIntent}
               aria-busy={isStartingRandom}
               testId="landingRandomStart"
             >
-              <Button.Icon name="dice-5-fill" />
+              <span
+                className={classNames(
+                  "flex",
+                  isStartingRandom && "motion-safe:animate-dice-roll",
+                )}
+              >
+                <Button.Icon name="dice-5-fill" />
+              </span>
               <Button.Text>{t("landing.hero.randomStart")}</Button.Text>
             </Button>
           </div>
@@ -126,7 +146,8 @@ export function LandingHero({
             height={MAP_PREVIEW.height}
             alt={t("landing.hero.mapAlt")}
             fetchPriority="high"
-            className="h-auto w-full drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
+            ref={revealWhenLoaded}
+            className="h-auto w-full drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)] transition-[opacity,scale] duration-500 ease-out-strong data-loading:scale-[0.98] data-loading:opacity-0 motion-reduce:data-loading:scale-100"
           />
           <figcaption className="text-sm text-slate-300">
             {t("landing.hero.mapCaption")}
