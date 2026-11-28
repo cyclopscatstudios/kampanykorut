@@ -1,0 +1,34 @@
+{
+  "playerSideVictory": {
+    "title": "Karácsony Gergely marad a főpolgármester",
+    "subtitle": "Újabb öt év a Városházán",
+    "description": "Karácsony Gergely megnyerte a főpolgármester-választást, és második ciklusát kezdheti Budapest élén. A kampány megmutatta, hogy a fővárosi szavazók többsége a zöldebb, szolidárisabb város programját választja, még egy gyorsan átalakuló mezőnyben is. A következő öt év sem lesz könnyebb: a kormánnyal folytatott pénzügyi viták és a megosztott Fővárosi Közgyűlés újabb kompromisszumokat követel.",
+    "imageUri": "/images/2024_budapest/default-banner.webp"
+  },
+  "playerSideDefeat": {
+    "title": "Vereség a fővárosban",
+    "subtitle": "Véget ért a Karácsony-korszak",
+    "description": "Karácsony Gergely nem tudta megvédeni a főpolgármesteri széket. Öt év kormánnyal vívott csatái után a budapestiek többsége változást akart, a DK–MSZP–Párbeszéd szövetség pedig ellenzékbe szorul a Városházán.",
+    "imageUri": "/images/2024_budapest/default-banner.webp"
+  },
+  "playerSideDefeatBy": {
+    "vitezy_david": {
+      "title": "Vitézy Dávid nyert",
+      "subtitle": "Véget ért a Karácsony-korszak",
+      "description": "Vitézy Dávid lett Budapest főpolgármestere. A kihívó a szakmai városvezetés és a működő főváros ígéretével a változást akaró szavazók többségét maga mögé állította, köztük sok egykori ellenzéki választót is. Karácsony Gergely öt év után átadja a hivatalt, a baloldali szövetségnek pedig újra kell gondolnia, hogyan szólíthatja meg a budapestieket.",
+      "imageUri": "/images/2024_budapest/karacsony_consolidation_vitezy.png"
+    },
+    "szentkiralyi_alexandra": {
+      "title": "Szentkirályi Alexandra nyert",
+      "subtitle": "A Fidesz visszaszerezte Budapestet",
+      "description": "A szétforgácsolódó ellenzéki szavazatok között Szentkirályi Alexandra lett Budapest főpolgármestere. A kormánypárti tábor egységesen mozdult, Karácsony Gergely és Vitézy Dávid pedig egymás elől vitték el a voksokat. Öt év után a Fidesz–KDNP jelöltje vezeti újra a fővárost.",
+      "imageUri": "/images/2024_budapest/szentkiralyi_nem_lep_vissza.png"
+    }
+  },
+  "deadlock": {
+    "title": "Holtverseny",
+    "subtitle": "Minden szavazat számít",
+    "description": "Budapest történetének legszorosabb főpolgármester-választásán nem lehet győztest hirdetni. Mindkét tábor újraszámlálást követel, a döntés a választási bizottságokon és a bíróságokon múlik. A főváros heteken át vezető nélkül várja, ki költözhet be a Városházára.",
+    "imageUri": "/images/2024_budapest/default-banner.webp"
+  }
+}

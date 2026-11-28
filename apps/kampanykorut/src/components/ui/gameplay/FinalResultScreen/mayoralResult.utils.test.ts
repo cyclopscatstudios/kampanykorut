@@ -1,7 +1,8 @@
-import { MayoralDistrictResult } from "@shared/types";
+import { EndResultProps, MayoralDistrictResult } from "@shared/types";
 import {
   formatShare,
   getMayoralDistrictRows,
+  getMayoralEndResultAsset,
   getMayoralHeadline,
   getWithdrawnCandidates,
   MayoralDistrictRow,
@@ -24,6 +25,50 @@ describe("getMayoralHeadline", () => {
       getMayoralHeadline({ kind: "tie", candidateIds: ["a", "b"] }, "a"),
     ).toBe("deadlock");
     expect(getMayoralHeadline({ kind: "no_winner" }, "a")).toBe("deadlock");
+  });
+});
+
+describe("getMayoralEndResultAsset", () => {
+  const asset = (title: string) => ({
+    title,
+    subtitle: "",
+    description: "",
+    imageUri: "",
+  });
+  const endResults: EndResultProps = {
+    playerSideVictory: asset("victory"),
+    playerSideDefeat: asset("defeat"),
+    deadlock: asset("deadlock"),
+    playerSideDefeatBy: { szentkiralyi: asset("defeat-by-szentkiralyi") },
+  };
+  const winner = (candidateId: string) =>
+    ({ kind: "winner", candidateId }) as const;
+
+  it("picks the story that matches the outcome", () => {
+    expect(
+      getMayoralEndResultAsset(endResults, winner("vitezy"), "vitezy")?.title,
+    ).toBe("victory");
+    expect(
+      getMayoralEndResultAsset(
+        endResults,
+        {
+          kind: "tie",
+          candidateIds: ["vitezy", "szentkiralyi"],
+        },
+        "vitezy",
+      )?.title,
+    ).toBe("deadlock");
+  });
+
+  it("prefers the defeat story written for the winner", () => {
+    expect(
+      getMayoralEndResultAsset(endResults, winner("szentkiralyi"), "vitezy")
+        ?.title,
+    ).toBe("defeat-by-szentkiralyi");
+    expect(
+      getMayoralEndResultAsset(endResults, winner("grundtner"), "vitezy")
+        ?.title,
+    ).toBe("defeat");
   });
 });
 

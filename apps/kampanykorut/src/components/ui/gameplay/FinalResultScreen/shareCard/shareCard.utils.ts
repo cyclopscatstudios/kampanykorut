@@ -14,7 +14,10 @@ import type {
 } from "@shared/types";
 import type { TFunction } from "i18next";
 import { campaignPagePath } from "../../../campaignPage/campaignPage.data";
-import { getMayoralHeadline } from "../mayoralResult.utils";
+import {
+  getMayoralEndResultAsset,
+  getMayoralHeadline,
+} from "../mayoralResult.utils";
 
 export const SHARE_CARD_WIDTH = 1200;
 export const SHARE_CARD_HEIGHT = 630;
@@ -152,7 +155,9 @@ export function buildShareCard({
       : base.outcome === "loss"
         ? base.winnerColor
         : DEADLOCK_COLOR;
-  const asset = endResults?.[outcomeToStory[base.outcome]];
+  const asset = mayoral
+    ? getMayoralEndResultAsset(endResults, mayoral.outcome, playerCandidateId)
+    : endResults?.[outcomeToStory[base.outcome]];
   const campaignTitle = electionConfig.title;
 
   return {
