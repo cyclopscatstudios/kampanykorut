@@ -6,6 +6,7 @@ export interface WinningLine {
   name: string;
   side: string;
   focuses: string[];
+  strategy?: string;
   governments: { partners: string[]; outcome: string }[];
   answers: Record<string, string>;
 }

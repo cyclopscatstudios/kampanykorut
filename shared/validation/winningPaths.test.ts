@@ -46,6 +46,11 @@ describe.each(files)("winning paths $name", ({ file }) => {
         expect(describeGovernments(result.governments)).toEqual(
           describeGovernments(line.governments),
         );
+        if (line.strategy) {
+          expect(result.strategyMatches[line.strategy]).toBeGreaterThanOrEqual(
+            side.strategyTarget(line.strategy),
+          );
+        }
       },
       60000,
     );
@@ -56,11 +61,14 @@ describe.each(files)("winning paths $name", ({ file }) => {
         const side = loadSide(fixture.campaign, sideId);
         const lost: string[] = [];
         for (const line of lines) {
+          const strategy = line.strategy
+            ? { id: line.strategy, target: side.strategyTarget(line.strategy) }
+            : undefined;
           const current = side.playLine(line);
-          const result = isWinning(current, line.focuses)
+          const result = isWinning(current, line.focuses, strategy)
             ? current
-            : improveLine(side, line.focuses, line.answers);
-          if (!isWinning(result, line.focuses)) {
+            : improveLine(side, line.focuses, line.answers, 6, line.strategy);
+          if (!isWinning(result, line.focuses, strategy)) {
             lost.push(line.name);
             continue;
           }
